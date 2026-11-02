@@ -5,7 +5,7 @@ import { renderPage, escapeHtml } from '../src/render.mjs';
 
 test('both business paths and every required company/legal destination exist', () => {
   for (const path of ['/', '/pages/products', '/pages/nevora', '/pages/custom-development', '/pages/about', '/pages/contact', '/pages/help', '/pages/legal', '/pages/privacy', '/pages/cookies', '/pages/website-terms', '/pages/software-project-terms', '/pages/accessibility', '/pages/security']) assert.ok(routes[path], path);
-  assert.equal(company.name, 'The Velani');
+  assert.equal(company.name, 'Velani');
   assert.equal(company.operator, 'VELANI LLC');
   assert.equal(company.email, 'support@thevelani.com');
 });

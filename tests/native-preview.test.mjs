@@ -31,7 +31,7 @@ test('the published theme is indexable while drafts stay noindex', async () => {
   const draft = await liquid.parseAndRender(layout, ctx('unpublished'));
   assert.doesNotMatch(main, /noindex/);
   assert.match(draft, /name="robots" content="noindex, nofollow"/);
-  assert.match(main, /<title>The Velani: Brighter work ahead<\/title>/);
+  assert.match(main, /<title>Velani: Brighter work ahead<\/title>/);
   assert.match(main, /velani-home\.css/);
 });
 test('the NEVORA page loads its own assets and marks its nav item', async () => {

@@ -1,6 +1,6 @@
 import { POLICY_DOCS } from './nevora-policies.mjs';
 export const company = Object.freeze({
-  name: 'The Velani',
+  name: 'Velani',
   operator: 'VELANI LLC',
   email: 'support@thevelani.com',
   address: '1654 Calle Tulipan, Suite 100, San Juan, PR 00927',
@@ -15,15 +15,15 @@ export const services = [
 const page = (title, eyebrow, intro, sections = [], extra = {}) => ({ title, eyebrow, intro, sections, ...extra });
 export const legalUpdated = 'November 2, 2026';
 export const routes = {
-  '/': page('Brighter work ahead', 'The Velani', 'NEVORA is our app for scheduling, the time clock and payroll calculation, made for teams that work in shifts. We also build web and mobile apps, business systems and integrations for other companies.', [], { kind: 'home' }),
-  '/pages/products': page('What we make.', 'The Velani', 'NEVORA, our own app for teams that work in shifts, and custom software we build for other businesses.', [], { kind: 'products', nav: 'nevora' }),
+  '/': page('Brighter work ahead', 'Velani', 'NEVORA is our app for scheduling, the time clock and payroll calculation, made for teams that work in shifts. We also build web and mobile apps, business systems and integrations for other companies.', [], { kind: 'home' }),
+  '/pages/products': page('What we make.', 'Velani', 'NEVORA, our own app for teams that work in shifts, and custom software we build for other businesses.', [], { kind: 'products', nav: 'nevora' }),
   '/pages/nevora': page('NEVORA: scheduling, time clock and payroll for shift teams', 'NEVORA', 'Managers plan the week and approve hours on the web. Employees see their shifts and send requests from their phone. Everyone clocks in on a shared tablet with their own PIN. NEVORA calculates payroll for your review and publishes pay statements.', [], { kind: 'nevora', nav: 'nevora' }),
   '/pages/custom-development': page('Software for the work your business needs to do.', 'Custom development', 'A customer-facing application, an internal system or a connection between tools. Start with the problem and the people doing the work.', [], { kind: 'services', nav: 'services' }),
-  '/pages/about': page('A software company. Two ways to work with us.', 'About The Velani', 'The Velani develops software products and builds custom applications for businesses.', [
+  '/pages/about': page('A software company. Two ways to work with us.', 'About Velani', 'Velani develops software products and builds custom applications for businesses.', [
     { heading: 'Products of our own', text: 'Our product work starts with a specific business workflow. NEVORA, our app for scheduling, the time clock and payroll calculation, is in development and offered to businesses by quote.' },
     { heading: 'Software for your business', text: 'Custom development starts with the work you need software to support. We define the problem and the scope before making project commitments.' },
     { heading: 'Clarity throughout', text: 'What a product does. What is still in development. What a project agreement covers. Those details should be easy to understand.' },
-    { heading: 'The company behind the work', text: 'The Velani is operated by VELANI LLC. You can reach us at support@thevelani.com or at 1654 Calle Tulipan, Suite 100, San Juan, PR 00927.' },
+    { heading: 'The company behind the work', text: 'Velani is operated by VELANI LLC. You can reach us at support@thevelani.com or at 1654 Calle Tulipan, Suite 100, San Juan, PR 00927.' },
   ], { nav: 'about' }),
   '/pages/contact': page('Start with the problem.', 'Discuss a project', 'Tell us what needs to work better, who needs to use it, and what you want to build.', [], { kind: 'contact', nav: 'contact' }),
   '/pages/help': page('Before we start.', 'Help & questions', 'Answers about our products, custom development and getting in touch.', [
@@ -36,7 +36,7 @@ export const routes = {
   ], { kind: 'faq' }),
   '/pages/legal': page('The details matter.', 'Legal & trust', 'Find the information that applies to this company website. Product use and paid engagements have their own applicable terms.', [], { kind: 'legal-index', legal: true }),
   '/pages/privacy': page('Privacy, in plain language.', 'Privacy notice', 'How information is handled on this company website and through a project inquiry.', [
-    { heading: 'Who operates this website', text: 'The Velani is operated by VELANI LLC. Contact support@thevelani.com about privacy, or write to VELANI LLC, 1654 Calle Tulipan, Suite 100, San Juan, PR 00927.' },
+    { heading: 'Who operates this website', text: 'Velani is operated by VELANI LLC. Contact support@thevelani.com about privacy, or write to VELANI LLC, 1654 Calle Tulipan, Suite 100, San Juan, PR 00927.' },
     { heading: 'What this website collects', text: 'This website does not ask you to create an account. Velani’s code does not save your name, email or message to browser storage. Do not include credentials, payment details or sensitive records in a message.' },
     { heading: 'Website platform information', text: 'The website is hosted on Shopify. Shopify and the platform providers it uses may process device, connection, security and storage information to operate the website. Velani has not added advertising or analytics tools to this website.' },
     { heading: 'If you contact us', text: 'An email you choose to send contains your address, your message and any other information you include. We use an inquiry to handle the conversation you requested. An inquiry is not consent to subscribe you to marketing.' },
@@ -53,7 +53,7 @@ export const routes = {
     { heading: 'Browser signals and withdrawal', text: 'Changing a choice affects supported processing going forward and does not itself erase data already processed. Contact support@thevelani.com with a privacy question.' },
   ], { legal: true, cookieAction: true }),
   '/pages/website-terms': page('Using the company website.', 'Website terms', 'These terms describe this informational website and its inquiry flow.', [
-    { heading: 'Operator and contact', text: 'This website is operated by VELANI LLC, doing business as The Velani. Contact support@thevelani.com or write to 1654 Calle Tulipan, Suite 100, San Juan, PR 00927.' },
+    { heading: 'Operator and contact', text: 'This website is operated by VELANI LLC, doing business as Velani. Contact support@thevelani.com or write to 1654 Calle Tulipan, Suite 100, San Juan, PR 00927.' },
     { heading: 'Information and inquiries', text: 'The website describes software products and custom development. Sending an inquiry does not begin a paid engagement, reserve availability, create a software account or make a purchase.' },
     { heading: 'Use the website lawfully', text: 'Do not attempt unauthorized access, disrupt the website, submit malicious material or misuse another person’s information. Do not send credentials or sensitive personal records through the public inquiry form.' },
     { heading: 'Product availability', text: 'Each product page states its current status. NEVORA is in development and offered to businesses by quote. A product page is not a promise of a launch date, price or completed capability.' },

@@ -7,3 +7,8 @@ Actual PNG dimensions: 1730 x 909 pixels
 The original generated PNG is preserved. The final asset is an unmodified copy.
 
 Delivery optimization: original PNG preserved in docs/reference/velani-social-original.png. Public asset is a lossless WebP conversion at the original 1730×909 size; ImageMagick pixel comparison AE=0 (evidence/social-lossless-compare.txt). The connector rejected the original 1.6 MB base64 request (HTTP 413), so the 723,334-byte lossless asset is sent separately. No visual edits or resized artwork.
+
+2026-11-02 replacement: public/assets/velani-social.webp is now a 1200×630 card rendered from the
+official VELANI wordmark (src/brand/velani-wordmark.svg, traced from docs/reference/velani-logo-official.pdf)
+in #f4f6f9 on #05090e, 560px wide, centred, lossless WebP. No generated imagery. The earlier
+generated card is still preserved in docs/reference/velani-social-original.png.
