@@ -1,0 +1,334 @@
+{
+  "status": "failed",
+  "passed": 40,
+  "failed": 8,
+  "blocked": 0,
+  "results": [
+    {
+      "name": "chromium home geometry 320",
+      "status": "failed",
+      "error": "Product development status missing"
+    },
+    {
+      "name": "chromium home geometry 390",
+      "status": "failed",
+      "error": "Product development status missing"
+    },
+    {
+      "name": "chromium home geometry 768",
+      "status": "failed",
+      "error": "Product development status missing"
+    },
+    {
+      "name": "chromium home geometry 969",
+      "status": "failed",
+      "error": "Product development status missing"
+    },
+    {
+      "name": "chromium home geometry 1440",
+      "status": "failed",
+      "error": "Product development status missing"
+    },
+    {
+      "name": "chromium home geometry 1920",
+      "status": "failed",
+      "error": "Product development status missing"
+    },
+    {
+      "name": "chromium route/a11y 390 /",
+      "status": "passed",
+      "detail": {
+        "axeViolations": 0
+      }
+    },
+    {
+      "name": "chromium route/a11y 390 /pages/products",
+      "status": "passed",
+      "detail": {
+        "axeViolations": 0
+      }
+    },
+    {
+      "name": "chromium route/a11y 390 /pages/nevora",
+      "status": "passed",
+      "detail": {
+        "axeViolations": 0
+      }
+    },
+    {
+      "name": "chromium route/a11y 390 /pages/custom-development",
+      "status": "passed",
+      "detail": {
+        "axeViolations": 0
+      }
+    },
+    {
+      "name": "chromium route/a11y 390 /pages/about",
+      "status": "passed",
+      "detail": {
+        "axeViolations": 0
+      }
+    },
+    {
+      "name": "chromium route/a11y 390 /pages/contact",
+      "status": "passed",
+      "detail": {
+        "axeViolations": 0
+      }
+    },
+    {
+      "name": "chromium route/a11y 390 /pages/help",
+      "status": "passed",
+      "detail": {
+        "axeViolations": 0
+      }
+    },
+    {
+      "name": "chromium route/a11y 390 /pages/legal",
+      "status": "passed",
+      "detail": {
+        "axeViolations": 0
+      }
+    },
+    {
+      "name": "chromium route/a11y 390 /pages/privacy",
+      "status": "passed",
+      "detail": {
+        "axeViolations": 0
+      }
+    },
+    {
+      "name": "chromium route/a11y 390 /pages/cookies",
+      "status": "passed",
+      "detail": {
+        "axeViolations": 0
+      }
+    },
+    {
+      "name": "chromium route/a11y 390 /pages/website-terms",
+      "status": "passed",
+      "detail": {
+        "axeViolations": 0
+      }
+    },
+    {
+      "name": "chromium route/a11y 390 /pages/software-project-terms",
+      "status": "passed",
+      "detail": {
+        "axeViolations": 0
+      }
+    },
+    {
+      "name": "chromium route/a11y 390 /pages/accessibility",
+      "status": "passed",
+      "detail": {
+        "axeViolations": 0
+      }
+    },
+    {
+      "name": "chromium route/a11y 390 /pages/nevora-support",
+      "status": "passed",
+      "detail": {
+        "axeViolations": 0
+      }
+    },
+    {
+      "name": "chromium route/a11y 390 /pages/nevora-privacy",
+      "status": "passed",
+      "detail": {
+        "axeViolations": 0
+      }
+    },
+    {
+      "name": "chromium route/a11y 390 /pages/nevora-terms",
+      "status": "passed",
+      "detail": {
+        "axeViolations": 0
+      }
+    },
+    {
+      "name": "chromium route/a11y 390 /pages/nevora-account-deletion",
+      "status": "passed",
+      "detail": {
+        "axeViolations": 0
+      }
+    },
+    {
+      "name": "chromium route/a11y 390 /pages/security",
+      "status": "passed",
+      "detail": {
+        "axeViolations": 0
+      }
+    },
+    {
+      "name": "chromium route/a11y 1440 /",
+      "status": "passed",
+      "detail": {
+        "axeViolations": 0
+      }
+    },
+    {
+      "name": "chromium route/a11y 1440 /pages/products",
+      "status": "passed",
+      "detail": {
+        "axeViolations": 0
+      }
+    },
+    {
+      "name": "chromium route/a11y 1440 /pages/nevora",
+      "status": "passed",
+      "detail": {
+        "axeViolations": 0
+      }
+    },
+    {
+      "name": "chromium route/a11y 1440 /pages/custom-development",
+      "status": "passed",
+      "detail": {
+        "axeViolations": 0
+      }
+    },
+    {
+      "name": "chromium route/a11y 1440 /pages/about",
+      "status": "passed",
+      "detail": {
+        "axeViolations": 0
+      }
+    },
+    {
+      "name": "chromium route/a11y 1440 /pages/contact",
+      "status": "passed",
+      "detail": {
+        "axeViolations": 0
+      }
+    },
+    {
+      "name": "chromium route/a11y 1440 /pages/help",
+      "status": "passed",
+      "detail": {
+        "axeViolations": 0
+      }
+    },
+    {
+      "name": "chromium route/a11y 1440 /pages/legal",
+      "status": "passed",
+      "detail": {
+        "axeViolations": 0
+      }
+    },
+    {
+      "name": "chromium route/a11y 1440 /pages/privacy",
+      "status": "passed",
+      "detail": {
+        "axeViolations": 0
+      }
+    },
+    {
+      "name": "chromium route/a11y 1440 /pages/cookies",
+      "status": "passed",
+      "detail": {
+        "axeViolations": 0
+      }
+    },
+    {
+      "name": "chromium route/a11y 1440 /pages/website-terms",
+      "status": "passed",
+      "detail": {
+        "axeViolations": 0
+      }
+    },
+    {
+      "name": "chromium route/a11y 1440 /pages/software-project-terms",
+      "status": "passed",
+      "detail": {
+        "axeViolations": 0
+      }
+    },
+    {
+      "name": "chromium route/a11y 1440 /pages/accessibility",
+      "status": "passed",
+      "detail": {
+        "axeViolations": 0
+      }
+    },
+    {
+      "name": "chromium route/a11y 1440 /pages/nevora-support",
+      "status": "passed",
+      "detail": {
+        "axeViolations": 0
+      }
+    },
+    {
+      "name": "chromium route/a11y 1440 /pages/nevora-privacy",
+      "status": "passed",
+      "detail": {
+        "axeViolations": 0
+      }
+    },
+    {
+      "name": "chromium route/a11y 1440 /pages/nevora-terms",
+      "status": "passed",
+      "detail": {
+        "axeViolations": 0
+      }
+    },
+    {
+      "name": "chromium route/a11y 1440 /pages/nevora-account-deletion",
+      "status": "passed",
+      "detail": {
+        "axeViolations": 0
+      }
+    },
+    {
+      "name": "chromium route/a11y 1440 /pages/security",
+      "status": "passed",
+      "detail": {
+        "axeViolations": 0
+      }
+    },
+    {
+      "name": "chromium mobile menu and keyboard return",
+      "status": "failed",
+      "error": "locator.click: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('[data-menu-toggle]')\u001b[22m\n"
+    },
+    {
+      "name": "chromium inquiry validation and no delivery",
+      "status": "passed"
+    },
+    {
+      "name": "chromium cookie choices, rejection, saved state and focus",
+      "status": "passed"
+    },
+    {
+      "name": "chromium unknown interest cannot become markup",
+      "status": "passed"
+    },
+    {
+      "name": "chromium all internal links and fragments",
+      "status": "passed",
+      "detail": {
+        "links": 111
+      }
+    },
+    {
+      "name": "chromium no-JavaScript navigation and no unsafe inquiry",
+      "status": "failed",
+      "error": "No-JS navigation hidden"
+    }
+  ],
+  "screenshots": [
+    "evidence/browser-upscale-20261102d/chromium-home-320.png",
+    "evidence/browser-upscale-20261102d/chromium-home-390.png",
+    "evidence/browser-upscale-20261102d/chromium-home-768.png",
+    "evidence/browser-upscale-20261102d/chromium-home-969.png",
+    "evidence/browser-upscale-20261102d/chromium-home-1440.png",
+    "evidence/browser-upscale-20261102d/chromium-home-1920.png",
+    "evidence/browser-upscale-20261102d/chromium-contact-390.png",
+    "evidence/browser-upscale-20261102d/chromium-cookie-390.png"
+  ],
+  "runtimeErrors": [],
+  "captureDiagnostics": [],
+  "posts": [],
+  "externalRequests": [],
+  "scope": "Actual local browser and compiled site; no hosted Shopify, live email or publication acceptance"
+}

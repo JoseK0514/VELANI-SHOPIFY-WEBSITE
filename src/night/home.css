@@ -43,7 +43,7 @@
 .build-head .t1{font-size:clamp(38px,4vw,56px)}
 .build-head .lede{margin-top:22px}
 .how{margin-top:var(--s2)}
-.how ol{margin-top:28px}
+.how ol{margin-top:28px;position:relative}.how li{background:linear-gradient(var(--line-2),var(--line-2)) 4px 0/1px 31px no-repeat,linear-gradient(var(--line-2),var(--line-2)) 4px 40px/1px 100% no-repeat}.how li:first-child{background-size:0 0,1px 100%}.how li:last-child{background-size:1px 31px,0 0}.how li{position:relative;padding-left:36px!important}.how li.draw::before{left:36px}.how li::after{content:"";position:absolute;left:0;top:31px;width:9px;height:9px;border-radius:50%;background:var(--bg);box-shadow:0 0 0 1px var(--line-2);transition:background .5s var(--out),box-shadow .5s var(--out)}.how li.in::after{background:var(--accent);box-shadow:0 0 0 4px rgba(187,216,255,.12)}.how li:nth-child(2)::after{transition-delay:.15s}.how li:nth-child(3)::after{transition-delay:.3s}.how li:nth-child(4)::after{transition-delay:.45s}
 .how li{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:8px 24px;padding:22px 0 24px;align-items:baseline}
 .how li b{font-size:19px;font-weight:600;letter-spacing:-.015em;text-wrap:balance}
 .how li span{font-size:16px;line-height:1.55;color:var(--text-2)}
@@ -79,3 +79,5 @@
  .door{padding:32px 22px;border-radius:22px}
 }
 @media(max-width:360px){.door{padding:28px 16px}.door .pill{font-size:16px;padding-inline:20px}}
+
+.no-js .how li::after{background:var(--accent)}@media(prefers-reduced-motion:reduce){.how li::after{transition:none}}

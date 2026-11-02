@@ -55,8 +55,8 @@ for (const engine of engines) {
       const geometry = await page.evaluate(() => { const h = document.querySelector('h1'), style = getComputedStyle(h); return { width: innerWidth, client: document.documentElement.clientWidth, scroll: document.documentElement.scrollWidth, lines: h.getBoundingClientRect().height / parseFloat(style.lineHeight) }; });
       expect(geometry.scroll <= geometry.client + 1, 'Horizontal overflow');
       if (width === 969) expect(geometry.lines < 2.2, 'Approved desktop headline must keep its two lines');
-      if (width >= 969) expect(!await page.locator('[data-menu-toggle]').isVisible(), 'Mobile menu appears on desktop');
-      expect(await page.getByText('In development', { exact: true }).isVisible(), 'Product development status missing');
+      if (width >= 969) expect(!await page.locator('#gmenu-btn').isVisible(), 'Mobile menu appears on desktop');
+      expect(await page.locator('.status').filter({ hasText: 'In development' }).first().isVisible(), 'Product development status missing');
       return geometry;
     });
     const shot = out + '/' + engine + '-home-' + width + '.png';
@@ -78,11 +78,11 @@ for (const engine of engines) {
   await page.setViewportSize({ width: 390, height: 844 });
   await check(engine + ' mobile menu and keyboard return', async () => {
     await page.goto(base);
-    const button = page.locator('[data-menu-toggle]');
+    const button = page.locator('#gmenu-btn');
     await button.click(); expect(await button.getAttribute('aria-expanded') === 'true', 'Menu did not open');
     await page.keyboard.press('Escape'); expect(await button.getAttribute('aria-expanded') === 'false', 'Escape did not close menu');
     expect(await button.evaluate(el => el === document.activeElement), 'Menu focus not restored');
-    await button.click(); await page.locator('#primary-nav').getByRole('link', { name: 'Custom Development', exact: true }).click();
+    await button.click(); await page.locator('#gmenu').getByRole('link', { name: 'Custom development', exact: true }).first().click();
     await page.waitForURL('**/pages/custom-development');
     expect((await page.locator('h1').innerText()).includes('Software for the work'), 'Wrong service destination');
   });
@@ -150,7 +150,7 @@ for (const engine of engines) {
   const noJsPage = await noJs.newPage();
   await check(engine + ' no-JavaScript navigation and no unsafe inquiry', async () => {
     await noJsPage.goto(base + '/pages/contact');
-    expect(await noJsPage.getByRole('link', { name: 'Products', exact: true }).isVisible(), 'No-JS navigation hidden');
+    expect(await noJsPage.locator('header').getByRole('link', { name: 'Custom development', exact: true }).isVisible(), 'No-JS navigation hidden');
     expect(await noJsPage.locator('[data-inquiry-submit]').isDisabled(), 'No-JS preview could submit personal information');
   });
   await noJs.close(); await browser.close();

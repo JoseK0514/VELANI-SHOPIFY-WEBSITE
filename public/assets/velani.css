@@ -36,7 +36,7 @@ img{display:block;max-width:100%;height:auto}
 .t3{font-size:clamp(22px,2vw,30px);line-height:1.18;font-weight:600;letter-spacing:-.022em}
 .lede{font-size:clamp(18px,1.5vw,22px);line-height:1.5;color:var(--text-2);letter-spacing:-.006em}
 .lede b{color:var(--text);font-weight:500}
-.cap{font-size:13.5px;line-height:1.5;color:var(--text-3)}
+.cap{font-size:14px;line-height:1.5;color:var(--text-3)}
 
 /* Actions */
 .acts{display:flex;flex-wrap:wrap;align-items:center;gap:14px 28px;margin-top:32px}
@@ -78,7 +78,7 @@ img{display:block;max-width:100%;height:auto}
 .slab.phone .bar{position:absolute;left:0;right:0;bottom:0;width:100%}
 
 /* Text motion: headings rise word by word from behind a mask; nothing else fades */
-.rise .w{display:inline-block;overflow:hidden;vertical-align:top;padding-bottom:.08em;margin-bottom:-.08em}
+.rise .w{display:inline-block;overflow:hidden;vertical-align:top;padding-bottom:.24em;margin-bottom:-.24em}
 .rise .w>span{display:inline-block;transform:translateY(105%);transition:transform .85s var(--out);transition-delay:calc(var(--i,0)*40ms)}
 .pre .rise{visibility:hidden}
 .rise.in .w>span{transform:none}
@@ -101,9 +101,9 @@ img{display:block;max-width:100%;height:auto}
 .rows a:hover .t3{color:var(--accent)}
 
 /* Footer */
-.foot{border-top:1px solid var(--line);color:var(--text-3);font-size:12.5px;line-height:1.5;padding:32px 0 28px}
+.foot{border-top:1px solid var(--line);color:var(--text-3);font-size:13px;line-height:1.5;padding:32px 0 28px}
 .foot-cols{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px;padding-bottom:28px}
-.foot-cols h3{font-size:12.5px;font-weight:600;color:var(--text);margin-bottom:10px;letter-spacing:0}
+.foot-cols h3{font-size:13px;font-weight:600;color:var(--text);margin-bottom:10px;letter-spacing:0}
 .foot-cols a,.foot-cols button{display:block;padding:4px 0;color:var(--text-2);text-align:left;font-size:inherit;line-height:inherit}
 .foot-cols a:hover,.foot-cols button:hover{color:var(--text);text-decoration:underline}
 .foot-note{padding:16px 0;border-top:1px solid var(--line);max-width:84ch}
@@ -131,13 +131,15 @@ img{display:block;max-width:100%;height:auto}
 
 /* Status line: dot stays with the first line when it wraps */
 .status{display:flex;align-items:baseline;gap:8px}
-.status i{flex:none;align-self:flex-start;margin:.5em 0 0!important;vertical-align:0!important}
+.status i{width:7px;height:7px;border-radius:50%;background:#e2a54a;flex:none;align-self:flex-start;margin:.5em 0 0!important;vertical-align:0!important}
 /* Screens that set down on a shared baseline */
 .setdown figure{opacity:0;transform:translateY(32px);transition:opacity 1s var(--out),transform 1.1s var(--out)}
 .setdown.in figure{opacity:1;transform:none}
 .setdown.in figure:nth-child(2){transition-delay:.09s}.setdown.in figure:nth-child(3){transition-delay:.18s}
 .no-js .setdown figure{opacity:1;transform:none}
 @media(prefers-reduced-motion:reduce){.setdown figure{opacity:1;transform:none}}
+.ul{text-decoration:underline;text-decoration-color:var(--line-2);text-underline-offset:3px}.ul:hover{text-decoration-color:currentColor}
+@media(max-width:833px){.no-js .gnav-in{flex-wrap:wrap}.no-js .gnav-links{display:flex;flex-wrap:wrap;order:3;width:100%;margin:0 0 4px -14px}.no-js .gnav-menu{display:none}}
 
 
 /* ---------- Inner pages: company, contact, help, legal and NEVORA policies ---------- */
@@ -162,7 +164,7 @@ img{display:block;max-width:100%;height:auto}
 
 /* How a custom project works (shared with Home) */
 .how{margin-top:var(--s2)}
-.how ol{margin-top:28px}
+.how ol{margin-top:28px;position:relative}.how li{background:linear-gradient(var(--line-2),var(--line-2)) 4px 0/1px 31px no-repeat,linear-gradient(var(--line-2),var(--line-2)) 4px 40px/1px 100% no-repeat}.how li:first-child{background-size:0 0,1px 100%}.how li:last-child{background-size:1px 31px,0 0}.how li{position:relative;padding-left:36px!important}.how li.draw::before{left:36px}.how li::after{content:"";position:absolute;left:0;top:31px;width:9px;height:9px;border-radius:50%;background:var(--bg);box-shadow:0 0 0 1px var(--line-2);transition:background .5s var(--out),box-shadow .5s var(--out)}.how li.in::after{background:var(--accent);box-shadow:0 0 0 4px rgba(187,216,255,.12)}.how li:nth-child(2)::after{transition-delay:.15s}.how li:nth-child(3)::after{transition-delay:.3s}.how li:nth-child(4)::after{transition-delay:.45s}
 .how li{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:8px 24px;padding:22px 0 24px;align-items:baseline}
 .how li b{font-size:19px;font-weight:600;letter-spacing:-.015em;text-wrap:balance}
 .how li span{font-size:16px;line-height:1.55;color:var(--text-2)}
@@ -258,7 +260,7 @@ img{display:block;max-width:100%;height:auto}
 .field-error{font-size:14px;color:#ffb3a9;min-height:0}
 .field-error:empty{display:none}
 .field-help,.form-privacy{font-size:14px;color:var(--text-3)}
-.form-privacy a{color:var(--text-2);text-decoration:underline;text-underline-offset:3px}
+.form-legal{margin:16px 0 0;font-size:13px;line-height:1.5;color:var(--text-3)}.form-legal a{color:var(--text-2);text-decoration:underline;text-underline-offset:3px}.form-privacy a{color:var(--text-2);text-decoration:underline;text-underline-offset:3px}
 .inquiry-form .pill{align-self:flex-start;gap:8px;border:0;cursor:pointer}
 .inquiry-form .pill:disabled{opacity:.6;cursor:default}
 .form-status{font-size:15px;color:var(--text-2)}
@@ -284,7 +286,7 @@ img{display:block;max-width:100%;height:auto}
 .cookie-option p,.cookie-option span span{display:block;color:var(--text-3);font-size:14px}
 .cookie-option input{width:22px;height:22px;accent-color:var(--accent);flex:none}
 .always-on{font-size:13px;color:var(--text-3);white-space:nowrap}
-.cookie-context{margin-top:14px;font-size:13.5px;color:var(--text-3)}
+.cookie-context{margin-top:14px;font-size:14px;color:var(--text-3)}
 .consent-status{font-size:14px;color:var(--accent);margin-top:8px}
 .consent-status:empty{display:none}
 .cookie-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}
@@ -292,3 +294,5 @@ img{display:block;max-width:100%;height:auto}
 .cookie-actions button:disabled{opacity:.6}
 .foot-cols button:disabled{opacity:1;cursor:pointer}
 .cookie-nojs-note{font-size:13px}
+
+.no-js .how li::after{background:var(--accent)}@media(prefers-reduced-motion:reduce){.how li::after{transition:none}}

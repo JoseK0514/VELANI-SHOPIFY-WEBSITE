@@ -21,7 +21,7 @@
 
 /* How a custom project works (shared with Home) */
 .how{margin-top:var(--s2)}
-.how ol{margin-top:28px}
+.how ol{margin-top:28px;position:relative}.how li{background:linear-gradient(var(--line-2),var(--line-2)) 4px 0/1px 31px no-repeat,linear-gradient(var(--line-2),var(--line-2)) 4px 40px/1px 100% no-repeat}.how li:first-child{background-size:0 0,1px 100%}.how li:last-child{background-size:1px 31px,0 0}.how li{position:relative;padding-left:36px!important}.how li.draw::before{left:36px}.how li::after{content:"";position:absolute;left:0;top:31px;width:9px;height:9px;border-radius:50%;background:var(--bg);box-shadow:0 0 0 1px var(--line-2);transition:background .5s var(--out),box-shadow .5s var(--out)}.how li.in::after{background:var(--accent);box-shadow:0 0 0 4px rgba(187,216,255,.12)}.how li:nth-child(2)::after{transition-delay:.15s}.how li:nth-child(3)::after{transition-delay:.3s}.how li:nth-child(4)::after{transition-delay:.45s}
 .how li{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:8px 24px;padding:22px 0 24px;align-items:baseline}
 .how li b{font-size:19px;font-weight:600;letter-spacing:-.015em;text-wrap:balance}
 .how li span{font-size:16px;line-height:1.55;color:var(--text-2)}
@@ -117,7 +117,7 @@
 .field-error{font-size:14px;color:#ffb3a9;min-height:0}
 .field-error:empty{display:none}
 .field-help,.form-privacy{font-size:14px;color:var(--text-3)}
-.form-privacy a{color:var(--text-2);text-decoration:underline;text-underline-offset:3px}
+.form-legal{margin:16px 0 0;font-size:13px;line-height:1.5;color:var(--text-3)}.form-legal a{color:var(--text-2);text-decoration:underline;text-underline-offset:3px}.form-privacy a{color:var(--text-2);text-decoration:underline;text-underline-offset:3px}
 .inquiry-form .pill{align-self:flex-start;gap:8px;border:0;cursor:pointer}
 .inquiry-form .pill:disabled{opacity:.6;cursor:default}
 .form-status{font-size:15px;color:var(--text-2)}
@@ -143,7 +143,7 @@
 .cookie-option p,.cookie-option span span{display:block;color:var(--text-3);font-size:14px}
 .cookie-option input{width:22px;height:22px;accent-color:var(--accent);flex:none}
 .always-on{font-size:13px;color:var(--text-3);white-space:nowrap}
-.cookie-context{margin-top:14px;font-size:13.5px;color:var(--text-3)}
+.cookie-context{margin-top:14px;font-size:14px;color:var(--text-3)}
 .consent-status{font-size:14px;color:var(--accent);margin-top:8px}
 .consent-status:empty{display:none}
 .cookie-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}
@@ -151,3 +151,5 @@
 .cookie-actions button:disabled{opacity:.6}
 .foot-cols button:disabled{opacity:1;cursor:pointer}
 .cookie-nojs-note{font-size:13px}
+
+.no-js .how li::after{background:var(--accent)}@media(prefers-reduced-motion:reduce){.how li::after{transition:none}}
