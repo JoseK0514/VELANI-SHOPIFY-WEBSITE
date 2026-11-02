@@ -47,3 +47,18 @@ test('local previews do not advertise themselves as public indexed pages', () =>
   assert.match(html, /name="robots" content="noindex, nofollow"/);
   assert.doesNotMatch(html, /application\/ld\+json[^]*AggregateRating/);
 });
+test('NEVORA policy pages are public and published pages carry no preview wording', () => {
+  for (const path of ['/pages/nevora-support', '/pages/nevora-privacy', '/pages/nevora-terms', '/pages/nevora-account-deletion']) assert.ok(routes[path], path);
+  for (const path of Object.keys(routes)) {
+    if (path === '/pages/contact') continue;
+    const { html } = renderPage(path, { target: 'preview' });
+    const text = html.replace(/<script[^]*?<\/script>|<[^>]+>/g, ' ');
+    assert.doesNotMatch(text, /\bpreview\b|\bdraft\b|unpublished|must (?:be )?verif/i, path);
+    assert.doesNotMatch(html, /Prototype|proto-toast/, path);
+  }
+});
+test('NEVORA payroll is described as calculation, never payment or tax filing', () => {
+  const { html } = renderPage('/pages/nevora', { target: 'preview' });
+  assert.match(html, /calculates payroll/);
+  assert.doesNotMatch(html, /NEVORA (?:pays|runs payroll|files)/);
+});

@@ -72,7 +72,7 @@ if (dialog) {
     setBusy(true); dialog.showModal();
     const state = await adapter.read();
     for (const input of inputs) input.checked = state.choices[input.dataset.consent] === true;
-    context.textContent = state.mode === 'local' ? 'Local website preview: these demonstration choices last only on this page. No analytics or marketing integration is added.' : state.available ? 'Choices are managed through Shopify. This website draft adds no new optional integration.' : 'The platform privacy service is unavailable. No optional Velani integration will be started.';
+    context.textContent = state.mode === 'local' ? 'Local website preview: these demonstration choices last only on this page. No analytics or marketing integration is added.' : state.available ? 'Choices are managed through Shopify. Velani has not added analytics or marketing tools to this website.' : 'The platform privacy service is unavailable. No optional Velani integration will be started.';
     setBusy(false);
   }
   document.querySelectorAll('[data-cookie-open]').forEach(button => { button.addEventListener('click', open); button.disabled = false; });

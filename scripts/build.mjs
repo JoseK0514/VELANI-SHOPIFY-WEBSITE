@@ -2,6 +2,7 @@ import { mkdir, readdir, readFile, writeFile, cp, copyFile, rm } from 'node:fs/p
 import path from 'node:path';
 import { routes, company } from '../src/content.mjs';
 import { renderPage, renderBody, renderShopifyLayout } from '../src/render.mjs';
+import { nightAssets } from '../src/night.mjs';
 export const root = path.resolve(import.meta.dirname, '..');
 export async function build() {
   const out = path.join(root, 'dist');
@@ -16,6 +17,13 @@ export async function build() {
     try { await copyFile(path.join(root, 'src/' + name + '.mjs'), path.join(root, 'public/assets/' + name + '.js')); }
     catch (error) { if (error.code !== 'ENOENT') throw error; }
   }
+  const { css, js } = nightAssets;
+  await writeFile(path.join(root, 'public/assets/velani.css'), css.base + '\n' + css.pages);
+  await writeFile(path.join(root, 'public/assets/velani-home.css'), css.home);
+  await writeFile(path.join(root, 'public/assets/velani-nevora.css'), css.nevora);
+  await writeFile(path.join(root, 'public/assets/velani-motion.js'), js.motion);
+  await writeFile(path.join(root, 'public/assets/velani-home.js'), js.home);
+  await writeFile(path.join(root, 'public/assets/velani-nevora.js'), js.nevora);
   await cp(path.join(root, 'public/assets'), path.join(out, 'preview/assets'), { recursive: true });
   await cp(path.join(root, 'public/assets'), path.join(out, 'theme/assets'), { recursive: true });
   for (const dir of ['layout', 'sections', 'templates', 'config', 'locales']) await mkdir(path.join(out, 'theme', dir), { recursive: true });
@@ -38,7 +46,7 @@ export async function build() {
   await writeFile(path.join(out, 'theme/sections/velani-not-found.liquid'), renderBody('/not-found', { target: 'shopify' }) + '\n{% schema %}{"name":"Velani fallback","settings":[]}{% endschema %}\n');
   for (const name of ['404', 'page', 'product', 'collection', 'list-collections', 'cart', 'search']) await writeFile(path.join(out, 'theme/templates', name + '.json'), JSON.stringify({ sections: { main: { type: 'velani-not-found' } }, order: ['main'] }, null, 2) + '\n');
   await writeFile(path.join(out, 'theme/layout/theme.liquid'), renderShopifyLayout());
-  await writeFile(path.join(out, 'theme/config/settings_schema.json'), JSON.stringify([{ name: 'theme_info', theme_name: 'Velani Midnight', theme_version: '0.1.0', theme_author: company.operator, theme_documentation_url: 'https://www.thevelani.com', theme_support_url: 'https://www.thevelani.com/pages/contact' }, { name: 'Inquiry activation', settings: [{ type: 'paragraph', content: 'This is an unpublished website preview. Do not enable delivery until the recipient, final policies and publication are approved.' }, { type: 'checkbox', id: 'inquiries_enabled', label: 'Enable inquiries on a published MAIN theme only', default: false }] }], null, 2) + '\n');
+  await writeFile(path.join(out, 'theme/config/settings_schema.json'), JSON.stringify([{ name: 'theme_info', theme_name: 'Velani Midnight', theme_version: '0.1.0', theme_author: company.operator, theme_documentation_url: 'https://www.thevelani.com', theme_support_url: 'https://www.thevelani.com/pages/contact' }, { name: 'Inquiry activation', settings: [{ type: 'paragraph', content: 'When on, the Contact page uses the Shopify contact form on the published theme, and inquiries are emailed to the store sender address. When off, the page shows the support email instead.' }, { type: 'checkbox', id: 'inquiries_enabled', label: 'Enable inquiries on a published MAIN theme only', default: false }] }], null, 2) + '\n');
   await writeFile(path.join(out, 'theme/config/settings_data.json'), JSON.stringify({ current: { inquiries_enabled: false }, presets: {} }, null, 2) + '\n');
   await writeFile(path.join(out, 'theme/locales/en.default.json'), JSON.stringify({ general: { accessibility: { skip_to_content: 'Skip to content' } } }, null, 2) + '\n');
   await writeFile(path.join(out, 'routes.json'), JSON.stringify(manifest, null, 2) + '\n');

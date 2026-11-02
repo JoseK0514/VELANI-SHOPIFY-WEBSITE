@@ -44,6 +44,6 @@ with zipfile.ZipFile(out) as z:
  assert len(set(z.namelist()))==len(z.namelist())
 `, root, zip]);
 const raw = await readFile(zip);
-const manifest = { format: 1, theme: 'Velani Midnight', state: 'UNPUBLISHED preview; inquiry delivery disabled', files: files.length, jsonFiles: jsonFiles.length, zip: path.basename(zip), bytes: raw.length, sha256: createHash('sha256').update(raw).digest('hex'), entries: files };
+const manifest = { format: 1, theme: 'Velani Midnight', state: 'Night redesign; inquiry delivery off until enabled in theme settings', files: files.length, jsonFiles: jsonFiles.length, zip: path.basename(zip), bytes: raw.length, sha256: createHash('sha256').update(raw).digest('hex'), entries: files };
 await writeFile('dist/theme-manifest.json', JSON.stringify(manifest, null, 2) + '\n');
 console.log(JSON.stringify({ ...manifest, entries: undefined }));
