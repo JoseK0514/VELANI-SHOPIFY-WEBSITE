@@ -6,7 +6,7 @@ Approved mockup 2 implemented as a 14-route local website and an **unpublished S
 
 - Shopify theme: **192965443898**, role **UNPUBLISHED**. [Open preview](https://www.thevelani.com/?preview_theme_id=192965443898) or [open theme editor](https://admin.shopify.com/store/x19hvn-ar/themes/192965443898/editor). The existing storefront password blocks unauthenticated hosted inspection; sign in through your own Shopify account. The public site has not been changed.
 - Approved visual: [reference](docs/reference/approved-homepage.png).
-- Local source branch: `codex/velani-company-site-20261102`. This isolated repository is separate from NEVORA. The requested private GitHub destination is `JoseK0514/VELANI-SHOPIFY-WEBSITE`; repository creation is currently blocked by the connection permissions. See [GitHub transfer status](docs/handoffs/github-transfer-2026-11-02.md).
+- Local source branch: `codex/velani-company-site-20261102`. This isolated repository is separate from NEVORA. GitHub repository: [JoseK0514/VELANI-SHOPIFY-WEBSITE](https://github.com/JoseK0514/VELANI-SHOPIFY-WEBSITE), **private**, with the full history and delivery artifacts on `main` and the preserved feature branch. See [completed GitHub transfer](docs/handoffs/github-transfer-complete-2026-11-02.md).
 - Page content and the policy directory are complete **for preview review**. Final published notices require verified website delivery, vendors, retention and commercial terms. This is not a legal compliance certification.
 
 ## Downloads

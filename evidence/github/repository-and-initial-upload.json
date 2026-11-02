@@ -1,0 +1,17 @@
+{
+  "repository": "JoseK0514/VELANI-SHOPIFY-WEBSITE",
+  "url": "https://github.com/JoseK0514/VELANI-SHOPIFY-WEBSITE",
+  "id": 1443058200,
+  "private": true,
+  "defaultBranch": "main",
+  "createdAt": "2026-11-02T14:19:49Z",
+  "createdThrough": "Composio GitHub connection authorized by the owner",
+  "owner": "JoseK0514",
+  "initialUploadCommit": "e2e3b14667d469569ac3ad57b839a033debc68c6",
+  "initialUploadTree": "9d04afb8c6c33f39dbe64d3c98c4fc384988587b",
+  "branches": [
+    "main",
+    "codex/velani-company-site-20261102"
+  ],
+  "verification": "e2e3b14667d469569ac3ad57b839a033debc68c6\trefs/heads/codex/velani-company-site-20261102\ne2e3b14667d469569ac3ad57b839a033debc68c6\trefs/heads/main\n{\"sha\":\"e2e3b14667d469569ac3ad57b839a033debc68c6\",\"tree\":\"9d04afb8c6c33f39dbe64d3c98c4fc384988587b\"}\n"
+}
