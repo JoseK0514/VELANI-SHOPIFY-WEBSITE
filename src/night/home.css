@@ -7,7 +7,7 @@
 .js .hero-side.fade{transition-delay:.25s}
 
 /* The crop opens: the page starts on the app's greeting card, then scrolling widens it to the whole screen */
-.open{position:relative;height:210vh;height:210svh;margin-top:calc(clamp(48px,5vw,72px) - 22vh);margin-top:calc(clamp(48px,5vw,72px) - 22svh)}
+.open{position:relative;pointer-events:none;height:210vh;height:210svh;margin-top:calc(clamp(48px,5vw,72px) - 22vh);margin-top:calc(clamp(48px,5vw,72px) - 22svh)}
 @media(prefers-reduced-motion:reduce){.open{margin-top:clamp(48px,5vw,72px)}}
 .no-js .open{margin-top:clamp(48px,5vw,72px)}
 .open-pin{position:sticky;top:0;height:100vh;height:100svh;display:flex;align-items:center;justify-content:flex-start;max-width:calc(var(--wrap) + var(--pad)*2);margin-inline:auto;padding-inline:var(--pad)}

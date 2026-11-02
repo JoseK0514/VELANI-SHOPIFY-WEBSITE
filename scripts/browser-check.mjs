@@ -57,6 +57,8 @@ for (const engine of engines) {
       if (width === 969) expect(geometry.lines < 2.2, 'Approved desktop headline must keep its two lines');
       if (width >= 969) expect(!await page.locator('#gmenu-btn').isVisible(), 'Mobile menu appears on desktop');
       expect(await page.locator('.status').filter({ hasText: 'In development' }).first().isVisible(), 'Product development status missing');
+      const covered = await page.evaluate(() => [...document.querySelectorAll('main a, main button')].filter(el => { const b = el.getBoundingClientRect(); return b.width && b.top >= 0 && b.bottom <= innerHeight }).filter(el => { const b = el.getBoundingClientRect(); return !el.contains(document.elementFromPoint(b.left + b.width / 2, b.top + b.height / 2)) }).map(el => el.textContent.trim()));
+      expect(covered.length === 0, 'Visible links covered by another layer: ' + covered.join(', '));
       return geometry;
     });
     const shot = out + '/' + engine + '-home-' + width + '.png';
@@ -75,6 +77,17 @@ for (const engine of engines) {
       return { axeViolations: violations.length };
     });
   }
+  // With motion on (most visitors): the pinned device scene must never cover the hero's links
+  const motion = await browser.newContext(); const motionPage = await motion.newPage();
+  for (const [w, h] of [[1440, 900], [1366, 768], [1280, 720]]) {
+    await motionPage.setViewportSize({ width: w, height: h });
+    await check(engine + ' home links clickable with motion ' + w + 'x' + h, async () => {
+      await motionPage.goto(base, { waitUntil: 'networkidle' }); await motionPage.waitForTimeout(600);
+      const covered = await motionPage.evaluate(() => [...document.querySelectorAll('main a, main button')].filter(el => { const b = el.getBoundingClientRect(); return b.width && b.top >= 0 && b.bottom <= innerHeight }).filter(el => { const b = el.getBoundingClientRect(); return !el.contains(document.elementFromPoint(b.left + b.width / 2, b.top + b.height / 2)) }).map(el => el.textContent.trim()));
+      expect(covered.length === 0, 'Visible links covered by another layer: ' + covered.join(', '));
+    });
+  }
+  await motion.close();
   await page.setViewportSize({ width: 390, height: 844 });
   await check(engine + ' mobile menu and keyboard return', async () => {
     await page.goto(base);
