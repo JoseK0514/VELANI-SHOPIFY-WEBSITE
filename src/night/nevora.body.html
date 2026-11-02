@@ -13,7 +13,7 @@
   <a class="lnav-t" href="#top"><img src="img/nevora-wm-white.png" alt="NEVORA" width="907" height="122"></a>
   <span class="lnav-cur" id="lnav-cur" aria-hidden="true">Overview</span>
   <button class="lnav-tog" id="lnav-tog" type="button" aria-expanded="false" aria-controls="lnav-list" aria-label="NEVORA sections">{{icon:caret-down}}</button>
-  <ul id="lnav-list"><li><a href="#top" data-spy="top">Overview</a></li><li><a href="#phone" data-spy="phone">Phone</a></li><li><a href="#clock" data-spy="clock">Time clock</a></li><li><a href="#web" data-spy="web">Web</a></li><li><a href="#pay" data-spy="pay">Pay</a></li><li><a href="#get" data-spy="get">How to get it</a></li><li><a href="#faq" data-spy="faq">Questions</a></li><li><a href="#help" data-spy="help">Help</a></li><li aria-hidden="true"><i class="lnav-ink" id="lnav-ink"></i></li></ul>
+  <ul id="lnav-list"><li><a href="#top" data-spy="top">Overview</a></li><li><a href="#phone" data-spy="phone">Phone</a></li><li><a href="#clock" data-spy="clock">Time clock</a></li><li><a href="#web" data-spy="web">Web</a></li><li><a href="#pay" data-spy="pay">Pay</a></li><li><a href="#specs" data-spy="specs">Specs</a></li><li><a href="#get" data-spy="get">How to get it</a></li><li><a href="#faq" data-spy="faq">Questions</a></li><li><a href="#help" data-spy="help">Help</a></li><li aria-hidden="true"><i class="lnav-ink" id="lnav-ink"></i></li></ul>
   <a class="pill" href="/pages/contact?interest=nevora">Ask for a quote</a>
  </div>
 </nav>
@@ -86,6 +86,45 @@
  </div>
 </section>
 
+<section class="chap try" id="try" aria-labelledby="try-t">
+ <div class="wrap">
+  <div class="head"><h2 class="t1 rise" id="try-t">Try the time clock</h2><p class="lede fade">This is the PIN screen from the shared tablet, working on this page. Type any four digits, then Continue.</p></div>
+  <div class="kio" id="kio" data-in>
+   <div class="kio-side">
+    <div class="kio-brand"><img src="img/nevora-wm-white.png" alt="NEVORA" width="907" height="122"><span data-k-t="Time clock">Time clock</span></div>
+    <div class="kio-now">
+     <p class="kio-loc">{{icon:map-pin}}<b>Northside Main Office</b></p>
+     <p class="kio-time"><span id="kio-hm">2:17</span><small id="kio-ap">PM</small></p>
+     <p class="kio-date" id="kio-date">Tuesday, October 27</p>
+    </div>
+   </div>
+   <div class="kio-main">
+    <div class="kio-step" id="kio-pin">
+     <h3 class="kio-h" id="kio-pin-h" tabindex="-1" data-k-t="Enter your PIN">Enter your PIN</h3>
+     <div class="kio-dots" id="kio-dots" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+     <p class="sr" id="kio-live" aria-live="polite"></p>
+     <div class="kio-pad" role="group" aria-labelledby="kio-pin-h">
+      <button type="button" data-d="1">1</button><button type="button" data-d="2">2</button><button type="button" data-d="3">3</button>
+      <button type="button" data-d="4">4</button><button type="button" data-d="5">5</button><button type="button" data-d="6">6</button>
+      <button type="button" data-d="7">7</button><button type="button" data-d="8">8</button><button type="button" data-d="9">9</button>
+      <button type="button" class="kio-soft" data-act="clear" data-k-t="Clear">Clear</button><button type="button" data-d="0">0</button><button type="button" class="kio-soft" data-act="back" aria-label="Delete digit" data-k-l="Delete digit">{{icon:backspace}}</button>
+     </div>
+     <button type="button" class="kio-go" id="kio-go" disabled><span data-k-t="Continue">Continue</span>{{icon:caret-right}}</button>
+     <div class="kio-foot"><p data-k-t="Your PIN is separate from your portal password.">Your PIN is separate from your portal password.</p><button type="button" class="kio-lang" id="kio-lang" aria-pressed="false">{{icon:translate}}<span lang="es">Español</span></button></div>
+    </div>
+    <div class="kio-step kio-ok" id="kio-ok" hidden>
+     <span class="kio-check">{{icon:check}}</span>
+     <h3 class="kio-h" id="kio-ok-h" tabindex="-1" data-k-t="Clock in recorded">Clock in recorded</h3>
+     <p class="kio-saved"><span data-k-t="Saved at">Saved at</span> <b id="kio-saved">Oct 27 · 2:17 PM</b><span data-k-t=". This screen clears in eight seconds.">. This screen clears in eight seconds.</span></p>
+     <span class="kio-bar" aria-hidden="true"><i id="kio-bar"></i></span>
+     <button type="button" class="kio-done" id="kio-done" data-k-t="Done">Done</button>
+    </div>
+   </div>
+  </div>
+  <p class="fine">A working copy of the NEVORA time clock with made-up details. Any four digits work, and nothing you type is saved or sent.</p>
+ </div>
+</section>
+
 <section class="chap" id="web" aria-labelledby="web-t">
  <div class="wrap">
   <div class="head"><h2 class="t1 rise" id="web-t">What you see as the owner</h2><p class="lede fade">Home shows how many people are on shift right now and anything waiting for your answer. Schedules, the team, timecards, payroll and insights are in the menu.</p></div>
@@ -101,6 +140,24 @@
    <div class="draw"><h3 class="t3">NEVORA does</h3><ul><li>Calculates payroll from approved hours</li><li>Shows it to you for review first</li><li>Publishes each person’s pay statement</li></ul></div>
    <div class="draw"><h3 class="t3">You keep doing</h3><ul><li>Paying your team, the way you do today</li><li>Filing payroll taxes</li></ul></div>
   </div>
+ </div>
+</section>
+
+<section class="chap specs" id="specs" aria-labelledby="specs-t">
+ <div class="wrap">
+  <div class="head"><h2 class="t1 rise" id="specs-t">Built for work</h2><p class="lede fade">The details behind NEVORA, from where it runs to how long it keeps records.</p></div>
+  <dl class="spec">
+   <div class="draw"><dt>Works on</dt><dd>The web, phones, and a shared tablet at the workplace for the time clock.</dd></div>
+   <div class="draw"><dt>Languages</dt><dd>The time clock works in English and Spanish.</dd></div>
+   <div class="draw"><dt>Signing in</dt><dd>Each person has their own account. At the tablet they use a separate four-digit PIN, and the screen clears itself for the next person.</dd></div>
+   <div class="draw"><dt>Who sees what</dt><dd>People in your workplace see information according to their roles.</dd></div>
+   <div class="draw"><dt>Payroll</dt><dd>Calculated from the hours you approve. You review it before each pay statement is published. NEVORA doesn’t pay your team or file payroll taxes.</dd></div>
+   <div class="draw"><dt>Where data lives</dt><dd>Database and application servers in the United States, in Northern Virginia.</dd></div>
+   <div class="draw"><dt>Protection</dt><dd>Role-based access and encrypted connections. Security and access logs are kept for up to 90 days.</dd></div>
+   <div class="draw"><dt>Deleting an account</dt><dd>In the app or on the web. We aim to complete eligible requests within 30 calendar days.</dd></div>
+   <div class="draw"><dt>Advertising</dt><dd>None. NEVORA doesn’t sell personal information or track people across other companies’ apps and sites for advertising.</dd></div>
+  </dl>
+  <p class="fine">From the <a class="ul" href="/pages/nevora-privacy">NEVORA privacy policy</a>. NEVORA is in development.</p>
  </div>
 </section>
 

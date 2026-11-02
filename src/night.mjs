@@ -57,7 +57,7 @@ export function footer(target) { return site(read('foot.html'), target); }
 
 export const nightAssets = {
   css: { base: read('base.css'), home: read('home.css'), nevora: read('nevora.css'), pages: read('pages.css') },
-  js: { motion: read('motion.js'), home: read('home.js'), nevora: read('nevora.js'), boot: "document.documentElement.className='js pre';\n" },
+  js: { motion: read('motion.js'), home: read('home.js'), nevora: read('nevora.js') + '\n' + read('kiosk.js'), boot: "document.documentElement.className='js pre';\n" },
 };
 
 /* NEVORA policy pages (Privacy, Support, Account deletion, Terms), from the NEVORA app's approved policy source. */
