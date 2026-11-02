@@ -6,8 +6,16 @@ Approved mockup 2 implemented as a 14-route local website and an **unpublished S
 
 - Shopify theme: **192965443898**, role **UNPUBLISHED**. [Open preview](https://www.thevelani.com/?preview_theme_id=192965443898) or [open theme editor](https://admin.shopify.com/store/x19hvn-ar/themes/192965443898/editor). The existing storefront password blocks unauthenticated hosted inspection; sign in through your own Shopify account. The public site has not been changed.
 - Approved visual: [reference](docs/reference/approved-homepage.png).
-- Local source branch: `codex/velani-company-site-20261102`. This isolated repository has no GitHub remote; it is separate from NEVORA.
+- Local source branch: `codex/velani-company-site-20261102`. This isolated repository is separate from NEVORA. The requested private GitHub destination is `JoseK0514/VELANI-SHOPIFY-WEBSITE`; repository creation is currently blocked by the connection permissions. See [GitHub transfer status](docs/handoffs/github-transfer-2026-11-02.md).
 - Page content and the policy directory are complete **for preview review**. Final published notices require verified website delivery, vendors, retention and commercial terms. This is not a legal compliance certification.
+
+## Downloads
+
+- [Complete source/evidence handoff](deliverables/2026-11-02/velani-company-website-daf95f6-handoff.zip), including the original MAIN theme backup, original mockups, complete-history source bundle, compiled preview, latest active ledger and reviews.
+- [Importable unpublished Shopify theme](deliverables/2026-11-02/velani-midnight-unpublished.zip).
+- [SHA256 checksums](deliverables/2026-11-02/SHA256SUMS).
+
+These are immutable snapshots of application checkpoint `daf95f6`. Its original handoff describes the pre-GitHub state at the time it was created; the transfer status below is the current record.
 
 ## Run locally
 

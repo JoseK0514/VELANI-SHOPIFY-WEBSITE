@@ -1,0 +1,10 @@
+2026-11-02 UTC
+Authenticated account: JoseK0514
+Requested destination: JoseK0514/VELANI-SHOPIFY-WEBSITE
+Visibility requested: private
+Command: gh repo create JoseK0514/VELANI-SHOPIFY-WEBSITE --private --source . --remote origin [description omitted here]
+Exit: 1
+Error: GraphQL: Resource not accessible by integration (createRepository)
+Follow-up repository view: Could not resolve to a Repository
+Accessible Velani repositories: none returned
+Outcome: no repository created, no remote push performed. Local source and original artifacts preserved.
