@@ -55,7 +55,7 @@ img{display:block;max-width:100%;height:auto}
 .gnav.tuck{transform:translateY(-100%);transition-duration:.4s}
 .gnav:not(.tuck){transition:transform .28s cubic-bezier(.2,.8,.2,1),border-color .3s}
 .gnav-in{min-height:52px;display:flex;align-items:center;gap:6px}
-.wordmark{font-size:1.1875rem;font-weight:600;letter-spacing:-.035em;min-height:44px;display:inline-flex;align-items:center;margin-right:auto}
+.wordmark{font-size:1.1875rem;font-weight:600;letter-spacing:-.035em;min-height:44px;display:inline-flex;align-items:center;margin-right:auto}.wm-velani{display:block;height:15px;width:auto;color:var(--text)}@media(min-width:834px){.wm-velani{height:16px}}
 .gnav-links{display:flex;align-items:center;margin-right:14px}
 .gnav-links a{display:inline-flex;align-items:center;min-height:44px;padding:0 14px;font-size:0.8125rem;color:var(--text-2);transition:color .2s}
 .gnav-links a:hover,.gnav-links a[aria-current]{color:var(--text)}

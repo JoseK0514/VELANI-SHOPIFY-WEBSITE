@@ -41,6 +41,9 @@ export function nevoraMain(target) { return site(between(nevSrc, '<nav class="ln
 
 const NAV = [['NEVORA', '/pages/nevora', 'nevora'], ['Custom development', '/pages/custom-development', 'services'], ['About', '/pages/about', 'about'], ['NEVORA help', '/pages/nevora-support', 'nevora-help']];
 /** current: the nav key for the preview build, or null in the Shopify layout, where Liquid marks it. */
+// Official VELANI wordmark, traced 1:1 from docs/reference/velani-logo-official.pdf; colour comes from CSS.
+const WORDMARK = readFileSync(new URL('./brand/velani-wordmark.svg', import.meta.url), 'utf8').trim()
+  .replace(/^<svg[^>]*viewBox="([^"]*)"[^>]*>/, '<svg class="wm-velani" viewBox="$1" fill="currentColor" aria-hidden="true" focusable="false">');
 export function header(current, target, { nevora = false } = {}) {
   const mark = key => target === 'shopify'
     ? `{% if velani_nav == '${key}' %} aria-current="page"{% endif %}`
@@ -48,7 +51,7 @@ export function header(current, target, { nevora = false } = {}) {
   const links = NAV.map(([text, href, key]) => `<li><a href="${href}"${mark(key)}>${text}</a></li>`).join('');
   const menu = NAV.map(([text, href, key]) => `<a href="${href}"${mark(key)}>${text}</a>`).join('');
   const staticClass = target === 'shopify' ? `{% if velani_page == 'nevora' %} static{% endif %}` : (nevora ? ' static' : '');
-  return `<a class="skip" href="#main">Skip to content</a><header class="gnav${staticClass}" id="gnav"><nav class="wrap gnav-in" aria-label="Main"><a class="wordmark" href="/" aria-label="The Velani home">The Velani</a><ul class="gnav-links">${links}</ul><a class="pill line" href="/pages/contact">Contact us</a><button class="gnav-menu" id="gmenu-btn" type="button" aria-expanded="false" aria-controls="gmenu" aria-label="Menu"><span class="i-open">${icon('list')}</span><span class="i-close" hidden>${icon('x')}</span></button></nav></header><div class="gmenu" id="gmenu" hidden><nav class="wrap" aria-label="Main menu">${menu}<a href="/pages/contact">Contact</a><a class="pill" href="/pages/contact">Contact us</a><small>The Velani is a brand of ${company.operator}.</small></nav></div>`;
+  return `<a class="skip" href="#main">Skip to content</a><header class="gnav${staticClass}" id="gnav"><nav class="wrap gnav-in" aria-label="Main"><a class="wordmark" href="/" aria-label="The Velani home">${WORDMARK}</a><ul class="gnav-links">${links}</ul><a class="pill line" href="/pages/contact">Contact us</a><button class="gnav-menu" id="gmenu-btn" type="button" aria-expanded="false" aria-controls="gmenu" aria-label="Menu"><span class="i-open">${icon('list')}</span><span class="i-close" hidden>${icon('x')}</span></button></nav></header><div class="gmenu" id="gmenu" hidden><nav class="wrap" aria-label="Main menu">${menu}<a href="/pages/contact">Contact</a><a class="pill" href="/pages/contact">Contact us</a><small>The Velani is a brand of ${company.operator}.</small></nav></div>`;
 }
 export function footer(target) { return site(read('foot.html'), target); }
 
