@@ -25,8 +25,12 @@
  const syncFoot=()=>fd.forEach(x=>x.open=wide.matches);syncFoot();wide.addEventListener('change',syncFoot);
  // Scroll-linked effects registered by each page. p = progress through a pinned track (0..1)
  const fx=window.__fx||[];const clamp=(v,a=0,b=1)=>Math.min(b,Math.max(a,v));
+ // Measure the small viewport (svh) once per resize: on phones innerHeight changes as the browser
+ // toolbar shows and hides, which would make pinned scenes jump mid-scroll.
+ const probe=d.createElement('div');probe.setAttribute('aria-hidden','true');probe.style.cssText='position:fixed;left:0;top:0;width:0;height:100vh;height:100svh;visibility:hidden;pointer-events:none';d.body.appendChild(probe);
+ const measure=()=>{window.__svh=probe.offsetHeight||innerHeight};measure();
  let ticking=false;
- const frame=()=>{ticking=false;const vh=innerHeight,y=scrollY;
+ const frame=()=>{ticking=false;const vh=window.__svh,y=Math.min(Math.max(scrollY,0),Math.max(0,root.scrollHeight-innerHeight));
   if(nav&&!(mb&&mb.getAttribute('aria-expanded')==='true')){nav.classList.toggle('scrolled',y>8);
    if(tuckable&&!reduce.matches&&!nav.contains(d.activeElement)){const dy=y-lastY;if(dy){const s=Math.sign(dy);if(s!==dir){dir=s;anchor=lastY}}
     if(dir>0&&y-anchor>24&&y>240)nav.classList.add('tuck');else if((dir<0&&anchor-y>12)||y<120)nav.classList.remove('tuck')}
@@ -34,7 +38,7 @@
   for(const f of fx){if(reduce.matches&&!f.always)continue;const r=f.el.getBoundingClientRect();const track=Math.max(1,r.height-vh);f.run(clamp(-r.top/track),r,vh,clamp)}
  };
  const req=()=>{if(!ticking){ticking=true;requestAnimationFrame(frame)}};
- addEventListener('scroll',req,{passive:true});addEventListener('resize',req);req();
+ addEventListener('scroll',req,{passive:true});addEventListener('resize',()=>{measure();req()});req();
  const resetAll=()=>fx.forEach(f=>f.reset&&f.reset());
  reduce.addEventListener('change',()=>{if(reduce.matches)resetAll();req()});
  if(reduce.matches)resetAll();

@@ -27,7 +27,7 @@ window.__fx=[];
   kdev.setAttribute('aria-labelledby','kt-'+i);note.setAttribute('aria-live',user?'polite':'off');note.textContent=notes[i];
   kdev.classList.remove('k1');if(i===1){void kdev.offsetWidth;kdev.classList.add('k1')}};
  let lock=-1,lockT;const unlock=()=>{lock=-1;window.__req&&__req()};
- const goK=(i,focus)=>{setK(i,focus,true);if(!pinOK.matches)return;lock=i;const top=clock.getBoundingClientRect().top+scrollY,track=clock.offsetHeight-innerHeight;
+ const goK=(i,focus)=>{setK(i,focus,true);if(!pinOK.matches)return;lock=i;const top=clock.getBoundingClientRect().top+scrollY,track=clock.offsetHeight-(window.__svh||innerHeight);
   scrollTo({top:top+track*(i+.5)/3,behavior:rm.matches?'auto':'smooth'});clearTimeout(lockT);lockT=setTimeout(unlock,1000)};
  addEventListener('scrollend',unlock);['wheel','touchstart'].forEach(t=>addEventListener(t,()=>{if(lock>=0)unlock()},{passive:true}));
  tabs.forEach((t,k)=>{t.addEventListener('click',()=>goK(+t.dataset.i));t.addEventListener('keydown',e=>{
