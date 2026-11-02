@@ -31,7 +31,7 @@ for (const file of jsonFiles) {
   }
 }
 const settings = JSON.parse(await readFile(path.join(root, 'config/settings_data.json'), 'utf8'));
-if (settings.current.inquiries_enabled !== false) throw new Error('Draft inquiry gate must remain disabled');
+if (settings.current.inquiries_enabled !== true) throw new Error('Inquiry form was approved by the owner on 2026-11-02 and must be enabled');
 const zip = path.resolve('dist/velani-midnight-unpublished.zip');
 execFileSync('python3', ['-c', `import pathlib,sys,zipfile
 root=pathlib.Path(sys.argv[1]); out=pathlib.Path(sys.argv[2])
@@ -44,6 +44,6 @@ with zipfile.ZipFile(out) as z:
  assert len(set(z.namelist()))==len(z.namelist())
 `, root, zip]);
 const raw = await readFile(zip);
-const manifest = { format: 1, theme: 'Velani Midnight', state: 'Night redesign; inquiry delivery off until enabled in theme settings', files: files.length, jsonFiles: jsonFiles.length, zip: path.basename(zip), bytes: raw.length, sha256: createHash('sha256').update(raw).digest('hex'), entries: files };
+const manifest = { format: 1, theme: 'Velani Midnight', state: 'Night redesign; contact form on for the published theme', files: files.length, jsonFiles: jsonFiles.length, zip: path.basename(zip), bytes: raw.length, sha256: createHash('sha256').update(raw).digest('hex'), entries: files };
 await writeFile('dist/theme-manifest.json', JSON.stringify(manifest, null, 2) + '\n');
 console.log(JSON.stringify({ ...manifest, entries: undefined }));

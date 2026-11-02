@@ -48,4 +48,8 @@ test('live contact page never shows the preview form on the published theme', as
   assert.match(off, /mailto:support@thevelani\.com/);
   const draft = await liquid.parseAndRender(body, { theme: { role: 'unpublished', id: 9 }, routes: { root_url: '/' }, settings: { inquiries_enabled: true } });
   assert.match(draft, /data-inquiry-mode="preview"/);
+  const live = await liquid.parseAndRender(body, { theme: { role: 'main', id: 9 }, routes: { root_url: '/' }, settings: { inquiries_enabled: true } });
+  assert.match(live, /data-inquiry-mode="live"/);
+  assert.match(live, /Send inquiry/);
+  assert.doesNotMatch(live, /preview/i);
 });

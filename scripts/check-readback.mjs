@@ -32,7 +32,7 @@ for (const file of original.files) {
 }
 if (response.original.files.nodes.length !== original.files.length) throw new Error('Original file inventory changed');
 const settings = response.draft.files.nodes.find(file => file.filename === 'config/settings_data.json');
-if (json(settings.body.content).current.inquiries_enabled !== false) throw new Error('Inquiry gate enabled');
+if (json(settings.body.content).current.inquiries_enabled !== true) throw new Error('Inquiry form should be enabled (owner-approved 2026-11-02)');
 const packageNames = new Set(expected.entries.map(file => file.filename));
 const inherited = response.draft.files.nodes.filter(file => !packageNames.has(file.filename)).map(file => ({ filename: file.filename, md5: file.checksumMd5 }));
 for (const file of inherited) if (original.files.find(item => item.filename === file.filename)?.md5 !== file.md5) throw new Error('Inherited file does not match original: ' + file.filename);
