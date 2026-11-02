@@ -260,7 +260,7 @@ img{display:block;max-width:100%;height:auto}
 .field-error{font-size:14px;color:#ffb3a9;min-height:0}
 .field-error:empty{display:none}
 .field-help,.form-privacy{font-size:14px;color:var(--text-3)}
-.form-legal{margin:16px 0 0;font-size:13px;line-height:1.5;color:var(--text-3)}.form-legal a{color:var(--text-2);text-decoration:underline;text-underline-offset:3px}.form-privacy a{color:var(--text-2);text-decoration:underline;text-underline-offset:3px}
+.form-legal,.form-legal p{margin:16px 0 0;font-size:13px;line-height:1.5;color:var(--text-3)}.form-legal p{margin:0}.form-legal a{color:var(--text-2);text-decoration:underline;text-underline-offset:3px}.form-privacy a{color:var(--text-2);text-decoration:underline;text-underline-offset:3px}
 .inquiry-form .pill{align-self:flex-start;gap:8px;border:0;cursor:pointer}
 .inquiry-form .pill:disabled{opacity:.6;cursor:default}
 .form-status{font-size:15px;color:var(--text-2)}
