@@ -1,0 +1,18 @@
+{
+  "status": "failed",
+  "passed": 0,
+  "failed": 0,
+  "blocked": 1,
+  "results": [
+    {
+      "name": "webkit launch",
+      "status": "blocked",
+      "error": "browserType.launch: \n╔══════════════════════════════════════════════════════╗\n║ Host system is missing dependencies to run browsers. ║\n║ Missing libraries:                                   ║\n║     libGLESv2.so.2                                   ║\n╚══════════════════════════════════════════════════════╝"
+    }
+  ],
+  "screenshots": [],
+  "runtimeErrors": [],
+  "posts": [],
+  "externalRequests": [],
+  "scope": "Actual local browser and compiled site; no hosted Shopify, live email or publication acceptance"
+}

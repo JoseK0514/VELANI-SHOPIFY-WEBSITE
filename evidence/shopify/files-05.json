@@ -1,0 +1,15 @@
+{
+  "data": {
+    "themeFilesUpsert": {
+      "job": null,
+      "upsertedThemeFiles": [
+        {
+          "filename": "assets/velani-social.webp",
+          "checksumMd5": "544bf7ec02da433516450a75553daaf0",
+          "size": "723334"
+        }
+      ],
+      "userErrors": []
+    }
+  }
+}

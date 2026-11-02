@@ -31,11 +31,12 @@ export async function build() {
     const schema = { name: 'Velani ' + slug.slice(0, 18), settings: [] };
     await writeFile(path.join(out, 'theme/sections', section + '.liquid'), renderBody(route, { target: 'shopify' }) + '\n{% schema %}\n' + JSON.stringify(schema, null, 2) + '\n{% endschema %}\n');
     await writeFile(path.join(out, 'theme/templates', template + '.json'), JSON.stringify({ sections: { main: { type: section } }, order: ['main'] }, null, 2) + '\n');
+    if (route !== '/') await writeFile(path.join(out, 'theme/templates', 'index.velani-' + slug + '.json'), JSON.stringify({ sections: { main: { type: section } }, order: ['main'] }, null, 2) + '\n');
     manifest[route] = { title: routes[route].title, templateSuffix: slug, section, filename };
   }
   await writeFile(path.join(out, 'preview/404.html'), renderPage('/not-found').html);
-  await writeFile(path.join(out, 'theme/templates/404.liquid'), renderBody('/not-found', { target: 'shopify' }));
-  await writeFile(path.join(out, 'theme/templates/page.liquid'), '<section class="page-hero"><div class="container"><p class="eyebrow">The Velani</p><h1>{{ page.title | escape }}</h1></div></section><section class="paper"><div class="container reading-layout"><div class="reading-content">{{ page.content }}</div></div></section>\n');
+  await writeFile(path.join(out, 'theme/sections/velani-not-found.liquid'), renderBody('/not-found', { target: 'shopify' }) + '\n{% schema %}{"name":"Velani fallback","settings":[]}{% endschema %}\n');
+  for (const name of ['404', 'page', 'product', 'collection', 'list-collections', 'cart', 'search']) await writeFile(path.join(out, 'theme/templates', name + '.json'), JSON.stringify({ sections: { main: { type: 'velani-not-found' } }, order: ['main'] }, null, 2) + '\n');
   await writeFile(path.join(out, 'theme/layout/theme.liquid'), renderShopifyLayout());
   await writeFile(path.join(out, 'theme/config/settings_schema.json'), JSON.stringify([{ name: 'theme_info', theme_name: 'Velani Midnight', theme_version: '0.1.0', theme_author: company.operator, theme_documentation_url: 'https://www.thevelani.com', theme_support_url: 'https://www.thevelani.com/pages/contact' }, { name: 'Inquiry activation', settings: [{ type: 'paragraph', content: 'This is an unpublished website preview. Do not enable delivery until the recipient, final policies and publication are approved.' }, { type: 'checkbox', id: 'inquiries_enabled', label: 'Enable inquiries on a published MAIN theme only', default: false }] }], null, 2) + '\n');
   await writeFile(path.join(out, 'theme/config/settings_data.json'), JSON.stringify({ current: { inquiries_enabled: false }, presets: {} }, null, 2) + '\n');

@@ -5,6 +5,17 @@ export function escapeHtml(value) {
 const e = escapeHtml;
 const asset = (name, target) => target === 'shopify' ? "{{ '" + name + "' | asset_url }}" : '/assets/' + name;
 const icon = (name, target, className = '') => '<img class="icon ' + e(className) + '" src="' + asset(name + '.svg', target) + '" width="24" height="24" alt="" aria-hidden="true">';
+function draftLinks(html) {
+  return html.replace(/href="(\/[^"\s]*)"/g, (attribute, href) => {
+    const path = href.split(/[?#]/)[0];
+    if (!routes[path]) return attribute;
+    const tail = href.slice(path.length);
+    const suffix = path === '/' ? '' : '&amp;view=velani-' + path.split('/').at(-1);
+    const query = tail.startsWith('?') ? '&amp;' + tail.slice(1) : tail;
+    const canonical = path === '/' ? '{{ routes.root_url }}' + tail : href;
+    return 'href="{% if theme.role == \'main\' %}' + canonical + '{% else %}{{ routes.root_url }}?preview_theme_id={{ theme.id }}' + suffix + query + '{% endif %}"';
+  });
+}
 function link(text, href, target, className = 'text-link') {
   return '<a class="' + e(className) + '" href="' + e(href) + '">' + e(text) + icon('arrow-right', target) + '</a>';
 }
@@ -58,10 +69,14 @@ function genericBody(page, target) {
   }
   return '<section class="paper"><div class="container reading-layout">' + (page.legal ? '<aside class="reading-aside"><span class="eyebrow">On this page</span><nav aria-label="Page contents">' + page.sections.map((s, index) => '<a href="#section-' + index + '">' + e(s.heading) + '</a>').join('') + '</nav><a href="/pages/legal">All legal information</a></aside>' : '') + '<div class="reading-content">' + (page.legal ? '<p class="legal-draft-note">Website preview · information prepared for review</p>' : '') + sectionsBody(page) + (page.cookieAction ? '<button class="button button-ink" type="button" data-cookie-open>Open cookie choices</button>' : '') + (page.cta ? link(page.cta, '/pages/contact?interest=' + e(page.interest || 'other'), target, 'button button-ink') : '') + '</div></div></section>' + (page.legal ? '' : invitation(target));
 }
-export function renderBody(path, { target = 'preview' } = {}) {
+function renderRawBody(path, target) {
   const page = routes[path];
   if (!page) return '<section class="page-hero"><div class="container"><p class="eyebrow">Page not found</p><h1>We could not find that page.</h1><p class="page-intro">Explore our products or return to the company homepage.</p><div class="hero-actions">' + link('Go to Home', '/', target, 'button') + link('Contact Velani', '/pages/contact', target) + '</div></div></section>';
   return page.kind === 'home' ? home(target) : pageHero(page) + genericBody(page, target);
+}
+export function renderBody(path, { target = 'preview' } = {}) {
+  const html = renderRawBody(path, target);
+  return target === 'shopify' ? draftLinks(html) : html;
 }
 export function renderPage(path, { target = 'preview' } = {}) {
   const page = routes[path] || { title: 'Page not found', intro: 'We could not find that page.' };
@@ -71,6 +86,8 @@ export function renderPage(path, { target = 'preview' } = {}) {
 }
 export function renderShopifyLayout() {
   const page = { title: 'The Velani' };
-  return '<!doctype html><html lang="{{ request.locale.iso_code }}" data-platform="shopify"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="noindex, nofollow"><meta name="color-scheme" content="dark light"><meta name="theme-color" content="#152637"><title>{{ page_title | escape }} · The Velani</title><meta name="description" content="{{ page_description | escape }}"><link rel="canonical" href="{{ canonical_url }}"><link rel="icon" href="' + asset('favicon.svg','shopify') + '" type="image/svg+xml"><link rel="preload" href="' + asset('dm-sans-latin-400-normal.woff2','shopify') + '" as="font" type="font/woff2" crossorigin><link rel="stylesheet" href="' + asset('velani.css','shopify') + '"><script type="module" src="' + asset('velani.js','shopify') + '"></script>{{ content_for_header }}</head><body><a class="skip-link" href="#main">Skip to content</a>' + header(page,'shopify') + '<main id="main" tabindex="-1">{{ content_for_layout }}</main>' + footer('shopify') + consent('shopify') + '</body></html>';
+  const assignments = (page) => `{% assign velani_page_title = ${JSON.stringify(page.title)} %}{% assign velani_page_description = ${JSON.stringify(page.intro)} %}`;
+  const metadata = `{% assign velani_page_title = page_title %}{% assign velani_page_description = page_description %}{% if template.name == 'index' and template.suffix == blank %}${assignments(routes['/'])}{% endif %}{% case template.suffix %}` + Object.entries(routes).filter(([path]) => path !== '/').map(([path, page]) => `{% when 'velani-${path.split('/').at(-1)}' or '${path.split('/').at(-1)}' %}${assignments(page)}`).join('') + '{% endcase %}';
+  const html = `<!doctype html><html lang="{{ request.locale.iso_code }}" data-platform="shopify"><head>${metadata}<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="noindex, nofollow"><meta name="color-scheme" content="dark light"><meta name="theme-color" content="#152637"><title>{{ velani_page_title | escape }} · The Velani</title><meta name="description" content="{{ velani_page_description | escape }}"><link rel="canonical" href="{{ canonical_url | escape }}"><meta property="og:site_name" content="The Velani"><meta property="og:type" content="website"><meta property="og:title" content="{{ velani_page_title | escape }} · The Velani"><meta property="og:description" content="{{ velani_page_description | escape }}"><meta property="og:url" content="{{ canonical_url | escape }}"><meta property="og:image" content="{{ 'velani-social.webp' | asset_url | prepend: 'https:' }}"><meta property="og:image:width" content="1730"><meta property="og:image:height" content="909"><meta property="og:image:alt" content="The Velani — software products and custom development"><meta name="twitter:card" content="summary_large_image"><link rel="icon" href="${asset('favicon.svg','shopify')}" type="image/svg+xml">{{ 'dm-sans-latin-400-normal.woff2' | asset_url | preload_tag: as: 'font', type: 'font/woff2', crossorigin: 'anonymous' }}<link rel="stylesheet" href="${asset('velani.css','shopify')}"><script type="module" src="${asset('velani.js','shopify')}"></script>{{ content_for_header }}</head><body><a class="skip-link" href="#main">Skip to content</a>${header(page,'shopify')}<main id="main" tabindex="-1">{% if request.page_type == 'policy' %}<section class="page-hero"><div class="container"><p class="eyebrow">Company website preview</p><h1>Legal and trust information.</h1><p class="page-intro">Review the company website notices and project information.</p>${link('Legal information','/pages/legal','shopify','button')}</div></section>{% else %}{{ content_for_layout }}{% endif %}</main>${footer('shopify')}${consent('shopify')}</body></html>`;
+  return draftLinks(html);
 }
-

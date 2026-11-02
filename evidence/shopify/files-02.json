@@ -1,0 +1,115 @@
+{
+  "data": {
+    "themeFilesUpsert": {
+      "job": null,
+      "upsertedThemeFiles": [
+        {
+          "filename": "templates/index.velani-products.json",
+          "checksumMd5": "157b974fdd29825e0c736761b243b271",
+          "size": "79"
+        },
+        {
+          "filename": "templates/index.velani-security.json",
+          "checksumMd5": "4f5a1fa9d229e509e43cfcf067ea90cf",
+          "size": "79"
+        },
+        {
+          "filename": "templates/index.velani-software-project-terms.json",
+          "checksumMd5": "2d6d6fde60d60bcd575bbb892533d325",
+          "size": "93"
+        },
+        {
+          "filename": "templates/index.velani-website-terms.json",
+          "checksumMd5": "ca6445a5ca91a755f43f7d4ef8245af2",
+          "size": "84"
+        },
+        {
+          "filename": "templates/list-collections.json",
+          "checksumMd5": "84721fcbb3b3493a1fa5d734e1b45efe",
+          "size": "80"
+        },
+        {
+          "filename": "templates/page.about.json",
+          "checksumMd5": "ca908e669f93559b06479f93d2c4d0dd",
+          "size": "76"
+        },
+        {
+          "filename": "templates/page.accessibility.json",
+          "checksumMd5": "463b29974f87ebe404007e77f8ca34ab",
+          "size": "84"
+        },
+        {
+          "filename": "templates/page.contact.json",
+          "checksumMd5": "66877f652ec2ef7c2d7dbf9390c5c332",
+          "size": "78"
+        },
+        {
+          "filename": "templates/page.cookies.json",
+          "checksumMd5": "7dfdbb02b08d47d9abd78de0a4140857",
+          "size": "78"
+        },
+        {
+          "filename": "templates/page.custom-development.json",
+          "checksumMd5": "635c9b80136855a6d30c9cf502f59992",
+          "size": "89"
+        },
+        {
+          "filename": "templates/page.help.json",
+          "checksumMd5": "4650e95240abe4dcec47d190367ba360",
+          "size": "75"
+        },
+        {
+          "filename": "templates/page.json",
+          "checksumMd5": "84721fcbb3b3493a1fa5d734e1b45efe",
+          "size": "80"
+        },
+        {
+          "filename": "templates/page.legal.json",
+          "checksumMd5": "2e228ad50b9fd35726bd30e8570a248d",
+          "size": "76"
+        },
+        {
+          "filename": "templates/page.nevora.json",
+          "checksumMd5": "4cd1bf85373f610b98d86ade057381ef",
+          "size": "77"
+        },
+        {
+          "filename": "templates/page.privacy.json",
+          "checksumMd5": "fcf1043a7d3f091e130715e8c4fd6abc",
+          "size": "78"
+        },
+        {
+          "filename": "templates/page.products.json",
+          "checksumMd5": "157b974fdd29825e0c736761b243b271",
+          "size": "79"
+        },
+        {
+          "filename": "templates/page.security.json",
+          "checksumMd5": "4f5a1fa9d229e509e43cfcf067ea90cf",
+          "size": "79"
+        },
+        {
+          "filename": "templates/page.software-project-terms.json",
+          "checksumMd5": "2d6d6fde60d60bcd575bbb892533d325",
+          "size": "93"
+        },
+        {
+          "filename": "templates/page.website-terms.json",
+          "checksumMd5": "ca6445a5ca91a755f43f7d4ef8245af2",
+          "size": "84"
+        },
+        {
+          "filename": "templates/product.json",
+          "checksumMd5": "84721fcbb3b3493a1fa5d734e1b45efe",
+          "size": "80"
+        },
+        {
+          "filename": "templates/search.json",
+          "checksumMd5": "84721fcbb3b3493a1fa5d734e1b45efe",
+          "size": "80"
+        }
+      ],
+      "userErrors": []
+    }
+  }
+}

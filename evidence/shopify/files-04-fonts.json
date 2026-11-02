@@ -1,0 +1,25 @@
+{
+  "data": {
+    "themeFilesUpsert": {
+      "job": null,
+      "upsertedThemeFiles": [
+        {
+          "filename": "assets/dm-sans-latin-400-normal.woff2",
+          "checksumMd5": "a220a32881ae190f4784c437c1e467e0",
+          "size": "14200"
+        },
+        {
+          "filename": "assets/dm-sans-latin-500-normal.woff2",
+          "checksumMd5": "aa952242481dddcafa4d2fcc03383ae1",
+          "size": "14304"
+        },
+        {
+          "filename": "assets/dm-sans-latin-600-normal.woff2",
+          "checksumMd5": "c64569e0302e745cee622d662e9c5df7",
+          "size": "14144"
+        }
+      ],
+      "userErrors": []
+    }
+  }
+}

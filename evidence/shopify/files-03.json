@@ -1,0 +1,16 @@
+{
+  "error": "McpServerError: Request body is too large",
+  "error_code": "INVALID_ARGUMENT",
+  "error_data": {
+    "type": "http_error",
+    "code": 413,
+    "message": "Request body is too large",
+    "payload": {
+      "statusCode": 413,
+      "error": "FastifyError",
+      "message": "Request body is too large"
+    },
+    "upstream_error_code": "FastifyError",
+    "url": "https://setup.shopify.com/mcp"
+  }
+}

@@ -13,7 +13,7 @@ if (menuButton && nav) {
   document.addEventListener('keydown', event => { if (event.key === 'Escape' && nav.hasAttribute('data-open')) closeMenu(true); });
   document.addEventListener('click', event => { if (!event.target.closest('.site-header')) closeMenu(); });
   nav.addEventListener('click', event => { if (event.target.closest('a')) closeMenu(); });
-  window.matchMedia('(min-width: 761px)').addEventListener('change', event => { if (event.matches) closeMenu(); });
+  window.matchMedia('(min-width: 901px)').addEventListener('change', event => { if (event.matches) closeMenu(); });
 }
 const form = document.querySelector('#project-inquiry');
 if (form) {

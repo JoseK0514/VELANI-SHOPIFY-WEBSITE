@@ -1,0 +1,15 @@
+{
+  "data": {
+    "themeFilesUpsert": {
+      "job": null,
+      "upsertedThemeFiles": [
+        {
+          "filename": "layout/theme.liquid",
+          "checksumMd5": "16a0886b93fb4bd9138da465c2a41af9",
+          "size": "10940"
+        }
+      ],
+      "userErrors": []
+    }
+  }
+}

@@ -1,0 +1,741 @@
+{
+  "status": "passed",
+  "passed": 92,
+  "failed": 0,
+  "blocked": 0,
+  "results": [
+    {
+      "name": "chromium home geometry 320",
+      "status": "passed",
+      "detail": {
+        "width": 320,
+        "client": 320,
+        "scroll": 320,
+        "lines": 2.9991883116883113
+      }
+    },
+    {
+      "name": "chromium home geometry 390",
+      "status": "passed",
+      "detail": {
+        "width": 390,
+        "client": 390,
+        "scroll": 390,
+        "lines": 2.999801797040169
+      }
+    },
+    {
+      "name": "chromium home geometry 768",
+      "status": "passed",
+      "detail": {
+        "width": 768,
+        "client": 768,
+        "scroll": 768,
+        "lines": 1.9998278236914602
+      }
+    },
+    {
+      "name": "chromium home geometry 969",
+      "status": "passed",
+      "detail": {
+        "width": 969,
+        "client": 969,
+        "scroll": 969,
+        "lines": 1.9997741431555964
+      }
+    },
+    {
+      "name": "chromium home geometry 1440",
+      "status": "passed",
+      "detail": {
+        "width": 1440,
+        "client": 1440,
+        "scroll": 1440,
+        "lines": 1.9999138100866825
+      }
+    },
+    {
+      "name": "chromium home geometry 1920",
+      "status": "passed",
+      "detail": {
+        "width": 1920,
+        "client": 1920,
+        "scroll": 1920,
+        "lines": 1.9999138100866825
+      }
+    },
+    {
+      "name": "chromium route/a11y 390 /",
+      "status": "passed",
+      "detail": {
+        "axeViolations": 0
+      }
+    },
+    {
+      "name": "chromium route/a11y 390 /pages/products",
+      "status": "passed",
+      "detail": {
+        "axeViolations": 0
+      }
+    },
+    {
+      "name": "chromium route/a11y 390 /pages/nevora",
+      "status": "passed",
+      "detail": {
+        "axeViolations": 0
+      }
+    },
+    {
+      "name": "chromium route/a11y 390 /pages/custom-development",
+      "status": "passed",
+      "detail": {
+        "axeViolations": 0
+      }
+    },
+    {
+      "name": "chromium route/a11y 390 /pages/about",
+      "status": "passed",
+      "detail": {
+        "axeViolations": 0
+      }
+    },
+    {
+      "name": "chromium route/a11y 390 /pages/contact",
+      "status": "passed",
+      "detail": {
+        "axeViolations": 0
+      }
+    },
+    {
+      "name": "chromium route/a11y 390 /pages/help",
+      "status": "passed",
+      "detail": {
+        "axeViolations": 0
+      }
+    },
+    {
+      "name": "chromium route/a11y 390 /pages/legal",
+      "status": "passed",
+      "detail": {
+        "axeViolations": 0
+      }
+    },
+    {
+      "name": "chromium route/a11y 390 /pages/privacy",
+      "status": "passed",
+      "detail": {
+        "axeViolations": 0
+      }
+    },
+    {
+      "name": "chromium route/a11y 390 /pages/cookies",
+      "status": "passed",
+      "detail": {
+        "axeViolations": 0
+      }
+    },
+    {
+      "name": "chromium route/a11y 390 /pages/website-terms",
+      "status": "passed",
+      "detail": {
+        "axeViolations": 0
+      }
+    },
+    {
+      "name": "chromium route/a11y 390 /pages/software-project-terms",
+      "status": "passed",
+      "detail": {
+        "axeViolations": 0
+      }
+    },
+    {
+      "name": "chromium route/a11y 390 /pages/accessibility",
+      "status": "passed",
+      "detail": {
+        "axeViolations": 0
+      }
+    },
+    {
+      "name": "chromium route/a11y 390 /pages/security",
+      "status": "passed",
+      "detail": {
+        "axeViolations": 0
+      }
+    },
+    {
+      "name": "chromium route/a11y 1440 /",
+      "status": "passed",
+      "detail": {
+        "axeViolations": 0
+      }
+    },
+    {
+      "name": "chromium route/a11y 1440 /pages/products",
+      "status": "passed",
+      "detail": {
+        "axeViolations": 0
+      }
+    },
+    {
+      "name": "chromium route/a11y 1440 /pages/nevora",
+      "status": "passed",
+      "detail": {
+        "axeViolations": 0
+      }
+    },
+    {
+      "name": "chromium route/a11y 1440 /pages/custom-development",
+      "status": "passed",
+      "detail": {
+        "axeViolations": 0
+      }
+    },
+    {
+      "name": "chromium route/a11y 1440 /pages/about",
+      "status": "passed",
+      "detail": {
+        "axeViolations": 0
+      }
+    },
+    {
+      "name": "chromium route/a11y 1440 /pages/contact",
+      "status": "passed",
+      "detail": {
+        "axeViolations": 0
+      }
+    },
+    {
+      "name": "chromium route/a11y 1440 /pages/help",
+      "status": "passed",
+      "detail": {
+        "axeViolations": 0
+      }
+    },
+    {
+      "name": "chromium route/a11y 1440 /pages/legal",
+      "status": "passed",
+      "detail": {
+        "axeViolations": 0
+      }
+    },
+    {
+      "name": "chromium route/a11y 1440 /pages/privacy",
+      "status": "passed",
+      "detail": {
+        "axeViolations": 0
+      }
+    },
+    {
+      "name": "chromium route/a11y 1440 /pages/cookies",
+      "status": "passed",
+      "detail": {
+        "axeViolations": 0
+      }
+    },
+    {
+      "name": "chromium route/a11y 1440 /pages/website-terms",
+      "status": "passed",
+      "detail": {
+        "axeViolations": 0
+      }
+    },
+    {
+      "name": "chromium route/a11y 1440 /pages/software-project-terms",
+      "status": "passed",
+      "detail": {
+        "axeViolations": 0
+      }
+    },
+    {
+      "name": "chromium route/a11y 1440 /pages/accessibility",
+      "status": "passed",
+      "detail": {
+        "axeViolations": 0
+      }
+    },
+    {
+      "name": "chromium route/a11y 1440 /pages/security",
+      "status": "passed",
+      "detail": {
+        "axeViolations": 0
+      }
+    },
+    {
+      "name": "chromium mobile menu and keyboard return",
+      "status": "passed"
+    },
+    {
+      "name": "chromium inquiry validation and no delivery",
+      "status": "passed"
+    },
+    {
+      "name": "chromium cookie choices, rejection, saved state and focus",
+      "status": "passed"
+    },
+    {
+      "name": "chromium unknown interest cannot become markup",
+      "status": "passed"
+    },
+    {
+      "name": "chromium all internal links and fragments",
+      "status": "passed",
+      "detail": {
+        "links": 64
+      }
+    },
+    {
+      "name": "chromium no-JavaScript navigation and no unsafe inquiry",
+      "status": "passed"
+    },
+    {
+      "name": "firefox home geometry 320",
+      "status": "passed",
+      "detail": {
+        "width": 320,
+        "client": 320,
+        "scroll": 320,
+        "lines": 3.0000001321107277
+      }
+    },
+    {
+      "name": "firefox home geometry 390",
+      "status": "passed",
+      "detail": {
+        "width": 390,
+        "client": 390,
+        "scroll": 390,
+        "lines": 2.9999998709616147
+      }
+    },
+    {
+      "name": "firefox home geometry 768",
+      "status": "passed",
+      "detail": {
+        "width": 768,
+        "client": 768,
+        "scroll": 768,
+        "lines": 1.9999999579647685
+      }
+    },
+    {
+      "name": "firefox home geometry 969",
+      "status": "passed",
+      "detail": {
+        "width": 969,
+        "client": 969,
+        "scroll": 969,
+        "lines": 1.999999005292393
+      }
+    },
+    {
+      "name": "firefox home geometry 1440",
+      "status": "passed",
+      "detail": {
+        "width": 1440,
+        "client": 1440,
+        "scroll": 1440,
+        "lines": 1.9999933527912814
+      }
+    },
+    {
+      "name": "firefox home geometry 1920",
+      "status": "passed",
+      "detail": {
+        "width": 1920,
+        "client": 1920,
+        "scroll": 1920,
+        "lines": 1.9999933527912814
+      }
+    },
+    {
+      "name": "firefox route/a11y 390 /",
+      "status": "passed",
+      "detail": {
+        "axeViolations": 0
+      }
+    },
+    {
+      "name": "firefox route/a11y 390 /pages/products",
+      "status": "passed",
+      "detail": {
+        "axeViolations": 0
+      }
+    },
+    {
+      "name": "firefox route/a11y 390 /pages/nevora",
+      "status": "passed",
+      "detail": {
+        "axeViolations": 0
+      }
+    },
+    {
+      "name": "firefox route/a11y 390 /pages/custom-development",
+      "status": "passed",
+      "detail": {
+        "axeViolations": 0
+      }
+    },
+    {
+      "name": "firefox route/a11y 390 /pages/about",
+      "status": "passed",
+      "detail": {
+        "axeViolations": 0
+      }
+    },
+    {
+      "name": "firefox route/a11y 390 /pages/contact",
+      "status": "passed",
+      "detail": {
+        "axeViolations": 0
+      }
+    },
+    {
+      "name": "firefox route/a11y 390 /pages/help",
+      "status": "passed",
+      "detail": {
+        "axeViolations": 0
+      }
+    },
+    {
+      "name": "firefox route/a11y 390 /pages/legal",
+      "status": "passed",
+      "detail": {
+        "axeViolations": 0
+      }
+    },
+    {
+      "name": "firefox route/a11y 390 /pages/privacy",
+      "status": "passed",
+      "detail": {
+        "axeViolations": 0
+      }
+    },
+    {
+      "name": "firefox route/a11y 390 /pages/cookies",
+      "status": "passed",
+      "detail": {
+        "axeViolations": 0
+      }
+    },
+    {
+      "name": "firefox route/a11y 390 /pages/website-terms",
+      "status": "passed",
+      "detail": {
+        "axeViolations": 0
+      }
+    },
+    {
+      "name": "firefox route/a11y 390 /pages/software-project-terms",
+      "status": "passed",
+      "detail": {
+        "axeViolations": 0
+      }
+    },
+    {
+      "name": "firefox route/a11y 390 /pages/accessibility",
+      "status": "passed",
+      "detail": {
+        "axeViolations": 0
+      }
+    },
+    {
+      "name": "firefox route/a11y 390 /pages/security",
+      "status": "passed",
+      "detail": {
+        "axeViolations": 0
+      }
+    },
+    {
+      "name": "firefox mobile menu and keyboard return",
+      "status": "passed"
+    },
+    {
+      "name": "firefox inquiry validation and no delivery",
+      "status": "passed"
+    },
+    {
+      "name": "firefox cookie choices, rejection, saved state and focus",
+      "status": "passed"
+    },
+    {
+      "name": "firefox unknown interest cannot become markup",
+      "status": "passed"
+    },
+    {
+      "name": "firefox all internal links and fragments",
+      "status": "passed",
+      "detail": {
+        "links": 64
+      }
+    },
+    {
+      "name": "firefox no-JavaScript navigation and no unsafe inquiry",
+      "status": "passed"
+    },
+    {
+      "name": "webkit home geometry 320",
+      "status": "passed",
+      "detail": {
+        "width": 320,
+        "client": 320,
+        "scroll": 320,
+        "lines": 2.987012922359028
+      }
+    },
+    {
+      "name": "webkit home geometry 390",
+      "status": "passed",
+      "detail": {
+        "width": 390,
+        "client": 390,
+        "scroll": 390,
+        "lines": 2.9809725788789128
+      }
+    },
+    {
+      "name": "webkit home geometry 768",
+      "status": "passed",
+      "detail": {
+        "width": 768,
+        "client": 768,
+        "scroll": 768,
+        "lines": 1.9834711290212432
+      }
+    },
+    {
+      "name": "webkit home geometry 969",
+      "status": "passed",
+      "detail": {
+        "width": 969,
+        "client": 969,
+        "scroll": 969,
+        "lines": 1.997963814269284
+      }
+    },
+    {
+      "name": "webkit home geometry 1440",
+      "status": "passed",
+      "detail": {
+        "width": 1440,
+        "client": 1440,
+        "scroll": 1440,
+        "lines": 1.9897557719588979
+      }
+    },
+    {
+      "name": "webkit home geometry 1920",
+      "status": "passed",
+      "detail": {
+        "width": 1920,
+        "client": 1920,
+        "scroll": 1920,
+        "lines": 1.9897557719588979
+      }
+    },
+    {
+      "name": "webkit route/a11y 390 /",
+      "status": "passed",
+      "detail": {
+        "axeViolations": 0
+      }
+    },
+    {
+      "name": "webkit route/a11y 390 /pages/products",
+      "status": "passed",
+      "detail": {
+        "axeViolations": 0
+      }
+    },
+    {
+      "name": "webkit route/a11y 390 /pages/nevora",
+      "status": "passed",
+      "detail": {
+        "axeViolations": 0
+      }
+    },
+    {
+      "name": "webkit route/a11y 390 /pages/custom-development",
+      "status": "passed",
+      "detail": {
+        "axeViolations": 0
+      }
+    },
+    {
+      "name": "webkit route/a11y 390 /pages/about",
+      "status": "passed",
+      "detail": {
+        "axeViolations": 0
+      }
+    },
+    {
+      "name": "webkit route/a11y 390 /pages/contact",
+      "status": "passed",
+      "detail": {
+        "axeViolations": 0
+      }
+    },
+    {
+      "name": "webkit route/a11y 390 /pages/help",
+      "status": "passed",
+      "detail": {
+        "axeViolations": 0
+      }
+    },
+    {
+      "name": "webkit route/a11y 390 /pages/legal",
+      "status": "passed",
+      "detail": {
+        "axeViolations": 0
+      }
+    },
+    {
+      "name": "webkit route/a11y 390 /pages/privacy",
+      "status": "passed",
+      "detail": {
+        "axeViolations": 0
+      }
+    },
+    {
+      "name": "webkit route/a11y 390 /pages/cookies",
+      "status": "passed",
+      "detail": {
+        "axeViolations": 0
+      }
+    },
+    {
+      "name": "webkit route/a11y 390 /pages/website-terms",
+      "status": "passed",
+      "detail": {
+        "axeViolations": 0
+      }
+    },
+    {
+      "name": "webkit route/a11y 390 /pages/software-project-terms",
+      "status": "passed",
+      "detail": {
+        "axeViolations": 0
+      }
+    },
+    {
+      "name": "webkit route/a11y 390 /pages/accessibility",
+      "status": "passed",
+      "detail": {
+        "axeViolations": 0
+      }
+    },
+    {
+      "name": "webkit route/a11y 390 /pages/security",
+      "status": "passed",
+      "detail": {
+        "axeViolations": 0
+      }
+    },
+    {
+      "name": "webkit mobile menu and keyboard return",
+      "status": "passed"
+    },
+    {
+      "name": "webkit inquiry validation and no delivery",
+      "status": "passed"
+    },
+    {
+      "name": "webkit cookie choices, rejection, saved state and focus",
+      "status": "passed"
+    },
+    {
+      "name": "webkit unknown interest cannot become markup",
+      "status": "passed"
+    },
+    {
+      "name": "webkit all internal links and fragments",
+      "status": "passed",
+      "detail": {
+        "links": 64
+      }
+    },
+    {
+      "name": "webkit no-JavaScript navigation and no unsafe inquiry",
+      "status": "passed"
+    }
+  ],
+  "screenshots": [
+    "evidence/browser-acceptance/chromium-home-320.png",
+    "evidence/browser-acceptance/chromium-home-390.png",
+    "evidence/browser-acceptance/chromium-home-768.png",
+    "evidence/browser-acceptance/chromium-home-969.png",
+    "evidence/browser-acceptance/chromium-home-1440.png",
+    "evidence/browser-acceptance/chromium-home-1920.png",
+    "evidence/browser-acceptance/chromium-contact-390.png",
+    "evidence/browser-acceptance/chromium-cookie-390.png",
+    "evidence/browser-acceptance/firefox-home-320.png",
+    "evidence/browser-acceptance/firefox-home-390.png",
+    "evidence/browser-acceptance/firefox-home-768.png",
+    "evidence/browser-acceptance/firefox-home-969.png",
+    "evidence/browser-acceptance/firefox-home-1440.png",
+    "evidence/browser-acceptance/firefox-home-1920.png",
+    "evidence/browser-acceptance/firefox-contact-390.png",
+    "evidence/browser-acceptance/firefox-cookie-390.png",
+    "evidence/browser-acceptance/webkit-home-320.png",
+    "evidence/browser-acceptance/webkit-home-390.png",
+    "evidence/browser-acceptance/webkit-home-768.png",
+    "evidence/browser-acceptance/webkit-home-969.png",
+    "evidence/browser-acceptance/webkit-home-1440.png",
+    "evidence/browser-acceptance/webkit-home-1920.png",
+    "evidence/browser-acceptance/webkit-contact-390.png",
+    "evidence/browser-acceptance/webkit-cookie-390.png"
+  ],
+  "runtimeErrors": [],
+  "captureDiagnostics": [
+    {
+      "engine": "webkit",
+      "capture": "evidence/browser-acceptance/webkit-home-320.png",
+      "message": "Refused to apply a stylesheet because its hash, its nonce, or 'unsafe-inline' does not appear in the style-src directive of the Content Security Policy.",
+      "source": "Playwright screenshotter inPagePrepareForScreenshots syncAnimations; see webkit-screenshot-csp-attribution.json"
+    },
+    {
+      "engine": "webkit",
+      "capture": "evidence/browser-acceptance/webkit-home-390.png",
+      "message": "Refused to apply a stylesheet because its hash, its nonce, or 'unsafe-inline' does not appear in the style-src directive of the Content Security Policy.",
+      "source": "Playwright screenshotter inPagePrepareForScreenshots syncAnimations; see webkit-screenshot-csp-attribution.json"
+    },
+    {
+      "engine": "webkit",
+      "capture": "evidence/browser-acceptance/webkit-home-768.png",
+      "message": "Refused to apply a stylesheet because its hash, its nonce, or 'unsafe-inline' does not appear in the style-src directive of the Content Security Policy.",
+      "source": "Playwright screenshotter inPagePrepareForScreenshots syncAnimations; see webkit-screenshot-csp-attribution.json"
+    },
+    {
+      "engine": "webkit",
+      "capture": "evidence/browser-acceptance/webkit-home-969.png",
+      "message": "Refused to apply a stylesheet because its hash, its nonce, or 'unsafe-inline' does not appear in the style-src directive of the Content Security Policy.",
+      "source": "Playwright screenshotter inPagePrepareForScreenshots syncAnimations; see webkit-screenshot-csp-attribution.json"
+    },
+    {
+      "engine": "webkit",
+      "capture": "evidence/browser-acceptance/webkit-home-1440.png",
+      "message": "Refused to apply a stylesheet because its hash, its nonce, or 'unsafe-inline' does not appear in the style-src directive of the Content Security Policy.",
+      "source": "Playwright screenshotter inPagePrepareForScreenshots syncAnimations; see webkit-screenshot-csp-attribution.json"
+    },
+    {
+      "engine": "webkit",
+      "capture": "evidence/browser-acceptance/webkit-home-1920.png",
+      "message": "Refused to apply a stylesheet because its hash, its nonce, or 'unsafe-inline' does not appear in the style-src directive of the Content Security Policy.",
+      "source": "Playwright screenshotter inPagePrepareForScreenshots syncAnimations; see webkit-screenshot-csp-attribution.json"
+    },
+    {
+      "engine": "webkit",
+      "capture": "evidence/browser-acceptance/webkit-contact-390.png",
+      "message": "Refused to apply a stylesheet because its hash, its nonce, or 'unsafe-inline' does not appear in the style-src directive of the Content Security Policy.",
+      "source": "Playwright screenshotter inPagePrepareForScreenshots syncAnimations; see webkit-screenshot-csp-attribution.json"
+    },
+    {
+      "engine": "webkit",
+      "capture": "evidence/browser-acceptance/webkit-cookie-390.png",
+      "message": "Refused to apply a stylesheet because its hash, its nonce, or 'unsafe-inline' does not appear in the style-src directive of the Content Security Policy.",
+      "source": "Playwright screenshotter inPagePrepareForScreenshots syncAnimations; see webkit-screenshot-csp-attribution.json"
+    }
+  ],
+  "posts": [],
+  "externalRequests": [],
+  "scope": "Actual local browser and compiled site; no hosted Shopify, live email or publication acceptance"
+}

@@ -1,0 +1,258 @@
+{
+  "status": "failed",
+  "passed": 33,
+  "failed": 4,
+  "blocked": 0,
+  "results": [
+    {
+      "name": "chromium home geometry 390",
+      "status": "passed",
+      "detail": {
+        "width": 390,
+        "client": 390,
+        "scroll": 375,
+        "lines": 2.999801797040169
+      }
+    },
+    {
+      "name": "chromium home geometry 969",
+      "status": "failed",
+      "error": "Approved desktop headline must keep its two lines"
+    },
+    {
+      "name": "chromium home geometry 1440",
+      "status": "failed",
+      "error": "Mobile menu appears on desktop"
+    },
+    {
+      "name": "chromium route/a11y 390 /",
+      "status": "passed",
+      "detail": {
+        "axeViolations": 0
+      }
+    },
+    {
+      "name": "chromium route/a11y 390 /pages/products",
+      "status": "passed",
+      "detail": {
+        "axeViolations": 0
+      }
+    },
+    {
+      "name": "chromium route/a11y 390 /pages/nevora",
+      "status": "passed",
+      "detail": {
+        "axeViolations": 0
+      }
+    },
+    {
+      "name": "chromium route/a11y 390 /pages/custom-development",
+      "status": "passed",
+      "detail": {
+        "axeViolations": 0
+      }
+    },
+    {
+      "name": "chromium route/a11y 390 /pages/about",
+      "status": "passed",
+      "detail": {
+        "axeViolations": 0
+      }
+    },
+    {
+      "name": "chromium route/a11y 390 /pages/contact",
+      "status": "failed",
+      "error": "[{\"id\":\"color-contrast\",\"impact\":\"serious\",\"nodes\":2}]"
+    },
+    {
+      "name": "chromium route/a11y 390 /pages/help",
+      "status": "passed",
+      "detail": {
+        "axeViolations": 0
+      }
+    },
+    {
+      "name": "chromium route/a11y 390 /pages/legal",
+      "status": "passed",
+      "detail": {
+        "axeViolations": 0
+      }
+    },
+    {
+      "name": "chromium route/a11y 390 /pages/privacy",
+      "status": "passed",
+      "detail": {
+        "axeViolations": 0
+      }
+    },
+    {
+      "name": "chromium route/a11y 390 /pages/cookies",
+      "status": "passed",
+      "detail": {
+        "axeViolations": 0
+      }
+    },
+    {
+      "name": "chromium route/a11y 390 /pages/website-terms",
+      "status": "passed",
+      "detail": {
+        "axeViolations": 0
+      }
+    },
+    {
+      "name": "chromium route/a11y 390 /pages/software-project-terms",
+      "status": "passed",
+      "detail": {
+        "axeViolations": 0
+      }
+    },
+    {
+      "name": "chromium route/a11y 390 /pages/accessibility",
+      "status": "passed",
+      "detail": {
+        "axeViolations": 0
+      }
+    },
+    {
+      "name": "chromium route/a11y 390 /pages/security",
+      "status": "passed",
+      "detail": {
+        "axeViolations": 0
+      }
+    },
+    {
+      "name": "chromium route/a11y 1440 /",
+      "status": "passed",
+      "detail": {
+        "axeViolations": 0
+      }
+    },
+    {
+      "name": "chromium route/a11y 1440 /pages/products",
+      "status": "passed",
+      "detail": {
+        "axeViolations": 0
+      }
+    },
+    {
+      "name": "chromium route/a11y 1440 /pages/nevora",
+      "status": "passed",
+      "detail": {
+        "axeViolations": 0
+      }
+    },
+    {
+      "name": "chromium route/a11y 1440 /pages/custom-development",
+      "status": "passed",
+      "detail": {
+        "axeViolations": 0
+      }
+    },
+    {
+      "name": "chromium route/a11y 1440 /pages/about",
+      "status": "passed",
+      "detail": {
+        "axeViolations": 0
+      }
+    },
+    {
+      "name": "chromium route/a11y 1440 /pages/contact",
+      "status": "failed",
+      "error": "[{\"id\":\"color-contrast\",\"impact\":\"serious\",\"nodes\":2}]"
+    },
+    {
+      "name": "chromium route/a11y 1440 /pages/help",
+      "status": "passed",
+      "detail": {
+        "axeViolations": 0
+      }
+    },
+    {
+      "name": "chromium route/a11y 1440 /pages/legal",
+      "status": "passed",
+      "detail": {
+        "axeViolations": 0
+      }
+    },
+    {
+      "name": "chromium route/a11y 1440 /pages/privacy",
+      "status": "passed",
+      "detail": {
+        "axeViolations": 0
+      }
+    },
+    {
+      "name": "chromium route/a11y 1440 /pages/cookies",
+      "status": "passed",
+      "detail": {
+        "axeViolations": 0
+      }
+    },
+    {
+      "name": "chromium route/a11y 1440 /pages/website-terms",
+      "status": "passed",
+      "detail": {
+        "axeViolations": 0
+      }
+    },
+    {
+      "name": "chromium route/a11y 1440 /pages/software-project-terms",
+      "status": "passed",
+      "detail": {
+        "axeViolations": 0
+      }
+    },
+    {
+      "name": "chromium route/a11y 1440 /pages/accessibility",
+      "status": "passed",
+      "detail": {
+        "axeViolations": 0
+      }
+    },
+    {
+      "name": "chromium route/a11y 1440 /pages/security",
+      "status": "passed",
+      "detail": {
+        "axeViolations": 0
+      }
+    },
+    {
+      "name": "chromium mobile menu and keyboard return",
+      "status": "passed"
+    },
+    {
+      "name": "chromium inquiry validation and no delivery",
+      "status": "passed"
+    },
+    {
+      "name": "chromium cookie choices, rejection, saved state and focus",
+      "status": "passed"
+    },
+    {
+      "name": "chromium unknown interest cannot become markup",
+      "status": "passed"
+    },
+    {
+      "name": "chromium all internal links and fragments",
+      "status": "passed",
+      "detail": {
+        "links": 64
+      }
+    },
+    {
+      "name": "chromium no-JavaScript navigation and no unsafe inquiry",
+      "status": "passed"
+    }
+  ],
+  "screenshots": [
+    "evidence/browser-initial/chromium-home-390.png",
+    "evidence/browser-initial/chromium-home-969.png",
+    "evidence/browser-initial/chromium-home-1440.png",
+    "evidence/browser-initial/chromium-contact-390.png",
+    "evidence/browser-initial/chromium-cookie-390.png"
+  ],
+  "runtimeErrors": [],
+  "posts": [],
+  "externalRequests": [],
+  "scope": "Actual local browser and compiled site; no hosted Shopify, live email or publication acceptance"
+}

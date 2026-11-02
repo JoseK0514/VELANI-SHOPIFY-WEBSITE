@@ -1,0 +1,9 @@
+Reference: /workspace/work/velani-company-site-20261102/docs/reference/approved-homepage.png
+Original generated image: /workspace/generated_images/exec-b70fd6b5-b262-4f57-9895-67135b1e473f.png
+Final asset: /workspace/work/velani-company-site-20261102/public/assets/velani-social.png
+Generator: built-in image_gen, with the approved homepage passed as referenced_image_paths.
+Prompt summary: One wide landscape Velani social brand card targeting 1200x630 (approximately 1.91:1), solid navy #152637, warm white #F8FBFF title The Velani and smaller pale blue #BBD8FF line Software products + custom development; clean DM Sans-like typography, generous safe margins, no additional information or graphics.
+Actual PNG dimensions: 1730 x 909 pixels
+The original generated PNG is preserved. The final asset is an unmodified copy.
+
+Delivery optimization: original PNG preserved in docs/reference/velani-social-original.png. Public asset is a lossless WebP conversion at the original 1730×909 size; ImageMagick pixel comparison AE=0 (evidence/social-lossless-compare.txt). The connector rejected the original 1.6 MB base64 request (HTTP 413), so the 723,334-byte lossless asset is sent separately. No visual edits or resized artwork.

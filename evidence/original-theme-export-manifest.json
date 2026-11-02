@@ -1,0 +1,237 @@
+{
+  "themeId": "gid://shopify/OnlineStoreTheme/190572462394",
+  "name": "upload-this-velani-shopify-theme",
+  "role": "MAIN",
+  "updatedAt": "2026-08-17T22:11:05Z",
+  "note": "Shopify-generated JSON headers/formatting/empty settings removed only when bytes exactly match the API checksum. Raw API bodies preserved separately.",
+  "files": [
+    {
+      "filename": "assets/base.css",
+      "bytes": 23861,
+      "md5": "68fd9b0358588b93bbffd59a2dd765db",
+      "sha256": "1d1a6f920e5015777ca45245d40fd71263d3ff4fda5fd3cadfefce6f7647a1ef"
+    },
+    {
+      "filename": "assets/global.js",
+      "bytes": 1154,
+      "md5": "7337d4abf47fe52eb104e67c9995538c",
+      "sha256": "11f4928d45dc2bdb1f8510a8cc4a27f349f4ae7c64e0d07719f7c16eeaab3d9b"
+    },
+    {
+      "filename": "assets/velani-bandanas.png",
+      "bytes": 2573414,
+      "md5": "9f1c34a52129e62a6f767e1173b625c2",
+      "sha256": "ad9da0ac8b216cb276b9c7d7a66ef56929c4335b09a2ff1a5dd7e52c9a4f2456"
+    },
+    {
+      "filename": "assets/velani-cat-collars.png",
+      "bytes": 1980512,
+      "md5": "5b7647566905be4563f5d7e04f31696f",
+      "sha256": "00f0c6d0441ffba4fd30a3e5fca128dbffc2a70ebef0f2303ad6051060ed38df"
+    },
+    {
+      "filename": "assets/velani-collars.png",
+      "bytes": 1619254,
+      "md5": "1bd3e0a37d4dc8fed686395b3bd7e4c0",
+      "sha256": "8c49074283301c3e6185586b9377ddb557f982a91317002a7da9889984173429"
+    },
+    {
+      "filename": "assets/velani-hero.png",
+      "bytes": 2180962,
+      "md5": "32c658c1edf30ba04048c954a9abd80f",
+      "sha256": "feded8c110f52de4bd2ef397d7dbae5d51c2193b968ff3f0b750060b5b0f7ace"
+    },
+    {
+      "filename": "config/settings_data.json",
+      "bytes": 313,
+      "md5": "7b8356a7e5ff51cd10fa7435b67efb1f",
+      "sha256": "2ac459164f47596e3406646e5c11bc08594ee7db05cfcfcdf2b920ac03436081"
+    },
+    {
+      "filename": "config/settings_schema.json",
+      "bytes": 1527,
+      "md5": "228c7fe2424135d82e64ff30dd5965a0",
+      "sha256": "dc4fa6d8688e23a302c6640f375eef997d6e8a7988ebae172aca71cc60e12425"
+    },
+    {
+      "filename": "layout/theme.liquid",
+      "bytes": 1516,
+      "md5": "8a36676f7a32ca96b93d1d91774b5070",
+      "sha256": "e9e8bd434315273ace2a891229272ba8d18d6162962aa411e2f1aae117b5b927"
+    },
+    {
+      "filename": "locales/en.default.json",
+      "bytes": 712,
+      "md5": "87625b5ade25886f4be69411fd58ece7",
+      "sha256": "e4ed0dfb0d6baa4c7abc3bcdba540a202c708448a1fab5c275f2d8228a911fef"
+    },
+    {
+      "filename": "sections/announcement-bar.liquid",
+      "bytes": 564,
+      "md5": "7e6d52acfdbd8d4186f2db0c346e681d",
+      "sha256": "9d1edbdb37192957dcb8202d5aad800048ad0300a72315997295a73dce6c7e6c"
+    },
+    {
+      "filename": "sections/collection-cards.liquid",
+      "bytes": 3293,
+      "md5": "3cb4efa8e71a671789d159c2e77ba892",
+      "sha256": "1a6a029b7025e5cc0e8bb3d460529872ff0ddadf80cf75e72b4d04a4b23a7f70"
+    },
+    {
+      "filename": "sections/featured-products.liquid",
+      "bytes": 2198,
+      "md5": "b4196319c33d41179ec50f04f027aea7",
+      "sha256": "e50e8bd95d0e3bf629069ef0ddcd72607a52c00ff4fd37fc30b986f4dc8100c2"
+    },
+    {
+      "filename": "sections/footer-group.json",
+      "bytes": 144,
+      "md5": "29f950b84fb5d20679a65871088f2323",
+      "sha256": "8c64a992e534c64a44fb9d9c42f6295e4e877aee45b154193fe2ef6599225b0a"
+    },
+    {
+      "filename": "sections/footer.liquid",
+      "bytes": 2221,
+      "md5": "e6d9dc7fd7f2ba72fe1cf19fcdc9a9df",
+      "sha256": "dd564ba6a35fc6bf0bae42b5db7bd4cf6827c8f18f09a9b4278cb39f21e6ea5c"
+    },
+    {
+      "filename": "sections/header-group.json",
+      "bytes": 326,
+      "md5": "8722b192fa92206fc55a86114c423bdc",
+      "sha256": "eeabb5bc0b06cc654619481f08b2ceab248f5e4f49fbc7be3c5b5dffc81baab5"
+    },
+    {
+      "filename": "sections/header.liquid",
+      "bytes": 1565,
+      "md5": "a27862dd40c8be46be5b362a53d3d197",
+      "sha256": "da25db2d364695cbd86fad4ae01995bc6f457905f39a9683df8915875bdfe6d0"
+    },
+    {
+      "filename": "sections/hero-velani.liquid",
+      "bytes": 2781,
+      "md5": "8e413d9ded0234aa9127303d012d751a",
+      "sha256": "8acdc6f76faee4fd096709698827285733b0b9fcedd7f1a2f88d877f4301a9d0"
+    },
+    {
+      "filename": "sections/main-404.liquid",
+      "bytes": 320,
+      "md5": "43360b43cf51b48989b2204a0b20f07c",
+      "sha256": "03cfcfe9b9b3f4946b6d12d56665720666dd032e683fa7aca48ca00b649ea432"
+    },
+    {
+      "filename": "sections/main-cart.liquid",
+      "bytes": 1497,
+      "md5": "36ec039eaf05bd4dc736ca3cff744032",
+      "sha256": "6cee669c2906aea076ad32b64307a25b49cd9c5aaf5b2eb1dd78635f8d99f99c"
+    },
+    {
+      "filename": "sections/main-collection-grid.liquid",
+      "bytes": 931,
+      "md5": "785123e6b46aa7ceada649bae29ebb1a",
+      "sha256": "29e6d415112b73307051dd370c285f35de9846de925c180ed9c408a1ccb5cc99"
+    },
+    {
+      "filename": "sections/main-list-collections.liquid",
+      "bytes": 924,
+      "md5": "e2bd28ed120457298f576bff28310667",
+      "sha256": "9ee094ae159a973d895eeb28f6ffc9a74986bf763772f90da502bd83a09c32aa"
+    },
+    {
+      "filename": "sections/main-page.liquid",
+      "bytes": 227,
+      "md5": "8f88811cc30d2eec1a24359e0c46b251",
+      "sha256": "45e5c6bae29b3a7096ca863aeb70fba7904827992664ecd0938340b18b0474a4"
+    },
+    {
+      "filename": "sections/main-product.liquid",
+      "bytes": 2893,
+      "md5": "c5cbbf2015159d401650a3ea56eb1edd",
+      "sha256": "e716ab0efaeaa45d036b79f5a31a028a607f6ecd94cb5f9370de8bb19220df5a"
+    },
+    {
+      "filename": "sections/main-search.liquid",
+      "bytes": 1284,
+      "md5": "7912ab96dca8964ca8fe0c5abac61a2c",
+      "sha256": "0a124086a59d7dac1d37b3d844efa2cec36959ad086a0951319b37e31fe0cc3c"
+    },
+    {
+      "filename": "sections/newsletter.liquid",
+      "bytes": 1657,
+      "md5": "4cfaa6256419faf071e61830d213ec84",
+      "sha256": "46b0b86b19065996a9b4fd394e9668b7965c914a7bfe81d05114a18acfb1548b"
+    },
+    {
+      "filename": "sections/story-split.liquid",
+      "bytes": 2318,
+      "md5": "da05aaa20590b39c4ada0bfb02adfbe8",
+      "sha256": "935960b96ffdcaa17920e98d0a2e05ed991fa0c714dbe1c58c89173f255c178b"
+    },
+    {
+      "filename": "sections/value-grid.liquid",
+      "bytes": 1690,
+      "md5": "d0a90575686865ce44ada7089fab7a8d",
+      "sha256": "706726e31256a9961484cbcf903857708b5311013b9f5264946861c894ac2cf3"
+    },
+    {
+      "filename": "snippets/product-card.liquid",
+      "bytes": 1005,
+      "md5": "d597d8dde9e13542d453e5f48a35a81f",
+      "sha256": "78b12d875d00853064e7418ae840f9657ed7b26aeeb94f6ed870964b462e2192"
+    },
+    {
+      "filename": "templates/404.json",
+      "bytes": 86,
+      "md5": "1d71fab7ee73a8155cc21757b5b5028a",
+      "sha256": "d2c432edafabe050695679ca563a861d697938460caf2c6100751d6540b9648e"
+    },
+    {
+      "filename": "templates/cart.json",
+      "bytes": 87,
+      "md5": "a9d06d17c77c05b648a74067b3acfbb9",
+      "sha256": "d058df62f4d8db22ba2c4a7cdd61641d8791605a4f3d08bbf41bb0c6134825eb"
+    },
+    {
+      "filename": "templates/collection.json",
+      "bytes": 123,
+      "md5": "4bd592527c506d7ddc3ea2111eabdc9b",
+      "sha256": "7120980c83e592d0269c82fce44e550e93b209de1c5005146c89fea846e053aa"
+    },
+    {
+      "filename": "templates/gift_card.liquid",
+      "bytes": 5173,
+      "md5": "87c78d9c290c6cf99551982bddcccddd",
+      "sha256": "14e8a497307248004929dd85b9887b63c4ff431597f93e8bab3cde2af5c722bf"
+    },
+    {
+      "filename": "templates/index.json",
+      "bytes": 1770,
+      "md5": "310e6e36627923f82340dc01de8dc081",
+      "sha256": "37a39da9fa12a59e02ad73a0c058e27fb5c5ed37a83210d44cf0e2d1b9f115f0"
+    },
+    {
+      "filename": "templates/list-collections.json",
+      "bytes": 99,
+      "md5": "b10cdd088ceb709e0f924a3c98e18772",
+      "sha256": "df427c98479a2263f5451d1c1cb087f16b1f72670ae094b6f874e186c72386c2"
+    },
+    {
+      "filename": "templates/page.json",
+      "bytes": 87,
+      "md5": "f4f8a024a0173f517bfc03376c179fde",
+      "sha256": "8168f842e587042563ae74f00affb082de2d30a91ffebc852ecf8d3f60df22dc"
+    },
+    {
+      "filename": "templates/product.json",
+      "bytes": 524,
+      "md5": "0ea2e811665cce7f3e496ecadf97ff8f",
+      "sha256": "a6462b78ed07a872057aa8444aff255b7338d7f90aab6b24051bb19aa597d485"
+    },
+    {
+      "filename": "templates/search.json",
+      "bytes": 89,
+      "md5": "499bc36d97ddd9010292733995320103",
+      "sha256": "f025a7ee9887f1cb06eb842aad6cda1246c350245e8c2ee9d150348d61235ce1"
+    }
+  ]
+}

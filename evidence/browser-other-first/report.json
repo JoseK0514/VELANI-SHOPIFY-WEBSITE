@@ -1,0 +1,179 @@
+{
+  "status": "failed",
+  "passed": 23,
+  "failed": 0,
+  "blocked": 1,
+  "results": [
+    {
+      "name": "firefox home geometry 390",
+      "status": "passed",
+      "detail": {
+        "width": 390,
+        "client": 390,
+        "scroll": 390,
+        "lines": 2.9999998709616147
+      }
+    },
+    {
+      "name": "firefox home geometry 969",
+      "status": "passed",
+      "detail": {
+        "width": 969,
+        "client": 969,
+        "scroll": 969,
+        "lines": 1.999999005292393
+      }
+    },
+    {
+      "name": "firefox home geometry 1440",
+      "status": "passed",
+      "detail": {
+        "width": 1440,
+        "client": 1440,
+        "scroll": 1440,
+        "lines": 1.9999933527912814
+      }
+    },
+    {
+      "name": "firefox route/a11y 390 /",
+      "status": "passed",
+      "detail": {
+        "axeViolations": 0
+      }
+    },
+    {
+      "name": "firefox route/a11y 390 /pages/products",
+      "status": "passed",
+      "detail": {
+        "axeViolations": 0
+      }
+    },
+    {
+      "name": "firefox route/a11y 390 /pages/nevora",
+      "status": "passed",
+      "detail": {
+        "axeViolations": 0
+      }
+    },
+    {
+      "name": "firefox route/a11y 390 /pages/custom-development",
+      "status": "passed",
+      "detail": {
+        "axeViolations": 0
+      }
+    },
+    {
+      "name": "firefox route/a11y 390 /pages/about",
+      "status": "passed",
+      "detail": {
+        "axeViolations": 0
+      }
+    },
+    {
+      "name": "firefox route/a11y 390 /pages/contact",
+      "status": "passed",
+      "detail": {
+        "axeViolations": 0
+      }
+    },
+    {
+      "name": "firefox route/a11y 390 /pages/help",
+      "status": "passed",
+      "detail": {
+        "axeViolations": 0
+      }
+    },
+    {
+      "name": "firefox route/a11y 390 /pages/legal",
+      "status": "passed",
+      "detail": {
+        "axeViolations": 0
+      }
+    },
+    {
+      "name": "firefox route/a11y 390 /pages/privacy",
+      "status": "passed",
+      "detail": {
+        "axeViolations": 0
+      }
+    },
+    {
+      "name": "firefox route/a11y 390 /pages/cookies",
+      "status": "passed",
+      "detail": {
+        "axeViolations": 0
+      }
+    },
+    {
+      "name": "firefox route/a11y 390 /pages/website-terms",
+      "status": "passed",
+      "detail": {
+        "axeViolations": 0
+      }
+    },
+    {
+      "name": "firefox route/a11y 390 /pages/software-project-terms",
+      "status": "passed",
+      "detail": {
+        "axeViolations": 0
+      }
+    },
+    {
+      "name": "firefox route/a11y 390 /pages/accessibility",
+      "status": "passed",
+      "detail": {
+        "axeViolations": 0
+      }
+    },
+    {
+      "name": "firefox route/a11y 390 /pages/security",
+      "status": "passed",
+      "detail": {
+        "axeViolations": 0
+      }
+    },
+    {
+      "name": "firefox mobile menu and keyboard return",
+      "status": "passed"
+    },
+    {
+      "name": "firefox inquiry validation and no delivery",
+      "status": "passed"
+    },
+    {
+      "name": "firefox cookie choices, rejection, saved state and focus",
+      "status": "passed"
+    },
+    {
+      "name": "firefox unknown interest cannot become markup",
+      "status": "passed"
+    },
+    {
+      "name": "firefox all internal links and fragments",
+      "status": "passed",
+      "detail": {
+        "links": 64
+      }
+    },
+    {
+      "name": "firefox no-JavaScript navigation and no unsafe inquiry",
+      "status": "passed"
+    },
+    {
+      "name": "webkit launch",
+      "status": "blocked",
+      "error": "browserType.launch: \n╔══════════════════════════════════════════════════════╗\n║ Host system is missing dependencies to run browsers. ║\n║ Missing libraries:                                   ║\n║     libgtk-4.so.1                                    ║\n║     libgraphene-1.0.so.0                             ║\n║     libwoff2dec.so.1.0.2                             ║\n║     libharfbuzz-icu.so.0                             ║\n║     libhyphen.so.0                                   ║\n║     libmanette-0.2.so.0                              ║\n║     libGLESv2.so.2                                   ║\n╚══════════════════════════════════════════════════════╝"
+    }
+  ],
+  "screenshots": [
+    "evidence/browser-other-first/firefox-home-390.png",
+    "evidence/browser-other-first/firefox-home-969.png",
+    "evidence/browser-other-first/firefox-home-1440.png",
+    "evidence/browser-other-first/firefox-contact-390.png",
+    "evidence/browser-other-first/firefox-cookie-390.png"
+  ],
+  "runtimeErrors": [],
+  "posts": [],
+  "externalRequests": [],
+  "scope": "Actual local browser and compiled site; no hosted Shopify, live email or publication acceptance"
+}
