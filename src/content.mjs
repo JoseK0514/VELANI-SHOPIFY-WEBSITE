@@ -15,7 +15,7 @@ export const services = [
 const page = (title, eyebrow, intro, sections = [], extra = {}) => ({ title, eyebrow, intro, sections, ...extra });
 export const legalUpdated = 'November 2, 2026';
 export const routes = {
-  '/': page('Brighter work ahead', 'Velani', 'NEVORA is our app for scheduling, the time clock and payroll calculation, made for teams that work in shifts. We also build web and mobile apps, business systems and integrations for other companies.', [], { kind: 'home' }),
+  '/': page('Your team’s week, in one place.', 'Velani', 'NEVORA by Velani: scheduling, time clock and payroll calculations for teams that work in shifts. In development and offered to businesses by quote.', [], { kind: 'home' }),
   '/pages/products': page('What we make.', 'Velani', 'NEVORA, our own app for teams that work in shifts, and custom software we build for other businesses.', [], { kind: 'products', nav: 'nevora' }),
   '/pages/nevora': page('NEVORA: scheduling, time clock and payroll for shift teams', 'NEVORA', 'Managers plan the week and approve hours on the web. Employees see their shifts and send requests from their phone. Everyone clocks in on a shared tablet with their own PIN. NEVORA calculates payroll for your review and publishes pay statements.', [], { kind: 'nevora', nav: 'nevora' }),
   '/pages/custom-development': page('Software for the work your business needs to do.', 'Custom development', 'A customer-facing application, an internal system or a connection between tools. Start with the problem and the people doing the work.', [], { kind: 'services', nav: 'services' }),

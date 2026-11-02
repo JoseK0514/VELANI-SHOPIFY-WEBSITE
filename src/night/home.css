@@ -1,83 +1,87 @@
-/* ---------- Home ---------- */
-.hero{padding-top:clamp(72px,9vw,128px)}
-.hero-grid{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:28px 64px;align-items:end}
-.hero-grid h1{grid-column:1/-1}
-.hero-side{grid-column:1/-1;max-width:34em;padding-bottom:0}
-.hero-side .acts{margin-top:28px}
-.js .hero-side.fade{transition-delay:.25s}
+/* ---------- Home: NEVORA by Velani, product first ---------- */
+/* A. Hero: the product, one action, real screens. No pinned scroll scene, so nothing sits over the actions. */
+.h-hero{padding-top:clamp(64px,8vw,112px)}
+.h-by{display:flex;align-items:center;gap:10px;font-size:0.9375rem;color:var(--text-2)}
+.h-by img{height:15px;width:auto}
+.h-hero .t0{margin-top:22px;max-width:13ch;font-size:clamp(2.75rem,6.4vw,5.5rem)}
+.h-hero .lede{margin-top:24px;max-width:30em}
+.h-hero .acts{margin-top:32px}
+.h-hero .status{display:block;margin-top:28px;font-size:0.9375rem;line-height:1.5;color:var(--text-2)}
+.h-hero .status i{display:inline-block;width:7px;height:7px;margin:0 8px 0 0!important;border-radius:50%;background:#e2a54a;vertical-align:.1em!important}
+.h-hero .status a{color:var(--text)}
+.h-media{position:relative;margin-top:var(--s1);padding-bottom:40px}
+.h-desk{aspect-ratio:3600/2250;border-radius:clamp(12px,1.4vw,20px)}
+.h-desk img{width:100%;height:100%;object-fit:cover}
+.h-phone{position:absolute;right:calc(var(--pad) + 3%);bottom:0;width:clamp(150px,17%,220px);aspect-ratio:900/1500;border-radius:clamp(20px,2.4vw,32px) clamp(20px,2.4vw,32px) 0 0}
+.h-media .cap{margin-top:14px;max-width:60%}
 
-/* The crop opens: the page starts on the app's greeting card, then scrolling widens it to the whole screen */
-.open{position:relative;pointer-events:none;height:210vh;height:210svh;margin-top:calc(clamp(48px,5vw,72px) - 22vh);margin-top:calc(clamp(48px,5vw,72px) - 22svh)}
-@media(prefers-reduced-motion:reduce){.open{margin-top:clamp(48px,5vw,72px)}}
-.no-js .open{margin-top:clamp(48px,5vw,72px)}
-.open-pin{position:sticky;top:0;height:100vh;height:100svh;display:flex;align-items:center;justify-content:flex-start;max-width:calc(var(--wrap) + var(--pad)*2);margin-inline:auto;padding-inline:var(--pad)}
-.frame{position:relative;width:min(1240px,100%,calc((100vh - 170px)*1.6));width:min(1240px,100%,calc((100svh - 170px)*1.6));aspect-ratio:2400/1500;container-type:inline-size}
-.crop{position:absolute;inset:0;overflow:hidden;border-radius:var(--r,16px);clip-path:inset(0 0 var(--cb,0px) 0 round var(--r,16px));background:#f7f6f3;transform:translateY(calc(var(--cb,0px) / 2))}
-.js .crop{--cb:32.38cqw;--r:2.06cqw}
-.crop img{position:absolute;left:0;top:0;width:100%;transform-origin:0 0;transform:translate(var(--tx,0px),var(--ty,0px)) scale(var(--sc,1));will-change:transform}
-.js .crop img{--sc:1.3746;--tx:-30.35cqw;--ty:-10.03cqw}
-.frame .ph{position:absolute;left:-2.5%;bottom:-5%;width:18%;border-radius:11.5% / 5.3%;opacity:var(--po,0);transform:translateY(var(--pt,48px));will-change:transform,opacity}
-.frame .ph .bar{display:block}
-.open-cap{position:absolute;left:24%;right:0;bottom:-38px;text-align:right;opacity:var(--co,0)}
-.no-js .frame{--po:1;--pt:0px;--co:1}
-.no-js .open,.open.flat{height:auto;padding-bottom:96px}
-.no-js .open-pin,.open.flat .open-pin{position:static;height:auto}
-@media(prefers-reduced-motion:reduce){.open{height:auto;padding-bottom:96px}.open-pin{position:static;height:auto}}
-@media(min-width:834px) and (max-aspect-ratio:1/1){.open{height:160vh;height:160svh}}
-.slab.phone.m-phone{display:none}
+/* B. Try a clock-in */
+.h-try{padding-top:var(--s3);scroll-margin-top:24px}
+.h-head{max-width:760px}
+.h-head .lede{margin-top:18px}
+.h-follow{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:20px 40px;max-width:1040px;margin-top:var(--s1);padding:28px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.h-follow p{margin-top:8px;color:var(--text-2);max-width:34em}
 
-.nev{padding-top:var(--s3)}
-.nev-grid{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:32px 64px;align-items:end}
-.nev .wm{width:min(300px,60vw)}
-.status{margin-top:20px;font-size:0.9375rem;color:var(--text-2)}
-.status i{display:inline-block;width:7px;height:7px;border-radius:50%;background:#e2a54a}
-.nev .t1{margin-top:26px;max-width:16ch}
-.stills{display:grid;grid-template-columns:minmax(0,.62fr) minmax(0,1.25fr) minmax(0,1.5fr);gap:clamp(16px,2vw,28px);align-items:end;margin-top:var(--s1)}
+/* C. The wider workflow: four stages on one rail */
+.h-flow{padding-top:var(--s3)}
+.h-flow .t1{max-width:16ch}
+.flow{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px;margin-top:var(--s1)}
+.flow li{position:relative;padding-top:30px}
+.flow li::after{content:"";position:absolute;left:0;top:-4px;width:9px;height:9px;border-radius:50%;background:var(--bg);box-shadow:0 0 0 1px var(--line-2);transition:background .5s var(--out),box-shadow .5s var(--out)}
+.flow li.in::after{background:var(--accent);box-shadow:0 0 0 4px rgba(187,216,255,.12)}
+.flow li:nth-child(2)::after{transition-delay:.15s}.flow li:nth-child(3)::after{transition-delay:.3s}.flow li:nth-child(4)::after{transition-delay:.45s}
+.flow b{display:block;font-size:1.3125rem;font-weight:600;letter-spacing:-.02em}
+.flow span{display:block;margin-top:8px;font-size:1.0625rem;line-height:1.55;color:var(--text-2)}
+.flow-note{margin-top:var(--s1);max-width:40em;font-size:1.0625rem;color:var(--text-2)}
+
+/* D. The right view for each person: real screens with their role */
+.h-roles{padding-top:var(--s3)}
+.stills{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,.62fr) minmax(0,1.25fr);gap:clamp(16px,2vw,28px);align-items:end;margin-top:var(--s1)}
 .stills .slab.phone{aspect-ratio:900/1885}
 .stills figcaption{margin-top:16px}
-.help-strip{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:8px 24px;margin-top:var(--s1);padding:20px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);font-size:1rem;color:var(--text-2)}
+.stills figcaption b{display:block;font-size:1.0625rem;font-weight:600}
+.stills figcaption span{display:block;margin-top:6px;font-size:0.9375rem;line-height:1.5;color:var(--text-2)}
+.roles-more{margin-top:28px}
 
-.build{padding-top:var(--s3)}
-.build-grid{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,6fr);gap:40px 72px;align-items:start}
-.build-head{position:sticky;top:96px}
-.build-head .t1{font-size:clamp(2.375rem,4vw,3.5rem)}
-.build-head .lede{margin-top:22px}
-.how{margin-top:var(--s2)}
-.how ol{margin-top:28px;position:relative}.how li{background:linear-gradient(var(--line-2),var(--line-2)) 4px 0/1px 31px no-repeat,linear-gradient(var(--line-2),var(--line-2)) 4px 40px/1px 100% no-repeat}.how li:first-child{background-size:0 0,1px 100%}.how li:last-child{background-size:1px 31px,0 0}.how li{position:relative;padding-left:36px!important}.how li.draw::before{left:36px}.how li::after{content:"";position:absolute;left:0;top:31px;width:9px;height:9px;border-radius:50%;background:var(--bg);box-shadow:0 0 0 1px var(--line-2);transition:background .5s var(--out),box-shadow .5s var(--out)}.how li.in::after{background:var(--accent);box-shadow:0 0 0 4px rgba(187,216,255,.12)}.how li:nth-child(2)::after{transition-delay:.15s}.how li:nth-child(3)::after{transition-delay:.3s}.how li:nth-child(4)::after{transition-delay:.45s}
-.how li{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:8px 24px;padding:22px 0 24px;align-items:baseline}
-.how li b{font-size:1.1875rem;font-weight:600;letter-spacing:-.015em;text-wrap:balance}
-.how li span{font-size:1rem;line-height:1.55;color:var(--text-2)}
+/* E. Questions and enquiry */
+.h-faq{padding-top:var(--s3)}
+.faq-list{margin-top:var(--s1);padding-bottom:0;max-width:880px}
+.h-ask{margin-top:var(--s2);padding:clamp(32px,4vw,56px);border-radius:28px;background:var(--panel-2)}
+.h-ask .t2{max-width:16ch}
+.h-ask p{margin-top:16px;max-width:36em;color:var(--text-2)}
+.h-ask .pill{margin-top:28px}
 
-.doors{padding:var(--s3) 0 var(--s2)}
-.doors-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
-.door{border-radius:28px;background:var(--panel-2);padding:clamp(32px,4vw,56px);min-height:340px;display:flex;flex-direction:column;justify-content:space-between;gap:40px}
-.door .t2{max-width:14ch}
-.mail{margin-top:28px;font-size:1rem;color:var(--text-3)}
-.mail a{color:var(--text);text-decoration:underline;text-underline-offset:4px;text-decoration-thickness:1px}
+/* F. Built by Velani */
+.h-velani{padding:var(--s2) 0}
+.h-velani-in{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:16px 64px;align-items:baseline;padding-top:32px;border-top:1px solid var(--line)}
+.h-velani p{max-width:34em;color:var(--text-2)}
+.h-velani .more{margin-top:14px}
 
+.no-js .flow li::after{background:var(--accent)}
+@media(prefers-reduced-motion:reduce){.flow li::after{transition:none}}
 @media(max-width:1023px){
- .hero-side{grid-column:1;max-width:36em}
- .hero-grid,.nev-grid,.build-grid{grid-template-columns:1fr}
- .nev-grid>div:last-child{max-width:36em}
- .build-head{position:static}
- .doors-grid{grid-template-columns:1fr}
- .door{min-height:0}
+ .flow{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:40px}
+ .h-velani-in{grid-template-columns:1fr}
 }
+/* Phones: one large, readable screen early; the rest flows */
 @media(max-width:833px){
- .open{display:none}
- .slab.phone.m-phone{display:block;margin:40px auto 0;width:min(320px,82vw);aspect-ratio:900/1320;border-radius:34px 34px 0 0}
- .m-phone .bar{display:none}
- .stills{grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr)}
- .stills figure:first-child{display:none}
- .stills figure:last-child{grid-column:1/-1}
- .how li{grid-template-columns:1fr}
+ .h-hero{padding-top:36px}
+ .h-hero .t0{font-size:clamp(2.5rem,11vw,3rem);line-height:1.02}
+ .h-hero .lede{margin-top:18px}
+ .h-hero .acts{margin-top:24px}
+ .h-hero .status{margin-top:20px;font-size:0.875rem}
+ .h-media{display:flex;flex-direction:column;align-items:center;margin-top:36px;padding-bottom:0}
+ .h-desk{display:none}
+ .h-phone{position:static;width:min(320px,80vw)}
+ .h-media .cap{max-width:none;text-align:center}
+ .stills{grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr)}
+ .stills figure:first-child{grid-column:1/-1}
 }
 @media(max-width:600px){
  body{font-size:1rem}
- .acts{flex-direction:column;align-items:flex-start;gap:6px}
+ .flow{grid-template-columns:1fr;row-gap:32px}
  .stills{grid-template-columns:1fr}
- .door{padding:32px 22px;border-radius:22px}
+ .stills .slab.phone{width:min(300px,78vw);aspect-ratio:900/1500}
+ .h-follow .pill,.h-ask .pill{width:100%;justify-content:center}
+ .h-ask{padding:32px 22px;border-radius:22px}
 }
-@media(max-width:360px){.door{padding:28px 16px}.door .pill{font-size:1rem;padding-inline:20px}}
-
-.no-js .how li::after{background:var(--accent)}@media(prefers-reduced-motion:reduce){.how li::after{transition:none}}

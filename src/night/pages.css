@@ -92,7 +92,7 @@
 
 /* Contact */
 .contact{padding-bottom:var(--s2)}
-.contact-grid{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,7fr);gap:48px 72px;align-items:start;padding-top:40px;background:linear-gradient(var(--line),var(--line)) var(--pad) 0/calc(100% - var(--pad)*2) 1px no-repeat}
+.contact-grid{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,4fr);gap:48px 72px;align-items:start;padding-top:40px;background:linear-gradient(var(--line),var(--line)) var(--pad) 0/calc(100% - var(--pad)*2) 1px no-repeat}
 .contact-aside{display:flex;flex-direction:column;gap:14px;color:var(--text-2)}
 .contact-aside h2{color:var(--text);margin-bottom:6px}
 .contact-address{font-size:0.9375rem;color:var(--text-3)}
@@ -153,3 +153,6 @@
 .cookie-nojs-note{font-size:0.8125rem}
 
 .no-js .how li::after{background:var(--accent)}@media(prefers-reduced-motion:reduce){.how li::after{transition:none}}
+
+.field[hidden],.form-row[hidden]{display:none}
+.form-row-one{grid-template-columns:1fr}

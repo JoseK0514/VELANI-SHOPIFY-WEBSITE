@@ -1,16 +1,42 @@
-window.__fx=[];
+window.__fx=window.__fx||[];
+
+// Try the time clock: a working copy of the NEVORA PIN screen, on the home and NEVORA pages.
+// Fictional: any four digits work. The PIN lives only in this closure; nothing is stored, sent or logged.
 (()=>{
- const $=s=>document.querySelector(s);
- const wide=matchMedia('(min-width:834px)');
- // The greeting card's place in the full screenshot, as fractions of the image
- const X0=.2208,X1=.9483,Y0=.1167,Y1=.4673,A=1500/2400;
- const frame=$('#frame'),crop=$('#crop'),img=crop.querySelector('img');
- const c01=v=>Math.min(1,Math.max(0,v));
- const setOpen=e=>{const W=crop.clientWidth,H=crop.clientHeight;const s0=1/(X1-X0);const s=s0+(1-s0)*e;
-  img.style.setProperty('--sc',s.toFixed(4));img.style.setProperty('--tx',(-X0*W*s0*(1-e)).toFixed(1)+'px');img.style.setProperty('--ty',(-Y0*W*A*s0*(1-e)).toFixed(1)+'px');
-  const h0=(Y1-Y0)*W*A*s0;crop.style.setProperty('--cb',(Math.max(0,H-h0)*(1-e)).toFixed(1)+'px');crop.style.setProperty('--r',(W*.0206*(1-e)+16*e).toFixed(1)+'px');
-  const pe=c01((e-.55)/.45);frame.style.setProperty('--po',c01(pe/.6).toFixed(3));frame.style.setProperty('--pt',((1-(1-Math.pow(1-pe,3)))*48).toFixed(1)+'px');
-  frame.style.setProperty('--co',c01((e-.88)/.12).toFixed(3))};
- __fx.push({el:$('#open'),run(p){if(!wide.matches)return;const t=c01(p/.8);setOpen(t<.5?2*t*t:1-2*(1-t)*(1-t))},reset(){setOpen(1)}});
- window.__setOpen=setOpen;
+ const k=document.getElementById('kio');if(!k)return;
+ const $=id=>document.getElementById(id);
+ // Spanish strings come from the NEVORA app's own time-clock copy where it has one
+ const ES={'Time clock':'Registro de tiempo','Enter your PIN':'Ingresa tu PIN','Clear':'Borrar','Continue':'Continuar','Your PIN is separate from your portal password.':'Tu PIN es distinto de tu contraseña del portal.','Clock-in recorded':'Tiempo registrado','Saved at':'Registrado','Demo only. No hours were saved.':'Solo es una demostración. No se guardaron horas.','Try again':'Probar de nuevo','Delete digit':'Borrar dígito'};
+ const dots=[...$('kio-dots').children],go=$('kio-go'),live=$('kio-live'),pinStep=$('kio-pin'),okStep=$('kio-ok'),lang=$('kio-lang'),langT=$('kio-lang-t');
+ let es=false,pin='',last='';
+ const loc=()=>es?'es-US':'en-US';
+ const parts=d=>{const p=new Intl.DateTimeFormat(loc(),{hour:'numeric',minute:'2-digit',hour12:true}).formatToParts(d);const v=t=>(p.find(x=>x.type===t)||{}).value||'';return{hm:v('hour')+':'+v('minute'),ap:v('dayPeriod').toUpperCase()}};
+ const tick=()=>{const d=new Date(),{hm,ap}=parts(d),day=new Intl.DateTimeFormat(loc(),{weekday:'long',month:'long',day:'numeric'}).format(d),key=hm+ap+day;
+  if(key===last)return;last=key;$('kio-hm').textContent=hm;$('kio-ap').textContent=ap;$('kio-date').textContent=day.charAt(0).toUpperCase()+day.slice(1)};
+ // Announce the count or the clearing, never the digits themselves
+ const say=t=>{live.textContent=t};
+ const count=()=>say(es?pin.length+' de 4 dígitos':pin.length+' of 4 digits entered');
+ const render=()=>{dots.forEach((d,i)=>d.classList.toggle('on',i<pin.length));go.disabled=pin.length<4};
+ const press=d=>{if(pin.length>=4){const s=$('kio-dots');s.classList.remove('shake');void s.offsetWidth;s.classList.add('shake');say(es?'Ya hay 4 dígitos':'4 digits already entered');return}pin+=d;render();count()};
+ const back=()=>{if(!pin)return;pin=pin.slice(0,-1);render();count()};
+ const clear=()=>{if(!pin)return;pin='';render();say(es?'Borrado':'Cleared')};
+ const inside=()=>k.contains(document.activeElement);
+ // Confirmation stays until the visitor chooses Try again (the real workplace tablet clears itself; this page does not)
+ const submit=()=>{if(pin.length!==4)return;const d=new Date(),{hm,ap}=parts(d),day=new Intl.DateTimeFormat(loc(),{month:'short',day:'numeric'}).format(d);
+  pin='';render();$('kio-saved').textContent=day+' · '+hm+' '+ap;$('kio-dot').textContent=/\.$/.test(ap)?'':'.';const f=inside();pinStep.hidden=true;okStep.hidden=false;
+  const ck=k.querySelector('.kio-check');ck.style.animation='none';void ck.offsetWidth;ck.style.animation='';say('');if(f)$('kio-ok-h').focus()};
+ const again=()=>{const f=inside();pin='';render();okStep.hidden=true;pinStep.hidden=false;say('');if(f)$('kio-pin-h').focus()};
+ k.querySelector('.kio-pad').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;
+  if(b.dataset.d)press(b.dataset.d);else if(b.dataset.act==='clear')clear();else if(b.dataset.act==='back')back()});
+ go.addEventListener('click',submit);$('kio-done').addEventListener('click',again);
+ // Physical keys only while focus is inside the demo; Enter and Space keep their native button behaviour
+ k.addEventListener('keydown',e=>{if(pinStep.hidden||e.metaKey||e.ctrlKey||e.altKey)return;
+  if(/^[0-9]$/.test(e.key)){e.preventDefault();press(e.key)}else if(e.key==='Backspace'){e.preventDefault();back()}else if(e.key==='Escape'){clear()}});
+ lang.addEventListener('click',()=>{es=!es;k.lang=es?'es':'en';langT.textContent=es?'English':'Español';langT.lang=es?'en':'es';
+  k.querySelectorAll('[data-k-t]').forEach(n=>{const en=n.dataset.kT;n.textContent=es?(ES[en]||en):en});
+  k.querySelectorAll('[data-k-l]').forEach(n=>{const en=n.dataset.kL;n.setAttribute('aria-label',es?(ES[en]||en):en)});last='';tick()});
+ // The clock ticks only while the demo is on screen and the tab is visible
+ let iv=0,onScreen=true;const run=()=>{clearInterval(iv);iv=0;if(onScreen&&!document.hidden){tick();iv=setInterval(tick,1000)}};
+ if('IntersectionObserver' in window)new IntersectionObserver(en=>{onScreen=en[0].isIntersecting;run()}).observe(k);
+ document.addEventListener('visibilitychange',run);tick();run();
 })();

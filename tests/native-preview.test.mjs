@@ -8,7 +8,7 @@ liquid.registerFilter('asset_url', name => '/assets/' + name);
 test('unpublished navigation stays in the exact draft without published page resources', async () => {
   const html = await liquid.parseAndRender(renderBody('/', { target: 'shopify' }), { theme: { role: 'unpublished', id: 123 }, routes: { root_url: '/' } });
   assert.match(html, /href="\/\?preview_theme_id=123&amp;view=velani-contact&amp;interest=nevora"/);
-  assert.match(html, /href="\/\?preview_theme_id=123&amp;view=velani-custom-development#web-applications"/);
+  assert.match(html, /href="\/\?preview_theme_id=123&amp;view=velani-custom-development"/);
   assert.doesNotMatch(html, /href="\/pages\//);
 });
 test('main-theme links retain canonical company page destinations', async () => {
@@ -31,7 +31,7 @@ test('the published theme is indexable while drafts stay noindex', async () => {
   const draft = await liquid.parseAndRender(layout, ctx('unpublished'));
   assert.doesNotMatch(main, /noindex/);
   assert.match(draft, /name="robots" content="noindex, nofollow"/);
-  assert.match(main, /<title>Velani: Brighter work ahead<\/title>/);
+  assert.match(main, /<title>Velani \| NEVORA for Shift Scheduling, Time Tracking &amp; Payroll Calculation<\/title>/);
   assert.match(main, /velani-home\.css/);
 });
 test('the NEVORA page loads its own assets and marks its nav item', async () => {

@@ -22,15 +22,29 @@ if (form) {
   const fieldset = form.querySelector('fieldset');
   let status = form.querySelector('.form-status');
   if (!status) { status = document.createElement('div'); status.className = 'form-status'; status.setAttribute('role', 'status'); status.tabIndex = -1; form.append(status); }
-  const fields = Object.fromEntries(['name', 'email', 'company', 'message', 'interest'].map(key => [key, form.querySelector('#inquiry-' + key)]));
+  const fields = Object.fromEntries(['name', 'email', 'company', 'message', 'interest', 'locations'].map(key => [key, form.querySelector('#inquiry-' + key)]));
   const topic = new URL(window.location.href).searchParams.get('interest');
   if (['custom-software', 'nevora', 'other'].includes(topic)) fields.interest.value = topic;
+  // Arriving from a NEVORA action: talk about the team, keep NEVORA as the topic without asking again
+  if (topic === 'nevora') {
+    const hero = document.querySelector('.phero');
+    const set = (selector, text) => { const el = hero && hero.querySelector(selector); if (el) { el.textContent = text; el.removeAttribute('aria-label'); } };
+    set('.kicker', 'NEVORA for your team'); set('h1', 'Tell us about your shift team.'); set('.lede', 'Share a little about your business. We’ll discuss what you need and NEVORA’s availability.');
+    document.title = 'NEVORA for your team · Velani';
+    form.querySelector('[data-nevora-fields]')?.removeAttribute('hidden');
+    fields.interest.closest('.field').hidden = true;
+    fields.interest.closest('.form-row')?.classList.add('form-row-one');
+    const label = form.querySelector('label[for="inquiry-message"]'); if (label) label.innerHTML = 'Anything else? <span class="optional">optional</span>';
+    fields.message.required = false;
+    const help = form.querySelector('#message-help'); if (help) help.textContent = 'For example, what you use today for schedules, time and payroll. Please do not include passwords, payment details or sensitive records.';
+  }
   const setBusy = busy => { submitButton.disabled = busy; form.setAttribute('aria-busy', String(busy)); };
   const messages = { checking: 'Checking your draft…', preview: 'Draft checked. Nothing was sent.', invalid: 'Check the highlighted fields.', sending: 'Sending inquiry…', accepted: 'Your inquiry was submitted.', failed: 'The inquiry was not accepted. Review the form before trying again.', uncertain: 'We could not confirm the submission. It may have been accepted. Check with support@thevelani.com before sending it again.', unavailable: 'Inquiry delivery is not available.' };
   const controller = createInquiryController({ mode: 'preview', onState: state => { status.dataset.state = state.status; status.textContent = messages[state.status] || ''; setBusy(['checking', 'sending'].includes(state.status)); } });
   function showErrors(errors) {
-    for (const key of ['name', 'email', 'company', 'message']) {
+    for (const key of ['name', 'email', 'company', 'message', 'locations']) {
       const message = form.querySelector('#error-' + key);
+      if (!message || !fields[key]) continue;
       message.textContent = errors[key] || '';
       if (errors[key]) fields[key].setAttribute('aria-invalid', 'true'); else fields[key].removeAttribute('aria-invalid');
     }

@@ -1,4 +1,4 @@
-const limits = { name: 120, email: 254, company: 160, message: 4000 };
+const limits = { name: 120, email: 254, company: 160, message: 4000, locations: 120 };
 const interests = new Set(['', 'custom-software', 'nevora', 'other']);
 export function validateInquiry(fields = {}) {
   const errors = {}, values = {};
@@ -10,7 +10,8 @@ export function validateInquiry(fields = {}) {
   }
   if (!values.name && !errors.name) errors.name = 'Enter your name.';
   if ((!values.email || !/^[^\s@<>"\\,;]+@[^\s@<>"\\,;]+\.[^\s@<>"\\,;]+$/u.test(values.email)) && !errors.email) errors.email = 'Enter an email address we can reply to.';
-  if (!values.message && !errors.message) errors.message = 'Tell us what you want to discuss.';
+  // A NEVORA enquiry asks about the team instead, so its message is optional
+  if (!values.message && !errors.message && fields?.interest !== 'nevora') errors.message = 'Tell us what you want to discuss.';
   values.interest = typeof fields?.interest === 'string' && interests.has(fields.interest) ? fields.interest : '';
   return { valid: Object.keys(errors).length === 0, errors, values };
 }

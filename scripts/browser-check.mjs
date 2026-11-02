@@ -163,7 +163,7 @@ for (const engine of engines) {
   const noJsPage = await noJs.newPage();
   await check(engine + ' no-JavaScript navigation and no unsafe inquiry', async () => {
     await noJsPage.goto(base + '/pages/contact');
-    expect(await noJsPage.locator('header').getByRole('link', { name: 'Custom development', exact: true }).isVisible(), 'No-JS navigation hidden');
+    expect(await noJsPage.locator('header').getByRole('link', { name: 'How it works', exact: true }).isVisible(), 'No-JS navigation hidden');
     expect(await noJsPage.locator('[data-inquiry-submit]').isDisabled(), 'No-JS preview could submit personal information');
   });
   await noJs.close(); await browser.close();

@@ -21,6 +21,7 @@ const e = value => String(value ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;',
 /** Turn a prototype fragment into site markup: icons inline, images from theme assets, real routes. */
 export function site(html, target) {
   return html
+    .replace('{{kiosk}}', () => read('kiosk.html'))
     .replace(/\{\{icon:([\w-]+)\}\}/g, (_, n) => icon(n))
     .replace(/src="img\/([\w.-]+)\.webp"/g, (_, n) => 'src="' + asset('night-' + n + '.webp', target) + '"')
     .replace(/src="img\/([\w.-]+)\.png"/g, (_, n) => 'src="' + asset('night-' + n + '.png', target) + '"')
@@ -39,7 +40,7 @@ const mainOf = src => between(src, '<main id="main">', '</main>').slice('<main i
 export function homeMain(target) { return site(mainOf(homeSrc), target); }
 export function nevoraMain(target) { return site(between(nevSrc, '<nav class="lnav"', '<main id="main">') + mainOf(nevSrc), target); }
 
-const NAV = [['NEVORA', '/pages/nevora', 'nevora'], ['Custom development', '/pages/custom-development', 'services'], ['About', '/pages/about', 'about'], ['NEVORA help', '/pages/nevora-support', 'nevora-help']];
+const NAV = [['NEVORA', '/pages/nevora', 'nevora'], ['How it works', '/#how', 'how'], ['About', '/pages/about', 'about'], ['Help', '/pages/nevora-support', 'nevora-help']];
 /** current: the nav key for the preview build, or null in the Shopify layout, where Liquid marks it. */
 // Official VELANI wordmark, traced 1:1 from docs/reference/velani-logo-official.pdf; colour comes from CSS.
 const WORDMARK = readFileSync(new URL('./brand/velani-wordmark.svg', import.meta.url), 'utf8').trim()
@@ -51,13 +52,13 @@ export function header(current, target, { nevora = false } = {}) {
   const links = NAV.map(([text, href, key]) => `<li><a href="${href}"${mark(key)}>${text}</a></li>`).join('');
   const menu = NAV.map(([text, href, key]) => `<a href="${href}"${mark(key)}>${text}</a>`).join('');
   const staticClass = target === 'shopify' ? `{% if velani_page == 'nevora' %} static{% endif %}` : (nevora ? ' static' : '');
-  return `<a class="skip" href="#main">Skip to content</a><header class="gnav${staticClass}" id="gnav"><nav class="wrap gnav-in" aria-label="Main"><a class="wordmark" href="/" aria-label="Velani home">${WORDMARK}</a><ul class="gnav-links">${links}</ul><a class="pill line" href="/pages/contact">Contact us</a><button class="gnav-menu" id="gmenu-btn" type="button" aria-expanded="false" aria-controls="gmenu" aria-label="Menu"><span class="i-open">${icon('list')}</span><span class="i-close" hidden>${icon('x')}</span></button></nav></header><div class="gmenu" id="gmenu" hidden><nav class="wrap" aria-label="Main menu">${menu}<a href="/pages/contact">Contact</a><a class="pill" href="/pages/contact">Contact us</a><small>Velani is a brand of ${company.operator}.</small></nav></div>`;
+  return `<a class="skip" href="#main">Skip to content</a><header class="gnav${staticClass}" id="gnav"><nav class="wrap gnav-in" aria-label="Main"><a class="wordmark" href="/" aria-label="Velani home">${WORDMARK}</a><ul class="gnav-links">${links}</ul><a class="pill line" href="/pages/contact?interest=nevora">Talk about NEVORA</a><button class="gnav-menu" id="gmenu-btn" type="button" aria-expanded="false" aria-controls="gmenu" aria-label="Menu"><span class="i-open">${icon('list')}</span><span class="i-close" hidden>${icon('x')}</span></button></nav></header><div class="gmenu" id="gmenu" hidden><nav class="wrap" aria-label="Main menu">${menu}<a href="/pages/custom-development">Custom development</a><a href="/pages/contact">Contact</a><a class="pill" href="/pages/contact?interest=nevora">Talk about NEVORA</a><small>Velani is a brand of ${company.operator}.</small></nav></div>`;
 }
 export function footer(target) { return site(read('foot.html'), target); }
 
 export const nightAssets = {
-  css: { base: read('base.css'), home: read('home.css'), nevora: read('nevora.css'), pages: read('pages.css') },
-  js: { motion: read('motion.js'), home: read('home.js'), nevora: read('nevora.js') + '\n' + read('kiosk.js'), boot: "document.documentElement.className='js pre';\n" },
+  css: { base: read('base.css'), home: read('home.css'), nevora: read('nevora.css'), pages: read('pages.css'), kiosk: read('kiosk.css') },
+  js: { motion: read('motion.js'), home: read('home.js') + '\n' + read('kiosk.js'), nevora: read('nevora.js') + '\n' + read('kiosk.js'), boot: "document.documentElement.className='js pre';\n" },
 };
 
 /* NEVORA policy pages (Privacy, Support, Account deletion, Terms), from the NEVORA app's approved policy source. */

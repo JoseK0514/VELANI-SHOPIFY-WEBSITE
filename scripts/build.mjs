@@ -18,7 +18,7 @@ export async function build() {
     catch (error) { if (error.code !== 'ENOENT') throw error; }
   }
   const { css, js } = nightAssets;
-  await writeFile(path.join(root, 'public/assets/velani.css'), css.base + '\n' + css.pages);
+  await writeFile(path.join(root, 'public/assets/velani.css'), css.base + '\n' + css.pages + '\n' + css.kiosk);
   await writeFile(path.join(root, 'public/assets/velani-home.css'), css.home);
   await writeFile(path.join(root, 'public/assets/velani-nevora.css'), css.nevora);
   await writeFile(path.join(root, 'public/assets/velani-motion.js'), js.motion);

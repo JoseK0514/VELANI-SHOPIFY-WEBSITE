@@ -107,3 +107,11 @@ test('malformed consent values do not become truthy permission', async () => {
   assert.equal(calls, 0);
 });
 
+
+test('NEVORA enquiries ask about the team, so the message is optional', () => {
+  assert.equal(validateInquiry({ ...valid, interest: 'custom-software', message: '' }).valid, false);
+  const nevora = validateInquiry({ ...valid, interest: 'nevora', message: '' });
+  assert.equal(nevora.valid, true);
+  assert.equal(nevora.values.interest, 'nevora');
+  assert.equal(validateInquiry({ ...valid, interest: 'nevora', locations: 'x'.repeat(121) }).valid, false);
+});

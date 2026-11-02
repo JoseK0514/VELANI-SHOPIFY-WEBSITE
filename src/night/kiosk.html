@@ -1,0 +1,32 @@
+  <div class="kio" id="kio" data-in>
+   <div class="kio-side">
+    <div class="kio-brand"><img src="img/nevora-wm-white.png" alt="NEVORA" width="907" height="122"><span data-k-t="Time clock">Time clock</span></div>
+    <div class="kio-now">
+     <p class="kio-loc">{{icon:map-pin}}<b>Northside Main Office</b></p>
+     <p class="kio-time"><span id="kio-hm">2:17</span><small id="kio-ap">PM</small></p>
+     <p class="kio-date" id="kio-date">Tuesday, October 27</p>
+    </div>
+   </div>
+   <div class="kio-main">
+    <div class="kio-step" id="kio-pin">
+     <h3 class="kio-h" id="kio-pin-h" tabindex="-1" data-k-t="Enter your PIN">Enter your PIN</h3>
+     <div class="kio-dots" id="kio-dots" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+     <p class="sr" id="kio-live" aria-live="polite"></p>
+     <div class="kio-pad" role="group" aria-labelledby="kio-pin-h">
+      <button type="button" data-d="1">1</button><button type="button" data-d="2">2</button><button type="button" data-d="3">3</button>
+      <button type="button" data-d="4">4</button><button type="button" data-d="5">5</button><button type="button" data-d="6">6</button>
+      <button type="button" data-d="7">7</button><button type="button" data-d="8">8</button><button type="button" data-d="9">9</button>
+      <button type="button" class="kio-soft" data-act="clear" data-k-t="Clear">Clear</button><button type="button" data-d="0">0</button><button type="button" class="kio-soft" data-act="back" aria-label="Delete digit" data-k-l="Delete digit">{{icon:backspace}}</button>
+     </div>
+     <button type="button" class="kio-go" id="kio-go" disabled><span data-k-t="Continue">Continue</span>{{icon:caret-right}}</button>
+     <div class="kio-foot"><p data-k-t="Your PIN is separate from your portal password.">Your PIN is separate from your portal password.</p><button type="button" class="kio-lang" id="kio-lang">{{icon:translate}}<span id="kio-lang-t" lang="es">Español</span></button></div>
+    </div>
+    <div class="kio-step kio-ok" id="kio-ok" hidden>
+     <span class="kio-check">{{icon:check}}</span>
+     <h3 class="kio-h" id="kio-ok-h" tabindex="-1" data-k-t="Clock-in recorded">Clock-in recorded</h3>
+     <p class="kio-saved"><span data-k-t="Saved at">Saved at</span> <b id="kio-saved">Oct 27 · 2:17 PM</b><span id="kio-dot">.</span></p>
+     <p class="kio-demo" data-k-t="Demo only. No hours were saved.">Demo only. No hours were saved.</p>
+     <button type="button" class="kio-done" id="kio-done" data-k-t="Try again">Try again</button>
+    </div>
+   </div>
+  </div>
