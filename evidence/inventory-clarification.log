@@ -1,0 +1,8 @@
+file:///workspace/work/velani-company-site-20261102/scripts/check-readback.mjs:27
+  if (!exactBytes && !semanticallyEqual) throw new Error('Readback differs: ' + file.filename);
+                                               ^
+
+Error: Readback differs: assets/velani.css
+    at file:///workspace/work/velani-company-site-20261102/scripts/check-readback.mjs:27:48
+
+Node.js v24.19.0

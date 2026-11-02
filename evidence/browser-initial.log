@@ -1,0 +1,37 @@
+
+> velani-company-site@0.1.0 check:browser
+> node scripts/browser-check.mjs
+
+{
+  "status": "failed",
+  "passed": 33,
+  "failed": 4,
+  "blocked": 0,
+  "results": [
+    {
+      "name": "chromium home geometry 969",
+      "status": "failed",
+      "error": "Approved desktop headline must keep its two lines"
+    },
+    {
+      "name": "chromium home geometry 1440",
+      "status": "failed",
+      "error": "Mobile menu appears on desktop"
+    },
+    {
+      "name": "chromium route/a11y 390 /pages/contact",
+      "status": "failed",
+      "error": "[{\"id\":\"color-contrast\",\"impact\":\"serious\",\"nodes\":2}]"
+    },
+    {
+      "name": "chromium route/a11y 1440 /pages/contact",
+      "status": "failed",
+      "error": "[{\"id\":\"color-contrast\",\"impact\":\"serious\",\"nodes\":2}]"
+    }
+  ],
+  "screenshots": 5,
+  "runtimeErrors": [],
+  "posts": [],
+  "externalRequests": [],
+  "scope": "Actual local browser and compiled site; no hosted Shopify, live email or publication acceptance"
+}

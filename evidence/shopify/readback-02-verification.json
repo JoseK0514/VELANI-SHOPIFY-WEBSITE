@@ -1,0 +1,613 @@
+{
+  "status": "passed",
+  "draftId": "gid://shopify/OnlineStoreTheme/192965443898",
+  "role": "UNPUBLISHED",
+  "totalDraftFiles": 96,
+  "verifiedPackageFiles": 70,
+  "retainedInheritedFiles": 26,
+  "inherited": [
+    {
+      "filename": "assets/base.css",
+      "md5": "68fd9b0358588b93bbffd59a2dd765db"
+    },
+    {
+      "filename": "assets/global.js",
+      "md5": "7337d4abf47fe52eb104e67c9995538c"
+    },
+    {
+      "filename": "assets/velani-bandanas.png",
+      "md5": "9f1c34a52129e62a6f767e1173b625c2"
+    },
+    {
+      "filename": "assets/velani-cat-collars.png",
+      "md5": "5b7647566905be4563f5d7e04f31696f"
+    },
+    {
+      "filename": "assets/velani-collars.png",
+      "md5": "1bd3e0a37d4dc8fed686395b3bd7e4c0"
+    },
+    {
+      "filename": "assets/velani-hero.png",
+      "md5": "32c658c1edf30ba04048c954a9abd80f"
+    },
+    {
+      "filename": "sections/announcement-bar.liquid",
+      "md5": "7e6d52acfdbd8d4186f2db0c346e681d"
+    },
+    {
+      "filename": "sections/collection-cards.liquid",
+      "md5": "3cb4efa8e71a671789d159c2e77ba892"
+    },
+    {
+      "filename": "sections/featured-products.liquid",
+      "md5": "b4196319c33d41179ec50f04f027aea7"
+    },
+    {
+      "filename": "sections/footer-group.json",
+      "md5": "29f950b84fb5d20679a65871088f2323"
+    },
+    {
+      "filename": "sections/footer.liquid",
+      "md5": "e6d9dc7fd7f2ba72fe1cf19fcdc9a9df"
+    },
+    {
+      "filename": "sections/header-group.json",
+      "md5": "8722b192fa92206fc55a86114c423bdc"
+    },
+    {
+      "filename": "sections/header.liquid",
+      "md5": "a27862dd40c8be46be5b362a53d3d197"
+    },
+    {
+      "filename": "sections/hero-velani.liquid",
+      "md5": "8e413d9ded0234aa9127303d012d751a"
+    },
+    {
+      "filename": "sections/main-404.liquid",
+      "md5": "43360b43cf51b48989b2204a0b20f07c"
+    },
+    {
+      "filename": "sections/main-cart.liquid",
+      "md5": "36ec039eaf05bd4dc736ca3cff744032"
+    },
+    {
+      "filename": "sections/main-collection-grid.liquid",
+      "md5": "785123e6b46aa7ceada649bae29ebb1a"
+    },
+    {
+      "filename": "sections/main-list-collections.liquid",
+      "md5": "e2bd28ed120457298f576bff28310667"
+    },
+    {
+      "filename": "sections/main-page.liquid",
+      "md5": "8f88811cc30d2eec1a24359e0c46b251"
+    },
+    {
+      "filename": "sections/main-product.liquid",
+      "md5": "c5cbbf2015159d401650a3ea56eb1edd"
+    },
+    {
+      "filename": "sections/main-search.liquid",
+      "md5": "7912ab96dca8964ca8fe0c5abac61a2c"
+    },
+    {
+      "filename": "sections/newsletter.liquid",
+      "md5": "4cfaa6256419faf071e61830d213ec84"
+    },
+    {
+      "filename": "sections/story-split.liquid",
+      "md5": "da05aaa20590b39c4ada0bfb02adfbe8"
+    },
+    {
+      "filename": "sections/value-grid.liquid",
+      "md5": "d0a90575686865ce44ada7089fab7a8d"
+    },
+    {
+      "filename": "snippets/product-card.liquid",
+      "md5": "d597d8dde9e13542d453e5f48a35a81f"
+    },
+    {
+      "filename": "templates/gift_card.liquid",
+      "md5": "87c78d9c290c6cf99551982bddcccddd"
+    }
+  ],
+  "exactByteMatches": 35,
+  "platformNormalizedJsonMatches": 35,
+  "originalTheme": "gid://shopify/OnlineStoreTheme/190572462394",
+  "originalRole": "MAIN",
+  "unchangedOriginalFiles": 38,
+  "inquiriesEnabled": false,
+  "hostedAcceptance": "blocked by existing storefront password; no password or global resources changed",
+  "files": [
+    {
+      "filename": "assets/arrow-right.svg",
+      "exactBytes": true,
+      "semanticallyEqual": false,
+      "shopifyMd5": "18939c6b6262326da5e8752557ec5f5d",
+      "localMd5": "18939c6b6262326da5e8752557ec5f5d"
+    },
+    {
+      "filename": "assets/calendar-blank.svg",
+      "exactBytes": true,
+      "semanticallyEqual": false,
+      "shopifyMd5": "12fd927ed1d8d66e83e86f9636e9c46e",
+      "localMd5": "12fd927ed1d8d66e83e86f9636e9c46e"
+    },
+    {
+      "filename": "assets/clock.svg",
+      "exactBytes": true,
+      "semanticallyEqual": false,
+      "shopifyMd5": "bf6dab777e7b8418a6fea1f2997a36d2",
+      "localMd5": "bf6dab777e7b8418a6fea1f2997a36d2"
+    },
+    {
+      "filename": "assets/code-simple.svg",
+      "exactBytes": true,
+      "semanticallyEqual": false,
+      "shopifyMd5": "7bef6b839246e5a6fc5a261f6cf79d7d",
+      "localMd5": "7bef6b839246e5a6fc5a261f6cf79d7d"
+    },
+    {
+      "filename": "assets/dm-sans-latin-400-normal.woff2",
+      "exactBytes": true,
+      "semanticallyEqual": false,
+      "shopifyMd5": "a220a32881ae190f4784c437c1e467e0",
+      "localMd5": "a220a32881ae190f4784c437c1e467e0"
+    },
+    {
+      "filename": "assets/dm-sans-latin-500-normal.woff2",
+      "exactBytes": true,
+      "semanticallyEqual": false,
+      "shopifyMd5": "aa952242481dddcafa4d2fcc03383ae1",
+      "localMd5": "aa952242481dddcafa4d2fcc03383ae1"
+    },
+    {
+      "filename": "assets/dm-sans-latin-600-normal.woff2",
+      "exactBytes": true,
+      "semanticallyEqual": false,
+      "shopifyMd5": "c64569e0302e745cee622d662e9c5df7",
+      "localMd5": "c64569e0302e745cee622d662e9c5df7"
+    },
+    {
+      "filename": "assets/favicon.svg",
+      "exactBytes": true,
+      "semanticallyEqual": false,
+      "shopifyMd5": "7bef6b839246e5a6fc5a261f6cf79d7d",
+      "localMd5": "7bef6b839246e5a6fc5a261f6cf79d7d"
+    },
+    {
+      "filename": "assets/file-text.svg",
+      "exactBytes": true,
+      "semanticallyEqual": false,
+      "shopifyMd5": "935f1b18e9587e5246c291b5e9fd07ba",
+      "localMd5": "935f1b18e9587e5246c291b5e9fd07ba"
+    },
+    {
+      "filename": "assets/inquiry.js",
+      "exactBytes": true,
+      "semanticallyEqual": false,
+      "shopifyMd5": "19d94b6d2a7ea0f80f22c3268dcc6f34",
+      "localMd5": "19d94b6d2a7ea0f80f22c3268dcc6f34"
+    },
+    {
+      "filename": "assets/list.svg",
+      "exactBytes": true,
+      "semanticallyEqual": false,
+      "shopifyMd5": "b63f5ac9b4ec9b61c9ddd3835a4cdd9c",
+      "localMd5": "b63f5ac9b4ec9b61c9ddd3835a4cdd9c"
+    },
+    {
+      "filename": "assets/plus.svg",
+      "exactBytes": true,
+      "semanticallyEqual": false,
+      "shopifyMd5": "ac7ba4a8cc208d69a46cd0af746c41e0",
+      "localMd5": "ac7ba4a8cc208d69a46cd0af746c41e0"
+    },
+    {
+      "filename": "assets/privacy.js",
+      "exactBytes": true,
+      "semanticallyEqual": false,
+      "shopifyMd5": "8c6947e3581b37a49650cda84a663f20",
+      "localMd5": "8c6947e3581b37a49650cda84a663f20"
+    },
+    {
+      "filename": "assets/velani-social.webp",
+      "exactBytes": true,
+      "semanticallyEqual": false,
+      "shopifyMd5": "544bf7ec02da433516450a75553daaf0",
+      "localMd5": "544bf7ec02da433516450a75553daaf0"
+    },
+    {
+      "filename": "assets/velani.css",
+      "exactBytes": true,
+      "semanticallyEqual": false,
+      "shopifyMd5": "6044dc30bd4dcd798b0ce15a85244321",
+      "localMd5": "6044dc30bd4dcd798b0ce15a85244321"
+    },
+    {
+      "filename": "assets/velani.js",
+      "exactBytes": true,
+      "semanticallyEqual": false,
+      "shopifyMd5": "55efc1b8f18340099752d2c34d52e31d",
+      "localMd5": "55efc1b8f18340099752d2c34d52e31d"
+    },
+    {
+      "filename": "assets/x.svg",
+      "exactBytes": true,
+      "semanticallyEqual": false,
+      "shopifyMd5": "9cb70e346359cd659e8abf96f5ef011f",
+      "localMd5": "9cb70e346359cd659e8abf96f5ef011f"
+    },
+    {
+      "filename": "config/settings_data.json",
+      "exactBytes": false,
+      "semanticallyEqual": true,
+      "shopifyMd5": "ae3f3555b3cd762be4ba2563f9fa49e8",
+      "localMd5": "6b17ba26fbd13cd2bc56f3920a9bef6e"
+    },
+    {
+      "filename": "config/settings_schema.json",
+      "exactBytes": true,
+      "semanticallyEqual": false,
+      "shopifyMd5": "93e9003036d5885401cde3175317f644",
+      "localMd5": "93e9003036d5885401cde3175317f644"
+    },
+    {
+      "filename": "layout/theme.liquid",
+      "exactBytes": true,
+      "semanticallyEqual": false,
+      "shopifyMd5": "556d2631c01dccfcb7e79147eeffaa87",
+      "localMd5": "556d2631c01dccfcb7e79147eeffaa87"
+    },
+    {
+      "filename": "locales/en.default.json",
+      "exactBytes": true,
+      "semanticallyEqual": false,
+      "shopifyMd5": "512171ae9c31818c172bc944ee53f367",
+      "localMd5": "512171ae9c31818c172bc944ee53f367"
+    },
+    {
+      "filename": "sections/velani-about.liquid",
+      "exactBytes": true,
+      "semanticallyEqual": false,
+      "shopifyMd5": "c37eaccf4b8fa90d4ef9f49b94ac1214",
+      "localMd5": "c37eaccf4b8fa90d4ef9f49b94ac1214"
+    },
+    {
+      "filename": "sections/velani-accessibility.liquid",
+      "exactBytes": true,
+      "semanticallyEqual": false,
+      "shopifyMd5": "c153dedca287453239701d8dffbfa8d1",
+      "localMd5": "c153dedca287453239701d8dffbfa8d1"
+    },
+    {
+      "filename": "sections/velani-contact.liquid",
+      "exactBytes": true,
+      "semanticallyEqual": false,
+      "shopifyMd5": "8b7d9d56a2206ff6cd7faa6af064a269",
+      "localMd5": "8b7d9d56a2206ff6cd7faa6af064a269"
+    },
+    {
+      "filename": "sections/velani-cookies.liquid",
+      "exactBytes": true,
+      "semanticallyEqual": false,
+      "shopifyMd5": "8efa57f377a8cc5042d60d83ea1534b9",
+      "localMd5": "8efa57f377a8cc5042d60d83ea1534b9"
+    },
+    {
+      "filename": "sections/velani-custom-development.liquid",
+      "exactBytes": true,
+      "semanticallyEqual": false,
+      "shopifyMd5": "e61010c0d63e5ed3569a32d8c0c655a4",
+      "localMd5": "e61010c0d63e5ed3569a32d8c0c655a4"
+    },
+    {
+      "filename": "sections/velani-help.liquid",
+      "exactBytes": true,
+      "semanticallyEqual": false,
+      "shopifyMd5": "9b59ead3e6f477e694811381dde37bee",
+      "localMd5": "9b59ead3e6f477e694811381dde37bee"
+    },
+    {
+      "filename": "sections/velani-home.liquid",
+      "exactBytes": true,
+      "semanticallyEqual": false,
+      "shopifyMd5": "aa767163b77c24eef8316bec361bedc6",
+      "localMd5": "aa767163b77c24eef8316bec361bedc6"
+    },
+    {
+      "filename": "sections/velani-legal.liquid",
+      "exactBytes": true,
+      "semanticallyEqual": false,
+      "shopifyMd5": "4ed31ba0bf4f9e72045760492a72c8ac",
+      "localMd5": "4ed31ba0bf4f9e72045760492a72c8ac"
+    },
+    {
+      "filename": "sections/velani-nevora.liquid",
+      "exactBytes": true,
+      "semanticallyEqual": false,
+      "shopifyMd5": "7585c07da4e235c5e375fc1abc14f96b",
+      "localMd5": "7585c07da4e235c5e375fc1abc14f96b"
+    },
+    {
+      "filename": "sections/velani-not-found.liquid",
+      "exactBytes": true,
+      "semanticallyEqual": false,
+      "shopifyMd5": "901c79c0cc5e15f01c029379c95fd432",
+      "localMd5": "901c79c0cc5e15f01c029379c95fd432"
+    },
+    {
+      "filename": "sections/velani-privacy.liquid",
+      "exactBytes": true,
+      "semanticallyEqual": false,
+      "shopifyMd5": "eaa3824430b461d0a12f475c583d58d6",
+      "localMd5": "eaa3824430b461d0a12f475c583d58d6"
+    },
+    {
+      "filename": "sections/velani-products.liquid",
+      "exactBytes": true,
+      "semanticallyEqual": false,
+      "shopifyMd5": "56253daf6f7ddfec1e1fca8ed4d6300e",
+      "localMd5": "56253daf6f7ddfec1e1fca8ed4d6300e"
+    },
+    {
+      "filename": "sections/velani-security.liquid",
+      "exactBytes": true,
+      "semanticallyEqual": false,
+      "shopifyMd5": "315725d21023ac2e91638576377759aa",
+      "localMd5": "315725d21023ac2e91638576377759aa"
+    },
+    {
+      "filename": "sections/velani-software-project-terms.liquid",
+      "exactBytes": true,
+      "semanticallyEqual": false,
+      "shopifyMd5": "d6a075882b7fa6fa72c0c9752fe98786",
+      "localMd5": "d6a075882b7fa6fa72c0c9752fe98786"
+    },
+    {
+      "filename": "sections/velani-website-terms.liquid",
+      "exactBytes": true,
+      "semanticallyEqual": false,
+      "shopifyMd5": "bf28fcdf6cc31f49ac1a2467fc1c6601",
+      "localMd5": "bf28fcdf6cc31f49ac1a2467fc1c6601"
+    },
+    {
+      "filename": "templates/404.json",
+      "exactBytes": false,
+      "semanticallyEqual": true,
+      "shopifyMd5": "84721fcbb3b3493a1fa5d734e1b45efe",
+      "localMd5": "1a15791689c40f328ce160f59d9c4680"
+    },
+    {
+      "filename": "templates/cart.json",
+      "exactBytes": false,
+      "semanticallyEqual": true,
+      "shopifyMd5": "84721fcbb3b3493a1fa5d734e1b45efe",
+      "localMd5": "1a15791689c40f328ce160f59d9c4680"
+    },
+    {
+      "filename": "templates/collection.json",
+      "exactBytes": false,
+      "semanticallyEqual": true,
+      "shopifyMd5": "84721fcbb3b3493a1fa5d734e1b45efe",
+      "localMd5": "1a15791689c40f328ce160f59d9c4680"
+    },
+    {
+      "filename": "templates/index.json",
+      "exactBytes": false,
+      "semanticallyEqual": true,
+      "shopifyMd5": "5ffdaf9ff5725555ea4d6b5db26bc1d1",
+      "localMd5": "4746e19d5cb75ecf8755c8b92de10de6"
+    },
+    {
+      "filename": "templates/index.velani-about.json",
+      "exactBytes": false,
+      "semanticallyEqual": true,
+      "shopifyMd5": "ca908e669f93559b06479f93d2c4d0dd",
+      "localMd5": "634d1c9a3995829d36e9135ce4ea6f8f"
+    },
+    {
+      "filename": "templates/index.velani-accessibility.json",
+      "exactBytes": false,
+      "semanticallyEqual": true,
+      "shopifyMd5": "463b29974f87ebe404007e77f8ca34ab",
+      "localMd5": "94f9be6155691d05db4a7e6d20461135"
+    },
+    {
+      "filename": "templates/index.velani-contact.json",
+      "exactBytes": false,
+      "semanticallyEqual": true,
+      "shopifyMd5": "66877f652ec2ef7c2d7dbf9390c5c332",
+      "localMd5": "3213b67b01f078ccf5f308affb7e70a8"
+    },
+    {
+      "filename": "templates/index.velani-cookies.json",
+      "exactBytes": false,
+      "semanticallyEqual": true,
+      "shopifyMd5": "7dfdbb02b08d47d9abd78de0a4140857",
+      "localMd5": "73cc9edffd5ac3c67dd41399fabd3c4c"
+    },
+    {
+      "filename": "templates/index.velani-custom-development.json",
+      "exactBytes": false,
+      "semanticallyEqual": true,
+      "shopifyMd5": "635c9b80136855a6d30c9cf502f59992",
+      "localMd5": "edb5291400007e818bd2d3f9f02bd5be"
+    },
+    {
+      "filename": "templates/index.velani-help.json",
+      "exactBytes": false,
+      "semanticallyEqual": true,
+      "shopifyMd5": "4650e95240abe4dcec47d190367ba360",
+      "localMd5": "82baa2e68c05bc8ce0dc2524ab34d94d"
+    },
+    {
+      "filename": "templates/index.velani-legal.json",
+      "exactBytes": false,
+      "semanticallyEqual": true,
+      "shopifyMd5": "2e228ad50b9fd35726bd30e8570a248d",
+      "localMd5": "c9ca966bf158d3c9d8763439f2462cfb"
+    },
+    {
+      "filename": "templates/index.velani-nevora.json",
+      "exactBytes": false,
+      "semanticallyEqual": true,
+      "shopifyMd5": "4cd1bf85373f610b98d86ade057381ef",
+      "localMd5": "c55b36e70ab84211153cdb0bd7bcdf7d"
+    },
+    {
+      "filename": "templates/index.velani-privacy.json",
+      "exactBytes": false,
+      "semanticallyEqual": true,
+      "shopifyMd5": "fcf1043a7d3f091e130715e8c4fd6abc",
+      "localMd5": "ad8577df0c839007a386914336a1efc0"
+    },
+    {
+      "filename": "templates/index.velani-products.json",
+      "exactBytes": false,
+      "semanticallyEqual": true,
+      "shopifyMd5": "157b974fdd29825e0c736761b243b271",
+      "localMd5": "442d92a02eb2fe685cb9d325763d0e88"
+    },
+    {
+      "filename": "templates/index.velani-security.json",
+      "exactBytes": false,
+      "semanticallyEqual": true,
+      "shopifyMd5": "4f5a1fa9d229e509e43cfcf067ea90cf",
+      "localMd5": "b28456bba1c5066bcd1c0451b876aae1"
+    },
+    {
+      "filename": "templates/index.velani-software-project-terms.json",
+      "exactBytes": false,
+      "semanticallyEqual": true,
+      "shopifyMd5": "2d6d6fde60d60bcd575bbb892533d325",
+      "localMd5": "d28994cac40d4eccdbe4dd218f65eeea"
+    },
+    {
+      "filename": "templates/index.velani-website-terms.json",
+      "exactBytes": false,
+      "semanticallyEqual": true,
+      "shopifyMd5": "ca6445a5ca91a755f43f7d4ef8245af2",
+      "localMd5": "10d08fc962772723b50afc7a0ece3a46"
+    },
+    {
+      "filename": "templates/list-collections.json",
+      "exactBytes": false,
+      "semanticallyEqual": true,
+      "shopifyMd5": "84721fcbb3b3493a1fa5d734e1b45efe",
+      "localMd5": "1a15791689c40f328ce160f59d9c4680"
+    },
+    {
+      "filename": "templates/page.about.json",
+      "exactBytes": false,
+      "semanticallyEqual": true,
+      "shopifyMd5": "ca908e669f93559b06479f93d2c4d0dd",
+      "localMd5": "634d1c9a3995829d36e9135ce4ea6f8f"
+    },
+    {
+      "filename": "templates/page.accessibility.json",
+      "exactBytes": false,
+      "semanticallyEqual": true,
+      "shopifyMd5": "463b29974f87ebe404007e77f8ca34ab",
+      "localMd5": "94f9be6155691d05db4a7e6d20461135"
+    },
+    {
+      "filename": "templates/page.contact.json",
+      "exactBytes": false,
+      "semanticallyEqual": true,
+      "shopifyMd5": "66877f652ec2ef7c2d7dbf9390c5c332",
+      "localMd5": "3213b67b01f078ccf5f308affb7e70a8"
+    },
+    {
+      "filename": "templates/page.cookies.json",
+      "exactBytes": false,
+      "semanticallyEqual": true,
+      "shopifyMd5": "7dfdbb02b08d47d9abd78de0a4140857",
+      "localMd5": "73cc9edffd5ac3c67dd41399fabd3c4c"
+    },
+    {
+      "filename": "templates/page.custom-development.json",
+      "exactBytes": false,
+      "semanticallyEqual": true,
+      "shopifyMd5": "635c9b80136855a6d30c9cf502f59992",
+      "localMd5": "edb5291400007e818bd2d3f9f02bd5be"
+    },
+    {
+      "filename": "templates/page.help.json",
+      "exactBytes": false,
+      "semanticallyEqual": true,
+      "shopifyMd5": "4650e95240abe4dcec47d190367ba360",
+      "localMd5": "82baa2e68c05bc8ce0dc2524ab34d94d"
+    },
+    {
+      "filename": "templates/page.json",
+      "exactBytes": false,
+      "semanticallyEqual": true,
+      "shopifyMd5": "84721fcbb3b3493a1fa5d734e1b45efe",
+      "localMd5": "1a15791689c40f328ce160f59d9c4680"
+    },
+    {
+      "filename": "templates/page.legal.json",
+      "exactBytes": false,
+      "semanticallyEqual": true,
+      "shopifyMd5": "2e228ad50b9fd35726bd30e8570a248d",
+      "localMd5": "c9ca966bf158d3c9d8763439f2462cfb"
+    },
+    {
+      "filename": "templates/page.nevora.json",
+      "exactBytes": false,
+      "semanticallyEqual": true,
+      "shopifyMd5": "4cd1bf85373f610b98d86ade057381ef",
+      "localMd5": "c55b36e70ab84211153cdb0bd7bcdf7d"
+    },
+    {
+      "filename": "templates/page.privacy.json",
+      "exactBytes": false,
+      "semanticallyEqual": true,
+      "shopifyMd5": "fcf1043a7d3f091e130715e8c4fd6abc",
+      "localMd5": "ad8577df0c839007a386914336a1efc0"
+    },
+    {
+      "filename": "templates/page.products.json",
+      "exactBytes": false,
+      "semanticallyEqual": true,
+      "shopifyMd5": "157b974fdd29825e0c736761b243b271",
+      "localMd5": "442d92a02eb2fe685cb9d325763d0e88"
+    },
+    {
+      "filename": "templates/page.security.json",
+      "exactBytes": false,
+      "semanticallyEqual": true,
+      "shopifyMd5": "4f5a1fa9d229e509e43cfcf067ea90cf",
+      "localMd5": "b28456bba1c5066bcd1c0451b876aae1"
+    },
+    {
+      "filename": "templates/page.software-project-terms.json",
+      "exactBytes": false,
+      "semanticallyEqual": true,
+      "shopifyMd5": "2d6d6fde60d60bcd575bbb892533d325",
+      "localMd5": "d28994cac40d4eccdbe4dd218f65eeea"
+    },
+    {
+      "filename": "templates/page.website-terms.json",
+      "exactBytes": false,
+      "semanticallyEqual": true,
+      "shopifyMd5": "ca6445a5ca91a755f43f7d4ef8245af2",
+      "localMd5": "10d08fc962772723b50afc7a0ece3a46"
+    },
+    {
+      "filename": "templates/product.json",
+      "exactBytes": false,
+      "semanticallyEqual": true,
+      "shopifyMd5": "84721fcbb3b3493a1fa5d734e1b45efe",
+      "localMd5": "1a15791689c40f328ce160f59d9c4680"
+    },
+    {
+      "filename": "templates/search.json",
+      "exactBytes": false,
+      "semanticallyEqual": true,
+      "shopifyMd5": "84721fcbb3b3493a1fa5d734e1b45efe",
+      "localMd5": "1a15791689c40f328ce160f59d9c4680"
+    }
+  ]
+}

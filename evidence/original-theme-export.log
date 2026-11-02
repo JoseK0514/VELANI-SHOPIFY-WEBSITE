@@ -1,0 +1,4 @@
+Traceback (most recent call last):
+  File "/workspace/work/velani-company-site-20261102/scripts/export-original-theme.py", line 45, in <module>
+    raise RuntimeError('Cannot reconstruct original bytes: ' + filename)
+RuntimeError: Cannot reconstruct original bytes: templates/404.json

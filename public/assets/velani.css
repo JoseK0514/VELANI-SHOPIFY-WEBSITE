@@ -10,3 +10,5 @@
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{animation:none!important;transition:none!important}}
 @media(forced-colors:active){.button,.status-tag,.cookie-dialog,.workflow-node{border:1px solid ButtonText}.icon{forced-color-adjust:auto}.skip-link{border:2px solid CanvasText}}
 
+
+.consent-status:focus-visible{outline:3px solid #528ae8;outline-offset:5px}.cookie-nojs-note{font-size:14px;line-height:1.6;max-width:36rem;margin-top:12px}

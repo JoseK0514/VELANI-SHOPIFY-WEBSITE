@@ -1,0 +1,11 @@
+{
+  "data": {
+    "shop": {
+      "name": "The Velani",
+      "myshopifyDomain": "x19hvn-ar.myshopify.com",
+      "primaryDomain": {
+        "url": "https://www.thevelani.com"
+      }
+    }
+  }
+}

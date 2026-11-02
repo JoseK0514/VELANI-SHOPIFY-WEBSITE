@@ -4,10 +4,11 @@ import { mkdir, writeFile } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
 import { routes } from '../src/content.mjs';
 const base = process.env.VELANI_PREVIEW_URL || 'http://127.0.0.1:4173';
-const run = process.env.VELANI_BROWSER_RUN || 'browser-initial';
+const run = process.env.VELANI_BROWSER_RUN || 'browser-' + new Date().toISOString().replace(/[:.]/g, '-');
 const engines = (process.env.VELANI_ENGINES || 'chromium').split(',');
 const out = 'evidence/' + run;
-await mkdir(out, { recursive: true });
+await mkdir('evidence', { recursive: true });
+await mkdir(out);
 const results = [], screenshots = [], runtimeErrors = [], captureDiagnostics = [], externalRequests = [], posts = [];
 let activeCapture = null;
 async function capture(page, options) {

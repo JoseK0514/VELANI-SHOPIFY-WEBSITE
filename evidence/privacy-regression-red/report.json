@@ -1,0 +1,26 @@
+{
+  "status": "failed",
+  "results": [
+    {
+      "name": "loading consent cannot accept a selection that is later overwritten",
+      "status": "failed",
+      "error": "Checkboxes were editable during unresolved platform read"
+    },
+    {
+      "name": "delayed rejected consent retains keyboard focus and requires explicit retry",
+      "status": "failed",
+      "error": "Rejected action lost focus instead of retaining its retry target"
+    },
+    {
+      "name": "closing and reopening cannot unlock a pending platform save",
+      "status": "failed",
+      "error": "Reopening cleared the outstanding save"
+    },
+    {
+      "name": "no-JavaScript privacy controls identify unavailable interaction",
+      "status": "failed",
+      "error": "No-JS cookie buttons falsely appear usable"
+    }
+  ],
+  "scope": "Actual local browser with intercepted HTML and fictional platform API; no real Shopify consent, inquiry or production action"
+}

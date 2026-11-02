@@ -1,0 +1,14 @@
+{
+  "keyboardRejection": {
+    "active": "BODY",
+    "error": "The platform did not accept the privacy change.",
+    "buttonEnabled": true,
+    "analytics": true,
+    "nextTab": "Accept optional"
+  },
+  "noJsCookie": {
+    "buttonEnabled": true,
+    "dialogVisible": false,
+    "noticeVisible": "Your website choices."
+  }
+}

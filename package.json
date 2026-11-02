@@ -9,6 +9,8 @@
     "test": "node --test tests/*.test.mjs",
     "check:theme": "node scripts/check-theme.mjs",
     "check:browser": "node scripts/browser-check.mjs",
+    "check:privacy": "node scripts/privacy-regression.mjs",
+    "check:readback": "node scripts/check-readback.mjs",
     "package:theme": "node scripts/package-theme.mjs"
   },
   "engines": {

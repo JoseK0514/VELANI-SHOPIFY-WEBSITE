@@ -1,0 +1,19 @@
+
+> velani-company-site@0.1.0 test
+> node --test tests/*.test.mjs
+
+✔ both business paths and every required company/legal destination exist (4.374051ms)
+✔ unknown routes have a real missing-resource result (0.511883ms)
+✔ all public routes have a document title, one main, one h1 and working legal navigation (1.699794ms)
+✔ product pages do not turn development into a launch or checkout claim (1.708927ms)
+✔ preview inquiry cannot point at the real contact transport (0.216863ms)
+✔ untrusted strings are encoded as text, including attribute-breaking input (0.069944ms)
+✔ local previews do not advertise themselves as public indexed pages (0.119699ms)
+ℹ tests 7
+ℹ suites 0
+ℹ pass 7
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 67.086908

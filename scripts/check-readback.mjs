@@ -1,6 +1,8 @@
 import { readFile, writeFile } from 'node:fs/promises';
 import { isDeepStrictEqual } from 'node:util';
-const response = JSON.parse(await readFile('evidence/shopify/readback-01.json', 'utf8')).data;
+const input = process.argv[2] || 'evidence/shopify/readback-02.json';
+const output = process.argv[3] || 'evidence/shopify/readback-02-verification.json';
+const response = JSON.parse(await readFile(input, 'utf8')).data;
 const original = JSON.parse(await readFile('evidence/original-theme-export-manifest.json', 'utf8'));
 const expected = JSON.parse(await readFile('dist/theme-manifest.json', 'utf8'));
 if (response.draft.id !== 'gid://shopify/OnlineStoreTheme/192965443898' || response.draft.role !== 'UNPUBLISHED') throw new Error('Exact draft is not unpublished');
@@ -31,9 +33,13 @@ for (const file of original.files) {
 if (response.original.files.nodes.length !== original.files.length) throw new Error('Original file inventory changed');
 const settings = response.draft.files.nodes.find(file => file.filename === 'config/settings_data.json');
 if (json(settings.body.content).current.inquiries_enabled !== false) throw new Error('Inquiry gate enabled');
-const summary = { status: 'passed', draftId: response.draft.id, role: response.draft.role, draftFiles: files.length,
+const packageNames = new Set(expected.entries.map(file => file.filename));
+const inherited = response.draft.files.nodes.filter(file => !packageNames.has(file.filename)).map(file => ({ filename: file.filename, md5: file.checksumMd5 }));
+for (const file of inherited) if (original.files.find(item => item.filename === file.filename)?.md5 !== file.md5) throw new Error('Inherited file does not match original: ' + file.filename);
+const summary = { status: 'passed', draftId: response.draft.id, role: response.draft.role,
+  totalDraftFiles: response.draft.files.nodes.length, verifiedPackageFiles: files.length, retainedInheritedFiles: inherited.length, inherited,
   exactByteMatches: files.filter(file => file.exactBytes).length, platformNormalizedJsonMatches: files.filter(file => file.semanticallyEqual).length,
   originalTheme: response.original.id, originalRole: response.original.role, unchangedOriginalFiles: original.files.length,
   inquiriesEnabled: false, hostedAcceptance: 'blocked by existing storefront password; no password or global resources changed', files };
-await writeFile('evidence/shopify/readback-verification.json', JSON.stringify(summary, null, 2) + '\n');
-console.log(JSON.stringify({ ...summary, files: undefined }));
+await writeFile(output, JSON.stringify(summary, null, 2) + '\n');
+console.log(JSON.stringify({ ...summary, files: undefined, inherited: undefined }));

@@ -59,10 +59,15 @@ if (dialog) {
   const status = dialog.querySelector('.consent-status');
   const controls = [...dialog.querySelectorAll('[data-cookie-reject], [data-cookie-accept], [data-cookie-save]')];
   const inputs = [...dialog.querySelectorAll('[data-consent]')];
-  let opener;
-  const setBusy = busy => { controls.forEach(button => { button.disabled = busy; }); dialog.setAttribute('aria-busy', String(busy)); };
+  let opener, busy = false;
+  const setBusy = value => {
+    busy = value;
+    [...controls, ...inputs].forEach(control => { control.disabled = value; });
+    dialog.setAttribute('aria-busy', String(value));
+  };
   async function open(event) {
     opener = event.currentTarget;
+    if (busy) { dialog.showModal(); return; }
     status.textContent = ''; context.textContent = 'Loading available choices…';
     setBusy(true); dialog.showModal();
     const state = await adapter.read();
@@ -70,18 +75,20 @@ if (dialog) {
     context.textContent = state.mode === 'local' ? 'Local website preview: these demonstration choices last only on this page. No analytics or marketing integration is added.' : state.available ? 'Choices are managed through Shopify. This website draft adds no new optional integration.' : 'The platform privacy service is unavailable. No optional Velani integration will be started.';
     setBusy(false);
   }
-  document.querySelectorAll('[data-cookie-open]').forEach(button => button.addEventListener('click', open));
+  document.querySelectorAll('[data-cookie-open]').forEach(button => { button.addEventListener('click', open); button.disabled = false; });
   dialog.querySelector('[data-cookie-close]').addEventListener('click', () => dialog.close());
   dialog.addEventListener('close', () => { if (opener?.isConnected) opener.focus(); });
   for (const button of controls) button.addEventListener('click', async () => {
+    if (busy) return;
     const choices = Object.fromEntries(inputs.map(input => [input.dataset.consent, button.hasAttribute('data-cookie-accept') ? true : button.hasAttribute('data-cookie-reject') ? false : input.checked]));
-    setBusy(true); status.textContent = 'Saving your choices…';
+    status.textContent = 'Saving your choices…'; status.tabIndex = -1; status.focus({ preventScroll: true }); setBusy(true);
     const result = await adapter.save(choices);
     setBusy(false);
     if (result.ok) {
       inputs.forEach(input => { input.checked = choices[input.dataset.consent]; });
       status.textContent = result.mode === 'local' ? 'Preview choices updated for this page.' : 'Cookie choices saved.';
     } else status.textContent = result.error;
+    if (dialog.open && document.activeElement === status) button.focus({ preventScroll: true });
   });
 }
 

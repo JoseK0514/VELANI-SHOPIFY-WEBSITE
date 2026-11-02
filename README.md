@@ -4,7 +4,7 @@ Approved mockup 2 implemented as a 14-route local website and an **unpublished S
 
 ## Review
 
-- Shopify theme: **192965443898**, role **UNPUBLISHED**. [Open preview](https://www.thevelani.com/?preview_theme_id=192965443898) or [open theme editor](https://www.thevelani.com/admin/themes/192965443898/editor). The existing storefront password blocks unauthenticated hosted inspection; sign in through your own Shopify account. The public site has not been changed.
+- Shopify theme: **192965443898**, role **UNPUBLISHED**. [Open preview](https://www.thevelani.com/?preview_theme_id=192965443898) or [open theme editor](https://admin.shopify.com/store/x19hvn-ar/themes/192965443898/editor). The existing storefront password blocks unauthenticated hosted inspection; sign in through your own Shopify account. The public site has not been changed.
 - Approved visual: [reference](docs/reference/approved-homepage.png).
 - Local source branch: `codex/velani-company-site-20261102`. This isolated repository has no GitHub remote; it is separate from NEVORA.
 - Page content and the policy directory are complete **for preview review**. Final published notices require verified website delivery, vendors, retention and commercial terms. This is not a legal compliance certification.
@@ -13,9 +13,9 @@ Approved mockup 2 implemented as a 14-route local website and an **unpublished S
 
 Node 24+ and Python 3 are needed for packaging. Run `npm ci`, then `npm run dev` and open `http://localhost:4173`. The server builds all routes and accepts GET/HEAD only. Its preview inquiry rejects POST with 405.
 
-Run `npm test`, `npm run build`, `npm run check:theme`, then `npm run package:theme`. The importable archive is `dist/velani-midnight-unpublished.zip`; `dist/theme-manifest.json` records every file and the ZIP SHA256. Build replaces `dist`, so package after the final build.
+Run `npm test`, `npm run build`, `npm run check:theme`, `npm run package:theme` and `npm run check:readback`. The importable archive is `dist/velani-midnight-unpublished.zip`; `dist/theme-manifest.json` records every file and the ZIP SHA256. Build replaces `dist`, so package after the final build.
 
-Browser checks: install Playwright browsers and host dependencies using the supported installer, start the local server, then run `VELANI_ENGINES=chromium,firefox,webkit npm run check:browser`. `VELANI_BROWSER_RUN` chooses a new evidence directory; preserve failed runs. `VELANI_CHROMIUM_EXECUTABLE` can select an installed Chromium. `VELANI_PREVIEW_URL` defaults to `http://127.0.0.1:4173`.
+Browser checks: install Playwright browsers and host dependencies using the supported installer, start the local server, then run `VELANI_ENGINES=chromium,firefox,webkit npm run check:browser`. `VELANI_BROWSER_RUN` chooses a new evidence directory; preserve failed runs. `VELANI_CHROMIUM_EXECUTABLE` can select an installed Chromium. `VELANI_PREVIEW_URL` defaults to `http://127.0.0.1:4173`. Browser run directories use timestamps by default and refuse existing names. `npm run check:privacy` runs the four asynchronous/no-JavaScript privacy regressions; use the same `VELANI_ENGINES` setting for three-engine coverage.
 
 ## Draft behavior
 
@@ -29,7 +29,7 @@ The new layout does not render inherited retail templates or global legacy polic
 
 ## Preservation and acceptance
 
-See `evidence/` for actual browser, unit, theme and Shopify readback results, including failed attempts. `evidence/private/` contains raw API/export data and temporary signed asset URLs and is excluded from Git and ordinary source archives. The original theme export has **38/38 matching API checksums**. The draft readback validates 70 files (exact bytes or Shopify-normalized JSON) and confirms all 38 original MAIN files unchanged.
+See `evidence/` for actual browser, unit, theme and Shopify readback results, including failed attempts. `evidence/private/` contains raw API/export data and temporary signed asset URLs and is excluded from Git and ordinary source archives. The original theme export has **38/38 matching API checksums**. The draft has 96 total files: 70 verified package files (exact bytes or Shopify-normalized JSON) and 26 retained inherited files, each checked against the original. All 38 original MAIN files are unchanged.
 
 Cloud WebKit uses already available user-space libraries linked only inside `.cache`; no application or machine configuration was changed. Playwright's host `ldconfig` check does not see those user-space libraries, so the cloud run explicitly skips that preflight while executing the real browser. WebKit's screenshot driver injects `body {}` to synchronize animations; the site correctly rejects it under its CSP. Those exact capture-time messages are retained separately from application runtime failures. See the diagnostic JSON and browser report; the site CSP was not relaxed.
 

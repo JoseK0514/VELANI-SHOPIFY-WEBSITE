@@ -1,0 +1,101 @@
+[
+  {
+    "route": "/",
+    "status": 200,
+    "width": 1024,
+    "scroll": 1024
+  },
+  {
+    "route": "/pages/products",
+    "status": 200,
+    "width": 1024,
+    "scroll": 1024
+  },
+  {
+    "route": "/pages/nevora",
+    "status": 200,
+    "width": 1024,
+    "scroll": 1024
+  },
+  {
+    "route": "/pages/custom-development",
+    "status": 200,
+    "width": 1024,
+    "scroll": 1024
+  },
+  {
+    "route": "/pages/about",
+    "status": 200,
+    "width": 1024,
+    "scroll": 1024
+  },
+  {
+    "route": "/pages/contact",
+    "status": 200,
+    "width": 1024,
+    "scroll": 1024
+  },
+  {
+    "route": "/pages/help",
+    "status": 200,
+    "width": 1024,
+    "scroll": 1024
+  },
+  {
+    "route": "/pages/legal",
+    "status": 200,
+    "width": 1024,
+    "scroll": 1024
+  },
+  {
+    "route": "/pages/privacy",
+    "status": 200,
+    "width": 1024,
+    "scroll": 1024
+  },
+  {
+    "route": "/pages/cookies",
+    "status": 200,
+    "width": 1024,
+    "scroll": 1024
+  },
+  {
+    "route": "/pages/website-terms",
+    "status": 200,
+    "width": 1024,
+    "scroll": 1024
+  },
+  {
+    "route": "/pages/software-project-terms",
+    "status": 200,
+    "width": 1024,
+    "scroll": 1024
+  },
+  {
+    "route": "/pages/accessibility",
+    "status": 200,
+    "width": 1024,
+    "scroll": 1024
+  },
+  {
+    "route": "/pages/security",
+    "status": 200,
+    "width": 1024,
+    "scroll": 1024
+  },
+  {
+    "longInputStatus": "Check the highlighted fields.",
+    "message": "Use 4000 characters or fewer.",
+    "valueLength": 4001,
+    "focused": "inquiry-message"
+  },
+  {
+    "links": 66,
+    "failed": []
+  },
+  {
+    "reportedBrowserChecks": 92,
+    "reportedCaptureDiagnostics": 8,
+    "reportedRuntimeErrors": 0
+  }
+]

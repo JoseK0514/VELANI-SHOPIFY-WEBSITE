@@ -1,0 +1,5 @@
+
+> velani-company-site@0.1.0 build
+> node scripts/build.mjs
+
+{"routes":14,"preview":"/workspace/work/velani-company-site-20261102/dist/preview","theme":"/workspace/work/velani-company-site-20261102/dist/theme"}

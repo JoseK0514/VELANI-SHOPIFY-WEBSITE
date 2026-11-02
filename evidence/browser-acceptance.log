@@ -1,0 +1,68 @@
+
+> velani-company-site@0.1.0 check:browser
+> node scripts/browser-check.mjs
+
+Skipping host requirements validation logic because `PLAYWRIGHT_SKIP_VALIDATE_HOST_REQUIREMENTS` env variable is set.
+Skipping host requirements validation logic because `PLAYWRIGHT_SKIP_VALIDATE_HOST_REQUIREMENTS` env variable is set.
+{
+  "status": "passed",
+  "passed": 92,
+  "failed": 0,
+  "blocked": 0,
+  "results": [],
+  "screenshots": 24,
+  "runtimeErrors": [],
+  "captureDiagnostics": [
+    {
+      "engine": "webkit",
+      "capture": "evidence/browser-acceptance/webkit-home-320.png",
+      "message": "Refused to apply a stylesheet because its hash, its nonce, or 'unsafe-inline' does not appear in the style-src directive of the Content Security Policy.",
+      "source": "Playwright screenshotter inPagePrepareForScreenshots syncAnimations; see webkit-screenshot-csp-attribution.json"
+    },
+    {
+      "engine": "webkit",
+      "capture": "evidence/browser-acceptance/webkit-home-390.png",
+      "message": "Refused to apply a stylesheet because its hash, its nonce, or 'unsafe-inline' does not appear in the style-src directive of the Content Security Policy.",
+      "source": "Playwright screenshotter inPagePrepareForScreenshots syncAnimations; see webkit-screenshot-csp-attribution.json"
+    },
+    {
+      "engine": "webkit",
+      "capture": "evidence/browser-acceptance/webkit-home-768.png",
+      "message": "Refused to apply a stylesheet because its hash, its nonce, or 'unsafe-inline' does not appear in the style-src directive of the Content Security Policy.",
+      "source": "Playwright screenshotter inPagePrepareForScreenshots syncAnimations; see webkit-screenshot-csp-attribution.json"
+    },
+    {
+      "engine": "webkit",
+      "capture": "evidence/browser-acceptance/webkit-home-969.png",
+      "message": "Refused to apply a stylesheet because its hash, its nonce, or 'unsafe-inline' does not appear in the style-src directive of the Content Security Policy.",
+      "source": "Playwright screenshotter inPagePrepareForScreenshots syncAnimations; see webkit-screenshot-csp-attribution.json"
+    },
+    {
+      "engine": "webkit",
+      "capture": "evidence/browser-acceptance/webkit-home-1440.png",
+      "message": "Refused to apply a stylesheet because its hash, its nonce, or 'unsafe-inline' does not appear in the style-src directive of the Content Security Policy.",
+      "source": "Playwright screenshotter inPagePrepareForScreenshots syncAnimations; see webkit-screenshot-csp-attribution.json"
+    },
+    {
+      "engine": "webkit",
+      "capture": "evidence/browser-acceptance/webkit-home-1920.png",
+      "message": "Refused to apply a stylesheet because its hash, its nonce, or 'unsafe-inline' does not appear in the style-src directive of the Content Security Policy.",
+      "source": "Playwright screenshotter inPagePrepareForScreenshots syncAnimations; see webkit-screenshot-csp-attribution.json"
+    },
+    {
+      "engine": "webkit",
+      "capture": "evidence/browser-acceptance/webkit-contact-390.png",
+      "message": "Refused to apply a stylesheet because its hash, its nonce, or 'unsafe-inline' does not appear in the style-src directive of the Content Security Policy.",
+      "source": "Playwright screenshotter inPagePrepareForScreenshots syncAnimations; see webkit-screenshot-csp-attribution.json"
+    },
+    {
+      "engine": "webkit",
+      "capture": "evidence/browser-acceptance/webkit-cookie-390.png",
+      "message": "Refused to apply a stylesheet because its hash, its nonce, or 'unsafe-inline' does not appear in the style-src directive of the Content Security Policy.",
+      "source": "Playwright screenshotter inPagePrepareForScreenshots syncAnimations; see webkit-screenshot-csp-attribution.json"
+    }
+  ],
+  "posts": [],
+  "externalRequests": [],
+  "scope": "Actual local browser and compiled site; no hosted Shopify, live email or publication acceptance"
+}

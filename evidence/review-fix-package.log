@@ -1,0 +1,5 @@
+
+> velani-company-site@0.1.0 package:theme
+> node scripts/package-theme.mjs
+
+{"format":1,"theme":"Velani Midnight","state":"UNPUBLISHED preview; inquiry delivery disabled","files":70,"jsonFiles":37,"zip":"velani-midnight-unpublished.zip","bytes":808525,"sha256":"3096cc2d54cd6b01b40abceb0b218e3a96f65b816ceab4fa5437b2ed190d365d"}

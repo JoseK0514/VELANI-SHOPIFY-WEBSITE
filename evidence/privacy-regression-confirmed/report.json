@@ -1,0 +1,66 @@
+{
+  "status": "passed",
+  "results": [
+    {
+      "engine": "chromium",
+      "name": "loading consent cannot accept a selection that is later overwritten",
+      "status": "passed"
+    },
+    {
+      "engine": "chromium",
+      "name": "delayed rejected consent retains keyboard focus and requires explicit retry",
+      "status": "passed"
+    },
+    {
+      "engine": "chromium",
+      "name": "closing and reopening cannot unlock a pending platform save",
+      "status": "passed"
+    },
+    {
+      "engine": "chromium",
+      "name": "no-JavaScript privacy controls identify unavailable interaction",
+      "status": "passed"
+    },
+    {
+      "engine": "firefox",
+      "name": "loading consent cannot accept a selection that is later overwritten",
+      "status": "passed"
+    },
+    {
+      "engine": "firefox",
+      "name": "delayed rejected consent retains keyboard focus and requires explicit retry",
+      "status": "passed"
+    },
+    {
+      "engine": "firefox",
+      "name": "closing and reopening cannot unlock a pending platform save",
+      "status": "passed"
+    },
+    {
+      "engine": "firefox",
+      "name": "no-JavaScript privacy controls identify unavailable interaction",
+      "status": "passed"
+    },
+    {
+      "engine": "webkit",
+      "name": "loading consent cannot accept a selection that is later overwritten",
+      "status": "passed"
+    },
+    {
+      "engine": "webkit",
+      "name": "delayed rejected consent retains keyboard focus and requires explicit retry",
+      "status": "passed"
+    },
+    {
+      "engine": "webkit",
+      "name": "closing and reopening cannot unlock a pending platform save",
+      "status": "passed"
+    },
+    {
+      "engine": "webkit",
+      "name": "no-JavaScript privacy controls identify unavailable interaction",
+      "status": "passed"
+    }
+  ],
+  "scope": "Actual local browser with intercepted HTML and fictional platform API; no real Shopify consent, inquiry or production action"
+}

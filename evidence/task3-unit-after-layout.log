@@ -1,0 +1,35 @@
+
+> velani-company-site@0.1.0 test
+> node --test tests/*.test.mjs
+
+✔ inquiries require a name, reply email and meaningful message (1.809361ms)
+✔ unicode names and ordinary message characters survive normalization (0.190805ms)
+✔ length boundaries prevent unbounded form values (0.28156ms)
+✔ non-string fields do not get coerced into accepted personal information (0.121511ms)
+✔ unexpected inquiry categories cannot become query-provided HTML (0.101421ms)
+✔ preview submission never calls a supplied delivery transport (0.253808ms)
+✔ invalid inquiries stop before transport and retain no copy in controller state (0.172036ms)
+✔ repeat clicks while sending share the original attempt (0.222892ms)
+✔ rejected transport is not turned into acceptance (0.199878ms)
+✔ lost response remains uncertain and does not automatically retry (0.282642ms)
+✔ unsupported delivery mode fails closed (0.299677ms)
+✔ local privacy demonstration stays in memory and saves a real choice (0.277504ms)
+✔ missing Shopify privacy API cannot silently switch to demo consent (0.1343ms)
+✔ consent is saved only after an explicit supported API acknowledgement (5.988629ms)
+✔ failing or silent privacy provider cannot report saved consent (14.698213ms)
+✔ malformed consent values do not become truthy permission (0.15417ms)
+✔ both business paths and every required company/legal destination exist (1.367992ms)
+✔ unknown routes have a real missing-resource result (0.426116ms)
+✔ all public routes have a document title, one main, one h1 and working legal navigation (1.54791ms)
+✔ product pages do not turn development into a launch or checkout claim (0.932492ms)
+✔ preview inquiry cannot point at the real contact transport (0.192277ms)
+✔ untrusted strings are encoded as text, including attribute-breaking input (0.067521ms)
+✔ local previews do not advertise themselves as public indexed pages (0.11441ms)
+ℹ tests 23
+ℹ suites 0
+ℹ pass 23
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 70.807846

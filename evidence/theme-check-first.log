@@ -1,0 +1,50 @@
+
+> velani-company-site@0.1.0 check:theme
+> node scripts/check-theme.mjs
+
+[
+  {
+    "check": "HardcodedRoutes",
+    "message": "Use routes object {{ routes.root_url }} instead of hardcoding /",
+    "severity": 1,
+    "uri": "file:///workspace/work/velani-company-site-20261102/dist/theme/templates/404.liquid",
+    "start": {
+      "index": 255,
+      "line": 0,
+      "character": 255
+    }
+  },
+  {
+    "check": "AssetPreload",
+    "message": "For better performance, prefer using the preload_tag filter",
+    "severity": 1,
+    "uri": "file:///workspace/work/velani-company-site-20261102/dist/theme/layout/theme.liquid",
+    "start": {
+      "index": 562,
+      "line": 0,
+      "character": 562
+    }
+  },
+  {
+    "check": "HardcodedRoutes",
+    "message": "Use routes object {{ routes.root_url }} instead of hardcoding /",
+    "severity": 1,
+    "uri": "file:///workspace/work/velani-company-site-20261102/dist/theme/layout/theme.liquid",
+    "start": {
+      "index": 988,
+      "line": 0,
+      "character": 988
+    }
+  },
+  {
+    "check": "HardcodedRoutes",
+    "message": "Use routes object {{ routes.root_url }} instead of hardcoding /",
+    "severity": 1,
+    "uri": "file:///workspace/work/velani-company-site-20261102/dist/theme/layout/theme.liquid",
+    "start": {
+      "index": 1899,
+      "line": 0,
+      "character": 1899
+    }
+  }
+]

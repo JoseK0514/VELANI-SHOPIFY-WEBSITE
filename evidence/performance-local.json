@@ -1,0 +1,154 @@
+{
+  "recordedAt": "2026-11-02T13:35:30.752Z",
+  "scope": "Local compiled preview only, not hosted Shopify or field performance; two single cold-cache lab samples on a shared cloud host",
+  "conditions": {
+    "viewport": "390x844",
+    "dpr": 2,
+    "latencyMs": 150,
+    "downloadBytesPerSecond": 200000,
+    "uploadBytesPerSecond": 93750,
+    "cpuSlowdown": 4,
+    "cache": "disabled"
+  },
+  "inp": "Not measured; real field interaction data unavailable",
+  "samples": [
+    {
+      "route": "/",
+      "lcp": 648,
+      "cls": 0,
+      "resources": [
+        {
+          "path": "/assets/dm-sans-latin-400-normal.woff2",
+          "encodedBodySize": 14200,
+          "transferSize": 14500
+        },
+        {
+          "path": "/assets/velani.js",
+          "encodedBodySize": 6664,
+          "transferSize": 6964
+        },
+        {
+          "path": "/assets/velani.css",
+          "encodedBodySize": 20320,
+          "transferSize": 20620
+        },
+        {
+          "path": "/assets/list.svg",
+          "encodedBodySize": 253,
+          "transferSize": 553
+        },
+        {
+          "path": "/assets/arrow-right.svg",
+          "encodedBodySize": 245,
+          "transferSize": 545
+        },
+        {
+          "path": "/assets/calendar-blank.svg",
+          "encodedBodySize": 327,
+          "transferSize": 627
+        },
+        {
+          "path": "/assets/clock.svg",
+          "encodedBodySize": 287,
+          "transferSize": 587
+        },
+        {
+          "path": "/assets/file-text.svg",
+          "encodedBodySize": 416,
+          "transferSize": 716
+        },
+        {
+          "path": "/assets/x.svg",
+          "encodedBodySize": 284,
+          "transferSize": 584
+        },
+        {
+          "path": "/assets/inquiry.js",
+          "encodedBodySize": 2861,
+          "transferSize": 3161
+        },
+        {
+          "path": "/assets/privacy.js",
+          "encodedBodySize": 3046,
+          "transferSize": 3346
+        },
+        {
+          "path": "/assets/dm-sans-latin-500-normal.woff2",
+          "encodedBodySize": 14304,
+          "transferSize": 14604
+        },
+        {
+          "path": "/assets/favicon.svg",
+          "encodedBodySize": 283,
+          "transferSize": 583
+        }
+      ],
+      "lcpTargetMet": true,
+      "clsTargetMet": true
+    },
+    {
+      "route": "/pages/contact",
+      "lcp": 624,
+      "cls": 0,
+      "resources": [
+        {
+          "path": "/assets/dm-sans-latin-400-normal.woff2",
+          "encodedBodySize": 14200,
+          "transferSize": 14500
+        },
+        {
+          "path": "/assets/velani.css",
+          "encodedBodySize": 20320,
+          "transferSize": 20620
+        },
+        {
+          "path": "/assets/velani.js",
+          "encodedBodySize": 6664,
+          "transferSize": 6964
+        },
+        {
+          "path": "/assets/list.svg",
+          "encodedBodySize": 253,
+          "transferSize": 553
+        },
+        {
+          "path": "/assets/arrow-right.svg",
+          "encodedBodySize": 245,
+          "transferSize": 545
+        },
+        {
+          "path": "/assets/x.svg",
+          "encodedBodySize": 284,
+          "transferSize": 584
+        },
+        {
+          "path": "/assets/inquiry.js",
+          "encodedBodySize": 2861,
+          "transferSize": 3161
+        },
+        {
+          "path": "/assets/privacy.js",
+          "encodedBodySize": 3046,
+          "transferSize": 3346
+        },
+        {
+          "path": "/assets/dm-sans-latin-500-normal.woff2",
+          "encodedBodySize": 14304,
+          "transferSize": 14604
+        },
+        {
+          "path": "/assets/dm-sans-latin-600-normal.woff2",
+          "encodedBodySize": 14144,
+          "transferSize": 14444
+        },
+        {
+          "path": "/assets/favicon.svg",
+          "encodedBodySize": 283,
+          "transferSize": 583
+        }
+      ],
+      "lcpTargetMet": true,
+      "clsTargetMet": true
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "recordedAt": "2026-11-02T13:35:19.721Z",
+  "node": "v24.19.0",
+  "npm": "11.9.0",
+  "python": "Python 3.12.14",
+  "os": "Linux 6.18.57 x86_64",
+  "browsers": {
+    "chromium": "154.0.8037.57",
+    "firefox": "142.0.1",
+    "webkit": "26.0"
+  },
+  "sourceBranch": "codex/velani-company-site-20261102",
+  "sourceHead": "c79ad5907c186535808dab2930126ce8602096ba",
+  "applicationCheckpoint": "6d58a1b6bc561df6623a56458ac7da796d142eef",
+  "draftThemeId": "gid://shopify/OnlineStoreTheme/192965443898",
+  "state": "UNPUBLISHED; password preserved; delivery disabled",
+  "server": "http://127.0.0.1:4173",
+  "browserSetup": "Real downloaded Firefox/WebKit; WebKit user-space libraries linked only in ignored cache. Host ldconfig preflight skipped; application tests not skipped."
+}

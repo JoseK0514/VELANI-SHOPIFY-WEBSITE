@@ -1,0 +1,211 @@
+{
+  "checks": [
+    {
+      "name": "custom-development 320",
+      "viewport": 320,
+      "scroll": 320,
+      "overflow": [],
+      "axe": []
+    },
+    {
+      "name": "contact 320",
+      "viewport": 320,
+      "scroll": 320,
+      "overflow": [],
+      "axe": []
+    },
+    {
+      "name": "privacy 320",
+      "viewport": 320,
+      "scroll": 320,
+      "overflow": [],
+      "axe": []
+    },
+    {
+      "name": "security 320",
+      "viewport": 320,
+      "scroll": 320,
+      "overflow": [],
+      "axe": []
+    },
+    {
+      "name": "custom-development 390",
+      "viewport": 390,
+      "scroll": 390,
+      "overflow": [],
+      "axe": []
+    },
+    {
+      "name": "contact 390",
+      "viewport": 390,
+      "scroll": 390,
+      "overflow": [],
+      "axe": []
+    },
+    {
+      "name": "privacy 390",
+      "viewport": 390,
+      "scroll": 390,
+      "overflow": [],
+      "axe": []
+    },
+    {
+      "name": "security 390",
+      "viewport": 390,
+      "scroll": 390,
+      "overflow": [],
+      "axe": []
+    },
+    {
+      "name": "custom-development 720",
+      "viewport": 720,
+      "scroll": 720,
+      "overflow": [],
+      "axe": []
+    },
+    {
+      "name": "contact 720",
+      "viewport": 720,
+      "scroll": 720,
+      "overflow": [],
+      "axe": []
+    },
+    {
+      "name": "privacy 720",
+      "viewport": 720,
+      "scroll": 720,
+      "overflow": [],
+      "axe": []
+    },
+    {
+      "name": "security 720",
+      "viewport": 720,
+      "scroll": 720,
+      "overflow": [],
+      "axe": []
+    },
+    {
+      "name": "custom-development 1440",
+      "viewport": 1440,
+      "scroll": 1440,
+      "overflow": [],
+      "axe": []
+    },
+    {
+      "name": "contact 1440",
+      "viewport": 1440,
+      "scroll": 1440,
+      "overflow": [],
+      "axe": []
+    },
+    {
+      "name": "privacy 1440",
+      "viewport": 1440,
+      "scroll": 1440,
+      "overflow": [],
+      "axe": []
+    },
+    {
+      "name": "security 1440",
+      "viewport": 1440,
+      "scroll": 1440,
+      "overflow": [],
+      "axe": []
+    },
+    {
+      "name": "320 cookie keyboard cycle",
+      "focus": [
+        {
+          "tag": "BUTTON",
+          "text": "",
+          "inDialog": true
+        },
+        {
+          "tag": "A",
+          "text": "Cookie notice",
+          "inDialog": true
+        },
+        {
+          "tag": "INPUT",
+          "text": "",
+          "inDialog": true
+        },
+        {
+          "tag": "INPUT",
+          "text": "",
+          "inDialog": true
+        },
+        {
+          "tag": "INPUT",
+          "text": "",
+          "inDialog": true
+        },
+        {
+          "tag": "BUTTON",
+          "text": "Reject optional",
+          "inDialog": true
+        },
+        {
+          "tag": "BUTTON",
+          "text": "Accept optional",
+          "inDialog": true
+        },
+        {
+          "tag": "BUTTON",
+          "text": "Save choices",
+          "inDialog": true
+        },
+        {
+          "tag": "BODY",
+          "text": "Skip to contentThe VelaniMenuProduc",
+          "inDialog": false
+        },
+        {
+          "tag": "DIALOG",
+          "text": "Cookie choicesChoose which optional",
+          "inDialog": true
+        },
+        {
+          "tag": "BUTTON",
+          "text": "",
+          "inDialog": true
+        }
+      ]
+    },
+    {
+      "name": "cookie restore",
+      "focused": true
+    },
+    {
+      "name": "invalid focus",
+      "id": "inquiry-name"
+    },
+    {
+      "name": "repeat preview",
+      "status": "Draft checked. Nothing was sent.",
+      "storage": {
+        "local": {},
+        "session": {}
+      },
+      "injected": 0
+    },
+    {
+      "name": "offline preview",
+      "status": "Draft checked. Nothing was sent."
+    },
+    {
+      "name": "mobile keyboard menu",
+      "focus": "Products"
+    },
+    {
+      "name": "menu restore",
+      "focused": true
+    },
+    {
+      "name": "no js",
+      "submitDisabled": true,
+      "navVisible": true
+    }
+  ],
+  "events": []
+}

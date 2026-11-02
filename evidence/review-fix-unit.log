@@ -1,0 +1,38 @@
+
+> velani-company-site@0.1.0 test
+> node --test tests/*.test.mjs
+
+✔ inquiries require a name, reply email and meaningful message (4.829399ms)
+✔ unicode names and ordinary message characters survive normalization (0.163292ms)
+✔ length boundaries prevent unbounded form values (0.318742ms)
+✔ non-string fields do not get coerced into accepted personal information (0.095571ms)
+✔ unexpected inquiry categories cannot become query-provided HTML (0.108781ms)
+✔ preview submission never calls a supplied delivery transport (0.217632ms)
+✔ invalid inquiries stop before transport and retain no copy in controller state (0.176731ms)
+✔ repeat clicks while sending share the original attempt (0.277121ms)
+✔ rejected transport is not turned into acceptance (0.19584ms)
+✔ lost response remains uncertain and does not automatically retry (0.309558ms)
+✔ unsupported delivery mode fails closed (0.483767ms)
+✔ local privacy demonstration stays in memory and saves a real choice (0.313524ms)
+✔ missing Shopify privacy API cannot silently switch to demo consent (0.126037ms)
+✔ consent is saved only after an explicit supported API acknowledgement (5.122102ms)
+✔ failing or silent privacy provider cannot report saved consent (15.683586ms)
+✔ malformed consent values do not become truthy permission (0.225464ms)
+✔ unpublished navigation stays in the exact draft without published page resources (7.054823ms)
+✔ main-theme links retain canonical company page destinations (1.800235ms)
+✔ native layout includes the real social card and uses theme page metadata (0.458339ms)
+✔ both business paths and every required company/legal destination exist (1.245263ms)
+✔ unknown routes have a real missing-resource result (0.75649ms)
+✔ all public routes have a document title, one main, one h1 and working legal navigation (1.158976ms)
+✔ product pages do not turn development into a launch or checkout claim (0.906492ms)
+✔ preview inquiry cannot point at the real contact transport (0.24301ms)
+✔ untrusted strings are encoded as text, including attribute-breaking input (0.113588ms)
+✔ local previews do not advertise themselves as public indexed pages (0.122191ms)
+ℹ tests 26
+ℹ suites 0
+ℹ pass 26
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 76.024969

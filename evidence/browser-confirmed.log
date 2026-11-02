@@ -1,0 +1,16 @@
+
+> velani-company-site@0.1.0 check:browser
+> node scripts/browser-check.mjs
+
+{
+  "status": "passed",
+  "passed": 37,
+  "failed": 0,
+  "blocked": 0,
+  "results": [],
+  "screenshots": 5,
+  "runtimeErrors": [],
+  "posts": [],
+  "externalRequests": [],
+  "scope": "Actual local browser and compiled site; no hosted Shopify, live email or publication acceptance"
+}

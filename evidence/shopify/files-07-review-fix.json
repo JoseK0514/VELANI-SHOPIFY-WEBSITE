@@ -1,0 +1,30 @@
+{
+  "data": {
+    "themeFilesUpsert": {
+      "job": null,
+      "upsertedThemeFiles": [
+        {
+          "filename": "assets/velani.css",
+          "checksumMd5": "6044dc30bd4dcd798b0ce15a85244321",
+          "size": "20478"
+        },
+        {
+          "filename": "assets/velani.js",
+          "checksumMd5": "55efc1b8f18340099752d2c34d52e31d",
+          "size": "6983"
+        },
+        {
+          "filename": "layout/theme.liquid",
+          "checksumMd5": "556d2631c01dccfcb7e79147eeffaa87",
+          "size": "11260"
+        },
+        {
+          "filename": "sections/velani-cookies.liquid",
+          "checksumMd5": "8efa57f377a8cc5042d60d83ea1534b9",
+          "size": "2959"
+        }
+      ],
+      "userErrors": []
+    }
+  }
+}
