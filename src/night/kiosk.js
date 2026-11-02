@@ -18,7 +18,7 @@
  const inside=()=>k.contains(document.activeElement);
  const reset=()=>{clearTimeout(timer);const f=inside();pin='';render();okStep.hidden=true;pinStep.hidden=false;bar.classList.remove('run');say('');if(f)$('kio-pin-h').focus()};
  const submit=()=>{if(pin.length!==4)return;const d=new Date(),{hm,ap}=parts(d),day=new Intl.DateTimeFormat(loc(),{month:'short',day:'numeric'}).format(d);
-  $('kio-saved').textContent=day+' · '+hm+' '+ap;const f=inside();pinStep.hidden=true;okStep.hidden=false;
+  $('kio-saved').textContent=day+' · '+hm+' '+ap;const f=inside();pinStep.hidden=true;okStep.hidden=false;const ck=k.querySelector('.kio-check');ck.style.animation='none';void ck.offsetWidth;ck.style.animation='';
   bar.classList.remove('run');void bar.offsetWidth;bar.classList.add('run');if(f)$('kio-ok-h').focus();clearTimeout(timer);timer=setTimeout(reset,8000)};
  k.querySelector('.kio-pad').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;
   if(b.dataset.d)press(b.dataset.d);else if(b.dataset.act==='clear')clear();else if(b.dataset.act==='back')back()});
@@ -26,7 +26,7 @@
  k.addEventListener('keydown',e=>{if(pinStep.hidden||e.metaKey||e.ctrlKey||e.altKey)return;
   if(/^[0-9]$/.test(e.key)){e.preventDefault();press(e.key)}else if(e.key==='Backspace'){e.preventDefault();back()}
   else if(e.key==='Enter'&&e.target.tagName!=='BUTTON'){e.preventDefault();submit()}else if(e.key==='Escape')clear()});
- lang.addEventListener('click',()=>{es=!es;lang.setAttribute('aria-pressed',String(es));k.lang=es?'es':'en';
+ lang.addEventListener('click',()=>{es=!es;k.lang=es?'es':'en';const lt=$('kio-lang-t');lt.textContent=es?'English':'Español';lt.lang=es?'en':'es';
   k.querySelectorAll('[data-k-t]').forEach(n=>{const en=n.dataset.kT;n.textContent=es?(ES[en]||en):en});
   k.querySelectorAll('[data-k-l]').forEach(n=>{const en=n.dataset.kL;n.setAttribute('aria-label',es?(ES[en]||en):en)});last='';tick()});
  tick();let iv=setInterval(tick,1000);

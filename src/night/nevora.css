@@ -6,26 +6,31 @@ html{scroll-padding-top:53px}
 .lnav-in{min-height:52px;display:flex;align-items:center;gap:6px}
 .lnav-t{display:inline-flex;align-items:center;min-height:44px;flex:none}
 .lnav-t img{height:14px;width:auto;max-width:none}
-.lnav-cur{display:none;font-size:0.875rem;color:var(--text-2);margin-left:12px}
 .lnav-tog{display:none;flex:none;width:44px;height:44px;align-items:center;justify-content:center;font-size:0.9375rem;color:var(--text-2)}
-.lnav-tog .icon{transition:transform .25s var(--out)}
-.lnav-tog[aria-expanded=true] .icon{transform:rotate(180deg)}
+.lnav-tog .i-close,.lnav-tog[aria-expanded=true] .i-open{display:none}
+.lnav-tog[aria-expanded=true] .i-close{display:inline-flex}
+.lnav-by{display:none}
 .lnav ul{position:relative;display:flex;margin-left:auto;margin-right:12px}
 .lnav ul a{display:inline-flex;align-items:center;min-height:44px;padding:0 12px;font-size:0.8125rem;color:var(--text-2);transition:color .2s}
 .lnav ul a:hover,.lnav ul a[aria-current]{color:var(--text)}
 .lnav-ink{position:absolute;bottom:8px;left:0;height:1px;width:1px;background:var(--accent);transform-origin:0 0;transform:translateX(var(--x,0)) scaleX(var(--w,0));transition:transform .45s var(--out)}
 .lnav .pill{min-height:32px;padding:6px 14px;font-size:0.8125rem;position:relative}
 .lnav .pill::after{content:"";position:absolute;inset:-6px -2px}
+/* Phones and small tablets: one row (mark, quote, menu); the Velani links live in the menu */
 @media(max-width:959px){
- .lnav-cur{display:inline}
- .lnav-tog{display:inline-flex;margin-right:auto}
+ .lnav-in{min-height:60px}
+ .lnav .pill{margin-left:auto}
+ .lnav-tog{display:inline-flex;margin-right:-10px;font-size:1.375rem;color:var(--text)}
  .lnav-ink{display:none}
- .lnav ul{display:none;position:absolute;left:0;right:0;top:100%;flex-direction:column;margin:0;padding:4px var(--pad) 16px;background:var(--bg);border-bottom:1px solid var(--line)}
+ .lnav ul{display:none;position:absolute;left:0;right:0;top:100%;flex-direction:column;margin:0;padding:4px var(--pad) 20px;background:var(--bg);border-bottom:1px solid var(--line);max-height:calc(100vh - 60px);max-height:calc(100svh - 60px);overflow-y:auto}
  .lnav ul.open{display:flex}
  .lnav ul a{display:flex;min-height:52px;font-size:1.0625rem;padding:0;color:var(--text);border-bottom:1px solid var(--line)}
  .lnav ul a[aria-current]{color:var(--accent)}
+ .lnav .lnav-by{display:flex;flex-direction:column;margin-top:22px}
+ .lnav .lnav-by span{padding-bottom:4px;font-size:0.8125rem;color:var(--text-3)}
+ .lnav .lnav-by a{min-height:44px;font-size:0.9375rem;color:var(--text-2);border-bottom:0}
 }
-@media(max-width:420px){.lnav-cur{display:none!important}}
+@media(max-width:833px){.gnav{display:none}}
 
 .n-hero{padding-top:clamp(56px,6vw,88px)}
 .status{font-size:0.9375rem;color:var(--text-2)}
@@ -34,6 +39,7 @@ html{scroll-padding-top:53px}
 .n-grid .t0{font-size:clamp(2.75rem,5.4vw,5rem)}
 .n-side{padding-bottom:12px}
 .js .n-side.fade{transition-delay:.25s}
+.n-help{margin-top:18px}
 /* Three screens set down on one hairline */
 .line3{position:relative;display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,.55fr) minmax(0,1.75fr);gap:clamp(16px,2.2vw,32px);align-items:end;margin-top:var(--s1)}
 .line3::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:var(--line-2);transform:scaleX(0);transition:transform .9s var(--out)}
@@ -70,39 +76,6 @@ html{scroll-padding-top:53px}
 #pinPhone.down::before{opacity:1}
 .who{margin-top:20px;font-size:0.875rem;color:var(--text-3)}
 
-/* Time clock: pinned; scrolling steps the tablet through PIN, saved, later. The left half never changes. */
-.clock{position:relative;height:300vh;height:300svh;scroll-margin-top:3px}
-.clock-pin{position:sticky;top:56px;height:calc(100vh - 56px);height:calc(100svh - 56px);display:flex;flex-direction:column;justify-content:safe center}
-.clock-grid{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:clamp(32px,4vw,64px);align-items:center}
-.clock .t1{max-width:none}
-.clock .lede{margin-top:20px}
-.ktabs{margin-top:32px;display:grid}
-.ktabs button{display:grid;grid-template-columns:28px 1fr;gap:12px;align-items:baseline;text-align:left;min-height:48px;padding:12px 0;border-top:1px solid var(--line);color:var(--text-3);font-size:1rem;transition:color .3s}
-.ktabs button b{font-size:0.8125rem;font-weight:600;font-variant-numeric:tabular-nums}
-.ktabs button[aria-selected=true]{color:var(--text)}
-.ktabs button[aria-selected=true] b{color:var(--accent)}
-.knote{margin-top:16px;font-size:0.9375rem;line-height:1.55;color:var(--text-2);min-height:4.6em}
-.device{position:relative;aspect-ratio:1024/768;border-radius:22px;overflow:visible}
-.device .scr{position:absolute;inset:0;overflow:hidden;border-radius:22px}
-.device img{position:absolute;inset:0;width:100%;height:100%;opacity:0;transition:none;will-change:opacity}
-.device img.base,.device img.was{opacity:1}
-.device img.was{z-index:1}
-.device img.on{opacity:1;z-index:2;transition:opacity .35s var(--out)}
-.device::after{content:"";position:absolute;top:auto;box-shadow:none;left:22px;right:22px;bottom:-14px;height:2px;border-radius:2px;background:var(--accent);transform:scaleX(0);transform-origin:0 50%;opacity:0}
-.device.k1::after{opacity:.8;animation:drain 8s linear forwards}
-@keyframes drain{from{transform:scaleX(1)}to{transform:scaleX(0)}}
-@media(prefers-reduced-motion:reduce){.device.k1::after{animation:none;transform:scaleX(1)}}
-@media(min-width:1024px){.clock{margin-top:var(--s2)}}
-@media(min-width:1024px) and (max-height:780px){
- .clock .t1{font-size:clamp(2.125rem,7vh,3.25rem);font-size:clamp(2.125rem,7svh,3.25rem)}
- .clock .lede{font-size:1.0625rem;margin-top:14px}
- .ktabs{margin-top:18px}.ktabs button{min-height:44px;padding:10px 0}
- .knote{min-height:3.2em;margin-top:12px}
-}
-@media(min-width:1024px) and (max-height:599px){.clock{height:auto;padding-top:var(--s3)}.clock-pin{position:static;height:auto}}
-.no-js .clock{height:auto;padding-top:var(--s3)}
-.no-js .clock-pin{position:static;height:auto}
-.no-js .ktabs{pointer-events:none}.no-js .ktabs button:not([aria-selected=true]){display:none}
 
 /* Owner */
 .owner{margin-top:var(--s1);clip-path:inset(var(--oi,5%) var(--oi,5%) 0 var(--oi,5%) round 14px);transition:clip-path 1.1s var(--out)}
@@ -151,18 +124,22 @@ html{scroll-padding-top:53px}
  .js .st:not(.on) h3,.js .st:not(.on) p,.js .st:not(.on) .n{color:inherit}
  .js .st:not(.on) p{color:var(--text-2)}
  .st .crop-ph{display:block;width:min(300px,78vw);margin-top:24px;aspect-ratio:900/1060;border-radius:30px 30px 0 0}
- .clock{height:auto;padding-top:var(--s3)}
- .clock-pin{position:static;height:auto}
- .clock-grid{grid-template-columns:1fr;row-gap:0}
- .clock-grid>div:first-child{display:contents}
- .clock .t1{order:1}.clock .lede{order:2}#kdev{order:3;margin-top:28px}.ktabs{order:4;margin-top:20px}.knote{order:5}
  .get{grid-template-columns:1fr}
 }
 @media(min-width:1024px){.st .crop-ph{display:none}}
 @media(max-width:833px){
- .line3{grid-template-columns:minmax(0,1fr) minmax(0,.62fr)}
- .line3 figure:last-child,.line3-caps span:last-child{display:none}
- .line3-caps{grid-template-columns:minmax(0,1fr) minmax(0,.62fr)}
+ .n-grid .t0{font-size:clamp(2.25rem,10vw,2.75rem);line-height:1.02}
+ .n-hero{padding-top:28px}
+ .n-hero .status{font-size:0.8125rem}
+ .n-grid{margin-top:16px;gap:20px}
+ .n-hero .acts .pill.line,.n-help{display:none}
+ .n-hero .acts{margin-top:22px}
+ .n-hero .line3{margin-top:36px}
+ .line3{grid-template-columns:1fr;justify-items:center}
+ .line3 figure:nth-child(2){width:min(320px,80vw)}
+ .line3 .slab.phone{aspect-ratio:900/1500}
+ .line3 figure:first-child,.line3 figure:last-child,.line3-caps span:first-child,.line3-caps span:last-child{display:none}
+ .line3-caps{grid-template-columns:1fr;text-align:center}
 }
 @media(max-width:600px){
  body{font-size:1rem}
@@ -172,6 +149,10 @@ html{scroll-padding-top:53px}
 .no-js .get li::after{background:var(--accent)}@media(prefers-reduced-motion:reduce){.get li::after{transition:none}}
 
 /* Try the time clock: a working copy of the NEVORA PIN screen. Light surface, like the real tablet. */
+.kio-note{display:inline-flex;flex-wrap:wrap;gap:4px 6px;margin-top:var(--s1);padding:10px 16px;border-radius:999px;background:var(--panel);box-shadow:0 0 0 1px var(--line);font-size:0.9375rem;line-height:1.4;color:var(--text-2)}
+.kio-note b{font-weight:600;color:var(--text)}
+.kio-note+.kio{margin-top:16px}
+.try-acts{margin-top:28px}
 .kio{--k-ink:#1b2a28;--k-mute:#5d6b68;--k-teal:#0f6e66;--k-side:#f3f6f5;--k-key:#f1f4f3;--k-line:#e4e9e7;position:relative;margin-top:var(--s1);display:grid;grid-template-columns:minmax(0,39fr) minmax(0,61fr);max-width:1040px;background:#fff;color:var(--k-ink);border-radius:clamp(18px,2vw,28px);overflow:hidden;box-shadow:0 0 0 1px rgba(255,255,255,.07),0 1px 1px rgba(0,0,0,.4),0 12px 24px -12px rgba(0,0,0,.6),0 48px 96px -32px rgba(0,0,0,.85)}
 .kio button:focus-visible{outline:2px solid #1f7ab8;outline-offset:2px}
 .kio-side{display:flex;flex-direction:column;padding:clamp(24px,3vw,40px);background:var(--k-side);border-right:1px solid var(--k-line)}
@@ -184,8 +165,8 @@ html{scroll-padding-top:53px}
 .kio-time small{font-size:1rem;letter-spacing:0}
 .kio-date{margin-top:14px;font-size:1rem;color:var(--k-mute)}
 .kio-main{display:grid;place-items:center;padding:clamp(28px,4vw,56px) clamp(20px,4vw,56px)}
-.kio-step{display:flex;flex-direction:column;width:min(100%,360px)}
-.kio-step[hidden]{display:none}
+.kio-step{grid-area:1/1;display:flex;flex-direction:column;width:min(100%,360px)}
+.kio-step[hidden]{display:flex;visibility:hidden}
 .kio-h{font-size:1.75rem;line-height:1.2;font-weight:600;letter-spacing:-.02em;text-align:center;outline:none}
 .kio-dots{display:flex;justify-content:center;align-items:center;gap:22px;height:64px;margin-top:20px;border-radius:14px;background:var(--k-key)}
 .kio-dots i{width:14px;height:14px;border-radius:50%;box-shadow:inset 0 0 0 1.5px #6b7976;transition:background-color .15s,box-shadow .15s,transform .25s var(--out)}
@@ -200,7 +181,6 @@ html{scroll-padding-top:53px}
 .kio-go:disabled{background:#e9eeec;color:#6b7976;cursor:default}
 .kio-foot{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-top:18px;font-size:0.9375rem;line-height:1.45;color:var(--k-mute)}
 .kio-lang{display:inline-flex;align-items:center;gap:6px;flex:none;min-height:44px;color:#3d4b48;font-size:0.9375rem}
-.kio-lang[aria-pressed="true"]{color:var(--k-teal);font-weight:600}
 .kio-ok{align-items:center;text-align:center}
 .kio-check{display:grid;place-items:center;width:88px;height:88px;border-radius:50%;background:var(--k-teal);color:#fff;font-size:2.75rem;animation:kio-pop .5s var(--out)}
 .kio-ok .kio-h{margin-top:24px}
@@ -215,6 +195,8 @@ html{scroll-padding-top:53px}
 @keyframes kio-shake{20%,60%{transform:translateX(-6px)}40%,80%{transform:translateX(6px)}}
 .kio-dots.shake{animation:kio-shake .32s}
 .no-js .try{display:none}
+.no-js .n-hero .acts a[href="#try"],.no-js .lnav li:has(>a[href="#try"]){display:none}
+.no-js .n-hero .acts .pill.line{display:inline-flex}
 @media(prefers-reduced-motion:reduce){.kio-check,.kio-dots.shake{animation:none}.kio-bar i.run{animation:none;transform:scaleX(0)}.kio-dots i,.kio-pad button{transition:none}}
 @media(max-width:833px){
  .kio{grid-template-columns:1fr}
@@ -236,3 +218,4 @@ html{scroll-padding-top:53px}
 .spec dd{margin:8px 0 0;font-size:1.0625rem;line-height:1.5;color:var(--text);text-wrap:pretty}
 @media(max-width:959px){.spec{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:599px){.spec{grid-template-columns:1fr}.spec>div{padding:18px 0 22px}}
+@media(max-width:360px){.kio-loc{font-size:0.75rem}.kio-loc b{white-space:nowrap}}
