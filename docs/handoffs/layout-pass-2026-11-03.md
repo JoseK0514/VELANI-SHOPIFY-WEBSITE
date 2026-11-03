@@ -47,8 +47,12 @@ Manual browser checks: Tab reaches the Home swipe row on a phone with a 2px focu
 
 Evidence: `evidence/layout-pass-20261103/` (before and after captures), `evidence/layout-*`, and the dated suite folders from this run.
 
+## Shopify preview
+
+Unpublished theme 193004142906 "Velani calmer layout (preview)", duplicated from the live theme 192986808634. The 13 changed files match the local build by checksum (`evidence/layout-pass-20261103/preview-theme-readback.txt`). Preview: https://www.thevelani.com/?preview_theme_id=193004142906. Publishing is the owner's step in Shopify admin.
+
 ## Not verified
 
-- Hosted Shopify rendering until the preview theme is uploaded and checked by file checksum.
+- Hosted Shopify rendering in a browser; this session cannot reach the storefront, so the preview is checked by file checksum only.
 - Real iOS Safari and Android devices; phone results come from Chromium device emulation.
 - RTL mirroring; the site has no RTL locale.
