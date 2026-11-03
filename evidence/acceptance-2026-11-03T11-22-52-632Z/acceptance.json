@@ -1,0 +1,316 @@
+{
+  "status": "passed",
+  "passed": 77,
+  "failed": 0,
+  "base": "http://127.0.0.1:4173",
+  "results": [
+    {
+      "status": "passed",
+      "message": "1440x960 no-preference scroll 0: Start a project → contact; Learn more → /pages/nevora; Start free demo → demo request"
+    },
+    {
+      "status": "passed",
+      "message": "1440x960 no-preference scroll 120: Start a project → contact; Learn more → /pages/nevora; Start free demo → demo request"
+    },
+    {
+      "status": "passed",
+      "message": "1280x800 no-preference scroll 0: Start a project → contact; Learn more → /pages/nevora; Start free demo → demo request"
+    },
+    {
+      "status": "passed",
+      "message": "1280x800 no-preference scroll 120: Start a project → contact; Learn more → /pages/nevora; Start free demo → demo request"
+    },
+    {
+      "status": "passed",
+      "message": "1440x960 reduce scroll 0: Start a project → contact; Learn more → /pages/nevora; Start free demo → demo request"
+    },
+    {
+      "status": "passed",
+      "message": "1440x960 reduce scroll 120: Start a project → contact; Learn more → /pages/nevora; Start free demo → demo request"
+    },
+    {
+      "status": "passed",
+      "message": "1280x800 reduce scroll 0: Start a project → contact; Learn more → /pages/nevora; Start free demo → demo request"
+    },
+    {
+      "status": "passed",
+      "message": "1280x800 reduce scroll 120: Start a project → contact; Learn more → /pages/nevora; Start free demo → demo request"
+    },
+    {
+      "status": "passed",
+      "message": "phone opening screen: the headline and the action are visible"
+    },
+    {
+      "status": "passed",
+      "message": "the NEVORA panel offers the free demo"
+    },
+    {
+      "status": "passed",
+      "message": "demo context shown before the keypad"
+    },
+    {
+      "status": "passed",
+      "message": "0 digits: Continue disabled"
+    },
+    {
+      "status": "passed",
+      "message": "1 digit: Continue disabled"
+    },
+    {
+      "status": "passed",
+      "message": "3 digits: Continue disabled"
+    },
+    {
+      "status": "passed",
+      "message": "4 digits: Continue enabled"
+    },
+    {
+      "status": "passed",
+      "message": "extra digit refused"
+    },
+    {
+      "status": "passed",
+      "message": "Delete removes one digit and announces the count"
+    },
+    {
+      "status": "passed",
+      "message": "Clear resets and announces it"
+    },
+    {
+      "status": "passed",
+      "message": "confirmation: heading, demo-only line, no digits shown"
+    },
+    {
+      "status": "passed",
+      "message": "focus moves to the result heading"
+    },
+    {
+      "status": "passed",
+      "message": "keypad and confirmation share one height"
+    },
+    {
+      "status": "passed",
+      "message": "confirmation stays after 9.5 s (no automatic reset)"
+    },
+    {
+      "status": "passed",
+      "message": "language button offers English while Spanish is on; stale announcement cleared"
+    },
+    {
+      "status": "passed",
+      "message": "Spanish on the confirmation"
+    },
+    {
+      "status": "passed",
+      "message": "Clock in again: cleared, language kept, focus at the start"
+    },
+    {
+      "status": "passed",
+      "message": "enquiry action outside the panel still there"
+    },
+    {
+      "status": "passed",
+      "message": "Clock in again from elsewhere does not steal focus"
+    },
+    {
+      "status": "passed",
+      "message": "no request carries entered digits"
+    },
+    {
+      "status": "passed",
+      "message": "nothing in browser storage"
+    },
+    {
+      "status": "passed",
+      "message": "Enter on a focused key types that key (native button)"
+    },
+    {
+      "status": "passed",
+      "message": "typed digits and Backspace announce the count"
+    },
+    {
+      "status": "passed",
+      "message": "Escape clears"
+    },
+    {
+      "status": "passed",
+      "message": "digits typed with focus outside the demo are ignored"
+    },
+    {
+      "status": "passed",
+      "message": "axe on the NEVORA page: clean"
+    },
+    {
+      "status": "passed",
+      "message": "home: no script errors "
+    },
+    {
+      "status": "passed",
+      "message": "NEVORA enquiry heading"
+    },
+    {
+      "status": "passed",
+      "message": "team size and locations shown; NEVORA kept without reselecting"
+    },
+    {
+      "status": "passed",
+      "message": "phone: form directly after the introduction, address below"
+    },
+    {
+      "status": "passed",
+      "message": "aside prompts speak about the team"
+    },
+    {
+      "status": "passed",
+      "message": "preview draft check passes without a message and says nothing was sent"
+    },
+    {
+      "status": "passed",
+      "message": "general enquiry unchanged for custom projects"
+    },
+    {
+      "status": "passed",
+      "message": "one header row, 61px tall"
+    },
+    {
+      "status": "passed",
+      "message": "global Velani bar hidden on phones (no second row)"
+    },
+    {
+      "status": "passed",
+      "message": "menu button 44x44"
+    },
+    {
+      "status": "passed",
+      "message": "menu opens from the keyboard"
+    },
+    {
+      "status": "passed",
+      "message": "the whole menu fits the phone screen without an inner scroll"
+    },
+    {
+      "status": "passed",
+      "message": "Velani attribution and links inside the menu"
+    },
+    {
+      "status": "passed",
+      "message": "Escape closes the menu and focus returns to the button"
+    },
+    {
+      "status": "passed",
+      "message": "Try the time clock visible in the opening screen"
+    },
+    {
+      "status": "passed",
+      "message": "product screen visible in the opening screen (top at 540px)"
+    },
+    {
+      "status": "passed",
+      "message": "demo heading lands below the header (101px)"
+    },
+    {
+      "status": "passed",
+      "message": "demo notice comes before the keypad"
+    },
+    {
+      "status": "passed",
+      "message": "Continue disabled at three digits"
+    },
+    {
+      "status": "passed",
+      "message": "Continue enabled at four digits"
+    },
+    {
+      "status": "passed",
+      "message": "keys are at least 44px on a phone (97x58)"
+    },
+    {
+      "status": "passed",
+      "message": "demo keeps the same height on the confirmation"
+    },
+    {
+      "status": "passed",
+      "message": "confirmation stays until Clock in again"
+    },
+    {
+      "status": "passed",
+      "message": "after Clock in again the demo action is still there"
+    },
+    {
+      "status": "passed",
+      "message": "Spanish on; the button now offers English"
+    },
+    {
+      "status": "passed",
+      "message": "back to English; the button offers Español"
+    },
+    {
+      "status": "passed",
+      "message": "no sideways scroll on a phone"
+    },
+    {
+      "status": "passed",
+      "message": "NEVORA: no script errors "
+    },
+    {
+      "status": "passed",
+      "message": "without JavaScript the hero offers Ask for a quote instead of the demo"
+    },
+    {
+      "status": "passed",
+      "message": "without JavaScript the Velani header links are shown on a phone"
+    },
+    {
+      "status": "passed",
+      "message": "reduced motion: headline, demo and product image all visible"
+    },
+    {
+      "status": "passed",
+      "message": "clock shows the visitor’s local time (11:24 AM)"
+    },
+    {
+      "status": "passed",
+      "message": "desktop: Continue disabled before 4 digits"
+    },
+    {
+      "status": "passed",
+      "message": "two dots after two clicks; screen reader hears progress, not digits"
+    },
+    {
+      "status": "passed",
+      "message": "keyboard digits and Backspace work; Continue enabled"
+    },
+    {
+      "status": "passed",
+      "message": "a fifth digit is refused"
+    },
+    {
+      "status": "passed",
+      "message": "confirmation shows and focus moves to its heading"
+    },
+    {
+      "status": "passed",
+      "message": "Español switches the screen to Spanish"
+    },
+    {
+      "status": "passed",
+      "message": "date in Spanish: Martes, 3 de noviembre"
+    },
+    {
+      "status": "passed",
+      "message": "axe on the NEVORA page: clean"
+    },
+    {
+      "status": "passed",
+      "message": "desktop demo: no script errors "
+    },
+    {
+      "status": "passed",
+      "message": "no requests leave the site "
+    },
+    {
+      "status": "passed",
+      "message": "nothing written to browser storage"
+    }
+  ]
+}

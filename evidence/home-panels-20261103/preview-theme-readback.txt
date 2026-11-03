@@ -1,5 +1,5 @@
 Preview theme 193009287482 "Velani home panels (preview)", role UNPUBLISHED, duplicated from the live theme 192986808634 on 2026-11-03.
-Upsert job gid://shopify/Job/6a9e7a43-5f8b-46fd-bca6-85f31b5c8a72 finished (done: true). Readback by checksumMd5 against dist/theme from commit e58efcc: all 18 uploaded files match.
+Upsert job gid://shopify/Job/6a9e7a43-5f8b-46fd-bca6-85f31b5c8a72 finished (done: true). Readback by checksumMd5 against dist/theme from commit e58efcc: all 18 uploaded files match. Second upsert gid://shopify/Job/cde33b41-4f5a-4638-90b2-729fe60868c7 (support hours 787-925-2000 Monday to Friday, 3-day deletion window) finished and the four files below match the build from the next commit.
 
 assets/inquiry.js                           d6e5ade7fbc35b50e65ba39b2576fd38
 assets/night-ai-devices.webp                66e465b464cc83b0018a531fcbc60d4d
@@ -12,12 +12,12 @@ assets/velani-nevora.css                    e43573ef58653709196c2345c7ee4394
 assets/velani-nevora.js                     c8461867b542505beea3db84cee1ac19
 assets/velani.css                           0c399d44b493baf320ef525c8e9eb291
 assets/velani.js                            6a63fa872484f37620aa853fd2b39f97
-layout/theme.liquid                         07b26122c4c54463a927bd007bf0acbc
+layout/theme.liquid                         bbdee3378bc71a46f4d4586abb72a55e  (support line, second upsert)
 sections/velani-about.liquid                67bcd3f858864371a4f9bb7bb48eb2f4
-sections/velani-contact.liquid              b93ecc0b7020443649211ec10fef7a8f
+sections/velani-contact.liquid              127d2c1c3bb56dd2989662d793b22add  (phone and hours, second upsert)
 sections/velani-custom-development.liquid   b166c9878ff89cc7479163e8ab389b5c
-sections/velani-help.liquid                 643a8de3e0fb55a040c10d0089893950
-sections/velani-home.liquid                 dd514a951efe68b751019bc8ceddea45
+sections/velani-help.liquid                 6ba697f61e04b0f2653bd470bec9fee3  (support and demo answers, second upsert)
+sections/velani-home.liquid                 65e104203187d5da8043a3d20b07912f  (support line, second upsert)
 sections/velani-nevora.liquid               917fdd1dde617cd9893219286b902362
 
 Not uploaded: config/settings_data.json and templates/*.json (live copies differ only by Shopify's header comment and an empty default).

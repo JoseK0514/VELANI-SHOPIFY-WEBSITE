@@ -29,8 +29,8 @@ Test changes: the Home demo checks moved to the NEVORA page; the Home action che
 
 Captures: `evidence/home-panels-20261103/`.
 
-## Still owed by Jose
+## Facts from Jose (2026-11-03)
 
-- Client support hours, phone or WhatsApp, and reply time for the Support page and footer.
-- The number of days before demo data is deleted, for the demo terms.
-- Whether demo spots are limited.
+- Client support: Monday to Friday, 787-925-2000 and support@thevelani.com. Shown in the footer, the Support page, the contact aside and the closing Home panel.
+- Demo data is deleted within 3 days after day 30 (demo intro and Support page).
+- Demo spots are not limited, so the site makes no claim about limits.

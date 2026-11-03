@@ -3,6 +3,8 @@ export const company = Object.freeze({
   name: 'Velani',
   operator: 'VELANI LLC',
   email: 'support@thevelani.com',
+  phone: '787-925-2000',
+  hours: 'Monday to Friday',
   address: '1654 Calle Tulipan, Suite 100, San Juan, PR 00927',
   domain: 'www.thevelani.com',
 });
@@ -28,12 +30,13 @@ export const routes = {
   ], { nav: 'about', name: 'About' }),
   '/pages/contact': page('Start with the problem.', 'Contact', 'Tell us what needs to work better, who needs to use it and what you want to build.', [], { kind: 'contact', nav: 'contact', name: 'Contact' }),
   '/pages/help': page('Before we start.', 'Help and questions', 'Answers about our products, custom development and getting in touch.', [
-    { heading: 'How does my business get NEVORA?', text: 'NEVORA is offered to businesses by quote. Ask for a quote and we will discuss your team’s needs. Employees get their account from their workplace, not from this website.' },
+    { heading: 'How does my business get NEVORA?', text: 'NEVORA is offered to businesses by quote, with a free 30-day demo for teams of up to 30 employees. Ask for a quote or start a demo and we will discuss your team’s needs. Employees get their account from their workplace, not from this website.' },
     { heading: 'Does Velani build custom software?', text: 'Yes. Describe the application, internal workflow or integration you need on the contact page.' },
     { heading: 'Can you give me a price or delivery date here?', text: 'A project needs an agreed scope. Fees, milestones and delivery expectations are set out in the engagement agreement.' },
     { heading: 'Does an inquiry start a contract?', text: 'No. An inquiry starts a conversation. It does not purchase a product or begin paid work.' },
     { heading: 'Where should I send sensitive information?', text: 'Do not send passwords, API keys, payment details or sensitive records through a public form or ordinary email. Ask for an appropriate channel first.' },
-    { heading: 'How do I reach you?', text: 'Write to support@thevelani.com, or use the contact page.' },
+    { heading: 'How do I reach client support?', text: 'Client support answers Monday to Friday. Write to support@thevelani.com, call 787-925-2000, or use the contact page.' },
+    { heading: 'How does the free NEVORA demo work?', text: 'A business with up to 30 employees can use NEVORA free for 30 days from setup. No card is needed and nothing is charged. On day 30 you continue by quote, export your data, or we delete it within 3 days. NEVORA calculates pay statements; it does not pay employees or file payroll taxes.' },
   ], { kind: 'faq', name: 'Help and questions' }),
   '/pages/legal': page('The details matter.', 'Legal and trust', 'Find the information that applies to this company website. Product use and paid engagements have their own applicable terms.', [], { kind: 'legal-index', legal: true, name: 'Legal' }),
   '/pages/privacy': page('Privacy, in plain language.', 'Privacy notice', 'How information is handled on this company website and through a project inquiry.', [
