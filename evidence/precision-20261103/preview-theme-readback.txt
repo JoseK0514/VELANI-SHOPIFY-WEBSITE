@@ -34,3 +34,8 @@ assets/velani.css                 95503169ff86eacc1efed1283c423244   47783  matc
 assets/velani.js                  77b81844e6a81f0628857dd76c620649   8388   match
 sections/velani-contact.liquid    283577ec2692f37d36f65ef16768af32   8662   match
 layout/theme.liquid               77de86c47fdcab66e0451df0355f6a99   27147  unchanged since the previous upload
+
+Contact page, plain centred form (fourth pass), upsert to the same theme, read back:
+assets/velani.css                 dd088f0a37d1b7bcd58e165d52ddd3ca   47659  match
+assets/velani.js                  e40aadc7bab5e50fdb15d872ba060379   8300   match
+sections/velani-contact.liquid    0ca4ce216e13c9161d98c2d9aa223a28   7980   match
