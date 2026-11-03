@@ -42,3 +42,10 @@ See `evidence/` for actual browser, unit, theme and Shopify readback results, in
 Cloud WebKit uses already available user-space libraries linked only inside `.cache`; no application or machine configuration was changed. Playwright's host `ldconfig` check does not see those user-space libraries, so the cloud run explicitly skips that preflight while executing the real browser. WebKit's screenshot driver injects `body {}` to synchronize animations; the site correctly rejects it under its CSP. Those exact capture-time messages are retained separately from application runtime failures. See the diagnostic JSON and browser report; the site CSP was not relaxed.
 
 The source, original references, active ledger and review reports must be retained. Do not publish, enable delivery, merge into NEVORA or modify production as part of this preview task.
+
+
+## Website AI backend source
+
+The complete, separate website assistant lives in [services/velani-ai](services/velani-ai) on branch `codex/velani-website-ai-backend`. Start with [the Claude handoff](services/velani-ai/START-HERE-CLAUDE.md) and [Vercel setup](services/velani-ai/docs/VERCEL.md). This source handoff does not change the current Shopify theme or deploy the assistant.
+
+[Download the complete AI source ZIP](deliverables/2026-11-03/velani-ai-source.zip), including `src`, all three migrations, `package.json`, `Dockerfile`, `docs/api.md` and the complete integration directory. Real credentials, dependency folders and build output are excluded.

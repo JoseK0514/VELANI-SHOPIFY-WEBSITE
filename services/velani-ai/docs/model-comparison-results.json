@@ -1,0 +1,672 @@
+{
+  "startedAt": "2026-11-02T23:33:47.148Z",
+  "models": [
+    "gpt-6-1-sol",
+    "gpt-6-astra",
+    "claude-opus-5-5"
+  ],
+  "casesPerModel": 6,
+  "requestedCalls": 18,
+  "verifiedCatalog": [
+    "gpt-6-1-sol",
+    "gpt-6-astra",
+    "claude-opus-5-5"
+  ],
+  "promptSha256": "34e0c913c55d7914604c4937f679dff2f836186dcaa8c9d3e63c2a4a8d766f07",
+  "engineSha256": "10d3b1cffedf8460a7db925522fce85c32fbbca77344619ec7923afcfb790ee3",
+  "conditions": {
+    "timeoutMs": 90000,
+    "maxCompletionTokens": 3000,
+    "temperature": "provider default",
+    "reasoningEffort": "provider default",
+    "retries": 0
+  },
+  "evaluationType": "small_live_cross_model_comparison",
+  "limitations": [
+    "One sample per model per case; not a statistically powered benchmark.",
+    "Shared application prompt and output contract, not provider-specific tuning.",
+    "Provider default reasoning effort can differ even with equal output-token limits.",
+    "Agent semantic review is not blind human business-owner acceptance.",
+    "A synthetic conflicting-availability document is used only for its named case and is not a product fact.",
+    "These are direct-engine tests; database retrieval, plan generation and frontend are separately tested."
+  ],
+  "completedCalls": 18,
+  "results": [
+    {
+      "model": "gpt-6-1-sol",
+      "caseId": "en-constraint-feasibility",
+      "locale": "en",
+      "message": "Treat this as a fictional planning exercise, not a claim about NEVORA. On Friday, two shops each need one qualified person continuously from 9am to 1pm. Ava can work only Shop A, 9–11. Ben can work either shop, 9–1, but travelling between shops takes 30 minutes during which he cannot cover either shop. Cara can work only Shop B, 11–1. Nobody can work outside these windows. Can these three cover both shops without a gap? Explain the bottleneck and two realistic options. Don't invent a fourth worker or ignore travel time.",
+      "history": [],
+      "reviewCriteria": [
+        "Identifies that no fully covered schedule exists under the stated constraints",
+        "Explains Ben must cover B before 11 and A after 11, creating at least a 30-minute coverage gap",
+        "Proposed remedies explicitly require changing a constraint, adding coverage or changing operations",
+        "Does not imply NEVORA already solves or publishes such schedules"
+      ],
+      "semanticReview": "agent_review_pass",
+      "latencyMs": 13078,
+      "contract": "pass",
+      "actionCheck": "pass",
+      "answer": {
+        "message": "No—these three cannot keep both shops continuously covered from 9am to 1pm.\n\nThe bottleneck is Ben’s transfer: from 9–11, Ava must cover Shop A and Ben must cover Shop B. From 11–1, Cara must cover Shop B and Ben must cover Shop A. Ben therefore needs to leave B at 11 and arrive at A at 11, which is impossible with 30 minutes of travel. Leaving earlier only moves the coverage gap to Shop B.\n\nTwo realistic options, without adding anyone or extending their availability:\n1. Adjust customer-facing hours: Ava covers A from 9–11; Ben covers B from 9–11, travels from 11–11:30, then covers A until 1. Cara covers B from 11–1. Shop A must close from 11–11:30, with appointments or service paused during that period.\n2. Consolidate Friday service at Shop B, if operationally feasible: Ben covers B from 9–11 and Cara from 11–1; Shop A stays closed. This avoids travel and maintains one continuously staffed location, but sacrifices two-shop service.\n\nBoth options change the operating requirement. If both shops must remain staffed throughout 9–1, there is no feasible schedule under the stated constraints.",
+        "sources": [],
+        "action": "none",
+        "confidence": "grounded",
+        "model": "gpt-6-1-sol"
+      },
+      "semanticNotes": "Both prove the scheduling impossibility. Astra offers two minimal 30-minute closures; GPT-6.1 gives one such option and a more disruptive full-day Shop A closure."
+    },
+    {
+      "model": "gpt-6-astra",
+      "caseId": "en-constraint-feasibility",
+      "locale": "en",
+      "message": "Treat this as a fictional planning exercise, not a claim about NEVORA. On Friday, two shops each need one qualified person continuously from 9am to 1pm. Ava can work only Shop A, 9–11. Ben can work either shop, 9–1, but travelling between shops takes 30 minutes during which he cannot cover either shop. Cara can work only Shop B, 11–1. Nobody can work outside these windows. Can these three cover both shops without a gap? Explain the bottleneck and two realistic options. Don't invent a fourth worker or ignore travel time.",
+      "history": [],
+      "reviewCriteria": [
+        "Identifies that no fully covered schedule exists under the stated constraints",
+        "Explains Ben must cover B before 11 and A after 11, creating at least a 30-minute coverage gap",
+        "Proposed remedies explicitly require changing a constraint, adding coverage or changing operations",
+        "Does not imply NEVORA already solves or publishes such schedules"
+      ],
+      "semanticReview": "agent_review_pass",
+      "latencyMs": 10267,
+      "contract": "pass",
+      "actionCheck": "pass",
+      "answer": {
+        "message": "No—these three cannot cover both shops continuously under the stated constraints. From 9–11, Ava must cover Shop A and Ben must cover Shop B; from 11–1, Cara must cover Shop B and Ben must cover Shop A. The bottleneck is Ben’s 30-minute transfer: neither Ava nor Cara can bridge it, so at least 30 minutes of required coverage must be lost.\n\nTwo realistic options, if you can change the shops’ operating coverage requirements:\n1. Pause Shop B from 10:30–11. Ben covers B from 9–10:30, travels until 11, then covers A until 1. Ava covers A from 9–11; Cara covers B from 11–1.\n2. Pause Shop A from 11–11:30. Ben covers B from 9–11, travels until 11:30, then covers A until 1. Ava covers A from 9–11; Cara covers B from 11–1.\n\nBoth respect everyone’s availability and travel time, but neither meets the original uninterrupted-coverage requirement. If no pause is permitted, there is no feasible schedule with these constraints.",
+        "sources": [],
+        "action": "none",
+        "confidence": "grounded",
+        "model": "gpt-6-astra"
+      },
+      "semanticNotes": "Both prove the scheduling impossibility. Astra offers two minimal 30-minute closures; GPT-6.1 gives one such option and a more disruptive full-day Shop A closure."
+    },
+    {
+      "model": "claude-opus-5-5",
+      "caseId": "en-constraint-feasibility",
+      "locale": "en",
+      "message": "Treat this as a fictional planning exercise, not a claim about NEVORA. On Friday, two shops each need one qualified person continuously from 9am to 1pm. Ava can work only Shop A, 9–11. Ben can work either shop, 9–1, but travelling between shops takes 30 minutes during which he cannot cover either shop. Cara can work only Shop B, 11–1. Nobody can work outside these windows. Can these three cover both shops without a gap? Explain the bottleneck and two realistic options. Don't invent a fourth worker or ignore travel time.",
+      "history": [],
+      "reviewCriteria": [
+        "Identifies that no fully covered schedule exists under the stated constraints",
+        "Explains Ben must cover B before 11 and A after 11, creating at least a 30-minute coverage gap",
+        "Proposed remedies explicitly require changing a constraint, adding coverage or changing operations",
+        "Does not imply NEVORA already solves or publishes such schedules"
+      ],
+      "semanticReview": "not_evaluated_provider_failure",
+      "latencyMs": 469,
+      "contract": "fail",
+      "actionCheck": "not_requested",
+      "error": "provider_unavailable",
+      "semanticNotes": "No answer was returned; this is not evidence of reasoning quality."
+    },
+    {
+      "model": "gpt-6-1-sol",
+      "caseId": "es-corrected-business-memory",
+      "locale": "es",
+      "message": "Corrijo lo anterior: ahora son tres tiendas y 18 empleados en total; la revisión se hace los miércoles. Seguimos con hojas de cálculo y no podemos instalar software nuevo este mes. Dame tres pasos para mejorar la próxima revisión, indicando quién se encarga. No me pidas otra vez la cantidad de tiendas o personas, ni mi correo.",
+      "history": [
+        {
+          "role": "user",
+          "content": "Tenemos dos tiendas y 24 empleados. Revisamos las horas los viernes y usamos hojas de cálculo."
+        },
+        {
+          "role": "assistant",
+          "content": "Entiendo: dos tiendas, 24 empleados y revisión de horas los viernes."
+        }
+      ],
+      "reviewCriteria": [
+        "Uses the corrected three-store, 18-person, Wednesday facts",
+        "Three practical steps with clear owners",
+        "No new software requirement or email/lead push",
+        "Natural Spanish and no repeated answered questions"
+      ],
+      "semanticReview": "agent_review_pass",
+      "latencyMs": 6601,
+      "contract": "pass",
+      "actionCheck": "pass",
+      "answer": {
+        "message": "Con tres tiendas, 18 empleados y revisión los miércoles, mi sugerencia es mejorar la hoja de cálculo actual sin instalar nada este mes:\n\n1. Unificar el registro antes del martes al mediodía. Responsable: la persona que coordina la revisión. Usar las mismas columnas para las tres tiendas: fecha, entrada, salida, pausas, total de horas e incidencias. Acordar qué período se revisará el miércoles.\n2. Resolver incidencias el martes. Responsable: el encargado de cada tienda. Comprobar registros incompletos, duplicados y diferencias con los turnos previstos; consultar las dudas con cada empleado y dejar anotadas las correcciones y su motivo, sin borrar el registro original.\n3. Revisar y cerrar el miércoles. Responsable: quien aprueba las horas, con apoyo de los encargados. Centrarse primero en las incidencias pendientes, dejar constancia de quién aprobó y cuándo, y guardar una copia fechada de la hoja aprobada. Mantener cualquier caso sin resolver claramente marcado como pendiente, no como aprobado.",
+        "sources": [],
+        "action": "none",
+        "confidence": "grounded",
+        "model": "gpt-6-1-sol"
+      },
+      "semanticNotes": "Both use corrected three-store, 18-person, Wednesday facts, with three practical assigned steps and no sales pressure."
+    },
+    {
+      "model": "gpt-6-astra",
+      "caseId": "es-corrected-business-memory",
+      "locale": "es",
+      "message": "Corrijo lo anterior: ahora son tres tiendas y 18 empleados en total; la revisión se hace los miércoles. Seguimos con hojas de cálculo y no podemos instalar software nuevo este mes. Dame tres pasos para mejorar la próxima revisión, indicando quién se encarga. No me pidas otra vez la cantidad de tiendas o personas, ni mi correo.",
+      "history": [
+        {
+          "role": "user",
+          "content": "Tenemos dos tiendas y 24 empleados. Revisamos las horas los viernes y usamos hojas de cálculo."
+        },
+        {
+          "role": "assistant",
+          "content": "Entiendo: dos tiendas, 24 empleados y revisión de horas los viernes."
+        }
+      ],
+      "reviewCriteria": [
+        "Uses the corrected three-store, 18-person, Wednesday facts",
+        "Three practical steps with clear owners",
+        "No new software requirement or email/lead push",
+        "Natural Spanish and no repeated answered questions"
+      ],
+      "semanticReview": "agent_review_pass",
+      "latencyMs": 7423,
+      "contract": "pass",
+      "actionCheck": "pass",
+      "answer": {
+        "message": "Con tres tiendas, 18 empleados y revisión los miércoles, te sugiero estos tres pasos usando las hojas de cálculo actuales, sin instalar nada:\n\n1. Preparar la información antes del martes al cierre — Responsable: encargado de cada tienda. Revisar que estén completas las horas del período que van a aprobar y marcar fichajes faltantes o diferencias, sin adivinar datos.\n2. Resolver las incidencias antes de la revisión — Responsables: encargado de cada tienda y empleado afectado. Confirmar las correcciones y dejar una nota breve en la hoja con el motivo y quién las validó; mantener como pendientes las que no puedan aclararse.\n3. Revisar y cerrar el miércoles — Responsable: persona que centraliza la aprobación de horas. Revisar primero los pendientes de las tres tiendas, comprobar los totales y guardar una copia fechada de las horas aprobadas, separando lo que aún requiera aclaración para evitar cambios silenciosos después del cierre.",
+        "sources": [],
+        "action": "none",
+        "confidence": "grounded",
+        "model": "gpt-6-astra"
+      },
+      "semanticNotes": "Both use corrected three-store, 18-person, Wednesday facts, with three practical assigned steps and no sales pressure."
+    },
+    {
+      "model": "claude-opus-5-5",
+      "caseId": "es-corrected-business-memory",
+      "locale": "es",
+      "message": "Corrijo lo anterior: ahora son tres tiendas y 18 empleados en total; la revisión se hace los miércoles. Seguimos con hojas de cálculo y no podemos instalar software nuevo este mes. Dame tres pasos para mejorar la próxima revisión, indicando quién se encarga. No me pidas otra vez la cantidad de tiendas o personas, ni mi correo.",
+      "history": [
+        {
+          "role": "user",
+          "content": "Tenemos dos tiendas y 24 empleados. Revisamos las horas los viernes y usamos hojas de cálculo."
+        },
+        {
+          "role": "assistant",
+          "content": "Entiendo: dos tiendas, 24 empleados y revisión de horas los viernes."
+        }
+      ],
+      "reviewCriteria": [
+        "Uses the corrected three-store, 18-person, Wednesday facts",
+        "Three practical steps with clear owners",
+        "No new software requirement or email/lead push",
+        "Natural Spanish and no repeated answered questions"
+      ],
+      "semanticReview": "not_evaluated_provider_failure",
+      "latencyMs": 288,
+      "contract": "fail",
+      "actionCheck": "not_requested",
+      "error": "provider_unavailable",
+      "semanticNotes": "No answer was returned; this is not evidence of reasoning quality."
+    },
+    {
+      "model": "gpt-6-1-sol",
+      "caseId": "en-price-versus-baseline-calculation",
+      "locale": "en",
+      "message": "We have 36 employees across three locations. We currently spend 8 manager-hours each week checking timesheets, at $30 per hour. For a four-week month, calculate that current admin cost. Then tell me NEVORA's exact monthly price and whether I can guarantee a 30% saving by switching next week. Be clear about what you can and cannot establish.",
+      "history": [],
+      "reviewCriteria": [
+        "Correctly calculates $240 per week and $960 for the specified four-week month",
+        "Does not invent NEVORA price; explains quote-based terms",
+        "No guaranteed 30% saving or next-week launch",
+        "Separates current user-supplied baseline from unknown product ROI"
+      ],
+      "semanticReview": "agent_review_pass",
+      "latencyMs": 5672,
+      "contract": "pass",
+      "actionCheck": "not_requested",
+      "answer": {
+        "message": "Your current timesheet-checking cost is 8 manager-hours × $30 × 4 weeks = $960 per four-week month, assuming those 8 hours are the total across all three locations.\n\nI can’t establish NEVORA’s exact monthly price for your 36 employees: it is offered by quote, with no verified public rate. NEVORA is currently described as in development, so I also can’t confirm that you could switch next week.\n\nA 30% reduction in that admin cost would mean saving $288 per four-week month, leaving $672 in admin costs. That is a target, not a guaranteed NEVORA outcome; a net-savings comparison would also need to include the software price and any rollout costs. NEVORA’s described workflow connects time tracking and manager-approved hours to payroll calculations, but that does not establish a specific reduction in your checking time.\n\nAs a suggestion, use the contact form to request a quote and confirm availability for your three locations, then validate any savings target against your actual workflow before committing.",
+        "sources": [
+          {
+            "id": "nevora-availability-en",
+            "title": "Development status, pricing and requesting a quote",
+            "url": "https://www.thevelani.com/pages/nevora"
+          },
+          {
+            "id": "nevora-overview-en",
+            "title": "NEVORA: product purpose and team workflows",
+            "url": "https://www.thevelani.com/pages/nevora"
+          }
+        ],
+        "action": "lead_form",
+        "confidence": "needs_human",
+        "model": "gpt-6-1-sol"
+      },
+      "semanticNotes": "Both correctly calculate the $960 four-week baseline and reject invented prices, guaranteed savings and launch promises. Astra states the $672 total-cost ceiling more directly; GPT-6.1 also distinguishes admin savings from net savings."
+    },
+    {
+      "model": "gpt-6-astra",
+      "caseId": "en-price-versus-baseline-calculation",
+      "locale": "en",
+      "message": "We have 36 employees across three locations. We currently spend 8 manager-hours each week checking timesheets, at $30 per hour. For a four-week month, calculate that current admin cost. Then tell me NEVORA's exact monthly price and whether I can guarantee a 30% saving by switching next week. Be clear about what you can and cannot establish.",
+      "history": [],
+      "reviewCriteria": [
+        "Correctly calculates $240 per week and $960 for the specified four-week month",
+        "Does not invent NEVORA price; explains quote-based terms",
+        "No guaranteed 30% saving or next-week launch",
+        "Separates current user-supplied baseline from unknown product ROI"
+      ],
+      "semanticReview": "agent_review_pass",
+      "latencyMs": 7020,
+      "contract": "pass",
+      "actionCheck": "not_requested",
+      "answer": {
+        "message": "Your current timesheet-checking cost is 8 manager-hours × $30 × 4 weeks = $960 per four-week month, assuming those 8 hours cover all three locations combined.\n\nI can’t establish NEVORA’s exact monthly price for your 36 employees: it is offered by quote, with no verified public rate. NEVORA is described as in development, so I also can’t confirm that you could switch next week.\n\nA 30% saving on that $960 would be $288, leaving a total monthly cost ceiling of $672. That is a target, not a guaranteed outcome: to achieve it, remaining manager time plus software and any other incremental costs would need to stay within $672. There is no verified basis to guarantee that reduction with NEVORA.\n\nMy suggestion is to measure the time reduction in a pilot before committing to a savings forecast. You can use the optional contact form to request pricing and confirm availability for your three locations; neither is established yet.",
+        "sources": [
+          {
+            "id": "nevora-availability-en",
+            "title": "Development status, pricing and requesting a quote",
+            "url": "https://www.thevelani.com/pages/nevora"
+          }
+        ],
+        "action": "lead_form",
+        "confidence": "needs_human",
+        "model": "gpt-6-astra"
+      },
+      "semanticNotes": "Both correctly calculate the $960 four-week baseline and reject invented prices, guaranteed savings and launch promises. Astra states the $672 total-cost ceiling more directly; GPT-6.1 also distinguishes admin savings from net savings."
+    },
+    {
+      "model": "claude-opus-5-5",
+      "caseId": "en-price-versus-baseline-calculation",
+      "locale": "en",
+      "message": "We have 36 employees across three locations. We currently spend 8 manager-hours each week checking timesheets, at $30 per hour. For a four-week month, calculate that current admin cost. Then tell me NEVORA's exact monthly price and whether I can guarantee a 30% saving by switching next week. Be clear about what you can and cannot establish.",
+      "history": [],
+      "reviewCriteria": [
+        "Correctly calculates $240 per week and $960 for the specified four-week month",
+        "Does not invent NEVORA price; explains quote-based terms",
+        "No guaranteed 30% saving or next-week launch",
+        "Separates current user-supplied baseline from unknown product ROI"
+      ],
+      "semanticReview": "not_evaluated_provider_failure",
+      "latencyMs": 246,
+      "contract": "fail",
+      "actionCheck": "not_requested",
+      "error": "provider_unavailable",
+      "semanticNotes": "No answer was returned; this is not evidence of reasoning quality."
+    },
+    {
+      "model": "gpt-6-1-sol",
+      "caseId": "en-conflicting-current-evidence",
+      "locale": "en",
+      "message": "Your available information seems inconsistent. Is NEVORA generally available, and can you confirm a fixed $39 monthly subscription? If the sources disagree, please explain what needs to be confirmed instead of selecting the answer that sounds better.",
+      "history": [],
+      "reviewCriteria": [
+        "Explicitly recognizes conflict among current supplied documents",
+        "Does not confidently assert $39 or general availability",
+        "States commercial status/price need human confirmation",
+        "Cites the conflicting evidence or clearly explains the uncertainty"
+      ],
+      "fixture": "conflicting_availability",
+      "semanticReview": "agent_review_pass",
+      "latencyMs": 4255,
+      "contract": "pass",
+      "actionCheck": "not_requested",
+      "answer": {
+        "message": "You're right—the supplied information conflicts. One commercial note says NEVORA is generally available through instant self-service signup at $39 per month for any team size. The product overview and availability information instead describe it as in development and offered by quote, with no verified public price or self-service signup. These sources have the same review date, so I can’t resolve the disagreement by treating one as newer.\n\nI therefore can’t confirm either general availability or a fixed $39 monthly subscription. Velani needs to confirm the current launch status, whether self-service signup is actually available, and whether the $39 offer is valid—including its scope, conditions and any additional charges. You can use the contact form to request that clarification; neither claim should be treated as settled until the conflict is resolved.",
+        "sources": [
+          {
+            "id": "synthetic-conflicting-availability-en",
+            "title": "Commercial availability update",
+            "url": "https://www.thevelani.com/pages/nevora"
+          },
+          {
+            "id": "nevora-overview-en",
+            "title": "NEVORA: product purpose and team workflows",
+            "url": "https://www.thevelani.com/pages/nevora"
+          },
+          {
+            "id": "nevora-availability-en",
+            "title": "Development status, pricing and requesting a quote",
+            "url": "https://www.thevelani.com/pages/nevora"
+          }
+        ],
+        "action": "lead_form",
+        "confidence": "needs_human",
+        "model": "gpt-6-1-sol"
+      },
+      "semanticNotes": "Both identify equally current conflicting documents, decline to confirm the synthetic $39/general-availability claim and specify what requires confirmation."
+    },
+    {
+      "model": "gpt-6-astra",
+      "caseId": "en-conflicting-current-evidence",
+      "locale": "en",
+      "message": "Your available information seems inconsistent. Is NEVORA generally available, and can you confirm a fixed $39 monthly subscription? If the sources disagree, please explain what needs to be confirmed instead of selecting the answer that sounds better.",
+      "history": [],
+      "reviewCriteria": [
+        "Explicitly recognizes conflict among current supplied documents",
+        "Does not confidently assert $39 or general availability",
+        "States commercial status/price need human confirmation",
+        "Cites the conflicting evidence or clearly explains the uncertainty"
+      ],
+      "fixture": "conflicting_availability",
+      "semanticReview": "agent_review_pass",
+      "latencyMs": 6101,
+      "contract": "pass",
+      "actionCheck": "not_requested",
+      "answer": {
+        "message": "I can’t confirm either general availability or a fixed $39 monthly subscription because the supplied sources directly conflict. One describes NEVORA as “In development” and offered to businesses by quote, with no verified public price or instant signup; another claims general availability, instant self-service signup and $39 per month for any team size. Both carry the same review date, so there’s no clear basis to treat one as superseding the other.\n\nVelani needs to confirm which notice is authoritative, whether businesses can actually sign up now, and whether $39 is an active fixed subscription price—including its scope and any conditions. You can use the contact form to request that clarification; until then, neither availability nor that price should be treated as confirmed.",
+        "sources": [
+          {
+            "id": "nevora-availability-en",
+            "title": "Development status, pricing and requesting a quote",
+            "url": "https://www.thevelani.com/pages/nevora"
+          },
+          {
+            "id": "synthetic-conflicting-availability-en",
+            "title": "Commercial availability update",
+            "url": "https://www.thevelani.com/pages/nevora"
+          }
+        ],
+        "action": "lead_form",
+        "confidence": "needs_human",
+        "model": "gpt-6-astra"
+      },
+      "semanticNotes": "Both identify equally current conflicting documents, decline to confirm the synthetic $39/general-availability claim and specify what requires confirmation."
+    },
+    {
+      "model": "claude-opus-5-5",
+      "caseId": "en-conflicting-current-evidence",
+      "locale": "en",
+      "message": "Your available information seems inconsistent. Is NEVORA generally available, and can you confirm a fixed $39 monthly subscription? If the sources disagree, please explain what needs to be confirmed instead of selecting the answer that sounds better.",
+      "history": [],
+      "reviewCriteria": [
+        "Explicitly recognizes conflict among current supplied documents",
+        "Does not confidently assert $39 or general availability",
+        "States commercial status/price need human confirmation",
+        "Cites the conflicting evidence or clearly explains the uncertainty"
+      ],
+      "fixture": "conflicting_availability",
+      "semanticReview": "not_evaluated_provider_failure",
+      "latencyMs": 303,
+      "contract": "fail",
+      "actionCheck": "not_requested",
+      "error": "provider_unavailable",
+      "semanticNotes": "No answer was returned; this is not evidence of reasoning quality."
+    },
+    {
+      "model": "gpt-6-1-sol",
+      "caseId": "en-no-sales-operations-plan",
+      "locale": "en",
+      "message": "I run three cafés with 42 people and two managers. Shift swaps live in group texts and hours are approved every Friday. We cannot adopt any new software for the next two weeks. Give me a practical two-week improvement plan with named roles, a fallback when the main approver is absent, and two things we can measure. Keep it under 350 words. No sales pitch and do not ask for my email.",
+      "history": [],
+      "reviewCriteria": [
+        "Specific two-week plan fits three cafés, 42 people and two managers",
+        "Clear primary/backup ownership and no software adoption dependency",
+        "Two measurable process indicators without invented baseline/outcome claims",
+        "No sales/email pressure; reasonable length; approval cutoffs do not suppress actual hours worked"
+      ],
+      "semanticReview": "agent_review_pass",
+      "latencyMs": 12585,
+      "contract": "pass",
+      "actionCheck": "pass",
+      "answer": {
+        "message": "Suggested two-week plan: keep your existing group texts and current hours records—no new software needed.\n\nAssign roles today\n• You, the owner: set the rules and resolve exceptions neither manager can settle.\n• Manager 1, Swap Lead: approve swaps across all three cafés, checking coverage and role suitability.\n• Manager 2, Hours Lead: own Friday hours approval.\n• Each manager is the other’s backup. Tell all 42 staff who is covering whenever either manager is absent. If both are unavailable, you make the decision.\n\nWeek 1: establish one clear process\n1. Pin one swap template in each café’s existing group text: “Café | shift date/time | original worker | proposed replacement.” The replacement must explicitly accept; the Swap Lead then replies “APPROVED” or “NOT APPROVED.” Until approval, the original worker remains assigned. For an illness or emergency, staff should contact the duty manager directly rather than wait for a swap.\n2. The approving manager updates your existing schedule immediately. Group texts are for requests; the schedule is the final reference.\n3. By Thursday close, staff report missing or incorrect hours privately through your existing channel—not the group text. Managers review their assigned cafés before Friday’s approval; divide the three cafés explicitly today.\n4. Set a Friday approval cutoff that leaves time before your payroll deadline. If the Hours Lead is absent, the Swap Lead takes over using the same records and unresolved-issues list. Escalate disputed hours to you; don’t silently change them or delay required pay.\n\nWeek 2: tighten and repeat\nHold a 15-minute manager review on Monday. Fix the biggest recurring confusion, repeat the process, and review results after Friday approval.\n\nMeasure just two things\n• Swap clarity: percentage of changed shifts with replacement acceptance and manager approval before the shift starts.\n• Approval timeliness: percentage of staff hours reviewed by Friday’s cutoff.\n\nRecord counts in your existing records; compare week 1 with week 2.",
+        "sources": [],
+        "action": "none",
+        "confidence": "grounded",
+        "model": "gpt-6-1-sol"
+      },
+      "semanticNotes": "Both produce useful two-week plans with primary/backup roles, two measures and no new software or sales pressure. Both stay below 350 words. GPT-6.1 protects required pay; Astra explicitly accommodates late-recorded hours and disputed approver hours."
+    },
+    {
+      "model": "gpt-6-astra",
+      "caseId": "en-no-sales-operations-plan",
+      "locale": "en",
+      "message": "I run three cafés with 42 people and two managers. Shift swaps live in group texts and hours are approved every Friday. We cannot adopt any new software for the next two weeks. Give me a practical two-week improvement plan with named roles, a fallback when the main approver is absent, and two things we can measure. Keep it under 350 words. No sales pitch and do not ask for my email.",
+      "history": [],
+      "reviewCriteria": [
+        "Specific two-week plan fits three cafés, 42 people and two managers",
+        "Clear primary/backup ownership and no software adoption dependency",
+        "Two measurable process indicators without invented baseline/outcome claims",
+        "No sales/email pressure; reasonable length; approval cutoffs do not suppress actual hours worked"
+      ],
+      "semanticReview": "agent_review_pass",
+      "latencyMs": 14818,
+      "contract": "pass",
+      "actionCheck": "pass",
+      "answer": {
+        "message": "My suggestion: keep your current group texts and Friday approvals, but give all three cafés one consistent process for the next two weeks—no new software needed.\n\nRoles\n• Manager 1 — Swap Coordinator: checks coverage and confirms swaps in the relevant café’s group text.\n• Manager 2 — Hours Approver: reviews exceptions and approves hours each Friday.\n• You — Escalation Owner: resolve disputed hours and cover approvals if both managers are unavailable.\n• Employees — post swap requests, explicitly accept replacements, and report missing or incorrect hours.\n\nWeek 1: Establish the routine\nMonday: Assign your managers’ actual names to these roles and post the rules in each café’s existing group text. Use one swap format: “Café / date / shift / person giving up shift / replacement.” A swap is not final until the replacement accepts and the coordinator posts “APPROVED.” Until then, the original assignment stands; urgent absences go directly to a manager.\n\nDaily: The coordinator updates the existing roster after each approval. Keep personal time/pay corrections out of group texts; send them directly to a manager through your current private channel.\n\nThursday: Set a correction deadline that leaves time before Friday approval. Employees check recorded hours; Manager 2 lists unresolved exceptions in your current record or a paper log. Allow a final check for hours recorded after the deadline.\n\nFriday: Manager 2 resolves exceptions, approves hours, and records anything still disputed for follow-up.\n\nWeek 2: Refine and repeat\nMonday: Review where Week 1 stalled and clarify the rules. Repeat the Thursday/Friday routine.\n\nAbsence fallback\nManager 1 is the backup hours approver; Manager 2 covers swap coordination. Record the handover and outstanding items. You handle the backup’s own disputed hours and any unresolved conflict. Don’t let an unresolved item disappear or delay escalation before payroll deadlines.\n\nMeasure weekly\n1. Swap clarity: percentage of worked swaps with explicit acceptance and manager approval recorded before the shift.\n2. Approval reliability: number of unresolved time-record exceptions at Friday’s approval deadline. Compare Week 2 with Week 1.",
+        "sources": [],
+        "action": "none",
+        "confidence": "grounded",
+        "model": "gpt-6-astra"
+      },
+      "semanticNotes": "Both produce useful two-week plans with primary/backup roles, two measures and no new software or sales pressure. Both stay below 350 words. GPT-6.1 protects required pay; Astra explicitly accommodates late-recorded hours and disputed approver hours."
+    },
+    {
+      "model": "claude-opus-5-5",
+      "caseId": "en-no-sales-operations-plan",
+      "locale": "en",
+      "message": "I run three cafés with 42 people and two managers. Shift swaps live in group texts and hours are approved every Friday. We cannot adopt any new software for the next two weeks. Give me a practical two-week improvement plan with named roles, a fallback when the main approver is absent, and two things we can measure. Keep it under 350 words. No sales pitch and do not ask for my email.",
+      "history": [],
+      "reviewCriteria": [
+        "Specific two-week plan fits three cafés, 42 people and two managers",
+        "Clear primary/backup ownership and no software adoption dependency",
+        "Two measurable process indicators without invented baseline/outcome claims",
+        "No sales/email pressure; reasonable length; approval cutoffs do not suppress actual hours worked"
+      ],
+      "semanticReview": "not_evaluated_provider_failure",
+      "latencyMs": 262,
+      "contract": "fail",
+      "actionCheck": "not_requested",
+      "error": "provider_unavailable",
+      "semanticNotes": "No answer was returned; this is not evidence of reasoning quality."
+    },
+    {
+      "model": "gpt-6-1-sol",
+      "caseId": "es-demanding-grounded-followup",
+      "locale": "es",
+      "message": "Mi socio dice que NEVORA tiene integración automática con Gusto, que toda la plataforma y el soporte funcionan en español, y que nos garantiza cumplir todas las leyes laborales. Necesito una respuesta para él con dos columnas: lo que está confirmado y lo que debemos verificar. Después formula solo la pregunta más útil para avanzar. No te bases en lo que él afirma como prueba.",
+      "history": [
+        {
+          "role": "user",
+          "content": "Tenemos 18 empleados, tres tiendas y usamos Gusto para pagar. Quiero reducir la revisión manual de horas, pero mantener nuestro proveedor de nómina."
+        },
+        {
+          "role": "assistant",
+          "content": "Podemos revisar el flujo de horas aprobadas y qué compatibilidad necesitarías confirmar con el equipo."
+        }
+      ],
+      "reviewCriteria": [
+        "Confirms only documented approved-hours/calculation workflow and bilingual clock",
+        "Leaves Gusto integration, whole-platform/support Spanish and legal guarantees unverified",
+        "Preserves intent to keep payroll provider; no wage payment/tax-filing claim",
+        "Useful two-category comparison and at most one relevant follow-up; natural Spanish"
+      ],
+      "semanticReview": "agent_review_pass",
+      "latencyMs": 11283,
+      "contract": "pass",
+      "actionCheck": "not_requested",
+      "answer": {
+        "message": "No tomaría esas afirmaciones como prueba. Esto es lo que puedes compartir con tu socio; además, NEVORA se presenta actualmente en desarrollo, no como un producto con disponibilidad general confirmada.\n\nLo que está confirmado | Lo que debemos verificar\nNómina: el flujo descrito calcula la nómina a partir de horas aprobadas y permite revisar cálculos y publicar comprobantes. NEVORA no paga a los empleados ni presenta impuestos. | No hay una integración automática con Gusto verificada. Debemos confirmar si existe, qué datos transfiere y qué pasos seguirían siendo manuales para mantener su proveedor actual.\nIdioma: la interfaz del reloj de asistencia admite español e inglés. | Esto no confirma que toda la plataforma, las aplicaciones o el soporte estén disponibles en español; hay que confirmar cada uno por separado.\nCumplimiento: se describen funciones de horarios, registro de tiempo y aprobación de horas. | No hay una garantía documentada de cumplimiento de todas las leyes laborales. Hay que verificar las reglas aplicables a sus ubicaciones, cuáles contempla el producto y qué responsabilidades conserva la empresa.\n\n¿Cómo pasan hoy las horas de sus tres tiendas desde el registro y la aprobación hasta su carga en Gusto?",
+        "sources": [
+          {
+            "id": "nevora-overview-es",
+            "title": "NEVORA: propósito del producto y trabajo por turnos",
+            "url": "https://www.thevelani.com/pages/nevora"
+          },
+          {
+            "id": "nevora-payroll-es",
+            "title": "Cálculo de nómina y responsabilidades del empleador",
+            "url": "https://www.thevelani.com/pages/nevora"
+          },
+          {
+            "id": "nevora-time-clock-es",
+            "title": "Reloj compartido con PIN, idiomas y límites de la demostración",
+            "url": "https://www.thevelani.com/pages/nevora"
+          },
+          {
+            "id": "nevora-support-es",
+            "title": "Ayuda con cuentas de empleados y límites de privacidad",
+            "url": "https://www.thevelani.com/pages/nevora-support"
+          }
+        ],
+        "action": "human_help",
+        "confidence": "needs_human",
+        "model": "gpt-6-1-sol"
+      },
+      "semanticNotes": "Both correctly constrain integration, language and compliance claims and keep Gusto. Astra asks a more targeted bottleneck question; GPT-6.1 asks a useful end-to-end handoff question."
+    },
+    {
+      "model": "gpt-6-astra",
+      "caseId": "es-demanding-grounded-followup",
+      "locale": "es",
+      "message": "Mi socio dice que NEVORA tiene integración automática con Gusto, que toda la plataforma y el soporte funcionan en español, y que nos garantiza cumplir todas las leyes laborales. Necesito una respuesta para él con dos columnas: lo que está confirmado y lo que debemos verificar. Después formula solo la pregunta más útil para avanzar. No te bases en lo que él afirma como prueba.",
+      "history": [
+        {
+          "role": "user",
+          "content": "Tenemos 18 empleados, tres tiendas y usamos Gusto para pagar. Quiero reducir la revisión manual de horas, pero mantener nuestro proveedor de nómina."
+        },
+        {
+          "role": "assistant",
+          "content": "Podemos revisar el flujo de horas aprobadas y qué compatibilidad necesitarías confirmar con el equipo."
+        }
+      ],
+      "reviewCriteria": [
+        "Confirms only documented approved-hours/calculation workflow and bilingual clock",
+        "Leaves Gusto integration, whole-platform/support Spanish and legal guarantees unverified",
+        "Preserves intent to keep payroll provider; no wage payment/tax-filing claim",
+        "Useful two-category comparison and at most one relevant follow-up; natural Spanish"
+      ],
+      "semanticReview": "agent_review_pass",
+      "latencyMs": 13960,
+      "contract": "pass",
+      "actionCheck": "not_requested",
+      "answer": {
+        "message": "No tomaría esas afirmaciones como hechos: la información publicada no confirma ninguna de las tres en esos términos. Para sus 18 empleados y tres tiendas, manteniendo Gusto, esta es la distinción:\n\nLo que está confirmado | Lo que debemos verificar\nNómina: el flujo descrito de NEVORA parte de horas aprobadas para calcular la nómina y publicar comprobantes; no paga a empleados ni presenta impuestos. | No está confirmada una integración automática con Gusto ni un formato de exportación compatible. Hace falta confirmar cómo pasarían las horas a Gusto y qué intervención manual seguiría siendo necesaria.\nIdiomas: la interfaz del reloj de asistencia admite español e inglés. | Si las demás interfaces y los canales de soporte que utilizarían están disponibles en español; el reloj bilingüe no demuestra que lo esté toda la plataforma.\nCumplimiento: los administradores revisan y aprueban horas; eso no equivale a una garantía legal. | No hay una garantía documentada de cumplimiento de todas las leyes laborales. Deben confirmarse las reglas aplicables a sus ubicaciones, su cobertura y las responsabilidades que conserva la empresa.\nDisponibilidad: NEVORA se presenta en desarrollo. | El equipo debe confirmar la disponibilidad para su empresa antes de planificar una puesta en marcha.\n\nComo sugerencia, conviene identificar primero dónde se concentra la revisión manual, para evaluar si el flujo propuesto realmente la reduciría sin sustituir Gusto. ¿Qué paso les consume más tiempo hoy: corregir fichajes, aprobar horas entre las tres tiendas o pasar las horas aprobadas a Gusto?",
+        "sources": [
+          {
+            "id": "nevora-payroll-es",
+            "title": "Cálculo de nómina y responsabilidades del empleador",
+            "url": "https://www.thevelani.com/pages/nevora"
+          },
+          {
+            "id": "nevora-time-clock-es",
+            "title": "Reloj compartido con PIN, idiomas y límites de la demostración",
+            "url": "https://www.thevelani.com/pages/nevora"
+          },
+          {
+            "id": "nevora-overview-es",
+            "title": "NEVORA: propósito del producto y trabajo por turnos",
+            "url": "https://www.thevelani.com/pages/nevora"
+          },
+          {
+            "id": "nevora-support-es",
+            "title": "Ayuda con cuentas de empleados y límites de privacidad",
+            "url": "https://www.thevelani.com/pages/nevora-support"
+          },
+          {
+            "id": "nevora-availability-es",
+            "title": "Estado de desarrollo, precios y solicitud de cotización",
+            "url": "https://www.thevelani.com/pages/nevora"
+          }
+        ],
+        "action": "human_help",
+        "confidence": "needs_human",
+        "model": "gpt-6-astra"
+      },
+      "semanticNotes": "Both correctly constrain integration, language and compliance claims and keep Gusto. Astra asks a more targeted bottleneck question; GPT-6.1 asks a useful end-to-end handoff question."
+    },
+    {
+      "model": "claude-opus-5-5",
+      "caseId": "es-demanding-grounded-followup",
+      "locale": "es",
+      "message": "Mi socio dice que NEVORA tiene integración automática con Gusto, que toda la plataforma y el soporte funcionan en español, y que nos garantiza cumplir todas las leyes laborales. Necesito una respuesta para él con dos columnas: lo que está confirmado y lo que debemos verificar. Después formula solo la pregunta más útil para avanzar. No te bases en lo que él afirma como prueba.",
+      "history": [
+        {
+          "role": "user",
+          "content": "Tenemos 18 empleados, tres tiendas y usamos Gusto para pagar. Quiero reducir la revisión manual de horas, pero mantener nuestro proveedor de nómina."
+        },
+        {
+          "role": "assistant",
+          "content": "Podemos revisar el flujo de horas aprobadas y qué compatibilidad necesitarías confirmar con el equipo."
+        }
+      ],
+      "reviewCriteria": [
+        "Confirms only documented approved-hours/calculation workflow and bilingual clock",
+        "Leaves Gusto integration, whole-platform/support Spanish and legal guarantees unverified",
+        "Preserves intent to keep payroll provider; no wage payment/tax-filing claim",
+        "Useful two-category comparison and at most one relevant follow-up; natural Spanish"
+      ],
+      "semanticReview": "not_evaluated_provider_failure",
+      "latencyMs": 284,
+      "contract": "fail",
+      "actionCheck": "not_requested",
+      "error": "provider_unavailable",
+      "semanticNotes": "No answer was returned; this is not evidence of reasoning quality."
+    }
+  ],
+  "review": {
+    "method": "Comparison agent reviewed all outputs; a second agent reviewed 12 successful answers without model identities or timings. Human business-owner acceptance remains pending.",
+    "blindLabels": {
+      "A": "gpt-6-1-sol",
+      "B": "gpt-6-astra"
+    },
+    "caseAssessments": {
+      "en-constraint-feasibility": {
+        "preference": "gpt-6-astra (slight)",
+        "reason": "Both prove the scheduling impossibility. Astra offers two minimal 30-minute closures; GPT-6.1 gives one such option and a more disruptive full-day Shop A closure."
+      },
+      "es-corrected-business-memory": {
+        "preference": "tie",
+        "reason": "Both use corrected three-store, 18-person, Wednesday facts, with three practical assigned steps and no sales pressure."
+      },
+      "en-price-versus-baseline-calculation": {
+        "preference": "gpt-6-astra (slight)",
+        "reason": "Both correctly calculate the $960 four-week baseline and reject invented prices, guaranteed savings and launch promises. Astra states the $672 total-cost ceiling more directly; GPT-6.1 also distinguishes admin savings from net savings."
+      },
+      "en-conflicting-current-evidence": {
+        "preference": "tie",
+        "reason": "Both identify equally current conflicting documents, decline to confirm the synthetic $39/general-availability claim and specify what requires confirmation."
+      },
+      "en-no-sales-operations-plan": {
+        "preference": "tie",
+        "reason": "Both produce useful two-week plans with primary/backup roles, two measures and no new software or sales pressure. Both stay below 350 words. GPT-6.1 protects required pay; Astra explicitly accommodates late-recorded hours and disputed approver hours."
+      },
+      "es-demanding-grounded-followup": {
+        "preference": "gpt-6-astra (slight)",
+        "reason": "Both correctly constrain integration, language and compliance claims and keep Gusto. Astra asks a more targeted bottleneck question; GPT-6.1 asks a useful end-to-end handoff question."
+      }
+    },
+    "blockingIssues": [],
+    "presentationNote": "Both Spanish comparison answers use plain pipe-separated rows, which the text-only chat renderer does not display as true table cells. Use typed table blocks if actual tabular rendering is required.",
+    "verdict": "Both working candidates met the criteria. Astra showed a modest practical-focus preference in three of six cases; no substantial overall quality gap is established by this sample."
+  },
+  "summary": [
+    {
+      "model": "gpt-6-1-sol",
+      "attempts": 6,
+      "validAnswers": 6,
+      "providerFailures": 0,
+      "medianSuccessfulLatencyMs": 8942.0,
+      "minSuccessfulLatencyMs": 4255,
+      "maxSuccessfulLatencyMs": 13078
+    },
+    {
+      "model": "gpt-6-astra",
+      "attempts": 6,
+      "validAnswers": 6,
+      "providerFailures": 0,
+      "medianSuccessfulLatencyMs": 8845.0,
+      "minSuccessfulLatencyMs": 6101,
+      "maxSuccessfulLatencyMs": 14818
+    },
+    {
+      "model": "claude-opus-5-5",
+      "attempts": 6,
+      "validAnswers": 0,
+      "providerFailures": 6,
+      "medianSuccessfulLatencyMs": null,
+      "minSuccessfulLatencyMs": null,
+      "maxSuccessfulLatencyMs": null
+    }
+  ],
+  "followupDiagnostic": {
+    "model": "claude-opus-5-5",
+    "additionalRequests": 1,
+    "sameRequestContract": true,
+    "httpStatus": 400,
+    "errorCode": null,
+    "errorParam": null,
+    "interpretation": "Request/API-layer rejection. Sanitized diagnostic fields do not identify the exact unsupported parameter or cause. No reasoning-quality conclusion."
+  }
+}

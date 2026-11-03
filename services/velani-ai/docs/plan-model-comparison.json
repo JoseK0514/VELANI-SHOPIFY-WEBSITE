@@ -1,0 +1,552 @@
+{
+  "evaluatedAt": "2026-11-02T23:37:23.463Z",
+  "comparisonType": "Small live task comparison, not a ranking benchmark",
+  "reviewedBy": "AI engineering agent; not blinded; human business-owner review pending",
+  "verdict": "Both models produced useful, grounded plans in these two scenarios. This sample does not establish a superior model or statistical difference.",
+  "sharedTask": "A practical two-week plan for 42 people across 3 locations using current spreadsheets; no new software this month; relevant documented NEVORA workflows without availability promises.",
+  "limits": [
+    "Two scenarios only, one generation per model per language; no repeated-trial reliability or diverse-business benchmark.",
+    "Both use the current PlanModelEngine with the same declared profile and brief and the current 12-article Neon corpus. Baseline retrieval query also appends the saved challenge; all current documents are retrieved in both cases, but ordering may differ.",
+    "Baseline saved plans have a smoke-test edit to the first action owner. That field must not be attributed to the baseline model.",
+    "Baseline latency includes API persistence, replay, editing, download, profile correction and a separate chat answer. Candidate latency measures only plan generation. They are not directly comparable.",
+    "Provider usage cost was not collected. Contract validation does not itself prove factual support."
+  ],
+  "models": [
+    {
+      "model": "gpt-6-1-sol",
+      "runType": "Real API and database smoke",
+      "results": [
+        {
+          "locale": "en",
+          "status": "passed_contract_and_smoke",
+          "endToEndSmokeLatencyMs": 31433,
+          "postGenerationModification": "First action owner changed by smoke test; notes excluded here.",
+          "plan": {
+            "model": "gpt-6-1-sol",
+            "title": "Two-week shift-swap and time-approval plan for three cafes",
+            "actions": [
+              {
+                "owner": "Operations manager",
+                "title": "Set up a consistent schedule and swap log",
+                "timing": "Week one, early",
+                "details": "Agree which existing spreadsheet is authoritative for each cafe. Add consistent swap-status fields and designate a manager to review each location's changes. Keep this within existing tools; no software purchase or migration is proposed."
+              },
+              {
+                "owner": "Suggested: location managers",
+                "title": "Test the review process at the first Friday approval",
+                "timing": "Week one, before and on Friday",
+                "details": "Compare swap decisions, scheduled shifts and reported actual time. Ask workers to clarify discrepancies, preserve a record of reviewed corrections and mark approved hours clearly. Track unresolved issues with an owner and next step, without blocking workers from reporting time."
+              },
+              {
+                "owner": "Suggested: payroll administrator and location managers",
+                "title": "Check the hours handoff to payroll",
+                "timing": "Week one, after Friday review and before the applicable payroll cutoff",
+                "details": "Use a dated copy of reviewed hours from all three locations. Check for omissions, duplicate entries and unresolved corrections. Confirm how late corrections are handled under the existing payroll process without delaying earned pay. Friday approval is not assumed to be the pay date."
+              },
+              {
+                "owner": "Suggested: operations manager with location managers and payroll administrator",
+                "title": "Repeat, refine and document future requirements",
+                "timing": "Week two, through the second Friday review",
+                "details": "Repeat the process across all three cafes, review where swaps or time corrections remain unclear and simplify the spreadsheet instructions. Record future evaluation needs around mobile swap responses, shared-tablet clocking, web approvals and payroll calculations. Treat availability, compatibility and detailed controls as unconfirmed; no adoption is proposed this month."
+              }
+            ],
+            "profile": {
+              "teamSize": "42",
+              "challenge": "Shift swaps and weekly time approval",
+              "locations": "3",
+              "constraints": "No new software this month",
+              "businessType": "cafes",
+              "currentTools": "spreadsheets",
+              "approvalCadence": "Friday"
+            },
+            "sources": [
+              {
+                "id": "nevora-overview-en",
+                "url": "https://www.thevelani.com/pages/nevora",
+                "title": "NEVORA: product purpose and team workflows"
+              },
+              {
+                "id": "nevora-availability-en",
+                "url": "https://www.thevelani.com/pages/nevora",
+                "title": "Development status, pricing and requesting a quote"
+              },
+              {
+                "id": "nevora-time-clock-en",
+                "url": "https://www.thevelani.com/pages/nevora",
+                "title": "Shared PIN time clock, languages and demonstration limits"
+              },
+              {
+                "id": "nevora-payroll-en",
+                "url": "https://www.thevelani.com/pages/nevora",
+                "title": "Payroll calculations and employer responsibilities"
+              }
+            ],
+            "summary": "For your 42-person team across three cafes, the suggested approach is to tighten shift-swap tracking and Friday time approval using your existing spreadsheets. Week one establishes a shared process and clear ownership; week two tests it across locations and resolves gaps. No new software is required this month. Documented NEVORA workflows are included only as future evaluation points, not as an adoption or availability promise.",
+            "workflow": [
+              {
+                "stage": "schedule",
+                "sourceIds": [
+                  "nevora-overview-en",
+                  "nevora-availability-en"
+                ],
+                "productFact": "NEVORA's described workflow lets managers plan the week on the web and employees view shifts, respond to shift-swap offers and request time off on their phones. NEVORA is in development; availability for your business and an implementation date are not confirmed.",
+                "recommendation": "Suggested approach: keep one designated schedule spreadsheet per location and add a swap log with the affected shift, proposed replacement, manager decision and status. Have a location manager review coverage before updating the schedule, then confirm the change with both workers through your existing communication method."
+              },
+              {
+                "stage": "clock",
+                "sourceIds": [
+                  "nevora-time-clock-en"
+                ],
+                "productFact": "The described NEVORA time clock uses a shared tablet and separate four-digit worker PINs, clearing between users. Its clock interface supports English and Spanish, but platform-wide bilingual support is not established. The inspected draft demonstration did not save attendance, and its public availability is unverified.",
+                "recommendation": "Suggested approach: retain your current way of recording time and consolidate actual hours into the existing spreadsheet. Keep scheduled shifts separate from actual hours worked. Provide a clear route for workers to report missing or incorrect time, including after a swap, and have a manager review corrections while retaining the original entry and reason."
+              },
+              {
+                "stage": "approve",
+                "sourceIds": [
+                  "nevora-overview-en"
+                ],
+                "productFact": "NEVORA's published scope includes managers approving hours on the web and connecting approved hours to payroll calculations. These are described workflows for a product in development; configurable approval deadlines, reminders and multi-location approval controls are not established by the reviewed sources.",
+                "recommendation": "Suggested approach: prepare an exceptions list before Friday covering missing time, unresolved swaps and differences between scheduled and reported hours. Each location manager reviews these with the affected workers, records decisions and marks reviewed hours for handoff. Keep unresolved items visible and escalate them promptly rather than deleting reported time or silently changing entries."
+              },
+              {
+                "stage": "payroll",
+                "sourceIds": [
+                  "nevora-payroll-en"
+                ],
+                "productFact": "NEVORA's described payroll workflow calculates payroll from approved hours; a manager reviews calculations and publishes employee pay statements. NEVORA does not pay employees or file payroll taxes. Supported payroll integrations, export formats, overtime rules and deductions are not confirmed.",
+                "recommendation": "Suggested approach: give the person responsible for payroll a dated copy of reviewed hours from all three cafes, with outstanding issues listed separately. Check that the same hours are not included twice and reconcile corrections through your existing payroll process. Retain employer responsibility for accurate, timely pay and tax tasks; do not assume future NEVORA compatibility."
+              }
+            ],
+            "questions": [
+              "How are actual hours currently recorded and checked against shift swaps?",
+              "What is the payroll cutoff relative to Friday approval, and who resolves corrections that arrive afterward?"
+            ],
+            "assumptions": [
+              "The existing spreadsheets can be adjusted without adopting new software.",
+              "Suggested ownership roles can be assigned among the people who currently manage schedules, review hours and handle payroll."
+            ]
+          },
+          "review": {
+            "constraintAdherence": "Observed",
+            "documentedProductScope": "Observed",
+            "specificResponsibilitiesAndSequence": "Observed",
+            "naturalLanguage": "Observed",
+            "blockingIssue": "None found in this sample"
+          }
+        },
+        {
+          "locale": "es",
+          "status": "passed_contract_and_smoke",
+          "endToEndSmokeLatencyMs": 32754,
+          "postGenerationModification": "First action owner changed by smoke test; notes excluded here.",
+          "plan": {
+            "model": "gpt-6-1-sol",
+            "title": "Plan de dos semanas para cambios de turno y aprobación de horas en tres tiendas",
+            "actions": [
+              {
+                "owner": "Responsable de operaciones",
+                "title": "Acordar responsables y un registro común",
+                "timing": "Inicio de la semana uno",
+                "details": "Sugerencia: designar quién revisa cambios de turno y horas en cada tienda y quién coordina la entrega a nómina. Adaptar las hojas existentes con campos comunes para solicitud, estado, revisión y motivo de corrección. Mantener separadas las horas previstas y las realmente trabajadas, sin incorporar otra herramienta."
+              },
+              {
+                "owner": "Responsables de tienda",
+                "title": "Probar el circuito de intercambios",
+                "timing": "Durante la semana uno",
+                "details": "Sugerencia: registrar las nuevas solicitudes de intercambio en la hoja acordada, revisar la cobertura y confirmar cada decisión antes de modificar el horario de referencia. Si el cambio afecta a más de una tienda, coordinar la revisión entre sus responsables. Anotar las dudas del proceso para resolverlas al cierre de la semana."
+              },
+              {
+                "owner": "Responsables de tienda y responsable de nómina",
+                "title": "Realizar la primera revisión de horas",
+                "timing": "Antes del viernes y el viernes de la semana uno",
+                "details": "Sugerencia: contrastar registros de asistencia con cambios confirmados y aclarar diferencias con las personas afectadas. El viernes, identificar las horas revisadas y las incidencias abiertas. Acordar una entrega a nómina compatible con su calendario actual, sin asumir que el viernes sea también el día de pago."
+              },
+              {
+                "owner": "Gerencia, responsables de tienda y responsable de nómina",
+                "title": "Repetir el proceso y ajustar los puntos débiles",
+                "timing": "Semana dos, con revisión final el viernes",
+                "details": "Sugerencia: repetir el circuito con los ajustes de la primera semana. Revisar solicitudes sin resolver, correcciones pendientes y claridad de la entrega a nómina. Dejar por escrito el procedimiento acordado y las necesidades que seguirían abiertas para una futura evaluación de software, sin fijar una adopción de NEVORA."
+              }
+            ],
+            "profile": {
+              "teamSize": "42",
+              "challenge": "Gestionar los intercambios de turnos y la aprobación semanal de horas.",
+              "locations": "3",
+              "constraints": "No se puede adoptar software nuevo este mes.",
+              "businessType": "Tiendas",
+              "currentTools": "Hojas de cálculo",
+              "approvalCadence": "Los viernes"
+            },
+            "sources": [
+              {
+                "id": "nevora-overview-es",
+                "url": "https://www.thevelani.com/pages/nevora",
+                "title": "NEVORA: propósito del producto y trabajo por turnos"
+              },
+              {
+                "id": "nevora-availability-es",
+                "url": "https://www.thevelani.com/pages/nevora",
+                "title": "Estado de desarrollo, precios y solicitud de cotización"
+              },
+              {
+                "id": "nevora-time-clock-es",
+                "url": "https://www.thevelani.com/pages/nevora",
+                "title": "Reloj compartido con PIN, idiomas y límites de la demostración"
+              },
+              {
+                "id": "nevora-payroll-es",
+                "url": "https://www.thevelani.com/pages/nevora",
+                "title": "Cálculo de nómina y responsabilidades del empleador"
+              }
+            ],
+            "summary": "Para un equipo de 42 personas en 3 tiendas que utiliza hojas de cálculo, se propone ordenar los intercambios de turnos y la aprobación de horas de los viernes sin incorporar software este mes. La primera semana serviría para acordar responsables y registros comunes; la segunda, para probar el proceso, revisar incidencias y ajustar la entrega de horas a nómina. Las capacidades documentadas de NEVORA se presentan como referencia para una evaluación futura, no como una implementación prevista.",
+            "workflow": [
+              {
+                "stage": "schedule",
+                "sourceIds": [
+                  "nevora-overview-es",
+                  "nevora-availability-es"
+                ],
+                "productFact": "El alcance documentado de NEVORA permite a los administradores planificar la semana desde la web y a los empleados consultar turnos, responder a ofertas de intercambio y solicitar tiempo libre desde el teléfono. NEVORA está en desarrollo; estas descripciones no garantizan disponibilidad general ni inicio inmediato.",
+                "recommendation": "Sugerencia: usar las hojas de cálculo actuales para mantener un horario de referencia por tienda y un registro de solicitudes de intercambio. Registrar turno original, cambio solicitado, aceptación y revisión del responsable. Actualizar el horario solo tras revisar cobertura y confirmar el cambio a las personas afectadas."
+              },
+              {
+                "stage": "clock",
+                "sourceIds": [
+                  "nevora-time-clock-es"
+                ],
+                "productFact": "El reloj descrito de NEVORA utiliza una tableta compartida y un PIN individual de cuatro dígitos. Su interfaz admite español e inglés, sin confirmar que toda la plataforma sea bilingüe. La demostración inspeccionada era una vista previa ficticia, no guardaba asistencia real y su disponibilidad en la página publicada no está verificada.",
+                "recommendation": "Sugerencia: mantener el método actual de registro de asistencia y acordar cómo anotar entradas, salidas e incidencias en las herramientas existentes. Conservar las horas realmente trabajadas por separado del horario previsto. Revisar cualquier corrección con la persona afectada y dejar constancia del motivo, sin impedir que comunique tiempo trabajado."
+              },
+              {
+                "stage": "approve",
+                "sourceIds": [
+                  "nevora-overview-es"
+                ],
+                "productFact": "El flujo publicado de NEVORA contempla que los administradores aprueben horas desde la web y conecta las horas aprobadas con el cálculo de nómina. La documentación revisada no detalla circuitos de aprobación por tienda ni reglas de cierre o corrección.",
+                "recommendation": "Sugerencia: preparar una revisión previa al viernes por tienda, comparando horas registradas, intercambios confirmados e incidencias. El viernes, el responsable designado revisaría las diferencias con las personas afectadas y marcaría qué horas están revisadas y qué casos siguen pendientes. Las discrepancias no deberían convertirse en una retención de pago ganado."
+              },
+              {
+                "stage": "payroll",
+                "sourceIds": [
+                  "nevora-payroll-es"
+                ],
+                "productFact": "NEVORA describe el cálculo de nómina a partir de horas aprobadas, seguido de revisión administrativa y publicación de comprobantes. No paga a empleados ni presenta impuestos de nómina: esas tareas corresponden al empleador. Las fuentes no confirman integraciones, formatos de exportación ni reglas de horas extras o deducciones.",
+                "recommendation": "Sugerencia: acordar con quien procesa la nómina qué información necesita y cuándo. Entregar una copia identificada de las horas revisadas, junto con las incidencias pendientes, y comprobar su recepción. Mantener el procedimiento actual de pago y obligaciones fiscales; revisar las correcciones posteriores sin sobrescribir el historial ni retrasar indebidamente pagos."
+              }
+            ],
+            "questions": [
+              "¿Cómo registran actualmente las entradas y salidas, y cómo revisan las correcciones de horas?",
+              "¿Quién procesa la nómina y qué fecha de corte e información necesita recibir tras la aprobación del viernes?"
+            ],
+            "assumptions": [
+              "Se propone adaptar las hojas de cálculo existentes; falta confirmar si sus permisos actuales permiten compartirlas entre responsables.",
+              "Los roles indicados son sugeridos: no se ha confirmado quién tiene actualmente autoridad para revisar turnos, aprobar horas o procesar nómina."
+            ]
+          },
+          "review": {
+            "constraintAdherence": "Observed",
+            "documentedProductScope": "Observed",
+            "specificResponsibilitiesAndSequence": "Observed",
+            "naturalLanguage": "Observed",
+            "blockingIssue": "None found in this sample"
+          }
+        }
+      ]
+    },
+    {
+      "model": "gpt-6-astra",
+      "runType": "Two direct real model generations through PlanModelEngine using the same confirmed profiles and briefs as experience-smoke.ts; knowledge fetched from real development Neon repository. No database writes.",
+      "results": [
+        {
+          "locale": "en",
+          "input": {
+            "brief": "Create a practical two-week plan for our saved business details. We cannot adopt new software this month. Explain which future NEVORA capabilities would be relevant, without promising availability.",
+            "profile": {
+              "businessType": "cafes",
+              "teamSize": "42",
+              "locations": "3",
+              "currentTools": "spreadsheets",
+              "challenge": "Shift swaps and weekly time approval",
+              "constraints": "No new software this month",
+              "approvalCadence": "Friday"
+            }
+          },
+          "knowledgeIds": [
+            "nevora-availability-en",
+            "nevora-overview-en",
+            "nevora-payroll-en",
+            "nevora-support-en",
+            "nevora-availability-es",
+            "nevora-overview-es",
+            "nevora-payroll-es",
+            "nevora-support-es",
+            "nevora-time-clock-en",
+            "velani-enquiries-en",
+            "nevora-time-clock-es",
+            "velani-enquiries-es"
+          ],
+          "latencyMs": 25671,
+          "status": "passed_contract",
+          "plan": {
+            "title": "Two-week spreadsheet plan for three cafes",
+            "summary": "For your team of 42 across three cafes, the suggested approach is to tighten shift-swap tracking and Friday time approval using your existing spreadsheets. Week one establishes a consistent swap log, time-review process and payroll handoff. Week two repeats the process across the cafes and adjusts unclear steps. No new software is required this month. Future product relevance is separated from the manual recommendations below.",
+            "profile": {
+              "businessType": "cafes",
+              "teamSize": "42",
+              "locations": "3",
+              "currentTools": "spreadsheets",
+              "challenge": "Shift swaps and weekly time approval",
+              "constraints": "No new software this month",
+              "approvalCadence": "Friday"
+            },
+            "workflow": [
+              {
+                "stage": "schedule",
+                "productFact": "NEVORA's described workflow lets managers plan the week on the web and employees view shifts, respond to shift-swap offers and request time off on their phones. NEVORA is in development; these descriptions do not establish general availability or a launch date.",
+                "recommendation": "Suggestion: Keep one clearly designated current schedule for each cafe in your existing spreadsheets. Add a swap log with the affected shift, proposed coverage, status and manager review. Ask a cafe manager to check coverage before updating the schedule, retain the change history and communicate the confirmed change through your existing channel.",
+                "sourceIds": [
+                  "nevora-overview-en",
+                  "nevora-availability-en"
+                ]
+              },
+              {
+                "stage": "clock",
+                "productFact": "The described NEVORA time clock uses a shared tablet with separate four-digit worker PINs and clears between people. Its clock interface supports English and Spanish; platform-wide bilingual support is not established. The inspected draft-preview demonstration simulated clock-ins without saving attendance, and its public availability is unverified.",
+                "recommendation": "Suggestion: Keep your current method for reporting worked time. Use a consistent spreadsheet review layout across the cafes to distinguish scheduled shifts from actual reported hours and flag missing or disputed entries. Keep a route open for workers to report all time worked, including after the routine review cutoff. Review corrections with the worker rather than replacing reported time with scheduled time.",
+                "sourceIds": [
+                  "nevora-time-clock-en"
+                ]
+              },
+              {
+                "stage": "approve",
+                "productFact": "NEVORA's published workflow includes managers approving hours on the web and connecting approved hours to payroll calculations. The reviewed overview does not establish configurable approval cutoffs, multi-level approvals or automatic reminders.",
+                "recommendation": "Suggestion: Have each cafe manager review exceptions before Friday, then record Friday approval status, review date and unresolved items in the spreadsheet. Keep original entries and a reviewed correction trail. Assign unresolved items to a manager for prompt follow-up without treating an approval issue as a reason to withhold earned pay.",
+                "sourceIds": [
+                  "nevora-overview-en"
+                ]
+              },
+              {
+                "stage": "payroll",
+                "productFact": "NEVORA's described workflow calculates payroll from approved hours, followed by manager review and publication of employee pay statements. It does not pay employees or file payroll taxes; those remain employer responsibilities. Supported payroll integrations, export formats, overtime rules, jurisdictions and deductions are not verified by the reviewed sources.",
+                "recommendation": "Suggestion: Prepare a dated copy of the Friday-reviewed hours for the person responsible for payroll, alongside an exception and correction log. Have that person check completeness across all three cafes and reconcile later corrections through the existing payroll process. Keep payment and tax responsibilities with your current arrangements; do not assume future NEVORA compatibility.",
+                "sourceIds": [
+                  "nevora-payroll-en"
+                ]
+              }
+            ],
+            "actions": [
+              {
+                "title": "Agree on a shared spreadsheet process",
+                "owner": "Suggested: operations manager and cafe managers",
+                "timing": "Suggested: start of week one",
+                "details": "Agree on the current schedule version for each cafe, a common swap-log layout and a consistent time-review layout. Assign a primary reviewer and backup for each cafe. Keep all work in existing spreadsheets and document who may update schedules and who reviews time corrections."
+              },
+              {
+                "title": "Use the swap log and review time exceptions",
+                "owner": "Suggested: cafe managers",
+                "timing": "Suggested: throughout week one",
+                "details": "Record swap requests and manager decisions before changing the current schedule. Check that confirmed coverage is communicated through your existing channel. Before Friday, review reported hours for missing entries and discrepancies, invite worker clarification and retain the original entries alongside reviewed corrections."
+              },
+              {
+                "title": "Run the first Friday review and prepare the handoff",
+                "owner": "Suggested: cafe managers and payroll administrator",
+                "timing": "Suggested: Friday of week one",
+                "details": "Record each cafe's approval status and unresolved items. Prepare a dated copy of reviewed hours and a separate exception log for payroll review at the appropriate point in your existing pay cycle. Assign follow-up responsibility for each open issue and maintain a route for late time reports and corrections."
+              },
+              {
+                "title": "Repeat, refine and document future requirements",
+                "owner": "Suggested: operations manager with cafe managers and payroll administrator",
+                "timing": "Suggested: week two, concluding after Friday review",
+                "details": "Repeat the process across all three cafes and complete the second Friday review. Identify unclear swap decisions, missing time entries and handoff problems, then revise the spreadsheet instructions. Note which documented future workflows could be relevant: phone-based shift responses, a shared-tablet clock, web approval and calculations from approved hours. Record availability and payroll compatibility as items requiring confirmation, not commitments to adopt."
+              }
+            ],
+            "assumptions": [
+              "Suggested ownership uses business roles; one person may cover more than one role.",
+              "The plan assumes your existing spreadsheets can accommodate logs and review fields without adopting new software."
+            ],
+            "questions": [
+              "What period of worked time does Friday approval cover, and when must reviewed hours reach the person responsible for payroll?",
+              "Can staff swap between cafes, or should swap review remain within each location?"
+            ],
+            "sources": [
+              {
+                "id": "nevora-overview-en",
+                "title": "NEVORA: product purpose and team workflows",
+                "url": "https://www.thevelani.com/pages/nevora"
+              },
+              {
+                "id": "nevora-availability-en",
+                "title": "Development status, pricing and requesting a quote",
+                "url": "https://www.thevelani.com/pages/nevora"
+              },
+              {
+                "id": "nevora-time-clock-en",
+                "title": "Shared PIN time clock, languages and demonstration limits",
+                "url": "https://www.thevelani.com/pages/nevora"
+              },
+              {
+                "id": "nevora-payroll-en",
+                "title": "Payroll calculations and employer responsibilities",
+                "url": "https://www.thevelani.com/pages/nevora"
+              }
+            ],
+            "model": "gpt-6-astra"
+          },
+          "review": {
+            "constraintAdherence": "Observed",
+            "documentedProductScope": "Observed",
+            "specificResponsibilitiesAndSequence": "Observed",
+            "naturalLanguage": "Observed",
+            "blockingIssue": "None found in this sample"
+          }
+        },
+        {
+          "locale": "es",
+          "input": {
+            "brief": "Prepara un plan práctico de dos semanas para los datos guardados de nuestra empresa. No podemos adoptar software nuevo este mes. Explica qué capacidades documentadas de NEVORA serían relevantes sin prometer disponibilidad.",
+            "profile": {
+              "businessType": "tiendas",
+              "teamSize": "42",
+              "locations": "3",
+              "currentTools": "spreadsheets",
+              "challenge": "Shift swaps and weekly time approval",
+              "constraints": "No new software this month",
+              "approvalCadence": "Friday"
+            }
+          },
+          "knowledgeIds": [
+            "nevora-availability-es",
+            "nevora-overview-es",
+            "nevora-payroll-es",
+            "nevora-support-es",
+            "nevora-availability-en",
+            "nevora-overview-en",
+            "nevora-payroll-en",
+            "nevora-support-en",
+            "nevora-time-clock-es",
+            "velani-enquiries-es",
+            "nevora-time-clock-en",
+            "velani-enquiries-en"
+          ],
+          "latencyMs": 26792,
+          "status": "passed_contract",
+          "plan": {
+            "title": "Plan de dos semanas para cambios de turno y aprobación de horas en tres tiendas",
+            "summary": "Para el equipo de 42 personas en tres tiendas, se propone ordenar los intercambios de turno y la aprobación de horas de los viernes usando las hojas de cálculo actuales, sin adoptar software este mes. La primera semana serviría para acordar responsables, registrar cambios y probar una revisión común; la segunda, para corregir dificultades y repetir el proceso. Las capacidades documentadas de NEVORA se presentan por separado como referencia, no como compromiso de implementación.",
+            "profile": {
+              "businessType": "Tiendas",
+              "teamSize": "42",
+              "locations": "3",
+              "currentTools": "Hojas de cálculo",
+              "challenge": "Gestionar intercambios de turno y la aprobación semanal de horas.",
+              "constraints": "No se puede adoptar software nuevo este mes. Se solicita un plan práctico de dos semanas.",
+              "approvalCadence": "Los viernes"
+            },
+            "workflow": [
+              {
+                "stage": "schedule",
+                "productFact": "El flujo documentado de NEVORA permite a los administradores planificar la semana desde la web y a los empleados consultar turnos, responder a ofertas de intercambio y solicitar tiempo libre desde el teléfono. NEVORA se presenta en desarrollo; no hay disponibilidad general ni fecha de lanzamiento verificadas. La disponibilidad para cada empresa requiere confirmación.",
+                "recommendation": "Sugerencia: mantener en las hojas actuales una versión de referencia del horario por tienda y un registro de intercambios con turno original, cambio solicitado, aceptación de las personas implicadas y estado de revisión. El responsable de tienda revisaría la cobertura antes de confirmar el cambio y comunicaría la versión vigente por el canal habitual.",
+                "sourceIds": [
+                  "nevora-overview-es",
+                  "nevora-availability-es"
+                ]
+              },
+              {
+                "stage": "clock",
+                "productFact": "El reloj descrito de NEVORA funciona en una tableta compartida con un PIN individual de cuatro dígitos, distinto de la contraseña del portal. Su interfaz admite español e inglés; esto no confirma una plataforma totalmente bilingüe. La demostración revisada era una vista previa en borrador, simulaba entradas sin guardar asistencia real y no tiene disponibilidad pública verificada.",
+                "recommendation": "Sugerencia: registrar en las hojas actuales las horas realmente trabajadas, separadas del horario previsto, y anotar diferencias o fichajes faltantes para revisión. Un intercambio pendiente no debería impedir registrar el tiempo trabajado. Conservar el dato original y documentar cualquier corrección revisada con la persona afectada.",
+                "sourceIds": [
+                  "nevora-time-clock-es"
+                ]
+              },
+              {
+                "stage": "approve",
+                "productFact": "El alcance publicado de NEVORA incluye la aprobación de horas por administradores desde la web y su conexión con el cálculo de nómina. Las fuentes no detallan circuitos de aprobación por tienda, recordatorios ni cierres automáticos.",
+                "recommendation": "Sugerencia: realizar una revisión preliminar el jueves para detectar diferencias entre turnos, intercambios y horas registradas. El viernes, cada responsable de tienda marcaría las horas revisadas y las incidencias pendientes. Designar un suplente y una vía de corrección posterior, sin borrar registros ni aplazar pagos debidos por incidencias administrativas.",
+                "sourceIds": [
+                  "nevora-overview-es",
+                  "nevora-payroll-es"
+                ]
+              },
+              {
+                "stage": "payroll",
+                "productFact": "El flujo descrito de NEVORA calcula la nómina a partir de horas aprobadas; un administrador revisa los cálculos y publica comprobantes de pago. NEVORA no paga a los empleados ni presenta impuestos de nómina: estas tareas siguen a cargo del empleador. No hay una lista verificada de integraciones ni formatos de exportación.",
+                "recommendation": "Sugerencia: preparar con las hojas existentes un resumen de horas revisadas por tienda, junto con las incidencias y su seguimiento, para quien procesa la nómina. Acordar la entrega según el calendario real de pago y comprobar manualmente la recepción y las correcciones. No asumir compatibilidad automática con el proceso actual.",
+                "sourceIds": [
+                  "nevora-payroll-es"
+                ]
+              }
+            ],
+            "actions": [
+              {
+                "title": "Acordar una plantilla y responsables comunes",
+                "owner": "Sugerido: responsable de operaciones y responsables de tienda",
+                "timing": "Sugerido: inicio de la primera semana",
+                "details": "Adaptar las hojas actuales con apartados para horario vigente, intercambios, horas reales y estado de revisión. Acordar quién mantiene cada hoja, quién aprueba y quién sustituye al aprobador. Mantener el historial de cambios y limitar el acceso a quienes lo necesiten."
+              },
+              {
+                "title": "Probar el registro de intercambios y diferencias",
+                "owner": "Sugerido: responsables de tienda",
+                "timing": "Sugerido: durante la primera semana",
+                "details": "Aplicar el mismo criterio en las tres tiendas: registrar la solicitud, comprobar la aceptación y la cobertura, revisar el cambio y comunicar el horario vigente. Registrar siempre el tiempo realmente trabajado aunque difiera del horario. Anotar los problemas del proceso sin tomar decisiones disciplinarias a partir de la prueba."
+              },
+              {
+                "title": "Realizar la primera revisión semanal",
+                "owner": "Sugerido: responsables de tienda y responsable de nómina",
+                "timing": "Sugerido: jueves y viernes de la primera semana",
+                "details": "El jueves, identificar diferencias y pedir aclaraciones por el canal habitual. El viernes, revisar las horas, dejar constancia de la aprobación y asignar seguimiento a cada incidencia pendiente. Preparar el resumen para nómina y acordar cuándo debe entregarse según la frecuencia de pago real."
+              },
+              {
+                "title": "Ajustar y repetir el proceso",
+                "owner": "Sugerido: responsable de operaciones, responsables de tienda y responsable de nómina",
+                "timing": "Sugerido: segunda semana, con revisión final el viernes",
+                "details": "Simplificar los campos que hayan resultado confusos y aclarar responsabilidades pendientes. Repetir la revisión del jueves y la aprobación del viernes. Al terminar, revisar si queda una versión clara del horario y si cada incidencia tiene responsable y seguimiento. Mantener el proceso manual este mes; dejar las capacidades documentadas de NEVORA como referencia para una evaluación futura, sujeta a disponibilidad."
+              }
+            ],
+            "assumptions": [
+              "Se supone que las hojas de cálculo actuales pueden adaptarse sin incorporar software nuevo.",
+              "Se propone una revisión preliminar los jueves; no se considera una práctica ya confirmada de la empresa."
+            ],
+            "questions": [
+              "¿Quién autoriza actualmente los intercambios y aprueba las horas: cada tienda o una persona responsable de las tres?",
+              "¿Con qué frecuencia se paga y cómo se trasladan hoy las horas aprobadas a quien procesa la nómina?"
+            ],
+            "sources": [
+              {
+                "id": "nevora-overview-es",
+                "title": "NEVORA: propósito del producto y trabajo por turnos",
+                "url": "https://www.thevelani.com/pages/nevora"
+              },
+              {
+                "id": "nevora-availability-es",
+                "title": "Estado de desarrollo, precios y solicitud de cotización",
+                "url": "https://www.thevelani.com/pages/nevora"
+              },
+              {
+                "id": "nevora-time-clock-es",
+                "title": "Reloj compartido con PIN, idiomas y límites de la demostración",
+                "url": "https://www.thevelani.com/pages/nevora"
+              },
+              {
+                "id": "nevora-payroll-es",
+                "title": "Cálculo de nómina y responsabilidades del empleador",
+                "url": "https://www.thevelani.com/pages/nevora"
+              }
+            ],
+            "model": "gpt-6-astra"
+          },
+          "review": {
+            "constraintAdherence": "Observed",
+            "documentedProductScope": "Observed",
+            "specificResponsibilitiesAndSequence": "Observed",
+            "naturalLanguage": "Observed",
+            "blockingIssue": "None found in this sample"
+          }
+        }
+      ]
+    }
+  ],
+  "decisionGuidance": "Keep model selection configurable. Do not switch solely because one model is positioned as larger. Combine this plan check with the separate conversation benchmark and measured production latency/cost, then review a broader held-out set."
+}

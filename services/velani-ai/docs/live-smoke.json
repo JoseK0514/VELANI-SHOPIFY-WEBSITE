@@ -1,0 +1,61 @@
+{
+  "model": "gpt-6-1-sol",
+  "startedAt": "2026-11-02T23:28:04.664Z",
+  "firstAnswer": {
+    "message": "NEVORA could help reduce paper handling for your two shops: its described workflow connects time tracking with managers reviewing and approving hours on the web, then uses approved hours for payroll calculations and employee pay statements. For your 28 employees, I’d suggest keeping Friday as the approval deadline while moving time capture and review off paper; the actual time savings would depend on how corrections and exceptions are handled.\n\nIt cannot pay employees directly or file payroll taxes—those remain your responsibility through your existing payroll process or provider. NEVORA is still described as in development, so availability for your shops and compatibility with your payroll process need confirmation.\n\nWhat payroll system or service do you use after managers approve Friday’s timesheets?",
+    "sources": [
+      {
+        "id": "nevora-overview-en",
+        "title": "NEVORA: product purpose and team workflows",
+        "url": "https://www.thevelani.com/pages/nevora"
+      },
+      {
+        "id": "nevora-payroll-en",
+        "title": "Payroll calculations and employer responsibilities",
+        "url": "https://www.thevelani.com/pages/nevora"
+      },
+      {
+        "id": "nevora-availability-en",
+        "title": "Development status, pricing and requesting a quote",
+        "url": "https://www.thevelani.com/pages/nevora"
+      }
+    ],
+    "action": "none",
+    "confidence": "needs_human",
+    "model": "gpt-6-1-sol"
+  },
+  "followupAnswer": {
+    "message": "For your two shops and 28 employees, I’d suggest these three evaluation steps:\n\n1. Map one Friday approval cycle. Record how managers collect timesheets, resolve missing or disputed hours, and pass approved totals to payroll. Measure time spent so you have a baseline for comparison.\n\n2. Walk through your real exceptions using fictional examples. Ask how NEVORA’s described time-tracking, web approval and payroll-calculation workflows would handle corrections and each shop’s Friday sign-off. Confirm compatibility with your existing payroll process; NEVORA does not pay employees or file payroll taxes.\n\n3. Agree on a small evaluation before committing. Ask Velani to confirm availability and quote terms for your two-shop setup—NEVORA is currently described as in development. If an evaluation is available, I’d suggest testing one shop first and judging it on approval time, unresolved corrections and accuracy of the payroll handoff.",
+    "sources": [
+      {
+        "id": "nevora-overview-en",
+        "title": "NEVORA: product purpose and team workflows",
+        "url": "https://www.thevelani.com/pages/nevora"
+      },
+      {
+        "id": "nevora-payroll-en",
+        "title": "Payroll calculations and employer responsibilities",
+        "url": "https://www.thevelani.com/pages/nevora"
+      },
+      {
+        "id": "nevora-availability-en",
+        "title": "Development status, pricing and requesting a quote",
+        "url": "https://www.thevelani.com/pages/nevora"
+      }
+    ],
+    "action": "none",
+    "confidence": "grounded",
+    "model": "gpt-6-1-sol"
+  },
+  "checks": [
+    "real-model answer with sources",
+    "idempotent chat replay",
+    "stored multi-turn history",
+    "explicit synthetic lead",
+    "idempotent lead replay",
+    "chat deletion and token invalidation",
+    "lead retained separately",
+    "restricted runtime role"
+  ],
+  "status": "passed"
+}

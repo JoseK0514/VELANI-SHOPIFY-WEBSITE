@@ -1,0 +1,288 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Velani · Assistant integration test</title>
+  <style>
+    :root { color-scheme: light; font: 16px/1.55 system-ui, sans-serif; color: #17252c; background: #f5f7f8; }
+    * { box-sizing: border-box; }
+    body { margin: 0 auto; padding: 36px 20px 70px; max-width: 850px; }
+    h1 { margin: 0; font-size: clamp(1.8rem, 4vw, 2.5rem); letter-spacing: -.04em; }
+    h2 { font-size: 1.2rem; }
+    p { margin: 10px 0; }
+    a { color: #075f64; }
+    form, .panel { background: white; border: 1px solid #d5dfe2; border-radius: 12px; padding: 20px; margin: 20px 0; }
+    label { display: block; font-weight: 600; margin: 12px 0 5px; }
+    input, textarea, select, button { font: inherit; }
+    input:not([type=checkbox]), textarea, select { width: 100%; padding: 10px; border: 1px solid #879ca5; border-radius: 5px; background: white; color: inherit; }
+    textarea { resize: vertical; min-height: 86px; }
+    button, .button { display: inline-block; padding: 10px 16px; margin: 8px 6px 0 0; border: 1px solid #15444b; border-radius: 6px; background: #15444b; color: white; cursor: pointer; text-decoration: none; }
+    button.secondary { background: white; color: #15444b; }
+    button:disabled { opacity: .5; cursor: default; }
+    :focus-visible { outline: 3px solid #e8a132; outline-offset: 3px; }
+    .quiet { font-size: .88rem; color: #4e646d; }
+    .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    #transcript { min-height: 120px; max-height: 520px; overflow-y: auto; padding: 0; list-style: none; }
+    .turn { border-bottom: 1px solid #e1e7e9; padding: 18px 0; }
+    .turn p { white-space: pre-wrap; overflow-wrap: anywhere; }
+    .speaker { font-size: .82rem; font-weight: 700; color: #4e646d; text-transform: uppercase; letter-spacing: .04em; }
+    #error { color: #9f2920; }
+    #status { min-height: 1.6em; }
+    .consent { display: flex; gap: 10px; align-items: flex-start; font-weight: 400; }
+    .consent input { margin-top: 7px; flex: 0 0 auto; }
+    summary { cursor: pointer; font-weight: 650; }
+    [hidden] { display: none !important; }
+    @media (max-width: 560px) { .grid { grid-template-columns: 1fr; } body { padding: 24px 14px; } }
+  </style>
+</head>
+<body>
+  <header>
+    <p class="quiet" data-i18n="testLabel">VELANI · INTEGRATION TEST</p>
+    <h1 data-i18n="title">Talk through Nevora with us.</h1>
+    <p id="notice" class="quiet"></p>
+  </header>
+
+  <form id="connection-form">
+    <h2 data-i18n="connection">Connection settings</h2>
+    <div class="grid">
+      <div><label for="api-url" data-i18n="api">API base URL</label><input id="api-url" type="url" value="http://localhost:3001" required autocomplete="off"></div>
+      <div><label for="locale" data-i18n="language">Language</label><select id="locale"><option value="en">English</option><option value="es">Español</option></select></div>
+    </div>
+    <label for="demo-url" data-i18n="demoUrl">Verified demo URL (optional)</label>
+    <input id="demo-url" type="url" autocomplete="off" aria-describedby="demo-help">
+    <p id="demo-help" class="quiet" data-i18n="demoHelp">Set this only after verifying the demo is live on thevelani.com. Otherwise, demo actions open the Nevora product page.</p>
+    <label for="captcha" data-i18n="captcha">Verification token (when required)</label>
+    <input id="captcha" type="password" autocomplete="off" maxlength="2048" aria-describedby="captcha-help">
+    <p id="captcha-help" class="quiet" data-i18n="captchaHelp">Local development can leave this empty. For protected environments, paste a fresh Turnstile token with action velani-session before connecting or retrying session creation.</p>
+    <button id="connect" type="submit" data-i18n="connect">Connect / start new chat</button>
+    <p class="quiet" data-i18n="connectionHelp">Starting again or reloading clears this tab's conversation, but does not delete saved data. Use Delete chat to remove the active conversation. Submitted enquiries are retained separately.</p>
+  </form>
+
+  <main class="panel">
+    <h2 data-i18n="conversation">Conversation</h2>
+    <ol id="transcript" role="log" aria-live="polite" aria-relevant="additions" aria-label="Conversation"></ol>
+    <form id="chat-form" method="post">
+      <label for="message" data-i18n="message">Your question</label>
+      <textarea id="message" maxlength="4000" required></textarea>
+      <button id="send" type="submit" disabled data-i18n="send">Send message</button>
+    </form>
+    <p id="status" role="status" aria-live="polite"></p>
+    <p id="error" role="alert" hidden></p>
+    <div id="retry-controls" hidden>
+      <button id="retry" type="button" data-i18n="retry">Retry same request</button>
+      <button id="discard" type="button" class="secondary" data-i18n="discard">Discard local retry</button>
+      <p class="quiet" data-i18n="retryHelp">A connection error can happen after the server accepts a request. Retrying keeps the same request ID to avoid duplicates. Discarding only removes the local retry.</p>
+    </div>
+    <button id="delete" type="button" class="secondary" disabled data-i18n="delete">Delete chat</button>
+    <p><a href="https://www.thevelani.com/pages/nevora" data-i18n="product">Explore Nevora</a> · <a href="https://www.thevelani.com/pages/contact?interest=nevora" data-i18n="contact">Contact Velani</a></p>
+
+    <details id="lead-details">
+      <summary data-i18n="enquiry">Send an enquiry</summary>
+      <form id="lead-form" method="post">
+        <p class="quiet" data-i18n="leadHelp">Share your details only if you want Velani to contact you about Nevora. Chat messages never submit this form automatically.</p>
+        <div class="grid">
+          <div><label for="name" data-i18n="name">Name</label><input id="name" name="name" required maxlength="120" autocomplete="name"></div>
+          <div><label for="email" data-i18n="email">Email</label><input id="email" name="email" type="email" required maxlength="254" autocomplete="email"></div>
+          <div><label for="company" data-i18n="company">Company (optional)</label><input id="company" name="company" maxlength="200" autocomplete="organization"></div>
+          <div><label for="teamSize" data-i18n="team">Team size (optional)</label><input id="teamSize" name="teamSize" maxlength="60"></div>
+        </div>
+        <label for="locations" data-i18n="locations">Locations (optional)</label><input id="locations" name="locations" maxlength="100">
+        <label for="enquiry-message" data-i18n="enquiryMessage">What would you like to discuss? (optional)</label><textarea id="enquiry-message" name="message" maxlength="2000"></textarea>
+        <label class="consent" for="consent"><input id="consent" name="consent" type="checkbox" required><span data-i18n="consent">I agree that Velani may store these details and contact me about this enquiry. Enquiries are retained for up to 90 days.</span></label>
+        <button id="lead-send" type="submit" disabled data-i18n="leadSend">Send enquiry</button>
+      </form>
+    </details>
+  </main>
+
+  <script type="module">
+    import { VelaniAssistant, NOTICES, safeSourceUrl } from './velani-assistant.js';
+
+    const copy = {
+      en: {
+        testLabel: 'VELANI · INTEGRATION TEST', title: 'Talk through Nevora with us.', connection: 'Connection settings',
+        api: 'API base URL', language: 'Language', captcha: 'Verification token (when required)',
+        demoUrl: 'Verified demo URL (optional)', demoHelp: 'Set this only after verifying the demo is live on thevelani.com. Otherwise, demo actions open the Nevora product page.',
+        captchaHelp: 'Local development can leave this empty. For protected environments, paste a fresh Turnstile token with action velani-session before connecting or retrying session creation.',
+        connect: 'Connect / start new chat', connectionHelp: "Starting again or reloading clears this tab's conversation, but does not delete saved data. Use Delete chat to remove the active conversation. Submitted enquiries are retained separately.",
+        conversation: 'Conversation', message: 'Your question', send: 'Send message', retry: 'Retry same request', discard: 'Discard local retry',
+        retryHelp: 'A connection error can happen after the server accepts a request. Retrying keeps the same request ID to avoid duplicates. Discarding only removes the local retry.',
+        delete: 'Delete chat', product: 'Explore Nevora', demo: 'Try the Nevora demo', contact: 'Contact Velani', support: 'Get Nevora support', enquiry: 'Send an enquiry',
+        leadHelp: 'Share your details only if you want Velani to contact you about Nevora. Chat messages never submit this form automatically.',
+        name: 'Name', email: 'Email', company: 'Company (optional)', team: 'Team size (optional)', locations: 'Locations (optional)',
+        enquiryMessage: 'What would you like to discuss? (optional)', consent: 'I agree that Velani may store these details and contact me about this enquiry. Enquiries are retained for up to 90 days.',
+        leadSend: 'Send enquiry', connecting: 'Connecting…', thinking: 'Thinking…', saving: 'Saving your enquiry…', deleting: 'Deleting chat…',
+        ready: 'Connected. Ask about Nevora and your business needs.', saved: 'Your enquiry has been saved.', deleted: 'Chat deleted. Submitted enquiries are retained separately.',
+        discarded: 'Local retry discarded. The original request may have reached the server.', you: 'You', assistant: 'Nevora assistant',
+        sources: 'Sources', unexpected: 'Unable to complete this request.', waiting: 'Wait before retrying.',
+      },
+      es: {
+        testLabel: 'VELANI · PRUEBA DE INTEGRACIÓN', title: 'Conversemos sobre Nevora.', connection: 'Configuración de conexión',
+        api: 'URL base de la API', language: 'Idioma', captcha: 'Token de verificación (si se requiere)',
+        demoUrl: 'URL de demo verificada (opcional)', demoHelp: 'Configúrala solo después de verificar que la demo está disponible en thevelani.com. De lo contrario, las acciones de demo abrirán la página del producto Nevora.',
+        captchaHelp: 'En desarrollo local puede quedar vacío. En entornos protegidos, pega un token nuevo de Turnstile con la acción velani-session antes de conectar o reintentar la creación de la sesión.',
+        connect: 'Conectar / iniciar otro chat', connectionHelp: 'Volver a conectar o recargar borra la conversación de esta pestaña, pero no los datos guardados. Usa Borrar chat para eliminar la conversación activa. Las consultas enviadas se conservan por separado.',
+        conversation: 'Conversación', message: 'Tu pregunta', send: 'Enviar mensaje', retry: 'Reintentar la misma solicitud', discard: 'Descartar reintento local',
+        retryHelp: 'La conexión puede fallar después de que el servidor acepte una solicitud. El reintento conserva su identificador para evitar duplicados. Descartar solo elimina el reintento local.',
+        delete: 'Borrar chat', product: 'Explorar Nevora', demo: 'Probar la demo de Nevora', contact: 'Contactar con Velani', support: 'Obtener soporte de Nevora', enquiry: 'Enviar una consulta',
+        leadHelp: 'Comparte tus datos solo si quieres que Velani te contacte sobre Nevora. Los mensajes del chat nunca envían este formulario automáticamente.',
+        name: 'Nombre', email: 'Correo electrónico', company: 'Empresa (opcional)', team: 'Tamaño del equipo (opcional)', locations: 'Ubicaciones (opcional)',
+        enquiryMessage: '¿De qué te gustaría hablar? (opcional)', consent: 'Acepto que Velani guarde estos datos y me contacte sobre esta consulta. Las consultas se conservan hasta 90 días.',
+        leadSend: 'Enviar consulta', connecting: 'Conectando…', thinking: 'Pensando…', saving: 'Guardando tu consulta…', deleting: 'Borrando el chat…',
+        ready: 'Conectado. Pregunta sobre Nevora y las necesidades de tu negocio.', saved: 'Tu consulta se ha guardado.', deleted: 'Chat borrado. Las consultas enviadas se conservan por separado.',
+        discarded: 'Reintento local descartado. La solicitud original puede haber llegado al servidor.', you: 'Tú', assistant: 'Asistente de Nevora',
+        sources: 'Fuentes', unexpected: 'No se pudo completar esta solicitud.', waiting: 'Espera antes de reintentar.',
+      },
+    };
+    const el = id => document.getElementById(id);
+    let client = null;
+    let demoUrl = null;
+    let busy = false;
+    let retryTimer;
+    const t = key => copy[el('locale').value][key];
+
+    function translate() {
+      document.documentElement.lang = el('locale').value;
+      document.querySelectorAll('[data-i18n]').forEach(node => { node.textContent = t(node.dataset.i18n); });
+      el('notice').textContent = NOTICES[el('locale').value];
+      el('transcript').setAttribute('aria-label', t('conversation'));
+    }
+
+    function controls() {
+      const failed = client?.failedRequest;
+      const connected = Boolean(client?.session);
+      el('connect').disabled = busy;
+      el('api-url').disabled = busy;
+      el('demo-url').disabled = busy;
+      el('locale').disabled = busy || connected;
+      el('send').disabled = busy || !connected || Boolean(failed);
+      el('lead-send').disabled = busy || !connected || Boolean(failed);
+      el('delete').disabled = busy || !connected || Boolean(failed);
+      el('retry-controls').hidden = !failed;
+      el('discard').disabled = busy;
+      const wait = Math.max(0, (failed?.retryAt ?? 0) - Date.now());
+      el('retry').disabled = busy || !failed?.retryable || wait > 0;
+      el('retry').title = wait > 0 ? t('waiting') : '';
+      clearTimeout(retryTimer);
+      if (wait > 0) retryTimer = setTimeout(controls, Math.min(wait + 25, 60_000));
+      el('transcript').setAttribute('aria-busy', String(busy));
+    }
+
+    function addTurn(speaker, message, answer) {
+      const item = document.createElement('li');
+      item.className = 'turn';
+      const label = document.createElement('div');
+      label.className = 'speaker';
+      label.textContent = speaker;
+      const paragraph = document.createElement('p');
+      paragraph.textContent = message;
+      item.append(label, paragraph);
+      if (answer?.sources?.length) {
+        const sources = document.createElement('ul');
+        sources.setAttribute('aria-label', t('sources'));
+        for (const source of answer.sources) {
+          const href = safeSourceUrl(source.url);
+          if (!href) continue;
+          const row = document.createElement('li');
+          const link = document.createElement('a');
+          link.href = href;
+          link.textContent = source.title;
+          link.target = '_blank';
+          link.rel = 'noopener noreferrer';
+          row.append(link);
+          sources.append(row);
+        }
+        item.append(sources);
+      }
+      if (answer?.action === 'show_demo') {
+        const link = document.createElement('a');
+        link.className = 'button';
+        link.textContent = t(demoUrl ? 'demo' : 'product');
+        link.href = demoUrl || 'https://www.thevelani.com/pages/nevora';
+        item.append(link);
+      } else if (answer?.action === 'human_help') {
+        const hasSupportSource = answer.sources.some(source => {
+          const href = safeSourceUrl(source.url);
+          return href && new URL(href).pathname.replace(/\/$/, '') === '/pages/nevora-support';
+        });
+        const link = document.createElement('a');
+        link.className = 'button';
+        link.textContent = t(hasSupportSource ? 'support' : 'contact');
+        link.href = hasSupportSource ? 'https://www.thevelani.com/pages/nevora-support'
+          : 'https://www.thevelani.com/pages/contact?interest=nevora';
+        item.append(link);
+      } else if (answer?.action === 'lead_form') {
+        const button = document.createElement('button');
+        button.type = 'button';
+        button.textContent = t('enquiry');
+        button.onclick = () => { el('lead-details').open = true; el('name').focus(); };
+        item.append(button);
+      }
+      el('transcript').append(item);
+      el('transcript').scrollTop = el('transcript').scrollHeight;
+    }
+
+    function success(kind, result) {
+      el('status').textContent = '';
+      if (kind === 'chat') addTurn(t('assistant'), result.message, result);
+      if (kind === 'session') el('status').textContent = t('ready');
+      if (kind === 'lead') { el('status').textContent = t('saved'); el('lead-form').reset(); }
+      if (kind === 'delete') { el('status').textContent = t('deleted'); el('transcript').replaceChildren(); }
+    }
+
+    async function run(kind, task) {
+      busy = true;
+      el('error').hidden = true;
+      el('status').textContent = t({ session: 'connecting', chat: 'thinking', lead: 'saving', delete: 'deleting' }[kind]);
+      controls();
+      try { success(kind, await task()); }
+      catch (error) { el('status').textContent = ''; el('error').textContent = error.message || t('unexpected'); el('error').hidden = false; }
+      finally { busy = false; controls(); }
+    }
+
+    el('locale').addEventListener('change', translate);
+    el('connection-form').addEventListener('submit', event => {
+      event.preventDefault();
+      if (busy) return;
+      try {
+        demoUrl = safeSourceUrl(el('demo-url').value);
+        client = new VelaniAssistant({ apiBaseUrl: el('api-url').value, locale: el('locale').value,
+          getCaptchaToken: () => { const token = el('captcha').value.trim(); el('captcha').value = ''; return token || undefined; },
+        });
+        el('transcript').replaceChildren();
+        void run('session', () => client.start());
+      } catch (error) { el('error').textContent = error.message; el('error').hidden = false; }
+    });
+    el('chat-form').addEventListener('submit', event => {
+      event.preventDefault();
+      const message = el('message').value.trim();
+      if (!message || !client || busy || client.failedRequest) return;
+      addTurn(t('you'), message);
+      el('message').value = '';
+      void run('chat', () => client.chat(message));
+    });
+    el('lead-form').addEventListener('submit', event => {
+      event.preventDefault();
+      if (!client || busy || client.failedRequest || !el('consent').checked) return;
+      const fields = Object.fromEntries(new FormData(event.currentTarget));
+      void run('lead', () => client.captureLead({ ...fields, consent: true, consentVersion: 'lead-v1' }));
+    });
+    el('retry').addEventListener('click', () => {
+      const kind = client?.failedRequest?.kind;
+      if (!kind || busy) return;
+      void run(kind, () => client.retryLastRequest());
+    });
+    el('discard').addEventListener('click', () => {
+      if (!client || busy) return;
+      client.discardFailedRequest();
+      el('error').hidden = true;
+      el('status').textContent = t('discarded');
+      controls();
+    });
+    el('delete').addEventListener('click', () => { if (client && !busy) void run('delete', () => client.deleteSession()); });
+    translate();
+    controls();
+  </script>
+</body>
+</html>

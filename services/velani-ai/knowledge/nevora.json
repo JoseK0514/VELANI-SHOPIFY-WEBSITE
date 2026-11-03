@@ -1,0 +1,118 @@
+[
+  {
+    "id": "nevora-overview-en",
+    "title": "NEVORA: product purpose and team workflows",
+    "url": "https://www.thevelani.com/pages/nevora",
+    "locale": "en",
+    "reviewedAt": "2026-11-02",
+    "validUntil": "2026-12-02",
+    "isCore": true,
+    "content": "NEVORA is Velani's workforce product for teams that work shifts. Its published scope connects scheduling, time tracking, approved hours, payroll calculations and employee pay statements. Managers plan the week and approve hours on the web. Employees can view shifts, respond to shift-swap offers and request time off on their phones. These are the product's described workflows, not a guarantee of general availability: NEVORA is currently described as in development. A useful product conversation starts with the employer's current workflow and biggest difficulty, then relates only documented capabilities to that need. Do not promise a specific integration, country-specific labor-rule engine, automated compliance, implementation date, savings amount or staffing outcome. The website bot provides product guidance and enquiry support; it does not operate a NEVORA employer account or read workforce records."
+  },
+  {
+    "id": "nevora-overview-es",
+    "title": "NEVORA: propósito del producto y trabajo por turnos",
+    "url": "https://www.thevelani.com/pages/nevora",
+    "locale": "es",
+    "reviewedAt": "2026-11-02",
+    "validUntil": "2026-12-02",
+    "isCore": true,
+    "content": "NEVORA es el producto de Velani para equipos que trabajan por turnos. El alcance publicado conecta horarios, registro de tiempo, horas aprobadas, cálculo de nómina y comprobantes de pago. Los administradores planifican la semana y aprueban horas desde la web. Los empleados pueden consultar turnos, responder a ofertas de intercambio y solicitar tiempo libre desde el teléfono. Estos son los flujos descritos del producto, no una garantía de disponibilidad general: NEVORA se presenta actualmente en desarrollo. Conviene entender el proceso actual de la empresa y su principal dificultad antes de relacionarlos con funciones documentadas. No se deben prometer integraciones específicas, un motor de reglas laborales por país, cumplimiento automático, fechas de implementación, ahorros concretos ni resultados de personal. El asistente del sitio orienta sobre el producto y consultas comerciales; no opera cuentas de empleadores ni consulta datos de trabajadores."
+  },
+  {
+    "id": "nevora-time-clock-en",
+    "title": "Shared PIN time clock, languages and demonstration limits",
+    "url": "https://www.thevelani.com/pages/nevora",
+    "locale": "en",
+    "reviewedAt": "2026-11-02",
+    "validUntil": "2026-12-02",
+    "content": "The described workplace time clock runs on a shared tablet. Each worker uses a separate four-digit PIN, distinct from their employee portal password. The clock clears between people. The clock interface supports English and Spanish; this does not establish that the entire NEVORA platform, every app or every support channel is bilingual. A browser time-clock demonstration was inspected in the draft theme preview. It accepts sample four-digit input, simulates a clock-in using the device time, offers English and Spanish, and resets. The inspected demonstration used local in-memory state and did not write an employee attendance record. Treat it as a fictional product illustration; use sample digits, never a real employee PIN. Its availability on the published product page has not been verified. Do not describe a preview clock-in as a real time punch or imply the website assistant can clock someone in."
+  },
+  {
+    "id": "nevora-time-clock-es",
+    "title": "Reloj compartido con PIN, idiomas y límites de la demostración",
+    "url": "https://www.thevelani.com/pages/nevora",
+    "locale": "es",
+    "reviewedAt": "2026-11-02",
+    "validUntil": "2026-12-02",
+    "content": "El reloj de asistencia descrito funciona en una tableta compartida. Cada trabajador utiliza un PIN individual de cuatro dígitos, diferente de la contraseña de su portal de empleado. El reloj se limpia entre personas. La interfaz del reloj admite español e inglés; esto no confirma que toda la plataforma NEVORA, cada aplicación o todos los canales de soporte sean bilingües. Se inspeccionó una demostración del reloj en el navegador dentro de la vista previa de un tema en borrador. Acepta cuatro dígitos de ejemplo, simula una entrada con la hora del dispositivo, permite cambiar entre español e inglés y se reinicia. La demostración inspeccionada usaba estado local en memoria y no guardaba asistencia real. Es una ilustración ficticia: deben utilizarse dígitos de ejemplo, nunca el PIN real de un empleado. No se ha verificado su disponibilidad en la página publicada. El asistente no puede registrar entradas reales."
+  },
+  {
+    "id": "nevora-payroll-en",
+    "title": "Payroll calculations and employer responsibilities",
+    "url": "https://www.thevelani.com/pages/nevora",
+    "locale": "en",
+    "reviewedAt": "2026-11-02",
+    "validUntil": "2026-12-02",
+    "isCore": true,
+    "content": "The described NEVORA payroll workflow calculates payroll from approved hours. A manager reviews the calculations and publishes employee pay statements. NEVORA does not pay employees and does not file payroll taxes; those tasks remain the employer's responsibility. Do not describe the product as a payroll-payment service, direct-deposit service, tax-filing service or replacement for the employer's payroll provider unless newly reviewed official documentation expressly confirms that capability. There is no verified list here of supported payroll integrations, export formats, overtime rules, tax jurisdictions or deductions. Ask about the employer's current approval and payroll process when helpful, and refer detailed compatibility or legal-compliance questions to the team. The website assistant cannot read, calculate from, modify or publish a real employee's payroll records."
+  },
+  {
+    "id": "nevora-payroll-es",
+    "title": "Cálculo de nómina y responsabilidades del empleador",
+    "url": "https://www.thevelani.com/pages/nevora",
+    "locale": "es",
+    "reviewedAt": "2026-11-02",
+    "validUntil": "2026-12-02",
+    "isCore": true,
+    "content": "El flujo de nómina descrito de NEVORA calcula la nómina a partir de horas aprobadas. Un administrador revisa los cálculos y publica los comprobantes de pago de los empleados. NEVORA no paga a los empleados ni presenta impuestos de nómina; esas tareas siguen siendo responsabilidad del empleador. No se debe presentar el producto como servicio de pago, depósito directo o presentación de impuestos, ni como sustituto del proveedor de nómina, salvo que nueva documentación oficial revisada confirme expresamente esa función. Aquí no hay una lista verificada de integraciones de nómina, formatos de exportación, reglas de horas extras, jurisdicciones fiscales o deducciones. Cuando ayude, conviene preguntar cómo se aprueban y procesan las horas actualmente y remitir dudas específicas de compatibilidad o cumplimiento al equipo. El asistente no puede consultar, modificar ni publicar la nómina real de un trabajador."
+  },
+  {
+    "id": "nevora-availability-en",
+    "title": "Development status, pricing and requesting a quote",
+    "url": "https://www.thevelani.com/pages/nevora",
+    "locale": "en",
+    "reviewedAt": "2026-11-02",
+    "validUntil": "2026-12-02",
+    "isCore": true,
+    "content": "The reviewed product page describes NEVORA as 'In development' and 'Offered to businesses by quote.' No verified public price, per-employee rate, pricing tier, free-trial offer, general launch date, app-store availability or instant self-service signup is established by these sources. Do not invent a price, calculate a binding estimate from a fictional rate, or promise that an employer can launch today. For a useful quote enquiry, the team can discuss the business's team size, locations, pay cadence, current tools and main operational need. Ask only for the next useful missing detail, rather than making visitors repeat details already given. Asking for a quote is nonbinding. The contact route for NEVORA is https://www.thevelani.com/pages/contact?interest=nevora. Only the team can confirm actual commercial terms and availability for a particular business."
+  },
+  {
+    "id": "nevora-availability-es",
+    "title": "Estado de desarrollo, precios y solicitud de cotización",
+    "url": "https://www.thevelani.com/pages/nevora",
+    "locale": "es",
+    "reviewedAt": "2026-11-02",
+    "validUntil": "2026-12-02",
+    "isCore": true,
+    "content": "La página revisada presenta NEVORA 'en desarrollo' y lo ofrece a empresas mediante cotización. Estas fuentes no establecen un precio público verificado, tarifa por empleado, planes de precios, prueba gratuita, fecha de lanzamiento general, disponibilidad en tiendas de aplicaciones ni registro inmediato de autoservicio. No se debe inventar un precio, calcular una propuesta vinculante usando una tarifa ficticia ni prometer que una empresa puede empezar hoy. Para preparar una consulta útil, el equipo puede conversar sobre cantidad de empleados, ubicaciones, frecuencia de pago, herramientas actuales y necesidad principal. Conviene pedir solo el siguiente dato que haga falta, sin repetir preguntas ya contestadas. Consultar una cotización no implica compromiso. La vía de contacto de NEVORA es https://www.thevelani.com/pages/contact?interest=nevora. El equipo debe confirmar las condiciones comerciales y la disponibilidad para cada empresa."
+  },
+  {
+    "id": "nevora-support-en",
+    "title": "Employee account help and privacy boundaries",
+    "url": "https://www.thevelani.com/pages/nevora-support",
+    "locale": "en",
+    "reviewedAt": "2026-11-02",
+    "validUntil": "2026-12-02",
+    "isCore": true,
+    "content": "NEVORA employee accounts come from the employer. For access problems or questions about a personal schedule, timecard or pay statement, the employee should contact their manager or employer and use the official NEVORA support route when needed. Velani publishes support@thevelani.com. The website product assistant has no authenticated access to employer accounts, employee directories, wages, PINs, passwords, schedules or payroll. It cannot reset credentials, edit time punches, approve leave or delete an account. Do not ask a visitor to paste credentials, government identifiers, financial details or employee records into this chat. The official product privacy and account-deletion pages are https://www.thevelani.com/pages/nevora-privacy and https://www.thevelani.com/pages/nevora-account-deletion. Specific security certifications, regulatory compliance, hosting location and contractual service guarantees require verified documentation or confirmation from the team; none is established in this knowledge article."
+  },
+  {
+    "id": "nevora-support-es",
+    "title": "Ayuda con cuentas de empleados y límites de privacidad",
+    "url": "https://www.thevelani.com/pages/nevora-support",
+    "locale": "es",
+    "reviewedAt": "2026-11-02",
+    "validUntil": "2026-12-02",
+    "isCore": true,
+    "content": "El empleador proporciona las cuentas de empleados de NEVORA. Si una persona necesita acceso o ayuda con su horario, registro de horas o comprobante de pago, debe acudir a su administrador o empleador y, cuando sea necesario, al soporte oficial de NEVORA. Velani publica support@thevelani.com. El asistente comercial del sitio no tiene acceso autenticado a cuentas de empresas, directorios, salarios, PIN, contraseñas, horarios ni nóminas. No puede restablecer credenciales, modificar fichajes, aprobar permisos ni eliminar cuentas. No se deben pedir contraseñas, documentos de identidad, datos financieros o expedientes de empleados en este chat. Las páginas oficiales de privacidad y eliminación de cuenta son https://www.thevelani.com/pages/nevora-privacy y https://www.thevelani.com/pages/nevora-account-deletion. Las certificaciones de seguridad, cumplimiento normativo, ubicación de alojamiento y garantías contractuales requieren documentación verificada o confirmación del equipo; este artículo no las establece."
+  },
+  {
+    "id": "velani-enquiries-en",
+    "title": "Velani, custom development and commercial enquiries",
+    "url": "https://www.thevelani.com/pages/contact?interest=nevora",
+    "locale": "en",
+    "reviewedAt": "2026-11-02",
+    "validUntil": "2026-12-02",
+    "content": "Velani is a brand of VELANI LLC. Alongside NEVORA, its site describes custom web and mobile applications, business systems and integrations; custom project scope and pricing require a discussion with the team. Custom-development information is at https://www.thevelani.com/pages/custom-development and enquiries can use https://www.thevelani.com/pages/contact?interest=custom-software. NEVORA enquiries can use https://www.thevelani.com/pages/contact?interest=nevora. A helpful assistant answers the visitor's product question before suggesting a quote or follow-up. For this assistant's lead workflow, contact details are submitted through an explicit form with consent. Mentioning an email address in chat does not mean a lead was saved, an email was sent or a meeting was booked. The language model cannot perform these actions. Do not claim completion without the application confirming a successful submission. Do not invent a booking URL, response-time promise or named sales representative."
+  },
+  {
+    "id": "velani-enquiries-es",
+    "title": "Velani, desarrollo a medida y consultas comerciales",
+    "url": "https://www.thevelani.com/pages/contact?interest=nevora",
+    "locale": "es",
+    "reviewedAt": "2026-11-02",
+    "validUntil": "2026-12-02",
+    "content": "Velani es una marca de VELANI LLC. Además de NEVORA, su sitio describe aplicaciones web y móviles a medida, sistemas empresariales e integraciones; el alcance y precio de un proyecto se acuerdan con el equipo. La información de desarrollo a medida está en https://www.thevelani.com/pages/custom-development y las consultas pueden dirigirse a https://www.thevelani.com/pages/contact?interest=custom-software. Para NEVORA, la ruta es https://www.thevelani.com/pages/contact?interest=nevora. El asistente debe resolver primero la pregunta del visitante y después, si resulta útil, sugerir una cotización o seguimiento. En el flujo de este asistente, los datos de contacto se envían mediante un formulario explícito con consentimiento. Escribir un correo en el chat no significa que se haya guardado una consulta, enviado un mensaje o reservado una reunión. El modelo no realiza esas acciones ni debe afirmar que terminaron sin confirmación de la aplicación. No se deben inventar enlaces de reserva, plazos de respuesta ni representantes."
+  }
+]

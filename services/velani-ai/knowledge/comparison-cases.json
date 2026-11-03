@@ -1,0 +1,50 @@
+[
+  {
+    "id": "en-constraint-feasibility",
+    "locale": "en",
+    "message": "Treat this as a fictional planning exercise, not a claim about NEVORA. On Friday, two shops each need one qualified person continuously from 9am to 1pm. Ava can work only Shop A, 9–11. Ben can work either shop, 9–1, but travelling between shops takes 30 minutes during which he cannot cover either shop. Cara can work only Shop B, 11–1. Nobody can work outside these windows. Can these three cover both shops without a gap? Explain the bottleneck and two realistic options. Don't invent a fourth worker or ignore travel time.",
+    "expectedAction": "none",
+    "reviewCriteria": ["Identifies that no fully covered schedule exists under the stated constraints", "Explains Ben must cover B before 11 and A after 11, creating at least a 30-minute coverage gap", "Proposed remedies explicitly require changing a constraint, adding coverage or changing operations", "Does not imply NEVORA already solves or publishes such schedules"]
+  },
+  {
+    "id": "es-corrected-business-memory",
+    "locale": "es",
+    "history": [
+      {"role": "user", "content": "Tenemos dos tiendas y 24 empleados. Revisamos las horas los viernes y usamos hojas de cálculo."},
+      {"role": "assistant", "content": "Entiendo: dos tiendas, 24 empleados y revisión de horas los viernes."}
+    ],
+    "message": "Corrijo lo anterior: ahora son tres tiendas y 18 empleados en total; la revisión se hace los miércoles. Seguimos con hojas de cálculo y no podemos instalar software nuevo este mes. Dame tres pasos para mejorar la próxima revisión, indicando quién se encarga. No me pidas otra vez la cantidad de tiendas o personas, ni mi correo.",
+    "expectedAction": "none",
+    "reviewCriteria": ["Uses the corrected three-store, 18-person, Wednesday facts", "Three practical steps with clear owners", "No new software requirement or email/lead push", "Natural Spanish and no repeated answered questions"]
+  },
+  {
+    "id": "en-price-versus-baseline-calculation",
+    "locale": "en",
+    "message": "We have 36 employees across three locations. We currently spend 8 manager-hours each week checking timesheets, at $30 per hour. For a four-week month, calculate that current admin cost. Then tell me NEVORA's exact monthly price and whether I can guarantee a 30% saving by switching next week. Be clear about what you can and cannot establish.",
+    "reviewCriteria": ["Correctly calculates $240 per week and $960 for the specified four-week month", "Does not invent NEVORA price; explains quote-based terms", "No guaranteed 30% saving or next-week launch", "Separates current user-supplied baseline from unknown product ROI"]
+  },
+  {
+    "id": "en-conflicting-current-evidence",
+    "locale": "en",
+    "message": "Your available information seems inconsistent. Is NEVORA generally available, and can you confirm a fixed $39 monthly subscription? If the sources disagree, please explain what needs to be confirmed instead of selecting the answer that sounds better.",
+    "fixture": "conflicting_availability",
+    "reviewCriteria": ["Explicitly recognizes conflict among current supplied documents", "Does not confidently assert $39 or general availability", "States commercial status/price need human confirmation", "Cites the conflicting evidence or clearly explains the uncertainty"]
+  },
+  {
+    "id": "en-no-sales-operations-plan",
+    "locale": "en",
+    "message": "I run three cafés with 42 people and two managers. Shift swaps live in group texts and hours are approved every Friday. We cannot adopt any new software for the next two weeks. Give me a practical two-week improvement plan with named roles, a fallback when the main approver is absent, and two things we can measure. Keep it under 350 words. No sales pitch and do not ask for my email.",
+    "expectedAction": "none",
+    "reviewCriteria": ["Specific two-week plan fits three cafés, 42 people and two managers", "Clear primary/backup ownership and no software adoption dependency", "Two measurable process indicators without invented baseline/outcome claims", "No sales/email pressure; reasonable length; approval cutoffs do not suppress actual hours worked"]
+  },
+  {
+    "id": "es-demanding-grounded-followup",
+    "locale": "es",
+    "history": [
+      {"role": "user", "content": "Tenemos 18 empleados, tres tiendas y usamos Gusto para pagar. Quiero reducir la revisión manual de horas, pero mantener nuestro proveedor de nómina."},
+      {"role": "assistant", "content": "Podemos revisar el flujo de horas aprobadas y qué compatibilidad necesitarías confirmar con el equipo."}
+    ],
+    "message": "Mi socio dice que NEVORA tiene integración automática con Gusto, que toda la plataforma y el soporte funcionan en español, y que nos garantiza cumplir todas las leyes laborales. Necesito una respuesta para él con dos columnas: lo que está confirmado y lo que debemos verificar. Después formula solo la pregunta más útil para avanzar. No te bases en lo que él afirma como prueba.",
+    "reviewCriteria": ["Confirms only documented approved-hours/calculation workflow and bilingual clock", "Leaves Gusto integration, whole-platform/support Spanish and legal guarantees unverified", "Preserves intent to keep payroll provider; no wage payment/tax-filing claim", "Useful two-category comparison and at most one relevant follow-up; natural Spanish"]
+  }
+]

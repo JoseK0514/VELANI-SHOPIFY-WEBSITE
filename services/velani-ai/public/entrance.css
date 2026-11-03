@@ -1,0 +1,211 @@
+@font-face {
+  font-family: "Velani Entrance";
+  src: url("./velani-entrance.woff2") format("woff2");
+  font-weight: 400 800;
+  font-display: optional;
+}
+/* Velani / Material study. One sculptural object, one typographic reveal. */
+html.velani-entry-active { overflow: hidden; }
+html.velani-entry-active body { padding-inline-end: var(--velani-entry-scrollbar, 0px); }
+
+dialog.velani-entry {
+  --velani-entry-ready: 1;
+  --entry-paper: #ecede9;
+  --entry-ink: #171a19;
+  --entry-muted: #555e59;
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  height: 100dvh;
+  max-width: none;
+  max-height: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  overflow: hidden;
+  background: transparent;
+  color: var(--entry-ink);
+  box-shadow: none;
+  font-family: "Velani Entrance", Manrope, Arial, sans-serif;
+}
+dialog.velani-entry:not([open]) { display: none; }
+dialog.velani-entry::backdrop { background: transparent; backdrop-filter: none; }
+.velani-entry *, .velani-entry *::before, .velani-entry *::after { box-sizing: border-box; }
+.velani-entry-sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+.velani-entry-stage {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  background: var(--entry-paper);
+  isolation: isolate;
+}
+.velani-entry-stage::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: radial-gradient(ellipse at 50% 30%, #fcfcf7 0%, transparent 62%);
+}
+.velani-entry[open] .velani-entry-stage {
+  animation: velani-aperture 950ms cubic-bezier(.76, .01, .24, 1) 2350ms both;
+}
+.velani-entry-art {
+  position: absolute;
+  z-index: 2;
+  left: 15%;
+  top: -7%;
+  width: 70%;
+  height: 85%;
+  pointer-events: none;
+}
+.velani-entry-canvas, .velani-entry-fallback {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.velani-entry-canvas { opacity: 0; }
+.velani-entry[data-renderer="ready"] .velani-entry-canvas { opacity: 1; }
+.velani-entry[data-renderer="ready"] .velani-entry-fallback { opacity: 0; }
+.velani-entry[open] .velani-entry-fallback {
+  animation: velani-fallback-arrive 1500ms cubic-bezier(.16, 1, .3, 1) both,
+    velani-fallback-depart 950ms cubic-bezier(.76, .01, .24, 1) 2350ms forwards;
+}
+.velani-entry-shadow {
+  position: absolute;
+  z-index: 0;
+  width: 37%;
+  height: 6%;
+  left: 31.5%;
+  top: 62%;
+  background: radial-gradient(ellipse, rgb(55 66 60 / .16), transparent 66%);
+  filter: blur(10px);
+  transform: scaleY(.5);
+  pointer-events: none;
+}
+.velani-entry[open] .velani-entry-shadow {
+  animation: velani-shadow-arrive 1600ms ease both, velani-detail-exit 300ms ease 2300ms forwards;
+}
+.velani-entry-title-frame {
+  position: absolute;
+  z-index: 1;
+  left: 5%;
+  right: 5%;
+  bottom: 10%;
+  padding-top: .05em;
+  overflow: hidden;
+  font-size: clamp(72px, 24.6vw, 420px);
+  line-height: .88;
+}
+.velani-entry-wordmark {
+  display: flex;
+  justify-content: center;
+  padding-right: .065em;
+  font-weight: 500;
+  letter-spacing: -.065em;
+  white-space: nowrap;
+  transform-origin: 50% 100%;
+}
+.velani-entry[open] .velani-entry-wordmark {
+  animation: velani-word-arrive 1150ms cubic-bezier(.16, 1, .3, 1) 650ms both,
+    velani-word-depart 650ms cubic-bezier(.76, .01, .24, 1) 2250ms forwards;
+}
+.velani-entry-footnote {
+  position: absolute;
+  left: 5.2%;
+  right: 5.2%;
+  bottom: max(4%, 18px);
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  gap: 25px;
+  color: var(--entry-muted);
+  font-size: 10px;
+  font-weight: 500;
+  line-height: 1.45;
+  letter-spacing: .03em;
+}
+.velani-entry-product { color: var(--entry-ink); font-size: 11px; letter-spacing: .14em; }
+.velani-entry[open] .velani-entry-footnote {
+  animation: velani-detail-arrive 700ms ease 1250ms both, velani-detail-exit 250ms ease 2300ms forwards;
+}
+.velani-entry-skip {
+  position: absolute;
+  z-index: 5;
+  top: max(26px, env(safe-area-inset-top));
+  right: max(4.6%, env(safe-area-inset-right));
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 28px;
+  min-height: 44px;
+  padding: 10px 3px;
+  border: 0;
+  border-bottom: 1px solid #a9afa9;
+  border-radius: 0;
+  color: var(--entry-ink);
+  background: transparent;
+  cursor: pointer;
+  font: 500 11px/1.4 "Velani Entrance", Manrope, Arial, sans-serif;
+  letter-spacing: .02em;
+  transition: border-color 160ms, background 160ms;
+}
+.velani-entry-skip:hover { border-color: var(--entry-ink); background: rgb(255 255 255 / .35); }
+.velani-entry-skip:active { transform: translateY(1px); }
+.velani-entry-skip:focus-visible { outline: 0; border-bottom: 2px solid var(--entry-ink); box-shadow: 0 3px 0 -1px var(--entry-paper), 0 5px 0 -1px var(--entry-ink); }
+
+@keyframes velani-word-arrive {
+  from { transform: translateY(115%) rotate(4deg); }
+  to { transform: translateY(0) rotate(0); }
+}
+@keyframes velani-word-depart { to { transform: translateY(115%); } }
+@keyframes velani-detail-arrive { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes velani-detail-exit { to { opacity: 0; } }
+@keyframes velani-shadow-arrive { from { opacity: 0; transform: scale(1.5, .8); } to { opacity: 1; transform: scale(1, .5); } }
+@keyframes velani-fallback-arrive {
+  from { transform: scale(2.7) rotate(-30deg) translateY(10%); }
+  to { transform: scale(1) rotate(-8deg) translateY(0); }
+}
+@keyframes velani-fallback-depart { to { transform: scale(7) rotate(-8deg) translateY(14%); } }
+/* The triangular opening follows the sculpture's negative space. */
+@keyframes velani-aperture {
+  from { clip-path: polygon(evenodd, 0 0, 100% 0, 100% 100%, 0 100%, 0 0, 50% 38%, 50% 38%, 50% 38%, 50% 38%); }
+  to { clip-path: polygon(evenodd, 0 0, 100% 0, 100% 100%, 0 100%, 0 0, -220% -280%, 320% -280%, 50% 480%, -220% -280%); }
+}
+@media (min-aspect-ratio: 17/10) {
+  .velani-entry-title-frame { font-size: min(24.6vw, 39vh); bottom: 9%; }
+  .velani-entry-art { height: 93%; top: -12%; }
+}
+@media (max-width: 600px) {
+  .velani-entry-art { left: -5%; top: 7%; width: 110%; height: 74%; }
+  .velani-entry-title-frame { left: 5%; right: 5%; bottom: 17%; font-size: 24.6vw; }
+  .velani-entry-shadow { top: 62%; width: 70%; left: 15%; }
+  .velani-entry-footnote { bottom: max(5%, 24px); font-size: 9px; }
+  .velani-entry-skip { top: 18px; right: 6%; gap: 25px; }
+}
+@media (max-height: 440px) {
+  .velani-entry-skip { top: 10px; }
+  .velani-entry-title-frame { bottom: 12%; font-size: 34vh; }
+  .velani-entry-art { top: -13%; height: 94%; }
+  .velani-entry-footnote { bottom: 12px; font-size: 8px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  dialog.velani-entry, #replay-entrance { display: none !important; }
+  html.velani-entry-active { overflow: auto; }
+}
+@media print {
+  dialog.velani-entry, #replay-entrance { display: none !important; }
+  html.velani-entry-active { overflow: visible; }
+}

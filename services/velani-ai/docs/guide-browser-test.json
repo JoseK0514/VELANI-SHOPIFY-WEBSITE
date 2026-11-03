@@ -1,0 +1,137 @@
+{
+  "startedAt": "2026-11-02T23:37:57.862Z",
+  "plan": {
+    "id": "c5303d08-9b61-4b5d-b6d6-e745729e023a",
+    "brief": "We run three cafés with 42 people. Staff arrange shift swaps by group text, and two managers approve paper timesheets every Friday. We want a clearer process without changing everything at once.",
+    "plan": {
+      "model": "gpt-6-astra",
+      "title": "A gradual shift-swap and timesheet plan for three cafés",
+      "actions": [
+        {
+          "owner": "Suggested: the two managers",
+          "title": "Agree on swap confirmation and review ownership",
+          "timing": "Suggested: week one",
+          "details": "Choose one café for an initial trial. Agree who confirms swaps, where the current schedule is kept, and which manager reviews each café's timesheets. Keep group texting, but distinguish a proposed swap from a confirmed schedule change."
+        },
+        {
+          "owner": "Suggested: manager responsible for the trial café",
+          "title": "Trial a consistent paper timesheet and Friday checklist",
+          "timing": "Suggested: first Friday review after setup",
+          "details": "Use the same time-entry fields and review checklist for the trial café. Check reported hours against the schedule only to identify questions, not to replace actual hours with scheduled hours. Review corrections with the worker concerned and preserve the original entry."
+        },
+        {
+          "owner": "Suggested: approving managers and person responsible for payroll",
+          "title": "Clarify the handoff from approval to payroll",
+          "timing": "Suggested: before the next payroll handoff",
+          "details": "Agree what reviewed records payroll needs, how approval is shown and who follows up on discrepancies. Keep payment and tax responsibilities within the existing payroll process. Confirm that Friday reviews fit the payroll deadline."
+        },
+        {
+          "owner": "Suggested: the two managers",
+          "title": "Review the trial before expanding",
+          "timing": "Suggested: after two Friday review cycles",
+          "details": "Discuss whether staff can identify confirmed swaps and whether timesheet questions reach the right reviewer. Adjust the process, then consider extending it to the other cafés. Treat any later NEVORA evaluation as a separate decision subject to availability and workflow fit."
+        }
+      ],
+      "profile": {
+        "teamSize": "42",
+        "challenge": "Want a clearer shift-swap and timesheet process across three cafés.",
+        "locations": "Three cafés",
+        "constraints": "Prefer gradual changes rather than changing everything at once.",
+        "businessType": "Cafés",
+        "currentTools": "Group text for shift swaps; paper timesheets",
+        "approvalCadence": "Two managers approve paper timesheets every Friday."
+      },
+      "sources": [
+        {
+          "id": "nevora-overview-en",
+          "url": "https://www.thevelani.com/pages/nevora",
+          "title": "NEVORA: product purpose and team workflows"
+        },
+        {
+          "id": "nevora-availability-en",
+          "url": "https://www.thevelani.com/pages/nevora",
+          "title": "Development status, pricing and requesting a quote"
+        },
+        {
+          "id": "nevora-time-clock-en",
+          "url": "https://www.thevelani.com/pages/nevora",
+          "title": "Shared PIN time clock, languages and demonstration limits"
+        },
+        {
+          "id": "nevora-payroll-en",
+          "url": "https://www.thevelani.com/pages/nevora",
+          "title": "Payroll calculations and employer responsibilities"
+        }
+      ],
+      "summary": "Your three cafés have 42 people, with shift swaps arranged by group text and paper timesheets approved by two managers every Friday. Suggested approach: keep those familiar tools initially, introduce one clear swap-confirmation process, and standardize Friday reviews and the payroll handoff. Try the process at one café before extending it to the other two, then assess whether software would fit.",
+      "workflow": [
+        {
+          "stage": "schedule",
+          "sourceIds": [
+            "nevora-overview-en",
+            "nevora-availability-en"
+          ],
+          "productFact": "NEVORA's described workflow lets managers plan the week on the web and employees view shifts, respond to shift-swap offers and request time off on their phones. NEVORA is in development; availability for a particular business requires confirmation.",
+          "recommendation": "Suggestion: keep group texts for swap requests, but designate a manager to confirm each change and update one agreed schedule. Use a consistent request format covering the café, shift and proposed replacement. Start at one café rather than changing all three at once."
+        },
+        {
+          "stage": "clock",
+          "sourceIds": [
+            "nevora-time-clock-en"
+          ],
+          "productFact": "The described NEVORA time clock runs on a shared tablet, uses a separate four-digit PIN for each worker and clears between people. Its interface supports English and Spanish; this does not establish a bilingual platform. The inspected draft demonstration did not save attendance records, and its public availability is unverified.",
+          "recommendation": "Suggestion: retain paper timesheets initially and agree on a consistent format for actual start and finish times, breaks and reported corrections. Keep actual hours separate from planned shifts, so an unconfirmed swap does not prevent someone from recording time worked. Review discrepancies before changing a record."
+        },
+        {
+          "stage": "approve",
+          "sourceIds": [
+            "nevora-overview-en"
+          ],
+          "productFact": "NEVORA's published scope includes approved hours, and managers are described as approving hours on the web. The reviewed sources do not establish a two-manager approval sequence or configurable Friday approval rules.",
+          "recommendation": "Suggestion: preserve Friday approvals. Agree which manager reviews each café and who handles unresolved questions, avoiding duplicate or missed reviews. Use one checklist for missing entries, actual hours and corrections. Record reviewer sign-off and keep unresolved items visible for prompt follow-up without withholding earned pay."
+        },
+        {
+          "stage": "payroll",
+          "sourceIds": [
+            "nevora-payroll-en"
+          ],
+          "productFact": "NEVORA is described as calculating payroll from approved hours, with a manager reviewing calculations and publishing employee pay statements. It does not pay employees or file payroll taxes. Supported payroll integrations, export formats, overtime rules and deductions are not verified in the reviewed sources.",
+          "recommendation": "Suggestion: keep your existing payroll arrangements while standardizing the handoff of reviewed timesheets. Include approval status and any outstanding questions, retain the original records, and have the person responsible for payroll verify the handoff. Check compatibility before considering any software change."
+        }
+      ],
+      "questions": [
+        "Do both managers review every timesheet, or do they divide responsibility by café or team?",
+        "How do approved Friday timesheets reach payroll, and what deadline must that handoff meet?"
+      ],
+      "assumptions": [
+        "The suggested first phase assumes you can retain group texts and paper timesheets while introducing shared process rules.",
+        "A trial at one café is a suggestion, not a confirmed rollout decision."
+      ]
+    },
+    "revision": 1,
+    "profileRevision": 0,
+    "notes": "",
+    "edited": false,
+    "createdAt": "2026-11-02T23:38:23.599Z"
+  },
+  "answer": {
+    "message": "Your saved details now show 4 locations. The draft plan still refers to three cafés, so I suggest updating:\n\n• The title, summary, location field and any references to “three cafés” to reflect four locations. Your saved challenge description also still says three cafés.\n• The rollout wording: keep the suggested one-café trial, then consider expanding to the other three, rather than the other two.\n• The review responsibilities: assign all four cafés to the two managers, with clear ownership and backup coverage for Friday approvals.\n\nYour 42-person team, current tools and preference for gradual changes can stay as they are. These are suggested edits; I haven’t changed the plan or saved details.",
+    "sources": [],
+    "action": "none",
+    "confidence": "grounded",
+    "model": "gpt-6-astra"
+  },
+  "status": "passed",
+  "checks": [
+    "live Astra plan with saved original brief",
+    "profile correction retained in plan-aware chat",
+    "editable plan saved",
+    "Markdown download",
+    "explicit consented share",
+    "EN/ES UI",
+    "390px and320px nooverflow",
+    "emptybrowserstorage",
+    "privatefiles404",
+    "workspace deletion"
+  ]
+}

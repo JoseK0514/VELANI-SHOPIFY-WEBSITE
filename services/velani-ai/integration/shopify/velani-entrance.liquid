@@ -1,0 +1,50 @@
+{% comment %}
+  Render once immediately after <body> in layout/theme.liquid.
+  Upload entrance.css, entrance-renderer.js, entrance.js and velani-entrance.woff2 into theme assets.
+{% endcomment %}
+{% if request.page_type == 'index' or page.handle == 'nevora' %}
+  {{ 'entrance.css' | asset_url | stylesheet_tag }}
+  <script src="{{ 'entrance-renderer.js' | asset_url }}" defer></script>
+  <script src="{{ 'entrance.js' | asset_url }}" defer></script>
+    <dialog
+      id="velani-entrance"
+      class="velani-entry"
+      aria-labelledby="velani-entry-title"
+      aria-describedby="velani-entry-description"
+    >
+      <h2 id="velani-entry-title" class="velani-entry-sr">Welcome to Velani</h2>
+      <p id="velani-entry-description" class="velani-entry-sr">
+        A short introduction. Skip or press Escape to continue.
+      </p>
+      <div class="velani-entry-stage" aria-hidden="true">
+        <div class="velani-entry-shadow"></div>
+        <div class="velani-entry-art">
+          <svg class="velani-entry-fallback" viewBox="0 0 700 700" fill="none">
+            <defs>
+              <linearGradient id="velani-metal" x1="215" y1="220" x2="520" y2="500" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#202824"/><stop offset=".18" stop-color="#c2cac4"/>
+                <stop offset=".26" stop-color="#fafcf7"/><stop offset=".34" stop-color="#606a63"/>
+                <stop offset=".61" stop-color="#131b18"/><stop offset=".77" stop-color="#889c92"/>
+                <stop offset=".84" stop-color="#eff4ee"/><stop offset="1" stop-color="#333b37"/>
+              </linearGradient>
+              <linearGradient id="velani-bevel" x1="130" y1="130" x2="490" y2="530" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#fff"/><stop offset=".45" stop-color="#9aa59b"/><stop offset="1" stop-color="#263b31"/>
+              </linearGradient>
+            </defs>
+            <path d="M155 190 252 180 365 412 468 179 551 179 373 546 320 546Z" fill="#39443e"/>
+            <path d="m147 169 92-13 106 235 105-235h85L359 521h-51Z" fill="url(#velani-metal)" stroke="url(#velani-bevel)" stroke-width="4" stroke-linejoin="round"/>
+            <path d="m239 156 106 235 20 21-113-232Z" fill="#d0d7cf"/>
+            <path d="m359 521 176-365 16 23-178 367Z" fill="#55675b"/>
+          </svg>
+          <canvas class="velani-entry-canvas"></canvas>
+        </div>
+        <div class="velani-entry-title-frame"><div class="velani-entry-wordmark">VELANI</div></div>
+        <div class="velani-entry-footnote">
+          <span class="velani-entry-product">NEVORA</span>
+        </div>
+      </div>
+      <button id="skip-entrance" class="velani-entry-skip" type="button" data-entrance-control autofocus>
+        <span>Skip intro</span><svg aria-hidden="true" width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M4 12 12 4M4 4h8v8" stroke="currentColor" stroke-width="1.2" /></svg>
+      </button>
+    </dialog>
+{% endif %}

@@ -1,0 +1,529 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex, nofollow" />
+    <meta name="theme-color" content="#142a30" />
+    <meta
+      name="description"
+      content="Explore NEVORA around your team's workflow and create a practical plan for a clearer working week."
+    />
+    <title>NEVORA for your business — Velani</title>
+    <link rel="stylesheet" href="/styles.css" />
+    <link rel="stylesheet" href="/entrance.css" />
+    <script defer src="/entrance-renderer.js"></script>
+    <script defer src="/entrance.js"></script>
+    <script type="module" src="/app.js"></script>
+  </head>
+  <body>
+    <dialog
+      id="velani-entrance"
+      class="velani-entry"
+      aria-labelledby="velani-entry-title"
+      aria-describedby="velani-entry-description"
+    >
+      <h2 id="velani-entry-title" class="velani-entry-sr">Welcome to Velani</h2>
+      <p id="velani-entry-description" class="velani-entry-sr">
+        A short introduction. Skip or press Escape to continue.
+      </p>
+      <div class="velani-entry-stage" aria-hidden="true">
+        <div class="velani-entry-shadow"></div>
+        <div class="velani-entry-art">
+          <svg class="velani-entry-fallback" viewBox="0 0 700 700" fill="none">
+            <defs>
+              <linearGradient id="velani-metal" x1="215" y1="220" x2="520" y2="500" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#202824"/><stop offset=".18" stop-color="#c2cac4"/>
+                <stop offset=".26" stop-color="#fafcf7"/><stop offset=".34" stop-color="#606a63"/>
+                <stop offset=".61" stop-color="#131b18"/><stop offset=".77" stop-color="#889c92"/>
+                <stop offset=".84" stop-color="#eff4ee"/><stop offset="1" stop-color="#333b37"/>
+              </linearGradient>
+              <linearGradient id="velani-bevel" x1="130" y1="130" x2="490" y2="530" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#fff"/><stop offset=".45" stop-color="#9aa59b"/><stop offset="1" stop-color="#263b31"/>
+              </linearGradient>
+            </defs>
+            <path d="M155 190 252 180 365 412 468 179 551 179 373 546 320 546Z" fill="#39443e"/>
+            <path d="m147 169 92-13 106 235 105-235h85L359 521h-51Z" fill="url(#velani-metal)" stroke="url(#velani-bevel)" stroke-width="4" stroke-linejoin="round"/>
+            <path d="m239 156 106 235 20 21-113-232Z" fill="#d0d7cf"/>
+            <path d="m359 521 176-365 16 23-178 367Z" fill="#55675b"/>
+          </svg>
+          <canvas class="velani-entry-canvas"></canvas>
+        </div>
+        <div class="velani-entry-title-frame"><div class="velani-entry-wordmark">VELANI</div></div>
+        <div class="velani-entry-footnote">
+          <span class="velani-entry-product">NEVORA</span>
+        </div>
+      </div>
+      <button id="skip-entrance" class="velani-entry-skip" type="button" data-entrance-control autofocus>
+        <span>Skip intro</span><svg aria-hidden="true" width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M4 12 12 4M4 4h8v8" stroke="currentColor" stroke-width="1.2" /></svg>
+      </button>
+    </dialog>
+    <a class="skip" href="#workspace" data-i18n="skip">Skip to the guide</a>
+    <header class="site-header">
+      <a
+        class="brand"
+        href="https://www.thevelani.com"
+        aria-label="Velani homepage"
+        >VELANI<span class="brand-mark" aria-hidden="true"></span
+      ></a>
+      <div class="header-divider" aria-hidden="true"></div>
+      <span class="header-product">NEVORA</span>
+      <nav class="header-nav" aria-label="Main">
+        <a href="https://www.thevelani.com/pages/nevora" data-i18n="productLink"
+          >Explore the product<span aria-hidden="true"> ↗</span></a
+        >
+        <label class="language-label"
+          ><span class="sr-only" data-i18n="language">Language</span
+          ><select id="language">
+            <option value="en">EN</option>
+            <option value="es">ES</option>
+          </select></label
+        >
+      </nav>
+    </header>
+
+    <main>
+      <section class="intro page-width" aria-labelledby="page-title">
+        <div>
+          <p class="eyebrow">
+            <span class="status-dot" aria-hidden="true"></span
+            ><span data-i18n="eyebrow">YOUR TEAM. YOUR WORKFLOW.</span>
+          </p>
+          <h1 id="page-title" data-i18n="headline">
+            Bring your week<br />into focus.
+          </h1>
+          <p class="intro-copy" data-i18n="intro">
+            Describe how your team works. Explore where NEVORA could fit, and
+            leave with a practical plan.
+          </p>
+        </div>
+        <aside class="intro-aside">
+          <p class="aside-title" data-i18n="guideTitle">
+            A guide built around your business
+          </p>
+          <p data-i18n="guideDescription">
+            An AI conversation, a clear visual workflow, and next steps you can
+            make your own.
+          </p>
+          <div class="intro-meta">
+            <span data-i18n="noSignup">No account needed</span
+            ><span aria-hidden="true">·</span
+            ><span data-i18n="development">NEVORA is in development</span>
+          </div>
+        </aside>
+      </section>
+
+      <section
+        id="workspace"
+        class="workspace page-width"
+        aria-label="Business workflow guide"
+      >
+        <aside class="guide-panel">
+          <div class="panel-heading">
+            <span class="guide-icon" aria-hidden="true">N</span>
+            <div>
+              <h2 data-i18n="guideName">Your NEVORA guide</h2>
+              <p data-i18n="guideLabel">Start with the way you work.</p>
+            </div>
+          </div>
+          <form id="brief-form">
+            <label for="brief" data-i18n="briefLabel"
+              >Tell us about your team</label
+            >
+            <textarea
+              id="brief"
+              maxlength="4000"
+              required
+              rows="6"
+              data-placeholder="briefPlaceholder"
+              placeholder="We run three cafés with 42 people. Shift swaps and Friday time approvals are a mess."
+            ></textarea>
+            <p class="field-hint" data-i18n="briefHint">
+              Team size, locations, current tools, and what you want to improve.
+              Keep employee details private.
+            </p>
+            <div
+              class="sample-prompts"
+              aria-label="Example business descriptions"
+            >
+              <button
+                type="button"
+                class="sample"
+                data-sample="cafes"
+                data-i18n="sampleCafe"
+              >
+                3 cafés · 42 people
+              </button>
+              <button
+                type="button"
+                class="sample"
+                data-sample="retail"
+                data-i18n="sampleRetail"
+              >
+                2 shops · 18 people
+              </button>
+              <button
+                type="button"
+                class="sample"
+                data-sample="growing"
+                data-i18n="sampleGrowing"
+              >
+                A growing team
+              </button>
+            </div>
+            <div id="verification" hidden></div>
+            <button class="primary generate-button" id="generate" type="submit">
+              <span data-i18n="createPlan">Create my workflow plan</span
+              ><span aria-hidden="true">↗</span>
+            </button>
+            <p class="small-print" data-i18n="creationNote">
+              A practical starting point, based on published product
+              information. No signup or sales form.
+            </p>
+          </form>
+          <div class="status-area">
+            <p id="status" role="status" aria-live="polite"></p>
+            <div id="error" role="alert" hidden></div>
+            <div id="retry-controls" hidden>
+              <button
+                class="text-button"
+                type="button"
+                id="retry"
+                data-i18n="retry"
+              >
+                Retry the same request</button
+              ><button
+                class="text-button"
+                type="button"
+                id="refresh-state"
+                data-i18n="refreshState"
+                hidden
+              >
+                Load saved version</button
+              ><button
+                class="text-button"
+                type="button"
+                id="dismiss-error"
+                data-i18n="dismiss"
+              >
+                Dismiss
+              </button>
+            </div>
+          </div>
+          <details id="profile-details" class="profile-details" hidden>
+            <summary>
+              <span data-i18n="businessDetails">Your business details</span
+              ><span id="profile-state" class="detail-state"></span>
+            </summary>
+            <p class="field-hint" data-i18n="profileHint">
+              Review these details before saving. Saved details help the guide
+              remember your business in this session.
+            </p>
+            <form id="profile-form">
+              <div id="profile-fields"></div>
+              <button
+                type="submit"
+                class="secondary"
+                id="save-profile"
+                data-i18n="saveDetails"
+              >
+                Save details
+              </button>
+            </form>
+          </details>
+          <section class="conversation" aria-labelledby="conversation-title">
+            <div class="conversation-heading">
+              <h3 id="conversation-title" data-i18n="askTitle">
+                Keep the conversation going
+              </h3>
+              <span class="conversation-line" aria-hidden="true"></span>
+            </div>
+            <p id="conversation-empty" class="field-hint" data-i18n="askHint">
+              Ask about your workflow, explore a limitation, or think through
+              your next step.
+            </p>
+            <ol
+              id="messages"
+              role="log"
+              aria-live="polite"
+              aria-relevant="additions"
+              aria-label="Conversation"
+            ></ol>
+            <form id="chat-form">
+              <label class="sr-only" for="chat-input" data-i18n="question"
+                >Your question</label
+              >
+              <div class="chat-compose">
+                <textarea
+                  id="chat-input"
+                  maxlength="4000"
+                  rows="2"
+                  required
+                  data-placeholder="chatPlaceholder"
+                  placeholder="What should we improve first?"
+                ></textarea
+                ><button
+                  type="submit"
+                  id="chat-send"
+                  aria-label="Send question"
+                >
+                  <span aria-hidden="true">↑</span>
+                </button>
+              </div>
+            </form>
+          </section>
+        </aside>
+
+        <div class="visual-panel">
+          <div class="canvas-heading">
+            <div>
+              <p class="eyebrow" data-i18n="workflowEyebrow">
+                THE WORKING WEEK
+              </p>
+              <h2 id="workflow-title" data-i18n="workflowTitle">
+                One connected workflow.
+              </h2>
+            </div>
+            <span class="preview-pill" data-i18n="illustrative"
+              >Illustrative guide</span
+            >
+          </div>
+          <div
+            id="workflow-tabs"
+            class="workflow-tabs"
+            role="tablist"
+            aria-label="Workflow stages"
+          ></div>
+          <section
+            id="stage-panel"
+            class="stage-panel"
+            role="tabpanel"
+            tabindex="0"
+            aria-live="polite"
+          ></section>
+          <div id="before-plan" class="before-plan">
+            <span class="north-arrow" aria-hidden="true">↗</span>
+            <div>
+              <h3 data-i18n="beforePlanTitle">Make this workflow yours.</h3>
+              <p data-i18n="beforePlanCopy">
+                Describe your team to see relevant suggestions and a plan you
+                can edit, download, and discuss.
+              </p>
+            </div>
+          </div>
+          <section
+            id="plan-section"
+            class="plan-section"
+            hidden
+            aria-labelledby="plan-title"
+          >
+            <div class="plan-heading">
+              <p class="eyebrow" data-i18n="yourPlan">YOUR WORKFLOW PLAN</p>
+              <span id="plan-state" class="detail-state"></span>
+            </div>
+            <h2 id="plan-title" tabindex="-1"></h2>
+            <p id="plan-summary" class="plan-summary"></p>
+            <div id="plan-context" class="plan-context"></div>
+            <form id="plan-form">
+              <div class="actions-heading">
+                <h3 data-i18n="nextSteps">Make the next steps your own</h3>
+                <span data-i18n="editable">Editable</span>
+              </div>
+              <div id="plan-actions"></div>
+              <label for="plan-notes" data-i18n="notesLabel">Your notes</label
+              ><textarea
+                id="plan-notes"
+                maxlength="3000"
+                rows="3"
+                data-placeholder="notesPlaceholder"
+                placeholder="What would you like to add or discuss?"
+              ></textarea>
+              <div class="save-row">
+                <button
+                  class="secondary"
+                  id="save-plan"
+                  type="submit"
+                  data-i18n="savePlan"
+                >
+                  Save changes</button
+                ><span id="save-state" class="field-hint"></span>
+              </div>
+            </form>
+            <div class="plan-questions">
+              <div>
+                <h3 data-i18n="assumptionsTitle">Assumptions to review</h3>
+                <ul id="plan-assumptions"></ul>
+              </div>
+              <div>
+                <h3 data-i18n="questionsTitle">Questions to resolve</h3>
+                <ul id="plan-questions"></ul>
+              </div>
+            </div>
+            <div class="plan-sources">
+              <h3 data-i18n="sources">Product sources</h3>
+              <ul id="plan-sources"></ul>
+            </div>
+            <p class="plan-disclaimer" data-i18n="planDisclaimer">
+              This is guidance, not a quote or implementation commitment. NEVORA
+              is in development and offered by quote. Payroll calculations do
+              not include paying employees or filing payroll taxes.
+            </p>
+            <div class="plan-toolbar">
+              <button type="button" class="secondary" id="download">
+                <span aria-hidden="true">↓</span
+                ><span data-i18n="download">Download plan</span></button
+              ><button
+                type="button"
+                class="text-button"
+                id="print"
+                data-i18n="print"
+              >
+                Print / save PDF</button
+              ><button type="button" class="primary" id="share">
+                <span data-i18n="share">Discuss with Velani</span
+                ><span aria-hidden="true">↗</span>
+              </button>
+            </div>
+            <p class="small-print" data-i18n="downloadNote">
+              Your download is yours to keep. Sharing with Velani is a separate
+              choice.
+            </p>
+          </section>
+        </div>
+      </section>
+
+      <section class="under-workspace page-width">
+        <div>
+          <h2 data-i18n="beyondTitle">
+            Built for the people behind every shift.
+          </h2>
+          <p data-i18n="beyondCopy">
+            Explore the product, bring us a specific question, or keep your plan
+            and take the next step when you are ready.
+          </p>
+        </div>
+        <a class="under-link" href="https://www.thevelani.com/pages/nevora"
+          ><span data-i18n="exploreNevora">Explore NEVORA</span
+          ><span aria-hidden="true">↗</span></a
+        >
+      </section>
+    </main>
+
+    <footer class="page-width">
+      <p data-i18n="privacy">
+        AI guide. Chats and plans are retained for up to 30 days; submitted
+        enquiries for up to 90 days. Reloading starts a new session. Do not
+        enter employee records or credentials.
+      </p>
+      <div>
+        <a
+          href="https://www.thevelani.com/pages/nevora-privacy"
+          data-i18n="privacyLink"
+          >Privacy</a
+        ><button
+          type="button"
+          id="delete-workspace"
+          class="text-button"
+          data-i18n="deleteWorkspace"
+        >
+          Delete this workspace
+        </button>
+        <button type="button" id="replay-entrance" class="text-button" data-entrance-control hidden>
+          Replay intro
+        </button>
+      </div>
+      <span class="footer-brand">VELANI</span>
+    </footer>
+
+    <dialog id="share-dialog" aria-labelledby="share-title">
+      <button
+        type="button"
+        class="dialog-close"
+        id="close-share"
+        aria-label="Close"
+      >
+        ×
+      </button>
+      <p class="eyebrow" data-i18n="talkToUs">LET’S TALK</p>
+      <h2 id="share-title" data-i18n="shareTitle">Start with your plan.</h2>
+      <p data-i18n="shareIntro">
+        Review what you are sharing, then tell us how to reach you.
+      </p>
+      <div class="share-preview">
+        <strong id="share-plan-title"></strong>
+        <p id="share-plan-summary"></p>
+        <span id="share-revision" class="field-hint"></span>
+      </div>
+      <form id="share-form">
+        <div class="form-grid">
+          <div>
+            <label for="lead-name" data-i18n="name">Name</label
+            ><input
+              id="lead-name"
+              name="name"
+              autocomplete="name"
+              maxlength="120"
+              required
+            />
+          </div>
+          <div>
+            <label for="lead-email" data-i18n="email">Email</label
+            ><input
+              id="lead-email"
+              name="email"
+              type="email"
+              autocomplete="email"
+              maxlength="254"
+              required
+            />
+          </div>
+        </div>
+        <label for="lead-company" data-i18n="company">Company (optional)</label
+        ><input
+          id="lead-company"
+          name="company"
+          autocomplete="organization"
+          maxlength="200"
+        /><label for="lead-message" data-i18n="leadMessage"
+          >Anything else you would like us to know?</label
+        ><textarea
+          id="lead-message"
+          name="message"
+          maxlength="2000"
+          rows="3"
+        ></textarea
+        ><label class="check-label"
+          ><input type="checkbox" id="share-plan-consent" required /><span
+            data-i18n="sharePlanConsent"
+            >Share the saved plan and its business details with Velani as part
+            of this enquiry.</span
+          ></label
+        ><label class="check-label"
+          ><input type="checkbox" id="lead-consent" required /><span
+            data-i18n="leadConsent"
+            >I agree that Velani may store these details and contact me about
+            this enquiry. This does not subscribe me to marketing.</span
+          ></label
+        >
+        <p class="small-print" data-i18n="leadRetention">
+          Submitted enquiries and their shared plan are retained for up to 90
+          days.
+        </p>
+        <p id="share-status" role="status"></p>
+        <button
+          type="button"
+          id="share-retry"
+          class="text-button"
+          data-i18n="retry"
+          hidden
+        >
+          Retry the same request
+        </button>
+        <button class="primary" id="send-enquiry" type="submit">
+          <span data-i18n="sendEnquiry">Send enquiry</span
+          ><span aria-hidden="true">↗</span>
+        </button>
+      </form>
+    </dialog>
+  </body>
+</html>
