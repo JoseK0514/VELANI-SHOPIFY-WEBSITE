@@ -18,8 +18,7 @@ export const services = [
 const page = (title, eyebrow, intro, sections = [], extra = {}) => ({ title, eyebrow, intro, sections, ...extra });
 export const legalUpdated = 'November 2, 2026';
 export const routes = {
-  '/': page('Your team’s week, in one place.', 'Velani', 'NEVORA by Velani: scheduling, time clock and payroll calculation for teams that work in shifts. In development and offered to businesses by quote.', [], { kind: 'home', name: 'Velani · NEVORA scheduling, time clock and payroll calculation for shift teams' }),
-  '/pages/products': page('What we make.', 'Velani', 'NEVORA, our own app for teams that work in shifts, and custom software we build for other businesses.', [], { kind: 'products', name: 'Products' }),
+  '/': page('Brighter work ahead.', 'Velani', 'Velani builds websites, booking systems, online stores and business tools, and makes NEVORA, its own scheduling, time clock and payroll calculation app for shift teams. Free NEVORA demo for 30 days.', [], { kind: 'home', name: 'Velani · Software, websites and custom apps for your business' }),
   '/pages/nevora': page('NEVORA · Scheduling, time clock and payroll calculation for shift teams', 'NEVORA', 'Scheduling, time clock and payroll calculation for shift teams. Owners and managers plan on the web, employees use their phone and everyone clocks in at a shared tablet with a PIN.', [], { kind: 'nevora', nav: 'nevora' }),
   '/pages/custom-development': page('Software for the work your business needs to do.', 'Custom development', 'Websites, booking systems, online stores and business tools, built for how your business works. Start with the problem and the people doing the work.', [], { kind: 'services', nav: 'services', name: 'Custom development' }),
   '/pages/about': page('A software company. Two\u00a0ways to work with us.', 'About Velani', 'Velani develops software products and builds custom applications for businesses.', [

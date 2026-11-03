@@ -7,7 +7,7 @@ const base = process.env.VELANI_PREVIEW_URL || 'http://127.0.0.1:4173';
 const run = process.env.VELANI_BROWSER_RUN || 'scroll-' + new Date().toISOString().replace(/[:.]/g, '-');
 const out = 'evidence/' + run;
 await mkdir(out, { recursive: true });
-const paths = (process.argv[2] || '/,/pages/nevora,/pages/products,/pages/custom-development,/pages/about,/pages/contact,/pages/help,/pages/privacy,/pages/nevora-privacy').split(',');
+const paths = (process.argv[2] || '/,/pages/nevora,/pages/custom-development,/pages/about,/pages/contact,/pages/help,/pages/privacy,/pages/nevora-privacy').split(',');
 const executablePath = process.env.VELANI_CHROMIUM_EXECUTABLE || (existsSync('/usr/bin/chromium') ? '/usr/bin/chromium' : undefined);
 const browser = await chromium.launch({ executablePath, headless: true, args: ['--no-sandbox', '--disable-dev-shm-usage'] });
 const ctx = await browser.newContext({ ...devices['iPhone 13'] });

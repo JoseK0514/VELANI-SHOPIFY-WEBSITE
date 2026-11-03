@@ -4,7 +4,7 @@ import { routes, company } from '../src/content.mjs';
 import { renderPage, escapeHtml } from '../src/render.mjs';
 
 test('both business paths and every required company/legal destination exist', () => {
-  for (const path of ['/', '/pages/products', '/pages/nevora', '/pages/custom-development', '/pages/about', '/pages/contact', '/pages/help', '/pages/legal', '/pages/privacy', '/pages/cookies', '/pages/website-terms', '/pages/software-project-terms', '/pages/accessibility', '/pages/security']) assert.ok(routes[path], path);
+  for (const path of ['/', '/pages/nevora', '/pages/custom-development', '/pages/about', '/pages/contact', '/pages/help', '/pages/legal', '/pages/privacy', '/pages/cookies', '/pages/website-terms', '/pages/software-project-terms', '/pages/accessibility', '/pages/security']) assert.ok(routes[path], path);
   assert.equal(company.name, 'Velani');
   assert.equal(company.operator, 'VELANI LLC');
   assert.equal(company.email, 'support@thevelani.com');
@@ -25,7 +25,7 @@ test('all public routes have a document title, one main, one h1 and working lega
   }
 });
 test('product pages do not turn development into a launch or checkout claim', () => {
-  for (const path of ['/', '/pages/products', '/pages/nevora']) {
+  for (const path of ['/', '/pages/nevora']) {
     const { html } = renderPage(path, { target: 'preview' });
     assert.match(html, /In development/);
     assert.doesNotMatch(html, /href=["'][^"']*(?:\/cart|\/checkout|\/account\/register)/);
