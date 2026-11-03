@@ -158,7 +158,7 @@
     },
     {
       "status": "passed",
-      "message": "aside shows the three next steps for a NEVORA quote"
+      "message": "the sentence asks about the team; support line under the form"
     },
     {
       "status": "passed",
@@ -266,7 +266,7 @@
     },
     {
       "status": "passed",
-      "message": "clock shows the visitor’s local time (5:41 PM)"
+      "message": "clock shows the visitor’s local time (6:44 PM)"
     },
     {
       "status": "passed",

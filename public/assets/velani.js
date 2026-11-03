@@ -9,7 +9,7 @@ if (form) {
   if (!status) { status = document.createElement('div'); status.className = 'form-status'; status.setAttribute('role', 'status'); status.tabIndex = -1; form.append(status); }
   const fields = Object.fromEntries(['name', 'email', 'company', 'message', 'interest', 'locations', 'team'].map(key => [key, form.querySelector('#inquiry-' + key)]));
   const topic = new URL(window.location.href).searchParams.get('interest');
-  if (['custom-software', 'nevora', 'nevora-demo', 'other'].includes(topic)) fields.interest.value = topic;
+  if (['website', 'custom-software', 'nevora', 'nevora-demo', 'other'].includes(topic)) fields.interest.value = topic;
   // Arriving from a NEVORA action: talk about the team, keep NEVORA as the topic without asking again
   // The page already shows the right wording (chosen before paint); drop the unused variant so screen readers and the heading label see one text
   const nevora = document.documentElement.classList.contains('ask-nevora');
@@ -19,6 +19,7 @@ if (form) {
   if (topic === 'nevora' || topic === 'nevora-demo') {
     document.title = (topic === 'nevora-demo' ? 'Free NEVORA demo' : 'NEVORA for your team') + ' · Velani';
     fields.message.required = false;
+    fields.message.placeholder = 'What you use today for schedules, time and payroll.';
   }
   const setBusy = busy => { submitButton.disabled = busy; form.setAttribute('aria-busy', String(busy)); };
   const messages = { checking: 'Checking your draft…', preview: 'Draft checked. Nothing was sent.', invalid: 'Check the highlighted fields.', sending: 'Sending inquiry…', accepted: 'Your inquiry was submitted.', failed: 'The inquiry was not accepted. Review the form before trying again.', uncertain: 'We could not confirm the submission. It may have been accepted. Check with support@thevelani.com before sending it again.', unavailable: 'Inquiry delivery is not available.' };
@@ -49,7 +50,16 @@ if (form) {
     await controller.submit(values);
   });
   fieldset.disabled = false;
-  fields.message.addEventListener('input', () => { fields.message.style.height = 'auto'; fields.message.style.height = Math.min(600, Math.max(150, fields.message.scrollHeight)) + 'px'; });
+  const minH = parseInt(fields.message.dataset.min || '150', 10);
+  fields.message.addEventListener('input', () => { fields.message.style.height = 'auto'; fields.message.style.height = Math.min(600, Math.max(minH, fields.message.scrollHeight)) + 'px'; });
+  // Blanks in the sentence grow with what is typed: measure the text in the same font and size the control to it
+  const brief = form.querySelector('.brief');
+  if (brief) {
+    const ruler = document.createElement('span'); ruler.className = 'brief-ruler'; ruler.setAttribute('aria-hidden', 'true'); brief.append(ruler);
+    const size = el => { const text = el.tagName === 'SELECT' ? (el.options[el.selectedIndex]?.text || '') : (el.value || el.placeholder || ''); ruler.textContent = text; const w = ruler.getBoundingClientRect().width; const cs = getComputedStyle(el); el.style.width = Math.max(el.tagName === 'SELECT' ? 0 : 3 * 16, w + parseFloat(cs.paddingLeft) + parseFloat(cs.paddingRight) + 2) + 'px'; };
+    for (const el of brief.querySelectorAll('input, select')) { size(el); el.addEventListener('input', () => size(el)); el.addEventListener('change', () => size(el)); }
+    if (document.fonts?.ready) document.fonts.ready.then(() => brief.querySelectorAll('input, select').forEach(size));
+  }
   window.addEventListener('pageshow', event => { if (event.persisted && mode === 'live' && form.getAttribute('aria-busy') === 'true') { setBusy(false); status.dataset.state = 'uncertain'; status.textContent = messages.uncertain; } });
 }
 const dialog = document.querySelector('#cookie-dialog');

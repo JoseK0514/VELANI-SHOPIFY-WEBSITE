@@ -36,7 +36,7 @@ for (const [label, w, h, zoom] of [['320px', 320, 640, 1], ['200% zoom', 640, 80
       for (const el of document.querySelectorAll('h1,h2,h3,p,a,button,li,label,summary,span.t3,b')) {
         const cs = getComputedStyle(el); if (cs.display === 'none' || cs.visibility === 'hidden' || (!el.offsetParent && cs.position !== 'fixed')) continue;
         const r = el.getBoundingClientRect(); if (!r.width) continue;
-        if (el.scrollWidth > el.clientWidth + 2 && cs.overflowX !== 'visible' && el.clientWidth > 0) found.push('clipped ' + el.tagName + '.' + el.className + ' "' + el.textContent.trim().slice(0, 30) + '"');
+        if (el.scrollWidth > el.clientWidth + 2 && cs.overflowX !== 'visible' && el.clientWidth > 0 && !el.closest('.sr')) found.push('clipped ' + el.tagName + '.' + el.className + ' "' + el.textContent.trim().slice(0, 30) + '"');
         if (r.right > vw + 1 && !el.closest('[aria-hidden="true"],.sr,.skip') && !inRow(el)) found.push('past edge ' + el.tagName + '.' + el.className + ' "' + el.textContent.trim().slice(0, 30) + '" right=' + Math.round(r.right));
       }
       return [...new Set(found)].slice(0, 6);
