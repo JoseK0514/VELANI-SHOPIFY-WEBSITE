@@ -26,3 +26,12 @@ sections/velani-not-found.liquid eb442c556c1c1de445737c588551fbf3
 sections/velani-products.liquid 99de97e7709f77603927275e71ea1a6f
 Every other file (templates, config, locales, the other legal sections, fonts, icons, screenshots) already matched the live theme by checksum and was not touched. assets/arrow-right.svg already existed on the live theme with the same checksum.
 Not done: publishing, DNS, storefront password, store menus, policies, settings, live inquiries, real messages.
+
+Second upsert (support hours "Monday to Friday, 8 am to 9 pm ET"), same theme 193011548474; checksumMd5 read back equals the local build:
+layout/theme.liquid de290b0e8faef5485c7cf753f9f10284
+sections/velani-home.liquid 244c322ff996076b2ec5249508bebf7c
+sections/velani-help.liquid 178c2fd4705314fa0d91924bb04a1078
+sections/velani-contact.liquid d36d4822bd6265b8a54df301f96c10b5
+sections/velani-about.liquid 72effed0da4a7c1c8e2e52a4d0f76175
+sections/velani-products.liquid cbd60f9fe0e204aefdeb1a6722b248a9
+sections/velani-custom-development.liquid e4d6c4a7b18cdf1a90c133f0f1167bf0

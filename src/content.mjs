@@ -4,7 +4,7 @@ export const company = Object.freeze({
   operator: 'VELANI LLC',
   email: 'support@thevelani.com',
   phone: '787-925-2000',
-  hours: 'Monday to Friday',
+  hours: 'Monday to Friday, 8 am to 9 pm ET',
   address: '1654 Calle Tulipan, Suite 100, San Juan, PR 00927',
   domain: 'www.thevelani.com',
 });
@@ -35,7 +35,7 @@ export const routes = {
     { heading: 'Can you give me a price or delivery date here?', text: 'A project needs an agreed scope. Fees, milestones and delivery expectations are set out in the engagement agreement.' },
     { heading: 'Does an inquiry start a contract?', text: 'No. An inquiry starts a conversation. It does not purchase a product or begin paid work.' },
     { heading: 'Where should I send sensitive information?', text: 'Do not send passwords, API keys, payment details or sensitive records through a public form or ordinary email. Ask for an appropriate channel first.' },
-    { heading: 'How do I reach client support?', text: 'Client support answers Monday to Friday. Write to support@thevelani.com, call 787-925-2000, or use the contact page.' },
+    { heading: 'How do I reach client support?', text: 'Client support answers Monday to Friday, 8 am to 9 pm ET. Write to support@thevelani.com, call 787-925-2000, or use the contact page.' },
     { heading: 'How does the free NEVORA demo work?', text: 'A business with up to 30 employees can use NEVORA free for 30 days from setup. No card is needed and nothing is charged. On day 30 you continue by quote, export your data, or we delete it within 3 days. NEVORA calculates pay statements; it does not pay employees or file payroll taxes.' },
   ], { kind: 'faq', nav: 'help', name: 'Support' }),
   '/pages/legal': page('The details matter.', 'Legal and trust', 'Find the information that applies to this company website. Product use and paid engagements have their own applicable terms.', [], { kind: 'legal-index', legal: true, name: 'Legal' }),
