@@ -11,12 +11,12 @@
       "path": "/",
       "cls": 0,
       "shifts": [],
-      "long": 1,
+      "long": 0,
       "flips": 2,
       "overflowX": 0,
       "flipsAtBottom": 1,
       "errors": [],
-      "height": 4401,
+      "height": 4578,
       "ok": true
     },
     {
@@ -28,7 +28,7 @@
       "overflowX": 0,
       "flipsAtBottom": 0,
       "errors": [],
-      "height": 7769,
+      "height": 7946,
       "ok": true
     },
     {
@@ -40,7 +40,7 @@
       "overflowX": 0,
       "flipsAtBottom": 1,
       "errors": [],
-      "height": 5925,
+      "height": 6102,
       "ok": true
     },
     {
@@ -52,19 +52,19 @@
       "overflowX": 0,
       "flipsAtBottom": 1,
       "errors": [],
-      "height": 2897,
+      "height": 3074,
       "ok": true
     },
     {
       "path": "/pages/contact",
       "cls": 0,
       "shifts": [],
-      "long": 1,
+      "long": 0,
       "flips": 2,
       "overflowX": 0,
       "flipsAtBottom": 1,
       "errors": [],
-      "height": 2634,
+      "height": 2718,
       "ok": true
     },
     {
@@ -76,23 +76,11 @@
       "overflowX": 0,
       "flipsAtBottom": 1,
       "errors": [],
-      "height": 3261,
+      "height": 3438,
       "ok": true
     },
     {
       "path": "/pages/privacy",
-      "cls": 0,
-      "shifts": [],
-      "long": 1,
-      "flips": 2,
-      "overflowX": 0,
-      "flipsAtBottom": 1,
-      "errors": [],
-      "height": 4209,
-      "ok": true
-    },
-    {
-      "path": "/pages/nevora-privacy",
       "cls": 0,
       "shifts": [],
       "long": 0,
@@ -100,7 +88,19 @@
       "overflowX": 0,
       "flipsAtBottom": 1,
       "errors": [],
-      "height": 8185,
+      "height": 4386,
+      "ok": true
+    },
+    {
+      "path": "/pages/nevora-privacy",
+      "cls": 0,
+      "shifts": [],
+      "long": 1,
+      "flips": 2,
+      "overflowX": 0,
+      "flipsAtBottom": 1,
+      "errors": [],
+      "height": 8362,
       "ok": true
     }
   ]

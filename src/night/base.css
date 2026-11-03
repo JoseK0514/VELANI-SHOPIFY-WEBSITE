@@ -199,6 +199,17 @@ html:has(main > .hpanel){scroll-padding-top:56px}
 @media(max-width:833px){
  .foot-legal{flex-direction:column;align-items:flex-start}
 }
+/* Phones: the footer becomes two aligned columns, not wrapped rows */
+@media(max-width:600px){
+ .foot{padding:24px 0 28px}
+ .foot-row{display:block;padding-bottom:20px}
+ .foot-nav{display:grid;grid-template-columns:1fr 1fr;gap:0 16px;margin-left:0}
+ .foot-nav a{min-height:40px;padding:0}
+ .foot-support{margin-top:12px;padding-top:16px;border-top:1px solid var(--line)}
+ .foot-legal{align-items:stretch;gap:12px;padding-top:16px}
+ .foot-links{display:grid;grid-template-columns:1fr 1fr;gap:0 16px}
+ .foot-links a,.foot-links button{min-height:36px;justify-content:flex-start;text-align:left}
+}
 
 @media(prefers-reduced-motion:reduce){
  *,*::before,*::after{animation-duration:.01ms!important;animation-delay:0s!important;transition-duration:0s!important;transition-delay:0s!important;scroll-behavior:auto!important}
