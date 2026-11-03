@@ -53,3 +53,19 @@ test('live contact page never shows the preview form on the published theme', as
   assert.match(live, /Send inquiry/);
   assert.doesNotMatch(live, /preview/i);
 });
+test('the assistant appears only when an API address is configured', async () => {
+  const layout = renderShopifyLayout();
+  assert.match(layout, /\{% if settings\.assistant_api_url != blank %\}[\s\S]*id="ast-root"[\s\S]*velani-assist\.js[\s\S]*\{% endif %\}/);
+  const ctx = api => ({ theme: { role: 'main', id: 9 }, routes: { root_url: '/' }, template: { name: 'index', suffix: '' }, request: { locale: { iso_code: 'en' }, page_type: 'index' }, settings: { assistant_api_url: api } });
+  assert.doesNotMatch(await liquid.parseAndRender(layout, ctx('')), /ast-root/);
+  const on = await liquid.parseAndRender(layout, ctx('https://velani-ai.example'));
+  assert.match(on, /id="ast-root" hidden data-api="https:\/\/velani-ai\.example"/);
+  assert.match(on, /velani-assist\.js/);
+  const { renderPage } = await import('../src/render.mjs');
+  const saved = process.env.VELANI_ASSISTANT_API;
+  delete process.env.VELANI_ASSISTANT_API;
+  assert.doesNotMatch(renderPage('/').html, /ast-root/);
+  process.env.VELANI_ASSISTANT_API = 'http://127.0.0.1:3001';
+  assert.match(renderPage('/').html, /data-api="http:\/\/127\.0\.0\.1:3001"[\s\S]*velani-assist\.js/);
+  if (saved === undefined) delete process.env.VELANI_ASSISTANT_API; else process.env.VELANI_ASSISTANT_API = saved;
+});

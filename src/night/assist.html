@@ -1,0 +1,27 @@
+<div class="ast-root" id="ast-root" hidden>
+ <button type="button" class="ast-launch" id="ast-launch" aria-expanded="false" aria-controls="ast" aria-label="Ask about NEVORA">{{icon:chat-circle-dots}}<span id="ast-launch-t">Ask about NEVORA</span></button>
+ <section class="ast" id="ast" role="dialog" aria-labelledby="ast-t" hidden>
+  <div class="ast-head">
+   <div class="ast-head-t" id="ast-head-t" tabindex="-1"><h2 class="ast-t" id="ast-t">Velani assistant</h2><p class="ast-sub" id="ast-sub">Answers about NEVORA and our work</p></div>
+   <button type="button" class="ast-icon" id="ast-clear" aria-label="Delete this conversation" hidden>{{icon:trash}}</button>
+   <button type="button" class="ast-icon" id="ast-close" aria-label="Close">{{icon:x}}</button>
+  </div>
+  <div class="ast-body" id="ast-body">
+   <div class="ast-intro" id="ast-intro">
+    <p class="ast-lede" id="ast-lede">Ask about scheduling, the time clock, payroll calculation or the software we build.</p>
+    <div class="ast-sugg" id="ast-sugg"></div>
+    <p class="ast-lang" id="ast-lang"><button type="button" data-locale="en" aria-pressed="true">English</button><button type="button" data-locale="es" lang="es" aria-pressed="false">Español</button></p>
+   </div>
+   <div class="ast-log" id="ast-log" role="log"></div>
+   <div class="ast-confirm" id="ast-confirm" hidden><p id="ast-confirm-t">Delete this conversation from our servers?</p><div><button type="button" class="pill ast-small" id="ast-confirm-yes">Delete</button><button type="button" class="pill line ast-small" id="ast-confirm-no">Keep</button></div></div>
+  </div>
+  <div class="ast-verify" id="ast-verify" hidden><p id="ast-verify-t">Checking that your browser is not an automated program…</p><div id="ast-turnstile"></div></div>
+  <form class="ast-form" id="ast-form">
+   <label class="sr" for="ast-in" id="ast-in-l">Your question</label>
+   <textarea id="ast-in" rows="1" maxlength="4000" placeholder="Ask a question" autocomplete="off" enterkeyhint="send"></textarea>
+   <button type="submit" class="ast-send" id="ast-send" aria-label="Send" disabled>{{icon:arrow-up}}</button>
+  </form>
+  <div class="ast-status" id="ast-status" role="status" hidden><span id="ast-status-t"></span><button type="button" class="ast-link" id="ast-retry" hidden>Retry</button><button type="button" class="ast-link" id="ast-discard" hidden>Discard</button></div>
+  <p class="ast-note" id="ast-note"><span id="ast-note-t">AI assistant. Answers can be wrong, and product details may change. Conversations are kept for up to 30 days.</span> <a href="/pages/privacy#section-4" id="ast-note-a">Privacy notice</a></p>
+ </section>
+</div>

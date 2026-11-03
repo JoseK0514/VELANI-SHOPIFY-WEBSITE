@@ -55,10 +55,12 @@ export function header(current, target, { nevora = false } = {}) {
   return `<a class="skip" href="#main">Skip to content</a><header class="gnav${staticClass}" id="gnav"><nav class="wrap gnav-in" aria-label="Main"><a class="wordmark" href="/" aria-label="Velani home">${WORDMARK}</a><ul class="gnav-links">${links}</ul><a class="pill line" href="/pages/contact?interest=nevora">Ask for a NEVORA quote</a><button class="gnav-menu" id="gmenu-btn" type="button" aria-expanded="false" aria-controls="gmenu" aria-label="Menu"><span class="i-open">${icon('list')}</span><span class="i-close" hidden>${icon('x')}</span></button></nav></header><div class="gmenu" id="gmenu" hidden><nav class="wrap" aria-label="Main menu">${menu}<a href="/pages/custom-development">Custom development</a><a href="/pages/contact">Contact</a><a class="pill" href="/pages/contact?interest=nevora">Ask for a NEVORA quote</a><small>Velani is a brand of ${company.operator}.</small></nav></div>`;
 }
 export function footer(target) { return site(read('foot.html'), target); }
+/** The assistant launcher and panel; the API address is filled in by the layout (theme setting or preview environment). */
+export function assistant(target, apiAttribute) { return site(read('assist.html'), target).replace('<div class="ast-root" id="ast-root" hidden>', '<div class="ast-root" id="ast-root" hidden data-api="' + apiAttribute + '">'); }
 
 export const nightAssets = {
-  css: { base: read('base.css'), home: read('home.css'), nevora: read('nevora.css'), pages: read('pages.css'), kiosk: read('kiosk.css') },
-  js: { motion: read('motion.js'), home: read('kiosk.js'), nevora: read('nevora.js') + '\n' + read('kiosk.js') },
+  css: { base: read('base.css'), home: read('home.css'), nevora: read('nevora.css'), pages: read('pages.css'), kiosk: read('kiosk.css'), assist: read('assist.css') },
+  js: { motion: read('motion.js'), home: read('kiosk.js'), nevora: read('nevora.js') + '\n' + read('kiosk.js'), assist: read('assist.js'), assistClient: read('velani-assistant.js') },
 };
 
 /* NEVORA policy pages (Privacy, Support, Account deletion, Terms), from the NEVORA app's approved policy source. */
