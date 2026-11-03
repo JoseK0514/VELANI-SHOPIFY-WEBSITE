@@ -209,6 +209,20 @@ html:has(main > .hpanel){scroll-padding-top:56px}
 @media(hover:hover){.foot-nav a:hover,.foot-links a:hover,.foot-links button:hover{text-decoration:underline;text-underline-offset:4px}}
 .foot-links button:disabled{opacity:1;cursor:pointer}
 .foot-note{padding:8px 0 0;max-width:84ch;font-size:0.75rem}
+/* Home hero: the morning's messages arrive one by one, then NEVORA's answer; still under reduced motion and without JavaScript */
+.hissues{position:absolute;right:max(var(--pad),calc(50% - 620px));top:50%;transform:translateY(-54%);width:340px;display:flex;flex-direction:column;gap:10px;z-index:1}
+.hi{margin:0;display:flex;gap:10px;align-items:flex-start;padding:12px 14px;border-radius:14px;background:rgba(10,16,24,.62);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);box-shadow:0 0 0 1px rgba(255,255,255,.1),0 20px 40px -20px rgba(0,0,0,.8);color:#f4f6f9;font-size:0.875rem;line-height:1.4;opacity:0;transform:translateY(16px);animation:hiIn .6s var(--out) forwards}
+.hi i{flex:none;font-style:normal;font-size:0.6875rem;letter-spacing:.06em;color:var(--text-3);padding-top:3px}
+.hi:nth-child(1){animation-delay:1.3s}.hi:nth-child(2){animation-delay:2.5s}.hi:nth-child(3){animation-delay:3.7s}.hi:nth-child(4){animation-delay:5.3s}
+.hi.app{background:rgba(248,250,253,.96);color:#0b1220;box-shadow:0 1px 0 rgba(255,255,255,.6) inset,0 14px 30px -10px rgba(0,0,0,.5)}
+.hi.app b{flex:none;width:30px;height:30px;border-radius:8px;background:#0d1620;color:#bbd8ff;display:grid;place-items:center;font-weight:600;font-size:0.9375rem}
+.hi.app em{display:block;font-style:normal;font-weight:600;font-size:0.6875rem;letter-spacing:.06em;margin-bottom:2px}
+@keyframes hiIn{to{opacity:1;transform:none}}
+.no-js .hi,.still .hi{opacity:1;transform:none;animation:none}
+@media(max-width:1180px){.hissues{width:300px}}
+@media(max-width:833px){.hissues{left:var(--pad);right:var(--pad);top:76px;transform:none;width:auto;gap:6px}.hi{padding:8px 11px;font-size:0.75rem;line-height:1.35;border-radius:12px}.hi i{font-size:0.625rem;padding-top:2px}.hi.app b{width:24px;height:24px;font-size:0.8125rem}.hi.app em{font-size:0.625rem}}
+@media(max-height:600px) and (max-width:833px){.hissues{display:none}}
+@media(prefers-reduced-motion:reduce){.hi{opacity:1;transform:none;animation:none}}
 /* The wordmark closes the page the way the hero opens it: full width, cut by the bottom edge, the hero light behind it */
 .foot-wm{position:relative;overflow:hidden;height:clamp(72px,11.5vw,168px);margin-top:40px;padding:0 var(--pad)}
 .foot-glow{position:absolute;inset:-40% 0 0;width:100%;height:auto;min-height:140%;object-fit:cover;object-position:50% 70%;opacity:.28;-webkit-mask-image:linear-gradient(0deg,#000 0%,rgba(0,0,0,.6) 50%,transparent 100%);mask-image:linear-gradient(0deg,#000 0%,rgba(0,0,0,.6) 50%,transparent 100%);pointer-events:none}
