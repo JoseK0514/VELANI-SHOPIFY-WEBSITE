@@ -41,7 +41,7 @@ const mainOf = src => between(src, '<main id="main">', '</main>').slice('<main i
 export function homeMain(target) { return site(mainOf(homeSrc), target); }
 export function nevoraMain(target) { return site(between(nevSrc, '<nav class="lnav"', '<main id="main">') + mainOf(nevSrc), target); }
 
-const NAV = [['NEVORA', '/pages/nevora', 'nevora'], ['Websites', '/pages/custom-development#web-applications', 'services'], ['Custom apps', '/pages/custom-development', 'services'], ['Support', '/pages/help', 'help'], ['About', '/pages/about', 'about']];
+const NAV = [['NEVORA', '/pages/nevora', 'nevora'], ['Websites', '/pages/custom-development#web-applications', 'services'], ['Custom apps', '/pages/custom-development', 'services'], ['Plans', '/pages/plans', 'plans'], ['Support', '/pages/help', 'help'], ['About', '/pages/about', 'about']];
 /** current: the nav key for the preview build, or null in the Shopify layout, where Liquid marks it. */
 // Official VELANI wordmark, traced 1:1 from docs/reference/velani-logo-official.pdf; colour comes from CSS.
 export const WORDMARK = readFileSync(new URL('./brand/velani-wordmark.svg', import.meta.url), 'utf8').trim()

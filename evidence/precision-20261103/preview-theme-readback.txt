@@ -1,0 +1,24 @@
+Theme gid://shopify/OnlineStoreTheme/193020428602 "Velani precision pass (preview)" role UNPUBLISHED
+Duplicated from the live theme 193011548474 on 2026-11-03. Read back with theme.files(filenames:) after themeFilesUpsert (URL bodies from stagedUploadsCreate; every staged POST returned 201).
+
+file                                        local md5 (dist/theme)             remote checksumMd5                 size
+assets/velani-nevora.css                    769ab947e711882ab21dbd1e40a2807e   769ab947e711882ab21dbd1e40a2807e   11042  match
+assets/velani-social.png                    9cdf93c8bf12db1fb8d10c4392260e49   9cdf93c8bf12db1fb8d10c4392260e49   465809 match
+assets/velani.css                           662ec824975585348832c3107eda2b28   662ec824975585348832c3107eda2b28   46384  match
+layout/theme.liquid                         efca19323ff87f05d98c68786d033241   efca19323ff87f05d98c68786d033241   26770  match
+sections/velani-about.liquid                3eee90908ad3d14881e27f87a0cfa028   3eee90908ad3d14881e27f87a0cfa028   7405   match
+sections/velani-custom-development.liquid   b147eb75dad44a006f27327d6e81b6d4   b147eb75dad44a006f27327d6e81b6d4   10960  match
+sections/velani-help.liquid                 ba45a7bfbb01a66bff9f58f6513d90f9   ba45a7bfbb01a66bff9f58f6513d90f9   12325  match
+sections/velani-home.liquid                 29cbcfaed2e34caace9d41e5301c3d35   29cbcfaed2e34caace9d41e5301c3d35   10772  match
+sections/velani-nevora.liquid               549c57df85caf478298e565f3f3aa244   549c57df85caf478298e565f3f3aa244   24039  match
+sections/velani-plans.liquid                258939e6a1533e2abb4cab2d45b0699e   258939e6a1533e2abb4cab2d45b0699e   8128   match (new section)
+templates/page.plans.json                   6b2de68949b006914fcc944e341ad9f6   ddb605d9554107eead07a46a552e8353   76     Shopify re-serialises JSON templates (102 -> 76 bytes); same pattern as every other page.*.json in the theme
+templates/index.velani-plans.json           6b2de68949b006914fcc944e341ad9f6   ddb605d9554107eead07a46a552e8353   76     same
+
+Not done: themeFilesDelete is refused by the Shopify connector's safety policy (category "destructive"), so the 39 unreferenced leftovers stay in the theme. None is loaded by any template, section, layout, CSS or JS in dist/theme. List for a later cleanup in admin or with Shopify CLI:
+assets/base.css assets/calendar-blank.svg assets/clock.svg assets/code-simple.svg assets/file-text.svg assets/global.js assets/list.svg assets/night-k-pin.webp assets/night-k-saved.webp assets/plus.svg assets/velani-bandanas.png assets/velani-cat-collars.png assets/velani-collars.png assets/velani-hero.png assets/velani-social.webp assets/x.svg assets/zz-velani-bundle7.css
+sections/announcement-bar.liquid sections/collection-cards.liquid sections/featured-products.liquid sections/footer-group.json sections/footer.liquid sections/header-group.json sections/header.liquid sections/hero-velani.liquid sections/main-404.liquid sections/main-cart.liquid sections/main-collection-grid.liquid sections/main-list-collections.liquid sections/main-page.liquid sections/main-product.liquid sections/main-search.liquid sections/newsletter.liquid sections/story-split.liquid sections/value-grid.liquid sections/velani-products.liquid
+snippets/product-card.liquid templates/index.velani-products.json templates/page.products.json
+Kept on purpose: templates/gift_card.liquid (Shopify default, not part of the build).
+
+Shopify page for /pages/plans: gid://shopify/Page/167254720826, handle "plans", template suffix "plans", created UNPUBLISHED. Jose publishes the page and the theme together in admin.

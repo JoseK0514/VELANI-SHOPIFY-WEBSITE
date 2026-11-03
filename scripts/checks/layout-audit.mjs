@@ -12,7 +12,7 @@ await mkdir(out, { recursive: true });
 // Targets from the approved plan. Screens = page height / viewport height.
 const targets = {
   '/': { desktop: { screens: 5.6 }, phone: { screens: 10 }, separators: 6 }, // five full-screen panels: one screen each on desktop, about two on a phone
-  '/pages/nevora': { desktop: { screens: 9.5 }, phone: { screens: 12 }, words: 660, separators: 12, topBarLinks: 8 }, // 660: the uppercase chapter labels and step numbers added after the calmer pass
+  '/pages/nevora': { desktop: { screens: 12 }, phone: { screens: 16.5 }, words: 920, separators: 18, topBarLinks: 8 }, // raised 2026-11-03 for the features, roles and before/after chapters every competitor carries
 };
 const shared = { sizes: 9, edges: 6 };
 
