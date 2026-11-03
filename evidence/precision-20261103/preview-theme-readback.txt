@@ -45,3 +45,11 @@ assets/velani.css                 de53378561bde007831fe7ae49cf34fc   50226  matc
 assets/night-ai-laptop.webp       f1c8a69ef3ae4c59a6e03458956f4744   56228  match
 sections/velani-home.liquid       b55678dcb55e1b1ecc3eb41dab302b84   10961  match
 layout/theme.liquid               53ba41f93970a521cceb46dec0460a32   30795  match (footer wordmark)
+
+Client work on the devices and the hero sequence, upsert to the same theme, read back:
+assets/velani.css                 0b62d0e39a52b253a768a31dd4cacb14   52218  match
+sections/velani-home.liquid       1dea9df815adfd78fddae3fb042f37f2   11399  match
+layout/theme.liquid               9807b75106b9d64437e1e09ed4dd3fc7   30852  match (footer note)
+assets/night-ai-phone.webp        0c10f2d24eea9904c8f93d58ad1ee890   46220  match (Yavi Barber rewards on the phone)
+assets/night-ai-laptop.webp       d8ecd52d803b002b7effc79721a9a435   62448  match (Tool Box homepage on the laptop)
+assets/night-booking.webp         47bebb79d901531726fdee3f8432b626   20078  match (Yavi rewards in the Home phone frame)
