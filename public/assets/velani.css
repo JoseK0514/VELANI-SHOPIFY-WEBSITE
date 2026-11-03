@@ -209,20 +209,30 @@ html:has(main > .hpanel){scroll-padding-top:56px}
 @media(hover:hover){.foot-nav a:hover,.foot-links a:hover,.foot-links button:hover{text-decoration:underline;text-underline-offset:4px}}
 .foot-links button:disabled{opacity:1;cursor:pointer}
 .foot-note{padding:8px 0 0;max-width:84ch;font-size:0.75rem}
-/* Home hero: the morning's messages arrive one by one, then NEVORA's answer; still under reduced motion and without JavaScript */
-.hissues{position:absolute;right:max(var(--pad),calc(50% - 620px));top:50%;transform:translateY(-54%);width:340px;display:flex;flex-direction:column;gap:10px;z-index:1}
-.hi{margin:0;display:flex;gap:10px;align-items:flex-start;padding:12px 14px;border-radius:14px;background:rgba(10,16,24,.62);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);box-shadow:0 0 0 1px rgba(255,255,255,.1),0 20px 40px -20px rgba(0,0,0,.8);color:#f4f6f9;font-size:0.875rem;line-height:1.4;opacity:0;transform:translateY(16px);animation:hiIn .6s var(--out) forwards}
-.hi i{flex:none;font-style:normal;font-size:0.6875rem;letter-spacing:.06em;color:var(--text-3);padding-top:3px}
-.hi:nth-child(1){animation-delay:1.3s}.hi:nth-child(2){animation-delay:2.5s}.hi:nth-child(3){animation-delay:3.7s}.hi:nth-child(4){animation-delay:5.3s}
-.hi.app{background:rgba(248,250,253,.96);color:#0b1220;box-shadow:0 1px 0 rgba(255,255,255,.6) inset,0 14px 30px -10px rgba(0,0,0,.5)}
-.hi.app b{flex:none;width:30px;height:30px;border-radius:8px;background:#0d1620;color:#bbd8ff;display:grid;place-items:center;font-weight:600;font-size:0.9375rem}
-.hi.app em{display:block;font-style:normal;font-weight:600;font-size:0.6875rem;letter-spacing:.06em;margin-bottom:2px}
-@keyframes hiIn{to{opacity:1;transform:none}}
-.no-js .hi,.still .hi{opacity:1;transform:none;animation:none}
-@media(max-width:1180px){.hissues{width:300px}}
-@media(max-width:833px){.hissues{left:var(--pad);right:var(--pad);top:76px;transform:none;width:auto;gap:6px}.hi{padding:8px 11px;font-size:0.75rem;line-height:1.35;border-radius:12px}.hi i{font-size:0.625rem;padding-top:2px}.hi.app b{width:24px;height:24px;font-size:0.8125rem}.hi.app em{font-size:0.625rem}}
-@media(max-height:600px) and (max-width:833px){.hissues{display:none}}
-@media(prefers-reduced-motion:reduce){.hi{opacity:1;transform:none;animation:none}}
+/* Home hero: a short conversation with the NEVORA assistant plays once over eight seconds; still under reduced motion and without JavaScript */
+.hchat{position:absolute;right:max(var(--pad),calc(50% - 620px));top:50%;transform:translateY(-52%);width:360px;display:flex;flex-direction:column;gap:8px;padding:14px;border-radius:18px;background:rgba(10,16,24,.62);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);box-shadow:0 0 0 1px rgba(255,255,255,.1),0 30px 60px -30px rgba(0,0,0,.9);z-index:1;font-size:0.875rem;line-height:1.4}
+.hchat-h{margin:0 0 6px;display:flex;align-items:center;gap:10px;font-size:0.75rem;color:var(--text-2)}
+.hchat-h b{width:26px;height:26px;border-radius:7px;background:#0d1620;color:#bbd8ff;display:grid;place-items:center;font-weight:600;font-size:0.8125rem;box-shadow:0 0 0 1px rgba(255,255,255,.12)}
+.hchat-h span{font-weight:500;color:var(--text)}
+.hchat-h i{margin-left:auto;font-style:normal;font-size:0.6875rem;letter-spacing:.06em;text-transform:uppercase;color:#e2a54a;display:flex;align-items:center;gap:6px}
+.hchat-h i::before{content:"";width:6px;height:6px;border-radius:50%;background:#e2a54a}
+.msg{margin:0;max-width:86%;padding:9px 12px;border-radius:14px;opacity:0;transform:translateY(10px);animation:8s linear forwards;position:relative}
+.msg.me{align-self:flex-end;background:#bbd8ff;color:#06121e;border-bottom-right-radius:4px}
+.msg.ai{align-self:flex-start;background:rgba(255,255,255,.1);color:#f4f6f9;border-bottom-left-radius:4px}
+/* while the assistant "types", the bubble is there with three dots and the text is still transparent */
+.msg.ai::before{content:"";position:absolute;left:12px;top:50%;width:6px;height:6px;margin-top:-3px;border-radius:50%;background:rgba(244,246,249,.75);box-shadow:10px 0 0 rgba(244,246,249,.75),20px 0 0 rgba(244,246,249,.75);opacity:0;animation:8s linear forwards}
+.msg.m1{animation-name:m1}.msg.a1{animation-name:a1}.msg.a1::before{animation-name:t1}.msg.m2{animation-name:m2}.msg.a2{animation-name:a2}.msg.a2::before{animation-name:t2}
+@keyframes m1{0%,11%{opacity:0;transform:translateY(10px)}16%,100%{opacity:1;transform:none}}
+@keyframes a1{0%,20%{opacity:0;transform:translateY(10px);color:rgba(244,246,249,0)}25%,39%{opacity:1;transform:none;color:rgba(244,246,249,0)}44%,100%{opacity:1;transform:none;color:#f4f6f9}}
+@keyframes t1{0%,24%{opacity:0}26%,39%{opacity:1}42%,100%{opacity:0}}
+@keyframes m2{0%,60%{opacity:0;transform:translateY(10px)}65%,100%{opacity:1;transform:none}}
+@keyframes a2{0%,70%{opacity:0;transform:translateY(10px);color:rgba(244,246,249,0)}75%,85%{opacity:1;transform:none;color:rgba(244,246,249,0)}90%,100%{opacity:1;transform:none;color:#f4f6f9}}
+@keyframes t2{0%,74%{opacity:0}76%,85%{opacity:1}88%,100%{opacity:0}}
+.no-js .msg,.still .msg{opacity:1;transform:none;animation:none;color:inherit}.no-js .msg.ai::before,.still .msg.ai::before{display:none}
+@media(max-width:1180px){.hchat{width:320px}}
+@media(max-width:833px){.hpanel.live:has(.hchat) .hcopy{bottom:40px}.hchat{left:var(--pad);right:var(--pad);top:60px;transform:none;width:auto;gap:5px;padding:10px 10px 12px;font-size:0.75rem;line-height:1.4;border-radius:14px}.hchat-h{margin-bottom:4px;font-size:0.6875rem}.hchat-h b{width:22px;height:22px;font-size:0.75rem}.hchat-h i{font-size:0.625rem}.msg{padding:7px 10px;max-width:90%}.msg.ai::before{left:10px}}
+@media(max-height:600px) and (max-width:833px){.hchat{display:none}}
+@media(prefers-reduced-motion:reduce){.msg{opacity:1;transform:none;animation:none}.msg.ai::before{display:none}}
 /* The wordmark closes the page the way the hero opens it: full width, cut by the bottom edge, the hero light behind it */
 .foot-wm{position:relative;overflow:hidden;height:clamp(72px,11.5vw,168px);margin-top:40px;padding:0 var(--pad)}
 .foot-glow{position:absolute;inset:-40% 0 0;width:100%;height:auto;min-height:140%;object-fit:cover;object-position:50% 70%;opacity:.28;-webkit-mask-image:linear-gradient(0deg,#000 0%,rgba(0,0,0,.6) 50%,transparent 100%);mask-image:linear-gradient(0deg,#000 0%,rgba(0,0,0,.6) 50%,transparent 100%);pointer-events:none}
