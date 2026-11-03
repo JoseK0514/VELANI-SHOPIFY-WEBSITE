@@ -1,5 +1,7 @@
 # Start here — Velani / NEVORA website AI source
 
+**Current task:** [Complete UI handoff](CLAUDE-UI-START-HERE.md) · [Verified launch status](LAUNCH-STATUS-2026-11-03.md) · [Shopify activation](SHOPIFY-ACTIVATION.md). Read these first; they reflect the existing Vercel project, installed credentials and current preview theme.
+
 This is the original source built in the Codex workspace, not an API reconstructed from database tables.
 
 ## Source location
@@ -26,7 +28,7 @@ The public website assistant is a separate service from the private NEVORA workf
 
 ## Read in this order
 
-1. README.md — local setup, configuration, current status.
+1. docs/CLAUDE-UI-START-HERE.md and docs/LAUNCH-STATUS-2026-11-03.md — current UI implementation and remaining deployment blocker. Then README.md for local setup.
 2. docs/RELEASE-0.2.md — current AI profile/plan behavior, API additions and database changes. Versions 0.2.1–0.2.2 add frontend entrance animation; the AI implementation remains this release.
 3. docs/api.md and docs/CLAUDE-HANDOFF.md — HTTP contract and handoff constraints.
 4. src/app.ts and src/experience-routes.ts — authoritative route handlers and validation.
@@ -43,7 +45,7 @@ Check out the branch above and work from services/velani-ai. Install locked depe
 
 The assistant database already had migrations applied in the Codex development work. Compare its current migration history/schema with these files before running administrative commands; another agent may have made later changes. Do not recreate tables to compensate for the earlier missing repository handoff.
 
-Use Vercel with Root Directory `services/velani-ai`; see [Vercel setup](VERCEL.md). Preserve the existing restricted runtime database role and separation from the NEVORA employee database. Publishing this source does not deploy the service or enable live Shopify AI integration. The Vercel account visible to this Codex session does not list NEVORA; select the owner's intended Vercel account before configuring secrets or deploying.
+Use Vercel with Root Directory `services/velani-ai`; see [Vercel setup](VERCEL.md). Preserve the existing restricted runtime database role and separation from the NEVORA employee database. The existing service project is `velani-ai` (`prj_E1Vl2AEpTlJlBam4MTKG7oEHB7x2`) in team `team_Lzbw410WwXGWHTuUXuamRI1N`. Do not create another project or alter the NEVORA workforce application. The required Turnstile credentials still block healthy startup; consult the current launch status.
 
 ## Package contents
 
