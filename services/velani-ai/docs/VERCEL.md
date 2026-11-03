@@ -11,7 +11,7 @@ This service belongs in a separate Vercel project from the NEVORA workforce appl
 | Root Directory | `services/velani-ai` |
 | Framework Preset | **Other** (explicitly configured by `framework: null`) |
 | Node.js | **24.x** |
-| Install command | `npm ci` |
+| Install command | `npm ci --include=dev` (with `NODE_ENV=production` set for the runtime, plain `npm ci` would skip the TypeScript build tooling) |
 | Build command | `npm run build` |
 | Output directory | `public` |
 | Function | `api/index.ts` |
