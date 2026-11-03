@@ -1,5 +1,5 @@
 /* Try the time clock: a working copy of the NEVORA PIN screen. Light surface, like the real tablet. */
-.kio-note{display:inline-flex;flex-wrap:wrap;gap:4px 6px;margin-top:var(--s1);padding:10px 16px;border-radius:999px;background:var(--panel);box-shadow:0 0 0 1px var(--line);font-size:0.9375rem;line-height:1.4;color:var(--text-2)}
+.kio-note{display:inline-flex;flex-wrap:wrap;gap:4px 6px;margin-top:var(--s1);padding:10px 16px;border-radius:var(--r);background:var(--panel);box-shadow:0 0 0 1px var(--line);font-size:0.875rem;line-height:1.4;color:var(--text-2)}
 .kio-note b{font-weight:600;color:var(--text)}
 .kio-note+.kio{margin-top:16px}
 .try-acts{margin-top:28px}
@@ -55,5 +55,5 @@
  .kio-foot{font-size:0.875rem}
 }
 @media(min-width:601px) and (max-width:833px){.kio{max-width:560px}}
-@media(max-width:600px){.kio-note{border-radius:16px}}
+
 @media(max-width:360px){.kio-loc{font-size:0.75rem}.kio-loc b{white-space:nowrap}}

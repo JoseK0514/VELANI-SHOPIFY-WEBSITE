@@ -9,10 +9,10 @@ export const company = Object.freeze({
   domain: 'www.thevelani.com',
 });
 export const services = [
-  { id: 'web-applications', title: 'Web applications', intro: 'Tools used in a browser, built around the task.', text: 'Customer portals, order trackers and tools for your office, used in a browser with nothing to install.', detail: 'Start with who needs access, what they need to finish and the systems the application needs to work with.' },
-  { id: 'mobile-applications', title: 'Mobile applications', intro: 'Software for work away from a desk.', text: 'Apps for people who work away from a desk, such as field crews, drivers and store or warehouse staff.', detail: 'Device capabilities, accessibility, connectivity and the distribution approach are part of defining the project.' },
-  { id: 'business-systems', title: 'Business systems', intro: 'A clear place for a manual process to happen.', text: 'Requests, approvals and records that move by email or paper today, kept in one place with a clear owner for each step.', detail: 'We work through roles, responsibilities and the information people need before deciding how a system should behave.' },
-  { id: 'integrations', title: 'Integrations', intro: 'Your existing tools, working together.', text: 'Connections between the tools you already pay for, so nobody types the same order, invoice or hours twice.', detail: 'A useful integration starts with the source of each record, the permissions involved and what should happen when a system is unavailable.' },
+  { id: 'web-applications', title: 'Websites', img: 'ai-laptop', side: 'right', text: 'Modern, fast and built to bring in calls and bookings on every phone. Your pages, your booking links and the ways customers reach you, designed around your business.' },
+  { id: 'booking', title: 'Booking and loyalty', img: 'ai-phone', side: 'left', text: 'Appointment booking your customers use from their phone, with reminders, and a rewards card that fills up with each visit.' },
+  { id: 'online-stores', title: 'Online stores', img: 'ai-store', side: 'right', text: 'Products, delivery pricing by distance and payment, with each order landing where your team already works.' },
+  { id: 'business-systems', title: 'Business tools', img: 'ai-dash', side: 'left', text: 'Requests, approvals and records that move by email or paper today, kept in one place. Dashboards for your day, and connections between the tools you already pay for.' },
 ];
 /** name: the short page name used for <title> and og:title ("<name> · Velani"); the title is the H1 tagline. */
 const page = (title, eyebrow, intro, sections = [], extra = {}) => ({ title, eyebrow, intro, sections, ...extra });
@@ -21,7 +21,7 @@ export const routes = {
   '/': page('Your team’s week, in one place.', 'Velani', 'NEVORA by Velani: scheduling, time clock and payroll calculation for teams that work in shifts. In development and offered to businesses by quote.', [], { kind: 'home', name: 'Velani · NEVORA scheduling, time clock and payroll calculation for shift teams' }),
   '/pages/products': page('What we make.', 'Velani', 'NEVORA, our own app for teams that work in shifts, and custom software we build for other businesses.', [], { kind: 'products', name: 'Products' }),
   '/pages/nevora': page('NEVORA · Scheduling, time clock and payroll calculation for shift teams', 'NEVORA', 'Scheduling, time clock and payroll calculation for shift teams. Owners and managers plan on the web, employees use their phone and everyone clocks in at a shared tablet with a PIN.', [], { kind: 'nevora', nav: 'nevora' }),
-  '/pages/custom-development': page('Software for the work your business needs to do.', 'Custom development', 'A customer-facing application, an internal system or a connection between tools. Start with the problem and the people doing the work.', [], { kind: 'services', nav: 'services', name: 'Custom development' }),
+  '/pages/custom-development': page('Software for the work your business needs to do.', 'Custom development', 'Websites, booking systems, online stores and business tools, built for how your business works. Start with the problem and the people doing the work.', [], { kind: 'services', nav: 'services', name: 'Custom development' }),
   '/pages/about': page('A software company. Two\u00a0ways to work with us.', 'About Velani', 'Velani develops software products and builds custom applications for businesses.', [
     { heading: 'Products of our own', text: 'Our product work starts with a specific business workflow. NEVORA, our app for scheduling, time clock and payroll calculation, is in development and offered to businesses by quote.' },
     { heading: 'Software for your business', text: 'Custom development starts with the work you need software to support. We define the problem and the scope before making project commitments.' },
@@ -29,7 +29,7 @@ export const routes = {
     { heading: 'The company behind the work', text: 'Velani is operated by VELANI LLC. You can reach us at support@thevelani.com or at 1654 Calle Tulipan, Suite 100, San Juan, PR 00927.' },
   ], { nav: 'about', name: 'About' }),
   '/pages/contact': page('Start with the problem.', 'Contact', 'Tell us what needs to work better, who needs to use it and what you want to build.', [], { kind: 'contact', nav: 'contact', name: 'Contact' }),
-  '/pages/help': page('Before we start.', 'Help and questions', 'Answers about our products, custom development and getting in touch.', [
+  '/pages/help': page('Here to help.', 'Support', 'Client support for our clients, answers about our products and custom development, and help for people who use NEVORA at work.', [
     { heading: 'How does my business get NEVORA?', text: 'NEVORA is offered to businesses by quote, with a free 30-day demo for teams of up to 30 employees. Ask for a quote or start a demo and we will discuss your team’s needs. Employees get their account from their workplace, not from this website.' },
     { heading: 'Does Velani build custom software?', text: 'Yes. Describe the application, internal workflow or integration you need on the contact page.' },
     { heading: 'Can you give me a price or delivery date here?', text: 'A project needs an agreed scope. Fees, milestones and delivery expectations are set out in the engagement agreement.' },
@@ -37,7 +37,7 @@ export const routes = {
     { heading: 'Where should I send sensitive information?', text: 'Do not send passwords, API keys, payment details or sensitive records through a public form or ordinary email. Ask for an appropriate channel first.' },
     { heading: 'How do I reach client support?', text: 'Client support answers Monday to Friday. Write to support@thevelani.com, call 787-925-2000, or use the contact page.' },
     { heading: 'How does the free NEVORA demo work?', text: 'A business with up to 30 employees can use NEVORA free for 30 days from setup. No card is needed and nothing is charged. On day 30 you continue by quote, export your data, or we delete it within 3 days. NEVORA calculates pay statements; it does not pay employees or file payroll taxes.' },
-  ], { kind: 'faq', name: 'Help and questions' }),
+  ], { kind: 'faq', nav: 'help', name: 'Support' }),
   '/pages/legal': page('The details matter.', 'Legal and trust', 'Find the information that applies to this company website. Product use and paid engagements have their own applicable terms.', [], { kind: 'legal-index', legal: true, name: 'Legal' }),
   '/pages/privacy': page('Privacy, in plain language.', 'Privacy notice', 'How information is handled on this company website and through a project inquiry.', [
     { heading: 'Who operates this website', text: 'Velani is operated by VELANI LLC. Contact support@thevelani.com about privacy, or write to VELANI LLC, 1654 Calle Tulipan, Suite 100, San Juan, PR 00927.' },

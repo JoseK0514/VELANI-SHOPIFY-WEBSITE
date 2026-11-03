@@ -29,7 +29,7 @@ try {
     const hosts = new Set(); p.on('request', r => hosts.add(new URL(r.url()).host));
     // The time clock lives on the NEVORA page, so the on-page demo action is checked there
     await p.goto(base + '/pages/nevora', { waitUntil: 'networkidle' });
-    ok(await p.locator('#ast-launch').isVisible() && (await p.locator('#ast-launch').innerText()).trim() === 'Ask about NEVORA' && await p.locator('#ast').isHidden(), 'launcher shows "Ask about NEVORA"; panel closed');
+    ok(await p.locator('#ast-launch').isVisible() && /^Ask about NEVORA$/i.test((await p.locator('#ast-launch').innerText()).trim()) && await p.locator('#ast').isHidden(), 'launcher shows "Ask about NEVORA"; panel closed');
     await p.click('#ast-launch'); await waitFor(p, '#ast');
     ok((await p.locator('#ast-launch').getAttribute('aria-expanded')) === 'true' && await p.evaluate(() => document.activeElement.id === 'ast-in'), 'panel opens and focus lands in the question field');
     ok((await p.locator('#ast-sugg button').count()) === 3 && /kept for up to 30 days/.test(await p.locator('#ast-note').innerText()) && await p.locator('#ast-note a[href$="/pages/privacy#section-4"]').isVisible(), 'intro offers three questions; retention notice links to the privacy notice');

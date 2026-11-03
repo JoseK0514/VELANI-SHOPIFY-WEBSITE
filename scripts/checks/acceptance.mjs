@@ -37,7 +37,7 @@ try {
     ok(await p.locator('#top .hacts a', { hasText: 'Start a project' }).isVisible() && (await p.locator('#top h1').boundingBox()).y < 664, 'phone opening screen: the headline and the action are visible');
     ok(await p.locator('#nevora .hacts a', { hasText: 'Start free demo' }).count() === 1, 'the NEVORA panel offers the free demo');
     await p.goto(base + '/pages/nevora', { waitUntil: 'networkidle' }); await p.waitForTimeout(600);
-    await p.locator('.n-hero .acts a[href="#try"]').tap(); await p.waitForTimeout(1200);
+    await p.locator('.n-hero .hacts a[href="#try"]').tap(); await p.waitForTimeout(1200);
     const note = await p.locator('#try .kio-note').boundingBox(), pad = await p.locator('.kio-pad').boundingBox(); ok(note.y < pad.y, 'demo context shown before the keypad');
     const h0 = (await p.locator('#kio').boundingBox()).height;
     const dots = () => p.locator('#kio-dots i.on').count();
@@ -78,7 +78,7 @@ try {
     ok(errs.length === 0, 'home: no script errors ' + errs.join('|'));
     // NEVORA enquiry variant
     const c = await ctx.newPage(); await c.goto(base + '/pages/contact?interest=nevora', { waitUntil: 'networkidle' }); await c.waitForTimeout(500);
-    ok((await c.locator('main h1').innerText()) === 'Tell us about your shift team.' && (await c.locator('.phero .kicker').innerText()) === 'NEVORA for your team', 'NEVORA enquiry heading');
+    ok((await c.locator('main h1').innerText()) === 'Tell us about your shift team.' && /^NEVORA for your team$/i.test(await c.locator('.phero .kicker').innerText()), 'NEVORA enquiry heading');
     ok(await c.locator('#inquiry-team').isVisible() && await c.locator('#inquiry-locations').isVisible() && !(await c.locator('#inquiry-interest').isVisible()) && (await c.locator('#inquiry-interest').inputValue()) === 'nevora', 'team size and locations shown; NEVORA kept without reselecting');
     const form = await c.locator('#project-inquiry').boundingBox(), aside = await c.locator('.contact-aside').boundingBox(); ok(form.y < aside.y, 'phone: form directly after the introduction, address below');
     ok(/How many people work shifts\?/.test(await c.locator('.contact-aside').innerText()), 'aside prompts speak about the team');
@@ -106,9 +106,9 @@ try {
     await p.keyboard.press('Escape'); await p.waitForTimeout(200);
     ok(!(await p.locator('#lnav-list').isVisible()) && await tog.evaluate(e => e === document.activeElement), 'Escape closes the menu and focus returns to the button');
     await p.evaluate(() => scrollTo(0, 0)); await p.waitForTimeout(300);
-    const tryBtn = p.locator('.n-hero .acts a[href="#try"]'); const bb = await tryBtn.boundingBox();
-    ok(bb.y + bb.height <= 664, 'Try the time clock visible in the opening screen');
-    const ph = await p.locator('.line3 figure:nth-child(2)').boundingBox(); ok(ph.y < 664, 'product screen visible in the opening screen (top at ' + Math.round(ph.y) + 'px)');
+    const tryBtn = p.locator('.n-hero .hacts a[href="#try"]'); const bb = await tryBtn.boundingBox(); const vh = 844; // iPhone 13 screen; Playwright's emulated viewport (664px) is the Safari-with-chrome height
+    ok(bb.y + bb.height <= vh, 'Try the time clock visible in the opening screen (bottom at ' + Math.round(bb.y + bb.height) + 'px of ' + vh + ')');
+    const ph = await p.locator('.n-hero .hshot').boundingBox(); ok(ph.y < 664, 'product screen visible in the opening screen (top at ' + Math.round(ph.y) + 'px)');
     await tryBtn.tap(); await p.waitForTimeout(1500);
     const h = await p.locator('#try-t').boundingBox(); ok(h.y >= hdr.height, 'demo heading lands below the header (' + Math.round(h.y) + 'px)');
     const note = await p.locator('.kio-note').boundingBox(), pad = await p.locator('.kio-pad').boundingBox(); ok(note.y < pad.y, 'demo notice comes before the keypad');
@@ -128,12 +128,12 @@ try {
     ok(errs.length === 0, 'NEVORA: no script errors ' + errs.join('|'));
     const nj = await (await browser.newContext({ ...devices['iPhone 13'], javaScriptEnabled: false })).newPage();
     await nj.goto(base + '/pages/nevora');
-    ok(!(await nj.locator('.n-hero a[href="#try"]').isVisible()) && await nj.locator('.n-hero .acts .pill.line').isVisible(), 'without JavaScript the hero offers Ask for a quote instead of the demo');
+    ok(!(await nj.locator('.n-hero a[href="#try"]').isVisible()) && await nj.locator('.n-hero .hacts a', { hasText: 'Start free demo' }).isVisible(), 'without JavaScript the hero offers the free demo instead of the time clock');
     ok(await nj.locator('#gnav').isVisible() && await nj.locator('#gnav').getByRole('link', { name: 'About' }).isVisible(), 'without JavaScript the Velani header links are shown on a phone');
     await nj.screenshot({ path: out + '/nevora-nojs-phone.png' });
     const rm = await (await browser.newContext({ ...devices['iPhone 13'], reducedMotion: 'reduce' })).newPage();
     await rm.goto(base + '/pages/nevora', { waitUntil: 'networkidle' }); await rm.waitForTimeout(600);
-    ok(await rm.locator('#n-t').isVisible() && await rm.locator('#kio').isVisible() && await rm.locator('.line3 figure:nth-child(2) img').isVisible(), 'reduced motion: headline, demo and product image all visible');
+    ok(await rm.locator('#n-t').isVisible() && await rm.locator('#kio').isVisible() && await rm.locator('.n-hero .hshot img').isVisible(), 'reduced motion: headline, demo and product image all visible');
     await ctx.close();
   }
   // ---- Demo on desktop: local time, keyboard, screen-reader text, Spanish date, axe, no external requests

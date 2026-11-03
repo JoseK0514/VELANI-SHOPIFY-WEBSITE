@@ -1,5 +1,5 @@
 import { company, routes, services, legalUpdated } from './content.mjs';
-import { header as nightHeader, footer as nightFooter, homeMain, nevoraMain, policyMain, assistant as nightAssistant, icon } from './night.mjs';
+import { header as nightHeader, footer as nightFooter, homeMain, nevoraMain, policyMain, assistant as nightAssistant, icon, WORDMARK } from './night.mjs';
 export function escapeHtml(value) {
   return String(value ?? '').replace(/[&<>"']/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[char]);
 }
@@ -26,8 +26,17 @@ const more = (text, href) => '<a class="more" href="' + e(href) + '"><span>' + e
 function pageHero(page, { meta = '' } = {}) {
   return '<section class="phero"><div class="wrap"><p class="kicker">' + e(page.eyebrow) + '</p><h1 class="t1 rise">' + e(page.title) + '</h1>' + (page.intro ? '<p class="lede fade">' + e(page.intro) + '</p>' : '') + meta + '</div></section>';
 }
-function doors() {
-  return '<section class="band" aria-label="Contact"><div class="wrap band-in band-two"><div><h2 class="t3">Thinking about NEVORA for your team?</h2><a class="pill" href="/pages/contact?interest=nevora">Ask for a NEVORA quote</a></div><div><h2 class="t3">Have a project in mind?</h2><a class="pill line" href="/pages/contact?interest=custom-software">Tell us about your project</a><p class="mail">Or write to <a href="mailto:' + company.email + '">' + company.email + '</a></p></div></div></section>';
+/* Full-screen panels (the home page language): a square outlined button, a label, a title, one paragraph and one or two actions */
+const hb = (text, href, fill = false) => '<a class="hb' + (fill ? ' fill' : '') + '" href="' + e(href) + '">' + e(text) + icon('arrow-right') + '</a>';
+const tel = () => 'tel:+1' + company.phone.replace(/-/g, '');
+function panel(target, { id, cls = '', img, flip = false, kick, title, tag = 'h2', html = '', text, acts = '', extra = '', first = false }) {
+  const tid = id + '-t';
+  const photo = img ? '<img class="hph' + (flip ? ' flip' : '') + '" src="' + asset('night-' + img + '.webp', target) + '" alt="" width="1920" height="1080"' + (first ? ' fetchpriority="high"' : ' loading="lazy"') + '>' : '';
+  return '<section class="hpanel ' + cls + '" id="' + id + '" aria-labelledby="' + tid + '">' + photo + '<div class="hshade"></div><div class="hcopy">' + (kick ? '<p class="hkick">' + e(kick) + '</p>' : '') + '<' + tag + ' class="rise" id="' + tid + '">' + (html || e(title)) + '</' + tag + '>' + (text ? '<p class="fade">' + e(text) + '</p>' : '') + (acts ? '<div class="hacts fade">' + acts + '</div>' : '') + '</div>' + extra + '</section>';
+}
+/** The closing panel on every company page: the wordmark, client support and the two ways in. */
+function closing(target) {
+  return '<section class="hpanel end" id="velani" aria-label="Velani"><img class="hph flip" src="' + asset('night-ai-light.webp', target) + '" alt="" width="1920" height="1080" loading="lazy"><div class="hshade"></div><div class="hcopy"><p class="hwm">' + WORDMARK + '</p><p class="fade">Software products and custom development. Client support ' + e(company.hours) + ' at <a class="ul" href="' + tel() + '">' + e(company.phone) + '</a>.</p><div class="hacts fade">' + hb('Start a project', '/pages/contact', true) + hb('Client support', '/pages/help') + '</div></div></section>';
 }
 const HOW = [
   ['We discuss the work', 'You show us how the work gets done today and who does it.'],
@@ -35,11 +44,18 @@ const HOW = [
   ['We build in milestones', 'You review working software at each milestone.'],
   ['We hand it over', 'Who owns the code, what you receive and how support works after launch are all set in the written agreement.'],
 ];
-function services_() {
-  return '<section class="split" aria-label="What we build"><div class="wrap">' + services.map(s => '<div class="draw" id="' + s.id + '"><h2 class="t2">' + e(s.title) + '</h2><div><h3>' + e(s.intro) + '</h3><p>' + e(s.text) + '</p><p>' + e(s.detail) + '</p></div></div>').join('') + '</div></section><section class="how-page"><div class="wrap"><div class="how"><h2 class="t2 rise">How a custom project works</h2><ol class="rail" data-in>' + HOW.map(([b, t]) => '<li data-in><b>' + e(b) + '</b><span>' + e(t) + '</span></li>').join('') + '</ol></div></div></section>' + doors();
+const rail = (steps, cls = '') => '<ol class="rail' + cls + '" data-in>' + steps.map(([b, t], i) => '<li data-in><i>0' + (i + 1) + '</i><b>' + e(b) + '</b><span>' + e(t) + '</span></li>').join('') + '</ol>';
+function services_(page, target) {
+  const hero = panel(target, { id: 'top', cls: 'dim long', img: 'ai-glow', kick: page.eyebrow, title: page.title, tag: 'h1', text: page.intro, acts: hb('Start a project', '/pages/contact?interest=custom-software', true), first: true });
+  const panels = services.map((s, i) => panel(target, { id: s.id, cls: s.side === 'right' ? 'right' : '', img: s.img, kick: '0' + (i + 1) + ' · Custom development', title: s.title, text: s.text, acts: hb('Start a project', '/pages/contact?interest=custom-software') })).join('');
+  const how = '<section class="how-page" aria-labelledby="how-t"><div class="wrap"><div class="how"><p class="hkick">How it works</p><h2 class="t2 rise" id="how-t">How a custom project works</h2>' + rail(HOW) + '</div></div></section>';
+  return hero + panels + how + closing(target);
 }
-function products() {
-  return '<section class="doors" aria-label="What we make"><div class="wrap"><div class="doors-grid"><div class="door fade"><div><img class="wm" src="{{wm}}" alt="NEVORA" width="907" height="122"><p class="status"><i aria-hidden="true"></i><span>In development · Offered to businesses <span class="nw">by quote</span></span></p><p>Scheduling, time clock and payroll calculation for teams that work in shifts, on the web, on phones and on a shared tablet at work.</p></div><div class="acts"><a class="pill" href="/pages/nevora">See how NEVORA works</a>' + more('Ask for a quote', '/pages/contact?interest=nevora') + '</div></div><div class="door fade"><div><h2 class="t2">Custom software</h2><p>Web and mobile applications, business systems and integrations, built for how your business works.</p></div><div class="acts"><a class="pill line" href="/pages/custom-development">Explore custom development</a>' + more('Tell us about your project', '/pages/contact?interest=custom-software') + '</div></div></div></div></section>';
+function products(page, target) {
+  const nevora = panel(target, { id: 'nevora', img: 'ai-devices', kick: 'Our product · In development', html: '<img src="' + asset('night-nevora-wm-white.png', target) + '" alt="NEVORA" width="907" height="122">', title: 'NEVORA', text: 'Scheduling, time clock and payroll calculation for teams that work in shifts. Free for 30 days, for teams of up to 30 employees.', acts: hb('Start free demo', '/pages/contact?interest=nevora-demo', true) + hb('Learn more', '/pages/nevora'), extra: '<div class="hshot fade"><img src="' + asset('night-phone-long.webp', target) + '" alt="NEVORA on an employee’s phone: her shift today and two things to do" width="1170" height="3936" loading="lazy"></div>' });
+  const web = panel(target, { id: 'websites', cls: 'right', img: 'ai-laptop', kick: 'Custom development', title: 'Websites', text: 'Modern, fast and built to bring in calls and bookings on every phone.', acts: hb('Start a project', '/pages/custom-development#web-applications') });
+  const apps = panel(target, { id: 'apps', img: 'ai-dash', kick: 'Custom development', title: 'Custom apps', text: 'Booking systems, loyalty cards, online stores with delivery pricing, and dashboards for your day.', acts: hb('Start a project', '/pages/custom-development') });
+  return pageHero(page) + nevora + web + apps + closing(target);
 }
 function fields(live = false) {
   return '<fieldset' + (live ? '' : ' disabled') + '><legend class="sr">Project inquiry</legend><div class="form-row"><div class="field"><label for="inquiry-name">Name <span aria-hidden="true">*</span></label><input id="inquiry-name" name="contact[name]" autocomplete="name" maxlength="120" required aria-describedby="error-name"' + (live ? ' value="{{ form.name | escape }}"' : '') + '><p class="field-error" id="error-name"></p></div><div class="field"><label for="inquiry-email">Email <span aria-hidden="true">*</span></label><input id="inquiry-email" type="email" name="contact[email]" autocomplete="email" maxlength="254" required aria-describedby="error-email"' + (live ? ' value="{{ form.email | escape }}"' : '') + '><p class="field-error" id="error-email"></p></div></div><div class="form-row row-topic"><div class="field"><label for="inquiry-company">Company <span class="optional">optional</span></label><input id="inquiry-company" name="contact[company]" autocomplete="organization" maxlength="160" aria-describedby="error-company"><p class="field-error" id="error-company"></p></div><div class="field field-topic"><label for="inquiry-interest">Topic <span class="optional">optional</span></label><select id="inquiry-interest" name="contact[interest]"><option value="">Choose a topic</option><option value="custom-software">Custom software</option><option value="nevora">NEVORA quote</option><option value="nevora-demo">Free NEVORA demo</option><option value="other">Other</option></select></div></div><div class="form-row" data-nevora-fields hidden><div class="field"><label for="inquiry-team">Team size <span class="optional">optional</span></label><select id="inquiry-team" name="contact[team_size]"><option value="">Choose a size</option><option>1–9</option><option>10–24</option><option>25–49</option><option>50–99</option><option>100+</option><option>Not sure</option></select></div><div class="field"><label for="inquiry-locations">Locations <span class="optional">optional</span></label><input id="inquiry-locations" name="contact[locations]" maxlength="120" aria-describedby="locations-help error-locations"><p class="field-help" id="locations-help">How many locations, or where they are.</p><p class="field-error" id="error-locations"></p></div></div><div class="field"><label for="inquiry-message">' + v('Your message <span aria-hidden="true">*</span>', 'Anything else we should know? <span class="optional">optional</span>') + '</label><textarea id="inquiry-message" name="contact[body]" rows="6" maxlength="4000" required aria-describedby="message-help error-message">' + (live ? '{{ form.body | escape }}' : '') + '</textarea><p class="field-help" id="message-help">' + v('Describe the work. Please do not include passwords, payment details or sensitive records.', 'For example, what you use today for schedules, time and payroll. Please do not include passwords, payment details or sensitive records.') + '</p><p class="field-error" id="error-message"></p></div><p class="form-privacy">An inquiry does not subscribe you to marketing. Read our <a href="/pages/privacy">Privacy notice</a>.</p><button class="pill" type="submit" data-inquiry-submit>' + (live ? 'Send inquiry' : 'Check draft inquiry') + '</button></fieldset>';
@@ -71,14 +87,18 @@ function legalIndex() {
   const nevora = [['NEVORA privacy policy', '/pages/nevora-privacy', 'How the NEVORA app handles workplace information.'], ['NEVORA terms of use', '/pages/nevora-terms', 'The rules for using NEVORA.'], ['NEVORA support', '/pages/nevora-support', 'Signing in, your account and getting help.'], ['Delete your NEVORA account', '/pages/nevora-account-deletion', 'How to ask us to delete your account.']];
   return '<section class="dir"><div class="wrap"><h2 class="t2">This website</h2><div class="rows">' + site.map(row).join('') + '</div><h2 class="t2">NEVORA app</h2><div class="rows">' + nevora.map(row).join('') + '</div></div></section>';
 }
-function faq(page) {
-  return '<section class="faq"><div class="wrap">' + page.sections.map(s => '<details><summary>' + e(s.heading) + icon('plus') + '</summary><p>' + linkEmail(e(s.text)) + '</p></details>').join('') + '<div class="acts">' + more('NEVORA questions', '/pages/nevora#faq') + more('NEVORA support', '/pages/nevora-support') + '</div></div></section>' + doors();
+function faq(page, target) {
+  const support = '<section class="support" aria-labelledby="sup-t"><div class="wrap"><p class="hkick">Client support</p><h2 class="t2 rise" id="sup-t">For our clients.</h2><dl class="spec big"><div><dt>Email</dt><dd><a href="mailto:' + company.email + '">' + company.email + '</a></dd></div><div><dt>Phone</dt><dd><a href="' + tel() + '">' + e(company.phone) + '</a><small>' + e(company.hours) + '</small></dd></div><div><dt>Write to us</dt><dd>' + e(company.operator) + '<small>' + e(company.address) + '</small></dd></div></dl><div class="acts"><a class="pill" href="/pages/contact">Contact page</a></div></div></section>';
+  const questions = '<section class="faq" aria-labelledby="faq-t"><div class="wrap"><div class="qa"><div class="head"><p class="hkick">Questions</p><h2 class="t2 rise" id="faq-t">Before we start</h2></div><div class="faq-list">' + page.sections.map(s => '<details><summary>' + e(s.heading) + icon('plus') + '</summary><p>' + linkEmail(e(s.text)) + '</p></details>').join('') + '<div class="acts">' + more('NEVORA questions', '/pages/nevora#faq') + '</div></div></div></div></section>';
+  const app = '<section class="band help" aria-labelledby="help-t"><div class="wrap band-in"><h2 class="t3" id="help-t">Do you use NEVORA at work?</h2><p class="band-links">' + more('NEVORA support', '/pages/nevora-support') + more('NEVORA privacy policy', '/pages/nevora-privacy') + more('Delete your NEVORA account', '/pages/nevora-account-deletion') + more('NEVORA terms of use', '/pages/nevora-terms') + '</p></div></section>';
+  return pageHero(page) + support + questions + app + closing(target);
 }
-function about(page) {
-  return '<section class="split"><div class="wrap">' + page.sections.map(s => '<div class="draw"><h2 class="t3">' + e(s.heading) + '</h2><div><p>' + linkEmail(e(s.text)) + '</p></div></div>').join('') + '</div></section>' + doors();
+function about(page, target) {
+  const hero = panel(target, { id: 'top', cls: 'dim long', img: 'ai-glow', flip: true, kick: page.eyebrow, title: page.title, tag: 'h1', text: page.intro, acts: hb('Start a project', '/pages/contact', true) + hb('See NEVORA', '/pages/nevora'), first: true });
+  return hero + '<section class="split" aria-label="About Velani"><div class="wrap">' + page.sections.map(s => '<div class="draw"><h2 class="t3">' + e(s.heading) + '</h2><div><p>' + linkEmail(e(s.text)) + '</p></div></div>').join('') + '</div></section>' + closing(target);
 }
 function notFound() {
-  return '<section class="phero"><div class="wrap"><p class="kicker">Page not found</p><h1 class="t1">We could not find that page.</h1><p class="lede">The link may be out of date, or the address may be misspelled.</p><div class="acts"><a class="pill" href="/">Go to the home page</a>' + more('See how NEVORA works', '/pages/nevora') + '</div></div></section>';
+  return '<section class="phero"><div class="wrap"><p class="kicker">Page not found</p><h1 class="t1">We could not find that page.</h1><p class="lede">The link may be out of date, or the address may be misspelled.</p><div class="acts"><a class="pill" href="/">Go to the home page</a><a class="pill line" href="/pages/nevora">See NEVORA</a></div></div></section>';
 }
 function renderRawBody(path, target) {
   const page = routes[path];
@@ -87,12 +107,12 @@ function renderRawBody(path, target) {
     case 'home': return homeMain(target);
     case 'nevora': return nevoraMain(target);
     case 'policy': return policyMain(page.slug);
-    case 'products': return pageHero(page) + products().replace('{{wm}}', asset('night-nevora-wm-white.png', target));
-    case 'services': return pageHero(page) + services_();
+    case 'products': return products(page, target);
+    case 'services': return services_(page, target);
     case 'contact': return contactHero(page) + contact(target);
-    case 'faq': return pageHero(page) + faq(page);
+    case 'faq': return faq(page, target);
     case 'legal-index': return pageHero(page) + legalIndex();
-    default: return page.legal ? legalDoc(page) : pageHero(page) + about(page);
+    default: return page.legal ? legalDoc(page) : about(page, target);
   }
 }
 export function renderBody(path, { target = 'preview' } = {}) {

@@ -1,53 +1,9 @@
-/* ---------- Home: five full-screen panels, one subject each ---------- */
-.hp{background:#000}
-main:has(> .hpanel){background:#000}
-.hpanel{position:relative;height:100vh;height:100svh;min-height:700px;overflow:hidden;background:#000;color:#f4f6f9}
-.hph{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 50%}
-.hph.flip{transform:scaleX(-1)}
-.hshade{position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,.72) 0%,rgba(0,0,0,.35) 45%,rgba(0,0,0,0) 70%)}
-.hpanel.right .hshade{background:linear-gradient(270deg,rgba(0,0,0,.72) 0%,rgba(0,0,0,.35) 45%,rgba(0,0,0,0) 70%)}
+/* ---------- Home: five full-screen panels (the panel system itself lives in base.css) ---------- */
 .hpanel.apps{background:radial-gradient(90% 70% at 70% 55%,#1a2230 0%,#0b0e13 60%,#000 100%)}
 .hpanel.apps .hshade{background:none}
-.hpanel.end .hshade{background:linear-gradient(0deg,rgba(0,0,0,.8) 0%,rgba(0,0,0,.3) 40%,rgba(0,0,0,0) 65%)}
-.hcopy{position:absolute;left:max(var(--pad),calc(50% - 620px));top:50%;transform:translateY(-50%);max-width:620px}
-.hpanel.right .hcopy{left:auto;right:max(var(--pad),calc(50% - 620px))}
-.hpanel.end .hcopy{left:0;right:0;top:auto;bottom:88px;transform:none;max-width:none;text-align:center}
-.hkick{margin:0 0 14px;font-size:0.75rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:#c9d6ea}
-.hpanel h1,.hpanel h2{margin:0;font-size:4rem;line-height:1.04;font-weight:600;letter-spacing:-.025em;text-wrap:balance}
-.hpanel h1{font-size:5.25rem;line-height:1}
-.hpanel h2 img{display:block;height:52px;width:auto}
-.hcopy p:not(.hkick){margin:18px 0 0;max-width:30em;font-size:1.0625rem;line-height:1.5;color:#dde3ee}
-.hpanel.end .hcopy p{margin-inline:auto}
-.hwm{margin:0}.hwm .wm-velani{height:44px;width:auto;display:block;margin:0 auto;color:#f4f6f9}
-.hacts{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
-.hpanel.end .hacts{justify-content:center}
-.hb{display:inline-flex;align-items:center;gap:12px;min-height:50px;padding:0 20px;border-radius:4px;background:rgba(0,0,0,.5);border:1px solid rgba(240,240,250,.35);color:#f0f0fa;font-size:0.875rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);transition:background-color .2s,transform .15s ease-out}
-.hb .icon{font-size:1rem}
-.hb.fill{background:#f0f0fa;color:#06121e;border-color:#f0f0fa}
-@media(hover:hover){.hb:hover{background:rgba(0,0,0,.7)}.hb.fill:hover{background:#fff}}
-.hb:active{transform:scale(.96)}
-.hshot{position:absolute;right:max(var(--pad),calc(50% - 500px));top:50%;width:300px;transform:translateY(-50%);padding:8px;border-radius:44px;background:#0b0d10;box-shadow:0 0 0 1px rgba(255,255,255,.14),inset 0 0 0 1px rgba(255,255,255,.05),0 50px 110px -20px rgba(0,0,0,.95)}
-.hshot img{display:block;width:100%;aspect-ratio:390/800;object-fit:cover;object-position:0 0;border-radius:36px}
 .hpanel.apps .hshot{right:auto;left:50%;margin-left:-110px;width:260px}
 .hpanel.apps .hshot img{aspect-ratio:auto}
-.hweb{position:absolute;right:max(var(--pad),calc(50% - 620px));top:50%;width:430px;transform:translateY(-50%);border-radius:18px;overflow:hidden;box-shadow:0 0 0 1px rgba(255,255,255,.12),0 60px 120px -30px rgba(0,0,0,.9)}
-.hweb img{display:block;width:100%}
-/* Entrance: the copy rises once, the shots fade in (motion.js adds .in; reduced motion crossfades) */
-.hpanel .fade,.hpanel .rise{transition-duration:.9s}
-@media(max-width:1180px){.hpanel.apps .hshot{left:auto;right:max(var(--pad),calc(50% - 500px));margin-left:0;width:250px}.hweb{display:none}}
-@media(min-width:834px) and (max-height:760px){.hshot{width:240px}}
+@media(max-width:1180px){.hpanel.apps .hshot{left:auto;right:max(var(--pad),calc(50% - 500px));margin-left:0;width:250px}}
 @media(max-width:833px){
- .hpanel{min-height:760px}
- .hpanel:has(.hshot){min-height:880px}
- .hcopy,.hpanel.right .hcopy{left:var(--pad);right:var(--pad);top:auto;bottom:64px;transform:none;max-width:none}
- .hshade,.hpanel.right .hshade{background:linear-gradient(0deg,rgba(0,0,0,.85) 0%,rgba(0,0,0,.35) 45%,rgba(0,0,0,0) 70%)}
- .hp h1{font-size:2.875rem}.hp h2{font-size:2.375rem}.hpanel h2 img{height:40px}
- .hcopy p:not(.hkick){font-size:1rem}
- .hb{min-height:46px;padding:0 16px;font-size:0.75rem}
- .hshot,.hpanel.apps .hshot{left:50%;right:auto;top:56px;width:46%;margin:0;transform:translateX(-50%);padding:5px;border-radius:28px}
- .hpanel.apps .hshot{width:42%}
- .hshot img{border-radius:24px}
- .hpanel.end .hcopy{bottom:72px}
- .hpanel.end .hacts .hb{width:100%;justify-content:center}
- .hwm .wm-velani{height:34px}
+ .hpanel.apps .hshot{left:50%;right:auto;top:56px;width:42%;margin:0;transform:translateX(-50%)}
 }
