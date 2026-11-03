@@ -40,6 +40,6 @@ const summary = { status: 'passed', draftId: response.draft.id, role: response.d
   totalDraftFiles: response.draft.files.nodes.length, verifiedPackageFiles: files.length, retainedInheritedFiles: inherited.length, inherited,
   exactByteMatches: files.filter(file => file.exactBytes).length, platformNormalizedJsonMatches: files.filter(file => file.semanticallyEqual).length,
   originalTheme: response.original.id, originalRole: response.original.role, unchangedOriginalFiles: original.files.length,
-  inquiriesEnabled: false, hostedAcceptance: 'blocked by existing storefront password; no password or global resources changed', files };
+  inquiriesEnabled: true, hostedAcceptance: 'blocked by existing storefront password; no password or global resources changed', files };
 await writeFile(output, JSON.stringify(summary, null, 2) + '\n');
 console.log(JSON.stringify({ ...summary, files: undefined, inherited: undefined }));

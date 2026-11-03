@@ -1,6 +1,6 @@
 window.__fx=[];
 (()=>{
- const $=s=>document.querySelector(s),rm=matchMedia('(prefers-reduced-motion: reduce)'),big=matchMedia('(min-width:960px)');
+ const $=s=>document.querySelector(s),big=matchMedia('(min-width:960px)');
  // Local nav: solid as soon as it sticks; names the section whose heading has passed
  const lnav=$('#lnav'),ink=$('#lnav-ink'),links=[...document.querySelectorAll('[data-spy]')];
  const heads=links.map(a=>{const t=document.getElementById(a.dataset.spy);return t&&(t.querySelector('h1,h2')||t)});

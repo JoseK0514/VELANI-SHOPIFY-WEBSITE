@@ -23,12 +23,12 @@
 .kio-dots i.on{background:var(--k-teal);box-shadow:none;transform:scale(1.08)}
 .kio-pad{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:14px}
 .kio-pad button{display:grid;place-items:center;height:64px;border-radius:12px;background:var(--k-key);color:var(--k-ink);font-size:1.5rem;font-variant-numeric:tabular-nums;transition:background-color .12s,transform .12s;touch-action:manipulation;-webkit-tap-highlight-color:transparent}
-.kio-pad button:hover{background:#e7ecea}
+@media(hover:hover){.kio-pad button:hover{background:#e7ecea}.kio-done:hover{background:#f1f4f3}.kio-lang:hover{color:var(--k-teal)}}
 .kio-pad button:active{background:#dde4e1;transform:scale(.97)}
 .kio-pad .kio-soft{font-size:1rem;font-weight:600;color:var(--k-teal)}
 .kio-pad .icon{font-size:1.375rem}
 .kio-go{display:flex;align-items:center;justify-content:center;gap:8px;height:52px;margin-top:16px;border-radius:12px;background:var(--k-teal);color:#fff;font-size:1.0625rem;font-weight:600;transition:background-color .2s,color .2s}
-.kio-go:disabled{background:#e9eeec;color:#6b7976;cursor:default}
+.kio-go:disabled{background:#e9eeec;color:#5d6b68;cursor:default}
 .kio-foot{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-top:18px;font-size:0.9375rem;line-height:1.45;color:var(--k-mute)}
 .kio-lang{display:inline-flex;align-items:center;gap:6px;flex:none;min-height:44px;color:#3d4b48;font-size:0.9375rem}
 .kio-ok{align-items:center;text-align:center}
@@ -54,4 +54,6 @@
  .kio-pad button{height:58px}
  .kio-foot{font-size:0.875rem}
 }
+@media(min-width:601px) and (max-width:833px){.kio{max-width:560px}}
+@media(max-width:600px){.kio-note{border-radius:16px}}
 @media(max-width:360px){.kio-loc{font-size:0.75rem}.kio-loc b{white-space:nowrap}}

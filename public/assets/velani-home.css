@@ -12,18 +12,18 @@
 .h-media{position:relative;margin-top:var(--s1);padding-bottom:40px}
 .h-desk{aspect-ratio:3600/2250;border-radius:clamp(12px,1.4vw,20px)}
 .h-desk img{width:100%;height:100%;object-fit:cover}
-.h-phone{position:absolute;right:calc(var(--pad) + 3%);bottom:0;width:clamp(150px,17%,220px);aspect-ratio:900/1500;border-radius:clamp(20px,2.4vw,32px) clamp(20px,2.4vw,32px) 0 0}
+.slab.phone.h-phone{position:absolute;right:calc(var(--pad) + 3%);bottom:0;width:clamp(150px,17%,220px);aspect-ratio:900/1310;border-radius:clamp(20px,2.4vw,32px) clamp(20px,2.4vw,32px) 0 0}
 .h-media .cap{margin-top:14px;max-width:60%}
 
 /* B. Try a clock-in */
-.h-try{padding-top:var(--s3);scroll-margin-top:24px}
+.h-try{padding-top:var(--s3);scroll-margin-top:calc(16px - var(--s3))}
 .h-head{max-width:760px}
 .h-head .lede{margin-top:18px}
 .h-follow{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:20px 40px;max-width:1040px;margin-top:var(--s1);padding:28px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
 .h-follow p{margin-top:8px;color:var(--text-2);max-width:34em}
 
 /* C. The wider workflow: four stages on one rail */
-.h-flow{padding-top:var(--s3)}
+.h-flow{padding-top:var(--s3);scroll-margin-top:calc(16px - var(--s3))}
 .h-flow .t1{max-width:16ch}
 .flow{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px;margin-top:var(--s1)}
 .flow li{position:relative;padding-top:30px}
@@ -36,7 +36,10 @@
 
 /* D. The right view for each person: real screens with their role */
 .h-roles{padding-top:var(--s3)}
-.stills{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,.62fr) minmax(0,1.25fr);gap:clamp(16px,2vw,28px);align-items:end;margin-top:var(--s1)}
+/* Screens share one baseline and captions start on one line (subgrid; older engines fall back to bottom-aligned figures) */
+.stills{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,.62fr) minmax(0,1.25fr);grid-auto-rows:auto;gap:clamp(16px,2vw,28px);align-items:end;margin-top:var(--s1)}
+.stills figure{display:grid;grid-template-rows:subgrid;grid-row:span 2;align-items:end}
+.stills figcaption{align-self:start}
 .stills .slab.phone{aspect-ratio:900/1885}
 .stills figcaption{margin-top:16px}
 .stills figcaption b{display:block;font-size:1.0625rem;font-weight:600}
@@ -45,7 +48,6 @@
 
 /* E. Questions and enquiry */
 .h-faq{padding-top:var(--s3)}
-.faq-list{margin-top:var(--s1);padding-bottom:0;max-width:880px}
 .h-ask{margin-top:var(--s2);padding:clamp(32px,4vw,56px);border-radius:28px;background:var(--panel-2)}
 .h-ask .t2{max-width:16ch}
 .h-ask p{margin-top:16px;max-width:36em;color:var(--text-2)}
@@ -53,11 +55,11 @@
 
 /* F. Built by Velani */
 .h-velani{padding:var(--s2) 0}
-.h-velani-in{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:16px 64px;align-items:baseline;padding-top:32px;border-top:1px solid var(--line)}
+.h-velani-in{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:16px 64px;align-items:baseline;padding-top:32px;background:linear-gradient(var(--line),var(--line)) var(--pad) 0/calc(100% - var(--pad)*2) 1px no-repeat}
 .h-velani p{max-width:34em;color:var(--text-2)}
 .h-velani .more{margin-top:14px}
 
-.no-js .flow li::after{background:var(--accent)}
+.no-js .flow li::after,.still .flow li::after{background:var(--accent)}
 @media(prefers-reduced-motion:reduce){.flow li::after{transition:none}}
 @media(max-width:1023px){
  .flow{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:40px}
@@ -72,16 +74,18 @@
  .h-hero .status{margin-top:20px;font-size:0.875rem}
  .h-media{display:flex;flex-direction:column;align-items:center;margin-top:36px;padding-bottom:0}
  .h-desk{display:none}
- .h-phone{position:static;width:min(320px,80vw)}
+ .slab.phone.h-phone{position:relative;inset:auto;width:min(320px,80vw)}
  .h-media .cap{max-width:none;text-align:center}
  .stills{grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr)}
  .stills figure:first-child{grid-column:1/-1}
 }
 @media(max-width:600px){
- body{font-size:1rem}
  .flow{grid-template-columns:1fr;row-gap:32px}
  .stills{grid-template-columns:1fr}
- .stills .slab.phone{width:min(300px,78vw);aspect-ratio:900/1500}
- .h-follow .pill,.h-ask .pill{width:100%;justify-content:center}
+ .stills .slab.phone{width:min(300px,78vw);aspect-ratio:900/1310}
+ /* Desktop and tablet screens are shown as readable crops on phones: the owner's Today panel and the clocked-in pane */
+ .stills figure:first-child .slab,.stills figure:last-child .slab{aspect-ratio:4/3}
+ .stills figure:first-child .slab img{width:300%;max-width:none;transform:translate(-25.8%,-12.2%)}
+ .stills figure:last-child .slab img{width:200%;max-width:none;transform:translate(-46%,-20%)}
  .h-ask{padding:32px 22px;border-radius:22px}
 }

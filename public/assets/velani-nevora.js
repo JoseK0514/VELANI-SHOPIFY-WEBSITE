@@ -1,6 +1,6 @@
 window.__fx=[];
 (()=>{
- const $=s=>document.querySelector(s),rm=matchMedia('(prefers-reduced-motion: reduce)'),big=matchMedia('(min-width:960px)');
+ const $=s=>document.querySelector(s),big=matchMedia('(min-width:960px)');
  // Local nav: solid as soon as it sticks; names the section whose heading has passed
  const lnav=$('#lnav'),ink=$('#lnav-ink'),links=[...document.querySelectorAll('[data-spy]')];
  const heads=links.map(a=>{const t=document.getElementById(a.dataset.spy);return t&&(t.querySelector('h1,h2')||t)});
@@ -31,7 +31,7 @@ window.__fx=[];
  const k=document.getElementById('kio');if(!k)return;
  const $=id=>document.getElementById(id);
  // Spanish strings come from the NEVORA app's own time-clock copy where it has one
- const ES={'Time clock':'Registro de tiempo','Enter your PIN':'Ingresa tu PIN','Clear':'Borrar','Continue':'Continuar','Your PIN is separate from your portal password.':'Tu PIN es distinto de tu contraseña del portal.','Clock-in recorded':'Tiempo registrado','Saved at':'Registrado','Demo only. No hours were saved.':'Solo es una demostración. No se guardaron horas.','Try again':'Probar de nuevo','Delete digit':'Borrar dígito'};
+ const ES={'Time clock':'Registro de tiempo','Enter your PIN':'Ingresa tu PIN','Clear':'Borrar','Continue':'Continuar','Your PIN is separate from your portal password.':'Tu PIN es distinto de tu contraseña del portal.','Clock-in recorded':'Tiempo registrado','Saved at':'Registrado','Demo only. No hours were saved.':'Solo es una demostración. No se guardaron horas.','Clock in again':'Registrar de nuevo','Delete digit':'Borrar dígito'};
  const dots=[...$('kio-dots').children],go=$('kio-go'),live=$('kio-live'),pinStep=$('kio-pin'),okStep=$('kio-ok'),lang=$('kio-lang'),langT=$('kio-lang-t');
  let es=false,pin='',last='';
  const loc=()=>es?'es-US':'en-US';
@@ -59,9 +59,9 @@ window.__fx=[];
   if(/^[0-9]$/.test(e.key)){e.preventDefault();press(e.key)}else if(e.key==='Backspace'){e.preventDefault();back()}else if(e.key==='Escape'){clear()}});
  lang.addEventListener('click',()=>{es=!es;k.lang=es?'es':'en';langT.textContent=es?'English':'Español';langT.lang=es?'en':'es';
   k.querySelectorAll('[data-k-t]').forEach(n=>{const en=n.dataset.kT;n.textContent=es?(ES[en]||en):en});
-  k.querySelectorAll('[data-k-l]').forEach(n=>{const en=n.dataset.kL;n.setAttribute('aria-label',es?(ES[en]||en):en)});last='';tick()});
+  k.querySelectorAll('[data-k-l]').forEach(n=>{const en=n.dataset.kL;n.setAttribute('aria-label',es?(ES[en]||en):en)});say('');last='';tick()});
  // The clock ticks only while the demo is on screen and the tab is visible
  let iv=0,onScreen=true;const run=()=>{clearInterval(iv);iv=0;if(onScreen&&!document.hidden){tick();iv=setInterval(tick,1000)}};
- if('IntersectionObserver' in window)new IntersectionObserver(en=>{onScreen=en[0].isIntersecting;run()}).observe(k);
+ if('IntersectionObserver' in window)new IntersectionObserver(en=>{onScreen=en[en.length-1].isIntersecting;run()}).observe(k);
  document.addEventListener('visibilitychange',run);tick();run();
 })();

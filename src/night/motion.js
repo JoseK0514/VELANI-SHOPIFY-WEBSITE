@@ -1,8 +1,10 @@
 (()=>{
  const d=document,root=d.documentElement;root.classList.remove('no-js');root.classList.add('js');
+ // The boot script marks the document "still" if this file has not run after 2.5s (everything shows, nothing animates). Arriving late, keep it that way.
+ clearTimeout(window.__pre);const late=root.classList.contains('still');
  const reduce=matchMedia('(prefers-reduced-motion: reduce)');
  // Headings: words rise from behind a mask in reading order. Screen readers get the whole sentence once.
- d.querySelectorAll('.rise').forEach(el=>{
+ if(!late)d.querySelectorAll('.rise').forEach(el=>{
   el.setAttribute('aria-label',el.textContent.replace(/\s+/g,' ').trim());
   let i=0;const walk=n=>{[...n.childNodes].forEach(c=>{
    if(c.nodeType===3){const f=d.createDocumentFragment();c.textContent.split(/([ \t\n\r]+)/).forEach(p=>{if(!p)return;if(/^[ \t\n\r]+$/.test(p)){f.appendChild(d.createTextNode(p));return}
@@ -42,5 +44,4 @@
  const resetAll=()=>fx.forEach(f=>f.reset&&f.reset());
  reduce.addEventListener('change',()=>{if(reduce.matches)resetAll();req()});
  if(reduce.matches)resetAll();
- window.__req=req;
 })();

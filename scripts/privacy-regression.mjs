@@ -62,7 +62,7 @@ await check('delayed rejected consent retains keyboard focus and requires explic
   const { context, page } = await fixture();
   try {
     await page.getByRole('button', { name: 'Open cookie choices', exact: true }).click();
-    const reject = page.getByRole('button', { name: 'Reject optional', exact: true });
+    const reject = page.getByRole('button', { name: 'Reject all optional', exact: true });
     await reject.focus(); await page.keyboard.press('Enter');
     await page.waitForFunction(() => window.__privacyFixture.calls.length === 1);
     await page.evaluate(() => window.__privacyFixture.acknowledgements.shift()('fictional rejection'));
@@ -79,7 +79,7 @@ await check('closing and reopening cannot unlock a pending platform save', async
   const { context, page } = await fixture();
   try {
     const open = page.getByRole('button', { name: 'Open cookie choices', exact: true });
-    await open.click(); await page.getByRole('button', { name: 'Accept optional', exact: true }).click();
+    await open.click(); await page.getByRole('button', { name: 'Accept all optional', exact: true }).click();
     await page.waitForFunction(() => window.__privacyFixture.calls.length === 1);
     await page.getByRole('button', { name: 'Close cookie choices', exact: true }).click(); await open.click();
     await page.waitForTimeout(50);

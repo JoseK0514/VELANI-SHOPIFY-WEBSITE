@@ -1,39 +1,29 @@
-<a class="skip" href="#main">Skip to content</a>
-<header class="gnav" id="gnav">
- <nav class="wrap gnav-in" aria-label="Main">
-  <a class="wordmark" href="home.html" aria-label="Velani home">Velani</a>
-  <ul class="gnav-links"><li><a href="nevora.html">NEVORA</a></li><li><a href="/pages/custom-development">Custom development</a></li><li><a href="/pages/about">About</a></li><li><a href="nevora.html#help">NEVORA help</a></li></ul>
-  <a class="pill line" href="/pages/contact">Contact us</a>
-  <button class="gnav-menu" id="gmenu-btn" type="button" aria-expanded="false" aria-controls="gmenu" aria-label="Menu"><span class="i-open">{{icon:list}}</span><span class="i-close" hidden>{{icon:x}}</span></button>
- </nav>
-</header>
-<div class="gmenu" id="gmenu" hidden><nav class="wrap" aria-label="Main menu"><a href="nevora.html">NEVORA</a><a href="/pages/custom-development">Custom development</a><a href="/pages/about">About</a><a href="nevora.html#help">NEVORA help</a><a class="pill" href="/pages/contact">Contact us</a><small>Velani is a brand of VELANI LLC.</small></nav></div>
-
+<!-- Home page source. src/night.mjs renders only <main>; the global header and footer come from night.mjs and foot.html. -->
 <main id="main">
 <section class="h-hero" aria-labelledby="hero-t">
  <div class="wrap">
   <p class="h-by"><img src="img/nevora-wm-white.png" alt="NEVORA" width="907" height="122"><span>by Velani</span></p>
   <h1 class="t0 rise" id="hero-t">Your team’s week, in one place.</h1>
-  <p class="lede fade">Scheduling, time clock and payroll calculations for teams that work in shifts.</p>
-  <div class="acts fade"><a class="pill" href="#try">Try the time clock</a><a class="more" href="nevora.html"><span>Explore NEVORA</span>{{icon:caret-right}}</a></div>
-  <p class="status fade"><i aria-hidden="true"></i>In development. <a class="ul" href="/pages/contact?interest=nevora">Contact us</a> about availability for your team.</p>
+  <p class="lede fade">Scheduling, time clock and payroll calculation for teams that work in shifts.</p>
+  <div class="acts fade"><a class="pill" href="#try">Try the time clock</a><a class="more" href="nevora.html"><span>See how NEVORA works</span>{{icon:caret-right}}</a></div>
+  <p class="status fade"><i aria-hidden="true"></i>In development. <a class="ul" href="/pages/contact?interest=nevora">Ask for a quote</a> to discuss availability for your team.</p>
  </div>
  <figure class="wrap h-media fade">
   <div class="slab h-desk"><img src="img/desk.webp" alt="NEVORA on the web: Alexandra’s home on a Tuesday afternoon, with her shift, two things to review and an approved request" width="3600" height="2250" fetchpriority="high"></div>
   <div class="slab phone h-phone"><img src="img/phone-long.webp" alt="NEVORA on Alexandra’s phone: Good afternoon, Alexandra, with her shift from 12:00 PM to 8:00 PM" width="1170" height="3936"></div>
-  <figcaption class="cap">Real NEVORA screens. Alexandra and her workplace are made up.</figcaption>
+  <figcaption class="cap">Real NEVORA screens. Alexandra and her workplace are fictional.</figcaption>
  </figure>
 </section>
 
 <section class="h-try" id="try" aria-labelledby="try-t">
  <div class="wrap">
-  <div class="h-head"><h2 class="t1 rise" id="try-t">Try a clock-in.</h2><p class="lede fade">Enter any four digits to see how the shared time clock works.</p></div>
+  <div class="h-head"><h2 class="t1 rise" id="try-t">Try the time clock.</h2><p class="lede fade">Enter any four digits to see how the shared time clock works.</p></div>
   <p class="kio-note"><b>No account needed.</b> Sample workplace.</p>
   {{kiosk}}
   <p class="fine">Interactive demo. Nothing you enter is saved or sent.</p>
   <div class="h-follow fade">
-   <div><h3 class="t3">Could this work for your team?</h3><p>Tell us about your team and locations. We’ll discuss NEVORA’s availability.</p></div>
-   <a class="pill" href="/pages/contact?interest=nevora">Talk about NEVORA</a>
+   <h3 class="t3">Could this work for your team?</h3>
+   <a class="pill" href="/pages/contact?interest=nevora">Ask for a quote</a>
   </div>
  </div>
 </section>
@@ -43,7 +33,7 @@
   <h2 class="t1 rise" id="how-t">From the posted schedule to the pay statement.</h2>
   <ol class="flow">
    <li class="draw"><b>Plan shifts</b><span>Build and publish the week.</span></li>
-   <li class="draw"><b>Record hours</b><span>Clock in at the workplace tablet.</span></li>
+   <li class="draw"><b>Record hours</b><span>Clock in at the shared tablet.</span></li>
    <li class="draw"><b>Review time</b><span>Approve hours before the pay period closes.</span></li>
    <li class="draw"><b>Calculate pay</b><span>Review calculations and publish pay statements.</span></li>
   </ol>
@@ -55,11 +45,11 @@
  <div class="wrap">
   <h2 class="t1 rise" id="roles-t">The right view for each person.</h2>
   <div class="stills setdown" data-in>
-   <figure><div class="slab"><img src="img/owner.webp" alt="The owner’s home on the web: the menu, 4 people on shift and nothing waiting" width="3000" height="2010" loading="lazy"></div><figcaption><b>Managers</b><span>Plan the week and review time on the web.</span></figcaption></figure>
+   <figure><div class="slab"><img src="img/owner.webp" alt="The owner’s home on the web: the menu, 4 people on shift and nothing waiting" width="3000" height="2010" loading="lazy"></div><figcaption><b>Owners and managers</b><span>Plan the week and review time on the web.</span></figcaption></figure>
    <figure><div class="slab phone"><img class="feed" src="img/phone-long.webp" alt="Alexandra’s phone: her shift today, two things to do and her approved time off" width="1170" height="3936" loading="lazy"></div><figcaption><b>Employees</b><span>Check shifts, respond to swap offers and request time off from a phone.</span></figcaption></figure>
-   <figure><div class="slab"><img src="img/k-later.webp" alt="The time clock at 2:17 PM, with Maximiliano clocked in" width="1024" height="768" loading="lazy"></div><figcaption><b>At work</b><span>A shared tablet, with a PIN for each person.</span></figcaption></figure>
+   <figure><div class="slab"><img src="img/k-later.webp" alt="The time clock on a shared tablet at 2:17 PM, with Maximiliano clocked in" width="1024" height="768" loading="lazy"></div><figcaption><b>At work</b><span>A shared tablet, with a PIN for each person.</span></figcaption></figure>
   </div>
-  <p class="roles-more fade"><a class="more" href="/pages/nevora#specs"><span>Where NEVORA runs and how it handles data</span>{{icon:caret-right}}</a></p>
+  <p class="roles-more fade"><a class="more" href="/pages/nevora#specs"><span>NEVORA specifications</span>{{icon:caret-right}}</a></p>
  </div>
 </section>
 
@@ -68,15 +58,15 @@
   <h2 class="t1 rise" id="faq-t">Questions</h2>
   <div class="faq faq-list">
    <details><summary>Can my business use NEVORA now?{{icon:plus}}</summary><p>NEVORA is in development and offered to businesses by quote. Tell us about your team and we’ll discuss its availability.</p></details>
-   <details><summary>Does NEVORA pay my employees or file payroll taxes?{{icon:plus}}</summary><p>No. NEVORA calculates payroll from approved hours and publishes pay statements. Your business continues to pay employees and file payroll taxes.</p></details>
-   <details><summary>How do employees get access?{{icon:plus}}</summary><p>Your business gives them access. They sign in on their phone or the web, and use their own four-digit PIN at the workplace tablet.</p></details>
+   <details><summary>Does NEVORA pay my employees or file payroll taxes?{{icon:plus}}</summary><p>No. It calculates payroll from approved hours and publishes pay statements; your business still pays employees and files payroll taxes.</p></details>
+   <details><summary>How do employees get access?{{icon:plus}}</summary><p>Your business gives them access. They sign in on their phone or the web and use their own four-digit PIN at the shared tablet.</p></details>
    <details><summary>Which languages does the time clock support?{{icon:plus}}</summary><p>The time clock works in English and Spanish.</p></details>
-   <details><summary>I use NEVORA at work and need help.{{icon:plus}}</summary><p>Ask your manager first. For signing in or your account, see <a class="ul" href="/pages/nevora-support">NEVORA support</a>.</p></details>
+   <details><summary>I use NEVORA at work. Where do I get help?{{icon:plus}}</summary><p>Ask your manager first. For signing in or your account, see <a class="ul" href="/pages/nevora-support">NEVORA support</a>.</p></details>
   </div>
   <div class="h-ask fade">
    <h2 class="t2">See if NEVORA fits your team.</h2>
-   <p>Tell us how many people work shifts, where they work, and what you use today. We’ll discuss your needs and NEVORA’s availability.</p>
-   <a class="pill" href="/pages/contact?interest=nevora">Talk about NEVORA</a>
+   <p>Tell us how many people work shifts, where they work and what you use today. We’ll discuss your needs and NEVORA’s availability.</p>
+   <a class="pill" href="/pages/contact?interest=nevora">Ask for a quote</a>
   </div>
  </div>
 </section>

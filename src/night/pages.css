@@ -1,8 +1,8 @@
 
 /* ---------- Inner pages: company, contact, help, legal and NEVORA policies ---------- */
 .kicker{font-size:0.9375rem;font-weight:500;color:var(--text-2);margin-bottom:18px}
-.kicker a{color:var(--accent)}
-.kicker a:hover{text-decoration:underline;text-underline-offset:4px}
+.kicker a{color:inherit}
+@media(hover:hover){.kicker a:hover{color:var(--text);text-decoration:underline;text-underline-offset:4px}}
 .phero{padding:clamp(72px,9vw,128px) 0 var(--s1)}
 .phero .t1{max-width:18ch}
 .phero .lede{margin-top:24px;max-width:36em}
@@ -10,8 +10,8 @@
 .doc-meta{margin-top:20px;font-size:0.875rem;color:var(--text-3)}
 
 /* Sections with a heading on the left and the words on the right */
-.split{padding-bottom:var(--s2)}
-.split>.wrap>*{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:12px 64px;padding:36px 0 40px;align-items:baseline}
+.split{padding-bottom:var(--s1)}
+.split>.wrap>*{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:12px 64px;padding:36px 0 40px;align-items:baseline;scroll-margin-top:-12px}
 .split h2{max-width:16ch}
 .split h3{font-size:1.1875rem;font-weight:600;letter-spacing:-.015em;line-height:1.35;color:var(--text);margin-bottom:10px}
 .split p{color:var(--text-2);max-width:38em}
@@ -30,7 +30,7 @@
 @media(max-width:833px){.how li{grid-template-columns:1fr}}
 
 /* Two doors (shared with Home) */
-.doors{padding:var(--s2) 0}
+.doors{padding:var(--s1) 0 var(--s2)}
 .doors-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
 .door{border-radius:28px;background:var(--panel-2);padding:clamp(32px,4vw,56px);min-height:340px;display:flex;flex-direction:column;justify-content:space-between;gap:40px}
 .door .t2{max-width:14ch}
@@ -39,18 +39,19 @@
 .mail a{color:var(--text);text-decoration:underline;text-underline-offset:4px;text-decoration-thickness:1px}
 .door .wm{width:min(220px,50vw)}
 @media(max-width:1023px){.doors-grid{grid-template-columns:1fr}.door{min-height:0}}
-@media(max-width:600px){.door{padding:32px 22px;border-radius:22px}}
+@media(max-width:600px){.door{padding:32px 22px;border-radius:22px}.door .pill{max-width:100%;white-space:normal;text-align:center;line-height:1.25}}
 
-/* Questions */
-.faq{padding-bottom:var(--s2)}
-.faq details{border-top:1px solid var(--line)}
-.faq details:last-child{border-bottom:1px solid var(--line)}
+/* Questions (the Help page, and the lists on Home and NEVORA) */
+.faq{padding-bottom:var(--s1)}
+.faq-list{margin-top:var(--s1);padding-bottom:0}
+.faq details{max-width:880px;border-top:1px solid var(--line)}
+.faq details:last-of-type{border-bottom:1px solid var(--line)}
 .faq summary{display:flex;align-items:center;justify-content:space-between;gap:24px;min-height:72px;padding:18px 0;font-size:clamp(1.125rem,1.6vw,1.3125rem);font-weight:500;letter-spacing:-.012em;cursor:pointer;list-style:none}
 .faq summary::-webkit-details-marker{display:none}
 .faq summary .icon{font-size:1.125rem;color:var(--text-3);transition:transform .3s var(--out)}
 .faq details[open] summary .icon{transform:rotate(45deg)}
 .faq details p{padding:0 48px 26px 0;color:var(--text-2);max-width:42em}
-.faq summary:hover{color:var(--accent)}
+@media(hover:hover){.faq summary:hover{color:var(--accent)}}
 
 /* Directory of links */
 .dir{padding-bottom:var(--s2)}
@@ -68,7 +69,7 @@
 .doc-aside-t:first-child{margin-top:0}
 .doc-aside nav{display:flex;flex-direction:column}
 .doc-aside a{padding:5px 0;color:var(--text-2);line-height:1.4}
-.doc-aside a:hover{color:var(--text)}
+@media(hover:hover){.doc-aside a:hover{color:var(--text)}}
 .doc-body{max-width:44em}
 .doc-body section{padding-bottom:36px}
 .doc-body section+section{padding-top:36px;border-top:1px solid var(--line)}
@@ -79,15 +80,16 @@
 .doc-body li{position:relative;padding-left:22px}
 .doc-body li::before{content:"";position:absolute;left:2px;top:.72em;width:6px;height:6px;border-radius:50%;background:var(--text-3)}
 .doc-body strong{color:var(--text);font-weight:600}
-.doc-body a,.doc-contact a,.contact-aside a,.note a{color:var(--accent);text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1px}
+.doc-body a,.doc-contact a,.contact-aside a,.split p a,.faq details p a{color:var(--accent);text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1px}
 .doc-contact{margin-top:8px;padding-top:28px;border-top:1px solid var(--line);color:var(--text-3);font-size:0.9375rem}
-.doc-body .pill{margin-top:20px}
+.doc-body .pill{margin:20px 0 36px}
 @media(max-width:833px){
  .doc-grid{grid-template-columns:1fr;gap:28px;padding-top:28px}
  .doc-aside{position:static;padding-bottom:24px;border-bottom:1px solid var(--line)}
  .doc-aside nav:first-of-type{display:none}
  .doc-aside .doc-aside-t:first-child{display:none}
  .doc-aside .doc-aside-t{margin-top:0}
+ .doc-aside a{padding:10px 0;font-size:0.9375rem}
 }
 
 /* Contact */
@@ -111,7 +113,7 @@
 .field input,.field select,.field textarea{font:inherit;font-size:1rem;color:var(--text);background:var(--bg);border:1px solid var(--line-2);border-radius:12px;min-height:50px;padding:12px 14px;width:100%;transition:border-color .2s,box-shadow .2s}
 .field select{appearance:none;-webkit-appearance:none;background-image:linear-gradient(45deg,transparent 50%,var(--text-2) 50%),linear-gradient(135deg,var(--text-2) 50%,transparent 50%);background-position:calc(100% - 20px) 50%,calc(100% - 15px) 50%;background-size:5px 5px;background-repeat:no-repeat;padding-right:40px}
 .field textarea{min-height:150px;resize:vertical;line-height:1.5}
-.field input:hover,.field select:hover,.field textarea:hover{border-color:rgba(255,255,255,.28)}
+@media(hover:hover){.field input:hover,.field select:hover,.field textarea:hover{border-color:rgba(255,255,255,.28)}}
 .field input:focus-visible,.field select:focus-visible,.field textarea:focus-visible{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px rgba(187,216,255,.22)}
 .field [aria-invalid="true"]{border-color:#ff9b8f}
 .field-error{font-size:0.875rem;color:#ffb3a9;min-height:0}
@@ -120,7 +122,7 @@
 .form-legal,.form-legal p{margin:16px 0 0;font-size:0.8125rem;line-height:1.5;color:var(--text-3)}.form-legal p{margin:0}.form-legal a{color:var(--text-2);text-decoration:underline;text-underline-offset:3px}.form-privacy a{color:var(--text-2);text-decoration:underline;text-underline-offset:3px}
 .inquiry-form .pill{align-self:flex-start;gap:8px;border:0;cursor:pointer}
 .inquiry-form .pill:disabled{opacity:.6;cursor:default}
-.form-status{font-size:0.9375rem;color:var(--text-2)}
+.form-status{margin-top:16px;font-size:0.9375rem;color:var(--text-2)}
 .form-status:empty{display:none}
 .form-status[data-state="invalid"],.form-status[role="alert"]{color:#ffb3a9}
 .form-status[data-state="accepted"],.form-status[data-state="preview"]{color:var(--accent)}
@@ -134,7 +136,7 @@
 .dialog-heading{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:12px}
 .dialog-heading h2{font-size:1.5rem;font-weight:600;letter-spacing:-.02em}
 .icon-button{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;margin-right:-10px;border-radius:50%;font-size:1.25rem}
-.icon-button:hover{background:rgba(255,255,255,.06)}
+@media(hover:hover){.icon-button:hover{background:rgba(255,255,255,.06)}}
 .cookie-dialog>p{font-size:0.9375rem;color:var(--text-2)}
 .cookie-dialog a{color:var(--accent);text-decoration:underline;text-underline-offset:3px}
 .cookie-option{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:16px 0;border-bottom:1px solid var(--line);font-size:0.9375rem}
@@ -151,8 +153,10 @@
 .cookie-actions button:disabled{opacity:.6}
 .foot-cols button:disabled{opacity:1;cursor:pointer}
 .cookie-nojs-note{font-size:0.8125rem}
+/* Phones: the dialog scrolls, and its actions stay in reach at the bottom */
+@media(max-width:600px){.cookie-dialog{padding:20px}.cookie-option{padding:12px 0}.cookie-actions{display:grid;grid-template-columns:1fr 1fr;gap:10px;position:sticky;bottom:0;margin:12px -20px -20px;padding:12px 20px 20px;background:var(--panel)}.cookie-actions .pill{min-width:0;padding:10px 12px;font-size:0.875rem;white-space:normal;text-align:center}.cookie-actions .pill:last-child{grid-column:1/-1}}
 
-.no-js .how li::after{background:var(--accent)}@media(prefers-reduced-motion:reduce){.how li::after{transition:none}}
+.no-js .how li::after,.still .how li::after{background:var(--accent)}@media(prefers-reduced-motion:reduce){.how li::after{transition:none}}
 
 .field[hidden],.form-row[hidden]{display:none}
 .form-row-one{grid-template-columns:1fr}

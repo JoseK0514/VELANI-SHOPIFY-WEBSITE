@@ -12,7 +12,7 @@ export function createPrivacyAdapter(host = globalThis, { platform = host.docume
       let finished = false;
       const timer = setTimeout(() => { finished = true; resolve(null); }, timeoutMs);
       try {
-        host.Shopify.loadFeatures([{ name: 'consent-tracking-api', version: '0.2' }], error => {
+        host.Shopify.loadFeatures([{ name: 'consent-tracking-api', version: '0.1' }], error => {
           if (finished) return;
           finished = true; clearTimeout(timer);
           resolve(error ? null : host.Shopify?.customerPrivacy || null);

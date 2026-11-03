@@ -1,0 +1,27 @@
+{
+  "status": "failed",
+  "results": [
+    {
+      "engine": "chromium",
+      "name": "loading consent cannot accept a selection that is later overwritten",
+      "status": "passed"
+    },
+    {
+      "engine": "chromium",
+      "name": "delayed rejected consent retains keyboard focus and requires explicit retry",
+      "status": "passed"
+    },
+    {
+      "engine": "chromium",
+      "name": "closing and reopening cannot unlock a pending platform save",
+      "status": "failed",
+      "error": "locator.click: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('button', { name: 'Accept optional', exact: true })\u001b[22m\n"
+    },
+    {
+      "engine": "chromium",
+      "name": "no-JavaScript privacy controls identify unavailable interaction",
+      "status": "passed"
+    }
+  ],
+  "scope": "Actual local browser with intercepted HTML and fictional platform API; no real Shopify consent, inquiry or production action"
+}

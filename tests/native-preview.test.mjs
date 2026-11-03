@@ -20,7 +20,7 @@ test('main-theme links retain canonical company page destinations', async () => 
 test('native layout includes the real social card and uses theme page metadata', () => {
   const html = renderShopifyLayout();
   assert.match(html, /property="og:image"/);
-  assert.match(html, /velani-social\.webp/);
+  assert.match(html, /velani-social\.png/);
   assert.match(html, /name="twitter:card" content="summary_large_image"/);
   assert.match(html, /velani_page_title/);
 });
@@ -31,7 +31,7 @@ test('the published theme is indexable while drafts stay noindex', async () => {
   const draft = await liquid.parseAndRender(layout, ctx('unpublished'));
   assert.doesNotMatch(main, /noindex/);
   assert.match(draft, /name="robots" content="noindex, nofollow"/);
-  assert.match(main, /<title>Velani \| NEVORA for Shift Scheduling, Time Tracking &amp; Payroll Calculation<\/title>/);
+  assert.match(main, /<title>Velani · NEVORA scheduling, time clock and payroll calculation for shift teams<\/title>/);
   assert.match(main, /velani-home\.css/);
 });
 test('the NEVORA page loads its own assets and marks its nav item', async () => {

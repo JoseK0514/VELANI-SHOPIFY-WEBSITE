@@ -1,7 +1,7 @@
 // "Night" design (approved 2026-11-02): header, footer, Home and NEVORA bodies, and NEVORA policy pages.
 import { readFileSync } from 'node:fs';
 import path from 'node:path';
-import { company } from './content.mjs';
+import { company, routes } from './content.mjs';
 import { POLICY_DOCS, POLICY_FACTS } from './nevora-policies.mjs';
 
 const dir = path.join(import.meta.dirname, 'night');
@@ -40,7 +40,7 @@ const mainOf = src => between(src, '<main id="main">', '</main>').slice('<main i
 export function homeMain(target) { return site(mainOf(homeSrc), target); }
 export function nevoraMain(target) { return site(between(nevSrc, '<nav class="lnav"', '<main id="main">') + mainOf(nevSrc), target); }
 
-const NAV = [['NEVORA', '/pages/nevora', 'nevora'], ['How it works', '/#how', 'how'], ['About', '/pages/about', 'about'], ['Help', '/pages/nevora-support', 'nevora-help']];
+const NAV = [['NEVORA', '/pages/nevora', 'nevora'], ['How it works', '/#how', 'how'], ['About', '/pages/about', 'about'], ['NEVORA support', '/pages/nevora-support', 'nevora-help']];
 /** current: the nav key for the preview build, or null in the Shopify layout, where Liquid marks it. */
 // Official VELANI wordmark, traced 1:1 from docs/reference/velani-logo-official.pdf; colour comes from CSS.
 const WORDMARK = readFileSync(new URL('./brand/velani-wordmark.svg', import.meta.url), 'utf8').trim()
@@ -52,13 +52,13 @@ export function header(current, target, { nevora = false } = {}) {
   const links = NAV.map(([text, href, key]) => `<li><a href="${href}"${mark(key)}>${text}</a></li>`).join('');
   const menu = NAV.map(([text, href, key]) => `<a href="${href}"${mark(key)}>${text}</a>`).join('');
   const staticClass = target === 'shopify' ? `{% if velani_page == 'nevora' %} static{% endif %}` : (nevora ? ' static' : '');
-  return `<a class="skip" href="#main">Skip to content</a><header class="gnav${staticClass}" id="gnav"><nav class="wrap gnav-in" aria-label="Main"><a class="wordmark" href="/" aria-label="Velani home">${WORDMARK}</a><ul class="gnav-links">${links}</ul><a class="pill line" href="/pages/contact?interest=nevora">Talk about NEVORA</a><button class="gnav-menu" id="gmenu-btn" type="button" aria-expanded="false" aria-controls="gmenu" aria-label="Menu"><span class="i-open">${icon('list')}</span><span class="i-close" hidden>${icon('x')}</span></button></nav></header><div class="gmenu" id="gmenu" hidden><nav class="wrap" aria-label="Main menu">${menu}<a href="/pages/custom-development">Custom development</a><a href="/pages/contact">Contact</a><a class="pill" href="/pages/contact?interest=nevora">Talk about NEVORA</a><small>Velani is a brand of ${company.operator}.</small></nav></div>`;
+  return `<a class="skip" href="#main">Skip to content</a><header class="gnav${staticClass}" id="gnav"><nav class="wrap gnav-in" aria-label="Main"><a class="wordmark" href="/" aria-label="Velani home">${WORDMARK}</a><ul class="gnav-links">${links}</ul><a class="pill line" href="/pages/contact?interest=nevora">Ask for a NEVORA quote</a><button class="gnav-menu" id="gmenu-btn" type="button" aria-expanded="false" aria-controls="gmenu" aria-label="Menu"><span class="i-open">${icon('list')}</span><span class="i-close" hidden>${icon('x')}</span></button></nav></header><div class="gmenu" id="gmenu" hidden><nav class="wrap" aria-label="Main menu">${menu}<a href="/pages/custom-development">Custom development</a><a href="/pages/contact">Contact</a><a class="pill" href="/pages/contact?interest=nevora">Ask for a NEVORA quote</a><small>Velani is a brand of ${company.operator}.</small></nav></div>`;
 }
 export function footer(target) { return site(read('foot.html'), target); }
 
 export const nightAssets = {
   css: { base: read('base.css'), home: read('home.css'), nevora: read('nevora.css'), pages: read('pages.css'), kiosk: read('kiosk.css') },
-  js: { motion: read('motion.js'), home: read('home.js') + '\n' + read('kiosk.js'), nevora: read('nevora.js') + '\n' + read('kiosk.js'), boot: "document.documentElement.className='js pre';\n" },
+  js: { motion: read('motion.js'), home: read('kiosk.js'), nevora: read('nevora.js') + '\n' + read('kiosk.js') },
 };
 
 /* NEVORA policy pages (Privacy, Support, Account deletion, Terms), from the NEVORA app's approved policy source. */
@@ -76,11 +76,13 @@ function inline(parts) {
     return '';
   }).join('');
 }
+/** The website names each policy page ("NEVORA privacy policy"); the policy source keeps its own document titles. */
+const siteTitle = slug => routes[POLICY_ROUTE['/' + slug]]?.title || POLICY_DOCS.find(d => d.slug === slug).title;
 export function policyMain(slug) {
   const doc = POLICY_DOCS.find(d => d.slug === slug);
   const others = POLICY_DOCS.filter(d => d.slug !== slug);
   const toc = doc.sections.map((s, i) => `<a href="#p-${i}">${e(s.heading)}</a>`).join('');
   const body = doc.sections.map((s, i) => `<section id="p-${i}"><h2>${e(s.heading)}</h2>${s.blocks.map(b => b.p ? `<p>${inline(b.p)}</p>` : `<ul>${b.list.map(li => `<li>${inline(li)}</li>`).join('')}</ul>`).join('')}</section>`).join('');
   const eff = doc.effective ? `<p class="doc-meta">Effective ${e(POLICY_FACTS.EFFECTIVE_DATE)}</p>` : '';
-  return `<section class="phero"><div class="wrap"><p class="kicker"><a href="/pages/nevora">NEVORA</a></p><h1 class="t1 rise">${e(doc.title)}</h1><p class="lede fade">${e(doc.summary)}</p>${eff}</div></section><section class="doc"><div class="wrap doc-grid"><aside class="doc-aside"><p class="doc-aside-t">On this page</p><nav aria-label="Page contents">${toc}</nav><p class="doc-aside-t">Also for NEVORA</p><nav aria-label="Other NEVORA pages">${others.map(d => `<a href="${POLICY_ROUTE['/' + d.slug]}">${e(d.title)}</a>`).join('')}</nav></aside><div class="doc-body">${body}<p class="doc-contact">Questions? Write to <a href="mailto:${company.email}">${company.email}</a>, or to ${e(company.operator)}, ${e(company.address)}.</p></div></div></section>`;
+  return `<section class="phero"><div class="wrap"><p class="kicker"><a href="/pages/nevora">NEVORA</a></p><h1 class="t1 rise">${e(siteTitle(slug))}</h1><p class="lede fade">${e(doc.summary)}</p>${eff}</div></section><section class="doc"><div class="wrap doc-grid"><aside class="doc-aside"><p class="doc-aside-t">On this page</p><nav aria-label="Page contents">${toc}</nav><p class="doc-aside-t">Also for NEVORA</p><nav aria-label="Other NEVORA pages">${others.map(d => `<a href="${POLICY_ROUTE['/' + d.slug]}">${e(siteTitle(d.slug))}</a>`).join('')}</nav></aside><div class="doc-body">${body}<p class="doc-contact">Questions? Write to <a href="mailto:${company.email}">${company.email}</a>, or to ${e(company.operator)}, ${e(company.address)}.</p></div></div></section>`;
 }

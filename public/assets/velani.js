@@ -1,20 +1,5 @@
 import { validateInquiry, createInquiryController } from './inquiry.js';
 import { createPrivacyAdapter } from './privacy.js';
-document.documentElement.classList.add('js');
-const menuButton = document.querySelector('[data-menu-toggle]');
-const nav = document.querySelector('#primary-nav');
-if (menuButton && nav) {
-  menuButton.hidden = false;
-  const closeMenu = (restore = false) => { nav.removeAttribute('data-open'); menuButton.setAttribute('aria-expanded', 'false'); menuButton.setAttribute('aria-label', 'Open navigation'); if (restore) menuButton.focus(); };
-  menuButton.addEventListener('click', () => {
-    if (nav.hasAttribute('data-open')) closeMenu();
-    else { nav.setAttribute('data-open', ''); menuButton.setAttribute('aria-expanded', 'true'); menuButton.setAttribute('aria-label', 'Close navigation'); }
-  });
-  document.addEventListener('keydown', event => { if (event.key === 'Escape' && nav.hasAttribute('data-open')) closeMenu(true); });
-  document.addEventListener('click', event => { if (!event.target.closest('.site-header')) closeMenu(); });
-  nav.addEventListener('click', event => { if (event.target.closest('a')) closeMenu(); });
-  window.matchMedia('(min-width: 901px)').addEventListener('change', event => { if (event.matches) closeMenu(); });
-}
 const form = document.querySelector('#project-inquiry');
 if (form) {
   const mode = form.dataset.inquiryMode || form.querySelector('[data-inquiry-mode]')?.dataset.inquiryMode || 'preview';
@@ -22,19 +7,22 @@ if (form) {
   const fieldset = form.querySelector('fieldset');
   let status = form.querySelector('.form-status');
   if (!status) { status = document.createElement('div'); status.className = 'form-status'; status.setAttribute('role', 'status'); status.tabIndex = -1; form.append(status); }
-  const fields = Object.fromEntries(['name', 'email', 'company', 'message', 'interest', 'locations'].map(key => [key, form.querySelector('#inquiry-' + key)]));
+  const fields = Object.fromEntries(['name', 'email', 'company', 'message', 'interest', 'locations', 'team'].map(key => [key, form.querySelector('#inquiry-' + key)]));
   const topic = new URL(window.location.href).searchParams.get('interest');
   if (['custom-software', 'nevora', 'other'].includes(topic)) fields.interest.value = topic;
   // Arriving from a NEVORA action: talk about the team, keep NEVORA as the topic without asking again
   if (topic === 'nevora') {
     const hero = document.querySelector('.phero');
     const set = (selector, text) => { const el = hero && hero.querySelector(selector); if (el) { el.textContent = text; el.removeAttribute('aria-label'); } };
-    set('.kicker', 'NEVORA for your team'); set('h1', 'Tell us about your shift team.'); set('.lede', 'Share a little about your business. We’ll discuss what you need and NEVORA’s availability.');
+    set('.kicker', 'NEVORA for your team'); set('h1', 'Tell us about your shift team.'); set('.lede', 'A few details about your business are enough to start. We’ll discuss what you need and NEVORA’s availability.');
+    const aside = document.querySelector('.contact-aside'), prompts = aside && aside.querySelector('[data-aside="prompts"]'), note = aside && aside.querySelector('[data-aside="note"]');
+    if (prompts) prompts.textContent = 'How many people work shifts? How many locations? What do you use today for schedules, time and payroll?';
+    if (note) note.textContent = 'A quote does not commit you to anything. We reply by email.';
     document.title = 'NEVORA for your team · Velani';
     form.querySelector('[data-nevora-fields]')?.removeAttribute('hidden');
     fields.interest.closest('.field').hidden = true;
     fields.interest.closest('.form-row')?.classList.add('form-row-one');
-    const label = form.querySelector('label[for="inquiry-message"]'); if (label) label.innerHTML = 'Anything else? <span class="optional">optional</span>';
+    const label = form.querySelector('label[for="inquiry-message"]'); if (label) label.innerHTML = 'Anything else we should know? <span class="optional">optional</span>';
     fields.message.required = false;
     const help = form.querySelector('#message-help'); if (help) help.textContent = 'For example, what you use today for schedules, time and payroll. Please do not include passwords, payment details or sensitive records.';
   }
@@ -59,7 +47,11 @@ if (form) {
       status.dataset.state = 'invalid'; status.textContent = messages.invalid;
       fields[Object.keys(checked.errors)[0]]?.focus(); return;
     }
-    if (mode === 'live') { setBusy(true); status.textContent = messages.sending; return; }
+    if (mode === 'live') {
+      // A NEVORA enquiry may have no message: send the team details as the message body so the email is never empty
+      if (!values.message.trim() && fields.message) fields.message.value = ['NEVORA quote request.', values.team && 'Team size: ' + values.team, values.locations && 'Locations: ' + values.locations, values.company && 'Company: ' + values.company].filter(Boolean).join('\n');
+      setBusy(true); status.textContent = messages.sending; return;
+    }
     await controller.submit(values);
   });
   fieldset.disabled = false;

@@ -77,7 +77,7 @@ for (const engine of engines) {
       return { axeViolations: violations.length };
     });
   }
-  // With motion on (most visitors): the pinned device scene must never cover the hero's links
+  // With motion on (most visitors): nothing may cover the hero's links at common laptop sizes
   const motion = await browser.newContext(); const motionPage = await motion.newPage();
   for (const [w, h] of [[1440, 900], [1366, 768], [1280, 720]]) {
     await motionPage.setViewportSize({ width: w, height: h });
@@ -119,10 +119,10 @@ for (const engine of engines) {
     const opener = page.getByRole('button', { name: 'Open cookie choices' });
     await opener.click();
     await page.getByText('Local website preview:', { exact: false }).waitFor();
-    await page.getByRole('button', { name: 'Accept optional', exact: true }).click();
+    await page.getByRole('button', { name: 'Accept all optional', exact: true }).click();
     await page.getByText('Preview choices updated for this page.', { exact: true }).waitFor();
     expect(await page.locator('[data-consent="analytics"]').isChecked(), 'Explicit accept not reflected');
-    await page.getByRole('button', { name: 'Reject optional', exact: true }).click();
+    await page.getByRole('button', { name: 'Reject all optional', exact: true }).click();
     expect(!await page.locator('[data-consent="analytics"]').isChecked(), 'Reject did not clear analytics');
     const violations = (await new AxeBuilder({ page }).analyze()).violations;
     expect(violations.length === 0, 'Dialog accessibility: ' + JSON.stringify(violations.map(v => v.id)));

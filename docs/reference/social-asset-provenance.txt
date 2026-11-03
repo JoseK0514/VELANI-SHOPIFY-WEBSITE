@@ -12,3 +12,8 @@ Delivery optimization: original PNG preserved in docs/reference/velani-social-or
 official VELANI wordmark (src/brand/velani-wordmark.svg, traced from docs/reference/velani-logo-official.pdf)
 in #f4f6f9 on #05090e, 560px wide, centred, lossless WebP. No generated imagery. The earlier
 generated card is still preserved in docs/reference/velani-social-original.png.
+
+2026-11-03 format change: the share image is now public/assets/velani-social.png (1200×630, 8-bit RGB PNG,
+13 KB), the same wordmark card as the 2026-11-02 WebP rendered to PNG, because LinkedIn and some messengers
+only read JPG/PNG/GIF Open Graph images. The WebP was removed from the source tree; copies already uploaded
+to Shopify themes stay there unused.
