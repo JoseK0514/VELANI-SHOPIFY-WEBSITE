@@ -1,5 +1,7 @@
 # Claude handoff: Velani / NEVORA AI assistant
 
+**For the current chat UI task, start with [CLAUDE-UI-START-HERE.md](CLAUDE-UI-START-HERE.md) and [verified launch status](LAUNCH-STATUS-2026-11-03.md).** The material below includes historical development context.
+
 **GitHub handoff:** [Exact source location and checkout instructions](START-HERE-CLAUDE.md). This service lives under `services/velani-ai` on branch `codex/velani-website-ai-backend` in the private `JoseK0514/VELANI-SHOPIFY-WEBSITE` repository. [Vercel setup](VERCEL.md) is the preferred continuation path.
 
 **Latest addition — 0.2.2:** [Velani entrance animation](ENTRANCE-ANIMATION.md) has been redesigned around a sculptural titanium V and is implemented in the development homepage, with desktop/mobile recordings and a ready-to-install Shopify Liquid snippet. Use that document for animation behavior, integration and validation. The public Shopify theme has not been changed.
@@ -36,7 +38,7 @@ See README, docs/api.md and docs/architecture.md for behavior and operations. Th
 
 ## Deployment work still needed
 
-The source and development resources are prepared. Production hosting and Shopify installation have not been performed by this handoff. Use the owner's intended Vercel account with the supplied Node adapter and `services/velani-ai` as Root Directory; see VERCEL.md. A managed Node container host remains an alternative using the Dockerfile. Neon supplies persistence and the AI gateway, not this HTTP process automatically.
+The source is published, Vercel project `velani-ai` exists at `https://velani-ai.vercel.app`, and a compatible widget is installed in an unpublished Shopify theme. The API is not healthy yet: database/AI/session configuration is present but the Cloudflare setup token cannot create the required Turnstile widget (HTTP 403). Follow the current launch-status and UI handoff before enabling the widget. Use the supplied Node adapter and `services/velani-ai` as Root Directory; see VERCEL.md. A managed Node container host remains an alternative using the Dockerfile. Neon supplies persistence and the AI gateway, not this HTTP process automatically.
 
 Configure an HTTPS API domain, health checks, restricted ingress proxy trust and production-only CORS origins. Create/configure Turnstile for the actual website hostnames; client action must be `velani-session`. `NODE_ENV=production` refuses disabled CAPTCHA or HTTP origins. A Shopify preview hostname must be intentionally added when needed.
 
