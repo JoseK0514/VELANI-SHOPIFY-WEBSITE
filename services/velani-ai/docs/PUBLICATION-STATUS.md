@@ -1,8 +1,10 @@
 # Source publication status — 2026-11-03
 
+**Current handoff:** [UI implementation](CLAUDE-UI-START-HERE.md) and [verified deployment state](LAUNCH-STATUS-2026-11-03.md). The test evidence below records the original source publication; it is not a successful hosted-chat test.
+
 The original website AI backend is available in the private `JoseK0514/VELANI-SHOPIFY-WEBSITE` repository on branch `codex/velani-website-ai-backend`, directory `services/velani-ai`. Start at `START-HERE-CLAUDE.md` in that directory. An independently usable ZIP is under `deliverables/2026-11-03/velani-ai-source.zip`, alongside its SHA256 checksum.
 
-This is source publication and Vercel preparation. It is not a live backend deployment or a change to the Shopify theme. NEVORA's workforce application and its AI-owner branch remain separate.
+The initial publication supplied source and Vercel preparation. A Vercel project has since been created and its database/AI/session credentials installed; Turnstile configuration still blocks startup. No Shopify theme was changed in this credential/handoff pass. NEVORA's workforce application and its AI-owner branch remain separate.
 
 ## Verified in this publication
 
@@ -15,8 +17,8 @@ This is source publication and Vercel preparation. It is not a live backend depl
 
 ## Account and credential status
 
-The existing runtime database URL names restricted role `velani_ai_app`; an AI gateway credential and a session secret are configured in the private Codex environment. Those values are not in Git. Avoid recreating or rotating resources solely because source was previously unavailable.
+Vercel project `velani-ai` (`prj_E1Vl2AEpTlJlBam4MTKG7oEHB7x2`), team `team_Lzbw410WwXGWHTuUXuamRI1N`, is the existing target. `DATABASE_URL`, `AI_API_KEY`, and `SESSION_HASH_SECRET` are sensitive variables for production and preview. Database/gateway connectivity were independently verified. Preserve the existing resources.
 
-Turnstile keys are not configured yet. Cloudflare account connection is required to create the widget and put its values directly into the correct hosting environment.
+The Cloudflare management token can read account/widgets, but widget creation returned HTTP 403 / error 10000. Grant Account → Turnstile → Edit, create the widget, install its matching site/secret keys, then redeploy the existing backend branch. The API currently returns 503; no successful real browser chat has been recorded.
 
-The Vercel account visible to this Codex session lists other projects but not NEVORA. Choose the owner's intended Vercel team before provisioning or transferring credentials. `docs/VERCEL.md` supplies the exact import settings. Live Vercel routing, real Turnstile challenges, and production readiness remain to be validated in that environment.
+The compatible unpublished Shopify preview is `192990773562`. The earlier preview `192986808634` is now MAIN. Follow the current UI handoff and re-read the target role before any changes.

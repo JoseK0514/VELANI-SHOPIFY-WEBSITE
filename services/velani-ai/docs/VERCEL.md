@@ -1,5 +1,7 @@
 # Run the Velani website AI on Vercel
 
+**Existing target:** project `velani-ai` (`prj_E1Vl2AEpTlJlBam4MTKG7oEHB7x2`), team `team_Lzbw410WwXGWHTuUXuamRI1N`, API `https://velani-ai.vercel.app`. Use this project; do not import a duplicate. See [current status](LAUNCH-STATUS-2026-11-03.md) before changing credentials.
+
 This service belongs in a separate Vercel project from the NEVORA workforce application. The source can live in the shared website repository without changing the Shopify theme or NEVORA's AI-owner branch.
 
 ## Import settings
@@ -61,7 +63,7 @@ Do not disable CAPTCHA to make a preview pass. Production configuration rejects 
 
 ## Validate before switching the website
 
-1. Import the branch into the intended Vercel team and configure the environment before deploying.
+1. Complete the missing Turnstile environment in the existing project, preserve other credentials, and redeploy the backend branch. The import settings above are reference configuration, not a request to create another project.
 2. Check `/health/live` returns 200 and `/health/ready` can reach the existing database.
 3. Confirm `/v1/config` returns the public site key and `requireCaptcha: true`.
 4. Test the actual hostnames: challenge completion, session creation, a cited chat answer, a plan and an explicitly consented enquiry. Check disallowed origins and missing/invalid CAPTCHA are rejected.
