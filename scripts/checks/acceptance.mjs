@@ -81,7 +81,7 @@ try {
     ok((await c.locator('main h1').innerText()) === 'Ask for a NEVORA quote.' && /^NEVORA for your team$/i.test(await c.locator('.phero .kicker').innerText()), 'NEVORA enquiry heading');
     ok(await c.locator('#inquiry-team').isVisible() && await c.locator('#inquiry-locations').isVisible() && !(await c.locator('#inquiry-interest').isVisible()) && (await c.locator('#inquiry-interest').inputValue()) === 'nevora', 'team size and locations shown; NEVORA kept without reselecting');
     const form = await c.locator('#project-inquiry').boundingBox(), aside = await c.locator('.contact-aside').boundingBox(); ok(form.y < aside.y, 'phone: form directly after the introduction, address below');
-    ok(/support@thevelani\.com/.test(await c.locator('.contact-aside').innerText()) && /We have/.test(await c.locator('.brief').innerText()), 'the sentence asks about the team; support line under the form');
+    ok(/support@thevelani\.com/.test(await c.locator('.contact-aside').innerText()) && /Anything else/.test(await c.locator('label[for=inquiry-message]').innerText()), 'NEVORA variant asks about the team; support line under the form');
     await c.locator('#inquiry-name').fill('Fictional Tester'); await c.locator('#inquiry-email').fill('tester@example.com'); await c.locator('#inquiry-team').selectOption('10–24'); await c.locator('#inquiry-locations').fill('2');
     await c.locator('[data-inquiry-submit]').tap(); await c.waitForTimeout(500);
     ok(/Draft checked\. Nothing was sent\./.test(await c.locator('.form-status').innerText()), 'preview draft check passes without a message and says nothing was sent');

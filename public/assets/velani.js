@@ -19,7 +19,6 @@ if (form) {
   if (topic === 'nevora' || topic === 'nevora-demo') {
     document.title = (topic === 'nevora-demo' ? 'Free NEVORA demo' : 'NEVORA for your team') + ' · Velani';
     fields.message.required = false;
-    fields.message.placeholder = 'What you use today for schedules, time and payroll.';
   }
   const setBusy = busy => { submitButton.disabled = busy; form.setAttribute('aria-busy', String(busy)); };
   const messages = { checking: 'Checking your draft…', preview: 'Draft checked. Nothing was sent.', invalid: 'Check the highlighted fields.', sending: 'Sending inquiry…', accepted: 'Your inquiry was submitted.', failed: 'The inquiry was not accepted. Review the form before trying again.', uncertain: 'We could not confirm the submission. It may have been accepted. Check with support@thevelani.com before sending it again.', unavailable: 'Inquiry delivery is not available.' };

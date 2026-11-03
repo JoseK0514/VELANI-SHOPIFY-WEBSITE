@@ -138,54 +138,51 @@
  .doc-body section>*:not(i){grid-column:1}
 }
 
-/* Contact: the inquiry is one sentence with blanks, set in display type; no card, no columns */
-.contact{padding:8px 0 var(--s2)}
-.inquiry-form,.contact-aside{max-width:920px}
+/* Contact: one centred column, large quiet fields with the label inside */
+.cform-hero{text-align:center;padding-bottom:40px}
+.cform-hero .t1{margin-inline:auto;max-width:14ch}
+.cform-hero .hfact{margin:20px auto 0;max-width:34em}
+.contact{padding:0 0 var(--s2)}
+.cform{max-width:calc(var(--pad)*2 + 560px)}
 .inquiry-form fieldset{border:0;margin:0;padding:0;min-width:0;display:block}
-.brief{position:relative;margin:0;font-size:clamp(1.5rem,2.4vw,2rem);line-height:1.65;letter-spacing:-.01em;color:var(--text-2);text-wrap:pretty}
-.brief input,.brief select,.brief-m textarea{font:inherit;color:var(--text);background:none;border:0;border-bottom:1px solid var(--line-2);border-radius:0;padding:0 .08em .06em;margin:0;vertical-align:baseline;transition:border-color .15s,box-shadow .15s;field-sizing:content}
-.brief input{min-width:3em;max-width:100%}
-.brief input::placeholder{color:var(--text-3);opacity:1}
-.brief select{appearance:none;-webkit-appearance:none;padding-right:1.15em;cursor:pointer;background-image:linear-gradient(45deg,transparent 50%,var(--text-2) 50%),linear-gradient(135deg,var(--text-2) 50%,transparent 50%);background-position:calc(100% - .55em) 55%,calc(100% - .35em) 55%;background-size:.2em .2em;background-repeat:no-repeat}
-.brief select:has(option[value=""]:checked){color:var(--text-3)}
-.brief input:focus-visible,.brief select:focus-visible,.brief-m textarea:focus-visible{outline:none;border-color:var(--text);box-shadow:0 1px 0 var(--text)}
-.brief input[aria-invalid="true"],.brief select[aria-invalid="true"],.brief-m textarea[aria-invalid="true"]{border-color:#ff9b8f;box-shadow:0 1px 0 #ff9b8f}
-.brief-ruler{position:absolute;left:0;top:0;visibility:hidden;white-space:pre;pointer-events:none;padding:0 .08em}
-.brief-m{margin-top:40px}
-.brief-l{display:block;margin-bottom:6px;font-size:clamp(1.5rem,2.4vw,2rem);line-height:1.65;letter-spacing:-.01em;color:var(--text-2)}
-.brief-m textarea{display:block;width:100%;min-height:64px;resize:none;font-size:1.25rem;line-height:1.55;padding:.1em 0 .35em;overflow:hidden}
-.brief-m textarea::placeholder{color:var(--text-3);opacity:1}
-.ferrs{margin-top:20px}
-.ferrs:has(.field-error:not(:empty)){margin-bottom:-8px}
-.field-error{font-size:0.875rem;line-height:1.5;color:#ffb3a9;margin:0}
+.ff{position:relative;margin-top:12px}
+.ff input,.ff select,.ff textarea{display:block;width:100%;min-height:58px;padding:26px 16px 10px;font:inherit;font-size:1.0625rem;line-height:1.3;color:var(--text);background:var(--panel-2);border:1px solid transparent;border-radius:var(--r2);transition:border-color .15s,box-shadow .15s;appearance:none;-webkit-appearance:none}
+.ff label{position:absolute;left:16px;top:29px;transform:translateY(-50%);font-size:1.0625rem;line-height:1;color:var(--text-3);pointer-events:none;transition:top .15s var(--out),font-size .15s var(--out),color .15s}
+.ff .opt{color:var(--text-3)}
+.ff input:focus+label,.ff input:not(:placeholder-shown)+label,.ff textarea:focus+label,.ff textarea:not(:placeholder-shown)+label,.ff.sel select:focus+label,.ff.sel select:not(:has(option[value=""]:checked))+label{top:10px;transform:none;font-size:0.75rem;color:var(--text-2)}
+.ff.area label{top:28px}
+.ff.area textarea{min-height:140px;resize:none;line-height:1.5;padding-top:30px}
+.ff.sel{background:linear-gradient(45deg,transparent 50%,var(--text-2) 50%),linear-gradient(135deg,var(--text-2) 50%,transparent 50%);background-position:calc(100% - 22px) 50%,calc(100% - 17px) 50%;background-size:5px 5px;background-repeat:no-repeat;border-radius:var(--r2)}
+.ff.sel select{background-color:transparent;position:relative;cursor:pointer;padding-right:44px}
+.ff.sel{background-color:var(--panel-2)}
+@media(hover:hover){.ff input:hover,.ff select:hover,.ff textarea:hover{border-color:rgba(255,255,255,.14)}}
+.ff input:focus-visible,.ff select:focus-visible,.ff textarea:focus-visible{outline:none;border-color:rgba(255,255,255,.5);box-shadow:0 0 0 3px rgba(244,246,249,.12)}
+.ff [aria-invalid="true"]{border-color:#ff9b8f}
+.field-error{margin:6px 16px 0;font-size:0.8125rem;line-height:1.5;color:#ffb3a9}
 .field-error:empty{display:none}
-.send{display:flex;flex-wrap:wrap;align-items:center;gap:16px 28px;margin-top:40px}
-.send .pill{cursor:pointer}
-.send .pill:disabled{opacity:.6;cursor:default}
-.send-note{margin:0;font-size:0.875rem;color:var(--text-3)}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.frow .ff{margin-top:12px}
+.cform .pill{width:100%;margin-top:24px;cursor:pointer}
+.cform .pill:disabled{opacity:.6;cursor:default}
+.send-note{margin:16px 0 0;text-align:center;font-size:0.875rem;color:var(--text-3)}
 .send-note a{color:var(--text-2);text-decoration:underline;text-underline-offset:3px}
-.contact .fine{max-width:46em}
-.form-legal,.form-legal p{margin:16px 0 0;font-size:0.75rem;line-height:1.5;color:var(--text-3)}.form-legal p{margin:0}.form-legal a{color:var(--text-2);text-decoration:underline;text-underline-offset:3px}
-.form-status{margin-top:20px;font-size:0.875rem;color:var(--text-2)}
+.contact .fine{margin-top:20px;text-align:center;max-width:none}
+.form-legal,.form-legal p{margin:16px 0 0;text-align:center;font-size:0.75rem;line-height:1.5;color:var(--text-3)}.form-legal p{margin:0}.form-legal a{color:var(--text-2);text-decoration:underline;text-underline-offset:3px}
+.form-status{margin-top:16px;text-align:center;font-size:0.875rem;color:var(--text-2)}
 .form-status:empty{display:none}
 .form-status[data-state="invalid"],.form-status[role="alert"]{color:#ffb3a9}
 .form-status[data-state="accepted"],.form-status[data-state="preview"]{color:var(--accent)}
-.note{margin:0 0 28px;font-size:0.75rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--text-3)}
-.contact-aside{display:flex;flex-wrap:wrap;gap:4px 10px;margin:72px 0 0;padding-top:24px;border-top:1px solid var(--line);font-size:0.875rem;color:var(--text-3)}
-.contact-aside a{display:inline-block;min-height:24px;line-height:24px;color:var(--text-2);text-decoration:underline;text-decoration-color:var(--line-2);text-underline-offset:3px}
+.note{margin:0 0 16px;text-align:center;font-size:0.75rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--text-3)}
+.contact-aside{margin:56px 0 0;text-align:center;font-size:0.875rem;line-height:1.7;color:var(--text-3)}
+.contact-aside a{display:inline-block;min-height:24px;color:var(--text-2);text-decoration:underline;text-decoration-color:var(--line-2);text-underline-offset:3px}
 .panel{background:var(--panel);border-radius:var(--r2);padding:clamp(24px,3.4vw,44px);box-shadow:0 0 0 1px var(--line)}
 .panel .t3{margin-bottom:12px}
 .panel>p{color:var(--text-2)}
 .panel .acts{margin-top:28px}
 .field-help.mail{margin-top:16px;font-size:0.875rem;color:var(--text-3)}
 @media(max-width:600px){
- .brief,.brief-l{font-size:1.375rem;line-height:1.7}
- .brief-m{margin-top:32px}
- .brief-m textarea{font-size:1.125rem}
- .send{margin-top:32px}
- .contact-aside{display:block;margin-top:56px}
- .contact-aside span:empty,.contact-aside span:not(:last-child):nth-child(even){display:none}
- .contact-aside>*,.contact-aside a{display:block}
+ .frow{grid-template-columns:1fr;gap:0}
+ .contact-aside{margin-top:48px}
 }
 
 /* Cookie choices */
@@ -216,5 +213,5 @@
 .field[hidden],.form-row[hidden],[data-nevora-fields][hidden]{display:none}
 /* NEVORA enquiry variant: the boot script adds .ask-nevora before paint, so nothing changes after the page shows */
 .ask-nevora .v-d,html:not(.ask-nevora) .v-n,html:not(.ask-demo) .v-m,.ask-demo .v-n:not(.v-nm){display:none}
-.ask-nevora [data-nevora-fields]{display:inline}
+.ask-nevora [data-nevora-fields]{display:grid}
 .ask-nevora .field-topic{display:none}

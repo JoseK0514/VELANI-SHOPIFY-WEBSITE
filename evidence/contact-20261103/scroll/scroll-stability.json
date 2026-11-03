@@ -35,7 +35,7 @@
       "path": "/pages/custom-development",
       "cls": 0,
       "shifts": [],
-      "long": 2,
+      "long": 0,
       "flips": 2,
       "overflowX": 0,
       "flipsAtBottom": 1,
@@ -64,7 +64,7 @@
       "overflowX": 0,
       "flipsAtBottom": 1,
       "errors": [],
-      "height": 1578,
+      "height": 1702,
       "ok": true
     },
     {
@@ -95,7 +95,7 @@
       "path": "/pages/nevora-privacy",
       "cls": 0,
       "shifts": [],
-      "long": 0,
+      "long": 1,
       "flips": 2,
       "overflowX": 0,
       "flipsAtBottom": 1,
