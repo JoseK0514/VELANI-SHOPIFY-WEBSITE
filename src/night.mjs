@@ -25,6 +25,7 @@ export function site(html, target) {
     .replace(/\{\{icon:([\w-]+)\}\}/g, (_, n) => icon(n))
     .replace(/\{\{wordmark\}\}/g, () => WORDMARK)
     .replace(/src="img\/([\w.-]+)\.webp"/g, (_, n) => 'src="' + asset('night-' + n + '.webp', target) + '"')
+    .replace(/href="img\/([\w.-]+)\.webp"/g, (_, n) => 'href="' + asset('night-' + n + '.webp', target) + '"')
     .replace(/src="img\/([\w.-]+)\.png"/g, (_, n) => 'src="' + asset('night-' + n + '.png', target) + '"')
     .replace(/href="home\.html"/g, 'href="/"')
     .replace(/href="nevora\.html(#[\w-]+)?"/g, (_, h) => 'href="/pages/nevora' + (h || '') + '"')

@@ -140,30 +140,31 @@ html:has(main > .hpanel){scroll-padding-top:56px}
 @media(hover:hover){.hcue:hover{opacity:1;animation-play-state:paused}}.hcue:focus-visible{animation-play-state:paused}
 /* Entrance: the copy rises once, the shots fade in (motion.js adds .in; reduced motion crossfades) */
 .hpanel .fade,.hpanel .rise{transition-duration:.9s}
-@media(max-width:1180px){.hweb{display:none}}
+@media(max-width:1180px){.hweb{display:none}.hpanel.right .hph{object-position:22% 50%}.hpanel.right .hcopy::before{inset:-30% -30% -26% -30%;background:radial-gradient(ellipse at 50% 50%,rgba(0,0,0,.86) 0%,rgba(0,0,0,.84) 42%,rgba(0,0,0,.55) 62%,rgba(0,0,0,0) 80%)}}
 @media(min-width:834px) and (max-height:760px){.hshot{width:240px}}
 @media(max-width:833px){
- .hpanel{min-height:760px}
+ /* Panels lay out in flow: the shot (if any) at the top, the copy pushed to the bottom; enlarged text makes the panel taller instead of clipping */
+ .hpanel{display:flex;flex-direction:column;justify-content:flex-end;height:auto;min-height:760px;padding-bottom:64px}
  .hpanel:has(.hshot){min-height:880px}
  .hpanel.short{min-height:0;padding:72px 0 64px}
- .hcopy,.hpanel.right .hcopy{left:var(--pad);right:var(--pad);top:auto;bottom:64px;transform:none;max-width:none}
- .hpanel.short .hcopy{position:relative;bottom:auto;left:auto;right:auto;margin:0}
+ .hcopy,.hpanel.right .hcopy{position:relative;left:auto;right:auto;top:auto;bottom:auto;transform:none;max-width:none;margin:auto var(--pad) 0}
+ .hpanel.short .hcopy{margin:0}
  .hshade,.hpanel.right .hshade,.hpanel.dim .hshade,.hpanel.end .hshade{background:linear-gradient(0deg,rgba(0,0,0,.94) 0%,rgba(0,0,0,.8) 32%,rgba(0,0,0,.42) 58%,rgba(0,0,0,0) 80%)}
  .hcopy::before{inset:-26% -10% -24% -12%;background:radial-gradient(ellipse at 50% 56%,rgba(0,0,0,.7) 0%,rgba(0,0,0,.48) 46%,rgba(0,0,0,0) 76%)}
  .hpanel.live .hph{object-position:58% 34%}
  .hpanel h1{font-size:2.875rem;line-height:1.02}.hpanel h2{font-size:2.375rem}.hpanel.long h1{font-size:2.375rem}.hpanel h2 img{height:40px}
  .pill,.hb{min-height:46px;padding:0 16px;font-size:0.75rem}
  .gnav .pill{min-height:34px;font-size:0.75rem}
- .hshot{left:50%;right:auto;top:56px;width:46%;margin:0;transform:translateX(-50%);padding:5px;border-radius:28px}
- .hshot.fade{transform:translateX(-50%) translateY(40px)}
- .hshot.fade.in{transform:translateX(-50%)}
+ .hshot{position:relative;left:auto;right:auto;top:auto;width:46%;margin:56px auto 32px;transform:none;padding:5px;border-radius:28px;flex:none;order:-1;z-index:1}
+ .hshot.fade{transform:translateY(40px)}
+ .hshot.fade.in{transform:none}
  .notif{left:5px;right:5px;top:9px;grid-template-columns:26px 1fr;column-gap:8px;padding:7px 9px 8px;border-radius:13px;font-size:0.6875rem}
  .notif-ic{width:26px;height:26px;border-radius:7px;font-size:0.8125rem}
  .notif-t b{font-size:0.625rem}.notif-t i{font-size:0.5625rem}
  .hshot img{border-radius:24px}
- .hpanel.end .hcopy{bottom:72px}
+ .hpanel.end .hcopy{bottom:auto;margin-bottom:8px}
  .hpanel.end .hacts .hb,.hpanel.end .hacts .pill{width:100%}
- .hpanel.live{min-height:700px}
+ .hpanel.live{height:auto;min-height:max(700px,calc(100svh - 56px))}
  .hcue{left:auto;right:8px;bottom:14px;margin:0}
  .hwm .wm-velani{height:34px}
 }
@@ -230,7 +231,7 @@ html:has(main > .hpanel){scroll-padding-top:56px}
 @keyframes t2{0%,74%{opacity:0}76%,85%{opacity:1}88%,100%{opacity:0}}
 .no-js .msg,.still .msg{opacity:1;transform:none;animation:none;color:inherit}.no-js .msg.ai::before,.still .msg.ai::before{display:none}
 @media(max-width:1180px){.hchat{width:320px}}
-@media(max-width:833px){.hpanel.live:has(.hchat) .hcopy{bottom:40px}.hchat{left:var(--pad);right:var(--pad);top:60px;transform:none;width:auto;gap:5px;padding:10px 10px 12px;font-size:0.75rem;line-height:1.4;border-radius:14px}.hchat-h{margin-bottom:4px;font-size:0.6875rem}.hchat-h b{width:22px;height:22px;font-size:0.75rem}.hchat-h i{font-size:0.625rem}.msg{padding:7px 10px;max-width:90%}.msg.ai::before{left:10px}}
+@media(max-width:833px){.hchat{position:relative;left:auto;right:auto;top:auto;transform:none;width:auto;margin:60px var(--pad) 24px;order:-1;gap:5px;padding:10px 10px 12px;font-size:0.75rem;line-height:1.4;border-radius:14px}.hchat-h{margin-bottom:4px;font-size:0.6875rem}.hchat-h b{width:22px;height:22px;font-size:0.75rem}.hchat-h i{font-size:0.625rem}.msg{padding:7px 10px;max-width:90%}.msg.ai::before{left:10px}}
 @media(max-height:600px) and (max-width:833px){.hchat{display:none}}
 @media(prefers-reduced-motion:reduce){.msg{opacity:1;transform:none;animation:none}.msg.ai::before{display:none}}
 /* The wordmark closes the page the way the hero opens it: full width, cut by the bottom edge, the hero light behind it */
@@ -260,7 +261,7 @@ html:has(main > .hpanel){scroll-padding-top:56px}
  .gnav.tuck{transform:none}
  .hpanel.live .hph{animation:none;transform:none}.hcue{animation:none}
  .hshot.fade{transform:translateY(-50%)}.notif{transform:none;transition:opacity .5s}
- @media(max-width:833px){.hshot.fade{transform:translateX(-50%)}}
+ @media(max-width:833px){.hshot.fade{transform:none}}
 }
 
 /* Status line: dot stays with the first line when it wraps */

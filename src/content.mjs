@@ -28,7 +28,7 @@ export const routes = {
     { heading: 'The company behind the work', text: 'Velani is operated by VELANI LLC. You can reach us at support@thevelani.com or at 1654 Calle Tulipan, Suite 100, San Juan, PR 00927.' },
   ], { nav: 'about', name: 'About' }),
   '/pages/contact': page('Start with the problem.', 'Contact', 'What needs to work better, and who will use it. One form, one reply, then a first conversation.', [], { kind: 'contact', nav: 'contact', name: 'Contact' }),
-  '/pages/plans': page('Free for 30 days. Then one price per business.', 'Plans', 'Start a free NEVORA demo for your team. On day 30 you continue by quote, export your data, or we delete it within 3 days.', [], { kind: 'plans', nav: 'plans', name: 'Plans' }),
+  '/pages/plans': page('Free for 30 days. Then one price per business.', 'Plans', 'Start a free NEVORA demo for your team. On day 30 you continue by quote, export your data, or we delete it within 3 days, except records we must keep by law.', [], { kind: 'plans', nav: 'plans', name: 'Plans' }),
   '/pages/help': page('Here to help.', 'Support', 'Client support, answers about our work, and help for people who use NEVORA.', [
     { heading: 'How does my business get NEVORA?', text: 'NEVORA is offered to businesses by quote, with a free 30-day demo for teams of up to 30 employees. Ask for a quote or start a demo and we will discuss your team’s needs. Employees get their account from their workplace, not from this website.' },
     { heading: 'Does Velani build custom software?', text: 'Yes. Describe the application, internal workflow or integration you need on the contact page.' },

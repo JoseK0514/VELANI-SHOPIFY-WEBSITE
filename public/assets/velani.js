@@ -48,6 +48,8 @@ if (form) {
     }
     await controller.submit(values);
   });
+  // F08: choosing a NEVORA topic in the general form reveals the team fields and makes the message optional, like the dedicated inquiry
+  fields.interest?.addEventListener('change', () => { const nev = /^nevora/.test(fields.interest.value); const row = form.querySelector('[data-nevora-fields]'); if (row) row.hidden = !nev; if (fields.message) fields.message.required = !nev; });
   fieldset.disabled = false;
   const minH = parseInt(fields.message.dataset.min || '150', 10);
   fields.message.addEventListener('input', () => { fields.message.style.height = 'auto'; fields.message.style.height = Math.min(600, Math.max(minH, fields.message.scrollHeight)) + 'px'; });
@@ -83,6 +85,8 @@ if (dialog) {
     for (const input of inputs) input.checked = state.choices[input.dataset.consent] === true;
     context.textContent = state.mode === 'local' ? 'Local website preview: these demonstration choices last only on this page. No analytics or marketing integration is added.' : state.available ? 'Choices are managed through Shopify. Velani has not added analytics or marketing tools to this website.' : 'The platform privacy service is unavailable. No optional Velani integration will be started.';
     setBusy(false);
+    // F24: when the platform's privacy service is unavailable, nothing can be saved, so the saving controls stay off and the message says what to do
+    if (state.mode !== 'local' && !state.available) { controls.forEach(control => { control.disabled = true; }); context.textContent += ' Nothing can be saved right now. Close this window and try again later.'; }
   }
   document.querySelectorAll('[data-cookie-open]').forEach(button => { button.addEventListener('click', open); button.disabled = false; });
   dialog.querySelector('[data-cookie-close]').addEventListener('click', () => dialog.close());
