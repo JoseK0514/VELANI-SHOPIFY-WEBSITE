@@ -1,0 +1,5 @@
+assets/velani-motion.js 16ba7022b6d99430d9ef297f92c90c92
+assets/velani.css b54c1465e64cfd2857f1064af578cd2e
+assets/velani.js ff8e36ba628bdb452ee9e28083383b81
+layout/theme.liquid 1e5d99c9f051bbe4f1557c560893d24c
+sections/velani-contact.liquid df59a115b5ff02ea73c7ea357ed0a9ac

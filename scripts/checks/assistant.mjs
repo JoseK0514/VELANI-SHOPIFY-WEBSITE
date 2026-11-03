@@ -3,6 +3,7 @@
 // VELANI_ASSISTANT_API=http://127.0.0.1:3001. The CAPTCHA path starts its own harness (port 3002) and preview (port 4174)
 // when VELANI_AI_DIR points at a built services/velani-ai checkout.
 // Usage: VELANI_CHROMIUM_EXECUTABLE=/path/to/chromium VELANI_AI_DIR=/path/to/services/velani-ai node scripts/checks/assistant.mjs
+// Start the harness fresh for each run: it keeps the service's real per-address limits (10 sessions an hour), and two runs in an hour exceed them.
 import { chromium, devices } from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
 import { spawn } from 'node:child_process';

@@ -23,3 +23,9 @@ Five read-only reviews ran against the local preview of commit 500ddfd: copy (64
 3. The website terms now say "operated by VELANI LLC. Velani is a brand of VELANI LLC." (was "doing business as Velani"); restore "doing business as" only if the DBA is registered.
 4. Assets: the owner screenshot (`night-owner.webp`) is cropped through the Settings row and should be re-exported from the app; the app screens carry a "NEVORA Workforce" sub-brand the website never mentions.
 5. Left as designed: About rows use a smaller heading size than Custom development rows; the textarea keeps its resize handle; the home page keeps several content widths.
+
+## Update, 01:25–01:45 UTC
+
+- Theme 192986808634 was published by the owner at 01:25 UTC; its 32 Velani files match the build of commit d9d17ae (`evidence/shopify-live-192986808634-readback-20261103.txt`).
+- The interaction/scroll review (final report) found four reproducible issues, fixed in commit a0c5573: the hide-on-scroll header was hidden after hash landings, in-page link clicks and Forward navigation; the mobile menu stayed open after tapping its in-page "How it works" link; under reduced motion the demo's focus management failed (transition-duration .01ms kept the step invisible for a frame); the NEVORA enquiry page rewrote its wording after paint (CLS 0.07–0.08, visible flash). The enquiry page now carries both wordings and the boot script picks one before paint.
+- Those fixes are uploaded and verified on the unpublished duplicate **192990773562 "Velani interaction fixes (preview)"** (`evidence/shopify-preview-192990773562-readback-20261103.txt`); publishing it is the owner's click. Re-run on that build: acceptance 76/76, browser 51/51, privacy 4/4, scroll 9/9, assistant 41/41, unit 33/33, theme-check clean.
