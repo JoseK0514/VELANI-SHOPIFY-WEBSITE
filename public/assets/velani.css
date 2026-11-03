@@ -121,7 +121,7 @@ img{display:block;max-width:100%;height:auto}
 
 
 @media(prefers-reduced-motion:reduce){
- *,*::before,*::after{animation-duration:.01ms!important;animation-delay:0s!important;transition-duration:.01ms!important;transition-delay:0s!important;scroll-behavior:auto!important}
+ *,*::before,*::after{animation-duration:.01ms!important;animation-delay:0s!important;transition-duration:0s!important;transition-delay:0s!important;scroll-behavior:auto!important}
  .rise .w>span{transform:none}.draw::before{transform:none}.fade{opacity:1}
  .gnav.tuck{transform:none}
 }
@@ -301,7 +301,11 @@ img{display:block;max-width:100%;height:auto}
 .no-js .how li::after,.still .how li::after{background:var(--accent)}@media(prefers-reduced-motion:reduce){.how li::after{transition:none}}
 
 .field[hidden],.form-row[hidden]{display:none}
-.form-row-one{grid-template-columns:1fr}
+/* NEVORA enquiry variant: the boot script adds .ask-nevora before paint, so nothing changes after the page shows */
+.ask-nevora .v-d,html:not(.ask-nevora) .v-n{display:none}
+.ask-nevora .form-row[data-nevora-fields]{display:grid}
+.ask-nevora .field-topic{display:none}
+.ask-nevora .row-topic{grid-template-columns:1fr}
 
 /* Try the time clock: a working copy of the NEVORA PIN screen. Light surface, like the real tablet. */
 .kio-note{display:inline-flex;flex-wrap:wrap;gap:4px 6px;margin-top:var(--s1);padding:10px 16px;border-radius:999px;background:var(--panel);box-shadow:0 0 0 1px var(--line);font-size:0.9375rem;line-height:1.4;color:var(--text-2)}

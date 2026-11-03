@@ -159,4 +159,8 @@
 .no-js .how li::after,.still .how li::after{background:var(--accent)}@media(prefers-reduced-motion:reduce){.how li::after{transition:none}}
 
 .field[hidden],.form-row[hidden]{display:none}
-.form-row-one{grid-template-columns:1fr}
+/* NEVORA enquiry variant: the boot script adds .ask-nevora before paint, so nothing changes after the page shows */
+.ask-nevora .v-d,html:not(.ask-nevora) .v-n{display:none}
+.ask-nevora .form-row[data-nevora-fields]{display:grid}
+.ask-nevora .field-topic{display:none}
+.ask-nevora .row-topic{grid-template-columns:1fr}

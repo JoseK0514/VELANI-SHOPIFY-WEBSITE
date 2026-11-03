@@ -11,20 +11,13 @@ if (form) {
   const topic = new URL(window.location.href).searchParams.get('interest');
   if (['custom-software', 'nevora', 'other'].includes(topic)) fields.interest.value = topic;
   // Arriving from a NEVORA action: talk about the team, keep NEVORA as the topic without asking again
+  // The page already shows the right wording (chosen before paint); drop the unused variant so screen readers and the heading label see one text
+  const nevora = document.documentElement.classList.contains('ask-nevora');
+  document.querySelectorAll(nevora ? '.v-d' : '.v-n').forEach(el => el.remove());
+  document.querySelectorAll('.phero .rise[aria-label]').forEach(h => h.setAttribute('aria-label', h.textContent.replace(/\s+/g, ' ').trim()));
   if (topic === 'nevora') {
-    const hero = document.querySelector('.phero');
-    const set = (selector, text) => { const el = hero && hero.querySelector(selector); if (el) { el.textContent = text; el.removeAttribute('aria-label'); } };
-    set('.kicker', 'NEVORA for your team'); set('h1', 'Tell us about your shift team.'); set('.lede', 'A few details about your business are enough to start. We’ll discuss what you need and NEVORA’s availability.');
-    const aside = document.querySelector('.contact-aside'), prompts = aside && aside.querySelector('[data-aside="prompts"]'), note = aside && aside.querySelector('[data-aside="note"]');
-    if (prompts) prompts.textContent = 'How many people work shifts? How many locations? What do you use today for schedules, time and payroll?';
-    if (note) note.textContent = 'A quote does not commit you to anything. We reply by email.';
     document.title = 'NEVORA for your team · Velani';
-    form.querySelector('[data-nevora-fields]')?.removeAttribute('hidden');
-    fields.interest.closest('.field').hidden = true;
-    fields.interest.closest('.form-row')?.classList.add('form-row-one');
-    const label = form.querySelector('label[for="inquiry-message"]'); if (label) label.innerHTML = 'Anything else we should know? <span class="optional">optional</span>';
     fields.message.required = false;
-    const help = form.querySelector('#message-help'); if (help) help.textContent = 'For example, what you use today for schedules, time and payroll. Please do not include passwords, payment details or sensitive records.';
   }
   const setBusy = busy => { submitButton.disabled = busy; form.setAttribute('aria-busy', String(busy)); };
   const messages = { checking: 'Checking your draft…', preview: 'Draft checked. Nothing was sent.', invalid: 'Check the highlighted fields.', sending: 'Sending inquiry…', accepted: 'Your inquiry was submitted.', failed: 'The inquiry was not accepted. Review the form before trying again.', uncertain: 'We could not confirm the submission. It may have been accepted. Check with support@thevelani.com before sending it again.', unavailable: 'Inquiry delivery is not available.' };

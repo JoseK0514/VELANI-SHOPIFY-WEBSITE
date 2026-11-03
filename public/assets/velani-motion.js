@@ -19,6 +19,7 @@
  const mb=d.getElementById('gmenu-btn'),mm=d.getElementById('gmenu'),behind=[...d.querySelectorAll('main,footer,.lnav,.skip')];
  const setMenu=o=>{if(!mb)return;mb.setAttribute('aria-expanded',String(o));mb.setAttribute('aria-label',o?'Close menu':'Menu');mm.hidden=!o;mb.querySelector('.i-open').hidden=o;mb.querySelector('.i-close').hidden=!o;d.body.style.overflow=o?'hidden':'';behind.forEach(x=>x.inert=o);if(o)nav.classList.remove('tuck')};
  if(mb){mb.addEventListener('click',()=>setMenu(mb.getAttribute('aria-expanded')!=='true'));
+  mm.addEventListener('click',e=>{if(e.target.closest('a'))setMenu(false)});
   d.addEventListener('keydown',e=>{if(e.key==='Escape'&&mb.getAttribute('aria-expanded')==='true'){setMenu(false);mb.focus()}});
   matchMedia('(min-width:834px)').addEventListener('change',e=>{if(e.matches)setMenu(false)});}
  nav&&nav.addEventListener('focusin',()=>nav.classList.remove('tuck'));
@@ -34,13 +35,16 @@
  let ticking=false;
  const frame=()=>{ticking=false;const vh=window.__svh,y=Math.min(Math.max(scrollY,0),Math.max(0,root.scrollHeight-innerHeight));
   if(nav&&!(mb&&mb.getAttribute('aria-expanded')==='true')){nav.classList.toggle('scrolled',y>8);
-   if(tuckable&&!reduce.matches&&!nav.contains(d.activeElement)){const dy=y-lastY;if(dy){const s=Math.sign(dy);if(s!==dir){dir=s;anchor=lastY}}
+   if(tuckable&&!reduce.matches&&!nav.contains(d.activeElement)){const dy=y-lastY;
+    // A jump (hash landing, in-page link, restored position) is not scrolling: it never hides the header
+    if(Math.abs(dy)>innerHeight/2){dir=0;anchor=y;nav.classList.remove('tuck')}else if(dy){const s=Math.sign(dy);if(s!==dir){dir=s;anchor=lastY}}
     if(dir>0&&y-anchor>24&&y>240)nav.classList.add('tuck');else if((dir<0&&anchor-y>12)||y<120)nav.classList.remove('tuck')}
    lastY=y}
   for(const f of fx){if(reduce.matches&&!f.always)continue;const r=f.el.getBoundingClientRect();const track=Math.max(1,r.height-vh);f.run(clamp(-r.top/track),r,vh,clamp)}
  };
  const req=()=>{if(!ticking){ticking=true;requestAnimationFrame(frame)}};
  addEventListener('scroll',req,{passive:true});addEventListener('resize',()=>{measure();req()});req();
+ const jump=()=>{lastY=anchor=scrollY;dir=0;nav&&nav.classList.remove('tuck')};addEventListener('hashchange',jump);addEventListener('pageshow',jump);
  const resetAll=()=>fx.forEach(f=>f.reset&&f.reset());
  reduce.addEventListener('change',()=>{if(reduce.matches)resetAll();req()});
  if(reduce.matches)resetAll();
