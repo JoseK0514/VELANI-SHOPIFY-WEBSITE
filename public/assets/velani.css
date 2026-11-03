@@ -82,6 +82,8 @@ img{display:block;max-width:100%;height:auto}
 
 /* ---------- Full-screen panels: one subject each, a big visual, a short title and one or two actions ---------- */
 main:has(> .hpanel){background:#000}
+/* On panel pages an anchor lands right under the 56px header (inner pages keep the 110px breathing room for headings) */
+html:has(main > .hpanel){scroll-padding-top:56px}
 .hpanel{position:relative;height:100vh;height:100svh;min-height:700px;overflow:hidden;background:#000;color:#f4f6f9}
 .hpanel.short{height:auto;min-height:0;padding:clamp(88px,12vw,160px) 0}
 .hph{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 50%}
@@ -117,7 +119,7 @@ main:has(> .hpanel){background:#000}
 .hpanel.live{height:calc(100vh - 56px);height:calc(100svh - 56px)}
 .hcue{position:absolute;left:50%;bottom:18px;z-index:2;display:flex;align-items:center;justify-content:center;width:44px;height:44px;margin-left:-22px;color:#f0f0fa;font-size:1.25rem;opacity:.85;animation:hbob 2.4s ease-in-out infinite}
 @keyframes hbob{0%,100%{transform:translateY(0)}50%{transform:translateY(6px)}}
-@media(hover:hover){.hcue:hover{opacity:1}}
+@media(hover:hover){.hcue:hover{opacity:1;animation-play-state:paused}}.hcue:focus-visible{animation-play-state:paused}
 /* Entrance: the copy rises once, the shots fade in (motion.js adds .in; reduced motion crossfades) */
 .hpanel .fade,.hpanel .rise{transition-duration:.9s}
 @media(max-width:1180px){.hweb{display:none}}
