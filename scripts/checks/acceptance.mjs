@@ -78,10 +78,10 @@ try {
     ok(errs.length === 0, 'home: no script errors ' + errs.join('|'));
     // NEVORA enquiry variant
     const c = await ctx.newPage(); await c.goto(base + '/pages/contact?interest=nevora', { waitUntil: 'networkidle' }); await c.waitForTimeout(500);
-    ok((await c.locator('main h1').innerText()) === 'Tell us about your shift team.' && /^NEVORA for your team$/i.test(await c.locator('.phero .kicker').innerText()), 'NEVORA enquiry heading');
+    ok((await c.locator('main h1').innerText()) === 'Ask for a NEVORA quote.' && /^NEVORA for your team$/i.test(await c.locator('.phero .kicker').innerText()), 'NEVORA enquiry heading');
     ok(await c.locator('#inquiry-team').isVisible() && await c.locator('#inquiry-locations').isVisible() && !(await c.locator('#inquiry-interest').isVisible()) && (await c.locator('#inquiry-interest').inputValue()) === 'nevora', 'team size and locations shown; NEVORA kept without reselecting');
     const form = await c.locator('#project-inquiry').boundingBox(), aside = await c.locator('.contact-aside').boundingBox(); ok(form.y < aside.y, 'phone: form directly after the introduction, address below');
-    ok(/How many people work shifts\?/.test(await c.locator('.contact-aside').innerText()), 'aside prompts speak about the team');
+    ok(/Your quote\./.test(await c.locator('.contact-aside').innerText()) && /What happens next/i.test(await c.locator('.contact-aside').innerText()), 'aside shows the three next steps for a NEVORA quote');
     await c.locator('#inquiry-name').fill('Fictional Tester'); await c.locator('#inquiry-email').fill('tester@example.com'); await c.locator('#inquiry-team').selectOption('10–24'); await c.locator('#inquiry-locations').fill('2');
     await c.locator('[data-inquiry-submit]').tap(); await c.waitForTimeout(500);
     ok(/Draft checked\. Nothing was sent\./.test(await c.locator('.form-status').innerText()), 'preview draft check passes without a message and says nothing was sent');

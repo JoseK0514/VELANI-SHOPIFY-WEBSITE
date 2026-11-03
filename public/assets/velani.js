@@ -14,7 +14,7 @@ if (form) {
   // The page already shows the right wording (chosen before paint); drop the unused variant so screen readers and the heading label see one text
   const nevora = document.documentElement.classList.contains('ask-nevora');
   const demo = document.documentElement.classList.contains('ask-demo');
-  document.querySelectorAll(demo ? '.v-d, .v-n' : nevora ? '.v-d, .v-m' : '.v-n, .v-m').forEach(el => el.remove());
+  document.querySelectorAll(demo ? '.v-d, .v-n:not(.v-nm)' : nevora ? '.v-d, .v-m' : '.v-n, .v-m').forEach(el => el.remove());
   document.querySelectorAll('.phero .rise[aria-label]').forEach(h => h.setAttribute('aria-label', h.textContent.replace(/\s+/g, ' ').trim()));
   if (topic === 'nevora' || topic === 'nevora-demo') {
     document.title = (topic === 'nevora-demo' ? 'Free NEVORA demo' : 'NEVORA for your team') + ' · Velani';

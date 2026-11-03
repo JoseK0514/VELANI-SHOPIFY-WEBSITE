@@ -361,27 +361,43 @@ html:has(main > .hpanel){scroll-padding-top:56px}
  .doc-body section>*:not(i){grid-column:1}
 }
 
-/* Contact */
+/* Contact: the form on the left in two numbered groups, what happens next on the right */
 .contact{padding-bottom:var(--s2)}
 .contact-grid{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,4fr);gap:48px 72px;align-items:start;padding-top:40px;background:linear-gradient(var(--line),var(--line)) var(--pad) 0/calc(100% - var(--pad)*2) 1px no-repeat}
-.contact-aside{display:flex;flex-direction:column;gap:14px;color:var(--text-2)}
-.contact-aside h2{color:var(--text);margin-bottom:6px}
-.contact-address{font-size:0.875rem;color:var(--text-3)}
+.contact-aside{display:flex;flex-direction:column;color:var(--text-2)}
+.contact-aside .hkick{margin-bottom:8px}
+.next{list-style:none;margin:0;padding:0}
+.next li{display:grid;grid-template-columns:32px minmax(0,1fr);gap:4px 12px;padding:18px 0;border-top:1px solid var(--line)}
+.next li:first-child{border-top:0;padding-top:8px}
+.next i{grid-row:1/span 2;padding-top:.3em;font-style:normal;font-size:0.75rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--text-3)}
+.next b{display:block;font-size:1.0625rem;font-weight:600;line-height:1.35;color:var(--text)}
+.next span{display:block;font-size:0.875rem;line-height:1.5;color:var(--text-2)}
+.spec.cfacts{grid-template-columns:1fr;gap:20px;margin-top:40px;padding-top:28px;border-top:1px solid var(--line)}
+.spec.cfacts dd{font-size:1rem}
+.spec.cfacts small{display:block;margin-top:4px;font-size:0.875rem;color:var(--text-3)}
 .panel{background:var(--panel);border-radius:var(--r2);padding:clamp(24px,3.4vw,44px);box-shadow:0 0 0 1px var(--line)}
 .panel .t3{margin-bottom:12px}
 .panel>p{color:var(--text-2)}
 .panel .acts{margin-top:28px}
-@media(max-width:833px){.contact-grid{grid-template-columns:1fr;padding-top:28px}}
+@media(max-width:833px){.contact-grid{grid-template-columns:1fr;padding-top:28px}.contact-aside{padding-top:8px}}
 
 /* Inquiry form */
-.inquiry-form fieldset{border:0;margin:0;padding:0;min-width:0;display:flex;flex-direction:column;gap:20px}
+.inquiry-form fieldset{border:0;margin:0;padding:0;min-width:0;display:flex;flex-direction:column;gap:36px}
+.fgroup{display:flex;flex-direction:column;gap:20px}
+.fstep{display:flex;align-items:baseline;gap:12px;margin:0 0 4px;font-size:0.75rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--text)}
+.fstep i{font-style:normal;color:var(--text-3)}
+.fsend{display:flex;flex-direction:column;gap:16px}
+.fsafe{display:flex;gap:10px;align-items:flex-start;margin:0;font-size:0.875rem;line-height:1.5;color:var(--text-3)}
+.fsafe .icon{flex:none;margin-top:3px;font-size:1rem;color:var(--text-2)}
+.fsafe a{color:var(--text-2);text-decoration:underline;text-underline-offset:3px}
+.fsend .fine{margin-top:0;max-width:40em}
 .form-row{display:grid;grid-template-columns:1fr 1fr;gap:20px}
 .field{display:flex;flex-direction:column;gap:8px}
 .field label{font-size:0.75rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--text)}
 .optional{font-weight:400;color:var(--text-3);margin-left:6px;letter-spacing:.06em}
 .field input,.field select,.field textarea{font:inherit;font-size:1rem;color:var(--text);background:var(--bg);border:1px solid var(--line-2);border-radius:var(--r);min-height:50px;padding:12px 14px;width:100%;transition:border-color .2s,box-shadow .2s}
 .field select{appearance:none;-webkit-appearance:none;background-image:linear-gradient(45deg,transparent 50%,var(--text-2) 50%),linear-gradient(135deg,var(--text-2) 50%,transparent 50%);background-position:calc(100% - 20px) 50%,calc(100% - 15px) 50%;background-size:5px 5px;background-repeat:no-repeat;padding-right:40px}
-.field textarea{min-height:150px;resize:vertical;line-height:1.5}
+.field textarea{min-height:132px;resize:vertical;line-height:1.5}
 @media(hover:hover){.field input:hover,.field select:hover,.field textarea:hover{border-color:rgba(255,255,255,.28)}}
 .field input:focus-visible,.field select:focus-visible,.field textarea:focus-visible{outline:none;border-color:var(--text);box-shadow:0 0 0 3px rgba(244,246,249,.14)}
 .field [aria-invalid="true"]{border-color:#ff9b8f}
@@ -391,11 +407,11 @@ html:has(main > .hpanel){scroll-padding-top:56px}
 .form-legal,.form-legal p{margin:16px 0 0;font-size:0.8125rem;line-height:1.5;color:var(--text-3)}.form-legal p{margin:0}.form-legal a{color:var(--text-2);text-decoration:underline;text-underline-offset:3px}.form-privacy a{color:var(--text-2);text-decoration:underline;text-underline-offset:3px}
 .inquiry-form .pill{align-self:flex-start;cursor:pointer}
 .inquiry-form .pill:disabled{opacity:.6;cursor:default}
-.form-status{margin-top:16px;font-size:0.875rem;color:var(--text-2)}
+.form-status{margin-top:20px;font-size:0.875rem;color:var(--text-2)}
 .form-status:empty{display:none}
 .form-status[data-state="invalid"],.form-status[role="alert"]{color:#ffb3a9}
 .form-status[data-state="accepted"],.form-status[data-state="preview"]{color:var(--accent)}
-.note{font-size:0.875rem;color:var(--text-3);padding:12px 16px;border-radius:var(--r);background:rgba(255,255,255,.04);margin-bottom:24px}
+.note{font-size:0.875rem;color:var(--text-3);padding:12px 16px;border-radius:var(--r);background:rgba(255,255,255,.04);margin-bottom:28px}
 .note strong{color:var(--text-2);font-weight:600}
 @media(max-width:600px){.form-row{grid-template-columns:1fr}}
 
@@ -426,7 +442,7 @@ html:has(main > .hpanel){scroll-padding-top:56px}
 
 .field[hidden],.form-row[hidden]{display:none}
 /* NEVORA enquiry variant: the boot script adds .ask-nevora before paint, so nothing changes after the page shows */
-.ask-nevora .v-d,html:not(.ask-nevora) .v-n,html:not(.ask-demo) .v-m,.ask-demo .v-n{display:none}
+.ask-nevora .v-d,html:not(.ask-nevora) .v-n,html:not(.ask-demo) .v-m,.ask-demo .v-n:not(.v-nm){display:none}
 .ask-nevora .form-row[data-nevora-fields]{display:grid}
 .ask-nevora .field-topic{display:none}
 .ask-nevora .row-topic{grid-template-columns:1fr}
