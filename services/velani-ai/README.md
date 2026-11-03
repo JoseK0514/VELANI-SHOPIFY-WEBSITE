@@ -1,5 +1,7 @@
 # Velani / NEVORA AI backend
 
+**Current UI handoff (2026-11-03):** [Start here to finish the chat UI](docs/CLAUDE-UI-START-HERE.md) · [Verified deployment status](docs/LAUNCH-STATUS-2026-11-03.md) · [Shopify activation](docs/SHOPIFY-ACTIVATION.md).
+
 **For Claude:** [GitHub source and checkout instructions](docs/START-HERE-CLAUDE.md) · [Vercel setup](docs/VERCEL.md). This is an independent service; use `services/velani-ai` as the deployment root in the website repository.
 
 **Current release: 0.2.2 — sculptural Velani entrance.** A 3.35-second titanium V and oversized wordmark reveal now opens the personalized guide. See [animation, recordings and Shopify installation](docs/ENTRANCE-ANIMATION.md). Run `npm run dev` and open `http://localhost:3001` for the bilingual experience. See [guide release details](docs/RELEASE-0.2.md), [AI validation](docs/VALIDATION-0.2.md), [model comparison](docs/model-comparison.md), and [the roadmap](docs/AI-EXPERIENCE-ROADMAP.md). The older integration harness remains available as a smaller API example.
@@ -19,7 +21,7 @@ Start with [the Claude handoff](docs/CLAUDE-HANDOFF.md). See [architecture](docs
 - A headless JavaScript client and accessible manual test page.
 - Database migrations, seeding, private enquiry export, retention jobs, live evaluation and a container build.
 
-This is a development release. The public Velani Shopify site has not been modified, and production hosting, Turnstile configuration, final branded widget and daily retention scheduling remain to be completed. No claim is made that this application is identical to ChatGPT or that model responses are infallible.
+A Vercel project and Shopify widget now exist. Database, AI and session credentials are configured, but Turnstile widget creation is blocked by the Cloudflare token's permissions, so the API still returns 503. A compatible unpublished Shopify preview is available. See the current status above; daily retention scheduling was not configured in this setup. No claim is made that this application is identical to ChatGPT or that model responses are infallible.
 
 ## Existing isolated development resources
 
