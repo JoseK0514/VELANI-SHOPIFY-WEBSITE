@@ -1,76 +1,53 @@
-/* ---------- Home: NEVORA by Velani, product first ---------- */
-/* A. Hero: the product, one action, real screens. No pinned scroll scene, so nothing sits over the actions. */
-.h-hero{padding-top:clamp(56px,6vw,88px)}
-.h-by{display:flex;align-items:center;gap:10px;font-size:0.9375rem;color:var(--text-2)}
-.h-by img{height:15px;width:auto}
-.h-hero .t0{margin-top:22px;max-width:13ch}
-.h-hero .lede{margin-top:24px;max-width:30em}
-.h-hero .acts{margin-top:32px}
-.h-hero .status{display:block;margin-top:28px;font-size:0.9375rem;line-height:1.5;color:var(--text-2)}
-.h-hero .status i{display:inline-block;width:7px;height:7px;margin:0 8px 0 0!important;border-radius:50%;background:#e2a54a;vertical-align:.1em!important}
-.h-hero .status a{color:var(--text)}
-.h-media{position:relative;margin-top:clamp(40px,4vw,56px);padding-bottom:40px}
-/* The desk screen shows its greeting and today: enough to read, short enough that the hero ends near one screen */
-.h-desk{aspect-ratio:12/5;border-radius:clamp(12px,1.4vw,20px)}
-.h-desk img{width:100%;height:100%;object-fit:cover;object-position:50% 0}
-.slab.phone.h-phone{position:absolute;right:calc(var(--pad) + 3%);bottom:0;width:clamp(150px,17%,220px);aspect-ratio:900/1310;border-radius:clamp(20px,2.4vw,32px) clamp(20px,2.4vw,32px) 0 0}
-.h-media .cap{margin-top:14px;max-width:60%}
-
-/* B. Try a clock-in */
-.h-try{padding-top:var(--s3);scroll-margin-top:calc(16px - var(--s3))}
-.h-head{max-width:760px}
-.h-head .lede{margin-top:18px}
-
-/* C. The wider workflow: four stages on one rail */
-.h-flow{padding-top:var(--s3);scroll-margin-top:calc(16px - var(--s3))}
-.h-flow .t1{max-width:20ch}
-.flow-note{margin-top:48px;max-width:40em;font-size:1.0625rem;color:var(--text-2)}
-
-/* D. The right view for each person: real screens with their role */
-.h-roles{padding-top:var(--s3)}
-/* Screens share one baseline and captions start on one line (subgrid; older engines fall back to bottom-aligned figures) */
-.stills{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,.62fr) minmax(0,1.25fr);grid-auto-rows:auto;gap:clamp(16px,2vw,28px);align-items:end;margin-top:var(--s1)}
-.stills figure{display:grid;grid-template-rows:subgrid;grid-row:span 2;align-items:end}
-.stills figcaption{align-self:start}
-.stills .slab.phone{aspect-ratio:900/1500}
-.stills .slab.phone .feed{--y:-41%}
-.stills figcaption{margin-top:16px}
-.stills figcaption b{display:block;font-size:1.0625rem;font-weight:600}
-.stills figcaption span{display:block;margin-top:6px;font-size:0.9375rem;line-height:1.5;color:var(--text-2)}
-
-/* E. Questions and enquiry: three questions, a way to the rest, then the quote card */
-.h-faq{padding-top:var(--s3)}
-.faq-more{margin-top:20px}
-.h-ask{margin-top:var(--s1);padding:clamp(32px,4vw,56px);border-radius:28px;background:var(--panel-2)}
-.h-ask .t2{max-width:16ch}
-.h-ask p{margin-top:16px;max-width:36em;color:var(--text-2)}
-.h-ask .pill{margin-top:28px}
-
-/* F. Built by Velani: one line under the quote card */
-.h-velani{display:flex;flex-wrap:wrap;align-items:center;gap:4px 24px;margin-top:40px;color:var(--text-2)}
-.h-velani b{font-weight:600;color:var(--text)}
-
-/* Phones: one large, readable screen early; the rest flows */
+/* ---------- Home: five full-screen panels, one subject each ---------- */
+.hp{background:#000}
+main:has(> .hpanel){background:#000}
+.hpanel{position:relative;height:100vh;height:100svh;min-height:700px;overflow:hidden;background:#000;color:#f4f6f9}
+.hph{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 50%}
+.hph.flip{transform:scaleX(-1)}
+.hshade{position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,.72) 0%,rgba(0,0,0,.35) 45%,rgba(0,0,0,0) 70%)}
+.hpanel.right .hshade{background:linear-gradient(270deg,rgba(0,0,0,.72) 0%,rgba(0,0,0,.35) 45%,rgba(0,0,0,0) 70%)}
+.hpanel.apps{background:radial-gradient(90% 70% at 70% 55%,#1a2230 0%,#0b0e13 60%,#000 100%)}
+.hpanel.apps .hshade{background:none}
+.hpanel.end .hshade{background:linear-gradient(0deg,rgba(0,0,0,.8) 0%,rgba(0,0,0,.3) 40%,rgba(0,0,0,0) 65%)}
+.hcopy{position:absolute;left:max(var(--pad),calc(50% - 620px));top:50%;transform:translateY(-50%);max-width:620px}
+.hpanel.right .hcopy{left:auto;right:max(var(--pad),calc(50% - 620px))}
+.hpanel.end .hcopy{left:0;right:0;top:auto;bottom:88px;transform:none;max-width:none;text-align:center}
+.hkick{margin:0 0 14px;font-size:0.75rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:#c9d6ea}
+.hpanel h1,.hpanel h2{margin:0;font-size:4rem;line-height:1.04;font-weight:600;letter-spacing:-.025em;text-wrap:balance}
+.hpanel h1{font-size:5.25rem;line-height:1}
+.hpanel h2 img{display:block;height:52px;width:auto}
+.hcopy p:not(.hkick){margin:18px 0 0;max-width:30em;font-size:1.0625rem;line-height:1.5;color:#dde3ee}
+.hpanel.end .hcopy p{margin-inline:auto}
+.hwm{margin:0}.hwm .wm-velani{height:44px;width:auto;display:block;margin:0 auto;color:#f4f6f9}
+.hacts{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+.hpanel.end .hacts{justify-content:center}
+.hb{display:inline-flex;align-items:center;gap:12px;min-height:50px;padding:0 20px;border-radius:4px;background:rgba(0,0,0,.5);border:1px solid rgba(240,240,250,.35);color:#f0f0fa;font-size:0.875rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);transition:background-color .2s,transform .15s ease-out}
+.hb .icon{font-size:1rem}
+.hb.fill{background:#f0f0fa;color:#06121e;border-color:#f0f0fa}
+@media(hover:hover){.hb:hover{background:rgba(0,0,0,.7)}.hb.fill:hover{background:#fff}}
+.hb:active{transform:scale(.96)}
+.hshot{position:absolute;right:max(var(--pad),calc(50% - 500px));top:50%;width:300px;transform:translateY(-50%);padding:8px;border-radius:44px;background:#0b0d10;box-shadow:0 0 0 1px rgba(255,255,255,.14),inset 0 0 0 1px rgba(255,255,255,.05),0 50px 110px -20px rgba(0,0,0,.95)}
+.hshot img{display:block;width:100%;aspect-ratio:390/800;object-fit:cover;object-position:0 0;border-radius:36px}
+.hpanel.apps .hshot{right:auto;left:50%;margin-left:-110px;width:260px}
+.hpanel.apps .hshot img{aspect-ratio:auto}
+.hweb{position:absolute;right:max(var(--pad),calc(50% - 620px));top:50%;width:430px;transform:translateY(-50%);border-radius:18px;overflow:hidden;box-shadow:0 0 0 1px rgba(255,255,255,.12),0 60px 120px -30px rgba(0,0,0,.9)}
+.hweb img{display:block;width:100%}
+/* Entrance: the copy rises once, the shots fade in (motion.js adds .in; reduced motion crossfades) */
+.hpanel .fade,.hpanel .rise{transition-duration:.9s}
+@media(max-width:1180px){.hpanel.apps .hshot{left:auto;right:max(var(--pad),calc(50% - 500px));margin-left:0;width:250px}.hweb{display:none}}
+@media(min-width:834px) and (max-height:760px){.hshot{width:240px}}
 @media(max-width:833px){
- .h-hero{padding-top:36px}
- .h-hero .lede{margin-top:18px}
- .h-hero .acts{margin-top:24px}
- .h-hero .status{margin-top:20px;font-size:0.875rem}
- .h-media{display:flex;flex-direction:column;align-items:center;margin-top:36px;padding-bottom:0}
- .h-desk{display:none}
- .slab.phone.h-phone{position:relative;inset:auto;width:min(320px,80vw)}
- .h-media .cap{max-width:none;text-align:center}
- /* The three screens become one row you swipe; the next card peeks 24px past the edge */
- .stills{grid-template-columns:none;grid-template-rows:auto auto;grid-auto-flow:column;grid-auto-columns:calc(100% - 40px);gap:14px 16px;overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x mandatory;scroll-padding-inline:var(--pad);margin-inline:calc(var(--pad)*-1);padding:0 var(--pad) 6px;scrollbar-width:none}
- .stills::-webkit-scrollbar{display:none}
- .stills:focus-visible{outline-offset:-2px}
- .stills figure{scroll-snap-align:start}
- .stills .slab,.stills .slab.phone{aspect-ratio:4/3;width:auto;border-radius:14px}
- .stills .slab img,.stills .slab.phone .feed{max-width:none}
- .stills figure:first-child .slab img{width:300%;transform:translate(-25.8%,-12.2%)}
- .stills .slab.phone .feed{--y:-44%}
- .stills figure:last-child .slab img{width:200%;transform:translate(-46%,-20%)}
-}
-@media(max-width:600px){
- .h-ask{padding:32px 22px;border-radius:22px}
+ .hpanel{min-height:760px}
+ .hpanel:has(.hshot){min-height:880px}
+ .hcopy,.hpanel.right .hcopy{left:var(--pad);right:var(--pad);top:auto;bottom:64px;transform:none;max-width:none}
+ .hshade,.hpanel.right .hshade{background:linear-gradient(0deg,rgba(0,0,0,.85) 0%,rgba(0,0,0,.35) 45%,rgba(0,0,0,0) 70%)}
+ .hp h1{font-size:2.875rem}.hp h2{font-size:2.375rem}.hpanel h2 img{height:40px}
+ .hcopy p:not(.hkick){font-size:1rem}
+ .hb{min-height:46px;padding:0 16px;font-size:0.75rem}
+ .hshot,.hpanel.apps .hshot{left:50%;right:auto;top:56px;width:46%;margin:0;transform:translateX(-50%);padding:5px;border-radius:28px}
+ .hpanel.apps .hshot{width:42%}
+ .hshot img{border-radius:24px}
+ .hpanel.end .hcopy{bottom:72px}
+ .hpanel.end .hacts .hb{width:100%;justify-content:center}
+ .hwm .wm-velani{height:34px}
 }

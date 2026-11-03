@@ -1,71 +1,58 @@
-<!-- Home page source. src/night.mjs renders only <main>; the global header and footer come from night.mjs and foot.html. -->
+<!-- Home page source. src/night.mjs renders only <main>; the global header and footer come from night.mjs and foot.html. Five full-screen panels: one subject each, a big visual, a short title and one or two actions. -->
 <main id="main">
-<section class="h-hero" aria-labelledby="hero-t">
- <div class="wrap">
-  <p class="h-by"><img src="img/nevora-wm-white.png" alt="NEVORA" width="907" height="122"><span>by Velani</span></p>
-  <h1 class="t0 rise" id="hero-t">Your team’s week, in one place.</h1>
-  <p class="lede fade">Scheduling, time clock and payroll calculation for teams that work in shifts.</p>
-  <div class="acts fade"><a class="pill" href="#try">Try the time clock</a><a class="more" href="nevora.html"><span>See how NEVORA works</span>{{icon:caret-right}}</a></div>
-  <p class="status fade"><i aria-hidden="true"></i>In development. <a class="ul" href="/pages/contact?interest=nevora">Ask for a quote</a> to discuss availability for your team.</p>
- </div>
- <figure class="wrap h-media fade">
-  <div class="slab h-desk"><img src="img/desk.webp" alt="NEVORA on the web: Alexandra’s home on a Tuesday afternoon, with her shift and two things to review" width="3600" height="2250" fetchpriority="high"></div>
-  <div class="slab phone h-phone"><img src="img/phone-long.webp" alt="NEVORA on Alexandra’s phone: Good afternoon, Alexandra, with her shift from 12:00 PM to 8:00 PM" width="1170" height="3936"></div>
-  <figcaption class="cap">Real NEVORA screens. Alexandra and her workplace are fictional.</figcaption>
- </figure>
-</section>
-
-<section class="h-try" id="try" aria-labelledby="try-t">
- <div class="wrap">
-  <div class="h-head"><h2 class="t1 rise" id="try-t">Try the time clock.</h2><p class="lede fade">Enter any four digits to see how the shared time clock works. No account needed.</p></div>
-  <p class="kio-note"><b>Sample workplace.</b> Nothing you enter is saved or sent.</p>
-  {{kiosk}}
+<section class="hpanel" id="top" aria-labelledby="hero-t">
+ <img class="hph" src="img/ai-light.webp" alt="" width="1920" height="1080" fetchpriority="high">
+ <div class="hshade"></div>
+ <div class="hcopy">
+  <p class="hkick">Velani · Software company</p>
+  <h1 class="rise" id="hero-t">Brighter work ahead.</h1>
+  <p class="fade">Websites, booking systems, online stores and business tools, built for you. And NEVORA, our own app for shift teams.</p>
+  <div class="hacts fade"><a class="hb" href="/pages/contact">Start a project{{icon:arrow-right}}</a></div>
  </div>
 </section>
 
-<section class="h-flow" id="how" aria-labelledby="how-t">
- <div class="wrap">
-  <h2 class="t1 rise" id="how-t">From the posted schedule to the pay statement.</h2>
-  <ol class="rail" data-in>
-   <li data-in><b>Plan shifts</b><span>Build and publish the week.</span></li>
-   <li data-in><b>Record hours</b><span>Clock in at the shared tablet.</span></li>
-   <li data-in><b>Review time</b><span>Approve hours before the pay period closes.</span></li>
-   <li data-in><b>Calculate pay</b><span>Review calculations and publish pay statements.</span></li>
-  </ol>
-  <p class="flow-note fade">NEVORA calculates payroll and publishes pay statements; your business still pays employees and files payroll taxes.</p>
+<section class="hpanel" id="nevora" aria-labelledby="nev-t">
+ <img class="hph" src="img/ai-devices.webp" alt="" width="1920" height="1080" loading="lazy">
+ <div class="hshade"></div>
+ <div class="hcopy">
+  <p class="hkick">Our product · In development</p>
+  <h2 class="rise" id="nev-t"><img src="img/nevora-wm-white.png" alt="NEVORA" width="907" height="122"></h2>
+  <p class="fade">Scheduling, time clock and payroll calculation for teams that work in shifts. Free for 30 days, for teams of up to 30 employees.</p>
+  <div class="hacts fade"><a class="hb fill" href="/pages/contact?interest=nevora-demo">Start free demo{{icon:arrow-right}}</a><a class="hb" href="nevora.html">Learn more{{icon:arrow-right}}</a></div>
+ </div>
+ <div class="hshot fade"><img src="img/phone-long.webp" alt="NEVORA on an employee’s phone: her shift today and two things to do" width="1170" height="3936" loading="lazy"></div>
+</section>
+
+<section class="hpanel right" id="websites" aria-labelledby="web-t">
+ <img class="hph" src="img/ai-laptop.webp" alt="" width="1920" height="1080" loading="lazy">
+ <div class="hshade"></div>
+ <div class="hcopy">
+  <p class="hkick">Custom development</p>
+  <h2 class="rise" id="web-t">Websites</h2>
+  <p class="fade">Modern, fast and built to bring in calls and bookings on every phone.</p>
+  <div class="hacts fade"><a class="hb" href="/pages/custom-development">Start a project{{icon:arrow-right}}</a></div>
  </div>
 </section>
 
-<section class="h-roles" aria-labelledby="roles-t">
- <div class="wrap">
-  <h2 class="t1 rise" id="roles-t">The right view for each person.</h2>
-  <div class="stills setdown" data-in data-scroll-x role="region" aria-label="Screens for each person">
-   <figure><div class="slab"><img src="img/owner.webp" alt="The owner’s home on the web: the menu, 4 people on shift and nothing waiting" width="3000" height="2010" loading="lazy"></div><figcaption><b>Owners and managers</b><span>Plan the week and review time on the web.</span></figcaption></figure>
-   <figure><div class="slab phone"><img class="feed" src="img/phone-long.webp" alt="Alexandra’s phone: two things to do, her next shift and her approved time off" width="1170" height="3936" loading="lazy"></div><figcaption><b>Employees</b><span>Check shifts, respond to swap offers and request time off from a phone.</span></figcaption></figure>
-   <figure><div class="slab"><img src="img/k-later.webp" alt="The time clock on a shared tablet at 2:17 PM, with Maximiliano clocked in" width="1024" height="768" loading="lazy"></div><figcaption><b>At work</b><span>A shared tablet, with a PIN for each person.</span></figcaption></figure>
-  </div>
+<section class="hpanel apps" id="apps" aria-labelledby="apps-t">
+ <div class="hshade"></div>
+ <div class="hcopy">
+  <p class="hkick">Custom development</p>
+  <h2 class="rise" id="apps-t">Custom apps</h2>
+  <p class="fade">Booking systems, loyalty cards, online stores with delivery pricing, and dashboards for your day.</p>
+  <div class="hacts fade"><a class="hb" href="/pages/custom-development">Start a project{{icon:arrow-right}}</a></div>
  </div>
+ <div class="hshot fade"><img src="img/booking.webp" alt="A booking app: choose a time, with a rewards card" width="780" height="1688" loading="lazy"></div>
+ <div class="hweb fade"><img src="img/k-later.webp" alt="The NEVORA time clock on a shared tablet" width="1024" height="768" loading="lazy"></div>
 </section>
 
-<section class="h-faq" aria-labelledby="faq-t">
- <div class="wrap">
-  <div class="qa">
-   <h2 class="t2 rise" id="faq-t">Questions</h2>
-   <div>
-    <div class="faq faq-list">
-     <details><summary>Can my business use NEVORA now?{{icon:plus}}</summary><p>NEVORA is in development and offered to businesses by quote. Tell us about your team and we’ll discuss its availability.</p></details>
-     <details><summary>Does NEVORA pay my employees or file payroll taxes?{{icon:plus}}</summary><p>No. It calculates payroll from approved hours and publishes pay statements; your business still pays employees and files payroll taxes.</p></details>
-     <details><summary>How do employees get access?{{icon:plus}}</summary><p>Your business gives them access. They sign in on their phone or the web and use their own four-digit PIN at the shared tablet.</p></details>
-    </div>
-    <p class="faq-more"><a class="more" href="/pages/nevora#faq"><span>More questions about NEVORA</span>{{icon:caret-right}}</a></p>
-   </div>
-  </div>
-  <div class="h-ask fade">
-   <h2 class="t2">See if NEVORA fits your team.</h2>
-   <p>Tell us how many people work shifts, where they work and what you use today. We’ll discuss your needs and NEVORA’s availability.</p>
-   <a class="pill" href="/pages/contact?interest=nevora">Ask for a quote</a>
-  </div>
-  <p class="h-velani"><span><b>Built by Velani.</b> We also build web and mobile applications, business systems and integrations for other companies.</span><a class="more" href="/pages/custom-development"><span>Explore custom development</span>{{icon:caret-right}}</a></p>
+<section class="hpanel end" id="velani" aria-label="Velani">
+ <img class="hph flip" src="img/ai-light.webp" alt="" width="1920" height="1080" loading="lazy">
+ <div class="hshade"></div>
+ <div class="hcopy">
+  <p class="hwm">{{wordmark}}</p>
+  <p class="fade">Software products and custom development.</p>
+  <div class="hacts fade"><a class="hb fill" href="/pages/contact">Start a project{{icon:arrow-right}}</a><a class="hb" href="/pages/help">Client support{{icon:arrow-right}}</a></div>
  </div>
 </section>
 </main>

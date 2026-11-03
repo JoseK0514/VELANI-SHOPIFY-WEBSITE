@@ -27,7 +27,8 @@ try {
     const ctx = await browser.newContext({ viewport: { width: 1440, height: 900 } }); const p = await ctx.newPage();
     const errors = []; p.on('pageerror', e => errors.push(e.message)); p.on('console', m => { if (m.type() === 'error' && !/Failed to load resource: the server responded with a status of 503/.test(m.text())) errors.push(m.text()); });
     const hosts = new Set(); p.on('request', r => hosts.add(new URL(r.url()).host));
-    await p.goto(base + '/', { waitUntil: 'networkidle' });
+    // The time clock lives on the NEVORA page, so the on-page demo action is checked there
+    await p.goto(base + '/pages/nevora', { waitUntil: 'networkidle' });
     ok(await p.locator('#ast-launch').isVisible() && (await p.locator('#ast-launch').innerText()).trim() === 'Ask about NEVORA' && await p.locator('#ast').isHidden(), 'launcher shows "Ask about NEVORA"; panel closed');
     await p.click('#ast-launch'); await waitFor(p, '#ast');
     ok((await p.locator('#ast-launch').getAttribute('aria-expanded')) === 'true' && await p.evaluate(() => document.activeElement.id === 'ast-in'), 'panel opens and focus lands in the question field');

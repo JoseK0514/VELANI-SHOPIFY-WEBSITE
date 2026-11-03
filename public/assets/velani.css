@@ -99,13 +99,20 @@ img{display:block;max-width:100%;height:auto}
 @media(hover:hover){.rows a:hover .icon{transform:translateX(5px);color:var(--text)}.rows a:hover .t3{color:var(--accent)}}
 
 /* Footer */
-.foot{border-top:1px solid var(--line);color:var(--text-3);font-size:0.8125rem;line-height:1.5;padding:32px 0 28px}
+.foot{border-top:1px solid var(--line);color:var(--text-3);font-size:0.8125rem;line-height:1.5;padding:28px 0 28px}
+.foot-row{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px 32px;padding-bottom:18px;border-bottom:1px solid var(--line)}
+.foot-nav{display:flex;flex-wrap:wrap;gap:0 4px;margin-left:-10px}
+.foot-nav a{display:inline-flex;align-items:center;min-height:44px;padding:0 10px;color:var(--text);font-size:0.875rem;font-weight:500}
+.foot-support{margin:0;color:var(--text-2)}.foot-support a{color:var(--text)}
+.foot-links{display:flex;flex-wrap:wrap;gap:0 18px}.foot-links a,.foot-links button{display:inline-flex;align-items:center;min-height:36px;color:var(--text-2);font-size:inherit;line-height:inherit}
+@media(hover:hover){.foot-nav a:hover,.foot-links a:hover,.foot-links button:hover{text-decoration:underline}}
+.foot-links button:disabled{opacity:1;cursor:pointer}
 .foot-cols{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px;padding-bottom:28px;border-bottom:1px solid var(--line)}
 .foot-cols h3{font-size:0.8125rem;font-weight:600;color:var(--text);margin-bottom:10px;letter-spacing:0}
 .foot-cols a,.foot-cols button{display:block;padding:4px 0;color:var(--text-2);text-align:left;font-size:inherit;line-height:inherit}
 @media(hover:hover){.foot-cols a:hover,.foot-cols button:hover{color:var(--text);text-decoration:underline}}
-.foot-note{padding:16px 0;max-width:84ch}
-.foot-legal{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 24px;padding-top:16px;border-top:1px solid var(--line)}
+.foot-note{padding:8px 0 0;max-width:84ch;font-size:0.75rem}
+.foot-legal{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:4px 24px;padding-top:10px}
 .foot-legal a{color:var(--text-2)}
 @media(max-width:833px){
  .foot{font-size:0.875rem}
@@ -117,7 +124,7 @@ img{display:block;max-width:100%;height:auto}
  .foot-cols details[open] summary .icon{transform:rotate(90deg)}
  .foot-cols details a,.foot-cols details button{display:flex;align-items:center;min-height:44px;padding:6px 0 6px 12px;font-size:0.9375rem}
  .foot-cols h3{display:none}
- .foot-legal{flex-direction:column}
+ .foot-legal{flex-direction:column;align-items:flex-start}
 }
 @media(min-width:834px){.foot-cols details summary{display:none}.foot-cols a,.foot-cols button{width:fit-content}}
 
@@ -327,7 +334,7 @@ img{display:block;max-width:100%;height:auto}
 
 .field[hidden],.form-row[hidden]{display:none}
 /* NEVORA enquiry variant: the boot script adds .ask-nevora before paint, so nothing changes after the page shows */
-.ask-nevora .v-d,html:not(.ask-nevora) .v-n{display:none}
+.ask-nevora .v-d,html:not(.ask-nevora) .v-n,html:not(.ask-demo) .v-m,.ask-demo .v-n{display:none}
 .ask-nevora .form-row[data-nevora-fields]{display:grid}
 .ask-nevora .field-topic{display:none}
 .ask-nevora .row-topic{grid-template-columns:1fr}

@@ -11,7 +11,7 @@ await mkdir(out, { recursive: true });
 
 // Targets from the approved plan. Screens = page height / viewport height.
 const targets = {
-  '/': { desktop: { screens: 5.5 }, phone: { screens: 8 }, separators: 6 },
+  '/': { desktop: { screens: 5.6 }, phone: { screens: 10 }, separators: 6 }, // five full-screen panels: one screen each on desktop, about two on a phone
   '/pages/nevora': { desktop: { screens: 9.5 }, phone: { screens: 12 }, words: 650, separators: 12, topBarLinks: 8 },
 };
 const shared = { sizes: 9, edges: 6 };
@@ -25,7 +25,7 @@ const measure = () => {
   const box = e => e.getBoundingClientRect();
   const lead = blocks.filter(e => { const a = box(e); return !blocks.some(o => o !== e && !o.contains(e) && !e.contains(o) && box(o).right <= a.left + 1 && box(o).bottom > a.top + 2 && box(o).top < a.bottom - 2); });
   const edges = [...new Set(lead.map(e => Math.round(box(e).left)))].sort((a, b) => a - b);
-  let separators = 0; main.querySelectorAll('*').forEach(e => { if (!vis(e) || e.closest('.kio,.slab')) return; const cs = getComputedStyle(e); if (parseFloat(cs.borderTopWidth) > 0 && cs.borderTopStyle !== 'none') separators++; });
+  let separators = 0; main.querySelectorAll('*').forEach(e => { if (!vis(e) || e.closest('.kio,.slab') || e.matches('a,button,input,select,textarea')) return; const cs = getComputedStyle(e); if (parseFloat(cs.borderTopWidth) > 0 && cs.borderTopStyle !== 'none') separators++; });
   const imgs = {}; [...main.querySelectorAll('img')].filter(vis).filter(i => !/wm-|tabbar/.test(i.src)).forEach(i => { const n = i.src.split('/').pop(); imgs[n] = (imgs[n] || 0) + 1; });
   // Links only, as in the before measurement (16 on NEVORA); menu buttons are reported separately
   const topBarLinks = [...document.querySelectorAll('header a, .lnav a')].filter(vis).length;

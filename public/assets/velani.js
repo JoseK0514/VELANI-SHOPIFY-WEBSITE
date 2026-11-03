@@ -9,14 +9,15 @@ if (form) {
   if (!status) { status = document.createElement('div'); status.className = 'form-status'; status.setAttribute('role', 'status'); status.tabIndex = -1; form.append(status); }
   const fields = Object.fromEntries(['name', 'email', 'company', 'message', 'interest', 'locations', 'team'].map(key => [key, form.querySelector('#inquiry-' + key)]));
   const topic = new URL(window.location.href).searchParams.get('interest');
-  if (['custom-software', 'nevora', 'other'].includes(topic)) fields.interest.value = topic;
+  if (['custom-software', 'nevora', 'nevora-demo', 'other'].includes(topic)) fields.interest.value = topic;
   // Arriving from a NEVORA action: talk about the team, keep NEVORA as the topic without asking again
   // The page already shows the right wording (chosen before paint); drop the unused variant so screen readers and the heading label see one text
   const nevora = document.documentElement.classList.contains('ask-nevora');
-  document.querySelectorAll(nevora ? '.v-d' : '.v-n').forEach(el => el.remove());
+  const demo = document.documentElement.classList.contains('ask-demo');
+  document.querySelectorAll(demo ? '.v-d, .v-n' : nevora ? '.v-d, .v-m' : '.v-n, .v-m').forEach(el => el.remove());
   document.querySelectorAll('.phero .rise[aria-label]').forEach(h => h.setAttribute('aria-label', h.textContent.replace(/\s+/g, ' ').trim()));
-  if (topic === 'nevora') {
-    document.title = 'NEVORA for your team · Velani';
+  if (topic === 'nevora' || topic === 'nevora-demo') {
+    document.title = (topic === 'nevora-demo' ? 'Free NEVORA demo' : 'NEVORA for your team') + ' · Velani';
     fields.message.required = false;
   }
   const setBusy = busy => { submitButton.disabled = busy; form.setAttribute('aria-busy', String(busy)); };

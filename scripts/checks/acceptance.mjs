@@ -15,16 +15,17 @@ const executablePath = process.env.VELANI_CHROMIUM_EXECUTABLE || (existsSync('/u
 const browser = await chromium.launch({ executablePath, headless: true, args: ['--no-sandbox', '--disable-dev-shm-usage'] });
 const pageErrors = page => { const errors = []; page.on('pageerror', e => errors.push(e.message)); return errors; };
 try {
-  // ---- Home: hero actions clickable with motion on and off, at laptop sizes, at the top and after a small scroll
+  // ---- Home: panel actions clickable with motion on and off, at laptop sizes, at the top and after a small scroll
   for (const [w, h, rm] of [[1440, 960, 'no-preference'], [1280, 800, 'no-preference'], [1440, 960, 'reduce'], [1280, 800, 'reduce']]) {
     const p = await (await browser.newContext({ viewport: { width: w, height: h }, reducedMotion: rm })).newPage();
     for (const y of [0, 120]) {
       await p.goto(base + '/', { waitUntil: 'networkidle' }); await p.waitForTimeout(500); await p.evaluate(y => scrollTo(0, y), y); await p.waitForTimeout(400);
-      await p.locator('.h-hero .acts a', { hasText: 'Try the time clock' }).click({ timeout: 4000 }); await p.waitForTimeout(900);
-      const t = await p.evaluate(() => ({ hash: location.hash, top: Math.round(document.getElementById('try-t').getBoundingClientRect().top), hdr: Math.round(document.getElementById('gnav').getBoundingClientRect().bottom) }));
-      await p.goto(base + '/', { waitUntil: 'networkidle' }); await p.waitForTimeout(500); await p.evaluate(y => scrollTo(0, y), y); await p.waitForTimeout(400);
-      await p.locator('.h-hero .acts a', { hasText: 'See how NEVORA works' }).click({ timeout: 4000 }); await p.waitForURL('**/pages/nevora', { timeout: 4000 });
-      ok(t.hash === '#try' && t.top >= Math.max(0, t.hdr), `${w}x${h} ${rm} scroll ${y}: Try → #try (heading at ${t.top}px, header bottom ${t.hdr}px); See how NEVORA works → /pages/nevora`);
+      await p.locator('#top .hacts a', { hasText: 'Start a project' }).click({ timeout: 4000 }); await p.waitForURL('**/pages/contact', { timeout: 4000 });
+      await p.goto(base + '/', { waitUntil: 'networkidle' }); await p.waitForTimeout(500); await p.locator('#nevora').scrollIntoViewIfNeeded(); await p.waitForTimeout(600);
+      await p.locator('#nevora .hacts a', { hasText: 'Learn more' }).click({ timeout: 4000 }); await p.waitForURL('**/pages/nevora', { timeout: 4000 });
+      await p.goto(base + '/', { waitUntil: 'networkidle' }); await p.waitForTimeout(500); await p.locator('#nevora').scrollIntoViewIfNeeded(); await p.waitForTimeout(600);
+      await p.locator('#nevora .hacts a', { hasText: 'Start free demo' }).click({ timeout: 4000 }); await p.waitForURL('**/pages/contact?interest=nevora-demo', { timeout: 4000 });
+      ok(/ask-demo/.test(await p.evaluate(() => document.documentElement.className)) && /free NEVORA demo/i.test(await p.locator('main h1').innerText()), `${w}x${h} ${rm} scroll ${y}: Start a project → contact; Learn more → /pages/nevora; Start free demo → demo request`);
     }
     await p.context().close();
   }
@@ -33,8 +34,10 @@ try {
     const ctx = await browser.newContext({ ...devices['iPhone 13'] }); const p = await ctx.newPage(); const errs = pageErrors(p);
     const reqs = []; p.on('request', r => reqs.push(r.url()));
     await p.goto(base + '/', { waitUntil: 'networkidle' }); await p.waitForTimeout(600);
-    ok(await p.locator('.h-hero .acts a', { hasText: 'Try the time clock' }).isVisible() && (await p.locator('.h-media .h-phone').boundingBox()).y < 664, 'phone opening screen: NEVORA, the action and a product screen are visible');
-    await p.locator('.h-hero .acts a', { hasText: 'Try the time clock' }).tap(); await p.waitForTimeout(1200);
+    ok(await p.locator('#top .hacts a', { hasText: 'Start a project' }).isVisible() && (await p.locator('#top h1').boundingBox()).y < 664, 'phone opening screen: the headline and the action are visible');
+    ok(await p.locator('#nevora .hacts a', { hasText: 'Start free demo' }).count() === 1, 'the NEVORA panel offers the free demo');
+    await p.goto(base + '/pages/nevora', { waitUntil: 'networkidle' }); await p.waitForTimeout(600);
+    await p.locator('.n-hero .acts a[href="#try"]').tap(); await p.waitForTimeout(1200);
     const note = await p.locator('#try .kio-note').boundingBox(), pad = await p.locator('.kio-pad').boundingBox(); ok(note.y < pad.y, 'demo context shown before the keypad');
     const h0 = (await p.locator('#kio').boundingBox()).height;
     const dots = () => p.locator('#kio-dots i.on').count();
@@ -60,18 +63,18 @@ try {
     await p.screenshot({ path: out + '/home-demo-confirmation-es.png', clip: await p.locator('#kio').boundingBox() });
     await p.locator('#kio-done').tap(); await p.waitForTimeout(300);
     ok(await p.locator('#kio-pin').isVisible() && (await dots()) === 0 && (await p.locator('#kio-pin-h').innerText()) === 'Ingresa tu PIN' && await p.evaluate(() => document.activeElement.id) === 'kio-pin-h', 'Clock in again: cleared, language kept, focus at the start');
-    ok(await p.locator('.h-ask a', { hasText: 'Ask for a quote' }).isVisible(), 'enquiry action outside the panel still there');
+    ok(await p.locator('#lnav a.pill', { hasText: 'Start free demo' }).isVisible(), 'enquiry action outside the panel still there');
     await p.locator('#kio-lang').tap();
     for (const d of ['1', '1', '1', '1']) await p.locator(`.kio-pad [data-d="${d}"]`).tap(); await p.locator('#kio-go').tap();
-    await p.locator('.h-ask a').focus(); await p.locator('#kio-done').evaluate(el => el.click()); await p.waitForTimeout(200);
-    ok(await p.evaluate(() => document.activeElement.closest('.h-ask') !== null), 'Clock in again from elsewhere does not steal focus');
+    await p.locator('#lnav a.pill').focus(); await p.locator('#kio-done').evaluate(el => el.click()); await p.waitForTimeout(200);
+    ok(await p.evaluate(() => document.activeElement.closest('#lnav') !== null), 'Clock in again from elsewhere does not steal focus');
     ok(reqs.filter(u => /1111|9012|1234/.test(u)).length === 0, 'no request carries entered digits');
     ok(await p.evaluate(() => localStorage.length + sessionStorage.length) === 0, 'nothing in browser storage');
     await p.locator('.kio-pad [data-d="7"]').focus(); await p.keyboard.press('Enter'); ok((await dots()) === 1, 'Enter on a focused key types that key (native button)');
     await p.keyboard.type('234'); await p.keyboard.press('Backspace'); ok((await dots()) === 3 && (await p.locator('#kio-live').innerText()) === '3 of 4 digits entered', 'typed digits and Backspace announce the count');
     await p.keyboard.press('Escape'); ok((await dots()) === 0, 'Escape clears');
-    await p.locator('.h-ask a').focus(); await p.keyboard.type('5678'); ok((await dots()) === 0, 'digits typed with focus outside the demo are ignored');
-    const ax = await new AxeBuilder({ page: p }).analyze(); ok(ax.violations.length === 0, 'axe on the home page: ' + (ax.violations.map(v => v.id).join(',') || 'clean'));
+    await p.locator('#lnav a.pill').focus(); await p.keyboard.type('5678'); ok((await dots()) === 0, 'digits typed with focus outside the demo are ignored');
+    const ax = await new AxeBuilder({ page: p }).analyze(); ok(ax.violations.length === 0, 'axe on the NEVORA page: ' + (ax.violations.map(v => v.id).join(',') || 'clean'));
     ok(errs.length === 0, 'home: no script errors ' + errs.join('|'));
     // NEVORA enquiry variant
     const c = await ctx.newPage(); await c.goto(base + '/pages/contact?interest=nevora', { waitUntil: 'networkidle' }); await c.waitForTimeout(500);
@@ -118,7 +121,7 @@ try {
     const during = await p.locator('#kio').boundingBox(); ok(Math.abs(during.height - before.height) < 1, 'demo keeps the same height on the confirmation');
     await p.waitForTimeout(9000); ok(await p.locator('#kio-ok').isVisible(), 'confirmation stays until Clock in again');
     await p.locator('#kio-done').tap(); await p.waitForTimeout(300);
-    ok(await p.locator('#kio-pin').isVisible() && await p.locator('#lnav a.pill', { hasText: 'Ask for a quote' }).isVisible(), 'after Clock in again the quote action is still there');
+    ok(await p.locator('#kio-pin').isVisible() && await p.locator('#lnav a.pill', { hasText: 'Start free demo' }).isVisible(), 'after Clock in again the demo action is still there');
     await p.locator('#kio-lang').tap(); ok((await p.locator('#kio-lang-t').innerText()) === 'English' && (await p.locator('#kio-pin-h').innerText()) === 'Ingresa tu PIN', 'Spanish on; the button now offers English');
     await p.locator('#kio-lang').tap(); ok((await p.locator('#kio-lang-t').innerText()) === 'Español', 'back to English; the button offers Español');
     ok(await p.evaluate(() => document.documentElement.scrollWidth - innerWidth) === 0, 'no sideways scroll on a phone');

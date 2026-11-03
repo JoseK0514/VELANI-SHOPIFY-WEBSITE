@@ -56,7 +56,7 @@ for (const engine of engines) {
       expect(geometry.scroll <= geometry.client + 1, 'Horizontal overflow');
       if (width === 969) expect(geometry.lines < 2.2, 'Approved desktop headline must keep its two lines');
       if (width >= 969) expect(!await page.locator('#gmenu-btn').isVisible(), 'Mobile menu appears on desktop');
-      expect(await page.locator('.status').filter({ hasText: 'In development' }).first().isVisible(), 'Product development status missing');
+      expect(await page.locator('.status, .hkick').filter({ hasText: 'In development' }).first().isVisible(), 'Product development status missing');
       const covered = await page.evaluate(() => [...document.querySelectorAll('main a, main button')].filter(el => { const b = el.getBoundingClientRect(); return b.width && b.top >= 0 && b.bottom <= innerHeight }).filter(el => { const b = el.getBoundingClientRect(); return !el.contains(document.elementFromPoint(b.left + b.width / 2, b.top + b.height / 2)) }).map(el => el.textContent.trim()));
       expect(covered.length === 0, 'Visible links covered by another layer: ' + covered.join(', '));
       return geometry;
@@ -95,7 +95,7 @@ for (const engine of engines) {
     await button.click(); expect(await button.getAttribute('aria-expanded') === 'true', 'Menu did not open');
     await page.keyboard.press('Escape'); expect(await button.getAttribute('aria-expanded') === 'false', 'Escape did not close menu');
     expect(await button.evaluate(el => el === document.activeElement), 'Menu focus not restored');
-    await button.click(); await page.locator('#gmenu').getByRole('link', { name: 'Custom development', exact: true }).first().click();
+    await button.click(); await page.locator('#gmenu').getByRole('link', { name: 'Custom apps', exact: true }).first().click();
     await page.waitForURL('**/pages/custom-development');
     expect((await page.locator('h1').innerText()).includes('Software for the work'), 'Wrong service destination');
   });
@@ -163,7 +163,7 @@ for (const engine of engines) {
   const noJsPage = await noJs.newPage();
   await check(engine + ' no-JavaScript navigation and no unsafe inquiry', async () => {
     await noJsPage.goto(base + '/pages/contact');
-    expect(await noJsPage.locator('header').getByRole('link', { name: 'How it works', exact: true }).isVisible(), 'No-JS navigation hidden');
+    expect(await noJsPage.locator('header').getByRole('link', { name: 'NEVORA', exact: true }).isVisible(), 'No-JS navigation hidden');
     expect(await noJsPage.locator('[data-inquiry-submit]').isDisabled(), 'No-JS preview could submit personal information');
   });
   await noJs.close(); await browser.close();
