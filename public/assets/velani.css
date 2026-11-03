@@ -116,6 +116,16 @@ html:has(main > .hpanel){scroll-padding-top:56px}
 .acts+.hfact{margin-top:14px}
 .hshot{position:absolute;right:max(var(--pad),calc(50% - 500px));top:50%;width:300px;transform:translateY(-50%);padding:8px;border-radius:44px;background:#0b0d10;box-shadow:0 0 0 1px rgba(255,255,255,.14),inset 0 0 0 1px rgba(255,255,255,.05),0 50px 110px -20px rgba(0,0,0,.95)}
 .hshot img{display:block;width:100%;aspect-ratio:390/800;object-fit:cover;object-position:0 0;border-radius:36px}
+/* The phone rises into the NEVORA panel, then one notification arrives; still under reduced motion and without JavaScript */
+.hshot.fade{transition:opacity .9s var(--out),transform 1.1s var(--out)}
+@media(min-width:834px){.hshot.fade{transform:translateY(-50%) translateY(48px)}.hshot.fade.in{transform:translateY(-50%)}}
+.notif{position:absolute;left:8px;right:8px;top:14px;margin:0;display:grid;grid-template-columns:34px 1fr;grid-template-rows:auto auto;column-gap:10px;align-items:center;padding:10px 12px 11px;border-radius:18px;background:rgba(248,250,253,.96);color:#0b1220;box-shadow:0 1px 0 rgba(255,255,255,.6) inset,0 10px 30px -8px rgba(0,0,0,.45);font-size:0.8125rem;line-height:1.3;opacity:0;transform:translateY(-24px);transition:opacity .45s var(--out) 1.25s,transform .55s var(--out) 1.25s}
+.hshot.in .notif,.no-js .notif,.still .notif{opacity:1;transform:none}
+.notif-ic{grid-row:1/span 2;width:34px;height:34px;border-radius:9px;background:#0d1620;color:#bbd8ff;display:grid;place-items:center;font-weight:600;font-size:1rem;letter-spacing:0}
+.notif-t{display:flex;justify-content:space-between;align-items:baseline;gap:8px}
+.notif-t b{font-weight:600;letter-spacing:.04em;font-size:0.75rem}
+.notif-t i{font-style:normal;font-size:0.6875rem;color:#6b7686}
+.notif-m{display:block;margin-top:1px;font-weight:400}
 .hweb{position:absolute;right:max(var(--pad),calc(50% - 620px));top:50%;width:430px;transform:translateY(-50%);border-radius:var(--r2);overflow:hidden;box-shadow:0 0 0 1px rgba(255,255,255,.12),0 60px 120px -30px rgba(0,0,0,.9)}
 .hweb img{display:block;width:100%}
 /* Hero buttons sit over imagery, so they get the glass; buttons elsewhere stay flat (cheaper to scroll) */
@@ -145,6 +155,11 @@ html:has(main > .hpanel){scroll-padding-top:56px}
  .pill,.hb{min-height:46px;padding:0 16px;font-size:0.75rem}
  .gnav .pill{min-height:34px;font-size:0.75rem}
  .hshot{left:50%;right:auto;top:56px;width:46%;margin:0;transform:translateX(-50%);padding:5px;border-radius:28px}
+ .hshot.fade{transform:translateX(-50%) translateY(40px)}
+ .hshot.fade.in{transform:translateX(-50%)}
+ .notif{left:5px;right:5px;top:9px;grid-template-columns:26px 1fr;column-gap:8px;padding:7px 9px 8px;border-radius:13px;font-size:0.6875rem}
+ .notif-ic{width:26px;height:26px;border-radius:7px;font-size:0.8125rem}
+ .notif-t b{font-size:0.625rem}.notif-t i{font-size:0.5625rem}
  .hshot img{border-radius:24px}
  .hpanel.end .hcopy{bottom:72px}
  .hpanel.end .hacts .hb,.hpanel.end .hacts .pill{width:100%}
@@ -194,6 +209,10 @@ html:has(main > .hpanel){scroll-padding-top:56px}
 @media(hover:hover){.foot-nav a:hover,.foot-links a:hover,.foot-links button:hover{text-decoration:underline;text-underline-offset:4px}}
 .foot-links button:disabled{opacity:1;cursor:pointer}
 .foot-note{padding:8px 0 0;max-width:84ch;font-size:0.75rem}
+/* The wordmark closes the page the way the hero opens it: full width, cut by the bottom edge, the hero light behind it */
+.foot-wm{position:relative;overflow:hidden;height:clamp(72px,11.5vw,168px);margin-top:40px;padding:0 var(--pad)}
+.foot-glow{position:absolute;inset:-40% 0 0;width:100%;height:auto;min-height:140%;object-fit:cover;object-position:50% 70%;opacity:.28;-webkit-mask-image:linear-gradient(0deg,#000 0%,rgba(0,0,0,.6) 50%,transparent 100%);mask-image:linear-gradient(0deg,#000 0%,rgba(0,0,0,.6) 50%,transparent 100%);pointer-events:none}
+.foot-wm .wm-velani{position:absolute;left:var(--pad);right:var(--pad);top:18%;width:calc(100% - var(--pad)*2);height:auto;color:#f4f6f9;opacity:.92}
 .foot-legal{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:4px 24px;padding-top:10px}
 .foot-legal a{color:var(--text-2)}
 @media(max-width:833px){
@@ -216,6 +235,8 @@ html:has(main > .hpanel){scroll-padding-top:56px}
  .rise .w>span{transform:none}.draw::before,.rail::before{transform:none}.fade{opacity:1}
  .gnav.tuck{transform:none}
  .hpanel.live .hph{animation:none;transform:none}.hcue{animation:none}
+ .hshot.fade{transform:translateY(-50%)}.notif{transform:none;transition:opacity .5s}
+ @media(max-width:833px){.hshot.fade{transform:translateX(-50%)}}
 }
 
 /* Status line: dot stays with the first line when it wraps */
