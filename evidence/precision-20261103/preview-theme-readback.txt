@@ -39,3 +39,9 @@ Contact page, plain centred form (fourth pass), upsert to the same theme, read b
 assets/velani.css                 dd088f0a37d1b7bcd58e165d52ddd3ca   47659  match
 assets/velani.js                  e40aadc7bab5e50fdb15d872ba060379   8300   match
 sections/velani-contact.liquid    0ca4ce216e13c9161d98c2d9aa223a28   7980   match
+
+Three additions (phone notification, laptop screen, footer wordmark), upsert to the same theme, read back:
+assets/velani.css                 de53378561bde007831fe7ae49cf34fc   50226  match
+assets/night-ai-laptop.webp       f1c8a69ef3ae4c59a6e03458956f4744   56228  match
+sections/velani-home.liquid       b55678dcb55e1b1ecc3eb41dab302b84   10961  match
+layout/theme.liquid               53ba41f93970a521cceb46dec0460a32   30795  match (footer wordmark)
