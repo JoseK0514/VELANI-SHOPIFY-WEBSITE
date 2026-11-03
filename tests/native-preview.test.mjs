@@ -14,7 +14,7 @@ test('unpublished navigation stays in the exact draft without published page res
 test('main-theme links retain canonical company page destinations', async () => {
   const html = await liquid.parseAndRender(renderBody('/', { target: 'shopify' }), { theme: { role: 'main', id: 123 }, routes: { root_url: '/' } });
   assert.match(html, /href="\/pages\/contact\?interest=nevora"/);
-  assert.match(html, /href="\/pages\/nevora-support"/);
+  assert.match(html, /href="\/pages\/nevora#faq"/);
   assert.doesNotMatch(html, /preview_theme_id|view=velani-/);
 });
 test('native layout includes the real social card and uses theme page metadata', () => {

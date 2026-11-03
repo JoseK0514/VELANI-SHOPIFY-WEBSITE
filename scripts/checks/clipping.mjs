@@ -23,11 +23,21 @@ for (const [label, w, h, zoom] of [['320px', 320, 640, 1], ['200% zoom', 640, 80
     const problems = await p.evaluate(() => {
       const found = []; const vw = document.documentElement.clientWidth;
       if (document.documentElement.scrollWidth > vw + 1) found.push('page overflow ' + document.documentElement.scrollWidth);
+      // A deliberate swipe row ([data-scroll-x]) may hold content past the edge only if it scrolls, takes keyboard focus and lets the next item peek at least 16px
+      const rows = [...document.querySelectorAll('[data-scroll-x]')].filter(r => r.scrollWidth > r.clientWidth + 1);
+      for (const row of rows) {
+        const rr = row.getBoundingClientRect(), cs = getComputedStyle(row), next = row.children[1];
+        if (!/auto|scroll/.test(cs.overflowX)) found.push('swipe row does not scroll');
+        if (row.tabIndex !== 0) found.push('swipe row not keyboard-focusable');
+        if (rr.left < -1 || rr.right > vw + 1) found.push('swipe row past edge right=' + Math.round(rr.right));
+        if (!next || next.getBoundingClientRect().left > Math.min(rr.right, vw) - 16) found.push('swipe row gives no peek of the next item');
+      }
+      const inRow = el => rows.some(r => r.contains(el));
       for (const el of document.querySelectorAll('h1,h2,h3,p,a,button,li,label,summary,span.t3,b')) {
         const cs = getComputedStyle(el); if (cs.display === 'none' || cs.visibility === 'hidden' || (!el.offsetParent && cs.position !== 'fixed')) continue;
         const r = el.getBoundingClientRect(); if (!r.width) continue;
         if (el.scrollWidth > el.clientWidth + 2 && cs.overflowX !== 'visible' && el.clientWidth > 0) found.push('clipped ' + el.tagName + '.' + el.className + ' "' + el.textContent.trim().slice(0, 30) + '"');
-        if (r.right > vw + 1 && !el.closest('[aria-hidden="true"],.sr,.skip')) found.push('past edge ' + el.tagName + '.' + el.className + ' "' + el.textContent.trim().slice(0, 30) + '" right=' + Math.round(r.right));
+        if (r.right > vw + 1 && !el.closest('[aria-hidden="true"],.sr,.skip') && !inRow(el)) found.push('past edge ' + el.tagName + '.' + el.className + ' "' + el.textContent.trim().slice(0, 30) + '" right=' + Math.round(r.right));
       }
       return [...new Set(found)].slice(0, 6);
     });

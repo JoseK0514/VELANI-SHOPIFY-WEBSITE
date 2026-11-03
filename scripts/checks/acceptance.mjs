@@ -60,17 +60,17 @@ try {
     await p.screenshot({ path: out + '/home-demo-confirmation-es.png', clip: await p.locator('#kio').boundingBox() });
     await p.locator('#kio-done').tap(); await p.waitForTimeout(300);
     ok(await p.locator('#kio-pin').isVisible() && (await dots()) === 0 && (await p.locator('#kio-pin-h').innerText()) === 'Ingresa tu PIN' && await p.evaluate(() => document.activeElement.id) === 'kio-pin-h', 'Clock in again: cleared, language kept, focus at the start');
-    ok(await p.locator('.h-follow a', { hasText: 'Ask for a quote' }).isVisible(), 'enquiry action outside the panel still there');
+    ok(await p.locator('.h-ask a', { hasText: 'Ask for a quote' }).isVisible(), 'enquiry action outside the panel still there');
     await p.locator('#kio-lang').tap();
     for (const d of ['1', '1', '1', '1']) await p.locator(`.kio-pad [data-d="${d}"]`).tap(); await p.locator('#kio-go').tap();
-    await p.locator('.h-follow a').focus(); await p.locator('#kio-done').evaluate(el => el.click()); await p.waitForTimeout(200);
-    ok(await p.evaluate(() => document.activeElement.closest('.h-follow') !== null), 'Clock in again from elsewhere does not steal focus');
+    await p.locator('.h-ask a').focus(); await p.locator('#kio-done').evaluate(el => el.click()); await p.waitForTimeout(200);
+    ok(await p.evaluate(() => document.activeElement.closest('.h-ask') !== null), 'Clock in again from elsewhere does not steal focus');
     ok(reqs.filter(u => /1111|9012|1234/.test(u)).length === 0, 'no request carries entered digits');
     ok(await p.evaluate(() => localStorage.length + sessionStorage.length) === 0, 'nothing in browser storage');
     await p.locator('.kio-pad [data-d="7"]').focus(); await p.keyboard.press('Enter'); ok((await dots()) === 1, 'Enter on a focused key types that key (native button)');
     await p.keyboard.type('234'); await p.keyboard.press('Backspace'); ok((await dots()) === 3 && (await p.locator('#kio-live').innerText()) === '3 of 4 digits entered', 'typed digits and Backspace announce the count');
     await p.keyboard.press('Escape'); ok((await dots()) === 0, 'Escape clears');
-    await p.locator('.h-follow a').focus(); await p.keyboard.type('5678'); ok((await dots()) === 0, 'digits typed with focus outside the demo are ignored');
+    await p.locator('.h-ask a').focus(); await p.keyboard.type('5678'); ok((await dots()) === 0, 'digits typed with focus outside the demo are ignored');
     const ax = await new AxeBuilder({ page: p }).analyze(); ok(ax.violations.length === 0, 'axe on the home page: ' + (ax.violations.map(v => v.id).join(',') || 'clean'));
     ok(errs.length === 0, 'home: no script errors ' + errs.join('|'));
     // NEVORA enquiry variant
@@ -118,7 +118,7 @@ try {
     const during = await p.locator('#kio').boundingBox(); ok(Math.abs(during.height - before.height) < 1, 'demo keeps the same height on the confirmation');
     await p.waitForTimeout(9000); ok(await p.locator('#kio-ok').isVisible(), 'confirmation stays until Clock in again');
     await p.locator('#kio-done').tap(); await p.waitForTimeout(300);
-    ok(await p.locator('#kio-pin').isVisible() && await p.locator('.try-acts a', { hasText: 'Ask for a quote' }).isVisible(), 'after Clock in again the quote action is still there');
+    ok(await p.locator('#kio-pin').isVisible() && await p.locator('#lnav a.pill', { hasText: 'Ask for a quote' }).isVisible(), 'after Clock in again the quote action is still there');
     await p.locator('#kio-lang').tap(); ok((await p.locator('#kio-lang-t').innerText()) === 'English' && (await p.locator('#kio-pin-h').innerText()) === 'Ingresa tu PIN', 'Spanish on; the button now offers English');
     await p.locator('#kio-lang').tap(); ok((await p.locator('#kio-lang-t').innerText()) === 'Español', 'back to English; the button offers Español');
     ok(await p.evaluate(() => document.documentElement.scrollWidth - innerWidth) === 0, 'no sideways scroll on a phone');

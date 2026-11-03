@@ -1,0 +1,19 @@
+{
+  "status": "failed",
+  "passed": 0,
+  "failed": 0,
+  "blocked": 1,
+  "results": [
+    {
+      "name": "chromium launch",
+      "status": "blocked",
+      "error": "browserType.launch: Executable doesn't exist at /opt/pw-browsers/chromium_headless_shell-1194/chrome-linux/headless_shell\n╔═════════════════════════════════════════════════════════════════════════╗\n║ Looks like Playwright Test or Playwright was just installed or updated. ║\n║ Please run the following command to download new browsers:              ║\n║                                                                         ║\n║     npx playwright install                                              ║\n║                                                                         ║\n║ <3 Playwright Team                                                      ║\n╚═════════════════════════════════════════════════════════════════════════╝"
+    }
+  ],
+  "screenshots": [],
+  "runtimeErrors": [],
+  "captureDiagnostics": [],
+  "posts": [],
+  "externalRequests": [],
+  "scope": "Actual local browser and compiled site; no hosted Shopify, live email or publication acceptance"
+}
