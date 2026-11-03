@@ -2,7 +2,7 @@
 html{scroll-padding-top:53px}
 .gnav.static{position:relative;transform:none!important}
 .lnav{position:sticky;top:0;z-index:58;background:transparent;border-bottom:1px solid transparent;transition:background-color .35s var(--out),border-color .35s}
-.lnav.solid{background:rgba(5,9,14,.82);-webkit-backdrop-filter:saturate(180%) blur(20px);backdrop-filter:saturate(180%) blur(20px);border-color:var(--line)}
+.lnav.solid{background:rgba(5,9,14,.84);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border-color:var(--line)}
 .lnav-in{min-height:56px;display:flex;align-items:center;gap:6px}
 .lnav-t{display:inline-flex;align-items:center;min-height:44px;flex:none}
 .lnav-t img{height:14px;width:auto;max-width:none}

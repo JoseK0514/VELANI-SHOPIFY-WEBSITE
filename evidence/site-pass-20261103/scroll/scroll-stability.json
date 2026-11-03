@@ -16,14 +16,14 @@
       "overflowX": 0,
       "flipsAtBottom": 1,
       "errors": [],
-      "height": 4462,
+      "height": 4402,
       "ok": true
     },
     {
       "path": "/pages/nevora",
       "cls": 0,
       "shifts": [],
-      "long": 0,
+      "long": 3,
       "flips": 0,
       "overflowX": 0,
       "flipsAtBottom": 0,
@@ -47,7 +47,7 @@
       "path": "/pages/custom-development",
       "cls": 0,
       "shifts": [],
-      "long": 1,
+      "long": 0,
       "flips": 2,
       "overflowX": 0,
       "flipsAtBottom": 1,
@@ -59,7 +59,7 @@
       "path": "/pages/about",
       "cls": 0,
       "shifts": [],
-      "long": 1,
+      "long": 0,
       "flips": 2,
       "overflowX": 0,
       "flipsAtBottom": 1,
@@ -76,7 +76,7 @@
       "overflowX": 0,
       "flipsAtBottom": 1,
       "errors": [],
-      "height": 2139,
+      "height": 2166,
       "ok": true
     },
     {
@@ -100,19 +100,19 @@
       "overflowX": 0,
       "flipsAtBottom": 1,
       "errors": [],
-      "height": 4027,
+      "height": 4208,
       "ok": true
     },
     {
       "path": "/pages/nevora-privacy",
       "cls": 0,
       "shifts": [],
-      "long": 1,
+      "long": 0,
       "flips": 2,
       "overflowX": 0,
       "flipsAtBottom": 1,
       "errors": [],
-      "height": 7982,
+      "height": 8184,
       "ok": true
     }
   ]

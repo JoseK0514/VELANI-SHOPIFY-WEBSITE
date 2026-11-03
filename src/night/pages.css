@@ -78,42 +78,54 @@
 @media(hover:hover){.faq summary:hover{color:var(--accent)}}
 .faq .acts{margin-top:var(--s1)}
 
-/* Directory of links */
-.dir{padding-bottom:var(--s2)}
-.dir h2{margin:var(--s1) 0 8px}
-.dir h2:first-child{margin-top:0}
-.dir .rows a:last-child{border-bottom:1px solid var(--line)}
-.dir .rows>*{padding:22px 0 24px}
+/* Directory of links: flat tiles */
+.dir{padding-bottom:var(--s3)}
+.dir .hkick{margin-top:var(--s2)}
+.dir .hkick:first-child{margin-top:0}
+.tiles{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:24px}
+.tile{display:flex;flex-direction:column;gap:10px;min-height:188px;padding:28px;border-radius:var(--r2);background:var(--panel);box-shadow:0 0 0 1px var(--line);transition:background-color .25s,box-shadow .25s}
+.tile p{color:var(--text-2);max-width:34em}
+.tile .icon{margin-top:auto;align-self:flex-end;font-size:1.25rem;color:var(--text-2);transition:transform .35s var(--out),color .2s}
+@media(hover:hover){.tile:hover{background:var(--panel-2);box-shadow:0 0 0 1px var(--line-2)}.tile:hover .icon{transform:translateX(5px);color:var(--text)}}
+@media(max-width:700px){.tiles{grid-template-columns:1fr}.tile{min-height:0;padding:24px}}
 
-/* Long documents: legal notices and NEVORA policies */
-.doc{padding-bottom:var(--s2)}
-.doc-grid{display:grid;grid-template-columns:minmax(0,3fr) minmax(0,8fr);gap:48px 72px;align-items:start;padding-top:40px;background:linear-gradient(var(--line),var(--line)) var(--pad) 0/calc(100% - var(--pad)*2) 1px no-repeat}
-.doc-aside{position:sticky;top:88px;display:flex;flex-direction:column;gap:6px;font-size:0.875rem}
-.doc-aside-t{font-size:0.75rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--text-3);margin:18px 0 6px}
+/* Long documents: legal notices and NEVORA policies. Numbered sections, a quiet contents column, no hairlines. */
+.doc{padding-bottom:var(--s3)}
+.doc-grid{display:grid;grid-template-columns:minmax(0,3fr) minmax(0,8fr);gap:48px 96px;align-items:start}
+.doc-aside{position:sticky;top:88px;display:flex;flex-direction:column;gap:4px}
+.doc-aside-t{margin:28px 0 8px;font-size:0.75rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--text-3)}
 .doc-aside-t:first-child{margin-top:0}
 .doc-aside nav{display:flex;flex-direction:column}
-.doc-aside a{padding:5px 0;color:var(--text-2);line-height:1.4}
-@media(hover:hover){.doc-aside a:hover{color:var(--text)}}
-.doc-body{max-width:44em}
-.doc-body section{padding-bottom:36px}
-.doc-body section+section{padding-top:36px;border-top:1px solid var(--line)}
-.doc-body h2{font-size:clamp(1.3125rem,1.8vw,1.625rem);font-weight:600;letter-spacing:-.02em;line-height:1.2;margin-bottom:14px}
+.doc-aside a{padding:6px 0 6px 14px;border-left:1px solid var(--line);font-size:0.9375rem;line-height:1.4;color:var(--text-2);transition:color .2s,border-color .2s}
+@media(hover:hover){.doc-aside a:hover{color:var(--text);border-color:var(--text)}}
+.doc-body{max-width:46em}
+.doc-body section{display:grid;grid-template-columns:56px minmax(0,1fr);gap:4px 16px;padding:0 0 56px}
+.doc-body section>i{grid-row:1/span 9;padding-top:.45em;font-style:normal;font-size:0.75rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--text-3)}
+.doc-body section>*:not(i){grid-column:2}
+.doc-body h2{font-size:clamp(1.5rem,2vw,2rem);font-weight:600;letter-spacing:-.025em;line-height:1.15;margin-bottom:12px}
 .doc-body p,.doc-body li{color:var(--text-2);font-size:1.0625rem;line-height:1.65}
 .doc-body p+p,.doc-body p+ul,.doc-body ul+p{margin-top:14px}
 .doc-body ul{display:flex;flex-direction:column;gap:10px}
 .doc-body li{position:relative;padding-left:22px}
-.doc-body li::before{content:"";position:absolute;left:2px;top:.72em;width:6px;height:6px;border-radius:50%;background:var(--text-3)}
+.doc-body li::before{content:"";position:absolute;left:2px;top:.78em;width:6px;height:1px;background:var(--text-3)}
 .doc-body strong{color:var(--text);font-weight:600}
-.doc-body a,.doc-contact a,.contact-aside a,.split p a,.faq details p a,.support a.ul{color:var(--accent);text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1px}
-.doc-contact{margin-top:8px;padding-top:28px;border-top:1px solid var(--line);color:var(--text-3);font-size:0.9375rem}
+.doc-body a,.doc-contact a,.contact-aside a,.split p a,.faq details p a,.support a.ul{color:var(--text);text-decoration:underline;text-underline-offset:4px;text-decoration-thickness:1px;text-decoration-color:var(--line-2)}
+@media(hover:hover){.doc-body a:hover,.doc-contact a:hover,.contact-aside a:hover,.split p a:hover,.faq details p a:hover{text-decoration-color:currentColor}}
+.doc-end{margin-top:8px;padding-top:40px;color:var(--text-2);font-size:1.0625rem;line-height:1.6;max-width:40em}
+.doc-end .hkick{margin-bottom:10px}
+.doc-end .acts{margin-top:24px}
 .doc-body .pill{margin:20px 0 36px}
 @media(max-width:833px){
- .doc-grid{grid-template-columns:1fr;gap:28px;padding-top:28px}
- .doc-aside{position:static;padding-bottom:24px;border-bottom:1px solid var(--line)}
+ .doc-grid{grid-template-columns:1fr;gap:32px}
+ .doc-aside{position:static}
  .doc-aside nav:first-of-type{display:none}
  .doc-aside .doc-aside-t:first-child{display:none}
  .doc-aside .doc-aside-t{margin-top:0}
- .doc-aside a{padding:10px 0;font-size:0.9375rem}
+ .doc-aside nav:last-of-type{flex-direction:row;flex-wrap:wrap;gap:8px}
+ .doc-aside a{padding:8px 12px;border:1px solid var(--line-2);border-radius:var(--r);font-size:0.75rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--text)}
+ .doc-body section{grid-template-columns:1fr;padding-bottom:44px}
+ .doc-body section>i{grid-row:auto}
+ .doc-body section>*:not(i){grid-column:1}
 }
 
 /* Contact */

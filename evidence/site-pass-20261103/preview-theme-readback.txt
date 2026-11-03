@@ -35,3 +35,23 @@ sections/velani-contact.liquid d36d4822bd6265b8a54df301f96c10b5
 sections/velani-about.liquid 72effed0da4a7c1c8e2e52a4d0f76175
 sections/velani-products.liquid cbd60f9fe0e204aefdeb1a6722b248a9
 sections/velani-custom-development.liquid e4d6c4a7b18cdf1a90c133f0f1167bf0
+
+Third upsert (hero motion and scroll cue, legal and policy restyle, smoothness pass), same theme 193011548474; checksumMd5 read back equals the local build:
+assets/velani-nevora.css a1b099a095e1808cbbf15ed08b2ae283
+assets/velani.css a2b3e9f2698620e7168a98a65d44e541
+layout/theme.liquid 6da7c2abdc0898ba3249ffbfb4ad2bd6
+sections/velani-accessibility.liquid 2877e209b4e52299daa5aa4e9cb316e2
+sections/velani-cookies.liquid 809eb72d502440328071e6a8e99e1905
+sections/velani-custom-development.liquid be6494a523fc045b03fe2095acfd202b
+sections/velani-home.liquid c1c111d5c497ee7979f888e861255344
+sections/velani-legal.liquid a4c646453bc49c8c48d46361e6d29817
+sections/velani-nevora-account-deletion.liquid b38ad881bc9913ba8889e77610c0fb68
+sections/velani-nevora-privacy.liquid 2e39e1b4fe792453b991b13a762bc3b1
+sections/velani-nevora-support.liquid 107f30b7153fa8953537efa33b2c788a
+sections/velani-nevora-terms.liquid 75d43200a3cbda3623cdebb2d344ba3f
+sections/velani-nevora.liquid f90fd07c5886550e7c1aaa6366d2a99f
+sections/velani-privacy.liquid d3e7f4a9b66f81ef52ed405514447035
+sections/velani-products.liquid 405cae15ab246e468817f2119aefe011
+sections/velani-security.liquid e436d2a35cbadb9de8bdc08ff6db23bc
+sections/velani-software-project-terms.liquid 35d40199e09834636510d4dc2d71ee26
+sections/velani-website-terms.liquid 69ae330657b0610ee710e5a26e059a9a

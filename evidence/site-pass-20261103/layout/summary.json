@@ -7,7 +7,7 @@
    "label": "desktop",
    "path": "/",
    "name": "screens",
-   "value": 5.3,
+   "value": 5.2,
    "max": 5.6,
    "pass": true
   },
@@ -87,7 +87,7 @@
    "label": "phone",
    "path": "/",
    "name": "screens",
-   "value": 6.7,
+   "value": 6.6,
    "max": 10,
    "pass": true
   },

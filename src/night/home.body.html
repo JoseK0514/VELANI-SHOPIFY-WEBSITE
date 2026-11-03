@@ -1,6 +1,6 @@
 <!-- Home page source. src/night.mjs renders only <main>; the global header and footer come from night.mjs and foot.html. Five full-screen panels: one subject each, a big visual, a short title and one or two actions. -->
 <main id="main">
-<section class="hpanel" id="top" aria-labelledby="hero-t">
+<section class="hpanel live" id="top" aria-labelledby="hero-t">
  <img class="hph" src="img/ai-light.webp" alt="" width="1920" height="1080" fetchpriority="high">
  <div class="hshade"></div>
  <div class="hcopy">
@@ -9,10 +9,11 @@
   <p class="fade">Websites, booking systems, online stores and business tools, built for you. And NEVORA, our own app for shift teams.</p>
   <div class="hacts fade"><a class="hb" href="/pages/contact">Start a project{{icon:arrow-right}}</a></div>
  </div>
+ <a class="hcue fade" href="#nevora" aria-label="Scroll to NEVORA">{{icon:caret-down}}</a>
 </section>
 
 <section class="hpanel" id="nevora" aria-labelledby="nev-t">
- <img class="hph" src="img/ai-devices.webp" alt="" width="1920" height="1080" loading="lazy">
+ <img class="hph" src="img/ai-devices.webp" alt="" width="1920" height="1080" loading="lazy" decoding="async">
  <div class="hshade"></div>
  <div class="hcopy">
   <p class="hkick">Our product · In development</p>
@@ -24,7 +25,7 @@
 </section>
 
 <section class="hpanel right" id="websites" aria-labelledby="web-t">
- <img class="hph" src="img/ai-laptop.webp" alt="" width="1920" height="1080" loading="lazy">
+ <img class="hph" src="img/ai-laptop.webp" alt="" width="1920" height="1080" loading="lazy" decoding="async">
  <div class="hshade"></div>
  <div class="hcopy">
   <p class="hkick">Custom development</p>
@@ -47,7 +48,7 @@
 </section>
 
 <section class="hpanel end" id="velani" aria-label="Velani">
- <img class="hph flip" src="img/ai-light.webp" alt="" width="1920" height="1080" loading="lazy">
+ <img class="hph flip" src="img/ai-light.webp" alt="" width="1920" height="1080" loading="lazy" decoding="async">
  <div class="hshade"></div>
  <div class="hcopy">
   <p class="hwm">{{wordmark}}</p>
