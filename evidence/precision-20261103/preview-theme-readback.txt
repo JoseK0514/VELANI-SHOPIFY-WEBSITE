@@ -53,3 +53,7 @@ layout/theme.liquid               9807b75106b9d64437e1e09ed4dd3fc7   30852  matc
 assets/night-ai-phone.webp        0c10f2d24eea9904c8f93d58ad1ee890   46220  match (Yavi Barber rewards on the phone)
 assets/night-ai-laptop.webp       d8ecd52d803b002b7effc79721a9a435   62448  match (Tool Box homepage on the laptop)
 assets/night-booking.webp         47bebb79d901531726fdee3f8432b626   20078  match (Yavi rewards in the Home phone frame)
+
+Hero conversation, upsert to the same theme, read back:
+assets/velani.css                 ac87dd069da4b2b962ac9bda135db3b2   53769  match
+sections/velani-home.liquid       2306b9fa2ff0afcd8490bc181e5012c4   11500  match
