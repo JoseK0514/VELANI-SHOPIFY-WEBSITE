@@ -1,0 +1,7 @@
+assets/velani-assist.js 2b060aabc36a0161af2b3a82e0c50de3
+assets/velani-assistant.js 8d0ef87706eec9ed7155c556ac1da9c6
+assets/velani.css 8e194135fb9ebe3cf2de11f09dd5abf0
+config/settings_schema.json 02540ced80eeb8a4c5db34580e81357a
+layout/theme.liquid 9c29b51d00a434227958603bbe3732eb
+sections/velani-cookies.liquid 27aee84c999752ce8f49e56c350b4703
+sections/velani-privacy.liquid 0377421e4e5e61d23867c9ffac4efe67
