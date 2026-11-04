@@ -53,9 +53,13 @@
 @media(hover:hover){.jump a:hover{color:var(--text);text-decoration-color:currentColor}}
 @media(max-width:599px){.jump{display:grid;grid-template-columns:1fr 1fr;gap:0 16px;margin-top:28px}}
 /* Booking panel: the phone screen's step row sits behind the copy, so the scrim is deeper here */
-@media(min-width:834px){#booking .hph{object-position:100% 50%}#booking .hcopy{max-width:460px}}
-/* Business tools: the monitor carries a real NEVORA screen, so the photo moves right and the copy stays on the dark wall */
-@media(min-width:834px){#business-systems .hph{object-position:0% 50%}#business-systems .hcopy{max-width:440px}}
+@media(min-width:834px){#booking .hph{object-position:0% 50%}#booking .hcopy{max-width:460px}}
+/* Business tools: a real NEVORA web screen shown straight, in a window over the softened room photo */
+.hwin{position:absolute;z-index:1;right:max(var(--pad),calc(50% - 620px));top:50%;width:min(680px,48vw);transform:translateY(-50%);border-radius:var(--r2);overflow:hidden;box-shadow:0 0 0 1px rgba(255,255,255,.12),0 60px 120px -30px rgba(0,0,0,.9)}
+.hwin img{display:block;width:100%;height:auto}
+@media(min-width:834px){#business-systems .hcopy{max-width:440px}}
+@media(min-width:834px) and (max-width:1180px){.hwin{width:min(520px,46vw)}}
+@media(max-width:833px){.hpanel.svc .hwin{position:absolute;left:var(--pad);right:var(--pad);top:calc((75vw - (100vw - var(--pad)*2)/1.6)/2);width:auto;transform:none;border-radius:12px}}
 @media(max-width:833px){#booking .hshade{background:linear-gradient(0deg,rgba(0,0,0,.95) 0%,rgba(0,0,0,.86) 44%,rgba(0,0,0,.45) 66%,rgba(0,0,0,0) 84%)}}
 .band-in{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:16px 64px;align-items:baseline;padding-top:32px;background:linear-gradient(var(--line),var(--line)) var(--pad) 0/calc(100% - var(--pad)*2) 1px no-repeat}
 .band-in p{color:var(--text-2);max-width:34em}

@@ -114,3 +114,12 @@ assets/velani.css                                 2268db54bed801ecd4a77711e0feeb
 layout/theme.liquid                               b63b671cbda1d0bcedefbc4491238c29  33577  match
 sections/velani-custom-development.liquid         0f15b91c1f10dea182585a345176a70a  11153  match
 sections/velani-home.liquid                       e915b5eecddfae222353b7c61e3e8bab  11457  match
+
+Straight screens and second Codex review, 2026-11-04, upsert to the same theme (job done), read back:
+assets/night-ai-dash.webp                         3638b2ef1d4474fdc1982736a7fe2afb  36454  match
+assets/night-ai-phone.webp                        6076c4b363f4bb886d19c9ee36a16815  47084  match
+assets/night-ai-room.webp                         ae6ea1cf6b5d301ddd909ff8894b4a9e  12546  match
+assets/velani.css                                 ed74fd778bd166e88c618973e7af03e2  59650  match
+layout/theme.liquid                               833925d3265d758fb761253edb9c689c  33874  match
+sections/velani-custom-development.liquid         de59167d2648608091218d95d1c8dc39  11406  match
+sections/velani-home.liquid                       78fb73c8762fe1d3c94c5c8e883feb0a  11465  match

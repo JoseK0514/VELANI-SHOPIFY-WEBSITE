@@ -12,7 +12,7 @@ export const services = [
   { id: 'web-applications', title: 'Websites', img: 'ai-laptop', side: 'right', text: 'Fast, modern, and built to bring in calls and bookings on every phone.' },
   { id: 'booking', title: 'Booking and loyalty', img: 'ai-phone', side: 'left', text: 'Customers book from their phone. Reminders go out. The rewards card fills up.' },
   { id: 'online-stores', title: 'Online stores', img: 'ai-store', side: 'right', text: 'Products, delivery priced by distance, payment. Orders land where your team works.' },
-  { id: 'business-systems', title: 'Business tools', img: 'ai-dash', side: 'left', text: 'Requests, approvals and records in one place. A dashboard for your day.' },
+  { id: 'business-systems', title: 'Business tools', img: 'ai-room', win: ['desk', 'NEVORA on the web, built by Velani: today’s shift, two items to review and a shift swap waiting for an answer', 3600, 2250], side: 'left', text: 'Requests, approvals and records in one place. A dashboard for your day.' },
 ];
 /** name: the short page name used for <title> and og:title ("<name> · Velani"); the title is the H1 tagline. */
 const page = (title, eyebrow, intro, sections = [], extra = {}) => ({ title, eyebrow, intro, sections, ...extra });

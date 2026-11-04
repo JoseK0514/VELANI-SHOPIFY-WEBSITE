@@ -146,7 +146,8 @@ html:has(main > .hpanel){scroll-padding-top:56px}
 @media(max-width:833px){
  /* Panels lay out in flow: the shot (if any) at the top, the copy pushed to the bottom; enlarged text makes the panel taller instead of clipping */
  .hpanel{display:flex;flex-direction:column;justify-content:flex-end;height:auto;min-height:760px;padding-bottom:64px}
- .hpanel:has(.hshot){min-height:880px}
+ .hpanel:has(.hshot){min-height:0;justify-content:flex-start}
+ .hpanel:has(.hshot) .hcopy{margin-top:0}
  .hpanel.short{min-height:0;padding:72px 0 64px}
  .hcopy,.hpanel.right .hcopy{position:relative;left:auto;right:auto;top:auto;bottom:auto;transform:none;max-width:none;margin:auto var(--pad) 0}
  .hpanel.short .hcopy{margin:0}
@@ -167,7 +168,9 @@ html:has(main > .hpanel){scroll-padding-top:56px}
  .hpanel.dim.long{justify-content:center;min-height:calc(100svh - 56px);padding-bottom:24px}
  .hpanel.dim.long .hcopy{margin-top:0}
  .hpanel.end .hacts .hb,.hpanel.end .hacts .pill{width:100%}
- .hpanel.live{height:auto;min-height:calc(100svh - 56px);padding-bottom:40px}
+ .hpanel.live{height:auto;min-height:calc(100svh - 56px);padding-bottom:56px;justify-content:center}
+ .hpanel.live .hcopy{margin-top:0}
+ .hpanel.end{min-height:560px}
  /* Service panels on phones: the device in a framed 4:3 image, the heading straight under it */
  .hpanel.svc{justify-content:flex-start;min-height:0;padding:0 0 64px}
  .hpanel.svc .hph{position:relative;inset:auto;height:auto;aspect-ratio:4/3;flex:none}
@@ -232,6 +235,7 @@ html:has(main > .hpanel){scroll-padding-top:56px}
 .msg.ai{align-self:flex-start;background:rgba(255,255,255,.1);color:#f4f6f9;border-bottom-left-radius:4px}
 /* while the assistant "types", the bubble is there with three dots and the text is still transparent */
 .msg.ai::before{content:"";position:absolute;left:12px;top:50%;width:6px;height:6px;margin-top:-3px;border-radius:50%;background:rgba(244,246,249,.75);box-shadow:10px 0 0 rgba(244,246,249,.75),20px 0 0 rgba(244,246,249,.75);opacity:0;animation:8s linear forwards}
+.js .hchat:not(.in) .msg,.js .hchat:not(.in) .msg.ai::before{animation-play-state:paused}
 .msg.m1{animation-name:m1}.msg.a1{animation-name:a1}.msg.a1::before{animation-name:t1}.msg.m2{animation-name:m2}.msg.a2{animation-name:a2}.msg.a2::before{animation-name:t2}
 @keyframes m1{0%,11%{opacity:0;transform:translateY(10px)}16%,100%{opacity:1;transform:none}}
 @keyframes a1{0%,20%{opacity:0;transform:translateY(10px);color:rgba(244,246,249,0)}25%,41%{opacity:1;transform:none;color:rgba(244,246,249,0)}46%,100%{opacity:1;transform:none;color:#f4f6f9}}
@@ -241,7 +245,7 @@ html:has(main > .hpanel){scroll-padding-top:56px}
 @keyframes t2{0%,74%{opacity:0}76%,83%{opacity:1}86%,100%{opacity:0}}
 .no-js .msg,.still .msg{opacity:1;transform:none;animation:none;color:inherit}.no-js .msg.ai::before,.still .msg.ai::before{display:none}
 @media(max-width:1180px){.hchat{width:320px}.hchat-h{font-size:0.6875rem;gap:8px}.hchat-h i{font-size:0.625rem}}
-@media(max-width:833px){.hchat{position:relative;left:auto;right:auto;top:auto;transform:none;width:auto;max-width:460px;margin:16px auto 12px var(--pad);order:-1;gap:5px;padding:10px 10px 12px;font-size:0.75rem;line-height:1.4;border-radius:14px}.hchat-h{margin-bottom:4px;font-size:0.6875rem}.hchat-h b{width:22px;height:22px;font-size:0.75rem}.hchat-h i{font-size:0.625rem}.msg{padding:7px 10px;max-width:90%}.msg.ai::before{left:10px}}
+@media(max-width:833px){.hchat{position:relative;left:auto;right:auto;top:auto;transform:none;align-self:flex-start;width:calc(100% - var(--pad)*2);max-width:460px;margin:28px var(--pad) 0;order:1;gap:5px;padding:10px 10px 12px;font-size:0.75rem;line-height:1.4;border-radius:14px}.hchat-h{margin-bottom:4px;font-size:0.6875rem}.hchat-h b{width:22px;height:22px;font-size:0.75rem}.hchat-h i{font-size:0.625rem}.msg{padding:7px 10px;max-width:90%}.msg.ai::before{left:10px}}
 @media(max-height:600px) and (max-width:833px){.hchat{display:none}}
 @media(prefers-reduced-motion:reduce){.msg{opacity:1;transform:none;animation:none}.msg.ai::before{display:none}}
 /* The wordmark closes the page the way the hero opens it: full width, cut by the bottom edge, the hero light behind it */
