@@ -12,6 +12,8 @@ export function validateInquiry(fields = {}) {
   if ((!values.email || !/^[^\s@<>"\\,;]+@[^\s@<>"\\,;]+\.[^\s@<>"\\,;]+$/u.test(values.email)) && !errors.email) errors.email = 'Enter an email address we can reply to.';
   // A NEVORA enquiry asks about the team instead, so its message is optional
   if (!values.message && !errors.message && !/^nevora/.test(fields?.interest || '')) errors.message = 'Tell us what you want to discuss.';
+  // Locations is a count: blank, or a whole number from 1 to 9999
+  if (values.locations && !errors.locations && !/^[1-9]\d{0,3}$/.test(values.locations)) errors.locations = 'Enter the number of locations, for example 2.';
   values.interest = typeof fields?.interest === 'string' && interests.has(fields.interest) ? fields.interest : '';
   return { valid: Object.keys(errors).length === 0, errors, values };
 }

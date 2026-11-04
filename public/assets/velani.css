@@ -351,6 +351,9 @@ html:has(main > .hpanel){scroll-padding-top:56px}
 /* Business tools: a real NEVORA web screen shown straight, in a window over the softened room photo */
 .hwin{position:absolute;z-index:1;right:max(var(--pad),calc(50% - 620px));top:50%;width:min(680px,48vw);transform:translateY(-50%);border-radius:var(--r2);overflow:hidden;box-shadow:0 0 0 1px rgba(255,255,255,.12),0 60px 120px -30px rgba(0,0,0,.9)}
 .hwin img{display:block;width:100%;height:auto}
+.hcopy p.hcap{margin:20px 0 0;font-size:0.8125rem;line-height:1.5;color:var(--label);max-width:30em}
+.hpanel.right .hwin{right:auto;left:max(var(--pad),calc(50% - 620px))}
+@media(min-width:834px){#online-stores .hcopy{max-width:440px}}
 @media(min-width:834px){#business-systems .hcopy{max-width:440px}}
 @media(min-width:834px) and (max-width:1180px){.hwin{width:min(520px,46vw)}}
 @media(max-width:833px){.hpanel.svc .hwin{position:absolute;left:var(--pad);right:var(--pad);top:calc((75vw - (100vw - var(--pad)*2)/1.6)/2);width:auto;transform:none;border-radius:12px}}

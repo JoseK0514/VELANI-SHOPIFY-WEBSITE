@@ -8,6 +8,10 @@ test('inquiries require a name, reply email and meaningful message', () => {
   assert.equal(result.valid, false);
   assert.deepEqual(Object.keys(result.errors).sort(), ['email', 'message', 'name']);
 });
+test('locations must be a positive whole number when given', () => {
+  for (const bad of ['-1', '0', '2.5', 'two', '10000']) assert.equal(validateInquiry({ ...valid, locations: bad }).errors.locations !== undefined, true, bad);
+  for (const ok of ['', '1', '12', '9999']) assert.equal(validateInquiry({ ...valid, locations: ok }).errors.locations, undefined, ok);
+});
 test('unicode names and ordinary message characters survive normalization', () => {
   const result = validateInquiry({ ...valid, message: '  Equipo — mañana 👋  ' });
   assert.equal(result.valid, true);

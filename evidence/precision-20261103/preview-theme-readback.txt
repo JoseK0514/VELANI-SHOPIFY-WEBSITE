@@ -138,3 +138,13 @@ sections/velani-nevora.liquid                     ac61d548a9a56c1679d6ca783b99b2
 sections/velani-plans.liquid                      d69e313dea62893928e55142794f659a  8627  match
 sections/velani-software-project-terms.liquid     3ec0352a06883d0ed730d39932e02feb  3654  match
 sections/velani-website-terms.liquid              b899cb2647b287bb4fa73f9b541a3e2e  3789  match
+
+Stores and captions pass, 2026-11-04, upsert to the same theme (job done), read back: all 8 match
+assets/inquiry.js                                 51a7055d9b12ffbf0dbc9b12f13236db  3248  match
+assets/night-ai-phone.webp                        4716e9af7bceb7a00ed41b459897d9fb  49502  match
+assets/night-ai-store-soft.webp                   5b7cb411fe9537a878663b37eac360db  13380  match (new)
+assets/night-store.webp                           d3686b2d06048e7bb2d6a1d0abbdefe6  57072  match (new)
+assets/velani.css                                 c48be2a089dcb45b6edb31104543b6ce  59886  match
+sections/velani-cookies.liquid                    37ab0714669e1ee851fa0fe63d55808d  3414  match
+sections/velani-custom-development.liquid         0cd45dd5a586266c58b6d63253976901  12039  match
+sections/velani-privacy.liquid                    0fb564c14b3b9909cd9024ba46080817  5512  match
