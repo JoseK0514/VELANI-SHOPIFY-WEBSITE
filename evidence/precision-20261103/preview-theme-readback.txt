@@ -123,3 +123,18 @@ assets/velani.css                                 ed74fd778bd166e88c618973e7af03
 layout/theme.liquid                               833925d3265d758fb761253edb9c689c  33874  match
 sections/velani-custom-development.liquid         de59167d2648608091218d95d1c8dc39  11406  match
 sections/velani-home.liquid                       78fb73c8762fe1d3c94c5c8e883feb0a  11465  match
+
+Second decisions pass (all demo data deleted, NEVORA presented as finished, Codex review 3 fixes), 2026-11-04, upsert to the same theme (job done), read back: all 13 match
+assets/velani-nevora.css                          5cd2227ea9158d498ee1a4157becdc6c  11600  match
+assets/velani.js                                  8709e259ceebe186cf827c124c3d94c8  9496  match
+layout/theme.liquid                               f6124006cd2f0bbf71b14cb4ce789443  33913  match
+sections/velani-about.liquid                      06d24fa5c2e51984494325dfa6c03e0f  7303  match
+sections/velani-contact.liquid                    cd5054afe7330ff37a332bb4c4fb97d6  8153  match
+sections/velani-help.liquid                       5a85a0633220e6de2bbd5b02521d6e6e  12437  match
+sections/velani-home.liquid                       8e2f955cb8d9f56fda3037aa5700b935  11443  match
+sections/velani-nevora-account-deletion.liquid    98bec8c300a537828eabab275b17c821  5170  match
+sections/velani-nevora-privacy.liquid             256896f856199ced59c06a859a385238  11079  match
+sections/velani-nevora.liquid                     ac61d548a9a56c1679d6ca783b99b222  24114  match
+sections/velani-plans.liquid                      d69e313dea62893928e55142794f659a  8627  match
+sections/velani-software-project-terms.liquid     3ec0352a06883d0ed730d39932e02feb  3654  match
+sections/velani-website-terms.liquid              b899cb2647b287bb4fa73f9b541a3e2e  3789  match

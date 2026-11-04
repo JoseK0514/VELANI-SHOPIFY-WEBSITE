@@ -33,6 +33,7 @@ html{scroll-padding-top:53px}
  .lnav .pill{margin-left:auto}
  @media(max-width:359px){.lnav .pill{padding:0 9px;font-size:0.6875rem;letter-spacing:.08em}}
  .lnav-tog{display:inline-flex;margin-right:-10px;font-size:1.375rem;color:var(--text)}
+ @media(max-width:359px){.lnav-tog{margin-right:-4px}.lnav-in{gap:2px}.lnav-t img{height:12px}}
  .lnav-ink,.lnav-v{display:none}
  .lnav ul{display:none;position:absolute;left:0;right:0;top:100%;flex-direction:column;margin:0;padding:4px var(--pad) 20px;background:var(--bg);border-bottom:1px solid var(--line);max-height:calc(100vh - 60px);max-height:calc(100svh - 60px);overflow-y:auto}
  .lnav ul.open{display:flex}
