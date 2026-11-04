@@ -24,11 +24,11 @@ Fixed (source in src/ and public/assets/):
 - Cookie dialog on phones: save confirmation visible.
 
 Left for Jose:
-- Backup retention sentence in the NEVORA privacy and account-deletion pages ("we are verifying...") needs the real number.
+- Backup retention sentence ("we are verifying...") is Jose's approved interim wording (NEVORA docs/compliance/README.md); replace it once the maximum backup age is confirmed.
 - The NEVORA app's own policies.ts should receive the website-side policy edits before the next regeneration.
 
 Checks on the final build (all passed): unit 33, theme check, acceptance 77, browser 51, clipping 18 routes at 320 px and 200% zoom, layout 19, scroll 8, privacy 4.
 Not run: assistant check (its Playwright version wants a browser build this container does not have).
-Not uploaded: the 24 changed theme files were not sent to preview theme 193020428602; the upload was declined at the permission prompt.
+Uploaded: the 24 changed theme files went to unpublished preview theme 193020428602 on 2026-11-04; every checksum read back matches the local build (evidence/precision-20261103/preview-theme-readback.txt).
 
 Screenshots after the fixes: after/desktop-<page>.png and after/phone-<page>.png.

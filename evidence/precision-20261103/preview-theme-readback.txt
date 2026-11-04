@@ -81,3 +81,29 @@ sections/velani-nevora.liquid                     00d5dd27e91fecdf54c2a47f3a0c16
 sections/velani-plans.liquid                      3d5c4ed05eee00363da59ac7d7511352   8139   match
 sections/velani-software-project-terms.liquid     103eee62438c0f38a14061b6eda0f647   3644   match
 sections/velani-website-terms.liquid              d056cfc096a868cf47e6cb874ab35bde   3739   match
+
+Full-site inspection pass, 2026-11-04, upsert to the same theme (job done), read back: all 24 match the local build
+assets/velani-home.css                            25e56a9c3e1d999eccb6d8b29460fcc3  635  match
+assets/velani-motion.js                           5aafd9aff80f47633215f24e6c5b9531  5477  match
+assets/velani-nevora.css                          69e2fc2fc5189b4be8e2e7a7e17bdda0  11504  match
+assets/velani.css                                 a448fadd1df97e477f740a05d23255b6  57283  match
+assets/velani.js                                  5b19b797e443482f0a03861005638d25  9480  match
+layout/theme.liquid                               55a9c52e8fded2a2738d8795f804d749  33285  match
+sections/velani-about.liquid                      eaa76163436ef8e84316970db7595fe2  7332  match
+sections/velani-accessibility.liquid              e1a2a6cf3de44e3ba6eb2deed40b4209  2472  match
+sections/velani-contact.liquid                    7402f305c4ae76877ecc1cb42e7f0ca8  8075  match
+sections/velani-cookies.liquid                    f13f16feb8f1cbd8393edd4421536e9c  3394  match
+sections/velani-custom-development.liquid         f6010addb9dd73f2f3f12e7adbe55d82  10905  match
+sections/velani-help.liquid                       3e802609805a8cc514fe92e712dfb40b  12350  match
+sections/velani-home.liquid                       7fc13b6de88415b091cbc2e800d43a0e  11453  match
+sections/velani-legal.liquid                      50306749e983d2c3499c892e4d64e205  6301  match
+sections/velani-nevora-account-deletion.liquid    da78f9859822bd215bcf51071a1f2190  5059  match
+sections/velani-nevora-privacy.liquid             e4e78d0c71afe9b5df17d5a9d12e496e  10754  match
+sections/velani-nevora-support.liquid             d174cec1b07d664f6330a7b46690f3b2  4504  match
+sections/velani-nevora-terms.liquid               749a28bc67047bfaa5e1718a383952e1  6193  match
+sections/velani-nevora.liquid                     572480879f442b07a6bc3ea59f31dbd7  24220  match
+sections/velani-plans.liquid                      2619cf7be5d1668a7ad54338d471d763  8077  match
+sections/velani-privacy.liquid                    86da9a5a282695f20a68917ff9bd910f  5470  match
+sections/velani-security.liquid                   51c33e929e041fded97e6c659427de61  2393  match
+sections/velani-software-project-terms.liquid     80e801026fac85cad9271b9fa3c23ef2  3691  match
+sections/velani-website-terms.liquid              76f74dc4f9b569fbd5db06b526817f49  3826  match
