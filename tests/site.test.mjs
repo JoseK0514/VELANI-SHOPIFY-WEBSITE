@@ -24,10 +24,10 @@ test('all public routes have a document title, one main, one h1 and working lega
     assert.doesNotMatch(html, /Fuel Coffee Drive|Coffee Bags|Sample Product|CONFIRM_|\[LEGAL_COMPANY_NAME\]/, path);
   }
 });
-test('product pages do not turn development into a launch or checkout claim', () => {
+test('product pages state availability without a checkout claim', () => {
   for (const path of ['/', '/pages/nevora']) {
     const { html } = renderPage(path, { target: 'preview' });
-    assert.match(html, /In development/);
+    assert.match(html, /Available now/);
     assert.doesNotMatch(html, /href=["'][^"']*(?:\/cart|\/checkout|\/account\/register)/);
   }
 });

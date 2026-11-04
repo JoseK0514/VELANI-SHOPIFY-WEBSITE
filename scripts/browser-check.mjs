@@ -56,7 +56,7 @@ for (const engine of engines) {
       expect(geometry.scroll <= geometry.client + 1, 'Horizontal overflow');
       if (width === 969) expect(geometry.lines < 2.2, 'Approved desktop headline must keep its two lines');
       if (width >= 969) expect(!await page.locator('#gmenu-btn').isVisible(), 'Mobile menu appears on desktop');
-      expect(await page.locator('.status, .hkick').filter({ hasText: 'In development' }).first().isVisible(), 'Product development status missing');
+      expect(await page.locator('.status, .hkick').filter({ hasText: 'Available now' }).first().isVisible(), 'Product availability status missing');
       const covered = await page.evaluate(() => [...document.querySelectorAll('main a, main button')].filter(el => { const b = el.getBoundingClientRect(); return b.width && b.top >= 0 && b.bottom <= innerHeight }).filter(el => { const b = el.getBoundingClientRect(); return !el.contains(document.elementFromPoint(b.left + b.width / 2, b.top + b.height / 2)) }).map(el => el.textContent.trim()));
       expect(covered.length === 0, 'Visible links covered by another layer: ' + covered.join(', '));
       return geometry;

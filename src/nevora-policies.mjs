@@ -88,7 +88,7 @@ const SUPPORT = {
       { p: ["Include the app version, your device and its operating system version, and what happened. Add your workspace name if we need it to find the problem. Remove personal information from screenshots. ", { strong: "Never email your password, a verification code, bank details or payroll documents." }] }
     ] },
     { heading: "Questions about your work", blocks: [{ p: ["Ask your manager or workplace administrator about shifts, time-off decisions, pay or corrections to your work records. Contact NEVORA support if a problem in the app stops you from reaching them."] }] },
-    { heading: "Signing in", blocks: [{ p: ["Use ", { href: "/forgot-access", text: "Forgot access" }, " on the sign-in page. If you no longer have the email address on your account, ask your manager or Owner: they can verify you and give you a recovery code. We will never ask for your password or a verification code by email."] }] },
+    { heading: "Signing in", blocks: [{ p: ["Each workplace has its own NEVORA sign-in address, which your employer gives you; there is no shared NEVORA login. Sign in with your Employee ID and password, or with a passkey or Face ID where offered. New employees activate their account from the invitation email their employer sends. No invitation? Ask your Owner."] }, { p: ["Forgot your password? Use ", { strong: "Forgot access" }, " on the sign-in page. If you no longer have the email address on your account, ask your manager or Owner: they can verify you and give you a recovery code. We will never ask for your password or a verification code by email."] }] },
     { heading: "Privacy and account deletion", blocks: [{ p: ["Read our ", { href: "/privacy", text: "Privacy Policy" }, ", or see ", { href: "/account-deletion", text: "Account deletion" }, " to start a request. You can do it on the web without the app."] }] },
     { heading: "Reporting content", blocks: [{ p: ["Email ", mail, " with a short description of the item and where it appears, without unnecessary personal information."] }] }
   ]
@@ -100,8 +100,8 @@ const ACCOUNT_DELETION = {
   summary: "You can ask us to delete your NEVORA account and the information linked to it, in the app or on the web.",
   sections: [
     { heading: "In the app or on the web", blocks: [
-      { p: ["Open Profile, choose ", { strong: "Delete my account" }, ", read what happens, re-enter your password and confirm. If you\u2019ve uninstalled the app, ", { href: "/login", text: "sign in to NEVORA on the web" }, " and do the same; the page opens after you sign in."] },
-      { p: ["If you can\u2019t sign in, use ", { href: "/forgot-access", text: "Forgot access" }, " first, or email ", mail, " and we\u2019ll help you confirm it\u2019s you."] }
+      { p: ["Open Profile, choose ", { strong: "Delete my account" }, ", read what happens, re-enter your password and confirm. If you\u2019ve uninstalled the app, ", "sign in to NEVORA on the web at your workplace’s address", " and do the same; the page opens after you sign in."] },
+      { p: ["If you can\u2019t sign in, use ", { strong: "Forgot access" }, " first, or email ", mail, " and we\u2019ll help you confirm it\u2019s you."] }
     ] },
     { heading: "What happens next", blocks: [{ p: ["When you confirm, we save your request and show you a reference such as DEL-7KQ2M9XA. You\u2019re signed out on every device and can\u2019t sign in again. We aim to delete your account within ", f("DELETION_COMPLETION_PERIOD"), ", and we email you when it\u2019s done if we have your email address. Quote your reference to ", mail, " to ask about it."] }] },
     { heading: "What is removed", blocks: [{ p: ["Your account and the information linked to it that can be deleted: your profile, sign-in details, sessions, notification subscriptions, calendar feed links and the content you contributed, including copies held by our service providers."] }] },
