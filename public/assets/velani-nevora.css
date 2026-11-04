@@ -21,16 +21,17 @@ html{scroll-padding-top:53px}
 .lnav-vmenu a{display:flex;align-items:center;min-height:40px;padding:0 12px;border-radius:var(--r);font-size:0.75rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--text-2)}
 @media(hover:hover){.lnav-vmenu a:hover{background:rgba(255,255,255,.06);color:var(--text)}}
 .lnav ul{position:relative;display:flex;margin-left:auto;margin-right:12px}
-.lnav ul a{display:inline-flex;align-items:center;min-height:44px;padding:0 12px;font-size:0.75rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--text-2);transition:color .2s}
+.lnav ul a{display:inline-flex;align-items:center;min-height:44px;padding:0 12px;white-space:nowrap;font-size:0.75rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--text-2);transition:color .2s}
 .lnav ul a[aria-current]{color:var(--text)}@media(hover:hover){.lnav ul a:hover{color:var(--text)}}
 .lnav-ink{position:absolute;bottom:8px;left:0;height:1px;width:1px;background:var(--text);transform-origin:0 0;transform:translateX(var(--x,0)) scaleX(var(--w,0));transition:transform .45s var(--out)}
-.lnav .pill{min-height:34px;padding:0 14px;font-size:0.75rem;position:relative;backdrop-filter:none;-webkit-backdrop-filter:none}
+.lnav .pill{min-height:34px;padding:0 14px;font-size:0.75rem;position:relative;white-space:nowrap;flex:none;backdrop-filter:none;-webkit-backdrop-filter:none}
 .lnav .pill::after{display:none}
 .lnav .pill::before{content:"";position:absolute;inset:-6px -2px}
 /* Phones and small tablets: one row (mark, demo, menu); the Velani links live in the menu */
 @media(max-width:959px){
  .lnav-in{min-height:60px}
  .lnav .pill{margin-left:auto}
+ @media(max-width:359px){.lnav .pill{padding:0 9px;font-size:0.6875rem;letter-spacing:.08em}}
  .lnav-tog{display:inline-flex;margin-right:-10px;font-size:1.375rem;color:var(--text)}
  .lnav-ink,.lnav-v{display:none}
  .lnav ul{display:none;position:absolute;left:0;right:0;top:100%;flex-direction:column;margin:0;padding:4px var(--pad) 20px;background:var(--bg);border-bottom:1px solid var(--line);max-height:calc(100vh - 60px);max-height:calc(100svh - 60px);overflow-y:auto}
@@ -52,6 +53,8 @@ html{scroll-padding-top:53px}
 .n-hero .hkick.status{display:flex;align-items:baseline;gap:8px;font-size:0.75rem;color:var(--label)}
 .n-hero .hkick.status i{margin:.35em 0 0!important}
 .n-hero .hcopy{max-width:640px}
+@media(min-width:834px) and (max-width:1023px){.n-hero .hcopy{max-width:calc(100% - 340px)}.n-hero .hshot{width:260px}}
+@media(min-width:960px) and (max-width:1023px){.lnav ul a{padding:0 8px}}
 .js .n-hero .fade{transition-delay:.25s}
 @media(max-width:959px){.n-hero{margin-top:-60px}}
 
@@ -112,7 +115,7 @@ html{scroll-padding-top:53px}
 @media(min-width:1024px){.st .crop-ph{display:none}}
 @media(max-width:833px){
  .n-hero.hpanel:has(.hshot){min-height:800px}
- .n-hero .hcopy p.fade,.n-hero .n-help{display:none}
+ .n-hero .hcopy p.fade:not(.hfact),.n-hero .n-help{display:none}
  .n-hero .hcopy{bottom:auto;margin-bottom:-8px}
  .n-hero .hshot{margin-top:80px;width:38%}
  .n-hero.hpanel.long h1{font-size:2.5rem}
@@ -128,7 +131,7 @@ html{scroll-padding-top:53px}
 .no-js .n-hero .hacts a[href="#try"],.no-js .lnav li:has(>a[href="#try"]){display:none}
 
 /* Chapter titles match the hero title (one display size on the page) */
-.chap .t1{font-size:clamp(2.5rem,4.5vw,4rem)}
+.chap .t1{font-size:clamp(2.25rem,3.8vw,3.25rem)}
 /* Features: eight items, icon over label, on the 8px scale */
 .feat{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:40px clamp(24px,3vw,48px);margin-top:var(--s1)}
 .feat li{display:flex;flex-direction:column;gap:8px}
@@ -139,7 +142,7 @@ html{scroll-padding-top:53px}
 @media(max-width:599px){.feat{grid-template-columns:1fr;gap:28px}}
 /* Roles and the before/after: flat columns, one hairline each */
 .change{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:32px clamp(24px,3vw,48px);margin-top:var(--s1)}
-.change>div{padding-top:24px;border-top:1px solid var(--line-2)}
+.change>div{padding-top:24px;border-top:1px solid var(--line)}
 .change ul{margin-top:16px;display:grid;gap:12px}
 .change li{position:relative;padding-left:22px;font-size:1.0625rem;line-height:1.5;color:var(--text-2)}
 .change li::before{content:"";position:absolute;left:0;top:.75em;width:10px;height:1px;background:var(--text-3)}
@@ -147,4 +150,5 @@ html{scroll-padding-top:53px}
 .change>div:last-child li::before{width:12px;height:12px;top:.32em;background:var(--text);-webkit-mask:url(check.svg) center/contain no-repeat;mask:url(check.svg) center/contain no-repeat}
 @media(max-width:833px){.change{grid-template-columns:1fr;gap:28px}}
 /* Built for work: the spec sheet uses the shared facts grid (.spec, pages.css) */
-.specs .fine{margin-top:48px;max-width:56em}
+.specs .fine{margin-top:48px;max-width:42em}
+@media(min-width:1180px){.specs .spec{grid-template-columns:repeat(4,minmax(0,1fr))}}

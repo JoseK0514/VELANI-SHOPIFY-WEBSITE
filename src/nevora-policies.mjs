@@ -1,10 +1,10 @@
-// Generated from the NEVORA app's approved policy source (src/lib/legal/policies.ts, confirmed 2026-10-20). Do not edit by hand.
+// Generated from the NEVORA app's approved policy source (src/lib/legal/policies.ts, confirmed 2026-10-20), then edited on the website side on 2026-11-03/04 (sign-in guidance, regional statement, retention list, day-30 demo deletion). Mirror those edits into policies.ts before the next regeneration.
 const SUPPORT_EMAIL = "support@thevelani.com";
 const POLICY_OPERATOR = "VELANI LLC";
 const POLICY_VERSION = "2026-10-20";
 const POLICY_FACTS = {
   EFFECTIVE_DATE: "October 20, 2026",
-  SUPPORT_RESPONSE_TIME: "We aim to respond to support and privacy inquiries within two business days. Business days are Monday through Friday, excluding public holidays observed in Puerto Rico. Requests that need investigation may take longer to resolve.",
+  SUPPORT_RESPONSE_TIME: "We aim to respond to support and privacy inquiries within two business days. Business days are Monday to Friday, excluding public holidays observed in Puerto Rico. Requests that need investigation may take longer to resolve.",
   DELETION_COMPLETION_PERIOD: "30 calendar days after we receive the request",
   RETENTION_SCHEDULE: "attendance, approved timecards, payroll calculations, published pay statements and their corrections and approvals for three years from the record\u2019s final entry, and records supporting employment taxes for at least four years after the tax is due or paid, whichever is later; security and access logs for up to 90 days; records of privacy requests for 24 months after the request is closed; and records under a legal hold or unresolved dispute until the hold is released and the applicable period has passed. The longest applicable period applies, and a deletion request doesn\u2019t restart it.",
   BACKUP_EXPIRY: "Our database keeps a restore history of six hours. We are verifying the maximum time any backup or exported copy is kept, and will update this policy once it is confirmed.",
@@ -12,7 +12,7 @@ const POLICY_FACTS = {
   HOSTING_TRANSFER_DETAILS: "Our database and application servers are in the United States, in Northern Virginia. Email delivery, push notification services and our providers\u2019 logs and support may process information in other locations.",
   SALE_SHARING_AND_TRACKING_STATEMENT: "NEVORA does not display advertisements, sell personal information, or share personal information for cross-context behavioral advertising. We do not track users across other companies\u2019 applications or websites for advertising purposes. We disclose information to your employer and our service providers as necessary to operate NEVORA and for the purposes described in this policy.",
   EMPLOYER_DATA_RESPONSIBILITIES: "Your employer decides how NEVORA is used for workplace activities, including scheduling, attendance, timekeeping, payroll records and employee administration. VELANI LLC operates NEVORA and processes these workplace records on your employer\u2019s documented instructions. Requests about workplace records your employer controls are coordinated with your employer, and VELANI LLC helps locate, correct, export or delete information where appropriate. VELANI LLC handles requests about information it controls for its own business purposes, such as direct support communications and service administration. Your employer remains responsible for employment decisions, payroll accuracy, required workplace notices and its own recordkeeping obligations.",
-  REGIONAL_PRIVACY_DETAILS: "NEVORA currently serves the participating employer and its authorized workforce in Puerto Rico. Applicable United States federal and Puerto Rico requirements govern the handling of relevant workplace records.",
+  REGIONAL_PRIVACY_DETAILS: "NEVORA currently serves employers and their authorized workforces in Puerto Rico. Applicable United States federal and Puerto Rico requirements govern the handling of relevant workplace records.",
   BUSINESS_CONTACT_DETAILS: "VELANI LLC, 1654 Calle Tulipan, Suite 100, San Juan, PR 00927"
 };
 const mail = { href: `mailto:${SUPPORT_EMAIL}`, text: SUPPORT_EMAIL };
@@ -100,17 +100,29 @@ const ACCOUNT_DELETION = {
   summary: "You can ask us to delete your NEVORA account and the information linked to it, in the app or on the web.",
   sections: [
     { heading: "In the app or on the web", blocks: [
-      { p: ["Open Profile, choose ", { strong: "Delete my account" }, ", read what happens, re-enter your password and confirm. If you\u2019ve uninstalled the app, ", "sign in to NEVORA on the web at your workplace’s address", " and do the same; the page opens after you sign in."] },
+      { p: ["In the app:"] },
+      { steps: [["Open ", { strong: "Profile" }, "."], ["Choose ", { strong: "Delete my account" }, "."], ["Read what is removed and what may be kept."], ["Re-enter your password and confirm."]] },
+      { p: ["If you\u2019ve uninstalled the app, ", "sign in to NEVORA on the web at your workplace’s address", " and do the same; the page opens after you sign in."] },
       { p: ["If you can\u2019t sign in, use ", { strong: "Forgot access" }, " first, or email ", mail, " and we\u2019ll help you confirm it\u2019s you."] }
     ] },
-    { heading: "What happens next", blocks: [{ p: ["When you confirm, we save your request and show you a reference such as DEL-7KQ2M9XA. You\u2019re signed out on every device and can\u2019t sign in again. We aim to delete your account within ", f("DELETION_COMPLETION_PERIOD"), ", and we email you when it\u2019s done if we have your email address. Quote your reference to ", mail, " to ask about it."] }] },
+    { heading: "What happens next", blocks: [{ p: ["When you confirm, we save your request and show you a reference such as DEL‑7KQ2M9XA. You\u2019re signed out on every device and can\u2019t sign in again. We aim to delete your account within ", f("DELETION_COMPLETION_PERIOD"), ", and we email you when it\u2019s done if we have your email address. Quote your reference to ", mail, " to ask about it."] }] },
     { heading: "What is removed", blocks: [{ p: ["Your account and the information linked to it that can be deleted: your profile, sign-in details, sessions, notification subscriptions, calendar feed links and the content you contributed, including copies held by our service providers."] }] },
-    { heading: "What may be kept", blocks: [{ p: ["Some attendance, payroll, security or dispute records may have to be kept for a recorded obligation. We keep ", f("RETENTION_SCHEDULE"), " Backups: ", f("BACKUP_EXPIRY"), " Kept records are restricted and never used to restore your account."] }] },
-    { heading: "Your job and your workplace", blocks: [{ p: ["Deleting your NEVORA account doesn\u2019t end your employment or remove records your employer has to keep. If you\u2019re the Owner, your company\u2019s workspace stays open for the rest of your team; closing a workspace is separate, so email ", mail, " to arrange it."] }] }
+    { heading: "What may be kept", blocks: [
+      { p: ["Some attendance, payroll, security or dispute records may have to be kept for a recorded obligation. We keep:"] },
+      { list: [
+        [{ strong: "Attendance, approved timecards, payroll calculations, published pay statements" }, " and their corrections and approvals: three years from the record\u2019s final entry."],
+        [{ strong: "Records supporting employment taxes:" }, " at least four years after the tax is due or paid, whichever is later."],
+        [{ strong: "Security and access logs:" }, " up to 90 days."],
+        [{ strong: "Records of privacy requests:" }, " 24 months after the request is closed."],
+        [{ strong: "Records under a legal hold or unresolved dispute:" }, " until the hold is released and the applicable period has passed."]
+      ] },
+      { p: ["The longest applicable period applies, and a deletion request doesn\u2019t restart it. Backups: ", f("BACKUP_EXPIRY"), " Kept records are restricted and never used to restore your account."] }
+    ] },
+    { heading: "Your job and your workplace", blocks: [{ p: ["Deleting your NEVORA account doesn\u2019t end your employment or remove records your employer has to keep. If you\u2019re the Owner, your company\u2019s workspace stays open for the rest of your team; closing a workspace is separate, so email ", mail, " to arrange it. A free demo workplace that ends on day 30 without a plan is deleted, all of it, within 3 days."] }] }
   ]
 };
 const POLICY_DOCUMENTS = [PRIVACY, TERMS, SUPPORT, ACCOUNT_DELETION];
-const factsIn = (blocks) => blocks.flatMap((block) => "p" in block ? [block.p] : block.list).flat().flatMap((run) => typeof run === "object" && "fact" in run ? [run.fact] : []);
+const factsIn = (blocks) => blocks.flatMap((block) => "p" in block ? [block.p] : block.list || block.steps).flat().flatMap((run) => typeof run === "object" && "fact" in run ? [run.fact] : []);
 function unresolvedFacts(facts = POLICY_FACTS) {
   const used = /* @__PURE__ */ new Set(["EFFECTIVE_DATE"]);
   for (const doc of POLICY_DOCUMENTS) for (const section of doc.sections) factsIn(section.blocks).forEach((fact) => used.add(fact));

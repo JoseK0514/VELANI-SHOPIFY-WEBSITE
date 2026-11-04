@@ -6,7 +6,7 @@ if (form) {
   const submitButton = form.querySelector('[data-inquiry-submit]');
   const fieldset = form.querySelector('fieldset');
   let status = form.querySelector('.form-status');
-  if (!status) { status = document.createElement('div'); status.className = 'form-status'; status.setAttribute('role', 'status'); status.tabIndex = -1; form.append(status); }
+  if (!status) { status = document.createElement('div'); status.className = 'form-status'; status.setAttribute('role', 'status'); status.tabIndex = -1; const submitNode = form.querySelector('[data-inquiry-submit]'); if (submitNode) submitNode.after(status); else form.append(status); }
   const fields = Object.fromEntries(['name', 'email', 'company', 'message', 'interest', 'locations', 'team'].map(key => [key, form.querySelector('#inquiry-' + key)]));
   const topic = new URL(window.location.href).searchParams.get('interest');
   if (['website', 'custom-software', 'nevora', 'nevora-demo', 'other'].includes(topic)) fields.interest.value = topic;
@@ -49,7 +49,8 @@ if (form) {
     await controller.submit(values);
   });
   // F08: choosing a NEVORA topic in the general form reveals the team fields and makes the message optional, like the dedicated inquiry
-  fields.interest?.addEventListener('change', () => { const nev = /^nevora/.test(fields.interest.value); const row = form.querySelector('[data-nevora-fields]'); if (row) row.hidden = !nev; if (fields.message) fields.message.required = !nev; });
+  const messageLabel = form.querySelector('label[for="inquiry-message"]'); const messageLabels = { general: messageLabel && messageLabel.innerHTML, nevora: 'Anything else <span class="opt">optional</span>' };
+  fields.interest?.addEventListener('change', () => { const nev = /^nevora/.test(fields.interest.value); const row = form.querySelector('[data-nevora-fields]'); if (row) row.hidden = !nev; if (fields.message) fields.message.required = !nev; if (messageLabel && !nevora && !demo) messageLabel.innerHTML = nev ? messageLabels.nevora : messageLabels.general; });
   fieldset.disabled = false;
   const minH = parseInt(fields.message.dataset.min || '150', 10);
   fields.message.addEventListener('input', () => { fields.message.style.height = 'auto'; fields.message.style.height = Math.min(600, Math.max(minH, fields.message.scrollHeight)) + 'px'; });

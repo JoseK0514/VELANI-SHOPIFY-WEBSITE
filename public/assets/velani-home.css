@@ -3,7 +3,8 @@
 .hpanel.apps .hshade{background:none}
 .hpanel.apps .hshot{right:auto;left:50%;margin-left:-110px;width:260px}
 .hpanel.apps .hshot img{aspect-ratio:auto}
+.hpanel.apps .hcopy{max-width:470px}
 @media(max-width:1180px){.hpanel.apps .hshot{left:auto;right:max(var(--pad),calc(50% - 500px));margin-left:0;width:250px}}
 @media(max-width:833px){
- .hpanel.apps .hshot{left:50%;right:auto;top:56px;width:42%;margin:0;transform:translateX(-50%)}
+ .hpanel.apps .hshot{left:auto;right:auto;top:auto;width:46%;margin:56px auto 32px;transform:none}
 }

@@ -27,6 +27,7 @@
  const sx=[...d.querySelectorAll('[data-scroll-x]')];const syncX=()=>sx.forEach(el=>{if(el.scrollWidth>el.clientWidth+1)el.tabIndex=0;else el.removeAttribute('tabindex')});syncX();addEventListener('resize',syncX);
  // Footer groups
  const fd=[...d.querySelectorAll('.foot-cols details')],wide=matchMedia('(min-width:834px)');
+ const td=[...d.querySelectorAll('.doc-toc')],tocWide=matchMedia('(min-width:600px)');const syncToc=()=>td.forEach(x=>x.open=tocWide.matches);syncToc();tocWide.addEventListener('change',syncToc);
  const syncFoot=()=>fd.forEach(x=>x.open=wide.matches);syncFoot();wide.addEventListener('change',syncFoot);
  // Scroll-linked effects registered by each page. p = progress through a pinned track (0..1)
  const fx=window.__fx||[];const clamp=(v,a=0,b=1)=>Math.min(b,Math.max(a,v));
