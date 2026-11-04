@@ -29,10 +29,10 @@ function pageHero(page, { meta = '' } = {}) {
 /* Full-screen panels (the home page language): a square outlined button, a label, a title, one paragraph and one or two actions */
 const hb = (text, href, fill = false) => '<a class="hb' + (fill ? ' fill' : '') + '" href="' + e(href) + '">' + e(text) + icon('arrow-right') + '</a>';
 const tel = () => 'tel:+1' + company.phone.replace(/-/g, '');
-function panel(target, { id, cls = '', img, flip = false, kick, title, tag = 'h2', html = '', text, acts = '', extra = '', first = false }) {
+function panel(target, { id, cls = '', img, flip = false, kick, title, tag = 'h2', html = '', text, acts = '', after = '', extra = '', first = false }) {
   const tid = id + '-t';
   const photo = img ? '<img class="hph' + (flip ? ' flip' : '') + '" src="' + asset('night-' + img + '.webp', target) + '" alt="" width="1920" height="1080"' + (first ? ' fetchpriority="high"' : ' loading="lazy" decoding="async"') + '>' : '';
-  return '<section class="hpanel ' + cls + '" id="' + id + '" aria-labelledby="' + tid + '">' + photo + '<div class="hshade"></div><div class="hcopy">' + (kick ? '<p class="hkick">' + e(kick) + '</p>' : '') + '<' + tag + ' class="rise" id="' + tid + '">' + (html || e(title)) + '</' + tag + '>' + (text ? '<p class="fade">' + e(text) + '</p>' : '') + (acts ? '<div class="hacts fade">' + acts + '</div>' : '') + '</div>' + extra + '</section>';
+  return '<section class="hpanel ' + cls + '" id="' + id + '" aria-labelledby="' + tid + '">' + photo + '<div class="hshade"></div><div class="hcopy">' + (kick ? '<p class="hkick">' + e(kick) + '</p>' : '') + '<' + tag + ' class="rise" id="' + tid + '">' + (html || e(title)) + '</' + tag + '>' + (text ? '<p class="fade">' + e(text) + '</p>' : '') + (acts ? '<div class="hacts fade">' + acts + '</div>' : '') + after + '</div>' + extra + '</section>';
 }
 /** The closing panel on every company page: the wordmark, client support and the two ways in. */
 function closing(target, { project = '/pages/contact', support = hb('Client support', '/pages/help') } = {}) {
@@ -46,8 +46,9 @@ const HOW = [
 ];
 const rail = (steps, cls = '') => '<ol class="rail' + cls + '" data-in>' + steps.map(([b, t], i) => '<li data-in><i>0' + (i + 1) + '</i><b>' + e(b) + '</b><span>' + e(t) + '</span></li>').join('') + '</ol>';
 function services_(page, target) {
-  const hero = panel(target, { id: 'top', cls: 'dim long', img: 'ai-glow', kick: page.eyebrow, title: page.title, tag: 'h1', text: page.intro, acts: hb('Start a project', '/pages/contact?interest=custom-software', true), first: true });
-  const panels = services.map((s, i) => panel(target, { id: s.id, cls: s.side === 'right' ? 'right' : '', img: s.img, kick: '0' + (i + 1) + ' · Custom development', title: s.title, text: s.text, acts: hb('Start a project', '/pages/contact?interest=' + (s.id === 'web-applications' ? 'website' : 'custom-software')) })).join('');
+  const jump = '<nav class="jump fade" aria-label="Services on this page">' + services.map(s => '<a href="#' + s.id + '">' + e(s.title) + '</a>').join('') + '</nav>';
+  const hero = panel(target, { id: 'top', cls: 'dim long', img: 'ai-glow', kick: page.eyebrow, title: page.title, tag: 'h1', text: page.intro, acts: hb('Start a project', '/pages/contact?interest=custom-software', true), after: jump, first: true });
+  const panels = services.map((s, i) => panel(target, { id: s.id, cls: 'svc' + (s.side === 'right' ? ' right' : ''), img: s.img, kick: '0' + (i + 1) + ' · Custom development', title: s.title, text: s.text, acts: hb('Start a project', '/pages/contact?interest=' + (s.id === 'web-applications' ? 'website' : 'custom-software')) })).join('');
   const how = '<section class="how-page" aria-labelledby="how-t"><div class="wrap"><div class="how"><p class="hkick">How it works</p><h2 class="t2 rise" id="how-t">How a custom project works</h2>' + rail(HOW) + '</div></div></section>';
   return hero + panels + how + closing(target, { project: '/pages/contact?interest=custom-software' });
 }

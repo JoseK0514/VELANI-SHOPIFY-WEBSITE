@@ -168,6 +168,13 @@ html:has(main > .hpanel){scroll-padding-top:56px}
  .hpanel.dim.long .hcopy{margin-top:0}
  .hpanel.end .hacts .hb,.hpanel.end .hacts .pill{width:100%}
  .hpanel.live{height:auto;min-height:calc(100svh - 56px);padding-bottom:40px}
+ /* Service panels on phones: the device in a framed 4:3 image, the heading straight under it */
+ .hpanel.svc{justify-content:flex-start;min-height:0;padding:0 0 64px}
+ .hpanel.svc .hph{position:relative;inset:auto;height:auto;aspect-ratio:4/3;flex:none}
+ .hpanel.svc .hshade,.hpanel.svc.right .hshade{inset:0 0 auto;height:75vw;background:linear-gradient(0deg,#000 0%,rgba(0,0,0,.5) 22%,rgba(0,0,0,0) 48%)}
+ .hpanel.svc .hcopy{margin:8px var(--pad) 0}
+ .hpanel.svc .hcopy::before{display:none}
+ #web-applications .hph,#websites .hph{object-position:30% 60%}#booking .hph{object-position:42% 40%}#online-stores .hph{object-position:18% 70%}#business-systems .hph{object-position:72% 50%}
  .hcue{left:auto;right:8px;bottom:14px;margin:0}
  .hwm .wm-velani{height:34px}
 }

@@ -107,3 +107,10 @@ sections/velani-privacy.liquid                    86da9a5a282695f20a68917ff9bd91
 sections/velani-security.liquid                   51c33e929e041fded97e6c659427de61  2393  match
 sections/velani-software-project-terms.liquid     80e801026fac85cad9271b9fa3c23ef2  3691  match
 sections/velani-website-terms.liquid              76f74dc4f9b569fbd5db06b526817f49  3826  match
+
+Custom development refinement (Codex review), 2026-11-04, upsert to the same theme (job done), read back:
+assets/night-ai-dash.webp                         2d44e70369aead92dfeb37c4da09eb7d  41038  match
+assets/velani.css                                 2268db54bed801ecd4a77711e0feebd5  58879  match
+layout/theme.liquid                               b63b671cbda1d0bcedefbc4491238c29  33577  match
+sections/velani-custom-development.liquid         0f15b91c1f10dea182585a345176a70a  11153  match
+sections/velani-home.liquid                       e915b5eecddfae222353b7c61e3e8bab  11457  match
