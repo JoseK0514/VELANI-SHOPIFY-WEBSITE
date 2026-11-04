@@ -69,3 +69,15 @@ sections/velani-help.liquid       5dd8d1eec2c42c691a232bcbf748b5ad   12370  matc
 sections/velani-home.liquid       d222c1e081b697cb66516e0cf3306102   11514  match
 sections/velani-nevora.liquid     7837510384e050497753285144fe91ef   24161  match
 sections/velani-plans.liquid      bb6195f0ebdd915a10f6b73c3c49bfd6   8238   match
+
+Decisions pass (availability, day-30 deletion, sign-in guidance), 2026-11-04, upsert to the same theme, read back:
+layout/theme.liquid                               e6a9513f9783905af43710c7c02a1bce   33223  match
+sections/velani-about.liquid                      d5112d8a23610085ae7d528895275b6f   7404   match
+sections/velani-contact.liquid                    98c51821eb41047675755b094d52259e   8004   match
+sections/velani-home.liquid                       6229c9f2f437c43b327c6860cdb026f0   11513  match
+sections/velani-nevora-account-deletion.liquid    6af79d12b6dbbda2fbcd70ac83625d12   4692   match
+sections/velani-nevora-support.liquid             06e13a185914a3beebb8d8912611b04d   4546   match
+sections/velani-nevora.liquid                     00d5dd27e91fecdf54c2a47f3a0c1691   24159  match
+sections/velani-plans.liquid                      3d5c4ed05eee00363da59ac7d7511352   8139   match
+sections/velani-software-project-terms.liquid     103eee62438c0f38a14061b6eda0f647   3644   match
+sections/velani-website-terms.liquid              d056cfc096a868cf47e6cb874ab35bde   3739   match
