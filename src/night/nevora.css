@@ -118,7 +118,7 @@ html{scroll-padding-top:53px}
  .n-hero.hpanel:has(.hshot){min-height:800px}
  .n-hero .hcopy p.fade:not(.hfact),.n-hero .n-help{display:none}
  .n-hero .hcopy{bottom:auto;margin-bottom:-8px}
- .n-hero .hshot{margin-top:80px;width:38%}
+ .n-hero .hshot{margin-top:28px;width:30%}
  .n-hero.hpanel.long h1{font-size:2.5rem}
 }
 @media(max-width:600px){
@@ -133,6 +133,7 @@ html{scroll-padding-top:53px}
 
 /* Chapter titles match the hero title (one display size on the page) */
 .chap .t1{font-size:clamp(2.25rem,3.8vw,3.25rem)}
+@media(max-width:833px){.chap .t1{font-size:1.75rem}}
 /* Features: eight items, icon over label, on the 8px scale */
 .feat{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:40px clamp(24px,3vw,48px);margin-top:var(--s1)}
 .feat li{display:flex;flex-direction:column;gap:8px}

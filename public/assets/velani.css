@@ -168,6 +168,13 @@ html:has(main > .hpanel){scroll-padding-top:56px}
  .hpanel.dim.long{justify-content:center;min-height:calc(100svh - 56px);padding-bottom:24px}
  .hpanel.dim.long .hcopy{margin-top:0}
  .hpanel.end .hacts .hb,.hpanel.end .hacts .pill{width:100%}
+ /* One button rule on phones: actions stack at full width */
+ .hacts,.acts{flex-direction:column;align-items:stretch}
+ .hacts .hb,.acts .pill{width:100%;justify-content:center}
+ /* The closing panel keeps its line and actions; the footer carries the wordmark */
+ .hpanel.end .hwm{display:none}
+ .hpanel.end{min-height:440px}
+ .t3{font-size:1.25rem}
  .hpanel.live{height:auto;min-height:calc(100svh - 56px);padding-bottom:56px;justify-content:center}
  .hpanel.live .hcopy{margin-top:0}
  .hpanel.end{min-height:560px}
@@ -262,11 +269,13 @@ html:has(main > .hpanel){scroll-padding-top:56px}
  .foot{padding:24px 0 28px}
  .foot-row{display:block;padding-bottom:20px}
  .foot-nav{display:grid;grid-template-columns:1fr 1fr;gap:0 16px;margin-left:0}
- .foot-nav a{min-height:40px;padding:0}
+ .foot-nav a{min-height:44px;padding:0}
  .foot-support{margin-top:12px;padding-top:16px;border-top:1px solid var(--line)}
  .foot-legal{align-items:stretch;gap:12px;padding-top:16px}
  .foot-links{display:grid;grid-template-columns:1fr 1fr;gap:0 16px}
- .foot-links a,.foot-links button{min-height:36px;justify-content:flex-start;text-align:left}
+ .foot-links a,.foot-links button{min-height:44px;justify-content:flex-start;text-align:left}
+ /* Phones show most of the wordmark so the cut still reads as VELANI */
+ .foot-wm{height:calc((100cqw - var(--pad)*2) * .1792 * .86)}
 }
 
 @media(prefers-reduced-motion:reduce){
@@ -295,6 +304,7 @@ html:has(main > .hpanel){scroll-padding-top:56px}
 /* ---------- Inner pages: company, contact, help, legal and NEVORA policies ---------- */
 /* Text hero: a label, a big title, one paragraph */
 .phero{padding:clamp(88px,12vw,168px) 0 var(--s1)}
+@media(max-width:833px){.phero{padding-top:56px}}
 .phero .t1{max-width:16ch}
 .phero .lede{margin-top:24px;max-width:34em}
 .phero .acts{margin-top:32px}
@@ -356,6 +366,13 @@ html:has(main > .hpanel){scroll-padding-top:56px}
 @media(min-width:834px){#online-stores .hcopy{max-width:440px}}
 @media(min-width:834px){#business-systems .hcopy{max-width:440px}}
 @media(min-width:834px) and (max-width:1180px){.hwin{width:min(520px,46vw)}}
+.hduo{position:absolute;z-index:1;right:max(var(--pad),calc(50% - 600px));top:50%;transform:translateY(-50%);display:flex;align-items:flex-start;gap:24px}
+.hduo .ph{width:250px;padding:7px;border-radius:40px;background:#0b0d10;box-shadow:0 0 0 1px rgba(255,255,255,.14),inset 0 0 0 1px rgba(255,255,255,.05),0 50px 100px -30px rgba(0,0,0,.9)}
+.hduo .ph img{display:block;width:100%;height:auto;border-radius:33px}
+.hduo .ph+.ph{margin-top:64px}
+@media(min-width:834px) and (max-width:1180px){.hduo{gap:16px}.hduo .ph{width:200px;padding:6px;border-radius:34px}.hduo .ph img{border-radius:28px}}
+@media(min-width:834px) and (max-height:760px){.hduo .ph{width:190px}}
+@media(max-width:833px){.hduo{position:relative;right:auto;top:auto;transform:none;order:-1;justify-content:center;gap:14px;margin:48px var(--pad) 32px}.hduo .ph{width:calc(50% - 7px);max-width:210px;padding:4px;border-radius:26px}.hduo .ph img{border-radius:22px}.hduo .ph+.ph{margin-top:40px}.hpanel:has(.hduo){min-height:0;justify-content:flex-start}.hpanel:has(.hduo) .hcopy{margin-top:0}}
 @media(max-width:833px){.hpanel.svc .hwin{position:absolute;left:var(--pad);right:var(--pad);top:calc((75vw - (100vw - var(--pad)*2)/1.6)/2);width:auto;transform:none;border-radius:12px}}
 @media(max-width:833px){#booking .hshade{background:linear-gradient(0deg,rgba(0,0,0,.95) 0%,rgba(0,0,0,.86) 44%,rgba(0,0,0,.45) 66%,rgba(0,0,0,0) 84%)}}
 .band-in{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:16px 64px;align-items:baseline;padding-top:32px;background:linear-gradient(var(--line),var(--line)) var(--pad) 0/calc(100% - var(--pad)*2) 1px no-repeat}

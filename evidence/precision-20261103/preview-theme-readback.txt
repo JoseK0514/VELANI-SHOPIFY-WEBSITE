@@ -148,3 +148,20 @@ assets/velani.css                                 c48be2a089dcb45b6edb31104543b6
 sections/velani-cookies.liquid                    37ab0714669e1ee851fa0fe63d55808d  3414  match
 sections/velani-custom-development.liquid         0cd45dd5a586266c58b6d63253976901  12039  match
 sections/velani-privacy.liquid                    0fb564c14b3b9909cd9024ba46080817  5512  match
+
+2026-11-04 straight screens + phone polish
+Theme: gid://shopify/OnlineStoreTheme/193073316154 "Velani straight screens + phone polish (preview)", role UNPUBLISHED (themeDuplicate of MAIN 193020428602; MAIN not written)
+Upserted 11 files via staged URLs (all 201), job b7b4cff3-add3-429b-8e70-93db70299a01 done; readback checksums equal local build:
+6cc074c6fe93dd3fa66b16aa6b0ec4cf assets/night-ai-laptop-soft.webp
+032c1ccee1a1f47c5b2595f05201ff72 assets/night-ai-phone-soft.webp
+199a7ce1bc67ffeb4b51d1e6d980c069 assets/night-tb-home.webp
+c8f952574ca38e39223c148475966d74 assets/night-yavi-book.webp
+80d1b126c93e08c51a9d4e4b942142a2 assets/night-yavi-rewards.webp
+c4c75b15c3f874aecf839c1712e0eb11 assets/velani-assist.js
+f0be58193e8b015c97edca8608227e07 assets/velani-nevora.css
+72404ff7d4ab501e7fa275768471a483 assets/velani.css
+d3c96e438ed20b51b235c20025b90d04 assets/velani.js
+bbb4ffecd52a89f4cd67aa9441649e22 sections/velani-custom-development.liquid
+76573ceba2f3bdfc83939c6ae9e91093 sections/velani-home.liquid
+All other non-JSON files matched before upload; JSON templates/settings unchanged from last shipped build (Shopify normalizes their bytes).
+Checks: npm test 34/34, check:theme [], check:privacy passed, check:browser passed, acceptance 77/77, clipping 18 routes at 320px and 200%, layout-audit 19/19, scroll-stability 8/8, probe phone+desktop 0 findings (1 chat-bubble contrast sample taken mid-animation; computed #06121e on #bbd8ff).

@@ -168,6 +168,13 @@ html:has(main > .hpanel){scroll-padding-top:56px}
  .hpanel.dim.long{justify-content:center;min-height:calc(100svh - 56px);padding-bottom:24px}
  .hpanel.dim.long .hcopy{margin-top:0}
  .hpanel.end .hacts .hb,.hpanel.end .hacts .pill{width:100%}
+ /* One button rule on phones: actions stack at full width */
+ .hacts,.acts{flex-direction:column;align-items:stretch}
+ .hacts .hb,.acts .pill{width:100%;justify-content:center}
+ /* The closing panel keeps its line and actions; the footer carries the wordmark */
+ .hpanel.end .hwm{display:none}
+ .hpanel.end{min-height:440px}
+ .t3{font-size:1.25rem}
  .hpanel.live{height:auto;min-height:calc(100svh - 56px);padding-bottom:56px;justify-content:center}
  .hpanel.live .hcopy{margin-top:0}
  .hpanel.end{min-height:560px}
@@ -262,11 +269,13 @@ html:has(main > .hpanel){scroll-padding-top:56px}
  .foot{padding:24px 0 28px}
  .foot-row{display:block;padding-bottom:20px}
  .foot-nav{display:grid;grid-template-columns:1fr 1fr;gap:0 16px;margin-left:0}
- .foot-nav a{min-height:40px;padding:0}
+ .foot-nav a{min-height:44px;padding:0}
  .foot-support{margin-top:12px;padding-top:16px;border-top:1px solid var(--line)}
  .foot-legal{align-items:stretch;gap:12px;padding-top:16px}
  .foot-links{display:grid;grid-template-columns:1fr 1fr;gap:0 16px}
- .foot-links a,.foot-links button{min-height:36px;justify-content:flex-start;text-align:left}
+ .foot-links a,.foot-links button{min-height:44px;justify-content:flex-start;text-align:left}
+ /* Phones show most of the wordmark so the cut still reads as VELANI */
+ .foot-wm{height:calc((100cqw - var(--pad)*2) * .1792 * .86)}
 }
 
 @media(prefers-reduced-motion:reduce){
