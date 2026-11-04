@@ -57,3 +57,15 @@ assets/night-booking.webp         47bebb79d901531726fdee3f8432b626   20078  matc
 Hero conversation, upsert to the same theme, read back:
 assets/velani.css                 ac87dd069da4b2b962ac9bda135db3b2   53769  match
 sections/velani-home.liquid       2306b9fa2ff0afcd8490bc181e5012c4   11500  match
+
+Audit F01–F25 pass, upsert to the same theme, read back:
+assets/inquiry.js                 cd51d8712de09ed14cf1b0ba5a237af7   3024   match
+assets/velani-nevora.css          ad1c82a2afc4468bd08fba3c01b08017   11068  match
+assets/velani.css                 5062695c745c6fade27bde51957b7240   54274  match
+assets/velani.js                  bf2a37eaaa630ac47df8d964c287faac   9045   match
+layout/theme.liquid               3babda2596a5713e092c16e2d393fe95   33281  match (policy aliases, retired-template noindex)
+sections/velani-contact.liquid    1a6da965371094005d2ac0b67403702c   8062   match
+sections/velani-help.liquid       5dd8d1eec2c42c691a232bcbf748b5ad   12370  match
+sections/velani-home.liquid       d222c1e081b697cb66516e0cf3306102   11514  match
+sections/velani-nevora.liquid     7837510384e050497753285144fe91ef   24161  match
+sections/velani-plans.liquid      bb6195f0ebdd915a10f6b73c3c49bfd6   8238   match
