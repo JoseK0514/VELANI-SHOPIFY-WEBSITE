@@ -1,4 +1,5 @@
-import { mkdir, writeFile, cp, copyFile, rm } from 'node:fs/promises';
+import { mkdir, writeFile, readFile, cp, copyFile, rm } from 'node:fs/promises';
+import { createHash } from 'node:crypto';
 import path from 'node:path';
 import { routes, company } from '../src/content.mjs';
 import { renderPage, renderBody, renderShopifyLayout } from '../src/render.mjs';
@@ -28,6 +29,17 @@ export async function build() {
   await writeFile(path.join(root, 'public/assets/velani-assistant.js'), js.assistClient);
   await cp(path.join(root, 'public/assets'), path.join(out, 'preview/assets'), { recursive: true });
   await cp(path.join(root, 'public/assets'), path.join(out, 'theme/assets'), { recursive: true });
+  // Module imports between theme assets carry a content fingerprint, so Shopify's CDN and browsers never serve a stale copy
+  // of a dependency after it changes (asset_url versions only the files the layout links directly).
+  for (const [file, deps] of [['velani.js', ['inquiry.js', 'privacy.js']], ['velani-assist.js', ['velani-assistant.js']]]) {
+    const target = path.join(out, 'theme/assets', file);
+    let code = await readFile(target, 'utf8');
+    for (const dep of deps) {
+      const hash = createHash('sha256').update(await readFile(path.join(out, 'theme/assets', dep))).digest('hex').slice(0, 10);
+      code = code.split("'./" + dep + "'").join("'./" + dep + '?v=' + hash + "'");
+    }
+    await writeFile(target, code);
+  }
   for (const dir of ['layout', 'sections', 'templates', 'config', 'locales']) await mkdir(path.join(out, 'theme', dir), { recursive: true });
   const manifest = {};
   for (const route of Object.keys(routes)) {
