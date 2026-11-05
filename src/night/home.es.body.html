@@ -1,0 +1,89 @@
+<!-- Spanish Home (/pages/es), 1:1 with home.body.html: same panels, images and order. src/night.mjs renders only <main>. -->
+<main id="main">
+<script>(function(d){try{if(matchMedia('(prefers-reduced-motion: reduce)').matches||sessionStorage.getItem('v-dawn'))return;sessionStorage.setItem('v-dawn','1')}catch(e){return}d.classList.add('dawn')})(document.documentElement)</script>
+<section class="hpanel live" id="top" aria-labelledby="hero-t">
+ <img class="hph" src="img/ai-light.webp" alt="" width="1920" height="1080" fetchpriority="high">
+ <div class="hshade"></div>
+ <div class="hdawn" aria-hidden="true"></div>
+ <script>(function(d){if(!d.classList.contains('dawn'))return;var i=document.querySelector('.hpanel.live .hph'),done=0,go=function(){if(!done){done=1;d.classList.add('dawn-go')}};if(i&&!i.complete){i.addEventListener('load',go);i.addEventListener('error',go);setTimeout(go,1200)}else go()})(document.documentElement)</script>
+ <div class="hcopy">
+  <p class="hkick">Velani&nbsp;· Empresa de software</p>
+  <h1 class="rise" id="hero-t">Más luz para tu trabajo.</h1>
+  <p class="fade">Sitios web, apps y herramientas de negocio, hechos a tu medida. Y NEVORA, nuestra app para equipos por turnos.</p>
+  <div class="hacts fade"><a class="hb fill" href="/pages/es-contacto">Empieza un proyecto{{icon:arrow-right}}</a><a class="hb" href="/pages/es-contacto?interest=nevora-demo">Pide la prueba gratis de NEVORA{{icon:arrow-right}}</a></div>
+ </div>
+ <div class="hchat" aria-hidden="true" data-in>
+  <p class="hchat-h">{{rondo}}<span>Rondo&nbsp;· Asistente de NEVORA</span><i>En desarrollo</i></p>
+  <p class="msg me m1">Carlos acaba de reportarse enfermo para esta noche.</p>
+  <p class="msg ai a1">Lo sé. Carlos se reportó ausente a las 7:42. María está libre y tiene menos de 40 horas esta semana, y dijo que sí a las 7:58. Solo falta tu aprobación.</p>
+  <p class="msg me m2">Apruébalo.</p>
+  <p class="msg ai a2">Listo. María quedó programada de 2 a 8&nbsp;p.&nbsp;m. y ya le avisé.</p>
+  <p class="hchat-cap">Conversación de ejemplo con personas ficticias.</p>
+ </div>
+ <a class="hcue" href="#nevora" aria-label="Ir a NEVORA">{{icon:caret-down}}</a>
+</section>
+
+<section class="hpanel" id="nevora" aria-labelledby="nev-t">
+ <img class="hph" src="img/ai-devices.webp" alt="" width="1920" height="1080" decoding="async">
+ <div class="hshade"></div>
+ <div class="hcopy">
+  <p class="hkick">Nuestro producto&nbsp;· Disponible ahora</p>
+  <h2 class="rise" id="nev-t"><img src="img/nevora-wm-white.png" alt="NEVORA" width="907" height="122"></h2>
+  <p class="fade">Horarios, registro de tiempo y cálculo de nómina para equipos por turnos. Gratis por 30 días.</p>
+  <div class="hacts fade"><a class="hb fill" href="/pages/es-contacto?interest=nevora-demo">Pide la prueba gratis{{icon:arrow-right}}</a><a class="hb" href="/pages/es-nevora">Conoce más{{icon:arrow-right}}</a></div>
+  <p class="hfact fade">Sin tarjeta&nbsp;· Sin cargos automáticos&nbsp;· Inglés&nbsp;y&nbsp;español</p>
+ </div>
+ <div class="hshot fade"><img src="img/phone-long.webp" alt="NEVORA en el teléfono de una empleada: su turno de hoy y dos cosas por hacer" width="1170" height="3936"><p class="notif"><span class="notif-ic" aria-hidden="true">N</span><span class="notif-t"><b>NEVORA</b><i>ahora</i></span><span class="notif-m">María te pidió un cambio de turno</span></p></div>
+</section>
+
+<section class="hpanel right rondo-home" id="rondo" aria-labelledby="rondo-t">
+ <img class="hph" src="img/ai-glow.webp" alt="" width="1920" height="1080" loading="lazy" decoding="async">
+ <div class="hshade"></div>
+ <div class="hcopy">
+  <p class="hkick">Llega a NEVORA&nbsp;· En desarrollo</p>
+  <h2 class="rise" id="rondo-t">Te presentamos a Rondo.</h2>
+  <p class="fade">El asistente de IA que llega a NEVORA. Encontrará los turnos sin cubrir, preparará la solución y esperará tu visto bueno.</p>
+  <div class="hacts fade"><a class="hb fill" href="/pages/es-nevora#rondo">Conoce a Rondo{{icon:arrow-right}}</a></div>
+ </div>
+ <ul class="rcard" aria-label="Lo que hará Rondo">
+  <li>{{icon:sun}}<span><b>Resumen de la mañana</b>Quién llegó y quién va tarde, antes de que preguntes.</span></li>
+  <li>{{icon:users-three}}<span><b>Busca reemplazo</b>Quién está libre, el más adecuado primero.</span></li>
+  <li>{{icon:receipt}}<span><b>Revisa la nómina</b>Asistencia y tarjetas de tiempo antes del día de pago.</span></li>
+  <li>{{icon:check}}<span><b>Tú apruebas</b>Nada cambia sin tu visto bueno.</span></li>
+ </ul>
+</section>
+
+<section class="hpanel right svc" id="websites" aria-labelledby="web-t">
+ <img class="hph" src="img/ai-laptop-soft.webp" alt="" width="1920" height="1080" decoding="async">
+ <div class="hshade"></div>
+ <div class="hcopy">
+  <p class="hkick">Desarrollo a la medida</p>
+  <h2 class="rise" id="web-t">Sitios web</h2>
+  <p class="fade">Rápidos. Hechos para traerte llamadas y reservas desde cualquier teléfono.</p>
+  <div class="hacts fade"><a class="hb" href="/pages/custom-development#web-applications" hreflang="en">Ver sitios web{{icon:arrow-right}}</a></div>
+ </div>
+ <div class="hwin fade"><img src="img/tb-home.webp" alt="El sitio web de Tool Box LLC, creado por Velani: alquiler de equipos con entrega en la obra y fechas" width="2000" height="1250" loading="lazy" decoding="async"></div>
+</section>
+
+<section class="hpanel apps" id="apps" aria-labelledby="apps-t">
+ <div class="hshade"></div>
+ <div class="hcopy">
+  <p class="hkick">Desarrollo a la medida</p>
+  <h2 class="rise" id="apps-t">Apps a la medida</h2>
+  <p class="fade">Reservas, lealtad, tiendas en línea, paneles. Todo pensado para tu día a día.</p>
+  <div class="hacts fade"><a class="hb" href="/pages/custom-development" hreflang="en">Ver apps a la medida{{icon:arrow-right}}</a></div>
+ </div>
+ <div class="hshot fade"><img src="img/yavi-rewards.webp" alt="La tarjeta de recompensas de Yavi Barber, creada por Velani: diez visitas, dos recompensas" width="780" height="1688" loading="lazy" decoding="async"></div>
+ <div class="hweb fade"><img src="img/k-later.webp" alt="El registro de tiempo de NEVORA en una tableta compartida" width="1024" height="768"></div>
+</section>
+
+<section class="hpanel end" id="velani" aria-label="Velani">
+ <img class="hph flip" src="img/ai-light.webp" alt="" width="1920" height="1080" decoding="async">
+ <div class="hshade"></div>
+ <div class="hcopy">
+  <p class="hwm">{{wordmark}}</p>
+  <p class="fade">Productos de software y desarrollo a la medida, desde San Juan.</p>
+  <div class="hacts fade"><a class="hb fill" href="/pages/es-contacto">Empieza un proyecto{{icon:arrow-right}}</a><a class="hb" href="/pages/help" hreflang="en">Soporte al cliente{{icon:arrow-right}}</a></div>
+ </div>
+</section>
+</main>

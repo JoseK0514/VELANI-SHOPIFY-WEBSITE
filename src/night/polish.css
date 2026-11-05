@@ -192,3 +192,36 @@ main>section:first-of-type .fade{opacity:1}
  .ast-launch{border:2px solid ButtonText}
  .ast-av{border:1px solid CanvasText}
 }
+/* Language switch (EN | ES): two quiet links in the nav's own type; the current language is white, the other grey */
+.lang-sw{display:inline-flex;align-items:center;flex:none;font-size:0.8125rem;font-weight:500;letter-spacing:.04em;line-height:1;color:var(--text-3)}
+.lang-sw a{display:inline-flex;align-items:center;justify-content:center;min-width:32px;min-height:44px;padding:0 6px;color:var(--text-2);text-decoration:none;transition:color .2s}
+.lang-sw a[aria-current]{color:var(--text)}
+@media(hover:hover){.lang-sw a:hover{color:var(--text);text-decoration:underline;text-underline-offset:4px}}
+.lang-sep{padding:0 1px;user-select:none}
+.gnav-lang{margin-right:10px}
+@media(min-width:834px) and (max-width:1023px){.gnav-lang{margin-right:4px}.gnav-lang a{min-width:28px;padding:0 4px}}
+@media(max-width:833px){.gnav-lang{display:none}}
+.gmenu .gmenu-lang{margin-top:16px;margin-left:-6px;font-size:1rem}
+.foot-links .foot-lang a{min-height:36px}
+@media(max-width:600px){.foot-links .foot-lang a{min-height:44px;justify-content:center}}
+/* Spanish nav words are longer: at tablet widths the links sit a little closer so the bar still fits on one line */
+@media(min-width:834px) and (max-width:959px){html[lang=es] .gnav-links a{padding:0 5px}html[lang=es] .gnav-links{margin-right:4px}}
+/* NEVORA page: the global header is hidden, so the local bar carries the switch; in its narrow menu it sits with the company links */
+.lnav-lang{margin-right:8px}
+@media(max-width:959px){.lnav-lang{display:none}}
+.lnav .lnav-by .lnav-by-lang{width:100%;margin-left:-6px}
+.lnav .lnav-by .lnav-by-lang a{min-height:44px;font-size:0.875rem;padding:0 6px;color:var(--text-2)}
+.lnav .lnav-by .lnav-by-lang a[aria-current]{color:var(--text)}
+@media(min-width:960px) and (max-width:1099px){.lnav-lang{margin-right:2px}.lnav-lang a{min-width:26px;padding:0 3px}html[lang=es] .lnav ul a{padding:0 6px}html[lang=es] .lnav ul{margin-right:6px}}
+@media(min-width:960px) and (max-width:1023px){html[lang=es] .lnav ul a{padding:0 4px}}
+
+/* ---------- Rondo's mark: round, with a three-quarter ring of light (one design for every place Rondo appears) ---------- */
+b.rmark,.hchat-h b.rmark,.rondo-kick .rmark,.ast-launch .rmark,.ast-head .rmark,.ast-who .rmark{position:relative;display:grid;place-items:center;flex:none;border-radius:50%;background:radial-gradient(circle at 35% 28%,#1c3049 0,#0f1a29 58%,#0a121c 100%);color:#dcebff;font-style:normal;font-weight:600;letter-spacing:0;line-height:1;box-shadow:none;border:0}
+.rmark svg{position:absolute;inset:0;width:100%;height:100%;fill:none;stroke-width:1.5;stroke-linecap:round;pointer-events:none}
+.rmark svg circle{stroke:rgba(187,216,255,.18)}
+.rmark svg path{stroke:#bbd8ff}
+.ast-head .rmark{width:32px;height:32px;font-size:0.875rem}
+.ast-launch .rmark{width:26px;height:26px;font-size:0.75rem}
+.ast-who{display:flex;align-items:center;gap:8px}
+.ast-who .rmark{width:22px;height:22px;font-size:0.6875rem}
+@media(forced-colors:active){.rmark{forced-color-adjust:none;background:Canvas;color:CanvasText}.rmark svg path{stroke:CanvasText}.rmark svg circle{stroke:GrayText}}

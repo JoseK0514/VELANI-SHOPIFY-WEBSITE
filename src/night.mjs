@@ -2,6 +2,7 @@
 import { readFileSync } from 'node:fs';
 import path from 'node:path';
 import { company, routes } from './content.mjs';
+import { CHROME_ES, ES_PATHS } from './content.es.mjs';
 import { POLICY_DOCS, POLICY_FACTS } from './nevora-policies.mjs';
 
 const dir = path.join(import.meta.dirname, 'night');
@@ -18,12 +19,36 @@ export function icon(name) {
 const asset = (name, target) => target === 'shopify' ? "{{ '" + name + "' | asset_url }}" : '/assets/' + name;
 const e = value => String(value ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
 
-/** Turn a prototype fragment into site markup: icons inline, images from theme assets, real routes. */
-export function site(html, target) {
+/** Links on a Spanish page go to the Spanish version of a page when one exists (query and #section kept). A link marked
+ * hreflang="en" (the language switch, pages only in English) is left alone. */
+export function localize(html, lang) {
+  if (lang !== 'es') return html;
+  return html.replace(/href="(\/[^"#?\s]*)([?#][^"\s]*)?"(?! hreflang="en")/g, (attribute, path, tail = '') => ES_PATHS[path] ? 'href="' + ES_PATHS[path] + tail + '"' : attribute);
+}
+/** The time-clock demo's Spanish words come from kiosk.js's own table, so the server-rendered Spanish page and the script agree. */
+export const KIOSK_ES = (() => { const m = read('kiosk.js').match(/const ES=(\{[^}]*\});/); if (!m) throw new Error('night: kiosk ES table not found'); return JSON.parse(m[1].replace(/'/g, '"')); })();
+function kiosk(lang) {
+  const html = read('kiosk.html');
+  if (lang !== 'es') return html;
+  // The demo starts in Spanish on Spanish pages: same markup, Spanish words, and the switch offers English
   return html
-    .replace('{{kiosk}}', () => read('kiosk.html'))
+    .replace('<div class="kio" id="kio">', '<div class="kio" id="kio" lang="es">')
+    .replace(/data-k-t="([^"]+)">([^<]*)</g, (_, en) => 'data-k-t="' + en + '">' + (KIOSK_ES[en] || en) + '<')
+    .replace(/aria-label="([^"]+)" data-k-l="([^"]+)"/g, (_, label, en) => 'aria-label="' + (KIOSK_ES[en] || en) + '" data-k-l="' + en + '"')
+    .replace('<span id="kio-lang-t" lang="es">Español</span>', '<span id="kio-lang-t" lang="en">English</span>')
+    .replace('<small id="kio-ap">PM</small>', '<small id="kio-ap">p.\u00a0m.</small>')
+    .replace('Tuesday, October 27', 'Martes, 27 de octubre')
+    .replace('Oct 27&nbsp;· 2:17 PM</b><span id="kio-dot">.</span>', '27 oct&nbsp;· 2:17 p.\u00a0m.</b><span id="kio-dot"></span>');
+}
+/** Turn a prototype fragment into site markup: icons inline, images from theme assets, real routes. */
+/** Rondo's mark: a round badge with the R and a three-quarter ring of light (the same markup everywhere; size comes from the context) */
+const RONDO_MARK = (cls = '') => '<b class="rmark' + (cls ? ' ' + cls : '') + '" aria-hidden="true"><svg viewBox="0 0 32 32" focusable="false"><circle cx="16" cy="16" r="14.25"/><path d="M16 1.75A14.25 14.25 0 1 1 1.75 16"/></svg>R</b>';
+export function site(html, target, lang = 'en') {
+  return html
+    .replace('{{kiosk}}', () => kiosk(lang))
     .replace(/\{\{icon:([\w-]+)\}\}/g, (_, n) => icon(n))
     .replace(/\{\{wordmark\}\}/g, () => WORDMARK)
+    .replace(/\{\{rondo(?::([\w -]+))?\}\}/g, (_, cls) => RONDO_MARK(cls))
     .replace(/src="img\/([\w.-]+)\.webp"/g, (_, n) => 'src="' + asset('night-' + n + '.webp', target) + '"')
     .replace(/href="img\/([\w.-]+)\.webp"/g, (_, n) => 'href="' + asset('night-' + n + '.webp', target) + '"')
     .replace(/src="img\/([\w.-]+)\.png"/g, (_, n) => 'src="' + asset('night-' + n + '.png', target) + '"')
@@ -34,24 +59,36 @@ export function site(html, target) {
 }
 
 const between = (text, start, end) => { const s = text.indexOf(start); const t = text.indexOf(end, s); if (s < 0 || t < 0) throw new Error('night: marker not found ' + start); return text.slice(s, t); };
-const homeSrc = read('home.body.html');
-const nevSrc = read('nevora.body.html');
-const productsSrc = read('products.body.html');
+const SRC = { en: { home: read('home.body.html'), nevora: read('nevora.body.html'), products: read('products.body.html') }, es: { home: read('home.es.body.html'), nevora: read('nevora.es.body.html'), products: read('products.es.body.html') } };
 const mainOf = src => between(src, '<main id="main">', '</main>').slice('<main id="main">'.length);
 
 /** Inside <main> for Home, NEVORA and Products. The NEVORA local nav sits at the top of its section content. */
-export function homeMain(target) { return site(mainOf(homeSrc), target); }
-export function nevoraMain(target) { return site(between(nevSrc, '<nav class="lnav"', '<main id="main">') + mainOf(nevSrc), target); }
-export function productsMain(target) { return site(mainOf(productsSrc), target); }
+export function homeMain(target, lang = 'en') { return localize(site(mainOf(SRC[lang].home), target, lang), lang); }
+// The global header is hidden on the NEVORA page, so its local nav carries the language switch (wide bar and narrow menu)
+export function nevoraMain(target, lang = 'en') { const src = SRC[lang].nevora; return localize(site(between(src, '<nav class="lnav"', '<main id="main">') + mainOf(src), target, lang).replace(/\{\{lang:([\w-]+)\}\}/g, (_, cls) => langSwitch(lang, { en: '/pages/nevora', es: '/pages/es-nevora' }, ' ' + cls)), lang); }
+export function productsMain(target, lang = 'en') { return localize(site(mainOf(SRC[lang].products), target, lang), lang); }
 
 /* Products: one header item with a short menu (NEVORA Workforce, Rondo, NEVORA Relay); the phone menu lists them under a Products label. */
 const PRODUCTS = [['NEVORA Workforce', '/pages/nevora', 'Scheduling, time clock and payroll calculation'], ['Rondo<span class="nav-soon">In development</span>', '/pages/nevora#rondo', 'The AI assistant coming to NEVORA'], ['NEVORA Relay<span class="nav-soon">Coming soon</span>', '/pages/products#relay', 'Orders, kitchen display and inventory']];
 const NAV = [['Websites', '/pages/custom-development#web-applications', 'websites'], ['Custom apps', '/pages/custom-development', 'services'], ['Plans', '/pages/plans', 'plans'], ['Support', '/pages/help', 'help'], ['About', '/pages/about', 'about']];
+/** The words of the header, the phone menu and the language switch, per language (Spanish in src/content.es.mjs). */
+export const CHROME = {
+  en: { skip: 'Skip to content', home: 'Velani home', main: 'Main', mainMenu: 'Main menu', menu: 'Menu', products: 'Products', productsMenu: 'Products menu', productsList: PRODUCTS, nav: NAV, rondoSoon: 'In development', relaySoon: 'Soon', contact: 'Contact', trial: 'Request free trial', trialLong: 'Request free NEVORA trial', project: 'Start a project', support: 'Client support', hours: company.hours, brandOf: 'Velani is a brand of ', langGroup: 'Language', closingLine: 'Software products and custom development, from San Juan.' },
+  es: CHROME_ES,
+};
+/** In the Shopify layout the two destinations are computed once per page (main theme or draft), see renderShopifyLayout. */
+export const SHOPIFY_LANG_HREFS = { en: '{{ velani_en_href }}', es: '{{ velani_es_href }}' };
+/** EN | ES: two links, the current language marked; each option is named and spoken in its own language. */
+export function langSwitch(lang, hrefs, cls = '') {
+  const opt = (code, name, href) => `<a href="${href}" hreflang="${code}" lang="${code}" aria-label="${name}"${code === lang ? ' aria-current="true"' : ''}>${code.toUpperCase()}</a>`;
+  return `<span class="lang-sw${cls}" role="group" aria-label="${CHROME[lang].langGroup}">${opt('en', 'English', hrefs.en)}<span class="lang-sep" aria-hidden="true">|</span>${opt('es', 'Español', hrefs.es)}</span>`;
+}
 /** current: the nav key for the preview build, or null in the Shopify layout, where Liquid marks it. */
 // Official VELANI wordmark, traced 1:1 from docs/reference/velani-logo-official.pdf; colour comes from CSS.
 export const WORDMARK = readFileSync(new URL('./brand/velani-wordmark.svg', import.meta.url), 'utf8').trim()
   .replace(/^<svg[^>]*viewBox="([^"]*)"[^>]*>/, '<svg class="wm-velani" viewBox="$1" fill="currentColor" aria-hidden="true" focusable="false">');
-export function header(current, target, { nevora = false } = {}) {
+export function header(current, target, { nevora = false, lang = 'en', hrefs = SHOPIFY_LANG_HREFS } = {}) {
+  const t = CHROME[lang], nevoraSlug = lang === 'es' ? 'es-nevora' : 'nevora';
   const mark = key => target === 'shopify'
     ? `{% if velani_nav == '${key}' %} aria-current="page"{% endif %}`
     : (current === key ? ' aria-current="page"' : '');
@@ -59,14 +96,17 @@ export function header(current, target, { nevora = false } = {}) {
     ? `{% if velani_nav == 'nevora' or velani_nav == 'products' %} aria-current="page"{% endif %}`
     : (current === 'nevora' || current === 'products' ? ' aria-current="page"' : '');
   // A disclosure: the word links to the Products page, the caret button opens the menu (hover and keyboard focus also open it; Escape closes it)
-  const products = `<li class="gnav-dd"><a class="gnav-ddlink" href="/pages/products"${productsMark}>Products</a><button class="gnav-ddbtn" type="button" aria-expanded="false" aria-controls="gnav-ddmenu" aria-label="Products menu">${icon('caret-down')}</button><div class="gnav-ddmenu" id="gnav-ddmenu"><ul aria-label="Products">` + PRODUCTS.map(([name, href, note]) => `<li><a href="${href}"><b>${name}</b><span>${note}</span></a></li>`).join('') + '</ul></div></li>';
-  const links = products + NAV.map(([text, href, key]) => `<li><a href="${href}"${mark(key)}>${text}</a></li>`).join('');
-  const productsMenu = `<p class="gmenu-k">Products</p><a class="gmenu-sub" href="/pages/nevora"${mark('nevora')}>NEVORA Workforce</a><a class="gmenu-sub nav-rondo" href="/pages/nevora#rondo">Rondo<span class="nav-soon">In development</span></a><a class="gmenu-sub" href="/pages/products#relay">NEVORA Relay<span class="nav-soon">Soon</span></a>`;
-  const menu = productsMenu + NAV.map(([text, href, key]) => `<a href="${href}"${mark(key)}>${text}</a>`).join('');
-  const staticClass = target === 'shopify' ? `{% if velani_page == 'nevora' %} static{% endif %}` : (nevora ? ' static' : '');
-  return `<a class="skip" href="#main">Skip to content</a><header class="gnav${staticClass}" id="gnav"><nav class="wrap gnav-in" aria-label="Main"><a class="wordmark" href="/" aria-label="Velani home">${WORDMARK}</a><ul class="gnav-links">${links}</ul>${target === 'shopify' ? `{% if velani_nav == 'services' %}<a class="pill line" href="/pages/contact?interest=custom-software">Start a project</a>{% else %}<a class="pill line" href="/pages/contact?interest=nevora-demo">Request free trial</a>{% endif %}` : (current === 'services' ? '<a class="pill line" href="/pages/contact?interest=custom-software">Start a project</a>' : '<a class="pill line" href="/pages/contact?interest=nevora-demo">Request free trial</a>')}<button class="gnav-menu" id="gmenu-btn" type="button" aria-expanded="false" aria-controls="gmenu" aria-label="Menu"><span class="i-open">${icon('list')}</span><span class="i-close" hidden>${icon('x')}</span></button></nav></header><div class="gmenu" id="gmenu" hidden><nav class="wrap" aria-label="Main menu">${menu}<a href="/pages/contact">Contact</a>${target === 'shopify' ? `{% if velani_nav == 'services' %}<a class="pill" href="/pages/contact?interest=custom-software">Start a project</a>{% else %}<a class="pill" href="/pages/contact?interest=nevora-demo">Request free NEVORA trial</a>{% endif %}` : (current === 'services' ? '<a class="pill" href="/pages/contact?interest=custom-software">Start a project</a>' : '<a class="pill" href="/pages/contact?interest=nevora-demo">Request free NEVORA trial</a>')}<small>Client support · <a href="mailto:${company.email}">${company.email}</a> · <a href="tel:+1${company.phone.replace(/-/g, '')}">${company.phone}</a> · ${company.hours}<br>Velani is a brand of ${company.operator}.</small></nav></div>`;
+  const products = `<li class="gnav-dd"><a class="gnav-ddlink" href="/pages/products"${productsMark}>${t.products}</a><button class="gnav-ddbtn" type="button" aria-expanded="false" aria-controls="gnav-ddmenu" aria-label="${t.productsMenu}">${icon('caret-down')}</button><div class="gnav-ddmenu" id="gnav-ddmenu"><ul aria-label="${t.products}">` + t.productsList.map(([name, href, note]) => `<li><a href="${href}"><b>${name}</b><span>${note}</span></a></li>`).join('') + '</ul></div></li>';
+  const enOnly = href => lang === 'es' && !ES_PATHS[href.split(/[?#]/)[0]] ? ' hreflang="en"' : '';
+  const links = products + t.nav.map(([text, href, key]) => `<li><a href="${href}"${enOnly(href)}${mark(key)}>${text}</a></li>`).join('');
+  const productsMenu = `<p class="gmenu-k">${t.products}</p><a class="gmenu-sub" href="/pages/nevora"${mark('nevora')}>NEVORA Workforce</a><a class="gmenu-sub nav-rondo" href="/pages/nevora#rondo">Rondo<span class="nav-soon">${t.rondoSoon}</span></a><a class="gmenu-sub" href="/pages/products#relay">NEVORA Relay<span class="nav-soon">${t.relaySoon}</span></a>`;
+  const menu = productsMenu + t.nav.map(([text, href, key]) => `<a href="${href}"${enOnly(href)}${mark(key)}>${text}</a>`).join('');
+  const staticClass = target === 'shopify' ? `{% if velani_page == '${nevoraSlug}' %} static{% endif %}` : (nevora ? ' static' : '');
+  const cta = (cls, trial) => target === 'shopify' ? `{% if velani_nav == 'services' %}<a class="${cls}" href="/pages/contact?interest=custom-software">${t.project}</a>{% else %}<a class="${cls}" href="/pages/contact?interest=nevora-demo">${trial}</a>{% endif %}` : (current === 'services' ? `<a class="${cls}" href="/pages/contact?interest=custom-software">${t.project}</a>` : `<a class="${cls}" href="/pages/contact?interest=nevora-demo">${trial}</a>`);
+  const html = `<a class="skip" href="#main">${t.skip}</a><header class="gnav${staticClass}" id="gnav"><nav class="wrap gnav-in" aria-label="${t.main}"><a class="wordmark" href="/" aria-label="${t.home}">${WORDMARK}</a><ul class="gnav-links">${links}</ul>${langSwitch(lang, hrefs, ' gnav-lang')}${cta('pill line', t.trial)}<button class="gnav-menu" id="gmenu-btn" type="button" aria-expanded="false" aria-controls="gmenu" aria-label="${t.menu}"><span class="i-open">${icon('list')}</span><span class="i-close" hidden>${icon('x')}</span></button></nav></header><div class="gmenu" id="gmenu" hidden><nav class="wrap" aria-label="${t.mainMenu}">${menu}<a href="/pages/contact">${t.contact}</a>${langSwitch(lang, hrefs, ' gmenu-lang')}${cta('pill', t.trialLong)}<small>${t.support} · <a href="mailto:${company.email}">${company.email}</a> · <a href="tel:+1${company.phone.replace(/-/g, '')}">${company.phone}</a> · ${t.hours}<br>${t.brandOf}${company.operator}.</small></nav></div>`;
+  return localize(html, lang);
 }
-export function footer(target) { return site(read('foot.html'), target); }
+export function footer(target, { lang = 'en', hrefs = SHOPIFY_LANG_HREFS } = {}) { return localize(site(read(lang === 'es' ? 'foot.es.html' : 'foot.html'), target).replace('{{lang}}', () => langSwitch(lang, hrefs, ' foot-lang')), lang); }
 /** Custom development: client screenshots open full screen (an inline script at the end of the section). */
 export function zoomScript(target) { return site(read('zoom.html'), target); }
 /** The assistant launcher and panel; the API address is filled in by the layout (theme setting or preview environment). */

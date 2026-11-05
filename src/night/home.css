@@ -4,7 +4,8 @@
 .hpanel.apps .hshot{right:auto;left:50%;margin-left:-110px;width:260px}
 .hpanel.apps .hshot img{aspect-ratio:auto}
 /* Clear of the phone, which sits 110px left of centre on wide screens (at 1200px the two met) */
-.hpanel.apps .hcopy{max-width:min(470px,calc(50% - 134px - var(--pad)))}
+.hpanel.apps .hcopy{max-width:470px}
+@media(min-width:1181px){.hpanel.apps .hcopy{max-width:min(470px,calc(50% - 134px - var(--pad)))}}
 @media(max-width:1180px){.hpanel.apps .hshot{left:auto;right:max(var(--pad),calc(50% - 500px));margin-left:0;width:250px}}
 @media(max-width:833px){
  .hpanel.apps .hshot{left:auto;right:auto;top:auto;width:46%;margin:56px auto 32px;transform:none}

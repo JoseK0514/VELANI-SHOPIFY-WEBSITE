@@ -1,4 +1,5 @@
 import { POLICY_DOCS } from './nevora-policies.mjs';
+import { ES_ROUTES } from './content.es.mjs';
 export const company = Object.freeze({
   name: 'Velani',
   operator: 'VELANI LLC',
@@ -91,4 +92,8 @@ export const routes = {
   ], { legal: true, name: 'Security' }),
 };
 for (const route of Object.values(routes)) if (route.kind === 'policy') route.intro = POLICY_DOCS.find(doc => doc.slug === route.slug).summary;
-
+// Spanish pages (src/content.es.mjs): each names its English page (en), and that page names it back (es)
+for (const [path, page] of Object.entries(ES_ROUTES)) { routes[path] = page; routes[page.en].es = path; }
+/** Language of a route ('en' unless the page says otherwise), and its counterpart in the other language, if any. */
+export const langOf = path => routes[path]?.lang || 'en';
+export const counterpart = path => routes[path]?.lang === 'es' ? routes[path].en : routes[path]?.es;

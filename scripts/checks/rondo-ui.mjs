@@ -86,7 +86,7 @@ try {
       ok((await last().locator('.ast-acts a').getAttribute('href')) === '#try', `${tag}: demo action points at the time clock on this page`);
       await p.screenshot({ path: `${out}/${name}-${vp.w}-answer.png` });
       await send('markup please'); await settle();
-      ok(await p.evaluate(() => !window.__xss && !document.querySelector('.ast-log img, .ast-log b')), `${tag}: answers render as text, never markup`);
+      ok(await p.evaluate(() => !window.__xss && !document.querySelector('.ast-log img, .ast-log b:not(.rmark)')), `${tag}: answers render as text, never markup`);
       await send('a follow up'); await settle();
       const chats = log.filter(l => l.path === '/v1/chat'); ok(chats.every(c => c.auth) && log.filter(l => l.path === '/v1/sessions').length === 1, `${tag}: follow-ups reuse the same session with the bearer token`);
       // duplicate submissions: double Enter sends once

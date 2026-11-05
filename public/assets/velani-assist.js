@@ -27,10 +27,10 @@ import { VelaniAssistant, safeSourceUrl } from './velani-assistant.js';
    ask: 'Escribe tu pregunta para Rondo', label: 'Tu pregunta para Rondo', send: 'Enviar', close: 'Cerrar', del: 'Eliminar esta conversación', lang: 'Idioma',
    confirm: '¿Eliminar esta conversación de nuestros servidores?', yes: 'Eliminar', keep: 'Conservar',
    switchQ: '¿Cambiar a inglés? Esta conversación se eliminará y empezará una nueva en inglés.', switchYes: 'Cambiar', switchNo: 'Seguir en español', switched: 'Nueva conversación en español.',
-   verify: 'Comprobando que tu navegador no es un programa automatizado…', note: 'Rondo es una IA y puede equivocarse. No compartas contraseñas, datos de pago ni registros de empleados. Las conversaciones se conservan hasta 30 días.', privacy: 'Aviso de privacidad',
+   verify: 'Comprobando que tu navegador no es un programa automatizado…', note: 'Rondo es una IA y puede equivocarse. No compartas contraseñas, datos de pago ni registros de empleados. Las conversaciones se conservan hasta 30 días.', privacy: 'Aviso de privacidad (en inglés)',
    retry: 'Reintentar', discard: 'Descartar', edit: 'Editar pregunta', contact: 'Página de contacto',
-   sugg: ['¿Cómo funciona el reloj de entrada?', '¿Cómo funciona la prueba gratis?', '¿Pueden crear nuestro sitio web o aplicación?'],
-   sources: 'Fuentes', newTab: '(se abre en una pestaña nueva)', demo: 'Probar el reloj de entrada', quote: 'Pedir una cotización', support: 'Soporte de NEVORA', talk: 'Contáctanos',
+   sugg: ['¿Cómo funciona el registro de tiempo?', '¿Cómo funciona la prueba gratis?', '¿Pueden crear nuestro sitio web o aplicación?'],
+   sources: 'Fuentes', newTab: '(se abre en una pestaña nueva)', demo: 'Probar el registro de tiempo', quote: 'Pedir una cotización', support: 'Soporte de NEVORA', talk: 'Contáctanos',
    deleted: 'Conversación eliminada. Las consultas enviadas por el formulario de contacto se conservan por separado.',
    ended: 'Esta conversación ya había terminado. Se elimina de nuestros servidores en un plazo de 30 días.',
    verifyFail: 'No se pudo cargar la verificación.',
@@ -51,7 +51,8 @@ import { VelaniAssistant, safeSourceUrl } from './velani-assistant.js';
   input.placeholder = t('ask'); $('ast-in-l').textContent = t('label'); send.setAttribute('aria-label', t('send'));
   $('ast-close').setAttribute('aria-label', t('close')); clearBtn.setAttribute('aria-label', t('del')); $('ast-lang').setAttribute('aria-label', t('lang'));
   $('ast-verify-t').textContent = t('verify'); $('ast-note-t').textContent = t('note'); $('ast-note-a').textContent = t('privacy');
-  retryBtn.textContent = t('retry'); contactLink.textContent = t('contact');
+  retryBtn.textContent = t('retry'); contactLink.textContent = t('contact'); contactLink.href = siteHref(page('/pages/contact'));
+  $('ast-note-a').hreflang = 'en';
   const sugg = $('ast-sugg'); sugg.replaceChildren(...t('sugg').map(q => { const b = document.createElement('button'); b.type = 'button'; b.textContent = q; b.addEventListener('click', () => { input.value = q; submit(); }); return b; }));
   document.querySelectorAll('#ast-lang button').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.locale === locale)));
  };
@@ -165,7 +166,7 @@ import { VelaniAssistant, safeSourceUrl } from './velani-assistant.js';
  };
  const addAnswer = answer => {
   const li = document.createElement('div'); li.className = 'ast-msg ai';
-  const who = document.createElement('p'); who.className = 'ast-who'; who.textContent = name; li.append(who);
+  const who = document.createElement('p'); who.className = 'ast-who'; const mk = panel.querySelector('.ast-head .rmark'); if (mk) who.append(mk.cloneNode(true)); who.append(document.createTextNode(name)); li.append(who);
   for (const para of String(answer.message).split(/\n{2,}/)) {
    const p = document.createElement('p'); const lines = para.split('\n');
    lines.forEach((line, i) => { if (i) p.append(document.createElement('br')); p.append(document.createTextNode(line)); }); li.append(p);
@@ -187,12 +188,14 @@ import { VelaniAssistant, safeSourceUrl } from './velani-assistant.js';
   const u = new URL(href, location.origin), slug = u.pathname === '/' ? '' : u.pathname.split('/').at(-1);
   return '/?preview_theme_id=' + encodeURIComponent(draft) + (slug ? '&view=velani-' + slug : '') + (u.search ? '&' + u.search.slice(1) : '') + u.hash;
  };
+ // In Spanish, the pages that have a Spanish version open in Spanish (NEVORA support stays English)
+ const page = path => locale === 'es' ? ({ '/pages/nevora': '/pages/es-nevora', '/pages/contact': '/pages/es-contacto' })[path] || path : path;
  // Suggested next steps go only to pages that exist on this site; Rondo itself never books, sends or pays
  const action = (answer, sources) => {
   const a = document.createElement('a');
-  if (answer.action === 'show_demo') { const here = !!document.getElementById('try'); a.href = here ? '#try' : siteHref('/pages/nevora#try'); a.textContent = t('demo'); if (here) a.addEventListener('click', () => close()); return a; }
-  if (answer.action === 'lead_form') { a.href = siteHref('/pages/contact?interest=nevora'); a.textContent = t('quote'); return a; }
-  if (answer.action === 'human_help') { const support = sources.some(s => /\/pages\/nevora-support\b/.test(s.url)); a.href = siteHref(support ? '/pages/nevora-support' : '/pages/contact'); a.textContent = support ? t('support') : t('talk'); return a; }
+  if (answer.action === 'show_demo') { const here = !!document.getElementById('try'); a.href = here ? '#try' : siteHref(page('/pages/nevora') + '#try'); a.textContent = t('demo'); if (here) a.addEventListener('click', () => close()); return a; }
+  if (answer.action === 'lead_form') { a.href = siteHref(page('/pages/contact') + '?interest=nevora'); a.textContent = t('quote'); return a; }
+  if (answer.action === 'human_help') { const support = sources.some(s => /\/pages\/nevora-support\b/.test(s.url)); a.href = siteHref(support ? '/pages/nevora-support' : page('/pages/contact')); a.textContent = support ? t('support') : t('talk'); return a; }
   return null;
  };
 

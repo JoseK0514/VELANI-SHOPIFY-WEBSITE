@@ -2,7 +2,7 @@
  const d=document,root=d.documentElement;root.classList.remove('no-js');root.classList.add('js');
  // The boot script marks the document "still" if this file has not run after 2.5s (everything shows, nothing animates). Arriving late, keep it that way.
  clearTimeout(window.__pre);const late=root.classList.contains('still');
- const reduce=matchMedia('(prefers-reduced-motion: reduce)');
+ const reduce=matchMedia('(prefers-reduced-motion: reduce)'),es=/^es\b/i.test(root.lang);
  // Headings: words rise from behind a mask in reading order. Screen readers get the whole sentence once.
  // The first section is shown at first paint (CSS settles it in), and a heading with no words (an image) is left alone.
  if(!late)d.querySelectorAll('.rise').forEach(el=>{
@@ -19,7 +19,7 @@
  // Nav: a hairline once you leave the top; tucks after 24px of scrolling down, returns after 12px up
  const nav=d.getElementById('gnav'),tuckable=nav&&!nav.classList.contains('static');let lastY=scrollY,dir=0,anchor=scrollY;
  const mb=d.getElementById('gmenu-btn'),mm=d.getElementById('gmenu'),behind=[...d.querySelectorAll('main,footer,.lnav,.skip,#ast-root')];
- const setMenu=o=>{if(!mb)return;mb.setAttribute('aria-expanded',String(o));mb.setAttribute('aria-label',o?'Close menu':'Menu');mm.hidden=!o;mb.querySelector('.i-open').hidden=o;mb.querySelector('.i-close').hidden=!o;d.body.style.overflow=o?'hidden':'';behind.forEach(x=>x.inert=o);if(o)nav.classList.remove('tuck')};
+ const setMenu=o=>{if(!mb)return;mb.setAttribute('aria-expanded',String(o));mb.setAttribute('aria-label',o?(es?'Cerrar menú':'Close menu'):(es?'Menú':'Menu'));mm.hidden=!o;mb.querySelector('.i-open').hidden=o;mb.querySelector('.i-close').hidden=!o;d.body.style.overflow=o?'hidden':'';behind.forEach(x=>x.inert=o);if(o)nav.classList.remove('tuck')};
  if(mb){mb.addEventListener('click',()=>setMenu(mb.getAttribute('aria-expanded')!=='true'));
   mm.addEventListener('click',e=>{if(e.target.closest('a'))setMenu(false)});
   d.addEventListener('keydown',e=>{if(e.key==='Escape'&&mb.getAttribute('aria-expanded')==='true'){setMenu(false);mb.focus()}});

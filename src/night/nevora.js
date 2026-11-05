@@ -1,6 +1,6 @@
 window.__fx=[];
 (()=>{
- const $=s=>document.querySelector(s),big=matchMedia('(min-width:960px)');
+ const $=s=>document.querySelector(s),big=matchMedia('(min-width:960px)'),es=/^es\b/i.test(document.documentElement.lang);
  // Local nav: solid as soon as it sticks; names the section whose heading has passed
  const lnav=$('#lnav'),ink=$('#lnav-ink'),links=[...document.querySelectorAll('[data-spy]')];
  const heads=links.map(a=>{const t=document.getElementById(a.dataset.spy);return t&&(t.querySelector('h1,h2')||t)});
@@ -16,13 +16,14 @@ window.__fx=[];
  const show=i=>{if(i===si)return;si=i;steps.forEach((s,j)=>s.classList.toggle('on',j===i));feed.style.setProperty('--y',steps[i].dataset.y+'%');pp.classList.toggle('down',i>0)};show(0);
  __fx.push({always:true,el:$('#story'),run(p,r,vh,c){let best=0,bd=1e9;steps.forEach((s,i)=>{const b=s.getBoundingClientRect();const d=Math.abs(b.top+b.height/2-vh/2);if(d<bd){bd=d;best=i}});show(best);
   const sp=c((vh*.5-r.top)/r.height);bar.style.setProperty('--sp',sp.toFixed(3));const mins=Math.round(sp*480/15)*15,h=12+Math.floor(mins/60),m=mins%60;
-  now.textContent=((h-1)%12+1)+':'+String(m).padStart(2,'0')+(h<12?' AM':' PM');now.style.setProperty('--tip',(sp*r.height).toFixed(0)+'px')}});
+  now.textContent=((h-1)%12+1)+':'+String(m).padStart(2,'0')+(es?(h<12?'\u00a0a.\u00a0m.':'\u00a0p.\u00a0m.'):(h<12?' AM':' PM'));now.style.setProperty('--tip',(sp*r.height).toFixed(0)+'px')}});
  // Owner screenshot: clip reveal, then hand the edge back to the slab's own ring and shadow
  const ow=$('#owner');ow.addEventListener('transitionend',e=>{if(e.propertyName==='clip-path')ow.style.clipPath='none'});
  // Local nav menu on narrow screens, like the main phone menu: focus moves into it, the page behind is inert and does not
  // scroll, Escape closes it and returns focus to the button, and the button says "Close menu" while it is open
- const tog=$('#lnav-tog'),list=$('#lnav-list'),behindL=[...document.querySelectorAll('main>:not(.lnav),footer,.skip,#ast-root')];// the local nav sits inside <main>
- const setL=(o,focus)=>{if(o===(tog.getAttribute('aria-expanded')==='true'))return;tog.setAttribute('aria-expanded',String(o));tog.setAttribute('aria-label',o?'Close menu':'Menu');list.classList.toggle('open',o);
+ const tog=$('#lnav-tog'),list=$('#lnav-list'),behindL=(()=>{// everything beside the local nav at each level up to <body>, never an element that contains the nav (on Shopify the nav sits inside a section wrapper)
+  const out=[];let n=tog.closest('.lnav')||tog;while(n&&n.parentElement&&n!==document.body){for(const s of n.parentElement.children)if(s!==n&&!/^(SCRIPT|STYLE|LINK|TEMPLATE)$/.test(s.tagName))out.push(s);n=n.parentElement}return out})();
+ const setL=(o,focus)=>{if(o===(tog.getAttribute('aria-expanded')==='true'))return;tog.setAttribute('aria-expanded',String(o));tog.setAttribute('aria-label',o?(es?'Cerrar menú':'Close menu'):(es?'Menú':'Menu'));list.classList.toggle('open',o);
   behindL.forEach(x=>x.inert=o);document.body.style.overflow=o?'hidden':'';
   if(o&&focus){const first=[...list.querySelectorAll('a')].find(a=>a.offsetParent!==null);first&&first.focus({preventScroll:true})}};
  tog.addEventListener('click',()=>setL(tog.getAttribute('aria-expanded')!=='true',true));list.addEventListener('click',e=>{if(e.target.closest('a'))setL(false)});

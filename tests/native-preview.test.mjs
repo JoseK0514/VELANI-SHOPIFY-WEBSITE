@@ -1,10 +1,14 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { Liquid } from 'liquidjs';
-import { renderBody, renderShopifyLayout } from '../src/render.mjs';
+import { renderBody, renderShopifyLayout, renderShopifySnippets } from '../src/render.mjs';
 
-const liquid = new Liquid();
+// The layout renders its header and footer from theme snippets ({% render %}); Shopify's global objects (theme, routes, settings,
+// request) are visible inside snippets, so the test passes the page context as globals too
+const liquid = new Liquid({ templates: Object.fromEntries(Object.entries(renderShopifySnippets()).map(([name, src]) => [name + '.liquid', src])), extname: '.liquid' });
 liquid.registerFilter('asset_url', name => '/assets/' + name);
+const parseAndRender = liquid.parseAndRender.bind(liquid);
+liquid.parseAndRender = (tpl, ctx = {}) => parseAndRender(tpl, ctx, { globals: ctx });
 test('unpublished navigation stays in the exact draft without published page resources', async () => {
   const html = await liquid.parseAndRender(renderBody('/', { target: 'shopify' }), { theme: { role: 'unpublished', id: 123 }, routes: { root_url: '/' } });
   assert.match(html, /href="\/\?preview_theme_id=123&amp;view=velani-contact&amp;interest=nevora-demo"/);

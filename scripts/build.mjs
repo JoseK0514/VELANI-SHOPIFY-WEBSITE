@@ -2,7 +2,7 @@ import { mkdir, writeFile, readFile, cp, copyFile, rm } from 'node:fs/promises';
 import { createHash } from 'node:crypto';
 import path from 'node:path';
 import { routes, company } from '../src/content.mjs';
-import { renderPage, renderBody, renderShopifyLayout } from '../src/render.mjs';
+import { renderPage, renderBody, renderShopifyLayout, renderShopifySnippets } from '../src/render.mjs';
 import { nightAssets } from '../src/night.mjs';
 export const root = path.resolve(import.meta.dirname, '..');
 export async function build() {
@@ -39,7 +39,7 @@ export async function build() {
     }
     await writeFile(target, code);
   }
-  for (const dir of ['layout', 'sections', 'templates', 'config', 'locales']) await mkdir(path.join(out, 'theme', dir), { recursive: true });
+  for (const dir of ['layout', 'sections', 'snippets', 'templates', 'config', 'locales']) await mkdir(path.join(out, 'theme', dir), { recursive: true });
   const manifest = {};
   for (const route of Object.keys(routes)) {
     const filename = route === '/' ? 'index.html' : route.slice(1) + '/index.html';
@@ -59,6 +59,7 @@ export async function build() {
   await writeFile(path.join(out, 'theme/sections/velani-not-found.liquid'), renderBody('/not-found', { target: 'shopify' }) + '\n{% schema %}{"name":"Velani fallback","settings":[]}{% endschema %}\n');
   for (const name of ['404', 'page', 'product', 'collection', 'list-collections', 'cart', 'search']) await writeFile(path.join(out, 'theme/templates', name + '.json'), JSON.stringify({ sections: { main: { type: 'velani-not-found' } }, order: ['main'] }, null, 2) + '\n');
   await writeFile(path.join(out, 'theme/layout/theme.liquid'), renderShopifyLayout());
+  for (const [name, liquid] of Object.entries(renderShopifySnippets())) await writeFile(path.join(out, 'theme/snippets', name + '.liquid'), liquid);
   await writeFile(path.join(out, 'theme/config/settings_schema.json'), JSON.stringify([{ name: 'theme_info', theme_name: 'Velani Midnight', theme_version: '0.1.0', theme_author: company.operator, theme_documentation_url: 'https://www.thevelani.com', theme_support_url: 'https://www.thevelani.com/pages/contact' }, { name: 'Inquiry activation', settings: [{ type: 'paragraph', content: 'When on, the Contact page uses the Shopify contact form on the published theme, and inquiries are emailed to the store sender address. When off, the page shows the support email instead.' }, { type: 'checkbox', id: 'inquiries_enabled', label: 'Enable inquiries on a published MAIN theme only', default: true }] }, { name: 'AI assistant', settings: [{ type: 'paragraph', content: 'The Velani assistant (chat) appears on every page when the API address is set. Use the HTTPS address of the deployed Velani AI service, with no path. Leave empty to hide the assistant.' }, { type: 'text', id: 'assistant_api_url', label: 'Assistant API address' }] }], null, 2) + '\n');
   await writeFile(path.join(out, 'theme/config/settings_data.json'), JSON.stringify({ current: { inquiries_enabled: true, assistant_api_url: '' }, presets: {} }, null, 2) + '\n');
   await writeFile(path.join(out, 'theme/locales/en.default.json'), JSON.stringify({ general: { accessibility: { skip_to_content: 'Skip to content' } } }, null, 2) + '\n');
