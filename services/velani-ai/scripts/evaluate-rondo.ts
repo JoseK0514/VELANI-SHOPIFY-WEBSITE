@@ -35,7 +35,9 @@ if (!args.includes('--run')) {
   const apiKey = process.env.AI_API_KEY;
   const baseURL = process.env.AI_BASE_URL;
   const model = process.env.AI_MODEL;
-  if (!apiKey || !baseURL || model !== 'gpt-6-astra') throw new Error('Use the authorized development gateway and explicitly set AI_MODEL=gpt-6-astra.');
+  if (!apiKey || !baseURL || !model || !['gpt-6-astra', 'gpt-6-1-sol'].includes(model)) {
+    throw new Error('Use the authorized development gateway and explicitly select gpt-6-astra or gpt-6-1-sol.');
+  }
   // This authorization is for this existing development gateway, whose prices we verify below.
   if (baseURL !== 'https://br-snowy-brook-bcc6b3zm-api.ai.c-16.us-east-1.aws.neon.tech/v1') {
     throw new Error('Use the authorized Velani development gateway; another host needs separate pricing and authorization.');
