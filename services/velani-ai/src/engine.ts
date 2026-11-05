@@ -20,7 +20,7 @@ export class ModelError extends Error {
     super(code);
     this.name = 'ModelError';
     this.code = code;
-    if (Number.isInteger(providerStatus) && providerStatus! >= 400 && providerStatus! <= 599) this.providerStatus = providerStatus;
+    if (typeof providerStatus === 'number' && Number.isInteger(providerStatus) && providerStatus >= 400 && providerStatus <= 599) this.providerStatus = providerStatus;
   }
 }
 
