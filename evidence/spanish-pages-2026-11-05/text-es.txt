@@ -216,7 +216,7 @@ Registro de tiempo
 
 Northside Main Office
 
-12:50
+1:01
 p. m.
 
 Jueves, 5 de noviembre
@@ -801,40 +801,17 @@ Registro de tiempo
 
 Northside Main Office
 
-12:51
+1:02
 p. m.
 
 Jueves, 5 de noviembre
 
 Entrada registrada
 
-Registrada el 5 nov · 12:51 p. m.
+Registrada el 5 nov · 1:02 p. m.
 
 Solo es una demostración. No se guarda nada.
 
 Marcar entrada de nuevo
 
-Entrada registrada a las 12:51 p. m.
-
-=== Rondo panel
-R
-Rondo
-
-Asesor de IA · Velani y NEVORA
-
-EN
-ES
-
-Hola, soy Rondo.
-
-Soy el asesor de IA de Velani. Pregúntame sobre NEVORA, la prueba gratis o los sitios web y aplicaciones que desarrollamos.
-
-¿Cómo funciona el registro de tiempo?
-¿Cómo funciona la prueba gratis?
-¿Pueden crear nuestro sitio web o aplicación?
-
-No puedo ver cuentas de empleados ni hacer cambios, reservas o pagos.
-
-Tu pregunta para Rondo
-
-Rondo es una IA y puede equivocarse. No compartas contraseñas, datos de pago ni registros de empleados. Las conversaciones se conservan hasta 30 días. Aviso de privacidad (en inglés)
+Entrada registrada a las 1:02 p. m.

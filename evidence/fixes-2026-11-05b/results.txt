@@ -11,7 +11,7 @@ PASS chromium 1920: no panel text overlaps a visual on 6 pages (none)
 PASS chromium 1440: NEVORA page says it runs on the web and in the NEVORA app
 PASS chromium 1440: Rondo section is future tense, says the website chat works today; deletion is a request
 PASS chromium 1440: NEVORA price answer uses the quote wording
-PASS chromium 1440: after Continue focus is on the result and "Clock-in recorded at 12:41 PM" is announced
+PASS chromium 1440: after Continue focus is on the result and "Clock-in recorded at 1:03 PM" is announced
 PASS chromium 1440: Continue by keyboard also lands on the result
 PASS chromium 1440: focused "Scroll to NEVORA" is visible (opacity 1)
 PASS chromium 1440: home Rondo label says Coming to NEVORA
@@ -49,7 +49,7 @@ PASS chromium 1440: verification that cannot load hides the empty box and offers
 PASS chromium 1024: NEVORA page says it runs on the web and in the NEVORA app
 PASS chromium 1024: Rondo section is future tense, says the website chat works today; deletion is a request
 PASS chromium 1024: NEVORA price answer uses the quote wording
-PASS chromium 1024: after Continue focus is on the result and "Clock-in recorded at 12:41 PM" is announced
+PASS chromium 1024: after Continue focus is on the result and "Clock-in recorded at 1:03 PM" is announced
 PASS chromium 1024: Continue by keyboard also lands on the result
 PASS chromium 1024: focused "Scroll to NEVORA" is visible (opacity 1)
 PASS chromium 1024: home Rondo label says Coming to NEVORA
@@ -87,7 +87,7 @@ PASS chromium 834: NEVORA price answer uses the quote wording
 PASS chromium 834: NEVORA menu takes focus, the page behind is inert and locked, button says Close menu ({"inList":true,"inert":[true,true,true,true],"lock":"hidden","label":"Close menu"})
 PASS chromium 834: Ask Rondo is hidden while the NEVORA menu is open
 PASS chromium 834: Escape closes the NEVORA menu and returns focus to its button
-PASS chromium 834: after Continue focus is on the result and "Clock-in recorded at 12:42 PM" is announced
+PASS chromium 834: after Continue focus is on the result and "Clock-in recorded at 1:03 PM" is announced
 PASS chromium 834: Continue by keyboard also lands on the result
 PASS chromium 834: focused "Scroll to NEVORA" is visible (opacity 1)
 PASS chromium 834: home Rondo label says Coming to NEVORA
@@ -125,7 +125,7 @@ PASS chromium 390: NEVORA price answer uses the quote wording
 PASS chromium 390: NEVORA menu takes focus, the page behind is inert and locked, button says Close menu ({"inList":true,"inert":[true,true,true,true],"lock":"hidden","label":"Close menu"})
 PASS chromium 390: Ask Rondo is hidden while the NEVORA menu is open
 PASS chromium 390: Escape closes the NEVORA menu and returns focus to its button
-PASS chromium 390: after Continue focus is on the result and "Clock-in recorded at 12:42 PM" is announced
+PASS chromium 390: after Continue focus is on the result and "Clock-in recorded at 1:04 PM" is announced
 PASS chromium 390: Continue by keyboard also lands on the result
 PASS chromium 390: focused "Scroll to NEVORA" is visible (opacity 1)
 PASS chromium 390: home Rondo label says Coming to NEVORA
@@ -167,7 +167,7 @@ PASS webkit 1920: no panel text overlaps a visual on 6 pages (none)
 PASS webkit 1440: NEVORA page says it runs on the web and in the NEVORA app
 PASS webkit 1440: Rondo section is future tense, says the website chat works today; deletion is a request
 PASS webkit 1440: NEVORA price answer uses the quote wording
-PASS webkit 1440: after Continue focus is on the result and "Clock-in recorded at 12:43 PM" is announced
+PASS webkit 1440: after Continue focus is on the result and "Clock-in recorded at 1:05 PM" is announced
 PASS webkit 1440: Continue by keyboard also lands on the result
 PASS webkit 1440: focused "Scroll to NEVORA" is visible (opacity 1)
 PASS webkit 1440: home Rondo label says Coming to NEVORA
@@ -203,7 +203,7 @@ PASS webkit 1440: verification that cannot load hides the empty box and offers t
 PASS webkit 1024: NEVORA page says it runs on the web and in the NEVORA app
 PASS webkit 1024: Rondo section is future tense, says the website chat works today; deletion is a request
 PASS webkit 1024: NEVORA price answer uses the quote wording
-PASS webkit 1024: after Continue focus is on the result and "Clock-in recorded at 12:43 PM" is announced
+PASS webkit 1024: after Continue focus is on the result and "Clock-in recorded at 1:05 PM" is announced
 PASS webkit 1024: Continue by keyboard also lands on the result
 PASS webkit 1024: focused "Scroll to NEVORA" is visible (opacity 1)
 PASS webkit 1024: home Rondo label says Coming to NEVORA
@@ -239,7 +239,7 @@ PASS webkit 834: NEVORA price answer uses the quote wording
 PASS webkit 834: NEVORA menu takes focus, the page behind is inert and locked, button says Close menu ({"inList":true,"inert":[true,true,true,true],"lock":"hidden","label":"Close menu"})
 PASS webkit 834: Ask Rondo is hidden while the NEVORA menu is open
 PASS webkit 834: Escape closes the NEVORA menu and returns focus to its button
-PASS webkit 834: after Continue focus is on the result and "Clock-in recorded at 12:44 PM" is announced
+PASS webkit 834: after Continue focus is on the result and "Clock-in recorded at 1:05 PM" is announced
 PASS webkit 834: Continue by keyboard also lands on the result
 PASS webkit 834: focused "Scroll to NEVORA" is visible (opacity 1)
 PASS webkit 834: home Rondo label says Coming to NEVORA
@@ -275,7 +275,7 @@ PASS webkit 390: NEVORA price answer uses the quote wording
 PASS webkit 390: NEVORA menu takes focus, the page behind is inert and locked, button says Close menu ({"inList":true,"inert":[true,true,true,true],"lock":"hidden","label":"Close menu"})
 PASS webkit 390: Ask Rondo is hidden while the NEVORA menu is open
 PASS webkit 390: Escape closes the NEVORA menu and returns focus to its button
-PASS webkit 390: after Continue focus is on the result and "Clock-in recorded at 12:44 PM" is announced
+PASS webkit 390: after Continue focus is on the result and "Clock-in recorded at 1:06 PM" is announced
 PASS webkit 390: Continue by keyboard also lands on the result
 PASS webkit 390: focused "Scroll to NEVORA" is visible (opacity 1)
 PASS webkit 390: home Rondo label says Coming to NEVORA

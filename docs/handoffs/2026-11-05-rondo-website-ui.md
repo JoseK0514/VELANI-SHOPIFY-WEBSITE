@@ -2,6 +2,54 @@
 
 ## Latest status (end of 2026-11-05)
 
+**Newest: the theme to publish is `193112473914` "Velani Spanish + Rondo mark (preview)", role `UNPUBLISHED`.** It was duplicated from the live `193110835514` and adds:
+- **Spanish site:** Inicio, NEVORA, Productos, Planes and Contacto, with an EN | ES switch in the header, the phone menu and the footer. Each page has `hreflang` en/es/x-default and Spanish search titles and descriptions. Wording rules are in `docs/i18n/es-glossary.md`.
+- **Rondo's mark:** one round mark (a dark disc with a three-quarter ring of light and the R) everywhere Rondo appears: the home and NEVORA example chats, the launcher, the chat header and each answer.
+- **Fixes Jose found on the phone:** the NEVORA page menu no longer freezes the page after a jump (logo and back work again), and the Custom apps text uses the full width on phones.
+- **Found and fixed in this pass:** at 1024 px, the Spanish example-chat header pushed "En desarrollo" past the card edge. The label now moves to its own line when the name is long. A new "text stays inside its card" check runs on every page and width.
+
+**Checks on `193112473914` (hosted, 2026-11-05): 1612 of 1612 pass** (`scripts/checks/hosted-spanish-mark.mjs`, evidence in `evidence/hosted-spanish-mark-2026-11-05/`):
+- **Coverage:** 13 pages (8 English, 5 Spanish), at 1440, 1180, 1024, 834, 390 and 320 px, in Chromium and WebKit.
+- **Every page:**
+  - loads on the preview theme with the right `lang`;
+  - no sideways overflow;
+  - no text sticks out of its card;
+  - no text over pictures;
+  - every internal link stays on the preview;
+  - every Rondo mark is round with its ring;
+  - the launcher carries the mark;
+  - no script errors;
+  - hreflang en/es/x-default is in place.
+- **Flows:**
+  - EN → ES → EN round trips from NEVORA, Plans and Home;
+  - the Spanish NEVORA menu closes and frees the page;
+  - "Inicio de Velani" goes to the Spanish home;
+  - the Spanish phone menu opens and Escape closes it;
+  - the chat opens in Spanish, with the 32 px mark in its header;
+  - the Spanish contact form shows Spanish labels and the preview notice, and sends nothing.
+
+Local checks: unit 45/45, Rondo UI 166/166, Spanish pages 44/44, fixes 306/306, inspection fixes 44/44.
+
+**Publish steps for Jose:**
+1. Publish theme `193112473914` in Shopify admin (Online Store → Themes).
+2. Create five pages in Shopify admin (Online Store → Pages), each with this handle and theme template:
+   - `es` → `page.es`
+   - `es-nevora` → `page.es-nevora`
+   - `es-productos` → `page.es-productos`
+   - `es-planes` → `page.es-planes`
+   - `es-contacto` → `page.es-contacto`
+
+   Until these pages exist, the ES links on the live site lead to "page not found". The preview works without them.
+
+**For a native Puerto Rico Spanish reviewer**, please confirm:
+- "Más luz para tu trabajo." (hero)
+- "apps a la medida"
+- "Nosotros"
+- "Pedidos"
+- "turnos sin cubrir"
+- "Procuramos responderte"
+- "Venta o intercambio de datos"
+
 **Update after the full inspection: the theme to publish is now `193109852474` "Velani inspection fixes (preview)".** It contains everything in `193106706746` plus the fixes from `docs/reviews/velani-site-inspection-2026-11-05.md`:
 - **Layout:** the tablet text-and-image overlap is gone; hosted check finds no overlaps at 834, 1024, 1180 or 1440 px in Chromium or WebKit.
 - **Accessibility and chat:** the keyboard and focus fixes, plus honest chat wording.
