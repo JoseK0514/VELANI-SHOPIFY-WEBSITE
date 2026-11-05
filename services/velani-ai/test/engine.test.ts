@@ -194,6 +194,24 @@ describe('ModelEngine contract and trust boundaries', () => {
     }
   });
 
+  it.each([
+    ['output token budget exceeded', 'token_budget'],
+    ['request blocked by content_filter', 'safety_filter'],
+    ['invalid JSON generated', 'structured_output'],
+    ['unclassified private diagnostic', undefined],
+  ])('reduces provider diagnostic text to a fixed label: %s', async (message, hint) => {
+    const engine = new ModelEngine({ ...options, complete: async () => {
+      throw new OpenAI.APIError(400, { message: message + ' secret-token' }, undefined, new Headers());
+    } });
+    try {
+      await engine.answer(input);
+      expect.fail('Expected a sanitized provider error');
+    } catch (error) {
+      expect(error).toMatchObject({ code: 'provider_unavailable', providerStatus: 400, providerHint: hint });
+      expect(JSON.stringify(error)).not.toMatch(/secret-token|private diagnostic/);
+    }
+  });
+
   it('aborts and times out even when a provider never settles', async () => {
     vi.useFakeTimers();
     let signal: AbortSignal | undefined;

@@ -1,4 +1,4 @@
-import OpenAI from 'openai';
+import OpenAI, { APIError } from 'openai';
 import { z } from 'zod';
 import { buildModelMessages, type ModelMessage } from './prompts.js';
 import type { Answer, AnswerEngine, KnowledgeDocument, Message } from './types.js';
@@ -11,16 +11,28 @@ const outputSchema = z.object({
 }).strict();
 
 export type ModelErrorCode = 'invalid_input' | 'provider_unavailable' | 'provider_timeout' | 'invalid_model_response';
+type ProviderHint = 'token_budget' | 'structured_output' | 'safety_filter';
+
+function providerHint(error: APIError): ProviderHint | undefined {
+  // Reduce upstream text to fixed diagnostic labels; never retain its text, headers or body.
+  const message = error.message.slice(0, 4096);
+  if (/(output|completion|reasoning).{0,40}(token|budget).{0,40}(exceed|limit|insufficient|small)|max_(?:completion_)?tokens.{0,40}(exceed|invalid|must)/i.test(message)) return 'token_budget';
+  if (/content_filter|content policy|safety filter|moderation|jailbreak|prompt injection/i.test(message)) return 'safety_filter';
+  if (/response_format|invalid.{0,30}json|json.{0,30}(invalid|parse|malformed|failed)/i.test(message)) return 'structured_output';
+  return undefined;
+}
 
 /** Safe to log the code/message; deliberately does not retain a provider error or raw response. */
 export class ModelError extends Error {
   readonly code: ModelErrorCode;
   readonly providerStatus?: number;
-  constructor(code: ModelErrorCode, providerStatus?: number) {
+  readonly providerHint?: ProviderHint;
+  constructor(code: ModelErrorCode, providerStatus?: number, hint?: ProviderHint) {
     super(code);
     this.name = 'ModelError';
     this.code = code;
     if (typeof providerStatus === 'number' && Number.isInteger(providerStatus) && providerStatus >= 400 && providerStatus <= 599) this.providerStatus = providerStatus;
+    if (hint) this.providerHint = hint;
   }
 }
 
@@ -168,7 +180,8 @@ export class ModelEngine implements AnswerEngine {
       ]);
     } catch (error) {
       if (controller.signal.aborted || (error instanceof ModelError && error.code === 'provider_timeout')) throw new ModelError('provider_timeout');
-      throw new ModelError('provider_unavailable', error instanceof OpenAI.APIError ? error.status : undefined);
+      throw new ModelError('provider_unavailable', error instanceof OpenAI.APIError ? error.status : undefined,
+        error instanceof OpenAI.APIError ? providerHint(error) : undefined);
     } finally {
       if (timer) clearTimeout(timer);
     }
