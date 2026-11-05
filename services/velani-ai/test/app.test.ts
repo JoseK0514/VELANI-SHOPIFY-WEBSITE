@@ -106,6 +106,16 @@ describe('public assistant API', () => {
     expect(response.statusCode).toBe(503); expect(response.json().error.code).toBe('provider_unavailable');
     expect(repository.failTurn).toHaveBeenCalled(); expect(repository.completeTurn).not.toHaveBeenCalled();
   });
+  it('gives a rephrase error for upstream request rejection without promising a timed retry', async () => {
+    const { app, create, engine, repository } = setup();
+    engine.answer.mockRejectedValueOnce(new ModelError('provider_unavailable', 400));
+    const response = await app.inject({ method: 'POST', url: '/v1/chat', headers: await create(), payload: { requestId: randomUUID(), message: 'Synthetic compound question' } });
+    expect(response.statusCode).toBe(503);
+    expect(response.json().error).toEqual({ code: 'provider_request_rejected', message: 'This request could not be processed. Please rephrase it or ask one question at a time.' });
+    expect(response.headers['retry-after']).toBeUndefined();
+    expect(response.body).not.toContain('providerStatus');
+    expect(repository.failTurn).toHaveBeenCalledOnce();
+  });
   it('blocks model cost when a persistent quota is exhausted', async () => {
     const { app, create, engine, repository } = setup(); const headers = await create();
     vi.mocked(repository.consumeRateLimit).mockImplementation(async key => !key.startsWith('global:'));

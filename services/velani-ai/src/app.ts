@@ -92,6 +92,9 @@ export function buildApp(config: Config, repository: Repository, engine: AnswerE
     else if (error instanceof StaleTurnError) mapped = new ApiError(409, 'turn_expired', 'Please retry this message.');
     else if (error instanceof ProfileChangedError) mapped = new ApiError(409, 'profile_changed', 'Business details changed. Review them before generating a new plan.');
     else if (error instanceof PlanKnowledgeUnavailableError) mapped = new ApiError(503, 'knowledge_unavailable', 'Current product information is unavailable. Please contact Velani.');
+    else if (error instanceof ModelError && error.providerStatus === 400) {
+      mapped = new ApiError(503, 'provider_request_rejected', 'This request could not be processed. Please rephrase it or ask one question at a time.');
+    }
     else if (error instanceof ModelError) mapped = new ApiError(503, error.code, 'The assistant could not answer right now. Please retry, or contact Velani.', 10);
     else mapped = new ApiError(503, 'service_unavailable', 'The service is temporarily unavailable. Please try again.', 10);
     request.log.warn({ code: mapped.code, requestId: request.id,

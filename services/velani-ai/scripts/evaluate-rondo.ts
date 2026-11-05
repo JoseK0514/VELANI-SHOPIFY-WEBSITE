@@ -67,7 +67,7 @@ if (!args.includes('--run')) {
   }
   report.pricing = { inputPerMillion: Math.max(entry.cost.input, entry.cost.cache_write ?? 0), outputPerMillion: entry.cost.output };
   reserveEvaluationCost(0, MAX_COMPLETION_TOKENS, report.pricing, 0, budgetUsd);
-  const client = new OpenAI({ apiKey, baseURL, maxRetries: 0, timeout: 75_000 });
+  const client = new OpenAI({ apiKey, baseURL, maxRetries: 0, timeout: 45_000 });
   let servedModels: string[];
   try { servedModels = (await client.models.list()).data.map(item => item.id); }
   catch { throw new Error('Gateway catalog check failed; no paid calls made.'); }
@@ -76,7 +76,7 @@ if (!args.includes('--run')) {
   for (const test of cases) {
     const row: EvaluationResult = { ...test, status: 'reserved', semanticReview: 'pending' };
     const started = performance.now();
-    const engine = new ModelEngine({ apiKey, model, baseURL, timeoutMs: 75_000, complete: async (request, signal) => {
+    const engine = new ModelEngine({ apiKey, model, baseURL, timeoutMs: 45_000, complete: async (request, signal) => {
       const inputBytes = Buffer.byteLength(JSON.stringify(request.messages));
       if (inputBytes + 1024 >= 200_000) throw new Error('Evaluation context exceeds reviewed price tier.');
       const reservation = reserveEvaluationCost(inputBytes, request.max_completion_tokens, report.pricing, report.reservedUpperBoundUsd, budgetUsd);
