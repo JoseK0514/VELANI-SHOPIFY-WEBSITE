@@ -1,6 +1,6 @@
 # Latest status — 2026-11-05
 
-Rondo's public backend is live and tested. [Current validation](RONDO-VALIDATION-2026-11-05.md) and [Claude UI handoff](CLAUDE-UI-START-HERE.md) supersede the historical credential/deployment/theme statements below. The compound-request provider limitation remains documented. No Shopify UI was changed.
+Rondo's public backend is live and tested. [Current validation](RONDO-VALIDATION-2026-11-05.md) and [Claude UI handoff](CLAUDE-UI-START-HERE.md) supersede the historical credential/deployment/theme statements below. The compound-request provider limitation remains documented. Approved cleanup removed three synthetic database conversations and the unused original Turnstile widget; the active replacement and 14 knowledge documents remain. Health, readiness and configuration returned HTTP 200 after cleanup. No Shopify UI was changed.
 
 # Source publication status — 2026-11-03
 
