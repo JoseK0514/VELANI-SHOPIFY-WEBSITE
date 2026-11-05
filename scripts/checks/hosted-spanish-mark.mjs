@@ -45,7 +45,7 @@ for (const engine of ['chromium', 'webkit']) { const b = await pw[engine].launch
   const ctx = await b.newContext({ viewport: { width: vp.w, height: vp.h }, deviceScaleFactor: vp.m ? 2 : 1, isMobile: !!vp.m, hasTouch: !!vp.m, reducedMotion: 'reduce' });
   await ctx.route('https://velani-ai.vercel.app/v1/chat', r => r.abort()); await ctx.route('https://velani-ai.vercel.app/v1/sessions', r => r.abort());
   await ctx.addInitScript(css => { const add = () => { const st = document.createElement('style'); st.textContent = css; document.documentElement.appendChild(st); }; if (document.documentElement) add(); else document.addEventListener('DOMContentLoaded', add); }, hide);
-  const p = await ctx.newPage(); const errs = []; p.on('pageerror', e => errs.push(e.message));
+  const p = await ctx.newPage(); const errs = []; p.on('pageerror', e => { if (!/\/api\/event\/collect/.test(e.message)) errs.push(e.message); }); // Shopify's own analytics beacon: WebKit reports it as an access-control error when a navigation cancels it (not theme code)
   const go = async path => { const r = await p.goto(q(path), { waitUntil: 'load' }); await p.addStyleTag({ content: hide }); await p.waitForTimeout(900); return r.status(); };
   for (const path of (process.env.ONLY_FLOWS ? [] : [...EN, ...ES])) { const isEs = /velani-es|\/pages\/es/.test(path); errs.length = 0;
    const st = await go(path); const f = await p.evaluate(pageFacts, LIVE);
