@@ -27,7 +27,8 @@ if (!args.includes('--run')) {
   if (!apiKey || !baseURL || model !== 'gpt-6-astra') throw new Error('Use the authorized development gateway and explicitly set AI_MODEL=gpt-6-astra.');
   const endpoint = new URL(baseURL);
   if (endpoint.protocol !== 'https:' || endpoint.username || endpoint.password) throw new Error('Use a credential-free HTTPS gateway URL.');
-  const outputPath = resolve(args.find(arg => arg.startsWith('--out='))?.slice(6) ?? 'artifacts/rondo-hard-evaluation.json');
+  if (args.some(arg => arg.startsWith('--out='))) throw new Error('The authorized suite uses one fixed spend ledger; alternate output paths are not allowed.');
+  const outputPath = resolve('artifacts/rondo-hard-evaluation.json');
   await mkdir(dirname(outputPath), { recursive: true });
   const report = {
     startedAt: new Date().toISOString(), model, budgetUsd, reservedUpperBoundUsd: 0,
