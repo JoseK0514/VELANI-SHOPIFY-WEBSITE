@@ -1,6 +1,7 @@
 import { createHash } from 'node:crypto';
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { dirname, resolve } from 'node:path';
+import { fileURLToPath } from 'node:url';
 import OpenAI from 'openai';
 import { z } from 'zod';
 import { ModelEngine, ModelError } from '../src/engine.js';
@@ -40,7 +41,7 @@ if (!args.includes('--run')) {
     throw new Error('Use the authorized Velani development gateway; another host needs separate pricing and authorization.');
   }
   if (args.some(arg => arg.startsWith('--out='))) throw new Error('The authorized suite uses one fixed spend ledger; alternate output paths are not allowed.');
-  const outputPath = resolve('artifacts/rondo-hard-evaluation.json');
+  const outputPath = resolve(fileURLToPath(new URL('../artifacts/rondo-hard-evaluation.json', import.meta.url)));
   await mkdir(dirname(outputPath), { recursive: true });
   const report = {
     startedAt: new Date().toISOString(), model, budgetUsd, reservedUpperBoundUsd: 0,
