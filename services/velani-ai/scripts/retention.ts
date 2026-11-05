@@ -14,19 +14,24 @@ export async function runRetention(pool: Pool, options: { apply?: boolean; chatD
   const apply = options.apply === true;
   const client = await pool.connect();
   try {
-    await client.query('BEGIN ISOLATION LEVEL REPEATABLE READ');
+    // A new snapshot after the advisory lock sees a concurrent cron's commit.
+    await client.query('BEGIN');
     await client.query("SELECT pg_advisory_xact_lock(hashtext(current_database()), hashtext(current_schema() || ':velani-retention'))");
-    const counts = await client.query<{ sessions: string; leads: string; rate_limits: string }>(`SELECT
-      (SELECT count(*) FROM sessions WHERE expires_at <= now() OR created_at < now() - make_interval(days => $1)) AS sessions,
-      (SELECT count(*) FROM leads WHERE created_at < now() - make_interval(days => $2)) AS leads,
-      (SELECT count(*) FROM rate_limits WHERE expires_at < now() - interval '1 day') AS rate_limits`, [chatDays, leadDays]);
+    let result: RetentionResult;
     if (apply) {
-      await client.query('DELETE FROM leads WHERE created_at < now() - make_interval(days => $1)', [leadDays]);
-      await client.query('DELETE FROM sessions WHERE expires_at <= now() OR created_at < now() - make_interval(days => $1)', [chatDays]);
-      await client.query("DELETE FROM rate_limits WHERE expires_at < now() - interval '1 day'");
+      const leads = await client.query('DELETE FROM leads WHERE created_at < now() - make_interval(days => $1)', [leadDays]);
+      const sessions = await client.query('DELETE FROM sessions WHERE expires_at <= now() OR created_at < now() - make_interval(days => $1)', [chatDays]);
+      const rateLimits = await client.query("DELETE FROM rate_limits WHERE expires_at < now() - interval '1 day'");
+      result = { apply, sessions: sessions.rowCount ?? 0, leads: leads.rowCount ?? 0, rateLimits: rateLimits.rowCount ?? 0 };
+    } else {
+      const counts = await client.query<{ sessions: string; leads: string; rate_limits: string }>(`SELECT
+        (SELECT count(*) FROM sessions WHERE expires_at <= now() OR created_at < now() - make_interval(days => $1)) AS sessions,
+        (SELECT count(*) FROM leads WHERE created_at < now() - make_interval(days => $2)) AS leads,
+        (SELECT count(*) FROM rate_limits WHERE expires_at < now() - interval '1 day') AS rate_limits`, [chatDays, leadDays]);
+      result = { apply, sessions: Number(counts.rows[0]!.sessions), leads: Number(counts.rows[0]!.leads), rateLimits: Number(counts.rows[0]!.rate_limits) };
     }
     await client.query('COMMIT');
-    return { apply, sessions: Number(counts.rows[0]!.sessions), leads: Number(counts.rows[0]!.leads), rateLimits: Number(counts.rows[0]!.rate_limits) };
+    return result;
   } catch (error) {
     await client.query('ROLLBACK').catch(() => undefined);
     throw error;

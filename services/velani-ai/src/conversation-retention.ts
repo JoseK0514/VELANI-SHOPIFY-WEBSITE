@@ -1,0 +1,17 @@
+import type { Pool } from 'pg';
+
+/** Uses only the runtime role's existing DELETE permission on sessions. */
+export async function runConversationRetention(pool: Pool): Promise<{ sessions: number }> {
+  const client = await pool.connect();
+  try {
+    // READ COMMITTED takes a new snapshot after waiting for another cleanup.
+    await client.query('BEGIN');
+    await client.query("SELECT pg_advisory_xact_lock(hashtext(current_database()), hashtext(current_schema() || ':velani-retention'))");
+    const result = await client.query("DELETE FROM sessions WHERE expires_at <= now() OR created_at < now() - interval '30 days'");
+    await client.query('COMMIT');
+    return { sessions: result.rowCount ?? 0 };
+  } catch (error) {
+    await client.query('ROLLBACK').catch(() => undefined);
+    throw error;
+  } finally { client.release(); }
+}

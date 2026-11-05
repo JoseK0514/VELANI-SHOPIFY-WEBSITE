@@ -18,6 +18,8 @@ const messages = {
     retry: 'No failed request is available to retry.',
     early: 'Wait for the retry delay to finish.',
     captcha: 'Complete the verification, then retry.',
+    rejected: 'This question could not be answered as written. Edit it or ask one thing at a time.',
+    inprogress: 'Your previous message is still being answered. Wait a moment, then retry.',
   },
   es: {
     network: 'Se interrumpió la conexión. Puedes reintentar la misma solicitud.',
@@ -32,6 +34,8 @@ const messages = {
     retry: 'No hay ninguna solicitud fallida para reintentar.',
     early: 'Espera a que termine el plazo de reintento.',
     captcha: 'Completa la verificación y vuelve a intentarlo.',
+    rejected: 'No se pudo responder a esta pregunta tal como está escrita. Edítala o pregunta una cosa a la vez.',
+    inprogress: 'Tu mensaje anterior todavía se está respondiendo. Espera un momento y reintenta.',
   },
 };
 
@@ -217,10 +221,12 @@ export class VelaniAssistant {
         const delay = retryHeader ? Number(retryHeader) : NaN;
         const retryAt = Number.isFinite(delay) ? Date.now() + Math.max(0, delay) * 1000
           : retryHeader ? (Date.parse(retryHeader) || 0) : 0;
-        const retryable = [408, 425, 429, 500, 502, 503, 504].includes(response.status)
-          || (response.status === 409 && serverCode !== 'request_id_conflict') || serverCode === 'captcha_required';
-        const code = serverCode === 'captcha_required' ? 'captcha' : response.status === 429 ? 'rate' : response.status === 401 ? 'expired'
-          : response.status === 403 ? 'denied' : retryable ? 'server' : 'invalid';
+        // An upstream rejection is not fixed by sending the same words again: offer an edit instead of a retry
+        const rejected = serverCode === 'provider_request_rejected';
+        const retryable = !rejected && ([408, 425, 429, 500, 502, 503, 504].includes(response.status)
+          || (response.status === 409 && serverCode !== 'request_id_conflict') || serverCode === 'captcha_required');
+        const code = rejected ? 'rejected' : serverCode === 'captcha_required' ? 'captcha' : response.status === 429 ? 'rate' : response.status === 401 ? 'expired'
+          : response.status === 403 ? 'denied' : serverCode === 'turn_in_progress' ? 'inprogress' : retryable ? 'server' : 'invalid';
         throw this.#error(code, { status: response.status, retryable, retryAt });
       }
       if (response.status === 204) return { deleted: true };

@@ -11,8 +11,17 @@
   "functions": {
     "api/index.ts": {
       "maxDuration": 120
+    },
+    "api/cron/retention.ts": {
+      "maxDuration": 120
     }
   },
+  "crons": [
+    {
+      "path": "/api/cron/retention",
+      "schedule": "0 15 * * *"
+    }
+  ],
   "rewrites": [
     {
       "source": "/v1/:path*",

@@ -7,6 +7,7 @@ import type { Answer, KnowledgeDocument, LeadInput } from '../src/types.js';
 import { migrate } from '../scripts/migrate.js';
 import { seedKnowledge } from '../scripts/seed.js';
 import { runRetention } from '../scripts/retention.js';
+import { runConversationRetention } from '../src/conversation-retention.js';
 import { createDatabasePool } from '../src/db-pool.js';
 
 // Never fall back to DATABASE_URL: this suite creates and removes its own schema only
@@ -237,5 +238,83 @@ describe.skipIf(!testUrl)('PostgreSQL repository integration', () => {
     expect((await pool.query('SELECT session_id FROM leads')).rows).toEqual([{ session_id: null }]);
     expect((await pool.query('SELECT count(*) FROM sessions')).rows[0].count).toBe('1');
     expect((await pool.query('SELECT count(*) FROM rate_limits')).rows[0].count).toBe('0');
+  });
+
+  it('automatically removes expired/old conversation children, preserves enquiries and recent chats, and tolerates concurrent delivery', async () => {
+    const expired = await session();
+    const old = await session();
+    const recent = await session();
+    for (const value of [expired, old, recent]) {
+      const claim = await repository.claimTurn(value.id, 'turn', hash(value.id));
+      if (claim.state !== 'new') throw new Error('Expected a new claim.');
+      await repository.completeTurn(value.id, 'turn', 'Synthetic retention test', answer, claim.leaseToken);
+      await repository.saveLead(value.id, 'lead', hash(value.id), lead);
+      await pool.query('INSERT INTO session_profiles (session_id, profile, revision) VALUES ($1, $2, 1)', [value.id, '{}']);
+      await pool.query("INSERT INTO workflow_plans (session_id, generated_plan, actions, profile_revision) VALUES ($1, '{}', '[]', 1)", [value.id]);
+      await pool.query("INSERT INTO plan_requests (session_id, request_id, request_hash, status, lease_token, lease_expires_at) VALUES ($1, 'pending-plan', $2, 'pending', $3, now() + interval '1 minute')", [value.id, hash(value.id), randomUUID()]);
+    }
+    await pool.query("UPDATE sessions SET expires_at = now() - interval '1 second' WHERE id = $1", [expired.id]);
+    await pool.query("UPDATE sessions SET created_at = now() - interval '31 days' WHERE id = $1", [old.id]);
+    await pool.query("UPDATE leads SET created_at = now() - interval '91 days'");
+    await repository.consumeRateLimit('preserved-rate-limit', 1, 1);
+    const runs = await Promise.all([runConversationRetention(pool), runConversationRetention(pool)]);
+    expect(runs.map(result => result.sessions).sort()).toEqual([0, 2]);
+    expect((await pool.query('SELECT id FROM sessions')).rows).toEqual([{ id: recent.id }]);
+    for (const table of ['chat_turns', 'session_profiles', 'workflow_plans', 'plan_requests']) {
+      expect((await pool.query(`SELECT session_id FROM ${table}`)).rows).toEqual([{ session_id: recent.id }]);
+    }
+    expect((await pool.query('SELECT count(*) FROM messages')).rows[0].count).toBe('2');
+    expect((await pool.query('SELECT count(*) FROM leads')).rows[0].count).toBe('3');
+    expect((await pool.query('SELECT count(*) FROM leads WHERE session_id IS NULL')).rows[0].count).toBe('2');
+    expect((await pool.query('SELECT count(*) FROM rate_limits')).rows[0].count).toBe('1');
+    expect(await runConversationRetention(pool)).toEqual({ sessions: 0 });
+  });
+
+  it('lets manual cleanup waiting behind cron see the committed deletion', async () => {
+    const one = await session();
+    await pool.query("UPDATE sessions SET expires_at = now() - interval '1 second' WHERE id = $1", [one.id]);
+    const blocker = await pool.connect();
+    await blocker.query('BEGIN');
+    await blocker.query('SELECT id FROM sessions WHERE id = $1 FOR UPDATE', [one.id]);
+    const cron = runConversationRetention(pool);
+    const waitForQuery = async (pattern: string) => {
+      for (let attempt = 0; attempt < 40; attempt++) {
+        const result = await pool.query("SELECT 1 FROM pg_stat_activity WHERE datname = current_database() AND usename = current_user AND wait_event_type = 'Lock' AND query LIKE $1", [pattern]);
+        if (result.rowCount) return;
+        await new Promise(resolve => setTimeout(resolve, 25));
+      }
+      throw new Error('Expected a cleanup query waiting on a database lock.');
+    };
+    let manual: ReturnType<typeof runRetention> | undefined;
+    try {
+      await waitForQuery('DELETE FROM sessions%');
+      manual = runRetention(pool, { apply: true });
+      const completed = Promise.allSettled([cron, manual]);
+      await waitForQuery('SELECT pg_advisory_xact_lock%');
+      await blocker.query('COMMIT');
+      const results = await completed;
+      expect(results).toEqual([
+        { status: 'fulfilled', value: { sessions: 1 } },
+        { status: 'fulfilled', value: { apply: true, sessions: 0, leads: 0, rateLimits: 0 } },
+      ]);
+    } finally {
+      await blocker.query('ROLLBACK'); blocker.release();
+      await Promise.allSettled([cron, ...(manual ? [manual] : [])]);
+    }
+  });
+
+  it('rolls back a failed cleanup and releases its connection for a later run', async () => {
+    const one = await session();
+    await pool.query("UPDATE sessions SET expires_at = now() - interval '1 second' WHERE id = $1", [one.id]);
+    await pool.query("CREATE FUNCTION reject_retention_test() RETURNS trigger LANGUAGE plpgsql AS $$ BEGIN RAISE EXCEPTION 'Synthetic deletion failure'; END $$");
+    await pool.query('CREATE TRIGGER reject_retention_test BEFORE DELETE ON sessions FOR EACH ROW EXECUTE FUNCTION reject_retention_test()');
+    try {
+      await expect(runConversationRetention(pool)).rejects.toThrow('Synthetic deletion failure');
+      expect((await pool.query('SELECT id FROM sessions')).rows).toEqual([{ id: one.id }]);
+    } finally {
+      await pool.query('DROP TRIGGER reject_retention_test ON sessions');
+      await pool.query('DROP FUNCTION reject_retention_test()');
+    }
+    expect(await runConversationRetention(pool)).toEqual({ sessions: 1 });
   });
 });

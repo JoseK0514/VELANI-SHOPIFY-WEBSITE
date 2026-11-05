@@ -1,6 +1,6 @@
 # Velani / NEVORA AI backend
 
-**Current UI handoff (2026-11-03):** [Start here to finish the chat UI](docs/CLAUDE-UI-START-HERE.md) · [Verified deployment status](docs/LAUNCH-STATUS-2026-11-03.md) · [Shopify activation](docs/SHOPIFY-ACTIVATION.md).
+**Current backend follow-through (2026-11-05):** [Retention schedule, knowledge refresh, client sync and verification](docs/RETENTION-REFRESH-2026-11-05.md). This supersedes the historical setup status below and the November 3 handoffs. Claude owns the Shopify UI.
 
 **For Claude:** [GitHub source and checkout instructions](docs/START-HERE-CLAUDE.md) · [Vercel setup](docs/VERCEL.md). This is an independent service; use `services/velani-ai` as the deployment root in the website repository.
 
@@ -14,14 +14,14 @@ Start with [the Claude handoff](docs/CLAUDE-HANDOFF.md). See [architecture](docs
 
 - Model-backed reasoning about visitors' business needs, with reviewed sources and clear uncertainty.
 - Last 40 conversation messages, capped at 32,000 characters; sessions expire after 24 hours by default.
-- Twelve reviewed bilingual knowledge articles; expiring sources and a safe response when knowledge is unavailable.
+- Sixteen reviewed bilingual knowledge articles; expiring sources and a safe response when knowledge is unavailable.
 - Explicit-consent enquiries stored in Neon; no automatic emails, subscriptions or bookings.
 - Hashed bearer sessions, strict origins, production CAPTCHA, persistent quotas, idempotent retries and fenced request leases.
 - Separate restricted runtime and database-administration credentials.
 - A headless JavaScript client and accessible manual test page.
 - Database migrations, seeding, private enquiry export, retention jobs, live evaluation and a container build.
 
-A Vercel project and Shopify widget now exist. Database, AI and session credentials are configured, but Turnstile widget creation is blocked by the Cloudflare token's permissions, so the API still returns 503. A compatible unpublished Shopify preview is available. See the current status above; daily retention scheduling was not configured in this setup. No claim is made that this application is identical to ChatGPT or that model responses are infallible.
+The existing Vercel backend and protected Shopify preview have passed hosted chat checks, including English follow-up context, Spanish, source links and deletion. See the current follow-through document for the conversation-cleanup deployment evidence. This does not publish the Shopify theme or establish that every model request will succeed.
 
 ## Existing isolated development resources
 
@@ -89,7 +89,11 @@ npm run retention
 npm run retention -- --apply
 ```
 
-Lead exports contain personal contact details, are created with mode 600 and refuse existing filenames. No contact data is printed to the terminal. Retention is a dry run by default; schedule the apply command daily. It removes expired sessions (normally after 24 hours), any remaining sessions older than 30 days, and enquiries older than 90 days. Therefore conversation retention is bounded by 30 days but normally shorter. Public privacy wording must match actual scheduling, policy and Neon backup retention.
+Lead exports contain personal contact details, are created with mode 600 and refuse existing filenames. No contact data is printed to the terminal. The manual retention command is a dry run by default; `--apply` removes expired sessions, sessions older than 30 days, enquiries older than 90 days, and stale rate limits. It requires the separate administration role.
+
+Vercel schedules **conversation cleanup only** at `/api/cron/retention`, daily at **15:00 UTC / 11:00 Puerto Rico** (Hobby execution may occur within that hour). It requires production `CRON_SECRET` as a Sensitive environment variable, minimum 32 random characters, sent as `Authorization: Bearer …`; previews and unauthenticated requests cannot run it. It uses the existing runtime role's session-delete permission, cascading messages, profiles and plans, while preserving enquiries and rate limits. The current 24-hour session expiry (maximum configurable seven days) means daily deletion is normally much earlier than 30 days. The 30-day age condition is a fallback. Keep the bounded session TTL and scheduled job in place; a daily sweep at a 30-day cutoff alone would allow records to exceed 30 days between sweeps.
+
+Monitor the cron path in Vercel runtime logs: each completed run records `conversation_retention`, `status: ok`, aggregate session count and UTC completion time. Vercel does not automatically retry failures: investigate any non-200 run or missing daily success. Consented enquiries remain on the separate manual 90-day policy; this change does not schedule their deletion. Public privacy wording must also match Neon backup retention.
 
 ## Deploy
 
@@ -101,6 +105,6 @@ docker build -t velani-ai-backend .
 
 The container runs as a non-root user. Configure `NODE_ENV=production`, HTTPS-only origins, a real Turnstile secret, the gateway token, a random session hash secret and the restricted `DATABASE_URL`. Set trusted proxy IPs/CIDRs only when your ingress is verified; never trust arbitrary forwarded headers. Use `/health/live` and `/health/ready` probes.
 
-For separate administrative container jobs, supply owner credentials only to those jobs and use compiled commands such as `node dist/scripts/retention.js --apply`, `node dist/scripts/migrate.js` and `node dist/scripts/seed.js`. Schedule daily retention before displaying a fixed retention promise publicly.
+For separate administrative container jobs, supply owner credentials only to those jobs and use compiled commands such as `node dist/scripts/retention.js --apply`, `node dist/scripts/migrate.js` and `node dist/scripts/seed.js`. The scheduled conversation endpoint does not require an owner credential. Disable cron jobs separately when rolling back a deployment: Vercel instant rollback does not replace the active cron configuration.
 
 The default global cap is 500 model requests per rolling 24-hour window. This is not a dollar cap. Set actual provider budgets/alerts and watch latency, errors and unanswered topics. Production rollout requires a real browser check inside Shopify, privacy notice, contact-review ownership and confirmed model pricing. The source is ready for that integration work; it does not silently deploy it.
