@@ -259,6 +259,8 @@ html:has(main > .hpanel){scroll-padding-top:56px}
 .foot-wm{position:relative;overflow:hidden;height:calc((100cqw - var(--pad)*2) * .1792 * .58);margin-top:40px;padding:0 var(--pad)}
 .foot-glow{position:absolute;inset:-40% 0 0;width:100%;height:auto;min-height:140%;object-fit:cover;object-position:50% 70%;opacity:.28;-webkit-mask-image:linear-gradient(0deg,#000 0%,rgba(0,0,0,.6) 50%,transparent 100%);mask-image:linear-gradient(0deg,#000 0%,rgba(0,0,0,.6) 50%,transparent 100%);pointer-events:none}
 .foot-wm .wm-velani{position:absolute;left:var(--pad);right:var(--pad);top:0;width:calc(100% - var(--pad)*2);height:auto;color:#f4f6f9;opacity:.92}
+/* The cut only reads as deliberate when it is the page edge, so no footer padding below it */
+.foot:has(.foot-wm){padding-bottom:0}
 .foot-legal{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:4px 24px;padding-top:10px}
 .foot-legal a{color:var(--text-2)}
 @media(max-width:833px){
@@ -274,8 +276,9 @@ html:has(main > .hpanel){scroll-padding-top:56px}
  .foot-legal{align-items:stretch;gap:12px;padding-top:16px}
  .foot-links{display:grid;grid-template-columns:1fr 1fr;gap:0 16px}
  .foot-links a,.foot-links button{min-height:44px;justify-content:flex-start;text-align:left}
- /* Phones show most of the wordmark so the cut still reads as VELANI */
- .foot-wm{height:calc((100cqw - var(--pad)*2) * .1792 * .86)}
+ /* Phones show the whole wordmark: a near-complete cut on a narrow screen reads as a rendering fault.
+    The extra 28px keeps the glow running to the page edge under the word, so there is no seam */
+ .foot-wm{height:calc((100cqw - var(--pad)*2) * .1792 + 28px);margin-top:32px}
 }
 
 @media(prefers-reduced-motion:reduce){

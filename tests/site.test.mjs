@@ -19,7 +19,8 @@ test('all public routes have a document title, one main, one h1 and working lega
     assert.equal(status, 200, path);
     assert.match(html, /<title>[^<]+<\/title>/, path);
     assert.equal((html.match(/<main\b/g) || []).length, 1, path);
-    assert.equal((html.match(/<h1\b/g) || []).length, 1, path);
+    // One visible h1: the contact page also carries the sent confirmation, hidden until a message is sent (its heading replaces the hero's)
+    assert.equal((html.replace(/<div class="sent" id="inquiry-sent" tabindex="-1" hidden>[\s\S]*?<\/div>/, '').match(/<h1\b/g) || []).length, 1, path);
     for (const key of ['privacy', 'cookies', 'website-terms', 'accessibility']) assert.ok(html.includes('/pages/' + key), path + ':' + key);
     assert.doesNotMatch(html, /Fuel Coffee Drive|Coffee Bags|Sample Product|CONFIRM_|\[LEGAL_COMPANY_NAME\]/, path);
   }

@@ -1,5 +1,5 @@
 const limits = { name: 120, email: 254, company: 160, message: 4000, locations: 120 };
-const interests = new Set(['', 'website', 'custom-software', 'nevora', 'nevora-demo', 'other']);
+const interests = new Set(['', 'website', 'custom-software', 'nevora', 'nevora-demo', 'relay', 'other']);
 export function validateInquiry(fields = {}) {
   const errors = {}, values = {};
   for (const key of Object.keys(limits)) {
@@ -10,8 +10,8 @@ export function validateInquiry(fields = {}) {
   }
   if (!values.name && !errors.name) errors.name = 'Enter your name.';
   if ((!values.email || !/^[^\s@<>"\\,;]+@[^\s@<>"\\,;]+\.[^\s@<>"\\,;]+$/u.test(values.email)) && !errors.email) errors.email = 'Enter an email address we can reply to.';
-  // A NEVORA enquiry asks about the team instead, so its message is optional
-  if (!values.message && !errors.message && !/^nevora/.test(fields?.interest || '')) errors.message = 'Tell us what you want to discuss.';
+  // A NEVORA enquiry asks about the team instead, and Relay early access needs only a name and email, so their message is optional
+  if (!values.message && !errors.message && !/^(nevora|relay)/.test(fields?.interest || '')) errors.message = 'Tell us what you want to discuss.';
   // Locations is a count: blank, or a whole number from 1 to 9999
   if (values.locations && !errors.locations && !/^[1-9]\d{0,3}$/.test(values.locations)) errors.locations = 'Enter the number of locations, for example 2.';
   values.interest = typeof fields?.interest === 'string' && interests.has(fields.interest) ? fields.interest : '';

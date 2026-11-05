@@ -39,7 +39,9 @@ test('the NEVORA page loads its own assets and marks its nav item', async () => 
   const html = await liquid.parseAndRender(layout, { theme: { role: 'main', id: 9 }, routes: { root_url: '/' }, template: { name: 'page', suffix: 'nevora' }, request: { locale: { iso_code: 'en' }, page_type: 'page' }, settings: {} });
   assert.match(html, /velani-nevora\.js/);
   assert.match(html, /class="gnav static"/);
-  assert.match(html, /<a href="\/pages\/nevora" aria-current="page">NEVORA<\/a>/);
+  // NEVORA now lives under the Products menu: the dropdown trigger and the phone menu's NEVORA Workforce link carry the current-page mark
+  assert.match(html, /<a class="gnav-ddlink" href="\/pages\/products" aria-current="page">Products/);
+  assert.match(html, /<a class="gmenu-sub" href="\/pages\/nevora" aria-current="page">NEVORA Workforce<\/a>/);
 });
 test('live contact page never shows the preview form on the published theme', async () => {
   const body = renderBody('/pages/contact', { target: 'shopify' }).replace(/\{% form [^%]*%\}/, '<form>').replace('{% endform %}', '</form>').replace(/\{\{ 'shopify[^}]*\}\}/, '');

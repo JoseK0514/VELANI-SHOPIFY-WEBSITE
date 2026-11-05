@@ -1,0 +1,31 @@
+<script>
+/* Client screenshots: tap or click to see the whole screen. On phones a desktop screenshot opens at a readable height and pans sideways */
+(() => {
+  const imgs = [...document.querySelectorAll('.hpanel .hwin img, .hpanel .hduo .ph img')];
+  if (!imgs.length || !window.HTMLDialogElement) return;
+  const out = '{{icon:arrows-out-simple}}';
+  const x = '{{icon:x}}';
+  const d = document.createElement('dialog');
+  d.className = 'zoom'; d.tabIndex = -1; d.setAttribute('aria-label', 'Screenshot');
+  d.innerHTML = '<button class="zoom-x" type="button" aria-label="Close">' + x + '</button><div class="zoom-sc" tabindex="0"><img alt="" decoding="async"></div><p class="zoom-cap"></p><p class="zoom-tip" aria-hidden="true">Swipe to see the whole screen</p>';
+  document.body.append(d);
+  const sc = d.querySelector('.zoom-sc'), big = sc.querySelector('img'), cap = d.querySelector('.zoom-cap');
+  let opener;
+  for (const img of imgs) {
+    const host = img.closest('.hwin, .ph');
+    const b = document.createElement('button');
+    b.type = 'button'; b.className = 'zoom-btn'; b.setAttribute('aria-label', 'View full screen: ' + img.alt); b.innerHTML = out;
+    host.classList.add('can-zoom'); host.append(b);
+    b.addEventListener('click', () => {
+      opener = b;
+      big.width = img.naturalWidth || img.width; big.height = img.naturalHeight || img.height;
+      big.src = img.currentSrc || img.src; big.alt = img.alt; cap.textContent = img.alt;
+      d.classList.toggle('wide', (img.naturalWidth || img.width) > (img.naturalHeight || img.height));
+      d.showModal(); d.focus(); sc.scrollLeft = 0;
+    });
+  }
+  d.querySelector('.zoom-x').addEventListener('click', () => d.close());
+  d.addEventListener('click', e => { if (e.target === d) d.close(); });
+  d.addEventListener('close', () => { if (opener?.isConnected) opener.focus({ preventScroll: true }); });
+})();
+</script>

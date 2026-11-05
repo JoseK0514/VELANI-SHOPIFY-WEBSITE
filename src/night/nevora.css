@@ -115,10 +115,11 @@ html{scroll-padding-top:53px}
 }
 @media(min-width:1024px){.st .crop-ph{display:none}}
 @media(max-width:833px){
- .n-hero.hpanel:has(.hshot){min-height:800px}
- .n-hero .hcopy p.fade:not(.hfact),.n-hero .n-help{display:none}
- .n-hero .hcopy{bottom:auto;margin-bottom:-8px}
- .n-hero .hshot{margin-top:28px;width:30%}
+ /* Phones: copy first, clear of the nav; then a large phone that rises out of the panel's bottom edge */
+ .n-hero.hpanel:has(.hshot){min-height:0;padding-bottom:0}
+ .n-hero .n-help{display:none}
+ .n-hero.hpanel:has(.hshot) .hcopy{bottom:auto;margin:96px var(--pad) 0}
+ .n-hero .hshot{order:2;width:min(64vw,260px);margin:40px auto calc(min(64vw,260px) * -.62)}
  .n-hero.hpanel.long h1{font-size:2.5rem}
 }
 @media(max-width:600px){
@@ -154,3 +155,34 @@ html{scroll-padding-top:53px}
 /* Built for work: the spec sheet uses the shared facts grid (.spec, pages.css) */
 .specs .fine{margin-top:48px;max-width:42em}
 @media(min-width:1180px){.specs .spec{grid-template-columns:repeat(4,minmax(0,1fr))}}
+
+/* ---------- Polish pass 2 (Nov 4) ---------- */
+.lnav.solid{background:rgba(5,9,14,.97)}
+.lnav ul a,.lnav-vbtn,.lnav-vmenu a{letter-spacing:0;text-transform:none;font-size:0.875rem}
+.lnav .pill{font-size:0.875rem}
+@media(max-width:959px){.lnav ul a{font-size:1rem}}
+
+/* ---------- Rondo, NEVORA's AI assistant (Nov 4): the work is Rondo's, the call is the owner's ---------- */
+.rondo{position:relative}
+.rondo::before{content:"";position:absolute;inset:0;background:radial-gradient(55% 60% at 80% 55%,rgba(64,120,220,.16),rgba(0,0,0,0) 70%);pointer-events:none}
+.rondo-grid{position:relative;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:clamp(40px,6vw,96px);align-items:center}
+.rondo-kick{display:flex;align-items:center;gap:10px}
+.rondo-mark{width:24px;height:24px;flex:none;border-radius:7px;display:grid;place-items:center;background:#0d1620;color:#bbd8ff;font-size:0.75rem;font-weight:600;letter-spacing:0;box-shadow:0 0 0 1px rgba(255,255,255,.14)}
+.rondo .t1{max-width:13ch}
+.rondo .lede{margin-top:20px;max-width:32em}
+.rondo-can{list-style:none;margin:var(--s1) 0 0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px clamp(24px,3vw,40px)}
+.rondo-can li{display:grid;grid-template-columns:24px minmax(0,1fr);column-gap:14px;row-gap:4px;align-items:start}
+.rondo-can .icon{grid-row:1/span 2;width:24px;height:24px;margin-top:1px;color:#bbd8ff}
+.rondo-can b{font-size:1.0625rem;font-weight:600;line-height:1.3;letter-spacing:-.01em}
+.rondo-can span{font-size:0.9375rem;line-height:1.5;color:var(--text-2)}
+.rondo-trust{margin-top:32px;padding-top:20px;border-top:1px solid var(--line);font-size:0.875rem;line-height:1.6;color:var(--text-2)}
+.rondo .acts{margin-top:28px}
+.rondo-fine{margin-top:12px;font-size:0.8125rem;color:var(--text-3)}
+.rondo-fig{margin:0;display:flex;flex-direction:column;align-items:flex-end}
+/* The example chat sits in the page flow here (on the home hero it floats) */
+.hchat.rchat{position:relative;left:auto;right:auto;top:auto;transform:none;display:flex;order:0;align-self:auto;width:100%;max-width:440px;margin:0;padding:18px;gap:10px;font-size:0.9375rem;line-height:1.45;border-radius:22px}
+.hchat.rchat .hchat-h{font-size:0.75rem}
+.rondo-fig figcaption{width:100%;max-width:440px;margin-top:12px;font-size:0.75rem;color:var(--text-3)}
+/* One column: the example chat comes right after the promise, then the details */
+@media(max-width:959px){.rondo-grid{display:flex;flex-direction:column;align-items:stretch;gap:0}.rondo-copy{display:contents}.rondo-fig{order:1;align-items:flex-start;margin-top:32px}.rondo-can,.rondo-trust,.rondo .acts,.rondo-fine{order:2}}
+@media(max-width:599px){.rondo-can{grid-template-columns:1fr;gap:20px}.hchat.rchat{padding:12px;gap:8px;font-size:0.875rem;border-radius:18px}.rondo .acts .pill{width:100%}}

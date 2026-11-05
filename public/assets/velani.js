@@ -1,7 +1,19 @@
 import { validateInquiry, createInquiryController } from './inquiry.js';
 import { createPrivacyAdapter } from './privacy.js';
 const form = document.querySelector('#project-inquiry');
-if (form) {
+// After sending, the form is replaced by a confirmation that says what happens next (the topic is kept for this one page view)
+const sent = document.querySelector('#inquiry-sent');
+const sentCopy = { 'nevora-demo': ['Trial request sent.', 'We’ll email you within two business days to set up your NEVORA workplace. Your 30 days start the day it’s ready.'], nevora: ['Quote request sent.', 'We’ll email you within two business days with a price for your team.'], relay: ['You’re on the Relay list.', 'We’ll email you when NEVORA Relay opens for early access. No dates yet.'] };
+function showSent(topic, preview) {
+  const copy = sentCopy[topic];
+  if (copy) { sent.querySelector('[data-sent-h]').textContent = copy[0]; sent.querySelector('[data-sent-p]').textContent = copy[1]; }
+  document.title = (copy ? copy[0].replace(/\.$/, '') : 'Message sent') + ' · Velani';
+  const note = sent.querySelector('[data-sent-preview]'); if (note) note.hidden = !preview;
+  sent.hidden = false; window.scrollTo(0, 0); sent.focus({ preventScroll: true });
+}
+const justSent = !!sent && !sent.hidden;
+if (justSent) { let topic = ''; try { topic = sessionStorage.getItem('v-inquiry-topic') || ''; sessionStorage.removeItem('v-inquiry-topic'); } catch {} showSent(topic, false); }
+if (form && !justSent) {
   const mode = form.dataset.inquiryMode || form.querySelector('[data-inquiry-mode]')?.dataset.inquiryMode || 'preview';
   const submitButton = form.querySelector('[data-inquiry-submit]');
   const fieldset = form.querySelector('fieldset');
@@ -9,7 +21,7 @@ if (form) {
   if (!status) { status = document.createElement('div'); status.className = 'form-status'; status.setAttribute('role', 'status'); status.tabIndex = -1; const submitNode = form.querySelector('[data-inquiry-submit]'); if (submitNode) submitNode.after(status); else form.append(status); }
   const fields = Object.fromEntries(['name', 'email', 'company', 'message', 'interest', 'locations', 'team'].map(key => [key, form.querySelector('#inquiry-' + key)]));
   const topic = new URL(window.location.href).searchParams.get('interest');
-  if (['website', 'custom-software', 'nevora', 'nevora-demo', 'other'].includes(topic)) fields.interest.value = topic;
+  if (['website', 'custom-software', 'nevora', 'nevora-demo', 'relay', 'other'].includes(topic)) fields.interest.value = topic;
   // Arriving from a NEVORA action: talk about the team, keep NEVORA as the topic without asking again
   // The page already shows the right wording (chosen before paint); drop the unused variant so screen readers and the heading label see one text
   const nevora = document.documentElement.classList.contains('ask-nevora');
@@ -17,12 +29,12 @@ if (form) {
   document.querySelectorAll(demo ? '.v-d, .v-n:not(.v-nm)' : nevora ? '.v-d, .v-m' : '.v-n, .v-m').forEach(el => el.remove());
   document.querySelectorAll('.phero .rise[aria-label]').forEach(h => h.setAttribute('aria-label', h.textContent.replace(/\s+/g, ' ').trim()));
   if (topic === 'nevora' || topic === 'nevora-demo') {
-    document.title = (topic === 'nevora-demo' ? 'Free NEVORA demo' : 'NEVORA for your team') + ' · Velani';
+    document.title = (topic === 'nevora-demo' ? 'Free NEVORA trial' : 'NEVORA for your team') + ' · Velani';
     fields.message.required = false;
   }
   const setBusy = busy => { submitButton.disabled = busy; form.setAttribute('aria-busy', String(busy)); };
   const messages = { checking: 'Checking your draft…', preview: 'Draft checked. Nothing was sent.', invalid: 'Check the highlighted fields.', sending: 'Sending inquiry…', accepted: 'Your inquiry was submitted.', failed: 'The inquiry was not accepted. Review the form before trying again.', uncertain: 'We could not confirm the submission. It may have been accepted. Check with support@thevelani.com before sending it again.', unavailable: 'Inquiry delivery is not available.' };
-  const controller = createInquiryController({ mode: 'preview', onState: state => { status.dataset.state = state.status; status.textContent = messages[state.status] || ''; setBusy(['checking', 'sending'].includes(state.status)); } });
+  const controller = createInquiryController({ mode: 'preview', onState: state => { status.dataset.state = state.status; status.textContent = messages[state.status] || ''; setBusy(['checking', 'sending'].includes(state.status)); if (state.status === 'preview' && sent) { form.hidden = true; showSent(fields.interest?.value || '', true); } } });
   function showErrors(errors) {
     for (const key of ['name', 'email', 'company', 'message', 'locations']) {
       const message = form.querySelector('#error-' + key);
@@ -43,14 +55,17 @@ if (form) {
     }
     if (mode === 'live') {
       // A NEVORA enquiry may have no message: send the team details as the message body so the email is never empty
-      if (!values.message.trim() && fields.message) fields.message.value = ['NEVORA quote request.', values.team && 'Team size: ' + values.team, values.locations && 'Locations: ' + values.locations, values.company && 'Company: ' + values.company].filter(Boolean).join('\n');
+      if (!values.message.trim() && fields.message) fields.message.value = [values.interest === 'relay' ? 'NEVORA Relay early access request.' : values.interest === 'nevora-demo' ? 'Free NEVORA trial request.' : 'NEVORA quote request.', values.team && 'Team size: ' + values.team, values.locations && 'Locations: ' + values.locations, values.company && 'Company: ' + values.company].filter(Boolean).join('\n');
+      try { sessionStorage.setItem('v-inquiry-topic', values.interest || ''); } catch {}
       setBusy(true); status.textContent = messages.sending; return;
     }
     await controller.submit(values);
   });
   // F08: choosing a NEVORA topic in the general form reveals the team fields and makes the message optional, like the dedicated inquiry
   const messageLabel = form.querySelector('label[for="inquiry-message"]'); const messageLabels = { general: messageLabel && messageLabel.innerHTML, nevora: 'Anything else <span class="opt">optional</span>' };
-  fields.interest?.addEventListener('change', () => { const nev = /^nevora/.test(fields.interest.value); const row = form.querySelector('[data-nevora-fields]'); if (row) row.hidden = !nev; if (fields.message) fields.message.required = !nev; if (messageLabel && !nevora && !demo) messageLabel.innerHTML = nev ? messageLabels.nevora : messageLabels.general; });
+  const onTopic = () => { const nev = /^nevora/.test(fields.interest.value); const optional = nev || fields.interest.value === 'relay'; const row = form.querySelector('[data-nevora-fields]'); if (row) row.hidden = !nev; if (fields.message) fields.message.required = !optional; if (messageLabel && !nevora && !demo) messageLabel.innerHTML = optional ? messageLabels.nevora : messageLabels.general; };
+  fields.interest?.addEventListener('change', onTopic);
+  if (topic === 'relay' && fields.interest) onTopic();
   fieldset.disabled = false;
   const minH = parseInt(fields.message.dataset.min || '150', 10);
   fields.message.addEventListener('input', () => { fields.message.style.height = 'auto'; fields.message.style.height = Math.min(600, Math.max(minH, fields.message.scrollHeight)) + 'px'; });

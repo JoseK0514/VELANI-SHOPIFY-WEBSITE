@@ -4,7 +4,7 @@
  const k=document.getElementById('kio');if(!k)return;
  const $=id=>document.getElementById(id);
  // Spanish strings come from the NEVORA app's own time-clock copy where it has one
- const ES={'Time clock':'Registro de tiempo','Enter your PIN':'Ingresa tu PIN','Clear':'Borrar','Continue':'Continuar','Your PIN is separate from your portal password.':'Tu PIN es distinto de tu contraseña del portal.','Clock-in recorded':'Tiempo registrado','Saved at':'Registrado','Demo only. No hours were saved.':'Solo es una demostración. No se guardaron horas.','Clock in again':'Registrar de nuevo','Delete digit':'Borrar dígito'};
+ const ES={'Time clock':'Registro de tiempo','Enter your PIN':'Ingresa tu PIN','Clear':'Borrar','Continue':'Continuar','Your PIN is separate from your portal password.':'Tu PIN es distinto de tu contraseña del portal.','Clock-in recorded':'Tiempo registrado','Recorded at':'Registrado','Demo only. Nothing is kept.':'Solo es una demostración. No se guarda nada.','Clock in again':'Registrar de nuevo','Delete digit':'Borrar dígito'};
  const dots=[...$('kio-dots').children],go=$('kio-go'),live=$('kio-live'),pinStep=$('kio-pin'),okStep=$('kio-ok'),lang=$('kio-lang'),langT=$('kio-lang-t');
  let es=false,pin='',last='';
  const loc=()=>es?'es-US':'en-US';

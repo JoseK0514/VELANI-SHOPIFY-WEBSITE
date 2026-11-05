@@ -36,13 +36,17 @@ export function site(html, target) {
 const between = (text, start, end) => { const s = text.indexOf(start); const t = text.indexOf(end, s); if (s < 0 || t < 0) throw new Error('night: marker not found ' + start); return text.slice(s, t); };
 const homeSrc = read('home.body.html');
 const nevSrc = read('nevora.body.html');
+const productsSrc = read('products.body.html');
 const mainOf = src => between(src, '<main id="main">', '</main>').slice('<main id="main">'.length);
 
-/** Inside <main> for Home and NEVORA. The NEVORA local nav sits at the top of its section content. */
+/** Inside <main> for Home, NEVORA and Products. The NEVORA local nav sits at the top of its section content. */
 export function homeMain(target) { return site(mainOf(homeSrc), target); }
 export function nevoraMain(target) { return site(between(nevSrc, '<nav class="lnav"', '<main id="main">') + mainOf(nevSrc), target); }
+export function productsMain(target) { return site(mainOf(productsSrc), target); }
 
-const NAV = [['NEVORA', '/pages/nevora', 'nevora'], ['Websites', '/pages/custom-development#web-applications', 'websites'], ['Custom apps', '/pages/custom-development', 'services'], ['Plans', '/pages/plans', 'plans'], ['Support', '/pages/help', 'help'], ['About', '/pages/about', 'about']];
+/* Products: one header item with a short menu (NEVORA Workforce, Rondo, NEVORA Relay); the phone menu lists them under a Products label. */
+const PRODUCTS = [['NEVORA Workforce', '/pages/nevora', 'Scheduling, time clock and payroll calculation'], ['Rondo<span class="nav-ai">AI</span>', '/pages/nevora#rondo', 'The assistant inside NEVORA'], ['NEVORA Relay<span class="nav-soon">Coming soon</span>', '/pages/products#relay', 'Orders, kitchen display and inventory']];
+const NAV = [['Websites', '/pages/custom-development#web-applications', 'websites'], ['Custom apps', '/pages/custom-development', 'services'], ['Plans', '/pages/plans', 'plans'], ['Support', '/pages/help', 'help'], ['About', '/pages/about', 'about']];
 /** current: the nav key for the preview build, or null in the Shopify layout, where Liquid marks it. */
 // Official VELANI wordmark, traced 1:1 from docs/reference/velani-logo-official.pdf; colour comes from CSS.
 export const WORDMARK = readFileSync(new URL('./brand/velani-wordmark.svg', import.meta.url), 'utf8').trim()
@@ -51,18 +55,25 @@ export function header(current, target, { nevora = false } = {}) {
   const mark = key => target === 'shopify'
     ? `{% if velani_nav == '${key}' %} aria-current="page"{% endif %}`
     : (current === key ? ' aria-current="page"' : '');
-  const links = NAV.map(([text, href, key]) => `<li><a href="${href}"${mark(key)}>${text}</a></li>`).join('');
-  const menu = NAV.map(([text, href, key]) => `<a href="${href}"${mark(key)}>${text}</a>`).join('');
+  const productsMark = target === 'shopify'
+    ? `{% if velani_nav == 'nevora' or velani_nav == 'products' %} aria-current="page"{% endif %}`
+    : (current === 'nevora' || current === 'products' ? ' aria-current="page"' : '');
+  const products = `<li class="gnav-dd"><a class="gnav-ddlink" href="/pages/products"${productsMark}>Products${icon('caret-down')}</a><div class="gnav-ddmenu"><ul aria-label="Products">` + PRODUCTS.map(([name, href, note]) => `<li><a href="${href}"><b>${name}</b><span>${note}</span></a></li>`).join('') + '</ul></div></li>';
+  const links = products + NAV.map(([text, href, key]) => `<li><a href="${href}"${mark(key)}>${text}</a></li>`).join('');
+  const productsMenu = `<p class="gmenu-k">Products</p><a class="gmenu-sub" href="/pages/nevora"${mark('nevora')}>NEVORA Workforce</a><a class="gmenu-sub nav-rondo" href="/pages/nevora#rondo">Rondo<span class="nav-ai">AI</span></a><a class="gmenu-sub" href="/pages/products#relay">NEVORA Relay<span class="nav-soon">Soon</span></a>`;
+  const menu = productsMenu + NAV.map(([text, href, key]) => `<a href="${href}"${mark(key)}>${text}</a>`).join('');
   const staticClass = target === 'shopify' ? `{% if velani_page == 'nevora' %} static{% endif %}` : (nevora ? ' static' : '');
-  return `<a class="skip" href="#main">Skip to content</a><header class="gnav${staticClass}" id="gnav"><nav class="wrap gnav-in" aria-label="Main"><a class="wordmark" href="/" aria-label="Velani home">${WORDMARK}</a><ul class="gnav-links">${links}</ul>${target === 'shopify' ? `{% if velani_nav == 'services' %}<a class="pill line" href="/pages/contact?interest=custom-software">Start a project</a>{% else %}<a class="pill line" href="/pages/contact?interest=nevora-demo">Start free demo</a>{% endif %}` : (current === 'services' ? '<a class="pill line" href="/pages/contact?interest=custom-software">Start a project</a>' : '<a class="pill line" href="/pages/contact?interest=nevora-demo">Start free demo</a>')}<button class="gnav-menu" id="gmenu-btn" type="button" aria-expanded="false" aria-controls="gmenu" aria-label="Menu"><span class="i-open">${icon('list')}</span><span class="i-close" hidden>${icon('x')}</span></button></nav></header><div class="gmenu" id="gmenu" hidden><nav class="wrap" aria-label="Main menu">${menu}<a href="/pages/contact">Contact</a>${target === 'shopify' ? `{% if velani_nav == 'services' %}<a class="pill" href="/pages/contact?interest=custom-software">Start a project</a>{% else %}<a class="pill" href="/pages/contact?interest=nevora-demo">Start free NEVORA demo</a>{% endif %}` : (current === 'services' ? '<a class="pill" href="/pages/contact?interest=custom-software">Start a project</a>' : '<a class="pill" href="/pages/contact?interest=nevora-demo">Start free NEVORA demo</a>')}<small>Client support · <a href="mailto:${company.email}">${company.email}</a> · <a href="tel:+1${company.phone.replace(/-/g, '')}">${company.phone}</a> · ${company.hours}<br>Velani is a brand of ${company.operator}.</small></nav></div>`;
+  return `<a class="skip" href="#main">Skip to content</a><header class="gnav${staticClass}" id="gnav"><nav class="wrap gnav-in" aria-label="Main"><a class="wordmark" href="/" aria-label="Velani home">${WORDMARK}</a><ul class="gnav-links">${links}</ul>${target === 'shopify' ? `{% if velani_nav == 'services' %}<a class="pill line" href="/pages/contact?interest=custom-software">Start a project</a>{% else %}<a class="pill line" href="/pages/contact?interest=nevora-demo">Request free trial</a>{% endif %}` : (current === 'services' ? '<a class="pill line" href="/pages/contact?interest=custom-software">Start a project</a>' : '<a class="pill line" href="/pages/contact?interest=nevora-demo">Request free trial</a>')}<button class="gnav-menu" id="gmenu-btn" type="button" aria-expanded="false" aria-controls="gmenu" aria-label="Menu"><span class="i-open">${icon('list')}</span><span class="i-close" hidden>${icon('x')}</span></button></nav></header><div class="gmenu" id="gmenu" hidden><nav class="wrap" aria-label="Main menu">${menu}<a href="/pages/contact">Contact</a>${target === 'shopify' ? `{% if velani_nav == 'services' %}<a class="pill" href="/pages/contact?interest=custom-software">Start a project</a>{% else %}<a class="pill" href="/pages/contact?interest=nevora-demo">Request free NEVORA trial</a>{% endif %}` : (current === 'services' ? '<a class="pill" href="/pages/contact?interest=custom-software">Start a project</a>' : '<a class="pill" href="/pages/contact?interest=nevora-demo">Request free NEVORA trial</a>')}<small>Client support · <a href="mailto:${company.email}">${company.email}</a> · <a href="tel:+1${company.phone.replace(/-/g, '')}">${company.phone}</a> · ${company.hours}<br>Velani is a brand of ${company.operator}.</small></nav></div>`;
 }
 export function footer(target) { return site(read('foot.html'), target); }
+/** Custom development: client screenshots open full screen (an inline script at the end of the section). */
+export function zoomScript(target) { return site(read('zoom.html'), target); }
 /** The assistant launcher and panel; the API address is filled in by the layout (theme setting or preview environment). */
 export function assistant(target, apiAttribute) { return site(read('assist.html'), target).replace('<div class="ast-root" id="ast-root" hidden>', '<div class="ast-root" id="ast-root" hidden data-api="' + apiAttribute + '">'); }
 
 export const nightAssets = {
-  css: { base: read('base.css'), home: read('home.css'), nevora: read('nevora.css'), pages: read('pages.css'), kiosk: read('kiosk.css'), assist: read('assist.css') },
-  js: { motion: read('motion.js'), home: read('kiosk.js'), nevora: read('nevora.js') + '\n' + read('kiosk.js'), assist: read('assist.js'), assistClient: read('velani-assistant.js') },
+  css: { base: read('base.css'), home: read('home.css'), nevora: read('nevora.css'), pages: read('pages.css'), kiosk: read('kiosk.css'), assist: read('assist.css'), polish: read('polish.css') },
+  js: { motion: read('motion.js'), home: read('home.js'), nevora: read('nevora.js') + '\n' + read('kiosk.js'), assist: read('assist.js'), assistClient: read('velani-assistant.js') },
 };
 
 /* NEVORA policy pages (Privacy, Support, Account deletion, Terms), from the NEVORA app's approved policy source. */
