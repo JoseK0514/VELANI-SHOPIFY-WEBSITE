@@ -7,10 +7,13 @@
   const x = '{{icon:x}}';
   const d = document.createElement('dialog');
   d.className = 'zoom'; d.tabIndex = -1; d.setAttribute('aria-label', 'Screenshot');
-  d.innerHTML = '<button class="zoom-x" type="button" aria-label="Close">' + x + '</button><div class="zoom-sc" tabindex="0"><img alt="" decoding="async"></div><p class="zoom-cap"></p><p class="zoom-tip" aria-hidden="true">Swipe to see the whole screen</p>';
+  d.innerHTML = '<button class="zoom-x" type="button" aria-label="Close">' + x + '</button><div class="zoom-sc" role="region" aria-label="Screenshot, scrollable"><img alt="" decoding="async"></div><p class="zoom-cap"></p><p class="zoom-tip" aria-hidden="true">Swipe to see the whole screen</p>';
   document.body.append(d);
   const sc = d.querySelector('.zoom-sc'), big = sc.querySelector('img'), cap = d.querySelector('.zoom-cap');
   let opener;
+  // The picture area is a keyboard stop only while it actually scrolls (a wide screenshot on a phone)
+  const syncScroll = () => { if (sc.scrollWidth > sc.clientWidth + 1 || sc.scrollHeight > sc.clientHeight + 1) sc.tabIndex = 0; else sc.removeAttribute('tabindex'); };
+  addEventListener('resize', () => { if (d.open) syncScroll(); });
   for (const img of imgs) {
     const host = img.closest('.hwin, .ph');
     const b = document.createElement('button');
@@ -22,6 +25,7 @@
       big.src = img.currentSrc || img.src; big.alt = img.alt; cap.textContent = img.alt;
       d.classList.toggle('wide', (img.naturalWidth || img.width) > (img.naturalHeight || img.height));
       d.showModal(); d.focus(); sc.scrollLeft = 0;
+      if (big.complete) syncScroll(); else big.addEventListener('load', syncScroll, { once: true });
     });
   }
   d.querySelector('.zoom-x').addEventListener('click', () => d.close());

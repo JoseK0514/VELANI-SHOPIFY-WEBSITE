@@ -2,6 +2,23 @@
 
 ## Latest status (end of 2026-11-05)
 
+**Update after the full inspection: the theme to publish is now `193109852474` "Velani inspection fixes (preview)".** It contains everything in `193106706746` plus the fixes from `docs/reviews/velani-site-inspection-2026-11-05.md`:
+- **Layout:** the tablet text-and-image overlap is gone; hosted check finds no overlaps at 834, 1024, 1180 or 1440 px in Chromium or WebKit.
+- **Accessibility and chat:** the keyboard and focus fixes, plus honest chat wording.
+- **Copy:** the contradiction fixes, the NEVORA app wording, and the pricing wording based on the number of employees.
+- **Privacy:** the notices now name the Shopify analytics and Mailchimp pixels, and Cookie choices now controls analytics, marketing, preferences and sale or sharing.
+- **Speed and forms:** the performance fixes and the contact form fixes.
+
+Checks:
+- Locally: 35 unit tests, theme check clean, Rondo UI 166/166, inspection fixes 44/44, new fixes 306/306.
+- Hosted: the earlier fixes all pass; Rondo free checks 76, plus 4 contact-page items that change only because the launcher now hides there by design.
+- Crawl: 85 page views in both engines, no errors, overflow or broken images.
+
+The NEVORA policy text (`src/nevora-policies.mjs`) was left matching the app's approved policy source.
+
+Codex has scheduled retention (daily 15:00 UTC), refreshed the knowledge (16 docs) and synced the client (backend `fb6a79b`).
+
+
 **The theme to publish is `193106706746` "Velani Rondo + fixes (preview)", role `UNPUBLISHED`.** Preview: https://www.thevelani.com/?preview_theme_id=193106706746. It contains everything below plus the later work on this branch. `assistant_api_url` is set and `inquiries_enabled` is unchanged.
 
 1. **The repository matches the live site again** (`ba6e76b`).

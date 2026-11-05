@@ -19,9 +19,13 @@ window.__fx=[];
   now.textContent=((h-1)%12+1)+':'+String(m).padStart(2,'0')+(h<12?' AM':' PM');now.style.setProperty('--tip',(sp*r.height).toFixed(0)+'px')}});
  // Owner screenshot: clip reveal, then hand the edge back to the slab's own ring and shadow
  const ow=$('#owner');ow.addEventListener('transitionend',e=>{if(e.propertyName==='clip-path')ow.style.clipPath='none'});
- // Local nav disclosure on narrow screens
- const tog=$('#lnav-tog'),list=$('#lnav-list');const setL=o=>{tog.setAttribute('aria-expanded',String(o));list.classList.toggle('open',o)};
- tog.addEventListener('click',()=>setL(tog.getAttribute('aria-expanded')!=='true'));list.addEventListener('click',e=>{if(e.target.closest('a'))setL(false)});
+ // Local nav menu on narrow screens, like the main phone menu: focus moves into it, the page behind is inert and does not
+ // scroll, Escape closes it and returns focus to the button, and the button says "Close menu" while it is open
+ const tog=$('#lnav-tog'),list=$('#lnav-list'),behindL=[...document.querySelectorAll('main>:not(.lnav),footer,.skip,#ast-root')];// the local nav sits inside <main>
+ const setL=(o,focus)=>{if(o===(tog.getAttribute('aria-expanded')==='true'))return;tog.setAttribute('aria-expanded',String(o));tog.setAttribute('aria-label',o?'Close menu':'Menu');list.classList.toggle('open',o);
+  behindL.forEach(x=>x.inert=o);document.body.style.overflow=o?'hidden':'';
+  if(o&&focus){const first=[...list.querySelectorAll('a')].find(a=>a.offsetParent!==null);first&&first.focus({preventScroll:true})}};
+ tog.addEventListener('click',()=>setL(tog.getAttribute('aria-expanded')!=='true',true));list.addEventListener('click',e=>{if(e.target.closest('a'))setL(false)});
  document.addEventListener('keydown',e=>{if(e.key==='Escape'&&tog.getAttribute('aria-expanded')==='true'){setL(false);tog.focus()}});
  big.addEventListener('change',e=>{if(e.matches)setL(false);else setV(false)});
  // "by Velani": the company links on wide screens (narrow screens keep them in the menu)
@@ -56,9 +60,14 @@ window.__fx=[];
  const inside=()=>k.contains(document.activeElement);
  // Confirmation stays until the visitor chooses Try again (the real workplace tablet clears itself; this page does not)
  const submit=()=>{if(pin.length!==4)return;const d=new Date(),{hm,ap}=parts(d),day=new Intl.DateTimeFormat(loc(),{month:'short',day:'numeric'}).format(d);
-  pin='';render();$('kio-saved').textContent=day+' · '+hm+' '+ap;$('kio-dot').textContent=/\.$/.test(ap)?'':'.';const f=inside();pinStep.hidden=true;okStep.hidden=false;
-  const ck=k.querySelector('.kio-check');ck.style.animation='none';void ck.offsetWidth;ck.style.animation='';say('');if(f)$('kio-ok-h').focus()};
- const again=()=>{const f=inside();pin='';render();okStep.hidden=true;pinStep.hidden=false;say('');if(f)$('kio-pin-h').focus()};
+  // Continue was just used (it is the only way here), so focus goes to the result in every browser. Before, render() disabled
+  // the focused button first, Chromium dropped focus to the page and the result was never focused
+  pin='';render();$('kio-saved').textContent=day+' · '+hm+' '+ap;$('kio-dot').textContent=/\.$/.test(ap)?'':'.';pinStep.hidden=true;okStep.hidden=false;
+  const ck=k.querySelector('.kio-check');ck.style.animation='none';void ck.offsetWidth;ck.style.animation='';
+  $('kio-ok-h').focus({preventScroll:true});
+  // The live region sits outside both steps, so it is still read when the PIN step hides
+  say('');setTimeout(()=>say((es?'Tiempo registrado a las ':'Clock-in recorded at ')+hm+' '+ap),60)};
+ const again=()=>{const f=inside();pin='';render();okStep.hidden=true;pinStep.hidden=false;say('');if(f)$('kio-pin-h').focus({preventScroll:true})};
  k.querySelector('.kio-pad').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;
   if(b.dataset.d)press(b.dataset.d);else if(b.dataset.act==='clear')clear();else if(b.dataset.act==='back')back()});
  go.addEventListener('click',submit);$('kio-done').addEventListener('click',again);

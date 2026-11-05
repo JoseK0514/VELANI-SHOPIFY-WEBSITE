@@ -1,6 +1,8 @@
-const keys = ['analytics', 'marketing', 'preferences'];
-const off = () => ({ analytics: false, marketing: false, preferences: false });
-const valid = choices => choices && keys.every(key => typeof choices[key] === 'boolean');
+// Every purpose Shopify's Customer Privacy API controls. sale_of_data is the opt-out of sale or sharing under US state laws:
+// true allows it, false opts out. A caller that leaves it out opts out (the privacy-preserving default).
+const keys = ['analytics', 'marketing', 'preferences', 'sale_of_data'];
+const off = () => ({ analytics: false, marketing: false, preferences: false, sale_of_data: false });
+const valid = choices => choices && keys.every(key => typeof choices[key] === 'boolean' || (key === 'sale_of_data' && choices[key] === undefined));
 export function createPrivacyAdapter(host = globalThis, { platform = host.document?.documentElement?.dataset.platform || 'shopify', timeoutMs = 5000 } = {}) {
   let local = off(), loaded;
   const toChoices = input => Object.fromEntries(keys.map(key => [key, input?.[key] === true || input?.[key] === 'yes']));
@@ -31,7 +33,7 @@ export function createPrivacyAdapter(host = globalThis, { platform = host.docume
   }
   async function save(choices) {
     if (!valid(choices)) return { ok: false, error: 'Invalid privacy choices.' };
-    const clean = Object.fromEntries(keys.map(key => [key, choices[key]]));
+    const clean = Object.fromEntries(keys.map(key => [key, choices[key] === true]));
     if (platform === 'local') { local = clean; return { ok: true, mode: 'local' }; }
     try {
       const api = await resolveApi();

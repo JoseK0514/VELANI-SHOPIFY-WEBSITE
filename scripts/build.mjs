@@ -23,7 +23,6 @@ export async function build() {
   await writeFile(path.join(root, 'public/assets/velani-home.css'), css.home);
   await writeFile(path.join(root, 'public/assets/velani-nevora.css'), css.nevora);
   await writeFile(path.join(root, 'public/assets/velani-motion.js'), js.motion);
-  await writeFile(path.join(root, 'public/assets/velani-home.js'), js.home);
   await writeFile(path.join(root, 'public/assets/velani-nevora.js'), js.nevora);
   await writeFile(path.join(root, 'public/assets/velani-assist.js'), js.assist);
   await writeFile(path.join(root, 'public/assets/velani-assistant.js'), js.assistClient);

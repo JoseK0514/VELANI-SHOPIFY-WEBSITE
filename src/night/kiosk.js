@@ -21,9 +21,14 @@
  const inside=()=>k.contains(document.activeElement);
  // Confirmation stays until the visitor chooses Try again (the real workplace tablet clears itself; this page does not)
  const submit=()=>{if(pin.length!==4)return;const d=new Date(),{hm,ap}=parts(d),day=new Intl.DateTimeFormat(loc(),{month:'short',day:'numeric'}).format(d);
-  pin='';render();$('kio-saved').textContent=day+' · '+hm+' '+ap;$('kio-dot').textContent=/\.$/.test(ap)?'':'.';const f=inside();pinStep.hidden=true;okStep.hidden=false;
-  const ck=k.querySelector('.kio-check');ck.style.animation='none';void ck.offsetWidth;ck.style.animation='';say('');if(f)$('kio-ok-h').focus()};
- const again=()=>{const f=inside();pin='';render();okStep.hidden=true;pinStep.hidden=false;say('');if(f)$('kio-pin-h').focus()};
+  // Continue was just used (it is the only way here), so focus goes to the result in every browser. Before, render() disabled
+  // the focused button first, Chromium dropped focus to the page and the result was never focused
+  pin='';render();$('kio-saved').textContent=day+' · '+hm+' '+ap;$('kio-dot').textContent=/\.$/.test(ap)?'':'.';pinStep.hidden=true;okStep.hidden=false;
+  const ck=k.querySelector('.kio-check');ck.style.animation='none';void ck.offsetWidth;ck.style.animation='';
+  $('kio-ok-h').focus({preventScroll:true});
+  // The live region sits outside both steps, so it is still read when the PIN step hides
+  say('');setTimeout(()=>say((es?'Tiempo registrado a las ':'Clock-in recorded at ')+hm+' '+ap),60)};
+ const again=()=>{const f=inside();pin='';render();okStep.hidden=true;pinStep.hidden=false;say('');if(f)$('kio-pin-h').focus({preventScroll:true})};
  k.querySelector('.kio-pad').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;
   if(b.dataset.d)press(b.dataset.d);else if(b.dataset.act==='clear')clear();else if(b.dataset.act==='back')back()});
  go.addEventListener('click',submit);$('kio-done').addEventListener('click',again);

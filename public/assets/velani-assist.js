@@ -17,7 +17,9 @@ import { VelaniAssistant, safeSourceUrl } from './velani-assistant.js';
    retry: 'Retry', discard: 'Discard', edit: 'Edit question', contact: 'Contact page',
    sugg: ['How does the time clock work?', 'How does the free trial work?', 'Can you build our website or app?'],
    sources: 'Sources', newTab: '(opens in a new tab)', demo: 'Try the time clock', quote: 'Ask for a quote', support: 'NEVORA support', talk: 'Contact us',
-   deleted: 'Conversation deleted. Enquiries sent through the contact form are kept separately.',
+   deleted: 'Conversation deleted. Inquiries sent through the contact form are kept separately.',
+   ended: 'This conversation had already ended. It is removed from our servers within 30 days.',
+   verifyFail: 'Verification couldn’t load.',
    unavailable: 'Rondo isn’t available right now. Write to support@thevelani.com or use the contact page.',
    expired: 'This conversation expired. Your question is back in the box: send it to start a new conversation.',
    thinking: 'Rondo is thinking…', slow: 'Still working. Answers can take up to 45 seconds.', verifying: 'Waiting for the verification below…', seconds: 's' },
@@ -30,6 +32,8 @@ import { VelaniAssistant, safeSourceUrl } from './velani-assistant.js';
    sugg: ['¿Cómo funciona el reloj de entrada?', '¿Cómo funciona la prueba gratis?', '¿Pueden crear nuestro sitio web o aplicación?'],
    sources: 'Fuentes', newTab: '(se abre en una pestaña nueva)', demo: 'Probar el reloj de entrada', quote: 'Pedir una cotización', support: 'Soporte de NEVORA', talk: 'Contáctanos',
    deleted: 'Conversación eliminada. Las consultas enviadas por el formulario de contacto se conservan por separado.',
+   ended: 'Esta conversación ya había terminado. Se elimina de nuestros servidores en un plazo de 30 días.',
+   verifyFail: 'No se pudo cargar la verificación.',
    unavailable: 'Rondo no está disponible en este momento. Escribe a support@thevelani.com o usa la página de contacto.',
    expired: 'Esta conversación caducó. Tu pregunta está de nuevo en el cuadro: envíala para empezar una conversación nueva.',
    thinking: 'Rondo está pensando…', slow: 'Sigue trabajando. Las respuestas pueden tardar hasta 45 segundos.', verifying: 'Esperando la verificación de abajo…', seconds: 's' },
@@ -56,7 +60,7 @@ import { VelaniAssistant, safeSourceUrl } from './velani-assistant.js';
  const open = () => {
   panel.hidden = false; launch.setAttribute('aria-expanded', 'true'); requestAnimationFrame(() => panel.classList.add('in'));
   if (small.matches) { document.body.style.overflow = 'hidden'; panel.setAttribute('aria-modal', 'true'); }
-  (coarse.matches ? $('ast-head-t') : input).focus({ preventScroll: true });
+  (coarse.matches || input.disabled ? $('ast-head-t') : input).focus({ preventScroll: true });
   loadConfig();
  };
  const close = () => {
@@ -75,9 +79,16 @@ import { VelaniAssistant, safeSourceUrl } from './velani-assistant.js';
    items[next].focus();
   }
  });
- // On phones the launcher stays out of the first screen (hero actions and the scroll cue live at its bottom edge) and steps aside while a page form field has the keyboard
- let fieldFocus = false;
- const tuck = () => root.classList.toggle('ast-tucked', small.matches && panel.hidden && (fieldFocus || window.scrollY < innerHeight * 0.6));
+ // On phones the launcher stays out of the first screen (hero actions and the scroll cue live at its bottom edge) and off the
+ // footer and the closing panel's actions; at every width it steps aside while a page form field has the keyboard
+ let fieldFocus = false, endInView = false;
+ const tuck = () => root.classList.toggle('ast-tucked', panel.hidden && (fieldFocus || (small.matches && (endInView || window.scrollY < innerHeight * 0.6))));
+ const ends = [...document.querySelectorAll('.foot, main > .hpanel.end .hacts')];
+ if (ends.length && 'IntersectionObserver' in window) {
+  const seen = new Set();
+  const io = new IntersectionObserver(es => { es.forEach(x => x.isIntersecting ? seen.add(x.target) : seen.delete(x.target)); endInView = seen.size > 0; tuck(); });
+  ends.forEach(el => io.observe(el));
+ }
  addEventListener('scroll', tuck, { passive: true }); addEventListener('resize', tuck);
  document.addEventListener('focusin', e => { fieldFocus = !!e.target.closest?.('input,textarea,select') && !root.contains(e.target); tuck(); });
  document.addEventListener('focusout', () => { fieldFocus = false; requestAnimationFrame(tuck); });
@@ -86,12 +97,17 @@ import { VelaniAssistant, safeSourceUrl } from './velani-assistant.js';
  // ---------- the service
  const loadConfig = () => {
   if (configPromise) return configPromise;
-  configPromise = fetch(api + '/v1/config', { cache: 'no-store', credentials: 'omit' }).then(r => { if (!r.ok) throw new Error('config'); return r.json(); })
+  const abort = new AbortController(), timer = setTimeout(() => abort.abort(), 10000);
+  configPromise = fetch(api + '/v1/config', { cache: 'no-store', credentials: 'omit', signal: abort.signal }).then(r => { if (!r.ok) throw new Error('config'); return r.json(); })
+   .finally(() => clearTimeout(timer))
    .then(c => {
     config = c; configFailed = false;
     if (typeof c.assistantName === 'string' && /^[\p{L} .'-]{1,40}$/u.test(c.assistantName.trim())) { name = c.assistantName.trim(); applyLocale(); }
     if (status.dataset.kind === 'config') clearStatus();
-    setEnabled(true); return c;
+    setEnabled(true);
+    // Opened before the configuration arrived: the question box is ready now
+    if (!panel.hidden && !coarse.matches && (document.activeElement === $('ast-head-t') || document.activeElement === document.body)) input.focus({ preventScroll: true });
+    return c;
    })
    .catch(() => { configPromise = null; configFailed = true; setEnabled(false); showStatus(t('unavailable'), 'config'); retryBtn.hidden = false; retryBtn.disabled = false; retryBtn.textContent = t('retry'); contactLink.hidden = false; return null; });
   return configPromise;
@@ -100,11 +116,13 @@ import { VelaniAssistant, safeSourceUrl } from './velani-assistant.js';
  const getAssistant = () => assistant || (assistant = new VelaniAssistant({ apiBaseUrl: api, locale, getCaptchaToken: captchaToken }));
 
  // ---------- Cloudflare Turnstile: a fresh token is needed once, when a conversation starts
- const captcha = { widget: null, token: null, at: 0, waiting: null, script: null };
+ const captcha = { widget: null, token: null, at: 0, waiting: null, script: null, failed: false };
  const loadTurnstile = () => captcha.script || (captcha.script = new Promise((resolve, reject) => {
   if (window.turnstile) return resolve();
   const s = document.createElement('script'); s.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit'; s.async = true;
-  s.onload = () => resolve(); s.onerror = () => { captcha.script = null; reject(new Error('turnstile')); }; document.head.append(s);
+  const fail = () => { clearTimeout(timer); captcha.script = null; s.remove(); reject(new Error('turnstile')); };
+  const timer = setTimeout(fail, 15000);
+  s.onload = () => { clearTimeout(timer); window.turnstile ? resolve() : fail(); }; s.onerror = fail; document.head.append(s);
  }));
  const nextToken = () => new Promise((resolve, reject) => {
   const timer = setTimeout(() => { captcha.waiting = null; reject(new Error('timeout')); }, 120000);
@@ -122,10 +140,14 @@ import { VelaniAssistant, safeSourceUrl } from './velani-assistant.js';
    if (captcha.widget === null) {
     captcha.widget = window.turnstile.render('#ast-turnstile', { sitekey: c.turnstileSiteKey, action: 'velani-session', language: locale, appearance: 'interaction-only',
      callback: token => { captcha.token = token; captcha.at = Date.now(); captcha.waiting?.resolve(token); captcha.waiting = null; },
-     'expired-callback': () => { captcha.token = null; }, 'error-callback': () => { captcha.waiting?.reject(new Error('challenge')); captcha.waiting = null; } });
+     'expired-callback': () => { captcha.token = null; },
+     'error-callback': () => { captcha.waiting?.reject(new Error('challenge')); captcha.waiting = null; },
+     'timeout-callback': () => { captcha.waiting?.reject(new Error('challenge timeout')); captcha.waiting = null; },
+     'unsupported-callback': () => { captcha.waiting?.reject(new Error('unsupported')); captcha.waiting = null; } });
    } else window.turnstile.reset(captcha.widget);
-   const token = await waiting; captcha.token = null; return token;
-  } finally { verify.hidden = true; activeWait?.thinking(); }
+   const token = await waiting; captcha.token = null; captcha.failed = false; return token;
+  } catch (error) { captcha.failed = true; throw error; }
+  finally { verify.hidden = true; activeWait?.thinking(); }
  }
 
  // ---------- messages (answers are inserted as text; links only from validated sources)
@@ -157,12 +179,20 @@ import { VelaniAssistant, safeSourceUrl } from './velani-assistant.js';
   const act = action(answer, sources); if (act) { const d = document.createElement('div'); d.className = 'ast-acts'; d.append(act); li.append(d); }
   log.append(li); scroll(); return li;
  };
+ // A site path as the theme links it: the layout writes #ast-contact as a draft link on an unpublished theme
+ // (/?preview_theme_id=…&view=velani-contact), so links built here follow the same form and stay in the draft
+ const siteHref = href => {
+  let draft = null; try { draft = new URL(contactLink.getAttribute('href'), location.href).searchParams.get('preview_theme_id'); } catch {}
+  if (!draft) return href;
+  const u = new URL(href, location.origin), slug = u.pathname === '/' ? '' : u.pathname.split('/').at(-1);
+  return '/?preview_theme_id=' + encodeURIComponent(draft) + (slug ? '&view=velani-' + slug : '') + (u.search ? '&' + u.search.slice(1) : '') + u.hash;
+ };
  // Suggested next steps go only to pages that exist on this site; Rondo itself never books, sends or pays
  const action = (answer, sources) => {
   const a = document.createElement('a');
-  if (answer.action === 'show_demo') { const here = !!document.getElementById('try'); a.href = here ? '#try' : '/pages/nevora#try'; a.textContent = t('demo'); if (here) a.addEventListener('click', () => close()); return a; }
-  if (answer.action === 'lead_form') { a.href = '/pages/contact?interest=nevora'; a.textContent = t('quote'); return a; }
-  if (answer.action === 'human_help') { const support = sources.some(s => /\/pages\/nevora-support\b/.test(s.url)); a.href = support ? '/pages/nevora-support' : '/pages/contact'; a.textContent = support ? t('support') : t('talk'); return a; }
+  if (answer.action === 'show_demo') { const here = !!document.getElementById('try'); a.href = here ? '#try' : siteHref('/pages/nevora#try'); a.textContent = t('demo'); if (here) a.addEventListener('click', () => close()); return a; }
+  if (answer.action === 'lead_form') { a.href = siteHref('/pages/contact?interest=nevora'); a.textContent = t('quote'); return a; }
+  if (answer.action === 'human_help') { const support = sources.some(s => /\/pages\/nevora-support\b/.test(s.url)); a.href = siteHref(support ? '/pages/nevora-support' : '/pages/contact'); a.textContent = support ? t('support') : t('talk'); return a; }
   return null;
  };
 
@@ -185,7 +215,9 @@ import { VelaniAssistant, safeSourceUrl } from './velani-assistant.js';
    clearInterval(countdown); wait(); if (f.retryAt > Date.now()) countdown = setInterval(wait, 1000);
   } else if (f) discardBtn.hidden = false;
   if (error.code === 'server' || error.code === 'denied') contactLink.hidden = false;
-  if (error.code === 'captcha') verify.hidden = false;
+  // Verification that never loaded leaves an empty box: hide it, say so, and offer the contact page next to Retry
+  if (error.code === 'captcha' && captcha.failed) { verify.hidden = true; statusT.textContent = t('verifyFail'); contactLink.hidden = false; }
+  else if (error.code === 'captcha') verify.hidden = false;
  };
  retryBtn.addEventListener('click', async () => {
   if (retryBtn.disabled) return;
@@ -237,11 +269,13 @@ import { VelaniAssistant, safeSourceUrl } from './velani-assistant.js';
   const mode = confirmMode, next = switchTo; confirm.hidden = true; switchTo = null; clearStatus();
   try {
    if (assistant?.failedRequest) { try { assistant.discardFailedRequest(); } catch {} }
+   // "Deleted" only when the service confirmed the delete; an expired session was not deleted now, it is removed by retention
+   let ended = false;
    try { if (assistant && (assistant.session || started)) await assistant.deleteSession(); }
-   catch (error) { if (error.code !== 'expired') throw error; assistant.forgetLocally(); }
+   catch (error) { if (error.code !== 'expired') throw error; assistant.forgetLocally(); ended = true; }
    afterDelete();
-   if (mode === 'switch' && next) { setLocale(next); showStatus(t('switched'), 'info'); }
-   else showStatus(t('deleted'), 'info');
+   if (mode === 'switch' && next) { setLocale(next); showStatus(ended ? t('ended') + ' ' + t('switched') : t('switched'), 'info'); }
+   else showStatus(ended ? t('ended') : t('deleted'), 'info');
    input.focus();
   } catch (error) { failed(error); }
   updateSend();
@@ -254,6 +288,6 @@ import { VelaniAssistant, safeSourceUrl } from './velani-assistant.js';
   setLocale(next); clearStatus(); input.focus();
  }));
 
- applyLocale(); tuck(); root.hidden = false;
+ applyLocale(); setEnabled(false); tuck(); root.hidden = false;
  window.__velaniAssistant = { get locale() { return locale; } };
 })();

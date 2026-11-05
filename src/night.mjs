@@ -58,7 +58,8 @@ export function header(current, target, { nevora = false } = {}) {
   const productsMark = target === 'shopify'
     ? `{% if velani_nav == 'nevora' or velani_nav == 'products' %} aria-current="page"{% endif %}`
     : (current === 'nevora' || current === 'products' ? ' aria-current="page"' : '');
-  const products = `<li class="gnav-dd"><a class="gnav-ddlink" href="/pages/products"${productsMark}>Products${icon('caret-down')}</a><div class="gnav-ddmenu"><ul aria-label="Products">` + PRODUCTS.map(([name, href, note]) => `<li><a href="${href}"><b>${name}</b><span>${note}</span></a></li>`).join('') + '</ul></div></li>';
+  // A disclosure: the word links to the Products page, the caret button opens the menu (hover and keyboard focus also open it; Escape closes it)
+  const products = `<li class="gnav-dd"><a class="gnav-ddlink" href="/pages/products"${productsMark}>Products</a><button class="gnav-ddbtn" type="button" aria-expanded="false" aria-controls="gnav-ddmenu" aria-label="Products menu">${icon('caret-down')}</button><div class="gnav-ddmenu" id="gnav-ddmenu"><ul aria-label="Products">` + PRODUCTS.map(([name, href, note]) => `<li><a href="${href}"><b>${name}</b><span>${note}</span></a></li>`).join('') + '</ul></div></li>';
   const links = products + NAV.map(([text, href, key]) => `<li><a href="${href}"${mark(key)}>${text}</a></li>`).join('');
   const productsMenu = `<p class="gmenu-k">Products</p><a class="gmenu-sub" href="/pages/nevora"${mark('nevora')}>NEVORA Workforce</a><a class="gmenu-sub nav-rondo" href="/pages/nevora#rondo">Rondo<span class="nav-soon">In development</span></a><a class="gmenu-sub" href="/pages/products#relay">NEVORA Relay<span class="nav-soon">Soon</span></a>`;
   const menu = productsMenu + NAV.map(([text, href, key]) => `<a href="${href}"${mark(key)}>${text}</a>`).join('');
@@ -73,7 +74,7 @@ export function assistant(target, apiAttribute) { return site(read('assist.html'
 
 export const nightAssets = {
   css: { base: read('base.css'), home: read('home.css'), nevora: read('nevora.css'), pages: read('pages.css'), kiosk: read('kiosk.css'), assist: read('assist.css'), polish: read('polish.css') },
-  js: { motion: read('motion.js'), home: read('home.js'), nevora: read('nevora.js') + '\n' + read('kiosk.js'), assist: read('assist.js'), assistClient: read('velani-assistant.js') },
+  js: { motion: read('motion.js'), nevora: read('nevora.js') + '\n' + read('kiosk.js'), assist: read('assist.js'), assistClient: read('velani-assistant.js') },
 };
 
 /* NEVORA policy pages (Privacy, Support, Account deletion, Terms), from the NEVORA app's approved policy source. */

@@ -1,0 +1,306 @@
+PASS chromium 769: no panel text overlaps a visual on 6 pages (none)
+PASS chromium 834: no panel text overlaps a visual on 6 pages (none)
+PASS chromium 900: no panel text overlaps a visual on 6 pages (none)
+PASS chromium 1024: no panel text overlaps a visual on 6 pages (none)
+PASS chromium 1100: no panel text overlaps a visual on 6 pages (none)
+PASS chromium 1180: no panel text overlaps a visual on 6 pages (none)
+PASS chromium 1200: no panel text overlaps a visual on 6 pages (none)
+PASS chromium 1280: no panel text overlaps a visual on 6 pages (none)
+PASS chromium 1440: no panel text overlaps a visual on 6 pages (none)
+PASS chromium 1920: no panel text overlaps a visual on 6 pages (none)
+PASS chromium 1440: NEVORA page says it runs on the web and in the NEVORA app
+PASS chromium 1440: Rondo section is future tense, says the website chat works today; deletion is a request
+PASS chromium 1440: NEVORA price answer uses the quote wording
+PASS chromium 1440: after Continue focus is on the result and "Clock-in recorded at 11:29 AM" is announced
+PASS chromium 1440: Continue by keyboard also lands on the result
+PASS chromium 1440: focused "Scroll to NEVORA" is visible (opacity 1)
+PASS chromium 1440: home Rondo label says Coming to NEVORA
+PASS chromium 1440: Products still links to the Products page
+PASS chromium 1440: hover opens the Products menu and the button says expanded
+PASS chromium 1440: Escape closes the hover-opened menu
+PASS chromium 1440: keyboard focus opens the menu
+PASS chromium 1440: Escape closes it and focus stays on the button
+PASS chromium 1440: the button reopens it
+PASS chromium 1440: focusing a header link leaves the page where it was (1460 → 1460)
+PASS chromium 1440: an in-page anchor still lands below the sticky bar (heading at 138px)
+PASS chromium 1440: Ask Rondo stays hidden while a form field has focus
+PASS chromium 1440: contact fields show the 2px focus ring (solid 2px)
+PASS chromium 1440: errors explain what to fix
+PASS chromium 1440: message is required for a general topic
+PASS chromium 1440: switching to a NEVORA topic clears the now-optional message's error
+PASS chromium 1440: general form, free trial with more than 30 becomes a NEVORA quote with the note
+PASS chromium 1440: back to 11–20 returns to the free trial
+PASS chromium 1440: Relay waitlist heading and title (Join the NEVORA Relay waitlist. | NEVORA Relay waitlist · Velani)
+PASS chromium 1440: /pages/plans states the price is quoted for employees, business and features
+PASS chromium 1440: /pages/help states the price is quoted for employees, business and features
+PASS chromium 1440: Plans says how to close the workplace
+PASS chromium 1440: cookie choices name Shopify and Mailchimp and offer four choices
+PASS chromium 1440: Accept and Reject set analytics, marketing, preferences and sale_of_data ({"analytics":false,"marketing":false,"preferences":false,"sale_of_data":false})
+PASS chromium 1440: cookies page no longer says no analytics tools were added
+PASS chromium 1440: Plans heading and intro show without waiting for the motion script ({"h":"visible","l":1})
+PASS chromium 1440: the question box shows a focus ring
+PASS chromium 1440: Rondo's quote link stays in the draft theme
+PASS chromium 1440: an expired conversation is not reported as deleted ("This conversation had already ended. It is removed from our servers within 30 days.")
+PASS chromium 1440: a confirmed delete says Conversation deleted
+PASS chromium 1440: no page errors ()
+PASS chromium 1440: the question box stays disabled while the configuration loads
+PASS chromium 1440: a configuration that never answers ends in the unavailable state with Retry and Contact
+PASS chromium 1440: verification that cannot load hides the empty box and offers the contact page
+PASS chromium 1024: NEVORA page says it runs on the web and in the NEVORA app
+PASS chromium 1024: Rondo section is future tense, says the website chat works today; deletion is a request
+PASS chromium 1024: NEVORA price answer uses the quote wording
+PASS chromium 1024: after Continue focus is on the result and "Clock-in recorded at 11:29 AM" is announced
+PASS chromium 1024: Continue by keyboard also lands on the result
+PASS chromium 1024: focused "Scroll to NEVORA" is visible (opacity 1)
+PASS chromium 1024: home Rondo label says Coming to NEVORA
+PASS chromium 1024: Products still links to the Products page
+PASS chromium 1024: hover opens the Products menu and the button says expanded
+PASS chromium 1024: Escape closes the hover-opened menu
+PASS chromium 1024: keyboard focus opens the menu
+PASS chromium 1024: Escape closes it and focus stays on the button
+PASS chromium 1024: the button reopens it
+PASS chromium 1024: focusing a header link leaves the page where it was (1460 → 1460)
+PASS chromium 1024: an in-page anchor still lands below the sticky bar (heading at 138px)
+PASS chromium 1024: Ask Rondo stays hidden while a form field has focus
+PASS chromium 1024: contact fields show the 2px focus ring (solid 2px)
+PASS chromium 1024: errors explain what to fix
+PASS chromium 1024: message is required for a general topic
+PASS chromium 1024: switching to a NEVORA topic clears the now-optional message's error
+PASS chromium 1024: general form, free trial with more than 30 becomes a NEVORA quote with the note
+PASS chromium 1024: back to 11–20 returns to the free trial
+PASS chromium 1024: Relay waitlist heading and title (Join the NEVORA Relay waitlist. | NEVORA Relay waitlist · Velani)
+PASS chromium 1024: /pages/plans states the price is quoted for employees, business and features
+PASS chromium 1024: /pages/help states the price is quoted for employees, business and features
+PASS chromium 1024: Plans says how to close the workplace
+PASS chromium 1024: cookie choices name Shopify and Mailchimp and offer four choices
+PASS chromium 1024: Accept and Reject set analytics, marketing, preferences and sale_of_data ({"analytics":false,"marketing":false,"preferences":false,"sale_of_data":false})
+PASS chromium 1024: cookies page no longer says no analytics tools were added
+PASS chromium 1024: Plans heading and intro show without waiting for the motion script ({"h":"visible","l":1})
+PASS chromium 1024: the question box shows a focus ring
+PASS chromium 1024: Rondo's quote link stays in the draft theme
+PASS chromium 1024: an expired conversation is not reported as deleted ("This conversation had already ended. It is removed from our servers within 30 days.")
+PASS chromium 1024: a confirmed delete says Conversation deleted
+PASS chromium 1024: no page errors ()
+PASS chromium 834: NEVORA page says it runs on the web and in the NEVORA app
+PASS chromium 834: Rondo section is future tense, says the website chat works today; deletion is a request
+PASS chromium 834: NEVORA price answer uses the quote wording
+PASS chromium 834: NEVORA menu takes focus, the page behind is inert and locked, button says Close menu ({"inList":true,"inert":[true,true,true,true],"lock":"hidden","label":"Close menu"})
+PASS chromium 834: Ask Rondo is hidden while the NEVORA menu is open
+PASS chromium 834: Escape closes the NEVORA menu and returns focus to its button
+PASS chromium 834: after Continue focus is on the result and "Clock-in recorded at 11:30 AM" is announced
+PASS chromium 834: Continue by keyboard also lands on the result
+PASS chromium 834: focused "Scroll to NEVORA" is visible (opacity 1)
+PASS chromium 834: home Rondo label says Coming to NEVORA
+PASS chromium 834: Products still links to the Products page
+PASS chromium 834: hover opens the Products menu and the button says expanded
+PASS chromium 834: Escape closes the hover-opened menu
+PASS chromium 834: keyboard focus opens the menu
+PASS chromium 834: Escape closes it and focus stays on the button
+PASS chromium 834: the button reopens it
+PASS chromium 834: focusing a header link leaves the page where it was (1460 → 1460)
+PASS chromium 834: an in-page anchor still lands below the sticky bar (heading at 138px)
+PASS chromium 834: Ask Rondo stays hidden while a form field has focus
+PASS chromium 834: contact fields show the 2px focus ring (solid 2px)
+PASS chromium 834: errors explain what to fix
+PASS chromium 834: message is required for a general topic
+PASS chromium 834: switching to a NEVORA topic clears the now-optional message's error
+PASS chromium 834: general form, free trial with more than 30 becomes a NEVORA quote with the note
+PASS chromium 834: back to 11–20 returns to the free trial
+PASS chromium 834: Relay waitlist heading and title (Join the NEVORA Relay waitlist. | NEVORA Relay waitlist · Velani)
+PASS chromium 834: /pages/plans states the price is quoted for employees, business and features
+PASS chromium 834: /pages/help states the price is quoted for employees, business and features
+PASS chromium 834: Plans says how to close the workplace
+PASS chromium 834: cookie choices name Shopify and Mailchimp and offer four choices
+PASS chromium 834: Accept and Reject set analytics, marketing, preferences and sale_of_data ({"analytics":false,"marketing":false,"preferences":false,"sale_of_data":false})
+PASS chromium 834: cookies page no longer says no analytics tools were added
+PASS chromium 834: Plans heading and intro show without waiting for the motion script ({"h":"visible","l":1})
+PASS chromium 834: the question box shows a focus ring
+PASS chromium 834: Rondo's quote link stays in the draft theme
+PASS chromium 834: an expired conversation is not reported as deleted ("This conversation had already ended. It is removed from our servers within 30 days.")
+PASS chromium 834: a confirmed delete says Conversation deleted
+PASS chromium 834: no page errors ()
+PASS chromium 390: NEVORA page says it runs on the web and in the NEVORA app
+PASS chromium 390: Rondo section is future tense, says the website chat works today; deletion is a request
+PASS chromium 390: NEVORA price answer uses the quote wording
+PASS chromium 390: NEVORA menu takes focus, the page behind is inert and locked, button says Close menu ({"inList":true,"inert":[true,true,true,true],"lock":"hidden","label":"Close menu"})
+PASS chromium 390: Ask Rondo is hidden while the NEVORA menu is open
+PASS chromium 390: Escape closes the NEVORA menu and returns focus to its button
+PASS chromium 390: after Continue focus is on the result and "Clock-in recorded at 11:30 AM" is announced
+PASS chromium 390: Continue by keyboard also lands on the result
+PASS chromium 390: focused "Scroll to NEVORA" is visible (opacity 1)
+PASS chromium 390: home Rondo label says Coming to NEVORA
+PASS chromium 390: Ask Rondo shows after scrolling
+PASS chromium 390: Ask Rondo is hidden and inert while the phone menu is open
+PASS chromium 390: Ask Rondo steps aside at the footer
+PASS chromium 390: Ask Rondo stays hidden while a form field has focus
+PASS chromium 390: contact fields show the 2px focus ring (solid 2px)
+PASS chromium 390: errors explain what to fix
+PASS chromium 390: message is required for a general topic
+PASS chromium 390: switching to a NEVORA topic clears the now-optional message's error
+PASS chromium 390: general form, free trial with more than 30 becomes a NEVORA quote with the note
+PASS chromium 390: back to 11–20 returns to the free trial
+PASS chromium 390: Relay waitlist heading and title (Join the NEVORA Relay waitlist. | NEVORA Relay waitlist · Velani)
+PASS chromium 390: /pages/plans states the price is quoted for employees, business and features
+PASS chromium 390: /pages/help states the price is quoted for employees, business and features
+PASS chromium 390: Plans says how to close the workplace
+PASS chromium 390: cookie choices name Shopify and Mailchimp and offer four choices
+PASS chromium 390: Accept and Reject set analytics, marketing, preferences and sale_of_data ({"analytics":false,"marketing":false,"preferences":false,"sale_of_data":false})
+PASS chromium 390: cookies page no longer says no analytics tools were added
+PASS chromium 390: Plans heading and intro show without waiting for the motion script ({"h":"visible","l":1})
+PASS chromium 390: Rondo's quote link stays in the draft theme
+PASS chromium 390: an expired conversation is not reported as deleted ("This conversation had already ended. It is removed from our servers within 30 days.")
+PASS chromium 390: a confirmed delete says Conversation deleted
+PASS chromium 390: no page errors ()
+PASS chromium 390: the question box stays disabled while the configuration loads
+PASS chromium 390: a configuration that never answers ends in the unavailable state with Retry and Contact
+PASS chromium 390: verification that cannot load hides the empty box and offers the contact page
+PASS webkit 769: no panel text overlaps a visual on 6 pages (none)
+PASS webkit 834: no panel text overlaps a visual on 6 pages (none)
+PASS webkit 900: no panel text overlaps a visual on 6 pages (none)
+PASS webkit 1024: no panel text overlaps a visual on 6 pages (none)
+PASS webkit 1100: no panel text overlaps a visual on 6 pages (none)
+PASS webkit 1180: no panel text overlaps a visual on 6 pages (none)
+PASS webkit 1200: no panel text overlaps a visual on 6 pages (none)
+PASS webkit 1280: no panel text overlaps a visual on 6 pages (none)
+PASS webkit 1440: no panel text overlaps a visual on 6 pages (none)
+PASS webkit 1920: no panel text overlaps a visual on 6 pages (none)
+PASS webkit 1440: NEVORA page says it runs on the web and in the NEVORA app
+PASS webkit 1440: Rondo section is future tense, says the website chat works today; deletion is a request
+PASS webkit 1440: NEVORA price answer uses the quote wording
+PASS webkit 1440: after Continue focus is on the result and "Clock-in recorded at 11:31 AM" is announced
+PASS webkit 1440: Continue by keyboard also lands on the result
+PASS webkit 1440: focused "Scroll to NEVORA" is visible (opacity 1)
+PASS webkit 1440: home Rondo label says Coming to NEVORA
+PASS webkit 1440: Products still links to the Products page
+PASS webkit 1440: hover opens the Products menu and the button says expanded
+PASS webkit 1440: Escape closes the hover-opened menu
+PASS webkit 1440: keyboard focus opens the menu
+PASS webkit 1440: Escape closes it and focus stays on the button
+PASS webkit 1440: the button reopens it
+PASS webkit 1440: Ask Rondo stays hidden while a form field has focus
+PASS webkit 1440: contact fields show the 2px focus ring (solid 2px)
+PASS webkit 1440: errors explain what to fix
+PASS webkit 1440: message is required for a general topic
+PASS webkit 1440: switching to a NEVORA topic clears the now-optional message's error
+PASS webkit 1440: general form, free trial with more than 30 becomes a NEVORA quote with the note
+PASS webkit 1440: back to 11–20 returns to the free trial
+PASS webkit 1440: Relay waitlist heading and title (Join the NEVORA Relay waitlist. | NEVORA Relay waitlist · Velani)
+PASS webkit 1440: /pages/plans states the price is quoted for employees, business and features
+PASS webkit 1440: /pages/help states the price is quoted for employees, business and features
+PASS webkit 1440: Plans says how to close the workplace
+PASS webkit 1440: cookie choices name Shopify and Mailchimp and offer four choices
+PASS webkit 1440: Accept and Reject set analytics, marketing, preferences and sale_of_data ({"analytics":false,"marketing":false,"preferences":false,"sale_of_data":false})
+PASS webkit 1440: cookies page no longer says no analytics tools were added
+PASS webkit 1440: Plans heading and intro show without waiting for the motion script ({"h":"visible","l":1})
+PASS webkit 1440: the question box shows a focus ring
+PASS webkit 1440: Rondo's quote link stays in the draft theme
+PASS webkit 1440: an expired conversation is not reported as deleted ("This conversation had already ended. It is removed from our servers within 30 days.")
+PASS webkit 1440: a confirmed delete says Conversation deleted
+PASS webkit 1440: no page errors ()
+PASS webkit 1440: the question box stays disabled while the configuration loads
+PASS webkit 1440: a configuration that never answers ends in the unavailable state with Retry and Contact
+PASS webkit 1440: verification that cannot load hides the empty box and offers the contact page
+PASS webkit 1024: NEVORA page says it runs on the web and in the NEVORA app
+PASS webkit 1024: Rondo section is future tense, says the website chat works today; deletion is a request
+PASS webkit 1024: NEVORA price answer uses the quote wording
+PASS webkit 1024: after Continue focus is on the result and "Clock-in recorded at 11:31 AM" is announced
+PASS webkit 1024: Continue by keyboard also lands on the result
+PASS webkit 1024: focused "Scroll to NEVORA" is visible (opacity 1)
+PASS webkit 1024: home Rondo label says Coming to NEVORA
+PASS webkit 1024: Products still links to the Products page
+PASS webkit 1024: hover opens the Products menu and the button says expanded
+PASS webkit 1024: Escape closes the hover-opened menu
+PASS webkit 1024: keyboard focus opens the menu
+PASS webkit 1024: Escape closes it and focus stays on the button
+PASS webkit 1024: the button reopens it
+PASS webkit 1024: Ask Rondo stays hidden while a form field has focus
+PASS webkit 1024: contact fields show the 2px focus ring (solid 2px)
+PASS webkit 1024: errors explain what to fix
+PASS webkit 1024: message is required for a general topic
+PASS webkit 1024: switching to a NEVORA topic clears the now-optional message's error
+PASS webkit 1024: general form, free trial with more than 30 becomes a NEVORA quote with the note
+PASS webkit 1024: back to 11–20 returns to the free trial
+PASS webkit 1024: Relay waitlist heading and title (Join the NEVORA Relay waitlist. | NEVORA Relay waitlist · Velani)
+PASS webkit 1024: /pages/plans states the price is quoted for employees, business and features
+PASS webkit 1024: /pages/help states the price is quoted for employees, business and features
+PASS webkit 1024: Plans says how to close the workplace
+PASS webkit 1024: cookie choices name Shopify and Mailchimp and offer four choices
+PASS webkit 1024: Accept and Reject set analytics, marketing, preferences and sale_of_data ({"analytics":false,"marketing":false,"preferences":false,"sale_of_data":false})
+PASS webkit 1024: cookies page no longer says no analytics tools were added
+PASS webkit 1024: Plans heading and intro show without waiting for the motion script ({"h":"visible","l":1})
+PASS webkit 1024: the question box shows a focus ring
+PASS webkit 1024: Rondo's quote link stays in the draft theme
+PASS webkit 1024: an expired conversation is not reported as deleted ("This conversation had already ended. It is removed from our servers within 30 days.")
+PASS webkit 1024: a confirmed delete says Conversation deleted
+PASS webkit 1024: no page errors ()
+PASS webkit 834: NEVORA page says it runs on the web and in the NEVORA app
+PASS webkit 834: Rondo section is future tense, says the website chat works today; deletion is a request
+PASS webkit 834: NEVORA price answer uses the quote wording
+PASS webkit 834: NEVORA menu takes focus, the page behind is inert and locked, button says Close menu ({"inList":true,"inert":[true,true,true,true],"lock":"hidden","label":"Close menu"})
+PASS webkit 834: Ask Rondo is hidden while the NEVORA menu is open
+PASS webkit 834: Escape closes the NEVORA menu and returns focus to its button
+PASS webkit 834: after Continue focus is on the result and "Clock-in recorded at 11:32 AM" is announced
+PASS webkit 834: Continue by keyboard also lands on the result
+PASS webkit 834: focused "Scroll to NEVORA" is visible (opacity 1)
+PASS webkit 834: home Rondo label says Coming to NEVORA
+PASS webkit 834: Products still links to the Products page
+PASS webkit 834: hover opens the Products menu and the button says expanded
+PASS webkit 834: Escape closes the hover-opened menu
+PASS webkit 834: keyboard focus opens the menu
+PASS webkit 834: Escape closes it and focus stays on the button
+PASS webkit 834: the button reopens it
+PASS webkit 834: Ask Rondo stays hidden while a form field has focus
+PASS webkit 834: contact fields show the 2px focus ring (solid 2px)
+PASS webkit 834: errors explain what to fix
+PASS webkit 834: message is required for a general topic
+PASS webkit 834: switching to a NEVORA topic clears the now-optional message's error
+PASS webkit 834: general form, free trial with more than 30 becomes a NEVORA quote with the note
+PASS webkit 834: back to 11–20 returns to the free trial
+PASS webkit 834: Relay waitlist heading and title (Join the NEVORA Relay waitlist. | NEVORA Relay waitlist · Velani)
+PASS webkit 834: /pages/plans states the price is quoted for employees, business and features
+PASS webkit 834: /pages/help states the price is quoted for employees, business and features
+PASS webkit 834: Plans says how to close the workplace
+PASS webkit 834: cookie choices name Shopify and Mailchimp and offer four choices
+PASS webkit 834: Accept and Reject set analytics, marketing, preferences and sale_of_data ({"analytics":false,"marketing":false,"preferences":false,"sale_of_data":false})
+PASS webkit 834: cookies page no longer says no analytics tools were added
+PASS webkit 834: Plans heading and intro show without waiting for the motion script ({"h":"visible","l":1})
+PASS webkit 834: the question box shows a focus ring
+PASS webkit 834: Rondo's quote link stays in the draft theme
+PASS webkit 834: an expired conversation is not reported as deleted ("This conversation had already ended. It is removed from our servers within 30 days.")
+PASS webkit 834: a confirmed delete says Conversation deleted
+PASS webkit 834: no page errors ()
+PASS webkit 390: NEVORA page says it runs on the web and in the NEVORA app
+PASS webkit 390: Rondo section is future tense, says the website chat works today; deletion is a request
+PASS webkit 390: NEVORA price answer uses the quote wording
+PASS webkit 390: NEVORA menu takes focus, the page behind is inert and locked, button says Close menu ({"inList":true,"inert":[true,true,true,true],"lock":"hidden","label":"Close menu"})
+PASS webkit 390: Ask Rondo is hidden while the NEVORA menu is open
+PASS webkit 390: Escape closes the NEVORA menu and returns focus to its button
+PASS webkit 390: after Continue focus is on the result and "Clock-in recorded at 11:32 AM" is announced
+PASS webkit 390: Continue by keyboard also lands on the result
+PASS webkit 390: focused "Scroll to NEVORA" is visible (opacity 1)
+PASS webkit 390: home Rondo label says Coming to NEVORA
+PASS webkit 390: Ask Rondo shows after scrolling
+PASS webkit 390: Ask Rondo is hidden and inert while the phone menu is open
+PASS webkit 390: Ask Rondo steps aside at the footer
+PASS webkit 390: Ask Rondo stays hidden while a form field has focus
+PASS webkit 390: contact fields show the 2px focus ring (solid 2px)
+PASS webkit 390: errors explain what to fix
+PASS webkit 390: message is required for a general topic
+PASS webkit 390: switching to a NEVORA topic clears the now-optional message's error
+PASS webkit 390: general form, free trial with more than 30 becomes a NEVORA quote with the note
+PASS webkit 390: back to 11–20 returns to the free trial
+PASS webkit 390: Relay waitlist heading and title (Join the NEVORA Relay waitlist. | NEVORA Relay waitlist · Velani)
+PASS webkit 390: /pages/plans states the price is quoted for employees, business and features
+PASS webkit 390: /pages/help states the price is quoted for employees, business and features
+PASS webkit 390: Plans says how to close the workplace
+PASS webkit 390: cookie choices name Shopify and Mailchimp and offer four choices
+PASS webkit 390: Accept and Reject set analytics, marketing, preferences and sale_of_data ({"analytics":false,"marketing":false,"preferences":false,"sale_of_data":false})
+PASS webkit 390: cookies page no longer says no analytics tools were added
+PASS webkit 390: Plans heading and intro show without waiting for the motion script ({"h":"visible","l":1})
+PASS webkit 390: Rondo's quote link stays in the draft theme
+PASS webkit 390: an expired conversation is not reported as deleted ("This conversation had already ended. It is removed from our servers within 30 days.")
+PASS webkit 390: a confirmed delete says Conversation deleted
+PASS webkit 390: no page errors ()
+PASS webkit 390: the question box stays disabled while the configuration loads
+PASS webkit 390: a configuration that never answers ends in the unavailable state with Retry and Contact
+PASS webkit 390: verification that cannot load hides the empty box and offers the contact page

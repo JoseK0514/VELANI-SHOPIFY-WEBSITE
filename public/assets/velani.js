@@ -3,7 +3,7 @@ import { createPrivacyAdapter } from './privacy.js';
 const form = document.querySelector('#project-inquiry');
 // After sending, the form is replaced by a confirmation that says what happens next (the topic is kept for this one page view)
 const sent = document.querySelector('#inquiry-sent');
-const sentCopy = { 'nevora-demo': ['Trial request sent.', 'We’ll email you within two business days to set up your NEVORA workplace. Your 30 days start the day it’s ready.'], nevora: ['Quote request sent.', 'We’ll email you within two business days with a price for your team.'], relay: ['You’re on the Relay list.', 'We’ll email you when NEVORA Relay opens for early access. No dates yet.'] };
+const sentCopy = { 'nevora-demo': ['Trial request sent.', 'We aim to email you within two business days to set up your NEVORA workplace. Your 30 days start the day it’s ready.'], nevora: ['Quote request sent.', 'We aim to email you within two business days to discuss your team and locations.'], relay: ['You’re on the Relay list.', 'We’ll email you when NEVORA Relay opens for early access. No dates yet.'] };
 function showSent(topic, preview) {
   const copy = sentCopy[topic];
   if (copy) { sent.querySelector('[data-sent-h]').textContent = copy[0]; sent.querySelector('[data-sent-p]').textContent = copy[1]; }
@@ -12,7 +12,7 @@ function showSent(topic, preview) {
   sent.hidden = false; window.scrollTo(0, 0); sent.focus({ preventScroll: true });
 }
 const justSent = !!sent && !sent.hidden;
-if (justSent) { let topic = ''; try { topic = sessionStorage.getItem('v-inquiry-topic') || ''; sessionStorage.removeItem('v-inquiry-topic'); } catch {} showSent(topic, false); }
+if (justSent) { let topic = ''; try { topic = sessionStorage.getItem('v-inquiry-topic') || ''; sessionStorage.removeItem('v-inquiry-topic'); sessionStorage.removeItem('v-inquiry-draft'); } catch {} showSent(topic, false); }
 if (form && !justSent) {
   const mode = form.dataset.inquiryMode || form.querySelector('[data-inquiry-mode]')?.dataset.inquiryMode || 'preview';
   const submitButton = form.querySelector('[data-inquiry-submit]');
@@ -26,30 +26,37 @@ if (form && !justSent) {
   // The page already shows the right wording (chosen before paint); drop the unused variant so screen readers and the heading label see one text
   const nevora = document.documentElement.classList.contains('ask-nevora');
   const demo = document.documentElement.classList.contains('ask-demo');
-  // The trial page keeps its quote wording (hidden) so a team of more than 30 can switch to a quote without losing what was typed
-  document.querySelectorAll(demo ? '.v-d' : nevora ? '.v-d, .v-m' : '.v-n, .v-m').forEach(el => el.remove());
+  const relay = document.documentElement.classList.contains('ask-relay');
+  // The trial page keeps its quote wording (hidden) so a team of more than 30 can switch to a quote without losing what was typed.
+  // The Relay waitlist has its own hero wording only; its form keeps the general wording.
+  document.querySelectorAll(demo ? '.v-d, .v-r' : nevora ? '.v-d, .v-m, .v-r' : relay ? '.cform-hero .v-d, .v-n, .v-m' : '.v-n, .v-m, .v-r').forEach(el => el.remove());
   const shown = el => [...el.childNodes].filter(n => n.nodeType === 3 || getComputedStyle(n).display !== 'none').map(n => n.textContent).join('');
-  const relabel = () => document.querySelectorAll('.phero .rise[aria-label]').forEach(h => h.setAttribute('aria-label', shown(h).replace(/\s+/g, ' ').trim()));
+  const relabel = () => document.querySelectorAll('.phero h1.rise').forEach(h => h.setAttribute('aria-label', shown(h).replace(/\s+/g, ' ').trim()));
   relabel();
   if (topic === 'nevora' || topic === 'nevora-demo') {
     document.title = (topic === 'nevora-demo' ? 'Free NEVORA trial' : 'NEVORA for your team') + ' · Velani';
     fields.message.required = false;
   }
-  // Trial page, team of more than 30: the free trial does not apply, so the page becomes a quote request (heading, button, topic)
-  if (demo && fields.team) {
+  if (relay) document.title = 'NEVORA Relay waitlist · Velani';
+  // Free trial with a team of more than 30 (the trial page, or the general form with "Free NEVORA trial" chosen): the trial does not
+  // apply, so the request becomes a NEVORA quote (topic; on the trial page also heading and button). Back to 30 or fewer undoes it.
+  let autoQuote = false, onTeam = () => {};
+  if (fields.team && fields.interest) {
    const note = document.createElement('p'); note.className = 'send-note quote-note'; note.setAttribute('role', 'status'); note.hidden = true;
    note.textContent = 'Teams of more than 30 people get a quote instead of the free trial. What you typed is kept.';
    submitButton.before(note);
-   fields.team.addEventListener('change', () => {
+   onTeam = () => {
     const big = /^More than 30/.test(fields.team.value);
-    document.documentElement.classList.toggle('ask-demo', !big);
-    fields.interest.value = big ? 'nevora' : 'nevora-demo';
-    document.title = (big ? 'NEVORA for your team' : 'Free NEVORA trial') + ' · Velani';
-    note.hidden = !big; relabel();
-   });
+    if (big && fields.interest.value === 'nevora-demo') { autoQuote = true; fields.interest.value = 'nevora'; }
+    else if (!big && autoQuote && fields.interest.value === 'nevora') { autoQuote = false; fields.interest.value = 'nevora-demo'; }
+    const quote = autoQuote && big;
+    if (demo) { document.documentElement.classList.toggle('ask-demo', !quote); document.title = (quote ? 'NEVORA for your team' : 'Free NEVORA trial') + ' · Velani'; }
+    note.hidden = !quote; relabel();
+   };
+   fields.team.addEventListener('change', onTeam);
   }
   const setBusy = busy => { submitButton.disabled = busy; form.setAttribute('aria-busy', String(busy)); };
-  const messages = { checking: 'Checking your draft…', preview: 'Draft checked. Nothing was sent.', invalid: 'Check the highlighted fields.', sending: 'Sending inquiry…', accepted: 'Your inquiry was submitted.', failed: 'The inquiry was not accepted. Review the form before trying again.', uncertain: 'We could not confirm the submission. It may have been accepted. Check with support@thevelani.com before sending it again.', unavailable: 'Inquiry delivery is not available.' };
+  const messages = { checking: 'Checking your draft…', preview: 'Draft checked. Nothing was sent.', invalid: 'We couldn’t send your inquiry. Check the highlighted fields and try again.', sending: 'Sending inquiry…', accepted: 'Your inquiry was submitted.', failed: 'The inquiry was not accepted. Review the form before trying again.', uncertain: 'We could not confirm the submission. It may have been accepted. Check with support@thevelani.com before sending it again.', unavailable: 'We could not send your inquiry. Write to support@thevelani.com or call 787-925-2000, Monday to Friday, 8 am to 9 pm ET.' };
   const controller = createInquiryController({ mode: 'preview', onState: state => { status.dataset.state = state.status; status.textContent = messages[state.status] || ''; setBusy(['checking', 'sending'].includes(state.status)); if (state.status === 'preview' && sent) { form.hidden = true; showSent(fields.interest?.value || '', true); } } });
   function showErrors(errors) {
     for (const key of ['name', 'email', 'company', 'message', 'locations']) {
@@ -72,16 +79,27 @@ if (form && !justSent) {
     if (mode === 'live') {
       // A NEVORA enquiry may have no message: send the team details as the message body so the email is never empty
       if (!values.message.trim() && fields.message) fields.message.value = [values.interest === 'relay' ? 'NEVORA Relay waitlist request.' : values.interest === 'nevora-demo' ? 'Free NEVORA trial request.' : 'NEVORA quote request.', values.team && 'Team size: ' + values.team, values.locations && 'Locations: ' + values.locations, values.company && 'Company: ' + values.company].filter(Boolean).join('\n');
-      try { sessionStorage.setItem('v-inquiry-topic', values.interest || ''); } catch {}
+      // Shopify re-renders the form after a server-side error with only name, email and message: keep the rest for this tab
+      try { sessionStorage.setItem('v-inquiry-topic', values.interest || ''); sessionStorage.setItem('v-inquiry-draft', JSON.stringify({ company: values.company, interest: values.interest, team: values.team, locations: values.locations })); } catch {}
       setBusy(true); status.textContent = messages.sending; return;
     }
     await controller.submit(values);
   });
   // F08: choosing a NEVORA topic in the general form reveals the team fields and makes the message optional, like the dedicated inquiry
   const messageLabel = form.querySelector('label[for="inquiry-message"]'); const messageLabels = { general: messageLabel && messageLabel.innerHTML, nevora: 'Anything else <span class="opt">optional</span>' };
-  const onTopic = () => { const nev = /^nevora/.test(fields.interest.value); const optional = nev || fields.interest.value === 'relay'; const row = form.querySelector('[data-nevora-fields]'); if (row) row.hidden = !nev; if (fields.message) fields.message.required = !optional; if (messageLabel && !nevora && !demo) messageLabel.innerHTML = optional ? messageLabels.nevora : messageLabels.general; };
-  fields.interest?.addEventListener('change', onTopic);
+  const onTopic = () => { const nev = /^nevora/.test(fields.interest.value); const optional = nev || fields.interest.value === 'relay'; const row = form.querySelector('[data-nevora-fields]'); if (row) row.hidden = !nev; if (fields.message) fields.message.required = !optional; if (messageLabel && !nevora && !demo) messageLabel.innerHTML = optional ? messageLabels.nevora : messageLabels.general;
+   // A message that just became optional loses its old "required" error
+   if (optional && fields.message && !fields.message.value.trim()) { const err = form.querySelector('#error-message'); if (err) err.textContent = ''; fields.message.removeAttribute('aria-invalid'); } };
+  fields.interest?.addEventListener('change', () => { autoQuote = false; onTopic(); onTeam(); });
   if (topic === 'relay' && fields.interest) onTopic();
+  // After a server-side error the live form comes back without company, topic, team size and locations: restore them
+  if (mode === 'live' && form.querySelector('.form-status[role="alert"]')) {
+   let draft = null; try { draft = JSON.parse(sessionStorage.getItem('v-inquiry-draft') || 'null'); } catch {}
+   if (draft) {
+    for (const key of ['company', 'interest', 'team', 'locations']) if (fields[key] && typeof draft[key] === 'string' && draft[key] && !fields[key].value) fields[key].value = draft[key];
+    if (fields.interest) { onTopic(); onTeam(); }
+   }
+  }
   fieldset.disabled = false;
   const minH = parseInt(fields.message.dataset.min || '150', 10);
   fields.message.addEventListener('input', () => { fields.message.style.height = 'auto'; fields.message.style.height = Math.min(600, Math.max(minH, fields.message.scrollHeight)) + 'px'; });
@@ -115,7 +133,7 @@ if (dialog) {
     setBusy(true); dialog.showModal();
     const state = await adapter.read();
     for (const input of inputs) input.checked = state.choices[input.dataset.consent] === true;
-    context.textContent = state.mode === 'local' ? 'Local website preview: these demonstration choices last only on this page. No analytics or marketing integration is added.' : state.available ? 'Choices are managed through Shopify. Velani has not added analytics or marketing tools to this website.' : 'The platform privacy service is unavailable. No optional Velani integration will be started.';
+    context.textContent = state.mode === 'local' ? 'Local website preview: these demonstration choices last only on this page. No analytics or marketing integration is added.' : state.available ? 'Choices are managed through Shopify. Shopify collects visit information for analytics, and Mailchimp, our email tool, can receive it for analytics and marketing.' : 'The platform privacy service is unavailable. No optional Velani integration will be started.';
     setBusy(false);
     // F24: when the platform's privacy service is unavailable, nothing can be saved, so the saving controls stay off and the message says what to do
     if (state.mode !== 'local' && !state.available) { [...controls, ...inputs].forEach(control => { control.disabled = true; }); context.textContent += ' Nothing can be saved right now. Close this window and try again later.'; }

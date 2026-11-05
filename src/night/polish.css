@@ -96,22 +96,27 @@ html:has(.zoom[open]){overflow:hidden}
 /* ---------- Products menu, Relay and the "what it does" card (Nov 4) ---------- */
 /* Header: one Products item opens a short menu on hover or keyboard focus; the word itself links to the Products page */
 .gnav-dd{position:relative}
-.gnav-links .gnav-ddlink .icon{width:11px;height:11px;margin-left:6px;transition:transform .2s var(--out)}
+.gnav-dd{display:flex;align-items:center}
+.gnav-links .gnav-ddlink{padding-right:2px}
+.gnav-ddbtn{display:inline-flex;align-items:center;justify-content:center;min-width:28px;min-height:44px;padding:0 10px 0 4px;color:var(--text-2)}
+.gnav-ddbtn .icon{width:11px;height:11px;transition:transform .2s var(--out)}
+@media(hover:hover){.gnav-ddbtn:hover{color:var(--text)}}
 .gnav-ddmenu{position:absolute;left:50%;top:100%;z-index:70;padding-top:6px;opacity:0;visibility:hidden;transform:translate(-50%,6px);transition:opacity .18s var(--out),transform .18s var(--out),visibility 0s linear .18s}
-.gnav-dd:hover .gnav-ddmenu,.gnav-dd:focus-within .gnav-ddmenu{opacity:1;visibility:visible;transform:translate(-50%,0);transition-delay:0s}
-.gnav-dd:hover .gnav-ddlink .icon,.gnav-dd:focus-within .gnav-ddlink .icon{transform:rotate(180deg)}
+/* Open on hover, keyboard focus or the caret button; Escape adds .shut until the pointer or focus leaves */
+.gnav-dd:is(:hover,:focus-within,.open):not(.shut) .gnav-ddmenu{opacity:1;visibility:visible;transform:translate(-50%,0);transition-delay:0s}
+.gnav-ddbtn[aria-expanded=true] .icon{transform:rotate(180deg)}
 .gnav-ddmenu ul{list-style:none;margin:0;padding:8px;width:340px;display:flex;flex-direction:column;border-radius:14px;background:#0a1017;box-shadow:0 0 0 1px rgba(255,255,255,.1),0 24px 60px rgba(0,0,0,.6)}
 .gnav-links .gnav-ddmenu a{display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:2px;min-height:56px;padding:10px 12px;border-radius:10px;white-space:normal;letter-spacing:0;text-transform:none;color:var(--text)}
 .gnav-ddmenu b{display:flex;align-items:center;font-size:0.9375rem;font-weight:500}
 .gnav-ddmenu a>span{font-size:0.8125rem;line-height:1.4;color:var(--text-2)}
 @media(hover:hover){.gnav-links .gnav-ddmenu a:hover{background:rgba(255,255,255,.06)}}
 .gnav-links .gnav-ddmenu a:focus-visible{outline-offset:-2px}
-.nav-soon{display:inline-block;margin-left:8px;padding:2px 6px;border-radius:5px;font-size:0.625rem;font-weight:600;line-height:1.2;letter-spacing:.06em;text-transform:uppercase;color:#e2a54a;background:rgba(226,165,74,.12);box-shadow:inset 0 0 0 1px rgba(226,165,74,.3);vertical-align:2px}
-@media(prefers-reduced-motion:reduce){.gnav-ddmenu,.gnav-links .gnav-ddlink .icon{transition:none}}
+.nav-soon{display:inline-block;margin-left:8px;padding:2px 6px;border-radius:5px;font-size:0.75rem;font-weight:600;line-height:1.2;letter-spacing:.06em;text-transform:uppercase;color:#e2a54a;background:rgba(226,165,74,.12);box-shadow:inset 0 0 0 1px rgba(226,165,74,.3);vertical-align:2px}
+@media(prefers-reduced-motion:reduce){.gnav-ddmenu,.gnav-ddbtn .icon{transition:none}}
 /* Phone menu: the three products sit under a small Products label */
 .gmenu-k{margin:16px 0 0;padding-bottom:4px;font-size:0.75rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--text-3)}
 .gmenu nav>a.gmenu-sub{min-height:52px;padding-left:16px;font-size:1.125rem}
-.gmenu .nav-soon{font-size:0.6875rem;vertical-align:4px}
+.gmenu .nav-soon{font-size:0.75rem;vertical-align:4px}
 /* The "what it does" card beside a panel's copy (home Rondo, Products Relay) */
 .rcard{position:absolute;z-index:1;left:max(var(--pad),calc(50% - 620px));top:50%;transform:translateY(-50%);width:min(420px,38vw);margin:0;padding:6px 22px;list-style:none;border-radius:20px;background:rgba(10,16,24,.66);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);box-shadow:0 0 0 1px rgba(255,255,255,.1),0 30px 60px -30px rgba(0,0,0,.9)}
 .rcard li{display:grid;grid-template-columns:22px minmax(0,1fr);column-gap:14px;padding:16px 0;border-top:1px solid rgba(255,255,255,.08);font-size:0.9375rem;line-height:1.45;color:var(--text-2)}
@@ -141,3 +146,49 @@ body:has(#inquiry-sent:not([hidden])) .cform-hero{display:none}
 @media(max-width:1023px){.rail.r2{grid-template-columns:1fr;gap:28px}}
 /* Trial form: a team of more than 30 turns the request into a quote; the note says so next to the button */
 .quote-note{color:var(--text-2)}
+
+/* ---------- Inspection fixes 2 (Nov 5) ---------- */
+/* Tablets and small laptops (834–1199px): a panel with a visual stacks, copy first, then the visual centred and no wider
+   than 560px, so the two never overlap. The home hero keeps its own two-track row (home.css). Phones keep their own order. */
+@media(min-width:834px) and (max-width:1199px){
+ .hpanel:not(.live):has(>.hshot,>.hwin,>.rcard,>.hduo){display:flex;flex-direction:column;align-items:stretch;height:auto;min-height:0;padding:clamp(112px,13vw,144px) 0 clamp(96px,11vw,128px)}
+ .hpanel:not(.live):has(>.hshot,>.hwin,>.rcard,>.hduo) .hcopy{position:relative;left:auto;right:auto;top:auto;bottom:auto;transform:none;max-width:640px;margin:0 var(--pad)}
+ .hpanel:not(.live):has(>.hshot,>.hwin,>.rcard,>.hduo) .hshade{background:linear-gradient(180deg,rgba(0,0,0,.74) 0%,rgba(0,0,0,.5) 42%,rgba(0,0,0,.42) 70%,rgba(0,0,0,.66) 100%)}
+ .hpanel:not(.live):has(>.hshot,>.hwin,>.rcard,>.hduo)>:is(.hshot,.hwin,.rcard,.hduo){position:relative;left:auto;right:auto;top:auto;transform:none;flex:none;margin:56px auto 0}
+ .hpanel:not(.live):has(>.hshot,>.hwin,>.rcard,>.hduo)>.hshot{width:280px}
+ .hpanel:not(.live):has(>.hshot,>.hwin,>.rcard,>.hduo)>:is(.hwin,.rcard){width:min(560px,calc(100% - var(--pad)*2))}
+ .hpanel:not(.live):has(>.hshot,>.hwin,>.rcard,>.hduo)>.hduo{justify-content:center;width:min(560px,calc(100% - var(--pad)*2))}
+ .hpanel:not(.live):has(>.hshot,>.hwin,>.rcard,>.hduo) .hduo .ph{width:calc(50% - 12px);max-width:220px}
+ .hpanel:not(.live):has(>.hshot,>.hwin,>.rcard,>.hduo)>.hweb{display:none}
+ .hpanel:not(.live):has(>.hshot,>.hwin,>.rcard,>.hduo)>.hshot.fade{transform:translateY(40px)}
+ .hpanel:not(.live):has(>.hshot,>.hwin,>.rcard,>.hduo)>.hshot.fade.in,.no-js .hpanel:has(>.hshot)>.hshot.fade,.still .hpanel:has(>.hshot)>.hshot.fade{transform:none}
+}
+@media(min-width:834px) and (max-width:1199px) and (prefers-reduced-motion:reduce){.hpanel:not(.live):has(>.hshot)>.hshot.fade{transform:none}}
+/* Products, Websites: the laptop's own screen sits behind the copy, so a deeper shade on that side and a narrower column */
+@media(min-width:834px){
+ .hpanel.laptop .hshade{background:linear-gradient(90deg,rgba(0,0,0,.9) 0%,rgba(0,0,0,.86) 38%,rgba(0,0,0,.5) 54%,rgba(0,0,0,0) 70%)}
+ .hpanel.laptop .hcopy{max-width:520px}
+}
+/* The first section shows at first paint: its heading and intro are never hidden while scripts load. They settle in with CSS alone */
+main>section:first-of-type .fade{opacity:1}
+.pre main>section:first-of-type .rise{visibility:visible}
+@media(prefers-reduced-motion:no-preference){.js main>section:first-of-type :is(.rise,.fade:not(.hshot)){animation:first-in .8s var(--out) both}}
+@keyframes first-in{from{transform:translateY(14px)}}
+/* Example chat on the home hero: say it is an example */
+.hchat-cap{margin:4px 2px 0;font-size:0.75rem;line-height:1.4;color:var(--text-3)}
+/* Status chips and labels: 12px at the smallest */
+.hchat-h i{font-size:0.75rem}
+@media(max-width:1180px){.hchat-h i{font-size:0.75rem}}
+@media(max-width:833px){.hchat-h i{font-size:0.75rem}}
+/* The phone's notification is a solid card; screenshot frames are dark while their image loads */
+.notif{background:#f8fafd}
+.hwin,.slab.owner{background:#0b1118}
+/* Windows High Contrast and other forced colours: PIN dots, the NEVORA wordmark and the Rondo button keep their shape */
+@media(forced-colors:active){
+ .kio-dots i{forced-color-adjust:none;box-shadow:none;border:2px solid CanvasText;background:transparent}
+ .kio-dots i.on{background:CanvasText}
+ .hpanel h2 img,.lnav-t img,.hcopy h2 img{forced-color-adjust:none;background:#05090e;padding:6px;border-radius:4px;box-sizing:content-box}
+ .kio-brand img{forced-color-adjust:none;background:#fff;padding:4px;border-radius:4px;box-sizing:content-box}
+ .ast-launch{border:2px solid ButtonText}
+ .ast-av{border:1px solid CanvasText}
+}

@@ -54,6 +54,8 @@
 .ast-form textarea::placeholder{color:var(--text-3)}
 .ast-form textarea:focus-visible{outline:none}
 .ast-form:focus-within{border-top-color:var(--line-2)}
+/* The question box shows the site's focus ring while it has the keyboard */
+.ast-form:has(textarea:focus-visible){outline:2px solid var(--accent);outline-offset:-4px;border-radius:var(--r2)}
 .ast-send{display:inline-flex;align-items:center;justify-content:center;flex:none;width:44px;height:44px;border-radius:var(--r);background:var(--text);color:#06121e;font-size:1.125rem;transition:background-color .2s,opacity .2s}
 .ast-send:disabled{opacity:.35;cursor:default}
 .ast-status{display:flex;flex-wrap:wrap;align-items:center;gap:2px 14px;padding:8px 22px 0;font-size:0.75rem;line-height:1.45;color:#ffb3a9}
@@ -73,9 +75,12 @@ a.ast-link{display:inline-flex;align-items:center}
  .ast-launch{right:16px;bottom:16px;min-height:44px;padding:0 14px 0 10px;gap:8px}
  .ast-head{padding-left:16px}
  .ast-sub-x{display:none}
- .ast-launch{transition:opacity .25s var(--out),transform .3s var(--out),visibility 0s}
- .ast-tucked .ast-launch{opacity:0;transform:translateY(16px);visibility:hidden;pointer-events:none;transition:opacity .2s,transform .2s,visibility 0s .2s}
  .ast-body{padding:16px 18px}
  .ast-msg.you{max-width:92%}
 }
+/* The launcher steps aside: on phones over the first screen and the footer, at every width while a page field has the keyboard */
+.ast-launch{transition:opacity .25s var(--out),transform .3s var(--out),visibility 0s,background-color .3s}
+.ast-tucked .ast-launch{opacity:0;transform:translateY(16px);visibility:hidden;pointer-events:none;transition:opacity .2s,transform .2s,visibility 0s .2s}
+/* …and is gone while a full-screen menu is open (motion.js and nevora.js also make it inert) */
+body:has(#gmenu-btn[aria-expanded=true]) .ast-launch,body:has(#lnav-tog[aria-expanded=true]) .ast-launch{display:none}
 @media(prefers-reduced-motion:reduce){.ast-wait i{animation:none;opacity:.6}.js .ast{transition:none}}

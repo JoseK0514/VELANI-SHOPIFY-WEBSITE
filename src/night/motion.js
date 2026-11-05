@@ -4,8 +4,10 @@
  clearTimeout(window.__pre);const late=root.classList.contains('still');
  const reduce=matchMedia('(prefers-reduced-motion: reduce)');
  // Headings: words rise from behind a mask in reading order. Screen readers get the whole sentence once.
+ // The first section is shown at first paint (CSS settles it in), and a heading with no words (an image) is left alone.
  if(!late)d.querySelectorAll('.rise').forEach(el=>{
-  el.setAttribute('aria-label',el.textContent.replace(/\s+/g,' ').trim());
+  const words=el.textContent.replace(/\s+/g,' ').trim();if(!words||el.closest('main>section:first-of-type'))return;
+  el.setAttribute('aria-label',words);
   let i=0;const walk=n=>{[...n.childNodes].forEach(c=>{
    if(c.nodeType===3){const f=d.createDocumentFragment();c.textContent.split(/([ \t\n\r]+)/).forEach(p=>{if(!p)return;if(/^[ \t\n\r]+$/.test(p)){f.appendChild(d.createTextNode(p));return}
      const w=d.createElement('span');w.className='w';w.setAttribute('aria-hidden','true');const s=d.createElement('span');s.textContent=p;s.style.setProperty('--i',Math.min(i++,7));w.appendChild(s);f.appendChild(w)});c.replaceWith(f)}
@@ -16,13 +18,24 @@
  d.querySelectorAll('.rise,.draw,.fade,[data-in]').forEach(el=>io.observe(el));
  // Nav: a hairline once you leave the top; tucks after 24px of scrolling down, returns after 12px up
  const nav=d.getElementById('gnav'),tuckable=nav&&!nav.classList.contains('static');let lastY=scrollY,dir=0,anchor=scrollY;
- const mb=d.getElementById('gmenu-btn'),mm=d.getElementById('gmenu'),behind=[...d.querySelectorAll('main,footer,.lnav,.skip')];
+ const mb=d.getElementById('gmenu-btn'),mm=d.getElementById('gmenu'),behind=[...d.querySelectorAll('main,footer,.lnav,.skip,#ast-root')];
  const setMenu=o=>{if(!mb)return;mb.setAttribute('aria-expanded',String(o));mb.setAttribute('aria-label',o?'Close menu':'Menu');mm.hidden=!o;mb.querySelector('.i-open').hidden=o;mb.querySelector('.i-close').hidden=!o;d.body.style.overflow=o?'hidden':'';behind.forEach(x=>x.inert=o);if(o)nav.classList.remove('tuck')};
  if(mb){mb.addEventListener('click',()=>setMenu(mb.getAttribute('aria-expanded')!=='true'));
   mm.addEventListener('click',e=>{if(e.target.closest('a'))setMenu(false)});
   d.addEventListener('keydown',e=>{if(e.key==='Escape'&&mb.getAttribute('aria-expanded')==='true'){setMenu(false);mb.focus()}});
   matchMedia('(min-width:834px)').addEventListener('change',e=>{if(e.matches)setMenu(false)});}
  nav&&nav.addEventListener('focusin',()=>nav.classList.remove('tuck'));
+ // Products menu (desktop): a disclosure. Hover and keyboard focus open it; the caret button toggles it; Escape closes it until the pointer or focus leaves
+ const dd=d.querySelector('.gnav-dd'),ddb=dd&&dd.querySelector('.gnav-ddbtn');
+ if(dd&&ddb){const shown=()=>!dd.classList.contains('shut')&&(dd.classList.contains('open')||dd.matches(':hover')||dd.matches(':focus-within'));
+  const sync=()=>ddb.setAttribute('aria-expanded',String(shown()));
+  ddb.addEventListener('click',()=>{const o=!shown();dd.classList.remove('shut');dd.classList.toggle('open',o);if(!o)dd.classList.add('shut');sync()});
+  dd.addEventListener('mouseenter',()=>{dd.classList.remove('shut');sync()});
+  dd.addEventListener('mouseleave',()=>{dd.classList.remove('open');if(!dd.matches(':focus-within'))dd.classList.remove('shut');sync()});
+  dd.addEventListener('focusin',sync);
+  dd.addEventListener('focusout',()=>requestAnimationFrame(()=>{if(!dd.matches(':focus-within')){dd.classList.remove('open','shut')}sync()}));
+  d.addEventListener('keydown',e=>{if(e.key!=='Escape'||!shown())return;const inside=dd.contains(d.activeElement);dd.classList.remove('open');dd.classList.add('shut');sync();if(inside&&d.activeElement!==ddb&&d.activeElement!==dd.querySelector('.gnav-ddlink'))ddb.focus()});
+  d.addEventListener('click',e=>{if(!dd.contains(e.target)&&dd.classList.contains('open')){dd.classList.remove('open');sync()}});}
  // Rows that scroll sideways on narrow screens are reachable by keyboard only while they actually scroll
  const sx=[...d.querySelectorAll('[data-scroll-x]')];const syncX=()=>sx.forEach(el=>{if(el.scrollWidth>el.clientWidth+1)el.tabIndex=0;else el.removeAttribute('tabindex')});syncX();addEventListener('resize',syncX);
  // Footer groups

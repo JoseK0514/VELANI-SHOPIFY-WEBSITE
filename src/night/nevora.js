@@ -19,9 +19,13 @@ window.__fx=[];
   now.textContent=((h-1)%12+1)+':'+String(m).padStart(2,'0')+(h<12?' AM':' PM');now.style.setProperty('--tip',(sp*r.height).toFixed(0)+'px')}});
  // Owner screenshot: clip reveal, then hand the edge back to the slab's own ring and shadow
  const ow=$('#owner');ow.addEventListener('transitionend',e=>{if(e.propertyName==='clip-path')ow.style.clipPath='none'});
- // Local nav disclosure on narrow screens
- const tog=$('#lnav-tog'),list=$('#lnav-list');const setL=o=>{tog.setAttribute('aria-expanded',String(o));list.classList.toggle('open',o)};
- tog.addEventListener('click',()=>setL(tog.getAttribute('aria-expanded')!=='true'));list.addEventListener('click',e=>{if(e.target.closest('a'))setL(false)});
+ // Local nav menu on narrow screens, like the main phone menu: focus moves into it, the page behind is inert and does not
+ // scroll, Escape closes it and returns focus to the button, and the button says "Close menu" while it is open
+ const tog=$('#lnav-tog'),list=$('#lnav-list'),behindL=[...document.querySelectorAll('main>:not(.lnav),footer,.skip,#ast-root')];// the local nav sits inside <main>
+ const setL=(o,focus)=>{if(o===(tog.getAttribute('aria-expanded')==='true'))return;tog.setAttribute('aria-expanded',String(o));tog.setAttribute('aria-label',o?'Close menu':'Menu');list.classList.toggle('open',o);
+  behindL.forEach(x=>x.inert=o);document.body.style.overflow=o?'hidden':'';
+  if(o&&focus){const first=[...list.querySelectorAll('a')].find(a=>a.offsetParent!==null);first&&first.focus({preventScroll:true})}};
+ tog.addEventListener('click',()=>setL(tog.getAttribute('aria-expanded')!=='true',true));list.addEventListener('click',e=>{if(e.target.closest('a'))setL(false)});
  document.addEventListener('keydown',e=>{if(e.key==='Escape'&&tog.getAttribute('aria-expanded')==='true'){setL(false);tog.focus()}});
  big.addEventListener('change',e=>{if(e.matches)setL(false);else setV(false)});
  // "by Velani": the company links on wide screens (narrow screens keep them in the menu)
