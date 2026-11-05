@@ -1,5 +1,7 @@
 # Claude: finish the Velani website assistant UI
 
+**Latest backend completion:** [Daily conversation cleanup, refreshed knowledge and exact client sync](RETENTION-REFRESH-2026-11-05.md), with production evidence. This supersedes older pending-retention and knowledge-count statements below. Claude's Shopify UI is unchanged by that backend work.
+
 Updated 2026-11-05. This is the current handoff for the public Velani / NEVORA marketing assistant. It supersedes older deployment-status statements in the historical release notes.
 
 ## Exact source and deployment

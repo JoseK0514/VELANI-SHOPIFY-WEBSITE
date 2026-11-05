@@ -1,6 +1,8 @@
 # Claude: start here
 
-Read [the current UI handoff](docs/CLAUDE-UI-START-HERE.md) first. It identifies the exact existing backend and UI branches, Vercel project, public API contract, compatible unpublished Shopify theme, and remaining Cloudflare permission blocker.
+**2026-11-05 backend completion:** Read [the verified retention, knowledge and client handoff](docs/RETENTION-REFRESH-2026-11-05.md) first. Daily cleanup is installed, the first authenticated run is verified, 16 knowledge documents are published, and the reference client matches Claude's UI branch. This supersedes older blocker statements.
+
+The [UI handoff](docs/CLAUDE-UI-START-HERE.md) describes the public API contract and earlier integration work.
 
 - [Verified launch status](docs/LAUNCH-STATUS-2026-11-03.md)
 - [Exact Shopify activation operations](docs/SHOPIFY-ACTIVATION.md)

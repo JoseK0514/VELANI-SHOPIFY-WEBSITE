@@ -6,7 +6,9 @@
 
 CRITICAL, HIGH, MEDIUM and LOW: no active findings. All earlier findings below are closed. On final inspection, `scripts/retention.ts` counts eligible rows only in the dry-run branch. Applied runs use DELETE row counts and the same advisory lock as the cron. Both review skill perspectives were applied; no remaining violations found. The executor reports that four real PostgreSQL retention regressions passed again after the last change, together with typecheck and build. The reviewer independently inspected the final branch logic, checked client byte identity and previously ran eight HTTP/client tests and typecheck.
 
-The executor reports a production readback of 16 published documents, ten core, with matching hashes and successful restricted-role retrieval for Relay and Plans in both languages. Cron activation, installation verification and first applied run remain separate operational gates. No paid reviewer calls.
+Final operational evidence audit: inspected `services/velani-ai/docs/evidence/retention-activation-2026-11-05.json` and the updated launch handoff. The production deployment `dpl_CniQFLC1BWmEJ5G3gKLZSX9o8zMG` for `0ca8a753` is recorded READY, and the installed daily `0 15 * * *` cron references that deployment. The secret metadata identifies a production-only sensitive value. The authenticated manual run returned HTTP 200 and zero sessions, with a matching 14:29:40 UTC aggregate production log. Unauthenticated access returned 401. The first automatic tick remains unobserved as explicitly recorded. The installed schedule and manual applied-run evidence meet the stated acceptance criteria.
+
+Independently recomputed the 16 document hashes from source and matched every entry in the readback manifest. Evidence records 10 core entries, bilingual Relay/Plans retrieval, 133 passing tests and no skips, four fresh retention regressions, typecheck/build success and isolated database cleanup. The guarded rollback file exists in the deployed source revision. No remaining task requirement or contradiction found. No new API calls or tests during this final evidence audit.
 
 ## Audit history — superseded findings and verdicts
 

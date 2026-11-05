@@ -1,0 +1,266 @@
+{
+  "date": "2026-11-05",
+  "baseline": "d6ed79fff0bc362e752e269baf66d24a424d5361",
+  "sourceCommit": "0ca8a753cd8618577a9fb7c1b9250c6769d46134",
+  "branch": "codex/rondo-backend-readiness-20261104",
+  "deployment": {
+    "id": "dpl_CniQFLC1BWmEJ5G3gKLZSX9o8zMG",
+    "url": "https://velani-ai.vercel.app",
+    "target": "production",
+    "state": "READY",
+    "aliasVerified": true
+  },
+  "schedule": {
+    "id": "prj_E1Vl2AEpTlJlBam4MTKG7oEHB7x2",
+    "rootDirectory": "services/velani-ai",
+    "crons": {
+      "enabledAt": 1793668229140,
+      "disabledAt": null,
+      "updatedAt": 1793888948593,
+      "deploymentId": "dpl_CniQFLC1BWmEJ5G3gKLZSX9o8zMG",
+      "definitions": [
+        {
+          "host": "velani-31wr500tt-josekarlo-5933s-projects.vercel.app",
+          "path": "/api/cron/retention",
+          "schedule": "0 15 * * *"
+        }
+      ]
+    }
+  },
+  "cronSecret": {
+    "configured": true,
+    "type": "sensitive",
+    "target": [
+      "production"
+    ],
+    "valueRecorded": false
+  },
+  "checks": [
+    {
+      "path": "/health/live",
+      "status": 200,
+      "cacheControl": "no-store",
+      "body": {
+        "status": "ok"
+      }
+    },
+    {
+      "path": "/health/ready",
+      "status": 200,
+      "cacheControl": "no-store",
+      "body": {
+        "status": "ready"
+      }
+    },
+    {
+      "path": "/v1/config",
+      "status": 200,
+      "cacheControl": "no-store",
+      "body": {
+        "assistantName": "Rondo",
+        "requireCaptcha": true,
+        "turnstileSiteKey": "0x4AAAAAAF0PYGQhwxiU91hz"
+      }
+    },
+    {
+      "path": "/api/cron/retention",
+      "status": 401,
+      "cacheControl": "no-store",
+      "body": {
+        "status": "error",
+        "code": "unauthorized"
+      }
+    },
+    {
+      "path": "/api/cron/retention",
+      "authenticated": true,
+      "status": 200,
+      "body": {
+        "status": "ok",
+        "sessions": 0
+      },
+      "checkedAt": "2026-11-05T14:29:40.158Z"
+    }
+  ],
+  "firstAppliedRun": {
+    "invocation": "manual authenticated HTTP verification",
+    "automaticTickObserved": false,
+    "logs": [
+      {
+        "timestamp": "2026-11-05T14:29:40.111Z",
+        "projectId": "prj_E1Vl2AEpTlJlBam4MTKG7oEHB7x2",
+        "requestId": "fk98p-1793888979994-67e898ede581",
+        "branch": "codex/rondo-backend-readiness-20261104",
+        "deploymentId": "dpl_CniQFLC1BWmEJ5G3gKLZSX9o8zMG",
+        "domain": "velani-ai.vercel.app",
+        "environment": "production",
+        "requestPath": "/api/cron/retention",
+        "requestMethod": "GET",
+        "source": "function",
+        "service": "",
+        "isSystemLog": false,
+        "region": "iad1",
+        "runtime": "nodejs26.x",
+        "level": "info",
+        "message": "{\"event\":\"conversation_retention\",\"status\":\"ok\",\"sessions\":0,\"completedAt\":\"2026-11-05T14:29:40.111Z\"}",
+        "stream": "stdout",
+        "traceId": "",
+        "spanId": "",
+        "attributes": {},
+        "truncated": false
+      }
+    ]
+  },
+  "knowledge": {
+    "project": "wild-leaf-57992989",
+    "branch": "br-snowy-brook-bcc6b3zm",
+    "database": "velani_ai",
+    "published": 16,
+    "core": 10,
+    "exactSourceHashMatch": true,
+    "retrieval": {
+      "en": {
+        "relay": true,
+        "plans": true,
+        "documents": 16
+      },
+      "es": {
+        "relay": true,
+        "plans": true,
+        "documents": 16
+      }
+    },
+    "manifest": [
+      {
+        "id": "nevora-availability-en",
+        "content_hash": "16fce3ea1e794997f299e8534bd857b5fdf6ca458d843ce528c3840290e34e87",
+        "reviewed_at": "2026-11-05 00:00:00+00",
+        "valid_until": "2026-12-05 23:59:59.999+00"
+      },
+      {
+        "id": "nevora-availability-es",
+        "content_hash": "197c73f58143b7890bc55571ec2a0edaff5d209ddf0f96674df0e340ccf808ee",
+        "reviewed_at": "2026-11-05 00:00:00+00",
+        "valid_until": "2026-12-05 23:59:59.999+00"
+      },
+      {
+        "id": "nevora-overview-en",
+        "content_hash": "aae3742465a1b57fa5a1da299eb5d948b8c5adcef191352d6191029945aff468",
+        "reviewed_at": "2026-11-04 00:00:00+00",
+        "valid_until": "2026-12-04 23:59:59.999+00"
+      },
+      {
+        "id": "nevora-overview-es",
+        "content_hash": "e4c10340de70fb653f3f0c45cbb943adcec6e28b9c26976a52cd390493a39d5e",
+        "reviewed_at": "2026-11-04 00:00:00+00",
+        "valid_until": "2026-12-04 23:59:59.999+00"
+      },
+      {
+        "id": "nevora-payroll-en",
+        "content_hash": "21cba76793bb38151632f47693029ccf8dc67bb942cf657dfa003a8fa6042765",
+        "reviewed_at": "2026-11-04 00:00:00+00",
+        "valid_until": "2026-12-04 23:59:59.999+00"
+      },
+      {
+        "id": "nevora-payroll-es",
+        "content_hash": "204051131b2ebb40541097feb1a049568f182d4cd5d8616466e494fd20ba0311",
+        "reviewed_at": "2026-11-04 00:00:00+00",
+        "valid_until": "2026-12-04 23:59:59.999+00"
+      },
+      {
+        "id": "nevora-rondo-en",
+        "content_hash": "7b61c2ec52be47d576da9b47d21721bfd2e9b376ec3b1a02c3d4e708fd82999e",
+        "reviewed_at": "2026-11-05 00:00:00+00",
+        "valid_until": "2026-12-05 23:59:59.999+00"
+      },
+      {
+        "id": "nevora-rondo-es",
+        "content_hash": "0c1bb85fad0d14455e04c89274074cf2bd9b414966df1e679dd6a20015f80635",
+        "reviewed_at": "2026-11-05 00:00:00+00",
+        "valid_until": "2026-12-05 23:59:59.999+00"
+      },
+      {
+        "id": "nevora-support-en",
+        "content_hash": "93d33a4cef160c41b2dba9bc9baaa6f7ef994248027b14d74b582aab9e95924c",
+        "reviewed_at": "2026-11-04 00:00:00+00",
+        "valid_until": "2026-12-04 23:59:59.999+00"
+      },
+      {
+        "id": "nevora-support-es",
+        "content_hash": "52d70dcc443424ae8d94cc0cd6d958163568593f118c4ee764a4c6a00b418c88",
+        "reviewed_at": "2026-11-04 00:00:00+00",
+        "valid_until": "2026-12-04 23:59:59.999+00"
+      },
+      {
+        "id": "nevora-time-clock-en",
+        "content_hash": "53c6b6cf9503107ea4473a315b873c1993ca48ce9e1914ae3b043f8d51a401eb",
+        "reviewed_at": "2026-11-04 00:00:00+00",
+        "valid_until": "2026-12-04 23:59:59.999+00"
+      },
+      {
+        "id": "nevora-time-clock-es",
+        "content_hash": "552be9b4e42974c7499ec30e6e4974ed269ffa85e2f4a4fa1ed1e3ea89d8d82b",
+        "reviewed_at": "2026-11-04 00:00:00+00",
+        "valid_until": "2026-12-04 23:59:59.999+00"
+      },
+      {
+        "id": "velani-enquiries-en",
+        "content_hash": "9ba452b9cdaefc660ccc734fa60d858518686fc214dc26de09b92d8569f19faa",
+        "reviewed_at": "2026-11-05 00:00:00+00",
+        "valid_until": "2026-12-05 23:59:59.999+00"
+      },
+      {
+        "id": "velani-enquiries-es",
+        "content_hash": "7ba7e5484f1e35f2a55affde0c9577b7f5cf7becb0471ace69082b573dee2f2c",
+        "reviewed_at": "2026-11-05 00:00:00+00",
+        "valid_until": "2026-12-05 23:59:59.999+00"
+      },
+      {
+        "id": "velani-relay-en",
+        "content_hash": "d3a677ea1ac57f316d74d5d0ac00dd1b8fd37b3389a29cfd14004ff6fedc1a2b",
+        "reviewed_at": "2026-11-05 00:00:00+00",
+        "valid_until": "2026-12-05 23:59:59.999+00"
+      },
+      {
+        "id": "velani-relay-es",
+        "content_hash": "ef443527e9ba5869382b9a13a2bd2a2b78d4bd0afa81e14cc12f49233d32de2b",
+        "reviewed_at": "2026-11-05 00:00:00+00",
+        "valid_until": "2026-12-05 23:59:59.999+00"
+      }
+    ],
+    "rollback": "knowledge-rollback-2026-11-05.sql"
+  },
+  "client": {
+    "sourceCommit": "3be6321b8eafd25f537280098907f262e187d808",
+    "path": "src/night/velani-assistant.js",
+    "reference": "integration/velani-assistant.js",
+    "gitBlob": "f9ab868f765b2c819e5152b60a66d997d0f29b7c",
+    "byteIdentical": true
+  },
+  "validation": {
+    "fullServiceSuite": {
+      "passed": 133,
+      "skipped": 0
+    },
+    "afterFinalManualOptimization": {
+      "retentionIntegrationPassed": 4,
+      "typecheck": "passed",
+      "build": "passed"
+    },
+    "reviews": {
+      "standards": "CLEAR / APPROVE",
+      "spec": "CLEAR / APPROVE"
+    }
+  },
+  "testIsolation": {
+    "database": "rondo_retention_test_20261105",
+    "productionCredentialsUsed": false,
+    "remainingTables": 0,
+    "testRoleLoginDisabled": true,
+    "emptyDatabaseRetained": true
+  },
+  "paidAiCalls": 0,
+  "aiReservationUpperBoundUSD": 3.225423,
+  "approvedCumulativeCapUSD": 3.35,
+  "shopifyWrites": 0
+}

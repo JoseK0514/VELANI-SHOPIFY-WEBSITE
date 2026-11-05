@@ -1,5 +1,7 @@
 # Claude handoff: Velani / NEVORA AI assistant
 
+**2026-11-05 verified completion:** [Retention schedule, knowledge refresh and client sync](RETENTION-REFRESH-2026-11-05.md). Read this before historical deployment or launch-blocker statements below.
+
 **For the current chat UI task, start with [CLAUDE-UI-START-HERE.md](CLAUDE-UI-START-HERE.md) and [verified launch status](LAUNCH-STATUS-2026-11-03.md).** The material below includes historical development context.
 
 **GitHub handoff:** [Exact source location and checkout instructions](START-HERE-CLAUDE.md). This service lives under `services/velani-ai` on branch `codex/velani-website-ai-backend` in the private `JoseK0514/VELANI-SHOPIFY-WEBSITE` repository. [Vercel setup](VERCEL.md) is the preferred continuation path.
