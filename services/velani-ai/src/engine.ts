@@ -15,10 +15,12 @@ export type ModelErrorCode = 'invalid_input' | 'provider_unavailable' | 'provide
 /** Safe to log the code/message; deliberately does not retain a provider error or raw response. */
 export class ModelError extends Error {
   readonly code: ModelErrorCode;
-  constructor(code: ModelErrorCode) {
+  readonly providerStatus?: number;
+  constructor(code: ModelErrorCode, providerStatus?: number) {
     super(code);
     this.name = 'ModelError';
     this.code = code;
+    if (Number.isInteger(providerStatus) && providerStatus! >= 400 && providerStatus! <= 599) this.providerStatus = providerStatus;
   }
 }
 
@@ -166,7 +168,7 @@ export class ModelEngine implements AnswerEngine {
       ]);
     } catch (error) {
       if (controller.signal.aborted || (error instanceof ModelError && error.code === 'provider_timeout')) throw new ModelError('provider_timeout');
-      throw new ModelError('provider_unavailable');
+      throw new ModelError('provider_unavailable', error instanceof OpenAI.APIError ? error.status : undefined);
     } finally {
       if (timer) clearTimeout(timer);
     }

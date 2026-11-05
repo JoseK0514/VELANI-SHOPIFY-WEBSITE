@@ -1,4 +1,5 @@
 import { afterEach, describe, expect, it, vi } from 'vitest';
+import OpenAI from 'openai';
 import { ModelEngine, ModelError, type ModelCompletion, type ModelRequest } from '../src/engine.js';
 import type { KnowledgeDocument, Message } from '../src/types.js';
 
@@ -176,6 +177,19 @@ describe('ModelEngine contract and trust boundaries', () => {
     } catch (error) {
       expect(error).toMatchObject({ name: 'ModelError', code: 'provider_unavailable', message: 'provider_unavailable' });
       expect(JSON.stringify(error)).not.toContain('secret-api-key');
+      expect((error as Error).cause).toBeUndefined();
+    }
+  });
+
+  it('retains only safe HTTP status metadata for diagnosing upstream failures', async () => {
+    const providerError = new OpenAI.APIError(429, { code: 'secret-key-in-untrusted-code', message: 'private request body' }, 'private message', new Headers({ authorization: 'secret-token' }));
+    const engine = new ModelEngine({ ...options, complete: async () => { throw providerError; } });
+    try {
+      await engine.answer(input);
+      expect.fail('Expected a sanitized provider error');
+    } catch (error) {
+      expect(error).toMatchObject({ code: 'provider_unavailable', providerStatus: 429 });
+      expect(JSON.stringify(error)).not.toMatch(/secret|private|authorization/);
       expect((error as Error).cause).toBeUndefined();
     }
   });

@@ -100,8 +100,9 @@ describe('public assistant API', () => {
     expect(engine.answer).not.toHaveBeenCalled();
   });
   it('releases the lease and returns a sanitized failure when inference fails', async () => {
-    const { app, create, engine, repository } = setup(); engine.answer.mockRejectedValueOnce(new ModelError('provider_unavailable'));
+    const { app, create, engine, repository } = setup(); engine.answer.mockRejectedValueOnce(new ModelError('provider_unavailable', 502));
     const response = await app.inject({ method: 'POST', url: '/v1/chat', headers: await create(), payload: { requestId: randomUUID(), message: 'Hello' } });
+    expect(response.body).not.toContain('providerStatus');
     expect(response.statusCode).toBe(503); expect(response.json().error.code).toBe('provider_unavailable');
     expect(repository.failTurn).toHaveBeenCalled(); expect(repository.completeTurn).not.toHaveBeenCalled();
   });
