@@ -2,6 +2,10 @@
 
 All request and response bodies are JSON except `DELETE` success (204) and plan downloads. `/v1` mutation calls require `Origin: https://www.thevelani.com` or another exact configured origin. Protected GET reads require the bearer token and may omit Origin for same-origin browsers; supplied disallowed origins are rejected. Responses use `Cache-Control: no-store`. CORS allows Content-Type and Authorization, and exposes Retry-After. See [release 0.2](RELEASE-0.2.md) for profile, plan and download endpoints.
 
+## Public configuration
+
+`GET /v1/config` returns `{ "assistantName": "Rondo", "requireCaptcha": true, "turnstileSiteKey": "public-site-key" }`. No server secret is returned. Use the current public site key to render Turnstile.
+
 ## Session
 
 `POST /v1/sessions`
@@ -77,6 +81,7 @@ Returns 201 `{ "id": "...", "saved": true }`, or 200 for an identical replay. Sa
 | 403 | Origin or CAPTCHA rejected | Correct configuration / new CAPTCHA |
 | 409 | Turn in progress / UUID conflict / expired lease | Wait, or fix request ID reuse |
 | 429 | Persistent quota exhausted | Respect Retry-After |
-| 503 | Provider/database unavailable | Offer intentional retry and contact route |
+| 503 `provider_request_rejected` | Upstream request rejected | Offer rephrasing/editing; no timed retry is promised and no Retry-After is sent |
+| Other 503 | Provider/database unavailable | Offer intentional retry and contact route |
 
 `GET /health/live` checks process availability. `GET /health/ready` checks database connectivity. Startup validates model credentials are configured; readiness is not a paid live model call and does not certify provider availability or knowledge freshness.

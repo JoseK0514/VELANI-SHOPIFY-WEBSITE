@@ -1,6 +1,6 @@
-# Latest status — 2026-11-04
+# Latest status — 2026-11-05
 
-Rondo source and current integration/activation blockers are recorded in [the current handoff](CLAUDE-UI-START-HERE.md). The original publication below is historical. Do not use its Cloudflare widget or theme-role statements as current state. Rondo hosted chat remains unverified; no paid tests have run.
+Rondo's public backend is live and tested. [Current validation](RONDO-VALIDATION-2026-11-05.md) and [Claude UI handoff](CLAUDE-UI-START-HERE.md) supersede the historical credential/deployment/theme statements below. The compound-request provider limitation remains documented. No Shopify UI was changed.
 
 # Source publication status — 2026-11-03
 

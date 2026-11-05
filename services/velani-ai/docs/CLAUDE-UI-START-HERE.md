@@ -1,6 +1,6 @@
 # Claude: finish the Velani website assistant UI
 
-Updated 2026-11-04. This is the current handoff for the public Velani / NEVORA marketing assistant. It supersedes older deployment-status statements in the historical release notes.
+Updated 2026-11-05. This is the current handoff for the public Velani / NEVORA marketing assistant. It supersedes older deployment-status statements in the historical release notes.
 
 ## Exact source and deployment
 
@@ -28,22 +28,23 @@ git worktree add --detach ../velani-ai-reference origin/codex/rondo-backend-read
 
 The service includes `src/`, `api/index.ts`, `migrations/`, `knowledge/`, `integration/`, `public/`, tests, `package.json`, lockfile, `Dockerfile`, `vercel.json`, and complete docs. No runtime secrets belong in the source archive.
 
-## Current readiness — do not skip
+## Current readiness — 2026-11-05
 
-**Rondo source passes local checks. Hosted chat and answer quality are still unverified.** No Shopify UI files or theme settings were changed in this backend pass.
+**The backend is live and tested; Claude owns UI integration.** See [current validation and known limits](RONDO-VALIDATION-2026-11-05.md). No Shopify theme or UI source was changed by the backend pass.
 
-- Name: **Rondo**, exposed as additive public `assistantName` metadata and set in the model's instructions. Warm, professional, precise voice; contradiction, arithmetic and uncertainty checks. No claim of unlimited intelligence.
-- Existing Vercel database/AI/session secrets preserved. Chat and plans remain `gpt-6-astra`; no automatic downgrade. `REQUIRE_CAPTCHA=true` remains enforced.
-- Assistant-only Neon development project `wild-leaf-57992989`, branch `br-snowy-brook-bcc6b3zm`, database `velani_ai`: 14 reviewed knowledge documents published with a backup and an optimistic transaction guard. No employee, lead or conversation records accessed.
-- Current knowledge distinguishes available NEVORA and its published trial from the in-app owner Rondo, which the product page labels in development. Website Rondo has no workforce tools.
-- Cloudflare Managed widget **Rondo · Velani website assistant** was created. The newly generated, unused secret appeared in a tool output during native form entry; it was not saved to Vercel and must be rotated before activation. Owner rotation and permission to save the replacement in Vercel are pending. Never use the exposed key.
-- Widget hostnames: `www.thevelani.com`, `thevelani.com`, `x19hvn-ar.myshopify.com`, `velani-ai.vercel.app`, and the earlier backend branch preview hostname `velani-ai-git-codex-velani-webs-9d1dc7-josekarlo-5933s-projects.vercel.app`. Those exact origins are configured; there are no wildcards. A new branch alias needs a deliberate matching hostname/origin addition before browser testing there.
-- Install the matching replacement `TURNSTILE_SITE_KEY` (public) and `TURNSTILE_SECRET_KEY` (sensitive) for preview and production. Do not replace the existing database, AI or session secrets.
-- Git previews initially became BLOCKED because the Mac's automatic commit email was not attributed to GitHub. The current source was reviewed independently; deployment state must be checked separately. Do not turn off Vercel protection or CAPTCHA.
+- API: **https://velani-ai.vercel.app**. Health/live, database readiness and public configuration return HTTP 200.
+- Public configuration adds `assistantName: "Rondo"`; CAPTCHA is required. The matching fresh Turnstile pair is installed for production and preview. Fetch the public site key from configuration, never hardcode an older widget key.
+- Explicit chat model: `gpt-6-1-sol`; existing plan model: `gpt-6-astra` (not retested this pass). Chat has a 3,000-token completion ceiling and 45-second server deadline, with no automatic provider retries or model fallback.
+- Existing restricted database/AI/session credentials are preserved. The assistant-only Neon project contains 14 current reviewed knowledge documents. This service has no NEVORA workforce-account tools.
+- Fresh Managed widget: **Rondo · Velani website assistant · replacement**, no pre-clearance. The original unused key appeared in a tool output and was never installed. The fresh pair passed real browser/server verification. Original-widget cleanup is tracked in the validation report.
+- Exact allowed origins/hostnames: `www.thevelani.com`, `thevelani.com`, `x19hvn-ar.myshopify.com`, `velani-ai.vercel.app`, `velani-ai-git-codex-velani-webs-9d1dc7-josekarlo-5933s-projects.vercel.app`, `velani-ai-git-codex-rondo-backe-536a4a-josekarlo-5933s-projects.vercel.app`. No wildcard. API CORS uses the HTTPS forms.
+- Protected Vercel preview navigation can succeed while anonymous fetches fail; the existing client's `credentials: omit` intentionally sends no Vercel login cookie. Use the stable public API base for Shopify. Do not weaken protection.
+- Root Directory `services/velani-ai`, Node 24 project setting, build `npm run build`, install `npm ci --include=dev`, output `public`; preserve the API adapter and rewrites.
+- Final runtime commit: `759a44d3e7662491b6fcea80f95be49ba4c70421`, deployment `dpl_Hcqh1ShtUkdHCAVddRiC5ZWTyKAm` (production, READY). Documentation commits may follow it without runtime differences.
 
-Keep Vercel Root Directory `services/velani-ai`, Node 24, build `npm run build`, install **`npm ci --include=dev`**, and output `public`. The install flag is required because `NODE_ENV=production` otherwise omits the TypeScript build dependency. Preserve the supplied API adapter and rewrites.
+Seven answer-quality rubrics passed across five GPT-6.1 replies, with an independent review. A compound workflow-plus-forged-system message remains rejected upstream with HTTP 400; all five attempts are preserved as failures. Its components worked separately. Do not claim unlimited intelligence, a resolved provider cause or a universal best-model ranking.
 
-Last public observation: health/config returned 503. A ready build is not proof of working runtime configuration. No successful hosted chat or real Turnstile browser check is claimed in this pass.
+Before public customer UI launch, confirm operational retention scheduling and consent wording. The retention script exists; this pass did not configure or verify its schedule. Knowledge review is due by 2026-12-02.
 
 ## What to implement in the UI
 
@@ -78,7 +79,7 @@ Each source is `{ id, title, url }`. `action` is one of `none`, `show_demo`, `le
 
 Generate a new UUID for a new message. Retry a failed message with **the identical UUID and payload**. The headless client's `retryLastRequest()` preserves this. Do not create a new request ID merely because a network response was interrupted.
 
-Error envelope: `{ error: { code, message }, requestId }`. Handle 401 by offering a new session, 403 by obtaining valid verification/configuration, 409 as pending/conflict, 429 using `Retry-After`, and 503 with intentional retry/contact fallback. Never turn off production CAPTCHA to make the UI pass.
+Error envelope: `{ error: { code, message }, requestId }`. Upstream HTTP 400 is exposed as HTTP 503 `provider_request_rejected` with a safe rephrase message and no `Retry-After`; offer editing/rephrasing and avoid unchanged automatic retries. The visitor response does not contain upstream diagnostics. Handle 401 by offering a new session, 403 by obtaining valid verification/configuration, 409 as pending/conflict, 429 using `Retry-After`, and 503 with intentional retry/contact fallback. Never turn off production CAPTCHA to make the UI pass.
 
 The service returns a complete validated answer, not an SSE token stream. A thinking indicator is appropriate; fake streaming and a second browser-side model integration are unnecessary.
 
@@ -138,8 +139,8 @@ Advanced profile/plan features already exist in the service; they are not requir
 
 ## Rondo evaluation and spending
 
-Local checks: 85 passed, 31 database-dependent tests skipped; typecheck/build passed. Reviews approve source, with live answer-quality and hosted checks pending.
+Typecheck/build/diff checks passed. Local suite: **91 passed, 31 isolated-database tests skipped**. Eleven paid attempts yielded six answers and five failed compound-request attempts. Conservative reserved cost: **$2.812445 of $3**; actual billing not measured. All failed requests remain reserved. No more paid tests were run.
 
-Seven hard cases and manual semantic rubrics are in `knowledge/rondo-hard-evals.json`. They cover infeasible coverage, annual/monthly financial math, base-rate probability, Spanish corrections, trial limits, privacy/injection, impossible proofs and professional behavior under pressure. No paid call has been made in this task: **$0 of the approved $3 spent**.
+The canonical `artifacts/rondo-hard-evaluation.json` records the authorization and prevents another direct-suite run. Preserve it; copying the checkout or deleting spend evidence does not renew authorization. `npx tsx scripts/evaluate-rondo.ts --list` is free. A future authorized run requires a development gateway credential and explicitly selected `gpt-6-astra` or `gpt-6-1-sol`; it verifies pricing/model availability, reserves full input/output cost before transmission and never retries automatically.
 
-`npx tsx scripts/evaluate-rondo.ts --list` is free. The `--run` mode requires an authorized development gateway credential in the process environment, verifies current official Neon pricing/model availability, reserves conservative input/output cost before transmission and keeps failed calls reserved. It refuses alternate output paths and an existing canonical spend ledger. Never delete or reset that ledger to repeat spending under the same authorization. No production secret should be copied for local testing. The direct suite is not a hosted browser acceptance test. Review every returned answer; syntactically valid JSON is not evidence of intelligence or truth.
+Read [current validation](RONDO-VALIDATION-2026-11-05.md) for the exact test scope, failure and handoff. No production secret was copied for local verification.
