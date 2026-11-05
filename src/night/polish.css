@@ -134,3 +134,10 @@ body:has(#inquiry-sent:not([hidden])) .cform-hero{display:none}
 .sent .pill{margin-top:32px}
 @media(prefers-reduced-motion:no-preference){.sent:not([hidden]){animation:sent-in .5s var(--out) both}}
 @keyframes sent-in{from{opacity:0;transform:translateY(8px)}}
+
+/* ---------- Inspection fixes (Nov 5) ---------- */
+/* Plans: the trial ends one of two ways */
+.rail.r2{grid-template-columns:repeat(2,minmax(0,1fr))}
+@media(max-width:1023px){.rail.r2{grid-template-columns:1fr;gap:28px}}
+/* Trial form: a team of more than 30 turns the request into a quote; the note says so next to the button */
+.quote-note{color:var(--text-2)}

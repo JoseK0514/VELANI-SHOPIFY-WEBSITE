@@ -13,7 +13,7 @@ import { VelaniAssistant, safeSourceUrl } from './velani-assistant.js';
    ask: 'Ask Rondo a question', label: 'Your question for Rondo', send: 'Send', close: 'Close', del: 'Delete this conversation', lang: 'Language',
    confirm: 'Delete this conversation from our servers?', yes: 'Delete', keep: 'Keep',
    switchQ: 'Switch to Spanish? This conversation will be deleted and a new one started in Spanish.', switchYes: 'Switch', switchNo: 'Keep English', switched: 'New conversation in English.',
-   verify: 'Checking that your browser is not an automated program…', note: 'Rondo is an AI and can be wrong. Product details may change. Conversations are kept for up to 30 days.', privacy: 'Privacy notice',
+   verify: 'Checking that your browser is not an automated program…', note: 'Rondo is an AI and can be wrong. Don’t share passwords, payment details or employee records. Conversations are kept for up to 30 days.', privacy: 'Privacy notice',
    retry: 'Retry', discard: 'Discard', edit: 'Edit question', contact: 'Contact page',
    sugg: ['How does the time clock work?', 'How does the free trial work?', 'Can you build our website or app?'],
    sources: 'Sources', newTab: '(opens in a new tab)', demo: 'Try the time clock', quote: 'Ask for a quote', support: 'NEVORA support', talk: 'Contact us',
@@ -25,7 +25,7 @@ import { VelaniAssistant, safeSourceUrl } from './velani-assistant.js';
    ask: 'Escribe tu pregunta para Rondo', label: 'Tu pregunta para Rondo', send: 'Enviar', close: 'Cerrar', del: 'Eliminar esta conversación', lang: 'Idioma',
    confirm: '¿Eliminar esta conversación de nuestros servidores?', yes: 'Eliminar', keep: 'Conservar',
    switchQ: '¿Cambiar a inglés? Esta conversación se eliminará y empezará una nueva en inglés.', switchYes: 'Cambiar', switchNo: 'Seguir en español', switched: 'Nueva conversación en español.',
-   verify: 'Comprobando que tu navegador no es un programa automatizado…', note: 'Rondo es una IA y puede equivocarse. Los detalles del producto pueden cambiar. Las conversaciones se conservan hasta 30 días.', privacy: 'Aviso de privacidad',
+   verify: 'Comprobando que tu navegador no es un programa automatizado…', note: 'Rondo es una IA y puede equivocarse. No compartas contraseñas, datos de pago ni registros de empleados. Las conversaciones se conservan hasta 30 días.', privacy: 'Aviso de privacidad',
    retry: 'Reintentar', discard: 'Descartar', edit: 'Editar pregunta', contact: 'Página de contacto',
    sugg: ['¿Cómo funciona el reloj de entrada?', '¿Cómo funciona la prueba gratis?', '¿Pueden crear nuestro sitio web o aplicación?'],
    sources: 'Fuentes', newTab: '(se abre en una pestaña nueva)', demo: 'Probar el reloj de entrada', quote: 'Pedir una cotización', support: 'Soporte de NEVORA', talk: 'Contáctanos',
@@ -63,6 +63,8 @@ import { VelaniAssistant, safeSourceUrl } from './velani-assistant.js';
   panel.classList.remove('in'); panel.hidden = true; panel.removeAttribute('aria-modal'); launch.setAttribute('aria-expanded', 'false'); document.body.style.overflow = ''; launch.focus({ preventScroll: true });
  };
  launch.addEventListener('click', open); $('ast-close').addEventListener('click', close);
+ // Page buttons marked data-open-rondo open the panel; without the assistant they keep their normal link
+ document.querySelectorAll('[data-open-rondo]').forEach(a => a.addEventListener('click', e => { e.preventDefault(); if (panel.hidden) open(); }));
  panel.addEventListener('keydown', e => {
   if (e.key === 'Escape') { e.preventDefault(); if (!confirm.hidden) hideConfirm(); else close(); return; }
   if (e.key === 'Tab' && small.matches) {

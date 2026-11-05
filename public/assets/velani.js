@@ -26,11 +26,27 @@ if (form && !justSent) {
   // The page already shows the right wording (chosen before paint); drop the unused variant so screen readers and the heading label see one text
   const nevora = document.documentElement.classList.contains('ask-nevora');
   const demo = document.documentElement.classList.contains('ask-demo');
-  document.querySelectorAll(demo ? '.v-d, .v-n:not(.v-nm)' : nevora ? '.v-d, .v-m' : '.v-n, .v-m').forEach(el => el.remove());
-  document.querySelectorAll('.phero .rise[aria-label]').forEach(h => h.setAttribute('aria-label', h.textContent.replace(/\s+/g, ' ').trim()));
+  // The trial page keeps its quote wording (hidden) so a team of more than 30 can switch to a quote without losing what was typed
+  document.querySelectorAll(demo ? '.v-d' : nevora ? '.v-d, .v-m' : '.v-n, .v-m').forEach(el => el.remove());
+  const shown = el => [...el.childNodes].filter(n => n.nodeType === 3 || getComputedStyle(n).display !== 'none').map(n => n.textContent).join('');
+  const relabel = () => document.querySelectorAll('.phero .rise[aria-label]').forEach(h => h.setAttribute('aria-label', shown(h).replace(/\s+/g, ' ').trim()));
+  relabel();
   if (topic === 'nevora' || topic === 'nevora-demo') {
     document.title = (topic === 'nevora-demo' ? 'Free NEVORA trial' : 'NEVORA for your team') + ' · Velani';
     fields.message.required = false;
+  }
+  // Trial page, team of more than 30: the free trial does not apply, so the page becomes a quote request (heading, button, topic)
+  if (demo && fields.team) {
+   const note = document.createElement('p'); note.className = 'send-note quote-note'; note.setAttribute('role', 'status'); note.hidden = true;
+   note.textContent = 'Teams of more than 30 people get a quote instead of the free trial. What you typed is kept.';
+   submitButton.before(note);
+   fields.team.addEventListener('change', () => {
+    const big = /^More than 30/.test(fields.team.value);
+    document.documentElement.classList.toggle('ask-demo', !big);
+    fields.interest.value = big ? 'nevora' : 'nevora-demo';
+    document.title = (big ? 'NEVORA for your team' : 'Free NEVORA trial') + ' · Velani';
+    note.hidden = !big; relabel();
+   });
   }
   const setBusy = busy => { submitButton.disabled = busy; form.setAttribute('aria-busy', String(busy)); };
   const messages = { checking: 'Checking your draft…', preview: 'Draft checked. Nothing was sent.', invalid: 'Check the highlighted fields.', sending: 'Sending inquiry…', accepted: 'Your inquiry was submitted.', failed: 'The inquiry was not accepted. Review the form before trying again.', uncertain: 'We could not confirm the submission. It may have been accepted. Check with support@thevelani.com before sending it again.', unavailable: 'Inquiry delivery is not available.' };
@@ -55,7 +71,7 @@ if (form && !justSent) {
     }
     if (mode === 'live') {
       // A NEVORA enquiry may have no message: send the team details as the message body so the email is never empty
-      if (!values.message.trim() && fields.message) fields.message.value = [values.interest === 'relay' ? 'NEVORA Relay early access request.' : values.interest === 'nevora-demo' ? 'Free NEVORA trial request.' : 'NEVORA quote request.', values.team && 'Team size: ' + values.team, values.locations && 'Locations: ' + values.locations, values.company && 'Company: ' + values.company].filter(Boolean).join('\n');
+      if (!values.message.trim() && fields.message) fields.message.value = [values.interest === 'relay' ? 'NEVORA Relay waitlist request.' : values.interest === 'nevora-demo' ? 'Free NEVORA trial request.' : 'NEVORA quote request.', values.team && 'Team size: ' + values.team, values.locations && 'Locations: ' + values.locations, values.company && 'Company: ' + values.company].filter(Boolean).join('\n');
       try { sessionStorage.setItem('v-inquiry-topic', values.interest || ''); } catch {}
       setBusy(true); status.textContent = messages.sending; return;
     }

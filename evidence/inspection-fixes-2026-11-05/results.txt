@@ -1,0 +1,44 @@
+PASS chromium 1440: trial form starts as a trial request
+PASS chromium 1440: more than 30 switches heading, topic and note to a quote; typed name kept (Check draft inquiry)
+PASS chromium 1440: choosing 11–20 switches back to the trial
+PASS chromium 1440: Plans shows two ways the trial ends, export before closing
+PASS chromium 1440: Products: explanation links say Explore; Start a project goes to the contact form
+PASS chromium 1440: Relay button says Join the waitlist
+PASS chromium 1440: Products has a search description
+PASS chromium 1440: Rondo is labelled In development in the desktop menu
+PASS chromium 1440: "Ask Rondo" on the NEVORA page opens the chat instead of the quote form
+PASS chromium 1440: chat note asks people not to share passwords, payment details or employee records
+PASS chromium 1440: no page errors ()
+PASS chromium 390: trial form starts as a trial request
+PASS chromium 390: more than 30 switches heading, topic and note to a quote; typed name kept (Check draft inquiry)
+PASS chromium 390: choosing 11–20 switches back to the trial
+PASS chromium 390: Plans shows two ways the trial ends, export before closing
+PASS chromium 390: Products: explanation links say Explore; Start a project goes to the contact form
+PASS chromium 390: Relay button says Join the waitlist
+PASS chromium 390: Products has a search description
+PASS chromium 390: Rondo is labelled In development in the phone menu
+PASS chromium 390: "Ask Rondo" on the NEVORA page opens the chat instead of the quote form
+PASS chromium 390: chat note asks people not to share passwords, payment details or employee records
+PASS chromium 390: no page errors ()
+PASS webkit 1440: trial form starts as a trial request
+PASS webkit 1440: more than 30 switches heading, topic and note to a quote; typed name kept (Check draft inquiry)
+PASS webkit 1440: choosing 11–20 switches back to the trial
+PASS webkit 1440: Plans shows two ways the trial ends, export before closing
+PASS webkit 1440: Products: explanation links say Explore; Start a project goes to the contact form
+PASS webkit 1440: Relay button says Join the waitlist
+PASS webkit 1440: Products has a search description
+PASS webkit 1440: Rondo is labelled In development in the desktop menu
+PASS webkit 1440: "Ask Rondo" on the NEVORA page opens the chat instead of the quote form
+PASS webkit 1440: chat note asks people not to share passwords, payment details or employee records
+PASS webkit 1440: no page errors ()
+PASS webkit 390: trial form starts as a trial request
+PASS webkit 390: more than 30 switches heading, topic and note to a quote; typed name kept (Check draft inquiry)
+PASS webkit 390: choosing 11–20 switches back to the trial
+PASS webkit 390: Plans shows two ways the trial ends, export before closing
+PASS webkit 390: Products: explanation links say Explore; Start a project goes to the contact form
+PASS webkit 390: Relay button says Join the waitlist
+PASS webkit 390: Products has a search description
+PASS webkit 390: Rondo is labelled In development in the phone menu
+PASS webkit 390: "Ask Rondo" on the NEVORA page opens the chat instead of the quote form
+PASS webkit 390: chat note asks people not to share passwords, payment details or employee records
+PASS webkit 390: no page errors ()
