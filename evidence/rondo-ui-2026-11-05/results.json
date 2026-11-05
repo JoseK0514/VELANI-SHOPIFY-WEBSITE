@@ -1,0 +1,669 @@
+{
+ "failures": 0,
+ "results": [
+  {
+   "status": "passed",
+   "msg": "chromium 1440: launcher reads \"Ask Rondo\""
+  },
+  {
+   "status": "passed",
+   "msg": "chromium 1440: launcher overlaps no visible page action at load (none)"
+  },
+  {
+   "status": "passed",
+   "msg": "chromium 1440: panel names Rondo, an AI adviser"
+  },
+  {
+   "status": "passed",
+   "msg": "chromium 1440: welcome states what Rondo cannot do"
+  },
+  {
+   "status": "passed",
+   "msg": "chromium 1440: three suggestions; send disabled while empty"
+  },
+  {
+   "status": "passed",
+   "msg": "chromium 1440: no horizontal overflow with the panel open"
+  },
+  {
+   "status": "passed",
+   "msg": "chromium 1440: while verification is pending the panel says so (not \"thinking\")"
+  },
+  {
+   "status": "passed",
+   "msg": "chromium 1440: session created with locale en and a fresh verification token"
+  },
+  {
+   "status": "passed",
+   "msg": "chromium 1440: suggestion sends and the answer appears"
+  },
+  {
+   "status": "passed",
+   "msg": "chromium 1440: only the valid Velani source is linked (unsafe ones dropped)"
+  },
+  {
+   "status": "passed",
+   "msg": "chromium 1440: demo action points at the time clock on this page"
+  },
+  {
+   "status": "passed",
+   "msg": "chromium 1440: answers render as text, never markup"
+  },
+  {
+   "status": "passed",
+   "msg": "chromium 1440: follow-ups reuse the same session with the bearer token"
+  },
+  {
+   "status": "passed",
+   "msg": "chromium 1440: repeated Enter or clicks send one request"
+  },
+  {
+   "status": "passed",
+   "msg": "chromium 1440: lead_form goes to the real contact route"
+  },
+  {
+   "status": "passed",
+   "msg": "chromium 1440: service failure explains, offers Retry and the contact page"
+  },
+  {
+   "status": "passed",
+   "msg": "chromium 1440: no new question while a failed one is pending"
+  },
+  {
+   "status": "passed",
+   "msg": "chromium 1440: retry reuses the same request ID and words"
+  },
+  {
+   "status": "passed",
+   "msg": "chromium 1440: retried question gets its answer"
+  },
+  {
+   "status": "passed",
+   "msg": "chromium 1440: rate limit counts down before Retry is allowed"
+  },
+  {
+   "status": "passed",
+   "msg": "chromium 1440: Retry enables after Retry-After"
+  },
+  {
+   "status": "passed",
+   "msg": "chromium 1440: 409 in progress says so"
+  },
+  {
+   "status": "passed",
+   "msg": "chromium 1440: rejected question offers Edit, not an automatic or unchanged retry"
+  },
+  {
+   "status": "passed",
+   "msg": "chromium 1440: rejected question is not resent automatically"
+  },
+  {
+   "status": "passed",
+   "msg": "chromium 1440: Edit returns the question to the box"
+  },
+  {
+   "status": "passed",
+   "msg": "chromium 1440: edited question uses a new request ID"
+  },
+  {
+   "status": "passed",
+   "msg": "chromium 1440: long wait says answers can take up to 45 seconds"
+  },
+  {
+   "status": "passed",
+   "msg": "chromium 1440: Escape closes and focus returns to the launcher"
+  },
+  {
+   "status": "passed",
+   "msg": "chromium 1440: keyboard reopens with the conversation kept"
+  },
+  {
+   "status": "passed",
+   "msg": "chromium 1440: switching language mid-conversation asks first"
+  },
+  {
+   "status": "passed",
+   "msg": "chromium 1440: old conversation deleted on the server; panel now in Spanish"
+  },
+  {
+   "status": "passed",
+   "msg": "chromium 1440: new session in es; Spanish answer and labels"
+  },
+  {
+   "status": "passed",
+   "msg": "chromium 1440: expired session explains and returns the question to the box"
+  },
+  {
+   "status": "passed",
+   "msg": "chromium 1440: delete asks for confirmation with focus on Delete"
+  },
+  {
+   "status": "passed",
+   "msg": "chromium 1440: Escape cancels the confirmation without closing the panel"
+  },
+  {
+   "status": "passed",
+   "msg": "chromium 1440: authenticated delete clears the conversation"
+  },
+  {
+   "status": "passed",
+   "msg": "chromium 1440: no page errors ()"
+  },
+  {
+   "status": "passed",
+   "msg": "chromium 1440: axe on the open panel: clean"
+  },
+  {
+   "status": "passed",
+   "msg": "chromium 1440: unavailable service disables the box and offers Retry and the contact page"
+  },
+  {
+   "status": "passed",
+   "msg": "chromium 1440: Retry recovers when the service returns"
+  },
+  {
+   "status": "passed",
+   "msg": "chromium 390: on phones the launcher stays off the first screen"
+  },
+  {
+   "status": "passed",
+   "msg": "chromium 390: the launcher appears after scrolling"
+  },
+  {
+   "status": "passed",
+   "msg": "chromium 390: launcher reads \"Ask Rondo\""
+  },
+  {
+   "status": "passed",
+   "msg": "chromium 390: launcher overlaps no visible page action at load (none)"
+  },
+  {
+   "status": "passed",
+   "msg": "chromium 390: panel names Rondo, an AI adviser"
+  },
+  {
+   "status": "passed",
+   "msg": "chromium 390: welcome states what Rondo cannot do"
+  },
+  {
+   "status": "passed",
+   "msg": "chromium 390: three suggestions; send disabled while empty"
+  },
+  {
+   "status": "passed",
+   "msg": "chromium 390: no horizontal overflow with the panel open"
+  },
+  {
+   "status": "passed",
+   "msg": "chromium 390: while verification is pending the panel says so (not \"thinking\")"
+  },
+  {
+   "status": "passed",
+   "msg": "chromium 390: session created with locale en and a fresh verification token"
+  },
+  {
+   "status": "passed",
+   "msg": "chromium 390: suggestion sends and the answer appears"
+  },
+  {
+   "status": "passed",
+   "msg": "chromium 390: only the valid Velani source is linked (unsafe ones dropped)"
+  },
+  {
+   "status": "passed",
+   "msg": "chromium 390: demo action points at the time clock on this page"
+  },
+  {
+   "status": "passed",
+   "msg": "chromium 390: answers render as text, never markup"
+  },
+  {
+   "status": "passed",
+   "msg": "chromium 390: follow-ups reuse the same session with the bearer token"
+  },
+  {
+   "status": "passed",
+   "msg": "chromium 390: repeated Enter or clicks send one request"
+  },
+  {
+   "status": "passed",
+   "msg": "chromium 390: lead_form goes to the real contact route"
+  },
+  {
+   "status": "passed",
+   "msg": "chromium 390: service failure explains, offers Retry and the contact page"
+  },
+  {
+   "status": "passed",
+   "msg": "chromium 390: no new question while a failed one is pending"
+  },
+  {
+   "status": "passed",
+   "msg": "chromium 390: retry reuses the same request ID and words"
+  },
+  {
+   "status": "passed",
+   "msg": "chromium 390: retried question gets its answer"
+  },
+  {
+   "status": "passed",
+   "msg": "chromium 390: rate limit counts down before Retry is allowed"
+  },
+  {
+   "status": "passed",
+   "msg": "chromium 390: Retry enables after Retry-After"
+  },
+  {
+   "status": "passed",
+   "msg": "chromium 390: 409 in progress says so"
+  },
+  {
+   "status": "passed",
+   "msg": "chromium 390: rejected question offers Edit, not an automatic or unchanged retry"
+  },
+  {
+   "status": "passed",
+   "msg": "chromium 390: rejected question is not resent automatically"
+  },
+  {
+   "status": "passed",
+   "msg": "chromium 390: Edit returns the question to the box"
+  },
+  {
+   "status": "passed",
+   "msg": "chromium 390: edited question uses a new request ID"
+  },
+  {
+   "status": "passed",
+   "msg": "chromium 390: long wait says answers can take up to 45 seconds"
+  },
+  {
+   "status": "passed",
+   "msg": "chromium 390: Escape closes and focus returns to the launcher"
+  },
+  {
+   "status": "passed",
+   "msg": "chromium 390: keyboard reopens with the conversation kept"
+  },
+  {
+   "status": "passed",
+   "msg": "chromium 390: Tab stays inside the full-screen panel"
+  },
+  {
+   "status": "passed",
+   "msg": "chromium 390: switching language mid-conversation asks first"
+  },
+  {
+   "status": "passed",
+   "msg": "chromium 390: old conversation deleted on the server; panel now in Spanish"
+  },
+  {
+   "status": "passed",
+   "msg": "chromium 390: new session in es; Spanish answer and labels"
+  },
+  {
+   "status": "passed",
+   "msg": "chromium 390: expired session explains and returns the question to the box"
+  },
+  {
+   "status": "passed",
+   "msg": "chromium 390: delete asks for confirmation with focus on Delete"
+  },
+  {
+   "status": "passed",
+   "msg": "chromium 390: Escape cancels the confirmation without closing the panel"
+  },
+  {
+   "status": "passed",
+   "msg": "chromium 390: authenticated delete clears the conversation"
+  },
+  {
+   "status": "passed",
+   "msg": "chromium 390: no page errors ()"
+  },
+  {
+   "status": "passed",
+   "msg": "chromium 390: axe on the open panel: clean"
+  },
+  {
+   "status": "passed",
+   "msg": "chromium 390: unavailable service disables the box and offers Retry and the contact page"
+  },
+  {
+   "status": "passed",
+   "msg": "chromium 390: Retry recovers when the service returns"
+  },
+  {
+   "status": "passed",
+   "msg": "webkit 1440: launcher reads \"Ask Rondo\""
+  },
+  {
+   "status": "passed",
+   "msg": "webkit 1440: launcher overlaps no visible page action at load (none)"
+  },
+  {
+   "status": "passed",
+   "msg": "webkit 1440: panel names Rondo, an AI adviser"
+  },
+  {
+   "status": "passed",
+   "msg": "webkit 1440: welcome states what Rondo cannot do"
+  },
+  {
+   "status": "passed",
+   "msg": "webkit 1440: three suggestions; send disabled while empty"
+  },
+  {
+   "status": "passed",
+   "msg": "webkit 1440: no horizontal overflow with the panel open"
+  },
+  {
+   "status": "passed",
+   "msg": "webkit 1440: while verification is pending the panel says so (not \"thinking\")"
+  },
+  {
+   "status": "passed",
+   "msg": "webkit 1440: session created with locale en and a fresh verification token"
+  },
+  {
+   "status": "passed",
+   "msg": "webkit 1440: suggestion sends and the answer appears"
+  },
+  {
+   "status": "passed",
+   "msg": "webkit 1440: only the valid Velani source is linked (unsafe ones dropped)"
+  },
+  {
+   "status": "passed",
+   "msg": "webkit 1440: demo action points at the time clock on this page"
+  },
+  {
+   "status": "passed",
+   "msg": "webkit 1440: answers render as text, never markup"
+  },
+  {
+   "status": "passed",
+   "msg": "webkit 1440: follow-ups reuse the same session with the bearer token"
+  },
+  {
+   "status": "passed",
+   "msg": "webkit 1440: repeated Enter or clicks send one request"
+  },
+  {
+   "status": "passed",
+   "msg": "webkit 1440: lead_form goes to the real contact route"
+  },
+  {
+   "status": "passed",
+   "msg": "webkit 1440: service failure explains, offers Retry and the contact page"
+  },
+  {
+   "status": "passed",
+   "msg": "webkit 1440: no new question while a failed one is pending"
+  },
+  {
+   "status": "passed",
+   "msg": "webkit 1440: retry reuses the same request ID and words"
+  },
+  {
+   "status": "passed",
+   "msg": "webkit 1440: retried question gets its answer"
+  },
+  {
+   "status": "passed",
+   "msg": "webkit 1440: rate limit counts down before Retry is allowed"
+  },
+  {
+   "status": "passed",
+   "msg": "webkit 1440: Retry enables after Retry-After"
+  },
+  {
+   "status": "passed",
+   "msg": "webkit 1440: 409 in progress says so"
+  },
+  {
+   "status": "passed",
+   "msg": "webkit 1440: rejected question offers Edit, not an automatic or unchanged retry"
+  },
+  {
+   "status": "passed",
+   "msg": "webkit 1440: rejected question is not resent automatically"
+  },
+  {
+   "status": "passed",
+   "msg": "webkit 1440: Edit returns the question to the box"
+  },
+  {
+   "status": "passed",
+   "msg": "webkit 1440: edited question uses a new request ID"
+  },
+  {
+   "status": "passed",
+   "msg": "webkit 1440: long wait says answers can take up to 45 seconds"
+  },
+  {
+   "status": "passed",
+   "msg": "webkit 1440: Escape closes and focus returns to the launcher"
+  },
+  {
+   "status": "passed",
+   "msg": "webkit 1440: keyboard reopens with the conversation kept"
+  },
+  {
+   "status": "passed",
+   "msg": "webkit 1440: switching language mid-conversation asks first"
+  },
+  {
+   "status": "passed",
+   "msg": "webkit 1440: old conversation deleted on the server; panel now in Spanish"
+  },
+  {
+   "status": "passed",
+   "msg": "webkit 1440: new session in es; Spanish answer and labels"
+  },
+  {
+   "status": "passed",
+   "msg": "webkit 1440: expired session explains and returns the question to the box"
+  },
+  {
+   "status": "passed",
+   "msg": "webkit 1440: delete asks for confirmation with focus on Delete"
+  },
+  {
+   "status": "passed",
+   "msg": "webkit 1440: Escape cancels the confirmation without closing the panel"
+  },
+  {
+   "status": "passed",
+   "msg": "webkit 1440: authenticated delete clears the conversation"
+  },
+  {
+   "status": "passed",
+   "msg": "webkit 1440: no page errors ()"
+  },
+  {
+   "status": "passed",
+   "msg": "webkit 1440: axe on the open panel: clean"
+  },
+  {
+   "status": "passed",
+   "msg": "webkit 1440: unavailable service disables the box and offers Retry and the contact page"
+  },
+  {
+   "status": "passed",
+   "msg": "webkit 1440: Retry recovers when the service returns"
+  },
+  {
+   "status": "passed",
+   "msg": "webkit 390: on phones the launcher stays off the first screen"
+  },
+  {
+   "status": "passed",
+   "msg": "webkit 390: the launcher appears after scrolling"
+  },
+  {
+   "status": "passed",
+   "msg": "webkit 390: launcher reads \"Ask Rondo\""
+  },
+  {
+   "status": "passed",
+   "msg": "webkit 390: launcher overlaps no visible page action at load (none)"
+  },
+  {
+   "status": "passed",
+   "msg": "webkit 390: panel names Rondo, an AI adviser"
+  },
+  {
+   "status": "passed",
+   "msg": "webkit 390: welcome states what Rondo cannot do"
+  },
+  {
+   "status": "passed",
+   "msg": "webkit 390: three suggestions; send disabled while empty"
+  },
+  {
+   "status": "passed",
+   "msg": "webkit 390: no horizontal overflow with the panel open"
+  },
+  {
+   "status": "passed",
+   "msg": "webkit 390: while verification is pending the panel says so (not \"thinking\")"
+  },
+  {
+   "status": "passed",
+   "msg": "webkit 390: session created with locale en and a fresh verification token"
+  },
+  {
+   "status": "passed",
+   "msg": "webkit 390: suggestion sends and the answer appears"
+  },
+  {
+   "status": "passed",
+   "msg": "webkit 390: only the valid Velani source is linked (unsafe ones dropped)"
+  },
+  {
+   "status": "passed",
+   "msg": "webkit 390: demo action points at the time clock on this page"
+  },
+  {
+   "status": "passed",
+   "msg": "webkit 390: answers render as text, never markup"
+  },
+  {
+   "status": "passed",
+   "msg": "webkit 390: follow-ups reuse the same session with the bearer token"
+  },
+  {
+   "status": "passed",
+   "msg": "webkit 390: repeated Enter or clicks send one request"
+  },
+  {
+   "status": "passed",
+   "msg": "webkit 390: lead_form goes to the real contact route"
+  },
+  {
+   "status": "passed",
+   "msg": "webkit 390: service failure explains, offers Retry and the contact page"
+  },
+  {
+   "status": "passed",
+   "msg": "webkit 390: no new question while a failed one is pending"
+  },
+  {
+   "status": "passed",
+   "msg": "webkit 390: retry reuses the same request ID and words"
+  },
+  {
+   "status": "passed",
+   "msg": "webkit 390: retried question gets its answer"
+  },
+  {
+   "status": "passed",
+   "msg": "webkit 390: rate limit counts down before Retry is allowed"
+  },
+  {
+   "status": "passed",
+   "msg": "webkit 390: Retry enables after Retry-After"
+  },
+  {
+   "status": "passed",
+   "msg": "webkit 390: 409 in progress says so"
+  },
+  {
+   "status": "passed",
+   "msg": "webkit 390: rejected question offers Edit, not an automatic or unchanged retry"
+  },
+  {
+   "status": "passed",
+   "msg": "webkit 390: rejected question is not resent automatically"
+  },
+  {
+   "status": "passed",
+   "msg": "webkit 390: Edit returns the question to the box"
+  },
+  {
+   "status": "passed",
+   "msg": "webkit 390: edited question uses a new request ID"
+  },
+  {
+   "status": "passed",
+   "msg": "webkit 390: long wait says answers can take up to 45 seconds"
+  },
+  {
+   "status": "passed",
+   "msg": "webkit 390: Escape closes and focus returns to the launcher"
+  },
+  {
+   "status": "passed",
+   "msg": "webkit 390: keyboard reopens with the conversation kept"
+  },
+  {
+   "status": "passed",
+   "msg": "webkit 390: Tab stays inside the full-screen panel"
+  },
+  {
+   "status": "passed",
+   "msg": "webkit 390: switching language mid-conversation asks first"
+  },
+  {
+   "status": "passed",
+   "msg": "webkit 390: old conversation deleted on the server; panel now in Spanish"
+  },
+  {
+   "status": "passed",
+   "msg": "webkit 390: new session in es; Spanish answer and labels"
+  },
+  {
+   "status": "passed",
+   "msg": "webkit 390: expired session explains and returns the question to the box"
+  },
+  {
+   "status": "passed",
+   "msg": "webkit 390: delete asks for confirmation with focus on Delete"
+  },
+  {
+   "status": "passed",
+   "msg": "webkit 390: Escape cancels the confirmation without closing the panel"
+  },
+  {
+   "status": "passed",
+   "msg": "webkit 390: authenticated delete clears the conversation"
+  },
+  {
+   "status": "passed",
+   "msg": "webkit 390: no page errors ()"
+  },
+  {
+   "status": "passed",
+   "msg": "webkit 390: axe on the open panel: clean"
+  },
+  {
+   "status": "passed",
+   "msg": "webkit 390: unavailable service disables the box and offers Retry and the contact page"
+  },
+  {
+   "status": "passed",
+   "msg": "webkit 390: Retry recovers when the service returns"
+  }
+ ]
+}
