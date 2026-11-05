@@ -50,18 +50,21 @@ Files: `src/night/assist.html`, `src/night/assist.js`, `src/night/assist.css`, `
 
 Evidence: `evidence/rondo-ui-2026-11-05/` (results.json, screenshots), `evidence/rondo-hosted-2026-11-05/` (results, screenshots, including the failed pre-fix capture), `evidence/shopify/193103921466-rondo-chat/` (before/after files; the original `settings_data.json` checksum on Shopify was `0cb17f68d4cb4ba956308ed29ad5e9a1`, after `3f31c18bc5cbcc079716e4d3000dd283`).
 
-## Not done: end-to-end acceptance is still open
+## End-to-end acceptance on the hosted preview (human check, 2026-11-05)
 
-1. **Real Turnstile needs a person.** Cloudflare shows automated browsers an interactive "Verify you are human" checkbox. Claude may not complete it, so the hosted check stops there. Jose (or another person) must open the preview URL in a normal browser.
-2. **Paid answers need new budget approval.** The earlier $3 allowance has $2.812445 reserved, about $0.19 left. That's not enough for the required English answer, context follow-up and Spanish conversation (at the backend's conservative reservation of about $0.26 per attempt, three or four answers need roughly $0.80–$1.05 of new approval). No paid call was made in this pass.
-3. Once both are approved, the human check is:
-   - open the preview;
-   - ask an English product question, then a follow-up that depends on it;
-   - switch to ES, confirm, and ask a Spanish question;
-   - check that the source and action links open real pages;
-   - delete the conversation (trash, then Delete) and confirm the log clears.
+Jose approved $1.05 of additional paid testing (on top of the $2.812445 already reserved of the earlier $3). It was capped at four questions; **three were used, all answered, none failed**. Actual provider billing was not measured.
 
-   Record status codes without tokens.
+| Step | Result |
+| --- | --- |
+| App's built-in browser (Claude desktop) | Cloudflare showed "Verify you are human"; the person's tick was rejected ("verification failed"); the browser identifies itself as Claude. Panel showed the correct timeout state ("Complete the verification, then retry." with Retry/Discard). No session, no chat, nothing billed. Evidence: `app-browser-364-verification-timeout-state.jpg` |
+| Jose's own Safari, desktop, preview `193103921466` | Real Turnstile verification passed and a real session was created |
+| English question: "How does the free NEVORA trial work for a café with 12 employees?" | Answered; source "Trial, setup, pricing and end-of-trial choices"; action "Ask for a quote" |
+| Context follow-up: "What happens to our data if we don't continue after that?" | Answered and explicitly referred to the trial and "your café's workplace"; same source; no action |
+| ES switch mid-conversation | Confirmation, server deletion of the English conversation, new Spanish session |
+| Spanish question: "¿Cómo funciona el reloj de entrada en una tableta compartida?" | Correct Spanish answer (4-digit PIN at a shared tablet, separate from the portal password; public sample clock stores nothing); source "Reloj compartido con PIN, idiomas y límites de la demostración" opened https://www.thevelani.com/pages/nevora in a new tab. Evidence: `human-safari-1440-spanish-answer.jpg` |
+| Delete (trash, then Eliminar) | Conversation cleared; "Conversación eliminada." shown; welcome returned. Evidence: `human-safari-1440-after-delete.jpg` |
+
+Steps 2–6 were run by Jose. Claude read the results from Safari screenshots (read-only) and Jose's report; network status codes from that browser were not captured. The English exchange was deleted by the language switch before Claude could screenshot it, so the English results rest on Jose's report. Not covered by the human pass: a phone-sized real device, keyboard-only use in Safari, and the provider-rejection path (covered by the stand-in tests only).
 
 ## Before public launch
 
