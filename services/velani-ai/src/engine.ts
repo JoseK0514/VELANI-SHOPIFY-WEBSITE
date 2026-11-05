@@ -64,7 +64,7 @@ const MAX_HISTORY_CHARS = 32000;
 const MAX_KNOWLEDGE_CHARS = 32000;
 const MAX_DOCUMENT_CHARS = 6000;
 // Includes the model's internal reasoning as well as the validated visitor-facing JSON.
-const MAX_COMPLETION_TOKENS = 6000;
+export const MAX_COMPLETION_TOKENS = 6000;
 const ALLOWED_SOURCE_HOSTS = new Set(['www.thevelani.com', 'thevelani.com']);
 const EMAIL_PATTERN = /[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?)+/g;
 

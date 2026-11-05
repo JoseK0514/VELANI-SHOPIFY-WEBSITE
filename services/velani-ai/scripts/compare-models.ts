@@ -2,7 +2,7 @@ import { createHash } from 'node:crypto';
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { dirname, resolve } from 'node:path';
 import { z } from 'zod';
-import { ModelEngine, ModelError } from '../src/engine.js';
+import { ModelEngine, ModelError, MAX_COMPLETION_TOKENS } from '../src/engine.js';
 import type { Answer, KnowledgeDocument } from '../src/types.js';
 
 const schema = z.array(z.object({
@@ -49,7 +49,7 @@ if (args.includes('--list')) {
     startedAt, models, casesPerModel: selected.length, requestedCalls: models.length * selected.length,
     verifiedCatalog: models, promptSha256: createHash('sha256').update(promptSource).digest('hex'),
     engineSha256: createHash('sha256').update(engineSource).digest('hex'),
-    conditions: { timeoutMs: 90000, maxCompletionTokens: 3000, temperature: 'provider default', reasoningEffort: 'provider default', retries: 0 },
+    conditions: { timeoutMs: 90000, maxCompletionTokens: MAX_COMPLETION_TOKENS, temperature: 'provider default', reasoningEffort: 'provider default', retries: 0 },
     evaluationType: 'small_live_cross_model_comparison',
     limitations: [
       'One sample per model per case; not a statistically powered benchmark.',

@@ -4,7 +4,7 @@ import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import OpenAI from 'openai';
 import { z } from 'zod';
-import { ModelEngine, ModelError } from '../src/engine.js';
+import { ModelEngine, ModelError, MAX_COMPLETION_TOKENS } from '../src/engine.js';
 import type { Answer, KnowledgeDocument } from '../src/types.js';
 import { SYSTEM_PROMPT } from '../src/prompts.js';
 import { reserveEvaluationCost } from './evaluation-budget.js';
@@ -66,7 +66,7 @@ if (!args.includes('--run')) {
     throw new Error('Model pricing changed or is unavailable; review budget before spending.');
   }
   report.pricing = { inputPerMillion: Math.max(entry.cost.input, entry.cost.cache_write ?? 0), outputPerMillion: entry.cost.output };
-  reserveEvaluationCost(0, 3000, report.pricing, 0, budgetUsd);
+  reserveEvaluationCost(0, MAX_COMPLETION_TOKENS, report.pricing, 0, budgetUsd);
   const client = new OpenAI({ apiKey, baseURL, maxRetries: 0, timeout: 75_000 });
   let servedModels: string[];
   try { servedModels = (await client.models.list()).data.map(item => item.id); }
