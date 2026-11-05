@@ -99,7 +99,7 @@ export function buildApp(config: Config, repository: Repository, engine: AnswerE
     return reply.code(mapped.statusCode).send({ error: { code: mapped.code, message: mapped.message }, requestId: request.id });
   });
   app.get('/health/live', async () => ({ status: 'ok' }));
-  app.get('/v1/config', async () => ({ requireCaptcha: config.requireCaptcha, turnstileSiteKey: config.turnstileSiteKey ?? null }));
+  app.get('/v1/config', async () => ({ assistantName: 'Rondo', requireCaptcha: config.requireCaptcha, turnstileSiteKey: config.turnstileSiteKey ?? null }));
   app.get('/health/ready', async () => {
     await repository.ping();
     return { status: 'ready' };

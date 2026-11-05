@@ -37,6 +37,14 @@ function setup(overrides: Partial<Repository> = {}, requireCaptcha = false) {
 }
 
 describe('public assistant API', () => {
+  it('identifies Rondo and exposes only public verification configuration', async () => {
+    const { app } = setup({}, true);
+    const response = await app.inject({ method: 'GET', url: '/v1/config' });
+    expect(response.statusCode).toBe(200);
+    expect(response.json()).toEqual({ assistantName: 'Rondo', requireCaptcha: true, turnstileSiteKey: null });
+    expect(response.body).not.toContain('test-key');
+    expect(response.body).not.toContain('turnstileSecret');
+  });
   it('rejects missing and unapproved origins before any state mutation', async () => {
     const { app, repository } = setup();
     for (const headers of [{}, { origin: 'https://attacker.example' }]) {
