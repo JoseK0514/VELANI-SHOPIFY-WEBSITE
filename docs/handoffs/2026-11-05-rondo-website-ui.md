@@ -1,5 +1,43 @@
 # Rondo website chat: UI finished, installed on an unpublished preview
 
+## Latest status (end of 2026-11-05)
+
+**The theme to publish is `193106706746` "Velani Rondo + fixes (preview)", role `UNPUBLISHED`.** Preview: https://www.thevelani.com/?preview_theme_id=193106706746. It contains everything below plus the later work on this branch. `assistant_api_url` is set and `inquiries_enabled` is unchanged.
+
+1. **The repository matches the live site again** (`ba6e76b`).
+   - Every change made directly in Shopify since `9d291b8` is ported into source.
+   - `scripts/check-live-parity.mjs <snapshot>` builds the theme and compares it with a downloaded snapshot of `193103921466`: 76 of 77 files are identical or accepted. The one remaining difference is intentional: the contact page's "Back to home" link now uses the renderer's standard `routes.root_url` form, which goes to the same place.
+   - The share images and their generator script are now in the repository.
+   - **From now on, change the site in the repository and deploy the build. Don't hand-edit Shopify.**
+2. **Inspection fixes** (`a993a15`):
+   - **Trial form:** choosing "More than 30 (by quote)" turns the page into a quote request (heading, button, topic, a short note) and keeps what was typed.
+   - **Plans, Help and Contact:** the trial now ends in one of two ways, continue by quote or close the workplace, with export as the step before closing.
+   - **Rondo:** labelled "In development" in both menus. "Ask Rondo" on the NEVORA page opens the chat. The chat note asks people not to share passwords, payment details or employee records.
+   - **Products:** links that only describe a service say "Explore"; Relay's button says "Join the waitlist"; the page has its own search description; the contact topic is now "NEVORA Relay waitlist".
+3. **Checks on `193106706746`:**
+   - Hosted fixes: 24/24 in Chromium and WebKit at 1440 and 390.
+   - Hosted Rondo free checks: 78 pass, plus the same 2 mid-scroll observations on the phone contact page.
+   - Crawl of all 17 pages in both engines at both sizes: no sideways scroll, broken images or page errors.
+   - Locally: 34 unit tests, theme check clean, Rondo UI 166/166, inspection fixes 44/44.
+   - Evidence is in `evidence/hosted-193106706746-2026-11-05/` and `evidence/inspection-fixes-2026-11-05/`.
+4. **Rondo end-to-end** passed in Jose's Safari on `193103921466` (details below). The new theme uses the same chat code, apart from the added privacy line and the "Ask Rondo" page button.
+5. **Codex** (`docs/handoffs/2026-11-05-claude-to-codex-rondo-launch.md`):
+   - **Retention is not scheduled, and this is a launch blocker.** Deletion only happens when someone runs `npm run retention -- --apply`.
+   - A knowledge refresh: `rondo-knowledge-proposed-2026-11-05.json` has 6 updated documents and 2 new Relay documents.
+   - A sync of the reference client.
+6. **Waiting on Jose:**
+   - publishing the theme, after Codex schedules retention;
+   - a starting price or price guidance;
+   - client results for case studies;
+   - the real About team;
+   - Spanish site copy;
+   - a WhatsApp number, if wanted;
+   - a trademark check on "Rondo" and "Relay";
+   - a final legal and consent review of the chat wording.
+7. **Sitemap.** Plans isn't in Shopify's page sitemap yet. Its page ID is newer than the cached sitemap range, and the page isn't hidden. Recheck after Shopify regenerates the sitemap, and submit the sitemap in Google Search Console if it doesn't appear.
+
+---
+
 Claude, 2026-11-05. This updates `services/velani-ai/docs/CLAUDE-UI-START-HERE.md` (backend branch `codex/rondo-backend-readiness-20261104` at `d6ed79f`) for the UI side. Backend, database, models and credentials were not touched.
 
 ## Where it is
