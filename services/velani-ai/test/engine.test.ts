@@ -28,7 +28,7 @@ describe('ModelEngine contract and trust boundaries', () => {
       action: 'lead_form', confidence: 'grounded', model: options.model,
     });
     expect(complete.mock.calls[0][0]).toMatchObject({
-      model: options.model, max_completion_tokens: 3000, response_format: { type: 'json_object' }, stream: false,
+      model: options.model, max_completion_tokens: 6000, response_format: { type: 'json_object' }, stream: false,
     });
     expect(complete.mock.calls[0][0]).not.toHaveProperty('tools');
   });
