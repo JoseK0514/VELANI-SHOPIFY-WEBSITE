@@ -1,3 +1,7 @@
+# Latest status — 2026-11-04
+
+Rondo source and current integration/activation blockers are recorded in [the current handoff](CLAUDE-UI-START-HERE.md). The original publication below is historical. Do not use its Cloudflare widget or theme-role statements as current state. Rondo hosted chat remains unverified; no paid tests have run.
+
 # Source publication status — 2026-11-03
 
 **Current handoff:** [UI implementation](CLAUDE-UI-START-HERE.md) and [verified deployment state](LAUNCH-STATUS-2026-11-03.md). The test evidence below records the original source publication; it is not a successful hosted-chat test.
