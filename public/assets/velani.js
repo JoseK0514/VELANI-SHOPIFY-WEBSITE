@@ -3,7 +3,7 @@ import { createPrivacyAdapter } from './privacy.js';
 // Every word this script shows, in the page's language (<html lang>): English, or Spanish on the Spanish pages
 const STRINGS = {
   en: {
-    sent: { 'nevora-demo': ['Trial request sent.', 'We aim to email you within two business days to set up your NEVORA workplace. Your 30 days start the day it’s ready.'], nevora: ['Quote request sent.', 'We aim to email you within two business days to discuss your team and locations.'], relay: ['You’re on the Relay list.', 'We’ll email you when NEVORA Relay opens for early access. No dates yet.'] },
+    sent: { 'nevora-demo': ['Trial request sent.', 'We aim to email you within two business days to set up your NEVORA workplace. Your 30 days start the day it’s ready.'], nevora: ['Quote request sent.', 'We aim to email you within two business days to discuss your team and locations.'], relay: ['You’re on the Relay list.', 'We’ll email you when NEVORA Relay opens for early access. No dates yet.'], 'client-work': ['Request sent.', 'We aim to reply by email within two business days. Paid work starts only after you approve a written quote.'], 'client-help': ['Sent to support.', 'We aim to reply by email within two business days. If you can’t work, call 787-925-2000, Monday to Friday, 8 am to 9 pm ET.'] },
     sentTitle: 'Message sent', trialTitle: 'Free NEVORA trial', quoteTitle: 'NEVORA for your team', relayTitle: 'NEVORA Relay waitlist',
     quoteNote: 'Teams of more than 30 people get a quote instead of the free trial. What you typed is kept.',
     optional: 'Anything else <span class="opt">optional</span>',
@@ -13,7 +13,7 @@ const STRINGS = {
     privacyErrors: {},
   },
   es: {
-    sent: { 'nevora-demo': ['Solicitud de prueba enviada.', 'Procuramos escribirte en un plazo de dos días laborables para configurar tu espacio de trabajo de NEVORA. Tus 30 días empiezan el día en que esté listo.'], nevora: ['Solicitud de cotización enviada.', 'Procuramos escribirte en un plazo de dos días laborables para hablar de tu equipo y tus ubicaciones.'], relay: ['Ya estás en la lista de Relay.', 'Te escribiremos cuando NEVORA Relay abra el acceso anticipado. Aún sin fechas.'] },
+    sent: { 'nevora-demo': ['Solicitud de prueba enviada.', 'Procuramos escribirte en un plazo de dos días laborables para configurar tu espacio de trabajo de NEVORA. Tus 30 días empiezan el día en que esté listo.'], nevora: ['Solicitud de cotización enviada.', 'Procuramos escribirte en un plazo de dos días laborables para hablar de tu equipo y tus ubicaciones.'], relay: ['Ya estás en la lista de Relay.', 'Te escribiremos cuando NEVORA Relay abra el acceso anticipado. Aún sin fechas.'], 'client-work': ['Solicitud enviada.', 'Procuramos responderte por correo en un plazo de dos días laborables. El trabajo pagado empieza solo después de que apruebes una cotización por escrito.'], 'client-help': ['Enviado a soporte.', 'Procuramos responderte por correo en un plazo de dos días laborables. Si no pueden trabajar, llama al 787-925-2000, lunes a viernes, 8\u00a0a.\u00a0m. a 9\u00a0p.\u00a0m. ET.'] },
     sentTitle: 'Mensaje enviado', trialTitle: 'Prueba gratis de NEVORA', quoteTitle: 'NEVORA para tu equipo', relayTitle: 'Lista de espera de NEVORA Relay',
     quoteNote: 'Los equipos de más de 30 personas reciben una cotización en lugar de la prueba gratis. Lo que escribiste se conserva.',
     optional: 'Algo más <span class="opt">opcional</span>',
@@ -48,7 +48,15 @@ if (form && !justSent) {
   if (!status) { status = document.createElement('div'); status.className = 'form-status'; status.setAttribute('role', 'status'); status.tabIndex = -1; const submitNode = form.querySelector('[data-inquiry-submit]'); if (submitNode) submitNode.after(status); else form.append(status); }
   const fields = Object.fromEntries(['name', 'email', 'company', 'message', 'interest', 'locations', 'team'].map(key => [key, form.querySelector('#inquiry-' + key)]));
   const topic = new URL(window.location.href).searchParams.get('interest');
-  if (['website', 'custom-software', 'nevora', 'nevora-demo', 'relay', 'other'].includes(topic)) fields.interest.value = topic;
+  if (['website', 'custom-software', 'nevora', 'nevora-demo', 'relay', 'other', 'client-work', 'client-help'].includes(topic)) fields.interest.value = topic;
+  // Sign in page: two kinds of client request share one form. The choice sets the topic, the message label, the timing or
+  // urgency field (the hidden one is disabled so it is not sent) and, on the live form, the button wording.
+  const kinds = [...form.querySelectorAll('input[name="client_kind"]')];
+  if (kinds.length && fields.interest) {
+   const setKind = value => { const key = value === 'client-help' ? 'help' : 'work'; fields.interest.value = value; kinds.forEach(r => { r.checked = r.value === value; }); form.querySelectorAll('[data-k]').forEach(el => { el.hidden = el.dataset.k !== key; el.querySelectorAll('select').forEach(s => { s.disabled = el.hidden; }); }); };
+   kinds.forEach(r => r.addEventListener('change', () => { if (r.checked) setKind(r.value); }));
+   setKind(topic === 'client-help' ? 'client-help' : 'client-work');
+  }
   // Arriving from a NEVORA action: talk about the team, keep NEVORA as the topic without asking again
   // The page already shows the right wording (chosen before paint); drop the unused variant so screen readers and the heading label see one text
   const nevora = document.documentElement.classList.contains('ask-nevora');

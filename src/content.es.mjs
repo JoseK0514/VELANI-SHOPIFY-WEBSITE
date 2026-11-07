@@ -17,6 +17,7 @@ export const ES_PATHS = Object.freeze({
   '/pages/about': '/pages/es-nosotros',
   '/pages/help': '/pages/es-ayuda',
   '/pages/custom-development': '/pages/es-a-la-medida',
+  '/pages/sign-in': '/pages/es-entrar',
 });
 
 /** English-only pages whose closest Spanish page is not the Spanish home: the ES switch goes there instead. */
@@ -86,6 +87,12 @@ ES_ROUTES['/pages/es-ayuda'] = es('/pages/help', {
   ],
 });
 
+ES_ROUTES['/pages/es-entrar'] = es('/pages/sign-in', {
+  kind: 'signin', nav: 'signin', eyebrow: '', name: 'Entrar',
+  title: 'Entra a NEVORA.',
+  intro: 'Abre NEVORA o envíanos una solicitud sobre el sitio web o la app que creamos para ti.',
+  desc: 'Entra a NEVORA, pide trabajo nuevo para tu sitio web o tu app, o recibe ayuda con un proyecto que Velani creó.',
+});
 ES_ROUTES['/pages/es-a-la-medida'] = es('/pages/custom-development', {
   kind: 'services', nav: 'services', eyebrow: 'Software a la medida', name: 'Software a la medida',
   title: 'Sitios web y apps hechos para tu negocio.',
@@ -133,7 +140,7 @@ export const CHROME_ES = {
     ['custom', 'Software a la medida', ['services', 'websites'], [['Sitios web', '/pages/custom-development#web-applications', 'Sitios que traen llamadas y reservas'], ['Apps de reservas', '/pages/custom-development#booking', 'Reservas, recordatorios y tarjetas de recompensas'], ['Tiendas en línea', '/pages/custom-development#online-stores', 'Productos, precio de entrega y pago'], ['Herramientas de negocio', '/pages/custom-development#business-systems', 'Solicitudes, aprobaciones y registros en un solo lugar']]],
     ['company', 'Empresa', ['about', 'help', 'contact'], [['Nosotros', '/pages/about', 'Qué hacemos y cómo trabajamos'], ['Soporte', '/pages/help', 'Lunes a viernes, 8 a. m. a 9 p. m. ET'], ['Contacto', '/pages/contact', 'Empieza un proyecto o haz una pregunta']]],
   ],
-  signIn: 'Entrar', signInHref: '/pages/nevora-support',
+  signIn: 'Entrar', signInHref: '/pages/sign-in',
   rondoNevora: 'Rondo en NEVORA', rondoSoon: 'En desarrollo', relaySoon: 'Pronto', contact: 'Contacto',
   trial: 'Prueba gratis', trialLong: 'Pide la prueba gratis de NEVORA', project: 'Empieza un proyecto',
   support: 'Soporte al cliente', hours: HOURS_ES, brandOf: 'Velani es una marca de ',
@@ -156,6 +163,21 @@ export const CONSENT_ES = {
 };
 
 /** The contact page: hero variants, form labels, the sent confirmation, the inquiry-off panel and the aside. */
+/** Sign in page (Spanish). Values sent with a request stay in English, like the contact topics. */
+export const SIGNIN_ES = {
+  h1: 'Entra a NEVORA.', appText: 'Dueños, gerentes y empleados entran con el correo con el que su lugar de trabajo los invitó.', open: 'Abrir NEVORA', support: 'Soporte de NEVORA (en inglés)',
+  appFact: '¿No puedes entrar? Pídele a tu gerente que te reenvíe la invitación.',
+  webAlt: 'NEVORA en la web para un dueño: un asunto que necesita respuesta, cinco de cinco con entrada marcada y el próximo día de pago', phoneAlt: 'NEVORA en el teléfono de una empleada: su turno de hoy y sus próximos turnos',
+  clientT: '¿Necesitas algo en tu sitio o tu app?', clientText: 'Pídenos una página nueva, una función o un cambio, o cuéntanos qué dejó de funcionar. Respondemos por correo en un plazo de dos días laborables.',
+  callK: 'Si no pueden trabajar, llámanos.',
+  need: '¿Qué necesitas?', kinds: [['Trabajo nuevo', 'Una página nueva, una función o un cambio.'], ['Ayuda', 'Algo de tu sitio o tu app dejó de funcionar.']],
+  business: 'Negocio', message: ['¿Qué necesitas?', '¿Qué pasó?'],
+  timing: ['¿Para cuándo lo necesitas?', [['No rush', 'Sin prisa'], ['This month', 'Este mes'], ['This week', 'Esta semana']]],
+  urgency: ['¿Qué tan urgente es?', [['It can wait', 'Puede esperar'], ["It's slowing us down", 'Nos está atrasando'], ["We can't work", 'No podemos trabajar']]],
+  send: ['Enviar solicitud', 'Enviar a soporte'], check: 'Revisar el borrador', note: 'No envíes contraseñas ni datos de pago.',
+  preview: 'Vista previa. Este formulario revisa tu borrador y no envía nada.',
+  writeT: 'Escríbenos', writeText: 'Cuéntanos qué necesitas o qué pasó, y de qué sitio web o app se trata. Respondemos desde ',
+};
 export const CONTACT_ES = {
   kicker: ['NEVORA para tu equipo', 'Prueba gratis de NEVORA por 30 días', 'NEVORA Relay'],
   h1: ['Pide una cotización de NEVORA.', 'Pide tu prueba gratis de NEVORA.', 'Únete a la lista de espera de NEVORA Relay.'],

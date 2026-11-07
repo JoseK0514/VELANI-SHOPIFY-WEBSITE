@@ -124,8 +124,8 @@
 @media(max-width:600px){
  .acts{flex-direction:column;align-items:flex-start;gap:10px}
  /* The owner's web screen is shown as a readable crop of the Today panel on phones */
- .owner{aspect-ratio:4/3}
- .owner img{width:300%;max-width:none;height:auto;object-fit:fill;transform:translate(-25.8%,-12.2%)}
+ .owner{aspect-ratio:16/9}
+ .owner img{width:200%;max-width:none;height:auto;object-fit:fill;transform:translate(-19%,-8.5%)}
 }
 
 .no-js .try{display:none}
@@ -202,7 +202,7 @@
 /* Premium pass (Nov 7): product screens sit on a lit stage instead of flat on black (the glow is NEVORA teal, the ring and depth
    are the .slab ones); captions read as titles; the walkthrough drops its decorative shift line; Relay uses the page's own dark
    stage (derived from the Home custom-apps panel's radial background) instead of a blurred photo */
-.feat-shots .slab,.owner-block .slab.owner{border-radius:18px;box-shadow:0 0 0 1px rgba(255,255,255,.09),0 30px 70px -28px rgba(0,0,0,.9),0 0 140px -30px rgba(26,140,126,.42)}
+.feat-shots .slab,.owner-block .slab.owner{border-radius:18px}
 .feat-shots figcaption{margin-top:22px;gap:6px}
 .feat-shots figcaption b{font-size:1.25rem;letter-spacing:-.01em}
 .feat-shots figcaption span{font-size:1rem;line-height:1.55;max-width:34em}
@@ -217,3 +217,33 @@
  .hpanel.relay-stage .rcard{position:relative;left:auto;top:auto;transform:none;width:auto;margin:0;grid-column:1;grid-row:1}
  .hpanel.relay-stage .hcopy{position:relative;left:auto;right:auto;top:auto;transform:none;max-width:560px;grid-column:2;grid-row:1}
 }
+.feat-note{margin-top:clamp(40px,5vw,64px);max-width:46em;font-size:clamp(1.0625rem,1.4vw,1.1875rem);line-height:1.6;color:var(--text-2)}
+/* Phones (Nov 7): fewer stacked screens. Carmen's three screens and Alexandra's three steps each become one swipe row,
+   using the site's existing data-scroll-x rows; the next card peeks in so the row reads as swipeable */
+@media(max-width:833px){
+ .feat-shots,.story .steps{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;overscroll-behavior-x:contain;margin-inline:calc(var(--pad)*-1);padding-inline:var(--pad);scroll-padding-inline:var(--pad);scrollbar-width:none}
+ .feat-shots::-webkit-scrollbar,.story .steps::-webkit-scrollbar{display:none}
+ .feat-shots .fs,.story .st{flex:0 0 84%;scroll-snap-align:start}
+ .feat-shots .fs.wide{grid-column:auto}
+ .feat-shots .fs .slab,.feat-shots .fs:not(.wide) .slab{aspect-ratio:4/3}
+ .feat-shots .slab img,.feat-shots .fs:not(.wide) .slab img{width:calc(var(--z,1)*100%);max-width:none;height:auto;object-fit:fill;translate:calc(var(--x,0%)*-1) calc(var(--y,0%)*-1)}
+ .feat-shots .fs.wide figcaption{grid-template-columns:1fr}
+ .feat-shots figcaption b{font-size:1.125rem}
+ .story .st{display:flex;flex-direction:column;justify-content:flex-start;padding:0}
+ .story .st .crop-ph{order:-1;width:100%;margin:0 0 20px;border-radius:24px}
+ .feat-shots .fs{display:flex;flex-direction:column;justify-content:flex-start}
+ .story .st h3{margin-top:0;font-size:1.375rem}
+ .js .story .st:not(.on) h3{color:var(--text)}
+}
+/* Phone hero (Nov 7): one trial button on screen at a time. The local nav's trial pill waits until the hero (which has its own)
+   has scrolled away; the headline is set a step smaller so it reads in four lines, not five */
+@media(max-width:833px){
+ .js .lnav:not(.past-hero) .pill{opacity:0;visibility:hidden;pointer-events:none}
+ .lnav .pill{transition:opacity .25s var(--out),visibility 0s linear .25s}
+ .lnav.past-hero .pill{transition-delay:0s}
+ .n-hero.hpanel.long h1{font-size:2.125rem;line-height:1.06}
+ .n-hero .hcopy>p.fade{font-size:1.0625rem}
+ .n-hero .hcopy>p.hfact{font-size:0.9375rem;color:var(--text-2)}
+}
+@media(max-width:833px) and (prefers-reduced-motion:reduce){.lnav .pill{transition:none}}
+@media(max-width:359px){.n-hero.hpanel.long h1{font-size:1.875rem}}

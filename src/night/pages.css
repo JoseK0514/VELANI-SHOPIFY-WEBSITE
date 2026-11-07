@@ -280,3 +280,55 @@ html:not(.ask-relay) .v-r,.ask-relay .cform-hero .v-d{display:none}
  .case-phones .shot.phone{width:46%}
  .case-phones .shot.phone+.shot.phone{margin-top:32px}
 }
+
+/* Sign in: a full first screen for NEVORA (the Home panel's real web and phone screens), then a split for Velani clients:
+   the question and the phone number on the left, the request form on the right; the company close ends the page */
+@media(min-width:1181px){
+ .signin-top .hweb{right:max(var(--pad),calc(50% - 620px));width:min(600px,42vw)}
+ .signin-top .hshot{right:calc(max(var(--pad),calc(50% - 620px)) + min(600px,42vw) - 96px);width:240px;top:56%}
+ .signin-top .hcopy{max-width:min(520px,calc(100% - var(--pad)*2 - min(600px,42vw) - 200px))}
+}
+.client{padding:var(--s2) 0}
+.client-grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:clamp(48px,7vw,112px);align-items:start}
+.client-side{position:sticky;top:104px}
+.client-side .t1{margin:0;font-size:clamp(2.5rem,4.2vw,3.75rem);line-height:1.04;max-width:12ch}
+.client-side .lede{margin:24px 0 0;max-width:27em}
+.client-call{margin-top:56px}
+.client-call p{margin:0;font-size:0.9375rem;line-height:1.6;color:var(--text-2)}
+.client-tel{display:inline-block;margin:4px 0 6px;font-size:clamp(1.875rem,2.8vw,2.5rem);font-weight:600;letter-spacing:-.025em;line-height:1.15;color:var(--text);text-decoration:none;transition:color .2s var(--out)}
+.client-tel:hover{color:var(--accent)}
+.client-call a[href^="mailto"]{color:var(--text-2);text-decoration:underline;text-decoration-color:var(--line-2);text-underline-offset:3px}
+.client-call a[href^="mailto"]:hover{text-decoration-color:currentColor}
+.inquiry-form .kinds{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:0;padding:0;border:0;min-width:0}
+.kind{position:relative;display:flex;align-items:center;min-height:60px;padding:0 16px;border-radius:var(--r2);border:1px solid transparent;background:var(--panel-2);cursor:pointer;transition:background-color .2s var(--out),border-color .2s var(--out)}
+.kind input{position:absolute;inset:0;width:100%;height:100%;margin:0;opacity:0;cursor:pointer}
+.kind b{font-size:1.0625rem;font-weight:500;color:var(--text-2)}
+.kind:hover{border-color:rgba(255,255,255,.14)}
+.kind:has(input:checked){background:#f0f0fa;border-color:#f0f0fa}
+.kind:has(input:checked) b{color:#06121e}
+.kind:has(input:focus-visible){outline:2px solid var(--accent);outline-offset:2px}
+.client-send{display:flex;align-items:center;flex-wrap:wrap;gap:16px 24px;margin-top:24px}
+.client-send .pill{margin:0;cursor:pointer}
+.client-send .pill:disabled{opacity:.6;cursor:default}
+.client-note{margin:0;font-size:0.875rem;line-height:1.5;color:var(--text-3)}
+.client-note a{color:var(--text-2);text-decoration:underline;text-underline-offset:3px}
+.client-preview{margin:20px 0 0;font-size:0.875rem;line-height:1.5;color:var(--text-3)}
+.client .form-status{text-align:left}
+.client-write .t3{margin:0 0 12px}.client-write p{color:var(--text-2)}.client-write .acts{margin-top:28px}
+body:has(#inquiry-sent:not([hidden])) :is(.signin-top,.client-side){display:none}
+.client-grid:has(#inquiry-sent:not([hidden])){display:block}
+@media(prefers-reduced-motion:reduce){.kind,.client-tel{transition:none}}
+@media(max-width:833px){
+ .signin-top .hshot{width:34%;margin:32px auto 24px}
+ .client{padding:72px 0}
+ .client-grid{display:flex;flex-direction:column;gap:0}
+ .client-side{display:contents}
+ .client-side .t1{font-size:2.375rem;max-width:none}
+ .client-side .lede{margin-bottom:32px}
+ .client-form{order:2}
+ .client-call{order:3;margin-top:56px}
+}
+@media(max-width:600px){
+ .client-send{flex-direction:column;align-items:stretch}
+ .client-send .pill{width:100%}
+}

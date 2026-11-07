@@ -1,5 +1,5 @@
 import { company, routes, services, legalUpdated, langOf, counterpart } from './content.mjs';
-import { CONSENT_ES, CONTACT_ES, PLANS_ES, HOURS_ES, ABOUT_ES, FAQ_ES, ES_NEAREST, IN_ENGLISH, WORK_ES } from './content.es.mjs';
+import { CONSENT_ES, CONTACT_ES, PLANS_ES, HOURS_ES, ABOUT_ES, FAQ_ES, ES_NEAREST, IN_ENGLISH, WORK_ES, SIGNIN_ES } from './content.es.mjs';
 import { header as nightHeader, footer as nightFooter, homeMain, nevoraMain, productsMain, policyMain, zoomScript, assistant as nightAssistant, icon, WORDMARK, CHROME, localize } from './night.mjs';
 export function escapeHtml(value) {
   return String(value ?? '').replace(/[&<>"']/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[char]);
@@ -114,6 +114,50 @@ function contact(target, lang = 'en') {
   const aside = '<p class="contact-aside"><a href="mailto:' + company.email + '">' + company.email + '</a><br><a href="' + tel() + '">' + e(company.phone) + '</a>&nbsp;· ' + e(lang === 'es' ? HOURS_ES : company.hours) + '<br>' + e(company.operator) + ', ' + keepAddress(e(company.address)) + '</p>';
   return '<section class="contact"><div class="wrap cform">' + (target === 'shopify' ? native : preview + sentPanel(true, lang)) + aside + '</div></section>';
 }
+/** Sign in (Nov 7 flow map): NEVORA's own sign-in first, then one form for Velani clients with two kinds of request.
+ * The form is the contact form (same ids, validation, preview check and confirmation in velani.js), with the topic set by the
+ * two choices: client-work or client-help. Timing and urgency values stay in English so every request email reads the same. */
+const NEVORA_APP = 'https://nevora.team';
+const SIGNIN = {
+  en: { h1: 'Sign in to NEVORA.', appText: 'Owners, managers and employees sign in with the email their workplace invited.', open: 'Open NEVORA', support: 'NEVORA support',
+    appFact: 'Can’t sign in? Ask your manager to resend your invite.',
+    webAlt: 'NEVORA on the web for an owner: one thing that needs an answer, five of five clocked in and the next payday', phoneAlt: 'NEVORA on an employee’s phone: her shift today and her next shifts',
+    clientT: 'Need something on your site or app?', clientText: 'Ask for a new page, a feature or a change, or tell us what stopped working. We reply by email within two business days.',
+    callK: 'If you can’t work, call us.',
+    need: 'What do you need?', kinds: [['New work', 'A new page, a feature or a change.'], ['Help', 'Something on your site or app stopped working.']],
+    business: 'Business', message: ['What do you need?', 'What happened?'],
+    timing: ['When do you need it?', [['No rush', 'No rush'], ['This month', 'This month'], ['This week', 'This week']]],
+    urgency: ['How urgent is it?', [['It can wait', 'It can wait'], ["It's slowing us down", 'It’s slowing us down'], ["We can't work", 'We can’t work']]],
+    send: ['Send request', 'Send to support'], check: 'Check draft request', note: 'Don’t send passwords or payment details.',
+    preview: 'Preview. This form checks your draft and sends nothing.',
+    writeT: 'Write to us', writeText: 'Tell us what you need or what happened, and which website or app it is about. We reply from ' },
+  es: SIGNIN_ES,
+};
+function clientFields(live, lang) {
+  const t = SIGNIN[lang], c = CONTACT[lang], opt = ' <span class="opt">' + c.optional + '</span>';
+  const k = (work, help) => '<span data-k="work">' + work + '</span><span data-k="help" hidden>' + help + '</span>';
+  const ff = (id, name, label, extra, value = '') => '<div class="ff"><input id="inquiry-' + id + '" name="contact[' + name + ']" placeholder=" " ' + extra + (value ? ' value="' + value + '"' : '') + '><label for="inquiry-' + id + '">' + label + '</label><p class="field-error" id="error-' + id + '"></p></div>';
+  const kinds = '<fieldset class="kinds"><legend class="sr">' + t.need + '</legend>' + ['client-work', 'client-help'].map((value, i) => '<label class="kind"><input type="radio" name="client_kind" value="' + value + '"' + (i ? '' : ' checked') + '><b>' + t.kinds[i][0] + '</b></label>').join('') + '</fieldset><input type="hidden" id="inquiry-interest" name="contact[interest]" value="client-work">';
+  const select = (key, id, [label, options], hidden) => '<div class="ff sel" data-k="' + key + '"' + (hidden ? ' hidden' : '') + '><select id="inquiry-' + id + '" name="contact[' + id + ']"' + (hidden ? ' disabled' : '') + '><option value=""></option>' + options.map(([value, text]) => '<option value="' + e(value) + '">' + text + '</option>').join('') + '</select><label for="inquiry-' + id + '">' + label + '</label></div>';
+  const message = '<div class="ff area"><textarea id="inquiry-message" name="contact[body]" placeholder=" " rows="4" maxlength="4000" required aria-describedby="error-message" data-min="140">' + (live ? '{{ form.body | escape }}' : '') + '</textarea><label for="inquiry-message">' + k(...t.message) + '</label><p class="field-error" id="error-message"></p></div>';
+  const send = '<div class="client-send"><button class="pill" type="submit" data-inquiry-submit>' + (live ? k(...t.send) : t.check) + '</button><p class="client-note">' + t.note + ' <a href="/pages/privacy"' + enOnly(lang) + '>' + c.privacy + '</a></p></div>';
+  return '<fieldset' + (live ? '' : ' disabled') + '><legend class="sr">' + t.clientT + '</legend>' + kinds
+    + '<div class="frow">' + ff('name', 'name', c.name, 'autocomplete="name" maxlength="120" required aria-describedby="error-name"', live ? '{{ form.name | escape }}' : '')
+    + ff('email', 'email', c.email, 'type="email" autocomplete="email" maxlength="254" required aria-describedby="error-email"', live ? '{{ form.email | escape }}' : '') + '</div>'
+    + '<div class="frow">' + ff('company', 'company', t.business + opt, 'autocomplete="organization" maxlength="160" aria-describedby="error-company"') + select('work', 'timing', t.timing, false) + select('help', 'urgency', t.urgency, true) + '</div>'
+    + message + send + '</fieldset>';
+}
+function signin(page, target, lang = 'en') {
+  const t = SIGNIN[lang], c = CONTACT[lang];
+  const shots = '<div class="hweb fade"><img src="' + asset('night-r1-owner-today.webp', target) + '" alt="' + e(t.webAlt) + '" width="1800" height="750" decoding="async"></div><div class="hshot fade"><img src="' + asset('night-r1-ph-home.webp', target) + '" alt="' + e(t.phoneAlt) + '" width="780" height="1688" decoding="async"></div>';
+  const hero = panel(target, { id: 'top', cls: 'live signin-top', img: 'ai-devices', title: t.h1, tag: 'h1', text: t.appText, acts: hb(t.open, NEVORA_APP, true) + hb(t.support, '/pages/nevora-support', false, enOnly(lang)), after: '<p class="hfact fade">' + e(t.appFact) + '</p>', extra: shots, first: true });
+  const preview = '<form id="project-inquiry" class="inquiry-form" method="post" action="/?velani_preview_inquiry=1" data-inquiry-mode="preview" novalidate>' + clientFields(false, lang) + '<div class="form-status" role="status" aria-live="polite" tabindex="-1"></div><p class="client-preview">' + t.preview + '</p><noscript><p>' + c.noscript + '</p></noscript></form>';
+  const email = '<div class="client-write"><h3 class="t3">' + t.writeT + '</h3><p>' + t.writeText + company.email + '.</p><div class="acts"><a class="pill" href="mailto:' + company.email + '">' + c.writeButton + company.email + '</a></div></div>';
+  const native = "{% if settings.inquiries_enabled and theme.role == 'main' %}{% form 'contact', id: 'project-inquiry', class: 'inquiry-form', novalidate: 'novalidate' %}{% if form.posted_successfully? %}{{ velani_sent }}{% else %}<div data-inquiry-mode=\"live\">" + clientFields(true, lang) + "</div>{% if form.errors %}<div class=\"form-status\" role=\"alert\">{{ form.errors | default_errors }}</div>{% endif %}<div class=\"form-legal\">{{ 'shopify.online_store.spam_detection.disclaimer_html' | t }}</div>{% endif %}{% endform %}{% elsif theme.role == 'main' %}" + email + '{% else %}' + preview + "{{ velani_sent | replace: 'id=\"inquiry-sent\" tabindex=\"-1\"', 'id=\"inquiry-sent\" tabindex=\"-1\" hidden' }}{% endif %}";
+  const side = '<div class="client-side"><h2 class="t1 rise" id="client-t">' + e(t.clientT) + '</h2><p class="lede fade">' + e(t.clientText) + '</p><div class="client-call fade"><p>' + e(t.callK) + '</p><a class="client-tel" href="' + tel() + '">' + e(company.phone) + '</a><p>' + e(lang === 'es' ? HOURS_ES : company.hours) + '<br><a href="mailto:' + company.email + '">' + company.email + '</a></p></div></div>';
+  const client = '<section class="chap client" id="client" aria-labelledby="client-t"><div class="wrap client-grid">' + side + '<div class="client-form">' + (target === 'shopify' ? native : preview + sentPanel(true, lang)) + '</div></div></section>';
+  return localize((target === 'shopify' ? '{% capture velani_sent %}' + sentPanel(false, lang) + '{% endcapture %}' : '') + hero + client + closing(target, { lang }), lang);
+}
 /** The cookie choices dialog's words (Spanish in src/content.es.mjs). */
 const CONSENT = {
   en: { title: 'Cookie choices', close: 'Close cookie choices', summary: ['Choose which optional processing you allow. Necessary platform features are explained on our ', 'Cookies and preferences', ' page.'],
@@ -198,6 +242,7 @@ function renderRawBody(path, target) {
     case 'policy': return policyMain(page.slug);
     case 'services': return services_(page, target, lang);
     case 'contact': return localize((target === 'shopify' ? '{% capture velani_sent %}' + sentPanel(false, lang) + '{% endcapture %}' : '') + contactHero(page, lang) + contact(target, lang), lang);
+    case 'signin': return signin(page, target, lang);
     case 'faq': return faq(page, target, lang);
     case 'plans': return localize(plans(page, target, lang), lang);
     case 'legal-index': return pageHero(page) + legalIndex();
@@ -228,7 +273,7 @@ function assistantBlock(target) {
 }
 const preload = (target, extra = '') => '<link rel="preload" href="' + asset('dm-sans-latin-400-normal.woff2', target) + '" as="font" type="font/woff2" crossorigin><link rel="preload" href="' + asset('dm-sans-latin-600-normal.woff2', target) + '" as="font" type="font/woff2" crossorigin>' + extra;
 /** The first large image of each panel page, preloaded at high priority (it is the page's largest paint). */
-const heroOf = path => ({ home: 'night-ai-light.webp', nevora: 'night-ai-devices.webp', products: 'night-ai-devices.webp', services: 'night-ai-glow.webp' })[routes[path]?.kind] || (path === '/pages/about' || path === '/pages/es-nosotros' ? 'night-ai-glow.webp' : '');
+const heroOf = path => ({ home: 'night-ai-light.webp', nevora: 'night-ai-devices.webp', products: 'night-ai-devices.webp', services: 'night-ai-glow.webp', signin: 'night-ai-devices.webp' })[routes[path]?.kind] || (path === '/pages/about' || path === '/pages/es-nosotros' ? 'night-ai-glow.webp' : '');
 /** Language versions: the English and Spanish paths of a page that has both, absolute on the main domain (hreflang). */
 const absolute = path => 'https://' + company.domain + path;
 const pairOf = path => { const other = counterpart(path); if (!other) return null; return langOf(path) === 'es' ? { en: other, es: path } : { en: path, es: other }; };

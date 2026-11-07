@@ -77,8 +77,8 @@ const GROUPS = [
   ['custom', 'Custom software', ['services', 'websites'], [['Websites', '/pages/custom-development#web-applications', 'Sites that bring in calls and bookings'], ['Booking apps', '/pages/custom-development#booking', 'Booking, reminders and rewards cards'], ['Online stores', '/pages/custom-development#online-stores', 'Products, delivery pricing and payment'], ['Business tools', '/pages/custom-development#business-systems', 'Requests, approvals and records in one place']]],
   ['company', 'Company', ['about', 'help', 'contact'], [['About', '/pages/about', 'What we make and how we work'], ['Support', '/pages/help', 'Monday to Friday, 8 am to 9 pm ET'], ['Contact', '/pages/contact', 'Start a project or ask a question']]],
 ];
-/** Until the Sign in page is built, Sign in goes to NEVORA support, which explains how each workplace signs in. */
-const SIGN_IN = '/pages/nevora-support';
+/** The client page: NEVORA's sign-in, and requests for new work or help from Velani clients. */
+const SIGN_IN = '/pages/sign-in';
 /** The words of the header, the phone menu and the language switch, per language (Spanish in src/content.es.mjs). */
 export const CHROME = {
   en: { skip: 'Skip to content', home: 'Velani home', main: 'Main', mainMenu: 'Main menu', menu: 'Menu', products: 'Products', productsMenu: 'Products menu', productsList: PRODUCTS, nav: NAV, groups: GROUPS, signIn: 'Sign in', signInHref: SIGN_IN, rondoNevora: 'Rondo in NEVORA', rondoSoon: 'In development', relaySoon: 'Soon', contact: 'Contact', trial: 'Request free trial', trialLong: 'Request free NEVORA trial', project: 'Start a project', support: 'Client support', hours: company.hours, brandOf: 'Velani is a brand of ', langGroup: 'Language', closingLine: 'Try NEVORA free, or tell us what you want built.' },
@@ -110,7 +110,7 @@ export function header(current, target, { nevora = false, lang = 'en', hrefs = S
   const enOnly = href => lang === 'es' && !ES_PATHS[href.split(/[?#]/)[0]] ? ' hreflang="en"' : '';
   const plain = html => html.replace(/<[^>]+>/g, '');
   const links = t.groups.map(([key, label, keys, items]) => `<li class="gnav-dd"><button class="gnav-ddbtn txt" type="button" aria-expanded="false" aria-controls="gnav-dd-${key}"${groupMark(keys)}>${label}${icon('caret-down')}</button><div class="gnav-ddmenu" id="gnav-dd-${key}"><ul aria-label="${plain(label)}">` + items.map(([name, href, note]) => `<li><a href="${href}"${enOnly(href)}><b>${name}</b><span>${note}</span></a></li>`).join('') + '</ul></div></li>').join('');
-  const signIn = cls => `<a class="${cls}" href="${t.signInHref}"${enOnly(t.signInHref)}>${t.signIn}</a>`;
+  const signIn = cls => `<a class="${cls}" href="${t.signInHref}"${enOnly(t.signInHref)}${mark('signin')}>${t.signIn}</a>`;
   const menu = signIn('gmenu-signin') + t.groups.map(([, label, , items]) => `<p class="gmenu-k">${label}</p>` + items.map(([name, href]) => `<a class="gmenu-sub" href="${href}"${enOnly(href)}>${name}</a>`).join('')).join('');
   const staticClass = target === 'shopify' ? `{% if velani_page == '${nevoraSlug}' %} static{% endif %}` : (nevora ? ' static' : '');
   const cta = (cls, trial) => target === 'shopify' ? `{% if velani_nav == 'services' %}<a class="${cls}" href="/pages/contact?interest=custom-software">${t.project}</a>{% else %}<a class="${cls}" href="/pages/contact?interest=nevora-demo">${trial}</a>{% endif %}` : (current === 'services' ? `<a class="${cls}" href="/pages/contact?interest=custom-software">${t.project}</a>` : `<a class="${cls}" href="/pages/contact?interest=nevora-demo">${trial}</a>`);

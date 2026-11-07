@@ -51,7 +51,8 @@ test('local previews do not advertise themselves as public indexed pages', () =>
 test('NEVORA policy pages are public and published pages carry no preview wording', () => {
   for (const path of ['/pages/nevora-support', '/pages/nevora-privacy', '/pages/nevora-terms', '/pages/nevora-account-deletion']) assert.ok(routes[path], path);
   for (const path of Object.keys(routes)) {
-    if (path === '/pages/contact') continue;
+    // The contact form and the Sign in client form show a preview form off the main theme (Shopify's form on the main theme)
+    if (path === '/pages/contact' || path === '/pages/sign-in') continue;
     const { html } = renderPage(path, { target: 'preview' });
     const text = html.replace(/<script[^]*?<\/script>|<[^>]+>/g, ' ');
     assert.doesNotMatch(text, /\bpreview\b|\bdraft\b|unpublished|must (?:be )?verif/i, path);

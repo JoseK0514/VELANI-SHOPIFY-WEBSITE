@@ -1,5 +1,5 @@
 const limits = { name: 120, email: 254, company: 160, message: 4000, locations: 120 };
-const interests = new Set(['', 'website', 'custom-software', 'nevora', 'nevora-demo', 'relay', 'other']);
+const interests = new Set(['', 'website', 'custom-software', 'nevora', 'nevora-demo', 'relay', 'other', 'client-work', 'client-help']);
 export function validateInquiry(fields = {}) {
   const errors = {}, values = {};
   for (const key of Object.keys(limits)) {

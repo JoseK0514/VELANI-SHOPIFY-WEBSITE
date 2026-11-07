@@ -81,6 +81,7 @@ export const routes = {
     { heading: 'Evaluation', text: 'We check the website with automated tools and by hand in desktop and mobile browsers, with a keyboard and with reduced motion. We have not completed a full audit, and an automated result alone does not establish full conformance.' },
     { heading: 'Report a barrier', text: 'Email support@thevelani.com with the page and the task you were trying to complete. Include the device or assistive technology if it helps explain the problem. Do not include unnecessary personal information.' },
   ], { legal: true, name: 'Accessibility' }),
+  '/pages/sign-in': page('Sign in to NEVORA.', '', 'Open NEVORA, or send a request about a website or app we built for you.', [], { kind: 'signin', nav: 'signin', name: 'Sign in', desc: 'Sign in to NEVORA, ask Velani for new work on your website or app, or get help with a project we built.' }),
   '/pages/nevora-support': page('NEVORA support', 'NEVORA', '', [], { kind: 'policy', slug: 'support', nav: 'nevora-help' }),
   '/pages/nevora-privacy': page('NEVORA privacy policy', 'NEVORA', '', [], { kind: 'policy', slug: 'privacy' }),
   '/pages/nevora-terms': page('NEVORA terms of use', 'NEVORA', '', [], { kind: 'policy', slug: 'terms', desc: 'The rules for using NEVORA, Velani’s scheduling, time clock and payroll calculation app for authorized workplace use, including the app license.' }),

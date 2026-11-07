@@ -557,6 +557,90 @@ html:has(main > .hpanel){--anchor:56px}
 html:not(.ask-relay) .v-r,.ask-relay .cform-hero .v-d{display:none}
 .ask-nevora [data-nevora-fields]{display:grid}
 .ask-nevora .field-topic{display:none}
+.how-text{max-width:40em;margin-top:24px;color:var(--text-2)}
+.how-page .acts{margin-top:32px}
+/* Custom software (Nov 7): case studies on the page background, client screens large, no full-screen photo per section.
+   Screens use the .slab frame from the NEVORA page; phones use .slab.phone */
+.case{padding:clamp(88px,10vw,144px) 0}
+.case .anchor{position:relative;top:-80px;display:block}
+.case-head{max-width:760px}
+.case-kind{margin-top:12px;font-size:1.125rem;color:var(--accent)}
+.case-head .lede{margin-top:20px;color:var(--text-2);max-width:40em}
+.case-shots{display:grid;gap:clamp(20px,2.5vw,32px);margin-top:clamp(40px,5vw,64px)}
+.case-shots.two{grid-template-columns:1.25fr 1fr;align-items:start}
+.case .shot{position:relative;margin:0;border-radius:16px}
+.case .shot img{display:block;width:100%;height:auto}
+.case-credit{margin-top:24px;font-size:0.9375rem;color:var(--text-3)}
+.case-split{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(40px,6vw,96px);align-items:center}
+.case-phones{display:flex;gap:clamp(16px,2vw,28px);justify-content:center}
+.case-phones .shot.phone{width:min(260px,44%);aspect-ratio:auto;border-radius:30px;background:#0b0d10;padding:6px}
+.case-phones .shot.phone img{border-radius:24px}
+.case-phones .shot.phone+.shot.phone{margin-top:48px}
+.case-more{padding:0 0 clamp(72px,8vw,112px)}
+.case-more .lede{max-width:40em;color:var(--text-2)}
+.case-cols{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(40px,6vw,96px)}
+.case-cols h3{margin-top:0}
+@media(max-width:833px){
+ .case-split,.case-cols{grid-template-columns:1fr}
+ .case-phones{order:2}
+ .case-shots.two{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;overscroll-behavior-x:contain;margin-inline:calc(var(--pad)*-1);padding-inline:var(--pad);scroll-padding-inline:var(--pad);scrollbar-width:none}
+ .case-shots.two::-webkit-scrollbar{display:none}
+ .case-shots.two .shot{flex:0 0 88%;scroll-snap-align:start}
+ .case-phones .shot.phone{width:46%}
+ .case-phones .shot.phone+.shot.phone{margin-top:32px}
+}
+
+/* Sign in: a full first screen for NEVORA (the Home panel's real web and phone screens), then a split for Velani clients:
+   the question and the phone number on the left, the request form on the right; the company close ends the page */
+@media(min-width:1181px){
+ .signin-top .hweb{right:max(var(--pad),calc(50% - 620px));width:min(600px,42vw)}
+ .signin-top .hshot{right:calc(max(var(--pad),calc(50% - 620px)) + min(600px,42vw) - 96px);width:240px;top:56%}
+ .signin-top .hcopy{max-width:min(520px,calc(100% - var(--pad)*2 - min(600px,42vw) - 200px))}
+}
+.client{padding:var(--s2) 0}
+.client-grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:clamp(48px,7vw,112px);align-items:start}
+.client-side{position:sticky;top:104px}
+.client-side .t1{margin:0;font-size:clamp(2.5rem,4.2vw,3.75rem);line-height:1.04;max-width:12ch}
+.client-side .lede{margin:24px 0 0;max-width:27em}
+.client-call{margin-top:56px}
+.client-call p{margin:0;font-size:0.9375rem;line-height:1.6;color:var(--text-2)}
+.client-tel{display:inline-block;margin:4px 0 6px;font-size:clamp(1.875rem,2.8vw,2.5rem);font-weight:600;letter-spacing:-.025em;line-height:1.15;color:var(--text);text-decoration:none;transition:color .2s var(--out)}
+.client-tel:hover{color:var(--accent)}
+.client-call a[href^="mailto"]{color:var(--text-2);text-decoration:underline;text-decoration-color:var(--line-2);text-underline-offset:3px}
+.client-call a[href^="mailto"]:hover{text-decoration-color:currentColor}
+.inquiry-form .kinds{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:0;padding:0;border:0;min-width:0}
+.kind{position:relative;display:flex;align-items:center;min-height:60px;padding:0 16px;border-radius:var(--r2);border:1px solid transparent;background:var(--panel-2);cursor:pointer;transition:background-color .2s var(--out),border-color .2s var(--out)}
+.kind input{position:absolute;inset:0;width:100%;height:100%;margin:0;opacity:0;cursor:pointer}
+.kind b{font-size:1.0625rem;font-weight:500;color:var(--text-2)}
+.kind:hover{border-color:rgba(255,255,255,.14)}
+.kind:has(input:checked){background:#f0f0fa;border-color:#f0f0fa}
+.kind:has(input:checked) b{color:#06121e}
+.kind:has(input:focus-visible){outline:2px solid var(--accent);outline-offset:2px}
+.client-send{display:flex;align-items:center;flex-wrap:wrap;gap:16px 24px;margin-top:24px}
+.client-send .pill{margin:0;cursor:pointer}
+.client-send .pill:disabled{opacity:.6;cursor:default}
+.client-note{margin:0;font-size:0.875rem;line-height:1.5;color:var(--text-3)}
+.client-note a{color:var(--text-2);text-decoration:underline;text-underline-offset:3px}
+.client-preview{margin:20px 0 0;font-size:0.875rem;line-height:1.5;color:var(--text-3)}
+.client .form-status{text-align:left}
+.client-write .t3{margin:0 0 12px}.client-write p{color:var(--text-2)}.client-write .acts{margin-top:28px}
+body:has(#inquiry-sent:not([hidden])) :is(.signin-top,.client-side){display:none}
+.client-grid:has(#inquiry-sent:not([hidden])){display:block}
+@media(prefers-reduced-motion:reduce){.kind,.client-tel{transition:none}}
+@media(max-width:833px){
+ .signin-top .hshot{width:34%;margin:32px auto 24px}
+ .client{padding:72px 0}
+ .client-grid{display:flex;flex-direction:column;gap:0}
+ .client-side{display:contents}
+ .client-side .t1{font-size:2.375rem;max-width:none}
+ .client-side .lede{margin-bottom:32px}
+ .client-form{order:2}
+ .client-call{order:3;margin-top:56px}
+}
+@media(max-width:600px){
+ .client-send{flex-direction:column;align-items:stretch}
+ .client-send .pill{width:100%}
+}
 
 /* Try the time clock: a working copy of the NEVORA PIN screen. Light surface, like the real tablet. */
 .kio-note{display:inline-flex;flex-wrap:wrap;gap:4px 6px;margin-top:var(--s1);padding:10px 16px;border-radius:var(--r);background:var(--panel);box-shadow:0 0 0 1px var(--line);font-size:0.875rem;line-height:1.4;color:var(--text-2)}
@@ -766,8 +850,8 @@ html:has(.zoom[open]){overflow:hidden}
  /* The client credit sits directly under the screenshot it describes */
  .hpanel.svc .hcopy,#booking .hcopy{display:flex;flex-direction:column;align-items:flex-start}
  .hpanel.svc .hcopy>*,#booking .hcopy>*{max-width:100%}
- .hcopy p.hcap{order:-1;margin:0 0 32px}
- .hpanel.svc .hcopy p.hcap{margin-top:-20px}
+ .hcopy p.hcap{order:0;margin:18px 0 0}
+
  .zoom:not(.wide) .zoom-sc img{max-height:calc(100svh - 220px);border-radius:24px}
 }
 @media(max-width:600px){
@@ -980,4 +1064,5 @@ b.rmark,.hchat-h b.rmark,.rondo-kick .rmark,.ast-launch .rmark,.ast-head .rmark,
 }
 @media(max-width:380px){.foot-acc-in{grid-template-columns:1fr}}
 @media(prefers-reduced-motion:reduce){.foot-acc summary .icon{transition:none}}
-}
+/* Spanish header between 834 and 959px: the longest call to action ("Empieza un proyecto") still fits */
+@media(min-width:834px) and (max-width:959px){html[lang=es] .gnav-ddbtn.txt{padding:0 6px 0 8px;gap:4px}html[lang=es] .gnav-signin{padding:0 6px}html[lang=es] .gnav-in>.pill{padding-inline:12px}}
