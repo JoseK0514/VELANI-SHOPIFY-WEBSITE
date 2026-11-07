@@ -1,7 +1,7 @@
 <script>
 /* Client screenshots: tap or click to see the whole screen. On phones a desktop screenshot opens at a readable height and pans sideways */
 (() => {
-  const imgs = [...document.querySelectorAll('.hpanel .hwin img, .hpanel .hduo .ph img')];
+  const imgs = [...document.querySelectorAll('.hpanel .hwin img, .hpanel .hduo .ph img, .case .shot img')];
   if (!imgs.length || !window.HTMLDialogElement) return;
   const out = '{{icon:arrows-out-simple}}';
   const x = '{{icon:x}}';
@@ -15,7 +15,7 @@
   const syncScroll = () => { if (sc.scrollWidth > sc.clientWidth + 1 || sc.scrollHeight > sc.clientHeight + 1) sc.tabIndex = 0; else sc.removeAttribute('tabindex'); };
   addEventListener('resize', () => { if (d.open) syncScroll(); });
   for (const img of imgs) {
-    const host = img.closest('.hwin, .ph');
+    const host = img.closest('.hwin, .ph, .shot');
     const b = document.createElement('button');
     b.type = 'button'; b.className = 'zoom-btn'; b.setAttribute('aria-label', 'View full screen: ' + img.alt); b.innerHTML = out;
     host.classList.add('can-zoom'); host.append(b);

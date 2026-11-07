@@ -250,3 +250,33 @@ html:not(.ask-relay) .v-r,.ask-relay .cform-hero .v-d{display:none}
 .ask-nevora .field-topic{display:none}
 .how-text{max-width:40em;margin-top:24px;color:var(--text-2)}
 .how-page .acts{margin-top:32px}
+/* Custom software (Nov 7): case studies on the page background, client screens large, no full-screen photo per section.
+   Screens use the .slab frame from the NEVORA page; phones use .slab.phone */
+.case{padding:clamp(88px,10vw,144px) 0}
+.case .anchor{position:relative;top:-80px;display:block}
+.case-head{max-width:760px}
+.case-kind{margin-top:12px;font-size:1.125rem;color:var(--accent)}
+.case-head .lede{margin-top:20px;color:var(--text-2);max-width:40em}
+.case-shots{display:grid;gap:clamp(20px,2.5vw,32px);margin-top:clamp(40px,5vw,64px)}
+.case-shots.two{grid-template-columns:1.25fr 1fr;align-items:start}
+.case .shot{position:relative;margin:0;border-radius:16px}
+.case .shot img{display:block;width:100%;height:auto}
+.case-credit{margin-top:24px;font-size:0.9375rem;color:var(--text-3)}
+.case-split{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(40px,6vw,96px);align-items:center}
+.case-phones{display:flex;gap:clamp(16px,2vw,28px);justify-content:center}
+.case-phones .shot.phone{width:min(260px,44%);aspect-ratio:auto;border-radius:30px;background:#0b0d10;padding:6px}
+.case-phones .shot.phone img{border-radius:24px}
+.case-phones .shot.phone+.shot.phone{margin-top:48px}
+.case-more{padding:0 0 clamp(72px,8vw,112px)}
+.case-more .lede{max-width:40em;color:var(--text-2)}
+.case-cols{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(40px,6vw,96px)}
+.case-cols h3{margin-top:0}
+@media(max-width:833px){
+ .case-split,.case-cols{grid-template-columns:1fr}
+ .case-phones{order:2}
+ .case-shots.two{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;overscroll-behavior-x:contain;margin-inline:calc(var(--pad)*-1);padding-inline:var(--pad);scroll-padding-inline:var(--pad);scrollbar-width:none}
+ .case-shots.two::-webkit-scrollbar{display:none}
+ .case-shots.two .shot{flex:0 0 88%;scroll-snap-align:start}
+ .case-phones .shot.phone{width:46%}
+ .case-phones .shot.phone+.shot.phone{margin-top:32px}
+}
