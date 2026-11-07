@@ -124,8 +124,8 @@
 @media(max-width:600px){
  .acts{flex-direction:column;align-items:flex-start;gap:10px}
  /* The owner's web screen is shown as a readable crop of the Today panel on phones */
- .owner{aspect-ratio:4/3}
- .owner img{width:300%;max-width:none;height:auto;object-fit:fill;transform:translate(-25.8%,-12.2%)}
+ .owner{aspect-ratio:16/9}
+ .owner img{width:200%;max-width:none;height:auto;object-fit:fill;transform:translate(-19%,-8.5%)}
 }
 
 .no-js .try{display:none}
@@ -218,3 +218,19 @@
  .hpanel.relay-stage .hcopy{position:relative;left:auto;right:auto;top:auto;transform:none;max-width:560px;grid-column:2;grid-row:1}
 }
 .feat-note{margin-top:clamp(40px,5vw,64px);max-width:46em;font-size:clamp(1.0625rem,1.4vw,1.1875rem);line-height:1.6;color:var(--text-2)}
+/* Phones (Nov 7): fewer stacked screens. Carmen's three screens and Alexandra's three steps each become one swipe row,
+   using the site's existing data-scroll-x rows; the next card peeks in so the row reads as swipeable */
+@media(max-width:833px){
+ .feat-shots,.story .steps{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;overscroll-behavior-x:contain;margin-inline:calc(var(--pad)*-1);padding-inline:var(--pad);scroll-padding-inline:var(--pad);scrollbar-width:none}
+ .feat-shots::-webkit-scrollbar,.story .steps::-webkit-scrollbar{display:none}
+ .feat-shots .fs,.story .st{flex:0 0 84%;scroll-snap-align:start}
+ .feat-shots .fs.wide{grid-column:auto}
+ .feat-shots .fs .slab,.feat-shots .fs:not(.wide) .slab{aspect-ratio:4/3}
+ .feat-shots .slab img,.feat-shots .fs:not(.wide) .slab img{width:calc(var(--z,1)*100%);max-width:none;height:auto;object-fit:fill;translate:calc(var(--x,0%)*-1) calc(var(--y,0%)*-1)}
+ .feat-shots .fs.wide figcaption{grid-template-columns:1fr}
+ .feat-shots figcaption b{font-size:1.125rem}
+ .story .st{display:flex;flex-direction:column;padding:0}
+ .story .st .crop-ph{order:-1;width:100%;margin:0 0 20px}
+ .story .st h3{margin-top:0;font-size:1.375rem}
+ .js .story .st:not(.on) h3{color:var(--text)}
+}
