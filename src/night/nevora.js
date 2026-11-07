@@ -12,10 +12,10 @@ window.__fx=[];
   if(idx!==lastIdx){lastIdx=idx;links.forEach((a,i)=>i===idx?a.setAttribute('aria-current','true'):a.removeAttribute('aria-current'));moveInk(idx)}}});
  addEventListener('resize',()=>{moveInk(lastIdx)});
  // Phone story: the pinned phone shows what each step describes; Alexandra's shift line fills with a live time
- const steps=[...document.querySelectorAll('.st')],pp=$('#pinPhone'),feed=$('#pinPhone .feed'),bar=$('#shiftbar'),now=$('#shiftNow');let si=-1;
- const show=i=>{if(i===si)return;si=i;steps.forEach((s,j)=>s.classList.toggle('on',j===i));feed.style.setProperty('--y',steps[i].dataset.y+'%');pp.classList.toggle('down',i>0)};show(0);
+ const steps=[...document.querySelectorAll('.st')],pp=$('#pinPhone'),feed=$('#pinPhone .feed'),feeds=[...document.querySelectorAll('#pinPhone .feed')],bar=$('#shiftbar'),now=$('#shiftNow');let si=-1;
+ const show=i=>{if(i===si)return;si=i;steps.forEach((s,j)=>s.classList.toggle('on',j===i));if(feeds.length>1)feeds.forEach((f,j)=>f.classList.toggle('on',j===i));else feed.style.setProperty('--y',steps[i].dataset.y+'%');pp.classList.toggle('down',i>0)};show(0);
  __fx.push({always:true,el:$('#story'),run(p,r,vh,c){let best=0,bd=1e9;steps.forEach((s,i)=>{const b=s.getBoundingClientRect();const d=Math.abs(b.top+b.height/2-vh/2);if(d<bd){bd=d;best=i}});show(best);
-  const sp=c((vh*.5-r.top)/r.height);bar.style.setProperty('--sp',sp.toFixed(3));const mins=Math.round(sp*480/15)*15,h=12+Math.floor(mins/60),m=mins%60;
+  const sp=c((vh*.5-r.top)/r.height);bar.style.setProperty('--sp',sp.toFixed(3));const mins=Math.round(sp*480/15)*15,h=8+Math.floor(mins/60),m=mins%60;
   now.textContent=((h-1)%12+1)+':'+String(m).padStart(2,'0')+(es?(h<12?'\u00a0a.\u00a0m.':'\u00a0p.\u00a0m.'):(h<12?' AM':' PM'));now.style.setProperty('--tip',(sp*r.height).toFixed(0)+'px')}});
  // Owner screenshot: clip reveal, then hand the edge back to the slab's own ring and shadow
  const ow=$('#owner');ow.addEventListener('transitionend',e=>{if(e.propertyName==='clip-path')ow.style.clipPath='none'});

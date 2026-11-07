@@ -185,3 +185,17 @@
 /* One column: the example chat comes right after the promise, then the details */
 @media(max-width:959px){.rondo-grid{display:flex;flex-direction:column;align-items:stretch;gap:0}.rondo-copy{display:contents}.rondo-fig{order:1;align-items:flex-start;margin-top:32px}.rondo-can,.rondo-trust,.rondo .acts,.rondo-fine{order:2}}
 @media(max-width:599px){.rondo-can{grid-template-columns:1fr;gap:20px}.hchat.rchat{padding:12px;gap:8px;font-size:0.875rem;border-radius:18px}.rondo .acts .pill{width:100%}}
+/* Release 1 screens (Nov 7). What NEVORA does: the week schedule wide, the tablet and payroll side by side; same .slab frame as the owner screen */
+.feat-shots{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(24px,3vw,40px);margin-top:var(--s1)}
+.feat-shots .fs{margin:0}.feat-shots .fs.wide{grid-column:1/-1}
+.feat-shots .slab{background:#f4f6f8}
+.feat-shots figcaption{margin-top:16px;display:grid;gap:4px}
+.feat-shots figcaption b{font-weight:600}
+.feat-shots figcaption span{color:var(--text-2)}
+.feat.feat-more{margin-top:clamp(40px,5vw,64px)}
+@media(max-width:833px){.feat-shots{grid-template-columns:1fr}}
+/* Walkthrough phone: three Release 1 screens that cross-fade step by step */
+.slab.phone.multi .feed{transform:none;opacity:0;transition:opacity .45s var(--out)}
+.slab.phone.multi .feed.on{opacity:1}
+@media(prefers-reduced-motion:reduce){.slab.phone.multi .feed{transition:none}}
+.feat-shots .fs:not(.wide) .slab{aspect-ratio:3/2}.feat-shots .fs:not(.wide) .slab img{height:100%;object-fit:cover;object-position:50% 0}
