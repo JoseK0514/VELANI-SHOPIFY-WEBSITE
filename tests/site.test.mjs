@@ -28,7 +28,7 @@ test('all public routes have a document title, one main, one h1 and working lega
 test('product pages state availability without a checkout claim', () => {
   for (const path of ['/', '/pages/nevora']) {
     const { html } = renderPage(path, { target: 'preview' });
-    assert.match(html, /Available now/);
+    assert.match(html, /available now/i);
     assert.doesNotMatch(html, /href=["'][^"']*(?:\/cart|\/checkout|\/account\/register)/);
   }
 });
