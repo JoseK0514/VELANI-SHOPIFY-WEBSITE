@@ -68,7 +68,7 @@
 .shift .ends{position:absolute;left:0;font-size:0.75rem;color:var(--text-3);font-variant-numeric:tabular-nums}
 .shift .ends.a{top:-30px}.shift .ends.b{bottom:-30px}
 #shiftNow{position:absolute;left:18px;top:0;font:500 12px/1 var(--font);font-variant-numeric:tabular-nums;color:var(--accent);transform:translateY(calc(var(--tip,0px) - 50%));white-space:nowrap}
-.st{min-height:52vh;min-height:52svh;display:flex;flex-direction:column;justify-content:center;padding:40px 0}
+.st{min-height:34vh;min-height:34svh;display:flex;flex-direction:column;justify-content:center;padding:40px 0}
 .st .n{font-size:0.75rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--text-3);font-variant-numeric:tabular-nums}
 .st h3{margin-top:12px}
 .st p{margin-top:16px;font-size:clamp(1.0625rem,1.4vw,1.25rem);line-height:1.5;color:var(--text-2);max-width:27em}
