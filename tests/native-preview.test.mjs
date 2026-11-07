@@ -12,7 +12,7 @@ liquid.parseAndRender = (tpl, ctx = {}) => parseAndRender(tpl, ctx, { globals: c
 test('unpublished navigation stays in the exact draft without published page resources', async () => {
   const html = await liquid.parseAndRender(renderBody('/', { target: 'shopify' }), { theme: { role: 'unpublished', id: 123 }, routes: { root_url: '/' } });
   assert.match(html, /href="\/\?preview_theme_id=123&amp;view=velani-contact&amp;interest=nevora-demo"/);
-  assert.match(html, /href="\/\?preview_theme_id=123&amp;view=velani-custom-development"/);
+  assert.match(html, /href="\/\?preview_theme_id=123&amp;view=velani-custom-development#booking"/);
   assert.doesNotMatch(html, /href="\/pages\//);
 });
 test('main-theme links retain canonical company page destinations', async () => {
@@ -43,9 +43,9 @@ test('the NEVORA page loads its own assets and marks its nav item', async () => 
   const html = await liquid.parseAndRender(layout, { theme: { role: 'main', id: 9 }, routes: { root_url: '/' }, template: { name: 'page', suffix: 'nevora' }, request: { locale: { iso_code: 'en' }, page_type: 'page' }, settings: {} });
   assert.match(html, /velani-nevora\.js/);
   assert.match(html, /class="gnav static"/);
-  // NEVORA now lives under the Products menu: the dropdown trigger and the phone menu's NEVORA Workforce link carry the current-page mark
-  assert.match(html, /<a class="gnav-ddlink" href="\/pages\/products" aria-current="page">Products/);
-  assert.match(html, /<a class="gmenu-sub" href="\/pages\/nevora" aria-current="page">NEVORA Workforce<\/a>/);
+  // NEVORA lives under the NEVORA menu: its button carries the current-section mark; the phone menu lists it
+  assert.match(html, /<button class="gnav-ddbtn txt" type="button" aria-expanded="false" aria-controls="gnav-dd-nevora" data-cur>NEVORA/);
+  assert.match(html, /<a class="gmenu-sub" href="\/pages\/nevora">NEVORA Workforce<\/a>/);
 });
 test('live contact page never shows the preview form on the published theme', async () => {
   const body = renderBody('/pages/contact', { target: 'shopify' }).replace(/\{% form [^%]*%\}/, '<form>').replace('{% endform %}', '</form>').replace(/\{\{ 'shopify[^}]*\}\}/, '');

@@ -1,4 +1,4 @@
-<!-- Home page source. src/night.mjs renders only <main>; the global header and footer come from night.mjs and foot.html. Five full-screen panels: one subject each, a big visual, a short title and one or two actions. -->
+<!-- Home page source. src/night.mjs renders only <main>; the global header and footer come from night.mjs and foot.html. Five full-screen panels: one subject each, a big visual, a short title and one or two actions. Order (Nov 7): Velani, NEVORA, two client projects, closing. -->
 <main id="main">
 <script>(function(d){try{if(matchMedia('(prefers-reduced-motion: reduce)').matches||sessionStorage.getItem('v-dawn'))return;sessionStorage.setItem('v-dawn','1')}catch(e){return}d.classList.add('dawn')})(document.documentElement)</script>
 <section class="hpanel live" id="top" aria-labelledby="hero-t">
@@ -7,18 +7,9 @@
  <div class="hdawn" aria-hidden="true"></div>
  <script>(function(d){if(!d.classList.contains('dawn'))return;var i=document.querySelector('.hpanel.live .hph'),done=0,go=function(){if(!done){done=1;d.classList.add('dawn-go')}};if(i&&!i.complete){i.addEventListener('load',go);i.addEventListener('error',go);setTimeout(go,1200)}else go()})(document.documentElement)</script>
  <div class="hcopy">
-  <p class="hkick">Velani&nbsp;· Software company</p>
   <h1 class="rise" id="hero-t">Brighter work ahead.</h1>
-  <p class="fade">Websites, apps and business tools, built for you. And NEVORA, our app for shift teams.</p>
-  <div class="hacts fade"><a class="hb fill" href="/pages/contact">Start a project{{icon:arrow-right}}</a><a class="hb" href="/pages/contact?interest=nevora-demo">Request free NEVORA trial{{icon:arrow-right}}</a></div>
- </div>
- <div class="hchat" aria-hidden="true" data-in>
-  <p class="hchat-h">{{rondo}}<span>Rondo in NEVORA</span><i>In development</i></p>
-  <p class="msg me m1">Carlos just called out sick for tonight.</p>
-  <p class="msg ai a1">I know. Carlos marked himself out at 7:42. Maria is free and under 40 hours this week, and she said yes at 7:58. It only needs your approval.</p>
-  <p class="msg me m2">Approve it.</p>
-  <p class="msg ai a2">Done. Maria is scheduled 2 to 8 pm, and I let her know.</p>
-  <p class="hchat-cap">Example conversation with fictional people.</p>
+  <p class="fade">NEVORA runs your team’s schedule, time clock and payroll calculation. We also design and build websites and apps for your business.</p>
+  <div class="hacts fade"><a class="hb fill" href="/pages/contact?interest=nevora-demo">Request free NEVORA trial{{icon:arrow-right}}</a><a class="hb" href="/pages/contact?interest=custom-software">Start a project{{icon:arrow-right}}</a></div>
  </div>
  <a class="hcue" href="#nevora" aria-label="Scroll to NEVORA">{{icon:caret-down}}</a>
 </section>
@@ -27,54 +18,36 @@
  <img class="hph" src="img/ai-devices.webp" alt="" width="1920" height="1080" decoding="async">
  <div class="hshade"></div>
  <div class="hcopy">
-  <p class="hkick">Our product&nbsp;· Available now</p>
   <h2 class="rise" id="nev-t"><img src="img/nevora-wm-white.png" alt="NEVORA" width="907" height="122"></h2>
-  <p class="fade">Scheduling, time clock and payroll calculation for shift teams. Free for 30 days.</p>
+  <p class="fade">Scheduling, time clock and payroll calculation for teams that work in shifts. Free for 30 days.</p>
   <div class="hacts fade"><a class="hb fill" href="/pages/contact?interest=nevora-demo">Request free trial{{icon:arrow-right}}</a><a class="hb" href="/pages/nevora">Learn more{{icon:arrow-right}}</a></div>
-  <p class="hfact fade">No card&nbsp;· No automatic charge&nbsp;· English&nbsp;and&nbsp;Spanish</p>
+  <p class="hfact fade">Available now on the web and Android&nbsp;· Coming to the App&nbsp;Store&nbsp;· No card&nbsp;· English&nbsp;and&nbsp;Spanish</p>
  </div>
  <div class="hshot fade"><img src="img/phone-long.webp" alt="NEVORA on an employee’s phone: her shift today and two things to do" width="1170" height="3936"><p class="notif"><span class="notif-ic" aria-hidden="true">N</span><span class="notif-t"><b>NEVORA</b><i>now</i></span><span class="notif-m">Maria requested a shift swap with you</span></p></div>
-</section>
-
-<section class="hpanel right rondo-home" id="rondo" aria-labelledby="rondo-t">
- <img class="hph" src="img/ai-glow.webp" alt="" width="1920" height="1080" loading="lazy" decoding="async">
- <div class="hshade"></div>
- <div class="hcopy">
-  <p class="hkick">Rondo in NEVORA&nbsp;· In development</p>
-  <h2 class="rise" id="rondo-t">Meet Rondo.</h2>
-  <p class="fade">The AI assistant coming to NEVORA. It will find the gaps, line up the fix and wait for your OK.</p>
-  <div class="hacts fade"><a class="hb fill" href="/pages/nevora#rondo">Meet Rondo{{icon:arrow-right}}</a></div>
- </div>
- <ul class="rcard" aria-label="What Rondo will do">
-  <li>{{icon:sun}}<span><b>Morning briefing</b>Who is in, who is late, before you ask.</span></li>
-  <li>{{icon:users-three}}<span><b>Finds cover</b>Who is free, best fit first.</span></li>
-  <li>{{icon:receipt}}<span><b>Checks pay</b>Attendance and timecards before payday.</span></li>
-  <li>{{icon:check}}<span><b>You approve</b>Nothing changes without your OK.</span></li>
- </ul>
 </section>
 
 <section class="hpanel right svc" id="websites" aria-labelledby="web-t">
  <img class="hph" src="img/ai-laptop-soft.webp" alt="" width="1920" height="1080" decoding="async">
  <div class="hshade"></div>
  <div class="hcopy">
-  <p class="hkick">Custom development</p>
-  <h2 class="rise" id="web-t">Websites</h2>
-  <p class="fade">Fast. Built to bring in calls and bookings on every phone.</p>
-  <div class="hacts fade"><a class="hb" href="/pages/custom-development#web-applications">See websites{{icon:arrow-right}}</a></div>
+  <h2 class="rise" id="web-t">Websites and online stores</h2>
+  <p class="fade">Tool Box rents equipment online. Customers pick the dates, see the delivery price for their job site and reserve.</p>
+  <div class="hacts fade"><a class="hb" href="/pages/custom-development#web-applications">See the work{{icon:arrow-right}}</a></div>
+  <p class="hcap fade"><b>Tool Box LLC</b>&nbsp;· website and online store, designed and built by Velani</p>
  </div>
- <div class="hwin fade"><img src="img/tb-home.webp" alt="The Tool Box LLC website, built by Velani: equipment rental with job-site delivery and dates" width="2000" height="1250" loading="lazy" decoding="async"></div>
+ <div class="hwin fade"><img style="--z:1.6;--x:4%;--y:0%" src="img/tb-home.webp" alt="The Tool Box LLC website, built by Velani: equipment rental with job-site delivery and dates" width="2000" height="1250" loading="lazy" decoding="async"></div>
 </section>
 
-<section class="hpanel apps" id="apps" aria-labelledby="apps-t">
+<section class="hpanel" id="apps" aria-labelledby="apps-t">
+ <img class="hph" src="img/ai-phone-soft.webp" alt="" width="1920" height="1080" loading="lazy" decoding="async">
  <div class="hshade"></div>
  <div class="hcopy">
-  <p class="hkick">Custom development</p>
-  <h2 class="rise" id="apps-t">Custom apps</h2>
-  <p class="fade">Booking, loyalty, online stores, dashboards. Built around your day.</p>
-  <div class="hacts fade"><a class="hb" href="/pages/custom-development">See custom apps{{icon:arrow-right}}</a></div>
+  <h2 class="rise" id="apps-t">Booking and rewards apps</h2>
+  <p class="fade">Yavi Barber’s clients book from their phone, get a reminder before the visit and fill a rewards card.</p>
+  <div class="hacts fade"><a class="hb fill" href="/pages/contact?interest=custom-software">Start a project{{icon:arrow-right}}</a><a class="hb" href="/pages/custom-development#booking">See the work{{icon:arrow-right}}</a></div>
+  <p class="hcap fade"><b>Yavi Barber</b>&nbsp;· booking and rewards app, designed and built by Velani</p>
  </div>
- <div class="hshot fade"><img src="img/yavi-rewards.webp" alt="The Yavi Barber rewards card, built by Velani: ten visits, two rewards" width="780" height="1688" loading="lazy" decoding="async"></div>
- <div class="hweb fade"><img src="img/k-later.webp" alt="The NEVORA time clock on a shared tablet" width="1024" height="768"></div>
+ <div class="hduo fade"><div class="ph"><img src="img/yavi-book.webp" alt="Yavi Barber booking on a phone: the next open times and services with prices" width="780" height="1688" loading="lazy" decoding="async"></div><div class="ph"><img src="img/yavi-rewards.webp" alt="Yavi Barber rewards card on a phone: ten visits and two rewards" width="780" height="1688" loading="lazy" decoding="async"></div></div>
 </section>
 
 <section class="hpanel end" id="velani" aria-label="Velani">
@@ -82,7 +55,7 @@
  <div class="hshade"></div>
  <div class="hcopy">
   <p class="hwm">{{wordmark}}</p>
-  <p class="fade">Software products and custom development, from San Juan.</p>
+  <p class="fade">Software products and custom development.</p>
   <div class="hacts fade"><a class="hb fill" href="/pages/contact">Start a project{{icon:arrow-right}}</a><a class="hb" href="/pages/help">Client support{{icon:arrow-right}}</a></div>
  </div>
 </section>

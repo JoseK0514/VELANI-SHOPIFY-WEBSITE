@@ -102,6 +102,16 @@ html:has(.zoom[open]){overflow:hidden}
 .gnav-ddbtn .icon{width:11px;height:11px;transition:transform .2s var(--out)}
 @media(hover:hover){.gnav-ddbtn:hover{color:var(--text)}}
 .gnav-ddmenu{position:absolute;left:50%;top:100%;z-index:70;padding-top:6px;opacity:0;visibility:hidden;transform:translate(-50%,6px);transition:opacity .18s var(--out),transform .18s var(--out),visibility 0s linear .18s}
+/* Menu buttons with words (Nov 7): same type as .gnav-links a, caret after the word */
+.gnav-ddbtn.txt{min-width:0;gap:6px;padding:0 12px 0 14px;font-size:0.75rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;white-space:nowrap;color:var(--text-2)}
+.gnav-ddbtn.txt .icon{width:10px;height:10px}
+.gnav-ddbtn.txt[data-cur],.gnav-dd.open .gnav-ddbtn.txt{color:var(--text)}
+@media(hover:hover){.gnav-ddbtn.txt:hover{color:var(--text)}}
+.gnav-links .gnav-dd .gnav-ddmenu{left:0;transform:translate(0,6px)}.gnav-links .gnav-dd.open .gnav-ddmenu{transform:translate(0,0)}
+.gnav-signin{display:inline-flex;align-items:center;min-height:44px;padding:0 12px;margin-right:6px;white-space:nowrap;font-size:0.75rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--text-2);transition:color .2s}
+@media(hover:hover){.gnav-signin:hover{color:var(--text)}}
+@media(max-width:833px){.gnav-signin{display:none}}
+.gmenu nav>a.gmenu-signin{color:var(--text)}
 /* One open state: .open, set only by the caret button (see motion.js) */
 .gnav-dd.open .gnav-ddmenu{opacity:1;visibility:visible;transform:translate(-50%,0);transition-delay:0s}
 .gnav-ddbtn[aria-expanded=true] .icon{transform:rotate(180deg)}

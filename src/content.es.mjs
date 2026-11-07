@@ -108,12 +108,18 @@ export const CHROME_ES = {
     ['NEVORA Relay<span class="nav-soon">Próximamente</span>', '/pages/products#relay', 'Pedidos, pantalla de cocina e inventario'],
   ],
   nav: [['Sitios web', '/pages/custom-development#web-applications', 'websites'], ['Apps a la medida', '/pages/custom-development', 'services'], ['Planes', '/pages/plans', 'plans'], ['Soporte', '/pages/help', 'help'], ['Nosotros', '/pages/about', 'about']],
+  groups: [
+    ['nevora', 'NEVORA', ['nevora', 'products', 'plans'], [['NEVORA Workforce', '/pages/nevora', 'Horarios, registro de tiempo y cálculo de nómina'], ['Rondo en NEVORA<span class="nav-soon">En desarrollo</span>', '/pages/nevora#rondo', 'El asistente de IA que llega a NEVORA'], ['NEVORA Relay<span class="nav-soon">Próximamente</span>', '/pages/products#relay', 'Pedidos, pantalla de cocina e inventario'], ['Planes', '/pages/plans', 'Gratis por 30 días y luego un solo precio por negocio']]],
+    ['custom', 'Software a la medida', ['services', 'websites'], [['Sitios web', '/pages/custom-development#web-applications', 'Sitios que traen llamadas y reservas'], ['Apps de reservas y lealtad', '/pages/custom-development#booking', 'Reservas, recordatorios y tarjetas de recompensas'], ['Tiendas en línea', '/pages/custom-development#online-stores', 'Productos, precio de entrega y pago'], ['Herramientas de negocio', '/pages/custom-development#business-systems', 'Solicitudes, aprobaciones y registros en un solo lugar']]],
+    ['company', 'Empresa', ['about', 'help', 'contact'], [['Nosotros', '/pages/about', 'Qué hacemos y cómo trabajamos'], ['Soporte', '/pages/help', 'Lunes a viernes, 8 a. m. a 9 p. m. ET'], ['Contacto', '/pages/contact', 'Empieza un proyecto o haz una pregunta']]],
+  ],
+  signIn: 'Iniciar sesión', signInHref: '/pages/nevora-support',
   rondoNevora: 'Rondo en NEVORA', rondoSoon: 'En desarrollo', relaySoon: 'Pronto', contact: 'Contacto',
   trial: 'Prueba gratis', trialLong: 'Pide la prueba gratis de NEVORA', project: 'Empieza un proyecto',
   support: 'Soporte al cliente', hours: HOURS_ES, brandOf: 'Velani es una marca de ',
   langGroup: 'Idioma',
   // Closing panel on company pages
-  closingLine: 'Productos de software y desarrollo a la medida, desde San Juan.',
+  closingLine: 'Productos de software y desarrollo a la medida.',
   // The footer's words are in src/night/foot.es.html
 };
 

@@ -25,16 +25,19 @@
   d.addEventListener('keydown',e=>{if(e.key==='Escape'&&mb.getAttribute('aria-expanded')==='true'){setMenu(false);mb.focus()}});
   matchMedia('(min-width:834px)').addEventListener('change',e=>{if(e.matches)setMenu(false)});}
  nav&&nav.addEventListener('focusin',()=>nav.classList.remove('tuck'));
- // Products menu (desktop): a disclosure with one open state. Only the caret button opens and closes it (click, Enter or Space);
- // Escape, a click outside or focus leaving the menu closes it. Hover never opens it, so a click never fights the pointer.
- const dd=d.querySelector('.gnav-dd'),ddb=dd&&dd.querySelector('.gnav-ddbtn');
- if(dd&&ddb){const isOpen=()=>dd.classList.contains('open');
-  const set=o=>{dd.classList.toggle('open',o);ddb.setAttribute('aria-expanded',String(o))};
-  ddb.addEventListener('click',()=>set(!isOpen()));
-  ddb.addEventListener('keydown',e=>{if(e.key==='ArrowDown'){e.preventDefault();set(true);const first=dd.querySelector('.gnav-ddmenu a');first&&first.focus()}});
-  dd.addEventListener('focusout',()=>requestAnimationFrame(()=>{if(isOpen()&&!dd.contains(d.activeElement))set(false)}));
-  d.addEventListener('keydown',e=>{if(e.key!=='Escape'||!isOpen())return;const inside=dd.contains(d.activeElement);set(false);if(inside)ddb.focus()});
-  d.addEventListener('click',e=>{if(isOpen()&&!dd.contains(e.target))set(false)});}
+ // Header menus (desktop): each is a disclosure with one open state, and only one is open at a time. Only its button opens
+ // and closes it (click, Enter or Space; ArrowDown opens and focuses the first item); Escape, a click outside or focus leaving closes it.
+ // Hover never opens a menu, so a click never fights the pointer.
+ const dds=[...d.querySelectorAll('.gnav-dd')].map(dd=>({dd,btn:dd.querySelector('.gnav-ddbtn')})).filter(x=>x.btn);
+ if(dds.length){const set=(x,o)=>{x.dd.classList.toggle('open',o);x.btn.setAttribute('aria-expanded',String(o))};
+  const openOne=()=>dds.find(x=>x.dd.classList.contains('open'));
+  dds.forEach(x=>{
+   x.btn.addEventListener('click',()=>{const o=!x.dd.classList.contains('open');dds.forEach(y=>y!==x&&set(y,false));set(x,o)});
+   x.btn.addEventListener('keydown',e=>{if(e.key==='ArrowDown'){e.preventDefault();dds.forEach(y=>y!==x&&set(y,false));set(x,true);const first=x.dd.querySelector('.gnav-ddmenu a');first&&first.focus()}});
+   x.dd.addEventListener('focusout',()=>requestAnimationFrame(()=>{if(x.dd.classList.contains('open')&&!x.dd.contains(d.activeElement))set(x,false)}));
+  });
+  d.addEventListener('keydown',e=>{const x=openOne();if(e.key!=='Escape'||!x)return;const inside=x.dd.contains(d.activeElement);set(x,false);if(inside)x.btn.focus()});
+  d.addEventListener('click',e=>{const x=openOne();if(x&&!x.dd.contains(e.target))set(x,false)});}
  // Language switch: keep the visitor's place. Both languages use the same section ids, so the current #section carries over
  // (unless the link already names a section, as for an English-only page whose closest Spanish page is another one)
  d.querySelectorAll('.lang-sw a[hreflang]:not([aria-current])').forEach(a=>a.addEventListener('click',()=>{const h=location.hash;if(/^#[\w-]+$/.test(h)&&!a.hash)a.hash=h}));
