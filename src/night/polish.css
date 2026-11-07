@@ -262,10 +262,10 @@ b.rmark,.hchat-h b.rmark,.rondo-kick .rmark,.ast-launch .rmark,.ast-head .rmark,
  .foot-acc details[open] summary .icon{transform:rotate(45deg) scale(.78)}
  .foot-acc-in{display:grid;grid-template-columns:1fr 1fr;column-gap:16px;padding:0 0 14px}
  .foot-acc-in a,.foot-acc-in button{display:flex;align-items:center;min-height:44px;padding:0;color:var(--text-2);font:inherit;font-size:0.9375rem;text-align:left;background:none;border:0}
- .foot-support{display:grid;gap:2px;margin-top:28px;padding-top:0;border-top:0}
+ .foot-support{display:grid;gap:4px;margin-top:28px;padding-top:0;border-top:0}
  .foot-support .fs-sep{display:none}
  .foot-support .fs-k{margin-bottom:6px;font-size:0.75rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--text-3)}
- .foot-support a{justify-self:start;min-height:36px;display:inline-flex;align-items:center}
+ .foot-support a{justify-self:start;min-height:44px;display:inline-flex;align-items:center}
  .foot-legal{display:flex;flex-direction:column;align-items:flex-start;gap:4px;margin-top:24px;padding-top:16px;border-top:1px solid var(--line)}
  .foot-legal .foot-links{display:flex}
  .foot-legal .foot-links>a,.foot-legal .foot-links>button{display:none}
