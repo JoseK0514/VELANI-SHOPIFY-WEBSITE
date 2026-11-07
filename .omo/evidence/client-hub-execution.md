@@ -25,4 +25,14 @@ Initial missing-module failures preceded implementation. Focused tests then cove
 - Effective privilege readback: role LOGIN, NOINHERIT, NOSUPERUSER/NOCREATEDB/NOCREATEROLE/NOREPLICATION/NOBYPASSRLS; no schema CREATE; no read/write on Rondo tables; no rewrite of outbox payload or request fields. Outbox UPDATE only nine delivery metadata columns. Existing Rondo app cannot read hub requests. Hub requests/jobs0; pre-existing chat-session aggregate1 preserved.
 - Domain-restricted sending-only Resend key and fresh restricted hub DB URL saved directly as production-sensitive Vercel variables. Admission flag false; six existing approved exact origins copied as public configuration. No secret value printed or written to a local production env file.
 
-Deployment and operational acceptance evidence will be appended after hosted checks; local/source evidence alone does not establish production delivery.
+## Hosted acceptance
+
+Source `d89350bd4019bc2746373bba8b75ff70d05039c8` was pushed on the feature branch, no main merge. Guarded deployment `dpl_BZdFwDp5DYr7uJXFRFSNpVjJfJTF` passed disabled-flag 503, exact CORS/403, cron 401 and internal consumer 404 checks. The same source activated in deployment `dpl_8ChbePq8yvGTPJxi3LAspPyCtwnG`, Ready, alias `velani-ai.vercel.app`, region iad1. Config 200/enabled true; invalid fields 422 with individual codes; media 415; all six approved origin preflights 204; Rondo health 200.
+
+Vercel deployment metadata records the queue/v2beta trigger for `velani-client-requests`; public callback POST returns 404. Both cron registrations match source. Authenticated CLI manual hub cron runs in both deployments produced aggregate retentionSucceeded/recoverySucceeded true, zero jobs/expired requests. Active run completed `2026-11-07T15:23:46.313Z`. The secret was not exposed. A future automatic daily firing has not yet been observed.
+
+Provider-owned simulation `01a1b692-ba02-723d-809d-f82e5894671d` from requests@thevelani.com, Reply-To support, to a labelled resend.dev address reported delivered. This is simulation evidence, with no real customer/support inbox send. The restricted Resend sending key was stored independently; this connector-sent simulation does not prove an application-sent email.
+
+Neon project restore history readback: 86,400 seconds. The isolated test DB has no tables; its test role is NOLOGIN with zero active test connections. Temporary secret copies were cleared. Production hub request/outbox counts remain 0 and the existing Rondo session aggregate 1 was preserved.
+
+Actual accepted form → queue consumer → two emails remains untested pending genuine Turnstile/UI and inbox-test authorization. Queue observability showed no data and provided no publisher control; no probe test job was created. Full form delivery and future cron firing are not claimed.

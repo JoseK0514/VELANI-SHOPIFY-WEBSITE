@@ -1,0 +1,13 @@
+# Task 4 review — offline app-link preparation
+
+**Spec: PASS. Quality: PASS with one nonblocking hardening finding.** Scope: detached NEVORA commit `60542450a1366d627837f362a3a7c463ad275382`, verified direct parent `365538ce33a27dcbb5e819dc967948f0b96f61c3`. No launch certification.
+
+- **Critical:** None.
+- **Important:** None.
+- **Minor — malformed API option silently includes credential sharing** (`native/association/prepare.mjs:35`). A real local call to `associationDocuments(config, {linksOnly: 'true'})` returned Apple `webcredentials` and Android `get_login_creds`. A script forwarding an environment string could unintentionally prepare a broader bundle. Reject explicitly supplied nonboolean values before producing documents; retain the documented default and explicit boolean behavior. This is outside the stated boolean API contract; the documented CLI flag supplies a boolean and is unaffected.
+
+The committed diff touches only the preparer, its tests, its README and the new domain handoff. Explicit boolean opt-in removes both credential declarations while retaining route scope, identifiers and certificates; default output preserves them. The same input validator, output custody checks and receipt writer serve both modes. No production association artifact, native ID, entitlement, DNS, or deployment configuration appears in the changes.
+
+Reviewer ran `node --test --test-name-pattern="links-only|CLI prepares an explicitly selected public configuration|CLI rejects unknown" native/association/prepare.check.mjs`: **8/8 passed**, zero skips. These tests check exact documents, files from a real temporary bundle, receipt hashes and verification flags, validation and destination refusal, and actual CLI subprocesses for default mode, flag placement and invalid arguments. `git diff --check` on the specified pair passed. The implementer separately reports 20/23 on red (three expected failures), then 23/23 green; the historical red run was not independently observed, and the full suite was not repeated here.
+
+The handoff identifies the precise well-known URLs, response/TLS requirements, rollback limits, owner and next gates. Domain purchase/DNS absence and pending enrollment are controller-reported facts, not independently verified in this review. Production project/domain ownership, signed iOS application-identifier and entitlement, Play production package/app-signing certificate and exact host filter, hosted responses, and actual device behavior remain unverified. No sender-domain records were produced; they depend on domain/provider setup. Jose's production authorization remains outstanding.

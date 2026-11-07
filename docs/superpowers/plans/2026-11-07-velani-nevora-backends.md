@@ -30,34 +30,34 @@
 
 Files: create `services/velani-ai/src/client-hub/{types,validation,repository,app,config}.ts`, `api/client-hub.ts`, `migrations/004_client_hub.sql`, and focused tests. Modify only specific Vercel routing/function entries.
 
-- [ ] Add failing validation/API/repository tests for both request types, EN/ES, bad fields, no Origin, CAPTCHA mismatch, quotas, concurrent monthly allocation, duplicate and conflicting keys, and transaction rollback.
-- [ ] Implement minimal modules with parameterized SQL, independent AI-free bootstrap and no request-body logging.
-- [ ] Run focused tests and typecheck; record red/green evidence.
+- [x] Add failing validation/API/repository tests for both request types, EN/ES, bad fields, no Origin, CAPTCHA mismatch, quotas, concurrent monthly allocation, duplicate and conflicting keys, and transaction rollback.
+- [x] Implement minimal modules with parameterized SQL, independent AI-free bootstrap and no request-body logging.
+- [x] Run focused tests and typecheck; record red/green evidence.
 
 ### Task 2: Email dispatch, recovery, retention and activation
 
 Files: create `src/client-hub/{email,delivery,maintenance,runtime}.ts`, `api/cron/client-hub.ts`, role-provisioning/operations documentation; modify `vercel.json` and `.env.example`.
 
-- [ ] Add failing provider and outbox tests for recipient/Reply-To, escaped/plain text contents, bilingual confirmations, partial failure, fencing/concurrent workers, permanent failures and idempotency expiry.
-- [ ] Implement bounded inline dispatch and durable daily recovery on the existing Hobby plan. Retry only within a safe provider idempotency window; retain operator-visible blocked/uncertain state instead of duplicating notifications.
-- [ ] Purge eligible request/outbox data daily, preserving non-personal counters and leaving email-copy retention explicit.
-- [ ] Prepare/verify Resend DNS, restricted production configuration and guarded migration/rollback through existing approved stores. Activate sending only after domain verification and account capacity evidence. No customer-data tests.
-- [ ] Run full service suite using an isolated test database, typecheck/build and production-safe probes; commit feature work and evidence.
+- [x] Add failing provider and outbox tests for recipient/Reply-To, escaped/plain text contents, bilingual confirmations, partial failure, fencing/concurrent workers, permanent failures and idempotency expiry.
+- [x] Implement bounded inline dispatch, native Vercel queue retries and durable daily recovery on the existing Hobby plan. Retry only within a safe provider idempotency window; retain operator-visible blocked/uncertain state instead of duplicating notifications.
+- [x] Purge eligible request/outbox data daily, preserving non-personal counters and leaving email-copy retention explicit.
+- [x] Prepare/verify Resend DNS, restricted production configuration and guarded migration/rollback through existing approved stores. Activate sending only after domain verification and account capacity evidence. No customer-data tests.
+- [x] Run full service suite using an isolated test database, typecheck/build and production-safe probes; commit feature work and evidence.
 
 ### Task 3: Release 1.1 trial lifecycle
 
 Files and integration points are selected after inspecting NEVORA's current workspace/provisioning/notifications/export controls; record exact paths and why in its Release 1.1 handoff before edits.
 
-- [ ] Add a failing 30-day grace/reminder-boundary test at trial end, deletion minus seven days, deletion minus one day, conversion/cancellation races, idempotency, and owner-only export authorization.
+- [x] Add a failing 30-day grace/reminder-boundary test at trial end, deletion minus seven days, deletion minus one day, conversion/cancellation races, idempotency, and owner-only export authorization.
 - [ ] Introduce explicit authoritative trial state/provisioning and a fail-closed lifecycle boundary; do not claim a completed deletion worker where no trusted deletion/provisioning adapter exists.
-- [ ] Verify affected tests/typecheck, preserve frozen candidate and current policy copy, and commit detached development changes for the existing integration line.
+- [x] Verify affected tests/typecheck, preserve frozen candidate and current policy copy, and commit detached development changes for the existing integration line.
 
 ### Task 4: nevora.team production preparation and handoff
 
 - [ ] Verify purchase/DNS ownership and production project identity before domain writes; preserve the frozen production release boundary.
 - [ ] Inspect actual Apple team/bundle and Android package/store signing identities. Prepare validated association files and native entitlements/intent filters; fail closed rather than publishing placeholder identities.
-- [ ] Document exact DNS/email records, release ownership, hosted checks actually performed, unresolved external prerequisites, rollback and next production gate in `docs/handoffs/2026-11-07-velani-nevora-backend-handoff.md`.
-- [ ] Run independent standards/spec review of the final work and address material findings before handoff.
+- [x] Document exact DNS/email records, release ownership, hosted checks actually performed, unresolved external prerequisites, rollback and next production gate in `docs/handoffs/2026-11-07-velani-nevora-backend-handoff.md`.
+- [x] Run independent standards/spec review of the final work and address material findings before handoff.
 
 ## Decision and execution ledger
 
@@ -71,3 +71,9 @@ Files and integration points are selected after inspecting NEVORA's current work
 - Evidence so far: 41 focused in-memory cases and 9 isolated PostgreSQL cases passed; typecheck passed; production dependency audit reports zero vulnerabilities. Full final suite and hosted activation remain.
 - DNS evidence: Shopify domain detail explicitly says Managed by Shopify; DNS settings are accessible. Existing Google Workspace MX/SPF/DKIM remain intact. Resend domain is created, not verified. No DNS writes yet.
 - Current state: no NEVORA production writes, no customer email tests; nevora.team purchase and production store-signing identities remain unverified.
+
+## Final bounded outcome
+
+- Website source d89350bd4019bc2746373bba8b75ff70d05039c8 pushed; active deployment dpl_8ChbePq8yvGTPJxi3LAspPyCtwnG Ready/enabled. Domain verified, effective grants/cron/route isolation checked; 186 full tests plus 3 final HTTP regressions passed. Actual accepted-form/queue/two-email journey is still pending UI, genuine verification and authorized inbox testing.
+- NEVORA detached candidate 831d33dac00f63622f538e77fc598857f3b9b8d9 has zero open final source-review findings. Task3 timing policy and Task4 offline generator are prepared; authoritative lifecycle adapters, real signed app files and domain activation are not complete or shipped. The unchecked integration/purchase/signing gates above remain for Release1.1.
+- Final dated status/owners/rollback and exact evidence: docs/handoffs/2026-11-07-velani-nevora-backend-handoff.md. Keep the worktrees/ledger for continuation; no NEVORA production release or main merge.
