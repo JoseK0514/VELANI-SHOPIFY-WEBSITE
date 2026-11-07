@@ -59,8 +59,8 @@ html:has(.zoom[open]){overflow:hidden}
  /* The client credit sits directly under the screenshot it describes */
  .hpanel.svc .hcopy,#booking .hcopy{display:flex;flex-direction:column;align-items:flex-start}
  .hpanel.svc .hcopy>*,#booking .hcopy>*{max-width:100%}
- .hcopy p.hcap{order:-1;margin:0 0 32px}
- .hpanel.svc .hcopy p.hcap{margin-top:-20px}
+ .hcopy p.hcap{order:0;margin:18px 0 0}
+
  .zoom:not(.wide) .zoom-sc img{max-height:calc(100svh - 220px);border-radius:24px}
 }
 @media(max-width:600px){

@@ -119,7 +119,7 @@ export const CHROME_ES = {
   support: 'Soporte al cliente', hours: HOURS_ES, brandOf: 'Velani es una marca de ',
   langGroup: 'Idioma',
   // Closing panel on company pages
-  closingLine: 'Productos de software y desarrollo a la medida.',
+  closingLine: 'Prueba NEVORA gratis o cuéntanos qué quieres crear.',
   // The footer's words are in src/night/foot.es.html
 };
 

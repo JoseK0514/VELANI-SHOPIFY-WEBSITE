@@ -248,3 +248,5 @@
 html:not(.ask-relay) .v-r,.ask-relay .cform-hero .v-d{display:none}
 .ask-nevora [data-nevora-fields]{display:grid}
 .ask-nevora .field-topic{display:none}
+.how-text{max-width:40em;margin-top:24px;color:var(--text-2)}
+.how-page .acts{margin-top:32px}

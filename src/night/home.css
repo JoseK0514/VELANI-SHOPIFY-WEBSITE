@@ -47,5 +47,3 @@
  #nevora .hshot{right:calc(max(var(--pad),calc(50% - 620px)) + min(600px,42vw) - 96px);width:240px;top:56%}
  #nevora .hcopy{max-width:min(500px,calc(100% - var(--pad)*2 - min(600px,42vw) - 200px))}
 }
-/* Home on phones (Nov 7): client credits read after the description, as a sentence, not above the heading */
-@media(max-width:833px){#websites .hcopy p.hcap,#apps .hcopy p.hcap{order:0;margin:18px 0 0}#websites .hcopy p.hcap{margin-top:18px}}

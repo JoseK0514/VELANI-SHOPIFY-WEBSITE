@@ -81,7 +81,7 @@ const GROUPS = [
 const SIGN_IN = '/pages/nevora-support';
 /** The words of the header, the phone menu and the language switch, per language (Spanish in src/content.es.mjs). */
 export const CHROME = {
-  en: { skip: 'Skip to content', home: 'Velani home', main: 'Main', mainMenu: 'Main menu', menu: 'Menu', products: 'Products', productsMenu: 'Products menu', productsList: PRODUCTS, nav: NAV, groups: GROUPS, signIn: 'Sign in', signInHref: SIGN_IN, rondoNevora: 'Rondo in NEVORA', rondoSoon: 'In development', relaySoon: 'Soon', contact: 'Contact', trial: 'Request free trial', trialLong: 'Request free NEVORA trial', project: 'Start a project', support: 'Client support', hours: company.hours, brandOf: 'Velani is a brand of ', langGroup: 'Language', closingLine: 'Software products and custom development.' },
+  en: { skip: 'Skip to content', home: 'Velani home', main: 'Main', mainMenu: 'Main menu', menu: 'Menu', products: 'Products', productsMenu: 'Products menu', productsList: PRODUCTS, nav: NAV, groups: GROUPS, signIn: 'Sign in', signInHref: SIGN_IN, rondoNevora: 'Rondo in NEVORA', rondoSoon: 'In development', relaySoon: 'Soon', contact: 'Contact', trial: 'Request free trial', trialLong: 'Request free NEVORA trial', project: 'Start a project', support: 'Client support', hours: company.hours, brandOf: 'Velani is a brand of ', langGroup: 'Language', closingLine: 'Try NEVORA free, or tell us what you want built.' },
   es: CHROME_ES,
 };
 /** In the Shopify layout the two destinations are computed once per page (main theme or draft), see renderShopifyLayout. */
