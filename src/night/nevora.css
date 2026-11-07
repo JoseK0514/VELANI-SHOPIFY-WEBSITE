@@ -234,3 +234,14 @@
  .story .st h3{margin-top:0;font-size:1.375rem}
  .js .story .st:not(.on) h3{color:var(--text)}
 }
+/* Phone hero (Nov 7): one trial button on screen at a time. The local nav's trial pill waits until the hero (which has its own)
+   has scrolled away; the headline is set a step smaller so it reads in four lines, not five */
+@media(max-width:833px){
+ .js .lnav:not(.past-hero) .pill{opacity:0;visibility:hidden;pointer-events:none}
+ .lnav .pill{transition:opacity .25s var(--out),visibility 0s linear .25s}
+ .lnav.past-hero .pill{transition-delay:0s}
+ .n-hero.hpanel.long h1{font-size:2.125rem;line-height:1.06}
+ .n-hero .hcopy>p.fade{font-size:1.0625rem}
+ .n-hero .hcopy>p.hfact{font-size:0.9375rem;color:var(--text-2)}
+}
+@media(max-width:833px) and (prefers-reduced-motion:reduce){.lnav .pill{transition:none}}

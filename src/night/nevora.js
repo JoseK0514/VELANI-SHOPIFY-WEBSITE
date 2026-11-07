@@ -6,7 +6,7 @@ window.__fx=[];
  const heads=links.map(a=>{const t=document.getElementById(a.dataset.spy);return t&&(t.querySelector('h1,h2')||t)});
  let lastIdx=-1;
  const moveInk=i=>{if(!big.matches)return;if(i<0){ink.style.setProperty('--w',0);return}const a=links[i];ink.style.setProperty('--x',(a.offsetLeft+12)+'px');ink.style.setProperty('--w',a.offsetWidth-24)};
- __fx.push({always:true,el:document.body,run(p,r,vh){lnav.classList.toggle('solid',lnav.getBoundingClientRect().top<=0&&scrollY>2);
+ const hero=$('#top');__fx.push({always:true,el:document.body,run(p,r,vh){lnav.classList.toggle('solid',lnav.getBoundingClientRect().top<=0&&scrollY>2);if(hero)lnav.classList.toggle('past-hero',hero.getBoundingClientRect().bottom<80);
   // Nothing is current above the first chapter: the wordmark stands for the overview
   let idx=-1;heads.forEach((h,i)=>{if(h&&h.getBoundingClientRect().top<=vh*.45)idx=i});
   if(idx!==lastIdx){lastIdx=idx;links.forEach((a,i)=>i===idx?a.setAttribute('aria-current','true'):a.removeAttribute('aria-current'));moveInk(idx)}}});
