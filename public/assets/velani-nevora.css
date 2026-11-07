@@ -68,7 +68,7 @@
 .shift .ends{position:absolute;left:0;font-size:0.75rem;color:var(--text-3);font-variant-numeric:tabular-nums}
 .shift .ends.a{top:-30px}.shift .ends.b{bottom:-30px}
 #shiftNow{position:absolute;left:18px;top:0;font:500 12px/1 var(--font);font-variant-numeric:tabular-nums;color:var(--accent);transform:translateY(calc(var(--tip,0px) - 50%));white-space:nowrap}
-.st{min-height:52vh;min-height:52svh;display:flex;flex-direction:column;justify-content:center;padding:40px 0}
+.st{min-height:34vh;min-height:34svh;display:flex;flex-direction:column;justify-content:center;padding:40px 0}
 .st .n{font-size:0.75rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--text-3);font-variant-numeric:tabular-nums}
 .st h3{margin-top:12px}
 .st p{margin-top:16px;font-size:clamp(1.0625rem,1.4vw,1.25rem);line-height:1.5;color:var(--text-2);max-width:27em}
@@ -185,3 +185,35 @@
 /* One column: the example chat comes right after the promise, then the details */
 @media(max-width:959px){.rondo-grid{display:flex;flex-direction:column;align-items:stretch;gap:0}.rondo-copy{display:contents}.rondo-fig{order:1;align-items:flex-start;margin-top:32px}.rondo-can,.rondo-trust,.rondo .acts,.rondo-fine{order:2}}
 @media(max-width:599px){.rondo-can{grid-template-columns:1fr;gap:20px}.hchat.rchat{padding:12px;gap:8px;font-size:0.875rem;border-radius:18px}.rondo .acts .pill{width:100%}}
+/* Release 1 screens (Nov 7). What NEVORA does: the week schedule wide, the tablet and payroll side by side; same .slab frame as the owner screen */
+.feat-shots{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(24px,3vw,40px);margin-top:var(--s1)}
+.feat-shots .fs{margin:0}.feat-shots .fs.wide{grid-column:1/-1}
+.feat-shots .slab{background:#f4f6f8}
+.feat-shots figcaption{margin-top:16px;display:grid;gap:4px}
+.feat-shots figcaption b{font-weight:600}
+.feat-shots figcaption span{color:var(--text-2)}
+.feat.feat-more{margin-top:clamp(40px,5vw,64px)}
+@media(max-width:833px){.feat-shots{grid-template-columns:1fr}}
+/* Walkthrough phone: three Release 1 screens that cross-fade step by step */
+.slab.phone.multi .feed{transform:none;opacity:0;transition:opacity .45s var(--out)}
+.slab.phone.multi .feed.on{opacity:1}
+@media(prefers-reduced-motion:reduce){.slab.phone.multi .feed{transition:none}}
+.feat-shots .fs:not(.wide) .slab{aspect-ratio:3/2}.feat-shots .fs:not(.wide) .slab img{height:100%;object-fit:cover;object-position:50% 0}
+/* Premium pass (Nov 7): product screens sit on a lit stage instead of flat on black (the glow is NEVORA teal, the ring and depth
+   are the .slab ones); captions read as titles; the walkthrough drops its decorative shift line; Relay uses the page's own dark
+   stage (derived from the Home custom-apps panel's radial background) instead of a blurred photo */
+.feat-shots .slab,.owner-block .slab.owner{border-radius:18px;box-shadow:0 0 0 1px rgba(255,255,255,.09),0 30px 70px -28px rgba(0,0,0,.9),0 0 140px -30px rgba(26,140,126,.42)}
+.feat-shots figcaption{margin-top:22px;gap:6px}
+.feat-shots figcaption b{font-size:1.25rem;letter-spacing:-.01em}
+.feat-shots figcaption span{font-size:1rem;line-height:1.55;max-width:34em}
+.feat-shots .fs.wide figcaption{grid-template-columns:minmax(0,1fr) minmax(0,2fr);column-gap:40px;align-items:baseline}
+@media(max-width:833px){.feat-shots .fs.wide figcaption{grid-template-columns:1fr}}
+.shift{display:none}.steps{padding-right:0}
+/* Relay: a normal chapter on the page background (no full-screen panel, no seam): the plan card and the copy side by side */
+.hpanel.relay-stage{background:transparent;min-height:0;height:auto}
+.hpanel.relay-stage .hcopy::before{display:none}
+@media(min-width:834px){
+ .hpanel.relay-stage{display:grid;grid-template-columns:minmax(0,420px) minmax(0,1fr);gap:clamp(48px,7vw,112px);align-items:center;padding:clamp(96px,10vw,144px) max(var(--pad),calc(50% - 620px))}
+ .hpanel.relay-stage .rcard{position:relative;left:auto;top:auto;transform:none;width:auto;margin:0;grid-column:1;grid-row:1}
+ .hpanel.relay-stage .hcopy{position:relative;left:auto;right:auto;top:auto;transform:none;max-width:560px;grid-column:2;grid-row:1}
+}

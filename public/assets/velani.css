@@ -818,6 +818,7 @@ html:has(.zoom[open]){overflow:hidden}
 .gnav-signin{display:inline-flex;align-items:center;min-height:44px;padding:0 12px;margin-right:6px;white-space:nowrap;font-size:0.75rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--text-2);transition:color .2s}
 @media(hover:hover){.gnav-signin:hover{color:var(--text)}}
 @media(max-width:833px){.gnav-signin{display:none}}
+@media(min-width:834px) and (max-width:959px){.gnav-ddbtn.txt{padding:0 8px 0 10px}.gnav-signin{padding:0 8px;margin-right:2px}.gnav-links{margin-right:4px}}
 .gmenu nav>a.gmenu-signin{color:var(--text)}
 /* One open state: .open, set only by the caret button (see motion.js) */
 .gnav-dd.open .gnav-ddmenu{opacity:1;visibility:visible;transform:translate(-50%,0);transition-delay:0s}
@@ -945,3 +946,38 @@ b.rmark,.hchat-h b.rmark,.rondo-kick .rmark,.ast-launch .rmark,.ast-head .rmark,
 /* Example chat header: a longer name (Spanish) moves the status label to its own line instead of past the card edge */
 .hchat-h{flex-wrap:wrap;row-gap:4px}
 .hchat-h span{min-width:0}
+
+/* Footer links in the header's three groups (Nov 7). Labels use the phone menu's .gmenu-k style; links keep .foot-nav a */
+.foot-nav.grouped{display:grid;grid-template-columns:repeat(3,max-content);gap:0 72px;margin-left:0;align-items:start}
+.foot-grp{display:flex;flex-direction:column;align-items:flex-start}
+.foot-nav.grouped a{min-height:36px;padding:0}
+.foot-k{margin:0 0 6px;font-size:0.75rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--text-3)}
+.foot-row:has(.foot-nav.grouped){align-items:flex-end}
+/* Footer accordion (Nov 7): phones and tablets fold the link groups and the legal links into rows that open on tap, styled like the
+   Support page's question list (.faq summary). Desktop keeps the open groups and never shows these rows. */
+.foot-acc{display:none}
+@media(max-width:833px){
+ .foot-row:has(.foot-nav.grouped){display:block;padding-bottom:0;border-bottom:0}
+ .foot-nav.grouped{display:none}
+ .foot-acc{display:block}
+ .foot-acc details{border-top:1px solid var(--line)}
+ .foot-acc details:first-of-type{border-top:0}
+ .foot-acc details:last-of-type{border-bottom:1px solid var(--line)}
+ .foot-acc summary{display:flex;align-items:center;justify-content:space-between;min-height:56px;font-size:0.75rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--text);cursor:pointer;list-style:none}
+ .foot-acc summary::-webkit-details-marker{display:none}
+ .foot-acc summary .icon{font-size:1rem;color:var(--text-3);transition:transform .3s var(--out)}
+ .foot-acc details[open] summary .icon{transform:rotate(45deg) scale(.78)}
+ .foot-acc-in{display:grid;grid-template-columns:1fr 1fr;column-gap:16px;padding:0 0 14px}
+ .foot-acc-in a,.foot-acc-in button{display:flex;align-items:center;min-height:44px;padding:0;color:var(--text-2);font:inherit;font-size:0.9375rem;text-align:left;background:none;border:0}
+ .foot-support{display:grid;gap:4px;margin-top:28px;padding-top:0;border-top:0}
+ .foot-support .fs-sep{display:none}
+ .foot-support .fs-k{margin-bottom:6px;font-size:0.75rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--text-3)}
+ .foot-support a{justify-self:start;min-height:44px;display:inline-flex;align-items:center}
+ .foot-legal{display:flex;flex-direction:column;align-items:flex-start;gap:4px;margin-top:24px;padding-top:16px;border-top:1px solid var(--line)}
+ .foot-legal .foot-links{display:flex}
+ .foot-legal .foot-links>a,.foot-legal .foot-links>button{display:none}
+ .foot-links .foot-lang{margin-left:-6px}
+}
+@media(max-width:380px){.foot-acc-in{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){.foot-acc summary .icon{transition:none}}
+}
