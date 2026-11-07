@@ -273,4 +273,5 @@ b.rmark,.hchat-h b.rmark,.rondo-kick .rmark,.ast-launch .rmark,.ast-head .rmark,
 }
 @media(max-width:380px){.foot-acc-in{grid-template-columns:1fr}}
 @media(prefers-reduced-motion:reduce){.foot-acc summary .icon{transition:none}}
-}
+/* Spanish header between 834 and 959px: the longest call to action ("Empieza un proyecto") still fits */
+@media(min-width:834px) and (max-width:959px){html[lang=es] .gnav-ddbtn.txt{padding:0 6px 0 8px;gap:4px}html[lang=es] .gnav-signin{padding:0 6px}html[lang=es] .gnav-in>.pill{padding-inline:12px}}
