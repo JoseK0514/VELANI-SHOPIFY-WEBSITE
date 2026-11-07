@@ -14,15 +14,35 @@
     },
     "api/cron/retention.ts": {
       "maxDuration": 120
+    },
+    "api/client-hub.ts": {
+      "maxDuration": 120
+    },
+    "api/cron/client-hub.ts": {
+      "maxDuration": 120
+    },
+    "api/client-hub-email.ts": {
+      "maxDuration": 120,
+      "experimentalTriggers": [
+        { "type": "queue/v2beta", "topic": "velani-client-requests" }
+      ]
     }
   },
   "crons": [
     {
       "path": "/api/cron/retention",
       "schedule": "0 15 * * *"
+    },
+    {
+      "path": "/api/cron/client-hub",
+      "schedule": "0 16 * * *"
     }
   ],
   "rewrites": [
+    {
+      "source": "/v1/client-hub/:path*",
+      "destination": "/api/client-hub"
+    },
     {
       "source": "/v1/:path*",
       "destination": "/api/index"
