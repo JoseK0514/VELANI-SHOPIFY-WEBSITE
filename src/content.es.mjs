@@ -113,7 +113,7 @@ export const CHROME_ES = {
     ['custom', 'Software a la medida', ['services', 'websites'], [['Sitios web', '/pages/custom-development#web-applications', 'Sitios que traen llamadas y reservas'], ['Apps de reservas', '/pages/custom-development#booking', 'Reservas, recordatorios y tarjetas de recompensas'], ['Tiendas en línea', '/pages/custom-development#online-stores', 'Productos, precio de entrega y pago'], ['Herramientas de negocio', '/pages/custom-development#business-systems', 'Solicitudes, aprobaciones y registros en un solo lugar']]],
     ['company', 'Empresa', ['about', 'help', 'contact'], [['Nosotros', '/pages/about', 'Qué hacemos y cómo trabajamos'], ['Soporte', '/pages/help', 'Lunes a viernes, 8 a. m. a 9 p. m. ET'], ['Contacto', '/pages/contact', 'Empieza un proyecto o haz una pregunta']]],
   ],
-  signIn: 'Iniciar sesión', signInHref: '/pages/nevora-support',
+  signIn: 'Entrar', signInHref: '/pages/nevora-support',
   rondoNevora: 'Rondo en NEVORA', rondoSoon: 'En desarrollo', relaySoon: 'Pronto', contact: 'Contacto',
   trial: 'Prueba gratis', trialLong: 'Pide la prueba gratis de NEVORA', project: 'Empieza un proyecto',
   support: 'Soporte al cliente', hours: HOURS_ES, brandOf: 'Velani es una marca de ',

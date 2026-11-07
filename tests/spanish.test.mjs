@@ -123,7 +123,7 @@ test('the main-theme layout renders Spanish pages in Spanish with es_PR metadata
   assert.match(html, /<a class="skip" href="#main">Saltar al contenido<\/a>/);
   assert.match(html, /<header class="gnav static" id="gnav">/);
   assert.match(html, /<button class="gnav-ddbtn txt" type="button" aria-expanded="false" aria-controls="gnav-dd-nevora" data-cur>NEVORA/);
-  assert.match(html, /<a class="gnav-signin" href="\/pages\/nevora-support" hreflang="en">Iniciar sesión<\/a>/);
+  assert.match(html, /<a class="gnav-signin" href="\/pages\/nevora-support" hreflang="en">Entrar<\/a>/);
   assert.match(html, /<a href="\/pages\/nevora" hreflang="en" lang="en" aria-label="English">EN<\/a>/);
   assert.match(html, /<a href="\/pages\/es-nevora" hreflang="es" lang="es" aria-label="Español" aria-current="true">ES<\/a>/);
   assert.match(html, /Opciones de cookies/);
