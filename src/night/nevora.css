@@ -245,3 +245,4 @@
  .n-hero .hcopy>p.hfact{font-size:0.9375rem;color:var(--text-2)}
 }
 @media(max-width:833px) and (prefers-reduced-motion:reduce){.lnav .pill{transition:none}}
+@media(max-width:359px){.n-hero.hpanel.long h1{font-size:1.875rem}}
