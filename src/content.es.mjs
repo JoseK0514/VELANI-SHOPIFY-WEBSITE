@@ -16,11 +16,11 @@ export const ES_PATHS = Object.freeze({
   '/pages/contact': '/pages/es-contacto',
   '/pages/about': '/pages/es-nosotros',
   '/pages/help': '/pages/es-ayuda',
+  '/pages/custom-development': '/pages/es-a-la-medida',
 });
 
 /** English-only pages whose closest Spanish page is not the Spanish home: the ES switch goes there instead. */
 export const ES_NEAREST = Object.freeze({
-  '/pages/custom-development': '/pages/es-productos#websites',
 });
 
 /** Spanish routes: same kinds (and so the same components, images and order) as their English pages. */
@@ -85,6 +85,26 @@ ES_ROUTES['/pages/es-ayuda'] = es('/pages/help', {
     { heading: '¿Cómo funciona la prueba gratis de NEVORA?', text: 'Un negocio con hasta 30 empleados puede usar NEVORA gratis por 30 días desde la configuración. No se necesita tarjeta y no se cobra nada. El día 30 continúas por cotización o cierras el espacio de trabajo. Primero, exporta tus datos: un espacio de trabajo cerrado y sus datos se eliminan en un plazo de 3 días, incluidas las tarjetas de tiempo y los comprobantes de nómina. Para cerrarlo, escribe a support@thevelani.com. NEVORA calcula los comprobantes de nómina; no les paga a los empleados ni presenta impuestos de nómina.' },
   ],
 });
+
+ES_ROUTES['/pages/es-a-la-medida'] = es('/pages/custom-development', {
+  kind: 'services', nav: 'services', eyebrow: 'Software a la medida', name: 'Software a la medida',
+  title: 'Sitios web y apps hechos para tu negocio.',
+  intro: 'Diseñamos y creamos sitios web, apps de reservas, tiendas en línea y herramientas de negocio. Antes de empezar cualquier trabajo pagado, recibes una cotización fija por escrito.',
+  desc: 'Velani diseña y crea sitios web, apps de reservas, tiendas en línea y herramientas de negocio, con una cotización fija por escrito.',
+  og: ['velani-social-custom.png', 'Velani: un sitio web creado por Velani para un cliente'],
+});
+
+/** The Custom software page below its hero (render.mjs WORK.en has the English). */
+export const WORK_ES = {
+  jump: [['Tool Box LLC', '#web-applications'], ['Yavi Barber', '#booking'], ['Lo que recibes', '#how']], jumpLabel: 'En esta página', shotsLabel: 'Pantallas de Tool Box LLC', moreLabel: 'Herramientas de negocio',
+  toolbox: { kind: 'Sitio web y tienda en línea de alquiler de equipos', text: 'Tool Box alquila elevadores y otros equipos. Desde cualquier teléfono, sus clientes encuentran la máquina que necesitan, eligen las fechas y verifican la entrega a su obra. Cada máquina tiene su precio y un botón para reservar, y la tienda calcula la entrega según la distancia a la obra.', credit: 'Diseñamos y creamos el sitio web y la tienda en línea de Tool Box LLC.', shots: [['tb-home', 'El sitio web de Tool Box LLC, creado por Velani: alquiler de equipos con entrega en la obra y fechas', 2000, 1250], ['store', 'La tienda en línea de Tool Box LLC, creada por Velani: equipos de alquiler con precios y un botón para reservar en cada uno', 1600, 1000]] },
+  yavi: { kind: 'App de reservas y recompensas', text: 'Los clientes de Yavi Barber eligen un servicio y una hora en su teléfono, reciben un recordatorio antes de la cita y suman cada visita en una tarjeta de recompensas.', credit: 'Diseñamos y creamos la app de reservas y recompensas de Yavi Barber.', shots: [['yavi-book', 'Reservas de Yavi Barber en un teléfono: los próximos horarios disponibles y los servicios con precios'], ['yavi-rewards', 'Tarjeta de recompensas de Yavi Barber en un teléfono: diez visitas y dos recompensas']] },
+  more: ['También creamos herramientas internas para tu equipo, como formularios de solicitudes, aprobaciones y paneles. Como ejemplo, mira ', 'NEVORA', ', la app de personal que hacemos.'],
+  getT: 'Lo que recibes', get: ['Cada proyecto incluye el diseño, el desarrollo y la configuración del hosting. Si lo quieres en inglés y español, creamos ambos. Después del lanzamiento, seguimos dándole soporte.', 'Antes de empezar cualquier trabajo pagado, recibes una cotización fija por escrito. El precio depende de lo que necesite el proyecto.'],
+  howT: 'Cómo funciona un proyecto', how: ['Nos muestras cómo se hace el trabajo hoy y quién lo hace. Luego recibes la propuesta por escrito con lo que vamos a crear, el precio fijo y los hitos. El trabajo pagado empieza solo cuando estés de acuerdo.', 'Creamos por hitos, y en cada uno pruebas el software funcionando. El acuerdo indica quién es dueño del código, qué recibes y cómo funciona el soporte después del lanzamiento.'],
+  project: 'Empieza un proyecto',
+  zoom: [['aria-label\', \'Screenshot\'', 'aria-label\', \'Captura de pantalla\''], ['aria-label="Close"', 'aria-label="Cerrar"'], ['aria-label="Screenshot, scrollable"', 'aria-label="Captura de pantalla, desplazable"'], ['Swipe to see the whole screen', 'Desliza para ver toda la pantalla'], ["'View full screen: '", "'Ver en pantalla completa: '"]],
+};
 
 /** The About and Support pages below their heroes. */
 export const ABOUT_ES = { project: 'Empieza un proyecto', see: 'Ver NEVORA', label: 'Sobre Velani' };

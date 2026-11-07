@@ -1,5 +1,5 @@
 import { company, routes, services, legalUpdated, langOf, counterpart } from './content.mjs';
-import { CONSENT_ES, CONTACT_ES, PLANS_ES, HOURS_ES, ABOUT_ES, FAQ_ES, ES_NEAREST, IN_ENGLISH } from './content.es.mjs';
+import { CONSENT_ES, CONTACT_ES, PLANS_ES, HOURS_ES, ABOUT_ES, FAQ_ES, ES_NEAREST, IN_ENGLISH, WORK_ES } from './content.es.mjs';
 import { header as nightHeader, footer as nightFooter, homeMain, nevoraMain, productsMain, policyMain, zoomScript, assistant as nightAssistant, icon, WORDMARK, CHROME, localize } from './night.mjs';
 export function escapeHtml(value) {
   return String(value ?? '').replace(/[&<>"']/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[char]);
@@ -45,7 +45,7 @@ const rail = (steps, cls = '') => '<ol class="rail' + cls + '" data-in>' + steps
 /** Custom software page words (Spanish added with its own page). Case studies lead; the client's name is the heading. */
 const WORK = {
   en: {
-    jump: [['Tool Box LLC', '#web-applications'], ['Yavi Barber', '#booking'], ['What you get', '#how']], jumpLabel: 'On this page',
+    jump: [['Tool Box LLC', '#web-applications'], ['Yavi Barber', '#booking'], ['What you get', '#how']], jumpLabel: 'On this page', shotsLabel: 'Tool Box LLC screens', moreLabel: 'Business tools',
     toolbox: { kind: 'Equipment rental website and online store', text: 'Tool Box rents lifts and other equipment. On any phone, customers find the machine they need, pick the dates and check delivery to their job site. Every machine has its price and a Reserve button, and the store prices delivery by the distance to the job site.', credit: 'We designed and built Tool Box LLC’s website and online store.', shots: [['tb-home', 'The Tool Box LLC website, built by Velani: equipment rental with job-site delivery and dates', 2000, 1250], ['store', 'The Tool Box LLC online store, built by Velani: rental equipment with prices and a Reserve button on each item', 1600, 1000]] },
     yavi: { kind: 'Booking and rewards app', text: 'Yavi Barber’s clients pick a service and a time on their phone, get a reminder before the visit and collect each visit on a rewards card.', credit: 'We designed and built Yavi Barber’s booking and rewards app.', shots: [['yavi-book', 'Yavi Barber booking on a phone: the next open times and services with prices'], ['yavi-rewards', 'Yavi Barber rewards card on a phone: ten visits and two rewards']] },
     more: ['We also build internal tools for your team, like request forms, approvals and dashboards. For an example, see ', 'NEVORA', ', the workforce app we make.'],
@@ -53,6 +53,7 @@ const WORK = {
     howT: 'How a project works', how: ['You show us how the work gets done today and who does it. You then get the written proposal with what we’ll build, the fixed price and the milestones. Paid work starts only after you agree to it.', 'We build in milestones, and you try working software at each one. The agreement says who owns the code, what you receive and how support works after launch.'],
     project: 'Start a project',
   },
+  es: WORK_ES,
 };
 function services_(page, target, lang = 'en') {
   const t = WORK[lang];
@@ -61,11 +62,11 @@ function services_(page, target, lang = 'en') {
   const shot = ([n, alt, w, h]) => '<figure class="shot slab"><img src="' + asset('night-' + n + '.webp', target) + '" alt="' + e(alt) + '" width="' + w + '" height="' + h + '" loading="lazy" decoding="async"></figure>';
   const phone = ([n, alt]) => '<figure class="shot slab phone"><img src="' + asset('night-' + n + '.webp', target) + '" alt="' + e(alt) + '" width="780" height="1688" loading="lazy" decoding="async"></figure>';
   const head = (id, name, c) => '<div class="case-head"><h2 class="t1 rise" id="' + id + '-t">' + e(name) + '</h2><p class="case-kind fade">' + e(c.kind) + '</p><p class="lede fade">' + e(c.text) + '</p></div>';
-  const toolbox = '<section class="chap case" id="web-applications" aria-labelledby="web-applications-t"><span class="anchor" id="online-stores"></span><div class="wrap">' + head('web-applications', 'Tool Box LLC', t.toolbox) + '<div class="case-shots two" data-scroll-x aria-label="Tool Box LLC screens">' + t.toolbox.shots.map(shot).join('') + '</div><p class="case-credit">' + e(t.toolbox.credit) + '</p></div></section>';
+  const toolbox = '<section class="chap case" id="web-applications" aria-labelledby="web-applications-t"><span class="anchor" id="online-stores"></span><div class="wrap">' + head('web-applications', 'Tool Box LLC', t.toolbox) + '<div class="case-shots two" data-scroll-x aria-label="' + t.shotsLabel + '">' + t.toolbox.shots.map(shot).join('') + '</div><p class="case-credit">' + e(t.toolbox.credit) + '</p></div></section>';
   const yavi = '<section class="chap case" id="booking" aria-labelledby="booking-t"><div class="wrap case-split">' + head('booking', 'Yavi Barber', t.yavi).replace(/<\/div>$/, '<p class="case-credit">' + e(t.yavi.credit) + '</p></div>') + '<div class="case-phones">' + t.yavi.shots.map(phone).join('') + '</div></div></section>';
-  const more = '<section class="chap case-more" id="business-systems" aria-label="Business tools"><div class="wrap"><p class="lede">' + e(t.more[0]) + '<a class="ul" href="/pages/nevora">' + e(t.more[1]) + '</a>' + e(t.more[2]) + '</p></div></section>';
+  const more = '<section class="chap case-more" id="business-systems" aria-label="' + t.moreLabel + '"><div class="wrap"><p class="lede">' + e(t.more[0]) + '<a class="ul" href="/pages/nevora">' + e(t.more[1]) + '</a>' + e(t.more[2]) + '</p></div></section>';
   const how = '<section class="chap how-page" id="how" aria-labelledby="how-t"><div class="wrap"><div class="case-cols"><div><h2 class="t2 rise" id="how-t">' + e(t.getT) + '</h2>' + t.get.map(x => '<p class="lede fade how-text">' + e(x) + '</p>').join('') + '</div><div><h3 class="t2 rise">' + e(t.howT) + '</h3>' + t.how.map(x => '<p class="lede fade how-text">' + e(x) + '</p>').join('') + '</div></div><div class="acts fade">' + hb(t.project, '/pages/contact?interest=custom-software', true) + '</div></div></section>';
-  return localize(hero + toolbox + yavi + more + how + closing(target, { lang, project: '/pages/contact?interest=custom-software' }), lang) + '\n' + zoomScript(target);
+  return localize(hero + toolbox + yavi + more + how + closing(target, { lang, project: '/pages/contact?interest=custom-software' }), lang) + '\n' + (t.zoom || []).reduce((z, [a, b]) => z.split(a).join(b), zoomScript(target));
 }
 /** The contact page's words (Spanish in src/content.es.mjs). Topic values never change, so the email Velani receives is the same. */
 const CONTACT = {
@@ -195,7 +196,7 @@ function renderRawBody(path, target) {
     case 'nevora': return nevoraMain(target, lang);
     case 'products': return productsMain(target, lang);
     case 'policy': return policyMain(page.slug);
-    case 'services': return services_(page, target);
+    case 'services': return services_(page, target, lang);
     case 'contact': return localize((target === 'shopify' ? '{% capture velani_sent %}' + sentPanel(false, lang) + '{% endcapture %}' : '') + contactHero(page, lang) + contact(target, lang), lang);
     case 'faq': return faq(page, target, lang);
     case 'plans': return localize(plans(page, target, lang), lang);

@@ -9,12 +9,12 @@ const S = process.argv[2] || 'evidence/hosted-spanish-mark', T = process.argv[3]
 await mkdir(S, { recursive: true });
 const LIVE = !!process.env.LIVE;
 const q = p => LIVE ? B + p : B + p + (p.includes('?') ? '&' : '?') + 'preview_theme_id=' + T;
-const ESP = { 'velani-es': '/pages/es', 'velani-es-nevora': '/pages/es-nevora', 'velani-es-productos': '/pages/es-productos', 'velani-es-planes': '/pages/es-planes', 'velani-es-contacto': '/pages/es-contacto', 'velani-es-nosotros': '/pages/es-nosotros', 'velani-es-ayuda': '/pages/es-ayuda' };
+const ESP = { 'velani-es': '/pages/es', 'velani-es-nevora': '/pages/es-nevora', 'velani-es-productos': '/pages/es-productos', 'velani-es-planes': '/pages/es-planes', 'velani-es-contacto': '/pages/es-contacto', 'velani-es-nosotros': '/pages/es-nosotros', 'velani-es-ayuda': '/pages/es-ayuda', 'velani-es-a-la-medida': '/pages/es-a-la-medida' };
 const esUrl = v => LIVE ? ESP[v] : '/?view=' + v;
 const hide = '#preview-bar-iframe,#PBarNextFrameWrapper{display:none!important}';
 let fails = 0; const ok = (c, m) => { if (!c) fails++; console.log((c ? 'PASS ' : 'FAIL ') + m); };
 const EN = ['/', '/pages/products', '/pages/custom-development', '/pages/nevora', '/pages/about', '/pages/plans', '/pages/contact', '/pages/help'];
-const ES = ['velani-es', 'velani-es-nevora', 'velani-es-productos', 'velani-es-planes', 'velani-es-contacto', 'velani-es-nosotros', 'velani-es-ayuda'].map(esUrl);
+const ES = ['velani-es', 'velani-es-nevora', 'velani-es-productos', 'velani-es-planes', 'velani-es-contacto', 'velani-es-nosotros', 'velani-es-ayuda', 'velani-es-a-la-medida'].map(esUrl);
 const pageFacts = LIVE => {
  const vw = innerWidth, bad = [];
  for (const el of document.querySelectorAll('main *, header *, footer *')) {
