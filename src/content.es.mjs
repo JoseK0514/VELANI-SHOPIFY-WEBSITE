@@ -14,6 +14,13 @@ export const ES_PATHS = Object.freeze({
   '/pages/plans': '/pages/es-planes',
   '/pages/products': '/pages/es-productos',
   '/pages/contact': '/pages/es-contacto',
+  '/pages/about': '/pages/es-nosotros',
+  '/pages/help': '/pages/es-ayuda',
+});
+
+/** English-only pages whose closest Spanish page is not the Spanish home: the ES switch goes there instead. */
+export const ES_NEAREST = Object.freeze({
+  '/pages/custom-development': '/pages/es-productos#websites',
 });
 
 /** Spanish routes: same kinds (and so the same components, images and order) as their English pages. */
@@ -51,6 +58,43 @@ export const ES_ROUTES = {
   }),
 };
 
+ES_ROUTES['/pages/es-nosotros'] = es('/pages/about', {
+  nav: 'about', eyebrow: 'Sobre Velani', name: 'Nosotros',
+  title: 'Una empresa de software. Dos\u00a0formas de trabajar con nosotros.',
+  intro: 'Hacemos NEVORA. Desarrollamos software para negocios.',
+  desc: 'Velani, operada por VELANI LLC en San Juan, hace NEVORA para horarios, registro de tiempo y cálculo de nómina, y desarrolla software a la medida para negocios.',
+  sections: [
+    { heading: 'Productos propios', text: 'Creamos cada producto alrededor de un proceso específico de un negocio. NEVORA, nuestra app de horarios, registro de tiempo y cálculo de nómina, ya está disponible; los negocios la obtienen por cotización.' },
+    { heading: 'Software para tu negocio', text: 'El desarrollo a la medida empieza por el trabajo que necesitas que el software apoye. Definimos el problema y el alcance antes de asumir compromisos de proyecto.' },
+    { heading: 'Claridad de principio a fin', text: 'Qué hace un producto, cuánto cuesta y qué cubre un acuerdo de proyecto. Lo dejamos por escrito donde puedas encontrarlo.' },
+    { heading: 'La empresa detrás del trabajo', text: 'Velani es operada por VELANI LLC. Puedes escribirnos a support@thevelani.com o a 1654 Calle Tulipan, Suite 100, San Juan, PR 00927.' },
+  ],
+});
+ES_ROUTES['/pages/es-ayuda'] = es('/pages/help', {
+  kind: 'faq', nav: 'help', eyebrow: 'Soporte', name: 'Soporte',
+  desc: 'Soporte al cliente de Velani: cómo obtener NEVORA, cómo funciona la prueba gratis y cómo escribirnos o llamarnos.',
+  title: 'Aquí para ayudarte.',
+  intro: 'Soporte al cliente, respuestas sobre nuestro trabajo y ayuda para quienes usan NEVORA.',
+  sections: [
+    { heading: '¿Cómo obtiene NEVORA mi negocio?', text: 'NEVORA se ofrece a los negocios por cotización, con una prueba gratis de 30 días para equipos de hasta 30 empleados. Después de la prueba hay un solo precio por negocio, cotizado según tu número de empleados, tu negocio y las funciones que uses. Pide una cotización o una prueba y hablamos de lo que necesita tu equipo. Los empleados reciben su cuenta de su lugar de trabajo, no de este sitio web.' },
+    { heading: '¿Velani desarrolla software a la medida?', text: 'Sí. Describe en la página de contacto la aplicación, el proceso interno o la integración que necesitas.' },
+    { heading: '¿Me pueden dar un precio o una fecha de entrega aquí?', text: 'No en el sitio web. Le ponemos precio a un proyecto cuando acordamos su alcance, y dejamos los honorarios, los hitos y las fechas de entrega en el acuerdo de proyecto por escrito.' },
+    { heading: '¿Una consulta inicia un contrato?', text: 'No. Una consulta inicia una conversación. No compra un producto ni da inicio a trabajo pagado.' },
+    { heading: '¿Dónde envío información confidencial?', text: 'No envíes contraseñas, claves de API, datos de pago ni registros confidenciales por un formulario público o por correo normal. Primero pide un canal adecuado.' },
+    { heading: '¿Cómo contacto al soporte al cliente?', text: 'El soporte al cliente responde de ' + HOURS_ES + '. Escribe a support@thevelani.com, llama al 787-925-2000 o usa la página de contacto.' },
+    { heading: '¿Cómo funciona la prueba gratis de NEVORA?', text: 'Un negocio con hasta 30 empleados puede usar NEVORA gratis por 30 días desde la configuración. No se necesita tarjeta y no se cobra nada. El día 30 continúas por cotización o cierras el espacio de trabajo. Primero, exporta tus datos: un espacio de trabajo cerrado y sus datos se eliminan en un plazo de 3 días, incluidas las tarjetas de tiempo y los comprobantes de nómina. Para cerrarlo, escribe a support@thevelani.com. NEVORA calcula los comprobantes de nómina; no les paga a los empleados ni presenta impuestos de nómina.' },
+  ],
+});
+
+/** The About and Support pages below their heroes. */
+export const ABOUT_ES = { project: 'Empieza un proyecto', see: 'Ver NEVORA', label: 'Sobre Velani' };
+export const FAQ_ES = {
+  supportKick: 'Soporte al cliente', supportTitle: 'Para nuestros clientes.', email: 'Correo electrónico', reply: 'Procuramos responderte en un plazo de dos días laborables',
+  phone: 'Teléfono', hours: HOURS_ES, post: 'Dirección postal', contactPage: 'Página de contacto', kick: 'Preguntas', title: 'Antes de empezar', nevoraQ: 'Preguntas sobre NEVORA',
+  appTitle: '¿Usas NEVORA en el trabajo?',
+  app: [['Soporte de NEVORA', '/pages/nevora-support'], ['Política de privacidad de NEVORA', '/pages/nevora-privacy'], ['Elimina tu cuenta de NEVORA', '/pages/nevora-account-deletion'], ['Términos de uso de NEVORA', '/pages/nevora-terms']],
+};
+
 /** Words for a link to a page that exists only in English. */
 export const IN_ENGLISH = '(en inglés)';
 
@@ -60,11 +104,11 @@ export const CHROME_ES = {
   products: 'Productos', productsMenu: 'Menú de productos',
   productsList: [
     ['NEVORA Workforce', '/pages/nevora', 'Horarios, registro de tiempo y cálculo de nómina'],
-    ['Rondo<span class="nav-soon">En desarrollo</span>', '/pages/nevora#rondo', 'El asistente de IA que llega a NEVORA'],
+    ['Rondo en NEVORA<span class="nav-soon">En desarrollo</span>', '/pages/nevora#rondo', 'El asistente de IA que llega a NEVORA'],
     ['NEVORA Relay<span class="nav-soon">Próximamente</span>', '/pages/products#relay', 'Pedidos, pantalla de cocina e inventario'],
   ],
   nav: [['Sitios web', '/pages/custom-development#web-applications', 'websites'], ['Apps a la medida', '/pages/custom-development', 'services'], ['Planes', '/pages/plans', 'plans'], ['Soporte', '/pages/help', 'help'], ['Nosotros', '/pages/about', 'about']],
-  rondoSoon: 'En desarrollo', relaySoon: 'Pronto', contact: 'Contacto',
+  rondoNevora: 'Rondo en NEVORA', rondoSoon: 'En desarrollo', relaySoon: 'Pronto', contact: 'Contacto',
   trial: 'Prueba gratis', trialLong: 'Pide la prueba gratis de NEVORA', project: 'Empieza un proyecto',
   support: 'Soporte al cliente', hours: HOURS_ES, brandOf: 'Velani es una marca de ',
   langGroup: 'Idioma',

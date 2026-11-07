@@ -35,6 +35,8 @@ const LEGACY = [
   /^snippets\/product-card\.liquid$/,
   /^sections\/(?!velani-)[^/]+\.liquid$/,
   /^assets\/velani-[^/]+\.png$/, /^assets\/[^/]+\.svg$/,
+  // Unreferenced leftovers on the live theme (checked 2026-11-07): the old time-clock script and the pet theme's section groups.
+  /^assets\/velani-home\.js$/, /^sections\/(header|footer)-group\.json$/,
 ];
 const IGNORED = new Set(['config/settings_data.json']);
 const isLegacy = file => LEGACY.some(re => re.test(file));

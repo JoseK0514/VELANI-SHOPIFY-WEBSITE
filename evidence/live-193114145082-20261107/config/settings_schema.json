@@ -1,0 +1,39 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "Velani Midnight",
+    "theme_version": "0.1.0",
+    "theme_author": "VELANI LLC",
+    "theme_documentation_url": "https://www.thevelani.com",
+    "theme_support_url": "https://www.thevelani.com/pages/contact"
+  },
+  {
+    "name": "Inquiry activation",
+    "settings": [
+      {
+        "type": "paragraph",
+        "content": "When on, the Contact page uses the Shopify contact form on the published theme, and inquiries are emailed to the store sender address. When off, the page shows the support email instead."
+      },
+      {
+        "type": "checkbox",
+        "id": "inquiries_enabled",
+        "label": "Enable inquiries on a published MAIN theme only",
+        "default": true
+      }
+    ]
+  },
+  {
+    "name": "AI assistant",
+    "settings": [
+      {
+        "type": "paragraph",
+        "content": "The Velani assistant (chat) appears on every page when the API address is set. Use the HTTPS address of the deployed Velani AI service, with no path. Leave empty to hide the assistant."
+      },
+      {
+        "type": "text",
+        "id": "assistant_api_url",
+        "label": "Assistant API address"
+      }
+    ]
+  }
+]

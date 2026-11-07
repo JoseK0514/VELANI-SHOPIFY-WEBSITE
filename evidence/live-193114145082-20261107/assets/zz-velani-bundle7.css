@@ -1,0 +1,164 @@
+@@@VELANIFILE assets/velani-home.css nl
+/* ---------- Home ---------- */
+.hero{padding-top:clamp(72px,9vw,128px)}
+.hero-grid{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:28px 64px;align-items:end}
+.hero-grid h1{grid-column:1/-1}
+.hero-side{grid-column:1/-1;max-width:34em;padding-bottom:0}
+.hero-side .acts{margin-top:28px}
+.js .hero-side.fade{transition-delay:.25s}
+
+/* The crop opens: the page starts on the app's greeting card, then scrolling widens it to the whole screen */
+.open{position:relative;pointer-events:none;height:210vh;height:210svh;margin-top:calc(clamp(48px,5vw,72px) - 22vh);margin-top:calc(clamp(48px,5vw,72px) - 22svh)}
+@media(prefers-reduced-motion:reduce){.open{margin-top:clamp(48px,5vw,72px)}}
+.no-js .open{margin-top:clamp(48px,5vw,72px)}
+.open-pin{position:sticky;top:0;height:100vh;height:100svh;display:flex;align-items:center;justify-content:flex-start;max-width:calc(var(--wrap) + var(--pad)*2);margin-inline:auto;padding-inline:var(--pad)}
+.frame{position:relative;width:min(1240px,100%,calc((100vh - 170px)*1.6));width:min(1240px,100%,calc((100svh - 170px)*1.6));aspect-ratio:2400/1500;container-type:inline-size}
+.crop{position:absolute;inset:0;overflow:hidden;border-radius:var(--r,16px);clip-path:inset(0 0 var(--cb,0px) 0 round var(--r,16px));background:#f7f6f3;transform:translateY(calc(var(--cb,0px) / 2))}
+.js .crop{--cb:32.38cqw;--r:2.06cqw}
+.crop img{position:absolute;left:0;top:0;width:100%;transform-origin:0 0;transform:translate(var(--tx,0px),var(--ty,0px)) scale(var(--sc,1));will-change:transform}
+.js .crop img{--sc:1.3746;--tx:-30.35cqw;--ty:-10.03cqw}
+.frame .ph{position:absolute;left:-2.5%;bottom:-5%;width:18%;border-radius:11.5% / 5.3%;opacity:var(--po,0);transform:translateY(var(--pt,48px));will-change:transform,opacity}
+.frame .ph .bar{display:block}
+.open-cap{position:absolute;left:24%;right:0;bottom:-38px;text-align:right;opacity:var(--co,0)}
+.no-js .frame{--po:1;--pt:0px;--co:1}
+.no-js .open,.open.flat{height:auto;padding-bottom:96px}
+.no-js .open-pin,.open.flat .open-pin{position:static;height:auto}
+@media(prefers-reduced-motion:reduce){.open{height:auto;padding-bottom:96px}.open-pin{position:static;height:auto}}
+@media(min-width:834px) and (max-aspect-ratio:1/1){.open{height:160vh;height:160svh}}
+.slab.phone.m-phone{display:none}
+
+.nev{padding-top:var(--s3)}
+.nev-grid{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:32px 64px;align-items:end}
+.nev .wm{width:min(300px,60vw)}
+.status{margin-top:20px;font-size:0.9375rem;color:var(--text-2)}
+.status i{display:inline-block;width:7px;height:7px;border-radius:50%;background:#e2a54a}
+.nev .t1{margin-top:26px;max-width:16ch}
+.stills{display:grid;grid-template-columns:minmax(0,.62fr) minmax(0,1.25fr) minmax(0,1.5fr);gap:clamp(16px,2vw,28px);align-items:end;margin-top:var(--s1)}
+.stills .slab.phone{aspect-ratio:900/1885}
+.stills figcaption{margin-top:16px}
+.help-strip{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:8px 24px;margin-top:var(--s1);padding:20px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);font-size:1rem;color:var(--text-2)}
+
+.build{padding-top:var(--s3)}
+.build-grid{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,6fr);gap:40px 72px;align-items:start}
+.build-head{position:sticky;top:96px}
+.build-head .t1{font-size:clamp(2.375rem,4vw,3.5rem)}
+.build-head .lede{margin-top:22px}
+.how{margin-top:var(--s2)}
+.how ol{margin-top:28px;position:relative}.how li{background:linear-gradient(var(--line-2),var(--line-2)) 4px 0/1px 31px no-repeat,linear-gradient(var(--line-2),var(--line-2)) 4px 40px/1px 100% no-repeat}.how li:first-child{background-size:0 0,1px 100%}.how li:last-child{background-size:1px 31px,0 0}.how li{position:relative;padding-left:36px!important}.how li.draw::before{left:36px}.how li::after{content:"";position:absolute;left:0;top:31px;width:9px;height:9px;border-radius:50%;background:var(--bg);box-shadow:0 0 0 1px var(--line-2);transition:background .5s var(--out),box-shadow .5s var(--out)}.how li.in::after{background:var(--accent);box-shadow:0 0 0 4px rgba(187,216,255,.12)}.how li:nth-child(2)::after{transition-delay:.15s}.how li:nth-child(3)::after{transition-delay:.3s}.how li:nth-child(4)::after{transition-delay:.45s}
+.how li{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:8px 24px;padding:22px 0 24px;align-items:baseline}
+.how li b{font-size:1.1875rem;font-weight:600;letter-spacing:-.015em;text-wrap:balance}
+.how li span{font-size:1rem;line-height:1.55;color:var(--text-2)}
+
+.doors{padding:var(--s3) 0 var(--s2)}
+.doors-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.door{border-radius:28px;background:var(--panel-2);padding:clamp(32px,4vw,56px);min-height:340px;display:flex;flex-direction:column;justify-content:space-between;gap:40px}
+.door .t2{max-width:14ch}
+.mail{margin-top:28px;font-size:1rem;color:var(--text-3)}
+.mail a{color:var(--text);text-decoration:underline;text-underline-offset:4px;text-decoration-thickness:1px}
+
+@media(max-width:1023px){
+ .hero-side{grid-column:1;max-width:36em}
+ .hero-grid,.nev-grid,.build-grid{grid-template-columns:1fr}
+ .nev-grid>div:last-child{max-width:36em}
+ .build-head{position:static}
+ .doors-grid{grid-template-columns:1fr}
+ .door{min-height:0}
+}
+@media(max-width:833px){
+ .open{display:none}
+ .slab.phone.m-phone{display:block;margin:40px auto 0;width:min(320px,82vw);aspect-ratio:900/1320;border-radius:34px 34px 0 0}
+ .m-phone .bar{display:none}
+ .stills{grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr)}
+ .stills figure:first-child{display:none}
+ .stills figure:last-child{grid-column:1/-1}
+ .how li{grid-template-columns:1fr}
+}
+@media(max-width:600px){
+ body{font-size:1rem}
+ .acts{flex-direction:column;align-items:flex-start;gap:6px}
+ .stills{grid-template-columns:1fr}
+ .door{padding:32px 22px;border-radius:22px}
+}
+@media(max-width:360px){.door{padding:28px 16px}.door .pill{font-size:1rem;padding-inline:20px}}
+
+.no-js .how li::after{background:var(--accent)}@media(prefers-reduced-motion:reduce){.how li::after{transition:none}}
+@@@VELANIFILE assets/velani-nevora.js nl
+window.__fx=[];
+(()=>{
+ const $=s=>document.querySelector(s),rm=matchMedia('(prefers-reduced-motion: reduce)'),big=matchMedia('(min-width:960px)');
+ const pinOK=matchMedia('(min-width:1024px) and (min-height:600px)');
+ // Local nav: solid as soon as it sticks; names the section whose heading has passed
+ const lnav=$('#lnav'),cur=$('#lnav-cur'),ink=$('#lnav-ink'),links=[...document.querySelectorAll('[data-spy]')];
+ const heads=links.map(a=>{const t=document.getElementById(a.dataset.spy);return t&&(t.querySelector('h1,h2')||t)});
+ let lastIdx=-1;
+ const moveInk=i=>{if(!big.matches)return;const a=links[i];ink.style.setProperty('--x',(a.offsetLeft+12)+'px');ink.style.setProperty('--w',a.offsetWidth-24)};
+ __fx.push({always:true,el:document.body,run(p,r,vh){lnav.classList.toggle('solid',lnav.getBoundingClientRect().top<=0&&scrollY>2);
+  let idx=0;heads.forEach((h,i)=>{if(h&&h.getBoundingClientRect().top<=vh*.45)idx=i});
+  if(idx!==lastIdx){lastIdx=idx;links.forEach((a,i)=>i===idx?a.setAttribute('aria-current','true'):a.removeAttribute('aria-current'));cur.textContent=links[idx].textContent;moveInk(idx)}}});
+ addEventListener('resize',()=>{if(lastIdx>=0)moveInk(lastIdx)});
+ // Phone story: the pinned phone shows what each step describes; Alexandra's shift line fills with a live time
+ const steps=[...document.querySelectorAll('.st')],pp=$('#pinPhone'),feed=$('#pinPhone .feed'),bar=$('#shiftbar'),now=$('#shiftNow');let si=-1;
+ const show=i=>{if(i===si)return;si=i;steps.forEach((s,j)=>s.classList.toggle('on',j===i));feed.style.setProperty('--y',steps[i].dataset.y+'%');pp.classList.toggle('down',i>0)};show(0);
+ __fx.push({always:true,el:$('#story'),run(p,r,vh,c){let best=0,bd=1e9;steps.forEach((s,i)=>{const b=s.getBoundingClientRect();const d=Math.abs(b.top+b.height/2-vh/2);if(d<bd){bd=d;best=i}});show(best);
+  const sp=c((vh*.5-r.top)/r.height);bar.style.setProperty('--sp',sp.toFixed(3));const mins=Math.round(sp*480/15)*15,h=12+Math.floor(mins/60),m=mins%60;
+  now.textContent=((h-1)%12+1)+':'+String(m).padStart(2,'0')+(h<12?' AM':' PM');now.style.setProperty('--tip',(sp*r.height).toFixed(0)+'px')}});
+ // Time clock: scrolling the pinned section steps the tablet; tabs jump to a step without flicker
+ const tabs=[...document.querySelectorAll('.ktabs [role=tab]')],imgs=[...document.querySelectorAll('#kdev img[data-k]')],note=$('#knote'),kdev=$('#kdev'),clock=$('#clock');
+ const notes=['Four digits, then Continue. The screen reminds him that his PIN is different from the password he uses to sign in to NEVORA. The Español button is in the corner.','NEVORA shows the time it saved, 2:17 PM, then clears the screen after eight seconds for the next person.','When he comes back, the same PIN shows his options: clock out or start a break.'];
+ let ki=0,wasT;
+ const swap=i=>{imgs.forEach(m=>{const k=+m.dataset.k;m.classList.toggle('was',m.classList.contains('on')&&k!==i);m.classList.toggle('on',k===i)});clearTimeout(wasT);wasT=setTimeout(()=>imgs.forEach(m=>m.classList.remove('was')),380)};
+ const setK=(i,focus,user)=>{if(i===ki&&!focus&&!user)return;const changed=i!==ki;ki=i;if(changed)swap(i);
+  tabs.forEach(t=>{const on=+t.dataset.i===i;t.setAttribute('aria-selected',on);t.tabIndex=on?0:-1;if(on&&focus)t.focus()});
+  kdev.setAttribute('aria-labelledby','kt-'+i);note.setAttribute('aria-live',user?'polite':'off');note.textContent=notes[i];
+  kdev.classList.remove('k1');if(i===1){void kdev.offsetWidth;kdev.classList.add('k1')}};
+ let lock=-1,lockT;const unlock=()=>{lock=-1;window.__req&&__req()};
+ const goK=(i,focus)=>{setK(i,focus,true);if(!pinOK.matches)return;lock=i;const top=clock.getBoundingClientRect().top+scrollY,track=clock.offsetHeight-(window.__svh||innerHeight);
+  scrollTo({top:top+track*(i+.5)/3,behavior:rm.matches?'auto':'smooth'});clearTimeout(lockT);lockT=setTimeout(unlock,1000)};
+ addEventListener('scrollend',unlock);['wheel','touchstart'].forEach(t=>addEventListener(t,()=>{if(lock>=0)unlock()},{passive:true}));
+ tabs.forEach((t,k)=>{t.addEventListener('click',()=>goK(+t.dataset.i));t.addEventListener('keydown',e=>{
+  if(e.key==='Home'||e.key==='End'){e.preventDefault();goK(e.key==='Home'?0:2,true);return}
+  const d={ArrowDown:1,ArrowRight:1,ArrowUp:-1,ArrowLeft:-1}[e.key]||0;if(!d)return;e.preventDefault();goK((k+d+3)%3,true)})});
+ __fx.push({always:true,el:clock,run(p){if(!pinOK.matches||lock>=0)return;setK(Math.min(2,Math.floor(p*3)))}});
+ // Owner screenshot: clip reveal, then hand the edge back to the slab's own ring and shadow
+ const ow=$('#owner');ow.addEventListener('transitionend',e=>{if(e.propertyName==='clip-path')ow.style.clipPath='none'});
+ // Local nav disclosure on narrow screens
+ const tog=$('#lnav-tog'),list=$('#lnav-list');const setL=o=>{tog.setAttribute('aria-expanded',String(o));list.classList.toggle('open',o)};
+ tog.addEventListener('click',()=>setL(tog.getAttribute('aria-expanded')!=='true'));list.addEventListener('click',e=>{if(e.target.closest('a'))setL(false)});
+ document.addEventListener('keydown',e=>{if(e.key==='Escape'&&tog.getAttribute('aria-expanded')==='true'){setL(false);tog.focus()}});
+ big.addEventListener('change',e=>{if(e.matches)setL(false)});
+})();
+
+// Try the time clock: a working copy of the NEVORA PIN screen. Fictional; nothing is stored or sent.
+(()=>{
+ const k=document.getElementById('kio');if(!k)return;
+ const $=id=>document.getElementById(id);
+ const ES={'Time clock':'Registro de tiempo','Enter your PIN':'Ingresa tu PIN','Clear':'Borrar','Continue':'Continuar','Your PIN is separate from your portal password.':'Tu PIN es distinto de tu contraseña del portal.','Clock in recorded':'Tiempo registrado','Saved at':'Registrado','. This screen clears in eight seconds.':'. Esta pantalla se borra en ocho segundos.','Done':'Listo','Delete digit':'Borrar dígito'};
+ const dots=[...$('kio-dots').children],go=$('kio-go'),live=$('kio-live'),pinStep=$('kio-pin'),okStep=$('kio-ok'),bar=$('kio-bar'),lang=$('kio-lang');
+ let es=false,pin='',timer=0,last='';
+ const loc=()=>es?'es-US':'en-US';
+ const parts=d=>{const p=new Intl.DateTimeFormat(loc(),{hour:'numeric',minute:'2-digit',hour12:true}).formatToParts(d);const v=t=>(p.find(x=>x.type===t)||{}).value||'';return{hm:v('hour')+':'+v('minute'),ap:v('dayPeriod').toUpperCase()}};
+ const tick=()=>{const d=new Date(),{hm,ap}=parts(d),day=new Intl.DateTimeFormat(loc(),{weekday:'long',month:'long',day:'numeric'}).format(d),key=hm+ap+day;
+  if(key===last)return;last=key;$('kio-hm').textContent=hm;$('kio-ap').textContent=ap;$('kio-date').textContent=day.charAt(0).toUpperCase()+day.slice(1)};
+ const say=t=>{live.textContent=t};
+ const count=()=>say(es?pin.length+' de 4 dígitos':pin.length+' of 4 digits entered');
+ const back=()=>{pin=pin.slice(0,-1);render();count()};
+ const clear=()=>{pin='';render();say(es?'Borrado':'Cleared')};
+ const render=()=>{dots.forEach((d,i)=>d.classList.toggle('on',i<pin.length));go.disabled=pin.length<4};
+ const press=d=>{if(pin.length>=4){const s=$('kio-dots');s.classList.remove('shake');void s.offsetWidth;s.classList.add('shake');return}pin+=d;render();count()};
+ const inside=()=>k.contains(document.activeElement);
+ const reset=()=>{clearTimeout(timer);const f=inside();pin='';render();okStep.hidden=true;pinStep.hidden=false;bar.classList.remove('run');say('');if(f)$('kio-pin-h').focus()};
+ const submit=()=>{if(pin.length!==4)return;const d=new Date(),{hm,ap}=parts(d),day=new Intl.DateTimeFormat(loc(),{month:'short',day:'numeric'}).format(d);
+  $('kio-saved').textContent=day+' · '+hm+' '+ap;const f=inside();pinStep.hidden=true;okStep.hidden=false;
+  bar.classList.remove('run');void bar.offsetWidth;bar.classList.add('run');if(f)$('kio-ok-h').focus();clearTimeout(timer);timer=setTimeout(reset,8000)};
+ k.querySelector('.kio-pad').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;
+  if(b.dataset.d)press(b.dataset.d);else if(b.dataset.act==='clear')clear();else if(b.dataset.act==='back')back()});
+ go.addEventListener('click',submit);$('kio-done').addEventListener('click',reset);
+ k.addEventListener('keydown',e=>{if(pinStep.hidden||e.metaKey||e.ctrlKey||e.altKey)return;
+  if(/^[0-9]$/.test(e.key)){e.preventDefault();press(e.key)}else if(e.key==='Backspace'){e.preventDefault();back()}
+  else if(e.key==='Enter'&&e.target.tagName!=='BUTTON'){e.preventDefault();submit()}else if(e.key==='Escape')clear()});
+ lang.addEventListener('click',()=>{es=!es;lang.setAttribute('aria-pressed',String(es));k.lang=es?'es':'en';
+  k.querySelectorAll('[data-k-t]').forEach(n=>{const en=n.dataset.kT;n.textContent=es?(ES[en]||en):en});
+  k.querySelectorAll('[data-k-l]').forEach(n=>{const en=n.dataset.kL;n.setAttribute('aria-label',es?(ES[en]||en):en)});last='';tick()});
+ tick();let iv=setInterval(tick,1000);
+ document.addEventListener('visibilitychange',()=>{clearInterval(iv);if(!document.hidden){tick();iv=setInterval(tick,1000)}});
+})();

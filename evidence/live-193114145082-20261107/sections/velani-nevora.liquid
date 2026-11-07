@@ -1,0 +1,197 @@
+<nav class="lnav" id="lnav" aria-label="NEVORA">
+ <div class="wrap lnav-in">
+  <a class="lnav-t" href="#top"><img src="{{ 'night-nevora-wm-white.png' | asset_url }}" alt="NEVORA" width="907" height="122"></a>
+  <div class="lnav-v"><button class="lnav-vbtn" id="lnav-vbtn" type="button" aria-expanded="false" aria-controls="lnav-vmenu">by Velani<svg class="icon" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"/></svg></button><div class="lnav-vmenu" id="lnav-vmenu" hidden><a href="{% if theme.role == 'main' %}{{ routes.root_url }}{% else %}{{ routes.root_url }}?preview_theme_id={{ theme.id }}{% endif %}">Velani home</a><a href="{% if theme.role == 'main' %}/pages/custom-development{% else %}{{ routes.root_url }}?preview_theme_id={{ theme.id }}&amp;view=velani-custom-development{% endif %}">Custom development</a><a href="{% if theme.role == 'main' %}/pages/about{% else %}{{ routes.root_url }}?preview_theme_id={{ theme.id }}&amp;view=velani-about{% endif %}">About</a><a href="{% if theme.role == 'main' %}/pages/nevora-support{% else %}{{ routes.root_url }}?preview_theme_id={{ theme.id }}&amp;view=velani-nevora-support{% endif %}">NEVORA support</a><a href="{% if theme.role == 'main' %}/pages/contact{% else %}{{ routes.root_url }}?preview_theme_id={{ theme.id }}&amp;view=velani-contact{% endif %}">Contact</a></div></div>
+  <ul id="lnav-list"><li><a href="#rondo" data-spy="rondo">Rondo</a></li><li><a href="#try" data-spy="try">Time clock</a></li><li><a href="#screens" data-spy="screens">Screens</a></li><li><a href="#specs" data-spy="specs">Details</a></li><li><a href="#get" data-spy="get">Get NEVORA</a></li><li><a href="#faq" data-spy="faq">Questions</a></li><li class="lnav-by"><span>NEVORA is a product of Velani</span><a href="{% if theme.role == 'main' %}{{ routes.root_url }}{% else %}{{ routes.root_url }}?preview_theme_id={{ theme.id }}{% endif %}">Velani home</a><a href="{% if theme.role == 'main' %}/pages/custom-development{% else %}{{ routes.root_url }}?preview_theme_id={{ theme.id }}&amp;view=velani-custom-development{% endif %}">Custom development</a><a href="{% if theme.role == 'main' %}/pages/about{% else %}{{ routes.root_url }}?preview_theme_id={{ theme.id }}&amp;view=velani-about{% endif %}">About</a><a href="{% if theme.role == 'main' %}/pages/nevora-support{% else %}{{ routes.root_url }}?preview_theme_id={{ theme.id }}&amp;view=velani-nevora-support{% endif %}">NEVORA support</a><a href="{% if theme.role == 'main' %}/pages/contact{% else %}{{ routes.root_url }}?preview_theme_id={{ theme.id }}&amp;view=velani-contact{% endif %}">Contact</a><span class="lang-sw lnav-by-lang" role="group" aria-label="Language"><a href="{% if theme.role == 'main' %}/pages/nevora{% else %}{{ routes.root_url }}?preview_theme_id={{ theme.id }}&amp;view=velani-nevora{% endif %}" hreflang="en" lang="en" aria-label="English" aria-current="true">EN</a><span class="lang-sep" aria-hidden="true">|</span><a href="{% if theme.role == 'main' %}/pages/es-nevora{% else %}{{ routes.root_url }}?preview_theme_id={{ theme.id }}&amp;view=velani-es-nevora{% endif %}" hreflang="es" lang="es" aria-label="Español">ES</a></span></li><li aria-hidden="true"><i class="lnav-ink" id="lnav-ink"></i></li></ul>
+  <span class="lang-sw lnav-lang" role="group" aria-label="Language"><a href="{% if theme.role == 'main' %}/pages/nevora{% else %}{{ routes.root_url }}?preview_theme_id={{ theme.id }}&amp;view=velani-nevora{% endif %}" hreflang="en" lang="en" aria-label="English" aria-current="true">EN</a><span class="lang-sep" aria-hidden="true">|</span><a href="{% if theme.role == 'main' %}/pages/es-nevora{% else %}{{ routes.root_url }}?preview_theme_id={{ theme.id }}&amp;view=velani-es-nevora{% endif %}" hreflang="es" lang="es" aria-label="Español">ES</a></span>
+  <a class="pill" href="{% if theme.role == 'main' %}/pages/contact?interest=nevora-demo{% else %}{{ routes.root_url }}?preview_theme_id={{ theme.id }}&amp;view=velani-contact&amp;interest=nevora-demo{% endif %}">Request free trial</a>
+  <button class="lnav-tog" id="lnav-tog" type="button" aria-expanded="false" aria-controls="lnav-list" aria-label="Menu"><span class="i-open"><svg class="icon" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M224,128a8,8,0,0,1-8,8H40a8,8,0,0,1,0-16H216A8,8,0,0,1,224,128ZM40,72H216a8,8,0,0,0,0-16H40a8,8,0,0,0,0,16ZM216,184H40a8,8,0,0,0,0,16H216a8,8,0,0,0,0-16Z"/></svg></span><span class="i-close"><svg class="icon" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M205.66,194.34a8,8,0,0,1-11.32,11.32L128,139.31,61.66,205.66a8,8,0,0,1-11.32-11.32L116.69,128,50.34,61.66A8,8,0,0,1,61.66,50.34L128,116.69l66.34-66.35a8,8,0,0,1,11.32,11.32L139.31,128Z"/></svg></span></button>
+ </div>
+</nav>
+
+
+<section class="hpanel long n-hero" id="top" aria-labelledby="n-t">
+ <img class="hph" src="{{ 'night-ai-devices.webp' | asset_url }}" alt="" width="1920" height="1080" fetchpriority="high">
+ <div class="hshade"></div>
+ <div class="hcopy">
+  <p class="hkick status"><i aria-hidden="true"></i><span>Available now</span></p>
+  <h1 class="rise" id="n-t">Scheduling, time clock and payroll calculation for shift teams.</h1>
+  <p class="fade">Plan on the web. Check shifts on the phone. Clock in at a shared tablet with a PIN.</p>
+  <div class="hacts fade"><a class="hb fill" href="#try">Try the time clock<svg class="icon" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></a><a class="hb" href="{% if theme.role == 'main' %}/pages/contact?interest=nevora-demo{% else %}{{ routes.root_url }}?preview_theme_id={{ theme.id }}&amp;view=velani-contact&amp;interest=nevora-demo{% endif %}">Request free trial<svg class="icon" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></a></div>
+  <p class="hfact fade">Free for 30 days&nbsp;· Up to 30 employees&nbsp;· No card&nbsp;· English and Spanish</p>
+  <a class="more n-help fade" href="#help"><span>Already use NEVORA? Get help</span><svg class="icon" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M181.66,133.66l-80,80a8,8,0,0,1-11.32-11.32L164.69,128,90.34,53.66a8,8,0,0,1,11.32-11.32l80,80A8,8,0,0,1,181.66,133.66Z"/></svg></a>
+ </div>
+ <div class="hshot fade"><img src="{{ 'night-phone-long.webp' | asset_url }}" alt="NEVORA on an employee’s phone: her shift today and two things to do" width="1170" height="3936"></div>
+</section>
+
+<section class="chap" id="features" aria-labelledby="feat-t">
+ <div class="wrap">
+  <div class="head"><p class="hkick">What NEVORA does</p><h2 class="t2 rise" id="feat-t">Schedule. Clock in. Calculate pay.</h2></div>
+  <ul class="feat">
+   <li><svg class="icon" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M208,32H184V24a8,8,0,0,0-16,0v8H88V24a8,8,0,0,0-16,0v8H48A16,16,0,0,0,32,48V208a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V48A16,16,0,0,0,208,32ZM72,48v8a8,8,0,0,0,16,0V48h80v8a8,8,0,0,0,16,0V48h24V80H48V48ZM208,208H48V96H208V208Z"/></svg><b>Scheduling</b><span>Build the week. Post it once.</span></li>
+   <li><svg class="icon" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Zm64-88a8,8,0,0,1-8,8H128a8,8,0,0,1-8-8V72a8,8,0,0,1,16,0v48h48A8,8,0,0,1,192,128Z"/></svg><b>Time clock</b><span>A shared tablet. A four-digit PIN.</span></li>
+   <li><svg class="icon" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M213.66,181.66l-32,32a8,8,0,0,1-11.32-11.32L188.69,184H48a8,8,0,0,1,0-16H188.69l-18.35-18.34a8,8,0,0,1,11.32-11.32l32,32A8,8,0,0,1,213.66,181.66Zm-139.32-64a8,8,0,0,0,11.32-11.32L67.31,88H208a8,8,0,0,0,0-16H67.31L85.66,53.66A8,8,0,0,0,74.34,42.34l-32,32a8,8,0,0,0,0,11.32Z"/></svg><b>Swaps and time off</b><span>Asked and answered in the app.</span></li>
+   <li><svg class="icon" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M72,104a8,8,0,0,1,8-8h96a8,8,0,0,1,0,16H80A8,8,0,0,1,72,104Zm8,40h96a8,8,0,0,0,0-16H80a8,8,0,0,0,0,16ZM232,56V208a8,8,0,0,1-11.58,7.15L192,200.94l-28.42,14.21a8,8,0,0,1-7.16,0L128,200.94,99.58,215.15a8,8,0,0,1-7.16,0L64,200.94,35.58,215.15A8,8,0,0,1,24,208V56A16,16,0,0,1,40,40H216A16,16,0,0,1,232,56Zm-16,0H40V195.06l20.42-10.22a8,8,0,0,1,7.16,0L96,199.06l28.42-14.22a8,8,0,0,1,7.16,0L160,199.06l28.42-14.22a8,8,0,0,1,7.16,0L216,195.06Z"/></svg><b>Pay statements</b><span>Calculated from approved hours.</span></li>
+   <li><svg class="icon" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M247.15,212.42l-56-112a8,8,0,0,0-14.31,0l-21.71,43.43A88,88,0,0,1,108,126.93,103.65,103.65,0,0,0,135.69,64H160a8,8,0,0,0,0-16H104V32a8,8,0,0,0-16,0V48H32a8,8,0,0,0,0,16h87.63A87.76,87.76,0,0,1,96,116.35a87.74,87.74,0,0,1-19-31,8,8,0,1,0-15.08,5.34A103.63,103.63,0,0,0,84,127a87.55,87.55,0,0,1-52,17,8,8,0,0,0,0,16,103.46,103.46,0,0,0,64-22.08,104.18,104.18,0,0,0,51.44,21.31l-26.6,53.19a8,8,0,0,0,14.31,7.16L148.94,192h70.11l13.79,27.58A8,8,0,0,0,240,224a8,8,0,0,0,7.15-11.58ZM156.94,176,184,121.89,211.05,176Z"/></svg><b>English and Spanish</b><span>For everyone on the team.</span></li>
+   <li><svg class="icon" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M176,16H80A24,24,0,0,0,56,40V216a24,24,0,0,0,24,24h96a24,24,0,0,0,24-24V40A24,24,0,0,0,176,16ZM72,64H184V192H72Zm8-32h96a8,8,0,0,1,8,8v8H72V40A8,8,0,0,1,80,32Zm96,192H80a8,8,0,0,1-8-8v-8H184v8A8,8,0,0,1,176,224Z"/></svg><b>Phone, web and tablet</b><span>On the web and in the NEVORA app.</span></li>
+  </ul>
+ </div>
+</section>
+
+<section class="chap rondo" id="rondo" aria-labelledby="rondo-t">
+ <div class="wrap">
+  <div class="rondo-grid">
+   <div class="rondo-copy">
+    <p class="hkick rondo-kick"><b class="rmark rondo-mark" aria-hidden="true"><svg viewBox="0 0 32 32" focusable="false"><circle cx="16" cy="16" r="14.25"/><path d="M16 1.75A14.25 14.25 0 1 1 1.75 16"/></svg>R</b>Rondo&nbsp;· NEVORA’s AI assistant</p>
+    <h2 class="t1 rise" id="rondo-t">Rondo will do the work. You make the call.</h2>
+    <p class="lede">Rondo is being built to watch your day, find what needs attention and line up the fix. Nothing will change until you approve it. The Rondo chat on this website answers questions about Velani and NEVORA today.</p>
+    <ul class="rondo-can">
+     <li><svg class="icon" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M120,40V16a8,8,0,0,1,16,0V40a8,8,0,0,1-16,0Zm72,88a64,64,0,1,1-64-64A64.07,64.07,0,0,1,192,128Zm-16,0a48,48,0,1,0-48,48A48.05,48.05,0,0,0,176,128ZM58.34,69.66A8,8,0,0,0,69.66,58.34l-16-16A8,8,0,0,0,42.34,53.66Zm0,116.68-16,16a8,8,0,0,0,11.32,11.32l16-16a8,8,0,0,0-11.32-11.32ZM192,72a8,8,0,0,0,5.66-2.34l16-16a8,8,0,0,0-11.32-11.32l-16,16A8,8,0,0,0,192,72Zm5.66,114.34a8,8,0,0,0-11.32,11.32l16,16a8,8,0,0,0,11.32-11.32ZM48,128a8,8,0,0,0-8-8H16a8,8,0,0,0,0,16H40A8,8,0,0,0,48,128Zm80,80a8,8,0,0,0-8,8v24a8,8,0,0,0,16,0V216A8,8,0,0,0,128,208Zm112-88H216a8,8,0,0,0,0,16h24a8,8,0,0,0,0-16Z"/></svg><b>Morning briefing</b><span>Who is scheduled, who clocked in and who is late, before you ask.</span></li>
+     <li><svg class="icon" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M244.8,150.4a8,8,0,0,1-11.2-1.6A51.6,51.6,0,0,0,192,128a8,8,0,0,1-7.37-4.89,8,8,0,0,1,0-6.22A8,8,0,0,1,192,112a24,24,0,1,0-23.24-30,8,8,0,1,1-15.5-4A40,40,0,1,1,219,117.51a67.94,67.94,0,0,1,27.43,21.68A8,8,0,0,1,244.8,150.4ZM190.92,212a8,8,0,1,1-13.84,8,57,57,0,0,0-98.16,0,8,8,0,1,1-13.84-8,72.06,72.06,0,0,1,33.74-29.92,48,48,0,1,1,58.36,0A72.06,72.06,0,0,1,190.92,212ZM128,176a32,32,0,1,0-32-32A32,32,0,0,0,128,176ZM72,120a8,8,0,0,0-8-8A24,24,0,1,1,87.24,82a8,8,0,1,0,15.5-4A40,40,0,1,0,37,117.51,67.94,67.94,0,0,0,9.6,139.19a8,8,0,1,0,12.8,9.61A51.6,51.6,0,0,1,64,128,8,8,0,0,0,72,120Z"/></svg><b>Finds cover</b><span>When someone calls out, Rondo will list who is free, best fit first, with their hours this week.</span></li>
+     <li><svg class="icon" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M72,104a8,8,0,0,1,8-8h96a8,8,0,0,1,0,16H80A8,8,0,0,1,72,104Zm8,40h96a8,8,0,0,0,0-16H80a8,8,0,0,0,0,16ZM232,56V208a8,8,0,0,1-11.58,7.15L192,200.94l-28.42,14.21a8,8,0,0,1-7.16,0L128,200.94,99.58,215.15a8,8,0,0,1-7.16,0L64,200.94,35.58,215.15A8,8,0,0,1,24,208V56A16,16,0,0,1,40,40H216A16,16,0,0,1,232,56Zm-16,0H40V195.06l20.42-10.22a8,8,0,0,1,7.16,0L96,199.06l28.42-14.22a8,8,0,0,1,7.16,0L160,199.06l28.42-14.22a8,8,0,0,1,7.16,0L216,195.06Z"/></svg><b>Checks pay before payday</b><span>It will review attendance and timecards for the pay period and point to what needs a look.</span></li>
+     <li><svg class="icon" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M221.87,83.16A104.1,104.1,0,1,1,195.67,49l22.67-22.68a8,8,0,0,1,11.32,11.32l-96,96a8,8,0,0,1-11.32-11.32l27.72-27.72a40,40,0,1,0,17.87,31.09,8,8,0,1,1,16-.9,56,56,0,1,1-22.38-41.65L184.3,60.39a87.88,87.88,0,1,0,23.13,29.67,8,8,0,0,1,14.44-6.9Z"/></svg><b>Knows your priorities</b><span>Tell it what matters, like keeping overtime down. It will remember.</span></li>
+    </ul>
+    <p class="rondo-trust">Designed so you approve every change&nbsp;· Every answer links to where it came from&nbsp;· English and Spanish&nbsp;· For owners</p>
+    <div class="acts"><a class="pill" href="{% if theme.role == 'main' %}/pages/contact?interest=nevora{% else %}{{ routes.root_url }}?preview_theme_id={{ theme.id }}&amp;view=velani-contact&amp;interest=nevora{% endif %}" data-open-rondo>Ask Rondo</a></div>
+    <p class="rondo-fine">Rondo is in development.</p>
+   </div>
+   <figure class="rondo-fig">
+    <div class="hchat rchat" data-in>
+     <p class="hchat-h"><b class="rmark" aria-hidden="true"><svg viewBox="0 0 32 32" focusable="false"><circle cx="16" cy="16" r="14.25"/><path d="M16 1.75A14.25 14.25 0 1 1 1.75 16"/></svg>R</b><span>Rondo&nbsp;· NEVORA assistant</span><i>In development</i></p>
+     <p class="msg me m1">Good morning. Anything I should know?</p>
+     <p class="msg ai a1">Two things. Luis is 12 minutes late at Northside, and Saturday 2 to 8 pm has no one on the register.</p>
+     <p class="msg me m2">Who can take Saturday?</p>
+     <p class="msg ai a2">Maria is free and at 28 of 32 hours this week, so she is the best fit. I set it up for you to review.</p>
+    </div>
+    <figcaption>Example conversation with fictional people.</figcaption>
+   </figure>
+  </div>
+ </div>
+</section>
+
+<section class="chap try" id="try" aria-labelledby="try-t">
+ <div class="wrap">
+  <div class="head"><p class="hkick">Time clock</p><h2 class="t1 rise" id="try-t">Try the time clock</h2><p class="lede fade">Type any four digits. The screen clears for the next person.</p></div>
+  <p class="kio-note"><b>Sample workplace.</b> Nothing you enter is saved or sent.</p>
+    <div class="kio" id="kio">
+   <div class="kio-side">
+    <div class="kio-brand"><img src="{{ 'night-nevora-wm-white.png' | asset_url }}" alt="NEVORA" width="907" height="122"><span data-k-t="Time clock">Time clock</span></div>
+    <div class="kio-now">
+     <p class="kio-loc"><svg class="icon" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M128,64a40,40,0,1,0,40,40A40,40,0,0,0,128,64Zm0,64a24,24,0,1,1,24-24A24,24,0,0,1,128,128Zm0-112a88.1,88.1,0,0,0-88,88c0,31.4,14.51,64.68,42,96.25a254.19,254.19,0,0,0,41.45,38.3,8,8,0,0,0,9.18,0A254.19,254.19,0,0,0,174,200.25c27.45-31.57,42-64.85,42-96.25A88.1,88.1,0,0,0,128,16Zm0,206c-16.53-13-72-60.75-72-118a72,72,0,0,1,144,0C200,161.23,144.53,209,128,222Z"/></svg><b>Northside Main Office</b></p>
+     <p class="kio-time"><span id="kio-hm">2:17</span><small id="kio-ap">PM</small></p>
+     <p class="kio-date" id="kio-date">Tuesday, October 27</p>
+    </div>
+   </div>
+   <div class="kio-main">
+    <div class="kio-step" id="kio-pin">
+     <h3 class="kio-h" id="kio-pin-h" tabindex="-1" data-k-t="Enter your PIN">Enter your PIN</h3>
+     <div class="kio-dots" id="kio-dots" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+     <div class="kio-pad" role="group" aria-labelledby="kio-pin-h">
+      <button type="button" data-d="1">1</button><button type="button" data-d="2">2</button><button type="button" data-d="3">3</button>
+      <button type="button" data-d="4">4</button><button type="button" data-d="5">5</button><button type="button" data-d="6">6</button>
+      <button type="button" data-d="7">7</button><button type="button" data-d="8">8</button><button type="button" data-d="9">9</button>
+      <button type="button" class="kio-soft" data-act="clear" data-k-t="Clear">Clear</button><button type="button" data-d="0">0</button><button type="button" class="kio-soft" data-act="back" aria-label="Delete digit" data-k-l="Delete digit"><svg class="icon" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M216,40H68.53a16.08,16.08,0,0,0-13.72,7.77L9.14,123.88a8,8,0,0,0,0,8.24l45.67,76.11A16.08,16.08,0,0,0,68.53,216H216a16,16,0,0,0,16-16V56A16,16,0,0,0,216,40ZM61.67,204.12,68.53,200h0ZM216,200H68.53l-43.2-72,43.2-72H216ZM106.34,146.34,124.69,128l-18.35-18.34a8,8,0,0,1,11.32-11.32L136,116.69l18.34-18.35a8,8,0,0,1,11.32,11.32L147.31,128l18.35,18.34a8,8,0,0,1-11.32,11.32L136,139.31l-18.34,18.35a8,8,0,0,1-11.32-11.32Z"/></svg></button>
+     </div>
+     <button type="button" class="kio-go" id="kio-go" disabled><span data-k-t="Continue">Continue</span><svg class="icon" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M181.66,133.66l-80,80a8,8,0,0,1-11.32-11.32L164.69,128,90.34,53.66a8,8,0,0,1,11.32-11.32l80,80A8,8,0,0,1,181.66,133.66Z"/></svg></button>
+     <div class="kio-foot"><p data-k-t="Your PIN is separate from your portal password.">Your PIN is separate from your portal password.</p><button type="button" class="kio-lang" id="kio-lang"><svg class="icon" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M247.15,212.42l-56-112a8,8,0,0,0-14.31,0l-21.71,43.43A88,88,0,0,1,108,126.93,103.65,103.65,0,0,0,135.69,64H160a8,8,0,0,0,0-16H104V32a8,8,0,0,0-16,0V48H32a8,8,0,0,0,0,16h87.63A87.76,87.76,0,0,1,96,116.35a87.74,87.74,0,0,1-19-31,8,8,0,1,0-15.08,5.34A103.63,103.63,0,0,0,84,127a87.55,87.55,0,0,1-52,17,8,8,0,0,0,0,16,103.46,103.46,0,0,0,64-22.08,104.18,104.18,0,0,0,51.44,21.31l-26.6,53.19a8,8,0,0,0,14.31,7.16L148.94,192h70.11l13.79,27.58A8,8,0,0,0,240,224a8,8,0,0,0,7.15-11.58ZM156.94,176,184,121.89,211.05,176Z"/></svg><span id="kio-lang-t" lang="es">Español</span></button></div>
+    </div>
+    <div class="kio-step kio-ok" id="kio-ok" hidden>
+     <span class="kio-check"><svg class="icon" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"/></svg></span>
+     <h3 class="kio-h" id="kio-ok-h" tabindex="-1" data-k-t="Clock-in recorded">Clock-in recorded</h3>
+     <p class="kio-saved"><span data-k-t="Recorded at">Recorded at</span> <b id="kio-saved">Oct 27&nbsp;· 2:17 PM</b><span id="kio-dot">.</span></p>
+     <p class="kio-demo" data-k-t="Demo only. Nothing is kept.">Demo only. Nothing is kept.</p>
+     <button type="button" class="kio-done" id="kio-done" data-k-t="Clock in again">Clock in again</button>
+    </div>
+    <p class="sr" id="kio-live" aria-live="polite"></p>
+   </div>
+  </div>
+
+ </div>
+</section>
+
+<section class="chap" id="screens" aria-labelledby="sc-t">
+ <div class="wrap">
+  <div class="head"><p class="hkick">Screens</p><h2 class="t1 rise" id="sc-t">What each person sees</h2><p class="lede fade">Alexandra works 12 to 8 today. Her phone first, then what the owner sees on the web.</p></div>
+  <div class="story" id="story">
+   <div class="story-grid">
+    <div class="steps">
+     <div class="shift" aria-hidden="true"><span class="ends a">12 PM</span><span class="bar"><i id="shiftbar"></i></span><em id="shiftNow">12:00 PM</em><span class="ends b">8 PM</span></div>
+     <article class="st on" data-y="0"><span class="n">Today&nbsp;· 12:00 PM to 8:00 PM</span><h3 class="t2">Her shift comes first.</h3><p>Hours, location, clocked in or not.</p></article>
+     <article class="st" data-y="-23"><span class="n">To do&nbsp;· 2</span><h3 class="t2">Two things need her answer.</h3><p>A posted schedule to review. A shift swap from a teammate.</p>
+      <div class="slab phone crop-ph" aria-hidden="true"><img class="feed" src="{{ 'night-phone-long.webp' | asset_url }}" alt="" width="1170" height="3936" style="--y:-43%"></div></article>
+     <article class="st" data-y="-35.7"><span class="n">Recent activity</span><h3 class="t2">The owner approved her days off.</h3><p>She sees the answer on her home screen.</p></article>
+    </div>
+    <div class="pin" aria-hidden="true"><div class="slab phone" id="pinPhone"><img class="feed" src="{{ 'night-phone-long.webp' | asset_url }}" alt="" width="1170" height="3936"><img class="bar" src="{{ 'night-tabbar.webp' | asset_url }}" alt="" width="900" height="162"></div></div>
+   </div>
+  </div>
+  <div class="owner-block" id="web">
+   <div class="head"><h3 class="t2 rise" id="web-t">What you see as the owner</h3><p class="lede fade">Who is on shift now. What waits for your answer. Everything else in the menu.</p></div>
+   <div class="slab owner" id="owner" data-in><img src="{{ 'night-owner.webp' | asset_url }}" alt="NEVORA on the web for an owner: the menu and Today, showing 4 people on shift and nothing waiting" width="3000" height="2010" loading="lazy" decoding="async"></div>
+   <p class="who"><a class="ul" href="{{ 'night-owner.webp' | asset_url }}" target="_blank" rel="noopener">Open the full-size screen</a>&nbsp;· Alexandra and her workplace are fictional. Screens from the NEVORA app.</p>
+  </div>
+ </div>
+</section>
+
+<section class="chap" id="change" aria-labelledby="change-t">
+ <div class="wrap">
+  <div class="head"><p class="hkick">What changes</p><h2 class="t2 rise" id="change-t">From the group chat to one place.</h2></div>
+  <div class="change">
+   <div><h3 class="t3">Today</h3><ul><li>Schedules by text message</li><li>Paper timesheets</li><li>Hours typed into a spreadsheet</li></ul></div>
+   <div><h3 class="t3">With NEVORA</h3><ul><li>Posted in the app</li><li>A tablet and a PIN</li><li>Pay statements from approved hours</li></ul></div>
+  </div>
+ </div>
+</section>
+
+<section class="chap specs" id="specs" aria-labelledby="specs-t">
+ <div class="wrap">
+  <div class="head"><p class="hkick">Details</p><h2 class="t2 rise" id="specs-t">Built for work</h2></div>
+  <dl class="spec">
+   <div><dt>Works on</dt><dd>Web, phones and a shared tablet.</dd></div>
+   <div><dt>Languages</dt><dd>English and Spanish, chosen by each person.</dd></div>
+   <div><dt>Payroll</dt><dd>Calculated from the hours you approve. You review before it is published.</dd></div>
+   <div><dt>Where data lives</dt><dd>United States, Northern Virginia. Encrypted connections, role-based access.</dd></div>
+  </dl>
+  <p class="fine">NEVORA calculates pay statements; it does not pay your team or file payroll taxes. You can request account deletion in the app or on the web. We aim to complete it within 30 calendar days. Details in the <a class="ul" href="{% if theme.role == 'main' %}/pages/nevora-privacy{% else %}{{ routes.root_url }}?preview_theme_id={{ theme.id }}&amp;view=velani-nevora-privacy{% endif %}">NEVORA privacy policy</a>.</p>
+ </div>
+</section>
+
+<section class="chap" id="get" aria-labelledby="get-t">
+ <div class="wrap">
+  <div class="head"><p class="hkick">Get NEVORA</p><h2 class="t2 rise" id="get-t">How your business gets NEVORA</h2></div>
+  <ol class="rail r3" data-in>
+   <li data-in><i>01</i><b>Tell us about your team</b><span>People, locations, how often you pay.</span></li>
+   <li data-in><i>02</i><b>We set up your workplace</b><span>Free for 30 days. Up to 30 employees.</span></li>
+   <li data-in><i>03</i><b>Your team signs in</b><span>Each person gets a login, and the tablet gets its PINs.</span></li>
+  </ol>
+  <div class="acts fade"><a class="pill" href="{% if theme.role == 'main' %}/pages/contact?interest=nevora-demo{% else %}{{ routes.root_url }}?preview_theme_id={{ theme.id }}&amp;view=velani-contact&amp;interest=nevora-demo{% endif %}">Request free trial</a><a class="pill line" href="{% if theme.role == 'main' %}/pages/plans{% else %}{{ routes.root_url }}?preview_theme_id={{ theme.id }}&amp;view=velani-plans{% endif %}">See plans</a></div>
+  <p class="hfact fade">No card required&nbsp;· No automatic charge</p>
+ </div>
+</section>
+
+<section class="chap chap-follow" id="faq" aria-labelledby="faq-t">
+ <div class="wrap">
+  <div class="qa">
+  <div class="head"><p class="hkick">Questions</p><h2 class="t2 rise" id="faq-t">Questions businesses ask</h2></div>
+  <div class="faq faq-list">
+   <details><summary>Can my business start using NEVORA now?<svg class="icon" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M224,128a8,8,0,0,1-8,8H136v80a8,8,0,0,1-16,0V136H40a8,8,0,0,1,0-16h80V40a8,8,0,0,1,16,0v80h80A8,8,0,0,1,224,128Z"/></svg></summary><p>Yes. Request the free trial and we set up your workplace.</p></details>
+   <details><summary>Does NEVORA pay my employees or file payroll taxes?<svg class="icon" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M224,128a8,8,0,0,1-8,8H136v80a8,8,0,0,1-16,0V136H40a8,8,0,0,1,0-16h80V40a8,8,0,0,1,16,0v80h80A8,8,0,0,1,224,128Z"/></svg></summary><p>No. NEVORA calculates payroll from approved hours and publishes pay statements. You pay your team and file taxes as you do today.</p></details>
+   <details><summary>How much does NEVORA cost?<svg class="icon" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M224,128a8,8,0,0,1-8,8H136v80a8,8,0,0,1-16,0V136H40a8,8,0,0,1,0-16h80V40a8,8,0,0,1,16,0v80h80A8,8,0,0,1,224,128Z"/></svg></summary><p>After the free 30 days, one price per business, quoted for your number of employees, your business and the features you use. See <a href="{% if theme.role == 'main' %}/pages/plans{% else %}{{ routes.root_url }}?preview_theme_id={{ theme.id }}&amp;view=velani-plans{% endif %}">Plans</a>.</p></details>
+   <details><summary>I use NEVORA at work. How do I get an account?<svg class="icon" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M224,128a8,8,0,0,1-8,8H136v80a8,8,0,0,1-16,0V136H40a8,8,0,0,1,0-16h80V40a8,8,0,0,1,16,0v80h80A8,8,0,0,1,224,128Z"/></svg></summary><p>Ask your manager; accounts come from your workplace. Still stuck? <a href="mailto:support@thevelani.com">support@thevelani.com</a>.</p></details>
+  </div>
+  </div>
+ </div>
+</section>
+
+<section class="band help" id="help" aria-labelledby="help-t">
+ <div class="wrap band-in">
+  <h2 class="t3" id="help-t">Do you use NEVORA at work?</h2>
+  <p class="band-links"><a class="more" href="{% if theme.role == 'main' %}/pages/nevora-support{% else %}{{ routes.root_url }}?preview_theme_id={{ theme.id }}&amp;view=velani-nevora-support{% endif %}"><span>NEVORA support</span><svg class="icon" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M181.66,133.66l-80,80a8,8,0,0,1-11.32-11.32L164.69,128,90.34,53.66a8,8,0,0,1,11.32-11.32l80,80A8,8,0,0,1,181.66,133.66Z"/></svg></a><a class="more" href="{% if theme.role == 'main' %}/pages/nevora-privacy{% else %}{{ routes.root_url }}?preview_theme_id={{ theme.id }}&amp;view=velani-nevora-privacy{% endif %}"><span>NEVORA privacy policy</span><svg class="icon" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M181.66,133.66l-80,80a8,8,0,0,1-11.32-11.32L164.69,128,90.34,53.66a8,8,0,0,1,11.32-11.32l80,80A8,8,0,0,1,181.66,133.66Z"/></svg></a><a class="more" href="{% if theme.role == 'main' %}/pages/nevora-account-deletion{% else %}{{ routes.root_url }}?preview_theme_id={{ theme.id }}&amp;view=velani-nevora-account-deletion{% endif %}"><span>Delete your NEVORA account</span><svg class="icon" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M181.66,133.66l-80,80a8,8,0,0,1-11.32-11.32L164.69,128,90.34,53.66a8,8,0,0,1,11.32-11.32l80,80A8,8,0,0,1,181.66,133.66Z"/></svg></a><a class="more" href="{% if theme.role == 'main' %}/pages/nevora-terms{% else %}{{ routes.root_url }}?preview_theme_id={{ theme.id }}&amp;view=velani-nevora-terms{% endif %}"><span>NEVORA terms of use</span><svg class="icon" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M181.66,133.66l-80,80a8,8,0,0,1-11.32-11.32L164.69,128,90.34,53.66a8,8,0,0,1,11.32-11.32l80,80A8,8,0,0,1,181.66,133.66Z"/></svg></a></p>
+ </div>
+</section>
+
+{% schema %}
+{
+  "name": "Velani nevora",
+  "settings": []
+}
+{% endschema %}

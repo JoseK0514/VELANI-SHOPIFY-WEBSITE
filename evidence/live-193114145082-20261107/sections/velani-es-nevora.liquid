@@ -1,0 +1,197 @@
+<nav class="lnav" id="lnav" aria-label="NEVORA">
+ <div class="wrap lnav-in">
+  <a class="lnav-t" href="#top"><img src="{{ 'night-nevora-wm-white.png' | asset_url }}" alt="NEVORA" width="907" height="122"></a>
+  <div class="lnav-v"><button class="lnav-vbtn" id="lnav-vbtn" type="button" aria-expanded="false" aria-controls="lnav-vmenu">de Velani<svg class="icon" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"/></svg></button><div class="lnav-vmenu" id="lnav-vmenu" hidden><a href="{% if theme.role == 'main' %}/pages/es{% else %}{{ routes.root_url }}?preview_theme_id={{ theme.id }}&amp;view=velani-es{% endif %}">Inicio de Velani</a><a href="{% if theme.role == 'main' %}/pages/custom-development{% else %}{{ routes.root_url }}?preview_theme_id={{ theme.id }}&amp;view=velani-custom-development{% endif %}" hreflang="en">Desarrollo a la medida</a><a href="{% if theme.role == 'main' %}/pages/about{% else %}{{ routes.root_url }}?preview_theme_id={{ theme.id }}&amp;view=velani-about{% endif %}" hreflang="en">Nosotros</a><a href="{% if theme.role == 'main' %}/pages/nevora-support{% else %}{{ routes.root_url }}?preview_theme_id={{ theme.id }}&amp;view=velani-nevora-support{% endif %}" hreflang="en">Soporte de NEVORA (en inglés)</a><a href="{% if theme.role == 'main' %}/pages/es-contacto{% else %}{{ routes.root_url }}?preview_theme_id={{ theme.id }}&amp;view=velani-es-contacto{% endif %}">Contacto</a></div></div>
+  <ul id="lnav-list"><li><a href="#rondo" data-spy="rondo">Rondo</a></li><li><a href="#try" data-spy="try">Registro de tiempo</a></li><li><a href="#screens" data-spy="screens">Pantallas</a></li><li><a href="#specs" data-spy="specs">Detalles</a></li><li><a href="#get" data-spy="get">Obtén NEVORA</a></li><li><a href="#faq" data-spy="faq">Preguntas</a></li><li class="lnav-by"><span>NEVORA es un producto de Velani</span><a href="{% if theme.role == 'main' %}/pages/es{% else %}{{ routes.root_url }}?preview_theme_id={{ theme.id }}&amp;view=velani-es{% endif %}">Inicio de Velani</a><a href="{% if theme.role == 'main' %}/pages/custom-development{% else %}{{ routes.root_url }}?preview_theme_id={{ theme.id }}&amp;view=velani-custom-development{% endif %}" hreflang="en">Desarrollo a la medida</a><a href="{% if theme.role == 'main' %}/pages/about{% else %}{{ routes.root_url }}?preview_theme_id={{ theme.id }}&amp;view=velani-about{% endif %}" hreflang="en">Nosotros</a><a href="{% if theme.role == 'main' %}/pages/nevora-support{% else %}{{ routes.root_url }}?preview_theme_id={{ theme.id }}&amp;view=velani-nevora-support{% endif %}" hreflang="en">Soporte de NEVORA (en inglés)</a><a href="{% if theme.role == 'main' %}/pages/es-contacto{% else %}{{ routes.root_url }}?preview_theme_id={{ theme.id }}&amp;view=velani-es-contacto{% endif %}">Contacto</a><span class="lang-sw lnav-by-lang" role="group" aria-label="Idioma"><a href="{% if theme.role == 'main' %}/pages/nevora{% else %}{{ routes.root_url }}?preview_theme_id={{ theme.id }}&amp;view=velani-nevora{% endif %}" hreflang="en" lang="en" aria-label="English">EN</a><span class="lang-sep" aria-hidden="true">|</span><a href="{% if theme.role == 'main' %}/pages/es-nevora{% else %}{{ routes.root_url }}?preview_theme_id={{ theme.id }}&amp;view=velani-es-nevora{% endif %}" hreflang="es" lang="es" aria-label="Español" aria-current="true">ES</a></span></li><li aria-hidden="true"><i class="lnav-ink" id="lnav-ink"></i></li></ul>
+  <span class="lang-sw lnav-lang" role="group" aria-label="Idioma"><a href="{% if theme.role == 'main' %}/pages/nevora{% else %}{{ routes.root_url }}?preview_theme_id={{ theme.id }}&amp;view=velani-nevora{% endif %}" hreflang="en" lang="en" aria-label="English">EN</a><span class="lang-sep" aria-hidden="true">|</span><a href="{% if theme.role == 'main' %}/pages/es-nevora{% else %}{{ routes.root_url }}?preview_theme_id={{ theme.id }}&amp;view=velani-es-nevora{% endif %}" hreflang="es" lang="es" aria-label="Español" aria-current="true">ES</a></span>
+  <a class="pill" href="{% if theme.role == 'main' %}/pages/es-contacto?interest=nevora-demo{% else %}{{ routes.root_url }}?preview_theme_id={{ theme.id }}&amp;view=velani-es-contacto&amp;interest=nevora-demo{% endif %}">Prueba gratis</a>
+  <button class="lnav-tog" id="lnav-tog" type="button" aria-expanded="false" aria-controls="lnav-list" aria-label="Menú"><span class="i-open"><svg class="icon" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M224,128a8,8,0,0,1-8,8H40a8,8,0,0,1,0-16H216A8,8,0,0,1,224,128ZM40,72H216a8,8,0,0,0,0-16H40a8,8,0,0,0,0,16ZM216,184H40a8,8,0,0,0,0,16H216a8,8,0,0,0,0-16Z"/></svg></span><span class="i-close"><svg class="icon" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M205.66,194.34a8,8,0,0,1-11.32,11.32L128,139.31,61.66,205.66a8,8,0,0,1-11.32-11.32L116.69,128,50.34,61.66A8,8,0,0,1,61.66,50.34L128,116.69l66.34-66.35a8,8,0,0,1,11.32,11.32L139.31,128Z"/></svg></span></button>
+ </div>
+</nav>
+
+
+<section class="hpanel long n-hero" id="top" aria-labelledby="n-t">
+ <img class="hph" src="{{ 'night-ai-devices.webp' | asset_url }}" alt="" width="1920" height="1080" fetchpriority="high">
+ <div class="hshade"></div>
+ <div class="hcopy">
+  <p class="hkick status"><i aria-hidden="true"></i><span>Disponible ahora</span></p>
+  <h1 class="rise" id="n-t">Horarios, registro de tiempo y cálculo de nómina para equipos por turnos.</h1>
+  <p class="fade">Planifica en la web. Consulta los turnos en el teléfono. Marca entrada en una tableta compartida con un PIN.</p>
+  <div class="hacts fade"><a class="hb fill" href="#try">Prueba el registro de tiempo<svg class="icon" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></a><a class="hb" href="{% if theme.role == 'main' %}/pages/es-contacto?interest=nevora-demo{% else %}{{ routes.root_url }}?preview_theme_id={{ theme.id }}&amp;view=velani-es-contacto&amp;interest=nevora-demo{% endif %}">Pide la prueba gratis<svg class="icon" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></a></div>
+  <p class="hfact fade">Gratis por 30 días&nbsp;· Hasta 30 empleados&nbsp;· Sin tarjeta&nbsp;· Inglés y español</p>
+  <a class="more n-help fade" href="#help"><span>¿Ya usas NEVORA? Obtén ayuda</span><svg class="icon" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M181.66,133.66l-80,80a8,8,0,0,1-11.32-11.32L164.69,128,90.34,53.66a8,8,0,0,1,11.32-11.32l80,80A8,8,0,0,1,181.66,133.66Z"/></svg></a>
+ </div>
+ <div class="hshot fade"><img src="{{ 'night-phone-long.webp' | asset_url }}" alt="NEVORA en el teléfono de una empleada: su turno de hoy y dos cosas por hacer" width="1170" height="3936"></div>
+</section>
+
+<section class="chap" id="features" aria-labelledby="feat-t">
+ <div class="wrap">
+  <div class="head"><p class="hkick">Qué hace NEVORA</p><h2 class="t2 rise" id="feat-t">Programa turnos. Marca entrada. Calcula el pago.</h2></div>
+  <ul class="feat">
+   <li><svg class="icon" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M208,32H184V24a8,8,0,0,0-16,0v8H88V24a8,8,0,0,0-16,0v8H48A16,16,0,0,0,32,48V208a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V48A16,16,0,0,0,208,32ZM72,48v8a8,8,0,0,0,16,0V48h80v8a8,8,0,0,0,16,0V48h24V80H48V48ZM208,208H48V96H208V208Z"/></svg><b>Horarios</b><span>Arma la semana. Publícala una vez.</span></li>
+   <li><svg class="icon" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Zm64-88a8,8,0,0,1-8,8H128a8,8,0,0,1-8-8V72a8,8,0,0,1,16,0v48h48A8,8,0,0,1,192,128Z"/></svg><b>Registro de tiempo</b><span>Una tableta compartida. Un PIN de cuatro dígitos.</span></li>
+   <li><svg class="icon" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M213.66,181.66l-32,32a8,8,0,0,1-11.32-11.32L188.69,184H48a8,8,0,0,1,0-16H188.69l-18.35-18.34a8,8,0,0,1,11.32-11.32l32,32A8,8,0,0,1,213.66,181.66Zm-139.32-64a8,8,0,0,0,11.32-11.32L67.31,88H208a8,8,0,0,0,0-16H67.31L85.66,53.66A8,8,0,0,0,74.34,42.34l-32,32a8,8,0,0,0,0,11.32Z"/></svg><b>Cambios de turno y tiempo libre</b><span>Se piden y se responden en la app.</span></li>
+   <li><svg class="icon" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M72,104a8,8,0,0,1,8-8h96a8,8,0,0,1,0,16H80A8,8,0,0,1,72,104Zm8,40h96a8,8,0,0,0,0-16H80a8,8,0,0,0,0,16ZM232,56V208a8,8,0,0,1-11.58,7.15L192,200.94l-28.42,14.21a8,8,0,0,1-7.16,0L128,200.94,99.58,215.15a8,8,0,0,1-7.16,0L64,200.94,35.58,215.15A8,8,0,0,1,24,208V56A16,16,0,0,1,40,40H216A16,16,0,0,1,232,56Zm-16,0H40V195.06l20.42-10.22a8,8,0,0,1,7.16,0L96,199.06l28.42-14.22a8,8,0,0,1,7.16,0L160,199.06l28.42-14.22a8,8,0,0,1,7.16,0L216,195.06Z"/></svg><b>Comprobantes de nómina</b><span>Calculados a partir de las horas aprobadas.</span></li>
+   <li><svg class="icon" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M247.15,212.42l-56-112a8,8,0,0,0-14.31,0l-21.71,43.43A88,88,0,0,1,108,126.93,103.65,103.65,0,0,0,135.69,64H160a8,8,0,0,0,0-16H104V32a8,8,0,0,0-16,0V48H32a8,8,0,0,0,0,16h87.63A87.76,87.76,0,0,1,96,116.35a87.74,87.74,0,0,1-19-31,8,8,0,1,0-15.08,5.34A103.63,103.63,0,0,0,84,127a87.55,87.55,0,0,1-52,17,8,8,0,0,0,0,16,103.46,103.46,0,0,0,64-22.08,104.18,104.18,0,0,0,51.44,21.31l-26.6,53.19a8,8,0,0,0,14.31,7.16L148.94,192h70.11l13.79,27.58A8,8,0,0,0,240,224a8,8,0,0,0,7.15-11.58ZM156.94,176,184,121.89,211.05,176Z"/></svg><b>Inglés y español</b><span>Para todo el equipo.</span></li>
+   <li><svg class="icon" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M176,16H80A24,24,0,0,0,56,40V216a24,24,0,0,0,24,24h96a24,24,0,0,0,24-24V40A24,24,0,0,0,176,16ZM72,64H184V192H72Zm8-32h96a8,8,0,0,1,8,8v8H72V40A8,8,0,0,1,80,32Zm96,192H80a8,8,0,0,1-8-8v-8H184v8A8,8,0,0,1,176,224Z"/></svg><b>Teléfono, web y tableta</b><span>En la web y en la app de NEVORA.</span></li>
+  </ul>
+ </div>
+</section>
+
+<section class="chap rondo" id="rondo" aria-labelledby="rondo-t">
+ <div class="wrap">
+  <div class="rondo-grid">
+   <div class="rondo-copy">
+    <p class="hkick rondo-kick"><b class="rmark rondo-mark" aria-hidden="true"><svg viewBox="0 0 32 32" focusable="false"><circle cx="16" cy="16" r="14.25"/><path d="M16 1.75A14.25 14.25 0 1 1 1.75 16"/></svg>R</b>Rondo&nbsp;· Asistente de IA de NEVORA</p>
+    <h2 class="t1 rise" id="rondo-t">Rondo hará el trabajo. Tú tomas la decisión.</h2>
+    <p class="lede">Rondo se está desarrollando para seguir tu día, encontrar lo que necesita atención y preparar la solución. Nada cambiará hasta que lo apruebes. Hoy, el chat de Rondo en este sitio web responde preguntas sobre Velani y NEVORA.</p>
+    <ul class="rondo-can">
+     <li><svg class="icon" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M120,40V16a8,8,0,0,1,16,0V40a8,8,0,0,1-16,0Zm72,88a64,64,0,1,1-64-64A64.07,64.07,0,0,1,192,128Zm-16,0a48,48,0,1,0-48,48A48.05,48.05,0,0,0,176,128ZM58.34,69.66A8,8,0,0,0,69.66,58.34l-16-16A8,8,0,0,0,42.34,53.66Zm0,116.68-16,16a8,8,0,0,0,11.32,11.32l16-16a8,8,0,0,0-11.32-11.32ZM192,72a8,8,0,0,0,5.66-2.34l16-16a8,8,0,0,0-11.32-11.32l-16,16A8,8,0,0,0,192,72Zm5.66,114.34a8,8,0,0,0-11.32,11.32l16,16a8,8,0,0,0,11.32-11.32ZM48,128a8,8,0,0,0-8-8H16a8,8,0,0,0,0,16H40A8,8,0,0,0,48,128Zm80,80a8,8,0,0,0-8,8v24a8,8,0,0,0,16,0V216A8,8,0,0,0,128,208Zm112-88H216a8,8,0,0,0,0,16h24a8,8,0,0,0,0-16Z"/></svg><b>Resumen de la mañana</b><span>Quién tiene turno, quién marcó entrada y quién va tarde, antes de que preguntes.</span></li>
+     <li><svg class="icon" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M244.8,150.4a8,8,0,0,1-11.2-1.6A51.6,51.6,0,0,0,192,128a8,8,0,0,1-7.37-4.89,8,8,0,0,1,0-6.22A8,8,0,0,1,192,112a24,24,0,1,0-23.24-30,8,8,0,1,1-15.5-4A40,40,0,1,1,219,117.51a67.94,67.94,0,0,1,27.43,21.68A8,8,0,0,1,244.8,150.4ZM190.92,212a8,8,0,1,1-13.84,8,57,57,0,0,0-98.16,0,8,8,0,1,1-13.84-8,72.06,72.06,0,0,1,33.74-29.92,48,48,0,1,1,58.36,0A72.06,72.06,0,0,1,190.92,212ZM128,176a32,32,0,1,0-32-32A32,32,0,0,0,128,176ZM72,120a8,8,0,0,0-8-8A24,24,0,1,1,87.24,82a8,8,0,1,0,15.5-4A40,40,0,1,0,37,117.51,67.94,67.94,0,0,0,9.6,139.19a8,8,0,1,0,12.8,9.61A51.6,51.6,0,0,1,64,128,8,8,0,0,0,72,120Z"/></svg><b>Busca reemplazo</b><span>Cuando alguien se reporte ausente, Rondo te mostrará quién está libre, el más adecuado primero, con sus horas de la semana.</span></li>
+     <li><svg class="icon" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M72,104a8,8,0,0,1,8-8h96a8,8,0,0,1,0,16H80A8,8,0,0,1,72,104Zm8,40h96a8,8,0,0,0,0-16H80a8,8,0,0,0,0,16ZM232,56V208a8,8,0,0,1-11.58,7.15L192,200.94l-28.42,14.21a8,8,0,0,1-7.16,0L128,200.94,99.58,215.15a8,8,0,0,1-7.16,0L64,200.94,35.58,215.15A8,8,0,0,1,24,208V56A16,16,0,0,1,40,40H216A16,16,0,0,1,232,56Zm-16,0H40V195.06l20.42-10.22a8,8,0,0,1,7.16,0L96,199.06l28.42-14.22a8,8,0,0,1,7.16,0L160,199.06l28.42-14.22a8,8,0,0,1,7.16,0L216,195.06Z"/></svg><b>Revisa la nómina antes del día de pago</b><span>Revisará la asistencia y las tarjetas de tiempo del período de pago y te señalará lo que hay que revisar.</span></li>
+     <li><svg class="icon" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M221.87,83.16A104.1,104.1,0,1,1,195.67,49l22.67-22.68a8,8,0,0,1,11.32,11.32l-96,96a8,8,0,0,1-11.32-11.32l27.72-27.72a40,40,0,1,0,17.87,31.09,8,8,0,1,1,16-.9,56,56,0,1,1-22.38-41.65L184.3,60.39a87.88,87.88,0,1,0,23.13,29.67,8,8,0,0,1,14.44-6.9Z"/></svg><b>Conoce tus prioridades</b><span>Dile lo que importa, como mantener bajas las horas extra. Lo recordará.</span></li>
+    </ul>
+    <p class="rondo-trust">Diseñado para que apruebes cada cambio&nbsp;· Cada respuesta enlaza a su fuente&nbsp;· Inglés y español&nbsp;· Para dueños</p>
+    <div class="acts"><a class="pill" href="{% if theme.role == 'main' %}/pages/es-contacto?interest=nevora{% else %}{{ routes.root_url }}?preview_theme_id={{ theme.id }}&amp;view=velani-es-contacto&amp;interest=nevora{% endif %}" data-open-rondo>Pregúntale a Rondo</a></div>
+    <p class="rondo-fine">Rondo está en desarrollo.</p>
+   </div>
+   <figure class="rondo-fig">
+    <div class="hchat rchat" data-in>
+     <p class="hchat-h"><b class="rmark" aria-hidden="true"><svg viewBox="0 0 32 32" focusable="false"><circle cx="16" cy="16" r="14.25"/><path d="M16 1.75A14.25 14.25 0 1 1 1.75 16"/></svg>R</b><span>Rondo&nbsp;· Asistente de NEVORA</span><i>En desarrollo</i></p>
+     <p class="msg me m1">Buenos días. ¿Hay algo que deba saber?</p>
+     <p class="msg ai a1">Dos cosas. Luis lleva 12 minutos de retraso en Northside, y el sábado de 2 a 8&nbsp;p.&nbsp;m. no hay nadie en la caja.</p>
+     <p class="msg me m2">¿Quién puede cubrir el sábado?</p>
+     <p class="msg ai a2">María está libre y lleva 28 de 32 horas esta semana, así que es la más adecuada. Lo dejé listo para que lo revises.</p>
+    </div>
+    <figcaption>Conversación de ejemplo con personas ficticias.</figcaption>
+   </figure>
+  </div>
+ </div>
+</section>
+
+<section class="chap try" id="try" aria-labelledby="try-t">
+ <div class="wrap">
+  <div class="head"><p class="hkick">Registro de tiempo</p><h2 class="t1 rise" id="try-t">Prueba el registro de tiempo</h2><p class="lede fade">Escribe cuatro dígitos cualesquiera. La pantalla se borra para la siguiente persona.</p></div>
+  <p class="kio-note"><b>Lugar de trabajo de ejemplo.</b> Nada de lo que escribas se guarda ni se envía.</p>
+    <div class="kio" id="kio" lang="es">
+   <div class="kio-side">
+    <div class="kio-brand"><img src="{{ 'night-nevora-wm-white.png' | asset_url }}" alt="NEVORA" width="907" height="122"><span data-k-t="Time clock">Registro de tiempo</span></div>
+    <div class="kio-now">
+     <p class="kio-loc"><svg class="icon" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M128,64a40,40,0,1,0,40,40A40,40,0,0,0,128,64Zm0,64a24,24,0,1,1,24-24A24,24,0,0,1,128,128Zm0-112a88.1,88.1,0,0,0-88,88c0,31.4,14.51,64.68,42,96.25a254.19,254.19,0,0,0,41.45,38.3,8,8,0,0,0,9.18,0A254.19,254.19,0,0,0,174,200.25c27.45-31.57,42-64.85,42-96.25A88.1,88.1,0,0,0,128,16Zm0,206c-16.53-13-72-60.75-72-118a72,72,0,0,1,144,0C200,161.23,144.53,209,128,222Z"/></svg><b>Northside Main Office</b></p>
+     <p class="kio-time"><span id="kio-hm">2:17</span><small id="kio-ap">p. m.</small></p>
+     <p class="kio-date" id="kio-date">Martes, 27 de octubre</p>
+    </div>
+   </div>
+   <div class="kio-main">
+    <div class="kio-step" id="kio-pin">
+     <h3 class="kio-h" id="kio-pin-h" tabindex="-1" data-k-t="Enter your PIN">Ingresa tu PIN</h3>
+     <div class="kio-dots" id="kio-dots" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+     <div class="kio-pad" role="group" aria-labelledby="kio-pin-h">
+      <button type="button" data-d="1">1</button><button type="button" data-d="2">2</button><button type="button" data-d="3">3</button>
+      <button type="button" data-d="4">4</button><button type="button" data-d="5">5</button><button type="button" data-d="6">6</button>
+      <button type="button" data-d="7">7</button><button type="button" data-d="8">8</button><button type="button" data-d="9">9</button>
+      <button type="button" class="kio-soft" data-act="clear" data-k-t="Clear">Borrar</button><button type="button" data-d="0">0</button><button type="button" class="kio-soft" data-act="back" aria-label="Borrar dígito" data-k-l="Delete digit"><svg class="icon" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M216,40H68.53a16.08,16.08,0,0,0-13.72,7.77L9.14,123.88a8,8,0,0,0,0,8.24l45.67,76.11A16.08,16.08,0,0,0,68.53,216H216a16,16,0,0,0,16-16V56A16,16,0,0,0,216,40ZM61.67,204.12,68.53,200h0ZM216,200H68.53l-43.2-72,43.2-72H216ZM106.34,146.34,124.69,128l-18.35-18.34a8,8,0,0,1,11.32-11.32L136,116.69l18.34-18.35a8,8,0,0,1,11.32,11.32L147.31,128l18.35,18.34a8,8,0,0,1-11.32,11.32L136,139.31l-18.34,18.35a8,8,0,0,1-11.32-11.32Z"/></svg></button>
+     </div>
+     <button type="button" class="kio-go" id="kio-go" disabled><span data-k-t="Continue">Continuar</span><svg class="icon" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M181.66,133.66l-80,80a8,8,0,0,1-11.32-11.32L164.69,128,90.34,53.66a8,8,0,0,1,11.32-11.32l80,80A8,8,0,0,1,181.66,133.66Z"/></svg></button>
+     <div class="kio-foot"><p data-k-t="Your PIN is separate from your portal password.">Tu PIN es distinto de tu contraseña del portal.</p><button type="button" class="kio-lang" id="kio-lang"><svg class="icon" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M247.15,212.42l-56-112a8,8,0,0,0-14.31,0l-21.71,43.43A88,88,0,0,1,108,126.93,103.65,103.65,0,0,0,135.69,64H160a8,8,0,0,0,0-16H104V32a8,8,0,0,0-16,0V48H32a8,8,0,0,0,0,16h87.63A87.76,87.76,0,0,1,96,116.35a87.74,87.74,0,0,1-19-31,8,8,0,1,0-15.08,5.34A103.63,103.63,0,0,0,84,127a87.55,87.55,0,0,1-52,17,8,8,0,0,0,0,16,103.46,103.46,0,0,0,64-22.08,104.18,104.18,0,0,0,51.44,21.31l-26.6,53.19a8,8,0,0,0,14.31,7.16L148.94,192h70.11l13.79,27.58A8,8,0,0,0,240,224a8,8,0,0,0,7.15-11.58ZM156.94,176,184,121.89,211.05,176Z"/></svg><span id="kio-lang-t" lang="en">English</span></button></div>
+    </div>
+    <div class="kio-step kio-ok" id="kio-ok" hidden>
+     <span class="kio-check"><svg class="icon" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"/></svg></span>
+     <h3 class="kio-h" id="kio-ok-h" tabindex="-1" data-k-t="Clock-in recorded">Entrada registrada</h3>
+     <p class="kio-saved"><span data-k-t="Recorded at">Registrada el</span> <b id="kio-saved">27 oct&nbsp;· 2:17 p. m.</b><span id="kio-dot"></span></p>
+     <p class="kio-demo" data-k-t="Demo only. Nothing is kept.">Solo es una demostración. No se guarda nada.</p>
+     <button type="button" class="kio-done" id="kio-done" data-k-t="Clock in again">Marcar entrada de nuevo</button>
+    </div>
+    <p class="sr" id="kio-live" aria-live="polite"></p>
+   </div>
+  </div>
+
+ </div>
+</section>
+
+<section class="chap" id="screens" aria-labelledby="sc-t">
+ <div class="wrap">
+  <div class="head"><p class="hkick">Pantallas</p><h2 class="t1 rise" id="sc-t">Lo que ve cada persona</h2><p class="lede fade">Alexandra trabaja hoy de 12 a 8. Primero, su teléfono; luego, lo que ve el dueño en la web.</p></div>
+  <div class="story" id="story">
+   <div class="story-grid">
+    <div class="steps">
+     <div class="shift" aria-hidden="true"><span class="ends a">12&nbsp;p.&nbsp;m.</span><span class="bar"><i id="shiftbar"></i></span><em id="shiftNow">12:00&nbsp;p.&nbsp;m.</em><span class="ends b">8&nbsp;p.&nbsp;m.</span></div>
+     <article class="st on" data-y="0"><span class="n">Hoy&nbsp;· 12:00&nbsp;p.&nbsp;m. a 8:00&nbsp;p.&nbsp;m.</span><h3 class="t2">Su turno va primero.</h3><p>Horas, ubicación y si ya marcó entrada.</p></article>
+     <article class="st" data-y="-23"><span class="n">Por hacer&nbsp;· 2</span><h3 class="t2">Dos cosas esperan su respuesta.</h3><p>Un horario publicado por revisar. Un cambio de turno que le pidió alguien del equipo.</p>
+      <div class="slab phone crop-ph" aria-hidden="true"><img class="feed" src="{{ 'night-phone-long.webp' | asset_url }}" alt="" width="1170" height="3936" style="--y:-43%"></div></article>
+     <article class="st" data-y="-35.7"><span class="n">Actividad reciente</span><h3 class="t2">El dueño aprobó sus días libres.</h3><p>Ve la respuesta en su pantalla de inicio.</p></article>
+    </div>
+    <div class="pin" aria-hidden="true"><div class="slab phone" id="pinPhone"><img class="feed" src="{{ 'night-phone-long.webp' | asset_url }}" alt="" width="1170" height="3936"><img class="bar" src="{{ 'night-tabbar.webp' | asset_url }}" alt="" width="900" height="162"></div></div>
+   </div>
+  </div>
+  <div class="owner-block" id="web">
+   <div class="head"><h3 class="t2 rise" id="web-t">Lo que ves como dueño</h3><p class="lede fade">Quién está en turno ahora. Lo que espera tu respuesta. Todo lo demás, en el menú.</p></div>
+   <div class="slab owner" id="owner" data-in><img src="{{ 'night-owner.webp' | asset_url }}" alt="NEVORA en la web para un dueño: el menú y Hoy, con 4 personas en turno y nada pendiente" width="3000" height="2010" loading="lazy" decoding="async"></div>
+   <p class="who"><a class="ul" href="{{ 'night-owner.webp' | asset_url }}" target="_blank" rel="noopener">Abrir la pantalla en tamaño completo</a>&nbsp;· Alexandra y su lugar de trabajo son ficticios. Pantallas de la app NEVORA.</p>
+  </div>
+ </div>
+</section>
+
+<section class="chap" id="change" aria-labelledby="change-t">
+ <div class="wrap">
+  <div class="head"><p class="hkick">Qué cambia</p><h2 class="t2 rise" id="change-t">Del chat de grupo a un solo lugar.</h2></div>
+  <div class="change">
+   <div><h3 class="t3">Hoy</h3><ul><li>Horarios por mensaje de texto</li><li>Hojas de asistencia en papel</li><li>Horas copiadas a una hoja de cálculo</li></ul></div>
+   <div><h3 class="t3">Con NEVORA</h3><ul><li>Publicados en la app</li><li>Una tableta y un PIN</li><li>Comprobantes de nómina a partir de las horas aprobadas</li></ul></div>
+  </div>
+ </div>
+</section>
+
+<section class="chap specs" id="specs" aria-labelledby="specs-t">
+ <div class="wrap">
+  <div class="head"><p class="hkick">Detalles</p><h2 class="t2 rise" id="specs-t">Hecho para el trabajo</h2></div>
+  <dl class="spec">
+   <div><dt>Funciona en</dt><dd>La web, teléfonos y una tableta compartida.</dd></div>
+   <div><dt>Idiomas</dt><dd>Inglés y español; cada persona elige.</dd></div>
+   <div><dt>Nómina</dt><dd>Se calcula a partir de las horas que apruebas. La revisas antes de publicarla.</dd></div>
+   <div><dt>Dónde están los datos</dt><dd>Estados Unidos, norte de Virginia. Conexiones cifradas y acceso según el rol.</dd></div>
+  </dl>
+  <p class="fine">NEVORA calcula los comprobantes de nómina; no le paga a tu equipo ni presenta impuestos de nómina. Puedes solicitar la eliminación de tu cuenta en la app o en la web. Procuramos completarla en un plazo de 30 días calendario. Detalles en la <a class="ul" href="{% if theme.role == 'main' %}/pages/nevora-privacy{% else %}{{ routes.root_url }}?preview_theme_id={{ theme.id }}&amp;view=velani-nevora-privacy{% endif %}" hreflang="en">política de privacidad de NEVORA (en inglés)</a>.</p>
+ </div>
+</section>
+
+<section class="chap" id="get" aria-labelledby="get-t">
+ <div class="wrap">
+  <div class="head"><p class="hkick">Obtén NEVORA</p><h2 class="t2 rise" id="get-t">Cómo empieza tu negocio con NEVORA</h2></div>
+  <ol class="rail r3" data-in>
+   <li data-in><i>01</i><b>Cuéntanos sobre tu equipo</b><span>Personas, ubicaciones y cada cuánto pagas.</span></li>
+   <li data-in><i>02</i><b>Configuramos tu espacio de trabajo</b><span>Gratis por 30 días. Hasta 30 empleados.</span></li>
+   <li data-in><i>03</i><b>Tu equipo inicia sesión</b><span>Cada persona recibe su acceso y la tableta recibe sus PIN.</span></li>
+  </ol>
+  <div class="acts fade"><a class="pill" href="{% if theme.role == 'main' %}/pages/es-contacto?interest=nevora-demo{% else %}{{ routes.root_url }}?preview_theme_id={{ theme.id }}&amp;view=velani-es-contacto&amp;interest=nevora-demo{% endif %}">Pide la prueba gratis</a><a class="pill line" href="{% if theme.role == 'main' %}/pages/es-planes{% else %}{{ routes.root_url }}?preview_theme_id={{ theme.id }}&amp;view=velani-es-planes{% endif %}">Ver planes</a></div>
+  <p class="hfact fade">No se requiere tarjeta&nbsp;· Sin cargos automáticos</p>
+ </div>
+</section>
+
+<section class="chap chap-follow" id="faq" aria-labelledby="faq-t">
+ <div class="wrap">
+  <div class="qa">
+  <div class="head"><p class="hkick">Preguntas</p><h2 class="t2 rise" id="faq-t">Lo que preguntan los negocios</h2></div>
+  <div class="faq faq-list">
+   <details><summary>¿Mi negocio puede empezar a usar NEVORA ahora?<svg class="icon" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M224,128a8,8,0,0,1-8,8H136v80a8,8,0,0,1-16,0V136H40a8,8,0,0,1,0-16h80V40a8,8,0,0,1,16,0v80h80A8,8,0,0,1,224,128Z"/></svg></summary><p>Sí. Pide la prueba gratis y configuramos tu espacio de trabajo.</p></details>
+   <details><summary>¿NEVORA les paga a mis empleados o presenta los impuestos de nómina?<svg class="icon" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M224,128a8,8,0,0,1-8,8H136v80a8,8,0,0,1-16,0V136H40a8,8,0,0,1,0-16h80V40a8,8,0,0,1,16,0v80h80A8,8,0,0,1,224,128Z"/></svg></summary><p>No. NEVORA calcula la nómina a partir de las horas aprobadas y publica los comprobantes de nómina. Tú le pagas a tu equipo y presentas los impuestos como lo haces hoy.</p></details>
+   <details><summary>¿Cuánto cuesta NEVORA?<svg class="icon" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M224,128a8,8,0,0,1-8,8H136v80a8,8,0,0,1-16,0V136H40a8,8,0,0,1,0-16h80V40a8,8,0,0,1,16,0v80h80A8,8,0,0,1,224,128Z"/></svg></summary><p>Después de los 30 días gratis, un solo precio por negocio, cotizado según tu número de empleados, tu negocio y las funciones que uses. Mira los <a href="{% if theme.role == 'main' %}/pages/es-planes{% else %}{{ routes.root_url }}?preview_theme_id={{ theme.id }}&amp;view=velani-es-planes{% endif %}">Planes</a>.</p></details>
+   <details><summary>Uso NEVORA en el trabajo. ¿Cómo obtengo una cuenta?<svg class="icon" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M224,128a8,8,0,0,1-8,8H136v80a8,8,0,0,1-16,0V136H40a8,8,0,0,1,0-16h80V40a8,8,0,0,1,16,0v80h80A8,8,0,0,1,224,128Z"/></svg></summary><p>Pregúntale a tu gerente; las cuentas las da tu lugar de trabajo. ¿Sigues sin poder entrar? Escribe a <a href="mailto:support@thevelani.com">support@thevelani.com</a>.</p></details>
+  </div>
+  </div>
+ </div>
+</section>
+
+<section class="band help" id="help" aria-labelledby="help-t">
+ <div class="wrap band-in">
+  <h2 class="t3" id="help-t">¿Usas NEVORA en el trabajo?</h2>
+  <p class="band-links"><a class="more" href="{% if theme.role == 'main' %}/pages/nevora-support{% else %}{{ routes.root_url }}?preview_theme_id={{ theme.id }}&amp;view=velani-nevora-support{% endif %}" hreflang="en"><span>Soporte de NEVORA (en inglés)</span><svg class="icon" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M181.66,133.66l-80,80a8,8,0,0,1-11.32-11.32L164.69,128,90.34,53.66a8,8,0,0,1,11.32-11.32l80,80A8,8,0,0,1,181.66,133.66Z"/></svg></a><a class="more" href="{% if theme.role == 'main' %}/pages/nevora-privacy{% else %}{{ routes.root_url }}?preview_theme_id={{ theme.id }}&amp;view=velani-nevora-privacy{% endif %}" hreflang="en"><span>Política de privacidad de NEVORA (en inglés)</span><svg class="icon" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M181.66,133.66l-80,80a8,8,0,0,1-11.32-11.32L164.69,128,90.34,53.66a8,8,0,0,1,11.32-11.32l80,80A8,8,0,0,1,181.66,133.66Z"/></svg></a><a class="more" href="{% if theme.role == 'main' %}/pages/nevora-account-deletion{% else %}{{ routes.root_url }}?preview_theme_id={{ theme.id }}&amp;view=velani-nevora-account-deletion{% endif %}" hreflang="en"><span>Eliminar tu cuenta de NEVORA (en inglés)</span><svg class="icon" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M181.66,133.66l-80,80a8,8,0,0,1-11.32-11.32L164.69,128,90.34,53.66a8,8,0,0,1,11.32-11.32l80,80A8,8,0,0,1,181.66,133.66Z"/></svg></a><a class="more" href="{% if theme.role == 'main' %}/pages/nevora-terms{% else %}{{ routes.root_url }}?preview_theme_id={{ theme.id }}&amp;view=velani-nevora-terms{% endif %}" hreflang="en"><span>Términos de uso de NEVORA (en inglés)</span><svg class="icon" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M181.66,133.66l-80,80a8,8,0,0,1-11.32-11.32L164.69,128,90.34,53.66a8,8,0,0,1,11.32-11.32l80,80A8,8,0,0,1,181.66,133.66Z"/></svg></a></p>
+ </div>
+</section>
+
+{% schema %}
+{
+  "name": "Velani es-nevora",
+  "settings": []
+}
+{% endschema %}

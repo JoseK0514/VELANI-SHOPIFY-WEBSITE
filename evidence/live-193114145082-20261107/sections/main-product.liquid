@@ -1,0 +1,52 @@
+<section class="main-product page-width" data-section-id="{{ section.id }}">
+  <div class="product-gallery">
+    {% for media in product.media %}
+      {% if media.media_type == 'image' %}{{ media | image_url: width: 1800 | image_tag: widths: '600,900,1200,1800', sizes: '(min-width: 990px) 29vw, 100vw', loading: 'lazy', alt: media.alt }}{% endif %}
+    {% else %}
+      {{ 'product-1' | placeholder_svg_tag }}
+    {% endfor %}
+  </div>
+
+  <div class="product-info">
+    <p class="eyebrow">{{ product.type | default: 'Velani essential' }}</p>
+    <h1 class="display">{{ product.title }}</h1>
+    <div class="product-price" data-product-price>{{ product.selected_or_first_available_variant.price | money }}</div>
+    <div class="product-description">{{ product.description }}</div>
+
+    <div data-product-form>
+    {% form 'product', product, class: 'product-form' %}
+      <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+      {% unless product.has_only_default_variant %}
+        <label for="Variant-{{ section.id }}">Choose an option</label>
+        <select id="Variant-{{ section.id }}" data-variant-select>
+          {% for variant in product.variants %}<option value="{{ variant.id }}" data-price="{{ variant.price | money }}" data-available="{{ variant.available }}" {% if variant == product.selected_or_first_available_variant %}selected{% endif %}>{{ variant.title }}{% unless variant.available %} – Sold out{% endunless %}</option>{% endfor %}
+        </select>
+      {% endunless %}
+      <label for="Quantity-{{ section.id }}">{{ 'products.product.quantity' | t }}</label>
+      <input id="Quantity-{{ section.id }}" type="number" name="quantity" min="1" value="1">
+      <button class="button button--primary" type="submit" name="add" {% unless product.selected_or_first_available_variant.available %}disabled{% endunless %}>{% if product.selected_or_first_available_variant.available %}{{ 'products.product.add_to_cart' | t }}{% else %}{{ 'products.product.sold_out' | t }}{% endif %}</button>
+    {% endform %}
+    </div>
+
+    {% for block in section.blocks %}
+      {% case block.type %}
+        {% when '@app' %}{% render block %}
+        {% when 'details' %}<div class="product-details" {{ block.shopify_attributes }}><details><summary>{{ block.settings.heading }}</summary><div class="rte">{{ block.settings.content }}</div></details></div>
+      {% endcase %}
+    {% endfor %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Main product",
+  "settings": [],
+  "blocks": [
+    { "type": "@app" },
+    { "type": "details", "name": "Details", "settings": [
+      { "type": "text", "id": "heading", "label": "Heading", "default": "Product details" },
+      { "type": "richtext", "id": "content", "label": "Content", "default": "<p>Add product details, care guidance or sizing information here.</p>" }
+    ] }
+  ]
+}
+{% endschema %}

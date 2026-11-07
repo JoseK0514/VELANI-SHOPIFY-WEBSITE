@@ -2,10 +2,10 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { Liquid } from 'liquidjs';
 import { routes } from '../src/content.mjs';
-import { ES_PATHS } from '../src/content.es.mjs';
+import { ES_PATHS, ES_NEAREST } from '../src/content.es.mjs';
 import { renderPage, renderBody, renderShopifyLayout, renderShopifySnippets } from '../src/render.mjs';
 
-const PAIRS = { '/': '/pages/es', '/pages/nevora': '/pages/es-nevora', '/pages/plans': '/pages/es-planes', '/pages/products': '/pages/es-productos', '/pages/contact': '/pages/es-contacto' };
+const PAIRS = { '/': '/pages/es', '/pages/nevora': '/pages/es-nevora', '/pages/plans': '/pages/es-planes', '/pages/products': '/pages/es-productos', '/pages/contact': '/pages/es-contacto', '/pages/about': '/pages/es-nosotros', '/pages/help': '/pages/es-ayuda' };
 const ES = Object.values(PAIRS);
 const text = html => html.replace(/<script[^]*?<\/script>|<style[^]*?<\/style>/g, ' ').replace(/<[^>]+>/g, ' ').replace(/&nbsp;/g, ' ').replace(/\s+/g, ' ');
 const withoutHiddenSent = html => html.replace(/<div class="sent" id="inquiry-sent" tabindex="-1" hidden>[\s\S]*?<\/div>/, '');
@@ -13,7 +13,7 @@ const between = (html, start, end) => { const s = html.indexOf(start); assert.ok
 // English UI words that must not appear in the Spanish header, phone menu, footer, cookie dialog or contact form
 const DENY = /\b(Products|Websites|Custom apps|Plans|Support|About|Contact|Request free|Start a project|Skip to content|Menu|Main menu|Name|Email|Company|optional|Topic|Team size|Number of locations|Something else|Website preview|Cookie choices|Necessary|Preferences|Analytics|Sale or sharing|Always on|Reject all|Accept all|Save choices|All rights reserved|Client support|Monday|Friday|Language|Send inquiry|Check draft|Privacy notice|Back to home|Message sent|Trial request|In development|Coming soon|Scheduling|time clock|payroll)\b/;
 
-test('the five Spanish routes exist, pair with their English pages and use the same components', () => {
+test('the seven Spanish routes exist, pair with their English pages and use the same components', () => {
   assert.deepEqual(Object.fromEntries(Object.entries(ES_PATHS)), PAIRS);
   for (const [en, es] of Object.entries(PAIRS)) {
     assert.equal(routes[es].lang, 'es', es);
@@ -79,7 +79,7 @@ test('the NEVORA time clock demo starts in Spanish on the Spanish page and offer
   assert.match(html, /<span id="kio-lang-t" lang="en">English<\/span>/);
   assert.match(renderPage('/pages/nevora').html, /data-k-t="Enter your PIN">Enter your PIN</);
 });
-test('every page has a language switch; it round-trips between the pairs and falls back to the other home', () => {
+test('every page has a language switch; it round-trips between the pairs and falls back to the closest Spanish page', () => {
   const sw = html => [...html.matchAll(/<span class="lang-sw[^"]*" role="group" aria-label="([^"]+)"><a href="([^"]+)" hreflang="en" lang="en" aria-label="English"( aria-current="true")?>EN<\/a><span class="lang-sep" aria-hidden="true">\|<\/span><a href="([^"]+)" hreflang="es" lang="es" aria-label="Español"( aria-current="true")?>ES<\/a><\/span>/g)];
   for (const [en, es] of Object.entries(PAIRS)) {
     const a = sw(renderPage(en).html), b = sw(renderPage(es).html);
@@ -90,7 +90,7 @@ test('every page has a language switch; it round-trips between the pairs and fal
   for (const path of Object.keys(routes).filter(p => !routes[p].lang && !PAIRS[p])) {
     const m = sw(renderPage(path).html);
     assert.ok(m.length >= 2, path);
-    for (const x of m) { assert.equal(x[2], path); assert.equal(x[4], '/pages/es'); }
+    for (const x of m) { assert.equal(x[2], path); assert.equal(x[4], ES_NEAREST[path] || '/pages/es'); }
   }
 });
 
@@ -111,7 +111,8 @@ test('hreflang pairs are reciprocal, absolute and default to English on the main
     assert.deepEqual(b, a, es);
   }
   // Pages with no Spanish version name no alternates
-  assert.deepEqual(alternates(await page('main', '/pages/about')), {});
+  assert.deepEqual(alternates(await page('main', '/pages/legal')), {});
+  assert.deepEqual(alternates(await page('main', '/pages/custom-development')), {});
 });
 test('the main-theme layout renders Spanish pages in Spanish with es_PR metadata and the Spanish chrome', async () => {
   const html = await page('main', '/pages/es-nevora');
@@ -129,8 +130,13 @@ test('the main-theme layout renders Spanish pages in Spanish with es_PR metadata
   assert.match(en, /^<!doctype html><html lang="en"/);
   assert.match(en, /<meta property="og:locale" content="en_US"><meta property="og:locale:alternate" content="es_PR">/);
   assert.match(en, /<a href="\/pages\/es-nevora" hreflang="es" lang="es" aria-label="Español">ES<\/a>/);
+  // The switch keeps the visitor's place: About goes to Nosotros; an English-only page goes to its closest Spanish page
   const about = await page('main', '/pages/about');
-  assert.match(about, /<a href="\/pages\/about" hreflang="en" lang="en" aria-label="English" aria-current="true">EN<\/a><span class="lang-sep" aria-hidden="true">\|<\/span><a href="\/pages\/es" hreflang="es"/);
+  assert.match(about, /<a href="\/pages\/about" hreflang="en" lang="en" aria-label="English" aria-current="true">EN<\/a><span class="lang-sep" aria-hidden="true">\|<\/span><a href="\/pages\/es-nosotros" hreflang="es"/);
+  const dev = await page('main', '/pages/custom-development');
+  assert.match(dev, /<a href="\/pages\/es-productos#websites" hreflang="es" lang="es" aria-label="Español">ES<\/a>/);
+  const legal = await page('main', '/pages/legal');
+  assert.match(legal, /<a href="\/pages\/es" hreflang="es" lang="es" aria-label="Español">ES<\/a>/);
 });
 test('on an unpublished theme the switch and Spanish links stay in the same draft, and the page stays noindex', async () => {
   const ctx = { template: { name: 'index', suffix: 'velani-es-planes' }, request: { locale: { iso_code: 'en' }, page_type: 'index', path: '/' } };

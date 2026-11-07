@@ -1,0 +1,25 @@
+<section class="newsletter-section">
+  <div><p class="eyebrow">{{ section.settings.eyebrow }}</p><h2 class="section-title">{{ section.settings.heading }}</h2></div>
+  {% form 'customer', class: 'newsletter-form' %}
+    <input type="hidden" name="contact[tags]" value="newsletter">
+    <label class="visually-hidden" for="Newsletter-{{ section.id }}">{{ 'newsletter.label' | t }}</label>
+    <input id="Newsletter-{{ section.id }}" type="email" name="contact[email]" value="{{ form.email }}" autocorrect="off" autocapitalize="off" autocomplete="email" placeholder="{{ 'newsletter.label' | t }}" required>
+    <button type="submit">{{ section.settings.button_label }} →</button>
+    {% if form.posted_successfully? %}<p class="newsletter-message" role="status">{{ 'newsletter.success' | t }}</p>{% endif %}
+    {% if form.errors %}<p class="newsletter-message" role="alert">{{ form.errors.translated_fields.email | capitalize }} {{ form.errors.messages.email }}</p>{% endif %}
+  {% endform %}
+  <p class="newsletter-section__copy">{{ section.settings.text }}</p>
+</section>
+
+{% schema %}
+{
+  "name": "Newsletter",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "The Velani family" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Stay close to Velani." },
+    { "type": "textarea", "id": "text", "label": "Text", "default": "Be first to discover new collections, brand stories and everyday inspiration for life with your pet." },
+    { "type": "text", "id": "button_label", "label": "Button label", "default": "Join the family" }
+  ],
+  "presets": [{ "name": "Newsletter" }]
+}
+{% endschema %}

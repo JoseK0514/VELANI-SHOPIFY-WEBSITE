@@ -809,8 +809,8 @@ html:has(.zoom[open]){overflow:hidden}
 .gnav-ddbtn .icon{width:11px;height:11px;transition:transform .2s var(--out)}
 @media(hover:hover){.gnav-ddbtn:hover{color:var(--text)}}
 .gnav-ddmenu{position:absolute;left:50%;top:100%;z-index:70;padding-top:6px;opacity:0;visibility:hidden;transform:translate(-50%,6px);transition:opacity .18s var(--out),transform .18s var(--out),visibility 0s linear .18s}
-/* Open on hover, keyboard focus or the caret button; Escape adds .shut until the pointer or focus leaves */
-.gnav-dd:is(:hover,:focus-within,.open):not(.shut) .gnav-ddmenu{opacity:1;visibility:visible;transform:translate(-50%,0);transition-delay:0s}
+/* One open state: .open, set only by the caret button (see motion.js) */
+.gnav-dd.open .gnav-ddmenu{opacity:1;visibility:visible;transform:translate(-50%,0);transition-delay:0s}
 .gnav-ddbtn[aria-expanded=true] .icon{transform:rotate(180deg)}
 .gnav-ddmenu ul{list-style:none;margin:0;padding:8px;width:340px;display:flex;flex-direction:column;border-radius:14px;background:#0a1017;box-shadow:0 0 0 1px rgba(255,255,255,.1),0 24px 60px rgba(0,0,0,.6)}
 .gnav-links .gnav-ddmenu a{display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:2px;min-height:56px;padding:10px 12px;border-radius:10px;white-space:normal;letter-spacing:0;text-transform:none;color:var(--text)}

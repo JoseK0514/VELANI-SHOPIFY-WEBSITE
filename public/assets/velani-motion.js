@@ -25,17 +25,19 @@
   d.addEventListener('keydown',e=>{if(e.key==='Escape'&&mb.getAttribute('aria-expanded')==='true'){setMenu(false);mb.focus()}});
   matchMedia('(min-width:834px)').addEventListener('change',e=>{if(e.matches)setMenu(false)});}
  nav&&nav.addEventListener('focusin',()=>nav.classList.remove('tuck'));
- // Products menu (desktop): a disclosure. Hover and keyboard focus open it; the caret button toggles it; Escape closes it until the pointer or focus leaves
+ // Products menu (desktop): a disclosure with one open state. Only the caret button opens and closes it (click, Enter or Space);
+ // Escape, a click outside or focus leaving the menu closes it. Hover never opens it, so a click never fights the pointer.
  const dd=d.querySelector('.gnav-dd'),ddb=dd&&dd.querySelector('.gnav-ddbtn');
- if(dd&&ddb){const shown=()=>!dd.classList.contains('shut')&&(dd.classList.contains('open')||dd.matches(':hover')||dd.matches(':focus-within'));
-  const sync=()=>ddb.setAttribute('aria-expanded',String(shown()));
-  ddb.addEventListener('click',()=>{const o=!shown();dd.classList.remove('shut');dd.classList.toggle('open',o);if(!o)dd.classList.add('shut');sync()});
-  dd.addEventListener('mouseenter',()=>{dd.classList.remove('shut');sync()});
-  dd.addEventListener('mouseleave',()=>{dd.classList.remove('open');if(!dd.matches(':focus-within'))dd.classList.remove('shut');sync()});
-  dd.addEventListener('focusin',sync);
-  dd.addEventListener('focusout',()=>requestAnimationFrame(()=>{if(!dd.matches(':focus-within')){dd.classList.remove('open','shut')}sync()}));
-  d.addEventListener('keydown',e=>{if(e.key!=='Escape'||!shown())return;const inside=dd.contains(d.activeElement);dd.classList.remove('open');dd.classList.add('shut');sync();if(inside&&d.activeElement!==ddb&&d.activeElement!==dd.querySelector('.gnav-ddlink'))ddb.focus()});
-  d.addEventListener('click',e=>{if(!dd.contains(e.target)&&dd.classList.contains('open')){dd.classList.remove('open');sync()}});}
+ if(dd&&ddb){const isOpen=()=>dd.classList.contains('open');
+  const set=o=>{dd.classList.toggle('open',o);ddb.setAttribute('aria-expanded',String(o))};
+  ddb.addEventListener('click',()=>set(!isOpen()));
+  ddb.addEventListener('keydown',e=>{if(e.key==='ArrowDown'){e.preventDefault();set(true);const first=dd.querySelector('.gnav-ddmenu a');first&&first.focus()}});
+  dd.addEventListener('focusout',()=>requestAnimationFrame(()=>{if(isOpen()&&!dd.contains(d.activeElement))set(false)}));
+  d.addEventListener('keydown',e=>{if(e.key!=='Escape'||!isOpen())return;const inside=dd.contains(d.activeElement);set(false);if(inside)ddb.focus()});
+  d.addEventListener('click',e=>{if(isOpen()&&!dd.contains(e.target))set(false)});}
+ // Language switch: keep the visitor's place. Both languages use the same section ids, so the current #section carries over
+ // (unless the link already names a section, as for an English-only page whose closest Spanish page is another one)
+ d.querySelectorAll('.lang-sw a[hreflang]:not([aria-current])').forEach(a=>a.addEventListener('click',()=>{const h=location.hash;if(/^#[\w-]+$/.test(h)&&!a.hash)a.hash=h}));
  // Rows that scroll sideways on narrow screens are reachable by keyboard only while they actually scroll
  const sx=[...d.querySelectorAll('[data-scroll-x]')];const syncX=()=>sx.forEach(el=>{if(el.scrollWidth>el.clientWidth+1)el.tabIndex=0;else el.removeAttribute('tabindex')});syncX();addEventListener('resize',syncX);
  // Footer groups

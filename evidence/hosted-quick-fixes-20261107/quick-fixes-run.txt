@@ -1,0 +1,127 @@
+PASS chromium 1440: ES switch About → Nosotros (?view=velani-es-nosotros)
+PASS chromium 1440: EN switch back from velani-es-nosotros (?view=velani-about)
+PASS chromium 1440: ES switch Support → Ayuda (?view=velani-es-ayuda)
+PASS chromium 1440: EN switch back from velani-es-ayuda (?view=velani-help)
+PASS chromium 1440: ES switch Products#relay → Productos#relay (?view=velani-es-productos#relay)
+PASS chromium 1440: EN switch back from velani-es-productos (?view=velani-products#relay)
+PASS chromium 1440: ES switch Custom development → Productos#websites (?view=velani-es-productos#websites)
+PASS chromium 1440: EN switch back from velani-es-productos (?view=velani-products#websites)
+PASS chromium 1440: ES switch NEVORA#try → es-nevora#try (?view=velani-es-nevora#try)
+PASS chromium 1440: EN switch back from velani-es-nevora (?view=velani-nevora#try)
+PASS chromium 1440: hovering Products does not open the menu
+PASS chromium 1440: clicking the caret opens the menu
+PASS chromium 1440: menu stays open when the pointer leaves
+PASS chromium 1440: clicking the caret again closes it
+PASS chromium 1440: Enter opens it
+PASS chromium 1440: Enter again closes it
+PASS chromium 1440: Space opens it
+PASS chromium 1440: Tab moves into the open menu
+PASS chromium 1440: Escape closes it and returns focus to the caret
+PASS chromium 1440: ArrowDown opens it and focuses the first item
+PASS chromium 1440: a click outside closes it
+PASS chromium 1440: tabbing out of the menu closes it
+PASS chromium 1440: menu says "Rondo in NEVORA" (NEVORA Workforce / Rondo in NEVORAIn development / NEVORA RelayComing soon)
+PASS chromium 1440: NEVORA page labels (RRondo in NEVORA · AI assistant | Ask Rondo on this site)
+PASS chromium 1440: chat header says "On this site" (On this site · AI adviser for Velani and NEVORA)
+PASS chromium 1440: NEVORA privacy names the seven-day restore history and recovery snapshots
+PASS chromium 1440: velani-es-nosotros (Nosotros · Velani, overflow 0)
+PASS chromium 1440: velani-es-ayuda (Soporte · Velani, overflow 0)
+PASS chromium 1440: no page errors ()
+PASS chromium 390: ES switch About → Nosotros (?view=velani-es-nosotros)
+PASS chromium 390: EN switch back from velani-es-nosotros (?view=velani-about)
+PASS chromium 390: ES switch Support → Ayuda (?view=velani-es-ayuda)
+PASS chromium 390: EN switch back from velani-es-ayuda (?view=velani-help)
+PASS chromium 390: ES switch Products#relay → Productos#relay (?view=velani-es-productos#relay)
+PASS chromium 390: EN switch back from velani-es-productos (?view=velani-products#relay)
+PASS chromium 390: ES switch Custom development → Productos#websites (?view=velani-es-productos#websites)
+PASS chromium 390: EN switch back from velani-es-productos (?view=velani-products#websites)
+PASS chromium 390: ES switch NEVORA#try → es-nevora#try (?view=velani-es-nevora#try)
+PASS chromium 390: EN switch back from velani-es-nevora (?view=velani-nevora#try)
+PASS chromium 390: phone menu says "Rondo in NEVORA" (Rondo in NEVORAIn development)
+PASS chromium 390: NEVORA page labels (RRondo in NEVORA · AI assistant | Ask Rondo on this site)
+PASS chromium 390: chat header says "On this site" (On this site · AI adviser for Velani and NEVORA)
+PASS chromium 390: NEVORA privacy names the seven-day restore history and recovery snapshots
+PASS chromium 390: velani-es-nosotros (Nosotros · Velani, overflow 0)
+PASS chromium 390: velani-es-ayuda (Soporte · Velani, overflow 0)
+PASS chromium 390: no page errors ()
+PASS chromium 320: ES switch About → Nosotros (?view=velani-es-nosotros)
+PASS chromium 320: EN switch back from velani-es-nosotros (?view=velani-about)
+PASS chromium 320: ES switch Support → Ayuda (?view=velani-es-ayuda)
+PASS chromium 320: EN switch back from velani-es-ayuda (?view=velani-help)
+PASS chromium 320: ES switch Products#relay → Productos#relay (?view=velani-es-productos#relay)
+PASS chromium 320: EN switch back from velani-es-productos (?view=velani-products#relay)
+PASS chromium 320: ES switch Custom development → Productos#websites (?view=velani-es-productos#websites)
+PASS chromium 320: EN switch back from velani-es-productos (?view=velani-products#websites)
+PASS chromium 320: ES switch NEVORA#try → es-nevora#try (?view=velani-es-nevora#try)
+PASS chromium 320: EN switch back from velani-es-nevora (?view=velani-nevora#try)
+PASS chromium 320: phone menu says "Rondo in NEVORA" (Rondo in NEVORAIn development)
+PASS chromium 320: NEVORA page labels (RRondo in NEVORA · AI assistant | Ask Rondo on this site)
+PASS chromium 320: chat header says "On this site" (On this site · AI adviser for Velani and NEVORA)
+PASS chromium 320: NEVORA privacy names the seven-day restore history and recovery snapshots
+PASS chromium 320: velani-es-nosotros (Nosotros · Velani, overflow 0)
+PASS chromium 320: velani-es-ayuda (Soporte · Velani, overflow 0)
+PASS chromium 320: no page errors ()
+PASS webkit 1440: ES switch About → Nosotros (?view=velani-es-nosotros)
+PASS webkit 1440: EN switch back from velani-es-nosotros (?view=velani-about)
+PASS webkit 1440: ES switch Support → Ayuda (?view=velani-es-ayuda)
+PASS webkit 1440: EN switch back from velani-es-ayuda (?view=velani-help)
+PASS webkit 1440: ES switch Products#relay → Productos#relay (?view=velani-es-productos#relay)
+PASS webkit 1440: EN switch back from velani-es-productos (?view=velani-products#relay)
+PASS webkit 1440: ES switch Custom development → Productos#websites (?view=velani-es-productos#websites)
+PASS webkit 1440: EN switch back from velani-es-productos (?view=velani-products#websites)
+PASS webkit 1440: ES switch NEVORA#try → es-nevora#try (?view=velani-es-nevora#try)
+PASS webkit 1440: EN switch back from velani-es-nevora (?view=velani-nevora#try)
+PASS webkit 1440: hovering Products does not open the menu
+PASS webkit 1440: clicking the caret opens the menu
+PASS webkit 1440: menu stays open when the pointer leaves
+PASS webkit 1440: clicking the caret again closes it
+PASS webkit 1440: Enter opens it
+PASS webkit 1440: Enter again closes it
+PASS webkit 1440: Space opens it
+PASS webkit 1440: Tab moves into the open menu
+PASS webkit 1440: Escape closes it and returns focus to the caret
+PASS webkit 1440: ArrowDown opens it and focuses the first item
+PASS webkit 1440: a click outside closes it
+PASS webkit 1440: tabbing out of the menu closes it
+PASS webkit 1440: menu says "Rondo in NEVORA" (NEVORA Workforce / Rondo in NEVORAIn development / NEVORA RelayComing soon)
+PASS webkit 1440: NEVORA page labels (RRondo in NEVORA · AI assistant | Ask Rondo on this site)
+PASS webkit 1440: chat header says "On this site" (On this site · AI adviser for Velani and NEVORA)
+PASS webkit 1440: NEVORA privacy names the seven-day restore history and recovery snapshots
+PASS webkit 1440: velani-es-nosotros (Nosotros · Velani, overflow 0)
+PASS webkit 1440: velani-es-ayuda (Soporte · Velani, overflow 0)
+PASS webkit 1440: no page errors ()
+PASS webkit 390: ES switch About → Nosotros (?view=velani-es-nosotros)
+PASS webkit 390: EN switch back from velani-es-nosotros (?view=velani-about)
+PASS webkit 390: ES switch Support → Ayuda (?view=velani-es-ayuda)
+PASS webkit 390: EN switch back from velani-es-ayuda (?view=velani-help)
+PASS webkit 390: ES switch Products#relay → Productos#relay (?view=velani-es-productos#relay)
+PASS webkit 390: EN switch back from velani-es-productos (?view=velani-products#relay)
+PASS webkit 390: ES switch Custom development → Productos#websites (?view=velani-es-productos#websites)
+PASS webkit 390: EN switch back from velani-es-productos (?view=velani-products#websites)
+PASS webkit 390: ES switch NEVORA#try → es-nevora#try (?view=velani-es-nevora#try)
+PASS webkit 390: EN switch back from velani-es-nevora (?view=velani-nevora#try)
+PASS webkit 390: phone menu says "Rondo in NEVORA" (Rondo in NEVORAIn development)
+PASS webkit 390: NEVORA page labels (RRondo in NEVORA · AI assistant | Ask Rondo on this site)
+PASS webkit 390: chat header says "On this site" (On this site · AI adviser for Velani and NEVORA)
+PASS webkit 390: NEVORA privacy names the seven-day restore history and recovery snapshots
+PASS webkit 390: velani-es-nosotros (Nosotros · Velani, overflow 0)
+PASS webkit 390: velani-es-ayuda (Soporte · Velani, overflow 0)
+PASS webkit 390: no page errors ()
+PASS webkit 320: ES switch About → Nosotros (?view=velani-es-nosotros)
+PASS webkit 320: EN switch back from velani-es-nosotros (?view=velani-about)
+PASS webkit 320: ES switch Support → Ayuda (?view=velani-es-ayuda)
+PASS webkit 320: EN switch back from velani-es-ayuda (?view=velani-help)
+PASS webkit 320: ES switch Products#relay → Productos#relay (?view=velani-es-productos#relay)
+PASS webkit 320: EN switch back from velani-es-productos (?view=velani-products#relay)
+PASS webkit 320: ES switch Custom development → Productos#websites (?view=velani-es-productos#websites)
+PASS webkit 320: EN switch back from velani-es-productos (?view=velani-products#websites)
+PASS webkit 320: ES switch NEVORA#try → es-nevora#try (?view=velani-es-nevora#try)
+PASS webkit 320: EN switch back from velani-es-nevora (?view=velani-nevora#try)
+PASS webkit 320: phone menu says "Rondo in NEVORA" (Rondo in NEVORAIn development)
+PASS webkit 320: NEVORA page labels (RRondo in NEVORA · AI assistant | Ask Rondo on this site)
+PASS webkit 320: chat header says "On this site" (On this site · AI adviser for Velani and NEVORA)
+PASS webkit 320: NEVORA privacy names the seven-day restore history and recovery snapshots
+PASS webkit 320: velani-es-nosotros (Nosotros · Velani, overflow 0)
+PASS webkit 320: velani-es-ayuda (Soporte · Velani, overflow 0)
+PASS webkit 320: no page errors ()
+all passed

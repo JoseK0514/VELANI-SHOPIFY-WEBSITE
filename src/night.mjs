@@ -69,11 +69,11 @@ export function nevoraMain(target, lang = 'en') { const src = SRC[lang].nevora; 
 export function productsMain(target, lang = 'en') { return localize(site(mainOf(SRC[lang].products), target, lang), lang); }
 
 /* Products: one header item with a short menu (NEVORA Workforce, Rondo, NEVORA Relay); the phone menu lists them under a Products label. */
-const PRODUCTS = [['NEVORA Workforce', '/pages/nevora', 'Scheduling, time clock and payroll calculation'], ['Rondo<span class="nav-soon">In development</span>', '/pages/nevora#rondo', 'The AI assistant coming to NEVORA'], ['NEVORA Relay<span class="nav-soon">Coming soon</span>', '/pages/products#relay', 'Orders, kitchen display and inventory']];
+const PRODUCTS = [['NEVORA Workforce', '/pages/nevora', 'Scheduling, time clock and payroll calculation'], ['Rondo in NEVORA<span class="nav-soon">In development</span>', '/pages/nevora#rondo', 'The AI assistant coming to NEVORA'], ['NEVORA Relay<span class="nav-soon">Coming soon</span>', '/pages/products#relay', 'Orders, kitchen display and inventory']];
 const NAV = [['Websites', '/pages/custom-development#web-applications', 'websites'], ['Custom apps', '/pages/custom-development', 'services'], ['Plans', '/pages/plans', 'plans'], ['Support', '/pages/help', 'help'], ['About', '/pages/about', 'about']];
 /** The words of the header, the phone menu and the language switch, per language (Spanish in src/content.es.mjs). */
 export const CHROME = {
-  en: { skip: 'Skip to content', home: 'Velani home', main: 'Main', mainMenu: 'Main menu', menu: 'Menu', products: 'Products', productsMenu: 'Products menu', productsList: PRODUCTS, nav: NAV, rondoSoon: 'In development', relaySoon: 'Soon', contact: 'Contact', trial: 'Request free trial', trialLong: 'Request free NEVORA trial', project: 'Start a project', support: 'Client support', hours: company.hours, brandOf: 'Velani is a brand of ', langGroup: 'Language', closingLine: 'Software products and custom development, from San Juan.' },
+  en: { skip: 'Skip to content', home: 'Velani home', main: 'Main', mainMenu: 'Main menu', menu: 'Menu', products: 'Products', productsMenu: 'Products menu', productsList: PRODUCTS, nav: NAV, rondoNevora: 'Rondo in NEVORA', rondoSoon: 'In development', relaySoon: 'Soon', contact: 'Contact', trial: 'Request free trial', trialLong: 'Request free NEVORA trial', project: 'Start a project', support: 'Client support', hours: company.hours, brandOf: 'Velani is a brand of ', langGroup: 'Language', closingLine: 'Software products and custom development, from San Juan.' },
   es: CHROME_ES,
 };
 /** In the Shopify layout the two destinations are computed once per page (main theme or draft), see renderShopifyLayout. */
@@ -95,11 +95,11 @@ export function header(current, target, { nevora = false, lang = 'en', hrefs = S
   const productsMark = target === 'shopify'
     ? `{% if velani_nav == 'nevora' or velani_nav == 'products' %} aria-current="page"{% endif %}`
     : (current === 'nevora' || current === 'products' ? ' aria-current="page"' : '');
-  // A disclosure: the word links to the Products page, the caret button opens the menu (hover and keyboard focus also open it; Escape closes it)
+  // A disclosure: the word links to the Products page; only the caret button opens and closes the menu (Escape, a click outside or leaving it also closes it)
   const products = `<li class="gnav-dd"><a class="gnav-ddlink" href="/pages/products"${productsMark}>${t.products}</a><button class="gnav-ddbtn" type="button" aria-expanded="false" aria-controls="gnav-ddmenu" aria-label="${t.productsMenu}">${icon('caret-down')}</button><div class="gnav-ddmenu" id="gnav-ddmenu"><ul aria-label="${t.products}">` + t.productsList.map(([name, href, note]) => `<li><a href="${href}"><b>${name}</b><span>${note}</span></a></li>`).join('') + '</ul></div></li>';
   const enOnly = href => lang === 'es' && !ES_PATHS[href.split(/[?#]/)[0]] ? ' hreflang="en"' : '';
   const links = products + t.nav.map(([text, href, key]) => `<li><a href="${href}"${enOnly(href)}${mark(key)}>${text}</a></li>`).join('');
-  const productsMenu = `<p class="gmenu-k">${t.products}</p><a class="gmenu-sub" href="/pages/nevora"${mark('nevora')}>NEVORA Workforce</a><a class="gmenu-sub nav-rondo" href="/pages/nevora#rondo">Rondo<span class="nav-soon">${t.rondoSoon}</span></a><a class="gmenu-sub" href="/pages/products#relay">NEVORA Relay<span class="nav-soon">${t.relaySoon}</span></a>`;
+  const productsMenu = `<p class="gmenu-k">${t.products}</p><a class="gmenu-sub" href="/pages/nevora"${mark('nevora')}>NEVORA Workforce</a><a class="gmenu-sub nav-rondo" href="/pages/nevora#rondo">${t.rondoNevora}<span class="nav-soon">${t.rondoSoon}</span></a><a class="gmenu-sub" href="/pages/products#relay">NEVORA Relay<span class="nav-soon">${t.relaySoon}</span></a>`;
   const menu = productsMenu + t.nav.map(([text, href, key]) => `<a href="${href}"${enOnly(href)}${mark(key)}>${text}</a>`).join('');
   const staticClass = target === 'shopify' ? `{% if velani_page == '${nevoraSlug}' %} static{% endif %}` : (nevora ? ' static' : '');
   const cta = (cls, trial) => target === 'shopify' ? `{% if velani_nav == 'services' %}<a class="${cls}" href="/pages/contact?interest=custom-software">${t.project}</a>{% else %}<a class="${cls}" href="/pages/contact?interest=nevora-demo">${trial}</a>{% endif %}` : (current === 'services' ? `<a class="${cls}" href="/pages/contact?interest=custom-software">${t.project}</a>` : `<a class="${cls}" href="/pages/contact?interest=nevora-demo">${trial}</a>`);

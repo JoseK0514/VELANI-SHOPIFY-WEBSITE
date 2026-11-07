@@ -1,5 +1,5 @@
 import { company, routes, services, legalUpdated, langOf, counterpart } from './content.mjs';
-import { CONSENT_ES, CONTACT_ES, PLANS_ES, HOURS_ES } from './content.es.mjs';
+import { CONSENT_ES, CONTACT_ES, PLANS_ES, HOURS_ES, ABOUT_ES, FAQ_ES, ES_NEAREST, IN_ENGLISH } from './content.es.mjs';
 import { header as nightHeader, footer as nightFooter, homeMain, nevoraMain, productsMain, policyMain, zoomScript, assistant as nightAssistant, icon, WORDMARK, CHROME, localize } from './night.mjs';
 export function escapeHtml(value) {
   return String(value ?? '').replace(/[&<>"']/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[char]);
@@ -38,7 +38,7 @@ function panel(target, { id, cls = '', img, flip = false, kick, kickHtml, title,
   return '<section class="hpanel ' + cls + '" id="' + id + '" aria-labelledby="' + tid + '">' + photo + '<div class="hshade"></div><div class="hcopy">' + (kick || kickHtml ? '<p class="hkick">' + (kickHtml || e(kick)) + '</p>' : '') + '<' + tag + ' class="rise" id="' + tid + '">' + (html || e(title)) + '</' + tag + '>' + (text ? '<p class="fade">' + e(text) + '</p>' : '') + (acts ? '<div class="hacts fade">' + acts + '</div>' : '') + after + '</div>' + extra + '</section>';
 }
 /** The closing panel on every company page: the wordmark, client support and the two ways in. */
-function closing(target, { project = '/pages/contact', lang = 'en', support = hb(CHROME[lang].support, '/pages/help', false, lang === 'es' ? ' hreflang="en"' : '') } = {}) {
+function closing(target, { project = '/pages/contact', lang = 'en', support = hb(CHROME[lang].support, '/pages/help') } = {}) {
   return '<section class="hpanel end" id="velani" aria-label="Velani"><img class="hph flip" src="' + asset('night-ai-light.webp', target) + '" alt="" width="1920" height="1080" loading="lazy"><div class="hshade"></div><div class="hcopy"><p class="hwm">' + WORDMARK + '</p><p class="fade">' + e(CHROME[lang].closingLine) + '</p><div class="hacts fade">' + hb(CHROME[lang].project, project, true) + support + '</div></div></section>';
 }
 const HOW = [
@@ -152,15 +152,26 @@ function plans(page, target, lang = 'en') {
   const custom = '<div class="inc"><p class="hkick">' + t.customKick + '</p><h2 class="t2 rise">' + t.customTitle + '</h2><p class="lede">' + t.customText + '</p><div class="acts"><a class="pill line" href="/pages/contact?interest=custom-software">' + t.project + '</a></div></div>';
   return pageHero(page, { meta: start }) + '<section class="plans"><div class="wrap">' + facts + inc + day30 + custom + '</div></section>' + closing(target, { lang });
 }
-function faq(page, target) {
-  const support = '<section class="support" aria-labelledby="sup-t"><div class="wrap"><p class="hkick">Client support</p><h2 class="t2 rise" id="sup-t">For our clients.</h2><dl class="spec big"><div><dt>Email</dt><dd><a href="mailto:' + company.email + '">' + company.email + '</a><small>We aim to reply within two business days</small></dd></div><div><dt>Phone</dt><dd><a href="' + tel() + '">' + e(company.phone) + '</a><small>' + e(company.hours) + '</small></dd></div><div><dt>Postal address</dt><dd>' + e(company.operator) + '<small>' + keepAddress(e(company.address)) + '</small></dd></div></dl><div class="acts"><a class="pill" href="/pages/contact">Contact page</a></div></div></section>';
-  const questions = '<section class="faq" aria-labelledby="faq-t"><div class="wrap"><div class="qa"><div class="head"><p class="hkick">Questions</p><h2 class="t2 rise" id="faq-t">Before we start</h2></div><div class="faq-list">' + page.sections.map(s => '<details><summary>' + e(s.heading) + icon('plus') + '</summary><p>' + linkEmail(e(s.text)).split(company.phone).join('<a href="' + tel() + '">' + e(company.phone) + '</a>') + '</p></details>').join('') + '<div class="acts">' + more('NEVORA questions', '/pages/nevora#faq') + '</div></div></div></div></section>';
-  const app = '<section class="band help" aria-labelledby="help-t"><div class="wrap band-in"><h2 class="t3" id="help-t">Do you use NEVORA at work?</h2><p class="band-links">' + more('NEVORA support', '/pages/nevora-support') + more('NEVORA privacy policy', '/pages/nevora-privacy') + more('Delete your NEVORA account', '/pages/nevora-account-deletion') + more('NEVORA terms of use', '/pages/nevora-terms') + '</p></div></section>';
-  return pageHero(page) + support + questions + app + closing(target, { support: hb('Contact page', '/pages/contact') });
+/** The Support page's words (Spanish in src/content.es.mjs). */
+const FAQ = {
+  en: { supportKick: 'Client support', supportTitle: 'For our clients.', email: 'Email', reply: 'We aim to reply within two business days', phone: 'Phone', hours: company.hours, post: 'Postal address', contactPage: 'Contact page', kick: 'Questions', title: 'Before we start', nevoraQ: 'NEVORA questions', appTitle: 'Do you use NEVORA at work?',
+    app: [['NEVORA support', '/pages/nevora-support'], ['NEVORA privacy policy', '/pages/nevora-privacy'], ['Delete your NEVORA account', '/pages/nevora-account-deletion'], ['NEVORA terms of use', '/pages/nevora-terms']] },
+  es: FAQ_ES,
+};
+function faq(page, target, lang = 'en') {
+  const t = FAQ[lang];
+  // NEVORA's policy pages are English only for now: on Spanish pages their links say so
+  const appLink = ([text, href]) => lang === 'es' ? '<a class="more" href="' + e(href) + '" hreflang="en"><span>' + e(text) + ' ' + IN_ENGLISH + '</span>' + icon('caret-right') + '</a>' : more(text, href);
+  const support = '<section class="support" aria-labelledby="sup-t"><div class="wrap"><p class="hkick">' + t.supportKick + '</p><h2 class="t2 rise" id="sup-t">' + t.supportTitle + '</h2><dl class="spec big"><div><dt>' + t.email + '</dt><dd><a href="mailto:' + company.email + '">' + company.email + '</a><small>' + t.reply + '</small></dd></div><div><dt>' + t.phone + '</dt><dd><a href="' + tel() + '">' + e(company.phone) + '</a><small>' + e(t.hours) + '</small></dd></div><div><dt>' + t.post + '</dt><dd>' + e(company.operator) + '<small>' + keepAddress(e(company.address)) + '</small></dd></div></dl><div class="acts"><a class="pill" href="/pages/contact">' + t.contactPage + '</a></div></div></section>';
+  const questions = '<section class="faq" aria-labelledby="faq-t"><div class="wrap"><div class="qa"><div class="head"><p class="hkick">' + t.kick + '</p><h2 class="t2 rise" id="faq-t">' + t.title + '</h2></div><div class="faq-list">' + page.sections.map(s => '<details><summary>' + e(s.heading) + icon('plus') + '</summary><p>' + linkEmail(e(s.text)).split(company.phone).join('<a href="' + tel() + '">' + e(company.phone) + '</a>') + '</p></details>').join('') + '<div class="acts">' + more(t.nevoraQ, '/pages/nevora#faq') + '</div></div></div></div></section>';
+  const app = '<section class="band help" aria-labelledby="help-t"><div class="wrap band-in"><h2 class="t3" id="help-t">' + t.appTitle + '</h2><p class="band-links">' + t.app.map(appLink).join('') + '</p></div></section>';
+  return localize(pageHero(page) + support + questions + app + closing(target, { lang, support: hb(t.contactPage, '/pages/contact') }), lang);
 }
-function about(page, target) {
-  const hero = panel(target, { id: 'top', cls: 'dim long', img: 'ai-glow', flip: true, kick: page.eyebrow, title: page.title, tag: 'h1', text: page.intro, acts: hb('Start a project', '/pages/contact', true) + hb('See NEVORA', '/pages/nevora'), first: true });
-  return hero + '<section class="split" aria-label="About Velani"><div class="wrap">' + page.sections.map(s => '<div class="draw"><h2 class="t3">' + e(s.heading) + '</h2><div><p>' + keepAddress(linkEmail(e(s.text))) + '</p></div></div>').join('') + '</div></section>' + closing(target);
+const ABOUT = { en: { project: 'Start a project', see: 'See NEVORA', label: 'About Velani' }, es: ABOUT_ES };
+function about(page, target, lang = 'en') {
+  const t = ABOUT[lang];
+  const hero = panel(target, { id: 'top', cls: 'dim long', img: 'ai-glow', flip: true, kick: page.eyebrow, title: page.title, tag: 'h1', text: page.intro, acts: hb(t.project, '/pages/contact', true) + hb(t.see, '/pages/nevora'), first: true });
+  return localize(hero + '<section class="split" aria-label="' + t.label + '"><div class="wrap">' + page.sections.map(s => '<div class="draw"><h2 class="t3">' + e(s.heading) + '</h2><div><p>' + keepAddress(linkEmail(e(s.text))) + '</p></div></div>').join('') + '</div></section>' + closing(target, { lang }), lang);
 }
 function notFound() {
   return '<section class="phero"><div class="wrap"><p class="kicker">Page not found</p><h1 class="t1">We could not find that page.</h1><p class="lede">The link may be out of date, or the address may be misspelled.</p><div class="acts"><a class="pill" href="/">Go to the home page</a><a class="pill line" href="/pages/nevora">See NEVORA</a></div></div></section>';
@@ -176,10 +187,10 @@ function renderRawBody(path, target) {
     case 'policy': return policyMain(page.slug);
     case 'services': return services_(page, target);
     case 'contact': return localize((target === 'shopify' ? '{% capture velani_sent %}' + sentPanel(false, lang) + '{% endcapture %}' : '') + contactHero(page, lang) + contact(target, lang), lang);
-    case 'faq': return faq(page, target);
+    case 'faq': return faq(page, target, lang);
     case 'plans': return localize(plans(page, target, lang), lang);
     case 'legal-index': return pageHero(page) + legalIndex();
-    default: return page.legal ? legalDoc(page) : about(page, target);
+    default: return page.legal ? legalDoc(page) : about(page, target, lang);
   }
 }
 export function renderBody(path, { target = 'preview' } = {}) {
@@ -206,7 +217,7 @@ function assistantBlock(target) {
 }
 const preload = (target, extra = '') => '<link rel="preload" href="' + asset('dm-sans-latin-400-normal.woff2', target) + '" as="font" type="font/woff2" crossorigin><link rel="preload" href="' + asset('dm-sans-latin-600-normal.woff2', target) + '" as="font" type="font/woff2" crossorigin>' + extra;
 /** The first large image of each panel page, preloaded at high priority (it is the page's largest paint). */
-const heroOf = path => ({ home: 'night-ai-light.webp', nevora: 'night-ai-devices.webp', products: 'night-ai-devices.webp', services: 'night-ai-glow.webp' })[routes[path]?.kind] || (path === '/pages/about' ? 'night-ai-glow.webp' : '');
+const heroOf = path => ({ home: 'night-ai-light.webp', nevora: 'night-ai-devices.webp', products: 'night-ai-devices.webp', services: 'night-ai-glow.webp' })[routes[path]?.kind] || (path === '/pages/about' || path === '/pages/es-nosotros' ? 'night-ai-glow.webp' : '');
 /** Language versions: the English and Spanish paths of a page that has both, absolute on the main domain (hreflang). */
 const absolute = path => 'https://' + company.domain + path;
 const pairOf = path => { const other = counterpart(path); if (!other) return null; return langOf(path) === 'es' ? { en: other, es: path } : { en: path, es: other }; };
@@ -218,7 +229,7 @@ function alternates(path) {
 export function langPaths(path) {
   const page = routes[path];
   if (!page) return { en: '/', es: '/pages/es' };
-  return langOf(path) === 'es' ? { en: page.en || '/', es: path } : { en: path, es: page.es || '/pages/es' };
+  return langOf(path) === 'es' ? { en: page.en || '/', es: path } : { en: path, es: page.es || ES_NEAREST[path] || '/pages/es' };
 }
 export function renderPage(path, { target = 'preview' } = {}) {
   const page = routes[path] || { title: 'Page not found', intro: 'We could not find that page.' };
