@@ -245,4 +245,16 @@ b.rmark,.hchat-h b.rmark,.rondo-kick .rmark,.ast-launch .rmark,.ast-head .rmark,
 .foot-nav.grouped a{min-height:36px;padding:0}
 .foot-k{margin:0 0 6px;font-size:0.75rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--text-3)}
 .foot-row:has(.foot-nav.grouped){align-items:flex-end}
-@media(max-width:600px){.foot-nav.grouped{grid-template-columns:1fr 1fr;gap:20px 16px}.foot-nav.grouped a{min-height:44px}}
+/* Tablets and phones: groups stack; each label gets a full row and its links sit in two even columns, the same columns as the legal links */
+@media(max-width:833px){
+ .foot-row:has(.foot-nav.grouped){display:block}
+ .foot-nav.grouped{grid-template-columns:1fr;gap:20px}
+ .foot-grp{display:grid;grid-template-columns:1fr 1fr;column-gap:16px;align-items:center}
+ .foot-grp .foot-k{grid-column:1/-1;margin:0 0 2px}
+ .foot-nav.grouped a{min-height:44px}
+ .foot-support{display:grid;gap:2px;margin-top:20px;padding-top:20px;border-top:1px solid var(--line)}
+ .foot-support .fs-sep{display:none}
+ .foot-support .fs-k{margin-bottom:6px;font-size:0.75rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--text-3)}
+ .foot-support a{justify-self:start;min-height:36px;display:inline-flex;align-items:center}
+ .foot-links .foot-lang{justify-self:start;margin-left:-6px}.foot-links .foot-lang a:first-child{justify-content:flex-start;padding-left:6px}
+}

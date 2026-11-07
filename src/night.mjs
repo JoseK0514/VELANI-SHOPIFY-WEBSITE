@@ -74,7 +74,7 @@ const NAV = [['Websites', '/pages/custom-development#web-applications', 'website
 /** Header menus (Nov 7 flow map): [key, label, nav keys that mark it current, items [name, href, note]]. */
 const GROUPS = [
   ['nevora', 'NEVORA', ['nevora', 'products', 'plans'], [...PRODUCTS, ['Plans', '/pages/plans', 'Free for 30 days, then one price per business']]],
-  ['custom', 'Custom software', ['services', 'websites'], [['Websites', '/pages/custom-development#web-applications', 'Sites that bring in calls and bookings'], ['Booking and loyalty apps', '/pages/custom-development#booking', 'Booking, reminders and rewards cards'], ['Online stores', '/pages/custom-development#online-stores', 'Products, delivery pricing and payment'], ['Business tools', '/pages/custom-development#business-systems', 'Requests, approvals and records in one place']]],
+  ['custom', 'Custom software', ['services', 'websites'], [['Websites', '/pages/custom-development#web-applications', 'Sites that bring in calls and bookings'], ['Booking apps', '/pages/custom-development#booking', 'Booking, reminders and rewards cards'], ['Online stores', '/pages/custom-development#online-stores', 'Products, delivery pricing and payment'], ['Business tools', '/pages/custom-development#business-systems', 'Requests, approvals and records in one place']]],
   ['company', 'Company', ['about', 'help', 'contact'], [['About', '/pages/about', 'What we make and how we work'], ['Support', '/pages/help', 'Monday to Friday, 8 am to 9 pm ET'], ['Contact', '/pages/contact', 'Start a project or ask a question']]],
 ];
 /** Until the Sign in page is built, Sign in goes to NEVORA support, which explains how each workplace signs in. */
