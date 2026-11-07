@@ -7,3 +7,4 @@ evidence/private/
 .env.*
 
 .cache/
+evidence/baseline-live-*/
