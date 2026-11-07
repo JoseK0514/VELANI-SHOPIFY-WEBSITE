@@ -238,3 +238,11 @@ b.rmark,.hchat-h b.rmark,.rondo-kick .rmark,.ast-launch .rmark,.ast-head .rmark,
 /* Example chat header: a longer name (Spanish) moves the status label to its own line instead of past the card edge */
 .hchat-h{flex-wrap:wrap;row-gap:4px}
 .hchat-h span{min-width:0}
+
+/* Footer links in the header's three groups (Nov 7). Labels use the phone menu's .gmenu-k style; links keep .foot-nav a */
+.foot-nav.grouped{display:grid;grid-template-columns:repeat(3,max-content);gap:0 72px;margin-left:0;align-items:start}
+.foot-grp{display:flex;flex-direction:column;align-items:flex-start}
+.foot-nav.grouped a{min-height:36px;padding:0}
+.foot-k{margin:0 0 6px;font-size:0.75rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--text-3)}
+.foot-row:has(.foot-nav.grouped){align-items:flex-end}
+@media(max-width:600px){.foot-nav.grouped{grid-template-columns:1fr 1fr;gap:20px 16px}.foot-nav.grouped a{min-height:44px}}
