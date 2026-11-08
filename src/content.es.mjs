@@ -53,7 +53,7 @@ export const ES_ROUTES = {
     og: ['velani-social-plans.png', 'Planes de NEVORA: gratis por 30 días y luego un solo precio por negocio'],
   }),
   '/pages/es-contacto': es('/pages/contact', {
-    kind: 'contact', nav: 'contact', eyebrow: 'Contacto', title: 'Empieza por el problema.', name: 'Contacto',
+    kind: 'contact', nav: 'contact', eyebrow: 'Contacto', title: 'Cuéntanos qué necesitas.', name: 'Contacto',
     intro: 'Cuéntanos qué necesita funcionar mejor y quién lo usará. Procuramos responderte por correo en un plazo de dos días laborables.',
     og: ['velani-social.png', 'Velani. Escríbenos sobre tu proyecto o sobre NEVORA.'],
   }),
@@ -95,7 +95,7 @@ ES_ROUTES['/pages/es-entrar'] = es('/pages/sign-in', {
 });
 ES_ROUTES['/pages/es-a-la-medida'] = es('/pages/custom-development', {
   kind: 'services', nav: 'services', eyebrow: 'Software a la medida', name: 'Software a la medida',
-  title: 'Sitios web y apps hechos para tu negocio.',
+  title: 'Sitios web y apps para tu negocio.',
   intro: 'Diseñamos y creamos sitios web, apps de reservas, tiendas en línea y herramientas de negocio. Antes de empezar cualquier trabajo pagado, recibes una cotización fija por escrito.',
   desc: 'Velani diseña y crea sitios web, apps de reservas, tiendas en línea y herramientas de negocio, con una cotización fija por escrito.',
   og: ['velani-social-custom.png', 'Velani: un sitio web creado por Velani para un cliente'],
@@ -180,8 +180,9 @@ export const SIGNIN_ES = {
 };
 export const CONTACT_ES = {
   kicker: ['NEVORA para tu equipo', 'Prueba gratis de NEVORA por 30 días', 'NEVORA Relay'],
-  h1: ['Pide una cotización de NEVORA.', 'Pide tu prueba gratis de NEVORA.', 'Únete a la lista de espera de NEVORA Relay.'],
-  fact: ['Sitios web, apps a la medida, NEVORA u otra cosa.', 'Un solo precio por negocio, cotizado según tu número de empleados, tu negocio y las funciones que uses. Sin compromiso.', 'Hasta 30 empleados&nbsp;· 30 días&nbsp;· Sin tarjeta&nbsp;· Sin&nbsp;cargos&nbsp;automáticos', 'En diseño&nbsp;· Aún sin fechas. Te escribiremos cuando abra el acceso anticipado.'],
+  h1: ['Pide una cotización de NEVORA.', 'Pide tu prueba gratis de NEVORA.', 'Únete a la lista de NEVORA Relay.'],
+  fact: ['Un sitio web, una app a la medida, NEVORA u otra cosa.', 'Un solo precio por negocio, cotizado según tu número de empleados, tu negocio y las funciones que uses. Sin compromiso.', 'Gratis por 30 días para equipos de hasta 30 personas. No necesitas tarjeta.', 'NEVORA Relay está en diseño y aún no tiene fechas. Te escribiremos cuando abra el acceso anticipado.'],
+  callK: '¿Prefieres hablar? Llámanos.', preview: 'Vista previa. Este formulario revisa tu borrador y no envía nada.',
   previewNote: 'Vista previa del sitio web&nbsp;· revisa tu borrador, no envía nada',
   noscript: 'El formulario de vista previa necesita JavaScript. Desde esta vista previa no se envían mensajes.',
   legend: 'Consulta',

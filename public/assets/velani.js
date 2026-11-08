@@ -66,7 +66,7 @@ if (form && !justSent) {
   // The Relay waitlist has its own hero wording only; its form keeps the general wording.
   document.querySelectorAll(demo ? '.v-d, .v-r' : nevora ? '.v-d, .v-m, .v-r' : relay ? '.cform-hero .v-d, .v-n, .v-m' : '.v-n, .v-m, .v-r').forEach(el => el.remove());
   const shown = el => [...el.childNodes].filter(n => n.nodeType === 3 || getComputedStyle(n).display !== 'none').map(n => n.textContent).join('');
-  const relabel = () => document.querySelectorAll('.phero h1.rise').forEach(h => h.setAttribute('aria-label', shown(h).replace(/\s+/g, ' ').trim()));
+  const relabel = () => document.querySelectorAll('.cform-hero h1.rise').forEach(h => h.setAttribute('aria-label', shown(h).replace(/\s+/g, ' ').trim()));
   relabel();
   if (topic === 'nevora' || topic === 'nevora-demo') {
     document.title = (topic === 'nevora-demo' ? L.trialTitle : L.quoteTitle) + ' · Velani';

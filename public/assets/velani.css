@@ -631,8 +631,9 @@ body:has(#inquiry-sent:not([hidden])) :is(.signin-top,.client-side){display:none
  .shots-hero .hshot{width:34%;margin:32px auto 24px}
  .client{padding:72px 0}
  .client-grid{display:flex;flex-direction:column;gap:0}
- .client-side{display:contents}
+ .client-side,.contact-side{display:contents}
  .client-side .t2{max-width:none}
+ .contact-side .lede{margin-bottom:32px}
  .client-side .lede{margin-bottom:32px}
  .client-form{order:2}
  .client-call{order:3;margin-top:56px}
@@ -684,6 +685,24 @@ body:has(#inquiry-sent:not([hidden])) :is(.signin-top,.client-side){display:none
  .cal-g .c i{display:none}
 }
 @media(max-width:359px){.hpanel.long h1{font-size:2rem}}
+
+/* Contact: the Sign in split. The heading changes with the topic; the phone sits under it; the form keeps the contact behaviour */
+.contact-split{padding:clamp(56px,7vw,104px) 0 var(--s2)}
+.contact-split .cform-hero{padding:0;text-align:left}
+.contact-split .cform-hero .t1{margin:0;max-width:none;font-size:clamp(2.5rem,3.6vw,3.25rem);line-height:1.04}
+.contact-split .cform-hero .lede{margin:24px 0 0;max-width:28em}
+.contact-split .fine{margin:20px 0 0;max-width:42em;text-align:left}
+.contact-split .form-status{text-align:left}
+.client-send .send-note{margin:0;text-align:left}
+.frow-ct{grid-template-columns:1fr}
+.sent .note{font-size:0.875rem;font-weight:400;letter-spacing:0;text-transform:none}
+@media(max-width:1023px){.contact-split .client-grid{grid-template-columns:1fr;gap:40px}.contact-split .cform-hero .t1{max-width:16ch}}
+@media(max-width:833px){.contact-split{padding:48px 0 72px}.contact-split .cform-hero .t1{font-size:2.375rem;max-width:none}}
+@media(max-width:400px){.contact-split .cform-hero .t1{font-size:2rem}}
+@media(max-width:359px){.contact-split .cform-hero .t1{font-size:1.75rem}}
+.contact-side .client-call{margin:56px 0 0;text-align:left;font-size:inherit;line-height:inherit;color:inherit}
+.contact-side .client-call a.client-tel{display:inline-block;min-height:0;color:var(--text);text-decoration:none}
+.contact-side .client-call a.client-tel:hover{color:var(--accent)}
 
 /* Try the time clock: a working copy of the NEVORA PIN screen. Light surface, like the real tablet. */
 .kio-note{display:inline-flex;flex-wrap:wrap;gap:4px 6px;margin-top:var(--s1);padding:10px 16px;border-radius:var(--r);background:var(--panel);box-shadow:0 0 0 1px var(--line);font-size:0.875rem;line-height:1.4;color:var(--text-2)}

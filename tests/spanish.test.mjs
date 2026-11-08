@@ -58,7 +58,7 @@ test('no English UI is left in the Spanish header, phone menu, footer, cookie di
     assert.equal(hit, null, path + ': ' + (hit && hit[0]));
   }
   const contact = renderPage('/pages/es-contacto').html;
-  const form = between(contact, '<section class="phero cform-hero">', '</section>') + between(contact, '<form id="project-inquiry"', '</form>') + between(contact, '<div class="sent"', '</div>');
+  const form = between(contact, '<div class="cform-hero contact-side">', '<div class="client-form">') + between(contact, '<form id="project-inquiry"', '</form>') + between(contact, '<div class="sent"', '</div>');
   const hit = text(form).match(DENY);
   assert.equal(hit, null, 'contact form: ' + (hit && hit[0]));
   assert.match(contact, /<option value="nevora-demo">Prueba gratis de NEVORA<\/option>/);

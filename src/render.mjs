@@ -70,7 +70,8 @@ function services_(page, target, lang = 'en') {
 }
 /** The contact page's words (Spanish in src/content.es.mjs). Topic values never change, so the email Velani receives is the same. */
 const CONTACT = {
-  en: { kicker: ['NEVORA for your team', 'Free 30-day NEVORA trial', 'NEVORA Relay'], h1: ['Ask for a NEVORA quote.', 'Request your free NEVORA trial.', 'Join the NEVORA Relay waitlist.'], fact: ['Websites, custom apps, NEVORA or something else.', 'One price per business, quoted for your number of employees, your business and the features you use. No commitment.', 'Up to 30 employees&nbsp;· 30 days&nbsp;· No card&nbsp;· No&nbsp;automatic&nbsp;charge', 'In design&nbsp;· No dates yet. We’ll email you when early access opens.'],
+  en: { kicker: ['NEVORA for your team', 'Free 30-day NEVORA trial', 'NEVORA Relay'], h1: ['Ask for a NEVORA quote.', 'Request your free NEVORA trial.', 'Join the NEVORA Relay waitlist.'], fact: ['A website, a custom app, NEVORA or something else.', 'One price per business, quoted for your number of employees, your business and the features you use. No commitment.', 'Free for 30 days for teams of up to 30 people. You don’t need a card.', 'NEVORA Relay is in design, with no dates yet. We’ll email you when early access opens.'],
+    callK: 'Prefer to talk? Call us.', preview: 'Preview. This form checks your draft and sends nothing.',
     previewNote: 'Website preview&nbsp;· checks your draft, sends nothing', noscript: 'The preview form needs JavaScript. No messages are sent from this preview.', legend: 'Inquiry',
     name: 'Name', email: 'Email', company: 'Company', optional: 'optional', topic: 'Topic', topics: [['website', 'Website'], ['custom-software', 'Custom app'], ['nevora', 'NEVORA quote'], ['nevora-demo', 'Free NEVORA trial'], ['relay', 'NEVORA Relay waitlist'], ['other', 'Something else']],
     team: 'Team size', bigTeam: 'More than 30 (by quote)', locations: 'Number of locations', message: 'What needs to work better', messageOptional: 'Anything else',
@@ -94,25 +95,23 @@ function fields(live = false, lang = 'en') {
   const big = CONTACT.en.bigTeam, bigOption = t.bigTeam === big ? '<option>' + big + '</option>' : '<option value="' + big + '">' + t.bigTeam + '</option>';
   const team = '<div class="frow" data-nevora-fields hidden><div class="ff sel"><select id="inquiry-team" name="contact[team_size]"><option value=""></option><option>1–10</option><option>11–20</option><option>21–30</option>' + bigOption + '</select><label for="inquiry-team">' + t.team + '</label></div>' + ff('locations', 'locations', t.locations, 'maxlength="120" aria-describedby="error-locations" inputmode="numeric"') + '</div>';
   const message = '<div class="ff area"><textarea id="inquiry-message" name="contact[body]" placeholder=" " rows="4" maxlength="4000" required aria-describedby="error-message" data-min="140">' + (live ? '{{ form.body | escape }}' : '') + '</textarea><label for="inquiry-message">' + v(t.message, t.messageOptional + opt) + '</label><p class="field-error" id="error-message"></p></div>';
-  const send = '<button class="pill" type="submit" data-inquiry-submit>' + (live ? v(...t.send) : t.check) + '</button><p class="send-note">' + t.sendNote + ' <a href="/pages/privacy"' + enOnly(lang) + '>' + t.privacy + '</a></p><p class="fine v-m">' + t.fine + '</p>';
-  return '<fieldset' + (live ? '' : ' disabled') + '><legend class="sr">' + t.legend + '</legend>' + name + email + company + topic + team + message + send + '</fieldset>';
+  const send = '<div class="client-send"><button class="pill" type="submit" data-inquiry-submit>' + (live ? v(...t.send) : t.check) + '</button><p class="send-note">' + t.sendNote + ' <a href="/pages/privacy"' + enOnly(lang) + '>' + t.privacy + '</a></p></div><p class="fine v-m">' + t.fine + '</p>';
+  return '<fieldset' + (live ? '' : ' disabled') + '><legend class="sr">' + t.legend + '</legend><div class="frow">' + name + email + '</div><div class="frow frow-ct">' + company + topic + '</div>' + team + message + send + '</fieldset>';
 }
 /** The contact page carries the general, the NEVORA quote and the demo wording; the boot script marks the document before paint and CSS shows one. */
 const v = (general, nevora, demo, relay) => '<span class="v-d">' + general + '</span><span class="v-n' + (demo ? '' : ' v-nm') + '">' + nevora + '</span>' + (demo ? '<span class="v-m">' + demo + '</span>' : '') + (relay ? '<span class="v-r">' + relay + '</span>' : '');
 /** After a successful send the form is replaced by this confirmation; velani.js adapts its wording to the topic (and shows it after a preview check). */
 const SENT_ICON = '<svg class="sent-i" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M173.66,98.34a8,8,0,0,1,0,11.32l-56,56a8,8,0,0,1-11.32,0l-24-24a8,8,0,0,1,11.32-11.32L112,148.69l50.34-50.35A8,8,0,0,1,173.66,98.34ZM232,128A104,104,0,1,1,128,24,104.11,104.11,0,0,1,232,128Zm-16,0a88,88,0,1,0-88,88A88.1,88.1,0,0,0,216,128Z"/></svg>';
 const sentPanel = (hidden = false, lang = 'en') => { const t = CONTACT[lang]; return '<div class="sent" id="inquiry-sent" tabindex="-1"' + (hidden ? ' hidden' : '') + '>' + SENT_ICON + '<p class="note" data-sent-preview hidden>' + t.sentPreview + '</p><h1 class="t2 sent-h" data-sent-h>' + t.sentH + '</h1><p class="sent-p" data-sent-p>' + t.sentP + '</p><p class="sent-from">' + t.sentFrom[0] + '<a href="mailto:' + company.email + '">' + company.email + '</a>' + t.sentFrom[1] + '</p><a class="pill" href="/">' + t.back + '</a></div>'; };
-function contactHero(page, lang = 'en') {
+/** Contact (Nov 7): one split like the Sign in page. The heading and its line change with the topic the visitor came for (the
+ * boot script marks the document before paint; velani.js removes the unused wording), the phone sits under them, the form beside. */
+function contact(page, target, lang = 'en') {
   const t = CONTACT[lang];
-  return '<section class="phero cform-hero"><div class="wrap"><p class="kicker">' + v(e(page.eyebrow), ...t.kicker) + '</p><h1 class="t1 rise">' + v(e(page.title), ...t.h1) + '</h1><p class="hfact fade">' + v(...t.fact) + '</p></div></section>';
-}
-function contact(target, lang = 'en') {
-  const t = CONTACT[lang];
-  const preview = '<form id="project-inquiry" class="inquiry-form" method="post" action="/?velani_preview_inquiry=1" data-inquiry-mode="preview" novalidate><p class="note">' + t.previewNote + '</p>' + fields(false, lang) + '<div class="form-status" role="status" aria-live="polite" tabindex="-1"></div><noscript><p>' + t.noscript + '</p></noscript></form>';
-  const email = '<div class="panel"><h2 class="t3">' + t.writeTitle + '</h2><p>' + t.writeText + company.email + '.</p><div class="acts"><a class="pill" href="mailto:' + company.email + '">' + t.writeButton + company.email + '</a></div><p class="field-help mail">' + t.noSensitive + '</p></div>';
+  const side = '<div class="cform-hero contact-side"><h1 class="t1 rise">' + v(e(page.title), ...t.h1) + '</h1><p class="lede fade">' + v(...t.fact) + '</p><div class="client-call contact-aside fade"><p>' + t.callK + '</p><a class="client-tel" href="' + tel() + '">' + e(company.phone) + '</a><p>' + e(lang === 'es' ? HOURS_ES : company.hours) + '<br><a href="mailto:' + company.email + '">' + company.email + '</a></p></div></div>';
+  const preview = '<form id="project-inquiry" class="inquiry-form" method="post" action="/?velani_preview_inquiry=1" data-inquiry-mode="preview" novalidate>' + fields(false, lang) + '<div class="form-status" role="status" aria-live="polite" tabindex="-1"></div><p class="client-preview">' + t.preview + '</p><noscript><p>' + t.noscript + '</p></noscript></form>';
+  const email = '<div class="client-write"><h2 class="t3">' + t.writeTitle + '</h2><p>' + t.writeText + company.email + '.</p><div class="acts"><a class="pill" href="mailto:' + company.email + '">' + t.writeButton + company.email + '</a></div><p class="field-help mail">' + t.noSensitive + '</p></div>';
   const native = "{% if settings.inquiries_enabled and theme.role == 'main' %}{% form 'contact', id: 'project-inquiry', class: 'inquiry-form', novalidate: 'novalidate' %}{% if form.posted_successfully? %}{{ velani_sent }}{% else %}<div data-inquiry-mode=\"live\">" + fields(true, lang) + "</div>{% if form.errors %}<div class=\"form-status\" role=\"alert\">{{ form.errors | default_errors }}</div>{% endif %}<div class=\"form-legal\">{{ 'shopify.online_store.spam_detection.disclaimer_html' | t }}</div>{% endif %}{% endform %}{% elsif theme.role == 'main' %}" + email + '{% else %}' + preview + "{{ velani_sent | replace: 'id=\"inquiry-sent\" tabindex=\"-1\"', 'id=\"inquiry-sent\" tabindex=\"-1\" hidden' }}{% endif %}";
-  const aside = '<p class="contact-aside"><a href="mailto:' + company.email + '">' + company.email + '</a><br><a href="' + tel() + '">' + e(company.phone) + '</a>&nbsp;· ' + e(lang === 'es' ? HOURS_ES : company.hours) + '<br>' + e(company.operator) + ', ' + keepAddress(e(company.address)) + '</p>';
-  return '<section class="contact"><div class="wrap cform">' + (target === 'shopify' ? native : preview + sentPanel(true, lang)) + aside + '</div></section>';
+  return '<section class="contact contact-split"><div class="wrap client-grid">' + side + '<div class="client-form">' + (target === 'shopify' ? native : preview + sentPanel(true, lang)) + '</div></div></section>';
 }
 /** Sign in (Nov 7 flow map): NEVORA's own sign-in first, then one form for Velani clients with two kinds of request.
  * The form is the contact form (same ids, validation, preview check and confirmation in velani.js), with the topic set by the
@@ -247,7 +246,7 @@ function renderRawBody(path, target) {
     case 'products': return productsMain(target, lang);
     case 'policy': return policyMain(page.slug);
     case 'services': return services_(page, target, lang);
-    case 'contact': return localize((target === 'shopify' ? '{% capture velani_sent %}' + sentPanel(false, lang) + '{% endcapture %}' : '') + contactHero(page, lang) + contact(target, lang), lang);
+    case 'contact': return localize((target === 'shopify' ? '{% capture velani_sent %}' + sentPanel(false, lang) + '{% endcapture %}' : '') + contact(page, target, lang), lang);
     case 'signin': return signin(page, target, lang);
     case 'faq': return faq(page, target, lang);
     case 'plans': return localize(plans(page, target, lang), lang);
