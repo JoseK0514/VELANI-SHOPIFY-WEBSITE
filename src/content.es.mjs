@@ -200,16 +200,14 @@ export const CONTACT_ES = {
 
 /** The plans page below its hero. */
 export const PLANS_ES = {
-  h1: 'Prueba NEVORA gratis por 30 días.', text: 'Los equipos de hasta 30 personas usan la app completa sin tarjeta. Después del día 30 pagas un solo precio por el negocio, cotizado para tu equipo.',
-  fact: 'Sin tarjeta. No cobramos nada el día 30.', trial: 'Pide la prueba gratis', quote: 'Pide una cotización',
-  webAlt: 'Horario de NEVORA para la semana: ocho personas, sus turnos de cada día y la semana publicada', phoneAlt: 'Pago de NEVORA en el teléfono de una empleada: el próximo día de pago, el último cheque y su comprobante',
-  termsT: 'Cómo funciona la prueba',
-  terms: [['30 días', 'Gratis desde el día en que configuramos tu espacio de trabajo.'], ['30 personas', 'La prueba cubre equipos de hasta 30. Los equipos más grandes reciben una cotización desde el primer día.'], ['Sin tarjeta', 'No cobramos nada cuando termina la prueba.'], ['Un solo precio', 'Para todo el negocio, cotizado según tu número de empleados y las funciones que uses.']],
-  includedT: 'Todo lo de la prueba sigue en el plan.',
-  included: ['Horarios y cambios de turno', 'Registro de tiempo en una tableta compartida, con PIN', 'Solicitudes y aprobaciones de tiempo libre', 'Tarjetas de tiempo listas para revisar', 'Nómina calculada a partir de las horas aprobadas', 'Comprobantes de nómina para cada empleado', 'Roles para dueños, gerentes y empleados', 'Inglés y español para todos'],
+  h1: 'Prueba NEVORA gratis por 30 días.', text: 'Los equipos de hasta 30 personas usan la app completa, sin tarjeta. Después del día 30 pagas un solo precio por el negocio, cotizado para tu equipo.',
+  date: ['Gratis por 30 días desde el día en que configuramos tu espacio de trabajo.', 'Si configuramos tu espacio de trabajo hoy, es gratis hasta el '],
+  trial: 'Pide la prueba gratis', quote: 'Pide una cotización',
+  daysT: 'Tus 30 días', calLabel: 'Tu prueba en un calendario',
+  steps: [['Día 1', 'Configuramos tu espacio de trabajo. Invitas a tu equipo y cada persona recibe un PIN para la tableta del registro de tiempo.'], ['Primera semana', 'Publicas el horario. Tu equipo ve sus turnos en el teléfono, cambia turnos y pide tiempo libre, en inglés o en español.'], ['Segunda semana', 'Apruebas las tarjetas de tiempo. NEVORA calcula la nómina a partir de las horas aprobadas y prepara un comprobante para cada empleado.'], ['Día 30', 'Tú decides qué sigue.']],
   fine: 'NEVORA calcula los comprobantes de nómina. No les paga a los empleados ni presenta impuestos de nómina.',
-  shotAlt: 'Tarjetas de tiempo de NEVORA de la semana pasada: ocho de nueve aprobadas, con las horas registradas y el estado de cada persona',
-  dayT: 'El día 30, tú decides.',
-  day: [['Continúa por cotización', 'Le ponemos precio a NEVORA para tu negocio y tu equipo sigue trabajando sin pausa.'], ['Cierra el espacio de trabajo', 'Primero exporta tus horarios, tarjetas de tiempo y comprobantes de nómina, y luego escribe a support@thevelani.com. Eliminamos el espacio de trabajo y sus datos en un plazo de 3 días.']],
-  custom: ['Los sitios web y las apps a la medida reciben una cotización fija por escrito para cada proyecto. ', 'Mira Software a la medida', '.'],
+  shotAlt: 'Horario de NEVORA para la semana: ocho personas, sus turnos de cada día y la semana publicada', shotCap: 'La semana de Carmen en Northside Coffee, un lugar de trabajo de ejemplo: ocho personas y todos los turnos publicados.',
+  endT: 'Cuando termina la prueba',
+  end: [['Sigue con NEVORA', 'Te cotizamos un solo precio para tu negocio y tu equipo sigue trabajando sin pausa.'], ['Cierra tu espacio de trabajo', 'Exporta tus horarios, tarjetas de tiempo y comprobantes de nómina, y luego escribe a support@thevelani.com. Eliminamos el espacio de trabajo y sus datos en un plazo de 3 días.']],
+  closing: 'Los sitios web y las apps a la medida reciben una cotización fija por escrito para cada proyecto.', project: 'Empieza un proyecto', custom: 'Mira Software a la medida',
 };

@@ -38,8 +38,8 @@ function panel(target, { id, cls = '', img, flip = false, kick, kickHtml, title,
   return '<section class="hpanel ' + cls + '" id="' + id + '" aria-labelledby="' + tid + '">' + photo + '<div class="hshade"></div><div class="hcopy">' + (kick || kickHtml ? '<p class="hkick">' + (kickHtml || e(kick)) + '</p>' : '') + '<' + tag + ' class="rise" id="' + tid + '">' + (html || e(title)) + '</' + tag + '>' + (text ? '<p class="fade">' + e(text) + '</p>' : '') + (acts ? '<div class="hacts fade">' + acts + '</div>' : '') + after + '</div>' + extra + '</section>';
 }
 /** The closing panel on every company page: the wordmark, client support and the two ways in. */
-function closing(target, { project = '/pages/contact', lang = 'en', support = hb(CHROME[lang].support, '/pages/help') } = {}) {
-  return '<section class="hpanel end" id="velani" aria-label="Velani"><img class="hph flip" src="' + asset('night-ai-light.webp', target) + '" alt="" width="1920" height="1080" loading="lazy"><div class="hshade"></div><div class="hcopy"><p class="hwm">' + WORDMARK + '</p><p class="fade">' + e(CHROME[lang].closingLine) + '</p><div class="hacts fade">' + hb(CHROME[lang].project, project, true) + support + '</div></div></section>';
+function closing(target, { project = '/pages/contact', lang = 'en', support = hb(CHROME[lang].support, '/pages/help'), line = CHROME[lang].closingLine } = {}) {
+  return '<section class="hpanel end" id="velani" aria-label="Velani"><img class="hph flip" src="' + asset('night-ai-light.webp', target) + '" alt="" width="1920" height="1080" loading="lazy"><div class="hshade"></div><div class="hcopy"><p class="hwm">' + WORDMARK + '</p><p class="fade">' + e(line) + '</p><div class="hacts fade">' + hb(CHROME[lang].project, project, true) + support + '</div></div></section>';
 }
 const rail = (steps, cls = '') => '<ol class="rail' + cls + '" data-in>' + steps.map(([b, t], i) => '<li data-in><i>0' + (i + 1) + '</i><b>' + e(b) + '</b><span>' + e(t) + '</span></li>').join('') + '</ol>';
 /** Custom software page words (Spanish added with its own page). Case studies lead; the client's name is the heading. */
@@ -186,33 +186,32 @@ function legalIndex() {
   return '<section class="dir"><div class="wrap"><p class="hkick">This website</p><h2 class="t2">Website notices</h2><div class="tiles">' + site.map(tile).join('') + '</div><p class="hkick">NEVORA app</p><h2 class="t2">For people who use NEVORA</h2><div class="tiles">' + nevora.map(tile).join('') + '</div></div></section>';
 }
 /** The plans page's words (Spanish in src/content.es.mjs). */
-/** Plans (Nov 7 flow map): the trial in the first screen with the real schedule and pay screens, the four terms set large,
- * what the plan includes beside the timecards screen, the two ways day 30 can go as two equal panels, one line for custom work. */
+/** Plans (Nov 7 flow map, v2): the trial in the first screen with today's real end date, the 30 days as a calendar beside what
+ * happens in them (the plan's features, as things your team does), one NEVORA screen large, the two ways the trial can end as
+ * two equal panels, and custom work in the closing. Dates come from the visitor's clock (motion.js); without it the page says
+ * "Day 1" and "Day 30". */
 const PLANS = {
-  en: { h1: 'Try NEVORA free for 30 days.', text: 'Teams of up to 30 people get the whole app with no card. After day 30 you pay one price for the business, quoted for your team.',
-    fact: 'No card. Nothing is charged on day 30.', trial: 'Request free trial', quote: 'Ask for a quote',
-    webAlt: 'NEVORA schedule for the week: eight people, their shifts each day and the week published', phoneAlt: 'NEVORA pay on an employee’s phone: the next payday, the last paycheck and its statement',
-    termsT: 'How the trial works',
-    terms: [['30 days', 'Free from the day we set up your workplace.'], ['30 people', 'The trial covers teams of up to 30. Larger teams get a quote from day one.'], ['No card', 'We charge nothing when the trial ends.'], ['One price', 'For the whole business, quoted for your number of employees and the features you use.']],
-    includedT: 'Everything in the trial stays in the plan.',
-    included: ['Scheduling and shift swaps', 'Time clock on a shared tablet, with PINs', 'Time off requests and approvals', 'Timecards ready for review', 'Payroll calculated from approved hours', 'Pay statements for every employee', 'Roles for owners, managers and employees', 'English and Spanish for everyone'],
+  en: { h1: 'Try NEVORA free for 30 days.', text: 'Teams of up to 30 people get the whole app, with no card. After day 30 you pay one price for the business, quoted for your team.',
+    date: ['Free for 30 days from the day we set up your workplace.', 'If we set up your workplace today, it’s free through '],
+    trial: 'Request free trial', quote: 'Ask for a quote',
+    daysT: 'Your 30 days', calLabel: 'Your trial on a calendar',
+    steps: [['Day 1', 'We set up your workplace. You invite your team, and each person gets a PIN for the time clock tablet.'], ['First week', 'You publish the schedule. Your team sees their shifts on their phones, swaps shifts and asks for time off, in English or Spanish.'], ['Second week', 'You approve timecards. NEVORA calculates payroll from the approved hours and makes a pay statement for each employee.'], ['Day 30', 'You decide what happens next.']],
     fine: 'NEVORA calculates pay statements. It does not pay employees or file payroll taxes.',
-    shotAlt: 'NEVORA timecards for last week: eight of nine approved, each person’s recorded hours and status',
-    dayT: 'On day 30, you choose.',
-    day: [['Continue by quote', 'We price NEVORA for your business, and your team keeps working without a break.'], ['Close the workplace', 'Export your schedules, timecards and pay statements first, then email support@thevelani.com. We delete the workplace and its data within 3 days.']],
-    custom: ['Websites and custom apps get a fixed written quote for each project. ', 'See custom software', '.'] },
+    shotAlt: 'NEVORA schedule for the week: eight people, their shifts each day and the week published', shotCap: 'Carmen’s week at Northside Coffee, a sample workplace: eight people and every shift published.',
+    endT: 'When the trial ends',
+    end: [['Keep NEVORA', 'We quote one price for your business, and your team keeps working without a break.'], ['Close your workplace', 'Export your schedules, timecards and pay statements, then email support@thevelani.com. We delete the workplace and its data within 3 days.']],
+    closing: 'Websites and custom apps get a fixed written quote for each project.', project: 'Start a project', custom: 'See custom software' },
   es: PLANS_ES,
 };
 function plans(page, target, lang = 'en') {
   const t = PLANS[lang];
   const trial = hb(t.trial, '/pages/contact?interest=nevora-demo', true), quote = hb(t.quote, '/pages/contact?interest=nevora');
-  const shots = '<div class="hweb fade"><img src="' + asset('night-r1-schedule.webp', target) + '" alt="' + e(t.webAlt) + '" width="2000" height="1181" decoding="async"></div><div class="hshot fade"><img src="' + asset('night-r1-ph-pay.webp', target) + '" alt="' + e(t.phoneAlt) + '" width="780" height="1688" decoding="async"></div>';
-  const hero = panel(target, { id: 'top', cls: 'live long shots-hero', img: 'ai-devices', flip: true, title: t.h1, tag: 'h1', text: t.text, acts: trial + quote, after: '<p class="hfact fade">' + e(t.fact) + '</p>', extra: shots, first: true });
-  const terms = '<section class="chap terms" aria-labelledby="terms-t"><div class="wrap"><h2 class="t2 rise" id="terms-t">' + e(t.termsT) + '</h2><dl class="terms-list">' + t.terms.map(([dt, dd]) => '<div class="fade"><dt>' + e(dt) + '</dt><dd>' + e(dd) + '</dd></div>').join('') + '</dl></div></section>';
-  const included = '<section class="chap included" aria-labelledby="inc-t"><div class="wrap included-grid"><div><h2 class="t2 rise" id="inc-t">' + e(t.includedT) + '</h2><ul class="inc-list fade">' + t.included.map(x => '<li>' + icon('check') + '<span>' + e(x) + '</span></li>').join('') + '</ul><p class="inc-fine">' + e(t.fine) + '</p></div><figure class="shot slab fade"><img src="' + asset('night-r1-timecards.webp', target) + '" alt="' + e(t.shotAlt) + '" width="1500" height="1000" loading="lazy" decoding="async"></figure></div></section>';
-  const day = '<section class="chap day30" aria-labelledby="day-t"><div class="wrap"><h2 class="t2 rise" id="day-t">' + e(t.dayT) + '</h2><div class="day-opts">' + t.day.map(([h, x]) => '<div class="day-opt fade"><h3 class="t3">' + e(h) + '</h3><p>' + linkEmail(e(x)) + '</p></div>').join('') + '</div><div class="hacts day-acts fade">' + trial + quote + '</div></div></section>';
-  const custom = '<section class="chap case-more plans-custom" aria-label="' + e(t.custom[1]) + '"><div class="wrap"><p class="lede">' + e(t.custom[0]) + '<a class="ul" href="/pages/custom-development">' + e(t.custom[1]) + '</a>' + e(t.custom[2]) + '</p></div></section>';
-  return hero + terms + included + day + custom + closing(target, { lang });
+  const hero = panel(target, { id: 'top', cls: 'dim long', img: 'ai-glow', title: t.h1, tag: 'h1', text: t.text, acts: trial + quote, after: '<p class="hfact fade" data-trial-end data-before="' + e(t.date[1]) + '">' + e(t.date[0]) + '</p>', first: true });
+  const steps = '<ol class="days-list">' + t.steps.map(([k, x], i) => '<li class="fade"><p class="days-k"' + (i === 0 ? ' data-day="1"' : i === 3 ? ' data-day="30"' : '') + '>' + e(k) + '</p><p>' + e(x) + '</p></li>').join('') + '</ol><p class="days-fine">' + e(t.fine) + '</p>';
+  const days = '<section class="chap days" aria-labelledby="days-t"><div class="wrap days-grid"><div><h2 class="t2 rise" id="days-t">' + e(t.daysT) + '</h2>' + steps + '</div><div class="cal fade" data-cal role="img" aria-label="' + e(t.calLabel) + '" hidden></div></div></section>';
+  const shot = '<section class="chap plans-shot"><div class="wrap"><figure class="shot slab fade"><img src="' + asset('night-r1-schedule.webp', target) + '" alt="' + e(t.shotAlt) + '" width="2000" height="1181" loading="lazy" decoding="async"></figure><p class="shot-cap">' + e(t.shotCap) + '</p></div></section>';
+  const end = '<section class="chap day30" aria-labelledby="end-t"><div class="wrap"><h2 class="t2 rise" id="end-t">' + e(t.endT) + '</h2><div class="day-opts">' + t.end.map(([h, x]) => '<div class="day-opt fade"><h3 class="t3">' + e(h) + '</h3><p>' + linkEmail(e(x)) + '</p></div>').join('') + '</div><div class="hacts day-acts fade">' + trial + quote + '</div></div></section>';
+  return hero + days + shot + end + closing(target, { lang, line: t.closing, project: '/pages/contact?interest=custom-software', support: hb(t.custom, '/pages/custom-development') });
 }
 /** The Support page's words (Spanish in src/content.es.mjs). */
 const FAQ = {
@@ -280,7 +279,7 @@ function assistantBlock(target) {
 }
 const preload = (target, extra = '') => '<link rel="preload" href="' + asset('dm-sans-latin-400-normal.woff2', target) + '" as="font" type="font/woff2" crossorigin><link rel="preload" href="' + asset('dm-sans-latin-600-normal.woff2', target) + '" as="font" type="font/woff2" crossorigin>' + extra;
 /** The first large image of each panel page, preloaded at high priority (it is the page's largest paint). */
-const heroOf = path => ({ home: 'night-ai-light.webp', nevora: 'night-ai-devices.webp', products: 'night-ai-devices.webp', services: 'night-ai-glow.webp', signin: 'night-ai-devices.webp', plans: 'night-ai-devices.webp' })[routes[path]?.kind] || (path === '/pages/about' || path === '/pages/es-nosotros' ? 'night-ai-glow.webp' : '');
+const heroOf = path => ({ home: 'night-ai-light.webp', nevora: 'night-ai-devices.webp', products: 'night-ai-devices.webp', services: 'night-ai-glow.webp', signin: 'night-ai-devices.webp', plans: 'night-ai-glow.webp' })[routes[path]?.kind] || (path === '/pages/about' || path === '/pages/es-nosotros' ? 'night-ai-glow.webp' : '');
 /** Language versions: the English and Spanish paths of a page that has both, absolute on the main domain (hreflang). */
 const absolute = path => 'https://' + company.domain + path;
 const pairOf = path => { const other = counterpart(path); if (!other) return null; return langOf(path) === 'es' ? { en: other, es: path } : { en: path, es: other }; };

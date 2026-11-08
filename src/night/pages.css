@@ -333,33 +333,45 @@ body:has(#inquiry-sent:not([hidden])) :is(.signin-top,.client-side){display:none
  .client-send .pill{width:100%}
 }
 
-/* Plans: the trial in the first screen (shared composition .shots-hero), the four terms set large in one row, what the plan
-   includes beside the real timecards screen, day 30 as two equal panels, one line for custom work */
-.terms,.included,.day30{padding:var(--s2) 0 0}
-.terms-list{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(24px,3vw,48px);margin:clamp(40px,5vw,64px) 0 0}
-.terms-list div{margin:0}
-.terms-list dt{font-size:clamp(1.75rem,2.4vw,2.25rem);line-height:1.1;font-weight:600;letter-spacing:-.025em;color:var(--text)}
-.terms-list dd{margin:14px 0 0;max-width:24em;font-size:1rem;line-height:1.5;color:var(--text-2)}
-.included-grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:clamp(48px,7vw,112px);align-items:center}
-.included-grid .t2{max-width:14ch;margin:0}
-.inc-list{list-style:none;margin:36px 0 0;padding:0;display:grid;gap:14px}
-.inc-list li{display:flex;gap:12px;align-items:flex-start;margin:0;padding:0;border:0;font-size:1.0625rem;line-height:1.45;color:var(--text)}
-.inc-list .icon{flex:none;width:18px;height:18px;margin-top:4px;color:var(--accent)}
-.inc-fine{margin:28px 0 0;max-width:34em;font-size:0.875rem;line-height:1.5;color:var(--text-3)}
-.included .shot{margin:0}
+/* Plans: the trial in the first screen with its real end date, the 30 days as a calendar beside what happens in them, one NEVORA
+   screen large, the two ways the trial ends as two equal panels; custom work sits in the closing panel */
+.days,.plans-shot,.day30{padding:var(--s2) 0 0}
+.days-grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:clamp(48px,7vw,112px);align-items:start}
+.days-grid .t2{margin:0}
+.days-list{list-style:none;margin:36px 0 0;padding:0;display:grid;gap:28px}
+.days-list li{margin:0;padding:0}
+.days-list p{margin:0}
+.days-k{font-size:0.9375rem;font-weight:600;color:var(--accent)}
+.days-list .days-k+p{margin-top:6px;max-width:30em;font-size:1.0625rem;line-height:1.5;color:var(--text)}
+.days-fine{margin:32px 0 0;max-width:34em;font-size:0.875rem;line-height:1.5;color:var(--text-3)}
+.cal{padding:clamp(20px,2.4vw,32px);border-radius:var(--r2);background:var(--panel)}
+.cal-h{margin:0 0 18px;font-size:1.0625rem;font-weight:600;color:var(--text)}
+.cal-g{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:6px}
+.cal-g .w{padding-bottom:4px;font-size:0.8125rem;text-align:center;color:var(--text-3)}
+.cal-g .c{display:flex;flex-direction:column;justify-content:space-between;aspect-ratio:1;min-width:0;padding:8px 9px;border-radius:8px;font-size:0.875rem;line-height:1.2;color:var(--text-3)}
+.cal-g .c b{font-weight:500;white-space:nowrap}
+.cal-g .c.in{background:var(--panel-2);color:var(--text)}
+.cal-g .c.d1,.cal-g .c.d30{background:#f0f0fa;color:#06121e}
+.cal-g .c i{font-style:normal;font-size:0.6875rem;font-weight:600;white-space:nowrap}
+.plans-shot .shot{margin:0}
+.shot-cap{margin:16px 0 0;font-size:0.875rem;line-height:1.5;color:var(--text-3)}
 .day-opts{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:clamp(40px,5vw,56px) 0 0}
 .day-opt{padding:clamp(28px,3vw,40px);border-radius:var(--r2);background:var(--panel)}
 .day-opt .t3{margin:0}
 .day-opt p{margin:14px 0 0;max-width:32em;font-size:1.0625rem;line-height:1.5;color:var(--text-2)}
 .day-opt p a{color:var(--text);text-decoration:underline;text-decoration-color:var(--line-2);text-underline-offset:3px}
 .day-acts{margin-top:32px}
-.plans-custom{padding:var(--s2) 0}
-@media(max-width:1023px){.terms-list{grid-template-columns:1fr 1fr}}
+.day30{padding-bottom:var(--s2)}
+@media(max-width:1023px){.days-grid{display:flex;flex-direction:column;gap:0}.days-grid>div:first-child{display:contents}.days-grid .t2{order:0}.cal{order:1;margin-top:32px;width:100%;max-width:560px}.days-list{order:2;margin-top:40px}.days-fine{order:3}}
 @media(max-width:833px){
- .terms,.included,.day30{padding-top:72px}
- .included-grid{grid-template-columns:1fr;gap:40px}
+ .days,.plans-shot,.day30{padding-top:72px}
+ .day30{padding-bottom:72px}
  .day-opts{grid-template-columns:1fr}
- .plans-custom{padding:72px 0}
 }
-@media(max-width:600px){.terms-list{grid-template-columns:1fr;gap:28px}}
+@media(max-width:600px){
+ .cal{padding:16px}
+ .cal-g{gap:4px}
+ .cal-g .c{padding:5px 6px;font-size:0.75rem;border-radius:6px}
+ .cal-g .c i{display:none}
+}
 @media(max-width:359px){.hpanel.long h1{font-size:2rem}}

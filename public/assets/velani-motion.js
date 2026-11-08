@@ -70,3 +70,25 @@
  reduce.addEventListener('change',()=>{if(reduce.matches)resetAll();req()});
  if(reduce.matches)resetAll();
 })();
+
+/* Plans: the trial's real dates from the visitor's clock. Day 1 is today (the day we would set up the workplace), day 30 is 29 days
+   later. The hero line names the last free day; the calendar shows the 30 days from the Monday of this week. */
+(()=>{
+ const cal=document.querySelector('[data-cal]'),line=document.querySelector('[data-trial-end]');if(!cal&&!line)return;
+ const es=/^es\b/i.test(document.documentElement.lang),loc=es?'es':'en-US';
+ const d0=new Date();d0.setHours(12,0,0,0);const add=(d,n)=>{const x=new Date(d);x.setDate(x.getDate()+n);return x};const d30=add(d0,29);
+ const long=d=>d.toLocaleDateString(loc,{weekday:'long',month:'long',day:'numeric'});
+ if(line)line.textContent=line.dataset.before+long(d30)+'.';
+ const day1=document.querySelector('[data-day="1"]'),day30=document.querySelector('[data-day="30"]');
+ const short=d=>d.toLocaleDateString(loc,{weekday:'short',month:'short',day:'numeric'});
+ if(day1)day1.textContent=(es?'Hoy, ':'Today, ')+short(d0);if(day30)day30.textContent=short(d30);
+ if(!cal)return;
+ const start=add(d0,-((d0.getDay()+6)%7)),end=add(d30,(7-d30.getDay())%7);
+ const month=d=>d.toLocaleDateString(loc,{month:'long'}),cap=s=>s.charAt(0).toUpperCase()+s.slice(1);
+ const head=cap(month(d0))+(month(d0)!==month(d30)?(es?' a ':' to ')+month(d30):'')+' '+d30.getFullYear();
+ const wk=[...Array(7)].map((_,i)=>add(start,i).toLocaleDateString(loc,{weekday:'narrow'}));
+ let cells='';for(let d=start;d<=end;d=add(d,1)){const n=Math.round((d-d0)/864e5);const inT=n>=0&&n<=29;const first=d.getDate()===1;
+  cells+='<span class="c'+(inT?' in':'')+(n===0?' d1':'')+(n===29?' d30':'')+'"><b>'+(first?d.toLocaleDateString(loc,{month:'short'}).replace('.','')+' ':'')+d.getDate()+'</b>'+(n===0?'<i>'+(es?'Día 1':'Day 1')+'</i>':n===29?'<i>'+(es?'Día 30':'Day 30')+'</i>':'')+'</span>'}
+ cal.innerHTML='<p class="cal-h">'+head+'</p><div class="cal-g">'+wk.map(w=>'<span class="w">'+w+'</span>').join('')+cells+'</div>';
+ cal.setAttribute('aria-label',cal.getAttribute('aria-label')+': '+long(d0)+' – '+long(d30));cal.hidden=false;
+})();
