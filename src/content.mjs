@@ -80,8 +80,8 @@ export const routes = {
   // NEVORA signup, trial and billing (Nov 8, 2026). Reserved by the NEVORA commerce backend; built page by page.
   '/pages/nevora-start': page('Start your free trial.', '', 'The whole app for your team, free for 30 days. No card needed.', [], { kind: 'commerce', step: 'start', nav: 'plans', name: 'Start your NEVORA trial', desc: 'Start a free 30-day NEVORA trial for your business with your work email. No card needed.' }),
   '/pages/nevora-verify': page('Set up your workplace.', '', 'Tell us about your business and choose your Owner password. Your 30 free days start when your workplace is ready.', [], { kind: 'commerce', step: 'verify', nav: 'plans', name: 'Set up your NEVORA workplace' }),
-  '/pages/nevora-billing': page('Plan and billing.', '', 'See your plan, subscribe or update your card. We’ll email the business owner a sign-in link.', [], { kind: 'commerce', step: 'billing', nav: 'plans', name: 'NEVORA billing' }),
-  '/pages/nevora-billing-return': page('Confirming payment.', '', 'We’re confirming your subscription with our payment provider.', [], { kind: 'commerce', step: 'return', nav: 'plans', name: 'NEVORA billing' }),
+  '/pages/nevora-billing': page('Plan and billing.', '', 'See your NEVORA plan, subscribe or update your card. We’ll email the business owner a sign-in link.', [], { kind: 'commerce', step: 'billing', nav: 'plans', name: 'NEVORA billing' }),
+  '/pages/nevora-billing-return': page('Confirming payment.', '', 'We’re checking your subscription with NEVORA. This page updates by itself.', [], { kind: 'commerce', step: 'return', nav: 'plans', name: 'NEVORA billing' }),
   '/pages/nevora-support': page('NEVORA support', 'NEVORA', '', [], { kind: 'policy', slug: 'support', nav: 'nevora-help' }),
   '/pages/nevora-privacy': page('NEVORA privacy policy', 'NEVORA', '', [], { kind: 'policy', slug: 'privacy' }),
   '/pages/nevora-terms': page('NEVORA terms of use', 'NEVORA', '', [], { kind: 'policy', slug: 'terms', desc: 'The rules for using NEVORA, Velani’s scheduling, time clock and payroll calculation app for authorized workplace use, including the app license.' }),

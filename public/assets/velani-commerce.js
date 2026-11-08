@@ -422,6 +422,186 @@ function setupPage(root) {
 const setupRoot = document.querySelector('[data-setup-page]');
 if (setupRoot && configured()) setupPage(setupRoot);
 
+/* ---------- Plan and billing, and Confirming payment ---------- */
+const A = ES ? {
+  opening: ['Abriendo tu facturación.', 'Un momento mientras revisamos tu enlace.'],
+  sentT: 'Revisa tu correo.', sent: e => 'Si ' + e + ' es el correo del dueño de un lugar de trabajo de NEVORA, te enviamos un enlace para entrar. Funciona una vez, por 30 minutos.',
+  expired: ['Este enlace venció.', 'Cada enlace funciona una vez y por poco tiempo. Pide uno nuevo.'],
+  session: ['Tu sesión terminó.', 'Por seguridad, pide un enlace nuevo para seguir.'],
+  down: ['Facturación no disponible.', 'No pudimos conectar con NEVORA. No se cobró nada. Intenta de nuevo en unos minutos.'],
+  newLink: 'Pide un enlace nuevo', again: 'Envíalo otra vez', againIn: n => 'Envíalo otra vez en ' + n + ' s', other: 'Usa otro correo', resent: 'Lo enviamos otra vez.',
+  signOut: 'Salir', signedOut: ['Saliste de la facturación.', 'Para volver, pide un enlace nuevo.'],
+  plan: 'Plan', free: 'Prueba gratis', perMonth: p => p + ' al mes', trialEnds: 'La prueba termina', paidThrough: 'Pagado hasta', payBy: 'Paga antes del', employees: 'Empleados', of: (n, l) => n + ' de ' + l,
+} : {
+  opening: ['Opening your billing.', 'One moment while we check your link.'],
+  sentT: 'Check your email.', sent: e => 'If ' + e + ' belongs to the owner of a NEVORA workplace, we sent a sign-in link. It works once, for 30 minutes.',
+  expired: ['This link has expired.', 'Each link works once and for a short time. Ask for a new one.'],
+  session: ['Your session ended.', 'For your security, ask for a new link to continue.'],
+  down: ['Billing isn’t available right now.', 'We couldn’t reach NEVORA. Nothing was charged. Try again in a few minutes.'],
+  newLink: 'Get a new link', again: 'Send it again', againIn: n => 'Send it again in ' + n + ' s', other: 'Use a different email', resent: 'Sent again.',
+  signOut: 'Sign out', signedOut: ['You’re signed out of billing.', 'To come back, ask for a new link.'],
+  plan: 'Plan', free: 'Free trial', perMonth: p => p + ' a month', trialEnds: 'Trial ends', paidThrough: 'Paid through', payBy: 'Pay by', employees: 'Employees', of: (n, l) => n + ' of ' + l,
+};
+const R = {
+  checking: ['Confirming payment.', 'We’re checking your subscription with NEVORA. This page updates by itself.'],
+  done: ['You’re subscribed.', null],
+  trialKept: d => 'Your plan starts when your free trial ends on ' + d + '. You keep every trial day.',
+  paidKept: d => 'NEVORA is paid through ' + d + '.',
+  updated: ['Billing updated.', 'Your billing details are up to date.'],
+  waiting: ['We haven’t seen a payment yet.', 'If you finished paying, it can take a few minutes to arrive, and your plan updates by itself. If you left checkout, nothing was charged.'],
+  failed: ['Your payment didn’t go through.', 'Nothing was charged. Update your card in billing and try again.'],
+  billing: 'Plan and billing', retry: 'Try again',
+};
+function accountShell(root) {
+  const h1 = root.querySelector('h1'), lede = root.querySelector('[data-setup-lede]'), acts = root.querySelector('[data-setup-acts]'), card = root.querySelector('[data-setup-card]');
+  const form = root.querySelector('form');
+  root.querySelectorAll('[data-off]').forEach(x => { x.hidden = true; });
+  const ui = {
+    h1, lede, acts, card, form, title: h1.textContent, text: lede.textContent,
+    head: ([title, line], focus) => { h1.textContent = title; lede.textContent = line || ''; lede.hidden = !line; if (focus) h1.focus(); },
+    buttons: list => { acts.replaceChildren(...list); acts.hidden = !list.length; },
+    link: (label, href, fill) => { const a = document.createElement('a'); a.className = 'hb' + (fill ? ' fill' : ''); a.href = href; a.innerHTML = '<span></span>' + ARROW; a.firstChild.textContent = label; return a; },
+    button: (label, run, fill = true) => { const b = document.createElement('button'); b.type = 'button'; b.className = 'hb' + (fill ? ' fill' : ''); b.innerHTML = '<span></span>' + ARROW; b.firstChild.textContent = label; b.addEventListener('click', () => run(b)); return b; },
+    show: what => { if (form) form.hidden = what !== 'form'; card.hidden = what !== 'card'; },
+    rows: st => {
+      const esc = x => String(x).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
+      const row = (k, v) => '<div><dt>' + k + '</dt><dd><span>' + esc(v) + '</span></dd></div>';
+      const price = { small: '$19', team: '$29' }[st.plan];
+      let html = row(A.plan, price ? A.perMonth(price) : A.free);
+      if (st.state === 'trial' && st.trialEndsAt) html += row(A.trialEnds, day(st.trialEndsAt));
+      if (st.paidThrough && st.state !== 'trial') html += row(A.paidThrough, day(st.paidThrough));
+      if (st.graceEndsAt && st.state === 'grace') html += row(A.payBy, day(st.graceEndsAt));
+      if (st.setup === 'ready' || !st.setup) html += row(A.employees, A.of(st.activeEmployees, st.employeeLimit));
+      return '<dl class="setup-facts">' + html + '</dl>';
+    },
+  };
+  return ui;
+}
+/** Exchange a one-time link (#token= sign-in, #handoff= from NEVORA or Stripe) for a session and read the status. */
+async function openSession(kind, value) {
+  const x = await call(kind === 'token' ? '/v1/verify' : '/v1/handoff/exchange', { method: 'POST', body: { token: value } });
+  if (!x.ok || !x.data || typeof x.data.accessToken !== 'string') return { problem: x.status === 400 || x.status === 401 ? 'expired' : 'down' };
+  setToken(x.data.accessToken);
+  const st = await call('/v1/status', { auth: true });
+  if (!st.ok || !st.data) return { problem: st.status === 401 ? 'session' : 'down' };
+  return { status: st.data };
+}
+function billingPage(root) {
+  const ui = accountShell(root), form = ui.form, input = form.querySelector('input'), error = form.querySelector('.field-error');
+  const quoteHref = (document.querySelector('a[href*="interest=nevora"]') || {}).href || '/pages/contact?interest=nevora';
+  let timer = 0;
+  const request = () => { clearInterval(timer); ui.head([ui.title, ui.text], false); ui.buttons([]); ui.show('form'); };
+  const fail = text => { error.textContent = text; input.setAttribute('aria-invalid', 'true'); input.focus(); };
+  input.addEventListener('input', () => { error.textContent = ''; input.removeAttribute('aria-invalid'); });
+  async function send(email) {
+    const r = await call('/v1/login-link', { method: 'POST', body: { email } });
+    if (r.ok) return null;
+    if (r.status === 400) return t.badEmail;
+    if (r.status === 429) return t.limited;
+    return A.down[1];
+  }
+  const cooldown = (b, n) => { let left = n; b.disabled = true; b.firstChild.textContent = A.againIn(left); clearInterval(timer); timer = setInterval(() => { left -= 1; if (left <= 0) { clearInterval(timer); b.disabled = false; b.firstChild.textContent = A.again; } else b.firstChild.textContent = A.againIn(left); }, 1000); };
+  form.addEventListener('submit', async event => {
+    event.preventDefault();
+    const btn = form.querySelector('button[type="submit"]'); if (btn.disabled) return;
+    const email = input.value.trim();
+    if (!EMAIL.test(email)) return fail(t.badEmail);
+    const label = btn.textContent; btn.disabled = true; btn.setAttribute('aria-busy', 'true'); btn.textContent = btn.dataset.sending;
+    const problem = await send(email);
+    btn.disabled = false; btn.removeAttribute('aria-busy'); btn.textContent = label;
+    if (problem) return fail(problem);
+    ui.head([A.sentT, A.sent(email)], true); ui.show('none');
+    const again = ui.button(A.again, async b => { if (b.disabled) return; b.disabled = true; const p = await send(email); ui.lede.textContent = p || A.resent; cooldown(b, p ? 10 : 60); }, false);
+    ui.buttons([again, ui.button(A.other, () => { request(); input.select(); input.focus(); }, false)]);
+    cooldown(again, 30);
+  });
+  function status(st) {
+    const v = ownerView(st);
+    ui.head([st.businessName || t.yourPlan, v.line], true);
+    const actions = v.acts.map(a => a === 'quote' ? ui.link(t.quote, quoteHref, true) : ui.button(a === 'portal' ? t.manage : t.subscribe, async b => {
+      b.disabled = true; b.setAttribute('aria-busy', 'true'); const label = b.firstChild.textContent; b.firstChild.textContent = t.working;
+      const out = await openBilling(a); if (!out) return;
+      b.disabled = false; b.removeAttribute('aria-busy'); b.firstChild.textContent = label;
+      if (out.expired) return ui.head(A.session, true), ui.buttons([ui.button(A.newLink, request)]), ui.show('none');
+      note.textContent = out.text; note.setAttribute('role', 'alert');
+    }));
+    const back = safeUrl(st.applicationUrl);
+    if (back) actions.push(ui.link(t.back, back, false));
+    ui.buttons(actions);
+    ui.card.innerHTML = ui.rows(st) + '<p class="setup-note"></p><button class="setup-out" type="button">' + A.signOut + '</button>';
+    const note = ui.card.querySelector('.setup-note'); note.textContent = v.fact || '';
+    ui.card.querySelector('.setup-out').addEventListener('click', async () => { await call('/v1/logout', { method: 'POST', body: {}, auth: true }); clearToken(); ui.head(A.signedOut, true); ui.buttons([ui.button(A.newLink, request)]); ui.show('none'); });
+    ui.show('card');
+  }
+  const handoff = /^#handoff=/.test(location.hash) ? takeFragment('handoff') : null;
+  const token = handoff ? null : takeFragment('token');
+  if (!handoff && !token) return request();
+  ui.head(A.opening, false); ui.buttons([]); ui.show('none'); root.setAttribute('aria-busy', 'true');
+  openSession(handoff ? 'handoff' : 'token', handoff || token).then(r => {
+    root.removeAttribute('aria-busy');
+    if (r.problem) return ui.head(A[r.problem], true), ui.buttons([ui.button(A.newLink, request)]);
+    status(r.status);
+  });
+}
+/** Stripe sends the Owner back with a one-time #handoff=. Coming back proves nothing: we poll the status until the plan
+ * shows the subscription (or a failure), for about two minutes, then say honestly that it hasn't arrived yet. */
+function returnPage(root) {
+  const ui = accountShell(root);
+  const billingHref = (document.querySelector('a[href*="nevora-billing"]') || {}).href || '/pages/nevora-billing';
+  const handoff = takeFragment('handoff');
+  const stop = (text, list) => { ui.head(text, true); ui.buttons(list); ui.show('none'); };
+  if (!handoff) return stop(A.expired, [ui.link(t.getLink, billingHref, true)]);
+  ui.head(R.checking, false); ui.buttons([]);
+  ui.card.innerHTML = '<ol class="setup-steps"><li data-state="done">' + (ES ? 'Volviste del pago' : 'Back from checkout') + '</li><li data-state="now" aria-current="step">' + (ES ? 'Confirmando con NEVORA' : 'Confirming with NEVORA') + '</li><li data-state="next">' + (ES ? 'Plan actualizado' : 'Plan updated') + '</li></ol>';
+  ui.show('card'); root.setAttribute('aria-busy', 'true');
+  const started = Date.now(); let first = null, timer = 0;
+  const finish = (st, kind) => {
+    root.removeAttribute('aria-busy'); clearTimeout(timer);
+    const back = safeUrl(st.applicationUrl), list = [];
+    if (kind === 'done') {
+      const line = st.state === 'trial' && st.trialEndsAt ? R.trialKept(day(st.trialEndsAt)) : st.paidThrough ? R.paidKept(day(st.paidThrough)) : '';
+      ui.head([R.done[0], line], true);
+      if (back) list.push(ui.link(t.back, back, true));
+    } else if (kind === 'updated') {
+      ui.head([R.updated[0], ownerView(st).line], true);
+      if (back) list.push(ui.link(t.back, back, true));
+    } else if (kind === 'failed') {
+      ui.head(R.failed, true); list.push(ui.button(t.manage, async b => { b.disabled = true; const out = await openBilling('portal'); if (out) { b.disabled = false; ui.lede.textContent = out.text; } }));
+      if (back) list.push(ui.link(t.back, back, false));
+    } else {
+      ui.head(R.waiting, true); list.push(ui.link(R.billing, billingHref, true));
+      if (back) list.push(ui.link(t.back, back, false));
+    }
+    ui.buttons(list); ui.card.innerHTML = ui.rows(st) + '<p class="setup-note">' + t.stripe + '</p>'; ui.show('card');
+  };
+  const judge = st => {
+    if (!first) first = st;
+    if (st.reason === 'payment_failed' && st.state !== 'grace') return 'failed';
+    if (st.reason === 'subscription_canceled' && st.state === 'paid') return 'updated';
+    const covered = (st.state === 'paid' || st.state === 'trial' || st.state === 'grace') && st.plan;
+    if (covered && st.reason !== 'payment_failed') {
+      // A plan that was already there when we arrived may be a portal visit: still a good outcome, the details are current.
+      return 'done';
+    }
+    return null;
+  };
+  async function poll() {
+    if (document.visibilityState !== 'visible' || !navigator.onLine) return;
+    const r = await call('/v1/status', { auth: true });
+    if (r.status === 401) return stop(A.session, [ui.link(t.getLink, billingHref, true)]);
+    if (r.ok && r.data) { const k = judge(r.data); if (k) return finish(r.data, k); if (Date.now() - started > 120000) return finish(r.data, 'waiting'); }
+    timer = setTimeout(poll, Date.now() - started < 30000 ? 3000 : 6000);
+  }
+  document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'visible' && root.hasAttribute('aria-busy')) { clearTimeout(timer); poll(); } });
+  (async () => {
+    const x = await call('/v1/handoff/exchange', { method: 'POST', body: { token: handoff } });
+    if (!x.ok || !x.data || typeof x.data.accessToken !== 'string') { root.removeAttribute('aria-busy'); return stop(x.status === 400 || x.status === 401 ? A.expired : A.down, [ui.link(t.getLink, billingHref, true)]); }
+    setToken(x.data.accessToken); poll();
+  })();
+}
+const accountRoot = document.querySelector('[data-account-page]');
+if (accountRoot && configured()) (accountRoot.dataset.accountPage === 'billing' ? billingPage : returnPage)(accountRoot);
+
 /* ---------- Plans: the team-size price card ---------- */
 function pcard(root) {
   const range = root.querySelector('#pc-n'), out = root.querySelector('[data-count]'), unit = root.querySelector('[data-unit]');

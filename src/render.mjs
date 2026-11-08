@@ -279,11 +279,26 @@ function setupPage(page, target, lang) {
   const call = '<div class="client-call fade"><p>' + e(CONTACT[lang].callK) + '</p><a class="client-tel" href="' + tel() + '">' + e(company.phone) + '</a><p>' + e(lang === 'es' ? HOURS_ES : company.hours) + '<br><a href="mailto:' + company.email + '">' + company.email + '</a></p></div>';
   return '<section class="contact contact-split setup" id="setup" aria-labelledby="setup-t" data-setup-page><div class="wrap client-grid">' + side + '<div class="client-form">' + form + card + '</div>' + call + '</div></section>';
 }
+/** Plan and billing (nevora-billing, es-facturacion) and Confirming payment (nevora-billing-return): the setup page's split.
+ * Billing has an owner-email form for a sign-in link; both fill the right-hand card from the backend's status. */
+const BILLING = {
+  en: { email: 'Business owner email', send: 'Email me a sign-in link', sending: 'Sending', note: 'The link works once, for 30 minutes.' },
+  es: { email: 'Correo del dueño del negocio', send: 'Envíame un enlace para entrar', sending: 'Enviando', note: 'El enlace funciona una vez, por 30 minutos.' },
+};
+function accountPage(page, target, lang) {
+  const off = COMMERCE_OFF[lang], b = BILLING[lang];
+  const form = page.step === 'billing' ? '<form id="billing-form" class="setup-form billing-form" novalidate hidden><div class="ff"><input id="billing-email" name="email" type="email" autocomplete="email" inputmode="email" autocapitalize="none" spellcheck="false" maxlength="254" placeholder=" " required aria-describedby="billing-email-error billing-email-help"><label for="billing-email">' + e(b.email) + '</label><p class="field-help" id="billing-email-help">' + e(b.note) + '</p><p class="field-error" id="billing-email-error" role="alert"></p></div><div class="client-send"><button class="pill" type="submit" data-sending="' + e(b.sending) + '">' + e(b.send) + '</button></div></form>' : '';
+  const card = '<div class="setup-card" data-setup-card hidden aria-live="polite"></div>';
+  const side = '<div class="cform-hero contact-side"><h1 class="t1 rise" id="setup-t" tabindex="-1">' + e(page.title) + '</h1><p class="lede fade" data-setup-lede>' + e(page.intro) + '</p><p class="lede fade" data-off>' + e(off.text) + '</p><div class="hacts setup-acts" data-setup-acts><span data-off>' + hb(off.act, '/pages/contact?interest=nevora-demo', true) + '</span></div></div>';
+  const call = '<div class="client-call fade"><p>' + e(CONTACT[lang].callK) + '</p><a class="client-tel" href="' + tel() + '">' + e(company.phone) + '</a><p>' + e(lang === 'es' ? HOURS_ES : company.hours) + '<br><a href="mailto:' + company.email + '">' + company.email + '</a></p></div>';
+  return '<section class="contact contact-split setup" id="setup" aria-labelledby="setup-t" data-account-page="' + e(page.step) + '"><div class="wrap client-grid">' + side + '<div class="client-form">' + form + card + '</div>' + call + '</div></section>';
+}
 function commercePage(page, target, lang = 'en') {
   const off = COMMERCE_OFF[lang];
   const offActs = hb(off.act, '/pages/contact?interest=nevora-demo', true);
   const script = commerceBlock(target) + '<script type="module" src="' + asset('velani-commerce.js', target) + '"></script>';
   if (page.step === 'verify') return setupPage(page, target, lang) + script;
+  if (page.step === 'billing' || page.step === 'return') return accountPage(page, target, lang) + script;
   if (page.step === 'start') {
     const t = START[lang];
     const phone = '<div class="hshot fade"><img src="' + asset('night-r1-ph-schedule.webp', target) + '" alt="' + e(t.phoneAlt) + '" width="780" height="1688" decoding="async"></div>';

@@ -580,3 +580,10 @@ button.hb:disabled{cursor:progress;opacity:.75}
 .setup-facts .copy:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 @media(prefers-reduced-motion:reduce){.setup-steps li[data-state="now"]::before{animation:none}}
 @media(max-width:600px){.setup-facts>div{flex-direction:column;align-items:flex-start;justify-content:center;gap:4px;padding:12px 0}.setup-facts dd{text-align:left}}
+.setup-out{display:inline-flex;align-items:center;min-height:44px;margin-top:8px;padding:0;border:0;background:none;color:var(--text-2);font:inherit;font-size:0.9375rem;text-decoration:underline;text-decoration-color:var(--line-2);text-underline-offset:3px;cursor:pointer}
+.setup-out:hover{color:var(--text)}
+.setup-out:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.setup [data-setup-lede][hidden]{display:none}
+.billing-form .client-send{margin-top:20px}
+/* Headings receive focus only so screen readers announce a new step; they are not controls, so no focus box. */
+:is(.setup,.signup-top,#top) h1[tabindex="-1"]:focus{outline:none}

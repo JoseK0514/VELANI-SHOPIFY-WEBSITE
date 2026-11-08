@@ -95,7 +95,7 @@ ES_ROUTES['/pages/es-prueba'] = es('/pages/nevora-start', {
 ES_ROUTES['/pages/es-facturacion'] = es('/pages/nevora-billing', {
   kind: 'commerce', step: 'billing', nav: 'plans', eyebrow: '', name: 'Facturación de NEVORA',
   title: 'Plan y facturación.',
-  intro: 'Mira tu plan, suscríbete o actualiza tu tarjeta. Le enviamos al dueño del negocio un enlace para entrar.',
+  intro: 'Mira tu plan de NEVORA, suscríbete o actualiza tu tarjeta. Le enviamos al dueño del negocio un enlace para entrar.',
 });
 ES_ROUTES['/pages/es-entrar'] = es('/pages/sign-in', {
   kind: 'signin', nav: 'signin', eyebrow: '', name: 'Entrar',
