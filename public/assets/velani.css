@@ -739,6 +739,9 @@ body:has(#inquiry-sent:not([hidden])) :is(.signin-top,.client-side){display:none
 @media(min-width:1024px){.about-how .days-grid{grid-template-columns:1fr 1fr;gap:clamp(24px,3vw,40px)}}
 .days-fine a{color:var(--text-2);text-decoration:underline;text-decoration-color:var(--line-2);text-underline-offset:3px}
 .days-fine a:hover{text-decoration-color:currentColor}
+/* About hero on phones and tablets: a short panel with the page's side margins (short sets margin:0, dim.long sets a full screen) */
+@media(min-width:834px){.hpanel.about-hero .hcopy{margin-left:max(var(--pad),calc(50% - 620px))}}
+@media(max-width:833px){.hpanel.dim.long.about-hero{min-height:0;justify-content:flex-end;padding:120px 0 64px}.hpanel.dim.long.about-hero .hcopy{margin:0 var(--pad)}}
 
 /* Try the time clock: a working copy of the NEVORA PIN screen. Light surface, like the real tablet. */
 .kio-note{display:inline-flex;flex-wrap:wrap;gap:4px 6px;margin-top:var(--s1);padding:10px 16px;border-radius:var(--r);background:var(--panel);box-shadow:0 0 0 1px var(--line);font-size:0.875rem;line-height:1.4;color:var(--text-2)}
