@@ -29,6 +29,8 @@ const SCENARIOS = {
   'over-limit': { state: 'restricted', operational: false, plan: 'small', employeeLimit: 15, activeEmployees: 18, paidThrough: day(29), reason: 'employee_limit_exceeded' },
   'over-30': { state: 'restricted', operational: false, plan: 'team', activeEmployees: 34, paidThrough: day(29), reason: 'employee_limit_exceeded' },
   team: { activeEmployees: 22 },
+  setup: { setup: 'required', applicationUrl: null, trialEndsAt: null, reason: 'setup_required' },
+  waiting: { setup: 'pending', applicationUrl: null, trialEndsAt: null, reason: 'setup_pending' },
   slow: {}, lost: {},
 };
 const sessions = new Map(); // accessToken -> { scenario, seenKeys:Set }
@@ -86,7 +88,15 @@ http.createServer(async (req, res) => {
     return send(res, 200, { accessToken, expiresIn: 28800 }, ok);
   }
   if (!session) return err(res, 401, 'unauthorized', ok);
-  if (p === '/v1/status') return send(res, 200, { ...base, ...SCENARIOS[session.scenario] }, ok);
+  if (p === '/v1/status') {
+    // A setup scenario moves from required to pending, provisioning and ready on a short clock after /v1/setup.
+    if (session.setupAt) {
+      const s = (Date.now() - session.setupAt) / 1000;
+      const setup = s < 4 ? 'pending' : s < 9 ? 'provisioning' : 'ready';
+      return send(res, 200, { ...base, setup, applicationUrl: setup === 'ready' ? base.applicationUrl : null, trialEndsAt: setup === 'ready' ? base.trialEndsAt : null, reason: setup === 'ready' ? null : 'setup_pending', businessName: session.business || base.businessName, activeEmployees: 0 }, ok);
+    }
+    return send(res, 200, { ...base, ...SCENARIOS[session.scenario] }, ok);
+  }
   if (p === '/v1/logout') { sessions.delete(auth[1]); return send(res, 200, { state: 'signed_out' }, ok); }
   if (p === '/v1/checkout' || p === '/v1/portal') {
     const key = req.headers['idempotency-key'];
@@ -101,6 +111,18 @@ http.createServer(async (req, res) => {
     if (!session.lostOnce) { session.lostOnce = true; req.socket.destroy(); return; } // the response is lost; the same key must get the same answer
     return send(res, 200, result, ok);
   }
-  if (p === '/v1/setup') return send(res, 202, { state: 'setup_accepted' }, ok);
+  if (p === '/v1/setup') {
+    const b = body;
+    if (typeof b.password !== 'string' || b.password.length < 12 || b.password.length > 256) return err(res, 400, 'invalid_password', ok);
+    if (!/^1?\d{10}$/.test(String(b.phone || ''))) return err(res, 400, 'invalid_phone', ok);
+    if (!/^[A-Za-z]+\/[A-Za-z_]+$/.test(String(b.timeZone || ''))) return err(res, 400, 'invalid_time_zone', ok);
+    if (!Number.isInteger(b.employeeCount) || b.employeeCount < 1) return err(res, 400, 'invalid_employee_count', ok);
+    if (b.employeeCount > 30) return err(res, 400, 'assisted_quote_required', ok);
+    if (!b.firstName || !b.lastName || !b.businessName || !b.locationName) return err(res, 400, 'invalid_setup', ok);
+    const key = JSON.stringify(b);
+    if (session.setupKey && session.setupKey !== key) return err(res, 409, 'setup_already_submitted', ok);
+    if (!session.setupAt) { session.setupAt = Date.now(); session.setupKey = key; session.business = b.businessName; }
+    return send(res, 202, { state: 'setup_accepted' }, ok);
+  }
   return err(res, 404, 'not_found', ok);
 }).listen(port, '127.0.0.1', () => console.log('Commerce FIXTURE (local test only) on http://127.0.0.1:' + port + ' for ' + ui));

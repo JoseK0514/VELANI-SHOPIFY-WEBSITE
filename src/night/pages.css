@@ -545,3 +545,38 @@ button.hb:disabled{cursor:progress;opacity:.75}
 .signup-top .hfact a:hover{text-decoration-color:currentColor}
 /* On phones the email form comes first; the NEVORA screen follows it, smaller. */
 @media(max-width:833px){.signup-top .hshot{order:2;width:40%;margin:48px auto 40px}.hpanel.signup-top:has(.hshot) .hcopy{margin-top:72px}}
+/* Setup (Nov 8, 2026): the Contact split; the form, then progress and the ready details in the same column. */
+.setup-form fieldset{margin:0 0 28px;padding:0;border:0;min-width:0}
+.setup-form legend.kinds-q{padding:0;margin:0 0 2px}
+.setup .field-help{margin:6px 16px 0;font-size:0.8125rem;line-height:1.5;color:var(--text-3)}
+.setup .field-help a{color:var(--text-2);text-decoration:underline;text-decoration-color:var(--line-2);text-underline-offset:3px}
+.setup .ff.pw input{padding-right:84px}
+.pw-toggle{position:absolute;right:8px;top:7px;min-width:64px;height:44px;padding:0 12px;border:0;border-radius:var(--r);background:none;color:var(--text-2);font:inherit;font-size:0.875rem;font-weight:600;cursor:pointer}
+.pw-toggle:hover{color:var(--text)}
+.pw-toggle:focus-visible{outline:2px solid var(--accent);outline-offset:0}
+.setup .client-send .pill{cursor:pointer}
+.setup .client-send .pill:disabled{opacity:.6;cursor:progress}
+.setup .form-status{margin-top:16px;text-align:left;color:#ffb3a9}
+.setup-form[hidden],.setup-card[hidden],.setup [data-off][hidden],.setup-acts[hidden]{display:none}
+.setup-acts{margin-top:32px}
+.setup-card{padding:clamp(24px,3vw,40px);border-radius:var(--r2);background:var(--panel)}
+.setup-steps{list-style:none;margin:0;padding:0;display:grid;gap:4px}
+.setup-steps li{position:relative;display:flex;align-items:center;gap:14px;min-height:52px;font-size:1.0625rem;color:var(--text-3)}
+.setup-steps li::before{content:"";flex:none;width:12px;height:12px;border-radius:50%;border:1.5px solid var(--line-2)}
+.setup-steps li[data-state="done"]{color:var(--text-2)}
+.setup-steps li[data-state="done"]::before{background:var(--text-2);border-color:var(--text-2)}
+.setup-steps li[data-state="now"]{color:var(--text);font-weight:600}
+.setup-steps li[data-state="now"]::before{border-color:#f0f0fa;box-shadow:0 0 0 4px rgba(240,240,250,.12);animation:setup-pulse 1.6s var(--io) infinite}
+@keyframes setup-pulse{50%{box-shadow:0 0 0 7px rgba(240,240,250,.04)}}
+.setup-note{margin:20px 0 0;font-size:0.9375rem;line-height:1.5;color:var(--text-2)}
+.setup-facts{margin:0;padding:0;border-top:1px solid var(--line)}
+.setup-facts>div{display:flex;justify-content:space-between;align-items:center;gap:16px;min-height:60px;border-bottom:1px solid var(--line)}
+.setup-facts dt{flex:none;font-size:0.9375rem;color:var(--text-3)}
+.setup-facts dd{display:flex;align-items:center;gap:12px;min-width:0;margin:0;font-size:1.0625rem;font-weight:600;color:var(--text);text-align:right}
+.setup-facts dd span{min-width:0;overflow-wrap:anywhere}
+.setup-facts a{color:var(--text);text-decoration:underline;text-decoration-color:var(--line-2);text-underline-offset:3px}
+.setup-facts .copy{flex:none;min-height:44px;padding:0 12px;border:1px solid var(--line-2);border-radius:var(--r);background:none;color:var(--text-2);font:inherit;font-size:0.8125rem;font-weight:600;cursor:pointer}
+.setup-facts .copy:hover{color:var(--text);border-color:rgba(240,240,250,.4)}
+.setup-facts .copy:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+@media(prefers-reduced-motion:reduce){.setup-steps li[data-state="now"]::before{animation:none}}
+@media(max-width:600px){.setup-facts>div{flex-direction:column;align-items:flex-start;justify-content:center;gap:4px;padding:12px 0}.setup-facts dd{text-align:left}}

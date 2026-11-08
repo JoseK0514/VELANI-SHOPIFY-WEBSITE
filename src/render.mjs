@@ -250,10 +250,40 @@ const START = {
   es: { email: 'Correo de trabajo', send: 'Envíame el enlace', sending: 'Enviando', fact: ['Te enviamos un enlace para configurar tu lugar de trabajo. ¿Ya usas NEVORA? ', 'Entra', '.'],
     phoneAlt: 'NEVORA en un teléfono: la semana de un empleado con cada turno y sus horas' },
 };
+/** Setup (nevora-verify): the Contact split. The title and one line on the left, with the phone; on the right the form
+ * (business, then the Owner account), and the same column later holds the progress and the ready details.
+ * velani-commerce.js reads #token=, verifies it, then shows the step the backend's status asks for. */
+const SETUP = {
+  biz: 'Your business', owner: 'Your Owner account',
+  business: 'Business name', location: 'Location name', tz: 'Time zone', employees: 'Employees',
+  employeesHelp: 'Not counting you. More than 30? ', quote: 'Ask us for a quote',
+  first: 'First name', last: 'Last name', phone: 'Mobile phone', password: 'Password', passwordHelp: 'At least 12 characters.',
+  show: 'Show', hide: 'Hide', submit: 'Set up my workplace', note: 'You’ll sign in to NEVORA with the Owner ID OWNER and this password.',
+  zones: [['America/New_York', 'Eastern Time'], ['America/Chicago', 'Central Time'], ['America/Denver', 'Mountain Time'], ['America/Phoenix', 'Mountain Time (Arizona)'], ['America/Los_Angeles', 'Pacific Time'], ['America/Anchorage', 'Alaska Time'], ['Pacific/Honolulu', 'Hawaii Time'], ['America/Puerto_Rico', 'Atlantic Time']],
+};
+function setupPage(page, target, lang) {
+  const t = SETUP, off = COMMERCE_OFF[lang];
+  const ff = (id, label, attrs, help = '') => '<div class="ff"><input id="setup-' + id + '" name="' + id + '" placeholder=" " ' + attrs + ' aria-describedby="setup-' + id + '-error' + (help ? ' setup-' + id + '-help' : '') + '"><label for="setup-' + id + '">' + e(label) + '</label>' + (help ? '<p class="field-help" id="setup-' + id + '-help">' + help + '</p>' : '') + '<p class="field-error" id="setup-' + id + '-error"></p></div>';
+  const tz = '<div class="ff sel"><select id="setup-timeZone" name="timeZone" required aria-describedby="setup-timeZone-error">' + t.zones.map(([v, n]) => '<option value="' + v + '">' + e(n) + '</option>').join('') + '</select><label for="setup-timeZone">' + e(t.tz) + '</label><p class="field-error" id="setup-timeZone-error"></p></div>';
+  const pw = '<div class="ff pw"><input id="setup-password" name="password" type="password" placeholder=" " autocomplete="new-password" minlength="12" maxlength="256" required aria-describedby="setup-password-help setup-password-error"><label for="setup-password">' + e(t.password) + '</label><button class="pw-toggle" type="button" aria-controls="setup-password" aria-pressed="false" data-show="' + t.show + '" data-hide="' + t.hide + '">' + t.show + '</button><p class="field-help" id="setup-password-help">' + e(t.passwordHelp) + '</p><p class="field-error" id="setup-password-error"></p></div>';
+  const form = '<form id="setup-form" class="setup-form" novalidate hidden>'
+    + '<fieldset><legend class="kinds-q">' + e(t.biz) + '</legend>' + ff('businessName', t.business, 'autocomplete="organization" maxlength="120" required')
+    + '<div class="frow">' + ff('locationName', t.location, 'value="Main" maxlength="80" required') + tz + '</div>'
+    + ff('employeeCount', t.employees, 'type="number" inputmode="numeric" min="1" max="30" step="1" required', e(t.employeesHelp) + '<a href="/pages/contact?interest=nevora">' + e(t.quote) + '</a>.') + '</fieldset>'
+    + '<fieldset><legend class="kinds-q">' + e(t.owner) + '</legend><div class="frow">' + ff('firstName', t.first, 'autocomplete="given-name" maxlength="80" required') + ff('lastName', t.last, 'autocomplete="family-name" maxlength="80" required') + '</div>'
+    + ff('phone', t.phone, 'type="tel" autocomplete="tel-national" inputmode="tel" maxlength="20" required') + pw + '</fieldset>'
+    + '<div class="client-send"><button class="pill" type="submit" data-sending="Setting up">' + e(t.submit) + '</button><p class="client-note">' + e(t.note) + '</p></div>'
+    + '<p class="form-status" role="alert" data-form-status></p></form>';
+  const card = '<div class="setup-card" data-setup-card hidden aria-live="polite"></div>';
+  const side = '<div class="cform-hero contact-side"><h1 class="t1 rise" id="setup-t" tabindex="-1">' + e(page.title) + '</h1><p class="lede fade" data-setup-lede>' + e(page.intro) + '</p><p class="lede fade" data-off>' + e(off.text) + '</p><div class="hacts setup-acts" data-setup-acts><span data-off>' + hb(off.act, '/pages/contact?interest=nevora-demo', true) + '</span></div></div>';
+  const call = '<div class="client-call fade"><p>' + e(CONTACT[lang].callK) + '</p><a class="client-tel" href="' + tel() + '">' + e(company.phone) + '</a><p>' + e(lang === 'es' ? HOURS_ES : company.hours) + '<br><a href="mailto:' + company.email + '">' + company.email + '</a></p></div>';
+  return '<section class="contact contact-split setup" id="setup" aria-labelledby="setup-t" data-setup-page><div class="wrap client-grid">' + side + '<div class="client-form">' + form + card + '</div>' + call + '</div></section>';
+}
 function commercePage(page, target, lang = 'en') {
   const off = COMMERCE_OFF[lang];
   const offActs = hb(off.act, '/pages/contact?interest=nevora-demo', true);
   const script = commerceBlock(target) + '<script type="module" src="' + asset('velani-commerce.js', target) + '"></script>';
+  if (page.step === 'verify') return setupPage(page, target, lang) + script;
   if (page.step === 'start') {
     const t = START[lang];
     const phone = '<div class="hshot fade"><img src="' + asset('night-r1-ph-schedule.webp', target) + '" alt="' + e(t.phoneAlt) + '" width="780" height="1688" decoding="async"></div>';
