@@ -240,11 +240,33 @@ const COMMERCE_OFF = {
   en: { text: 'Online signup and billing aren’t open yet. Ask us for a trial and we’ll set up your workplace.', act: 'Ask for a free trial' },
   es: { text: 'El registro y la facturación en línea todavía no están abiertos. Pídenos una prueba y configuramos tu lugar de trabajo.', act: 'Pide la prueba gratis' },
 };
+/** Signup (nevora-start, es-prueba): one first screen. The title, one line and the email field with its button sit in the
+ * panel, with one real NEVORA phone screen beside them. velani-commerce.js shows the form when the API is set, sends
+ * POST /v1/signup and turns the panel into "Check your email". Without the API (or the script) the panel keeps the
+ * request-a-trial fallback. */
+const START = {
+  en: { email: 'Work email', send: 'Email me a link', sending: 'Sending', fact: ['We’ll email you a link to set up your workplace. Already use NEVORA? ', 'Sign in', '.'],
+    phoneAlt: 'NEVORA on a phone: an employee’s week with each shift and its hours' },
+  es: { email: 'Correo de trabajo', send: 'Envíame el enlace', sending: 'Enviando', fact: ['Te enviamos un enlace para configurar tu lugar de trabajo. ¿Ya usas NEVORA? ', 'Entra', '.'],
+    phoneAlt: 'NEVORA en un teléfono: la semana de un empleado con cada turno y sus horas' },
+};
 function commercePage(page, target, lang = 'en') {
   const off = COMMERCE_OFF[lang];
+  const offActs = hb(off.act, '/pages/contact?interest=nevora-demo', true);
+  const script = commerceBlock(target) + '<script type="module" src="' + asset('velani-commerce.js', target) + '"></script>';
+  if (page.step === 'start') {
+    const t = START[lang];
+    const phone = '<div class="hshot fade"><img src="' + asset('night-r1-ph-schedule.webp', target) + '" alt="' + e(t.phoneAlt) + '" width="780" height="1688" decoding="async"></div>';
+    const form = '<form class="sform" id="signup" data-signup novalidate hidden><div class="sform-row"><div class="ff"><input id="signup-email" name="email" type="email" autocomplete="email" inputmode="email" autocapitalize="none" spellcheck="false" maxlength="254" placeholder=" " required aria-describedby="signup-error"><label for="signup-email">' + e(t.email) + '</label></div><button class="hb fill" type="submit" data-sending="' + e(t.sending) + '"><span>' + e(t.send) + '</span>' + icon('arrow-right') + '</button></div><p class="field-error" id="signup-error" role="alert"></p></form>';
+    const offBlock = '<div class="hacts fade" data-off>' + offActs + '</div>';
+    const fact = '<p class="hfact fade" data-signup-fact hidden>' + e(t.fact[0]) + '<a href="/pages/sign-in">' + e(t.fact[1]) + '</a>' + e(t.fact[2]) + '</p>';
+    const offLine = '<p class="hfact fade" data-off>' + e(off.text) + '</p>';
+    const hero = panel(target, { id: 'top', cls: 'live long signup-top', img: 'ai-glow', title: page.title, tag: 'h1', text: page.intro, after: form + offBlock + fact + offLine, extra: phone, first: true });
+    return hero + script;
+  }
   const hero = panel(target, { id: 'top', cls: 'dim', img: 'ai-glow', title: page.title, tag: 'h1', text: page.intro, first: true });
-  const card = '<section class="chap cflow" id="flow" data-step="' + e(page.step) + '" aria-live="polite"><div class="wrap"><div class="cf-card" data-off><p>' + e(off.text) + '</p><div class="hacts">' + hb(off.act, '/pages/contact?interest=nevora-demo', true) + '</div></div></div></section>';
-  return hero + card + commerceBlock(target) + '<script type="module" src="' + asset('velani-commerce.js', target) + '"></script>';
+  const card = '<section class="chap cflow" id="flow" data-step="' + e(page.step) + '" aria-live="polite"><div class="wrap"><div class="cf-card" data-off><p>' + e(off.text) + '</p><div class="hacts">' + offActs + '</div></div></div></section>';
+  return hero + card + script;
 }
 /** The NEVORA billing API's address for the commerce pages: the theme setting on Shopify, VELANI_COMMERCE_API locally. Empty
  * means billing isn't available yet; the pages say so instead of guessing an endpoint. */

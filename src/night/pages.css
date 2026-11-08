@@ -531,3 +531,17 @@ button.hb:disabled{cursor:progress;opacity:.75}
 .cf-card{max-width:640px;padding:clamp(28px,3vw,40px);border-radius:var(--r2);background:var(--panel)}
 .cf-card>p{margin:0;font-size:1.0625rem;line-height:1.5;color:var(--text)}
 .cf-card .hacts{margin-top:24px}
+/* Signup (Nov 8, 2026): the email field and its button in the first screen, one row on wider screens. */
+.sform{margin-top:32px;max-width:520px}
+.sform[hidden],.hcopy [data-off][hidden],.hfact[hidden]{display:none}
+.sform-row{display:flex;gap:12px;align-items:stretch}
+.sform .ff{flex:1;min-width:0;margin:0}
+.sform .ff input{background:rgba(13,22,32,.82);border-color:rgba(240,240,250,.18);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+.sform .hb{flex:none;min-height:58px}
+.sform .field-error{margin:10px 0 0;font-size:0.875rem}
+.signup-top [data-sent]{margin-top:32px}
+@media(max-width:600px){.sform-row{flex-direction:column}.sform .hb{width:100%}}
+.signup-top .hfact a{color:var(--text);text-decoration:underline;text-decoration-color:rgba(240,240,250,.4);text-underline-offset:3px}
+.signup-top .hfact a:hover{text-decoration-color:currentColor}
+/* On phones the email form comes first; the NEVORA screen follows it, smaller. */
+@media(max-width:833px){.signup-top .hshot{order:2;width:40%;margin:48px auto 40px}.hpanel.signup-top:has(.hshot) .hcopy{margin-top:72px}}

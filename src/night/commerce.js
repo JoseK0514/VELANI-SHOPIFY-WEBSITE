@@ -81,6 +81,9 @@ const W = {
     checkoutExpired: 'That checkout expired before it was finished. Nothing was charged. Choose Subscribe to start again.',
     support: 'We need to check your billing account. Email support@thevelani.com and we’ll sort it out.',
     yourTeam: 'Your team',
+    sentT: 'Check your email.', sent: e => 'We sent a link to ' + e + '. Open it within 24 hours to set up your workplace.',
+    sentFact: 'No email after a few minutes? Check your spam folder, or send it again.', again: 'Send it again', againIn: s => 'Send it again in ' + s + ' s', other: 'Use a different email', resent: 'Sent again. Check your inbox.',
+    badEmail: 'Enter an email address like name@business.com.', signupDown: 'Signup is paused for a moment. Try again in a few minutes.', offline: 'We couldn’t reach NEVORA. Check your connection and try again.',
     over30: 'More than 30', quoted: 'Quote', quoteNote: 'Teams of more than 30 get a quote from us.', perMonth: 'a month', emp: n => n === 1 ? 'employee' : 'employees',
     valueText: (n, p) => n > 30 ? 'More than 30 employees, ask for a quote' : n + ' ' + (n === 1 ? 'employee' : 'employees') + ', ' + p + ' a month',
   },
@@ -108,6 +111,9 @@ const W = {
     checkoutExpired: 'Ese pago venció antes de completarse. No se cobró nada. Elige Suscríbete para empezar de nuevo.',
     support: 'Tenemos que revisar tu cuenta de facturación. Escribe a support@thevelani.com y lo resolvemos.',
     yourTeam: 'Tu equipo',
+    sentT: 'Revisa tu correo.', sent: e => 'Te enviamos un enlace a ' + e + '. Ábrelo dentro de 24 horas para configurar tu lugar de trabajo.',
+    sentFact: '¿No te llega después de unos minutos? Revisa la carpeta de correo no deseado o envíalo otra vez.', again: 'Envíalo otra vez', againIn: s => 'Envíalo otra vez en ' + s + ' s', other: 'Usa otro correo', resent: 'Lo enviamos otra vez. Revisa tu bandeja de entrada.',
+    badEmail: 'Escribe un correo como nombre@negocio.com.', signupDown: 'El registro está en pausa por un momento. Intenta de nuevo en unos minutos.', offline: 'No pudimos conectar con NEVORA. Revisa tu conexión e intenta de nuevo.',
     over30: 'Más de 30', quoted: 'Cotización', quoteNote: 'Los equipos de más de 30 reciben una cotización.', perMonth: 'al mes', emp: n => n === 1 ? 'empleado' : 'empleados',
     valueText: (n, p) => n > 30 ? 'Más de 30 empleados, pide una cotización' : n + ' ' + (n === 1 ? 'empleado' : 'empleados') + ', ' + p + ' al mes',
   },
@@ -216,6 +222,64 @@ function plans() {
     if (priceCard) priceCard.set(st.activeEmployees);
   })();
 }
+
+/* ---------- Signup: email only, then "Check your email" ---------- */
+const EMAIL = /^[^\s@]+@[^\s@.]+(\.[^\s@.]+)+$/;
+function signup(form) {
+  const hero = form.closest('.hpanel'), h1 = hero.querySelector('h1'), lead = hero.querySelector('.hcopy > p.fade:not(.hfact)');
+  const input = form.querySelector('input'), button = form.querySelector('button'), label = button.querySelector('span'), error = form.querySelector('.field-error');
+  const fact = hero.querySelector('[data-signup-fact]'), sendText = label.textContent, factHtml = fact.innerHTML, titleText = h1.textContent, leadText = lead.textContent;
+  hero.querySelectorAll('[data-off]').forEach(x => { x.hidden = true; });
+  form.hidden = false; fact.hidden = false;
+  let busy = false, sentTo = null, timer = 0;
+  const fail = text => { error.textContent = text; input.setAttribute('aria-invalid', 'true'); input.focus(); };
+  const clear = () => { error.textContent = ''; input.removeAttribute('aria-invalid'); };
+  input.addEventListener('input', clear);
+  async function send(email) {
+    const r = await call('/v1/signup', { method: 'POST', body: { email } });
+    if (r.ok) return null;
+    if (r.code === 'invalid_email' || r.status === 400) return t.badEmail;
+    if (r.status === 429) return t.limited;
+    if (r.status === 503) return t.signupDown;
+    return t.offline;
+  }
+  const cooldown = (btn, seconds) => {
+    let left = seconds; btn.disabled = true; btn.firstChild.textContent = t.againIn(left);
+    clearInterval(timer); timer = setInterval(() => { left -= 1; if (left <= 0) { clearInterval(timer); btn.disabled = false; btn.firstChild.textContent = t.again; } else btn.firstChild.textContent = t.againIn(left); }, 1000);
+  };
+  const showSent = () => {
+    h1.textContent = t.sentT; lead.textContent = t.sent(sentTo); form.hidden = true;
+    const again = document.createElement('button'); again.type = 'button'; again.className = 'hb'; again.innerHTML = '<span></span>' + button.querySelector('.icon').outerHTML;
+    const other = again.cloneNode(true); other.firstChild.textContent = t.other;
+    const acts = document.createElement('div'); acts.className = 'hacts'; acts.dataset.sent = ''; acts.append(again, other);
+    fact.textContent = t.sentFact; fact.removeAttribute('role'); fact.before(acts);
+    cooldown(again, 30);
+    again.addEventListener('click', async () => {
+      if (again.disabled) return; again.disabled = true;
+      const problem = await send(sentTo);
+      fact.textContent = problem || t.resent; fact.setAttribute('role', 'status');
+      cooldown(again, problem ? 10 : 60);
+    });
+    other.addEventListener('click', () => {
+      clearInterval(timer); acts.remove(); sentTo = null;
+      h1.textContent = titleText; lead.textContent = leadText; fact.innerHTML = factHtml; form.hidden = false; input.select(); input.focus();
+    });
+    h1.setAttribute('tabindex', '-1'); h1.focus();
+  };
+  form.addEventListener('submit', async event => {
+    event.preventDefault();
+    if (busy) return;
+    const email = input.value.trim();
+    if (!EMAIL.test(email)) return fail(t.badEmail);
+    busy = true; button.disabled = true; button.setAttribute('aria-busy', 'true'); label.textContent = button.dataset.sending;
+    const problem = await send(email);
+    busy = false; button.disabled = false; button.removeAttribute('aria-busy'); label.textContent = sendText;
+    if (problem) return fail(problem);
+    sentTo = email; showSent();
+  });
+}
+const signupForm = document.querySelector('[data-signup]');
+if (signupForm && configured()) signup(signupForm);
 
 /* ---------- Plans: the team-size price card ---------- */
 function pcard(root) {

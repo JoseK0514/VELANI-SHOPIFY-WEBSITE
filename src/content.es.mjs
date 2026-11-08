@@ -89,7 +89,7 @@ ES_ROUTES['/pages/es-ayuda'] = es('/pages/help', {
 ES_ROUTES['/pages/es-prueba'] = es('/pages/nevora-start', {
   kind: 'commerce', step: 'start', nav: 'plans', eyebrow: '', name: 'Empieza tu prueba de NEVORA',
   title: 'Tu prueba gratis.',
-  intro: 'Escribe tu correo de trabajo y te enviamos un enlace para configurar tu lugar de trabajo. Sin tarjeta.',
+  intro: 'La app completa para tu equipo, gratis por 30 días. Sin tarjeta.',
   desc: 'Empieza una prueba gratis de NEVORA por 30 días para tu negocio con tu correo de trabajo. Sin tarjeta.',
 });
 ES_ROUTES['/pages/es-facturacion'] = es('/pages/nevora-billing', {
