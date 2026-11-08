@@ -55,6 +55,8 @@ export function safeUrl(value) {
   } catch { /* not a URL */ }
   return null;
 }
+/** A countdown button keeps the width of its longest label, so its neighbour never shifts while the seconds change. */
+function lockWidth(b) { if (b.style.minWidth) return; requestAnimationFrame(() => { b.style.minWidth = Math.ceil(b.getBoundingClientRect().width) + 'px'; }); }
 const uuid = () => crypto.randomUUID ? crypto.randomUUID() : '10000000-1000-4000-8000-100000000000'.replace(/[018]/g, c => (c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(16));
 
 /* ---------- words ---------- */
@@ -220,6 +222,8 @@ function plans() {
     const buttons = v.acts.map(a => a === 'quote' ? link(t.quote, quoteHref, true) : button(a === 'portal' ? t.manage : t.subscribe, () => openBilling(a)));
     if (back) buttons.push(link(t.back, back, false));
     show(st.businessName || t.yourPlan, v.line, buttons, v.fact);
+    // The page is now the Owner's own plan: the trial walkthrough and the header's Start free trial are for new businesses.
+    document.documentElement.classList.add('owner-view');
     // The price card starts at the business's real team size (active employees, Owners excluded).
     if (priceCard) priceCard.set(st.activeEmployees);
   })();
@@ -246,7 +250,7 @@ function signup(form) {
     return t.offline;
   }
   const cooldown = (btn, seconds) => {
-    let left = seconds; btn.disabled = true; btn.firstChild.textContent = t.againIn(left);
+    lockWidth(btn); let left = seconds; btn.disabled = true; btn.firstChild.textContent = t.againIn(left);
     clearInterval(timer); timer = setInterval(() => { left -= 1; if (left <= 0) { clearInterval(timer); btn.disabled = false; btn.firstChild.textContent = t.again; } else btn.firstChild.textContent = t.againIn(left); }, 1000);
   };
   const showSent = () => {
@@ -500,7 +504,7 @@ function billingPage(root) {
     if (r.status === 429) return t.limited;
     return A.down[1];
   }
-  const cooldown = (b, n) => { let left = n; b.disabled = true; b.firstChild.textContent = A.againIn(left); clearInterval(timer); timer = setInterval(() => { left -= 1; if (left <= 0) { clearInterval(timer); b.disabled = false; b.firstChild.textContent = A.again; } else b.firstChild.textContent = A.againIn(left); }, 1000); };
+  const cooldown = (b, n) => { lockWidth(b); let left = n; b.disabled = true; b.firstChild.textContent = A.againIn(left); clearInterval(timer); timer = setInterval(() => { left -= 1; if (left <= 0) { clearInterval(timer); b.disabled = false; b.firstChild.textContent = A.again; } else b.firstChild.textContent = A.againIn(left); }, 1000); };
   form.addEventListener('submit', async event => {
     event.preventDefault();
     const btn = form.querySelector('button[type="submit"]'); if (btn.disabled) return;

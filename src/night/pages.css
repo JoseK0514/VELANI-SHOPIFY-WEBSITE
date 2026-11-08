@@ -587,3 +587,28 @@ button.hb:disabled{cursor:progress;opacity:.75}
 .billing-form .client-send{margin-top:20px}
 /* Headings receive focus only so screen readers announce a new step; they are not controls, so no focus box. */
 :is(.setup,.signup-top,#top) h1[tabindex="-1"]:focus{outline:none}
+/* ---------- Premium pass (Nov 8, 2026): calmer state changes and details ---------- */
+/* A card or row of buttons that appears after a step arrives with a short rise instead of a jump. */
+@keyframes v-arrive{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.setup-card:not([hidden]),.setup-form:not([hidden]),.setup-acts:not([hidden]),.signup-top [data-sent],.sform:not([hidden]){animation:v-arrive .42s var(--out) both}
+@media(prefers-reduced-motion:reduce){.setup-card:not([hidden]),.setup-form:not([hidden]),.setup-acts:not([hidden]),.signup-top [data-sent],.sform:not([hidden]){animation:none}}
+/* Countdown labels keep their digits the same width. */
+:is([data-sent],[data-setup-acts]) .hb{font-variant-numeric:tabular-nums}
+/* On setup, billing and payment pages the phone line supports the task instead of leading it. */
+.setup .client-call .client-tel{font-size:clamp(1.375rem,1.8vw,1.625rem);font-weight:600;letter-spacing:-.01em}
+.setup .client-call{margin-top:48px}
+/* A finished step shows a check, so progress reads at a glance. */
+.setup-steps li[data-state="done"]::before{background:var(--text-2) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256'%3E%3Cpath fill='%2305090e' d='M229.66 77.66l-128 128a8 8 0 0 1-11.32 0l-56-56a8 8 0 0 1 11.32-11.32L96 188.69 218.34 66.34a8 8 0 0 1 11.32 11.32Z'/%3E%3C/svg%3E") center/9px no-repeat;width:16px;height:16px;border:0}
+.setup-steps li::before{width:16px;height:16px;box-sizing:border-box}
+/* The price slider in the site's own look: a thin track and a white handle, the same in every browser. */
+.pc-range{-webkit-appearance:none;appearance:none;background:transparent}
+.pc-range::-webkit-slider-runnable-track{height:4px;border-radius:2px;background:var(--line-2)}
+.pc-range::-moz-range-track{height:4px;border-radius:2px;background:var(--line-2)}
+.pc-range::-webkit-slider-thumb{-webkit-appearance:none;width:22px;height:22px;margin-top:-9px;border-radius:50%;background:#f0f0fa;border:0;box-shadow:0 0 0 6px rgba(240,240,250,.08);transition:box-shadow .18s var(--out)}
+.pc-range::-moz-range-thumb{width:22px;height:22px;border-radius:50%;background:#f0f0fa;border:0;box-shadow:0 0 0 6px rgba(240,240,250,.08)}
+.pc-range:hover::-webkit-slider-thumb,.pc-range:focus-visible::-webkit-slider-thumb{box-shadow:0 0 0 9px rgba(240,240,250,.12)}
+.pc-range:focus-visible{outline:none}
+.pc-range:focus-visible::-webkit-slider-thumb{outline:2px solid #f0f0fa;outline-offset:3px}
+.pc-range:focus-visible::-moz-range-thumb{outline:2px solid #f0f0fa;outline-offset:3px}
+/* The Owner's own plan: no trial walkthrough and no Start free trial in the header. */
+.owner-view .chap.days,.owner-view .gnav-in>.pill{display:none}
