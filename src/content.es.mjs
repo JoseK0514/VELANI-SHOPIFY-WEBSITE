@@ -227,7 +227,7 @@ export const PLANS_ES = {
   shotAlt: 'Horario de NEVORA para la semana: ocho personas, sus turnos de cada día y la semana publicada', shotCap: 'La semana de Carmen en Northside Coffee, un lugar de trabajo de ejemplo: ocho personas y todos los turnos publicados.',
   priceT: 'Después de 30 días, un precio mensual',
   includes: 'Cada negocio recibe la app completa: horarios, registro de tiempo, tarjetas de tiempo y cálculo de nómina. El precio depende solo de cuántos empleados tienes, y los dueños no cuentan.',
-  card: { q: 'Tu equipo', unit: 'empleados', per: 'al mes', small: '1 a 15 · $19', team: '16 a 30 · $29', less: 'Un empleado menos', more: 'Un empleado más', note: 'Se cobra cada mes por tu negocio. Los dueños no cuentan.', valueText: (n, p) => n + ' empleados, ' + p + ' al mes' },
+  card: { q: 'Tu equipo', unit: 'empleados', per: 'al mes', small: '1 a 15 · $19', team: '16 a 30 · $29', less: 'Un empleado menos', more: 'Un empleado más', note: 'Se cobra cada mes, por negocio.', valueText: (n, p) => n + ' empleados, ' + p + ' al mes' },
   terms: 'Los precios son en dólares estadounidenses. Cancela cuando quieras y NEVORA sigue funcionando hasta el final del mes pagado. Si no te suscribes al terminar la prueba, NEVORA se pausa para tu equipo y todavía puedes exportar tus registros.',
   over: ['¿Más de 30 empleados? ', 'Pide una cotización', '.'],
   closing: 'Los sitios web y las apps a la medida reciben una cotización fija por escrito para cada proyecto.', project: 'Empieza un proyecto', custom: 'Mira el software a la medida',

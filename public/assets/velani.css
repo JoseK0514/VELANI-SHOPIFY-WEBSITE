@@ -922,6 +922,13 @@ button.hb:disabled{cursor:progress;opacity:.75}
 /* The Owner's own plan: no trial walkthrough and no Start free trial in the header. */
 .owner-view .chap.days,.owner-view .gnav-in>.pill{display:none}
 
+/* An Owner's handoff: hide the marketing hero copy until their own plan is ready (no flash of the trial pitch). */
+.owner-loading #top .hcopy>*{visibility:hidden}
+.owner-loading .chap.days,.owner-loading .gnav-in>.pill{display:none}
+/* Standalone links on the account pages get a full 44px target. */
+.setup-facts dd a,.setup .client-call a[href^="mailto"]{display:inline-flex;align-items:center;min-height:44px}
+.setup .client-call .client-tel{font-size:1.25rem}
+
 /* Try the time clock: a working copy of the NEVORA PIN screen. Light surface, like the real tablet. */
 .kio-note{display:inline-flex;flex-wrap:wrap;gap:4px 6px;margin-top:var(--s1);padding:10px 16px;border-radius:var(--r);background:var(--panel);box-shadow:0 0 0 1px var(--line);font-size:0.875rem;line-height:1.4;color:var(--text-2)}
 .kio-note b{font-weight:600;color:var(--text)}

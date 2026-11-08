@@ -612,3 +612,10 @@ button.hb:disabled{cursor:progress;opacity:.75}
 .pc-range:focus-visible::-moz-range-thumb{outline:2px solid #f0f0fa;outline-offset:3px}
 /* The Owner's own plan: no trial walkthrough and no Start free trial in the header. */
 .owner-view .chap.days,.owner-view .gnav-in>.pill{display:none}
+
+/* An Owner's handoff: hide the marketing hero copy until their own plan is ready (no flash of the trial pitch). */
+.owner-loading #top .hcopy>*{visibility:hidden}
+.owner-loading .chap.days,.owner-loading .gnav-in>.pill{display:none}
+/* Standalone links on the account pages get a full 44px target. */
+.setup-facts dd a,.setup .client-call a[href^="mailto"]{display:inline-flex;align-items:center;min-height:44px}
+.setup .client-call .client-tel{font-size:1.25rem}

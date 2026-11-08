@@ -57,6 +57,11 @@ export function safeUrl(value) {
 }
 /** A countdown button keeps the width of its longest label, so its neighbour never shifts while the seconds change. */
 function lockWidth(b) { if (b.style.minWidth) return; requestAnimationFrame(() => { b.style.minWidth = Math.ceil(b.getBoundingClientRect().width) + 'px'; }); }
+/** Move focus to a heading once it can take it (an entrance animation may still be hiding it), so screen readers say it. */
+export function focusSoon(el) {
+  const go = () => { if (document.activeElement !== el) el.focus({ preventScroll: true }); };
+  requestAnimationFrame(go); setTimeout(go, 400);
+}
 const uuid = () => crypto.randomUUID ? crypto.randomUUID() : '10000000-1000-4000-8000-100000000000'.replace(/[018]/g, c => (c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(16));
 
 /* ---------- words ---------- */
@@ -65,7 +70,7 @@ const W = {
     opening: 'Opening your plan', yourPlan: 'Your NEVORA plan', back: 'Back to NEVORA', subscribe: 'Subscribe', manage: 'Manage billing', quote: 'Ask for a quote',
     getLink: 'Get a billing link', working: 'Opening billing',
     trial: (d, p) => 'Free trial until ' + d + '. Your team’s plan will be ' + p + ' a month.',
-    trialFact: d => 'Subscribe now and you keep every day of your trial. Your first charge is on ' + d + '.',
+    trialFact: () => 'Subscribe now and you keep every day of your trial. You aren’t charged until it ends.',
     paid: (p, d) => p + ' a month' + (d ? ', paid through ' + d : '') + '.',
     canceled: d => 'Your subscription is canceled. NEVORA keeps working' + (d ? ' through ' + d : ' through the paid period') + '.',
     grace: d => 'Your last payment didn’t go through. Update your card' + (d ? ' by ' + d : '') + ' to keep NEVORA running.',
@@ -77,7 +82,7 @@ const W = {
     overTop: n => n + ' active employees. Self-service plans cover up to 30, so ask us for a quote.',
     setup: 'Your workplace is still being set up. Billing opens when it’s ready.',
     kept: 'Your schedules, timecards and pay records are safe, and you can still export them.',
-    stripe: 'Payments are handled by Stripe.',
+    stripe: 'Stripe processes the payment.',
     expiredT: 'This billing link has expired', expired: 'Billing links work once and for a short time. Open billing again from NEVORA, or get a sign-in link by email.',
     unavailableT: 'Billing isn’t available right now', unavailable: 'We couldn’t reach billing. Nothing was charged. Try again in a minute.',
     limited: 'Too many tries. Wait a minute, then try again.',
@@ -95,7 +100,7 @@ const W = {
     opening: 'Abriendo tu plan', yourPlan: 'Tu plan de NEVORA', back: 'Volver a NEVORA', subscribe: 'Suscríbete', manage: 'Administra la facturación', quote: 'Pide una cotización',
     getLink: 'Recibe un enlace de facturación', working: 'Abriendo la facturación',
     trial: (d, p) => 'Prueba gratis hasta el ' + d + '. El plan de tu equipo será de ' + p + ' al mes.',
-    trialFact: d => 'Si te suscribes ahora, conservas todos los días de tu prueba. El primer cargo es el ' + d + '.',
+    trialFact: () => 'Si te suscribes ahora, conservas todos los días de tu prueba. No se te cobra hasta que termine.',
     paid: (p, d) => p + ' al mes' + (d ? ', pagado hasta el ' + d : '') + '.',
     canceled: d => 'Tu suscripción está cancelada. NEVORA sigue funcionando' + (d ? ' hasta el ' + d : ' hasta el final del período pagado') + '.',
     grace: d => 'Tu último pago no se completó. Actualiza tu tarjeta' + (d ? ' antes del ' + d : '') + ' para que NEVORA siga funcionando.',
@@ -136,7 +141,7 @@ export function ownerView(s) {
     if (s.activeEmployees > 30) return { line: t.overTop(s.activeEmployees), acts: ['quote'] };
     return { line: t.overLimit(s.activeEmployees, s.employeeLimit), acts: [s.plan ? 'portal' : 'checkout'] };
   }
-  if (s.state === 'trial') return { line: t.trial(s.trialEndsAt ? day(s.trialEndsAt) : '', price), fact: s.trialEndsAt ? t.trialFact(day(s.trialEndsAt)) + ' ' + t.stripe : t.stripe, acts: ['checkout'] };
+  if (s.state === 'trial') return { line: t.trial(s.trialEndsAt ? day(s.trialEndsAt) : '', price), fact: t.trialFact() + ' ' + t.stripe, acts: ['checkout'] };
   if (s.state === 'paid') return { line: s.reason === 'subscription_canceled' ? t.canceled(s.paidThrough && day(s.paidThrough)) : t.paid(price, s.paidThrough && day(s.paidThrough)), fact: t.stripe, acts: ['portal'] };
   if (s.state === 'grace') return { line: t.grace(s.graceEndsAt && day(s.graceEndsAt)), fact: t.stripe, acts: ['portal'] };
   const line = { trial_ended: t.trialEnded, payment_failed: t.payFailed, subscription_canceled: t.ended }[s.reason] || t.payRequired;
@@ -183,11 +188,14 @@ function plans() {
   const quoteHref = (document.querySelector('.price-over a') || {}).href || '/pages/contact?interest=nevora';
   fact.removeAttribute('data-trial-end');
   const icon = (acts.querySelector('.hb .icon') || document.createElement('i')).outerHTML;
+  h1.setAttribute('tabindex', '-1');
   const show = (title, line, buttons, note) => {
     h1.textContent = title; text.textContent = line || ''; text.hidden = !line;
     acts.replaceChildren(...buttons); acts.hidden = !buttons.length;
     fact.textContent = note || ''; fact.hidden = !note;
     hero.removeAttribute('aria-busy');
+    document.documentElement.classList.remove('owner-loading');
+    if (title !== t.opening) focusSoon(h1);
   };
   const link = (label, href, fill) => { const a = document.createElement('a'); a.className = 'hb' + (fill ? ' fill' : ''); a.href = href; a.innerHTML = '<span></span>' + icon; a.firstChild.textContent = label; return a; };
   const button = (label, run) => {
@@ -207,6 +215,7 @@ function plans() {
   const fail = (title, line) => show(title, line, [link(t.getLink, billingHref, true)]);
 
   hero.setAttribute('aria-busy', 'true'); h1.textContent = t.opening; text.hidden = true; acts.hidden = true; fact.hidden = true;
+  document.documentElement.classList.remove('owner-loading');
   if (!configured()) return fail(t.unavailableT, t.unavailable);
   (async () => {
     const x = await call('/v1/handoff/exchange', { method: 'POST', body: { token: handoff } });
@@ -294,7 +303,7 @@ const S = {
   noLink: ['Open the link from your email.', 'For your security, each link works once. If you already used it, ask for a new one.'],
   down: ['Setup isn’t available right now.', 'We couldn’t reach NEVORA. Nothing was lost. Try the link again in a few minutes.'],
   session: ['Your session ended.', 'For your security, setup pages stay open for a few hours. Ask for a new link to continue.'],
-  pending: ['Setting up your workplace.', 'We have your details. Your workplace is in line to be set up.'],
+  pending: ['Setting up your workplace.', 'We have your details, and your workplace is next in line.'],
   provisioning: ['Setting up your workplace.', 'We’re preparing your workplace and your Owner account now.'],
   slow: 'It’s taking longer than usual. You can close this page. To check later, open Plan and billing and ask for a sign-in link.',
   usually: 'This usually takes a few minutes. Keep this page open; it updates by itself.',
@@ -337,6 +346,8 @@ function setupPage(root) {
   function progress(state) {
     if (!since) since = Date.now();
     head(state === 'provisioning' ? S.provisioning : S.pending, false); buttons([]);
+    const say = root.querySelector('[data-announce]'), line = (state === 'provisioning' ? S.provisioning : S.pending)[1];
+    if (say && say.textContent !== line) say.textContent = line;
     const done = state === 'provisioning' ? 1 : 1, now = state === 'provisioning' ? 1 : 1;
     card.innerHTML = '<ol class="setup-steps"></ol><p class="setup-note"></p>';
     const ol = card.querySelector('ol');
@@ -435,6 +446,7 @@ const A = ES ? {
   down: ['Facturación no disponible.', 'No pudimos conectar con NEVORA. No se cobró nada. Intenta de nuevo en unos minutos.'],
   newLink: 'Pide un enlace nuevo', again: 'Envíalo otra vez', againIn: n => 'Envíalo otra vez en ' + n + ' s', other: 'Usa otro correo', resent: 'Lo enviamos otra vez.',
   signOut: 'Salir', signedOut: ['Saliste de la facturación.', 'Para volver, pide un enlace nuevo.'],
+  trialOn: 'Tu prueba gratis está activa.', paidOn: 'Tu plan está activo.',
   plan: 'Plan', free: 'Prueba gratis', perMonth: p => p + ' al mes', trialEnds: 'La prueba termina', paidThrough: 'Pagado hasta', payBy: 'Paga antes del', employees: 'Empleados', of: (n, l) => n + ' de ' + l,
 } : {
   opening: ['Opening your billing.', 'One moment while we check your link.'],
@@ -444,6 +456,7 @@ const A = ES ? {
   down: ['Billing isn’t available right now.', 'We couldn’t reach NEVORA. Nothing was charged. Try again in a few minutes.'],
   newLink: 'Get a new link', again: 'Send it again', againIn: n => 'Send it again in ' + n + ' s', other: 'Use a different email', resent: 'Sent again.',
   signOut: 'Sign out', signedOut: ['You’re signed out of billing.', 'To come back, ask for a new link.'],
+  trialOn: 'Your free trial is running.', paidOn: 'Your plan is active.',
   plan: 'Plan', free: 'Free trial', perMonth: p => p + ' a month', trialEnds: 'Trial ends', paidThrough: 'Paid through', payBy: 'Pay by', employees: 'Employees', of: (n, l) => n + ' of ' + l,
 };
 const R = {
@@ -521,7 +534,9 @@ function billingPage(root) {
   });
   function status(st) {
     const v = ownerView(st);
-    ui.head([st.businessName || t.yourPlan, v.line], true);
+    // The rows carry the dates and the price, so a healthy plan's line says only how it stands.
+    const brief = st.reason ? v.line : st.state === 'trial' ? A.trialOn : st.state === 'paid' ? A.paidOn : v.line;
+    ui.head([st.businessName || t.yourPlan, brief], true);
     const actions = v.acts.map(a => a === 'quote' ? ui.link(t.quote, quoteHref, true) : ui.button(a === 'portal' ? t.manage : t.subscribe, async b => {
       b.disabled = true; b.setAttribute('aria-busy', 'true'); const label = b.firstChild.textContent; b.firstChild.textContent = t.working;
       const out = await openBilling(a); if (!out) return;
