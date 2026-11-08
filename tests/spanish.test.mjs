@@ -138,7 +138,7 @@ test('the main-theme layout renders Spanish pages in Spanish with es_US metadata
   const dev = await page('main', '/pages/custom-development');
   assert.match(dev, /<a href="\/pages\/es-a-la-medida" hreflang="es" lang="es" aria-label="Español">ES<\/a>/);
   const legal = await page('main', '/pages/legal');
-  assert.match(legal, /<a href="\/pages\/es" hreflang="es" lang="es" aria-label="Español">ES<\/a>/);
+  assert.match(legal, /<a href="\/pages\/es-ayuda" hreflang="es" lang="es" aria-label="Español">ES<\/a>/);
 });
 test('on an unpublished theme the switch and Spanish links stay in the same draft, and the page stays noindex', async () => {
   const ctx = { template: { name: 'index', suffix: 'velani-es-planes' }, request: { locale: { iso_code: 'en' }, page_type: 'index', path: '/' } };

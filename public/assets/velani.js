@@ -192,6 +192,8 @@ if (dialog) {
     if (result.ok) {
       inputs.forEach(input => { input.checked = choices[input.dataset.consent]; });
       status.textContent = result.mode === 'local' ? L.consent.savedLocal : L.consent.saved;
+      // Saved: close the dialog and return to the button that opened it (dialog.close() restores focus to it)
+      setTimeout(() => { if (dialog.open) dialog.close(); }, 600); return;
     } else status.textContent = L.privacyErrors[result.error] || result.error;
     if (dialog.open && document.activeElement === status) button.focus({ preventScroll: true });
   });

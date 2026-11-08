@@ -84,7 +84,7 @@ import { VelaniAssistant, safeSourceUrl } from './velani-assistant.js';
  // footer and the closing panel's actions; at every width it steps aside while a page form field has the keyboard
  let fieldFocus = false, endInView = false;
  const tuck = () => root.classList.toggle('ast-tucked', panel.hidden && (fieldFocus || (small.matches && (endInView || window.scrollY < innerHeight * 0.6))));
- const ends = [...document.querySelectorAll('.foot, main > .hpanel.end .hacts')];
+ const ends = [...document.querySelectorAll(document.querySelector('.help-top') ? '.foot' : '.foot, main > .hpanel.end .hacts')];
  if (ends.length && 'IntersectionObserver' in window) {
   const seen = new Set();
   const io = new IntersectionObserver(es => { es.forEach(x => x.isIntersecting ? seen.add(x.target) : seen.delete(x.target)); endInView = seen.size > 0; tuck(); });

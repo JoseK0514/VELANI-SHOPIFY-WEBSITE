@@ -281,3 +281,12 @@ b.rmark,.hchat-h b.rmark,.rondo-kick .rmark,.ast-launch .rmark,.ast-head .rmark,
 .hshot.fade{transition:opacity .5s var(--out),transform .6s var(--out)}
 .owner{transition-duration:.6s}
 @media(prefers-reduced-motion:reduce){.js .fade,.hpanel .fade,.hpanel .rise,.rise .w>span,.hshot.fade{transition:none}}
+
+/* Footer: the wordmark shows whole at every width (a cut letter read as "VEL ANI"); copyright then legal links, the same in both languages */
+.foot-wm{height:calc((100cqw - var(--pad)*2) * .1792 + 28px)}
+@media(min-width:834px){.foot-legal{flex-direction:column;align-items:flex-start;justify-content:flex-start;gap:8px}.foot-legal .foot-links{display:flex;flex-wrap:wrap;gap:4px 20px}}
+/* Cookie choices: buttons at the site's button size, a clear edge above the sticky actions on phones, and less padding so the Spanish dialog fits on a laptop */
+.cookie-actions .pill{font-size:0.875rem}
+.cookie-option{padding:12px 0}
+@media(max-width:600px){.cookie-actions{border-top:1px solid var(--line-2);box-shadow:0 -12px 24px -12px rgba(0,0,0,.6)}.cookie-actions .pill{font-size:0.8125rem}}
+.cookie-dialog .always-on{text-transform:none;letter-spacing:0;font-size:0.875rem}

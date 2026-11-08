@@ -22,6 +22,9 @@ export const ES_PATHS = Object.freeze({
 
 /** English-only pages whose closest Spanish page is not the Spanish home: the ES switch goes there instead. */
 export const ES_NEAREST = Object.freeze({
+  '/pages/legal': '/pages/es-ayuda', '/pages/privacy': '/pages/es-ayuda', '/pages/cookies': '/pages/es-ayuda', '/pages/website-terms': '/pages/es-ayuda',
+  '/pages/software-project-terms': '/pages/es-ayuda', '/pages/accessibility': '/pages/es-ayuda', '/pages/security': '/pages/es-ayuda',
+  '/pages/nevora-support': '/pages/es-nevora', '/pages/nevora-privacy': '/pages/es-nevora', '/pages/nevora-terms': '/pages/es-nevora', '/pages/nevora-account-deletion': '/pages/es-nevora',
 });
 
 /** Spanish routes: same kinds (and so the same components, images and order) as their English pages. */
@@ -48,7 +51,7 @@ export const ES_ROUTES = {
   '/pages/es-planes': es('/pages/plans', {
     kind: 'plans', nav: 'plans', eyebrow: 'Planes', name: 'Planes',
     title: 'Prueba NEVORA gratis por 30 días.',
-    intro: 'Prueba gratis de NEVORA por 30 días para equipos de hasta 30 empleados, sin tarjeta ni cargos automáticos. Luego, un solo precio por negocio, por cotización.',
+    intro: 'Prueba gratis de NEVORA por 30 días para equipos de hasta 30 personas, sin tarjeta ni cargos automáticos. Luego, un solo precio por negocio, por cotización.',
     lede: 'Pide una prueba gratis de NEVORA para tu equipo, sin tarjeta ni cargos automáticos. El día 30 decides qué sigue.',
     og: ['velani-social-plans.png', 'Planes de NEVORA: gratis por 30 días y luego un solo precio por negocio'],
   }),
@@ -71,13 +74,13 @@ ES_ROUTES['/pages/es-ayuda'] = es('/pages/help', {
   title: 'Aquí para ayudarte.',
   intro: 'Soporte al cliente, respuestas sobre nuestro trabajo y ayuda para quienes usan NEVORA.',
   sections: [
-    { heading: '¿Cómo consigue mi negocio NEVORA?', text: 'NEVORA se ofrece a los negocios por cotización, con una prueba gratis de 30 días para equipos de hasta 30 empleados. Después de la prueba hay un solo precio por negocio, cotizado según tu número de empleados, tu negocio y las funciones que uses. Pide una cotización o una prueba y hablamos de lo que necesita tu equipo. Los empleados reciben su cuenta de su lugar de trabajo, no de este sitio web.' },
+    { heading: '¿Cómo consigue mi negocio NEVORA?', text: 'NEVORA se ofrece a los negocios por cotización, con una prueba gratis de 30 días para equipos de hasta 30 personas. Después de la prueba hay un solo precio por negocio, cotizado según tu número de empleados, tu negocio y las funciones que uses. Pide una cotización o una prueba y hablamos de lo que necesita tu equipo. Los empleados reciben su cuenta de su lugar de trabajo, no de este sitio web.' },
     { heading: '¿Velani desarrolla software a la medida?', text: 'Sí. Describe en la página de contacto la aplicación, el proceso interno o la integración que necesitas.' },
     { heading: '¿Me pueden dar un precio o una fecha de entrega aquí?', text: 'No en el sitio web. Le ponemos precio a un proyecto cuando acordamos su alcance, y dejamos los honorarios, los hitos y las fechas de entrega en el acuerdo de proyecto por escrito.' },
     { heading: '¿Una consulta inicia un contrato?', text: 'No. Una consulta inicia una conversación. No compra un producto ni da inicio a trabajo pagado.' },
     { heading: '¿Dónde envío información confidencial?', text: 'No envíes contraseñas, claves de API, datos de pago ni registros confidenciales por un formulario público o por correo normal. Primero pide un canal adecuado.' },
     { heading: '¿Cómo contacto al soporte al cliente?', text: 'El soporte al cliente responde de ' + HOURS_ES + '. Escribe a support@thevelani.com, llama al 787-925-2000 o usa la página de contacto.' },
-    { heading: '¿Cómo funciona la prueba gratis de NEVORA?', text: 'Un negocio con hasta 30 empleados puede usar NEVORA gratis por 30 días desde la configuración. No se necesita tarjeta y no se cobra nada. El día 30 continúas por cotización o cierras el espacio de trabajo. Primero, exporta tus datos: un espacio de trabajo cerrado y sus datos se eliminan en un plazo de 3 días, incluidas las tarjetas de tiempo y los comprobantes de nómina. Para cerrarlo, escribe a support@thevelani.com. NEVORA calcula los comprobantes de nómina; no les paga a los empleados ni presenta impuestos de nómina.' },
+    { heading: '¿Cómo funciona la prueba gratis de NEVORA?', text: 'Un negocio con hasta 30 personas puede usar NEVORA gratis por 30 días desde la configuración. No se necesita tarjeta y no se cobra nada. El día 30 continúas por cotización o cierras el espacio de trabajo. Primero, exporta tus datos: un espacio de trabajo cerrado y sus datos se eliminan en un plazo de 3 días, incluidas las tarjetas de tiempo y los comprobantes de nómina. Para cerrarlo, escribe a support@thevelani.com. NEVORA calcula los comprobantes de nómina; no les paga a los empleados ni presenta impuestos de nómina.' },
   ],
 });
 
@@ -211,5 +214,5 @@ export const PLANS_ES = {
   shotAlt: 'Horario de NEVORA para la semana: ocho personas, sus turnos de cada día y la semana publicada', shotCap: 'La semana de Carmen en Northside Coffee, un lugar de trabajo de ejemplo: ocho personas y todos los turnos publicados.',
   endT: 'Cuando termina la prueba',
   end: [['Sigue con NEVORA', 'Te cotizamos un solo precio para tu negocio y tu equipo sigue trabajando sin pausa.'], ['Cierra tu espacio de trabajo', 'Exporta tus horarios, tarjetas de tiempo y comprobantes de nómina, y luego escribe a support@thevelani.com. Eliminamos el espacio de trabajo y sus datos en un plazo de 3 días.']],
-  closing: 'Los sitios web y las apps a la medida reciben una cotización fija por escrito para cada proyecto.', project: 'Empieza un proyecto', custom: 'Mira Software a la medida',
+  closing: 'Los sitios web y las apps a la medida reciben una cotización fija por escrito para cada proyecto.', project: 'Empieza un proyecto', custom: 'Mira el software a la medida',
 };
