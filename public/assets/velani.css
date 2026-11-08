@@ -929,6 +929,17 @@ button.hb:disabled{cursor:progress;opacity:.75}
 .setup-facts dd a,.setup .client-call a[href^="mailto"]{display:inline-flex;align-items:center;min-height:44px}
 .setup .client-call .client-tel{font-size:1.25rem}
 
+/* Plans: the live price line beside the team-size card (one price story: your team, your last free day, your price). */
+.price-mine{margin:28px 0 0;max-width:30em;font-size:1.25rem;line-height:1.45;color:var(--text-2)}
+.price-mine b{font-weight:600;color:var(--text)}
+.price-mine[hidden],.owner-view .price-mine{display:none}
+.price-mine+.price-inc{margin-top:16px}
+/* Setup ready: the Owner's own Today screen under the details, in the site's screenshot frame. */
+.setup-shot{margin:16px 0 0;animation:v-arrive .5s var(--out) .12s both}
+.setup-shot img{display:block;width:100%;height:auto;border-radius:var(--r2);box-shadow:0 0 0 1px var(--line-2),0 30px 60px -30px rgba(0,0,0,.8)}
+.setup-shot figcaption{margin:12px 0 0;font-size:0.875rem;line-height:1.5;color:var(--text-3)}
+@media(prefers-reduced-motion:reduce){.setup-shot{animation:none}}
+
 /* Try the time clock: a working copy of the NEVORA PIN screen. Light surface, like the real tablet. */
 .kio-note{display:inline-flex;flex-wrap:wrap;gap:4px 6px;margin-top:var(--s1);padding:10px 16px;border-radius:var(--r);background:var(--panel);box-shadow:0 0 0 1px var(--line);font-size:0.875rem;line-height:1.4;color:var(--text-2)}
 .kio-note b{font-weight:600;color:var(--text)}

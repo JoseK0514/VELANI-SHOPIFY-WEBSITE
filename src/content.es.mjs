@@ -20,6 +20,8 @@ export const ES_PATHS = Object.freeze({
   '/pages/sign-in': '/pages/es-entrar',
   '/pages/nevora-start': '/pages/es-prueba',
   '/pages/nevora-billing': '/pages/es-facturacion',
+  '/pages/nevora-verify': '/pages/es-configurar',
+  '/pages/nevora-billing-return': '/pages/es-pago',
 });
 
 /** English-only pages whose closest Spanish page is not the Spanish home: the ES switch goes there instead. */
@@ -96,6 +98,16 @@ ES_ROUTES['/pages/es-facturacion'] = es('/pages/nevora-billing', {
   kind: 'commerce', step: 'billing', nav: 'plans', eyebrow: '', name: 'Facturación de NEVORA',
   title: 'Plan y facturación.',
   intro: 'Mira tu plan de NEVORA, suscríbete o actualiza tu tarjeta. Le enviamos al dueño del negocio un enlace para entrar.',
+});
+ES_ROUTES['/pages/es-configurar'] = es('/pages/nevora-verify', {
+  kind: 'commerce', step: 'verify', nav: 'plans', eyebrow: '', name: 'Configura tu lugar de trabajo de NEVORA',
+  title: 'Configura tu lugar de trabajo.',
+  intro: 'Cuéntanos sobre tu negocio y elige tu contraseña de dueño. Tus 30 días gratis empiezan cuando tu lugar de trabajo esté listo.',
+});
+ES_ROUTES['/pages/es-pago'] = es('/pages/nevora-billing-return', {
+  kind: 'commerce', step: 'return', nav: 'plans', eyebrow: '', name: 'Facturación de NEVORA',
+  title: 'Confirmando el pago.',
+  intro: 'Estamos revisando tu suscripción con NEVORA. Esta página se actualiza sola.',
 });
 ES_ROUTES['/pages/es-entrar'] = es('/pages/sign-in', {
   kind: 'signin', nav: 'signin', eyebrow: '', name: 'Entrar',

@@ -229,8 +229,7 @@ function plans(page, target, lang = 'en') {
     + '<div class="pc-scale" aria-hidden="true"><span>' + e(t.card.small) + '</span><span>' + e(t.card.team) + '</span></div>'
     + '<div class="pc-ctl"><button class="pc-step" type="button" data-step="-1" aria-label="' + e(t.card.less) + '" aria-controls="pc-n" hidden>' + icon('minus') + '</button><input class="pc-range" id="pc-n" type="range" min="1" max="31" value="8" step="1" aria-valuetext="' + e(t.card.valueText(8, '$19')) + '" disabled><button class="pc-step" type="button" data-step="1" aria-label="' + e(t.card.more) + '" aria-controls="pc-n" hidden>' + icon('plus') + '</button></div>'
     + '<p class="pc-note" data-note>' + e(t.card.note) + '</p></div>';
-  const over = '<p class="price-over">' + e(t.over[0]) + '<a href="/pages/contact?interest=nevora">' + e(t.over[1]) + '</a>' + e(t.over[2]) + '</p>';
-  const price = '<section class="chap day30" id="price" aria-labelledby="price-t"><div class="wrap days-grid price-grid"><div><h2 class="t2 rise" id="price-t">' + e(t.priceT) + '</h2><p class="price-inc fade">' + e(t.includes) + '</p>' + over + '<p class="days-fine">' + e(t.terms) + '</p><div class="hacts day-acts fade">' + trial + quote + '</div></div>' + card + '</div></section>';
+  const price = '<section class="chap day30" id="price" aria-labelledby="price-t"><div class="wrap days-grid price-grid"><div><h2 class="t2 rise" id="price-t">' + e(t.priceT) + '</h2><p class="price-mine" data-price-mine hidden></p><p class="price-inc fade">' + e(t.includes) + '</p>' + '<p class="days-fine">' + e(t.terms) + '</p><div class="hacts day-acts fade">' + trial + quote + '</div></div>' + card + '</div></section>';
   const commerce = commerceBlock(target) + '<script type="module" src="' + asset('velani-commerce.js', target) + '"></script>';
   return hero + days + shot + price + closing(target, { lang, line: t.closing, project: '/pages/contact?interest=custom-software', support: hb(t.custom, '/pages/custom-development') }) + commerce + '\n' + (lang === 'es' ? WORK_ES.zoom || [] : []).reduce((z, [a, b]) => z.split(a).join(b), zoomScript(target));
 }
@@ -254,30 +253,37 @@ const START = {
  * (business, then the Owner account), and the same column later holds the progress and the ready details.
  * velani-commerce.js reads #token=, verifies it, then shows the step the backend's status asks for. */
 const SETUP = {
-  biz: 'Your business', owner: 'Your Owner account',
-  business: 'Business name', location: 'Location name', tz: 'Time zone', employees: 'Employees',
-  employeesHelp: 'Not counting you. More than 30? ', quote: 'Ask us for a quote',
-  first: 'First name', last: 'Last name', phone: 'Mobile phone', password: 'Password', passwordHelp: 'At least 12 characters.',
-  show: 'Show', hide: 'Hide', submit: 'Set up my workplace', note: 'You’ll sign in to NEVORA with the Owner ID OWNER and this password.',
-  zones: [['America/New_York', 'Eastern Time'], ['America/Chicago', 'Central Time'], ['America/Denver', 'Mountain Time'], ['America/Phoenix', 'Mountain Time (Arizona)'], ['America/Los_Angeles', 'Pacific Time'], ['America/Anchorage', 'Alaska Time'], ['Pacific/Honolulu', 'Hawaii Time'], ['America/Puerto_Rico', 'Atlantic Time']],
+  en: { biz: 'Your business', owner: 'Your Owner account',
+    business: 'Business name', location: 'Location name', locationDefault: 'Main', tz: 'Time zone', employees: 'Employees',
+    employeesHelp: 'Not counting you. More than 30? ', quote: 'Ask us for a quote',
+    first: 'First name', last: 'Last name', phone: 'Mobile phone', password: 'Password', passwordHelp: 'At least 12 characters.',
+    show: 'Show', hide: 'Hide', submit: 'Set up my workplace', sending: 'Setting up', note: 'You’ll sign in to NEVORA with the Owner ID OWNER and this password.',
+    zones: [['America/New_York', 'Eastern Time'], ['America/Chicago', 'Central Time'], ['America/Denver', 'Mountain Time'], ['America/Phoenix', 'Mountain Time (Arizona)'], ['America/Los_Angeles', 'Pacific Time'], ['America/Anchorage', 'Alaska Time'], ['Pacific/Honolulu', 'Hawaii Time'], ['America/Puerto_Rico', 'Atlantic Time']] },
+  es: { biz: 'Tu negocio', owner: 'Tu cuenta de dueño',
+    business: 'Nombre del negocio', location: 'Nombre de la ubicación', locationDefault: 'Principal', tz: 'Zona horaria', employees: 'Empleados',
+    employeesHelp: 'Sin contarte a ti. ¿Más de 30? ', quote: 'Pídenos una cotización',
+    first: 'Nombre', last: 'Apellido', phone: 'Teléfono móvil', password: 'Contraseña', passwordHelp: 'Al menos 12 caracteres.',
+    show: 'Mostrar', hide: 'Ocultar', submit: 'Configura mi lugar de trabajo', sending: 'Configurando', note: 'Entrarás a NEVORA con el ID de dueño OWNER y esta contraseña.',
+    zones: [['America/New_York', 'Hora del Este'], ['America/Chicago', 'Hora del Centro'], ['America/Denver', 'Hora de la Montaña'], ['America/Phoenix', 'Hora de la Montaña (Arizona)'], ['America/Los_Angeles', 'Hora del Pacífico'], ['America/Anchorage', 'Hora de Alaska'], ['Pacific/Honolulu', 'Hora de Hawái'], ['America/Puerto_Rico', 'Hora del Atlántico']] },
 };
 function setupPage(page, target, lang) {
-  const t = SETUP, off = COMMERCE_OFF[lang];
+  const t = SETUP[lang], off = COMMERCE_OFF[lang];
   const ff = (id, label, attrs, help = '') => '<div class="ff"><input id="setup-' + id + '" name="' + id + '" placeholder=" " ' + attrs + ' aria-describedby="setup-' + id + '-error' + (help ? ' setup-' + id + '-help' : '') + '"><label for="setup-' + id + '">' + e(label) + '</label>' + (help ? '<p class="field-help" id="setup-' + id + '-help">' + help + '</p>' : '') + '<p class="field-error" id="setup-' + id + '-error"></p></div>';
   const tz = '<div class="ff sel"><select id="setup-timeZone" name="timeZone" required aria-describedby="setup-timeZone-error">' + t.zones.map(([v, n]) => '<option value="' + v + '">' + e(n) + '</option>').join('') + '</select><label for="setup-timeZone">' + e(t.tz) + '</label><p class="field-error" id="setup-timeZone-error"></p></div>';
   const pw = '<div class="ff pw"><input id="setup-password" name="password" type="password" placeholder=" " autocomplete="new-password" minlength="12" maxlength="256" required aria-describedby="setup-password-help setup-password-error"><label for="setup-password">' + e(t.password) + '</label><button class="pw-toggle" type="button" aria-controls="setup-password" aria-pressed="false" data-show="' + t.show + '" data-hide="' + t.hide + '">' + t.show + '</button><p class="field-help" id="setup-password-help">' + e(t.passwordHelp) + '</p><p class="field-error" id="setup-password-error"></p></div>';
   const form = '<form id="setup-form" class="setup-form" novalidate hidden>'
     + '<fieldset><legend class="kinds-q">' + e(t.biz) + '</legend>' + ff('businessName', t.business, 'autocomplete="organization" maxlength="120" required')
-    + '<div class="frow">' + ff('locationName', t.location, 'value="Main" maxlength="80" required') + tz + '</div>'
+    + '<div class="frow">' + ff('locationName', t.location, 'value="' + e(t.locationDefault) + '" maxlength="80" required') + tz + '</div>'
     + ff('employeeCount', t.employees, 'type="number" inputmode="numeric" min="1" max="30" step="1" required', e(t.employeesHelp) + '<a href="/pages/contact?interest=nevora">' + e(t.quote) + '</a>.') + '</fieldset>'
     + '<fieldset><legend class="kinds-q">' + e(t.owner) + '</legend><div class="frow">' + ff('firstName', t.first, 'autocomplete="given-name" maxlength="80" required') + ff('lastName', t.last, 'autocomplete="family-name" maxlength="80" required') + '</div>'
     + ff('phone', t.phone, 'type="tel" autocomplete="tel-national" inputmode="tel" maxlength="20" required') + pw + '</fieldset>'
-    + '<div class="client-send"><button class="pill" type="submit" data-sending="Setting up">' + e(t.submit) + '</button><p class="client-note">' + e(t.note) + '</p></div>'
+    + '<div class="client-send"><button class="pill" type="submit" data-sending="' + e(t.sending) + '">' + e(t.submit) + '</button><p class="client-note">' + e(t.note) + '</p></div>'
     + '<p class="form-status" role="alert" data-form-status></p></form>';
   const card = '<div class="setup-card" data-setup-card hidden></div><p class="sr" role="status" data-announce></p>';
   const side = '<div class="cform-hero contact-side"><h1 class="t1 rise" id="setup-t" tabindex="-1">' + e(page.title) + '</h1><p class="lede fade" data-setup-lede>' + e(page.intro) + '</p><p class="lede fade" data-off>' + e(off.text) + '</p><div class="hacts setup-acts" data-setup-acts><span data-off>' + hb(off.act, '/pages/contact?interest=nevora-demo', true) + '</span></div></div>';
   const call = '<div class="client-call fade"><p>' + e(CONTACT[lang].callK) + '</p><a class="client-tel" href="' + tel() + '">' + e(company.phone) + '</a><p>' + e(lang === 'es' ? HOURS_ES : company.hours) + '<br><a href="mailto:' + company.email + '">' + company.email + '</a></p></div>';
-  return '<section class="contact contact-split setup" id="setup" aria-labelledby="setup-t" data-setup-page><div class="wrap client-grid">' + side + '<div class="client-form">' + form + card + '</div>' + call + '</div></section>';
+  const shot = '<template data-ready-shot><figure class="setup-shot"><img src="' + asset('night-r1-owner-today.webp', target) + '" alt="' + e(lang === 'es' ? 'Hoy en NEVORA para el dueño: lo que necesita tu respuesta, quién marcó entrada y el próximo día de pago' : 'NEVORA Today for the Owner: what needs your answer, who is clocked in and the next payday') + '" width="1800" height="750" decoding="async"><figcaption></figcaption></figure></template>';
+  return shot + '<section class="contact contact-split setup" id="setup" aria-labelledby="setup-t" data-setup-page><div class="wrap client-grid">' + side + '<div class="client-form">' + form + card + '</div>' + call + '</div></section>';
 }
 /** Plan and billing (nevora-billing, es-facturacion) and Confirming payment (nevora-billing-return): the setup page's split.
  * Billing has an owner-email form for a sign-in link; both fill the right-hand card from the backend's status. */

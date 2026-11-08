@@ -93,6 +93,7 @@ const W = {
     sentT: 'Check your email.', sent: e => 'We sent a link to ' + e + '. Open it within 24 hours to set up your workplace.',
     sentFact: 'No email after a few minutes? Check your spam folder, or send it again.', again: 'Send it again', againIn: s => 'Send it again in ' + s + ' s', other: 'Use a different email', resent: 'Sent again. Check your inbox.',
     badEmail: 'Enter an email address like name@business.com.', signupDown: 'Signup is paused for a moment. Try again in a few minutes.', offline: 'We couldn’t reach NEVORA. Check your connection and try again.',
+    mine: (n, d, p) => 'With <b>' + n + (n === 1 ? ' employee' : ' employees') + '</b>: free through <b>' + d + '</b>, then <b>' + p + ' a month</b>.', mineOver: 'With <b>more than 30 employees</b>: free for 30 days, then a quote from us.',
     over30: 'More than 30', quoted: 'Quote', quoteNote: 'Teams of more than 30 get a quote from us.', perMonth: 'a month', emp: n => n === 1 ? 'employee' : 'employees',
     valueText: (n, p) => n > 30 ? 'More than 30 employees, ask for a quote' : n + ' ' + (n === 1 ? 'employee' : 'employees') + ', ' + p + ' a month',
   },
@@ -123,6 +124,7 @@ const W = {
     sentT: 'Revisa tu correo.', sent: e => 'Te enviamos un enlace a ' + e + '. Ábrelo dentro de 24 horas para configurar tu lugar de trabajo.',
     sentFact: '¿No te llega después de unos minutos? Revisa la carpeta de correo no deseado o envíalo otra vez.', again: 'Envíalo otra vez', againIn: s => 'Envíalo otra vez en ' + s + ' s', other: 'Usa otro correo', resent: 'Lo enviamos otra vez. Revisa tu bandeja de entrada.',
     badEmail: 'Escribe un correo como nombre@negocio.com.', signupDown: 'El registro está en pausa por un momento. Intenta de nuevo en unos minutos.', offline: 'No pudimos conectar con NEVORA. Revisa tu conexión e intenta de nuevo.',
+    mine: (n, d, p) => 'Con <b>' + n + (n === 1 ? ' empleado' : ' empleados') + '</b>: gratis hasta el <b>' + d + '</b>, luego <b>' + p + ' al mes</b>.', mineOver: 'Con <b>más de 30 empleados</b>: gratis por 30 días, luego una cotización nuestra.',
     over30: 'Más de 30', quoted: 'Cotización', quoteNote: 'Los equipos de más de 30 reciben una cotización.', perMonth: 'al mes', emp: n => n === 1 ? 'empleado' : 'empleados',
     valueText: (n, p) => n > 30 ? 'Más de 30 empleados, pide una cotización' : n + ' ' + (n === 1 ? 'empleado' : 'empleados') + ', ' + p + ' al mes',
   },
@@ -185,7 +187,7 @@ function plans() {
   const h1 = hero.querySelector('h1'), text = hero.querySelector('.hcopy > p.fade:not(.hfact)'), acts = hero.querySelector('.hacts'), fact = hero.querySelector('.hfact');
   // The page's own links (already rewritten for a theme preview) give the billing and quote addresses.
   const billingHref = (acts.querySelector('a[href*="nevora-billing"]') || {}).href || '/pages/nevora-billing';
-  const quoteHref = (document.querySelector('.price-over a') || {}).href || '/pages/contact?interest=nevora';
+  const quoteHref = (document.querySelector('#price a[href*="interest=nevora"]') || {}).href || '/pages/contact?interest=nevora';
   fact.removeAttribute('data-trial-end');
   const icon = (acts.querySelector('.hb .icon') || document.createElement('i')).outerHTML;
   h1.setAttribute('tabindex', '-1');
@@ -297,7 +299,26 @@ const signupForm = document.querySelector('[data-signup]');
 if (signupForm && configured()) signup(signupForm);
 
 /* ---------- Setup: verify the link, the setup form, progress, ready ---------- */
-const S = {
+const S = ES ? {
+  opening: ['Abriendo tu enlace.', 'Un momento mientras revisamos tu enlace.'],
+  expired: ['Este enlace venció.', 'Cada enlace funciona una vez y vence después de un tiempo. Pide uno nuevo y usa el correo más reciente.'],
+  noLink: ['Abre el enlace de tu correo.', 'Por seguridad, cada enlace funciona una vez. Si ya lo usaste, pide uno nuevo.'],
+  down: ['Configuración no disponible.', 'No pudimos conectar con NEVORA. No se perdió nada. Prueba el enlace otra vez en unos minutos.'],
+  session: ['Tu sesión terminó.', 'Por seguridad, las páginas de configuración están abiertas unas horas. Pide un enlace nuevo para seguir.'],
+  pending: ['Configurando tu lugar de trabajo.', 'Ya tenemos tus datos, y tu lugar de trabajo es el próximo en la fila.'],
+  provisioning: ['Configurando tu lugar de trabajo.', 'Estamos preparando tu lugar de trabajo y tu cuenta de dueño.'],
+  slow: 'Está tardando más de lo normal. Puedes cerrar esta página. Para revisar después, abre Plan y facturación y pide un enlace para entrar.',
+  usually: 'Esto suele tardar unos minutos. Deja esta página abierta; se actualiza sola.',
+  ready: ['Tu lugar de trabajo está listo.', d => d ? 'Tu prueba gratis dura hasta el ' + d + '.' : 'Tu prueba gratis ya empezó.'],
+  newLink: 'Pide un enlace nuevo', billing: 'Plan y facturación', open: 'Abre NEVORA', copy: 'Copiar', copied: 'Copiado',
+  address: 'Dirección de NEVORA', ownerId: 'ID de dueño', password: 'Contraseña', passwordText: 'La que acabas de elegir', trial: 'Prueba gratis', until: d => 'Hasta el ' + d,
+  save: 'Guarda tu dirección de NEVORA. Tu equipo recibe sus propias invitaciones de NEVORA.',
+  shotCap: 'Así se ve Hoy cuando entras: lo que te necesita, quién marcó entrada y el próximo día de pago. Lugar de trabajo de ejemplo.',
+  steps: ['Datos recibidos', 'Preparando tu lugar de trabajo', 'Listo para entrar'],
+  required: 'Llena este campo.', businessLong: 'Usa 120 caracteres o menos.', phone: 'Escribe un teléfono de 10 dígitos.', password12: 'Usa al menos 12 caracteres.',
+  employees: 'Escribe un número del 1 al 30.', over30: 'Con más de 30 empleados te damos una cotización.', tz: 'Elige una zona horaria.',
+  conflict: 'Estos datos ya se enviaron. Estamos configurando el lugar de trabajo que enviaste primero.', failed: 'No pudimos configurar tu lugar de trabajo con estos datos. Revísalos e intenta de nuevo.',
+} : {
   opening: ['Opening your link.', 'One moment while we check your link.'],
   expired: ['This link has expired.', 'Each link works once and expires after a while. Ask for a new one and use the newest email.'],
   noLink: ['Open the link from your email.', 'For your security, each link works once. If you already used it, ask for a new one.'],
@@ -311,6 +332,7 @@ const S = {
   newLink: 'Get a new link', billing: 'Plan and billing', open: 'Open NEVORA', copy: 'Copy', copied: 'Copied',
   address: 'NEVORA address', ownerId: 'Owner ID', password: 'Password', passwordText: 'The one you just chose', trial: 'Free trial', until: d => 'Until ' + d,
   save: 'Save your NEVORA address. Your team gets their own invitations from NEVORA.',
+  shotCap: 'This is Today when you sign in: what needs you, who’s clocked in and the next payday. Sample workplace.',
   steps: ['Details received', 'Preparing your workplace', 'Ready to sign in'],
   required: 'Fill this in.', businessLong: 'Use 120 characters or fewer.', phone: 'Enter a 10-digit phone number.', password12: 'Use at least 12 characters.',
   employees: 'Enter a number from 1 to 30.', over30: 'More than 30 employees get a quote from us.', tz: 'Choose a time zone.',
@@ -319,7 +341,7 @@ const S = {
 function setupPage(root) {
   const h1 = root.querySelector('h1'), lede = root.querySelector('[data-setup-lede]'), acts = root.querySelector('[data-setup-acts]');
   const form = root.querySelector('#setup-form'), card = root.querySelector('[data-setup-card]'), status = form.querySelector('[data-form-status]');
-  const startHref = (document.querySelector('a[href*="nevora-start"]') || {}).href || '/pages/nevora-start';
+  const startHref = (document.querySelector('a[href*="nevora-start"],a[href*="es-prueba"]') || {}).href || (ES ? '/pages/es-prueba' : '/pages/nevora-start');
   const billingHref = '/pages/nevora-billing';
   root.querySelectorAll('[data-off]').forEach(x => { x.hidden = true; });
   const head = ([title, line], focus) => { h1.textContent = title; lede.textContent = line; if (focus) h1.focus(); };
@@ -367,6 +389,8 @@ function setupPage(root) {
     const esc = x => String(x).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
     const host = app ? new URL(app).host : '';
     card.innerHTML = '<dl class="setup-facts">' + (app ? row(S.address, '<a href="' + esc(app) + '">' + esc(host) + '</a>', esc(app)) : '') + row(S.ownerId, esc(st.ownerEmployeeId || 'OWNER'), esc(st.ownerEmployeeId || 'OWNER')) + row(S.password, S.passwordText) + '</dl><p class="setup-note">' + S.save + '</p>';
+    const shot = document.querySelector('template[data-ready-shot]');
+    if (shot && !document.querySelector('.setup-shot')) { const fig = shot.content.firstElementChild.cloneNode(true); fig.querySelector('figcaption').textContent = S.shotCap; card.after(fig); }
     card.querySelectorAll('[data-copy]').forEach(b => b.addEventListener('click', async () => { try { await navigator.clipboard.writeText(b.dataset.copy); b.textContent = S.copied; setTimeout(() => { b.textContent = S.copy; }, 1600); } catch { /* clipboard blocked: the value stays visible to copy by hand */ } }));
     show('card');
   }
@@ -459,7 +483,16 @@ const A = ES ? {
   trialOn: 'Your free trial is running.', paidOn: 'Your plan is active.',
   plan: 'Plan', free: 'Free trial', perMonth: p => p + ' a month', trialEnds: 'Trial ends', paidThrough: 'Paid through', payBy: 'Pay by', employees: 'Employees', of: (n, l) => n + ' of ' + l,
 };
-const R = {
+const R = ES ? {
+  checking: ['Confirmando el pago.', 'Estamos revisando tu suscripción con NEVORA. Esta página se actualiza sola.'],
+  done: ['Ya estás suscrito.', null],
+  trialKept: d => 'Tu plan empieza cuando termine tu prueba gratis, el ' + d + '. Conservas todos los días de prueba.',
+  paidKept: d => 'NEVORA está pagado hasta el ' + d + '.',
+  updated: ['Facturación actualizada.', 'Tus datos de facturación están al día.'],
+  waiting: ['Todavía no vemos un pago.', 'Si terminaste de pagar, puede tardar unos minutos en llegar y tu plan se actualiza solo. Si saliste del pago, no se cobró nada.'],
+  failed: ['Tu pago no se completó.', 'No se cobró nada. Actualiza tu tarjeta en la facturación e intenta de nuevo.'],
+  billing: 'Plan y facturación', retry: 'Intenta de nuevo',
+} : {
   checking: ['Confirming payment.', 'We’re checking your subscription with NEVORA. This page updates by itself.'],
   done: ['You’re subscribed.', null],
   trialKept: d => 'Your plan starts when your free trial ends on ' + d + '. You keep every trial day.',
@@ -566,7 +599,7 @@ function billingPage(root) {
  * shows the subscription (or a failure), for about two minutes, then say honestly that it hasn't arrived yet. */
 function returnPage(root) {
   const ui = accountShell(root);
-  const billingHref = (document.querySelector('a[href*="nevora-billing"]') || {}).href || '/pages/nevora-billing';
+  const billingHref = (document.querySelector('a[href*="nevora-billing"],a[href*="es-facturacion"]') || {}).href || (ES ? '/pages/es-facturacion' : '/pages/nevora-billing');
   const handoff = takeFragment('handoff');
   const stop = (text, list) => { ui.head(text, true); ui.buttons(list); ui.show('none'); };
   if (!handoff) return stop(A.expired, [ui.link(t.getLink, billingHref, true)]);
@@ -626,7 +659,8 @@ function pcard(root) {
   const range = root.querySelector('#pc-n'), out = root.querySelector('[data-count]'), unit = root.querySelector('[data-unit]');
   const amt = root.querySelector('[data-amt]'), per = root.querySelector('[data-per]'), note = root.querySelector('[data-note]');
   const ticks = [...root.querySelectorAll('.pc-meter i')], steps = [...root.querySelectorAll('[data-step]')];
-  const baseNote = note.textContent;
+  const baseNote = note.textContent, mine = document.querySelector('[data-price-mine]');
+  const last = (() => { const d = new Date(); d.setHours(12, 0, 0, 0); d.setDate(d.getDate() + 29); return d.toLocaleDateString(LOC, { weekday: 'long', month: 'long', day: 'numeric' }); })();
   const set = value => {
     const n = Math.max(1, Math.min(31, Math.round(Number(value) || 1)));
     range.value = String(n); root.dataset.n = String(n);
@@ -636,6 +670,7 @@ function pcard(root) {
     ticks.forEach((tick, i) => { tick.className = i < Math.min(n, 30) ? 'pc-on' : (!over && i < (team ? 30 : 15)) ? 'pc-in' : ''; });
     range.setAttribute('aria-valuetext', t.valueText(n, price));
     steps[0].disabled = n <= 1; steps[1].disabled = n >= 31;
+    if (mine) { mine.innerHTML = over ? t.mineOver : t.mine(n, last, price); mine.hidden = false; }
   };
   range.disabled = false; steps.forEach(b => { b.hidden = false; b.addEventListener('click', () => set(Number(range.value) + Number(b.dataset.step))); });
   range.addEventListener('input', () => set(range.value));
