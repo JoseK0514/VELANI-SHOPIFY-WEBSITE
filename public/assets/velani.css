@@ -593,14 +593,14 @@ html:not(.ask-relay) .v-r,.ask-relay .cform-hero .v-d{display:none}
 /* Sign in: a full first screen for NEVORA (the Home panel's real web and phone screens), then a split for Velani clients:
    the question and the phone number on the left, the request form on the right; the company close ends the page */
 @media(min-width:1181px){
- .signin-top .hweb{right:max(var(--pad),calc(50% - 620px));width:min(600px,42vw)}
- .signin-top .hshot{right:calc(max(var(--pad),calc(50% - 620px)) + min(600px,42vw) - 96px);width:240px;top:56%}
- .signin-top .hcopy{max-width:min(520px,calc(100% - var(--pad)*2 - min(600px,42vw) - 200px))}
+ .shots-hero .hweb{right:max(var(--pad),calc(50% - 620px));width:min(600px,42vw)}
+ .shots-hero .hshot{right:calc(max(var(--pad),calc(50% - 620px)) + min(600px,42vw) - 96px);width:240px;top:56%}
+ .shots-hero .hcopy{max-width:min(520px,calc(100% - var(--pad)*2 - min(600px,42vw) - 200px))}
 }
 .client{padding:var(--s2) 0}
 .client-grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:clamp(48px,7vw,112px);align-items:start}
 .client-side{position:sticky;top:104px}
-.client-side .t1{margin:0;font-size:clamp(2.5rem,4.2vw,3.75rem);line-height:1.04;max-width:12ch}
+.client-side .t2{margin:0;max-width:16ch}
 .client-side .lede{margin:24px 0 0;max-width:27em}
 .client-call{margin-top:56px}
 .client-call p{margin:0;font-size:0.9375rem;line-height:1.6;color:var(--text-2)}
@@ -628,11 +628,11 @@ body:has(#inquiry-sent:not([hidden])) :is(.signin-top,.client-side){display:none
 .client-grid:has(#inquiry-sent:not([hidden])){display:block}
 @media(prefers-reduced-motion:reduce){.kind,.client-tel{transition:none}}
 @media(max-width:833px){
- .signin-top .hshot{width:34%;margin:32px auto 24px}
+ .shots-hero .hshot{width:34%;margin:32px auto 24px}
  .client{padding:72px 0}
  .client-grid{display:flex;flex-direction:column;gap:0}
  .client-side{display:contents}
- .client-side .t1{font-size:2.375rem;max-width:none}
+ .client-side .t2{max-width:none}
  .client-side .lede{margin-bottom:32px}
  .client-form{order:2}
  .client-call{order:3;margin-top:56px}
@@ -641,6 +641,37 @@ body:has(#inquiry-sent:not([hidden])) :is(.signin-top,.client-side){display:none
  .client-send{flex-direction:column;align-items:stretch}
  .client-send .pill{width:100%}
 }
+
+/* Plans: the trial in the first screen (shared composition .shots-hero), the four terms set large in one row, what the plan
+   includes beside the real timecards screen, day 30 as two equal panels, one line for custom work */
+.terms,.included,.day30{padding:var(--s2) 0 0}
+.terms-list{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(24px,3vw,48px);margin:clamp(40px,5vw,64px) 0 0}
+.terms-list div{margin:0}
+.terms-list dt{font-size:clamp(1.75rem,2.4vw,2.25rem);line-height:1.1;font-weight:600;letter-spacing:-.025em;color:var(--text)}
+.terms-list dd{margin:14px 0 0;max-width:24em;font-size:1rem;line-height:1.5;color:var(--text-2)}
+.included-grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:clamp(48px,7vw,112px);align-items:center}
+.included-grid .t2{max-width:14ch;margin:0}
+.inc-list{list-style:none;margin:36px 0 0;padding:0;display:grid;gap:14px}
+.inc-list li{display:flex;gap:12px;align-items:flex-start;margin:0;padding:0;border:0;font-size:1.0625rem;line-height:1.45;color:var(--text)}
+.inc-list .icon{flex:none;width:18px;height:18px;margin-top:4px;color:var(--accent)}
+.inc-fine{margin:28px 0 0;max-width:34em;font-size:0.875rem;line-height:1.5;color:var(--text-3)}
+.included .shot{margin:0}
+.day-opts{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:clamp(40px,5vw,56px) 0 0}
+.day-opt{padding:clamp(28px,3vw,40px);border-radius:var(--r2);background:var(--panel)}
+.day-opt .t3{margin:0}
+.day-opt p{margin:14px 0 0;max-width:32em;font-size:1.0625rem;line-height:1.5;color:var(--text-2)}
+.day-opt p a{color:var(--text);text-decoration:underline;text-decoration-color:var(--line-2);text-underline-offset:3px}
+.day-acts{margin-top:32px}
+.plans-custom{padding:var(--s2) 0}
+@media(max-width:1023px){.terms-list{grid-template-columns:1fr 1fr}}
+@media(max-width:833px){
+ .terms,.included,.day30{padding-top:72px}
+ .included-grid{grid-template-columns:1fr;gap:40px}
+ .day-opts{grid-template-columns:1fr}
+ .plans-custom{padding:72px 0}
+}
+@media(max-width:600px){.terms-list{grid-template-columns:1fr;gap:28px}}
+@media(max-width:359px){.hpanel.long h1{font-size:2rem}}
 
 /* Try the time clock: a working copy of the NEVORA PIN screen. Light surface, like the real tablet. */
 .kio-note{display:inline-flex;flex-wrap:wrap;gap:4px 6px;margin-top:var(--s1);padding:10px 16px;border-radius:var(--r);background:var(--panel);box-shadow:0 0 0 1px var(--line);font-size:0.875rem;line-height:1.4;color:var(--text-2)}

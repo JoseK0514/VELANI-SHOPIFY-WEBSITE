@@ -47,7 +47,7 @@ export const ES_ROUTES = {
   }),
   '/pages/es-planes': es('/pages/plans', {
     kind: 'plans', nav: 'plans', eyebrow: 'Planes', name: 'Planes',
-    title: 'Gratis por 30 días. Luego, un solo precio por negocio.',
+    title: 'Prueba NEVORA gratis por 30 días.',
     intro: 'Prueba gratis de NEVORA por 30 días para equipos de hasta 30 empleados, sin tarjeta ni cargos automáticos. Luego, un solo precio por negocio, por cotización.',
     lede: 'Pide una prueba gratis de NEVORA para tu equipo, sin tarjeta ni cargos automáticos. El día 30 decides qué sigue.',
     og: ['velani-social-plans.png', 'Planes de NEVORA: gratis por 30 días y luego un solo precio por negocio'],
@@ -200,15 +200,16 @@ export const CONTACT_ES = {
 
 /** The plans page below its hero. */
 export const PLANS_ES = {
-  trial: 'Pide la prueba gratis', quote: 'Pide una cotización',
-  facts: [['Prueba gratis', '30 días', 'Desde el día en que configuramos tu espacio de trabajo'], ['Tamaño del equipo', 'Hasta 30 empleados', 'Equipos más grandes, por cotización'], ['Tarjeta', 'Ninguna', 'Sin cargos automáticos el día 30'], ['Después de la prueba', 'Un solo precio por&nbsp;negocio', 'Cotizado según tu número de empleados, tu negocio y las funciones que uses']],
-  includedKick: 'Incluido', includedTitle: 'Todo lo de la prueba sigue en el plan.',
+  h1: 'Prueba NEVORA gratis por 30 días.', text: 'Los equipos de hasta 30 personas usan la app completa sin tarjeta. Después del día 30 pagas un solo precio por el negocio, cotizado para tu equipo.',
+  fact: 'Sin tarjeta. No cobramos nada el día 30.', trial: 'Pide la prueba gratis', quote: 'Pide una cotización',
+  webAlt: 'Horario de NEVORA para la semana: ocho personas, sus turnos de cada día y la semana publicada', phoneAlt: 'Pago de NEVORA en el teléfono de una empleada: el próximo día de pago, el último cheque y su comprobante',
+  termsT: 'Cómo funciona la prueba',
+  terms: [['30 días', 'Gratis desde el día en que configuramos tu espacio de trabajo.'], ['30 personas', 'La prueba cubre equipos de hasta 30. Los equipos más grandes reciben una cotización desde el primer día.'], ['Sin tarjeta', 'No cobramos nada cuando termina la prueba.'], ['Un solo precio', 'Para todo el negocio, cotizado según tu número de empleados y las funciones que uses.']],
+  includedT: 'Todo lo de la prueba sigue en el plan.',
   included: ['Horarios y cambios de turno', 'Registro de tiempo en una tableta compartida, con PIN', 'Solicitudes y aprobaciones de tiempo libre', 'Tarjetas de tiempo listas para revisar', 'Nómina calculada a partir de las horas aprobadas', 'Comprobantes de nómina para cada empleado', 'Roles para dueños, gerentes y empleados', 'Inglés y español para todos'],
-  fine: 'NEVORA calcula los comprobantes de nómina; no les paga a los empleados ni presenta impuestos de nómina.',
-  dayKick: 'Día 30', dayTitle: 'Dos formas de terminar la prueba.',
-  day: [['Continúa por cotización', 'Le ponemos precio a NEVORA para tu negocio y tu equipo sigue trabajando sin interrupciones.'], ['Cierra el espacio de trabajo', 'Primero, exporta tus horarios, tarjetas de tiempo y comprobantes de nómina. Para cerrarlo, escribe a support@thevelani.com. Luego eliminamos el espacio de trabajo y sus datos en un plazo de 3 días.']],
-  noCard: 'No se requiere tarjeta · Sin cargos automáticos',
-  customKick: 'Sitios web y apps a la medida', customTitle: 'Cotizados por proyecto.',
-  customText: 'Una propuesta por escrito después de una primera conversación: qué creamos, cuánto cuesta y los hitos. El trabajo pagado empieza solo cuando estés de acuerdo.',
-  project: 'Empieza un proyecto',
+  fine: 'NEVORA calcula los comprobantes de nómina. No les paga a los empleados ni presenta impuestos de nómina.',
+  shotAlt: 'Tarjetas de tiempo de NEVORA de la semana pasada: ocho de nueve aprobadas, con las horas registradas y el estado de cada persona',
+  dayT: 'El día 30, tú decides.',
+  day: [['Continúa por cotización', 'Le ponemos precio a NEVORA para tu negocio y tu equipo sigue trabajando sin pausa.'], ['Cierra el espacio de trabajo', 'Primero exporta tus horarios, tarjetas de tiempo y comprobantes de nómina, y luego escribe a support@thevelani.com. Eliminamos el espacio de trabajo y sus datos en un plazo de 3 días.']],
+  custom: ['Los sitios web y las apps a la medida reciben una cotización fija por escrito para cada proyecto. ', 'Mira Software a la medida', '.'],
 };
