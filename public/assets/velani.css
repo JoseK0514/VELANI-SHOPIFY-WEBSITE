@@ -684,7 +684,7 @@ body:has(#inquiry-sent:not([hidden])) :is(.signin-top,.client-side){display:none
  .cal-g .c{padding:5px 6px;font-size:0.75rem;border-radius:6px}
  .cal-g .c i{display:none}
 }
-@media(max-width:359px){.hpanel.long h1{font-size:2rem}}
+@media(max-width:359px){.hpanel.long h1{font-size:1.875rem}}
 
 /* Contact: the Sign in split. The heading changes with the topic; the phone sits under it; the form keeps the contact behaviour */
 .contact-split{padding:clamp(56px,7vw,104px) 0 var(--s2)}
@@ -718,6 +718,22 @@ body:has(#inquiry-sent:not([hidden])) :is(.signin-top,.client-side){display:none
 .help-top+.faq .qa{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:clamp(48px,7vw,112px)}
 @media(max-width:1023px){.help-top+.faq .qa{grid-template-columns:1fr;gap:32px}}
 .help-top+.faq .faq-list{margin-top:0}
+
+/* About: two equal doors with a real picture each, how we work beside its heading (the Plans list), then the closing */
+.about-two{padding:var(--s2) 0 0}
+.about-two .t2{margin:0}
+.about-doors{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,3vw,40px);margin-top:clamp(40px,5vw,56px)}
+.about-door .shot{margin:0;aspect-ratio:16/10}
+.about-door .shot img{width:100%;height:100%;object-fit:cover;object-position:50% 0}
+.about-door .t3{margin:28px 0 0}
+.about-door p{margin:10px 0 0;max-width:32em;font-size:1.0625rem;line-height:1.5;color:var(--text-2)}
+.about-door .more{margin-top:14px}
+.about-how{padding-bottom:var(--s2)}
+@media(min-width:1024px){.about-how .days-list{margin-top:0}}
+@media(max-width:833px){.about-two{padding-top:72px}.about-doors{grid-template-columns:1fr;gap:48px}.about-how{padding-bottom:72px}}
+@media(min-width:1024px){.about-how .days-grid{grid-template-columns:1fr 1fr;gap:clamp(24px,3vw,40px)}}
+.days-fine a{color:var(--text-2);text-decoration:underline;text-decoration-color:var(--line-2);text-underline-offset:3px}
+.days-fine a:hover{text-decoration-color:currentColor}
 
 /* Try the time clock: a working copy of the NEVORA PIN screen. Light surface, like the real tablet. */
 .kio-note{display:inline-flex;flex-wrap:wrap;gap:4px 6px;margin-top:var(--s1);padding:10px 16px;border-radius:var(--r);background:var(--panel);box-shadow:0 0 0 1px var(--line);font-size:0.875rem;line-height:1.4;color:var(--text-2)}
