@@ -1,0 +1,106 @@
+// LOCAL FIXTURE ONLY. A fake NEVORA commerce API for testing the Velani signup and billing pages on this computer.
+// It follows the documented contract (NEVORA docs/handoffs/2026-11-07-commerce-backend.md) with fictional businesses, sends
+// no email, charges nothing and talks to no real service. It listens on 127.0.0.1 only.
+//
+//   node scripts/commerce-fixture.mjs            # API on http://127.0.0.1:4198
+//   VELANI_COMMERCE_API=http://127.0.0.1:4198 npm run dev -- --port 4199 --host 127.0.0.1
+//
+// Scenarios come from the one-time token, e.g. /pages/plans#handoff=fixture-trial-000000000000:
+//   trial, paid, canceled, grace, trial-ended, payment-failed, ended, payment-required, over-limit, over-30,
+//   expired (link already used), down (billing unavailable), slow (3 s), lost (checkout response lost once).
+import http from 'node:http';
+import { randomUUID } from 'node:crypto';
+
+const port = Number(process.env.FIXTURE_PORT || 4198);
+const ui = (process.env.FIXTURE_UI_ORIGIN || 'http://127.0.0.1:4199').replace(/\/+$/, '');
+const allowed = new Set([ui, ui.replace('127.0.0.1', 'localhost')]);
+const day = n => new Date(Date.UTC(2026, 10, 8 + n, 16)).toISOString();
+const base = { businessId: '22222222-2222-4222-8222-222222222222', businessName: 'Northside Coffee', setup: 'ready', applicationUrl: 'https://northside.example.test', ownerEmployeeId: 'OWNER',
+  trialEndsAt: day(30), paidThrough: null, graceEndsAt: null, plan: null, state: 'trial', operational: true, billing: true, export: true, employeeLimit: 30, activeEmployees: 8, reason: null };
+const SCENARIOS = {
+  trial: {},
+  paid: { state: 'paid', plan: 'small', employeeLimit: 15, paidThrough: day(29) },
+  canceled: { state: 'paid', plan: 'small', employeeLimit: 15, paidThrough: day(29), reason: 'subscription_canceled' },
+  grace: { state: 'grace', plan: 'small', employeeLimit: 15, paidThrough: day(-1), graceEndsAt: day(6), reason: 'payment_failed' },
+  'trial-ended': { state: 'restricted', operational: false, trialEndsAt: day(-2), reason: 'trial_ended' },
+  'payment-failed': { state: 'restricted', operational: false, plan: 'small', employeeLimit: 15, paidThrough: day(-9), graceEndsAt: day(-2), reason: 'payment_failed' },
+  ended: { state: 'restricted', operational: false, paidThrough: day(-3), reason: 'subscription_canceled' },
+  'payment-required': { state: 'restricted', operational: false, plan: 'team', reason: 'payment_required' },
+  'over-limit': { state: 'restricted', operational: false, plan: 'small', employeeLimit: 15, activeEmployees: 18, paidThrough: day(29), reason: 'employee_limit_exceeded' },
+  'over-30': { state: 'restricted', operational: false, plan: 'team', activeEmployees: 34, paidThrough: day(29), reason: 'employee_limit_exceeded' },
+  team: { activeEmployees: 22 },
+  slow: {}, lost: {},
+};
+const sessions = new Map(); // accessToken -> { scenario, seenKeys:Set }
+const used = new Set();
+const scenarioOf = token => (/^fixture-([a-z0-9-]+?)-[0-9]{12,}$/.exec(token) || [])[1];
+
+const send = (res, status, body, origin) => {
+  res.writeHead(status, { 'Content-Type': 'application/json', 'Cache-Control': 'no-store', ...(origin ? { 'Access-Control-Allow-Origin': origin, Vary: 'Origin' } : {}) });
+  res.end(body === undefined ? '' : JSON.stringify(body));
+};
+const err = (res, status, code, origin) => send(res, status, { error: { code } }, origin);
+
+http.createServer(async (req, res) => {
+  const url = new URL(req.url, 'http://fixture.invalid');
+  // A pretend Stripe page so the return flow can be exercised; it only links back to the Velani return page.
+  if (req.method === 'GET' && url.pathname === '/fake-stripe') {
+    const back = ui + '/pages/nevora-billing-return#handoff=fixture-' + (url.searchParams.get('next') || 'paid') + '-' + Date.now();
+    const cancel = ui + '/pages/nevora-billing-return#handoff=fixture-trial-' + Date.now();
+    res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8', 'Cache-Control': 'no-store' });
+    res.end('<!doctype html><meta charset="utf-8"><title>Fixture payment page</title><body style="font:16px system-ui;max-width:560px;margin:60px auto;padding:0 20px"><h1>Fixture payment page</h1><p>Local test only. This is not Stripe and nothing is charged.</p><p><a href="' + back + '">Finish (fixture)</a></p><p><a href="' + cancel + '">Cancel (fixture)</a></p>');
+    return;
+  }
+  const origin = req.headers.origin;
+  const ok = origin && allowed.has(origin) ? origin : null;
+  if (req.method === 'OPTIONS') {
+    if (!ok) { res.writeHead(403); res.end(); return; }
+    res.writeHead(204, { 'Access-Control-Allow-Origin': ok, 'Access-Control-Allow-Methods': 'GET, POST', 'Access-Control-Allow-Headers': 'Authorization, Content-Type, Idempotency-Key', 'Access-Control-Max-Age': '600', Vary: 'Origin' });
+    res.end(); return;
+  }
+  if (req.method === 'POST' && !ok) return err(res, 403, 'origin_denied', null);
+  let body = {};
+  if (req.method === 'POST') {
+    if (!/^application\/json/.test(req.headers['content-type'] || '')) return err(res, 415, 'json_required', ok);
+    let raw = ''; for await (const chunk of req) { raw += chunk; if (raw.length > 4096) return err(res, 413, 'body_too_large', ok); }
+    try { body = JSON.parse(raw || '{}'); } catch { return err(res, 400, 'invalid_json', ok); }
+  }
+  const auth = /^Bearer (.+)$/.exec(req.headers.authorization || '');
+  const session = auth && sessions.get(auth[1]);
+  const p = url.pathname;
+  if (p === '/v1/plans') return send(res, 200, { currency: 'usd', trialDays: 30, plans: [{ key: 'small', employees: 15, amount: 1900 }, { key: 'team', employees: 30, amount: 2900 }] }, ok);
+  if (p === '/v1/signup' || p === '/v1/login-link') {
+    if (typeof body.email !== 'string' || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(body.email)) return err(res, 400, 'invalid_email', ok);
+    if (/rate/.test(body.email)) return err(res, 429, 'rate_limited', ok);
+    if (/down/.test(body.email)) return err(res, 503, 'signup_unavailable', ok);
+    return send(res, 202, { state: 'check_email' }, ok);
+  }
+  if (p === '/v1/handoff/exchange' || p === '/v1/verify') {
+    const scenario = scenarioOf(body.token || '');
+    if (!scenario || used.has(body.token) || scenario === 'expired') return err(res, 400, 'invalid_or_expired_link', ok);
+    if (scenario === 'down') return err(res, 503, 'billing_unavailable', ok);
+    if (scenario === 'slow') await new Promise(r => setTimeout(r, 3000));
+    used.add(body.token);
+    const accessToken = randomUUID().replace(/-/g, '') + randomUUID().replace(/-/g, '');
+    sessions.set(accessToken, { scenario, lostOnce: scenario !== 'lost', keys: new Map() });
+    return send(res, 200, { accessToken, expiresIn: 28800 }, ok);
+  }
+  if (!session) return err(res, 401, 'unauthorized', ok);
+  if (p === '/v1/status') return send(res, 200, { ...base, ...SCENARIOS[session.scenario] }, ok);
+  if (p === '/v1/logout') { sessions.delete(auth[1]); return send(res, 200, { state: 'signed_out' }, ok); }
+  if (p === '/v1/checkout' || p === '/v1/portal') {
+    const key = req.headers['idempotency-key'];
+    if (!/^[0-9a-f-]{36}$/i.test(key || '')) return err(res, 400, 'idempotency_key_required', ok);
+    const s = { ...base, ...SCENARIOS[session.scenario] };
+    if (p === '/v1/checkout' && s.activeEmployees > 30) return err(res, 400, 'assisted_quote_required', ok);
+    if (p === '/v1/checkout' && s.plan && s.state !== 'restricted') return err(res, 409, 'use_billing_portal', ok);
+    if (p === '/v1/portal' && !s.plan) return err(res, 409, 'subscription_required', ok);
+    const prior = session.keys.get(key);
+    const result = prior || { url: 'http://127.0.0.1:' + port + '/fake-stripe?next=' + (p === '/v1/checkout' ? 'paid' : session.scenario) };
+    session.keys.set(key, result);
+    if (!session.lostOnce) { session.lostOnce = true; req.socket.destroy(); return; } // the response is lost; the same key must get the same answer
+    return send(res, 200, result, ok);
+  }
+  if (p === '/v1/setup') return send(res, 202, { state: 'setup_accepted' }, ok);
+  return err(res, 404, 'not_found', ok);
+}).listen(port, '127.0.0.1', () => console.log('Commerce FIXTURE (local test only) on http://127.0.0.1:' + port + ' for ' + ui));

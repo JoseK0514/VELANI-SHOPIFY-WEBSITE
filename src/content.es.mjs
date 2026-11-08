@@ -18,6 +18,8 @@ export const ES_PATHS = Object.freeze({
   '/pages/help': '/pages/es-ayuda',
   '/pages/custom-development': '/pages/es-a-la-medida',
   '/pages/sign-in': '/pages/es-entrar',
+  '/pages/nevora-start': '/pages/es-prueba',
+  '/pages/nevora-billing': '/pages/es-facturacion',
 });
 
 /** English-only pages whose closest Spanish page is not the Spanish home: the ES switch goes there instead. */
@@ -51,9 +53,9 @@ export const ES_ROUTES = {
   '/pages/es-planes': es('/pages/plans', {
     kind: 'plans', nav: 'plans', eyebrow: 'Planes', name: 'Planes',
     title: 'Prueba NEVORA gratis por 30 días.',
-    intro: 'Prueba gratis de NEVORA por 30 días para equipos de hasta 30 personas, sin tarjeta ni cargos automáticos. Luego, un solo precio por negocio, por cotización.',
-    lede: 'Pide una prueba gratis de NEVORA para tu equipo, sin tarjeta ni cargos automáticos. El día 30 decides qué sigue.',
-    og: ['velani-social-plans.png', 'Planes de NEVORA: gratis por 30 días y luego un solo precio por negocio'],
+    intro: 'Prueba NEVORA gratis por 30 días, sin tarjeta. Luego $19 al mes para hasta 15 empleados o $29 al mes para 16 a 30, por negocio.',
+    lede: 'Empieza tu prueba gratis de NEVORA, sin tarjeta. Luego un precio mensual por negocio.',
+    og: ['velani-social-plans.png', 'Planes de NEVORA: gratis por 30 días y luego un precio mensual por negocio'],
   }),
   '/pages/es-contacto': es('/pages/contact', {
     kind: 'contact', nav: 'contact', eyebrow: 'Contacto', title: 'Cuéntanos qué necesitas.', name: 'Contacto',
@@ -84,6 +86,17 @@ ES_ROUTES['/pages/es-ayuda'] = es('/pages/help', {
   ],
 });
 
+ES_ROUTES['/pages/es-prueba'] = es('/pages/nevora-start', {
+  kind: 'commerce', step: 'start', nav: 'plans', eyebrow: '', name: 'Empieza tu prueba de NEVORA',
+  title: 'Empieza tu prueba gratis de NEVORA.',
+  intro: 'Escribe tu correo de trabajo y te enviamos un enlace para configurar tu lugar de trabajo. Sin tarjeta.',
+  desc: 'Empieza una prueba gratis de NEVORA por 30 días para tu negocio con tu correo de trabajo. Sin tarjeta.',
+});
+ES_ROUTES['/pages/es-facturacion'] = es('/pages/nevora-billing', {
+  kind: 'commerce', step: 'billing', nav: 'plans', eyebrow: '', name: 'Facturación de NEVORA',
+  title: 'Administra la facturación de NEVORA.',
+  intro: 'Mira tu plan, suscríbete o actualiza tu tarjeta. Le enviamos al dueño del negocio un enlace para entrar.',
+});
 ES_ROUTES['/pages/es-entrar'] = es('/pages/sign-in', {
   kind: 'signin', nav: 'signin', eyebrow: '', name: 'Entrar',
   title: 'Entra a NEVORA.',
@@ -145,7 +158,7 @@ export const CHROME_ES = {
   ],
   signIn: 'Entrar', signInHref: '/pages/sign-in',
   rondoNevora: 'Rondo en NEVORA', rondoSoon: 'En desarrollo', relaySoon: 'Pronto', contact: 'Contacto',
-  trial: 'Prueba gratis', trialLong: 'Pide la prueba gratis de NEVORA', project: 'Empieza un proyecto',
+  trial: 'Prueba gratis', trialLong: 'Empieza la prueba gratis de NEVORA', project: 'Empieza un proyecto',
   support: 'Soporte al cliente', hours: HOURS_ES, brandOf: 'Velani es una marca de ',
   langGroup: 'Idioma',
   // Closing panel on company pages
@@ -205,14 +218,17 @@ export const CONTACT_ES = {
 
 /** The plans page below its hero. */
 export const PLANS_ES = {
-  h1: 'Prueba NEVORA gratis por 30 días.', text: 'Los equipos de hasta 30 personas usan la app completa, sin tarjeta. Después del día 30 pagas un solo precio por el negocio, cotizado para tu equipo.',
-  date: ['Gratis por 30 días desde el día en que configuramos tu espacio de trabajo.', 'Si configuramos tu espacio de trabajo hoy, es gratis hasta el '],
-  trial: 'Pide la prueba gratis', quote: 'Pide una cotización',
+  h1: 'Prueba NEVORA gratis por 30 días.', text: 'Todo tu equipo usa la app completa, sin tarjeta. Después pagas un solo precio mensual por tu negocio: $19 para hasta 15 empleados y $29 para 16 a 30.',
+  date: ['Gratis por 30 días desde el día en que tu lugar de trabajo esté listo.', 'Si empiezas hoy, es gratis hasta el '],
+  trial: 'Empieza la prueba gratis', billing: 'Administra la facturación', quote: 'Pide una cotización',
   daysT: 'Tus 30 días', calLabel: 'Tu prueba en un calendario',
-  steps: [['Día 1', 'Configuramos tu espacio de trabajo. Invitas a tu equipo y cada persona recibe un PIN para la tableta del registro de tiempo.'], ['Primera semana', 'Publicas el horario. Tu equipo ve sus turnos en el teléfono, cambia turnos y pide tiempo libre, en inglés o en español.'], ['Segunda semana', 'Apruebas las tarjetas de tiempo. NEVORA calcula la nómina a partir de las horas aprobadas y prepara un comprobante para cada empleado.'], ['Día 30', 'Tú decides qué sigue.']],
+  steps: [['Día 1', 'Tu lugar de trabajo está listo. Invitas a tu equipo y cada persona recibe un PIN para la tableta del registro de tiempo.'], ['Primera semana', 'Publicas el horario. Tu equipo ve sus turnos en el teléfono, cambia turnos y pide tiempo libre, en inglés o en español.'], ['Segunda semana', 'Apruebas las tarjetas de tiempo. NEVORA calcula la nómina a partir de las horas aprobadas y prepara un comprobante para cada empleado.'], ['Día 30', 'Suscríbete para seguir. Si te suscribes antes, igual tienes los 30 días gratis.']],
   fine: 'NEVORA calcula los comprobantes de nómina. No les paga a los empleados ni presenta impuestos de nómina.',
   shotAlt: 'Horario de NEVORA para la semana: ocho personas, sus turnos de cada día y la semana publicada', shotCap: 'La semana de Carmen en Northside Coffee, un lugar de trabajo de ejemplo: ocho personas y todos los turnos publicados.',
-  endT: 'Cuando termina la prueba',
-  end: [['Sigue con NEVORA', 'Te cotizamos un solo precio para tu negocio y tu equipo sigue trabajando sin pausa.'], ['Cierra tu espacio de trabajo', 'Exporta tus horarios, tarjetas de tiempo y comprobantes de nómina, y luego escribe a support@thevelani.com. Eliminamos el espacio de trabajo y sus datos en un plazo de 3 días.']],
+  priceT: 'Después de 30 días, un precio mensual',
+  includes: 'Cada negocio recibe la app completa: horarios, registro de tiempo, tarjetas de tiempo y cálculo de nómina. El precio depende solo de cuántos empleados tienes, y los dueños no cuentan.',
+  card: { q: 'Tu equipo', unit: 'empleados', per: 'al mes', small: '1 a 15 · $19', team: '16 a 30 · $29', less: 'Un empleado menos', more: 'Un empleado más', note: 'Se cobra cada mes por tu negocio. Los dueños no cuentan.', valueText: (n, p) => n + ' empleados, ' + p + ' al mes' },
+  terms: 'Los precios son en dólares estadounidenses. Cancela cuando quieras y NEVORA sigue funcionando hasta el final del mes pagado. Si no te suscribes al terminar la prueba, NEVORA se pausa para tu equipo y todavía puedes exportar tus registros.',
+  over: ['¿Más de 30 empleados? ', 'Pide una cotización', '.'],
   closing: 'Los sitios web y las apps a la medida reciben una cotización fija por escrito para cada proyecto.', project: 'Empieza un proyecto', custom: 'Mira el software a la medida',
 };

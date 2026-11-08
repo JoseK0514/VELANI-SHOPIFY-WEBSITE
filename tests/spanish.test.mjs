@@ -5,7 +5,7 @@ import { routes } from '../src/content.mjs';
 import { ES_PATHS, ES_NEAREST } from '../src/content.es.mjs';
 import { renderPage, renderBody, renderShopifyLayout, renderShopifySnippets } from '../src/render.mjs';
 
-const PAIRS = { '/': '/pages/es', '/pages/nevora': '/pages/es-nevora', '/pages/plans': '/pages/es-planes', '/pages/products': '/pages/es-productos', '/pages/contact': '/pages/es-contacto', '/pages/about': '/pages/es-nosotros', '/pages/help': '/pages/es-ayuda', '/pages/custom-development': '/pages/es-a-la-medida', '/pages/sign-in': '/pages/es-entrar' };
+const PAIRS = { '/': '/pages/es', '/pages/nevora': '/pages/es-nevora', '/pages/plans': '/pages/es-planes', '/pages/products': '/pages/es-productos', '/pages/contact': '/pages/es-contacto', '/pages/about': '/pages/es-nosotros', '/pages/help': '/pages/es-ayuda', '/pages/custom-development': '/pages/es-a-la-medida', '/pages/sign-in': '/pages/es-entrar', '/pages/nevora-start': '/pages/es-prueba', '/pages/nevora-billing': '/pages/es-facturacion' };
 const ES = Object.values(PAIRS);
 const text = html => html.replace(/<script[^]*?<\/script>|<style[^]*?<\/style>/g, ' ').replace(/<[^>]+>/g, ' ').replace(/&nbsp;/g, ' ').replace(/\s+/g, ' ');
 const withoutHiddenSent = html => html.replace(/<div class="sent" id="inquiry-sent" tabindex="-1" hidden>[\s\S]*?<\/div>/, '');
@@ -13,7 +13,7 @@ const between = (html, start, end) => { const s = html.indexOf(start); assert.ok
 // English UI words that must not appear in the Spanish header, phone menu, footer, cookie dialog or contact form
 const DENY = /\b(Products|Websites|Custom apps|Plans|Support|About|Contact|Request free|Start a project|Skip to content|Menu|Main menu|Name|Email|Company|optional|Topic|Team size|Number of locations|Something else|Website preview|Cookie choices|Necessary|Preferences|Analytics|Sale or sharing|Always on|Reject all|Accept all|Save choices|All rights reserved|Client support|Monday|Friday|Language|Send inquiry|Check draft|Privacy notice|Back to home|Message sent|Trial request|In development|Coming soon|Scheduling|time clock|payroll)\b/;
 
-test('the nine Spanish routes exist, pair with their English pages and use the same components', () => {
+test('the eleven Spanish routes exist, pair with their English pages and use the same components', () => {
   assert.deepEqual(Object.fromEntries(Object.entries(ES_PATHS)), PAIRS);
   for (const [en, es] of Object.entries(PAIRS)) {
     assert.equal(routes[es].lang, 'es', es);
@@ -44,7 +44,7 @@ test('Spanish pages link to the Spanish version of a page whenever one exists', 
     const english = [...html.matchAll(/href="(\/[^"]*)"/g)].map(m => m[1]).filter(href => ES_PATHS[href.split(/[?#]/)[0]]);
     assert.deepEqual(english, [], path);
     // Custom software leads to a project inquiry, every other Spanish page to the NEVORA trial (same as English)
-    assert.match(html, path === '/pages/es-a-la-medida' ? /href="\/pages\/es-contacto\?interest=custom-software"/ : /href="\/pages\/es-contacto\?interest=nevora-demo"/, path);
+    assert.match(html, path === '/pages/es-a-la-medida' ? /href="\/pages\/es-contacto\?interest=custom-software"/ : /href="\/pages\/es-prueba"/, path);
     // Pages that exist only in English are marked for browsers and assistive technology
     for (const m of html.matchAll(/<a [^>]*href="\/pages\/(privacy|nevora-privacy|website-terms|legal|cookies)"[^>]*>/g)) assert.match(m[0], /hreflang="en"/, path + ' ' + m[0]);
   }
@@ -147,7 +147,7 @@ test('on an unpublished theme the switch and Spanish links stay in the same draf
   assert.match(html, /name="robots" content="noindex, nofollow"/);
   assert.match(html, /<a href="\/\?preview_theme_id=77&amp;view=velani-plans" hreflang="en"/);
   assert.match(html, /<a href="\/\?preview_theme_id=77&amp;view=velani-es-planes" hreflang="es"/);
-  assert.match(html, /href="\/\?preview_theme_id=77&amp;view=velani-es-contacto&amp;interest=nevora-demo"/);
+  assert.match(html, /href="\/\?preview_theme_id=77&amp;view=velani-es-prueba"/);
   const body = await liquid.parseAndRender(renderBody('/pages/es-planes', { target: 'shopify' }), { theme: { role: 'unpublished', id: 77 }, routes: { root_url: '/' } });
   assert.match(body, /href="\/\?preview_theme_id=77&amp;view=velani-es-contacto&amp;interest=nevora"/);
   assert.doesNotMatch(body, /href="\/pages\//);

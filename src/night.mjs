@@ -81,7 +81,7 @@ const GROUPS = [
 const SIGN_IN = '/pages/sign-in';
 /** The words of the header, the phone menu and the language switch, per language (Spanish in src/content.es.mjs). */
 export const CHROME = {
-  en: { skip: 'Skip to content', home: 'Velani home', main: 'Main', mainMenu: 'Main menu', menu: 'Menu', products: 'Products', productsMenu: 'Products menu', productsList: PRODUCTS, nav: NAV, groups: GROUPS, signIn: 'Sign in', signInHref: SIGN_IN, rondoNevora: 'Rondo in NEVORA', rondoSoon: 'In development', relaySoon: 'Soon', contact: 'Contact', trial: 'Request free trial', trialLong: 'Request free NEVORA trial', project: 'Start a project', support: 'Client support', hours: company.hours, brandOf: 'Velani is a brand of ', langGroup: 'Language', closingLine: 'Try NEVORA free, or tell us what you want built.' },
+  en: { skip: 'Skip to content', home: 'Velani home', main: 'Main', mainMenu: 'Main menu', menu: 'Menu', products: 'Products', productsMenu: 'Products menu', productsList: PRODUCTS, nav: NAV, groups: GROUPS, signIn: 'Sign in', signInHref: SIGN_IN, rondoNevora: 'Rondo in NEVORA', rondoSoon: 'In development', relaySoon: 'Soon', contact: 'Contact', trial: 'Start free trial', trialLong: 'Start free NEVORA trial', project: 'Start a project', support: 'Client support', hours: company.hours, brandOf: 'Velani is a brand of ', langGroup: 'Language', closingLine: 'Try NEVORA free, or tell us what you want built.' },
   es: CHROME_ES,
 };
 /** In the Shopify layout the two destinations are computed once per page (main theme or draft), see renderShopifyLayout. */
@@ -113,7 +113,7 @@ export function header(current, target, { nevora = false, lang = 'en', hrefs = S
   const signIn = cls => `<a class="${cls}" href="${t.signInHref}"${enOnly(t.signInHref)}${mark('signin')}>${t.signIn}</a>`;
   const menu = signIn('gmenu-signin') + t.groups.map(([, label, , items]) => `<p class="gmenu-k">${label}</p>` + items.map(([name, href]) => `<a class="gmenu-sub" href="${href}"${enOnly(href)}>${name}</a>`).join('')).join('');
   const staticClass = target === 'shopify' ? `{% if velani_page == '${nevoraSlug}' %} static{% endif %}` : (nevora ? ' static' : '');
-  const cta = (cls, trial) => target === 'shopify' ? `{% if velani_nav == 'services' %}<a class="${cls}" href="/pages/contact?interest=custom-software">${t.project}</a>{% else %}<a class="${cls}" href="/pages/contact?interest=nevora-demo">${trial}</a>{% endif %}` : (current === 'services' ? `<a class="${cls}" href="/pages/contact?interest=custom-software">${t.project}</a>` : `<a class="${cls}" href="/pages/contact?interest=nevora-demo">${trial}</a>`);
+  const cta = (cls, trial) => target === 'shopify' ? `{% if velani_nav == 'services' %}<a class="${cls}" href="/pages/contact?interest=custom-software">${t.project}</a>{% else %}<a class="${cls}" href="/pages/nevora-start">${trial}</a>{% endif %}` : (current === 'services' ? `<a class="${cls}" href="/pages/contact?interest=custom-software">${t.project}</a>` : `<a class="${cls}" href="/pages/nevora-start">${trial}</a>`);
   const html = `<a class="skip" href="#main">${t.skip}</a><header class="gnav${staticClass}" id="gnav"><nav class="wrap gnav-in" aria-label="${t.main}"><a class="wordmark" href="/" aria-label="${t.home}">${WORDMARK}</a><ul class="gnav-links">${links}</ul>${langSwitch(lang, hrefs, ' gnav-lang')}${signIn('gnav-signin')}${cta('pill line', t.trial)}<button class="gnav-menu" id="gmenu-btn" type="button" aria-expanded="false" aria-controls="gmenu" aria-label="${t.menu}"><span class="i-open">${icon('list')}</span><span class="i-close" hidden>${icon('x')}</span></button></nav></header><div class="gmenu" id="gmenu" hidden><nav class="wrap" aria-label="${t.mainMenu}">${menu}${langSwitch(lang, hrefs, ' gmenu-lang')}${cta('pill', t.trialLong)}<small>${t.support} · <a href="mailto:${company.email}">${company.email}</a> · <a href="tel:+1${company.phone.replace(/-/g, '')}">${company.phone}</a> · ${t.hours}<br>${t.brandOf}${company.operator}.</small></nav></div>`;
   return localize(html, lang);
 }
@@ -125,7 +125,7 @@ export function assistant(target, apiAttribute) { return site(read('assist.html'
 
 export const nightAssets = {
   css: { base: read('base.css'), home: read('home.css'), nevora: read('nevora.css'), pages: read('pages.css'), kiosk: read('kiosk.css'), assist: read('assist.css'), polish: read('polish.css') },
-  js: { motion: read('motion.js'), nevora: read('nevora.js') + '\n' + read('kiosk.js'), assist: read('assist.js'), assistClient: read('velani-assistant.js') },
+  js: { motion: read('motion.js'), nevora: read('nevora.js') + '\n' + read('kiosk.js'), assist: read('assist.js'), assistClient: read('velani-assistant.js'), commerce: read('commerce.js') },
 };
 
 /* NEVORA policy pages (Privacy, Support, Account deletion, Terms), from the NEVORA app's approved policy source. */

@@ -794,6 +794,52 @@ body:has(#inquiry-sent:not([hidden])) :is(.signin-top,.client-side){display:none
 /* The zoom button's focus ring sits inside the rounded frame */
 .zoom-btn:focus-visible{outline-offset:-4px}
 @media(max-width:359px){html[lang=es] .hpanel h2{font-size:2rem}}
+/* Plans price (Nov 8, 2026): the words beside one team-size card, as the 30 days sit beside the calendar. The card's 30 marks
+   are the two bands (15 + 15); lit marks are your team, the soft ones the rest of your band. */
+@media(min-width:834px){.price-grid{align-items:center}}
+@media(max-width:833px){.price-grid{align-items:stretch}}
+.price-inc{margin:28px 0 0;max-width:34em;font-size:1.0625rem;line-height:1.55;color:var(--text)}
+.price-over{margin:14px 0 0;font-size:1.0625rem;line-height:1.5;color:var(--text-2)}
+.price-over a{color:var(--text);text-decoration:underline;text-decoration-color:var(--line-2);text-underline-offset:3px}
+.price-over a:hover{text-decoration-color:currentColor}
+.pcard{padding:clamp(24px,3vw,40px);border-radius:var(--r2);background:var(--panel)}
+.pc-top{display:flex;justify-content:space-between;align-items:baseline;gap:16px}
+.pc-q{font-size:1.0625rem;font-weight:600;color:var(--text)}
+.pc-n{margin:0;font-size:1.0625rem;color:var(--text-2);font-variant-numeric:tabular-nums}
+.pc-n output{color:var(--text);font-weight:600}
+.pc-amt{display:flex;align-items:baseline;gap:10px;margin:clamp(20px,2.4vw,28px) 0 0;color:var(--text)}
+.pc-amt b{font-size:clamp(3.5rem,6vw,5rem);line-height:1;font-weight:600;letter-spacing:-.04em;font-variant-numeric:tabular-nums}
+.pc-amt span{font-size:1.0625rem;color:var(--text-2)}
+.pc-amt span[hidden]{display:none}
+.pc-meter{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:clamp(24px,3vw,36px) 0 0}
+.pc-g{display:grid;grid-template-columns:repeat(15,minmax(0,1fr));gap:4px}
+.pc-meter i{display:block;height:32px;border-radius:3px;background:var(--line);transition:background-color .2s var(--out)}
+.pc-meter i.pc-in{background:var(--line-2)}
+.pc-meter i.pc-on{background:#f0f0fa}
+.pc-scale{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:10px;font-size:0.875rem;color:var(--text-3)}
+.pcard[data-n] .pc-scale span:first-child{color:var(--text-2)}
+.pc-ctl{display:flex;align-items:center;gap:12px;margin-top:clamp(20px,2.4vw,28px)}
+.pc-step{display:inline-flex;align-items:center;justify-content:center;flex:none;width:44px;height:44px;padding:0;border-radius:var(--r);background:rgba(0,0,0,.5);border:1px solid rgba(240,240,250,.35);color:#f0f0fa;cursor:pointer}
+.pc-step .icon{font-size:1.125rem}
+.pc-step[hidden]{display:none}
+.pc-step:disabled{opacity:.35;cursor:default}
+@media(hover:hover){.pc-step:not(:disabled):hover{background:rgba(0,0,0,.7);border-color:rgba(240,240,250,.6)}}
+.pc-step:active:not(:disabled){transform:scale(.96)}
+.pc-range{flex:1;min-width:0;height:44px;margin:0;background:none;accent-color:#f0f0fa;cursor:pointer}
+.pc-range:disabled{display:none}
+.pc-step:focus-visible,.pc-range:focus-visible{outline:2px solid #f0f0fa;outline-offset:3px}
+.pc-note{margin:clamp(16px,2vw,22px) 0 0;font-size:0.875rem;line-height:1.5;color:var(--text-3)}
+@media(max-width:833px){.price-grid .pcard{order:1;margin-top:32px}.price-grid .price-inc{order:2}.price-grid .price-over{order:3}.price-grid .days-fine{order:4}.price-grid .day-acts{order:5}}
+@media(prefers-reduced-motion:reduce){.pc-meter i{transition:none}}
+#price .days-fine{margin-top:20px;max-width:34em}
+button.hb{font-family:inherit;cursor:pointer}
+button.hb:disabled{cursor:progress;opacity:.75}
+.hacts[hidden],.hcopy p[hidden]{display:none}
+/* Signup and billing pages: the step's card under the panel. */
+.cflow{padding:0 0 var(--s2)}
+.cf-card{max-width:640px;padding:clamp(28px,3vw,40px);border-radius:var(--r2);background:var(--panel)}
+.cf-card>p{margin:0;font-size:1.0625rem;line-height:1.5;color:var(--text)}
+.cf-card .hacts{margin-top:24px}
 
 /* Try the time clock: a working copy of the NEVORA PIN screen. Light surface, like the real tablet. */
 .kio-note{display:inline-flex;flex-wrap:wrap;gap:4px 6px;margin-top:var(--s1);padding:10px 16px;border-radius:var(--r);background:var(--panel);box-shadow:0 0 0 1px var(--line);font-size:0.875rem;line-height:1.4;color:var(--text-2)}

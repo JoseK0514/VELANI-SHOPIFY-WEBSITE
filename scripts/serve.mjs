@@ -12,6 +12,9 @@ const port = Number(flag('--port', '4173'));
 const assistantApi = (process.env.VELANI_ASSISTANT_API || '').trim();
 const assistantConnect = assistantApi ? ' ' + new URL(assistantApi).origin + ' https://challenges.cloudflare.com' : '';
 const assistantScript = assistantApi ? ' https://challenges.cloudflare.com' : '';
+// VELANI_COMMERCE_API (an origin such as http://127.0.0.1:4198, the local fixture) turns on the NEVORA billing pages in the preview.
+const commerceApi = (process.env.VELANI_COMMERCE_API || '').trim();
+const commerceConnect = commerceApi ? ' ' + new URL(commerceApi).origin : '';
 const host = flag('--host', '0.0.0.0');
 await build();
 const dir = path.join(root, 'dist/preview');
@@ -20,7 +23,7 @@ const server = http.createServer(async (req, res) => {
   res.setHeader('X-Content-Type-Options', 'nosniff');
   res.setHeader('Referrer-Policy', 'strict-origin-when-cross-origin');
   res.setHeader('Permissions-Policy', 'camera=(), microphone=(), geolocation=()');
-  res.setHeader('Content-Security-Policy', "default-src 'self'; script-src 'self' " + bootHash + assistantScript + "; style-src 'self'; style-src-attr 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'" + assistantConnect + "; frame-src" + (assistantApi ? " https://challenges.cloudflare.com" : " 'none'") + "; frame-ancestors 'none'; base-uri 'self'; form-action 'self'");
+  res.setHeader('Content-Security-Policy', "default-src 'self'; script-src 'self' " + bootHash + assistantScript + "; style-src 'self'; style-src-attr 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'" + assistantConnect + commerceConnect + "; frame-src" + (assistantApi ? " https://challenges.cloudflare.com" : " 'none'") + "; frame-ancestors 'none'; base-uri 'self'; form-action 'self'");
   res.setHeader('Cache-Control', 'no-store');
   if (req.method !== 'GET' && req.method !== 'HEAD') { req.resume(); res.writeHead(405, { Allow: 'GET, HEAD', 'Content-Type': 'text/plain' }); res.end('Preview only. No inquiry was sent.'); return; }
   let url;

@@ -39,7 +39,7 @@ function panel(target, { id, cls = '', img, flip = false, kick, kickHtml, title,
 }
 /** The closing panel on every company page: the wordmark, client support and the two ways in. */
 function closing(target, { project = '/pages/contact', lang = 'en', support = hb(CHROME[lang].support, '/pages/help'), line = CHROME[lang].closingLine } = {}) {
-  return '<section class="hpanel end" id="velani" aria-label="Velani"><img class="hph flip" src="' + asset('night-ai-light.webp', target) + '" alt="" width="1920" height="1080" loading="lazy"><div class="hshade"></div><div class="hcopy"><p class="hwm">' + WORDMARK + '</p><p class="fade">' + e(line) + '</p><div class="hacts fade">' + (line === CHROME[lang].closingLine ? hb(CHROME[lang].trial, '/pages/contact?interest=nevora-demo', true) + hb(CHROME[lang].project, project) : hb(CHROME[lang].project, project, true) + support) + '</div></div></section>';
+  return '<section class="hpanel end" id="velani" aria-label="Velani"><img class="hph flip" src="' + asset('night-ai-light.webp', target) + '" alt="" width="1920" height="1080" loading="lazy"><div class="hshade"></div><div class="hcopy"><p class="hwm">' + WORDMARK + '</p><p class="fade">' + e(line) + '</p><div class="hacts fade">' + (line === CHROME[lang].closingLine ? hb(CHROME[lang].trial, '/pages/nevora-start', true) + hb(CHROME[lang].project, project) : hb(CHROME[lang].project, project, true) + support) + '</div></div></section>';
 }
 const rail = (steps, cls = '') => '<ol class="rail' + cls + '" data-in>' + steps.map(([b, t], i) => '<li data-in><i>0' + (i + 1) + '</i><b>' + e(b) + '</b><span>' + e(t) + '</span></li>').join('') + '</ol>';
 /** Custom software page words (Spanish added with its own page). Case studies lead; the client's name is the heading. */
@@ -194,27 +194,63 @@ function legalIndex() {
  * two equal panels, and custom work in the closing. Dates come from the visitor's clock (motion.js); without it the page says
  * "Day 1" and "Day 30". */
 const PLANS = {
-  en: { h1: 'Try NEVORA free for 30 days.', text: 'Teams of up to 30 people get the whole app, with no card. After day 30 you pay one price for the business, quoted for your team.',
-    date: ['Free for 30 days from the day we set up your workplace.', 'If we set up your workplace today, it’s free through '],
-    trial: 'Request free trial', quote: 'Ask for a quote',
+  en: { h1: 'Try NEVORA free for 30 days.', text: 'Your whole team gets the complete app, with no card. Then one monthly price for your business: $19 for up to 15 employees, $29 for 16 to 30.',
+    date: ['Free for 30 days from the day your workplace is ready.', 'If you start today, it’s free through '],
+    trial: 'Start free trial', billing: 'Manage billing', quote: 'Ask for a quote',
     daysT: 'Your 30 days', calLabel: 'Your trial on a calendar',
-    steps: [['Day 1', 'We set up your workplace. You invite your team, and each person gets a PIN for the time clock tablet.'], ['First week', 'You publish the schedule. Your team sees their shifts on their phones, swaps shifts and asks for time off, in English or Spanish.'], ['Second week', 'You approve timecards. NEVORA calculates payroll from the approved hours and makes a pay statement for each employee.'], ['Day 30', 'You decide what happens next.']],
+    steps: [['Day 1', 'Your workplace is ready. You invite your team, and each person gets a PIN for the time clock tablet.'], ['First week', 'You publish the schedule. Your team sees their shifts on their phones, swaps shifts and asks for time off, in English or Spanish.'], ['Second week', 'You approve timecards. NEVORA calculates payroll from the approved hours and makes a pay statement for each employee.'], ['Day 30', 'Subscribe to keep going. Subscribe on any day before and you still get all 30 days free.']],
     fine: 'NEVORA calculates pay statements. It does not pay employees or file payroll taxes.',
     shotAlt: 'NEVORA schedule for the week: eight people, their shifts each day and the week published', shotCap: 'Carmen’s week at Northside Coffee, a sample workplace: eight people and every shift published.',
-    endT: 'When the trial ends',
-    end: [['Keep NEVORA', 'We quote one price for your business, and your team keeps working without a break.'], ['Close your workplace', 'Export your schedules, timecards and pay statements, then email support@thevelani.com. We delete the workplace and its data within 3 days.']],
+    priceT: 'After 30 days, one monthly price',
+    includes: 'Every business gets the whole app: scheduling, the time clock, timecards and payroll calculation. The price depends only on how many employees you have, and owners aren’t counted.',
+    card: { q: 'Your team', unit: 'employees', per: 'a month', small: '1 to 15 · $19', team: '16 to 30 · $29', less: 'One fewer employee', more: 'One more employee', note: 'Billed monthly for your business. Owners aren’t counted.', valueText: (n, p) => n + ' employees, ' + p + ' a month' },
+    terms: 'Prices are in US dollars. Cancel any time and NEVORA keeps working through the month you paid for. If you don’t subscribe after the trial, NEVORA pauses for your team and you can still export your records.',
+    over: ['More than 30 employees? ', 'Ask for a quote', '.'],
     closing: 'Websites and custom apps get a fixed written quote for each project.', project: 'Start a project', custom: 'See custom software' },
   es: PLANS_ES,
 };
+/** Plans (Nov 8, 2026: self-service subscriptions). The trial in the first screen with today's real end date, the 30 days as a
+ * calendar, one NEVORA screen large, then the two prices as two equal boxes. Start free trial opens signup; Manage billing
+ * opens billing recovery. An Owner sent from NEVORA arrives with #handoff=…: velani-commerce.js swaps the hero for their own
+ * plan and marks the box they would be billed for. Dates come from the visitor's clock (motion.js). */
 function plans(page, target, lang = 'en') {
   const t = PLANS[lang];
-  const trial = hb(t.trial, '/pages/contact?interest=nevora-demo', true), quote = hb(t.quote, '/pages/contact?interest=nevora');
-  const hero = panel(target, { id: 'top', cls: 'dim long', img: 'ai-glow', title: t.h1, tag: 'h1', text: t.text, acts: trial + quote, after: '<p class="hfact fade" data-trial-end data-before="' + e(t.date[1]) + '">' + e(t.date[0]) + '</p>', first: true });
+  const trial = hb(t.trial, '/pages/nevora-start', true), billing = hb(t.billing, '/pages/nevora-billing'), quote = hb(t.quote, '/pages/contact?interest=nevora');
+  const hero = panel(target, { id: 'top', cls: 'dim long', img: 'ai-glow', title: t.h1, tag: 'h1', text: t.text, acts: trial + billing, after: '<p class="hfact fade" data-trial-end data-before="' + e(t.date[1]) + '">' + e(t.date[0]) + '</p>', first: true });
   const steps = '<ol class="days-list">' + t.steps.map(([k, x], i) => '<li class="fade"><p class="days-k"' + (i === 0 ? ' data-day="1"' : i === 3 ? ' data-day="30"' : '') + '>' + e(k) + '</p><p>' + e(x) + '</p></li>').join('') + '</ol><p class="days-fine">' + e(t.fine) + '</p>';
   const days = '<section class="chap days" aria-labelledby="days-t"><div class="wrap days-grid"><div><h2 class="t2 rise" id="days-t">' + e(t.daysT) + '</h2>' + steps + '</div><div class="cal fade" data-cal role="img" aria-label="' + e(t.calLabel) + '" hidden></div></div></section>';
   const shot = '<section class="chap plans-shot"><div class="wrap"><figure class="shot slab fade"><img src="' + asset('night-r1-schedule.webp', target) + '" alt="' + e(t.shotAlt) + '" width="2000" height="1181" loading="lazy" decoding="async"></figure><p class="shot-cap">' + e(t.shotCap) + '</p></div></section>';
-  const end = '<section class="chap day30" aria-labelledby="end-t"><div class="wrap"><h2 class="t2 rise" id="end-t">' + e(t.endT) + '</h2><div class="day-opts">' + t.end.map(([h, x]) => '<div class="day-opt fade"><h3 class="t3">' + e(h) + '</h3><p>' + linkEmail(e(x)) + '</p></div>').join('') + '</div><div class="hacts day-acts fade">' + trial + quote + '</div></div></section>';
-  return hero + days + shot + end + closing(target, { lang, line: t.closing, project: '/pages/contact?interest=custom-software', support: hb(t.custom, '/pages/custom-development') }) + '\n' + (lang === 'es' ? WORK_ES.zoom || [] : []).reduce((z, [a, b]) => z.split(a).join(b), zoomScript(target));
+  // The price as a team-size card beside the words, like the calendar beside the 30 days: 30 marks in the two bands, the
+  // price for the chosen size, and − / + with a slider. Without the script it reads 8 employees at $19 and still shows both bands.
+  const ticks = Array.from({ length: 30 }, (_, i) => '<i' + (i < 8 ? ' class="pc-on"' : i < 15 ? ' class="pc-in"' : '') + '></i>').join('');
+  const card = '<div class="pcard fade" data-pcard data-n="8"><div class="pc-top"><label class="pc-q" for="pc-n">' + e(t.card.q) + '</label><p class="pc-n"><output id="pc-out" for="pc-n" data-count>8</output> <span data-unit>' + e(t.card.unit) + '</span></p></div>'
+    + '<p class="pc-amt"><b data-amt>$19</b> <span data-per>' + e(t.card.per) + '</span></p>'
+    + '<div class="pc-meter" aria-hidden="true"><span class="pc-g">' + ticks.split('</i>').slice(0, 15).join('</i>') + '</i></span><span class="pc-g">' + ticks.split('</i>').slice(15, 30).join('</i>') + '</i></span></div>'
+    + '<div class="pc-scale" aria-hidden="true"><span>' + e(t.card.small) + '</span><span>' + e(t.card.team) + '</span></div>'
+    + '<div class="pc-ctl"><button class="pc-step" type="button" data-step="-1" aria-label="' + e(t.card.less) + '" aria-controls="pc-n" hidden>' + icon('minus') + '</button><input class="pc-range" id="pc-n" type="range" min="1" max="31" value="8" step="1" aria-valuetext="' + e(t.card.valueText(8, '$19')) + '" disabled><button class="pc-step" type="button" data-step="1" aria-label="' + e(t.card.more) + '" aria-controls="pc-n" hidden>' + icon('plus') + '</button></div>'
+    + '<p class="pc-note" data-note>' + e(t.card.note) + '</p></div>';
+  const over = '<p class="price-over">' + e(t.over[0]) + '<a href="/pages/contact?interest=nevora">' + e(t.over[1]) + '</a>' + e(t.over[2]) + '</p>';
+  const price = '<section class="chap day30" id="price" aria-labelledby="price-t"><div class="wrap days-grid price-grid"><div><h2 class="t2 rise" id="price-t">' + e(t.priceT) + '</h2><p class="price-inc fade">' + e(t.includes) + '</p>' + over + '<p class="days-fine">' + e(t.terms) + '</p><div class="hacts day-acts fade">' + trial + quote + '</div></div>' + card + '</div></section>';
+  const commerce = commerceBlock(target) + '<script type="module" src="' + asset('velani-commerce.js', target) + '"></script>';
+  return hero + days + shot + price + closing(target, { lang, line: t.closing, project: '/pages/contact?interest=custom-software', support: hb(t.custom, '/pages/custom-development') }) + commerce + '\n' + (lang === 'es' ? WORK_ES.zoom || [] : []).reduce((z, [a, b]) => z.split(a).join(b), zoomScript(target));
+}
+/** The signup and billing pages share one frame: the page's panel with its title and one line, then the step's own card
+ * (velani-commerce.js fills it). Without a configured API the card says online signup and billing aren't open yet. */
+const COMMERCE_OFF = {
+  en: { text: 'Online signup and billing aren’t open yet. Ask us for a trial and we’ll set up your workplace.', act: 'Ask for a free trial' },
+  es: { text: 'El registro y la facturación en línea todavía no están abiertos. Pídenos una prueba y configuramos tu lugar de trabajo.', act: 'Pide la prueba gratis' },
+};
+function commercePage(page, target, lang = 'en') {
+  const off = COMMERCE_OFF[lang];
+  const hero = panel(target, { id: 'top', cls: 'dim', img: 'ai-glow', title: page.title, tag: 'h1', text: page.intro, first: true });
+  const card = '<section class="chap cflow" id="flow" data-step="' + e(page.step) + '" aria-live="polite"><div class="wrap"><div class="cf-card" data-off><p>' + e(off.text) + '</p><div class="hacts">' + hb(off.act, '/pages/contact?interest=nevora-demo', true) + '</div></div></div></section>';
+  return hero + card + commerceBlock(target) + '<script type="module" src="' + asset('velani-commerce.js', target) + '"></script>';
+}
+/** The NEVORA billing API's address for the commerce pages: the theme setting on Shopify, VELANI_COMMERCE_API locally. Empty
+ * means billing isn't available yet; the pages say so instead of guessing an endpoint. */
+function commerceBlock(target) {
+  const api = target === 'shopify' ? '{{ settings.commerce_api_url | strip | escape }}' : e((process.env.VELANI_COMMERCE_API || '').trim());
+  return '<template id="velani-commerce" data-api="' + api + '"></template>';
 }
 /** The Support page's words (Spanish in src/content.es.mjs). */
 const FAQ = {
@@ -273,6 +309,7 @@ function renderRawBody(path, target) {
     case 'services': return services_(page, target, lang);
     case 'contact': return localize((target === 'shopify' ? '{% capture velani_sent %}' + sentPanel(false, lang) + '{% endcapture %}' : '') + contact(page, target, lang), lang);
     case 'signin': return signin(page, target, lang);
+    case 'commerce': return localize(commercePage(page, target, lang), lang);
     case 'faq': return faq(page, target, lang);
     case 'plans': return localize(plans(page, target, lang), lang);
     case 'legal-index': return pageHero(page) + legalIndex();
