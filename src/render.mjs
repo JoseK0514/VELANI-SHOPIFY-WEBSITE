@@ -234,25 +234,26 @@ function faq(page, target, lang = 'en') {
   const questions = '<section class="faq" aria-labelledby="faq-t"><div class="wrap"><div class="qa"><div class="head"><h2 class="t2 rise" id="faq-t">' + e(t.qT) + '</h2></div><div class="faq-list">' + qs.map(x => '<details><summary>' + e(x.heading) + icon('plus') + '</summary><p>' + linkEmail(e(x.text)).split(company.phone).join('<a href="' + tel() + '">' + e(company.phone) + '</a>') + '</p></details>').join('') + '</div></div></div></section>';
   return localize(top + questions + closing(target, { lang, support: hb(t.contactPage, '/pages/contact') }), lang);
 }
-/** About (Nov 7): who we are without names or photos. Two equal doors with a real picture each (NEVORA, custom software), how we
- * work as three plain facts beside their heading, the company line without the postal address, then the closing. */
+/** About (Nov 7, v2): who we are without names or photos. A short hero with Jose's reason for Velani set large, the three things we
+ * have built (one size of picture each, the year), and the company: the phone beside three facts. Then the closing. */
 const ABOUT = {
-  en: { h1: 'Software for small businesses.', text: 'We make NEVORA for teams that work in shifts. We also design and build websites and apps for other businesses.', project: 'Start a project', see: 'See NEVORA',
-    twoT: 'Two ways to work with us',
-    doors: [['NEVORA', 'Scheduling, time clock and payroll calculation for shift teams. Free for 30 days.', 'See NEVORA', '/pages/nevora', 'night-r1-owner.webp', 'NEVORA on the web for an owner: one thing that needs an answer, five of five clocked in, the next payday and this week’s hours'],
-      ['Custom software', 'Websites, booking apps and online stores, built for one business at a time.', 'See custom software', '/pages/custom-development', 'night-tb-home.webp', 'The Tool Box LLC website, built by Velani: equipment rental with job-site delivery and dates']],
-    howT: 'How we work',
-    how: [['A fixed quote in writing', 'Before any paid work starts, you get the price, the scope and the dates on paper.'], ['English and Spanish', 'NEVORA and the sites we build work in both languages.'], ['Support after launch', 'We keep looking after what we build once it’s live.']],
-    company: 'Velani is a brand of VELANI LLC. Write to support@thevelani.com or call 787-925-2000.' },
+  en: { h1: 'Software for small businesses.', text: 'We started Velani in 2026 to give small businesses top-quality software at prices they can afford.', project: 'Start a project', see: 'See NEVORA',
+    builtT: 'What we’ve built',
+    built: [['NEVORA', 'Scheduling, time clock and payroll calculation for shift teams. Our own product, launched in 2026.', 'See NEVORA', '/pages/nevora', 'night-r1-owner.webp', 'NEVORA on the web for an owner: one thing that needs an answer, five of five clocked in, the next payday and this week’s hours', false],
+      ['Tool Box LLC', 'An equipment rental website with an online store, built in 2026.', 'See the project', '/pages/custom-development#web-applications', 'night-tb-home.webp', 'The Tool Box LLC website, built by Velani: equipment rental with job-site delivery and dates', false],
+      ['Yavi Barber', 'A booking and rewards app, built in 2026.', 'See the project', '/pages/custom-development#booking', 'night-yavi-book.webp', 'Yavi Barber booking on a phone: the next open times and services with prices', true]],
+    coT: 'The company', callK: 'Prefer to talk? Call us.',
+    facts: [['Founded in 2026', 'Velani is a brand of VELANI LLC.'], ['English and Spanish', 'We work, write and build in both languages.'], ['A reply within two business days', 'Client support answers ' + company.hours + '.']] },
   es: ABOUT_ES,
 };
 function about(page, target, lang = 'en') {
   const t = ABOUT[lang];
-  const hero = panel(target, { id: 'top', cls: 'dim long', img: 'ai-glow', flip: true, title: t.h1, tag: 'h1', text: t.text, acts: hb(t.project, '/pages/contact?interest=custom-software', true) + hb(t.see, '/pages/nevora'), first: true });
-  const door = ([h, x, link, href, img, alt]) => '<div class="about-door fade"><figure class="shot slab"><img src="' + asset(img, target) + '" alt="' + e(alt) + '" width="2000" height="1250" loading="lazy" decoding="async"></figure><h3 class="t3">' + e(h) + '</h3><p>' + e(x) + '</p>' + more(link, href) + '</div>';
-  const two = '<section class="chap about-two" aria-labelledby="two-t"><div class="wrap"><h2 class="t2 rise" id="two-t">' + e(t.twoT) + '</h2><div class="about-doors">' + t.doors.map(door).join('') + '</div></div></section>';
-  const how = '<section class="chap days about-how" aria-labelledby="how-t"><div class="wrap days-grid"><div><h2 class="t2 rise" id="how-t">' + e(t.howT) + '</h2></div><div><ol class="days-list">' + t.how.map(([k, x]) => '<li class="fade"><p class="days-k">' + e(k) + '</p><p>' + e(x) + '</p></li>').join('') + '</ol><p class="days-fine">' + linkEmail(e(t.company)).split(company.phone).join('<a href="' + tel() + '">' + e(company.phone) + '</a>') + '</p></div></div></section>';
-  return localize(hero + two + how + closing(target, { lang }), lang);
+  const hero = panel(target, { id: 'top', cls: 'dim long short about-hero', img: 'ai-glow', flip: true, title: t.h1, tag: 'h1', text: t.text, acts: hb(t.project, '/pages/contact?interest=custom-software', true) + hb(t.see, '/pages/nevora'), first: true });
+  const item = ([h, x, link, href, img, alt, phone]) => '<div class="built-item fade"><figure class="shot built-shot' + (phone ? ' is-phone' : ' slab') + '"><img src="' + asset(img, target) + '" alt="' + e(alt) + '" width="' + (phone ? 780 : 2000) + '" height="' + (phone ? 1688 : 1250) + '" loading="lazy" decoding="async"></figure><h3 class="t3">' + e(h) + '</h3><p>' + e(x) + '</p>' + more(link, href) + '</div>';
+  const built = '<section class="chap about-built" aria-labelledby="built-t"><div class="wrap"><h2 class="t2 rise" id="built-t">' + e(t.builtT) + '</h2><div class="built-row">' + t.built.map(item).join('') + '</div></div></section>';
+  const call = '<div class="client-call fade"><p>' + e(t.callK) + '</p><a class="client-tel" href="' + tel() + '">' + e(company.phone) + '</a><p><a href="mailto:' + company.email + '">' + company.email + '</a></p></div>';
+  const co = '<section class="chap days about-how" aria-labelledby="co-t"><div class="wrap days-grid"><div><h2 class="t2 rise" id="co-t">' + e(t.coT) + '</h2>' + call + '</div><div><ul class="days-list">' + t.facts.map(([k, x]) => '<li class="fade"><p class="days-k">' + e(k) + '</p><p>' + e(x) + '</p></li>').join('') + '</ul></div></div></section>';
+  return localize(hero + built + co + closing(target, { lang }), lang);
 }
 function notFound() {
   return '<section class="phero"><div class="wrap"><p class="kicker">Page not found</p><h1 class="t1">We could not find that page.</h1><p class="lede">The link may be out of date, or the address may be misspelled.</p><div class="acts"><a class="pill" href="/">Go to the home page</a><a class="pill line" href="/pages/nevora">See NEVORA</a></div></div></section>';

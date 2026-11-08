@@ -62,7 +62,7 @@ export const ES_ROUTES = {
 ES_ROUTES['/pages/es-nosotros'] = es('/pages/about', {
   nav: 'about', eyebrow: 'Sobre Velani', name: 'Nosotros',
   title: 'Software para pequeños negocios.',
-  intro: 'Hacemos NEVORA para equipos que trabajan por turnos y diseñamos sitios web y apps para otros negocios.',
+  intro: 'Empezamos Velani en 2026 para darles a los pequeños negocios software de primera calidad a precios que puedan pagar.',
   desc: 'Velani, de VELANI LLC, hace NEVORA para horarios, registro de tiempo y cálculo de nómina, y diseña y crea sitios web y apps para negocios.',
 });
 ES_ROUTES['/pages/es-ayuda'] = es('/pages/help', {
@@ -108,13 +108,13 @@ export const WORK_ES = {
 };
 
 /** The About and Support pages below their heroes. */
-export const ABOUT_ES = { h1: 'Software para pequeños negocios.', text: 'Hacemos NEVORA para equipos que trabajan por turnos. También diseñamos y creamos sitios web y apps para otros negocios.', project: 'Empieza un proyecto', see: 'Ver NEVORA',
-  twoT: 'Dos formas de trabajar con nosotros',
-  doors: [['NEVORA', 'Horarios, registro de tiempo y cálculo de nómina para equipos por turnos. Gratis por 30 días.', 'Ver NEVORA', '/pages/nevora', 'night-r1-owner.webp', 'NEVORA en la web para un dueño: un asunto que necesita respuesta, cinco de cinco con entrada marcada, el próximo día de pago y las horas de esta semana'],
-    ['Software a la medida', 'Sitios web, apps de reservas y tiendas en línea, hechos para un negocio a la vez.', 'Ver Software a la medida', '/pages/custom-development', 'night-tb-home.webp', 'El sitio web de Tool Box LLC, creado por Velani: alquiler de equipos con entrega en la obra y fechas']],
-  howT: 'Cómo trabajamos',
-  how: [['Una cotización fija por escrito', 'Antes de empezar cualquier trabajo pagado, recibes el precio, el alcance y las fechas por escrito.'], ['Inglés y español', 'NEVORA y los sitios que creamos funcionan en los dos idiomas.'], ['Soporte después del lanzamiento', 'Seguimos cuidando lo que creamos cuando ya está en línea.']],
-  company: 'Velani es una marca de VELANI LLC. Escribe a support@thevelani.com o llama al 787-925-2000.' };
+export const ABOUT_ES = { h1: 'Software para pequeños negocios.', text: 'Empezamos Velani en 2026 para darles a los pequeños negocios software de primera calidad a precios que puedan pagar.', project: 'Empieza un proyecto', see: 'Ver NEVORA',
+  builtT: 'Lo que hemos creado',
+  built: [['NEVORA', 'Horarios, registro de tiempo y cálculo de nómina para equipos por turnos. Nuestro propio producto, lanzado en 2026.', 'Ver NEVORA', '/pages/nevora', 'night-r1-owner.webp', 'NEVORA en la web para un dueño: un asunto que necesita respuesta, cinco de cinco con entrada marcada, el próximo día de pago y las horas de esta semana', false],
+    ['Tool Box LLC', 'Un sitio web de alquiler de equipos con tienda en línea, creado en 2026.', 'Ver el proyecto', '/pages/custom-development#web-applications', 'night-tb-home.webp', 'El sitio web de Tool Box LLC, creado por Velani: alquiler de equipos con entrega en la obra y fechas', false],
+    ['Yavi Barber', 'Una app de reservas y recompensas, creada en 2026.', 'Ver el proyecto', '/pages/custom-development#booking', 'night-yavi-book.webp', 'Reservas de Yavi Barber en un teléfono: los próximos horarios disponibles y los servicios con precios', true]],
+  coT: 'La empresa', callK: '¿Prefieres hablar? Llámanos.',
+  facts: [['Fundada en 2026', 'Velani es una marca de VELANI LLC.'], ['Inglés y español', 'Trabajamos, escribimos y creamos en los dos idiomas.'], ['Respuesta en dos días laborables', 'El soporte al cliente atiende de ' + HOURS_ES + '.']] };
 export const FAQ_ES = {
   h1: 'Pide ayuda a Velani.', text: 'Preguntas sobre un sitio web o una app que creamos, sobre NEVORA o sobre cómo trabajamos. Te respondemos por correo en un plazo de dos días laborables.',
   callK: 'Si no pueden trabajar, llámanos.',
