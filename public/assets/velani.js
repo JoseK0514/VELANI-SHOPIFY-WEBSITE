@@ -3,7 +3,7 @@ import { createPrivacyAdapter } from './privacy.js';
 // Every word this script shows, in the page's language (<html lang>): English, or Spanish on the Spanish pages
 const STRINGS = {
   en: {
-    sent: { 'nevora-demo': ['Trial request sent.', 'We aim to email you within two business days to set up your NEVORA workplace. Your 30 days start the day it’s ready.'], nevora: ['Quote request sent.', 'We aim to email you within two business days to discuss your team and locations.'], relay: ['You’re on the Relay list.', 'We’ll email you when NEVORA Relay opens for early access. No dates yet.'], 'client-work': ['Request sent.', 'We aim to reply by email within two business days. Paid work starts only after you approve a written quote.'], 'client-help': ['Sent to support.', 'We aim to reply by email within two business days. If you can’t work, call 787-925-2000, Monday to Friday, 8 am to 9 pm ET.'] },
+    sent: { 'nevora-demo': ['Trial request sent.', 'We’ll email you within two business days to set up your NEVORA workplace. Your 30 days start the day it’s ready.'], nevora: ['Quote request sent.', 'We’ll email you within two business days to discuss your team and locations.'], relay: ['You’re on the Relay list.', 'We’ll email you when NEVORA Relay opens for early access. No dates yet.'], 'client-work': ['Request sent.', 'We reply by email within two business days. Paid work starts only after you approve a written quote.'], 'client-help': ['Sent to support.', 'We reply by email within two business days. If you can’t work, call 787-925-2000, Monday to Friday, 8 am to 9 pm ET.'] },
     sentTitle: 'Message sent', trialTitle: 'Free NEVORA trial', quoteTitle: 'NEVORA for your team', relayTitle: 'NEVORA Relay waitlist',
     quoteNote: 'Teams of more than 30 people get a quote instead of the free trial. What you typed is kept.',
     optional: 'Anything else <span class="opt">optional</span>',
@@ -13,7 +13,7 @@ const STRINGS = {
     privacyErrors: {},
   },
   es: {
-    sent: { 'nevora-demo': ['Solicitud de prueba enviada.', 'Procuramos escribirte en un plazo de dos días laborables para configurar tu espacio de trabajo de NEVORA. Tus 30 días empiezan el día en que esté listo.'], nevora: ['Solicitud de cotización enviada.', 'Procuramos escribirte en un plazo de dos días laborables para hablar de tu equipo y tus ubicaciones.'], relay: ['Ya estás en la lista de Relay.', 'Te escribiremos cuando NEVORA Relay abra el acceso anticipado. Aún sin fechas.'], 'client-work': ['Solicitud enviada.', 'Procuramos responderte por correo en un plazo de dos días laborables. El trabajo pagado empieza solo después de que apruebes una cotización por escrito.'], 'client-help': ['Enviado a soporte.', 'Procuramos responderte por correo en un plazo de dos días laborables. Si no pueden trabajar, llama al 787-925-2000, lunes a viernes, 8\u00a0a.\u00a0m. a 9\u00a0p.\u00a0m. ET.'] },
+    sent: { 'nevora-demo': ['Solicitud de prueba enviada.', 'Te escribiremos en un plazo de dos días laborables para configurar tu espacio de trabajo de NEVORA. Tus 30 días empiezan el día en que esté listo.'], nevora: ['Solicitud de cotización enviada.', 'Te escribiremos en un plazo de dos días laborables para hablar de tu equipo y tus ubicaciones.'], relay: ['Ya estás en la lista de Relay.', 'Te escribiremos cuando NEVORA Relay abra el acceso anticipado. Aún sin fechas.'], 'client-work': ['Solicitud enviada.', 'Te respondemos por correo en un plazo de dos días laborables. El trabajo pagado empieza solo después de que apruebes una cotización por escrito.'], 'client-help': ['Enviado a soporte.', 'Te respondemos por correo en un plazo de dos días laborables. Si no pueden trabajar, llama al 787-925-2000, lunes a viernes, 8\u00a0a.\u00a0m. a 9\u00a0p.\u00a0m. ET.'] },
     sentTitle: 'Mensaje enviado', trialTitle: 'Prueba gratis de NEVORA', quoteTitle: 'NEVORA para tu equipo', relayTitle: 'Lista de espera de NEVORA Relay',
     quoteNote: 'Los equipos de más de 30 personas reciben una cotización en lugar de la prueba gratis. Lo que escribiste se conserva.',
     optional: 'Algo más <span class="opt">opcional</span>',
@@ -70,7 +70,7 @@ if (form && !justSent) {
   const relay = document.documentElement.classList.contains('ask-relay');
   // The trial page keeps its quote wording (hidden) so a team of more than 30 can switch to a quote without losing what was typed.
   // The Relay waitlist has its own hero wording only; its form keeps the general wording.
-  document.querySelectorAll(demo ? '.v-d, .v-r' : nevora ? '.v-d, .v-m, .v-r' : relay ? '.cform-hero .v-d, .v-n, .v-m' : '.v-n, .v-m, .v-r').forEach(el => el.remove());
+  document.querySelectorAll(demo ? '.v-d, .v-r' : nevora ? '.v-d, .v-m, .v-r' : relay ? '.cform-hero .v-d, [data-inquiry-submit] .v-d, .v-n, .v-m' : '.v-n, .v-m, .v-r').forEach(el => el.remove());
   const shown = el => [...el.childNodes].filter(n => n.nodeType === 3 || getComputedStyle(n).display !== 'none').map(n => n.textContent).join('');
   const relabel = () => document.querySelectorAll('.cform-hero h1.rise').forEach(h => h.setAttribute('aria-label', shown(h).replace(/\s+/g, ' ').trim()));
   relabel();

@@ -88,7 +88,7 @@
  const head=cap(month(d0))+(month(d0)!==month(d30)?(es?' a ':' to ')+month(d30):'')+' '+d30.getFullYear();
  const wk=[...Array(7)].map((_,i)=>add(start,i).toLocaleDateString(loc,{weekday:'narrow'}));
  let cells='';for(let d=start;d<=end;d=add(d,1)){const n=Math.round((d-d0)/864e5);const inT=n>=0&&n<=29;const first=d.getDate()===1;
-  cells+='<span class="c'+(inT?' in':'')+(n===0?' d1':'')+(n===29?' d30':'')+'"><b>'+(first?d.toLocaleDateString(loc,{month:'short'}).replace('.','')+' ':'')+d.getDate()+'</b>'+(n===0?'<i>'+(es?'Día 1':'Day 1')+'</i>':n===29?'<i>'+(es?'Día 30':'Day 30')+'</i>':'')+'</span>'}
- cal.innerHTML='<p class="cal-h">'+head+'</p><div class="cal-g">'+wk.map(w=>'<span class="w">'+w+'</span>').join('')+cells+'</div>';
+  cells+='<span class="c'+(inT?' in':'')+(n===0?' d1':'')+(n===29?' d30':'')+'"><b>'+(first?'<span class="mo">'+d.toLocaleDateString(loc,{month:'short'}).replace('.','')+' </span>':'')+d.getDate()+'</b>'+(n===0?'<i>'+(es?'Día 1':'Day 1')+'</i>':n===29?'<i>'+(es?'Día 30':'Day 30')+'</i>':'')+'</span>'}
+ cal.innerHTML='<p class="cal-h">'+head+'</p><div class="cal-g">'+wk.map(w=>'<span class="w">'+w+'</span>').join('')+cells+'</div><p class="cal-key">'+(es?'El día 1 es hoy y el día 30 es el último día gratis.':'Day 1 is today. Day 30 is the last free day.')+'</p>';
  cal.setAttribute('aria-label',cal.getAttribute('aria-label')+': '+long(d0)+' – '+long(d30));cal.hidden=false;
 })();

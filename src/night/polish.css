@@ -162,17 +162,17 @@ body:has(#inquiry-sent:not([hidden])) .cform-hero{display:none}
 /* Tablets and small laptops (834–1199px): a panel with a visual stacks, copy first, then the visual centred and no wider
    than 560px, so the two never overlap. The home hero keeps its own two-track row (home.css). Phones keep their own order. */
 @media(min-width:834px) and (max-width:1199px){
- .hpanel:not(.live):has(>.hshot,>.hwin,>.rcard,>.hduo){display:flex;flex-direction:column;align-items:stretch;height:auto;min-height:0;padding:clamp(112px,13vw,144px) 0 clamp(96px,11vw,128px)}
- .hpanel:not(.live):has(>.hshot,>.hwin,>.rcard,>.hduo) .hcopy{position:relative;left:auto;right:auto;top:auto;bottom:auto;transform:none;max-width:640px;margin:0 var(--pad)}
- .hpanel:not(.live):has(>.hshot,>.hwin,>.rcard,>.hduo) .hshade{background:linear-gradient(180deg,rgba(0,0,0,.74) 0%,rgba(0,0,0,.5) 42%,rgba(0,0,0,.42) 70%,rgba(0,0,0,.66) 100%)}
- .hpanel:not(.live):has(>.hshot,>.hwin,>.rcard,>.hduo)>:is(.hshot,.hwin,.rcard,.hduo){position:relative;left:auto;right:auto;top:auto;transform:none;flex:none;margin:56px auto 0}
- .hpanel:not(.live):has(>.hshot,>.hwin,>.rcard,>.hduo)>.hshot{width:280px}
- .hpanel:not(.live):has(>.hshot,>.hwin,>.rcard,>.hduo)>:is(.hwin,.rcard){width:min(560px,calc(100% - var(--pad)*2))}
- .hpanel:not(.live):has(>.hshot,>.hwin,>.rcard,>.hduo)>.hduo{justify-content:center;width:min(560px,calc(100% - var(--pad)*2))}
- .hpanel:not(.live):has(>.hshot,>.hwin,>.rcard,>.hduo) .hduo .ph{width:calc(50% - 12px);max-width:220px}
- .hpanel:not(.live):has(>.hshot,>.hwin,>.rcard,>.hduo)>.hweb{display:none}
- .hpanel:not(.live):has(>.hshot,>.hwin,>.rcard,>.hduo)>.hshot.fade{transform:translateY(40px)}
- .hpanel:not(.live):has(>.hshot,>.hwin,>.rcard,>.hduo)>.hshot.fade.in,.no-js .hpanel:has(>.hshot)>.hshot.fade,.still .hpanel:has(>.hshot)>.hshot.fade{transform:none}
+ .hpanel:not(.live):not(.n-hero):has(>.hshot,>.hwin,>.rcard,>.hduo){display:flex;flex-direction:column;align-items:stretch;height:auto;min-height:0;padding:clamp(112px,13vw,144px) 0 clamp(96px,11vw,128px)}
+ .hpanel:not(.live):not(.n-hero):has(>.hshot,>.hwin,>.rcard,>.hduo) .hcopy{position:relative;left:auto;right:auto;top:auto;bottom:auto;transform:none;max-width:640px;margin:0 var(--pad)}
+ .hpanel:not(.live):not(.n-hero):has(>.hshot,>.hwin,>.rcard,>.hduo) .hshade{background:linear-gradient(180deg,rgba(0,0,0,.74) 0%,rgba(0,0,0,.5) 42%,rgba(0,0,0,.42) 70%,rgba(0,0,0,.66) 100%)}
+ .hpanel:not(.live):not(.n-hero):has(>.hshot,>.hwin,>.rcard,>.hduo)>:is(.hshot,.hwin,.rcard,.hduo){position:relative;left:auto;right:auto;top:auto;transform:none;flex:none;margin:56px auto 0}
+ .hpanel:not(.live):not(.n-hero):has(>.hshot,>.hwin,>.rcard,>.hduo)>.hshot{width:280px}
+ .hpanel:not(.live):not(.n-hero):has(>.hshot,>.hwin,>.rcard,>.hduo)>:is(.hwin,.rcard){width:min(560px,calc(100% - var(--pad)*2))}
+ .hpanel:not(.live):not(.n-hero):has(>.hshot,>.hwin,>.rcard,>.hduo)>.hduo{justify-content:center;width:min(560px,calc(100% - var(--pad)*2))}
+ .hpanel:not(.live):not(.n-hero):has(>.hshot,>.hwin,>.rcard,>.hduo) .hduo .ph{width:calc(50% - 12px);max-width:220px}
+ .hpanel:not(.live):not(.n-hero):has(>.hshot,>.hwin,>.rcard,>.hduo)>.hweb{display:none}
+ .hpanel:not(.live):not(.n-hero):has(>.hshot,>.hwin,>.rcard,>.hduo)>.hshot.fade{transform:translateY(40px)}
+ .hpanel:not(.live):not(.n-hero):has(>.hshot,>.hwin,>.rcard,>.hduo)>.hshot.fade.in,.no-js .hpanel:has(>.hshot)>.hshot.fade,.still .hpanel:has(>.hshot)>.hshot.fade{transform:none}
 }
 @media(min-width:834px) and (max-width:1199px) and (prefers-reduced-motion:reduce){.hpanel:not(.live):has(>.hshot)>.hshot.fade{transform:none}}
 /* Products, Websites: the laptop's own screen sits behind the copy, so a deeper shade on that side and a narrower column */
@@ -275,3 +275,9 @@ b.rmark,.hchat-h b.rmark,.rondo-kick .rmark,.ast-launch .rmark,.ast-head .rmark,
 @media(prefers-reduced-motion:reduce){.foot-acc summary .icon{transition:none}}
 /* Spanish header between 834 and 959px: the longest call to action ("Empieza un proyecto") still fits */
 @media(min-width:834px) and (max-width:959px){html[lang=es] .gnav-ddbtn.txt{padding:0 6px 0 8px;gap:4px}html[lang=es] .gnav-signin{padding:0 6px}html[lang=es] .gnav-in>.pill{padding-inline:12px}}
+/* Pre-launch inspection: reveals finish in about half a second, so long pages never feel slow */
+.js .fade,.hpanel .fade,.hpanel .rise{transition-duration:.5s}
+.rise .w>span{transition-duration:.55s;transition-delay:calc(var(--i,0)*30ms)}
+.hshot.fade{transition:opacity .5s var(--out),transform .6s var(--out)}
+.owner{transition-duration:.6s}
+@media(prefers-reduced-motion:reduce){.js .fade,.hpanel .fade,.hpanel .rise,.rise .w>span,.hshot.fade{transition:none}}

@@ -240,7 +240,7 @@ html:has(main > .hpanel){--anchor:56px}
 .hchat-h span{font-weight:500;color:var(--text);white-space:nowrap}
 .hchat-h i{margin-left:auto;font-style:normal;font-size:0.6875rem;letter-spacing:.06em;text-transform:uppercase;color:#e2a54a;display:flex;align-items:center;gap:6px;white-space:nowrap}
 .hchat-h i::before{content:"";width:6px;height:6px;border-radius:50%;background:#e2a54a}
-.msg{margin:0;max-width:86%;padding:9px 12px;border-radius:14px;opacity:0;transform:translateY(10px);animation:8s linear forwards;position:relative}
+.msg{margin:0;max-width:86%;padding:9px 12px;border-radius:14px;opacity:0;transform:translateY(10px);animation:5s linear forwards;position:relative}
 .msg.me{align-self:flex-end;background:#bbd8ff;color:#06121e;border-bottom-right-radius:4px}
 .msg.ai{align-self:flex-start;background:rgba(255,255,255,.1);color:#f4f6f9;border-bottom-left-radius:4px}
 /* while the assistant "types", the bubble is there with three dots and the text is still transparent */
@@ -662,7 +662,7 @@ body:has(#inquiry-sent:not([hidden])) :is(.signin-top,.client-side){display:none
 .cal-g .c b{font-weight:500;white-space:nowrap}
 .cal-g .c.in{background:var(--panel-2);color:var(--text)}
 .cal-g .c.d1,.cal-g .c.d30{background:#f0f0fa;color:#06121e}
-.cal-g .c i{font-style:normal;font-size:0.6875rem;font-weight:600;white-space:nowrap}
+.cal-g .c i{font-style:normal;font-size:0.75rem;font-weight:600;white-space:nowrap}
 .plans-shot .shot{margin:0}
 .shot-cap{margin:16px 0 0;font-size:0.875rem;line-height:1.5;color:var(--text-3)}
 .day-opts{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:clamp(40px,5vw,56px) 0 0}
@@ -672,7 +672,7 @@ body:has(#inquiry-sent:not([hidden])) :is(.signin-top,.client-side){display:none
 .day-opt p a{color:var(--text);text-decoration:underline;text-decoration-color:var(--line-2);text-underline-offset:3px}
 .day-acts{margin-top:32px}
 .day30{padding-bottom:var(--s2)}
-@media(max-width:1023px){.days-grid{display:flex;flex-direction:column;gap:0}.days-grid>div:first-child{display:contents}.days-grid .t2{order:0}.cal{order:1;margin-top:32px;width:100%;max-width:560px}.days-list{order:2;margin-top:40px}.days-fine{order:3}}
+@media(max-width:833px){.days-grid{display:flex;flex-direction:column;gap:0}.days-grid>div:first-child{display:contents}.days-grid .t2{order:0}.cal{order:1;margin-top:32px;width:100%;max-width:none}.days-list{order:2;margin-top:40px}.days-fine{order:3}}
 @media(max-width:833px){
  .days,.plans-shot,.day30{padding-top:72px}
  .day30{padding-bottom:72px}
@@ -700,7 +700,7 @@ body:has(#inquiry-sent:not([hidden])) :is(.signin-top,.client-side){display:none
 @media(max-width:400px){.contact-split .cform-hero .t1{font-size:2rem}}
 @media(max-width:359px){.contact-split .cform-hero .t1{font-size:1.75rem}}
 .contact-side .client-call{margin:56px 0 0;text-align:left;font-size:inherit;line-height:inherit;color:inherit}
-.contact-side .client-call a.client-tel{display:inline-block;min-height:0;color:var(--text);text-decoration:none}
+.contact-side .client-call a.client-tel{display:inline-flex;align-items:center;min-height:44px;color:var(--text);text-decoration:none}
 .contact-side .client-call a.client-tel:hover{color:var(--accent)}
 .inquiry-form .topics{grid-template-columns:repeat(3,minmax(0,1fr));margin:0 0 12px}
 .topics .kind b{font-size:1rem}
@@ -741,7 +741,59 @@ body:has(#inquiry-sent:not([hidden])) :is(.signin-top,.client-side){display:none
 .days-fine a:hover{text-decoration-color:currentColor}
 /* About hero on phones and tablets: a short panel with the page's side margins (short sets margin:0, dim.long sets a full screen) */
 @media(min-width:834px){.hpanel.about-hero .hcopy{margin-left:max(var(--pad),calc(50% - 620px))}}
-@media(max-width:833px){.hpanel.dim.long.about-hero{min-height:0;justify-content:flex-end;padding:120px 0 64px}.hpanel.dim.long.about-hero .hcopy{margin:0 var(--pad)}}
+/* Dim heroes on phones (About, Plans, Custom software): a short panel that ends after its actions, never a screen of dark;
+   the light in the photo is moved into view (its left edge is black) */
+@media(max-width:833px){.hpanel.dim.long{min-height:0;justify-content:flex-end;padding:132px 0 56px}.hpanel.dim.long .hcopy{margin:0 var(--pad)}.hpanel.dim.long .hph{object-position:72% 40%}}
+/* Pre-launch sweep: 44px touch targets for the phone link and the language switch on phones; legal headlines fit two lines at 320 */
+.client-tel{display:inline-flex;align-items:center;min-height:44px}
+@media(max-width:833px){.lang-sw a[href]{min-width:44px}}
+@media(max-width:359px){.phero .t1{font-size:2rem}}
+
+/* ---------- Pre-launch inspection (Nov 7) ---------- */
+/* Split pages (Sign in, Contact, Support): heading top left, form on the right, the phone block under the heading; one column below 1024 in reading order */
+.client-side{position:static}
+.client-grid{grid-template-rows:auto 1fr}
+.client-grid>.client-side,.client-grid>.contact-side{grid-column:1;grid-row:1}
+.client-grid>.client-form{grid-column:2;grid-row:1/3}
+.client-grid>.client-call{grid-column:1;grid-row:2;align-self:start;margin:56px 0 0;text-align:left;font-size:inherit;line-height:inherit;color:inherit}
+.client-grid>.client-call a.client-tel{display:inline-flex;align-items:center;min-height:44px;color:var(--text);text-decoration:none}
+.client-grid>.client-call a.client-tel:hover{color:var(--accent)}
+@media(max-width:1023px){
+ .client-grid,.contact-split .client-grid{display:flex;flex-direction:column;gap:0}
+ .client-grid>.client-side,.client-grid>.contact-side{display:block;margin-bottom:32px}
+ .client-grid .client-side .lede,.client-grid .contact-side .lede{margin-bottom:0}
+ .client-grid>.client-form,.client-grid>.client-call{order:0}
+ .client-grid .client-side .t2,.client-grid .contact-side .t1{max-width:none}
+}
+/* Fields in a row keep their own height when the neighbour shows an error */
+.inquiry-form .frow{align-items:start}
+/* Choices: a visible question; the chosen one is outlined in the accent, so it never competes with the white send button */
+.kinds-q{margin:0 0 10px;font-size:0.9375rem;color:var(--text-2)}
+.kind b{white-space:nowrap}
+.kind:has(input:checked){background:#14243a;border-color:var(--accent)}
+.kind:has(input:checked) b{color:var(--text)}
+@media(max-width:379px){.inquiry-form .kinds{grid-template-columns:1fr}}
+.ask-nevora .kinds-q.field-topic,.ask-relay .kinds-q.field-topic,.ask-relay .topics{display:none}
+/* Floating labels stay on one line */
+.ff label{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:calc(100% - 32px)}
+.ff.sel label{max-width:calc(100% - 60px)}
+/* Calendar: month names shrink away on phones and a key explains the two highlighted days */
+.cal-key{display:none;margin:16px 0 0;font-size:0.875rem;line-height:1.5;color:var(--text-2)}
+@media(max-width:1023px){.cal-g .c .mo,.cal-g .c i{display:none}.cal-key{display:block}}
+/* About: the statement in the hero reads as body copy, one step up; the Yavi phone fades out instead of being cut */
+.about-hero .hcopy p:not(.hkick){font-size:clamp(1.125rem,1.5vw,1.375rem)}
+.built-shot.is-phone img{-webkit-mask-image:linear-gradient(180deg,#000 70%,transparent);mask-image:linear-gradient(180deg,#000 70%,transparent)}
+/* Custom software: both Tool Box screenshots one height, the Yavi phones without an empty band, the case studies closer together */
+@media(min-width:834px){.case-shots.two{grid-template-columns:1fr 1fr;align-items:start}}
+.case-shots.two .shot{aspect-ratio:16/10}
+.case-shots.two .shot img{width:100%;height:100%;object-fit:cover;object-position:top}
+.case-phones .shot.phone{aspect-ratio:780/1688}
+.case-phones .shot.phone img{height:100%;object-fit:cover;object-position:top}
+.chap.case{padding-top:var(--s2)}
+.case-split{align-items:start}
+/* The zoom button's focus ring sits inside the rounded frame */
+.zoom-btn:focus-visible{outline-offset:-4px}
+@media(max-width:359px){html[lang=es] .hpanel h2{font-size:2rem}}
 
 /* Try the time clock: a working copy of the NEVORA PIN screen. Light surface, like the real tablet. */
 .kio-note{display:inline-flex;flex-wrap:wrap;gap:4px 6px;margin-top:var(--s1);padding:10px 16px;border-radius:var(--r);background:var(--panel);box-shadow:0 0 0 1px var(--line);font-size:0.875rem;line-height:1.4;color:var(--text-2)}
@@ -1054,17 +1106,17 @@ body:has(#inquiry-sent:not([hidden])) .cform-hero{display:none}
 /* Tablets and small laptops (834–1199px): a panel with a visual stacks, copy first, then the visual centred and no wider
    than 560px, so the two never overlap. The home hero keeps its own two-track row (home.css). Phones keep their own order. */
 @media(min-width:834px) and (max-width:1199px){
- .hpanel:not(.live):has(>.hshot,>.hwin,>.rcard,>.hduo){display:flex;flex-direction:column;align-items:stretch;height:auto;min-height:0;padding:clamp(112px,13vw,144px) 0 clamp(96px,11vw,128px)}
- .hpanel:not(.live):has(>.hshot,>.hwin,>.rcard,>.hduo) .hcopy{position:relative;left:auto;right:auto;top:auto;bottom:auto;transform:none;max-width:640px;margin:0 var(--pad)}
- .hpanel:not(.live):has(>.hshot,>.hwin,>.rcard,>.hduo) .hshade{background:linear-gradient(180deg,rgba(0,0,0,.74) 0%,rgba(0,0,0,.5) 42%,rgba(0,0,0,.42) 70%,rgba(0,0,0,.66) 100%)}
- .hpanel:not(.live):has(>.hshot,>.hwin,>.rcard,>.hduo)>:is(.hshot,.hwin,.rcard,.hduo){position:relative;left:auto;right:auto;top:auto;transform:none;flex:none;margin:56px auto 0}
- .hpanel:not(.live):has(>.hshot,>.hwin,>.rcard,>.hduo)>.hshot{width:280px}
- .hpanel:not(.live):has(>.hshot,>.hwin,>.rcard,>.hduo)>:is(.hwin,.rcard){width:min(560px,calc(100% - var(--pad)*2))}
- .hpanel:not(.live):has(>.hshot,>.hwin,>.rcard,>.hduo)>.hduo{justify-content:center;width:min(560px,calc(100% - var(--pad)*2))}
- .hpanel:not(.live):has(>.hshot,>.hwin,>.rcard,>.hduo) .hduo .ph{width:calc(50% - 12px);max-width:220px}
- .hpanel:not(.live):has(>.hshot,>.hwin,>.rcard,>.hduo)>.hweb{display:none}
- .hpanel:not(.live):has(>.hshot,>.hwin,>.rcard,>.hduo)>.hshot.fade{transform:translateY(40px)}
- .hpanel:not(.live):has(>.hshot,>.hwin,>.rcard,>.hduo)>.hshot.fade.in,.no-js .hpanel:has(>.hshot)>.hshot.fade,.still .hpanel:has(>.hshot)>.hshot.fade{transform:none}
+ .hpanel:not(.live):not(.n-hero):has(>.hshot,>.hwin,>.rcard,>.hduo){display:flex;flex-direction:column;align-items:stretch;height:auto;min-height:0;padding:clamp(112px,13vw,144px) 0 clamp(96px,11vw,128px)}
+ .hpanel:not(.live):not(.n-hero):has(>.hshot,>.hwin,>.rcard,>.hduo) .hcopy{position:relative;left:auto;right:auto;top:auto;bottom:auto;transform:none;max-width:640px;margin:0 var(--pad)}
+ .hpanel:not(.live):not(.n-hero):has(>.hshot,>.hwin,>.rcard,>.hduo) .hshade{background:linear-gradient(180deg,rgba(0,0,0,.74) 0%,rgba(0,0,0,.5) 42%,rgba(0,0,0,.42) 70%,rgba(0,0,0,.66) 100%)}
+ .hpanel:not(.live):not(.n-hero):has(>.hshot,>.hwin,>.rcard,>.hduo)>:is(.hshot,.hwin,.rcard,.hduo){position:relative;left:auto;right:auto;top:auto;transform:none;flex:none;margin:56px auto 0}
+ .hpanel:not(.live):not(.n-hero):has(>.hshot,>.hwin,>.rcard,>.hduo)>.hshot{width:280px}
+ .hpanel:not(.live):not(.n-hero):has(>.hshot,>.hwin,>.rcard,>.hduo)>:is(.hwin,.rcard){width:min(560px,calc(100% - var(--pad)*2))}
+ .hpanel:not(.live):not(.n-hero):has(>.hshot,>.hwin,>.rcard,>.hduo)>.hduo{justify-content:center;width:min(560px,calc(100% - var(--pad)*2))}
+ .hpanel:not(.live):not(.n-hero):has(>.hshot,>.hwin,>.rcard,>.hduo) .hduo .ph{width:calc(50% - 12px);max-width:220px}
+ .hpanel:not(.live):not(.n-hero):has(>.hshot,>.hwin,>.rcard,>.hduo)>.hweb{display:none}
+ .hpanel:not(.live):not(.n-hero):has(>.hshot,>.hwin,>.rcard,>.hduo)>.hshot.fade{transform:translateY(40px)}
+ .hpanel:not(.live):not(.n-hero):has(>.hshot,>.hwin,>.rcard,>.hduo)>.hshot.fade.in,.no-js .hpanel:has(>.hshot)>.hshot.fade,.still .hpanel:has(>.hshot)>.hshot.fade{transform:none}
 }
 @media(min-width:834px) and (max-width:1199px) and (prefers-reduced-motion:reduce){.hpanel:not(.live):has(>.hshot)>.hshot.fade{transform:none}}
 /* Products, Websites: the laptop's own screen sits behind the copy, so a deeper shade on that side and a narrower column */
@@ -1167,3 +1219,9 @@ b.rmark,.hchat-h b.rmark,.rondo-kick .rmark,.ast-launch .rmark,.ast-head .rmark,
 @media(prefers-reduced-motion:reduce){.foot-acc summary .icon{transition:none}}
 /* Spanish header between 834 and 959px: the longest call to action ("Empieza un proyecto") still fits */
 @media(min-width:834px) and (max-width:959px){html[lang=es] .gnav-ddbtn.txt{padding:0 6px 0 8px;gap:4px}html[lang=es] .gnav-signin{padding:0 6px}html[lang=es] .gnav-in>.pill{padding-inline:12px}}
+/* Pre-launch inspection: reveals finish in about half a second, so long pages never feel slow */
+.js .fade,.hpanel .fade,.hpanel .rise{transition-duration:.5s}
+.rise .w>span{transition-duration:.55s;transition-delay:calc(var(--i,0)*30ms)}
+.hshot.fade{transition:opacity .5s var(--out),transform .6s var(--out)}
+.owner{transition-duration:.6s}
+@media(prefers-reduced-motion:reduce){.js .fade,.hpanel .fade,.hpanel .rise,.rise .w>span,.hshot.fade{transition:none}}

@@ -240,7 +240,7 @@ html:has(main > .hpanel){--anchor:56px}
 .hchat-h span{font-weight:500;color:var(--text);white-space:nowrap}
 .hchat-h i{margin-left:auto;font-style:normal;font-size:0.6875rem;letter-spacing:.06em;text-transform:uppercase;color:#e2a54a;display:flex;align-items:center;gap:6px;white-space:nowrap}
 .hchat-h i::before{content:"";width:6px;height:6px;border-radius:50%;background:#e2a54a}
-.msg{margin:0;max-width:86%;padding:9px 12px;border-radius:14px;opacity:0;transform:translateY(10px);animation:8s linear forwards;position:relative}
+.msg{margin:0;max-width:86%;padding:9px 12px;border-radius:14px;opacity:0;transform:translateY(10px);animation:5s linear forwards;position:relative}
 .msg.me{align-self:flex-end;background:#bbd8ff;color:#06121e;border-bottom-right-radius:4px}
 .msg.ai{align-self:flex-start;background:rgba(255,255,255,.1);color:#f4f6f9;border-bottom-left-radius:4px}
 /* while the assistant "types", the bubble is there with three dots and the text is still transparent */

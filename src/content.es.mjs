@@ -30,7 +30,7 @@ export const ES_ROUTES = {
   '/pages/es': es('/', {
     kind: 'home', title: 'Más luz para tu trabajo.', eyebrow: 'Velani',
     name: 'Velani · Software, sitios web y apps a la medida para tu negocio',
-    intro: 'Creamos sitios web, apps de reservas, tiendas en línea y herramientas de negocio, y NEVORA: horarios, registro de tiempo y nómina para equipos por turnos.',
+    intro: 'Creamos sitios web, apps de reservas, tiendas en línea y herramientas de negocio, y NEVORA: horarios, registro de tiempo y cálculo de nómina por turnos.',
     og: ['velani-social.png', 'Velani. Más luz para tu trabajo.'],
   }),
   '/pages/es-nevora': es('/pages/nevora', {
@@ -54,7 +54,7 @@ export const ES_ROUTES = {
   }),
   '/pages/es-contacto': es('/pages/contact', {
     kind: 'contact', nav: 'contact', eyebrow: 'Contacto', title: 'Cuéntanos qué necesitas.', name: 'Contacto',
-    intro: 'Cuéntanos qué necesita funcionar mejor y quién lo usará. Procuramos responderte por correo en un plazo de dos días laborables.',
+    intro: 'Cuéntanos qué necesita funcionar mejor y quién lo usará. Te respondemos por correo en un plazo de dos días laborables.',
     og: ['velani-social.png', 'Velani. Escríbenos sobre tu proyecto o sobre NEVORA.'],
   }),
 };
@@ -71,7 +71,7 @@ ES_ROUTES['/pages/es-ayuda'] = es('/pages/help', {
   title: 'Aquí para ayudarte.',
   intro: 'Soporte al cliente, respuestas sobre nuestro trabajo y ayuda para quienes usan NEVORA.',
   sections: [
-    { heading: '¿Cómo obtiene NEVORA mi negocio?', text: 'NEVORA se ofrece a los negocios por cotización, con una prueba gratis de 30 días para equipos de hasta 30 empleados. Después de la prueba hay un solo precio por negocio, cotizado según tu número de empleados, tu negocio y las funciones que uses. Pide una cotización o una prueba y hablamos de lo que necesita tu equipo. Los empleados reciben su cuenta de su lugar de trabajo, no de este sitio web.' },
+    { heading: '¿Cómo consigue mi negocio NEVORA?', text: 'NEVORA se ofrece a los negocios por cotización, con una prueba gratis de 30 días para equipos de hasta 30 empleados. Después de la prueba hay un solo precio por negocio, cotizado según tu número de empleados, tu negocio y las funciones que uses. Pide una cotización o una prueba y hablamos de lo que necesita tu equipo. Los empleados reciben su cuenta de su lugar de trabajo, no de este sitio web.' },
     { heading: '¿Velani desarrolla software a la medida?', text: 'Sí. Describe en la página de contacto la aplicación, el proceso interno o la integración que necesitas.' },
     { heading: '¿Me pueden dar un precio o una fecha de entrega aquí?', text: 'No en el sitio web. Le ponemos precio a un proyecto cuando acordamos su alcance, y dejamos los honorarios, los hitos y las fechas de entrega en el acuerdo de proyecto por escrito.' },
     { heading: '¿Una consulta inicia un contrato?', text: 'No. Una consulta inicia una conversación. No compra un producto ni da inicio a trabajo pagado.' },
@@ -108,17 +108,17 @@ export const WORK_ES = {
 };
 
 /** The About and Support pages below their heroes. */
-export const ABOUT_ES = { h1: 'Software para pequeños negocios.', text: 'Empezamos Velani en 2026 para darles a los pequeños negocios software de primera calidad a precios que puedan pagar.', project: 'Empieza un proyecto', see: 'Ver NEVORA',
+export const ABOUT_ES = { h1: 'Software para pequeños negocios.', text: 'Empezamos Velani en 2026 para darles a los pequeños negocios software de primera calidad a precios que puedan pagar.', project: 'Empieza un proyecto', see: 'Mira NEVORA',
   builtT: 'Lo que hemos creado',
-  built: [['NEVORA', 'Horarios, registro de tiempo y cálculo de nómina para equipos por turnos. Nuestro propio producto, lanzado en 2026.', 'Ver NEVORA', '/pages/nevora', 'night-r1-owner.webp', 'NEVORA en la web para un dueño: un asunto que necesita respuesta, cinco de cinco con entrada marcada, el próximo día de pago y las horas de esta semana', false],
-    ['Tool Box LLC', 'Un sitio web de alquiler de equipos con tienda en línea, creado en 2026.', 'Ver el proyecto', '/pages/custom-development#web-applications', 'night-tb-home.webp', 'El sitio web de Tool Box LLC, creado por Velani: alquiler de equipos con entrega en la obra y fechas', false],
-    ['Yavi Barber', 'Una app de reservas y recompensas, creada en 2026.', 'Ver el proyecto', '/pages/custom-development#booking', 'night-yavi-book.webp', 'Reservas de Yavi Barber en un teléfono: los próximos horarios disponibles y los servicios con precios', true]],
+  built: [['NEVORA', 'Horarios, registro de tiempo y cálculo de nómina para equipos por turnos. Nuestro propio producto, lanzado en 2026.', 'Mira NEVORA', '/pages/nevora', 'night-r1-owner.webp', 'NEVORA en la web para un dueño: un asunto que necesita respuesta, cinco de cinco con entrada marcada, el próximo día de pago y las horas de esta semana', false],
+    ['Tool Box LLC', 'Un sitio web de alquiler de equipos con tienda en línea, creado en 2026.', 'Mira el proyecto', '/pages/custom-development#web-applications', 'night-tb-home.webp', 'El sitio web de Tool Box LLC, creado por Velani: alquiler de equipos con entrega en la obra y fechas', false],
+    ['Yavi Barber', 'Una app de reservas y recompensas, creada en 2026.', 'Mira el proyecto', '/pages/custom-development#booking', 'night-yavi-book.webp', 'Reservas de Yavi Barber en un teléfono: los próximos horarios disponibles y los servicios con precios', true]],
   coT: 'La empresa', callK: '¿Prefieres hablar? Llámanos.',
   facts: [['Fundada en 2026', 'Velani es una marca de VELANI LLC.'], ['Inglés y español', 'Trabajamos, escribimos y creamos en los dos idiomas.'], ['Respuesta en dos días laborables', 'El soporte al cliente atiende de ' + HOURS_ES + '.']] };
 export const FAQ_ES = {
   h1: 'Pide ayuda a Velani.', text: 'Preguntas sobre un sitio web o una app que creamos, sobre NEVORA o sobre cómo trabajamos. Te respondemos por correo en un plazo de dos días laborables.',
-  callK: 'Si no pueden trabajar, llámanos.',
-  doors: [['Un sitio web o una app que creamos', 'Algo dejó de funcionar o necesitas un cambio.', 'Pedir ayuda', '/pages/sign-in?interest=client-help#client', true], ['NEVORA', 'Cómo entrar, tu cuenta, tus datos y cómo eliminar tu cuenta.', 'Soporte de NEVORA (en inglés)', '/pages/nevora-support', false]],
+  callK: 'Si tu equipo no puede trabajar, llámanos.',
+  doors: [['Un sitio web o una app que creamos', 'Algo dejó de funcionar o necesitas un cambio.', 'Pide ayuda', '/pages/sign-in?interest=client-help#client', true], ['NEVORA', 'Cómo entrar, tu cuenta, tus datos y cómo eliminar tu cuenta. La página está en inglés.', 'Soporte de NEVORA', '/pages/nevora-support', false]],
   doorsLabel: 'Formas de recibir ayuda', qT: 'Preguntas', contactPage: 'Página de contacto',
 };
 
@@ -132,7 +132,7 @@ export const CHROME_ES = {
   productsList: [
     ['NEVORA Workforce', '/pages/nevora', 'Horarios, registro de tiempo y cálculo de nómina'],
     ['Rondo en NEVORA<span class="nav-soon">En desarrollo</span>', '/pages/nevora#rondo', 'El asistente de IA que llega a NEVORA'],
-    ['NEVORA Relay<span class="nav-soon">Próximamente</span>', '/pages/nevora#relay', 'Pedidos, pantalla de cocina e inventario'],
+    ['NEVORA Relay<span class="nav-soon">En diseño</span>', '/pages/nevora#relay', 'Pedidos, pantalla de cocina e inventario'],
   ],
   nav: [['Sitios web', '/pages/custom-development#web-applications', 'websites'], ['Apps a la medida', '/pages/custom-development', 'services'], ['Planes', '/pages/plans', 'plans'], ['Soporte', '/pages/help', 'help'], ['Nosotros', '/pages/about', 'about']],
   groups: [
@@ -169,11 +169,11 @@ export const SIGNIN_ES = {
   appFact: '¿No puedes entrar? Pídele a tu gerente que te reenvíe la invitación.',
   webAlt: 'NEVORA en la web para un dueño: un asunto que necesita respuesta, cinco de cinco con entrada marcada y el próximo día de pago', phoneAlt: 'NEVORA en el teléfono de una empleada: su turno de hoy y sus próximos turnos',
   clientT: '¿Necesitas algo en tu sitio o tu app?', clientText: 'Pídenos una página nueva, una función o un cambio, o cuéntanos qué dejó de funcionar. Respondemos por correo en un plazo de dos días laborables.',
-  callK: 'Si no pueden trabajar, llámanos.',
-  need: '¿Qué necesitas?', kinds: [['Trabajo nuevo', 'Una página nueva, una función o un cambio.'], ['Ayuda', 'Algo de tu sitio o tu app dejó de funcionar.']],
+  callK: 'Si tu equipo no puede trabajar, llámanos.',
+  need: 'Tipo de solicitud', kinds: [['Trabajo nuevo', 'Una página nueva, una función o un cambio.'], ['Ayuda', 'Algo de tu sitio o tu app dejó de funcionar.']],
   business: 'Negocio', message: ['¿Qué necesitas?', '¿Qué pasó?'],
-  timing: ['¿Para cuándo lo necesitas?', [['No rush', 'Sin prisa'], ['This month', 'Este mes'], ['This week', 'Esta semana']]],
-  urgency: ['¿Qué tan urgente es?', [['It can wait', 'Puede esperar'], ["It's slowing us down", 'Nos está atrasando'], ["We can't work", 'No podemos trabajar']]],
+  timing: ['Plazo', [['No rush', 'Sin prisa'], ['This month', 'Este mes'], ['This week', 'Esta semana']]],
+  urgency: ['Urgencia', [['It can wait', 'Puede esperar'], ["It's slowing us down", 'Nos está atrasando'], ["We can't work", 'No podemos trabajar']]],
   send: ['Enviar solicitud', 'Enviar a soporte'], check: 'Revisar el borrador', note: 'No envíes contraseñas ni datos de pago.',
   preview: 'Vista previa. Este formulario revisa tu borrador y no envía nada.',
   writeT: 'Escríbenos', writeText: 'Cuéntanos qué necesitas o qué pasó, y de qué sitio web o app se trata. Respondemos desde ',
@@ -182,7 +182,7 @@ export const CONTACT_ES = {
   kicker: ['NEVORA para tu equipo', 'Prueba gratis de NEVORA por 30 días', 'NEVORA Relay'],
   h1: ['Pide una cotización de NEVORA.', 'Pide tu prueba gratis de NEVORA.', 'Únete a la lista de NEVORA Relay.'],
   fact: ['Un sitio web, una app, NEVORA u otra cosa. Te respondemos por correo en un plazo de dos días laborables.', 'Un solo precio por negocio, cotizado según tu número de empleados, tu negocio y las funciones que uses. Sin compromiso.', 'Gratis por 30 días para equipos de hasta 30 personas. No necesitas tarjeta.', 'NEVORA Relay está en diseño y aún no tiene fechas. Te escribiremos cuando abra el acceso anticipado.'],
-  callK: '¿Prefieres hablar? Llámanos.', preview: 'Vista previa. Este formulario revisa tu borrador y no envía nada.',
+  callK: '¿Prefieres hablar? Llámanos.', topicQ: '¿Sobre qué es?', preview: 'Vista previa. Este formulario revisa tu borrador y no envía nada.',
   tiles: [['custom-software', 'Web o app'], ['nevora', 'NEVORA'], ['other', 'Otra cosa']],
   previewNote: 'Vista previa del sitio web&nbsp;· revisa tu borrador, no envía nada',
   noscript: 'El formulario de vista previa necesita JavaScript. Desde esta vista previa no se envían mensajes.',
@@ -191,11 +191,11 @@ export const CONTACT_ES = {
   topic: 'Tema', topics: [['website', 'Sitio web'], ['custom-software', 'App a la medida'], ['nevora', 'Cotización de NEVORA'], ['nevora-demo', 'Prueba gratis de NEVORA'], ['relay', 'Lista de espera de NEVORA Relay'], ['other', 'Otra cosa']],
   team: 'Tamaño del equipo', bigTeam: 'Más de 30 (por cotización)', locations: 'Número de ubicaciones',
   message: 'Qué necesita funcionar mejor', messageOptional: 'Algo más',
-  send: ['Enviar consulta', 'Pedir una cotización', 'Enviar solicitud de prueba'], check: 'Revisar el borrador',
+  send: ['Enviar consulta', 'Pedir una cotización', 'Enviar solicitud de prueba', 'Unirme a la lista'], check: 'Revisar el borrador',
   sendNote: 'No envíes contraseñas ni datos de pago.', privacy: 'Aviso de privacidad ' + IN_ENGLISH,
   fine: 'El día 30 continúas por cotización o cierras el espacio de trabajo. Primero, exporta tus datos: un espacio de trabajo cerrado y sus datos se eliminan en un plazo de 3&nbsp;días, incluidas las tarjetas de tiempo y los comprobantes de nómina. Para cerrarlo, escribe a support@thevelani.com. NEVORA calcula los comprobantes de nómina; no les paga a los empleados ni presenta impuestos de nómina.',
   sentPreview: 'Vista previa del sitio web&nbsp;· esto es lo que ven los visitantes después de enviar. No se envió nada.',
-  sentH: 'Mensaje enviado.', sentP: 'Gracias por escribirnos. Procuramos responderte por correo en un plazo de dos días laborables.',
+  sentH: 'Mensaje enviado.', sentP: 'Gracias por escribirnos. Te respondemos por correo en un plazo de dos días laborables.',
   sentFrom: ['Las respuestas llegan desde ', '. Si no ves nuestra respuesta en tu bandeja de entrada, revisa la carpeta de spam o de correo no deseado.'], back: 'Volver al inicio',
   writeTitle: 'Escríbenos', writeText: 'Qué necesita funcionar mejor, quién lo usará y cómo funciona hoy. Te respondemos desde ', writeButton: 'Escribe a ', noSensitive: 'No envíes contraseñas, datos de pago ni registros confidenciales por correo.',
 };

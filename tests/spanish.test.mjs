@@ -115,11 +115,11 @@ test('hreflang pairs are reciprocal, absolute and default to English on the main
   // Pages with no Spanish version name no alternates
   assert.deepEqual(alternates(await page('main', '/pages/legal')), {});
 });
-test('the main-theme layout renders Spanish pages in Spanish with es_PR metadata and the Spanish chrome', async () => {
+test('the main-theme layout renders Spanish pages in Spanish with es_US metadata and the Spanish chrome', async () => {
   const html = await page('main', '/pages/es-nevora');
   assert.match(html, /^<!doctype html><html lang="es"/);
   assert.match(html, /<title>NEVORA · Horarios, registro de tiempo y nómina · Velani<\/title>/);
-  assert.match(html, /<meta property="og:locale" content="es_PR"><meta property="og:locale:alternate" content="en_US">/);
+  assert.match(html, /<meta property="og:locale" content="es_US"><meta property="og:locale:alternate" content="en_US">/);
   assert.match(html, /<link rel="canonical" href="https:\/\/www\.thevelani\.com\/pages\/es-nevora">/);
   assert.match(html, /<a class="skip" href="#main">Saltar al contenido<\/a>/);
   assert.match(html, /<header class="gnav static" id="gnav">/);
@@ -130,7 +130,7 @@ test('the main-theme layout renders Spanish pages in Spanish with es_PR metadata
   assert.match(html, /Opciones de cookies/);
   const en = await page('main', '/pages/nevora');
   assert.match(en, /^<!doctype html><html lang="en"/);
-  assert.match(en, /<meta property="og:locale" content="en_US"><meta property="og:locale:alternate" content="es_PR">/);
+  assert.match(en, /<meta property="og:locale" content="en_US"><meta property="og:locale:alternate" content="es_US">/);
   assert.match(en, /<a href="\/pages\/es-nevora" hreflang="es" lang="es" aria-label="Español">ES<\/a>/);
   // The switch keeps the visitor's place: About goes to Nosotros; an English-only page goes to its closest Spanish page
   const about = await page('main', '/pages/about');

@@ -45,5 +45,8 @@
 @media(min-width:1181px){
  #nevora .hweb{right:max(var(--pad),calc(50% - 620px));width:min(600px,42vw)}
  #nevora .hshot{right:calc(max(var(--pad),calc(50% - 620px)) + min(600px,42vw) - 96px);width:240px;top:56%}
- #nevora .hcopy{max-width:min(500px,calc(100% - var(--pad)*2 - min(600px,42vw) - 200px))}
+ #nevora .hcopy{max-width:min(440px,calc(100% - var(--pad)*2 - min(600px,42vw) - 200px))}
 }
+
+/* Spanish panel titles are longer: a wider copy column keeps them to two lines */
+@media(min-width:834px){html[lang=es] #websites .hcopy,html[lang=es] #apps .hcopy{max-width:560px}}

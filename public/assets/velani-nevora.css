@@ -39,7 +39,7 @@
  .lnav ul a{display:flex;min-height:48px;font-size:0.875rem;padding:0;color:var(--text);border-bottom:1px solid var(--line)}
  .lnav ul a[aria-current]{color:var(--accent)}
  .lnav .lnav-by{display:flex;flex-direction:row;flex-wrap:wrap;gap:0 20px;margin-top:12px}
- .lnav .lnav-by span{width:100%;padding-bottom:4px;font-size:0.6875rem;letter-spacing:.12em;text-transform:uppercase;color:var(--text-3)}
+ .lnav .lnav-by>span:first-child{width:100%;padding-bottom:4px;font-size:0.6875rem;letter-spacing:.12em;text-transform:uppercase;color:var(--text-3)}
  .lnav .lnav-by a{min-height:40px;font-size:0.75rem;color:var(--text-2);border-bottom:0}
 }
 /* The NEVORA page carries its own demo action in the local nav */
@@ -53,7 +53,7 @@
 .n-hero .hkick.status{display:flex;align-items:baseline;gap:8px;font-size:0.75rem;color:var(--label)}
 .n-hero .hkick.status i{margin:.35em 0 0!important}
 .n-hero .hcopy{max-width:640px}
-@media(min-width:834px) and (max-width:1023px){.n-hero .hcopy{max-width:calc(100% - 340px)}.n-hero .hshot{width:260px}}
+@media(min-width:834px) and (max-width:1279px){.n-hero .hcopy{max-width:calc(100% - var(--pad) - max(var(--pad),50% - 500px) - 316px)}.n-hero .hshot{width:260px}}
 @media(min-width:960px) and (max-width:1023px){.lnav ul a{padding:0 8px}}
 .js .n-hero .fade{transition-delay:.25s}
 @media(max-width:959px){.n-hero{margin-top:-60px}}
@@ -167,7 +167,7 @@
 .rondo-grid{position:relative;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:clamp(40px,6vw,96px);align-items:center}
 .rondo-kick{display:flex;align-items:center;gap:10px}
 .rondo-mark{width:24px;height:24px;flex:none;border-radius:7px;display:grid;place-items:center;background:#0d1620;color:#bbd8ff;font-size:0.75rem;font-weight:600;letter-spacing:0;box-shadow:0 0 0 1px rgba(255,255,255,.14)}
-.rondo .t1{max-width:13ch}
+.rondo .t1{max-width:none}
 .rondo .lede{margin-top:20px;max-width:32em}
 .rondo-can{list-style:none;margin:var(--s1) 0 0;padding:0;display:grid;align-items:start;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px clamp(24px,3vw,40px)}
 .rondo-can li{display:grid;grid-template-columns:24px minmax(0,1fr);column-gap:14px;row-gap:4px;align-items:start}
@@ -247,3 +247,17 @@
 }
 @media(max-width:833px) and (prefers-reduced-motion:reduce){.lnav .pill{transition:none}}
 @media(max-width:359px){.n-hero.hpanel.long h1{font-size:1.875rem}}
+
+/* Pre-launch inspection (Nov 7) */
+/* One filled "Request free trial" per screen: the nav pill waits until the hero's own button has scrolled away, at every width */
+.js .lnav:not(.past-hero) .pill{opacity:0;visibility:hidden;pointer-events:none}
+.lnav .pill{transition:opacity .25s var(--out),visibility 0s linear .25s}.lnav.past-hero .pill{transition-delay:0s}
+@media(prefers-reduced-motion:reduce){.lnav .pill{transition:none}}
+/* The hero dissolves into the page instead of ending on a hard edge */
+.n-hero::after{content:"";position:absolute;left:0;right:0;bottom:0;height:140px;background:linear-gradient(180deg,rgba(0,0,0,0),#000);pointer-events:none;z-index:1}
+/* The walkthrough phone stays pinned until the last step is centred */
+@media(min-width:1024px){.story .st:last-child{min-height:60svh}}
+#get .fine{max-width:44em}
+/* Phone crop of the owner screen keeps whole words */
+@media(max-width:600px){.owner img{width:180%;transform:translate(-17%,-8%)}}
+@media(min-width:834px) and (max-width:1023px){.n-hero.hpanel.long h1{font-size:2.5rem;line-height:1.06}}
