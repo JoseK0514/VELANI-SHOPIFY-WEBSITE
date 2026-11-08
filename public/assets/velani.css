@@ -694,7 +694,6 @@ body:has(#inquiry-sent:not([hidden])) :is(.signin-top,.client-side){display:none
 .contact-split .fine{margin:20px 0 0;max-width:42em;text-align:left}
 .contact-split .form-status{text-align:left}
 .client-send .send-note{margin:0;text-align:left}
-.frow-ct{grid-template-columns:1fr}
 .sent .note{font-size:0.875rem;font-weight:400;letter-spacing:0;text-transform:none}
 @media(max-width:1023px){.contact-split .client-grid{grid-template-columns:1fr;gap:40px}.contact-split .cform-hero .t1{max-width:16ch}}
 @media(max-width:833px){.contact-split{padding:48px 0 72px}.contact-split .cform-hero .t1{font-size:2.375rem;max-width:none}}
@@ -703,6 +702,12 @@ body:has(#inquiry-sent:not([hidden])) :is(.signin-top,.client-side){display:none
 .contact-side .client-call{margin:56px 0 0;text-align:left;font-size:inherit;line-height:inherit;color:inherit}
 .contact-side .client-call a.client-tel{display:inline-block;min-height:0;color:var(--text);text-decoration:none}
 .contact-side .client-call a.client-tel:hover{color:var(--accent)}
+.inquiry-form .topics{grid-template-columns:repeat(3,minmax(0,1fr));margin:0 0 12px}
+.topics .kind b{font-size:1rem}
+.ask-nevora .topics{display:none}
+@media(max-width:600px){.topics .kind{padding:0 12px}.topics .kind b{font-size:0.9375rem;line-height:1.2}}
+@media(max-width:833px){.contact-split .client-grid{gap:0}.contact-split .cform-hero .lede{margin-bottom:32px}}
+@media(max-width:379px){.inquiry-form .topics{grid-template-columns:1fr}}
 
 /* Try the time clock: a working copy of the NEVORA PIN screen. Light surface, like the real tablet. */
 .kio-note{display:inline-flex;flex-wrap:wrap;gap:4px 6px;margin-top:var(--s1);padding:10px 16px;border-radius:var(--r);background:var(--panel);box-shadow:0 0 0 1px var(--line);font-size:0.875rem;line-height:1.4;color:var(--text-2)}

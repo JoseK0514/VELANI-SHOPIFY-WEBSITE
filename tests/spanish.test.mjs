@@ -61,12 +61,13 @@ test('no English UI is left in the Spanish header, phone menu, footer, cookie di
   const form = between(contact, '<div class="cform-hero contact-side">', '<div class="client-form">') + between(contact, '<form id="project-inquiry"', '</form>') + between(contact, '<div class="sent"', '</div>');
   const hit = text(form).match(DENY);
   assert.equal(hit, null, 'contact form: ' + (hit && hit[0]));
-  assert.match(contact, /<option value="nevora-demo">Prueba gratis de NEVORA<\/option>/);
+  assert.match(contact, /<input type="radio" name="topic_choice" value="custom-software"><b>Web o app<\/b>/);
 });
 test('the Spanish contact form sends the same topic values and team size as the English one', () => {
-  const values = html => [...between(html, '<select id="inquiry-interest"', '</select>').matchAll(/value="([^"]*)"/g)].map(m => m[1]);
+  const values = html => [...between(html, '<fieldset class="kinds topics field-topic">', '</fieldset>').matchAll(/value="([^"]*)"/g)].map(m => m[1]);
   assert.deepEqual(values(renderPage('/pages/es-contacto').html), values(renderPage('/pages/contact').html));
-  assert.deepEqual(values(renderPage('/pages/es-contacto').html), ['', 'website', 'custom-software', 'nevora', 'nevora-demo', 'relay', 'other']);
+  assert.deepEqual(values(renderPage('/pages/es-contacto').html), ['custom-software', 'nevora', 'other']);
+  assert.match(renderPage('/pages/es-contacto').html, /<input type="hidden" id="inquiry-interest" name="contact\[interest\]" value="">/);
   assert.match(renderPage('/pages/es-contacto').html, /<option value="More than 30 \(by quote\)">Más de 30 \(por cotización\)<\/option>/);
   const live = renderBody('/pages/es-contacto', { target: 'shopify' });
   assert.match(live, /\{% form 'contact', id: 'project-inquiry'/);

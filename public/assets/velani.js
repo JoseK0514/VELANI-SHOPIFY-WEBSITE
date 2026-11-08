@@ -49,6 +49,12 @@ if (form && !justSent) {
   const fields = Object.fromEntries(['name', 'email', 'company', 'message', 'interest', 'locations', 'team'].map(key => [key, form.querySelector('#inquiry-' + key)]));
   const topic = new URL(window.location.href).searchParams.get('interest');
   if (['website', 'custom-software', 'nevora', 'nevora-demo', 'relay', 'other', 'client-work', 'client-help'].includes(topic)) fields.interest.value = topic;
+  // Contact: the three topic choices set the hidden topic and announce the change, so the rest of the form adapts as it did with the menu;
+  // syncTopics keeps them in step when the topic changes in code (a link's ?interest=, the team of more than 30, a restored draft)
+  const topicRadios = [...form.querySelectorAll('input[name="topic_choice"]')];
+  const syncTopics = () => { const v = fields.interest?.value || ''; topicRadios.forEach(r => { r.checked = r.value === v || (r.value === 'custom-software' && v === 'website') || (r.value === 'nevora' && /^(nevora|relay)/.test(v)); }); };
+  topicRadios.forEach(r => r.addEventListener('change', () => { if (r.checked && fields.interest) { fields.interest.value = r.value; fields.interest.dispatchEvent(new Event('change')); } }));
+  syncTopics();
   // Sign in page: two kinds of client request share one form. The choice sets the topic, the message label, the timing or
   // urgency field (the hidden one is disabled so it is not sent) and, on the live form, the button wording.
   const kinds = [...form.querySelectorAll('input[name="client_kind"]')];
@@ -86,7 +92,7 @@ if (form && !justSent) {
     else if (!big && autoQuote && fields.interest.value === 'nevora') { autoQuote = false; fields.interest.value = 'nevora-demo'; }
     const quote = autoQuote && big;
     if (demo) { document.documentElement.classList.toggle('ask-demo', !quote); document.title = (quote ? L.quoteTitle : L.trialTitle) + ' · Velani'; }
-    note.hidden = !quote; relabel();
+    note.hidden = !quote; relabel(); syncTopics();
    };
    fields.team.addEventListener('change', onTeam);
   }
@@ -133,7 +139,7 @@ if (form && !justSent) {
    let draft = null; try { draft = JSON.parse(sessionStorage.getItem('v-inquiry-draft') || 'null'); } catch {}
    if (draft) {
     for (const key of ['company', 'interest', 'team', 'locations']) if (fields[key] && typeof draft[key] === 'string' && draft[key] && !fields[key].value) fields[key].value = draft[key];
-    if (fields.interest) { onTopic(); onTeam(); }
+    if (fields.interest) { onTopic(); onTeam(); syncTopics(); }
    }
   }
   fieldset.disabled = false;
