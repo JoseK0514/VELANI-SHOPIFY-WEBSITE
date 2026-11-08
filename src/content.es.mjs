@@ -88,13 +88,13 @@ ES_ROUTES['/pages/es-ayuda'] = es('/pages/help', {
 
 ES_ROUTES['/pages/es-prueba'] = es('/pages/nevora-start', {
   kind: 'commerce', step: 'start', nav: 'plans', eyebrow: '', name: 'Empieza tu prueba de NEVORA',
-  title: 'Empieza tu prueba gratis de NEVORA.',
+  title: 'Tu prueba gratis.',
   intro: 'Escribe tu correo de trabajo y te enviamos un enlace para configurar tu lugar de trabajo. Sin tarjeta.',
   desc: 'Empieza una prueba gratis de NEVORA por 30 días para tu negocio con tu correo de trabajo. Sin tarjeta.',
 });
 ES_ROUTES['/pages/es-facturacion'] = es('/pages/nevora-billing', {
   kind: 'commerce', step: 'billing', nav: 'plans', eyebrow: '', name: 'Facturación de NEVORA',
-  title: 'Administra la facturación de NEVORA.',
+  title: 'Plan y facturación.',
   intro: 'Mira tu plan, suscríbete o actualiza tu tarjeta. Le enviamos al dueño del negocio un enlace para entrar.',
 });
 ES_ROUTES['/pages/es-entrar'] = es('/pages/sign-in', {
