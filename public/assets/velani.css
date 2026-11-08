@@ -709,6 +709,16 @@ body:has(#inquiry-sent:not([hidden])) :is(.signin-top,.client-side){display:none
 @media(max-width:833px){.contact-split .client-grid{gap:0}.contact-split .cform-hero .lede{margin-bottom:32px}}
 @media(max-width:379px){.inquiry-form .topics{grid-template-columns:1fr}}
 
+/* Support: the Contact split; two equal doors on the right, then the questions */
+.help-doors{display:grid;gap:12px;grid-auto-rows:1fr}
+.help-door{display:flex;flex-direction:column}
+.help-door .hacts{margin-top:28px}
+.help-top{padding-bottom:var(--s1)}
+.help-top+.faq{padding-top:var(--s1)}
+.help-top+.faq .qa{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:clamp(48px,7vw,112px)}
+@media(max-width:1023px){.help-top+.faq .qa{grid-template-columns:1fr;gap:32px}}
+.help-top+.faq .faq-list{margin-top:0}
+
 /* Try the time clock: a working copy of the NEVORA PIN screen. Light surface, like the real tablet. */
 .kio-note{display:inline-flex;flex-wrap:wrap;gap:4px 6px;margin-top:var(--s1);padding:10px 16px;border-radius:var(--r);background:var(--panel);box-shadow:0 0 0 1px var(--line);font-size:0.875rem;line-height:1.4;color:var(--text-2)}
 .kio-note b{font-weight:600;color:var(--text)}

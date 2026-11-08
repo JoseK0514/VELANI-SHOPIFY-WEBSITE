@@ -5,7 +5,7 @@
 // Facts must match the English pages exactly: no added claims.
 
 /** Hours as they appear in lists and sentences ("lunes a viernes, 8 a. m. a 9 p. m. ET"); spaces inside the times never break. */
-export const HOURS_ES = 'lunes a viernes, 8 a. m. a 9 p. m. ET';
+export const HOURS_ES = 'lunes a viernes, 8 a. m. a 9 p. m. ET';
 
 /** English route → Spanish route, for every page that has a Spanish version. Links on Spanish pages follow this map. */
 export const ES_PATHS = Object.freeze({
@@ -116,10 +116,10 @@ export const WORK_ES = {
 /** The About and Support pages below their heroes. */
 export const ABOUT_ES = { project: 'Empieza un proyecto', see: 'Ver NEVORA', label: 'Sobre Velani' };
 export const FAQ_ES = {
-  supportKick: 'Soporte al cliente', supportTitle: 'Para nuestros clientes.', email: 'Correo electrónico', reply: 'Procuramos responderte en un plazo de dos días laborables',
-  phone: 'Teléfono', hours: HOURS_ES, post: 'Dirección postal', contactPage: 'Página de contacto', kick: 'Preguntas', title: 'Antes de empezar', nevoraQ: 'Preguntas sobre NEVORA',
-  appTitle: '¿Usas NEVORA en el trabajo?',
-  app: [['Soporte de NEVORA', '/pages/nevora-support'], ['Política de privacidad de NEVORA', '/pages/nevora-privacy'], ['Elimina tu cuenta de NEVORA', '/pages/nevora-account-deletion'], ['Términos de uso de NEVORA', '/pages/nevora-terms']],
+  h1: 'Pide ayuda a Velani.', text: 'Preguntas sobre un sitio web o una app que creamos, sobre NEVORA o sobre cómo trabajamos. Te respondemos por correo en un plazo de dos días laborables.',
+  callK: 'Si no pueden trabajar, llámanos.',
+  doors: [['Un sitio web o una app que creamos', 'Algo dejó de funcionar o necesitas un cambio.', 'Pedir ayuda', '/pages/sign-in?interest=client-help#client', true], ['NEVORA', 'Cómo entrar, tu cuenta, tus datos y cómo eliminar tu cuenta.', 'Soporte de NEVORA (en inglés)', '/pages/nevora-support', false]],
+  doorsLabel: 'Formas de recibir ayuda', qT: 'Preguntas', contactPage: 'Página de contacto',
 };
 
 /** Words for a link to a page that exists only in English. */

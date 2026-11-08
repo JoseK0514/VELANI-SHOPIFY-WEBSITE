@@ -216,18 +216,23 @@ function plans(page, target, lang = 'en') {
 }
 /** The Support page's words (Spanish in src/content.es.mjs). */
 const FAQ = {
-  en: { supportKick: 'Client support', supportTitle: 'For our clients.', email: 'Email', reply: 'We aim to reply within two business days', phone: 'Phone', hours: company.hours, post: 'Postal address', contactPage: 'Contact page', kick: 'Questions', title: 'Before we start', nevoraQ: 'NEVORA questions', appTitle: 'Do you use NEVORA at work?',
-    app: [['NEVORA support', '/pages/nevora-support'], ['NEVORA privacy policy', '/pages/nevora-privacy'], ['Delete your NEVORA account', '/pages/nevora-account-deletion'], ['NEVORA terms of use', '/pages/nevora-terms']] },
+  en: { h1: 'Get help from Velani.', text: 'Questions about a website or app we built, about NEVORA or about how we work. We reply by email within two business days.',
+    callK: 'If you can’t work, call us.',
+    doors: [['A website or app we built', 'Something stopped working, or you need a change.', 'Get help', '/pages/sign-in?interest=client-help#client', true], ['NEVORA', 'Signing in, your account, your data and deleting your account.', 'NEVORA support', '/pages/nevora-support', false]],
+    doorsLabel: 'Ways to get help', qT: 'Questions', contactPage: 'Contact page' },
   es: FAQ_ES,
 };
+/** Support (Nov 7): the Contact split with two equal doors (a project we built goes to the help form on Sign in; NEVORA to its support
+ * page), then five questions in the site's list. No postal address and no policy band; the footer carries both. */
+const FAQ_SKIP = /^(Does Velani build custom software|How do I reach client support|¿Velani desarrolla software|¿Cómo contacto al soporte)/;
 function faq(page, target, lang = 'en') {
   const t = FAQ[lang];
-  // NEVORA's policy pages are English only for now: on Spanish pages their links say so
-  const appLink = ([text, href]) => lang === 'es' ? '<a class="more" href="' + e(href) + '" hreflang="en"><span>' + e(text) + ' ' + IN_ENGLISH + '</span>' + icon('caret-right') + '</a>' : more(text, href);
-  const support = '<section class="support" aria-labelledby="sup-t"><div class="wrap"><p class="hkick">' + t.supportKick + '</p><h2 class="t2 rise" id="sup-t">' + t.supportTitle + '</h2><dl class="spec big"><div><dt>' + t.email + '</dt><dd><a href="mailto:' + company.email + '">' + company.email + '</a><small>' + t.reply + '</small></dd></div><div><dt>' + t.phone + '</dt><dd><a href="' + tel() + '">' + e(company.phone) + '</a><small>' + e(t.hours) + '</small></dd></div><div><dt>' + t.post + '</dt><dd>' + e(company.operator) + '<small>' + keepAddress(e(company.address)) + '</small></dd></div></dl><div class="acts"><a class="pill" href="/pages/contact">' + t.contactPage + '</a></div></div></section>';
-  const questions = '<section class="faq" aria-labelledby="faq-t"><div class="wrap"><div class="qa"><div class="head"><p class="hkick">' + t.kick + '</p><h2 class="t2 rise" id="faq-t">' + t.title + '</h2></div><div class="faq-list">' + page.sections.map(s => '<details><summary>' + e(s.heading) + icon('plus') + '</summary><p>' + linkEmail(e(s.text)).split(company.phone).join('<a href="' + tel() + '">' + e(company.phone) + '</a>') + '</p></details>').join('') + '<div class="acts">' + more(t.nevoraQ, '/pages/nevora#faq') + '</div></div></div></div></section>';
-  const app = '<section class="band help" aria-labelledby="help-t"><div class="wrap band-in"><h2 class="t3" id="help-t">' + t.appTitle + '</h2><p class="band-links">' + t.app.map(appLink).join('') + '</p></div></section>';
-  return localize(pageHero(page) + support + questions + app + closing(target, { lang, support: hb(t.contactPage, '/pages/contact') }), lang);
+  const side = '<div class="cform-hero contact-side"><h1 class="t1 rise">' + e(t.h1) + '</h1><p class="lede fade">' + e(t.text) + '</p><div class="client-call contact-aside fade"><p>' + e(t.callK) + '</p><a class="client-tel" href="' + tel() + '">' + e(company.phone) + '</a><p>' + e(lang === 'es' ? HOURS_ES : company.hours) + '<br><a href="mailto:' + company.email + '">' + company.email + '</a></p></div></div>';
+  const doors = '<div class="help-doors" role="list" aria-label="' + e(t.doorsLabel) + '">' + t.doors.map(([h, x, b, href, fill]) => '<div class="day-opt help-door fade" role="listitem"><h2 class="t3">' + e(h) + '</h2><p>' + e(x) + '</p><div class="hacts">' + hb(b, href, fill, href.includes('nevora-support') ? enOnly(lang) : '') + '</div></div>').join('') + '</div>';
+  const top = '<section class="contact contact-split help-top"><div class="wrap client-grid">' + side + '<div class="client-form">' + doors + '</div></div></section>';
+  const qs = page.sections.filter(x => !FAQ_SKIP.test(x.heading));
+  const questions = '<section class="faq" aria-labelledby="faq-t"><div class="wrap"><div class="qa"><div class="head"><h2 class="t2 rise" id="faq-t">' + e(t.qT) + '</h2></div><div class="faq-list">' + qs.map(x => '<details><summary>' + e(x.heading) + icon('plus') + '</summary><p>' + linkEmail(e(x.text)).split(company.phone).join('<a href="' + tel() + '">' + e(company.phone) + '</a>') + '</p></details>').join('') + '</div></div></div></section>';
+  return localize(top + questions + closing(target, { lang, support: hb(t.contactPage, '/pages/contact') }), lang);
 }
 const ABOUT = { en: { project: 'Start a project', see: 'See NEVORA', label: 'About Velani' }, es: ABOUT_ES };
 function about(page, target, lang = 'en') {
