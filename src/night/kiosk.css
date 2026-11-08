@@ -3,7 +3,7 @@
 .kio-note b{font-weight:600;color:var(--text)}
 .kio-note+.kio{margin-top:16px}
 .try-acts{margin-top:28px}
-.kio{--k-ink:#1b2a28;--k-mute:#5d6b68;--k-teal:#0f6e66;--k-side:#f3f6f5;--k-key:#f1f4f3;--k-line:#e4e9e7;position:relative;margin-top:var(--s1);display:grid;grid-template-columns:minmax(0,39fr) minmax(0,61fr);max-width:1040px;background:#fff;color:var(--k-ink);border-radius:clamp(18px,2vw,28px);overflow:hidden;box-shadow:0 0 0 1px rgba(255,255,255,.07),0 1px 1px rgba(0,0,0,.4),0 12px 24px -12px rgba(0,0,0,.6),0 48px 96px -32px rgba(0,0,0,.85)}
+.kio{--k-ink:#1b2a28;--k-mute:#5d6b68;--k-teal:#0f6e66;--k-side:#f3f6f5;--k-key:#f1f4f3;--k-line:#e4e9e7;position:relative;margin-top:var(--s1);display:grid;grid-template-columns:minmax(0,39fr) minmax(0,61fr);max-width:none;background:#fff;color:var(--k-ink);border-radius:clamp(18px,2vw,28px);overflow:hidden;box-shadow:0 0 0 1px rgba(255,255,255,.07),0 1px 1px rgba(0,0,0,.4),0 12px 24px -12px rgba(0,0,0,.6),0 48px 96px -32px rgba(0,0,0,.85)}
 .kio button:focus-visible{outline:2px solid #1f7ab8;outline-offset:2px}
 .kio-side{display:flex;flex-direction:column;padding:clamp(24px,3vw,40px);background:var(--k-side);border-right:1px solid var(--k-line)}
 .kio-brand img{display:block;height:15px;width:auto;filter:brightness(0);opacity:.86}

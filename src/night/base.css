@@ -119,7 +119,7 @@ html:has(main > .hpanel){--anchor:56px}
 .hcopy .hfact{max-width:30em}
 .acts+.hfact{margin-top:14px}
 .hshot{position:absolute;right:max(var(--pad),calc(50% - 500px));top:50%;width:300px;transform:translateY(-50%);padding:8px;border-radius:44px;background:#0b0d10;box-shadow:0 0 0 1px rgba(255,255,255,.14),inset 0 0 0 1px rgba(255,255,255,.05),0 50px 110px -20px rgba(0,0,0,.95)}
-.hshot img{display:block;width:100%;aspect-ratio:390/800;object-fit:cover;object-position:0 0;border-radius:36px}
+.hshot img{display:block;width:100%;aspect-ratio:390/844;object-fit:cover;object-position:0 0;border-radius:36px}
 /* The phone rises into the NEVORA panel, then one notification arrives; still under reduced motion and without JavaScript */
 .hshot.fade{transition:opacity .9s var(--out),transform 1.1s var(--out)}
 @media(min-width:834px){.hshot.fade{transform:translateY(-50%) translateY(48px)}.hshot.fade.in{transform:translateY(-50%)}}

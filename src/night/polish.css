@@ -103,12 +103,12 @@ html:has(.zoom[open]){overflow:hidden}
 @media(hover:hover){.gnav-ddbtn:hover{color:var(--text)}}
 .gnav-ddmenu{position:absolute;left:50%;top:100%;z-index:70;padding-top:6px;opacity:0;visibility:hidden;transform:translate(-50%,6px);transition:opacity .18s var(--out),transform .18s var(--out),visibility 0s linear .18s}
 /* Menu buttons with words (Nov 7): same type as .gnav-links a, caret after the word */
-.gnav-ddbtn.txt{min-width:0;gap:6px;padding:0 12px 0 14px;font-size:0.75rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;white-space:nowrap;color:var(--text-2)}
+.gnav-ddbtn.txt{min-width:0;gap:6px;padding:0 12px 0 14px;font-size:0.875rem;font-weight:500;letter-spacing:0;text-transform:none;white-space:nowrap;color:var(--text-2)}
 .gnav-ddbtn.txt .icon{width:10px;height:10px}
 .gnav-ddbtn.txt[data-cur],.gnav-dd.open .gnav-ddbtn.txt{color:var(--text)}
 @media(hover:hover){.gnav-ddbtn.txt:hover{color:var(--text)}}
 .gnav-links .gnav-dd .gnav-ddmenu{left:0;transform:translate(0,6px)}.gnav-links .gnav-dd.open .gnav-ddmenu{transform:translate(0,0)}
-.gnav-signin{display:inline-flex;align-items:center;min-height:44px;padding:0 12px;margin-right:6px;white-space:nowrap;font-size:0.75rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--text-2);transition:color .2s}
+.gnav-signin{display:inline-flex;align-items:center;min-height:44px;padding:0 12px;margin-right:6px;white-space:nowrap;font-size:0.875rem;font-weight:500;letter-spacing:0;text-transform:none;color:var(--text-2);transition:color .2s}
 @media(hover:hover){.gnav-signin:hover{color:var(--text)}}
 @media(max-width:833px){.gnav-signin{display:none}}
 @media(min-width:834px) and (max-width:959px){.gnav-ddbtn.txt{padding:0 8px 0 10px}.gnav-signin{padding:0 8px;margin-right:2px}.gnav-links{margin-right:4px}}
@@ -290,3 +290,18 @@ b.rmark,.hchat-h b.rmark,.rondo-kick .rmark,.ast-launch .rmark,.ast-head .rmark,
 .cookie-option{padding:12px 0}
 @media(max-width:600px){.cookie-actions{border-top:1px solid var(--line-2);box-shadow:0 -12px 24px -12px rgba(0,0,0,.6)}.cookie-actions .pill{font-size:0.8125rem}}
 .cookie-dialog .always-on{text-transform:none;letter-spacing:0;font-size:0.875rem}
+
+/* ---------- Seams (Nov 8): where two full-screen panels meet, each photo fades into the black panel ground over 96px,
+   so the page flows instead of cutting between pictures. Only the background photo is masked; copy and screens are untouched. */
+main>.hpanel:has(+.hpanel)>.hph{-webkit-mask-image:linear-gradient(180deg,#000 calc(100% - 96px),transparent);mask-image:linear-gradient(180deg,#000 calc(100% - 96px),transparent)}
+main>.hpanel+.hpanel>.hph{-webkit-mask-image:linear-gradient(0deg,#000 calc(100% - 96px),transparent);mask-image:linear-gradient(0deg,#000 calc(100% - 96px),transparent)}
+main>.hpanel+.hpanel:has(+.hpanel)>.hph{-webkit-mask-image:linear-gradient(180deg,transparent,#000 96px,#000 calc(100% - 96px),transparent);mask-image:linear-gradient(180deg,transparent,#000 96px,#000 calc(100% - 96px),transparent)}
+/* Phone frames (Nov 8): the NEVORA phone captures end at the tab bar, so the frame adds the iPhone's 34pt home-indicator strip
+   (tab bar white, 134x5 home bar) below it; the rounded screen corners then clip that strip instead of the tab labels */
+.hshot img[src*="r1-ph-"]{aspect-ratio:auto 390/844;padding-bottom:8.72%;background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 134 5'%3E%3Crect width='134' height='5' rx='2.5' fill='%23111'/%3E%3C/svg%3E") no-repeat center bottom 0.95%/34% auto}
+/* Corners scale with the frame (about 13% of the screen width, as on an iPhone), so a small phone doesn't clip the tab labels */
+.hshot img[src*="r1-ph-"]{border-radius:13%/6%}
+.hshot:has(>img[src*="r1-ph-"]){border-radius:16%/7.4%}
+/* One label style (Nov 8): menu and footer group labels use the header's normal case, like the NEVORA page nav */
+.gmenu-k,.foot-k,.foot-support .fs-k,.lnav .lnav-by>span:first-child{font-size:0.875rem;letter-spacing:0;text-transform:none}
+@media(max-width:833px){.foot-acc summary{font-size:1rem;letter-spacing:0;text-transform:none}}
