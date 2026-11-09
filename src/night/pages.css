@@ -630,3 +630,6 @@ button.hb:disabled{cursor:progress;opacity:.75}
 .setup-shot img{display:block;width:100%;height:auto;border-radius:var(--r2);box-shadow:0 0 0 1px var(--line-2),0 30px 60px -30px rgba(0,0,0,.8)}
 .setup-shot figcaption{margin:12px 0 0;font-size:0.875rem;line-height:1.5;color:var(--text-3)}
 @media(prefers-reduced-motion:reduce){.setup-shot{animation:none}}
+/* Phone off (Nov 9): the support email takes the large line in call blocks, one step smaller so the whole address fits a phone column */
+.client-call a.client-mail{color:var(--text);text-decoration:none;font-size:clamp(1.25rem,1.9vw,1.625rem);letter-spacing:-.01em;overflow-wrap:anywhere}
+.client-call a.client-mail:hover{color:var(--accent)}

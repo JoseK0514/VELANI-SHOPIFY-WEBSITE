@@ -4,7 +4,7 @@ export const company = Object.freeze({
   name: 'Velani',
   operator: 'VELANI LLC',
   email: 'support@thevelani.com',
-  phone: '787-925-2000',
+  phone: '', // Off for now (Jose, Nov 9). Was 787-925-2000; set it again to bring back every call block.
   hours: 'Monday to Friday, 8 am to 9 pm ET',
   address: '1654 Calle Tulipan, Suite 100, San Juan, PR 00927',
   domain: 'www.thevelani.com',
@@ -32,7 +32,7 @@ export const routes = {
     { heading: 'Can you give me a price or delivery date here?', text: 'Not on the website. We price a project once we agree its scope, and we put fees, milestones and delivery dates in the written project agreement.' },
     { heading: 'Does an inquiry start a contract?', text: 'No. An inquiry starts a conversation. It does not purchase a product or begin paid work.' },
     { heading: 'Where should I send sensitive information?', text: 'Do not send passwords, API keys, payment details or sensitive records through a public form or ordinary email. Ask for an appropriate channel first.' },
-    { heading: 'How do I reach client support?', text: 'Client support answers Monday to Friday, 8 am to 9 pm ET. Write to support@thevelani.com, call 787-925-2000, or use the contact page.' },
+    { heading: 'How do I reach client support?', text: 'Client support answers Monday to Friday, 8 am to 9 pm ET. Write to support@thevelani.com or use the contact page.' },
     { heading: 'How does the free NEVORA trial work?', text: 'A business with up to 30 people can use NEVORA free for 30 days from setup. No card is needed and nothing is charged. On day 30 you subscribe or close the workplace. Export your data first: a closed workplace and its data are deleted within 3 days, timecards and pay statements included. To close it, email support@thevelani.com. NEVORA calculates pay statements; it does not pay employees or file payroll taxes.' },
   ], { kind: 'faq', nav: 'help', name: 'Support' }),
   '/pages/legal': page('The details matter.', 'Legal and trust', 'The notices for this company website. Product use and paid engagements have their own terms.', [], { kind: 'legal-index', legal: true, name: 'Legal' }),

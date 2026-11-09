@@ -83,7 +83,7 @@ ES_ROUTES['/pages/es-ayuda'] = es('/pages/help', {
     { heading: '¿Me pueden dar un precio o una fecha de entrega aquí?', text: 'No en el sitio web. Le ponemos precio a un proyecto cuando acordamos su alcance, y dejamos los honorarios, los hitos y las fechas de entrega en el acuerdo de proyecto por escrito.' },
     { heading: '¿Una consulta inicia un contrato?', text: 'No. Una consulta inicia una conversación. No compra un producto ni da inicio a trabajo pagado.' },
     { heading: '¿Dónde envío información confidencial?', text: 'No envíes contraseñas, claves de API, datos de pago ni registros confidenciales por un formulario público o por correo normal. Primero pide un canal adecuado.' },
-    { heading: '¿Cómo contacto al soporte al cliente?', text: 'El soporte al cliente responde de ' + HOURS_ES + '. Escribe a support@thevelani.com, llama al 787-925-2000 o usa la página de contacto.' },
+    { heading: '¿Cómo contacto al soporte al cliente?', text: 'El soporte al cliente responde de ' + HOURS_ES + '. Escribe a support@thevelani.com o usa la página de contacto.' },
     { heading: '¿Cómo funciona la prueba gratis de NEVORA?', text: 'Un negocio con hasta 30 personas puede usar NEVORA gratis por 30 días desde la configuración. No se necesita tarjeta y no se cobra nada. El día 30 te suscribes o cierras el espacio de trabajo. Primero, exporta tus datos: un espacio de trabajo cerrado y sus datos se eliminan en un plazo de 3 días, incluidas las tarjetas de tiempo y los comprobantes de nómina. Para cerrarlo, escribe a support@thevelani.com. NEVORA calcula los comprobantes de nómina; no les paga a los empleados ni presenta impuestos de nómina.' },
   ],
 });
