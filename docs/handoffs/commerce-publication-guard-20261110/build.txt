@@ -1,0 +1,5 @@
+
+> velani-company-site@0.1.0 build
+> node scripts/build.mjs
+
+{"routes":37,"preview":"/Users/josek0514/.codex/worktrees/velani-publish-guard-20261110/dist/preview","theme":"/Users/josek0514/.codex/worktrees/velani-publish-guard-20261110/dist/theme"}
