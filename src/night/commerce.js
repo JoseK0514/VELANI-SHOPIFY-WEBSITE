@@ -97,7 +97,7 @@ const W = {
     checkoutExpired: 'That checkout expired before it was finished. Nothing was charged. Choose Subscribe to start again.',
     support: 'We need to check your billing account. Email support@thevelani.com and we’ll sort it out.',
     yourTeam: 'Your team',
-    mine: (n, d, p) => 'With <b>' + n + (n === 1 ? ' employee' : ' employees') + '</b>: free through <b>' + d + '</b>, then <b>' + p + ' a month</b>.', mineOver: 'With <b>more than 30 employees</b>: write to us first for assisted setup. Teams that qualify get the same 30 days free, from the day the workplace is set up.',
+    mine: (n, p) => 'With <b>' + n + (n === 1 ? ' employee' : ' employees') + '</b>: 30 days free from the day your workplace is ready, then <b>' + p + ' a month</b>.', mineOver: 'With <b>more than 30 employees</b>: write to us first for assisted setup. Teams that qualify get the same 30 days free, from the day the workplace is set up.',
     over30: 'More than 30', quoted: 'Contact us', quoteNote: 'More than 30: write to us for assisted setup. We reply within two business days.', perMonth: 'a month', emp: n => n === 1 ? 'employee' : 'employees',
     valueText: (n, p) => n > 30 ? 'More than 30 employees, contact us for assisted setup' : n + ' ' + (n === 1 ? 'employee' : 'employees') + ', ' + p + ' a month',
   },
@@ -125,7 +125,7 @@ const W = {
     checkoutExpired: 'Ese pago venció antes de completarse. No se cobró nada. Elige Suscríbete para empezar de nuevo.',
     support: 'Tenemos que revisar tu cuenta de facturación. Escribe a support@thevelani.com y lo resolvemos.',
     yourTeam: 'Tu equipo',
-    mine: (n, d, p) => 'Con <b>' + n + (n === 1 ? ' empleado' : ' empleados') + '</b>: gratis hasta el <b>' + d + '</b>, luego <b>' + p + ' al mes</b>.', mineOver: 'Con <b>más de 30 empleados</b>: escríbenos primero para una configuración asistida. Los equipos que califican reciben los mismos 30 días gratis, desde el día en que el lugar de trabajo queda configurado.',
+    mine: (n, p) => 'Con <b>' + n + (n === 1 ? ' empleado' : ' empleados') + '</b>: 30 días gratis desde el día en que tu lugar de trabajo queda listo, luego <b>' + p + ' al mes</b>.', mineOver: 'Con <b>más de 30 empleados</b>: escríbenos primero para una configuración asistida. Los equipos que califican reciben los mismos 30 días gratis, desde el día en que el lugar de trabajo queda configurado.',
     over30: 'Más de 30', quoted: 'Escríbenos', quoteNote: 'Más de 30: escríbenos para una configuración asistida. Respondemos en un plazo de dos días laborables.', perMonth: 'al mes', emp: n => n === 1 ? 'empleado' : 'empleados',
     valueText: (n, p) => n > 30 ? 'Más de 30 empleados, escríbenos para una configuración asistida' : n + ' ' + (n === 1 ? 'empleado' : 'empleados') + ', ' + p + ' al mes',
   },
@@ -196,9 +196,8 @@ function plans() {
   if (!hero || !handoff) return;
   const h1 = hero.querySelector('h1'), text = hero.querySelector('.hcopy > p.fade:not(.hfact)'), acts = hero.querySelector('.hacts'), fact = hero.querySelector('.hfact');
   // The page's own links (already rewritten for a theme preview) give the billing and quote addresses.
-  const billingHref = (acts.querySelector('a[href*="nevora-billing"]') || {}).href || '/pages/nevora-billing';
+  const billingHref = (document.querySelector('a[href*="nevora-billing"],a[href*="es-facturacion"]') || {}).href || '/pages/nevora-billing';
   const quoteHref = (document.querySelector('#price a[href*="interest=nevora"]') || {}).href || '/pages/contact?interest=nevora';
-  fact.removeAttribute('data-trial-end');
   const icon = (acts.querySelector('.hb .icon') || document.createElement('i')).outerHTML;
   h1.setAttribute('tabindex', '-1');
   const show = (title, line, buttons, note, focus = true) => {
@@ -446,12 +445,11 @@ else if (accountRoot) takeFragment('handoff'); // billing is off: scrub any one-
 
 /* ---------- Plans: the team-size price card ---------- */
 function pcard(root) {
-  const t = W[PAGE_LANG], LOC = PAGE_LANG === 'es' ? 'es' : 'en-US'; // the card is part of the page, so it keeps the page's language
+  const t = W[PAGE_LANG]; // the card is part of the page, so it keeps the page's language
   const range = root.querySelector('#pc-n'), out = root.querySelector('[data-count]'), unit = root.querySelector('[data-unit]');
   const amt = root.querySelector('[data-amt]'), per = root.querySelector('[data-per]'), note = root.querySelector('[data-note]');
   const ticks = [...root.querySelectorAll('.pc-meter i')], steps = [...root.querySelectorAll('[data-step]')];
   const baseNote = note.textContent, mine = document.querySelector('[data-price-mine]');
-  const last = (() => { const d = new Date(); d.setHours(12, 0, 0, 0); d.setDate(d.getDate() + 29); return d.toLocaleDateString(LOC, { weekday: 'long', month: 'long', day: 'numeric' }); })();
   const set = value => {
     const n = Math.max(1, Math.min(31, Math.round(Number(value) || 1)));
     range.value = String(n); root.dataset.n = String(n);
@@ -461,7 +459,7 @@ function pcard(root) {
     ticks.forEach((tick, i) => { tick.className = i < Math.min(n, 30) ? 'pc-on' : (!over && i < (team ? 30 : 15)) ? 'pc-in' : ''; });
     range.setAttribute('aria-valuetext', t.valueText(n, price));
     steps[0].disabled = n <= 1; steps[1].disabled = n >= 31;
-    if (mine) { mine.innerHTML = over ? t.mineOver : t.mine(n, last, price); mine.hidden = false; }
+    if (mine) { mine.innerHTML = over ? t.mineOver : t.mine(n, price); mine.hidden = false; }
   };
   range.disabled = false; steps.forEach(b => { b.hidden = false; b.addEventListener('click', () => set(Number(range.value) + Number(b.dataset.step))); });
   range.addEventListener('input', () => set(range.value));

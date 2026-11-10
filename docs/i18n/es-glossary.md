@@ -35,11 +35,11 @@ Spanish term, the website uses it. Sources checked (read-only): the NEVORA app o
 | Payroll / payroll calculation | nómina / cálculo de nómina | App: "Nómina", "Resumen de nómina" |
 | Time off | tiempo libre | App: "Solicita tiempo libre" |
 | Shift swap | cambio de turno | The app has no Spanish swap string yet; standard term |
-| Workplace (the business's NEVORA account) | espacio de trabajo | App: "Espacio de trabajo no disponible" |
+| Workplace (the business's NEVORA account) | lugar de trabajo | Nov 10: the website uses one term for both meanings, as the signup and setup screens do. The app's error "Espacio de trabajo no disponible" is the app's own string |
 | Your workplace (the employer) | tu lugar de trabajo / tu trabajo | App: "tu lugar de trabajo", "tu trabajo" |
-| Owner / manager / employee | dueño / gerente / empleado | App clocker and mobile access use "dueño"; the sign-in pages leave "Owner" in English, the site does not |
+| Owner / manager / employee | dueño del negocio / gerente / empleado | Write "el dueño del negocio" when it names the NEVORA Owner role (never "tu dueño"). App clocker and mobile access use "dueño" |
 | Location | ubicación | App: "Ubicación", "Ubicaciones" |
-| Free trial / request free trial | prueba gratis / Pide la prueba gratis | Header button shortened to "Prueba gratis" so the bar fits at 834px |
+| Free trial / request free trial | prueba gratis / Pide la prueba gratis | Every trial button says "Pide la prueba gratis" and opens the trial request (Nov 10); online signup isn't open |
 | Quote / by quote / ask for a quote | cotización / por cotización / Pide una cotización | |
 | One price per business | un solo precio por negocio | |
 | No card · No automatic charge | Sin tarjeta · Sin cargos automáticos | |
@@ -68,8 +68,9 @@ Spanish term, the website uses it. Sources checked (read-only): the NEVORA app o
 ## Facts that must stay identical to English
 
 30-day free trial; up to 30 employees; no card; no automatic charge; one price per business quoted by number of employees,
-business and features; a closed workplace and its data are deleted within 3 days; export first; email support@thevelani.com to
-close; we aim to reply within two business days; support hours as above; phone 787-925-2000; address unchanged; NEVORA
+business and features; the 30 days start the day the workplace is ready (assisted setup, online signup not open); an unpaid trial
+pauses the workplace and starts no automatic deletion; email support@thevelani.com to close a workplace; we aim to reply within
+two business days; support hours as above; no phone number for now (Nov 9); address unchanged; NEVORA
 calculates pay statements and does not pay employees or file payroll taxes; Rondo in NEVORA is in development and the website
 chat works today; NEVORA Relay is in design, no dates, waitlist.
 

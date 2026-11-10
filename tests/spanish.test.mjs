@@ -43,8 +43,8 @@ test('Spanish pages link to the Spanish version of a page whenever one exists', 
     const html = renderPage(path).html.replace(/<span class="lang-sw[^"]*" role="group"[\s\S]*?<\/a><\/span>/g, '');
     const english = [...html.matchAll(/href="(\/[^"]*)"/g)].map(m => m[1]).filter(href => ES_PATHS[href.split(/[?#]/)[0]]);
     assert.deepEqual(english, [], path);
-    // Custom software leads to a project inquiry, every other Spanish page to the NEVORA trial (same as English)
-    assert.match(html, path === '/pages/es-a-la-medida' ? /href="\/pages\/es-contacto\?interest=custom-software"/ : /href="\/pages\/es-prueba"/, path);
+    // Custom software leads to a project inquiry, every other Spanish page to the NEVORA trial request (same as English)
+    assert.match(html, path === '/pages/es-a-la-medida' ? /href="\/pages\/es-contacto\?interest=custom-software"/ : /href="\/pages\/es-contacto\?interest=nevora-demo"/, path);
     // Pages that exist only in English are marked for browsers and assistive technology
     for (const m of html.matchAll(/<a [^>]*href="\/pages\/(privacy|nevora-privacy|website-terms|legal|cookies)"[^>]*>/g)) assert.match(m[0], /hreflang="en"/, path + ' ' + m[0]);
   }
@@ -147,10 +147,16 @@ test('on an unpublished theme the switch and Spanish links stay in the same draf
   assert.match(html, /name="robots" content="noindex, nofollow"/);
   assert.match(html, /<a href="\/\?preview_theme_id=77&amp;view=velani-plans" hreflang="en"/);
   assert.match(html, /<a href="\/\?preview_theme_id=77&amp;view=velani-es-planes" hreflang="es"/);
-  assert.match(html, /href="\/\?preview_theme_id=77&amp;view=velani-es-prueba"/);
+  assert.match(html, /href="\/\?preview_theme_id=77&amp;view=velani-es-contacto&amp;interest=nevora-demo"/);
   const body = await liquid.parseAndRender(renderBody('/pages/es-planes', { target: 'shopify' }), { theme: { role: 'unpublished', id: 77 }, routes: { root_url: '/' } });
   assert.match(body, /href="\/\?preview_theme_id=77&amp;view=velani-es-contacto&amp;interest=nevora"/);
   assert.doesNotMatch(body, /href="\/pages\//);
   const home = await page('unpublished', '/', { template: { name: 'index', suffix: '' } });
   assert.match(home, /<a href="\/\?preview_theme_id=77" hreflang="en" lang="en" aria-label="English" aria-current="true">EN<\/a>/);
+});
+test('billing and setup utility pages are noindex on the main theme; acquisition pages are not', async () => {
+  for (const path of ['/pages/nevora-billing', '/pages/nevora-billing-return', '/pages/nevora-verify', '/pages/es-facturacion', '/pages/es-pago', '/pages/es-configurar'])
+    assert.match(await page('main', path), /<meta name="robots" content="noindex">/, path);
+  for (const path of ['/pages/plans', '/pages/es-planes', '/pages/sign-in', '/pages/help'])
+    assert.doesNotMatch(await page('main', path), /name="robots"/, path);
 });

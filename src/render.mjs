@@ -45,8 +45,10 @@ function panel(target, { id, cls = '', img, flip = false, kick, kickHtml, title,
 }
 /** The closing panel on every company page: the wordmark, client support and the two ways in. */
 function closing(target, { project = '/pages/contact', lang = 'en', support = hb(CHROME[lang].support, '/pages/help'), line = CHROME[lang].closingLine } = {}) {
-  return '<section class="hpanel end" id="velani" aria-label="Velani"><img class="hph flip" src="' + asset('night-ai-light.webp', target) + '" alt="" width="1920" height="1080" loading="lazy"><div class="hshade"></div><div class="hcopy"><p class="hwm">' + WORDMARK + '</p><p class="fade">' + e(line) + '</p><div class="hacts fade">' + (line === CHROME[lang].closingLine ? hb(CHROME[lang].trial, '/pages/nevora-start', true) + hb(CHROME[lang].project, project) : hb(CHROME[lang].project, project, true) + support) + '</div></div></section>';
+  return '<section class="hpanel end" id="velani" aria-label="Velani"><img class="hph flip" src="' + asset('night-ai-light.webp', target) + '" alt="" width="1920" height="1080" loading="lazy"><div class="hshade"></div><div class="hcopy"><p class="hwm">' + WORDMARK + '</p><p class="fade">' + e(line) + '</p><div class="hacts fade">' + (line === CHROME[lang].closingLine ? hb(CHROME[lang].trial, '/pages/contact?interest=nevora-demo', true) + hb(CHROME[lang].project, project) : hb(CHROME[lang].project, project, true) + support) + '</div></div></section>';
 }
+/** The end of a help or access page: one line and the next step for that task, in the site's link band (no product or project offer). */
+const helpEnd = (title, links) => '<section class="band help help-end" aria-labelledby="end-t"><div class="wrap band-in"><h2 class="t3" id="end-t">' + e(title) + '</h2><p class="band-links">' + links.map(([text, href, attrs = '']) => '<a class="more" href="' + e(href) + '"' + attrs + '><span>' + e(text) + '</span>' + icon('caret-right') + '</a>').join('') + '</p></div></section>';
 const rail = (steps, cls = '') => '<ol class="rail' + cls + '" data-in>' + steps.map(([b, t], i) => '<li data-in><i>0' + (i + 1) + '</i><b>' + e(b) + '</b><span>' + e(t) + '</span></li>').join('') + '</ol>';
 /** Custom software page words (Spanish added with its own page). Case studies lead; the client's name is the heading. */
 const WORK = {
@@ -76,7 +78,7 @@ function services_(page, target, lang = 'en') {
 }
 /** The contact page's words (Spanish in src/content.es.mjs). Topic values never change, so the email Velani receives is the same. */
 const CONTACT = {
-  en: { kicker: ['NEVORA for your team', 'Free 30-day NEVORA trial', 'NEVORA Relay'], h1: ['Set up NEVORA for a larger team.', 'Request your free NEVORA trial.', 'Join the NEVORA Relay waitlist.'], fact: ['A website, an app, NEVORA or something else. We reply by email within two business days.', 'For teams of more than 30 employees. We check what you need and set up your workplace with you. Teams that qualify get the same 30 days free. We reply within two business days.', 'Free for 30 days for teams of up to 30 people. You don’t need a card.', 'NEVORA Relay is in design, with no dates yet. We’ll email you when early access opens.'],
+  en: { kicker: ['NEVORA for your team', 'Free 30-day NEVORA trial', 'NEVORA Relay'], h1: ['Set up NEVORA for a larger team.', 'Request your free NEVORA trial.', 'Join the NEVORA Relay waitlist.'], fact: ['A website, an app, NEVORA or something else. We reply by email within two business days.', 'For teams of more than 30 employees. We check what you need and set up your workplace with you. Teams that qualify get the same 30 days free. We reply within two business days.', 'Tell us about your team. We reply within two business days and set up your workplace with you. Your 30 free days start the day it’s ready, and you don’t need a card.', 'NEVORA Relay is in design, with no dates yet. We’ll email you when early access opens.'],
     callK: 'Prefer to talk? Call us.', topicQ: 'What is it about?', preview: 'Preview. This form checks your draft and sends nothing.',
     tiles: [['custom-software', 'Web or app'], ['nevora', 'NEVORA'], ['other', 'Other']],
     previewNote: 'Website preview&nbsp;· checks your draft, sends nothing', noscript: 'The preview form needs JavaScript. No messages are sent from this preview.', legend: 'Inquiry',
@@ -128,10 +130,11 @@ function contact(page, target, lang = 'en') {
  * The form is the contact form (same ids, validation, preview check and confirmation in velani.js), with the topic set by the
  * two choices: client-work or client-help. Timing and urgency values stay in English so every request email reads the same. */
 const SIGNIN = {
-  en: { h1: 'Sign in to NEVORA.', appText: 'Each workplace has its own NEVORA address. Sign in there with your Employee ID and password.', support: 'NEVORA support',
+  en: { h1: 'How to sign in to NEVORA.', appText: 'NEVORA has no shared sign-in page. Each workplace has its own address, and you sign in there with your Employee ID and password.', support: 'NEVORA support', factsLabel: 'Sign-in help',
+    endT: 'Still can’t sign in?', endLinks: [['NEVORA support', '/pages/nevora-support'], ['Email support@thevelani.com', 'mailto:support@thevelani.com']],
     facts: [['Your address and ID', 'They’re in the invitation email from your workplace. Lost it? Ask your employer.'],
       ['Forgot your password?', 'Choose Forgot password? on your workplace’s sign-in page. You’ll need your Employee ID and the email your workplace has on file.'],
-      ['Your 4-digit PIN', 'It’s only for clocking in on your workplace’s tablet, not for signing in. Your Owner can set a new one.']],
+      ['Your 4-digit PIN', 'It’s only for clocking in on your workplace’s tablet, not for signing in. Forgot it? Ask the business Owner to set a new one.']],
     webAlt: 'NEVORA on the web for an owner: one thing that needs an answer, five of five clocked in and the next payday', phoneAlt: 'NEVORA on an employee’s phone: her shift today and her next shifts',
     clientT: 'Need something on your site or app?', clientText: 'Ask for a new page, a feature or a change, or tell us what stopped working. We reply by email within two business days.',
     callK: 'If you can’t work, call us.',
@@ -158,17 +161,23 @@ function clientFields(live, lang) {
     + '<div class="frow">' + ff('company', 'company', t.business + opt, 'autocomplete="organization" maxlength="160" aria-describedby="error-company"') + select('work', 'timing', t.timing, false) + select('help', 'urgency', t.urgency, true) + '</div>'
     + message + send + '</fieldset>';
 }
-function signin(page, target, lang = 'en') {
+/** The Velani client request form (new work or help), with the support block beside it. Shown on Support (#client). */
+function clientSection(target, lang) {
   const t = SIGNIN[lang], c = CONTACT[lang];
-  const shots = '<div class="hweb fade"><img src="' + asset('night-r1-owner-today.webp', target) + '" alt="' + e(t.webAlt) + '" width="1800" height="750" decoding="async"></div><div class="hshot fade"><img src="' + asset('night-r1-ph-home.webp', target) + '" alt="' + e(t.phoneAlt) + '" width="780" height="1688" decoding="async"></div>';
-  const hero = panel(target, { id: 'top', cls: 'live long shots-hero signin-top', img: 'ai-devices', title: t.h1, tag: 'h1', text: t.appText, acts: hb(t.support, '/pages/nevora-support', true, enOnly(lang)), after: '<dl class="signin-facts fade">' + t.facts.map(([k, v]) => '<div><dt>' + e(k) + '</dt><dd>' + e(v) + '</dd></div>').join('') + '</dl>', extra: shots, first: true });
   const preview = '<form id="project-inquiry" class="inquiry-form" method="post" action="/?velani_preview_inquiry=1" data-inquiry-mode="preview" novalidate>' + clientFields(false, lang) + '<div class="form-status" role="status" aria-live="polite" tabindex="-1"></div><p class="client-preview">' + t.preview + '</p><noscript><p>' + c.noscript + '</p></noscript></form>';
   const email = '<div class="client-write"><h3 class="t3">' + t.writeT + '</h3><p>' + t.writeText + company.email + '.</p><div class="acts"><a class="pill" href="mailto:' + company.email + '">' + c.writeButton + company.email + '</a></div></div>';
   const native = "{% if settings.inquiries_enabled and theme.role == 'main' %}{% form 'contact', id: 'project-inquiry', class: 'inquiry-form', novalidate: 'novalidate' %}{% if form.posted_successfully? %}{{ velani_sent }}{% else %}<div data-inquiry-mode=\"live\">" + clientFields(true, lang) + "</div>{% if form.errors %}<div class=\"form-status\" role=\"alert\">{{ form.errors | default_errors }}</div>{% endif %}<div class=\"form-legal\">{{ 'shopify.online_store.spam_detection.disclaimer_html' | t }}</div>{% endif %}{% endform %}{% elsif theme.role == 'main' %}" + email + '{% else %}' + preview + "{{ velani_sent | replace: 'id=\"inquiry-sent\" tabindex=\"-1\"', 'id=\"inquiry-sent\" tabindex=\"-1\" hidden' }}{% endif %}";
   const side = '<div class="client-side"><h2 class="t2 rise" id="client-t">' + e(t.clientT) + '</h2><p class="lede fade">' + e(t.clientText) + '</p></div>';
-  const call = callBlock(t.callK, (lang === 'es' ? HOURS_ES : company.hours));
-  const client = '<section class="chap client" id="client" aria-labelledby="client-t"><div class="wrap client-grid">' + side + '<div class="client-form">' + (target === 'shopify' ? native : preview + sentPanel(true, lang)) + '</div>' + call + '</div></section>';
-  return localize((target === 'shopify' ? '{% capture velani_sent %}' + sentPanel(false, lang) + '{% endcapture %}' : '') + hero + client + closing(target, { lang }), lang);
+  return (target === 'shopify' ? '{% capture velani_sent %}' + sentPanel(false, lang) + '{% endcapture %}' : '') + '<section class="chap client" id="client" aria-labelledby="client-t"><div class="wrap client-grid">' + side + '<div class="client-form">' + (target === 'shopify' ? native : preview + sentPanel(true, lang)) + '</div></div></section>';
+}
+/** Sign in (Nov 10 inspection): sign-in guidance in the Support layout. The title says it is guidance; the three facts sit where
+ * Support has its doors; it ends on the next step for this task (NEVORA support), with no product or project offer. */
+function signin(page, target, lang = 'en') {
+  const t = SIGNIN[lang];
+  const side = '<div class="cform-hero contact-side"><h1 class="t1 rise">' + e(t.h1) + '</h1><p class="lede fade">' + e(t.appText) + '</p><div class="hacts fade">' + hb(t.support, '/pages/nevora-support', true, enOnly(lang)) + '</div></div>';
+  const facts = '<div class="help-doors signin-doors" role="list" aria-label="' + e(t.factsLabel) + '">' + t.facts.map(([k, v]) => '<div class="day-opt help-door fade" role="listitem"><h2 class="t3">' + e(k) + '</h2><p>' + e(v) + '</p></div>').join('') + '</div>';
+  const top = '<section class="contact contact-split help-top signin-top"><div class="wrap client-grid">' + side + '<div class="client-form">' + facts + '</div></div></section>';
+  return localize(top + helpEnd(t.endT, t.endLinks.map(([x, href]) => [x, href, href.startsWith('/pages/nevora-support') ? enOnly(lang) : ''])), lang);
 }
 /** The cookie choices dialog's words (Spanish in src/content.es.mjs). */
 const CONSENT = {
@@ -198,15 +207,17 @@ function legalIndex() {
   return '<section class="dir"><div class="wrap"><p class="hkick">This website</p><h2 class="t2">Website notices</h2><div class="tiles">' + site.map(tile).join('') + '</div><p class="hkick">NEVORA app</p><h2 class="t2">For people who use NEVORA</h2><div class="tiles">' + nevora.map(tile).join('') + '</div></div></section>';
 }
 /** The plans page's words (Spanish in src/content.es.mjs). */
-/** Plans (Nov 7 flow map, v2): the trial in the first screen with today's real end date, the 30 days as a calendar beside what
+/** Plans (Nov 7 flow map, v2; Nov 10 inspection: prices before the calendar, no visit-date promise): the 30 days as a calendar beside what
  * happens in them (the plan's features, as things your team does), one NEVORA screen large, the two ways the trial can end as
  * two equal panels, and custom work in the closing. Dates come from the visitor's clock (motion.js); without it the page says
  * "Day 1" and "Day 30". */
 const PLANS = {
   en: { h1: 'Try NEVORA free for 30 days.', text: 'Your whole team gets the complete app, with no card. Then one monthly price for your business: $19 for up to 15 employees, $29 for 16 to 30.',
-    date: ['Free for 30 days from the day your workplace is ready.', 'If you start today, it’s free through '],
-    trial: 'Start free trial', billing: 'Manage billing', quote: 'More than 30 employees?',
-    daysT: 'Your 30 days', calLabel: 'Your trial on a calendar',
+    date: 'Your 30 free days start the day your workplace is ready. Ask for a trial and we reply within two business days to set it up with you.',
+    trial: 'Request a free trial', quote: 'More than 30 employees?',
+    bands: [['$19', 'a month', 'Up to 15 employees'], ['$29', 'a month', '16 to 30 employees']], bandsLabel: 'Prices',
+    billingHelp: ['Already on NEVORA? The business Owner opens billing from NEVORA, in Settings. ', 'Billing help'],
+    daysT: 'Your 30 days', calLabel: 'An example trial on a calendar',
     steps: [['Day 1', 'Your workplace is ready. You invite your team, and each person gets a PIN for the time clock tablet.'], ['First week', 'You publish the schedule. Your team sees their shifts on their phones, swaps shifts and asks for time off, in English or Spanish.'], ['Second week', 'You approve timecards. NEVORA calculates payroll from the approved hours and makes a pay statement for each employee.'], ['Day 30', 'Subscribe to keep going. Subscribe on any day before and you still get all 30 days free.']],
     fine: 'NEVORA calculates pay statements. It does not pay employees or file payroll taxes.',
     shotAlt: 'NEVORA schedule for the week: eight people, their shifts each day and the week published', shotCap: 'Carmen’s week at Northside Coffee, a sample workplace: eight people and every shift published.',
@@ -224,8 +235,8 @@ const PLANS = {
  * plan and marks the box they would be billed for. Dates come from the visitor's clock (motion.js). */
 function plans(page, target, lang = 'en') {
   const t = PLANS[lang];
-  const trial = hb(t.trial, '/pages/nevora-start', true), billing = hb(t.billing, '/pages/nevora-billing'), quote = hb(t.quote, '/pages/contact?interest=nevora');
-  const hero = panel(target, { id: 'top', cls: 'dim long', img: 'ai-glow', title: t.h1, tag: 'h1', text: t.text, acts: trial + billing, after: '<p class="hfact fade" data-trial-end data-before="' + e(t.date[1]) + '">' + e(t.date[0]) + '</p>', first: true });
+  const trial = hb(t.trial, '/pages/contact?interest=nevora-demo', true), quote = hb(t.quote, '/pages/contact?interest=nevora');
+  const hero = panel(target, { id: 'top', cls: 'dim long', img: 'ai-glow', title: t.h1, tag: 'h1', text: t.text, acts: trial, after: '<p class="hfact fade">' + e(t.date) + '</p>', first: true });
   const steps = '<ol class="days-list">' + t.steps.map(([k, x], i) => '<li class="fade"><p class="days-k"' + (i === 0 ? ' data-day="1"' : i === 3 ? ' data-day="30"' : '') + '>' + e(k) + '</p><p>' + e(x) + '</p></li>').join('') + '</ol><p class="days-fine">' + e(t.fine) + '</p>';
   const days = '<section class="chap days" aria-labelledby="days-t"><div class="wrap days-grid"><div><h2 class="t2 rise" id="days-t">' + e(t.daysT) + '</h2>' + steps + '</div><div class="cal fade" data-cal role="img" aria-label="' + e(t.calLabel) + '" hidden></div></div></section>';
   const shot = '<section class="chap plans-shot"><div class="wrap"><figure class="shot slab fade"><img src="' + asset('night-r1-schedule.webp', target) + '" alt="' + e(t.shotAlt) + '" width="2000" height="1181" loading="lazy" decoding="async"></figure><p class="shot-cap">' + e(t.shotCap) + '</p></div></section>';
@@ -238,14 +249,14 @@ function plans(page, target, lang = 'en') {
     + '<div class="pc-scale" aria-hidden="true"><span>' + e(t.card.small) + '</span><span>' + e(t.card.team) + '</span></div>'
     + '<div class="pc-ctl"><button class="pc-step" type="button" data-step="-1" aria-label="' + e(t.card.less) + '" aria-controls="pc-n" hidden>' + icon('minus') + '</button><input class="pc-range" id="pc-n" type="range" min="1" max="31" value="8" step="1" aria-valuetext="' + e(t.card.valueText(8, '$19')) + '" disabled><button class="pc-step" type="button" data-step="1" aria-label="' + e(t.card.more) + '" aria-controls="pc-n" hidden>' + icon('plus') + '</button></div>'
     + '<p class="pc-note" data-note>' + e(t.card.note) + '</p></div>';
-  const price = '<section class="chap day30" id="price" aria-labelledby="price-t"><div class="wrap days-grid price-grid"><div><h2 class="t2 rise" id="price-t">' + e(t.priceT) + '</h2><p class="price-mine" data-price-mine hidden></p><p class="price-inc fade">' + e(t.includes) + '</p>' + '<p class="days-fine">' + e(t.terms) + '</p><div class="hacts day-acts fade">' + trial + quote + '</div></div>' + card + '</div></section>';
+  const price = '<section class="chap day30" id="price" aria-labelledby="price-t"><div class="wrap days-grid price-grid"><div><h2 class="t2 rise" id="price-t">' + e(t.priceT) + '</h2><p class="price-mine" data-price-mine hidden></p><ul class="price-bands fade" aria-label="' + e(t.bandsLabel) + '">' + t.bands.map(([amt, per, who]) => '<li><b>' + e(amt) + ' <span>' + e(per) + '</span></b><span>' + e(who) + '</span></li>').join('') + '</ul><p class="price-inc fade">' + e(t.includes) + '</p>' + '<p class="days-fine">' + e(t.terms) + '</p><div class="hacts day-acts fade">' + trial + quote + '</div><p class="price-help">' + e(t.billingHelp[0]) + '<a href="/pages/nevora-billing">' + e(t.billingHelp[1]) + '</a></p></div>' + card + '</div></section>';
   const commerce = commerceBlock(target) + '<script type="module" src="' + asset('velani-commerce.js', target) + '"></script>';
-  return hero + days + shot + price + closing(target, { lang, line: t.closing, project: '/pages/contact?interest=custom-software', support: hb(t.custom, '/pages/custom-development') }) + commerce + '\n' + (lang === 'es' ? WORK_ES.zoom || [] : []).reduce((z, [a, b]) => z.split(a).join(b), zoomScript(target));
+  return hero + price + days + shot + closing(target, { lang, line: t.closing, project: '/pages/contact?interest=custom-software', support: hb(t.custom, '/pages/custom-development') }) + commerce + '\n' + (lang === 'es' ? WORK_ES.zoom || [] : []).reduce((z, [a, b]) => z.split(a).join(b), zoomScript(target));
 }
 /** The signup and billing pages share one frame: the page's panel with its title and one line, then the step's own card
  * (velani-commerce.js fills it). Without a configured API the card says online signup and billing aren't open yet. */
 const COMMERCE_OFF = {
-  en: { text: 'Online signup and billing aren’t open yet. Ask us for a trial and we’ll set up your workplace.', act: 'Ask for a free trial' },
+  en: { text: 'Online signup and billing aren’t open yet. Ask us for a trial and we’ll set up your workplace.', act: 'Request a free trial' },
   es: { text: 'El registro y la facturación en línea todavía no están abiertos. Pídenos una prueba y configuramos tu lugar de trabajo.', act: 'Pide la prueba gratis' },
 };
 /** Signup (nevora-start, es-prueba): one first screen with one real NEVORA phone screen. Self-service signup now lives in
@@ -280,7 +291,7 @@ function accountPage(page, target, lang) {
   const mail = '<a class="hb fill" href="mailto:' + company.email + '?subject=' + encodeURIComponent(b.subject) + '">' + e(b.act) + icon('arrow-right') + '</a>';
   const form = '';
   const card = '<div class="setup-card" data-setup-card hidden></div><p class="sr" role="status" data-announce></p>';
-  const side = '<div class="cform-hero contact-side"><h1 class="t1 rise" id="setup-t" tabindex="-1">' + e(page.title) + '</h1><p class="lede fade" data-setup-lede>' + e(page.intro) + '</p><p class="lede fade" data-off>' + e(off.text) + '</p><div class="hacts setup-acts" data-setup-acts><span data-off>' + mail + '</span></div></div>';
+  const side = '<div class="cform-hero contact-side"><h1 class="t1 rise" id="setup-t" tabindex="-1">' + e(page.title) + '</h1><p class="lede fade" data-setup-lede' + (page.intro ? '' : ' hidden') + '>' + e(page.intro) + '</p><p class="lede fade" data-off>' + e(off.text) + '</p><div class="hacts setup-acts" data-setup-acts><span data-off>' + mail + '</span></div></div>';
   const call = callBlock(CONTACT[lang].callK, (lang === 'es' ? HOURS_ES : company.hours));
   return '<section class="contact contact-split setup" id="setup" aria-labelledby="setup-t" data-account-page="' + e(page.step) + '"><div class="wrap client-grid">' + side + '<div class="client-form">' + form + card + '</div>' + call + '</div></section>';
 }
@@ -314,9 +325,10 @@ function commerceBlock(target) {
 }
 /** The Support page's words (Spanish in src/content.es.mjs). */
 const FAQ = {
-  en: { h1: 'Get help from Velani.', text: 'Questions about a website or app we built, about NEVORA or about how we work. We reply by email within two business days.',
+  en: { h1: 'Get help from Velani.', text: 'Questions about a website or app we built, about NEVORA or about how we work. We read email Monday to Friday, 8 am to 9 pm ET, and reply within two business days.',
+    endT: 'Still need help?', endLinks: [['Email support@thevelani.com', 'mailto:support@thevelani.com'], ['NEVORA support', '/pages/nevora-support']],
     callK: 'If you can’t work, call us.',
-    doors: [['A website or app we built', 'Something stopped working, or you need a change.', 'Get help', '/pages/sign-in?interest=client-help#client', true], ['NEVORA', 'Signing in, your account, your data and deleting your account.', 'NEVORA support', '/pages/nevora-support', false]],
+    doors: [['A website or app we built', 'Something stopped working, or you need a change.', 'Get help', '/pages/help?interest=client-help#client', true], ['NEVORA', 'Signing in, your account, your data and deleting your account.', 'NEVORA support', '/pages/nevora-support', false]],
     doorsLabel: 'Ways to get help', qT: 'Questions', contactPage: 'Contact page' },
   es: FAQ_ES,
 };
@@ -331,12 +343,12 @@ function faq(page, target, lang = 'en') {
   const top = '<section class="contact contact-split help-top"><div class="wrap client-grid">' + side + '<div class="client-form">' + doors + '</div>' + call + '</div></section>';
   const qs = page.sections.filter(x => !FAQ_SKIP.test(x.heading));
   const questions = '<section class="faq" aria-labelledby="faq-t"><div class="wrap"><div class="qa"><div class="head"><h2 class="t2 rise" id="faq-t">' + e(t.qT) + '</h2></div><div class="faq-list">' + qs.map(x => '<details><summary>' + e(x.heading) + icon('plus') + '</summary><p>' + (company.phone ? linkEmail(e(x.text)).split(company.phone).join('<a href="' + tel() + '">' + e(company.phone) + '</a>') : linkEmail(e(x.text))) + '</p></details>').join('') + '</div></div></div></section>';
-  return localize(top + questions + closing(target, { lang, support: hb(t.contactPage, '/pages/contact') }), lang);
+  return localize(top + clientSection(target, lang) + questions + helpEnd(t.endT, t.endLinks.map(([x, href]) => [x, href, href.startsWith('/pages/nevora-support') ? enOnly(lang) : ''])), lang);
 }
 /** About (Nov 7, v2): who we are without names or photos. A short hero with Jose's reason for Velani set large, the three things we
  * have built (one size of picture each, the year), and the company: the phone beside three facts. Then the closing. */
 const ABOUT = {
-  en: { h1: 'Software for small businesses.', text: 'We started Velani in 2026 to give small businesses top-quality software at prices they can afford.', project: 'Start a project', see: 'See NEVORA',
+  en: { h1: 'Software for small businesses.', text: 'We started Velani in 2026 to build software for small businesses, with a fixed price in writing and everything in English and Spanish.', project: 'Start a project', see: 'See NEVORA',
     builtT: 'What we’ve built',
     built: [['NEVORA', 'Scheduling, time clock and payroll calculation for shift teams. Our own product, launched in 2026.', 'See NEVORA', '/pages/nevora', 'night-r1-owner.webp', 'NEVORA on the web for an owner: one thing that needs an answer, five of five clocked in, the next payday and this week’s hours', false],
       ['Tool Box LLC', 'An equipment rental website with an online store, built in 2026.', 'See the project', '/pages/custom-development#web-applications', 'night-tb-home.webp', 'The Tool Box LLC website, built by Velani: equipment rental with job-site delivery and dates', false],
@@ -449,13 +461,13 @@ export function renderShopifyLayout() {
   // language and the two language destinations (path on the main theme, view on a draft)
   const view = path => path === '/' ? '' : '&amp;view=velani-' + slugOf(path);
   const langAssign = path => { const { en, es } = langPaths(path); return `{% assign velani_en_path = '${en}' %}{% assign velani_en_view = '${view(en)}' %}{% assign velani_es_path = '${es}' %}{% assign velani_es_view = '${view(es)}' %}` + (langOf(path) === 'es' ? `{% assign velani_lang = 'es' %}{% assign velani_locale = 'es_US' %}` : '') + (pairOf(path) ? `{% assign velani_alt_en = '${absolute(pairOf(path).en)}' %}{% assign velani_alt_es = '${absolute(pairOf(path).es)}' %}{% assign velani_locale_alt = '${langOf(path) === 'es' ? 'en_US' : 'es_US'}' %}` : ''); };
-  const assignments = page => `{% assign velani_page_title = ${liquidStr(page.title)} %}{% assign velani_page_description = ${liquidStr(page.intro)} %}` + pageHead(page.path) + langAssign(page.path) + (page.nav ? `{% assign velani_nav = '${page.nav}' %}` : '') + (page.og ? `{% assign velani_og = '${page.og[0]}' %}{% assign velani_og_alt = ${liquidStr(page.og[1])} %}` : '');
+  const assignments = page => `{% assign velani_page_title = ${liquidStr(page.title)} %}{% assign velani_page_description = ${liquidStr(page.intro)} %}` + pageHead(page.path) + langAssign(page.path) + (page.nav ? `{% assign velani_nav = '${page.nav}' %}` : '') + (page.og ? `{% assign velani_og = '${page.og[0]}' %}{% assign velani_og_alt = ${liquidStr(page.og[1])} %}` : '') + (page.noindex ? '{% assign velani_noindex = true %}' : '');
   // What a page adds to <head>, captured in its own case branch: the hero image preload, for Home and NEVORA their stylesheet
   // (NEVORA also its script), and for a page with two languages the absolute URLs of both versions (hreflang, set in the head below)
   const pageHead = path => { const hero = heroOf(path), kind = routes[path]?.kind; const css = kind === 'home' || kind === 'nevora' ? `<link rel="stylesheet" href="{{ 'velani-${kind}.css' | asset_url }}">` : ''; const js = kind === 'nevora' ? `<script src="{{ 'velani-nevora.js' | asset_url }}" defer></script>` : ''; return hero || css ? `{% capture velani_head %}${hero ? `<link rel="preload" as="image" href="{{ '${hero}' | asset_url }}" fetchpriority="high">` : ''}${css}${js}{% endcapture %}` : ''; };
   // Share image per page: velani-social.png by default; pages with their own image name it in content (og: [file, alt])
   const defaults = `{% assign velani_nav = '' %}{% assign velani_lang = 'en' %}{% assign velani_locale = 'en_US' %}{% assign velani_en_path = '/' %}{% assign velani_en_view = '' %}{% assign velani_es_path = '/pages/es' %}{% assign velani_es_view = '${view('/pages/es')}' %}{% assign velani_og = 'velani-social.png' %}{% assign velani_og_alt = ${liquidStr('Velani. ' + routes['/'].title)} %}`;
-  const metadata = `{% assign velani_page_title = page_title %}{% assign velani_page_description = page_description %}{% assign velani_page = template.suffix | remove_first: 'velani-' %}${defaults}{% if template.name == 'index' and template.suffix == blank %}{% assign velani_page = 'home' %}${pageHead('/')}${langAssign('/')}{% assign velani_page_title = ${liquidStr(pageTitle(routes['/']))} %}{% assign velani_page_description = ${liquidStr(routes['/'].intro)} %}{% endif %}{% case velani_page %}` + Object.entries(routes).filter(([path, page]) => path !== '/' && page.layoutMeta !== false).map(([path, page]) => `{% when '${slugOf(path)}' %}${assignments({ title: pageTitle(page), intro: page.desc || page.intro, path, nav: page.nav, og: page.og })}`).join('') + '{% endcase %}' + '{% if template.name == "collection" or template.name == "product" or template.name == "cart" or template.name == "search" or template.name == "list-collections" or template.name == "404" %}{% assign velani_page_title = "Page not found" %}{% assign velani_page_description = "The page you asked for is not on the Velani website. Go to the home page or see NEVORA, plans and custom software." %}{% assign velani_noindex = true %}{% endif %}{% assign velani_canonical = canonical_url %}{% if template.name == "index" and template.suffix != blank %}{% assign velani_noindex = true %}{% assign velani_canonical = shop.url | append: "/pages/" | append: velani_page %}{% endif %}';
+  const metadata = `{% assign velani_page_title = page_title %}{% assign velani_page_description = page_description %}{% assign velani_page = template.suffix | remove_first: 'velani-' %}${defaults}{% if template.name == 'index' and template.suffix == blank %}{% assign velani_page = 'home' %}${pageHead('/')}${langAssign('/')}{% assign velani_page_title = ${liquidStr(pageTitle(routes['/']))} %}{% assign velani_page_description = ${liquidStr(routes['/'].intro)} %}{% endif %}{% case velani_page %}` + Object.entries(routes).filter(([path, page]) => path !== '/' && page.layoutMeta !== false).map(([path, page]) => `{% when '${slugOf(path)}' %}${assignments({ title: pageTitle(page), intro: page.desc || page.intro, path, nav: page.nav, og: page.og, noindex: page.noindex })}`).join('') + '{% endcase %}' + '{% if template.name == "collection" or template.name == "product" or template.name == "cart" or template.name == "search" or template.name == "list-collections" or template.name == "404" %}{% assign velani_page_title = "Page not found" %}{% assign velani_page_description = "The page you asked for is not on the Velani website. Go to the home page or see NEVORA, plans and custom software." %}{% assign velani_noindex = true %}{% endif %}{% assign velani_canonical = canonical_url %}{% if template.name == "index" and template.suffix != blank %}{% assign velani_noindex = true %}{% assign velani_canonical = shop.url | append: "/pages/" | append: velani_page %}{% endif %}';
   // The language switch: on the main theme the canonical path, on a draft the same draft with the other page's view
   const switchLinks = `{% if theme.role == 'main' %}{% assign velani_en_href = velani_en_path %}{% assign velani_es_href = velani_es_path %}{% else %}{% capture velani_en_href %}{{ routes.root_url }}?preview_theme_id={{ theme.id }}{{ velani_en_view }}{% endcapture %}{% capture velani_es_href %}{{ routes.root_url }}?preview_theme_id={{ theme.id }}{{ velani_es_view }}{% endcapture %}{% endif %}`;
   const chrome = part => `{% if velani_lang == 'es' %}{% render 'velani-${part}-es'${part === 'header' ? ', velani_nav: velani_nav, velani_page: velani_page' : ''}, velani_en_href: velani_en_href, velani_es_href: velani_es_href %}{% else %}{% render 'velani-${part}-en'${part === 'header' ? ', velani_nav: velani_nav, velani_page: velani_page' : ''}, velani_en_href: velani_en_href, velani_es_href: velani_es_href %}{% endif %}`;

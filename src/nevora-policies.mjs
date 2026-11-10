@@ -124,7 +124,7 @@ const ACCOUNT_DELETION = {
       ] },
       { p: ["The longest applicable period applies, and a deletion request doesn\u2019t restart it. Backups: ", f("BACKUP_EXPIRY"), " Kept records are restricted and never used to restore your account."] }
     ] },
-    { heading: "Your job and your workplace", blocks: [{ p: ["Deleting your NEVORA account doesn\u2019t end your employment or remove records your employer has to keep. If you\u2019re the Owner, your company\u2019s workspace stays open for the rest of your team; closing a workspace is separate, so email ", mail, " to arrange it. A free trial workplace that ends on day 30 without a plan is deleted, all of it, within 3 days, including attendance, timecards and pay statements; the retention periods above apply to workplaces on a plan."] }] }
+    { heading: "Your job and your workplace", blocks: [{ p: ["Deleting your NEVORA account doesn\u2019t end your employment or remove records your employer has to keep. If you\u2019re the Owner, your company\u2019s workspace stays open for the rest of your team; closing a workspace is separate, so email ", mail, " to arrange it."] }] }
   ]
 };
 const POLICY_DOCUMENTS = [PRIVACY, TERMS, SUPPORT, ACCOUNT_DELETION];

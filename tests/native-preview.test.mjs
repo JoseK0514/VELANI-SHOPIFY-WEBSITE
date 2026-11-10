@@ -11,13 +11,13 @@ const parseAndRender = liquid.parseAndRender.bind(liquid);
 liquid.parseAndRender = (tpl, ctx = {}) => parseAndRender(tpl, ctx, { globals: ctx });
 test('unpublished navigation stays in the exact draft without published page resources', async () => {
   const html = await liquid.parseAndRender(renderBody('/', { target: 'shopify' }), { theme: { role: 'unpublished', id: 123 }, routes: { root_url: '/' } });
-  assert.match(html, /href="\/\?preview_theme_id=123&amp;view=velani-nevora-start"/);
+  assert.match(html, /href="\/\?preview_theme_id=123&amp;view=velani-contact&amp;interest=nevora-demo"/);
   assert.match(html, /href="\/\?preview_theme_id=123&amp;view=velani-custom-development#booking"/);
   assert.doesNotMatch(html, /href="\/pages\//);
 });
 test('main-theme links retain canonical company page destinations', async () => {
   const html = await liquid.parseAndRender(renderBody('/', { target: 'shopify' }), { theme: { role: 'main', id: 123 }, routes: { root_url: '/' } });
-  assert.match(html, /href="\/pages\/nevora-start"/);
+  assert.match(html, /href="\/pages\/contact\?interest=nevora-demo"/);
   assert.match(html, /href="\/pages\/nevora"/);
   assert.doesNotMatch(html, /preview_theme_id|view=velani-/);
 });
