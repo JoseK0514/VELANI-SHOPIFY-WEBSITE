@@ -76,14 +76,14 @@ function services_(page, target, lang = 'en') {
 }
 /** The contact page's words (Spanish in src/content.es.mjs). Topic values never change, so the email Velani receives is the same. */
 const CONTACT = {
-  en: { kicker: ['NEVORA for your team', 'Free 30-day NEVORA trial', 'NEVORA Relay'], h1: ['Ask for a NEVORA quote.', 'Request your free NEVORA trial.', 'Join the NEVORA Relay waitlist.'], fact: ['A website, an app, NEVORA or something else. We reply by email within two business days.', 'One price per business, quoted for your number of employees, your business and the features you use. No commitment.', 'Free for 30 days for teams of up to 30 people. You don’t need a card.', 'NEVORA Relay is in design, with no dates yet. We’ll email you when early access opens.'],
+  en: { kicker: ['NEVORA for your team', 'Free 30-day NEVORA trial', 'NEVORA Relay'], h1: ['Set up NEVORA for a larger team.', 'Request your free NEVORA trial.', 'Join the NEVORA Relay waitlist.'], fact: ['A website, an app, NEVORA or something else. We reply by email within two business days.', 'For teams of more than 30 employees. We check what you need and set up your workplace with you. Teams that qualify get the same 30 days free. We reply within two business days.', 'Free for 30 days for teams of up to 30 people. You don’t need a card.', 'NEVORA Relay is in design, with no dates yet. We’ll email you when early access opens.'],
     callK: 'Prefer to talk? Call us.', topicQ: 'What is it about?', preview: 'Preview. This form checks your draft and sends nothing.',
     tiles: [['custom-software', 'Web or app'], ['nevora', 'NEVORA'], ['other', 'Other']],
     previewNote: 'Website preview&nbsp;· checks your draft, sends nothing', noscript: 'The preview form needs JavaScript. No messages are sent from this preview.', legend: 'Inquiry',
-    name: 'Name', email: 'Email', company: 'Company', optional: 'optional', topic: 'Topic', topics: [['website', 'Website'], ['custom-software', 'Custom app'], ['nevora', 'NEVORA quote'], ['nevora-demo', 'Free NEVORA trial'], ['relay', 'NEVORA Relay waitlist'], ['other', 'Other']],
-    team: 'Team size', bigTeam: 'More than 30 (by quote)', locations: 'Number of locations', message: 'What needs to work better', messageOptional: 'Anything else',
-    send: ['Send inquiry', 'Ask for a quote', 'Send trial request', 'Join the waitlist'], check: 'Check draft inquiry', sendNote: 'Don’t send passwords or payment details.', privacy: 'Privacy notice',
-    fine: 'On day 30 you subscribe or close the workplace. Export your data first: a closed workplace and its data are deleted within 3&nbsp;days, timecards and pay statements included. To close it, email support@thevelani.com. NEVORA calculates pay statements; it does not pay employees or file payroll taxes.',
+    name: 'Name', email: 'Email', company: 'Company', optional: 'optional', topic: 'Topic', topics: [['website', 'Website'], ['custom-software', 'Custom app'], ['nevora', 'NEVORA for 30+ employees'], ['nevora-demo', 'Free NEVORA trial'], ['relay', 'NEVORA Relay waitlist'], ['other', 'Other']],
+    team: 'Team size', bigTeam: 'More than 30 (assisted setup)', locations: 'Number of locations', message: 'What needs to work better', messageOptional: 'Anything else',
+    send: ['Send inquiry', 'Request assisted setup', 'Send trial request', 'Join the waitlist'], check: 'Check draft inquiry', sendNote: 'Don’t send passwords or payment details.', privacy: 'Privacy notice',
+    fine: 'On day 30 you subscribe, or NEVORA pauses for your team. Before NEVORA opens to new businesses, we’ll publish how long a paused workplace’s records are kept and how to export them. To close a workplace or ask about its records, email support@thevelani.com. NEVORA calculates pay statements; it does not pay employees or file payroll taxes.',
     sentPreview: 'Website preview&nbsp;· this is what visitors see after sending. Nothing was sent.', sentH: 'Message sent.', sentP: 'Thanks for writing. We reply by email within two business days.', sentFrom: ['Replies come from ', '. If it isn’t in your inbox, check spam or junk.'], back: 'Back to home',
     writeTitle: 'Write to us', writeText: 'What needs to work better, who will use it, and how it works today. We reply from ', writeButton: 'Email ', noSensitive: 'No passwords, payment details or sensitive records by email.' },
   es: CONTACT_ES,
@@ -99,7 +99,7 @@ function fields(live = false, lang = 'en') {
   const company = ff('company', 'company', t.company + opt, 'autocomplete="organization" maxlength="160" aria-describedby="error-company"');
   // Topic: three choices of one size in place of a menu (radios set the hidden contact[interest]; velani.js keeps them in step)
   const topic = '<p class="kinds-q field-topic" aria-hidden="true">' + t.topicQ + '</p><fieldset class="kinds topics field-topic"><legend class="sr">' + t.topicQ + '</legend>' + t.tiles.map(([value, label]) => '<label class="kind"><input type="radio" name="topic_choice" value="' + value + '"><b>' + label + '</b></label>').join('') + '</fieldset><input type="hidden" id="inquiry-interest" name="contact[interest]" value="">';
-  // The submitted team size stays in English ("More than 30 (by quote)") so every inquiry email reads the same
+  // The submitted team size stays in English ("More than 30 (assisted setup)") so every inquiry email reads the same
   const big = CONTACT.en.bigTeam, bigOption = t.bigTeam === big ? '<option>' + big + '</option>' : '<option value="' + big + '">' + t.bigTeam + '</option>';
   const team = '<div class="frow" data-nevora-fields hidden><div class="ff sel"><select id="inquiry-team" name="contact[team_size]"><option value=""></option><option>1–10</option><option>11–20</option><option>21–30</option>' + bigOption + '</select><label for="inquiry-team">' + t.team + '</label></div>' + ff('locations', 'locations', t.locations, 'maxlength="120" aria-describedby="error-locations" inputmode="numeric"') + '</div>';
   const message = '<div class="ff area"><textarea id="inquiry-message" name="contact[body]" placeholder=" " rows="4" maxlength="4000" required aria-describedby="error-message" data-min="140">' + (live ? '{{ form.body | escape }}' : '') + '</textarea><label for="inquiry-message">' + v(t.message, t.messageOptional + opt) + '</label><p class="field-error" id="error-message"></p></div>';
@@ -122,13 +122,16 @@ function contact(page, target, lang = 'en') {
   const native = "{% if settings.inquiries_enabled and theme.role == 'main' %}{% form 'contact', id: 'project-inquiry', class: 'inquiry-form', novalidate: 'novalidate' %}{% if form.posted_successfully? %}{{ velani_sent }}{% else %}<div data-inquiry-mode=\"live\">" + fields(true, lang) + "</div>{% if form.errors %}<div class=\"form-status\" role=\"alert\">{{ form.errors | default_errors }}</div>{% endif %}<div class=\"form-legal\">{{ 'shopify.online_store.spam_detection.disclaimer_html' | t }}</div>{% endif %}{% endform %}{% elsif theme.role == 'main' %}" + email + '{% else %}' + preview + "{{ velani_sent | replace: 'id=\"inquiry-sent\" tabindex=\"-1\"', 'id=\"inquiry-sent\" tabindex=\"-1\" hidden' }}{% endif %}";
   return '<section class="contact contact-split"><div class="wrap client-grid">' + side + '<div class="client-form">' + (target === 'shopify' ? native : preview + sentPanel(true, lang)) + '</div>' + call + '</div></section>';
 }
-/** Sign in (Nov 7 flow map): NEVORA's own sign-in first, then one form for Velani clients with two kinds of request.
+/** Sign in (Nov 7 flow map; Nov 9 contract): how NEVORA sign-in works, then one form for Velani clients with two kinds of
+ * request. NEVORA has no public sign-in address yet, so there is no Open NEVORA link: each workplace signs in at its own
+ * address with its Employee ID and password (docs/handoffs/2026-11-09-claude-website-backend-contract.md §1–2 in NEVORA).
  * The form is the contact form (same ids, validation, preview check and confirmation in velani.js), with the topic set by the
  * two choices: client-work or client-help. Timing and urgency values stay in English so every request email reads the same. */
-const NEVORA_APP = 'https://nevora.team';
 const SIGNIN = {
-  en: { h1: 'Sign in to NEVORA.', appText: 'Owners, managers and employees sign in with the email their workplace invited.', open: 'Open NEVORA', support: 'NEVORA support',
-    appFact: 'Can’t sign in? Ask your manager to resend your invite.',
+  en: { h1: 'Sign in to NEVORA.', appText: 'Each workplace has its own NEVORA address. Sign in there with your Employee ID and password.', support: 'NEVORA support',
+    facts: [['Your address and ID', 'They’re in the invitation email from your workplace. Lost it? Ask your employer.'],
+      ['Forgot your password?', 'Choose Forgot password? on your workplace’s sign-in page. You’ll need your Employee ID and the email your workplace has on file.'],
+      ['Your 4-digit PIN', 'It’s only for clocking in on your workplace’s tablet, not for signing in. Your Owner can set a new one.']],
     webAlt: 'NEVORA on the web for an owner: one thing that needs an answer, five of five clocked in and the next payday', phoneAlt: 'NEVORA on an employee’s phone: her shift today and her next shifts',
     clientT: 'Need something on your site or app?', clientText: 'Ask for a new page, a feature or a change, or tell us what stopped working. We reply by email within two business days.',
     callK: 'If you can’t work, call us.',
@@ -158,7 +161,7 @@ function clientFields(live, lang) {
 function signin(page, target, lang = 'en') {
   const t = SIGNIN[lang], c = CONTACT[lang];
   const shots = '<div class="hweb fade"><img src="' + asset('night-r1-owner-today.webp', target) + '" alt="' + e(t.webAlt) + '" width="1800" height="750" decoding="async"></div><div class="hshot fade"><img src="' + asset('night-r1-ph-home.webp', target) + '" alt="' + e(t.phoneAlt) + '" width="780" height="1688" decoding="async"></div>';
-  const hero = panel(target, { id: 'top', cls: 'live long shots-hero signin-top', img: 'ai-devices', title: t.h1, tag: 'h1', text: t.appText, acts: hb(t.open, NEVORA_APP, true) + hb(t.support, '/pages/nevora-support', false, enOnly(lang)), after: '<p class="hfact fade">' + e(t.appFact) + '</p>', extra: shots, first: true });
+  const hero = panel(target, { id: 'top', cls: 'live long shots-hero signin-top', img: 'ai-devices', title: t.h1, tag: 'h1', text: t.appText, acts: hb(t.support, '/pages/nevora-support', true, enOnly(lang)), after: '<dl class="signin-facts fade">' + t.facts.map(([k, v]) => '<div><dt>' + e(k) + '</dt><dd>' + e(v) + '</dd></div>').join('') + '</dl>', extra: shots, first: true });
   const preview = '<form id="project-inquiry" class="inquiry-form" method="post" action="/?velani_preview_inquiry=1" data-inquiry-mode="preview" novalidate>' + clientFields(false, lang) + '<div class="form-status" role="status" aria-live="polite" tabindex="-1"></div><p class="client-preview">' + t.preview + '</p><noscript><p>' + c.noscript + '</p></noscript></form>';
   const email = '<div class="client-write"><h3 class="t3">' + t.writeT + '</h3><p>' + t.writeText + company.email + '.</p><div class="acts"><a class="pill" href="mailto:' + company.email + '">' + c.writeButton + company.email + '</a></div></div>';
   const native = "{% if settings.inquiries_enabled and theme.role == 'main' %}{% form 'contact', id: 'project-inquiry', class: 'inquiry-form', novalidate: 'novalidate' %}{% if form.posted_successfully? %}{{ velani_sent }}{% else %}<div data-inquiry-mode=\"live\">" + clientFields(true, lang) + "</div>{% if form.errors %}<div class=\"form-status\" role=\"alert\">{{ form.errors | default_errors }}</div>{% endif %}<div class=\"form-legal\">{{ 'shopify.online_store.spam_detection.disclaimer_html' | t }}</div>{% endif %}{% endform %}{% elsif theme.role == 'main' %}" + email + '{% else %}' + preview + "{{ velani_sent | replace: 'id=\"inquiry-sent\" tabindex=\"-1\"', 'id=\"inquiry-sent\" tabindex=\"-1\" hidden' }}{% endif %}";
@@ -202,7 +205,7 @@ function legalIndex() {
 const PLANS = {
   en: { h1: 'Try NEVORA free for 30 days.', text: 'Your whole team gets the complete app, with no card. Then one monthly price for your business: $19 for up to 15 employees, $29 for 16 to 30.',
     date: ['Free for 30 days from the day your workplace is ready.', 'If you start today, it’s free through '],
-    trial: 'Start free trial', billing: 'Manage billing', quote: 'Ask for a quote',
+    trial: 'Start free trial', billing: 'Manage billing', quote: 'More than 30 employees?',
     daysT: 'Your 30 days', calLabel: 'Your trial on a calendar',
     steps: [['Day 1', 'Your workplace is ready. You invite your team, and each person gets a PIN for the time clock tablet.'], ['First week', 'You publish the schedule. Your team sees their shifts on their phones, swaps shifts and asks for time off, in English or Spanish.'], ['Second week', 'You approve timecards. NEVORA calculates payroll from the approved hours and makes a pay statement for each employee.'], ['Day 30', 'Subscribe to keep going. Subscribe on any day before and you still get all 30 days free.']],
     fine: 'NEVORA calculates pay statements. It does not pay employees or file payroll taxes.',
@@ -210,8 +213,8 @@ const PLANS = {
     priceT: 'After 30 days, one monthly price',
     includes: 'Every business gets the whole app: scheduling, the time clock, timecards and payroll calculation. The price depends only on how many employees you have, and owners aren’t counted.',
     card: { q: 'Your team', unit: 'employees', per: 'a month', small: '1 to 15 · $19', team: '16 to 30 · $29', less: 'One fewer employee', more: 'One more employee', note: 'Billed monthly, per business.', valueText: (n, p) => n + ' employees, ' + p + ' a month' },
-    terms: 'Prices are in US dollars. Cancel any time and NEVORA keeps working through the month you paid for. If you don’t subscribe after the trial, NEVORA pauses for your team and you can still export your records.',
-    over: ['More than 30 employees? ', 'Ask for a quote', '.'],
+    terms: 'Prices are in US dollars. Cancel any time and NEVORA keeps working through the month you paid for. If you don’t subscribe after the trial, NEVORA pauses for your team.',
+    over: ['More than 30 employees? ', 'Write to us for assisted setup', '. We reply within two business days.'],
     closing: 'Websites and custom apps get a fixed written quote for each project.', project: 'Start a project', custom: 'See custom software' },
   es: PLANS_ES,
 };
@@ -245,63 +248,39 @@ const COMMERCE_OFF = {
   en: { text: 'Online signup and billing aren’t open yet. Ask us for a trial and we’ll set up your workplace.', act: 'Ask for a free trial' },
   es: { text: 'El registro y la facturación en línea todavía no están abiertos. Pídenos una prueba y configuramos tu lugar de trabajo.', act: 'Pide la prueba gratis' },
 };
-/** Signup (nevora-start, es-prueba): one first screen. The title, one line and the email field with its button sit in the
- * panel, with one real NEVORA phone screen beside them. velani-commerce.js shows the form when the API is set, sends
- * POST /v1/signup and turns the panel into "Check your email". Without the API (or the script) the panel keeps the
- * request-a-trial fallback. */
+/** Signup (nevora-start, es-prueba): one first screen with one real NEVORA phone screen. Self-service signup now lives in
+ * NEVORA's own onboarding (POST /api/onboarding/registrations on the signup address); the legacy /v1/signup this page used
+ * answers 409 use_onboarding. Until an approved signup address exists, the page asks for a trial request and Velani sets up
+ * the workplace. */
 const START = {
-  en: { email: 'Work email', send: 'Email me a link', sending: 'Sending', fact: ['We’ll email you a link to set up your workplace. Already use NEVORA? ', 'Sign in', '.'],
+  en: { fact: ['Already use NEVORA? ', 'How to sign in', '.'],
     phoneAlt: 'NEVORA on a phone: an employee’s week with each shift and its hours' },
-  es: { email: 'Correo de trabajo', send: 'Envíame el enlace', sending: 'Enviando', fact: ['Te enviamos un enlace para configurar tu lugar de trabajo. ¿Ya usas NEVORA? ', 'Entra', '.'],
+  es: { fact: ['¿Ya usas NEVORA? ', 'Cómo entrar', '.'],
     phoneAlt: 'NEVORA en un teléfono: la semana de un empleado con cada turno y sus horas' },
 };
-/** Setup (nevora-verify): the Contact split. The title and one line on the left, with the phone; on the right the form
- * (business, then the Owner account), and the same column later holds the progress and the ready details.
- * velani-commerce.js reads #token=, verifies it, then shows the step the backend's status asks for. */
-const SETUP = {
-  en: { biz: 'Your business', owner: 'Your Owner account',
-    business: 'Business name', location: 'Location name', locationDefault: 'Main', tz: 'Time zone', employees: 'Employees',
-    employeesHelp: 'Not counting you. More than 30? ', quote: 'Ask us for a quote',
-    first: 'First name', last: 'Last name', phone: 'Mobile phone', password: 'Password', passwordHelp: 'At least 12 characters.',
-    show: 'Show', hide: 'Hide', submit: 'Set up my workplace', sending: 'Setting up', note: 'You’ll sign in to NEVORA with the Owner ID OWNER and this password.',
-    zones: [['America/New_York', 'Eastern Time'], ['America/Chicago', 'Central Time'], ['America/Denver', 'Mountain Time'], ['America/Phoenix', 'Mountain Time (Arizona)'], ['America/Los_Angeles', 'Pacific Time'], ['America/Anchorage', 'Alaska Time'], ['Pacific/Honolulu', 'Hawaii Time'], ['America/Puerto_Rico', 'Atlantic Time']] },
-  es: { biz: 'Tu negocio', owner: 'Tu cuenta de dueño',
-    business: 'Nombre del negocio', location: 'Nombre de la ubicación', locationDefault: 'Principal', tz: 'Zona horaria', employees: 'Empleados',
-    employeesHelp: 'Sin contarte a ti. ¿Más de 30? ', quote: 'Pídenos una cotización',
-    first: 'Nombre', last: 'Apellido', phone: 'Teléfono móvil', password: 'Contraseña', passwordHelp: 'Al menos 12 caracteres.',
-    show: 'Mostrar', hide: 'Ocultar', submit: 'Configura mi lugar de trabajo', sending: 'Configurando', note: 'Entrarás a NEVORA con el ID de dueño OWNER y esta contraseña.',
-    zones: [['America/New_York', 'Hora del Este'], ['America/Chicago', 'Hora del Centro'], ['America/Denver', 'Hora de la Montaña'], ['America/Phoenix', 'Hora de la Montaña (Arizona)'], ['America/Los_Angeles', 'Hora del Pacífico'], ['America/Anchorage', 'Hora de Alaska'], ['Pacific/Honolulu', 'Hora de Hawái'], ['America/Puerto_Rico', 'Hora del Atlántico']] },
+/** Setup (nevora-verify, es-configurar), retired Nov 9: workplace setup now happens in NEVORA's own onboarding, which the
+ * verification email opens (/onboarding/verify on the signup address). The old #token= links went to the legacy /v1/verify,
+ * which now answers 409 use_onboarding, so this page only scrubs any fragment and explains where setup lives. */
+const SETUP_RETIRED = {
+  en: { line: 'Here from an older email? That link no longer works. Ask us for a trial and we’ll set up your workplace with you.' },
+  es: { line: '¿Llegaste desde un correo anterior? Ese enlace ya no funciona. Pídenos una prueba y configuramos tu lugar de trabajo contigo.' },
 };
-function setupPage(page, target, lang) {
-  const t = SETUP[lang], off = COMMERCE_OFF[lang];
-  const ff = (id, label, attrs, help = '') => '<div class="ff"><input id="setup-' + id + '" name="' + id + '" placeholder=" " ' + attrs + ' aria-describedby="setup-' + id + '-error' + (help ? ' setup-' + id + '-help' : '') + '"><label for="setup-' + id + '">' + e(label) + '</label>' + (help ? '<p class="field-help" id="setup-' + id + '-help">' + help + '</p>' : '') + '<p class="field-error" id="setup-' + id + '-error"></p></div>';
-  const tz = '<div class="ff sel"><select id="setup-timeZone" name="timeZone" required aria-describedby="setup-timeZone-error">' + t.zones.map(([v, n]) => '<option value="' + v + '">' + e(n) + '</option>').join('') + '</select><label for="setup-timeZone">' + e(t.tz) + '</label><p class="field-error" id="setup-timeZone-error"></p></div>';
-  const pw = '<div class="ff pw"><input id="setup-password" name="password" type="password" placeholder=" " autocomplete="new-password" minlength="12" maxlength="256" required aria-describedby="setup-password-help setup-password-error"><label for="setup-password">' + e(t.password) + '</label><button class="pw-toggle" type="button" aria-controls="setup-password" aria-pressed="false" data-show="' + t.show + '" data-hide="' + t.hide + '">' + t.show + '</button><p class="field-help" id="setup-password-help">' + e(t.passwordHelp) + '</p><p class="field-error" id="setup-password-error"></p></div>';
-  const form = '<form id="setup-form" class="setup-form" novalidate hidden>'
-    + '<fieldset><legend class="kinds-q">' + e(t.biz) + '</legend>' + ff('businessName', t.business, 'autocomplete="organization" maxlength="120" required')
-    + '<div class="frow">' + ff('locationName', t.location, 'value="' + e(t.locationDefault) + '" maxlength="80" required') + tz + '</div>'
-    + ff('employeeCount', t.employees, 'type="number" inputmode="numeric" min="1" max="30" step="1" required', e(t.employeesHelp) + '<a href="/pages/contact?interest=nevora">' + e(t.quote) + '</a>.') + '</fieldset>'
-    + '<fieldset><legend class="kinds-q">' + e(t.owner) + '</legend><div class="frow">' + ff('firstName', t.first, 'autocomplete="given-name" maxlength="80" required') + ff('lastName', t.last, 'autocomplete="family-name" maxlength="80" required') + '</div>'
-    + ff('phone', t.phone, 'type="tel" autocomplete="tel-national" inputmode="tel" maxlength="20" required') + pw + '</fieldset>'
-    + '<div class="client-send"><button class="pill" type="submit" data-sending="' + e(t.sending) + '">' + e(t.submit) + '</button><p class="client-note">' + e(t.note) + '</p></div>'
-    + '<p class="form-status" role="alert" data-form-status></p></form>';
-  const card = '<div class="setup-card" data-setup-card hidden></div><p class="sr" role="status" data-announce></p>';
-  const side = '<div class="cform-hero contact-side"><h1 class="t1 rise" id="setup-t" tabindex="-1">' + e(page.title) + '</h1><p class="lede fade" data-setup-lede>' + e(page.intro) + '</p><p class="lede fade" data-off>' + e(off.text) + '</p><div class="hacts setup-acts" data-setup-acts><span data-off>' + hb(off.act, '/pages/contact?interest=nevora-demo', true) + '</span></div></div>';
-  const call = callBlock(CONTACT[lang].callK, (lang === 'es' ? HOURS_ES : company.hours));
-  const shot = '<template data-ready-shot><figure class="setup-shot"><img src="' + asset('night-r1-owner-today.webp', target) + '" alt="' + e(lang === 'es' ? 'Hoy en NEVORA para el dueño: lo que necesita tu respuesta, quién marcó entrada y el próximo día de pago' : 'NEVORA Today for the Owner: what needs your answer, who is clocked in and the next payday') + '" width="1800" height="750" decoding="async"><figcaption></figcaption></figure></template>';
-  return shot + '<section class="contact contact-split setup" id="setup" aria-labelledby="setup-t" data-setup-page><div class="wrap client-grid">' + side + '<div class="client-form">' + form + card + '</div>' + call + '</div></section>';
-}
-/** Plan and billing (nevora-billing, es-facturacion) and Confirming payment (nevora-billing-return): the setup page's split.
- * Billing has an owner-email form for a sign-in link; both fill the right-hand card from the backend's status. */
+/** Plan and billing (nevora-billing, es-facturacion) and Confirming payment (nevora-billing-return, es-pago): the Contact
+ * split. Billing opens only through the Owner's one-time handoff from NEVORA (#handoff=); there is no email sign-in (the
+ * backend retired mailbox billing links, Nov 9). Until a handoff arrives, or while online billing is closed, the page gives
+ * billing support, never the new-trial request: these visitors already have a workplace. */
 const BILLING = {
-  en: { email: 'Business owner email', send: 'Email me a sign-in link', sending: 'Sending', note: 'The link works once, for 30 minutes.' },
-  es: { email: 'Correo del dueño del negocio', send: 'Envíame un enlace para entrar', sending: 'Enviando', note: 'El enlace funciona una vez, por 30 minutos.' },
+  en: { off: 'Online billing isn’t open yet. If NEVORA already runs your workplace, write to us about your plan or a charge. We reply within two business days.',
+    act: 'Email billing support', subject: 'NEVORA billing' },
+  es: { off: 'La facturación en línea todavía no está abierta. Si NEVORA ya funciona en tu lugar de trabajo, escríbenos sobre tu plan o un cobro. Respondemos en un plazo de dos días laborables.',
+    act: 'Escribe a facturación', subject: 'Facturación de NEVORA' },
 };
 function accountPage(page, target, lang) {
-  const off = COMMERCE_OFF[lang], b = BILLING[lang];
-  const form = page.step === 'billing' ? '<form id="billing-form" class="setup-form billing-form" novalidate hidden><div class="ff"><input id="billing-email" name="email" type="email" autocomplete="email" inputmode="email" autocapitalize="none" spellcheck="false" maxlength="254" placeholder=" " required aria-describedby="billing-email-error billing-email-help"><label for="billing-email">' + e(b.email) + '</label><p class="field-help" id="billing-email-help">' + e(b.note) + '</p><p class="field-error" id="billing-email-error" role="alert"></p></div><div class="client-send"><button class="pill" type="submit" data-sending="' + e(b.sending) + '">' + e(b.send) + '</button></div></form>' : '';
+  const b = BILLING[lang], off = { text: b.off, act: b.act };
+  const mail = '<a class="hb fill" href="mailto:' + company.email + '?subject=' + encodeURIComponent(b.subject) + '">' + e(b.act) + icon('arrow-right') + '</a>';
+  const form = '';
   const card = '<div class="setup-card" data-setup-card hidden></div><p class="sr" role="status" data-announce></p>';
-  const side = '<div class="cform-hero contact-side"><h1 class="t1 rise" id="setup-t" tabindex="-1">' + e(page.title) + '</h1><p class="lede fade" data-setup-lede>' + e(page.intro) + '</p><p class="lede fade" data-off>' + e(off.text) + '</p><div class="hacts setup-acts" data-setup-acts><span data-off>' + hb(off.act, '/pages/contact?interest=nevora-demo', true) + '</span></div></div>';
+  const side = '<div class="cform-hero contact-side"><h1 class="t1 rise" id="setup-t" tabindex="-1">' + e(page.title) + '</h1><p class="lede fade" data-setup-lede>' + e(page.intro) + '</p><p class="lede fade" data-off>' + e(off.text) + '</p><div class="hacts setup-acts" data-setup-acts><span data-off>' + mail + '</span></div></div>';
   const call = callBlock(CONTACT[lang].callK, (lang === 'es' ? HOURS_ES : company.hours));
   return '<section class="contact contact-split setup" id="setup" aria-labelledby="setup-t" data-account-page="' + e(page.step) + '"><div class="wrap client-grid">' + side + '<div class="client-form">' + form + card + '</div>' + call + '</div></section>';
 }
@@ -309,17 +288,19 @@ function commercePage(page, target, lang = 'en') {
   const off = COMMERCE_OFF[lang];
   const offActs = hb(off.act, '/pages/contact?interest=nevora-demo', true);
   const script = commerceBlock(target) + '<script type="module" src="' + asset('velani-commerce.js', target) + '"></script>';
-  if (page.step === 'verify') return setupPage(page, target, lang) + script;
+  if (page.step === 'verify') {
+    const hero = panel(target, { id: 'top', cls: 'dim', img: 'ai-glow', title: page.title, tag: 'h1', text: page.intro, first: true });
+    return hero + '<section class="chap cflow" id="flow" data-verify-retired><div class="wrap"><div class="cf-card"><p>' + e(SETUP_RETIRED[lang].line) + '</p><div class="hacts">' + offActs + '</div></div></div></section>' + script;
+  }
   if (page.step === 'billing' || page.step === 'return') return accountPage(page, target, lang) + script;
   if (page.step === 'start') {
     const t = START[lang];
     const phone = '<div class="hshot fade"><img src="' + asset('night-r1-ph-schedule.webp', target) + '" alt="' + e(t.phoneAlt) + '" width="780" height="1688" decoding="async"></div>';
-    const form = '<form class="sform" id="signup" data-signup novalidate hidden><div class="sform-row"><div class="ff"><input id="signup-email" name="email" type="email" autocomplete="email" inputmode="email" autocapitalize="none" spellcheck="false" maxlength="254" placeholder=" " required aria-describedby="signup-error"><label for="signup-email">' + e(t.email) + '</label></div><button class="hb fill" type="submit" data-sending="' + e(t.sending) + '"><span>' + e(t.send) + '</span>' + icon('arrow-right') + '</button></div><p class="field-error" id="signup-error" role="alert"></p></form>';
     const offBlock = '<div class="hacts fade" data-off>' + offActs + '</div>';
-    const fact = '<p class="hfact fade" data-signup-fact hidden>' + e(t.fact[0]) + '<a href="/pages/sign-in">' + e(t.fact[1]) + '</a>' + e(t.fact[2]) + '</p>';
+    const fact = '<p class="hfact fade">' + e(t.fact[0]) + '<a href="/pages/sign-in">' + e(t.fact[1]) + '</a>' + e(t.fact[2]) + '</p>';
     const offLine = '<p class="hfact fade" data-off>' + e(off.text) + '</p>';
-    const hero = panel(target, { id: 'top', cls: 'live long signup-top', img: 'ai-glow', title: page.title, tag: 'h1', text: page.intro, after: form + offBlock + fact + offLine, extra: phone, first: true });
-    return hero + script;
+    const hero = panel(target, { id: 'top', cls: 'live long signup-top', img: 'ai-glow', title: page.title, tag: 'h1', text: page.intro, after: offLine + offBlock + fact, extra: phone, first: true });
+    return hero;
   }
   const hero = panel(target, { id: 'top', cls: 'dim', img: 'ai-glow', title: page.title, tag: 'h1', text: page.intro, first: true });
   const card = '<section class="chap cflow" id="flow" data-step="' + e(page.step) + '" aria-live="polite"><div class="wrap"><div class="cf-card" data-off><p>' + e(off.text) + '</p><div class="hacts">' + offActs + '</div></div></div></section>';

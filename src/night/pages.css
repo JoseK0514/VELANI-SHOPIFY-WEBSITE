@@ -633,3 +633,18 @@ button.hb:disabled{cursor:progress;opacity:.75}
 /* Phone off (Nov 9): the support email takes the large line in call blocks, one step smaller so the whole address fits a phone column */
 .client-call a.client-mail{color:var(--text);text-decoration:none;font-size:clamp(1.25rem,1.9vw,1.625rem);letter-spacing:-.01em;overflow-wrap:anywhere}
 .client-call a.client-mail:hover{color:var(--accent)}
+/* Sign in (Nov 9): how NEVORA sign-in works, as three short facts under the hero line instead of a link to a parked address */
+.signin-facts{margin:22px 0 0;padding:0;max-width:34em;display:grid;gap:14px}
+.signin-facts>div{padding-left:14px;border-left:2px solid var(--line-2)}
+.signin-facts dt{font-size:0.9375rem;font-weight:600;line-height:1.4;color:var(--text)}
+.signin-facts dd{margin:2px 0 0;font-size:0.9375rem;line-height:1.5;color:var(--text-2)}
+.signin-facts+.hacts,.hacts+.signin-facts{margin-top:22px}
+/* Owner view on Plans (Nov 9): the billing language choice under the plan line. Two equal 44px targets, the chosen one filled. */
+.owner-lang{display:inline-flex;gap:4px;margin-top:18px;padding:4px;border:1px solid var(--line-2);border-radius:999px}
+.owner-lang button{min-height:44px;min-width:96px;padding:0 16px;border:0;border-radius:999px;background:transparent;color:var(--text-2);font:inherit;font-size:0.9375rem;cursor:pointer}
+.owner-lang button[aria-pressed="true"]{background:var(--text);color:var(--bg,#05060a)}
+.owner-lang button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+@media(hover:hover){.owner-lang button[aria-pressed="false"]:hover{color:var(--text)}}
+/* Sign in on wide screens: the copy column (now with the three sign-in facts) stops 32px before the phone, whose left edge is
+   the screen width less both page margins, the web screenshot and the phone's own 240 - 96 overhang. */
+@media(min-width:1181px){.signin-top .hcopy{max-width:min(520px,calc(100vw - 2*max(var(--pad),50vw - 620px) - min(600px,42vw) - 192px))}}

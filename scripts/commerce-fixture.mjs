@@ -1,5 +1,7 @@
 // LOCAL FIXTURE ONLY. A fake NEVORA commerce API for testing the Velani signup and billing pages on this computer.
-// It follows the documented contract (NEVORA docs/handoffs/2026-11-07-commerce-backend.md) with fictional businesses, sends
+// It follows the documented contract (NEVORA docs/handoffs/2026-11-07-commerce-backend.md and 2026-11-09-claude-website-
+// backend-contract.md: status.timeZone, {lang} on Checkout/Portal, legacy signup/verify/setup/login-link answer 409
+// use_onboarding) with fictional businesses, sends
 // no email, charges nothing and talks to no real service. It listens on 127.0.0.1 only.
 //
 //   node scripts/commerce-fixture.mjs            # API on http://127.0.0.1:4198
@@ -7,7 +9,8 @@
 //
 // Scenarios come from the one-time token, e.g. /pages/plans#handoff=fixture-trial-000000000000:
 //   trial, paid, canceled, grace, trial-ended, payment-failed, ended, payment-required, over-limit, over-30,
-//   expired (link already used), down (billing unavailable), slow (3 s), lost (checkout response lost once).
+//   expired (link already used), down (billing unavailable), slow (3 s), lost (checkout response lost once),
+//   no-zone (status.timeZone null: dates show in UTC).
 import http from 'node:http';
 import { randomUUID } from 'node:crypto';
 
@@ -16,7 +19,7 @@ const ui = (process.env.FIXTURE_UI_ORIGIN || 'http://127.0.0.1:4199').replace(/\
 const allowed = new Set([ui, ui.replace('127.0.0.1', 'localhost')]);
 const day = n => new Date(Date.UTC(2026, 10, 8 + n, 16)).toISOString();
 const base = { businessId: '22222222-2222-4222-8222-222222222222', businessName: 'Northside Coffee', setup: 'ready', applicationUrl: 'https://northside.example.test', ownerEmployeeId: 'OWNER',
-  trialEndsAt: day(30), paidThrough: null, graceEndsAt: null, plan: null, state: 'trial', operational: true, billing: true, export: true, employeeLimit: 30, activeEmployees: 8, reason: null };
+  trialEndsAt: day(30), paidThrough: null, graceEndsAt: null, plan: null, state: 'trial', operational: true, billing: true, export: true, employeeLimit: 30, activeEmployees: 8, reason: null, timeZone: 'America/Puerto_Rico' };
 const SCENARIOS = {
   trial: {},
   paid: { state: 'paid', plan: 'small', employeeLimit: 15, paidThrough: day(29) },
@@ -31,7 +34,7 @@ const SCENARIOS = {
   team: { activeEmployees: 22 },
   setup: { setup: 'required', applicationUrl: null, trialEndsAt: null, reason: 'setup_required' },
   waiting: { setup: 'pending', applicationUrl: null, trialEndsAt: null, reason: 'setup_pending' },
-  slow: {}, lost: {},
+  slow: {}, lost: {}, 'no-zone': { timeZone: null },
 };
 const sessions = new Map(); // accessToken -> { scenario, seenKeys:Set }
 const used = new Set();
@@ -47,8 +50,10 @@ http.createServer(async (req, res) => {
   const url = new URL(req.url, 'http://fixture.invalid');
   // A pretend Stripe page so the return flow can be exercised; it only links back to the Velani return page.
   if (req.method === 'GET' && url.pathname === '/fake-stripe') {
-    const back = ui + '/pages/nevora-billing-return#handoff=fixture-' + (url.searchParams.get('next') || 'paid') + '-' + Date.now();
-    const cancel = ui + '/pages/nevora-billing-return#handoff=fixture-trial-' + Date.now();
+    // The contract's fixed return pages for the requested language (success: billing return; cancel: billing).
+    const es = url.searchParams.get('lang') === 'es';
+    const back = ui + (es ? '/pages/es-pago' : '/pages/nevora-billing-return') + '#handoff=fixture-' + (url.searchParams.get('next') || 'paid') + '-' + Date.now();
+    const cancel = ui + (es ? '/pages/es-facturacion' : '/pages/nevora-billing') + '#handoff=fixture-trial-' + Date.now();
     res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8', 'Cache-Control': 'no-store' });
     res.end('<!doctype html><meta charset="utf-8"><title>Fixture payment page</title><body style="font:16px system-ui;max-width:560px;margin:60px auto;padding:0 20px"><h1>Fixture payment page</h1><p>Local test only. This is not Stripe and nothing is charged.</p><p><a href="' + back + '">Finish (fixture)</a></p><p><a href="' + cancel + '">Cancel (fixture)</a></p>');
     return;
@@ -71,20 +76,15 @@ http.createServer(async (req, res) => {
   const session = auth && sessions.get(auth[1]);
   const p = url.pathname;
   if (p === '/v1/plans') return send(res, 200, { currency: 'usd', trialDays: 30, plans: [{ key: 'small', employees: 15, amount: 1900 }, { key: 'team', employees: 30, amount: 2900 }] }, ok);
-  if (p === '/v1/signup' || p === '/v1/login-link') {
-    if (typeof body.email !== 'string' || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(body.email)) return err(res, 400, 'invalid_email', ok);
-    if (/rate/.test(body.email)) return err(res, 429, 'rate_limited', ok);
-    if (/down/.test(body.email)) return err(res, 503, 'signup_unavailable', ok);
-    return send(res, 202, { state: 'check_email' }, ok);
-  }
-  if (p === '/v1/handoff/exchange' || p === '/v1/verify') {
+  if (['/v1/signup', '/v1/login-link', '/v1/verify', '/v1/setup'].includes(p)) return err(res, 409, 'use_onboarding', ok);
+  if (p === '/v1/handoff/exchange') {
     const scenario = scenarioOf(body.token || '');
     if (!scenario || used.has(body.token) || scenario === 'expired') return err(res, 400, 'invalid_or_expired_link', ok);
     if (scenario === 'down') return err(res, 503, 'billing_unavailable', ok);
     if (scenario === 'slow') await new Promise(r => setTimeout(r, 3000));
     used.add(body.token);
     const accessToken = randomUUID().replace(/-/g, '') + randomUUID().replace(/-/g, '');
-    sessions.set(accessToken, { scenario, lostOnce: scenario !== 'lost', keys: new Map() });
+    sessions.set(accessToken, { scenario, lostLeft: scenario === 'lost' ? 2 : 0, keys: new Map() }); // two, because Chrome itself retries once on a dropped connection
     return send(res, 200, { accessToken, expiresIn: 28800 }, ok);
   }
   if (!session) return err(res, 401, 'unauthorized', ok);
@@ -101,28 +101,18 @@ http.createServer(async (req, res) => {
   if (p === '/v1/checkout' || p === '/v1/portal') {
     const key = req.headers['idempotency-key'];
     if (!/^[0-9a-f-]{36}$/i.test(key || '')) return err(res, 400, 'idempotency_key_required', ok);
+    if (!session) return err(res, 401, 'unauthorized', ok);
+    if (!Object.prototype.hasOwnProperty.call(body, 'lang') ? false : !['en', 'es'].includes(body.lang)) return err(res, 400, 'invalid_language', ok);
     const s = { ...base, ...SCENARIOS[session.scenario] };
     if (p === '/v1/checkout' && s.activeEmployees > 30) return err(res, 400, 'assisted_quote_required', ok);
     if (p === '/v1/checkout' && s.plan && s.state !== 'restricted') return err(res, 409, 'use_billing_portal', ok);
     if (p === '/v1/portal' && !s.plan) return err(res, 409, 'subscription_required', ok);
     const prior = session.keys.get(key);
-    const result = prior || { url: 'http://127.0.0.1:' + port + '/fake-stripe?next=' + (p === '/v1/checkout' ? 'paid' : session.scenario) };
-    session.keys.set(key, result);
-    if (!session.lostOnce) { session.lostOnce = true; req.socket.destroy(); return; } // the response is lost; the same key must get the same answer
+    if (prior && prior.body !== JSON.stringify(body)) return err(res, 409, 'idempotency_conflict', ok); // a retry must repeat the same body
+    const result = prior ? prior.result : { url: 'http://127.0.0.1:' + port + '/fake-stripe?next=' + (p === '/v1/checkout' ? 'paid' : session.scenario) + '&lang=' + (body.lang || 'en') };
+    session.keys.set(key, { body: JSON.stringify(body), result });
+    if (session.lostLeft > 0) { session.lostLeft -= 1; req.socket.destroy(); return; } // the response is lost; the same key must get the same answer
     return send(res, 200, result, ok);
-  }
-  if (p === '/v1/setup') {
-    const b = body;
-    if (typeof b.password !== 'string' || b.password.length < 12 || b.password.length > 256) return err(res, 400, 'invalid_password', ok);
-    if (!/^1?\d{10}$/.test(String(b.phone || ''))) return err(res, 400, 'invalid_phone', ok);
-    if (!/^[A-Za-z]+\/[A-Za-z_]+$/.test(String(b.timeZone || ''))) return err(res, 400, 'invalid_time_zone', ok);
-    if (!Number.isInteger(b.employeeCount) || b.employeeCount < 1) return err(res, 400, 'invalid_employee_count', ok);
-    if (b.employeeCount > 30) return err(res, 400, 'assisted_quote_required', ok);
-    if (!b.firstName || !b.lastName || !b.businessName || !b.locationName) return err(res, 400, 'invalid_setup', ok);
-    const key = JSON.stringify(b);
-    if (session.setupKey && session.setupKey !== key) return err(res, 409, 'setup_already_submitted', ok);
-    if (!session.setupAt) { session.setupAt = Date.now(); session.setupKey = key; session.business = b.businessName; }
-    return send(res, 202, { state: 'setup_accepted' }, ok);
   }
   return err(res, 404, 'not_found', ok);
 }).listen(port, '127.0.0.1', () => console.log('Commerce FIXTURE (local test only) on http://127.0.0.1:' + port + ' for ' + ui));

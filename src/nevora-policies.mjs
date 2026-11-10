@@ -43,7 +43,7 @@ const PRIVACY = {
     { heading: "Advertising and tracking", blocks: [{ p: [f("SALE_SHARING_AND_TRACKING_STATEMENT")] }] },
     { heading: "Where information is processed", blocks: [{ p: [f("HOSTING_TRANSFER_DETAILS")] }] },
     { heading: "How long we keep information", blocks: [
-      { p: [{ strong: "Free trial workplaces:" }, " when a trial ends on day 30 without a plan, we delete the workplace and all of its information within 3 days, including attendance, timecards, payroll calculations and pay statements. Export first if you need to keep those records. The periods below apply to workplaces on a plan."] },
+      { p: [{ strong: "Free trial workplaces:" }, " when a trial ends on day 30 without a plan, NEVORA pauses for the workplace. Before NEVORA opens to new businesses, we will publish here how long a paused workplace\u2019s records are kept and how its Owner can export them. Until then, write to support@thevelani.com to close a workplace or ask about its records. The periods below apply to workplaces on a plan."] },
       { p: ["We keep information only as long as we need it. Each period follows the age of the record; a deletion request doesn\u2019t restart it. Where a record fits more than one category, the longest period applies."] },
       { list: [
         [{ strong: "Attendance, approved timecards, payroll calculations, published pay statements" }, " and their corrections and approvals: three years from the record\u2019s final entry, or longer when the employment-tax rule below or another requirement applies. They preserve wage calculations, payment history and evidence for payroll questions or disputes."],

@@ -68,7 +68,7 @@ test('the Spanish contact form sends the same topic values and team size as the 
   assert.deepEqual(values(renderPage('/pages/es-contacto').html), values(renderPage('/pages/contact').html));
   assert.deepEqual(values(renderPage('/pages/es-contacto').html), ['custom-software', 'nevora', 'other']);
   assert.match(renderPage('/pages/es-contacto').html, /<input type="hidden" id="inquiry-interest" name="contact\[interest\]" value="">/);
-  assert.match(renderPage('/pages/es-contacto').html, /<option value="More than 30 \(by quote\)">Más de 30 \(por cotización\)<\/option>/);
+  assert.match(renderPage('/pages/es-contacto').html, /<option value="More than 30 \(assisted setup\)">Más de 30 \(configuración asistida\)<\/option>/);
   const live = renderBody('/pages/es-contacto', { target: 'shopify' });
   assert.match(live, /\{% form 'contact', id: 'project-inquiry'/);
   assert.match(live, /data-inquiry-mode=\\?"live\\?"/);
