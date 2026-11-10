@@ -1,0 +1,47 @@
+{
+  "date": "2026-11-09",
+  "sourceCommit": "f0a6de7",
+  "projectId": "wild-leaf-57992989",
+  "branchId": "br-snowy-brook-bcc6b3zm",
+  "database": "velani_ai",
+  "updatedRecords": [
+    {
+      "id": "nevora-availability-en",
+      "contentHash": "647cd2262759ada7f2fbb4d64618ecd0111ee2c4622fa6faf90b8a82505fb2bd",
+      "reviewedAt": "2026-11-09",
+      "validUntil": "2026-12-09",
+      "status": "published"
+    },
+    {
+      "id": "nevora-availability-es",
+      "contentHash": "f85abcabaf4d584df0f8070c2803b478daf153f674cc45a2a35e84861064a709",
+      "reviewedAt": "2026-11-09",
+      "validUntil": "2026-12-09",
+      "status": "published"
+    },
+    {
+      "id": "nevora-support-en",
+      "contentHash": "8fe4b3605da37fa5f488b77086f1fc37d276bf887c914cf538834362429a6bcd",
+      "reviewedAt": "2026-11-09",
+      "validUntil": "2026-12-09",
+      "status": "published"
+    },
+    {
+      "id": "nevora-support-es",
+      "contentHash": "4537e09ad18a104c5fccf96fc945a9232fcdc712a42280c2bd9d1f48185e1a46",
+      "reviewedAt": "2026-11-09",
+      "validUntil": "2026-12-09",
+      "status": "published"
+    }
+  ],
+  "modelCalls": 0,
+  "embeddingCalls": 0,
+  "aiSpendUsd": 0,
+  "sourceSchemaValidatedDocuments": 16,
+  "backendUnitTests": {
+    "passed": 146,
+    "skipped": 43
+  },
+  "readbackMatched": true,
+  "unrelatedRecordsPreserved": 12
+}
