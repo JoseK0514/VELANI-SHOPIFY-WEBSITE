@@ -54,8 +54,8 @@ const rail = (steps, cls = '') => '<ol class="rail' + cls + '" data-in>' + steps
 const WORK = {
   en: {
     jump: [['Tool Box LLC', '#web-applications'], ['Yavi Barber', '#booking'], ['What you get', '#how']], jumpLabel: 'On this page', shotsLabel: 'Tool Box LLC screens', moreLabel: 'Business tools',
-    toolbox: { kind: 'Equipment rental website and online store', text: 'Tool Box rents lifts and other equipment. On any phone, customers find the machine they need, pick the dates and check delivery to their job site. Every machine has its price and a Reserve button, and the store prices delivery by the distance to the job site.', credit: 'We designed and built Tool Box LLC’s website and online store.', shots: [['tb-home', 'The Tool Box LLC website, built by Velani: equipment rental with job-site delivery and dates', 2000, 1250], ['store', 'The Tool Box LLC online store, built by Velani: rental equipment with prices and a Reserve button on each item', 1600, 1000]] },
-    yavi: { kind: 'Booking and rewards app', text: 'Yavi Barber’s clients pick a service and a time on their phone, get a reminder before the visit and collect each visit on a rewards card.', credit: 'We designed and built Yavi Barber’s booking and rewards app.', shots: [['yavi-book', 'Yavi Barber booking on a phone: the next open times and services with prices'], ['yavi-rewards', 'Yavi Barber rewards card on a phone: ten visits and two rewards']] },
+    toolbox: { kind: 'Equipment rental website and online store', text: 'Tool Box rents lifts and other equipment. Before renting, a customer needs three answers: which machine, which dates and what delivery to the job site costs. We put all three on each machine’s page, so a customer can answer them on a phone and reserve. The store prices delivery by the distance to the job site, takes the payment and sends the order to the Tool Box team.', credit: 'We designed and built Tool Box LLC’s website and online store.', shots: [['tb-home', 'The Tool Box LLC website, built by Velani: equipment rental with job-site delivery and dates', 2000, 1250], ['store', 'The Tool Box LLC online store, built by Velani: rental equipment with prices and a Reserve button on each item', 1600, 1000]] },
+    yavi: { kind: 'Booking and rewards app', text: 'A barbershop runs on appointments and regular clients, so we built the booking and the rewards card into one app. Yavi Barber’s clients pick a service and a time on their phone, get a reminder before the visit, and each visit adds to their rewards card.', credit: 'We designed and built Yavi Barber’s booking and rewards app.', shots: [['yavi-book', 'Yavi Barber booking on a phone: the next open times and services with prices'], ['yavi-rewards', 'Yavi Barber rewards card on a phone: ten visits and two rewards']] },
     more: ['We also build internal tools for your team, like request forms, approvals and dashboards. For an example, see ', 'NEVORA', ', the workforce app we make.'],
     getT: 'What you get', get: ['Every project includes the design, the build and the hosting setup. If you want English and Spanish, we build both. After launch, we keep supporting it.', 'Before any paid work starts, you get a fixed quote in writing. The price depends on what the project needs.'],
     howT: 'How a project works', how: ['You show us how the work gets done today and who does it. You then get the written proposal with what we’ll build, the fixed price and the milestones. Paid work starts only after you agree to it.', 'We build in milestones, and you try working software at each one. The agreement says who owns the code, what you receive and how support works after launch.'],
@@ -224,7 +224,7 @@ const PLANS = {
     priceT: 'After 30 days, one monthly price',
     includes: 'Every business gets the whole app: scheduling, the time clock, timecards and payroll calculation. The price depends only on how many employees you have, and owners aren’t counted.',
     card: { q: 'Your team', unit: 'employees', per: 'a month', small: '1 to 15 · $19', team: '16 to 30 · $29', less: 'One fewer employee', more: 'One more employee', note: 'Billed monthly, per business.', valueText: (n, p) => n + ' employees, ' + p + ' a month' },
-    terms: 'Prices are in US dollars. Cancel any time and NEVORA keeps working through the month you paid for. If you don’t subscribe after the trial, NEVORA pauses for your team; the Owner can still open billing and export available payroll records.',
+    terms: 'Prices are in US dollars and may change before online billing opens. Cancel any time and NEVORA keeps working through the month you paid for. If you don’t subscribe after the trial, NEVORA pauses for your team; the Owner can still open billing and export available payroll records.',
     over: ['More than 30 employees? ', 'Write to us for assisted setup', '. We reply within two business days.'],
     closing: 'Websites and custom apps get a fixed written quote for each project.', project: 'Start a project', custom: 'See custom software' },
   es: PLANS_ES,
@@ -269,6 +269,17 @@ const START = {
   es: { fact: ['¿Ya usas NEVORA? ', 'Cómo entrar', '.'],
     phoneAlt: 'NEVORA en un teléfono: la semana de un empleado con cada turno y sus horas' },
 };
+/** Nov 10 (Jose): while online signup is closed, old links to the trial page (emails, bookmarks, search results) land on the
+ * trial request instead. Without a script the page itself still offers the same request button. */
+function startRedirect(target, lang) {
+  const to = lang === 'es' ? '/pages/es-contacto?interest=nevora-demo' : '/pages/contact?interest=nevora-demo';
+  if (target === 'shopify') {
+    // On an unpublished theme the request page lives at ?preview_theme_id=…&view=velani-<page>, like every draft link.
+    const view = '{{ routes.root_url }}?preview_theme_id={{ theme.id }}&view=velani-' + to.split('?')[0].split('/').at(-1) + '&' + to.split('?')[1];
+    return '{% if settings.commerce_api_url == blank %}<script>location.replace("{% if theme.role == \'main\' %}' + to + '{% else %}' + view + '{% endif %}")</script>{% endif %}';
+  }
+  return (process.env.VELANI_COMMERCE_API || '').trim() ? '' : '<script>location.replace(' + JSON.stringify(to) + ')</script>';
+}
 /** Setup (nevora-verify, es-configurar), retired Nov 9: workplace setup now happens in NEVORA's own onboarding, which the
  * verification email opens (/onboarding/verify on the signup address). The old #token= links went to the legacy /v1/verify,
  * which now answers 409 use_onboarding, so this page only scrubs any fragment and explains where setup lives. */
@@ -311,7 +322,7 @@ function commercePage(page, target, lang = 'en') {
     const fact = '<p class="hfact fade">' + e(t.fact[0]) + '<a href="/pages/sign-in">' + e(t.fact[1]) + '</a>' + e(t.fact[2]) + '</p>';
     const offLine = '<p class="hfact fade" data-off>' + e(off.text) + '</p>';
     const hero = panel(target, { id: 'top', cls: 'live long signup-top', img: 'ai-glow', title: page.title, tag: 'h1', text: page.intro, after: offLine + offBlock + fact, extra: phone, first: true });
-    return hero;
+    return startRedirect(target, lang) + hero;
   }
   const hero = panel(target, { id: 'top', cls: 'dim', img: 'ai-glow', title: page.title, tag: 'h1', text: page.intro, first: true });
   const card = '<section class="chap cflow" id="flow" data-step="' + e(page.step) + '" aria-live="polite"><div class="wrap"><div class="cf-card" data-off><p>' + e(off.text) + '</p><div class="hacts">' + offActs + '</div></div></div></section>';

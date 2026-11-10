@@ -155,8 +155,21 @@ test('on an unpublished theme the switch and Spanish links stay in the same draf
   assert.match(home, /<a href="\/\?preview_theme_id=77" hreflang="en" lang="en" aria-label="English" aria-current="true">EN<\/a>/);
 });
 test('billing and setup utility pages are noindex on the main theme; acquisition pages are not', async () => {
-  for (const path of ['/pages/nevora-billing', '/pages/nevora-billing-return', '/pages/nevora-verify', '/pages/es-facturacion', '/pages/es-pago', '/pages/es-configurar'])
+  for (const path of ['/pages/nevora-billing', '/pages/nevora-billing-return', '/pages/nevora-verify', '/pages/es-facturacion', '/pages/es-pago', '/pages/es-configurar', '/pages/nevora-start', '/pages/es-prueba'])
     assert.match(await page('main', path), /<meta name="robots" content="noindex">/, path);
   for (const path of ['/pages/plans', '/pages/es-planes', '/pages/sign-in', '/pages/help'])
     assert.doesNotMatch(await page('main', path), /name="robots"/, path);
+});
+
+test('while online signup is closed, the old trial page sends visitors to the trial request in their language', async () => {
+  const liquid = new Liquid();
+  const en = renderBody('/pages/nevora-start', { target: 'shopify' }), es = renderBody('/pages/es-prueba', { target: 'shopify' });
+  const closed = { settings: { commerce_api_url: '' }, theme: { role: 'main', id: 1 }, routes: { root_url: '/' } };
+  assert.match(await liquid.parseAndRender(en, closed), /<script>location\.replace\("\/pages\/contact\?interest=nevora-demo"\)<\/script>/);
+  assert.match(await liquid.parseAndRender(es, closed), /<script>location\.replace\("\/pages\/es-contacto\?interest=nevora-demo"\)<\/script>/);
+  const open = { ...closed, settings: { commerce_api_url: 'https://commerce.example.test' } };
+  assert.doesNotMatch(await liquid.parseAndRender(en, open), /location\.replace/);
+  const draft = await liquid.parseAndRender(en, { ...closed, theme: { role: 'unpublished', id: 77 } });
+  assert.match(draft, /location\.replace\("\/\?preview_theme_id=77&view=velani-contact&interest=nevora-demo"\)/, 'a draft stays in the draft');
+  assert.match(await liquid.parseAndRender(en, closed), /<a class="hb fill" href="\/pages\/contact\?interest=nevora-demo">/, 'the page still offers the request button without a script');
 });

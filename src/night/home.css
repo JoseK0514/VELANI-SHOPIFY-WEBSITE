@@ -50,3 +50,9 @@
 
 /* Spanish panel titles are longer: a wider copy column keeps them to two lines */
 @media(min-width:834px){html[lang=es] #websites .hcopy,html[lang=es] #apps .hcopy{max-width:560px}}
+
+/* Nov 10: the hero line is a sentence now ("Your team’s week, in one place."), so it sets one size down in a wider column and
+   stays at two lines from 360px to 1440px in both languages; the paragraph keeps its own measure */
+.hpanel.live #hero-t{font-size:clamp(3rem,5.6vw,4.5rem)}
+@media(min-width:834px){.hpanel.live .hcopy{max-width:min(800px,calc(100% - var(--pad)*2))}.hpanel.live .hcopy>p{max-width:520px}}
+@media(max-width:833px){.hpanel.live #hero-t{font-size:clamp(2.25rem,10.2vw,2.75rem)}}

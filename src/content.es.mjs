@@ -35,7 +35,7 @@ export const ES_NEAREST = Object.freeze({
 const es = (en, fields) => ({ lang: 'es', en, sections: [], ...fields });
 export const ES_ROUTES = {
   '/pages/es': es('/', {
-    kind: 'home', title: 'Más luz para tu trabajo.', eyebrow: 'Velani',
+    kind: 'home', title: 'Todo tu equipo, en un solo lugar.', eyebrow: 'Velani',
     name: 'Velani · Software, sitios web y apps a la medida para tu negocio',
     intro: 'Creamos sitios web, apps de reservas, tiendas en línea y herramientas de negocio, y NEVORA: horarios, registro de tiempo y cálculo de nómina por turnos.',
     og: ['velani-social.png', 'Velani. Más luz para tu trabajo.'],
@@ -89,7 +89,7 @@ ES_ROUTES['/pages/es-ayuda'] = es('/pages/help', {
 });
 
 ES_ROUTES['/pages/es-prueba'] = es('/pages/nevora-start', {
-  kind: 'commerce', step: 'start', nav: 'plans', eyebrow: '', name: 'Pide una prueba de NEVORA',
+  kind: 'commerce', step: 'start', nav: 'plans', eyebrow: '', name: 'Pide una prueba de NEVORA', noindex: true,
   title: 'Tu prueba gratis.',
   intro: 'La app completa para tu equipo, gratis por 30 días. Sin tarjeta.',
   desc: 'Pide una prueba gratis de NEVORA por 30 días para tu negocio. Sin tarjeta.',
@@ -127,8 +127,8 @@ ES_ROUTES['/pages/es-a-la-medida'] = es('/pages/custom-development', {
 /** The Custom software page below its hero (render.mjs WORK.en has the English). */
 export const WORK_ES = {
   jump: [['Tool Box LLC', '#web-applications'], ['Yavi Barber', '#booking'], ['Lo que recibes', '#how']], jumpLabel: 'En esta página', shotsLabel: 'Pantallas de Tool Box LLC', moreLabel: 'Herramientas de negocio',
-  toolbox: { kind: 'Sitio web y tienda en línea de alquiler de equipos', text: 'Tool Box alquila elevadores y otros equipos. Desde cualquier teléfono, sus clientes encuentran la máquina que necesitan, eligen las fechas y verifican la entrega a su obra. Cada máquina tiene su precio y un botón para reservar, y la tienda calcula la entrega según la distancia a la obra.', credit: 'Diseñamos y creamos el sitio web y la tienda en línea de Tool Box LLC.', shots: [['tb-home', 'El sitio web de Tool Box LLC, creado por Velani: alquiler de equipos con entrega en la obra y fechas', 2000, 1250], ['store', 'La tienda en línea de Tool Box LLC, creada por Velani: equipos de alquiler con precios y un botón para reservar en cada uno', 1600, 1000]] },
-  yavi: { kind: 'App de reservas y recompensas', text: 'Los clientes de Yavi Barber eligen un servicio y una hora en su teléfono, reciben un recordatorio antes de la cita y suman cada visita en una tarjeta de recompensas.', credit: 'Diseñamos y creamos la app de reservas y recompensas de Yavi Barber.', shots: [['yavi-book', 'Reservas de Yavi Barber en un teléfono: los próximos horarios disponibles y los servicios con precios'], ['yavi-rewards', 'Tarjeta de recompensas de Yavi Barber en un teléfono: diez visitas y dos recompensas']] },
+  toolbox: { kind: 'Sitio web y tienda en línea de alquiler de equipos', text: 'Tool Box alquila elevadores y otros equipos. Antes de alquilar, un cliente necesita tres respuestas: qué máquina, qué fechas y cuánto cuesta la entrega a su obra. Pusimos las tres en la página de cada máquina, así el cliente las resuelve desde su teléfono y reserva. La tienda calcula la entrega según la distancia a la obra, cobra el pago y le envía el pedido al equipo de Tool Box.', credit: 'Diseñamos y creamos el sitio web y la tienda en línea de Tool Box LLC.', shots: [['tb-home', 'El sitio web de Tool Box LLC, creado por Velani: alquiler de equipos con entrega en la obra y fechas', 2000, 1250], ['store', 'La tienda en línea de Tool Box LLC, creada por Velani: equipos de alquiler con precios y un botón para reservar en cada uno', 1600, 1000]] },
+  yavi: { kind: 'App de reservas y recompensas', text: 'Una barbería vive de las citas y de sus clientes de siempre, así que unimos las reservas y la tarjeta de recompensas en una sola app. Los clientes de Yavi Barber eligen un servicio y una hora en su teléfono, reciben un recordatorio antes de la cita y cada visita suma en su tarjeta de recompensas.', credit: 'Diseñamos y creamos la app de reservas y recompensas de Yavi Barber.', shots: [['yavi-book', 'Reservas de Yavi Barber en un teléfono: los próximos horarios disponibles y los servicios con precios'], ['yavi-rewards', 'Tarjeta de recompensas de Yavi Barber en un teléfono: diez visitas y dos recompensas']] },
   more: ['También creamos herramientas internas para tu equipo, como formularios de solicitudes, aprobaciones y paneles. Como ejemplo, mira ', 'NEVORA', ', la app de personal que hacemos.'],
   getT: 'Lo que recibes', get: ['Cada proyecto incluye el diseño, el desarrollo y la configuración del hosting. Si lo quieres en inglés y español, creamos ambos. Después del lanzamiento, seguimos dándole soporte.', 'Antes de empezar cualquier trabajo pagado, recibes una cotización fija por escrito. El precio depende de lo que necesite el proyecto.'],
   howT: 'Cómo funciona un proyecto', how: ['Nos muestras cómo se hace el trabajo hoy y quién lo hace. Luego recibes la propuesta por escrito con lo que vamos a crear, el precio fijo y los hitos. El trabajo pagado empieza solo cuando estés de acuerdo.', 'Creamos por hitos, y en cada uno pruebas el software funcionando. El acuerdo indica quién es dueño del código, qué recibes y cómo funciona el soporte después del lanzamiento.'],
@@ -247,7 +247,7 @@ export const PLANS_ES = {
   priceT: 'Después de 30 días, un precio mensual',
   includes: 'Cada negocio recibe la app completa: horarios, registro de tiempo, tarjetas de tiempo y cálculo de nómina. El precio depende solo de cuántos empleados tienes, y los dueños no cuentan.',
   card: { q: 'Tu equipo', unit: 'empleados', per: 'al mes', small: '1 a 15 · $19', team: '16 a 30 · $29', less: 'Un empleado menos', more: 'Un empleado más', note: 'Se cobra cada mes, por negocio.', valueText: (n, p) => n + ' empleados, ' + p + ' al mes' },
-  terms: 'Los precios son en dólares estadounidenses. Cancela cuando quieras y NEVORA sigue funcionando hasta el final del mes pagado. Si no te suscribes al terminar la prueba, NEVORA queda en pausa para tu equipo; el dueño todavía puede abrir la facturación y exportar los registros de nómina disponibles.',
+  terms: 'Los precios son en dólares estadounidenses y pueden cambiar antes de que abra la facturación en línea. Cancela cuando quieras y NEVORA sigue funcionando hasta el final del mes pagado. Si no te suscribes al terminar la prueba, NEVORA queda en pausa para tu equipo; el dueño todavía puede abrir la facturación y exportar los registros de nómina disponibles.',
   over: ['¿Más de 30 empleados? ', 'Escríbenos para una configuración asistida', '. Respondemos en un plazo de dos días laborables.'],
   closing: 'Los sitios web y las apps a la medida reciben una cotización fija por escrito para cada proyecto.', project: 'Empieza un proyecto', custom: 'Mira el software a la medida',
 };
