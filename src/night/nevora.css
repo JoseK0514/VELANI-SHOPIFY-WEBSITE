@@ -261,3 +261,35 @@
 /* Phone crop of the owner screen keeps whole words */
 @media(max-width:600px){.owner img{width:180%;transform:translate(-17%,-8%)}}
 @media(min-width:834px) and (max-width:1023px){.n-hero.hpanel.long h1{font-size:2.5rem;line-height:1.06}}
+
+/* ---------- Warm light (Nov 10 preview): the hero stays the dark cinematic light and the local nav stays dark; every chapter
+   after it reads on warm paper, down to the help band. Tokens are redefined inside the chapters, so shared rules follow;
+   the rest of this block covers the colours that were written for black. ---------- */
+:is(#features,#try,#screens,#get,#faq,#rondo,#relay,#help){--paper:#f5f0e8;--text:#1c1915;--text-2:#4f493f;--text-3:#6b6458;--label:#4f493f;--accent:#24508c;--line:rgba(28,25,21,.11);--line-2:rgba(28,25,21,.24);--panel:#fbf8f3;background:var(--paper);color:var(--text)}
+:is(#try,#get,#rondo){--paper:#efe8dc}
+:is(#features,#try,#screens,#get,#faq,#rondo,#relay,#help) .lede{color:var(--text-2)}
+:is(#features,#try,#screens,#get,#faq,#rondo,#relay,#help) .hfact{color:var(--text-3)}
+/* The chapters end where the next begins: padding at the bottom too, so each paper tone is a whole band */
+:is(#features,#try,#screens,#get,#rondo){padding-bottom:var(--s3)}
+#faq{padding-bottom:var(--s2)}
+#help{padding-top:var(--s2)}
+/* Actions on paper */
+:is(#get,#relay) .hb{background:transparent;border-color:rgba(28,25,21,.34);color:var(--text);-webkit-backdrop-filter:none;backdrop-filter:none}
+:is(#get,#relay) .hb.fill{background:var(--text);border-color:var(--text);color:#f7f3ec}
+@media(hover:hover){:is(#get,#relay) .hb:hover{background:rgba(28,25,21,.05);border-color:rgba(28,25,21,.6)}:is(#get,#relay) .hb.fill:hover{background:#000;border-color:#000}}
+/* Real screens sit on paper with a warm contact shadow */
+:is(#features,#screens) .slab,#try .kio{box-shadow:0 0 0 1px rgba(28,25,21,.10),0 2px 4px rgba(28,25,21,.06),0 28px 56px -24px rgba(72,52,28,.32),0 70px 120px -48px rgba(72,52,28,.28)}
+:is(#features,#screens) .slab::after{box-shadow:none}
+#screens .slab.phone{box-shadow:0 0 0 1px rgba(28,25,21,.14),0 2px 4px rgba(28,25,21,.08),0 30px 60px -24px rgba(72,52,28,.40)}
+/* Rondo: the example conversation is a solid dark card, the way it looks in the app; no blue glow on paper */
+.rondo::before{display:none}
+.hchat.rchat{background:#0d141c;-webkit-backdrop-filter:none;backdrop-filter:none;box-shadow:0 0 0 1px rgba(0,0,0,.6),0 30px 60px -26px rgba(72,52,28,.45)}
+.hchat.rchat .hchat-h{color:#a3b1c1}.hchat.rchat .hchat-h span{color:#f4f6f9}
+/* Relay: the copy in ink, the plan card a raised sheet of paper */
+.hpanel.relay-stage{background:var(--paper);color:var(--text)}
+.hpanel.relay-stage .hcopy p:not(.hkick){color:var(--text-2)}
+.hpanel.relay-stage .hcopy p.hfact{color:var(--text-3)}
+.rcard{background:var(--panel);-webkit-backdrop-filter:none;backdrop-filter:none;box-shadow:0 0 0 1px rgba(28,25,21,.10),0 24px 48px -26px rgba(72,52,28,.30)}
+.rcard li{border-top-color:var(--line)}
+.rcard .icon{color:var(--accent)}
+@media(max-width:833px){.hpanel.relay-stage{padding-top:var(--s2);padding-bottom:var(--s2)}}

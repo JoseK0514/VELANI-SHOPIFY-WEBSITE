@@ -56,3 +56,25 @@
 .hpanel.live #hero-t{font-size:clamp(3rem,5.6vw,4.5rem)}
 @media(min-width:834px){.hpanel.live .hcopy{max-width:min(800px,calc(100% - var(--pad)*2))}.hpanel.live .hcopy>p{max-width:520px}}
 @media(max-width:833px){.hpanel.live #hero-t{font-size:clamp(2.25rem,10.2vw,2.75rem)}}
+
+/* ---------- Warm light (Nov 10 preview): the hero and the closing stay the dark cinematic light; the three panels between them
+   read on warm paper. Same type, same layout, same devices; the photos behind them give way to paper, and the screens sit on it
+   as objects. Tokens are redefined inside the panels, so every shared rule (links, focus, captions) follows. ---------- */
+:is(#nevora,#websites,#apps){--paper:#f5f0e8;--text:#1c1915;--text-2:#4f493f;--text-3:#6b6458;--label:#4f493f;--accent:#24508c;--line:rgba(28,25,21,.11);--line-2:rgba(28,25,21,.24);--panel:#fbf8f3;background:var(--paper);color:var(--text)}
+#websites{--paper:#efe8dc}
+/* The photo keeps its box (on phones it holds the frame the Tool Box screen sits in) but is not painted */
+:is(#nevora,#websites,#apps)>.hph{visibility:hidden;animation:none}
+:is(#nevora,#websites,#apps)>.hshade,:is(#nevora,#websites,#apps) .hcopy::before{display:none}
+:is(#nevora,#websites,#apps) .hcopy p:not(.hkick){color:var(--text-2)}
+:is(#nevora,#websites,#apps) .hcopy :is(p.hcap,p.hfact){color:var(--text-3)}
+:is(#nevora,#websites,#apps) .hcopy p.hcap b{color:var(--text);font-weight:600}
+:is(#nevora,#websites,#apps) .hcopy .ul{text-decoration-color:var(--line-2)}
+/* On paper the NEVORA wordmark is the app's own light-background version (navy letters, the blue tip on the A) */
+/* Actions on paper: ink fill for the primary, an ink outline for the second; no glass */
+:is(#nevora,#websites,#apps) .hb{background:transparent;border-color:rgba(28,25,21,.34);color:var(--text);-webkit-backdrop-filter:none;backdrop-filter:none}
+:is(#nevora,#websites,#apps) .hb.fill{background:var(--text);border-color:var(--text);color:#f7f3ec}
+@media(hover:hover){:is(#nevora,#websites,#apps) .hb:hover{background:rgba(28,25,21,.05);border-color:rgba(28,25,21,.6)}:is(#nevora,#websites,#apps) .hb.fill:hover{background:#000;border-color:#000}}
+/* Screens and phones keep their frames; the shadow becomes a warm contact shadow under daylight */
+:is(#nevora,#websites,#apps) :is(.hweb,.hwin){box-shadow:0 0 0 1px rgba(28,25,21,.10),0 2px 4px rgba(28,25,21,.06),0 28px 56px -24px rgba(72,52,28,.34),0 70px 120px -48px rgba(72,52,28,.30)}
+:is(#nevora,#websites,#apps) :is(.hshot,.hduo .ph){box-shadow:0 0 0 1px rgba(0,0,0,.5),0 2px 4px rgba(28,25,21,.12),0 34px 64px -22px rgba(72,52,28,.46),0 80px 120px -50px rgba(72,52,28,.36)}
+:is(#nevora,#websites,#apps) .zoom-btn{color:#f7f3ec}
