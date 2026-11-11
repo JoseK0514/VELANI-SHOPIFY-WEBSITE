@@ -21,7 +21,7 @@ export async function build() {
   const { css, js } = nightAssets;
   await writeFile(path.join(root, 'public/assets/velani.css'), css.base + '\n' + css.pages + '\n' + css.kiosk + '\n' + css.assist + '\n' + css.polish);
   await writeFile(path.join(root, 'public/assets/velani-home.css'), css.home);
-  await writeFile(path.join(root, 'public/assets/velani-nevora.css'), css.nevora);
+  await writeFile(path.join(root, 'public/assets/velani-nevora.css'), css.home + '\n' + css.nevora); // the NEVORA page shares Home's sections and live piece
   await writeFile(path.join(root, 'public/assets/velani-motion.js'), js.motion);
   await writeFile(path.join(root, 'public/assets/velani-nevora.js'), js.nevora);
   await writeFile(path.join(root, 'public/assets/velani-assist.js'), js.assist);

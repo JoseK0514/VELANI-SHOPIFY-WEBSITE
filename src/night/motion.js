@@ -108,32 +108,35 @@
  const clockIn=(row,at,byYou)=>{row.dataset.state='in';row.dataset.in=at;const st=row.querySelector('.day-st');
   if(!reduce){row.classList.remove('just');void row.offsetWidth;row.classList.add('just');st.classList.add('arrive')}
   if(byYou)say.textContent=fill(D.tSaid,{n:row.querySelector('b').textContent,t:full(at)});paint()};
- function paint(){face.textContent=hm(now);ampm.textContent=now<720?D.am:D.pm;let today=0,week=0,n=0,dueN=0;const notes=[];
+ function paint(){face.textContent=hm(now);ampm.textContent=now<720?D.am:D.pm;let today=0,week=0,n=0,dueN=0;const notes=[],later=[],B={};
   rows.forEach((r,i)=>{const s=r.querySelector('[data-s]'),h=r.querySelector('[data-h]'),due=+r.dataset.due,st=r.dataset.state,name=r.querySelector('b').textContent,w=worked(r),wk=+r.dataset.week+w;today+=w;week+=wk;
    if(st==='in'){n++;s.textContent=fill(D.tIn,{t:hm(+r.dataset.in)});h.textContent=dur(w);if(r.dataset.in-due>5)notes.push(fill(D.tRLatein,{n:name,t:hm(+r.dataset.in),m:r.dataset.in-due}))}
-   else{h.textContent='';s.textContent=st==='late'?fill(D.tLate,{t:hm(due)}):fill(D.tStarts,{t:hm(due)});if(now>due+5)notes.push(fill(D.tRLate,{n:name,t:hm(due)}))}
+   else{h.textContent='';s.textContent=st==='late'?fill(D.tLate,{t:hm(due)}):fill(D.tStarts,{t:hm(due)});if(now>due+5)notes.push(fill(D.tRLate,{n:name,t:hm(due)}));else if(now<due)later.push(fill(D.tRLater,{n:name,t:hm(due)}))}
    if(now>=due)dueN++;
-   hrs[i].textContent=dur(wk);pa[i].textContent=usd(wk*rate/60)});
-  const ar=rows[2],arW=worked(ar),B={arWeek:dur(+ar.dataset.week+arW),arToday:dur(arW),arState:ar.dataset.state==='in'?fill(D.tPhIn,{t:full(+ar.dataset.in)}):D.tPhOut,brief:notes.concat(fill(D.tRSum,{c:n,s:dueN,p:usd(week*rate/60)})).join(' ')};
-  binds.forEach(e=>{const v=B[e.dataset.b];if(e.textContent!==v)e.textContent=v;if(e.dataset.b==='arState')e.classList.toggle('in',ar.dataset.state==='in')});
-  pay.textContent=usd(today*rate/60);on.textContent=fill(D.tOn,{n:n});wkPay.textContent=usd(week*rate/60);wkH.textContent=fill(D.tHours,{h:dur(week)});
-  rondo[0].textContent=notes.concat(fill(D.tRSum,{c:n,s:dueN,p:usd(week*rate/60)})).join(' ');
+   if(hrs[i]){hrs[i].textContent=dur(wk);pa[i].textContent=usd(wk*rate/60)}B['t'+i]=dur(w);B['h'+i]=dur(wk);B['a'+i]=usd(wk*rate/60)});
+  const ar=rows[2],arW=worked(ar),jt=rows[3];Object.assign(B,{need:notes[0]||D.tNone,weekPay:usd(week*rate/60),weekH:dur(week),f3:jt.dataset.state==='in'?fill(D.tIn,{t:hm(+jt.dataset.in)}):fill(D.tLate,{t:hm(+jt.dataset.due)}),arWeek:dur(+ar.dataset.week+arW),arToday:dur(arW),arState:ar.dataset.state==='in'?fill(D.tPhIn,{t:full(+ar.dataset.in)}):D.tPhOut,brief:notes.concat(later,fill(D.tRSum,{c:n,s:dueN,p:usd(week*rate/60)})).join(' ')});
   {const nm=r=>r.querySelector('b').textContent,list=a=>a.length>1?a.slice(0,-1).join(', ')+' '+D.tAnd+' '+a.at(-1):a[0],sun=rows.filter(r=>r.dataset.sun==='1'),off=rows.filter(r=>r.dataset.sun==='0'&&+r.dataset.sched<40),fullW=rows.filter(r=>r.dataset.sun==='0'&&+r.dataset.sched>=40);
-   rondo[1].textContent=fill(D.tCov,{w:list(sun.map(r=>{const st=+(r.dataset.sunt||r.dataset.due);return nm(r)+', '+hm(st)+(es?' a ':' to ')+hm(st+480)})),n:list(off.map(nm)),h:off.length?off[0].dataset.sched:''})+(fullW.length?' '+fill(D.tCovFull,{n:list(fullW.map(nm))}):'')}}
- const select=(i,focus)=>{tab=(i+tabs.length)%tabs.length;tabs.forEach((t,k)=>{const on=k===tab;t.setAttribute('aria-selected',on);t.tabIndex=on?0:-1;panels[k].classList.toggle('on',on);panels[k].inert=!on});if(focus)tabs[tab].focus()};
- const tick=()=>{if(auto&&++beat%7===0)select(tab+1);if(now>=END)return;now++;rows.forEach(r=>{if(r.dataset.state!=='in'&&r.dataset.auto&&now>=+r.dataset.auto)clockIn(r,+r.dataset.auto)});paint()};
+   B.cov=fill(D.tCov,{w:list(sun.map(r=>{const st=+(r.dataset.sunt||r.dataset.due);return nm(r)+', '+hm(st)+(es?' a ':' to ')+hm(st+480)})),n:list(off.map(nm)),h:off.length?off[0].dataset.sched:''})+(fullW.length?' '+fill(D.tCovFull,{n:list(fullW.map(nm))}):'')}
+  binds.forEach(e=>{const v=B[e.dataset.b];if(v===undefined)return;if(e.textContent!==v)e.textContent=v;if(e.dataset.b==='arState')e.classList.toggle('in',ar.dataset.state==='in')});
+  if(pay)pay.textContent=usd(today*rate/60);if(on)on.textContent=fill(D.tOn,{n:n});if(wkPay){wkPay.textContent=usd(week*rate/60);wkH.textContent=fill(D.tHours,{h:dur(week)})}
+  if(rondo[0]){rondo[0].textContent=B.brief;rondo[1].textContent=B.cov}}
+ const select=(i,focus)=>{if(!tabs.length)return;tab=(i+tabs.length)%tabs.length;tabs.forEach((t,k)=>{const on=k===tab;t.setAttribute('aria-selected',on);t.tabIndex=on?0:-1;panels[k].classList.toggle('on',on);panels[k].inert=!on});if(focus)tabs[tab].focus()};
+ const tick=()=>{if(auto&&tabs.length&&++beat%7===0)select(tab+1);if(now>=END)return;now++;rows.forEach(r=>{if(r.dataset.state!=='in'&&r.dataset.auto&&now>=+r.dataset.auto)clockIn(r,+r.dataset.auto)});paint()};
  const stop=()=>{clearInterval(timer);timer=0},run=()=>{stop();if(!paused&&seen&&!d.hidden)timer=setInterval(tick,1000)};
  const setPaused=p=>{paused=p;day.toggleAttribute('data-paused',p);pp.setAttribute('aria-label',p?D.tPlay:D.tPause);run()};
  const hands=()=>{auto=false};['pointerdown','keydown','focusin'].forEach(e=>day.addEventListener(e,hands,{passive:true}));
  pp.addEventListener('click',()=>setPaused(!paused));
  tabs.forEach((t,i)=>{t.addEventListener('click',()=>select(i));t.addEventListener('keydown',e=>{const k=e.key,to=k==='ArrowRight'?tab+1:k==='ArrowLeft'?tab-1:k==='Home'?0:k==='End'?tabs.length-1:null;if(to!==null){e.preventDefault();select(to,true)}})});
+ window.NVWEEK={now:()=>now,clockIn:()=>{const r=rows[2];if(r.dataset.state!=='in')clockIn(r,now,true);return +r.dataset.in}};
  q('[data-clock]').addEventListener('click',e=>{const row=e.currentTarget.closest('.day-row');row.tabIndex=-1;clockIn(row,now,true);row.focus({preventScroll:true})});
  asks.forEach((b,i)=>b.addEventListener('click',()=>{ask=i;asks.forEach((x,k)=>x.setAttribute('aria-pressed',k===i));rq.textContent=b.textContent;rsrc.textContent=i?D.tSrc1:D.tSrc0;rondo.forEach((x,k)=>{x.classList.toggle('on',k===i);x.hidden=false;x.setAttribute('aria-hidden',k!==i)})}));
  const ok=d.querySelector('[data-approve]');
- if(ok)ok.addEventListener('click',()=>{const dana=rows[1],tr=day.querySelectorAll('.day-sched tbody tr')[1],done=d.querySelector('[data-cov-done]');
-  dana.dataset.sched=40;dana.dataset.sun=1;dana.dataset.sunt=720;tr.children[7].innerHTML='<span class="day-chip">12<span class="sr"> '+(es?'a':'to')+' </span><i>8</i></span>';tr.querySelector('.day-wk').textContent='40 h';
+ if(ok)ok.addEventListener('click',()=>{const dana=rows[1],done=d.querySelector('[data-cov-done]');
+  dana.dataset.sched=40;dana.dataset.sun=1;dana.dataset.sunt=720;d.querySelectorAll('.day-sched tbody').forEach(tb=>{const tr=tb.children[1];tr.children[7].innerHTML='<span class="day-chip">12<span class="sr"> '+(es?'a':'to')+' </span><i>8</i></span>';tr.querySelector('.day-wk').textContent='40 h'});
   d.querySelector('[data-cov-acts]').hidden=true;done.textContent=D.tApproved;done.tabIndex=-1;done.focus({preventScroll:true});paint()});
+ const tcb=d.querySelector('[data-tc-approve]');if(tcb)tcb.addEventListener('click',()=>{const done=d.querySelector('[data-tc-done]');d.querySelector('[data-tc-acts]').hidden=true;d.querySelector('.tc-card').classList.add('ok');done.textContent=done.dataset.t;done.tabIndex=-1;done.focus({preventScroll:true})});
  d.addEventListener('visibilitychange',run);
- if('IntersectionObserver' in window)new IntersectionObserver(e=>{seen=e[0].isIntersecting;run()}).observe(day);
+ // On the NEVORA page the week keeps running while the visitor reads the sections that follow it
+ if('IntersectionObserver' in window&&!d.getElementById('kio'))new IntersectionObserver(e=>{seen=e[0].isIntersecting;run()}).observe(day);
  rondo.forEach((x,k)=>{x.hidden=false;x.setAttribute('aria-hidden',k!==0)});select(1);setPaused(paused);paint();
 })();

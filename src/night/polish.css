@@ -311,3 +311,10 @@ main>.hpanel+.hpanel:has(+.hpanel)>.hph{-webkit-mask-image:linear-gradient(180de
 .foot-wm .foot-glow{display:none}
 .foot-wm .wm-velani{position:static;width:auto;height:20px;color:#dfeaea;opacity:1}
 .foot:has(.foot-wm){padding-bottom:0}
+/* Website chat launcher (Nov 10): "Ask Velani", in the cool family; a 48px round button on phones; pages keep room for it */
+html{scroll-padding-bottom:88px}
+.ast-launch{border-radius:999px;background:#fff;color:#0e2a2a;box-shadow:0 0 0 1px rgba(14,42,42,.12),0 2px 4px rgba(14,42,42,.10),0 16px 32px -14px rgba(10,60,58,.45);letter-spacing:0;text-transform:none;font-weight:600}
+.ast-launch .ast-av{background:#0b6e69;color:#fff}
+@media(hover:hover){.ast-launch:hover{background:#f2f6f5}}
+@media(max-width:833px){.ast-launch{width:48px;min-height:48px;height:48px;padding:0;justify-content:center;right:16px;bottom:16px}.ast-launch #ast-launch-t,.ast-launch .ast-launch-t{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}}
+.foot-wm{padding-inline:max(var(--pad),calc(50% - 620px))}

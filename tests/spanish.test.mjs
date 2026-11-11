@@ -122,7 +122,7 @@ test('the main-theme layout renders Spanish pages in Spanish with es_US metadata
   assert.match(html, /<meta property="og:locale" content="es_US"><meta property="og:locale:alternate" content="en_US">/);
   assert.match(html, /<link rel="canonical" href="https:\/\/www\.thevelani\.com\/pages\/es-nevora">/);
   assert.match(html, /<a class="skip" href="#main">Saltar al contenido<\/a>/);
-  assert.match(html, /<header class="gnav static" id="gnav">/);
+  assert.match(html, /<header class="gnav" id="gnav">/);
   assert.match(html, /<button class="gnav-ddbtn txt" type="button" aria-expanded="false" aria-controls="gnav-dd-nevora" data-cur>NEVORA/);
   assert.match(html, /<a class="gnav-signin" href="\/pages\/es-entrar">Entrar<\/a>/);
   assert.match(html, /<a href="\/pages\/nevora" hreflang="en" lang="en" aria-label="English">EN<\/a>/);
@@ -235,5 +235,22 @@ test('Home below the first screen is three live sections that read the same week
     assert.match(between, /data-approve/);
     assert.match(between, /\$19<\/b>[^<]+<b>\$29<\/b>/);
     assert.doesNotMatch(between, /class="hpanel/);
+  }
+});
+
+test('the NEVORA page tells the week in order from the same sample data as Home, and its time clock clocks Alexandra in', async () => {
+  for (const [path, home] of [['/pages/nevora', '/'], ['/pages/es-nevora', '/pages/es']]) {
+    const html = renderBody(path, { target: 'local' }), h = renderBody(home, { target: 'local' });
+    const order = ['id="top"', 'id="plan"', 'id="clock"', 'id="approve"', 'id="pay"', 'id="rondo"', 'id="begin"', 'id="velani"'].map(k => html.indexOf(k));
+    assert.ok(order.every((v, i) => v > -1 && (i === 0 || v > order[i - 1])), path + ' sections in week order');
+    const rows = s => [...s.matchAll(/class="day-row" data-state="\w+" data-due="\d+" data-week="\d+" data-sched="\d+" data-sun="\d"/g)].map(m => m[0]).join('|');
+    assert.equal(rows(html), rows(h), 'the same five rows as Home');
+    assert.equal(html.match(/data-now="(\d+)" data-rate="(\d+)"/)[0], h.match(/data-now="(\d+)" data-rate="(\d+)"/)[0]);
+    for (const b of ['need', 'weekPay', 'weekH', 'h2', 'a2', 'cov', 'f3', 't0', 't4']) assert.match(html, new RegExp('data-b="' + b + '"'), path + ' ' + b);
+    assert.match(html, /id="kio-who">Alexandra Rivera/);
+    assert.match(html, /id="kio-date">(Saturday, November 7|Sábado, 7 de noviembre)</);
+    assert.doesNotMatch(html, /class="lnav"|In development|En desarrollo|eight people|ocho personas/);
+    assert.equal((html.match(/<details>/g) || []).length, 6);
+    assert.equal((html.match(/class="hb fill"/g) || []).length, 3, 'one filled action each in the first screen, the start section and the ending');
   }
 });

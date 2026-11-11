@@ -1,42 +1,4 @@
-window.__fx=[];
-(()=>{
- const $=s=>document.querySelector(s),big=matchMedia('(min-width:960px)'),es=/^es\b/i.test(document.documentElement.lang);
- // Local nav: solid as soon as it sticks; names the section whose heading has passed
- const lnav=$('#lnav'),ink=$('#lnav-ink'),links=[...document.querySelectorAll('[data-spy]')];
- const heads=links.map(a=>{const t=document.getElementById(a.dataset.spy);return t&&(t.querySelector('h1,h2')||t)});
- let lastIdx=-1;
- const moveInk=i=>{if(!big.matches)return;if(i<0){ink.style.setProperty('--w',0);return}const a=links[i];ink.style.setProperty('--x',(a.offsetLeft+12)+'px');ink.style.setProperty('--w',a.offsetWidth-24)};
- const hero=$('#top');__fx.push({always:true,el:document.body,run(p,r,vh){lnav.classList.toggle('solid',lnav.getBoundingClientRect().top<=0&&scrollY>2);if(hero)lnav.classList.toggle('past-hero',hero.getBoundingClientRect().bottom<80);
-  // Nothing is current above the first chapter: the wordmark stands for the overview
-  let idx=-1;heads.forEach((h,i)=>{if(h&&h.getBoundingClientRect().top<=vh*.45)idx=i});
-  if(idx!==lastIdx){lastIdx=idx;links.forEach((a,i)=>i===idx?a.setAttribute('aria-current','true'):a.removeAttribute('aria-current'));moveInk(idx)}}});
- addEventListener('resize',()=>{moveInk(lastIdx)});
- // Phone story: the pinned phone shows what each step describes; Alexandra's shift line fills with a live time
- const steps=[...document.querySelectorAll('.st')],pp=$('#pinPhone'),feed=$('#pinPhone .feed'),feeds=[...document.querySelectorAll('#pinPhone .feed')],bar=$('#shiftbar'),now=$('#shiftNow');let si=-1;
- const show=i=>{if(i===si)return;si=i;steps.forEach((s,j)=>s.classList.toggle('on',j===i));if(feeds.length>1)feeds.forEach((f,j)=>f.classList.toggle('on',j===i));else feed.style.setProperty('--y',steps[i].dataset.y+'%');pp.classList.toggle('down',i>0)};show(0);
- __fx.push({always:true,el:$('#story'),run(p,r,vh,c){let best=0,bd=1e9;steps.forEach((s,i)=>{const b=s.getBoundingClientRect();const d=Math.abs(b.top+b.height/2-vh/2);if(d<bd){bd=d;best=i}});show(best);
-  const sp=c((vh*.5-r.top)/r.height);bar.style.setProperty('--sp',sp.toFixed(3));const mins=Math.round(sp*480/15)*15,h=8+Math.floor(mins/60),m=mins%60;
-  now.textContent=((h-1)%12+1)+':'+String(m).padStart(2,'0')+(es?(h<12?'\u00a0a.\u00a0m.':'\u00a0p.\u00a0m.'):(h<12?' AM':' PM'));now.style.setProperty('--tip',(sp*r.height).toFixed(0)+'px')}});
- // Owner screenshot: clip reveal, then hand the edge back to the slab's own ring and shadow
- const ow=$('#owner');ow.addEventListener('transitionend',e=>{if(e.propertyName==='clip-path')ow.style.clipPath='none'});
- // Local nav menu on narrow screens, like the main phone menu: focus moves into it, the page behind is inert and does not
- // scroll, Escape closes it and returns focus to the button, and the button says "Close menu" while it is open
- const tog=$('#lnav-tog'),list=$('#lnav-list'),behindL=(()=>{// everything beside the local nav at each level up to <body>, never an element that contains the nav (on Shopify the nav sits inside a section wrapper)
-  const out=[];let n=tog.closest('.lnav')||tog;while(n&&n.parentElement&&n!==document.body){for(const s of n.parentElement.children)if(s!==n&&!/^(SCRIPT|STYLE|LINK|TEMPLATE)$/.test(s.tagName))out.push(s);n=n.parentElement}return out})();
- const setL=(o,focus)=>{if(o===(tog.getAttribute('aria-expanded')==='true'))return;tog.setAttribute('aria-expanded',String(o));tog.setAttribute('aria-label',o?(es?'Cerrar menú':'Close menu'):(es?'Menú':'Menu'));list.classList.toggle('open',o);
-  behindL.forEach(x=>x.inert=o);document.body.style.overflow=o?'hidden':'';
-  if(o&&focus){const first=[...list.querySelectorAll('a')].find(a=>a.offsetParent!==null);first&&first.focus({preventScroll:true})}};
- tog.addEventListener('click',()=>setL(tog.getAttribute('aria-expanded')!=='true',true));list.addEventListener('click',e=>{if(e.target.closest('a'))setL(false)});
- document.addEventListener('keydown',e=>{if(e.key==='Escape'&&tog.getAttribute('aria-expanded')==='true'){setL(false);tog.focus()}});
- big.addEventListener('change',e=>{if(e.matches)setL(false);else setV(false)});
- // "by Velani": the company links on wide screens (narrow screens keep them in the menu)
- const vb=$('#lnav-vbtn'),vm=$('#lnav-vmenu');const setV=o=>{if(!vb)return;vb.setAttribute('aria-expanded',String(o));vm.hidden=!o};
- if(vb){vb.addEventListener('click',()=>setV(vb.getAttribute('aria-expanded')!=='true'));
-  vm.addEventListener('click',e=>{if(e.target.closest('a'))setV(false)});
-  document.addEventListener('click',e=>{if(!e.target.closest('.lnav-v'))setV(false)});
-  document.addEventListener('keydown',e=>{if(e.key==='Escape'&&vb.getAttribute('aria-expanded')==='true'){setV(false);vb.focus()}});
-  vm.addEventListener('focusout',e=>{if(!e.relatedTarget||!e.currentTarget.parentNode.contains(e.relatedTarget))setV(false)});}
-})();
+window.__fx=window.__fx||[];
 
 // Try the time clock: a working copy of the NEVORA PIN screen, on the home and NEVORA pages.
 // Fictional: any four digits work. The PIN lives only in this closure; nothing is stored, sent or logged.
@@ -45,13 +7,15 @@ window.__fx=[];
  const $=id=>document.getElementById(id);
  // Spanish strings come from the NEVORA app's own time-clock copy where it has one ("Clock In" = "Marcar entrada",
  // "Clock In Recorded" = "Entrada registrada"). src/night.mjs reads this table to render the Spanish page's demo in Spanish.
- const ES={'Time clock':'Registro de tiempo','Enter your PIN':'Ingresa tu PIN','Clear':'Borrar','Continue':'Continuar','Your PIN is separate from your portal password.':'Tu PIN es distinto de tu contraseña del portal.','Clock-in recorded':'Entrada registrada','Recorded at':'Registrada el','This demo keeps nothing.':'Solo es una demostración. No se guarda nada.','Clock in again':'Marcar entrada de nuevo','Delete digit':'Borrar dígito'};
+ const ES={'Time clock':'Registro de tiempo','Enter your PIN':'Ingresa tu PIN','Clear':'Borrar','Continue':'Continuar','Your PIN is separate from your portal password.':'Tu PIN es distinto de tu contraseña del portal.','Clock-in recorded':'Entrada registrada','Recorded at':'Registrada el','This demo keeps nothing.':'Solo es una demostración. No se guarda nada.','Clock in again':'Marcar entrada de nuevo','See her timecard':'Mira su tarjeta de tiempo','Delete digit':'Borrar dígito','Tablet registered':'Tableta registrada','New York time · Main Street iPad':'Hora de Nueva York · iPad de Main Street'};
  const dots=[...$('kio-dots').children],go=$('kio-go'),live=$('kio-live'),pinStep=$('kio-pin'),okStep=$('kio-ok'),lang=$('kio-lang'),langT=$('kio-lang-t');
  let es=false,pin='',last='';
  const loc=()=>es?'es-PR':'en-US';
  // Spanish writes "p. m." (lowercase, a space inside, never split); browsers differ ("p.m.", "p. m."), so it is normalized
  const parts=d=>{const p=new Intl.DateTimeFormat(loc(),{hour:'numeric',minute:'2-digit',hour12:true}).formatToParts(d);const v=t=>(p.find(x=>x.type===t)||{}).value||'';const ap=v('dayPeriod');return{hm:v('hour')+':'+v('minute'),ap:es?ap.toLowerCase().replace(/^([ap])\.?\s*m\.?$/,'$1.\u00a0m.'):ap.toUpperCase()}};
- const tick=()=>{const d=new Date(),{hm,ap}=parts(d),day=new Intl.DateTimeFormat(loc(),{weekday:'long',month:'long',day:'numeric'}).format(d),key=hm+ap+day;
+ // The demo runs on the page's sample week (Saturday, November 7), so it agrees with the screens around it
+ const W=()=>window.NVWEEK,sample=m=>{const h=Math.floor(m/60)%12||12;return{hm:h+':'+String(m%60).padStart(2,'0'),ap:es?(m<720?'a.\u00a0m.':'p.\u00a0m.'):(m<720?'AM':'PM')}};
+ const tick=()=>{if(!W()&&document.querySelector('[data-day]'))return;const d=new Date(),{hm,ap}=W()?sample(W().now()):parts(d),day=W()?(es?'sábado, 7 de noviembre':'Saturday, November 7'):new Intl.DateTimeFormat(loc(),{weekday:'long',month:'long',day:'numeric'}).format(d),key=hm+ap+day;
   if(key===last)return;last=key;$('kio-hm').textContent=hm;$('kio-ap').textContent=ap;$('kio-date').textContent=day.charAt(0).toUpperCase()+day.slice(1)};
  // Announce the count or the clearing, never the digits themselves
  const say=t=>{live.textContent=t};
@@ -62,7 +26,7 @@ window.__fx=[];
  const clear=()=>{if(!pin)return;pin='';render();say(es?'Borrado':'Cleared')};
  const inside=()=>k.contains(document.activeElement);
  // Confirmation stays until the visitor chooses Try again (the real workplace tablet clears itself; this page does not)
- const submit=()=>{if(pin.length!==4)return;const d=new Date(),{hm,ap}=parts(d),day=new Intl.DateTimeFormat(loc(),{month:'short',day:'numeric'}).format(d);
+ const submit=()=>{if(pin.length!==4)return;const d=new Date(),{hm,ap}=W()?sample(W().clockIn()):parts(d),day=W()?(es?'7 nov':'Nov 7'):new Intl.DateTimeFormat(loc(),{month:'short',day:'numeric'}).format(d);
   // Continue was just used (it is the only way here), so focus goes to the result in every browser. Before, render() disabled
   // the focused button first, Chromium dropped focus to the page and the result was never focused
   pin='';render();$('kio-saved').textContent=es?day.replace(/\.$/,'')+' · '+hm+'\u00a0'+ap:day+' · '+hm+' '+ap;$('kio-dot').textContent=/\.$/.test(ap)?'':'.';pinStep.hidden=true;okStep.hidden=false;

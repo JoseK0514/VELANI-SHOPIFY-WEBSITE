@@ -42,7 +42,7 @@ test('the NEVORA page loads its own assets and marks its nav item', async () => 
   const layout = renderShopifyLayout();
   const html = await liquid.parseAndRender(layout, { theme: { role: 'main', id: 9 }, routes: { root_url: '/' }, template: { name: 'page', suffix: 'nevora' }, request: { locale: { iso_code: 'en' }, page_type: 'page' }, settings: {} });
   assert.match(html, /velani-nevora\.js/);
-  assert.match(html, /class="gnav static"/);
+  assert.match(html, /class="gnav"/);
   // NEVORA lives under the NEVORA menu: its button carries the current-section mark; the phone menu lists it
   assert.match(html, /<button class="gnav-ddbtn txt" type="button" aria-expanded="false" aria-controls="gnav-dd-nevora" data-cur>NEVORA/);
   assert.match(html, /<a class="gmenu-sub" href="\/pages\/nevora">NEVORA Workforce<\/a>/);

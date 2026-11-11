@@ -9,7 +9,7 @@ import { VelaniAssistant, safeSourceUrl } from './velani-assistant.js';
  const launch = $('ast-launch'), panel = $('ast'), body = $('ast-body'), intro = $('ast-intro'), log = $('ast-log'), form = $('ast-form'), input = $('ast-in'), send = $('ast-send');
  const status = $('ast-status'), statusT = $('ast-status-t'), retryBtn = $('ast-retry'), discardBtn = $('ast-discard'), contactLink = $('ast-contact'), verify = $('ast-verify'), confirm = $('ast-confirm'), clearBtn = $('ast-clear');
  const T = {
-  en: { launch: 'Ask Rondo', launchLabel: 'Ask Rondo on this site, Velani’s AI adviser', sub: ['On this site', ' · AI adviser for Velani and NEVORA'], hi: 'Hi, I’m {name}.', lede: 'I’m Velani’s AI adviser on this website. Ask me about NEVORA, the free trial, or the websites and apps we build.', scope: 'I can’t see employee accounts, and I can’t make changes, bookings or payments.',
+  en: { launch: 'Ask Velani', launchLabel: 'Ask Velani, the AI adviser on this site', sub: ['On this site', ' · AI adviser for Velani and NEVORA'], hi: 'Hi, I’m {name}.', lede: 'I’m Velani’s AI adviser on this website. Ask me about NEVORA, the free trial, or the websites and apps we build.', scope: 'I can’t see employee accounts, and I can’t make changes, bookings or payments.',
    ask: 'Ask Rondo a question', label: 'Your question for Rondo', send: 'Send', close: 'Close', del: 'Delete this conversation', lang: 'Language',
    confirm: 'Delete this conversation from our servers?', yes: 'Delete', keep: 'Keep',
    switchQ: 'Switch to Spanish? This conversation will be deleted and a new one started in Spanish.', switchYes: 'Switch', switchNo: 'Keep English', switched: 'New conversation in English.',
@@ -23,7 +23,7 @@ import { VelaniAssistant, safeSourceUrl } from './velani-assistant.js';
    unavailable: 'Rondo isn’t available right now. Write to support@thevelani.com or use the contact page.',
    expired: 'This conversation expired. Your question is back in the box: send it to start a new conversation.',
    thinking: 'Rondo is thinking…', slow: 'Still working. Answers can take up to 45 seconds.', verifying: 'Waiting for the verification below…', seconds: 's' },
-  es: { launch: 'Pregúntale a Rondo', launchLabel: 'Pregúntale a Rondo en este sitio, el asesor de IA de Velani', sub: ['En este sitio', ' · Asesor de IA de Velani y NEVORA'], hi: 'Hola, soy {name}.', lede: 'Soy el asesor de IA de Velani en este sitio web. Pregúntame sobre NEVORA, la prueba gratis o los sitios web y aplicaciones que desarrollamos.', scope: 'No puedo ver cuentas de empleados ni hacer cambios, reservas o pagos.',
+  es: { launch: 'Pregúntale a Velani', launchLabel: 'Pregúntale a Velani, el asesor de IA de este sitio', sub: ['En este sitio', ' · Asesor de IA de Velani y NEVORA'], hi: 'Hola, soy {name}.', lede: 'Soy el asesor de IA de Velani en este sitio web. Pregúntame sobre NEVORA, la prueba gratis o los sitios web y aplicaciones que desarrollamos.', scope: 'No puedo ver cuentas de empleados ni hacer cambios, reservas o pagos.',
    ask: 'Escribe tu pregunta para Rondo', label: 'Tu pregunta para Rondo', send: 'Enviar', close: 'Cerrar', del: 'Eliminar esta conversación', lang: 'Idioma',
    confirm: '¿Eliminar esta conversación de nuestros servidores?', yes: 'Eliminar', keep: 'Conservar',
    switchQ: '¿Cambiar a inglés? Esta conversación se eliminará y empezará una nueva en inglés.', switchYes: 'Cambiar', switchNo: 'Seguir en español', switched: 'Nueva conversación en español.',

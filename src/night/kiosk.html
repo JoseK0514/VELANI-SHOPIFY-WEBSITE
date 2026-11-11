@@ -1,10 +1,17 @@
   <div class="kio" id="kio">
    <div class="kio-side">
-    <div class="kio-brand"><img src="img/nevora-wm-white.png" alt="NEVORA" width="907" height="122"><span data-k-t="Time clock">Time clock</span></div>
+    <div class="kio-top">
+     <div class="kio-brand"><img src="img/nevora-wm-white.png" alt="NEVORA" width="907" height="122"><span data-k-t="Time clock">Time clock</span></div>
+     <p class="kio-ws kio-glass">Northside Coffee</p>
+    </div>
     <div class="kio-now">
-     <p class="kio-loc">{{icon:map-pin}}<b>Northside Main Street</b></p>
-     <p class="kio-time"><span id="kio-hm">2:17</span><small id="kio-ap">PM</small></p>
-     <p class="kio-date" id="kio-date">Tuesday, October 27</p>
+     <p class="kio-time"><span id="kio-hm">7:58</span><small id="kio-ap">AM</small></p>
+     <p class="kio-loc kio-glass">{{icon:map-pin}}<b>Main Street</b></p>
+     <p class="kio-date" id="kio-date">Saturday, November 7</p>
+    </div>
+    <div class="kio-bfoot">
+     <p class="kio-stat kio-glass"><i aria-hidden="true"></i><b data-k-t="Tablet registered">Tablet registered</b><span data-k-t="New York time · Main Street iPad">New York time · Main Street iPad</span></p>
+     <small>Powered by VELANI LLC</small>
     </div>
    </div>
    <div class="kio-main">
@@ -17,14 +24,14 @@
       <button type="button" data-d="7">7</button><button type="button" data-d="8">8</button><button type="button" data-d="9">9</button>
       <button type="button" class="kio-soft" data-act="clear" data-k-t="Clear">Clear</button><button type="button" data-d="0">0</button><button type="button" class="kio-soft" data-act="back" aria-label="Delete digit" data-k-l="Delete digit">{{icon:backspace}}</button>
      </div>
-     <button type="button" class="kio-go" id="kio-go" disabled><span data-k-t="Continue">Continue</span>{{icon:caret-right}}</button>
-     <div class="kio-foot"><p data-k-t="Your PIN is separate from your portal password.">Your PIN is separate from your portal password.</p><button type="button" class="kio-lang" id="kio-lang">{{icon:translate}}<span id="kio-lang-t" lang="es">Español</span></button></div>
+     <button type="button" class="kio-go" id="kio-go" disabled><span data-k-t="Continue">Continue</span>{{icon:arrow-right}}</button>
+     <div class="kio-foot"><p data-k-t="Your PIN is separate from your portal password.">Your PIN is separate from your portal password.</p><button type="button" class="kio-lang" id="kio-lang">{{icon:globe}}<span id="kio-lang-t" lang="es">Español</span></button></div>
     </div>
     <div class="kio-step kio-ok" id="kio-ok" hidden>
      <span class="kio-check">{{icon:check}}</span>
      <h3 class="kio-h" id="kio-ok-h" tabindex="-1" data-k-t="Clock-in recorded">Clock-in recorded</h3>
      <p class="kio-saved"><span data-k-t="Recorded at">Recorded at</span> <b id="kio-saved">Oct 27&nbsp;· 2:17 PM</b><span id="kio-dot">.</span></p>
-     <p class="kio-demo" data-k-t="This demo keeps nothing.">This demo keeps nothing.</p>
+     <p class="kio-who" id="kio-who">Alexandra Rivera · Barista</p><p class="kio-demo" data-k-t="This demo keeps nothing.">This demo keeps nothing.</p><a class="kio-next" href="#approve" data-k-t="See her timecard">See her timecard</a>
      <button type="button" class="kio-done" id="kio-done" data-k-t="Clock in again">Clock in again</button>
     </div>
     <p class="sr" id="kio-live" aria-live="polite"></p>

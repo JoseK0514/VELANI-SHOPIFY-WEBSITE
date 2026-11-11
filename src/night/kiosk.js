@@ -5,13 +5,15 @@
  const $=id=>document.getElementById(id);
  // Spanish strings come from the NEVORA app's own time-clock copy where it has one ("Clock In" = "Marcar entrada",
  // "Clock In Recorded" = "Entrada registrada"). src/night.mjs reads this table to render the Spanish page's demo in Spanish.
- const ES={'Time clock':'Registro de tiempo','Enter your PIN':'Ingresa tu PIN','Clear':'Borrar','Continue':'Continuar','Your PIN is separate from your portal password.':'Tu PIN es distinto de tu contraseña del portal.','Clock-in recorded':'Entrada registrada','Recorded at':'Registrada el','This demo keeps nothing.':'Solo es una demostración. No se guarda nada.','Clock in again':'Marcar entrada de nuevo','Delete digit':'Borrar dígito'};
+ const ES={'Time clock':'Registro de tiempo','Enter your PIN':'Ingresa tu PIN','Clear':'Borrar','Continue':'Continuar','Your PIN is separate from your portal password.':'Tu PIN es distinto de tu contraseña del portal.','Clock-in recorded':'Entrada registrada','Recorded at':'Registrada el','This demo keeps nothing.':'Solo es una demostración. No se guarda nada.','Clock in again':'Marcar entrada de nuevo','See her timecard':'Mira su tarjeta de tiempo','Delete digit':'Borrar dígito','Tablet registered':'Tableta registrada','New York time · Main Street iPad':'Hora de Nueva York · iPad de Main Street'};
  const dots=[...$('kio-dots').children],go=$('kio-go'),live=$('kio-live'),pinStep=$('kio-pin'),okStep=$('kio-ok'),lang=$('kio-lang'),langT=$('kio-lang-t');
  let es=false,pin='',last='';
  const loc=()=>es?'es-PR':'en-US';
  // Spanish writes "p. m." (lowercase, a space inside, never split); browsers differ ("p.m.", "p. m."), so it is normalized
  const parts=d=>{const p=new Intl.DateTimeFormat(loc(),{hour:'numeric',minute:'2-digit',hour12:true}).formatToParts(d);const v=t=>(p.find(x=>x.type===t)||{}).value||'';const ap=v('dayPeriod');return{hm:v('hour')+':'+v('minute'),ap:es?ap.toLowerCase().replace(/^([ap])\.?\s*m\.?$/,'$1.\u00a0m.'):ap.toUpperCase()}};
- const tick=()=>{const d=new Date(),{hm,ap}=parts(d),day=new Intl.DateTimeFormat(loc(),{weekday:'long',month:'long',day:'numeric'}).format(d),key=hm+ap+day;
+ // The demo runs on the page's sample week (Saturday, November 7), so it agrees with the screens around it
+ const W=()=>window.NVWEEK,sample=m=>{const h=Math.floor(m/60)%12||12;return{hm:h+':'+String(m%60).padStart(2,'0'),ap:es?(m<720?'a.\u00a0m.':'p.\u00a0m.'):(m<720?'AM':'PM')}};
+ const tick=()=>{if(!W()&&document.querySelector('[data-day]'))return;const d=new Date(),{hm,ap}=W()?sample(W().now()):parts(d),day=W()?(es?'sábado, 7 de noviembre':'Saturday, November 7'):new Intl.DateTimeFormat(loc(),{weekday:'long',month:'long',day:'numeric'}).format(d),key=hm+ap+day;
   if(key===last)return;last=key;$('kio-hm').textContent=hm;$('kio-ap').textContent=ap;$('kio-date').textContent=day.charAt(0).toUpperCase()+day.slice(1)};
  // Announce the count or the clearing, never the digits themselves
  const say=t=>{live.textContent=t};
@@ -22,7 +24,7 @@
  const clear=()=>{if(!pin)return;pin='';render();say(es?'Borrado':'Cleared')};
  const inside=()=>k.contains(document.activeElement);
  // Confirmation stays until the visitor chooses Try again (the real workplace tablet clears itself; this page does not)
- const submit=()=>{if(pin.length!==4)return;const d=new Date(),{hm,ap}=parts(d),day=new Intl.DateTimeFormat(loc(),{month:'short',day:'numeric'}).format(d);
+ const submit=()=>{if(pin.length!==4)return;const d=new Date(),{hm,ap}=W()?sample(W().clockIn()):parts(d),day=W()?(es?'7 nov':'Nov 7'):new Intl.DateTimeFormat(loc(),{month:'short',day:'numeric'}).format(d);
   // Continue was just used (it is the only way here), so focus goes to the result in every browser. Before, render() disabled
   // the focused button first, Chromium dropped focus to the page and the result was never focused
   pin='';render();$('kio-saved').textContent=es?day.replace(/\.$/,'')+' · '+hm+'\u00a0'+ap:day+' · '+hm+' '+ap;$('kio-dot').textContent=/\.$/.test(ap)?'':'.';pinStep.hidden=true;okStep.hidden=false;
