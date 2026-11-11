@@ -1,4 +1,5 @@
-/* Velani system (Phase 1, Nov 10, 2026): one look on every page. Loads after every other stylesheet.
+/* On Shopify each page sits inside a .shopify-section wrapper, so "first panel of the page" is matched on main or on that wrapper.
+   Velani system (Phase 1, Nov 10, 2026): one look on every page. Loads after every other stylesheet.
    Paper ground, white raised cards, NEVORA teal as the only accent, teal ink for the footer. A full teal field appears at most
    twice per page: the hero band and the closing. Fraunces 600 for page and section headings, DM Sans for everything else. */
 @font-face{font-family:"Fraunces";font-weight:600;font-display:swap;src:url(fraunces-latin-600-normal.woff2) format("woff2")}
@@ -118,10 +119,10 @@ body{font-size:1.0625rem;line-height:1.6}
 .gmenu small a{color:var(--ink-2)}
 
 /* ---------- Hero band: teal field, content sized, never the old streak images ---------- */
-main>.hpanel:first-child,main>.hpanel.end,.hpanel.end{position:relative;display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;column-gap:64px;height:auto;min-height:0;overflow:hidden;background:var(--band);color:#fff;padding:clamp(80px,9vw,128px) max(var(--pad),calc(50% - 620px));border-radius:0 0 var(--r4) var(--r4)}
-main>.hpanel:first-child .hph,main>.hpanel:first-child .hshade,.hpanel.end .hph,.hpanel.end .hshade,.hpanel .hdawn,.hpanel .hcue,.hpanel .hcopy::before{display:none}
-main>.hpanel:first-child::before,.hpanel.end::before{content:"";position:absolute;inset:0;background:radial-gradient(70% 90% at 88% 0%,rgba(63,179,168,.24) 0%,rgba(63,179,168,0) 70%);pointer-events:none}
-.hpanel .hcopy,main>.hpanel:first-child .hcopy{position:relative;z-index:1;grid-column:1;left:auto;right:auto;top:auto;bottom:auto;transform:none;max-width:860px;margin:0}
+:is(main,main>.shopify-section)>.hpanel:first-child,:is(main,main>.shopify-section)>.hpanel.end,.hpanel.end{position:relative;display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;column-gap:64px;height:auto;min-height:0;overflow:hidden;background:var(--band);color:#fff;padding:clamp(80px,9vw,128px) max(var(--pad),calc(50% - 620px));border-radius:0 0 var(--r4) var(--r4)}
+:is(main,main>.shopify-section)>.hpanel:first-child .hph,:is(main,main>.shopify-section)>.hpanel:first-child .hshade,.hpanel.end .hph,.hpanel.end .hshade,.hpanel .hdawn,.hpanel .hcue,.hpanel .hcopy::before{display:none}
+:is(main,main>.shopify-section)>.hpanel:first-child::before,.hpanel.end::before{content:"";position:absolute;inset:0;background:radial-gradient(70% 90% at 88% 0%,rgba(63,179,168,.24) 0%,rgba(63,179,168,0) 70%);pointer-events:none}
+.hpanel .hcopy,:is(main,main>.shopify-section)>.hpanel:first-child .hcopy{position:relative;z-index:1;grid-column:1;left:auto;right:auto;top:auto;bottom:auto;transform:none;max-width:860px;margin:0}
 .hpanel h1,.hpanel h2{color:#fff}
 .hpanel .hcopy p:not(.hkick){color:#f3faf8;max-width:36em}
 .hpanel .hfact,.hpanel .hcopy .hfact{color:#d6efe9}
@@ -136,26 +137,26 @@ main>.hpanel:first-child::before,.hpanel.end::before{content:"";position:absolut
 .hpanel.end .hwm{display:none}
 .hpanel.end .hacts{justify-content:center}
 /* Panels in the middle of a page (Products, Relay) sit on paper like any section */
-main>.hpanel:not(:first-child):not(.end){height:auto;min-height:0;background:var(--paper);color:var(--ink);padding:var(--sec) 0}
-main>.hpanel:not(:first-child):not(.end) .hph,main>.hpanel:not(:first-child):not(.end) .hshade{display:none}
-main>.hpanel:not(:first-child):not(.end) .hcopy{position:relative;left:auto;right:auto;top:auto;transform:none;margin-inline:max(var(--pad),calc(50% - 620px))}
-main>.hpanel:not(:first-child):not(.end) h2,main>.hpanel:not(:first-child):not(.end) h1{color:var(--ink)}
-main>.hpanel:not(:first-child):not(.end) .hcopy p:not(.hkick){color:var(--ink-2)}
-main>.hpanel:not(:first-child):not(.end) :focus-visible{outline-color:var(--teal)}
-#main>.hpanel:not(:first-child):not(.end) .hb{border-color:var(--rule-2);color:var(--ink)}
-#main>.hpanel:not(:first-child):not(.end) .hb.fill{background:var(--teal);border-color:var(--teal);color:#fff}
+:is(main,main>.shopify-section)>.hpanel:not(:first-child):not(.end){height:auto;min-height:0;background:var(--paper);color:var(--ink);padding:var(--sec) 0}
+:is(main,main>.shopify-section)>.hpanel:not(:first-child):not(.end) .hph,:is(main,main>.shopify-section)>.hpanel:not(:first-child):not(.end) .hshade{display:none}
+:is(main,main>.shopify-section)>.hpanel:not(:first-child):not(.end) .hcopy{position:relative;left:auto;right:auto;top:auto;transform:none;margin-inline:max(var(--pad),calc(50% - 620px))}
+:is(main,main>.shopify-section)>.hpanel:not(:first-child):not(.end) h2,:is(main,main>.shopify-section)>.hpanel:not(:first-child):not(.end) h1{color:var(--ink)}
+:is(main,main>.shopify-section)>.hpanel:not(:first-child):not(.end) .hcopy p:not(.hkick){color:var(--ink-2)}
+:is(main,main>.shopify-section)>.hpanel:not(:first-child):not(.end) :focus-visible{outline-color:var(--teal)}
+:is(#main,#main>.shopify-section)>.hpanel:not(:first-child):not(.end) .hb{border-color:var(--rule-2);color:var(--ink)}
+:is(#main,#main>.shopify-section)>.hpanel:not(:first-child):not(.end) .hb.fill{background:var(--teal);border-color:var(--teal);color:#fff}
 @media(max-width:1199px){
- main>.hpanel:first-child{grid-template-columns:minmax(0,1fr)}
+ :is(main,main>.shopify-section)>.hpanel:first-child{grid-template-columns:minmax(0,1fr)}
  .hpanel .hshot,.hpanel .hweb,.hpanel .hchat,.hpanel .hwin,.hpanel .hduo,.hpanel .rcard{grid-column:1;grid-row:auto;margin-top:48px;justify-self:start}
  .hpanel .hweb,.hpanel .hwin,.hpanel .rcard{display:none}
 }
 @media(max-width:833px){
- main>.hpanel:first-child,.hpanel.end{padding:56px var(--pad) 64px;min-height:0;border-radius:0 0 28px 28px;display:flex;flex-direction:column;align-items:stretch;justify-content:flex-start}
+ :is(main,main>.shopify-section)>.hpanel:first-child,.hpanel.end{padding:56px var(--pad) 64px;min-height:0;border-radius:0 0 28px 28px;display:flex;flex-direction:column;align-items:stretch;justify-content:flex-start}
  .hpanel.end{border-radius:28px 28px 0 0;padding:64px var(--pad);margin-top:0}
- .hpanel .hcopy,main>.hpanel:first-child .hcopy{margin:0}
+ .hpanel .hcopy,:is(main,main>.shopify-section)>.hpanel:first-child .hcopy{margin:0}
  .hpanel .hshot{order:2;width:min(240px,62%);margin:40px 0 0;align-self:center;padding:5px}
- main>.hpanel:not(:first-child):not(.end){padding:var(--sec) 0;display:flex;flex-direction:column}
- main>.hpanel:not(:first-child):not(.end) .hcopy{margin:0 var(--pad)}
+ :is(main,main>.shopify-section)>.hpanel:not(:first-child):not(.end){padding:var(--sec) 0;display:flex;flex-direction:column}
+ :is(main,main>.shopify-section)>.hpanel:not(:first-child):not(.end) .hcopy{margin:0 var(--pad)}
 }
 
 /* ---------- Sections, cards, frames ---------- */
@@ -245,7 +246,7 @@ html{scroll-padding-bottom:88px}
 @media(prefers-reduced-motion:reduce){.rise{opacity:1;transform:none}.fade{opacity:1}}
 /* NEVORA hero title: the same two sizes as every page title */
 main .n-hero.hpanel.long h1{font-size:clamp(2.5rem,5.6vw,5rem);line-height:1.02;max-width:none}
-main .hpanel.n-hero .hcopy{max-width:920px}
+main .n-hero.hpanel.long.long .hcopy{max-width:920px}
 @media(max-width:833px){main .n-hero.hpanel.long h1{font-size:clamp(1.75rem,8vw,3rem);line-height:1.06}}
 /* Typography details: tabular figures where numbers change or line up, pretty paragraphs, underlines from the font, 16px inputs */
 .pc-amt,.pc-n,.price-bands b,.nh-bands b,.kio-time,#kio-time,.cal-g,.days-k,.ff input[inputmode=numeric]{font-variant-numeric:tabular-nums}
@@ -270,15 +271,15 @@ a{text-underline-position:from-font}
 .foot .fs-k,.foot-support .fs-k{color:#c6d8d4}
 .kind:has(input:checked){background:var(--teal-50);border-color:var(--teal)}
 .kind:has(input:checked) b{color:var(--teal-d)}
-main>.hpanel:not(:first-child):not(.end) .hkick{color:var(--teal)}
-main>.hpanel:not(:first-child):not(.end) .hfact,main>.hpanel:not(:first-child):not(.end) .hcap{color:var(--ink-3)}
-main>.hpanel:not(:first-child):not(.end) .hfact a,main>.hpanel:not(:first-child):not(.end) .hcopy a:not(.hb):not(.pill){color:var(--ink)}
+:is(main,main>.shopify-section)>.hpanel:not(:first-child):not(.end) .hkick{color:var(--teal)}
+:is(main,main>.shopify-section)>.hpanel:not(:first-child):not(.end) .hfact,:is(main,main>.shopify-section)>.hpanel:not(:first-child):not(.end) .hcap{color:var(--ink-3)}
+:is(main,main>.shopify-section)>.hpanel:not(:first-child):not(.end) .hfact a,:is(main,main>.shopify-section)>.hpanel:not(:first-child):not(.end) .hcopy a:not(.hb):not(.pill){color:var(--ink)}
 .form-status[data-state=invalid]{display:block;margin:0 0 16px;padding:12px 14px;border-radius:var(--r);background:#fbeceb;color:#7a1c16;font-size:0.9375rem;font-weight:500}
 
 /* ---------- Gate pass (design-taste inspector): flat fields, flat buttons, fewer sizes, full-ink text ---------- */
 /* One flat teal field, no glows or ruled texture */
-main>.hpanel:first-child,main>.hpanel.end,.hpanel.end{background:var(--teal)}
-main>.hpanel:first-child::before,.hpanel.end::before,#main .nh-hero::before,#main .nh-hero::after{display:none}
+:is(main,main>.shopify-section)>.hpanel:first-child,:is(main,main>.shopify-section)>.hpanel.end,.hpanel.end{background:var(--teal)}
+:is(main,main>.shopify-section)>.hpanel:first-child::before,.hpanel.end::before,#main .nh-hero::before,#main .nh-hero::after{display:none}
 #main .nh-hero{background:var(--teal)}
 #main .nh-end-in{background:var(--teal)}
 #main .nh-end-in::before,#main .nh-end-in::after{display:none}
@@ -298,10 +299,10 @@ main>.hpanel:first-child::before,.hpanel.end::before,#main .nh-hero::before,#mai
 /* Running text in full ink; the muted ink is for notes */
 main p,main li,main dd,.lede{color:var(--ink)}
 main .hfact,main .cap,main .fine,main .nh-fine,main .case-credit,main .shot-cap,main .days-fine{color:var(--ink-3)}
-main>.hpanel:first-child p,main>.hpanel:first-child li,.hpanel.end p,#main .nh-hero p,#main .nh-end p{color:#f3faf8}
-main>.hpanel:first-child .hfact,#main .nh-hero .hfact{color:#d6efe9}
+:is(main,main>.shopify-section)>.hpanel:first-child p,:is(main,main>.shopify-section)>.hpanel:first-child li,.hpanel.end p,#main .nh-hero p,#main .nh-end p{color:#f3faf8}
+:is(main,main>.shopify-section)>.hpanel:first-child .hfact,#main .nh-hero .hfact{color:#d6efe9}
 @media(max-width:833px){.pill,.hb,#main .hb,.gnav-cta,.gnav .pill{font-size:1rem}#main .nh-h3,.nh-case-t,#main .nh-case-t{font-size:1.375rem}#main .nh-head p,#main .nh-lede{font-size:1.125rem}#main .nh-bands b,.price-bands li b{font-size:2.5rem}}
-@media(max-width:833px){main .n-hero.hpanel:has(.hshot) .hcopy,main>.hpanel.hpanel:first-child>.hcopy{margin:0}}
+@media(max-width:833px){main .n-hero.hpanel:has(.hshot) .hcopy,:is(main,main>.shopify-section)>.hpanel.hpanel:first-child>.hcopy{margin:0}}
 #main section:not(.nh-hero):not(.nh-end):not(.hpanel) p:not(.nh-fine):not(.nh-free):not(.hfact):not(.nh-ok-t):not(.nh-ok-n):not(.nh-ok-time),#main .nh-facts dd,#main .nh-facts dt{color:var(--ink)}
 #main section:not(.nh-hero):not(.hpanel) p.fade{font-size:1.25rem;line-height:1.5}
 #main .nh-copy p,#main .nh-case-p{font-size:1.0625rem;line-height:1.6}
@@ -319,8 +320,8 @@ main .days-k{font-size:1.0625rem;font-weight:600}
 
 /* Text on the teal fields stays light; text in mid-page panels stays ink */
 main .hpanel .hcopy p:not(.hkick):not(.hfact),main .hpanel .hcopy li,main .hpanel .lede{color:#f3faf8}
-main>.hpanel:not(:first-child):not(.end) .hcopy p:not(.hkick):not(.hfact){color:var(--ink)}
-main .hpanel.end .hcopy,main>.hpanel.end .hcopy{top:auto;bottom:auto}
+:is(main,main>.shopify-section)>.hpanel:not(:first-child):not(.end) .hcopy p:not(.hkick):not(.hfact){color:var(--ink)}
+main .hpanel.end .hcopy,:is(main,main>.shopify-section)>.hpanel.end .hcopy{top:auto;bottom:auto}
 #main .nh-hero .nh-float p,#main .nh-hero .nh-ok p{color:var(--ink)}#main .nh-hero .nh-ok .nh-ok-n{color:var(--teal)}
 .band-in,.band .band-in,#help .band-in,.help-end .band-in{background:transparent}
 .price-bands b span{white-space:nowrap}
