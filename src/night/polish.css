@@ -394,3 +394,16 @@ main:has(.day30) #velani::after{height:260px;background:radial-gradient(ellipse 
 
 /* ---------- Chat launcher on phones: never over a form, calendar, table or live piece (motion.js marks the document) ---------- */
 @media(max-width:833px){.quiet-chat .ast-launch{opacity:0;pointer-events:none;transform:translateY(8px)}}
+
+/* ---------- Plans first screen (round 8): the team-size price control is the page's live object, once ---------- */
+.plans-top .pcard{--text:#0e2a2a;--text-2:#3d5654;--text-3:#56706d;--line:rgba(14,42,42,.12);--line-2:rgba(14,42,42,.28);--panel:#f2f6f5;position:absolute;z-index:1;right:max(var(--pad),calc(50% - 620px));top:50%;transform:translateY(-50%);width:min(440px,40vw);margin:0;border-radius:24px;background:#f2f6f5!important;color:#0e2a2a;box-shadow:0 0 0 1px rgba(255,255,255,.10),0 2px 6px rgba(2,10,20,.35),0 34px 70px -24px rgba(2,10,20,.85),0 90px 140px -60px rgba(10,60,110,.5)!important}
+.plans-top .pcard.fade{transition:opacity .7s var(--out)}
+@media(min-width:834px){.plans-top .hcopy{max-width:calc(100% - var(--pad)*2 - min(440px,40vw) - 56px)}}
+main:has(.day30) .price-grid{grid-template-columns:minmax(0,720px)}
+@media(max-width:833px){.plans-top .pcard{position:relative;right:auto;top:auto;transform:none;width:auto;margin:28px var(--pad) 0}.hpanel.dim.long.plans-top{justify-content:flex-start;min-height:0;padding-top:72px;padding-bottom:150px}}
+body:has(main .contact-split) .gnav{background:#fff}
+@media(min-width:834px){.plans-top .hcopy{max-width:min(600px,calc(100% - var(--pad)*2 - min(440px,40vw) - 56px))}}
+main:has(.day30) #velani::after{height:240px;background:radial-gradient(ellipse 90% 100% at 50% 0%,rgba(96,204,204,.30) 0%,rgba(40,150,152,.16) 42%,rgba(20,110,112,0) 78%),linear-gradient(180deg,#f2f6f5 0%,rgba(232,245,243,.95) 4%,rgba(206,236,233,.78) 11%,rgba(160,216,213,.52) 24%,rgba(104,186,186,.30) 42%,rgba(50,146,148,.13) 64%,rgba(20,110,112,0) 100%)}
+/* Below 1100px the control sits under the copy, so the headline keeps its two lines */
+@media(max-width:1100px){.hpanel.dim.long.plans-top{display:flex;flex-direction:column;justify-content:flex-start;height:auto;min-height:0;padding-top:96px;padding-bottom:150px}.plans-top .hcopy{position:relative;left:auto;top:auto;transform:none;max-width:none;margin:0 var(--pad)}.plans-top .pcard{position:relative;right:auto;top:auto;transform:none;width:auto;max-width:520px;margin:32px var(--pad) 0}}
+@media(max-width:833px){.hpanel.dim.long.plans-top{padding-top:72px}}

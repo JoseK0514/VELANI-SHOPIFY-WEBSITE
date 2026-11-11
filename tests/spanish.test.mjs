@@ -254,3 +254,31 @@ test('the NEVORA page tells the week in order from the same sample data as Home,
     assert.equal((html.match(/class="hb fill"/g) || []).length, 3, 'one filled action each in the first screen, the start section and the ending');
   }
 });
+
+test('Plans puts the team-size price control in its first screen, once, and ends on the trial only', async () => {
+  for (const path of ['/pages/plans', '/pages/es-planes']) {
+    const html = renderBody(path, { target: 'local' });
+    assert.equal((html.match(/data-pcard/g) || []).length, 1, path);
+    const top = html.slice(html.indexOf('plans-top'), html.indexOf('id="price"'));
+    assert.match(top, /data-pcard/, path + ' the control is in the first screen');
+    assert.match(top, /role="status" data-pc-live/, path);
+    const end = html.slice(html.indexOf('id="velani"'));
+    assert.equal((end.match(/class="hb fill"/g) || []).length, 1, path);
+    assert.doesNotMatch(end, /custom-development|a-la-medida/, path);
+    assert.doesNotMatch(html, /night-r1-schedule/, path + ' no schedule screenshot');
+  }
+});
+
+test('the request form has a real label for every field and a live summary that names the fields to fix', async () => {
+  const { readFile } = await import('node:fs/promises');
+  for (const path of ['/pages/contact', '/pages/es-contacto']) {
+    const html = renderBody(path, { target: 'local' });
+    for (const id of ['name', 'email', 'company', 'team', 'locations', 'message']) assert.match(html, new RegExp('<label for="inquiry-' + id + '">'), path + ' ' + id);
+    assert.match(html, /aria-describedby="error-name"/);
+    assert.match(html, /data-inquiry-mode="preview"/);
+  }
+  const js = await readFile(new URL('../public/assets/velani.js', import.meta.url), 'utf8');
+  assert.match(js, /fields need attention: /); assert.match(js, /1 field needs attention: /);
+  assert.match(js, /campos necesitan atención: /); assert.match(js, /setAttribute\('role', 'alert'\)/);
+  assert.match(js, /form\.addEventListener\('input', recheck\)/);
+});
