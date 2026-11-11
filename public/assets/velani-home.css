@@ -253,3 +253,45 @@
  .day-clock{margin-top:12px;font-size:2.25rem}
  .day-date{margin-top:4px}
 }
+
+/* ---------- Round 4 (Nov 10): one cool family all the way down. Home is NEVORA and Rondo; white ground, teal-ink text,
+   NEVORA teal for the one filled action. No cream, no brown, no black. ---------- */
+#nevora{--paper:#fff;--text:#0e2a2a;--text-2:#3d5654;--text-3:#56706d;--label:#3d5654;--accent:#0b6e69;--line:rgba(14,42,42,.12);--line-2:rgba(14,42,42,.28);--panel:#f2f6f5}
+#nevora .hb{border-color:rgba(14,42,42,.38);color:var(--text)}
+#nevora .hb.fill{background:#0b6e69;border-color:#0b6e69;color:#fff}
+@media(hover:hover){#nevora .hb:hover{background:rgba(14,42,42,.05);border-color:rgba(14,42,42,.62)}#nevora .hb.fill:hover{background:#095f5b;border-color:#095f5b}}
+#nevora :is(.hweb,.hwin){box-shadow:0 0 0 1px rgba(14,42,42,.10),0 2px 4px rgba(14,42,42,.06),0 28px 56px -24px rgba(10,60,58,.30),0 70px 120px -48px rgba(10,60,58,.26)}
+#nevora :is(.hshot,.hduo .ph){box-shadow:0 0 0 1px rgba(0,0,0,.5),0 2px 4px rgba(14,42,42,.12),0 34px 64px -22px rgba(10,60,58,.42),0 80px 120px -50px rgba(10,60,58,.32)}
+/* The join: the teal light simply gets brighter into white. One hue, no line */
+.hmorn{height:220px;background:radial-gradient(ellipse 70% 100% at 50% 100%,rgba(150,226,226,.26) 0%,rgba(150,226,226,.10) 40%,rgba(150,226,226,0) 74%),linear-gradient(180deg,rgba(225,246,245,0) 0%,rgba(225,246,245,.03) 34%,rgba(226,246,245,.10) 52%,rgba(230,247,246,.24) 68%,rgba(238,250,249,.48) 81%,rgba(246,252,252,.76) 91%,rgba(252,254,254,.94) 97%,#fff 100%)}
+.hmorn::after{display:none}
+@media(max-width:833px){.hmorn{height:170px}}
+/* The piece's frame and neutrals return to the cool family */
+.hpanel.sig{--hair:#e2eae8;--ink:#0e2a2a;--ink-2:#3d5654}
+.day{background:#f2f6f5}
+.day-note{color:#4a6360}
+.day-av{background:#eaf0ef}
+.day-tabs{background:#e9efee}
+/* Closing: the trial alone, then one quiet line about the studio */
+.halso{margin-top:28px}
+.hpanel.end .halso{margin-inline:auto;color:#c6d6d6}
+/* Schedule: start over end in each chip, at a readable size, using the panel's full height */
+.day-sched tbody td{height:54px}
+.day-chip{padding:5px 0 4px;font-size:.6875rem;line-height:1.25;border-radius:8px;background:#e9f1ef;color:#0e2a2a}
+.day-chip i{display:block;font-style:normal;font-weight:500;color:#3d5654}
+.day-sched .now .day-chip i{color:#d9f0ed}
+.day-sched thead td:first-child,.day-sched tbody th{width:22%}
+.day-sched .day-wk{width:12%}
+/* Rondo: the app's starter questions, as the app shows them */
+.day-chips{display:grid;gap:8px;margin-top:auto;padding-top:12px}
+.day-ask{position:relative;min-height:40px;padding:8px 12px;border-radius:10px;background:#fff;box-shadow:inset 0 0 0 1px rgba(14,42,42,.16);color:var(--ink);font-size:.8125rem;font-weight:500;line-height:1.3;letter-spacing:0;text-align:left;touch-action:manipulation;transition:background-color .18s var(--out),box-shadow .18s var(--out),transform .12s ease-out}
+.day-ask::after{content:"";position:absolute;inset:-2px 0}
+.day-ask[aria-pressed=true]{background:var(--tint);box-shadow:inset 0 0 0 1px rgba(11,110,105,.34);color:#07524e}
+@media(hover:hover) and (pointer:fine){.day-ask[aria-pressed=false]:hover{background:#f2f6f5}}
+.day-ask:active{transform:scale(.98)}
+.day-ask:focus-visible{outline:2px solid var(--teal);outline-offset:2px}
+.day-a{background:#f4f8f7}
+.day-ats{display:grid}.day-ats .day-at{grid-area:1/1;visibility:hidden;opacity:0;transition:opacity .18s var(--out)}.day-ats .day-at.on{visibility:visible;opacity:1}
+@media(prefers-reduced-motion:reduce){.day-ats .day-at{transition:none}}
+.day-q [data-rq]{display:flex;align-items:center;min-height:2.7em}.day-src{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+@media(max-width:1100px){.day-q{font-size:.875rem}.day-q [data-rq]{min-height:4.05em}}

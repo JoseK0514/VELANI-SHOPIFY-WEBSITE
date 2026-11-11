@@ -293,3 +293,16 @@
 .rcard li{border-top-color:var(--line)}
 .rcard .icon{color:var(--accent)}
 @media(max-width:833px){.hpanel.relay-stage{padding-top:var(--s2);padding-bottom:var(--s2)}}
+
+/* ---------- Round 4 (Nov 10): the chapters leave the warm paper for the cool family: white and one pale teal-grey ground,
+   teal-ink text, NEVORA teal for filled actions, teal-grey hairlines and shadows ---------- */
+:is(#features,#try,#screens,#get,#faq,#rondo,#relay,#help){--paper:#fff;--text:#0e2a2a;--text-2:#3d5654;--text-3:#56706d;--label:#3d5654;--accent:#0b6e69;--line:rgba(14,42,42,.12);--line-2:rgba(14,42,42,.28);--panel:#f7faf9}
+:is(#try,#get,#rondo){--paper:#f2f6f5}
+:is(#get,#relay) .hb{border-color:rgba(14,42,42,.38);color:var(--text)}
+:is(#get,#relay) .hb.fill{background:#0b6e69;border-color:#0b6e69;color:#fff}
+@media(hover:hover){:is(#get,#relay) .hb:hover{background:rgba(14,42,42,.05);border-color:rgba(14,42,42,.62)}:is(#get,#relay) .hb.fill:hover{background:#095f5b;border-color:#095f5b}}
+:is(#features,#screens) .slab,#try .kio{box-shadow:0 0 0 1px rgba(14,42,42,.10),0 2px 4px rgba(14,42,42,.06),0 28px 56px -24px rgba(10,60,58,.28),0 70px 120px -48px rgba(10,60,58,.24)}
+#screens .slab.phone{box-shadow:0 0 0 1px rgba(14,42,42,.14),0 2px 4px rgba(14,42,42,.08),0 30px 60px -24px rgba(10,60,58,.36)}
+.hchat.rchat{box-shadow:0 0 0 1px rgba(0,0,0,.6),0 30px 60px -26px rgba(10,60,58,.42)}
+.rcard{box-shadow:0 0 0 1px rgba(14,42,42,.10),0 24px 48px -26px rgba(10,60,58,.28)}
+.hchat.rchat{background:#0b1f20}

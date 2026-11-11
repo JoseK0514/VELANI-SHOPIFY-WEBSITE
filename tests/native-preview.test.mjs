@@ -12,7 +12,7 @@ liquid.parseAndRender = (tpl, ctx = {}) => parseAndRender(tpl, ctx, { globals: c
 test('unpublished navigation stays in the exact draft without published page resources', async () => {
   const html = await liquid.parseAndRender(renderBody('/', { target: 'shopify' }), { theme: { role: 'unpublished', id: 123 }, routes: { root_url: '/' } });
   assert.match(html, /href="\/\?preview_theme_id=123&amp;view=velani-contact&amp;interest=nevora-demo"/);
-  assert.match(html, /href="\/\?preview_theme_id=123&amp;view=velani-custom-development#booking"/);
+  assert.match(html, /href="\/\?preview_theme_id=123&amp;view=velani-custom-development"/);
   assert.doesNotMatch(html, /href="\/pages\//);
 });
 test('main-theme links retain canonical company page destinations', async () => {
