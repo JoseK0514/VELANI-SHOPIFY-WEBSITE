@@ -213,3 +213,31 @@ Source: NEVORA `origin/development`, `docs/product/rondo-operating-contract.md` 
 ### For Codex
 - Confirm the kiosk's wrong-PIN message and "Clock-out recorded" wording against the app, in English and Spanish.
 - Confirm that billing help on Plans still points Owners to Settings in NEVORA.
+
+## Round 8 (same branch, same preview 193311572282): the path Home → Plans → sent trial request
+
+1. **Request form.** Field names, values, validation rules and the preview/live switch are unchanged.
+   - Labels sit above each field (the existing `<label for>`, 14px teal-ink, "optional" as plain text); fields are white with a teal-grey border, 48px tall, with a teal focus ring.
+   - After the first submit attempt, the form re-validates on input and on leaving a field. Each error clears when its field is fixed; errors stay tied by `aria-describedby`, and `aria-invalid` is removed.
+   - The summary sits directly above Send with `role="alert"`: "2 fields need attention: Name, Email." It counts down as fields are fixed and empties when none remain. Spanish: "2 campos necesitan atención: …". Focus moves to the first invalid field.
+   - The success panel fills one centred card; the side column is hidden in that state. Preview keeps its "Nothing was sent" note.
+   - The email address is a quiet line of selectable text.
+2. **Plans first screen.** The team-size price control is the page's live object, on the right at 1100px and wider, under the copy below that. It appears once: the price section below keeps the words, the two price boxes and the actions.
+3. **Plans closing join.** The pale ground deepens into the teal light through teal midtones.
+4. **Chat launcher on phones.** It steps aside while a form, calendar, table, price control or live piece is on screen, on every page (`quiet-chat`, set by a small observer in `motion.js`).
+5. **Light header.** On the request page the header is white with teal-ink links and the ink wordmark. Dark-hero pages keep the dark header.
+
+### Checks, round 8
+- `npm test` 54/54 (new: Plans first-screen object and single ending; request form labels and summary strings). `check:theme` clean.
+- axe WCAG 2.2 AA on Plans, the request page, NEVORA and Home, EN and ES, five widths: 0 violations in 40 runs. Headings two lines or fewer; no sideways scroll.
+- Form by keyboard, preview mode only, at 1440 and 390, local and hosted: empty Send → "2 fields need attention: Name, Email.", role alert, focus on Name, summary above Send; typing a name → "1 field needs attention: Email." and the name error clears; fixing the email empties the summary; Send → the success panel, with focus on it.
+- Hosted: 5/5 files match their checksums. Slices `r8-plans-*` and `r8-trial-*` at 1440 and 390, plus `r8-trial-*-error.png` and `r8-trial-*-success.png`.
+
+### Not done or still short
+- The success panel keeps the existing words ("We'll email you within two business days…"); it does not name Jose, and its button says "Back to home".
+- The light header is applied to the request page only (and the other contact topics, which share the layout). Other light pages without a dark first screen were not reviewed.
+- The header's hidden request button leaves an empty slot at the right of the nav on the request page.
+- The Plans join is teal now, but it reads as a soft bright band rather than an invisible transition. Banding was not checked on an 8-bit display.
+- Launcher hiding was confirmed on Plans at 390 by screenshot; 360 and the NEVORA and request pages were covered by the same rule but not looked at one by one.
+- I looked at about half of the hosted slices. Not run: real iPhone, Safari, WebKit, a screen reader.
+- The live (published) form path was never submitted, by design.
