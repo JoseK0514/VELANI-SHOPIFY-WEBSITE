@@ -273,3 +273,4 @@ a{text-underline-position:from-font}
 main>.hpanel:not(:first-child):not(.end) .hkick{color:var(--teal)}
 main>.hpanel:not(:first-child):not(.end) .hfact,main>.hpanel:not(:first-child):not(.end) .hcap{color:var(--ink-3)}
 main>.hpanel:not(:first-child):not(.end) .hfact a,main>.hpanel:not(:first-child):not(.end) .hcopy a:not(.hb):not(.pill){color:var(--ink)}
+.form-status[data-state=invalid]{display:block;margin:0 0 16px;padding:12px 14px;border-radius:var(--r);background:#fbeceb;color:#7a1c16;font-size:0.9375rem;font-weight:500}

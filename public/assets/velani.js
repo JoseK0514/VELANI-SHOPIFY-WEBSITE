@@ -118,7 +118,7 @@ if (form && !justSent) {
    if (checked.valid) { if (status.dataset.state === 'invalid') { status.dataset.state = ''; status.textContent = ''; } } else { status.dataset.state = 'invalid'; status.textContent = summary(checked.errors); } };
   for (const key of ['name', 'email', 'company', 'message', 'locations']) if (fields[key]) { fields[key].addEventListener('input', recheck); fields[key].addEventListener('blur', recheck); }
   // The status line sits right above the send button, where the eye is when it fails
-  if (submitButton && status && submitButton.parentElement && !status.closest('.cform-done')) { const row = submitButton.closest('.ff-actions, .form-actions, .cform-send') || submitButton; row.parentElement.insertBefore(status, row); }
+  if (submitButton && status && submitButton.parentElement && !status.closest('.cform-done')) { const row = submitButton.closest('.client-send, .ff-actions, .form-actions, .cform-send') || submitButton; row.parentElement.insertBefore(status, row); }
   form.addEventListener('submit', async event => {
     if (mode !== 'live') event.preventDefault();
     const values = Object.fromEntries(Object.entries(fields).map(([key, input]) => [key, input?.value || '']));
