@@ -258,3 +258,18 @@ a{text-underline-position:from-font}
 .kio-next{display:inline-flex;align-items:center;gap:8px;min-height:44px;margin-top:8px;font-weight:600;color:var(--teal);text-decoration:none}
 .kio-next .icon{width:1em;height:1em;transition:transform .18s var(--out)}
 @media(hover:hover) and (pointer:fine){.kio-next:hover .icon{transform:translateX(3px)}}
+/* NEVORA page chapters: the same paper, ink and teal as every page (no blue accent, no second beige) */
+:is(#features,#try,#screens,#get,#faq,#rondo,#relay,#help){--paper:#f7f3ec;--text:var(--ink);--text-2:var(--ink-2);--text-3:var(--ink-3);--label:var(--ink-2);--accent:var(--teal);--line:var(--rule);--line-2:var(--rule-2);--panel:#fff;background:var(--paper);color:var(--ink)}
+.hchat.rchat{background:var(--tink);box-shadow:var(--e2)}
+.hchat-h b,.rondo-mark,.notif-ic{background:rgba(255,255,255,.1);color:#bfe3dc}
+.hchat-h i{color:#bfe3dc}.hchat-h i::before{background:#bfe3dc}
+.msg.me{background:#e6f1ee;color:var(--tink)}
+.rondo-can .icon,.rcard .icon,.rmark svg path{color:var(--teal);stroke:var(--teal)}
+.nav-soon,.status i{background:var(--teal-50)}
+.status i{background:var(--teal)}
+.foot .fs-k,.foot-support .fs-k{color:#c6d8d4}
+.kind:has(input:checked){background:var(--teal-50);border-color:var(--teal)}
+.kind:has(input:checked) b{color:var(--teal-d)}
+main>.hpanel:not(:first-child):not(.end) .hkick{color:var(--teal)}
+main>.hpanel:not(:first-child):not(.end) .hfact,main>.hpanel:not(:first-child):not(.end) .hcap{color:var(--ink-3)}
+main>.hpanel:not(:first-child):not(.end) .hfact a,main>.hpanel:not(:first-child):not(.end) .hcopy a:not(.hb):not(.pill){color:var(--ink)}
