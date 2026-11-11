@@ -449,7 +449,8 @@ function pcard(root) {
   const range = root.querySelector('#pc-n'), out = root.querySelector('[data-count]'), unit = root.querySelector('[data-unit]');
   const amt = root.querySelector('[data-amt]'), per = root.querySelector('[data-per]'), note = root.querySelector('[data-note]');
   const ticks = [...root.querySelectorAll('.pc-meter i')], steps = [...root.querySelectorAll('[data-step]')];
-  const baseNote = note.textContent, mine = document.querySelector('[data-price-mine]');
+  const baseNote = note.textContent, mine = document.querySelector('[data-price-mine]'), live = root.querySelector('[data-pc-live]');
+  let said = false, timer = 0;
   const set = value => {
     const n = Math.max(1, Math.min(31, Math.round(Number(value) || 1)));
     range.value = String(n); root.dataset.n = String(n);
@@ -460,6 +461,8 @@ function pcard(root) {
     range.setAttribute('aria-valuetext', t.valueText(n, price));
     steps[0].disabled = n <= 1; steps[1].disabled = n >= 31;
     if (mine) { mine.innerHTML = over ? t.mineOver : t.mine(n, price); mine.hidden = false; }
+    if (live && said) { clearTimeout(timer); timer = setTimeout(() => { live.textContent = over ? out.textContent + '. ' + amt.textContent : t.valueText(n, price); }, 350); }
+    said = true;
   };
   range.disabled = false; steps.forEach(b => { b.hidden = false; b.addEventListener('click', () => set(Number(range.value) + Number(b.dataset.step))); });
   range.addEventListener('input', () => set(range.value));

@@ -318,3 +318,38 @@ html{scroll-padding-bottom:88px}
 @media(hover:hover){.ast-launch:hover{background:#f2f6f5}}
 @media(max-width:833px){.ast-launch{width:48px;min-height:48px;height:48px;padding:0;justify-content:center;right:16px;bottom:16px}.ast-launch #ast-launch-t,.ast-launch .ast-launch-t{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}}
 .foot-wm{padding-inline:max(var(--pad),calc(50% - 620px))}
+
+/* ---------- Plans and the request page in the same system as Home (Nov 10): white and #F2F6F5 grounds, teal-ink text,
+   NEVORA teal for the one filled action; the first screen and the ending keep the teal cinematic light ---------- */
+main:has(> .day30),main:has(> .contact-split){--bg:#fff;--panel:#f2f6f5;--panel-2:#e6f1ee;--line:rgba(14,42,42,.12);--line-2:rgba(14,42,42,.28);--text:#0e2a2a;--text-2:#3d5654;--text-3:#56706d;--accent:#0b6e69;--label:#3d5654;background:#fff;color:#0e2a2a}
+main:has(> .day30) .hpanel,main:has(> .contact-split) .hpanel{--text:#f4f6f9;--text-2:#dde3ee;--text-3:#c6d6d6;--accent:#bbd8ff;--label:#dbe3ee;--line:rgba(255,255,255,.08);--line-2:rgba(255,255,255,.15)}
+.plans-top>.hph,main:has(> .day30) #velani>.hph{filter:hue-rotate(-26deg) saturate(.9)}
+main:has(> .day30) .hpanel .hb.fill{background:#fff;border-color:#fff;color:#0e1716}
+main:has(> .day30) #velani::after{content:"";position:absolute;z-index:0;left:0;right:0;top:-1px;height:200px;pointer-events:none;background:linear-gradient(180deg,#f2f6f5 0%,rgba(242,246,245,.9) 4%,rgba(238,248,247,.6) 14%,rgba(230,247,246,.28) 30%,rgba(226,246,245,.1) 50%,rgba(225,246,245,0) 100%)}
+.plans-top::after{content:"";position:absolute;z-index:0;left:0;right:0;bottom:-1px;height:180px;pointer-events:none;background:linear-gradient(180deg,rgba(225,246,245,0) 0%,rgba(226,246,245,.1) 46%,rgba(230,247,246,.28) 68%,rgba(240,250,249,.6) 86%,rgba(252,254,254,.94) 97%,#fff 100%)}
+main:has(> .day30) :is(.day30,.days) .hb{background:transparent;border-color:rgba(14,42,42,.38);color:#0e2a2a;-webkit-backdrop-filter:none;backdrop-filter:none}
+main:has(> .day30) :is(.day30,.days) .hb.fill,main:has(> .contact-split) .contact .pill:not(.line){background:#0b6e69;border-color:#0b6e69;color:#fff}
+@media(hover:hover){main:has(> .day30) :is(.day30,.days) .hb.fill:hover,main:has(> .contact-split) .contact .pill:not(.line):hover{background:#095f5b;border-color:#095f5b}}
+.days{background:#f2f6f5;--panel:#fff;--panel-2:#e6f1ee;padding-bottom:var(--s2)}
+main:has(> .day30) .cal-g .c.d1,main:has(> .day30) .cal-g .c.d30{background:#0b6e69;color:#fff}
+main:has(> .day30) .cal{box-shadow:0 0 0 1px rgba(14,42,42,.06),0 22px 44px -26px rgba(10,60,58,.26)}
+main:has(> .day30) .pcard{background:#f2f6f5;box-shadow:0 0 0 1px rgba(14,42,42,.06),0 22px 44px -26px rgba(10,60,58,.26)}
+main:has(> .day30) .days-fine{font-size:1rem;line-height:1.55;color:#3d5654}
+main:has(> .day30) :is(a,button,input):focus-visible,main:has(> .contact-split) .contact :is(a,button,input,select,textarea):focus-visible{outline-color:#0b6e69}
+main:has(> .contact-split){background:#f2f6f5;--panel:#fff}
+main:has(> .contact-split) .field-error{color:#8f1c13}
+main:has(> .contact-split) .client-form{padding:clamp(20px,3vw,36px);border-radius:20px;background:#fff;box-shadow:0 0 0 1px rgba(14,42,42,.06),0 22px 44px -26px rgba(10,60,58,.26)}
+/* On the request page the header's own request button would point at the page you're on: it keeps its place and is not shown */
+.ask-demo .gnav .pill{visibility:hidden}
+
+.plans-top::after{height:220px;background:radial-gradient(ellipse 70% 100% at 50% 100%,rgba(150,226,226,.26) 0%,rgba(150,226,226,.10) 40%,rgba(150,226,226,0) 74%),linear-gradient(180deg,rgba(225,246,245,0) 0%,rgba(225,246,245,.03) 34%,rgba(226,246,245,.10) 52%,rgba(230,247,246,.24) 68%,rgba(238,250,249,.48) 81%,rgba(246,252,252,.76) 91%,rgba(252,254,254,.94) 97%,#fff 100%)}
+main:has(> .day30) .pc-meter i{background:#dfe7e5}
+main:has(> .day30) .pc-meter i.pc-in{background:#a9cbc6}
+main:has(> .day30) .pc-meter i.pc-on{background:#0b6e69}
+main:has(> .day30) .pc-step{background:#fff;border-color:rgba(14,42,42,.3);color:#0e2a2a}
+@media(hover:hover){main:has(> .day30) .pc-step:not(:disabled):hover{background:#e6f1ee}}
+main:has(> .day30) .pc-range{accent-color:#0b6e69}
+main:has(> .contact-split) .contact .lede,main:has(> .day30) :is(.day30,.days) .lede{color:#3d5654}
+main:has(> .day30) .pc-range::-webkit-slider-thumb{background:#0b6e69;border-color:#fff}
+main:has(> .day30) .pc-range::-moz-range-thumb{background:#0b6e69;border-color:#fff}
+main:has(> .day30) :is(.pc-step,.pc-range):focus-visible{outline-color:#0b6e69}
