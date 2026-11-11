@@ -1,80 +1,172 @@
-/* ---------- Home: five full-screen panels (the panel system itself lives in base.css) ---------- */
-.hpanel.apps{background:radial-gradient(90% 70% at 70% 55%,#1a2230 0%,#0b0e13 60%,#000 100%)}
-.hpanel.apps .hshade{background:none}
-.hpanel.apps .hshot{right:auto;left:50%;margin-left:-110px;width:260px}
-.hpanel.apps .hshot img{aspect-ratio:auto}
-/* Clear of the phone, which sits 110px left of centre on wide screens (at 1200px the two met) */
-.hpanel.apps .hcopy{max-width:470px}
-@media(min-width:1181px){.hpanel.apps .hcopy{max-width:min(470px,calc(50% - 134px - var(--pad)))}}
-@media(max-width:1180px){.hpanel.apps .hshot{left:auto;right:max(var(--pad),calc(50% - 500px));margin-left:0;width:250px}}
+/* ---------- Home (Nov 10, benchmark gusto.com): warm paper, one NEVORA-teal field, the app's own screens as the pictures,
+   and six sections at their natural height. Headings set in a warm serif; DM Sans stays for everything else.
+   This file loads only on Home (EN and ES), so the header and footer restyles below stay on this page. ---------- */
+@font-face{font-family:"Fraunces";font-weight:600;font-display:swap;src:url(fraunces-latin-600-normal.woff2) format("woff2")}
+html{--paper:#f7f3ec;--paper-2:#efe8dc;--card:#fffdf9;--ink:#1c1915;--ink-2:#4b453c;--ink-3:#675f53;--rule:rgba(28,25,21,.12);--teal:#0b6e69;--teal-2:#0c726c;--teal-d:#06403c;--serif:"Fraunces",Georgia,"Times New Roman",serif;--serif-w:600;--serif-t:-.025em;background:var(--paper)}
+body{background:var(--paper)}
+#main{background:var(--paper);color:var(--ink)}
+#main :focus-visible{outline-color:var(--teal)}
+
+/* ---------- The header on paper (same markup and behaviour as every page) ---------- */
+.gnav,.gmenu{--bg:#f7f3ec;--text:#1c1915;--text-2:#4b453c;--text-3:#675f53;--line:rgba(28,25,21,.1);--line-2:rgba(28,25,21,.24);--accent:#0b6e69}
+.gnav{background:rgba(247,243,236,.96);color:var(--text)}
+.gnav.scrolled{box-shadow:inset 0 -1px 0 var(--line)}
+.gnav .pill,.gnav .pill.line{background:var(--teal);border-color:var(--teal);color:#fff}
+@media(hover:hover){.gnav .pill:hover,.gnav .pill.line:hover{background:#095c58;border-color:#095c58}}
+.gnav-ddmenu ul{background:#fffdf9;box-shadow:0 0 0 1px rgba(28,25,21,.1),0 24px 60px -12px rgba(72,52,28,.28)}
+@media(hover:hover){.gnav-links .gnav-ddmenu a:hover{background:rgba(28,25,21,.05)}}
+.gnav .nav-soon,.gmenu .nav-soon{color:#8a4b00;background:#fdf3e4;box-shadow:inset 0 0 0 1px rgba(138,75,0,.2)}
+.gnav .nav-ai,.gmenu .nav-ai{color:var(--teal);background:#e8f3f1;box-shadow:none}
+.gmenu{background:var(--paper);color:var(--text)}
+.gmenu .pill:not(.line){background:var(--teal);border-color:var(--teal);color:#fff}
+.gmenu .pill.line{background:transparent;color:var(--text);border-color:var(--line-2)}
+html{--accent:#0b6e69}
+
+/* ---------- Shared pieces ---------- */
+.nh-serif{font-family:var(--serif);font-weight:var(--serif-w);letter-spacing:var(--serif-t);font-optical-sizing:auto}
+.nh-h2{font-size:clamp(2rem,3.9vw,3.5rem);line-height:1.04;text-wrap:balance}
+.nh-h3{font-size:clamp(1.375rem,1.9vw,1.75rem);line-height:1.2;font-weight:600;letter-spacing:-.02em}
+.nh-head{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:24px 64px;align-items:end}
+.nh-head p{font-size:1.125rem;line-height:1.55;color:var(--ink-2);max-width:46ch}
+#main .hacts{margin-top:32px}
+/* Actions on paper: teal fill, ink outline, the arrow kept; no glass */
+#main .hb{min-height:52px;border-radius:999px;padding:0 24px;background:transparent;border:1px solid rgba(28,25,21,.3);color:var(--ink);-webkit-backdrop-filter:none;backdrop-filter:none;font-weight:600}
+#main .hb.fill{background:var(--teal);border-color:var(--teal);color:#fff;box-shadow:0 8px 18px -10px rgba(11,110,105,.7)}
+#main .hb .icon{transition:transform .25s var(--out)}
+@media(hover:hover){#main .hb:hover{background:rgba(28,25,21,.05);border-color:rgba(28,25,21,.55)}#main .hb.fill:hover{background:#095c58;border-color:#095c58}#main .hb:hover .icon{transform:translateX(3px)}}
+#main .hb:active{transform:scale(.985)}
+.nh-hero,.nh-tour,.nh-who,.nh-price,.nh-work{position:relative}
+
+/* ---------- 1. The NEVORA field: serif line, two actions, the Owner's screen rising out of it with two real cards ---------- */
+.nh-hero{padding-top:clamp(56px,7.4vw,104px)}
+.nh-hero::before{content:"";position:absolute;inset:0 0 clamp(120px,15vw,240px);z-index:0;background:radial-gradient(60% 80% at 92% 0%,rgba(63,179,168,.42) 0%,transparent 60%),radial-gradient(70% 90% at 0% 100%,rgba(5,48,46,.8) 0%,transparent 70%),linear-gradient(165deg,#0e7a74 0%,#0b6e69 40%,#06403c 100%);border-radius:0 0 clamp(20px,2.6vw,36px) clamp(20px,2.6vw,36px)}
+.nh-hero::after{content:"";position:absolute;inset:0 0 clamp(120px,15vw,240px);z-index:0;background-image:linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px);background-size:100% 28px;-webkit-mask-image:linear-gradient(transparent,#000 40%,transparent 90%);mask-image:linear-gradient(transparent,#000 40%,transparent 90%);pointer-events:none}
+.nh-hero>.wrap{position:relative;z-index:1}
+.nh-hero-in{display:flex;flex-direction:column;align-items:center;text-align:center;color:#fff}
+.nh-hero h1{max-width:15ch;font-size:clamp(2.75rem,6.2vw,5.625rem);line-height:1;color:#fff}
+.nh-lede{max-width:37ch;margin-top:22px;font-size:clamp(1.0625rem,1.45vw,1.25rem);line-height:1.5;color:rgba(255,255,255,.86)}
+.nh-hero .hacts{justify-content:center}
+#main .nh-hero .hb{border-color:rgba(255,255,255,.5);color:#fff}
+#main .nh-hero .hb.fill{background:var(--paper);border-color:var(--paper);color:var(--teal-d);box-shadow:0 10px 24px -12px rgba(0,0,0,.5)}
+@media(hover:hover){#main .nh-hero .hb:hover{background:rgba(255,255,255,.1);border-color:#fff}#main .nh-hero .hb.fill:hover{background:#fff}}
+.nh-stage{position:relative;margin-top:clamp(48px,5.6vw,72px)}
+/* The screen sits in a light frame, so its own teal band reads as the app and not as more of the field */
+.nh-screen{position:relative;max-width:1040px;margin:0 auto;padding:clamp(6px,.8vw,10px);border-radius:clamp(14px,1.6vw,22px);background:rgba(255,255,255,.16);box-shadow:inset 0 0 0 1px rgba(255,255,255,.26),0 40px 90px -30px rgba(6,40,38,.6)}
+.nh-screen img{width:100%;border-radius:clamp(9px,1vw,13px);box-shadow:0 0 0 1px rgba(0,0,0,.08)}
+.nh-float{position:absolute;z-index:2;margin:0;background:#fff;color:#111517;border-radius:18px;box-shadow:0 0 0 1px rgba(16,40,38,.06),0 2px 4px rgba(16,40,38,.06),0 26px 50px -18px rgba(16,40,38,.42);font-size:0.875rem;line-height:1.35}
+.nh-float p{margin:0}
+.nh-float-a{left:max(0px,calc(50% - 650px));top:16%;width:260px;padding:22px 22px 20px;text-align:center}
+.nh-ok{display:grid;place-items:center;width:52px;height:52px;margin:4px auto 0;border-radius:50%;background:#1d8a55;color:#fff;font-size:1.5rem;box-shadow:0 0 0 6px #e7f4ec}
+.nh-ok-t{margin-top:16px!important;font-size:1.0625rem;font-weight:600;letter-spacing:-.01em}
+.nh-ok-time{margin-top:2px!important;font-size:2rem;font-weight:600;letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+.nh-ok-n{margin-top:4px!important;font-weight:600;color:#1d6b45}
+.nh-phone{right:max(0px,calc(50% - 650px));top:30%;width:min(230px,19vw);aspect-ratio:1170/1900;overflow:hidden;border-radius:30px;background:#f2f5f4;box-shadow:0 0 0 6px #111517,0 0 0 7px rgba(255,255,255,.18),0 40px 70px -24px rgba(6,30,28,.6)}
+.nh-phone img{width:100%}
+.nh-stage.fade .nh-float{opacity:0;transform:translateY(18px);transition:opacity .8s var(--out) .35s,transform 1s var(--out) .35s}
+.nh-stage.fade .nh-phone{transition-delay:.5s}
+.nh-stage.in .nh-float,.no-js .nh-float,.still .nh-float{opacity:1;transform:none}
+
+/* ---------- 2. NEVORA in three parts: tabs over the real screens ---------- */
+.nh-tour{padding:clamp(80px,10vw,144px) 0 clamp(72px,9vw,128px)}
+.nh-tabs{display:flex;gap:8px;margin-top:clamp(36px,4.4vw,56px);padding:6px;width:max-content;max-width:100%;border-radius:999px;background:var(--paper-2);box-shadow:inset 0 0 0 1px var(--rule)}
+.nh-tab{display:inline-flex;align-items:center;gap:9px;min-height:48px;padding:0 22px;border-radius:999px;font-size:1rem;font-weight:600;color:var(--ink-2);white-space:nowrap;transition:background-color .2s,color .2s,box-shadow .2s}
+.nh-tab .icon{font-size:1.125rem}
+.nh-tab[aria-selected=true]{background:var(--card);color:var(--ink);box-shadow:0 0 0 1px rgba(28,25,21,.08),0 6px 14px -8px rgba(72,52,28,.4)}
+.nh-tab[aria-selected=true] .icon{color:var(--teal)}
+@media(hover:hover){.nh-tab[aria-selected=false]:hover{color:var(--ink);background:rgba(28,25,21,.04)}}
+.nh-panel{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2.15fr);gap:clamp(28px,4vw,64px);align-items:center;margin-top:28px;padding:clamp(24px,3.4vw,48px);border-radius:clamp(18px,2vw,28px);background:var(--card);box-shadow:0 0 0 1px var(--rule),0 30px 60px -36px rgba(72,52,28,.35)}
+.nh-panel[hidden]{display:none}
+.nh-panel:focus-visible{outline:2px solid var(--teal);outline-offset:4px}
+.nh-copy p{margin-top:14px;font-size:1.0625rem;line-height:1.6;color:var(--ink-2)}
+.nh-shot{border-radius:14px;overflow:hidden;background:#f2f5f4;box-shadow:0 0 0 1px rgba(16,40,38,.08),0 20px 40px -24px rgba(16,40,38,.4)}
+.nh-shot img{width:100%}
+.nh-shot .nh-m{display:none}
+.nh-panel:not([hidden]) .nh-shot{animation:nh-in .5s var(--out)}
+@keyframes nh-in{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.nh-more{margin-top:32px}
+
+/* ---------- 3. Who it's for: one photograph and four short facts ---------- */
+.nh-who{padding:clamp(72px,9vw,128px) 0;background:var(--paper-2)}
+.nh-who-in{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:clamp(32px,5vw,80px);align-items:center}
+.nh-photo{position:relative}
+.nh-photo img{width:100%;aspect-ratio:4/3.4;object-fit:cover;object-position:62% 50%;border-radius:clamp(18px,2vw,28px)}
+.nh-photo figcaption{margin-top:10px;font-size:0.75rem;color:var(--ink-3)}
+.nh-photo figcaption a{text-decoration:underline;text-underline-offset:2px;text-decoration-color:var(--rule)}
+.nh-facts{display:grid;grid-template-columns:1fr 1fr;gap:28px 32px;margin-top:clamp(28px,3.4vw,44px)}
+.nh-facts div{padding-top:16px;border-top:1px solid rgba(28,25,21,.18)}
+.nh-facts dt{font-size:1.0625rem;font-weight:600;line-height:1.3}
+.nh-facts dd{margin:6px 0 0;font-size:0.9375rem;line-height:1.5;color:var(--ink-2)}
+
+/* ---------- 4. The price ---------- */
+.nh-price{padding:clamp(80px,10vw,144px) 0}
+.nh-price-in{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(32px,5vw,80px);align-items:center}
+.nh-price-copy>p{margin-top:20px;font-size:1.125rem;line-height:1.6;color:var(--ink-2);max-width:44ch}
+.nh-card{padding:clamp(24px,3vw,36px);border-radius:clamp(20px,2.2vw,28px);background:var(--card);box-shadow:0 0 0 1px var(--rule),0 30px 60px -36px rgba(72,52,28,.4)}
+.nh-free{font-size:1rem;font-weight:600;color:var(--teal)}
+.nh-bands{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:18px}
+.nh-bands li{display:flex;flex-direction:column;padding:22px 22px 20px;border-radius:18px;background:var(--paper);box-shadow:inset 0 0 0 1px var(--rule)}
+.nh-bands b{font-family:var(--serif);font-weight:var(--serif-w);font-size:clamp(2.75rem,4.4vw,3.75rem);line-height:1;letter-spacing:var(--serif-t)}
+.nh-bands span{margin-top:6px;font-size:0.9375rem;color:var(--ink-2)}
+.nh-bands em{margin-top:16px;padding-top:14px;border-top:1px solid var(--rule);font-style:normal;font-weight:600;font-size:0.9375rem}
+.nh-fine{margin-top:18px;font-size:0.8125rem;line-height:1.5;color:var(--ink-3)}
+
+/* ---------- 5. Client work: two cards, one height ---------- */
+.nh-work{padding:0 0 clamp(80px,10vw,144px)}
+.nh-cases{display:grid;grid-template-columns:1fr 1fr;gap:clamp(16px,2vw,28px);margin-top:clamp(36px,4.4vw,56px)}
+.nh-case{display:flex;flex-direction:column;padding:14px 14px 24px;border-radius:clamp(20px,2.2vw,28px);background:var(--card);box-shadow:0 0 0 1px var(--rule);transition:box-shadow .3s,transform .3s var(--out)}
+.nh-case-img{display:block;aspect-ratio:16/10;overflow:hidden;border-radius:16px;background:#1a1d22}
+.nh-case-img img{width:100%;height:100%;object-fit:cover;object-position:50% 0;transition:transform .6s var(--out)}
+.nh-case-ph{display:flex;justify-content:center;align-items:flex-start;gap:16px;padding:28px 24px 0;background:radial-gradient(80% 90% at 50% 0%,#2b2f36 0%,#0c0d10 100%)}
+.nh-case-ph img{width:auto;height:118%;border-radius:22px 22px 0 0;object-fit:cover;box-shadow:0 0 0 1px rgba(255,255,255,.1)}
+.nh-case-t{margin:22px 10px 0;font-family:var(--serif);font-weight:var(--serif-w);font-size:clamp(1.5rem,2.2vw,2rem);line-height:1.1;letter-spacing:var(--serif-t)}
+.nh-case-k{margin:6px 10px 0;font-size:0.9375rem;font-weight:600;color:var(--teal)}
+.nh-case-p{margin:12px 10px 0;font-size:1rem;line-height:1.55;color:var(--ink-2);flex:1}
+.nh-case-a{display:inline-flex;align-items:center;gap:8px;margin:20px 10px 0;font-weight:600}
+.nh-case-a .icon{transition:transform .25s var(--out)}
+@media(hover:hover){.nh-case:hover{box-shadow:0 0 0 1px rgba(28,25,21,.18),0 28px 56px -32px rgba(72,52,28,.45);transform:translateY(-2px)}.nh-case:hover .nh-case-img img{transform:scale(1.025)}.nh-case:hover .nh-case-a .icon{transform:translateX(3px)}}
+.nh-case:focus-visible{outline:2px solid var(--teal);outline-offset:4px}
+
+/* ---------- 6. The closing band ---------- */
+.nh-end{padding:0 var(--pad) clamp(40px,5vw,64px)}
+.nh-end-in{position:relative;overflow:hidden;max-width:calc(var(--wrap) + 80px);padding:clamp(56px,7vw,104px) clamp(24px,5vw,80px);border-radius:clamp(22px,2.6vw,36px);text-align:center;color:#fff;background:radial-gradient(60% 90% at 100% 0%,rgba(63,179,168,.38) 0%,transparent 60%),radial-gradient(70% 90% at 0% 100%,rgba(5,48,46,.85) 0%,transparent 70%),linear-gradient(165deg,#0e7a74 0%,#0b6e69 42%,#06403c 100%)}
+.nh-end h2{color:#fff}
+.nh-end p{max-width:46ch;margin:18px auto 0;font-size:1.125rem;line-height:1.55;color:rgba(255,255,255,.86)}
+.nh-end .hacts{justify-content:center}
+#main .nh-end .hb{border-color:rgba(255,255,255,.5);color:#fff}
+#main .nh-end .hb.fill{background:var(--paper);border-color:var(--paper);color:var(--teal-d)}
+@media(hover:hover){#main .nh-end .hb:hover{background:rgba(255,255,255,.1);border-color:#fff}#main .nh-end .hb.fill:hover{background:#fff}}
+
+/* ---------- Medium widths ---------- */
+@media(max-width:1180px){.nh-float-a{left:12px;width:220px;top:10%}.nh-phone{right:18px}}
+@media(max-width:1023px){.nh-panel{grid-template-columns:1fr}.nh-copy{max-width:56ch}}
+/* ---------- Phones and small tablets ---------- */
 @media(max-width:833px){
- .hpanel.apps .hshot{left:auto;right:auto;top:auto;width:46%;margin:56px auto 32px;transform:none}
+ .nh-hero-in{align-items:flex-start;text-align:left}
+ .nh-hero .hacts{justify-content:flex-start}
+ .nh-hero h1{font-size:clamp(2rem,9.4vw,3.25rem);line-height:1.04;max-width:none}
+ .nh-hero .hacts{align-self:stretch}
+ /* On phones the tour shows the employee's own phone screens (the web screens are too small to read) */
+ .nh-has-m{background:none;box-shadow:none;border-radius:0;overflow:visible;display:flex;justify-content:center}
+ .nh-has-m .nh-d{display:none}.nh-has-m .nh-m{display:block;width:min(250px,72%);border-radius:26px;box-shadow:0 0 0 5px #111517,0 24px 40px -18px rgba(16,40,38,.5)}
+ .nh-head{grid-template-columns:1fr;gap:16px}
+ .nh-float-a{display:none}
+ .nh-phone{right:10px;top:auto;bottom:-36px;width:32%;max-width:170px;border-radius:22px;box-shadow:0 0 0 4px #111517,0 24px 40px -16px rgba(6,30,28,.6)}
+ .nh-stage{margin-bottom:40px}
+ .nh-screen{margin-right:18%}
+ .nh-tabs{width:100%;justify-content:space-between}
+ .nh-tab{flex:1;justify-content:center;padding:0 10px;font-size:0.9375rem}
+ .nh-who-in,.nh-price-in{grid-template-columns:1fr}
+ .nh-cases{grid-template-columns:1fr}
+ .nh-end-in{text-align:left}.nh-end p{margin-left:0}.nh-end .hacts{justify-content:flex-start}
 }
-/* 834–1100px: the hero copy and the Faro card share one row, so each gets its own track (48px apart) instead of overlapping */
-@media(min-width:834px) and (max-width:1100px){
- .hpanel.live .hchat{width:300px}
- .hpanel.live:has(.hchat) .hcopy{max-width:calc(100% - var(--pad)*2 - 300px - 48px)}
- .hpanel.live h1{font-size:clamp(3.5rem,7.2vw,5.25rem)}
+@media(max-width:600px){
+ .nh-facts{grid-template-columns:1fr;gap:20px}
+ .nh-bands li{padding:18px 16px 16px}
+ .nh-tab .icon{display:none}
+ #main .hacts{flex-direction:column;align-items:stretch}
+ #main .hacts .hb{width:100%}
+ .nh-end{padding:0 0 0}
+ .nh-end-in{border-radius:0;padding:64px var(--pad)}
 }
-/* Phones and small tablets: the hero is the line and two actions; Faro (still in development) stays a desktop aside, so the first product a phone sees is NEVORA, which is available now. The copy also keeps clear of the bar on short screens */
-@media(max-width:833px){
- .hpanel.live .hchat{display:none}
- .hpanel.live{padding-top:48px}
- /* The shade behind the copy fades out inside its own box, so it never shows an edge */
- .hpanel.live .hcopy::before{background:radial-gradient(closest-side,rgba(0,0,0,.62) 0%,rgba(0,0,0,.4) 55%,rgba(0,0,0,0) 100%)}
-}
-/* Phones: the line sits in the lower part of the screen, under the light, like the other panels */
-@media(max-width:600px){.hpanel.live{justify-content:flex-end;padding-bottom:80px}}
-
-/* ---------- Meet Rondo (Nov 4): copy on the right, what Rondo does on the left (the card itself lives in velani.css) ---------- */
-@media(max-width:833px){.hpanel.rondo-home{justify-content:flex-end}}
-
-/* ---------- Page-load light (Nov 4): the hero opens outward from the light in the photo, once per visit.
-   An overlay with a clear centre scales up and fades: transform and opacity only, about 0.7s, decelerating.
-   The text never waits for it, and reduced motion or a repeat visit skips it (the script in the section decides) ---------- */
-.hdawn{display:none}
-.dawn .hpanel.live .hdawn{display:block;position:absolute;inset:-1px;z-index:0;pointer-events:none;background:radial-gradient(circle at 60% 56%,rgba(3,6,10,0) 0,rgba(3,6,10,0) 2%,rgba(3,6,10,.86) 9%,#03060a 17%);transform-origin:60% 56%}
-@media(max-width:833px){.dawn .hpanel.live .hdawn{background:radial-gradient(circle at 55% 40%,rgba(3,6,10,0) 0,rgba(3,6,10,0) 2%,rgba(3,6,10,.86) 10%,#03060a 19%);transform-origin:55% 40%}}
-/* It opens once the photo is ready (or after 1.2s at most), so the light is actually seen */
-.dawn-go .hpanel.live .hdawn{animation:hdawn 1.1s cubic-bezier(.5,0,.2,1) both}
-@keyframes hdawn{0%{transform:scale(1);opacity:1}70%{opacity:1}100%{transform:scale(9);opacity:0}}
-@media(prefers-reduced-motion:reduce){.dawn .hpanel.live .hdawn{display:none}}
-/* Client work on Home (Nov 7): same copy widths as the matching panels on Custom development, so the copy never runs under the screen */
-@media(min-width:834px){#websites .hcopy{max-width:440px}#apps .hph{object-position:0% 50%}#apps .hcopy{max-width:460px}}
-@media(max-width:833px){#apps .hcopy{display:flex;flex-direction:column;align-items:flex-start}#apps .hcopy>*{max-width:100%}#apps .hshade{background:linear-gradient(0deg,rgba(0,0,0,.95) 0%,rgba(0,0,0,.86) 44%,rgba(0,0,0,.45) 66%,rgba(0,0,0,0) 84%)}}
-@media(min-width:1181px){
- #nevora .hweb{right:max(var(--pad),calc(50% - 620px));width:min(600px,42vw)}
- #nevora .hshot{right:calc(max(var(--pad),calc(50% - 620px)) + min(600px,42vw) - 96px);width:240px;top:56%}
- #nevora .hcopy{max-width:min(440px,calc(100% - var(--pad)*2 - min(600px,42vw) - 200px))}
-}
-
-/* Spanish panel titles are longer: a wider copy column keeps them to two lines */
-@media(min-width:834px){html[lang=es] #websites .hcopy,html[lang=es] #apps .hcopy{max-width:560px}}
-
-/* Nov 10: the hero line is a sentence now ("Your team’s week, in one place."), so it sets one size down in a wider column and
-   stays at two lines from 360px to 1440px in both languages; the paragraph keeps its own measure */
-.hpanel.live #hero-t{font-size:clamp(3rem,5.6vw,4.5rem)}
-@media(min-width:834px){.hpanel.live .hcopy{max-width:min(800px,calc(100% - var(--pad)*2))}.hpanel.live .hcopy>p{max-width:520px}}
-@media(max-width:833px){.hpanel.live #hero-t{font-size:clamp(2.25rem,10.2vw,2.75rem)}}
-
-/* ---------- Warm light (Nov 10 preview): the hero and the closing stay the dark cinematic light; the three panels between them
-   read on warm paper. Same type, same layout, same devices; the photos behind them give way to paper, and the screens sit on it
-   as objects. Tokens are redefined inside the panels, so every shared rule (links, focus, captions) follows. ---------- */
-:is(#nevora,#websites,#apps){--paper:#f5f0e8;--text:#1c1915;--text-2:#4f493f;--text-3:#6b6458;--label:#4f493f;--accent:#24508c;--line:rgba(28,25,21,.11);--line-2:rgba(28,25,21,.24);--panel:#fbf8f3;background:var(--paper);color:var(--text)}
-#websites{--paper:#efe8dc}
-/* The photo keeps its box (on phones it holds the frame the Tool Box screen sits in) but is not painted */
-:is(#nevora,#websites,#apps)>.hph{visibility:hidden;animation:none}
-:is(#nevora,#websites,#apps)>.hshade,:is(#nevora,#websites,#apps) .hcopy::before{display:none}
-:is(#nevora,#websites,#apps) .hcopy p:not(.hkick){color:var(--text-2)}
-:is(#nevora,#websites,#apps) .hcopy :is(p.hcap,p.hfact){color:var(--text-3)}
-:is(#nevora,#websites,#apps) .hcopy p.hcap b{color:var(--text);font-weight:600}
-:is(#nevora,#websites,#apps) .hcopy .ul{text-decoration-color:var(--line-2)}
-/* On paper the NEVORA wordmark is the app's own light-background version (navy letters, the blue tip on the A) */
-/* Actions on paper: ink fill for the primary, an ink outline for the second; no glass */
-:is(#nevora,#websites,#apps) .hb{background:transparent;border-color:rgba(28,25,21,.34);color:var(--text);-webkit-backdrop-filter:none;backdrop-filter:none}
-:is(#nevora,#websites,#apps) .hb.fill{background:var(--text);border-color:var(--text);color:#f7f3ec}
-@media(hover:hover){:is(#nevora,#websites,#apps) .hb:hover{background:rgba(28,25,21,.05);border-color:rgba(28,25,21,.6)}:is(#nevora,#websites,#apps) .hb.fill:hover{background:#000;border-color:#000}}
-/* Screens and phones keep their frames; the shadow becomes a warm contact shadow under daylight */
-:is(#nevora,#websites,#apps) :is(.hweb,.hwin){box-shadow:0 0 0 1px rgba(28,25,21,.10),0 2px 4px rgba(28,25,21,.06),0 28px 56px -24px rgba(72,52,28,.34),0 70px 120px -48px rgba(72,52,28,.30)}
-:is(#nevora,#websites,#apps) :is(.hshot,.hduo .ph){box-shadow:0 0 0 1px rgba(0,0,0,.5),0 2px 4px rgba(28,25,21,.12),0 34px 64px -22px rgba(72,52,28,.46),0 80px 120px -50px rgba(72,52,28,.36)}
-:is(#nevora,#websites,#apps) .zoom-btn{color:#f7f3ec}
+@media(max-width:420px){.nh-tab{font-size:0.875rem;padding:0 6px}}
+@media(prefers-reduced-motion:reduce){.nh-stage.fade .nh-float{transition:none}.nh-panel:not([hidden]) .nh-shot{animation:none}#main .hb .icon,.nh-case,.nh-case-img img{transition:none}}

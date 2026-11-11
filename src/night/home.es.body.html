@@ -1,63 +1,116 @@
-<!-- Spanish Home (/pages/es), 1:1 with home.body.html: same panels, images and order (Nov 7 order: Velani, NEVORA, two client projects, closing). src/night.mjs renders only <main>. -->
+<!-- Spanish Home page source (same layout as home.body.html). src/night.mjs renders only <main>; the global header and footer come from night.mjs and foot.html. Nov 10 (Jose: "NEVORA would be the focus", benchmark gusto.com): six sections at their natural height on warm paper. The NEVORA field with the Owner's screen, NEVORA in three parts, who it's for, the price, client work, and the closing band. -->
 <main id="main">
-<script>(function(d){try{if(matchMedia('(prefers-reduced-motion: reduce)').matches||sessionStorage.getItem('v-dawn'))return;sessionStorage.setItem('v-dawn','1')}catch(e){return}d.classList.add('dawn')})(document.documentElement)</script>
-<section class="hpanel live" id="top" aria-labelledby="hero-t">
- <img class="hph" src="img/ai-light.webp" alt="" width="1920" height="1080" fetchpriority="high">
- <div class="hshade"></div>
- <div class="hdawn" aria-hidden="true"></div>
- <script>(function(d){if(!d.classList.contains('dawn'))return;var i=document.querySelector('.hpanel.live .hph'),done=0,go=function(){if(!done){done=1;d.classList.add('dawn-go')}};if(i&&!i.complete){i.addEventListener('load',go);i.addEventListener('error',go);setTimeout(go,1200)}else go()})(document.documentElement)</script>
- <div class="hcopy">
-  <h1 class="rise" id="hero-t">Todo tu equipo, en un solo lugar.</h1>
-  <p class="fade">NEVORA organiza los turnos de tu equipo, registra sus horas y calcula su pago. También diseñamos y creamos sitios web, apps de reservas y tiendas en línea para negocios como el tuyo.</p>
-  <div class="hacts fade"><a class="hb fill" href="/pages/es-contacto?interest=nevora-demo">Pide la prueba gratis de NEVORA{{icon:arrow-right}}</a><a class="hb" href="/pages/es-contacto?interest=custom-software">Empieza un proyecto{{icon:arrow-right}}</a></div>
+<section class="nh-hero" id="top" aria-labelledby="hero-t">
+ <div class="wrap nh-hero-in">
+  <h1 class="nh-serif rise" id="hero-t">Todo tu equipo, en un solo lugar.</h1>
+  <p class="nh-lede fade">NEVORA organiza los turnos de tu equipo, registra sus horas y calcula su pago. Gratis por 30 días, y lo configuramos contigo.</p>
+  <div class="hacts fade"><a class="hb fill" href="/pages/es-contacto?interest=nevora-demo">Pide la prueba gratis de NEVORA{{icon:arrow-right}}</a><a class="hb" href="#nevora">Mira cómo funciona{{icon:arrow-right}}</a></div>
  </div>
- <a class="hcue" href="#nevora" aria-label="Ir a NEVORA">{{icon:caret-down}}</a>
+ <div class="wrap nh-stage fade">
+  <figure class="nh-screen"><img src="img/r1-owner.webp" alt="NEVORA en la web para Carmen, la dueña de Northside Coffee: una solicitud de tiempo libre la espera, cinco de cinco personas marcaron entrada y el día de pago es el viernes 20 de noviembre" width="2000" height="1250" fetchpriority="high"></figure>
+  <div class="nh-float nh-float-a" aria-hidden="true">
+   <span class="nh-ok">{{icon:check}}</span>
+   <p class="nh-ok-t">Entrada registrada</p>
+   <p class="nh-ok-time">7:58 a.&nbsp;m.</p>
+   <p class="nh-ok-n">Que tengas un buen turno, Alexandra.</p>
+  </div>
+  <div class="nh-float nh-phone" aria-hidden="true"><img src="img/b2-phone-home.webp" alt="" width="1170" height="3435" loading="lazy" decoding="async"></div>
+ </div>
 </section>
 
-<section class="hpanel" id="nevora" aria-labelledby="nev-t">
- <img class="hph" src="img/ai-devices.webp" alt="" width="1920" height="1080" decoding="async">
- <div class="hshade"></div>
- <div class="hcopy">
-  <h2 class="rise" id="nev-t"><img src="img/nevora-wm-ink.png" alt="NEVORA" width="907" height="122"></h2>
-  <p class="fade">Horarios, registro de tiempo y cálculo de nómina para equipos que trabajan por turnos. Pide una prueba gratis de 30 días y configuramos tu lugar de trabajo contigo.</p>
-  <div class="hacts fade"><a class="hb fill" href="/pages/es-contacto?interest=nevora-demo">Pide la prueba gratis{{icon:arrow-right}}</a><a class="hb" href="/pages/es-nevora">Conoce más{{icon:arrow-right}}</a></div>
-  <p class="hfact fade">NEVORA ya está disponible en cualquier navegador, en inglés y español. La app para teléfonos llegará a App&nbsp;Store y Google&nbsp;Play. También estamos creando a <a class="ul" href="/pages/es-nevora#rondo">Rondo, un asistente de IA para NEVORA</a>.</p>
+<section class="nh-tour" id="nevora" aria-labelledby="tour-t">
+ <div class="wrap">
+  <div class="nh-head">
+   <h2 class="nh-serif nh-h2 rise" id="tour-t">Del horario al día de pago.</h2>
+   <p class="fade">Tres partes de una sola app, en inglés y español. Cada pantalla aquí es NEVORA hoy, con un lugar de trabajo de ejemplo.</p>
+  </div>
+  <div class="nh-tabs fade" role="tablist" aria-label="NEVORA">
+   <button class="nh-tab" role="tab" id="tab-s" aria-controls="tp-s" aria-selected="true">{{icon:calendar-blank}}Horario</button>
+   <button class="nh-tab" role="tab" id="tab-c" aria-controls="tp-c" aria-selected="false" tabindex="-1">{{icon:clock}}Registro de tiempo</button>
+   <button class="nh-tab" role="tab" id="tab-p" aria-controls="tp-p" aria-selected="false" tabindex="-1">{{icon:receipt}}Nómina</button>
+  </div>
+  <div class="nh-panel" role="tabpanel" id="tp-s" aria-labelledby="tab-s" tabindex="0">
+   <div class="nh-copy"><h3 class="nh-h3">Arma la semana y publícala.</h3><p>Programa los turnos de cada ubicación. Tu equipo los ve en su teléfono, cambia turnos y pide tiempo libre, y tú apruebas en un solo lugar.</p></div>
+   <figure class="nh-shot nh-has-m"><img class="nh-d" src="img/r1-schedule.webp" alt="Horario de NEVORA para Northside Coffee: ocho personas, sus turnos de la semana del 2 de noviembre y la semana publicada" width="2000" height="1181" loading="lazy" decoding="async"><img class="nh-m" src="img/r1-ph-schedule.webp" alt="NEVORA en el teléfono de una empleada: sus turnos de la semana" width="780" height="1688" loading="lazy" decoding="async"></figure>
+  </div>
+  <div class="nh-panel" role="tabpanel" id="tp-c" aria-labelledby="tab-c" tabindex="0" hidden>
+   <div class="nh-copy"><h3 class="nh-h3">Marca entrada con tu PIN en el trabajo.</h3><p>Una tableta en cada ubicación es el registro de tiempo. Cada persona marca entrada, toma sus descansos y marca salida con su propio PIN, en inglés o en español.</p></div>
+   <figure class="nh-shot"><img src="img/b2-clocker.webp" alt="El registro de tiempo de NEVORA en la tableta de Main Street: el lugar de trabajo, la hora y un teclado para escribir el PIN" width="1600" height="1202" loading="lazy" decoding="async"></figure>
+  </div>
+  <div class="nh-panel" role="tabpanel" id="tp-p" aria-labelledby="tab-p" tabindex="0" hidden>
+   <div class="nh-copy"><h3 class="nh-h3">Aprueba las horas y listo.</h3><p>NEVORA calcula la nómina a partir de las horas que apruebas y prepara un comprobante de nómina para cada empleado. Tú le sigues pagando a tu equipo y presentando los impuestos de nómina.</p></div>
+   <figure class="nh-shot nh-has-m"><img class="nh-d" src="img/r1-payroll.webp" alt="Nómina de NEVORA para Northside Coffee: la próxima nómina semanal y tres nóminas recientes con sus totales" width="1500" height="1000" loading="lazy" decoding="async"><img class="nh-m" src="img/r1-ph-pay.webp" alt="NEVORA en el teléfono de una empleada: el próximo día de pago y su último cheque" width="780" height="1688" loading="lazy" decoding="async"></figure>
+  </div>
+  <p class="nh-more fade"><a class="hb" href="/pages/es-nevora">Mira todo lo que hace NEVORA{{icon:arrow-right}}</a></p>
  </div>
- <div class="hweb fade"><img src="img/r1-owner-today.webp" alt="NEVORA en la web para el dueño: una cosa que necesita respuesta, cinco de cinco que marcaron entrada y el próximo día de pago" width="1800" height="750" loading="lazy" decoding="async"></div>
- <div class="hshot fade"><img src="img/r1-ph-home.webp" alt="NEVORA en el teléfono de una empleada: su turno de hoy y sus próximos turnos" width="780" height="1688"></div>
 </section>
 
-<section class="hpanel right svc" id="websites" aria-labelledby="web-t">
- <img class="hph" src="img/ai-laptop-soft.webp" alt="" width="1920" height="1080" decoding="async">
- <div class="hshade"></div>
- <div class="hcopy">
-  <h2 class="rise" id="web-t">Sitios web y tiendas en línea</h2>
-  <p class="fade">Tool Box alquila equipos en línea. Sus clientes eligen las fechas, ven el precio de entrega a su obra y reservan.</p>
-  <div class="hacts fade"><a class="hb fill" href="/pages/es-contacto?interest=custom-software">Empieza un proyecto{{icon:arrow-right}}</a><a class="hb" href="/pages/custom-development#web-applications">Mira el trabajo{{icon:arrow-right}}</a></div>
-  <p class="hcap fade">Diseñamos y creamos el sitio web y la tienda en línea de <b>Tool Box LLC</b>.</p>
+<section class="nh-who" aria-labelledby="who-t">
+ <div class="wrap nh-who-in">
+  <figure class="nh-photo fade">
+   <img src="img/photo-barista.webp" alt="Un barista calienta leche en la máquina de espresso de un café lleno" width="1600" height="1068" loading="lazy" decoding="async">
+   <figcaption>Foto: <a href="https://commons.wikimedia.org/w/index.php?curid=195948210" rel="noopener">Shixart1985</a>, <a href="https://creativecommons.org/licenses/by/2.0/" rel="license noopener">CC BY 2.0</a></figcaption>
+  </figure>
+  <div class="nh-who-copy">
+   <h2 class="nh-serif nh-h2 rise" id="who-t">Para equipos que trabajan por turnos.</h2>
+   <dl class="nh-facts fade">
+    <div><dt>Cafés, restaurantes, tiendas y salones</dt><dd>Cualquier negocio donde la semana se organiza por turnos.</dd></div>
+    <div><dt>Hasta 30 empleados</dt><dd>Los equipos más grandes nos escriben para una configuración asistida.</dd></div>
+    <div><dt>Inglés y español</dt><dd>Tu equipo usa NEVORA en cualquiera de los dos.</dd></div>
+    <div><dt>Disponible ahora en cualquier navegador</dt><dd>La app para teléfonos llegará a App&nbsp;Store y Google&nbsp;Play.</dd></div>
+   </dl>
+  </div>
  </div>
- <div class="hwin fade"><img style="--z:1.6;--x:4%;--y:0%" src="img/tb-home.webp" alt="El sitio web de Tool Box LLC, creado por Velani: alquiler de equipos con entrega en la obra y fechas" width="2000" height="1250" loading="lazy" decoding="async"></div>
 </section>
 
-<section class="hpanel" id="apps" aria-labelledby="apps-t">
- <img class="hph" src="img/ai-phone-soft.webp" alt="" width="1920" height="1080" loading="lazy" decoding="async">
- <div class="hshade"></div>
- <div class="hcopy">
-  <h2 class="rise" id="apps-t">Apps de reservas y recompensas</h2>
-  <p class="fade">Los clientes de Yavi Barber reservan desde su teléfono, reciben un recordatorio antes de la cita y llenan una tarjeta de recompensas.</p>
-  <div class="hacts fade"><a class="hb fill" href="/pages/es-contacto?interest=custom-software">Empieza un proyecto{{icon:arrow-right}}</a><a class="hb" href="/pages/custom-development#booking">Mira el trabajo{{icon:arrow-right}}</a></div>
-  <p class="hcap fade">Diseñamos y creamos la app de reservas y recompensas de <b>Yavi Barber</b>.</p>
+<section class="nh-price" id="price" aria-labelledby="price-t">
+ <div class="wrap nh-price-in">
+  <div class="nh-price-copy">
+   <h2 class="nh-serif nh-h2 rise" id="price-t">Un solo precio mensual por negocio.</h2>
+   <p class="fade">Cada negocio recibe la app completa: horarios, registro de tiempo, tarjetas de tiempo y cálculo de nómina. El precio depende solo de cuántos empleados tienes, y los dueños no cuentan.</p>
+   <div class="hacts fade"><a class="hb fill" href="/pages/es-contacto?interest=nevora-demo">Pide la prueba gratis{{icon:arrow-right}}</a><a class="hb" href="/pages/es-planes">Mira los planes{{icon:arrow-right}}</a></div>
+  </div>
+  <div class="nh-card fade">
+   <p class="nh-free">Gratis por 30 días, sin tarjeta. Después:</p>
+   <ul class="nh-bands" aria-label="Precios">
+    <li><b>$19</b><span>al mes</span><em>De 1 a 15 empleados</em></li>
+    <li><b>$29</b><span>al mes</span><em>De 16 a 30 empleados</em></li>
+   </ul>
+   <p class="nh-fine">Los precios son en dólares estadounidenses y pueden cambiar antes de que abra la facturación en línea.</p>
+  </div>
  </div>
- <div class="hduo fade"><div class="ph"><img src="img/yavi-book.webp" alt="Reservas de Yavi Barber en un teléfono: los próximos horarios disponibles y los servicios con precios" width="780" height="1688" loading="lazy" decoding="async"></div><div class="ph"><img src="img/yavi-rewards.webp" alt="Tarjeta de recompensas de Yavi Barber en un teléfono: diez visitas y dos recompensas" width="780" height="1688" loading="lazy" decoding="async"></div></div>
 </section>
 
-<section class="hpanel end" id="velani" aria-label="Velani">
- <img class="hph flip" src="img/ai-light.webp" alt="" width="1920" height="1080" decoding="async">
- <div class="hshade"></div>
- <div class="hcopy">
-  <p class="hwm">{{wordmark}}</p>
-  <p class="fade">Más luz para tu trabajo. Prueba NEVORA gratis o cuéntanos qué quieres crear.</p>
-  <div class="hacts fade"><a class="hb fill" href="/pages/es-contacto?interest=nevora-demo">Pide la prueba gratis de NEVORA{{icon:arrow-right}}</a><a class="hb" href="/pages/es-contacto?interest=custom-software">Empieza un proyecto{{icon:arrow-right}}</a></div>
+<section class="nh-work" id="work" aria-labelledby="work-t">
+ <div class="wrap">
+  <div class="nh-head">
+   <h2 class="nh-serif nh-h2 rise" id="work-t">También creamos sitios web y apps.</h2>
+   <p class="fade">Cada proyecto recibe un precio fijo por escrito antes de empezar el trabajo pagado, en inglés y español si quieres ambos.</p>
+  </div>
+  <div class="nh-cases">
+   <a class="nh-case fade" href="/pages/custom-development#web-applications">
+    <span class="nh-case-img"><img src="img/tb-home.webp" alt="" width="2000" height="1250" loading="lazy" decoding="async"></span>
+    <span class="nh-case-t">Tool Box LLC</span>
+    <span class="nh-case-k">Sitio web y tienda en línea de alquiler de equipos</span>
+    <span class="nh-case-p">Sus clientes eligen la máquina y las fechas, ven el precio de entrega a su obra y reservan.</span>
+    <span class="nh-case-a">Mira el proyecto{{icon:arrow-right}}</span>
+   </a>
+   <a class="nh-case fade" href="/pages/custom-development#booking">
+    <span class="nh-case-img nh-case-ph"><img src="img/yavi-book.webp" alt="" width="780" height="1688" loading="lazy" decoding="async"><img src="img/yavi-rewards.webp" alt="" width="780" height="1688" loading="lazy" decoding="async"></span>
+    <span class="nh-case-t">Yavi Barber</span>
+    <span class="nh-case-k">App de reservas y recompensas</span>
+    <span class="nh-case-p">Sus clientes reservan desde su teléfono, reciben un recordatorio antes de la cita y llenan una tarjeta de recompensas.</span>
+    <span class="nh-case-a">Mira el proyecto{{icon:arrow-right}}</span>
+   </a>
+  </div>
+ </div>
+</section>
+
+<section class="nh-end" id="velani" aria-labelledby="end-t">
+ <div class="wrap nh-end-in">
+  <h2 class="nh-serif nh-h2 rise" id="end-t">¿Quieres probar NEVORA?</h2>
+  <p class="fade">Pide una prueba gratis de 30 días. Te respondemos en un plazo de dos días laborables y configuramos tu lugar de trabajo contigo.</p>
+  <div class="hacts fade"><a class="hb fill" href="/pages/es-contacto?interest=nevora-demo">Pide la prueba gratis{{icon:arrow-right}}</a><a class="hb" href="/pages/es-contacto?interest=custom-software">Empieza un proyecto{{icon:arrow-right}}</a></div>
  </div>
 </section>
 </main>

@@ -973,65 +973,93 @@ button.hb:disabled{cursor:progress;opacity:.75}
 .help-end{padding-bottom:clamp(64px,8vw,112px)}
 @media(max-width:833px){.price-grid .price-help{order:6}}
 
-/* Try the time clock: a working copy of the NEVORA PIN screen. Light surface, like the real tablet. */
+/* Try the time clock: a working copy of the NEVORA PIN screen in the app's current look (Direction B round 2, NEVORA 830a1313):
+   a teal band with the wordmark, the workplace, the live clock as its large figure and the tablet's status in glass at the foot;
+   the task is one lifted white card (22px) on a pale canvas, 56px pills, 76px keys. DM Sans stays the site's type. */
 .kio-note{display:inline-flex;flex-wrap:wrap;gap:4px 6px;margin-top:var(--s1);padding:10px 16px;border-radius:var(--r);background:var(--panel);box-shadow:0 0 0 1px var(--line);font-size:0.875rem;line-height:1.4;color:var(--text-2)}
 .kio-note b{font-weight:600;color:var(--text)}
 .kio-note+.kio{margin-top:16px}
 .try-acts{margin-top:28px}
-.kio{--k-ink:#1b2a28;--k-mute:#5d6b68;--k-teal:#0f6e66;--k-side:#f3f6f5;--k-key:#f1f4f3;--k-line:#e4e9e7;position:relative;margin-top:var(--s1);display:grid;grid-template-columns:minmax(0,39fr) minmax(0,61fr);max-width:none;background:#fff;color:var(--k-ink);border-radius:clamp(18px,2vw,28px);overflow:hidden;box-shadow:0 0 0 1px rgba(255,255,255,.07),0 1px 1px rgba(0,0,0,.4),0 12px 24px -12px rgba(0,0,0,.6),0 48px 96px -32px rgba(0,0,0,.85)}
-.kio button:focus-visible{outline:2px solid #1f7ab8;outline-offset:2px}
-.kio-side{display:flex;flex-direction:column;padding:clamp(24px,3vw,40px);background:var(--k-side);border-right:1px solid var(--k-line)}
-.kio-brand img{display:block;height:15px;width:auto;filter:brightness(0);opacity:.86}
-.kio-brand span{display:block;margin-top:6px;font-size:0.875rem;color:var(--k-mute)}
-.kio-now{margin:auto 0}
-.kio-loc{display:flex;align-items:center;gap:8px;font-size:1.0625rem}
-.kio-loc .icon{flex:none;font-size:1.25rem;color:var(--k-teal)}
-.kio-time{display:flex;align-items:baseline;gap:10px;margin-top:18px;font-size:clamp(3.5rem,6.4vw,5.5rem);line-height:1;font-weight:500;letter-spacing:-.03em;font-variant-numeric:tabular-nums}
-.kio-time small{font-size:1rem;letter-spacing:0}
-.kio-date{margin-top:14px;font-size:1rem;color:var(--k-mute)}
-.kio-main{display:grid;place-items:center;padding:clamp(28px,4vw,56px) clamp(20px,4vw,56px)}
-.kio-step{grid-area:1/1;display:flex;flex-direction:column;width:min(100%,360px)}
+.kio{--k-ink:#111517;--k-mute:#5f676c;--k-teal:#0b6e69;--k-teal-2:#0c726c;--k-canvas:#f2f5f4;--k-key:#f0f2f3;--k-line:#e1e5e6;--k-tint:#e8f3f1;position:relative;margin-top:var(--s1);display:grid;grid-template-columns:minmax(0,38fr) minmax(0,62fr);max-width:none;background:var(--k-canvas);color:var(--k-ink);border-radius:clamp(18px,2vw,24px);overflow:hidden;isolation:isolate;box-shadow:0 0 0 1px rgba(255,255,255,.07),0 1px 1px rgba(0,0,0,.4),0 12px 24px -12px rgba(0,0,0,.6),0 48px 96px -32px rgba(0,0,0,.85)}
+.kio button:focus-visible{outline:3px solid var(--k-teal);outline-offset:3px}
+/* The band */
+.kio-side{position:relative;display:flex;flex-direction:column;gap:24px;padding:clamp(24px,3vw,36px) clamp(22px,3vw,36px) clamp(22px,2.6vw,30px);color:#fff;background:radial-gradient(70% 90% at 100% 0%,rgba(63,179,168,.40) 0%,transparent 55%),radial-gradient(70% 80% at 0% 100%,rgba(5,48,46,.85) 0%,transparent 70%),linear-gradient(165deg,#0e7a74 0%,#0b6e69 42%,#06403c 100%)}
+.kio-side::after{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.045) 1px,transparent 1px);background-size:100% 28px;-webkit-mask-image:linear-gradient(transparent,#000 45%,transparent);mask-image:linear-gradient(transparent,#000 45%,transparent);pointer-events:none}
+.kio-side>*{position:relative;z-index:1}
+.kio-glass{background:rgba(255,255,255,.12);box-shadow:inset 0 0 0 1px rgba(255,255,255,.18)}
+.kio-top{display:flex;flex-direction:column;align-items:flex-start;gap:18px}
+.kio-brand img{display:block;height:17px;width:auto}
+.kio-brand span{display:block;margin-top:7px;font-size:0.75rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.76)}
+.kio-ws{display:inline-flex;align-items:center;height:34px;padding:0 14px;border-radius:17px;font-size:0.875rem;font-weight:600;white-space:nowrap}
+.kio-now{margin:auto 0;display:flex;flex-direction:column;align-items:flex-start;gap:16px}
+.kio-time{display:flex;align-items:baseline;gap:10px;font-size:clamp(3.75rem,6.6vw,5.75rem);line-height:1;font-weight:600;letter-spacing:-.045em;font-variant-numeric:tabular-nums}
+.kio-time small{font-size:1.5rem;font-weight:600;letter-spacing:-.01em;color:rgba(255,255,255,.84)}
+.kio-loc{display:inline-flex;align-items:center;gap:8px;height:36px;padding:0 14px 0 12px;border-radius:18px;font-size:0.9375rem}
+.kio-loc b{font-weight:600}
+.kio-loc .icon{flex:none;font-size:1.125rem}
+.kio-date{font-size:1.125rem;font-weight:500;color:rgba(255,255,255,.84)}
+.kio-bfoot{display:flex;flex-direction:column;gap:14px}
+.kio-bfoot small{font-size:0.8125rem;color:rgba(255,255,255,.66)}
+.kio-stat{display:grid;grid-template-columns:auto 1fr;column-gap:10px;row-gap:2px;align-items:center;padding:12px 16px;border-radius:18px}
+.kio-stat i{width:8px;height:8px;border-radius:4px;background:#7ef0c7;box-shadow:0 0 0 3px rgba(126,240,199,.25)}
+.kio-stat b{font-size:0.90625rem;font-weight:600}
+.kio-stat span{grid-column:2;font-size:0.8125rem;color:rgba(255,255,255,.76)}
+/* The task: one lifted white card */
+.kio-main{display:grid;place-items:center;padding:clamp(24px,3.4vw,44px) clamp(18px,3.4vw,44px)}
+.kio-step{grid-area:1/1;display:flex;flex-direction:column;width:min(100%,472px);padding:30px 32px 26px;border-radius:22px;background:#fff;box-shadow:0 0 0 1px rgba(16,40,38,.05),0 1px 2px rgba(16,40,38,.06),0 18px 40px -16px rgba(16,40,38,.22)}
 .kio-step[hidden]{display:flex;visibility:hidden}
-.kio-h{font-size:1.75rem;line-height:1.2;font-weight:600;letter-spacing:-.02em;text-align:center;outline:none}
-.kio-dots{display:flex;justify-content:center;align-items:center;gap:22px;height:64px;margin-top:20px;border-radius:14px;background:var(--k-key)}
-.kio-dots i{width:14px;height:14px;border-radius:50%;box-shadow:inset 0 0 0 1.5px #6b7976;transition:background-color .15s,box-shadow .15s,transform .25s var(--out)}
-.kio-dots i.on{background:var(--k-teal);box-shadow:none;transform:scale(1.08)}
-.kio-pad{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:14px}
-.kio-pad button{display:grid;place-items:center;height:64px;border-radius:12px;background:var(--k-key);color:var(--k-ink);font-size:1.5rem;font-variant-numeric:tabular-nums;transition:background-color .12s,transform .12s;touch-action:manipulation;-webkit-tap-highlight-color:transparent}
-@media(hover:hover){.kio-pad button:hover{background:#e7ecea}.kio-done:hover{background:#f1f4f3}.kio-lang:hover{color:var(--k-teal)}}
-.kio-pad button:active{background:#dde4e1;transform:scale(.97)}
-.kio-pad .kio-soft{font-size:1rem;font-weight:600;color:var(--k-teal)}
-.kio-pad .icon{font-size:1.375rem}
-.kio-go{display:flex;align-items:center;justify-content:center;gap:8px;height:52px;margin-top:16px;border-radius:12px;background:var(--k-teal);color:#fff;font-size:1.0625rem;font-weight:600;transition:background-color .2s,color .2s}
-.kio-go:disabled{background:#e9eeec;color:#5d6b68;cursor:default}
-.kio-foot{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-top:18px;font-size:0.9375rem;line-height:1.45;color:var(--k-mute)}
-.kio-lang{display:inline-flex;align-items:center;gap:6px;flex:none;min-height:44px;color:#3d4b48;font-size:0.9375rem}
+.kio-h{font-size:1.875rem;line-height:1.2;font-weight:600;letter-spacing:-.03em;text-align:center;outline:none}
+.kio-dots{display:flex;justify-content:center;align-items:center;gap:18px;height:60px;margin:20px 0 16px;border-radius:16px;background:var(--k-canvas);box-shadow:inset 0 0 0 2px var(--k-teal)}
+.kio-dots i{width:16px;height:16px;border-radius:50%;box-shadow:inset 0 0 0 2px #8a9398;transition:background-color .15s,box-shadow .15s,transform .25s var(--out)}
+.kio-dots i.on{background:var(--k-teal);box-shadow:none;transform:scale(1.06)}
+.kio-pad{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.kio-pad button{display:grid;place-items:center;height:76px;border-radius:22px;background:var(--k-key);color:var(--k-ink);font-size:1.875rem;font-weight:600;letter-spacing:-.02em;font-variant-numeric:tabular-nums;transition:background-color .12s,transform .12s;touch-action:manipulation;-webkit-tap-highlight-color:transparent}
+@media(hover:hover){.kio-pad button:hover{background:#e6e9ea}.kio-pad .kio-soft:hover{background:#f6f7f7}.kio-done:hover{background:#e6e9ea}.kio-lang:hover{background:#dcefeb}}
+.kio-pad button:active{background:#dde1e3;transform:scale(.97)}
+.kio-pad .kio-soft{background:transparent;box-shadow:inset 0 0 0 1.5px var(--k-line);font-size:1rem;font-weight:600;color:#3f464b}
+.kio-pad .icon{font-size:1.5rem}
+.kio-go{display:flex;align-items:center;justify-content:center;gap:10px;height:56px;margin-top:16px;border-radius:28px;background:var(--k-teal-2);color:#fff;font-size:1.0625rem;font-weight:600;box-shadow:0 8px 18px -8px rgba(11,110,105,.6);transition:background-color .2s,color .2s,box-shadow .2s}
+.kio-go .icon{font-size:1.125rem}
+.kio-go:disabled{background:#e3e7e8;color:#5f676c;box-shadow:none;cursor:default}
+.kio-foot{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:14px;font-size:0.84375rem;line-height:1.45;color:var(--k-mute)}
+.kio-foot p{max-width:26ch}
+.kio-lang{display:inline-flex;align-items:center;gap:7px;flex:none;height:44px;padding:0 16px;border-radius:22px;background:var(--k-tint);color:var(--k-teal);font-size:0.90625rem;font-weight:600}
+.kio-lang .icon{font-size:1.125rem}
+/* Recorded */
 .kio-ok{align-items:center;text-align:center}
-.kio-check{display:grid;place-items:center;width:88px;height:88px;border-radius:50%;background:var(--k-teal);color:#fff;font-size:2.75rem;animation:kio-pop .5s var(--out)}
-.kio-ok .kio-h{margin-top:24px}
-.kio-saved{margin-top:20px;line-height:1.55;color:var(--k-mute);text-wrap:pretty}
-.kio-demo{margin-top:10px;font-size:0.9375rem;font-weight:500;color:var(--k-teal)}
-.kio-saved b{font-weight:500;color:var(--k-ink);font-variant-numeric:tabular-nums}
-.kio-done{width:100%;height:52px;margin-top:28px;border-radius:12px;box-shadow:inset 0 0 0 1px #cfd8d5;color:var(--k-teal);font-size:1.0625rem;font-weight:600}
+.kio-check{display:grid;place-items:center;width:96px;height:96px;margin-top:6px;border-radius:50%;background:#1d8a55;color:#fff;font-size:2.75rem;box-shadow:0 0 0 8px #e7f4ec;animation:kio-pop .5s var(--out)}
+.kio-ok .kio-h{margin-top:26px}
+.kio-saved{margin-top:14px;line-height:1.55;color:var(--k-mute);text-wrap:pretty}
+.kio-saved b{font-weight:600;color:var(--k-ink);font-variant-numeric:tabular-nums}
+.kio-demo{margin-top:10px;font-size:0.9375rem;font-weight:600;color:#1d6b45}
+.kio-done{width:100%;height:56px;margin-top:24px;border-radius:28px;background:var(--k-key);color:var(--k-ink);font-size:1.0625rem;font-weight:600}
 @keyframes kio-pop{from{transform:scale(.6);opacity:0}to{transform:none;opacity:1}}
 @keyframes kio-shake{20%,60%{transform:translateX(-6px)}40%,80%{transform:translateX(6px)}}
 .kio-dots.shake{animation:kio-shake .32s}
 @media(prefers-reduced-motion:reduce){.kio-check,.kio-dots.shake{animation:none}.kio-dots i,.kio-pad button{transition:none}}
+/* Tablet-narrow widths: the band and the card share less room */
+@media(min-width:834px) and (max-width:1100px){.kio-step{padding:24px 22px 22px}.kio-pad button{height:64px}.kio-time{font-size:clamp(3.25rem,6vw,4.5rem)}}
+/* Phones: the band runs across the top (wordmark and workplace, then the clock) and the card lifts over its lower edge, as on the portrait tablet */
 @media(max-width:833px){
  .kio{grid-template-columns:1fr}
- .kio-side{flex-direction:row;align-items:center;justify-content:space-between;gap:12px;padding:16px 18px;border-right:0;border-bottom:1px solid var(--k-line)}
- .kio-now{margin:0;text-align:right}
- .kio-loc{justify-content:flex-end;font-size:0.8125rem}.kio-loc .icon{font-size:1rem}
- .kio-time{justify-content:flex-end;gap:6px;margin-top:4px;font-size:2rem}.kio-time small{font-size:0.8125rem}
- .kio-date{display:none}
- .kio-main{padding:26px 18px 28px}
+ .kio-side{gap:14px;padding:18px 18px 64px}
+ .kio-top{flex-direction:row;align-items:center;justify-content:space-between;gap:10px}
+ .kio-brand img{height:14px}.kio-brand span{font-size:0.6875rem;margin-top:5px}
+ .kio-ws{height:30px;padding:0 12px;font-size:0.8125rem}
+ .kio-now{margin:0;flex-direction:row;align-items:flex-end;justify-content:space-between;gap:10px}
+ .kio-time{font-size:2.75rem;gap:6px}.kio-time small{font-size:1rem}
+ .kio-loc{height:32px;font-size:0.8125rem;margin-bottom:4px}.kio-loc .icon{font-size:1rem}
+ .kio-date,.kio-bfoot{display:none}
+ .kio-main{padding:0 12px 14px;margin-top:-50px;position:relative;z-index:2}
+ .kio-step{padding:22px 18px 20px}
  .kio-h{font-size:1.5rem}
- .kio-pad button{height:58px}
- .kio-foot{font-size:0.875rem}
+ .kio-dots{height:54px;margin:16px 0 14px}
+ .kio-pad{gap:10px}
+ .kio-pad button{height:60px;border-radius:18px;font-size:1.625rem}
+ .kio-foot{font-size:0.8125rem}
 }
 @media(min-width:601px) and (max-width:833px){.kio{max-width:560px}}
-
-@media(max-width:360px){.kio-loc{font-size:0.75rem}.kio-loc b{white-space:nowrap}}
+@media(max-width:380px){.kio-ws{display:none}.kio-lang{padding:0 12px}}
 
 /* ---------- Rondo, Velani's AI adviser: a launcher pill and a chat panel on every page ---------- */
 .ast-root[hidden]{display:none}
@@ -1321,7 +1349,7 @@ main>section:first-of-type .fade{opacity:1}
  .kio-dots i{forced-color-adjust:none;box-shadow:none;border:2px solid CanvasText;background:transparent}
  .kio-dots i.on{background:CanvasText}
  .hpanel h2 img,.lnav-t img,.hcopy h2 img{forced-color-adjust:none;background:#05090e;padding:6px;border-radius:4px;box-sizing:content-box}
- .kio-brand img{forced-color-adjust:none;background:#fff;padding:4px;border-radius:4px;box-sizing:content-box}
+ .kio-brand img{forced-color-adjust:none;background:#0b6e69;padding:4px;border-radius:4px;box-sizing:content-box}
  .ast-launch{border:2px solid ButtonText}
  .ast-av{border:1px solid CanvasText}
 }

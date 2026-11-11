@@ -87,3 +87,9 @@
  cal.innerHTML='<p class="cal-h">'+head+'</p><div class="cal-g">'+wk.map(w=>'<span class="w">'+w+'</span>').join('')+cells+'</div><p class="cal-key">'+(es?'Ejemplo: un lugar de trabajo listo hoy. Tu día 1 es el día en que tu lugar de trabajo queda listo.':'Example: a workplace that’s ready today. Your day 1 is the day your workplace is ready.')+'</p>';
  cal.setAttribute('aria-label',cal.getAttribute('aria-label')+': '+long(d0)+' – '+long(d30));cal.hidden=false;
 })();
+(()=>{
+ const d=document;
+ // Home (Nov 10): NEVORA in three parts is a tab list. Click or arrow keys (Home and End too) pick a part; focus follows with the keys
+ const tl=d.querySelector('.nh-tabs');if(tl){const ts=[...tl.querySelectorAll('[role=tab]')];const pick=(b,f)=>{ts.forEach(x=>{const on=x===b;x.setAttribute('aria-selected',String(on));x.tabIndex=on?0:-1;d.getElementById(x.getAttribute('aria-controls')).hidden=!on});if(f)b.focus()};
+  ts.forEach((b,i)=>{b.addEventListener('click',()=>pick(b));b.addEventListener('keydown',e=>{const n=e.key==='ArrowRight'?i+1:e.key==='ArrowLeft'?i-1:e.key==='Home'?0:e.key==='End'?ts.length-1:null;if(n===null)return;e.preventDefault();pick(ts[(n+ts.length)%ts.length],true)})})}
+})();

@@ -199,7 +199,7 @@ main>section:first-of-type .fade{opacity:1}
  .kio-dots i{forced-color-adjust:none;box-shadow:none;border:2px solid CanvasText;background:transparent}
  .kio-dots i.on{background:CanvasText}
  .hpanel h2 img,.lnav-t img,.hcopy h2 img{forced-color-adjust:none;background:#05090e;padding:6px;border-radius:4px;box-sizing:content-box}
- .kio-brand img{forced-color-adjust:none;background:#fff;padding:4px;border-radius:4px;box-sizing:content-box}
+ .kio-brand img{forced-color-adjust:none;background:#0b6e69;padding:4px;border-radius:4px;box-sizing:content-box}
  .ast-launch{border:2px solid ButtonText}
  .ast-av{border:1px solid CanvasText}
 }

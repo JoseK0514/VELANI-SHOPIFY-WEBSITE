@@ -1,63 +1,116 @@
-<!-- Home page source. src/night.mjs renders only <main>; the global header and footer come from night.mjs and foot.html. Five full-screen panels: one subject each, a big visual, a short title and one or two actions. Order (Nov 7): Velani, NEVORA, two client projects, closing. -->
+<!-- Home page source. src/night.mjs renders only <main>; the global header and footer come from night.mjs and foot.html. Nov 10 (Jose: "NEVORA would be the focus", benchmark gusto.com): six sections at their natural height on warm paper. The NEVORA field with the Owner's screen, NEVORA in three parts, who it's for, the price, client work, and the closing band. -->
 <main id="main">
-<script>(function(d){try{if(matchMedia('(prefers-reduced-motion: reduce)').matches||sessionStorage.getItem('v-dawn'))return;sessionStorage.setItem('v-dawn','1')}catch(e){return}d.classList.add('dawn')})(document.documentElement)</script>
-<section class="hpanel live" id="top" aria-labelledby="hero-t">
- <img class="hph" src="img/ai-light.webp" alt="" width="1920" height="1080" fetchpriority="high">
- <div class="hshade"></div>
- <div class="hdawn" aria-hidden="true"></div>
- <script>(function(d){if(!d.classList.contains('dawn'))return;var i=document.querySelector('.hpanel.live .hph'),done=0,go=function(){if(!done){done=1;d.classList.add('dawn-go')}};if(i&&!i.complete){i.addEventListener('load',go);i.addEventListener('error',go);setTimeout(go,1200)}else go()})(document.documentElement)</script>
- <div class="hcopy">
-  <h1 class="rise" id="hero-t">Your team’s week, in one place.</h1>
-  <p class="fade">NEVORA plans your team’s shifts, records their hours and calculates their pay. We also design and build websites, booking apps and online stores for businesses like yours.</p>
-  <div class="hacts fade"><a class="hb fill" href="/pages/contact?interest=nevora-demo">Request a free NEVORA trial{{icon:arrow-right}}</a><a class="hb" href="/pages/contact?interest=custom-software">Start a project{{icon:arrow-right}}</a></div>
+<section class="nh-hero" id="top" aria-labelledby="hero-t">
+ <div class="wrap nh-hero-in">
+  <h1 class="nh-serif rise" id="hero-t">Your team’s week, in one place.</h1>
+  <p class="nh-lede fade">NEVORA plans your team’s shifts, records their hours and calculates their pay. Free for 30 days, and we set it up with you.</p>
+  <div class="hacts fade"><a class="hb fill" href="/pages/contact?interest=nevora-demo">Request a free NEVORA trial{{icon:arrow-right}}</a><a class="hb" href="#nevora">See how it works{{icon:arrow-right}}</a></div>
  </div>
- <a class="hcue" href="#nevora" aria-label="Scroll to NEVORA">{{icon:caret-down}}</a>
+ <div class="wrap nh-stage fade">
+  <figure class="nh-screen"><img src="img/r1-owner.webp" alt="NEVORA on the web for Carmen, the owner of Northside Coffee: one time off request needs her, five of five people clocked in and payday on Friday, November 20" width="2000" height="1250" fetchpriority="high"></figure>
+  <div class="nh-float nh-float-a" aria-hidden="true">
+   <span class="nh-ok">{{icon:check}}</span>
+   <p class="nh-ok-t">Clock-in recorded</p>
+   <p class="nh-ok-time">7:58 AM</p>
+   <p class="nh-ok-n">Have a good shift, Alexandra.</p>
+  </div>
+  <div class="nh-float nh-phone" aria-hidden="true"><img src="img/b2-phone-home.webp" alt="" width="1170" height="3435" loading="lazy" decoding="async"></div>
+ </div>
 </section>
 
-<section class="hpanel" id="nevora" aria-labelledby="nev-t">
- <img class="hph" src="img/ai-devices.webp" alt="" width="1920" height="1080" decoding="async">
- <div class="hshade"></div>
- <div class="hcopy">
-  <h2 class="rise" id="nev-t"><img src="img/nevora-wm-ink.png" alt="NEVORA" width="907" height="122"></h2>
-  <p class="fade">Scheduling, time clock and payroll calculation for teams that work in shifts. Ask for a free 30-day trial and we set up your workplace with you.</p>
-  <div class="hacts fade"><a class="hb fill" href="/pages/contact?interest=nevora-demo">Request a free trial{{icon:arrow-right}}</a><a class="hb" href="/pages/nevora">Learn more{{icon:arrow-right}}</a></div>
-  <p class="hfact fade">NEVORA is available now in any browser, in English and Spanish. The phone app is coming to the App&nbsp;Store and Google&nbsp;Play. We’re also building <a class="ul" href="/pages/nevora#rondo">Rondo, an AI assistant for NEVORA</a>.</p>
+<section class="nh-tour" id="nevora" aria-labelledby="tour-t">
+ <div class="wrap">
+  <div class="nh-head">
+   <h2 class="nh-serif nh-h2 rise" id="tour-t">From the schedule to payday.</h2>
+   <p class="fade">Three parts of one app, in English and Spanish. Every screen here is NEVORA today, with a sample workplace.</p>
+  </div>
+  <div class="nh-tabs fade" role="tablist" aria-label="NEVORA">
+   <button class="nh-tab" role="tab" id="tab-s" aria-controls="tp-s" aria-selected="true">{{icon:calendar-blank}}Schedule</button>
+   <button class="nh-tab" role="tab" id="tab-c" aria-controls="tp-c" aria-selected="false" tabindex="-1">{{icon:clock}}Time clock</button>
+   <button class="nh-tab" role="tab" id="tab-p" aria-controls="tp-p" aria-selected="false" tabindex="-1">{{icon:receipt}}Pay</button>
+  </div>
+  <div class="nh-panel" role="tabpanel" id="tp-s" aria-labelledby="tab-s" tabindex="0">
+   <div class="nh-copy"><h3 class="nh-h3">Build the week, then publish it.</h3><p>Plan shifts for every location. Your team sees them on their phones, swaps shifts and asks for time off, and you approve in one place.</p></div>
+   <figure class="nh-shot nh-has-m"><img class="nh-d" src="img/r1-schedule.webp" alt="NEVORA schedule for Northside Coffee: eight people, their shifts for the week of November 2 and the week published" width="2000" height="1181" loading="lazy" decoding="async"><img class="nh-m" src="img/r1-ph-schedule.webp" alt="NEVORA on an employee’s phone: her shifts for the week" width="780" height="1688" loading="lazy" decoding="async"></figure>
+  </div>
+  <div class="nh-panel" role="tabpanel" id="tp-c" aria-labelledby="tab-c" tabindex="0" hidden>
+   <div class="nh-copy"><h3 class="nh-h3">Clock in with a PIN at work.</h3><p>A tablet at each location is the time clock. People clock in, take breaks and clock out with their own PIN, in English or Spanish.</p></div>
+   <figure class="nh-shot"><img src="img/b2-clocker.webp" alt="The NEVORA time clock on the Main Street tablet: the workplace, the time and a keypad to enter a PIN" width="1600" height="1202" loading="lazy" decoding="async"></figure>
+  </div>
+  <div class="nh-panel" role="tabpanel" id="tp-p" aria-labelledby="tab-p" tabindex="0" hidden>
+   <div class="nh-copy"><h3 class="nh-h3">Approve hours, get payroll.</h3><p>NEVORA calculates payroll from the hours you approve and makes a pay statement for each employee. You still pay your team and file payroll taxes.</p></div>
+   <figure class="nh-shot nh-has-m"><img class="nh-d" src="img/r1-payroll.webp" alt="NEVORA payroll for Northside Coffee: the next weekly payroll and three recent payrolls with their totals" width="1500" height="1000" loading="lazy" decoding="async"><img class="nh-m" src="img/r1-ph-pay.webp" alt="NEVORA on an employee’s phone: the next payday and her last paycheck" width="780" height="1688" loading="lazy" decoding="async"></figure>
+  </div>
+  <p class="nh-more fade"><a class="hb" href="/pages/nevora">See everything NEVORA does{{icon:arrow-right}}</a></p>
  </div>
- <div class="hweb fade"><img src="img/r1-owner-today.webp" alt="NEVORA on the web for an owner: one thing that needs an answer, five of five clocked in and the next payday" width="1800" height="750" loading="lazy" decoding="async"></div>
- <div class="hshot fade"><img src="img/r1-ph-home.webp" alt="NEVORA on an employee’s phone: her shift today and her next shifts" width="780" height="1688"></div>
 </section>
 
-<section class="hpanel right svc" id="websites" aria-labelledby="web-t">
- <img class="hph" src="img/ai-laptop-soft.webp" alt="" width="1920" height="1080" decoding="async">
- <div class="hshade"></div>
- <div class="hcopy">
-  <h2 class="rise" id="web-t">Websites and online stores</h2>
-  <p class="fade">Tool Box rents equipment online. Customers pick the dates, see the delivery price for their job site and reserve.</p>
-  <div class="hacts fade"><a class="hb fill" href="/pages/contact?interest=custom-software">Start a project{{icon:arrow-right}}</a><a class="hb" href="/pages/custom-development#web-applications">See the work{{icon:arrow-right}}</a></div>
-  <p class="hcap fade">We designed and built <b>Tool Box LLC</b>’s website and online store.</p>
+<section class="nh-who" aria-labelledby="who-t">
+ <div class="wrap nh-who-in">
+  <figure class="nh-photo fade">
+   <img src="img/photo-barista.webp" alt="A barista steams milk at the espresso machine of a busy café" width="1600" height="1068" loading="lazy" decoding="async">
+   <figcaption>Photo: <a href="https://commons.wikimedia.org/w/index.php?curid=195948210" rel="noopener">Shixart1985</a>, <a href="https://creativecommons.org/licenses/by/2.0/" rel="license noopener">CC BY 2.0</a></figcaption>
+  </figure>
+  <div class="nh-who-copy">
+   <h2 class="nh-serif nh-h2 rise" id="who-t">Made for teams that work in shifts.</h2>
+   <dl class="nh-facts fade">
+    <div><dt>Cafés, restaurants, shops and salons</dt><dd>Any business where the week runs on shifts.</dd></div>
+    <div><dt>Up to 30 employees</dt><dd>Larger teams write to us for assisted setup.</dd></div>
+    <div><dt>English and Spanish</dt><dd>Your team uses NEVORA in either one.</dd></div>
+    <div><dt>Available now in any browser</dt><dd>The phone app is coming to the App&nbsp;Store and Google&nbsp;Play.</dd></div>
+   </dl>
+  </div>
  </div>
- <div class="hwin fade"><img style="--z:1.6;--x:4%;--y:0%" src="img/tb-home.webp" alt="The Tool Box LLC website, built by Velani: equipment rental with job-site delivery and dates" width="2000" height="1250" loading="lazy" decoding="async"></div>
 </section>
 
-<section class="hpanel" id="apps" aria-labelledby="apps-t">
- <img class="hph" src="img/ai-phone-soft.webp" alt="" width="1920" height="1080" loading="lazy" decoding="async">
- <div class="hshade"></div>
- <div class="hcopy">
-  <h2 class="rise" id="apps-t">Booking and rewards apps</h2>
-  <p class="fade">Yavi Barber’s clients book from their phone, get a reminder before the visit and fill a rewards card.</p>
-  <div class="hacts fade"><a class="hb fill" href="/pages/contact?interest=custom-software">Start a project{{icon:arrow-right}}</a><a class="hb" href="/pages/custom-development#booking">See the work{{icon:arrow-right}}</a></div>
-  <p class="hcap fade">We designed and built <b>Yavi Barber</b>’s booking and rewards app.</p>
+<section class="nh-price" id="price" aria-labelledby="price-t">
+ <div class="wrap nh-price-in">
+  <div class="nh-price-copy">
+   <h2 class="nh-serif nh-h2 rise" id="price-t">One monthly price for your business.</h2>
+   <p class="fade">Every business gets the whole app: scheduling, the time clock, timecards and payroll calculation. The price depends only on how many employees you have, and owners aren’t counted.</p>
+   <div class="hacts fade"><a class="hb fill" href="/pages/contact?interest=nevora-demo">Request a free trial{{icon:arrow-right}}</a><a class="hb" href="/pages/plans">See plans{{icon:arrow-right}}</a></div>
+  </div>
+  <div class="nh-card fade">
+   <p class="nh-free">Free for 30 days, no card needed. Then:</p>
+   <ul class="nh-bands" aria-label="Prices">
+    <li><b>$19</b><span>a month</span><em>1 to 15 employees</em></li>
+    <li><b>$29</b><span>a month</span><em>16 to 30 employees</em></li>
+   </ul>
+   <p class="nh-fine">Prices are in US dollars and may change before online billing opens.</p>
+  </div>
  </div>
- <div class="hduo fade"><div class="ph"><img src="img/yavi-book.webp" alt="Yavi Barber booking on a phone: the next open times and services with prices" width="780" height="1688" loading="lazy" decoding="async"></div><div class="ph"><img src="img/yavi-rewards.webp" alt="Yavi Barber rewards card on a phone: ten visits and two rewards" width="780" height="1688" loading="lazy" decoding="async"></div></div>
 </section>
 
-<section class="hpanel end" id="velani" aria-label="Velani">
- <img class="hph flip" src="img/ai-light.webp" alt="" width="1920" height="1080" decoding="async">
- <div class="hshade"></div>
- <div class="hcopy">
-  <p class="hwm">{{wordmark}}</p>
-  <p class="fade">Brighter work ahead. Try NEVORA free, or tell us what you want built.</p>
-  <div class="hacts fade"><a class="hb fill" href="/pages/contact?interest=nevora-demo">Request a free NEVORA trial{{icon:arrow-right}}</a><a class="hb" href="/pages/contact?interest=custom-software">Start a project{{icon:arrow-right}}</a></div>
+<section class="nh-work" id="work" aria-labelledby="work-t">
+ <div class="wrap">
+  <div class="nh-head">
+   <h2 class="nh-serif nh-h2 rise" id="work-t">We also build websites and apps.</h2>
+   <p class="fade">Each project gets a fixed price in writing before paid work starts, in English and Spanish if you want both.</p>
+  </div>
+  <div class="nh-cases">
+   <a class="nh-case fade" href="/pages/custom-development#web-applications">
+    <span class="nh-case-img"><img src="img/tb-home.webp" alt="" width="2000" height="1250" loading="lazy" decoding="async"></span>
+    <span class="nh-case-t">Tool Box LLC</span>
+    <span class="nh-case-k">Equipment rental website and online store</span>
+    <span class="nh-case-p">Customers pick a machine and the dates, see the delivery price for their job site and reserve.</span>
+    <span class="nh-case-a">See the project{{icon:arrow-right}}</span>
+   </a>
+   <a class="nh-case fade" href="/pages/custom-development#booking">
+    <span class="nh-case-img nh-case-ph"><img src="img/yavi-book.webp" alt="" width="780" height="1688" loading="lazy" decoding="async"><img src="img/yavi-rewards.webp" alt="" width="780" height="1688" loading="lazy" decoding="async"></span>
+    <span class="nh-case-t">Yavi Barber</span>
+    <span class="nh-case-k">Booking and rewards app</span>
+    <span class="nh-case-p">Clients book a service from their phone, get a reminder before the visit and fill a rewards card.</span>
+    <span class="nh-case-a">See the project{{icon:arrow-right}}</span>
+   </a>
+  </div>
+ </div>
+</section>
+
+<section class="nh-end" id="velani" aria-labelledby="end-t">
+ <div class="wrap nh-end-in">
+  <h2 class="nh-serif nh-h2 rise" id="end-t">Ready to try NEVORA?</h2>
+  <p class="fade">Ask for a free 30-day trial. We reply within two business days and set up your workplace with you.</p>
+  <div class="hacts fade"><a class="hb fill" href="/pages/contact?interest=nevora-demo">Request a free trial{{icon:arrow-right}}</a><a class="hb" href="/pages/contact?interest=custom-software">Start a project{{icon:arrow-right}}</a></div>
  </div>
 </section>
 </main>

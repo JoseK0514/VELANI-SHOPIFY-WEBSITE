@@ -64,3 +64,16 @@ test('NEVORA payroll is described as calculation, never payment or tax filing', 
   assert.match(html, /calculates payroll/);
   assert.doesNotMatch(html, /NEVORA (?:pays|runs payroll|files)/);
 });
+test('Home (Nov 10): NEVORA in three tabs with matching panels, the licensed photo credited, the time clock in its current look', () => {
+  for (const path of ['/', '/pages/es']) {
+    const { html } = renderPage(path, { target: 'preview' });
+    const tabs = [...html.matchAll(/role="tab" id="([^"]+)" aria-controls="([^"]+)" aria-selected="(true|false)"/g)];
+    assert.equal(tabs.length, 3, path);
+    assert.equal(tabs.filter(t => t[3] === 'true').length, 1, path);
+    for (const [, id, panel] of tabs) assert.match(html, new RegExp('role="tabpanel" id="' + panel + '" aria-labelledby="' + id + '"'), path);
+    assert.match(html, /night-photo-barista\.webp/);
+    assert.match(html, /Shixart1985<\/a>, <a href="https:\/\/creativecommons\.org\/licenses\/by\/2\.0\/"/, path);
+    assert.match(html, /night-b2-clocker\.webp/, path);
+    assert.doesNotMatch(html, /night-r1-clocker\.webp/, path);
+  }
+});
