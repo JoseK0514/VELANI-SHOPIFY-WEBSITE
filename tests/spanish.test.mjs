@@ -221,3 +221,19 @@ test('Home is NEVORA and Rondo: no client panels, one filled action in the closi
     assert.equal((html.match(/data-ask="\d"/g) || []).length, 2, path);
   }
 });
+
+test('Home below the first screen is three live sections that read the same week as the piece', async () => {
+  for (const path of ['/', '/pages/es']) {
+    const html = renderBody(path, { target: 'local' });
+    for (const id of ['nevora', 'rondo', 'start']) assert.match(html, new RegExp('<section class="hn [^"]+" id="' + id + '"'), path + ' ' + id);
+    for (const b of ['arWeek', 'arToday', 'arState', 'brief']) assert.match(html, new RegExp('data-b="' + b + '"'), path + ' ' + b);
+    // Alexandra's Mon–Fri hours on the phone equal her row in the piece (1440 minutes)
+    assert.match(html, /data-b="arWeek">24:00</, path);
+    assert.match(html, /class="day-row" data-state="you" data-due="480" data-week="1440"/, path);
+    const between = html.slice(html.indexOf('id="nevora"'), html.indexOf('<section class="hpanel end"'));
+    assert.equal((between.match(/class="hb fill"/g) || []).length, 1, 'one filled action below the first screen, in the price section');
+    assert.match(between, /data-approve/);
+    assert.match(between, /\$19<\/b>[^<]+<b>\$29<\/b>/);
+    assert.doesNotMatch(between, /class="hpanel/);
+  }
+});

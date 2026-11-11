@@ -305,3 +305,9 @@ main>.hpanel+.hpanel:has(+.hpanel)>.hph{-webkit-mask-image:linear-gradient(180de
 /* One label style (Nov 8): menu and footer group labels use the header's normal case, like the NEVORA page nav */
 .gmenu-k,.foot-k,.foot-support .fs-k,.lnav .lnav-by>span:first-child{font-size:0.875rem;letter-spacing:0;text-transform:none}
 @media(max-width:833px){.foot-acc summary{font-size:1rem;letter-spacing:0;text-transform:none}}
+/* Footer (Nov 10): the thin wide-caps wordmark at a restrained size, in the cool family; no giant letters, no glow image */
+.foot{background:#06181a}
+.foot-wm{height:auto;margin-top:36px;padding:0 var(--pad) 40px;overflow:visible}
+.foot-wm .foot-glow{display:none}
+.foot-wm .wm-velani{position:static;width:auto;height:20px;color:#dfeaea;opacity:1}
+.foot:has(.foot-wm){padding-bottom:0}

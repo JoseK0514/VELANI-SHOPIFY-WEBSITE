@@ -102,7 +102,7 @@
  const day=hero.querySelector('[data-day]');if(!day)return;
  const D=day.dataset,rate=+D.rate,q=s=>day.querySelector(s),qa=s=>[...day.querySelectorAll(s)],rows=qa('.day-row'),face=q('[data-clockface]'),ampm=q('[data-ampm]'),pay=q('[data-pay]'),on=q('[data-on]'),say=q('[data-day-status]'),pp=q('[data-pp]'),
   tabs=qa('[role=tab]'),panels=qa('[role=tabpanel]'),hrs=qa('[data-ph]'),pa=qa('[data-pp-amt]'),wkPay=q('[data-week-pay]'),wkH=q('[data-week-h]'),rondo=qa('[data-rondo]');
- let now=+D.now,timer=0,seen=true,paused=reduce,auto=!reduce,beat=0,tab=1,ask=0;const es=/^es\b/i.test(root.lang),asks=qa('[data-ask]'),rq=q('[data-rq]'),rsrc=q('[data-rsrc]');const END=16*60;
+ let now=+D.now,timer=0,seen=true,paused=reduce,auto=!reduce,beat=0,tab=1,ask=0;const es=/^es\b/i.test(root.lang),binds=[...d.querySelectorAll('[data-b]')],asks=qa('[data-ask]'),rq=q('[data-rq]'),rsrc=q('[data-rsrc]');const END=16*60;
  const hm=m=>{const h=Math.floor(m/60)%12||12;return h+':'+String(m%60).padStart(2,'0')},full=m=>hm(m)+' '+(m<720?D.am:D.pm),dur=m=>Math.floor(m/60)+':'+String(m%60).padStart(2,'0'),fill=(t,o)=>t.replace(/\{(\w)\}/g,(_,k)=>o[k]),usd=v=>'$'+v.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});
  const worked=r=>r.dataset.state==='in'?Math.max(0,Math.min(now,+r.dataset.due+480)-r.dataset.in):0;
  const clockIn=(row,at,byYou)=>{row.dataset.state='in';row.dataset.in=at;const st=row.querySelector('.day-st');
@@ -114,10 +114,12 @@
    else{h.textContent='';s.textContent=st==='late'?fill(D.tLate,{t:hm(due)}):fill(D.tStarts,{t:hm(due)});if(now>due+5)notes.push(fill(D.tRLate,{n:name,t:hm(due)}))}
    if(now>=due)dueN++;
    hrs[i].textContent=dur(wk);pa[i].textContent=usd(wk*rate/60)});
+  const ar=rows[2],arW=worked(ar),B={arWeek:dur(+ar.dataset.week+arW),arToday:dur(arW),arState:ar.dataset.state==='in'?fill(D.tPhIn,{t:full(+ar.dataset.in)}):D.tPhOut,brief:notes.concat(fill(D.tRSum,{c:n,s:dueN,p:usd(week*rate/60)})).join(' ')};
+  binds.forEach(e=>{const v=B[e.dataset.b];if(e.textContent!==v)e.textContent=v;if(e.dataset.b==='arState')e.classList.toggle('in',ar.dataset.state==='in')});
   pay.textContent=usd(today*rate/60);on.textContent=fill(D.tOn,{n:n});wkPay.textContent=usd(week*rate/60);wkH.textContent=fill(D.tHours,{h:dur(week)});
   rondo[0].textContent=notes.concat(fill(D.tRSum,{c:n,s:dueN,p:usd(week*rate/60)})).join(' ');
   {const nm=r=>r.querySelector('b').textContent,list=a=>a.length>1?a.slice(0,-1).join(', ')+' '+D.tAnd+' '+a.at(-1):a[0],sun=rows.filter(r=>r.dataset.sun==='1'),off=rows.filter(r=>r.dataset.sun==='0'&&+r.dataset.sched<40),fullW=rows.filter(r=>r.dataset.sun==='0'&&+r.dataset.sched>=40);
-   rondo[1].textContent=fill(D.tCov,{c:sun.length===1?(es?'una persona':'one person'):sun.length,w:sun.map(r=>nm(r)+', '+hm(+r.dataset.due)+(es?' a ':' to ')+hm(+r.dataset.due+480)).join('; '),n:list(off.map(nm)),h:off.length?off[0].dataset.sched:''})+(fullW.length?' '+fill(D.tCovFull,{n:list(fullW.map(nm))}):'')}}
+   rondo[1].textContent=fill(D.tCov,{w:list(sun.map(r=>{const st=+(r.dataset.sunt||r.dataset.due);return nm(r)+', '+hm(st)+(es?' a ':' to ')+hm(st+480)})),n:list(off.map(nm)),h:off.length?off[0].dataset.sched:''})+(fullW.length?' '+fill(D.tCovFull,{n:list(fullW.map(nm))}):'')}}
  const select=(i,focus)=>{tab=(i+tabs.length)%tabs.length;tabs.forEach((t,k)=>{const on=k===tab;t.setAttribute('aria-selected',on);t.tabIndex=on?0:-1;panels[k].classList.toggle('on',on);panels[k].inert=!on});if(focus)tabs[tab].focus()};
  const tick=()=>{if(auto&&++beat%7===0)select(tab+1);if(now>=END)return;now++;rows.forEach(r=>{if(r.dataset.state!=='in'&&r.dataset.auto&&now>=+r.dataset.auto)clockIn(r,+r.dataset.auto)});paint()};
  const stop=()=>{clearInterval(timer);timer=0},run=()=>{stop();if(!paused&&seen&&!d.hidden)timer=setInterval(tick,1000)};
@@ -127,6 +129,10 @@
  tabs.forEach((t,i)=>{t.addEventListener('click',()=>select(i));t.addEventListener('keydown',e=>{const k=e.key,to=k==='ArrowRight'?tab+1:k==='ArrowLeft'?tab-1:k==='Home'?0:k==='End'?tabs.length-1:null;if(to!==null){e.preventDefault();select(to,true)}})});
  q('[data-clock]').addEventListener('click',e=>{const row=e.currentTarget.closest('.day-row');row.tabIndex=-1;clockIn(row,now,true);row.focus({preventScroll:true})});
  asks.forEach((b,i)=>b.addEventListener('click',()=>{ask=i;asks.forEach((x,k)=>x.setAttribute('aria-pressed',k===i));rq.textContent=b.textContent;rsrc.textContent=i?D.tSrc1:D.tSrc0;rondo.forEach((x,k)=>{x.classList.toggle('on',k===i);x.hidden=false;x.setAttribute('aria-hidden',k!==i)})}));
+ const ok=d.querySelector('[data-approve]');
+ if(ok)ok.addEventListener('click',()=>{const dana=rows[1],tr=day.querySelectorAll('.day-sched tbody tr')[1],done=d.querySelector('[data-cov-done]');
+  dana.dataset.sched=40;dana.dataset.sun=1;dana.dataset.sunt=720;tr.children[7].innerHTML='<span class="day-chip">12<span class="sr"> '+(es?'a':'to')+' </span><i>8</i></span>';tr.querySelector('.day-wk').textContent='40 h';
+  d.querySelector('[data-cov-acts]').hidden=true;done.textContent=D.tApproved;done.tabIndex=-1;done.focus({preventScroll:true});paint()});
  d.addEventListener('visibilitychange',run);
  if('IntersectionObserver' in window)new IntersectionObserver(e=>{seen=e[0].isIntersecting;run()}).observe(day);
  rondo.forEach((x,k)=>{x.hidden=false;x.setAttribute('aria-hidden',k!==0)});select(1);setPaused(paused);paint();
