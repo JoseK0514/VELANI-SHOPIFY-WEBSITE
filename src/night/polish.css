@@ -505,3 +505,4 @@ main:not(:has(.sig)) .doc-body :is(p,li){color:#3d5654}
 @media(max-width:1023px){.make-row{grid-template-columns:1fr}.make-acts{padding-top:24px}}
 /* At the narrowest phones a dark first screen's headline keeps its two lines */
 @media(max-width:379px){main:not(:has(.sig,.plans-top)) .hpanel.dim h1{font-size:1.875rem;letter-spacing:-.025em}}
+.sent-acts [hidden]{display:none!important}

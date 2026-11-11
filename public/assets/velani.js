@@ -39,7 +39,10 @@ function showSent(topic, preview) {
   // After a trial request the one filled action leads to the NEVORA page, and Home becomes a quiet text link
   const next = sent.querySelector('[data-sent-next]'), back = sent.querySelector('[data-sent-back]');
   if (next && back && topic === 'nevora-demo') { next.hidden = false; back.className = 'sent-back'; }
-  sent.hidden = false; window.scrollTo(0, 0); sent.focus({ preventScroll: true });
+  sent.hidden = false;
+  // On Support the form sits lower on the page: bring the confirmation into view there; on the request page go to the top
+  if (sent.closest('.client')) sent.scrollIntoView({ block: 'center' }); else window.scrollTo(0, 0);
+  sent.focus({ preventScroll: true });
 }
 const justSent = !!sent && !sent.hidden;
 if (justSent) { let topic = ''; try { topic = sessionStorage.getItem('v-inquiry-topic') || ''; sessionStorage.removeItem('v-inquiry-topic'); sessionStorage.removeItem('v-inquiry-draft'); } catch {} showSent(topic, false); }
@@ -108,8 +111,8 @@ if (form && !justSent) {
   const isEs = /^es\b/i.test(document.documentElement.lang);
   const labelOf = key => { const l = fields[key] && form.querySelector('label[for="' + fields[key].id + '"]'); if (!l) return key; const c = l.cloneNode(true); c.querySelectorAll('[hidden]').forEach(n => n.remove()); c.querySelectorAll('.opt,.v-n,.v-m,.v-r').forEach(n => { if (n.classList.contains('opt') || getComputedStyle(l.querySelector('.' + n.className.split(' ')[0]) || l).display === 'none') n.remove(); }); return c.textContent.replace(/\s+/g, ' ').trim(); };
   const summarize = errors => { const keys = Object.keys(errors).filter(k => fields[k]); if (!keys.length) { status.textContent = ''; status.dataset.state = ''; status.setAttribute('role', 'status'); return; }
-    const names = keys.map(labelOf).join(', '); status.dataset.state = 'invalid'; status.setAttribute('role', 'alert');
-    status.textContent = isEs ? (keys.length === 1 ? '1 campo necesita atención: ' : keys.length + ' campos necesitan atención: ') + names + '.' : (keys.length === 1 ? '1 field needs attention: ' : keys.length + ' fields need attention: ') + names + '.'; };
+    const names = keys.map(labelOf).join(', '); const end = /[?!.]$/.test(names) ? '' : '.'; status.dataset.state = 'invalid'; status.setAttribute('role', 'alert');
+    status.textContent = isEs ? (keys.length === 1 ? '1 campo necesita atención: ' : keys.length + ' campos necesitan atención: ') + names + end : (keys.length === 1 ? '1 field needs attention: ' : keys.length + ' fields need attention: ') + names + end; };
   const recheck = () => { if (!tried) return; const values = Object.fromEntries(Object.entries(fields).map(([key, input]) => [key, input?.value || ''])); const checked = validateInquiry(values); showErrors(checked.errors); summarize(checked.errors); };
   form.addEventListener('input', recheck); form.addEventListener('focusout', recheck);
   const sendRow = form.querySelector('.client-send'); if (sendRow && status.parentNode) sendRow.before(status);
