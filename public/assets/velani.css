@@ -1662,3 +1662,10 @@ main:not(:has(.sig)) .doc-body :is(p,li){color:#3d5654}
 /* At the narrowest phones a dark first screen's headline keeps its two lines */
 @media(max-width:379px){main:not(:has(.sig,.plans-top)) .hpanel.dim h1{font-size:1.875rem;letter-spacing:-.025em}}
 .sent-acts [hidden]{display:none!important}
+
+/* ---------- Round 10 ---------- */
+/* The quiet line under an ending's one action (Home's, and About's) */
+.hpanel.end .halso{margin:28px auto 0;color:#c6d6d6}
+.hpanel.end .halso .ul{color:#fff;text-decoration:underline;text-decoration-color:rgba(255,255,255,.45);text-underline-offset:3px}
+/* Dark header: the focus ring is paper white */
+.gnav :is(a,button):focus-visible{outline:2px solid #f4f6f9;outline-offset:2px}

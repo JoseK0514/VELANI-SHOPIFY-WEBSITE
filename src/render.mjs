@@ -33,8 +33,8 @@ function pageHero(page, { meta = '' } = {}) {
 const hb = (text, href, fill = false, attrs = '') => '<a class="hb' + (fill ? ' fill' : '') + '" href="' + e(href) + '"' + attrs + '>' + e(text) + icon('arrow-right') + '</a>';
 const tel = () => 'tel:+1' + company.phone.replace(/-/g, '');
 /* Support block beside forms. With a phone: the label, the number large, then hours and email. Without one (phone off since Nov 9): email takes the large line. */
-const MAIL_K = { 'Prefer to talk? Call us.': 'Prefer email? Write to us.', 'If you can’t work, call us.': 'If you can’t work, email us.',
-  '¿Prefieres hablar? Llámanos.': '¿Prefieres el correo? Escríbenos.', 'Si tu equipo no puede trabajar, llámanos.': 'Si tu equipo no puede trabajar, escríbenos.' };
+const MAIL_K = { 'Prefer to talk? Call us.': 'Prefer email? Write to us.', 'If you can’t work, call us.': 'If NEVORA is down and your team can’t clock in, email us.',
+  '¿Prefieres hablar? Llámanos.': '¿Prefieres el correo? Escríbenos.', 'Si tu equipo no puede trabajar, llámanos.': 'Si NEVORA no funciona y tu equipo no puede registrar su entrada, escríbenos.' };
 const callBlock = (label, hours) => company.phone
   ? '<div class="client-call fade"><p>' + e(label) + '</p><a class="client-tel" href="' + tel() + '">' + e(company.phone) + '</a><p>' + (hours ? e(hours) + '<br>' : '') + '<a href="mailto:' + company.email + '">' + company.email + '</a></p></div>'
   : '<div class="client-call fade"><p>' + e(MAIL_K[label] || label) + '</p><a class="client-tel client-mail" href="mailto:' + company.email + '">' + company.email + '</a>' + (hours ? '<p>' + e(hours) + '</p>' : '') + '</div>';
@@ -44,8 +44,8 @@ function panel(target, { id, cls = '', img, flip = false, kick, kickHtml, title,
   return '<section class="hpanel ' + cls + '" id="' + id + '" aria-labelledby="' + tid + '">' + photo + '<div class="hshade"></div><div class="hcopy">' + (kick || kickHtml ? '<p class="hkick">' + (kickHtml || e(kick)) + '</p>' : '') + '<' + tag + ' class="rise" id="' + tid + '">' + (html || e(title)) + '</' + tag + '>' + (text ? '<p class="fade">' + e(text) + '</p>' : '') + (acts ? '<div class="hacts fade">' + acts + '</div>' : '') + after + '</div>' + extra + '</section>';
 }
 /** The closing panel on every company page: the wordmark, client support and the two ways in. */
-function closing(target, { project = '/pages/contact', lang = 'en', support = hb(CHROME[lang].support, '/pages/help'), line = CHROME[lang].closingLine } = {}) {
-  return '<section class="hpanel end" id="velani" aria-label="Velani"><img class="hph flip" src="' + asset('night-ai-light.webp', target) + '" alt="" width="1920" height="1080" loading="lazy"><div class="hshade"></div><div class="hcopy"><p class="hwm">' + WORDMARK + '</p><p class="fade">' + e(line) + '</p><div class="hacts fade">' + (line === CHROME[lang].closingLine ? hb(CHROME[lang].trial, '/pages/contact?interest=nevora-demo', true) + hb(CHROME[lang].project, project) : hb(CHROME[lang].project, project, true) + support) + '</div></div></section>';
+function closing(target, { project = '/pages/contact', lang = 'en', support = hb(CHROME[lang].support, '/pages/help'), line = CHROME[lang].closingLine, also = null } = {}) {
+  return '<section class="hpanel end" id="velani" aria-label="Velani"><img class="hph flip" src="' + asset('night-ai-light.webp', target) + '" alt="" width="1920" height="1080" loading="lazy"><div class="hshade"></div><div class="hcopy"><p class="hwm">' + WORDMARK + '</p><p class="fade">' + e(line) + '</p><div class="hacts fade">' + (also ? hb(CHROME[lang].trial, '/pages/contact?interest=nevora-demo', true) : line === CHROME[lang].closingLine ? hb(CHROME[lang].trial, '/pages/contact?interest=nevora-demo', true) + hb(CHROME[lang].project, project) : hb(CHROME[lang].project, project, true) + support) + '</div>' + (also ? '<p class="hfact halso fade">' + e(also[0]) + ' <a class="ul" href="' + also[2] + '">' + e(also[1]) + '</a>.</p>' : '') + '</div></section>';
 }
 /** The end of a help or access page: one line and the next step for that task, in the site's link band (no product or project offer). */
 const helpEnd = (title, links) => '<section class="band help help-end" aria-labelledby="end-t"><div class="wrap band-in"><h2 class="t3" id="end-t">' + e(title) + '</h2><p class="band-links">' + links.map(([text, href, attrs = '']) => '<a class="more" href="' + e(href) + '"' + attrs + '><span>' + e(text) + '</span>' + icon('caret-right') + '</a>').join('') + '</p></div></section>';
@@ -367,6 +367,7 @@ const ABOUT = {
       ['Tool Box LLC', 'An equipment rental website with an online store, built in 2026.', 'See the project', '/pages/custom-development#web-applications', 'night-tb-home.webp', 'The Tool Box LLC website, built by Velani: equipment rental with job-site delivery and dates', false],
       ['Yavi Barber', 'A booking and rewards app, built in 2026.', 'See the project', '/pages/custom-development#booking', 'night-yavi-book.webp', 'Yavi Barber booking on a phone: the next open times and services with prices', true]],
     coT: 'The company', callK: 'Prefer to talk? Call us.',
+    endLine: 'Try NEVORA free for 30 days, and Jose from Velani sets it up with you.', also: ['We also build websites and apps for businesses.', 'See custom software', '/pages/custom-development'],
     facts: [['Founded in 2026', 'Velani is a brand of VELANI LLC.'], ['English and Spanish', 'We work, write and build in both languages.'], ['A reply within two business days', 'Client support answers ' + company.hours + '.']] },
   es: ABOUT_ES,
 };
@@ -377,7 +378,7 @@ function about(page, target, lang = 'en') {
   const built = '<section class="chap about-built" aria-labelledby="built-t"><div class="wrap"><h2 class="t2 rise" id="built-t">' + e(t.builtT) + '</h2><div class="built-row">' + t.built.map(item).join('') + '</div></div></section>';
   const call = callBlock(t.callK, '');
   const co = '<section class="chap days about-how" aria-labelledby="co-t"><div class="wrap days-grid"><div><h2 class="t2 rise" id="co-t">' + e(t.coT) + '</h2>' + call + '</div><div><ul class="days-list">' + t.facts.map(([k, x]) => '<li class="fade"><p class="days-k">' + e(k) + '</p><p>' + e(x) + '</p></li>').join('') + '</ul></div></div></section>';
-  return localize(hero + built + co + closing(target, { lang }), lang);
+  return localize(hero + built + co + closing(target, { lang, line: t.endLine, also: t.also }), lang);
 }
 function notFound() {
   return '<section class="phero"><div class="wrap"><h1 class="t1">We could not find that page.</h1><p class="lede">The link may be out of date, or the address may be misspelled.</p><div class="acts"><a class="hb fill" href="/">Go to the home page' + icon('arrow-right') + '</a><a class="hb" href="/pages/nevora">See NEVORA' + icon('arrow-right') + '</a></div></div></section>';

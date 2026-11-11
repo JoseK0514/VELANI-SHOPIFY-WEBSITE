@@ -25,3 +25,6 @@
 - Products page no longer says Rondo is "in development"; it says Rondo, the assistant for the Owner, is available. Confirm that is true in production.
 - The client request form (Help) and trial request keep the same field names, topics (client-work, client-help, nevora-demo) and preview/live switch; only velani.js presentation changed (success scroll, summary text, hidden second wording). Confirm the live contact form still posts after publish.
 - Products anchors kept: #nevora, #relay, #websites, #apps. Custom software dropped the in-page jump row; #web-applications, #online-stores, #booking, #business-systems, #how still exist.
+
+## Round 10
+- Items 3–5 + focus ring: support line now "If NEVORA is down and your team can’t clock in, email us." (ES equivalent) wherever the support block uses it; header button is the trial on every page (Custom software too, outline); About ends on the trial only with the quiet custom-software line; dark header focus ring is paper white.

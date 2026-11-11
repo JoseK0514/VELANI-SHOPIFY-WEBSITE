@@ -143,6 +143,7 @@ export const ABOUT_ES = { h1: 'Software para pequeños negocios.', text: 'Empeza
     ['Tool Box LLC', 'Un sitio web de alquiler de equipos con tienda en línea, creado en 2026.', 'Mira el proyecto', '/pages/custom-development#web-applications', 'night-tb-home.webp', 'El sitio web de Tool Box LLC, creado por Velani: alquiler de equipos con entrega en la obra y fechas', false],
     ['Yavi Barber', 'Una app de reservas y recompensas, creada en 2026.', 'Mira el proyecto', '/pages/custom-development#booking', 'night-yavi-book.webp', 'Reservas de Yavi Barber en un teléfono: los próximos horarios disponibles y los servicios con precios', true]],
   coT: 'La empresa', callK: '¿Prefieres hablar? Llámanos.',
+  endLine: 'Prueba NEVORA gratis por 30 días, y Jose, de Velani, lo configura contigo.', also: ['También creamos sitios web y apps para negocios.', 'Mira el software a la medida', '/pages/es-a-la-medida'],
   facts: [['Fundada en 2026', 'Velani es una marca de VELANI LLC.'], ['Inglés y español', 'Trabajamos, escribimos y creamos en los dos idiomas.'], ['Respuesta en dos días laborables', 'El soporte al cliente atiende de ' + HOURS_ES + '.']] };
 export const FAQ_ES = {
   h1: 'Pide ayuda a Velani.', text: 'Preguntas sobre un sitio web o una app que creamos, sobre NEVORA o sobre cómo trabajamos. Leemos el correo de ' + HOURS_ES + ', y respondemos en un plazo de dos días laborables.',
