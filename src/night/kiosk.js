@@ -5,7 +5,7 @@
  const $=id=>document.getElementById(id);
  // Spanish strings come from the NEVORA app's own time-clock copy where it has one ("Clock In" = "Marcar entrada",
  // "Clock In Recorded" = "Entrada registrada"). src/night.mjs reads this table to render the Spanish page's demo in Spanish.
- const ES={'Time clock':'Registro de tiempo','Enter your PIN':'Ingresa tu PIN','Clear':'Borrar','Continue':'Continuar','Your PIN is separate from your portal password.':'Tu PIN es distinto de tu contraseña del portal.','Clock-in recorded':'Entrada registrada','Recorded at':'Registrada el','This demo keeps nothing.':'Solo es una demostración. No se guarda nada.','Clock in again':'Marcar entrada de nuevo','Delete digit':'Borrar dígito','Tablet registered':'Tableta registrada','New York time · Main Street iPad':'Hora de Nueva York · iPad de Main Street'};
+ const ES={'Time clock':'Registro de tiempo','Enter your PIN':'Ingresa tu PIN','Clear':'Borrar todo','Request a free trial':'Pide la prueba gratis','Continue':'Continuar','Your PIN is separate from your portal password.':'Tu PIN es distinto de tu contraseña del portal.','Clock-in recorded':'Entrada registrada','Recorded at':'Registrada el','This demo keeps nothing.':'Solo es una demostración. No se guarda nada.','Clock in again':'Marcar entrada de nuevo','Delete digit':'Borrar dígito','Tablet registered':'Tableta registrada','New York time · Main Street iPad':'Hora de Nueva York · iPad de Main Street'};
  const dots=[...$('kio-dots').children],go=$('kio-go'),live=$('kio-live'),pinStep=$('kio-pin'),okStep=$('kio-ok'),lang=$('kio-lang'),langT=$('kio-lang-t');
  let es=false,pin='',last='';
  const loc=()=>es?'es-PR':'en-US';

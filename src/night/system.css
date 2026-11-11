@@ -96,7 +96,7 @@ body{font-size:1.0625rem;line-height:1.6}
 .cta-s{display:none}
 .gnav-menu{color:var(--ink)}
 /* The trial page itself needs no trial button */
-.ask-demo .gnav-cta{display:none}
+.ask-demo .gnav-cta,.ask-demo .gnav-in>.pill.gnav-cta,.ask-demo .gmenu .gmenu-trial{display:none}
 @media(max-width:1180px) and (min-width:1024px){.gnav-links a{padding:0 10px}.gnav-links a[aria-current]::after{left:10px;right:10px}.gnav-signin{padding:0 10px}}
 @media(max-width:1023px){
  .gnav-in{min-height:60px}
@@ -167,7 +167,7 @@ main>.hpanel:not(:first-child):not(.end) :focus-visible{outline-color:var(--teal
 .slab{border:1px solid transparent}
 .hwin,.slab.owner{background:#fff}
 .hduo .ph,.case-phones .shot.phone{background:#11201f;box-shadow:var(--e2)}
-.tiles>*,.tile,.cf-card,.setup-card,.pcard,.cal,.days .cal,.client-call,.help-card,.dir .tiles a{background:#fff;color:var(--ink);border-color:var(--rule);box-shadow:var(--e1);border-radius:var(--r2)}
+.tiles>*,.tile,.cf-card,.setup-card,.pcard,.cal,.days .cal,.help-card,.dir .tiles a{background:#fff;color:var(--ink);border-color:var(--rule);box-shadow:var(--e1);border-radius:var(--r2)}
 .price-bands li{background:#fff;box-shadow:inset 0 0 0 1px var(--rule);border-radius:var(--r2)}
 .price-bands li b,.price-bands b span{color:var(--ink)}
 .cal-g .c{background:var(--paper);color:var(--ink-2)}
@@ -254,3 +254,7 @@ a{text-underline-position:from-font}
 .ul,.foot-note a,.hpanel .hfact a{text-decoration-thickness:from-font;text-underline-offset:3px}
 .ff input,.ff select,.ff textarea{font-size:1rem}
 .gnav-links a,.gnav-signin,.gnav-cta,.foot-nav a{white-space:nowrap}
+/* Time clock demo: the success step offers the next step */
+.kio-next{display:inline-flex;align-items:center;gap:8px;min-height:44px;margin-top:8px;font-weight:600;color:var(--teal);text-decoration:none}
+.kio-next .icon{width:1em;height:1em;transition:transform .18s var(--out)}
+@media(hover:hover) and (pointer:fine){.kio-next:hover .icon{transform:translateX(3px)}}

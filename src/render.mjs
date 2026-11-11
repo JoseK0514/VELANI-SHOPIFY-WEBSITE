@@ -33,8 +33,8 @@ function pageHero(page, { meta = '' } = {}) {
 const hb = (text, href, fill = false, attrs = '') => '<a class="hb' + (fill ? ' fill' : '') + '" href="' + e(href) + '"' + attrs + '>' + e(text) + icon('arrow-right') + '</a>';
 const tel = () => 'tel:+1' + company.phone.replace(/-/g, '');
 /* Support block beside forms. With a phone: the label, the number large, then hours and email. Without one (phone off since Nov 9): email takes the large line. */
-const MAIL_K = { 'Prefer to talk? Call us.': 'Prefer email? Write to us.', 'If you can’t work, call us.': 'If you can’t work, email us.',
-  '¿Prefieres hablar? Llámanos.': '¿Prefieres el correo? Escríbenos.', 'Si tu equipo no puede trabajar, llámanos.': 'Si tu equipo no puede trabajar, escríbenos.' };
+const MAIL_K = { 'Prefer to talk? Call us.': 'Prefer email? Write to us.', 'If you can’t work, call us.': 'If NEVORA is down and your team can’t clock in, email us.',
+  '¿Prefieres hablar? Llámanos.': '¿Prefieres el correo? Escríbenos.', 'Si tu equipo no puede trabajar, llámanos.': 'Si NEVORA no funciona y tu equipo no puede marcar, escríbenos.' };
 const callBlock = (label, hours) => company.phone
   ? '<div class="client-call fade"><p>' + e(label) + '</p><a class="client-tel" href="' + tel() + '">' + e(company.phone) + '</a><p>' + (hours ? e(hours) + '<br>' : '') + '<a href="mailto:' + company.email + '">' + company.email + '</a></p></div>'
   : '<div class="client-call fade"><p>' + e(MAIL_K[label] || label) + '</p><a class="client-tel client-mail" href="mailto:' + company.email + '">' + company.email + '</a>' + (hours ? '<p>' + e(hours) + '</p>' : '') + '</div>';
@@ -44,8 +44,9 @@ function panel(target, { id, cls = '', img, flip = false, kick, kickHtml, title,
   return '<section class="hpanel ' + cls + '" id="' + id + '" aria-labelledby="' + tid + '">' + photo + '<div class="hshade"></div><div class="hcopy">' + (kick || kickHtml ? '<p class="hkick">' + (kickHtml || e(kick)) + '</p>' : '') + '<' + tag + ' class="rise" id="' + tid + '">' + (html || e(title)) + '</' + tag + '>' + (text ? '<p class="fade">' + e(text) + '</p>' : '') + (acts ? '<div class="hacts fade">' + acts + '</div>' : '') + after + '</div>' + extra + '</section>';
 }
 /** The closing panel on every company page: the wordmark, client support and the two ways in. */
-function closing(target, { project = '/pages/contact', lang = 'en', support = hb(CHROME[lang].support, '/pages/help'), line = CHROME[lang].closingLine } = {}) {
-  return '<section class="hpanel end" id="velani" aria-label="Velani"><img class="hph flip" src="' + asset('night-ai-light.webp', target) + '" alt="" width="1920" height="1080" loading="lazy"><div class="hshade"></div><div class="hcopy"><p class="hwm">' + WORDMARK + '</p><p class="fade">' + e(line) + '</p><div class="hacts fade">' + (line === CHROME[lang].closingLine ? hb(CHROME[lang].trial, '/pages/contact?interest=nevora-demo', true) + hb(CHROME[lang].project, project) : hb(CHROME[lang].project, project, true) + support) + '</div></div></section>';
+function closing(target, { project = '/pages/contact', lang = 'en', support = hb(CHROME[lang].support, '/pages/help'), line = CHROME[lang].closingLine, title = '', trial = false } = {}) {
+  const acts = trial ? hb(CHROME[lang].trial, '/pages/contact?interest=nevora-demo', true) + support : line === CHROME[lang].closingLine ? hb(CHROME[lang].trial, '/pages/contact?interest=nevora-demo', true) + hb(CHROME[lang].project, project) : hb(CHROME[lang].project, project, true) + support;
+  return '<section class="hpanel end" id="velani" aria-label="Velani"><img class="hph flip" src="' + asset('night-ai-light.webp', target) + '" alt="" width="1920" height="1080" loading="lazy"><div class="hshade"></div><div class="hcopy"><p class="hwm">' + WORDMARK + '</p>' + (title ? '<h2 class="rise">' + e(title) + '</h2>' : '') + '<p class="fade">' + e(line) + '</p><div class="hacts fade">' + acts + '</div></div></section>';
 }
 /** The end of a help or access page: one line and the next step for that task, in the site's link band (no product or project offer). */
 const helpEnd = (title, links) => '<section class="band help help-end" aria-labelledby="end-t"><div class="wrap band-in"><h2 class="t3" id="end-t">' + e(title) + '</h2><p class="band-links">' + links.map(([text, href, attrs = '']) => '<a class="more" href="' + e(href) + '"' + attrs + '><span>' + e(text) + '</span>' + icon('caret-right') + '</a>').join('') + '</p></div></section>';
@@ -78,7 +79,7 @@ function services_(page, target, lang = 'en') {
 }
 /** The contact page's words (Spanish in src/content.es.mjs). Topic values never change, so the email Velani receives is the same. */
 const CONTACT = {
-  en: { kicker: ['NEVORA for your team', 'Free 30-day NEVORA trial', 'NEVORA Relay'], h1: ['Set up NEVORA for a larger team.', 'Request your free NEVORA trial.', 'Join the NEVORA Relay waitlist.'], fact: ['A website, an app, NEVORA or something else. We reply by email within two business days.', 'For teams of more than 30 employees. We check what you need and set up your workplace with you. Teams that qualify get the same 30 days free. We reply within two business days.', 'Tell us about your team. We reply within two business days and set up your workplace with you. Your 30 free days start the day it’s ready, and you don’t need a card.', 'NEVORA Relay is in design, with no dates yet. We’ll email you when early access opens.'],
+  en: { kicker: ['NEVORA for your team', 'Free 30-day NEVORA trial', 'NEVORA Relay'], h1: ['Set up NEVORA for a larger team.', 'Request your free NEVORA trial.', 'Join the NEVORA Relay waitlist.'], fact: ['A website, an app, NEVORA or something else. We reply by email within two business days.', 'For teams of more than 30 employees. We check what you need and set up your workplace with you. Teams that qualify get the same 30 days free. We reply within two business days.', 'Tell us about your team. Jose from Velani replies within two business days and sets up your workplace with you. Your 30 free days start the day it’s ready, and you don’t need a card.', 'NEVORA Relay is in design, with no dates yet. We’ll email you when early access opens.'],
     callK: 'Prefer to talk? Call us.', topicQ: 'What is it about?', preview: 'Preview. This form checks your draft and sends nothing.',
     tiles: [['custom-software', 'Web or app'], ['nevora', 'NEVORA'], ['other', 'Other']],
     previewNote: 'Website preview&nbsp;· checks your draft, sends nothing', noscript: 'The preview form needs JavaScript. No messages are sent from this preview.', legend: 'Inquiry',
@@ -218,7 +219,7 @@ const PLANS = {
     bands: [['$19', 'a month', 'Up to 15 employees'], ['$29', 'a month', '16 to 30 employees']], bandsLabel: 'Prices',
     billingHelp: ['Already on NEVORA? The business Owner opens billing from NEVORA, in Settings. ', 'Billing help'],
     daysT: 'Your 30 days', calLabel: 'An example trial on a calendar',
-    steps: [['Day 1', 'Your workplace is ready. You invite your team, and each person gets a PIN for the time clock tablet.'], ['First week', 'You publish the schedule. Your team sees their shifts on their phones, swaps shifts and asks for time off, in English or Spanish.'], ['Second week', 'You approve timecards. NEVORA calculates payroll from the approved hours and makes a pay statement for each employee.'], ['Day 30', 'Subscribe to keep going. Subscribe on any day before and you still get all 30 days free.']],
+    steps: [['Day 1', 'Your workplace is ready. You invite your team, and each person gets a PIN for the time clock tablet.'], ['First week', 'You publish the schedule. Your team sees their shifts on their phones, swaps shifts and asks for time off, in English or Spanish.'], ['Second week', 'You approve timecards. NEVORA calculates payroll from the approved hours and makes a pay statement for each employee.'], ['Day 30', 'On day 30, the Owner picks a plan in NEVORA. Nothing is charged until you do.']],
     fine: 'NEVORA calculates pay statements. It does not pay employees or file payroll taxes.',
     shotAlt: 'NEVORA schedule for the week: eight people, their shifts each day and the week published', shotCap: 'Carmen’s week at Northside Coffee, a sample workplace: eight people and every shift published.',
     priceT: 'After 30 days, one monthly price',
@@ -226,7 +227,7 @@ const PLANS = {
     card: { q: 'Your team', unit: 'employees', per: 'a month', small: '1 to 15 · $19', team: '16 to 30 · $29', less: 'One fewer employee', more: 'One more employee', note: 'Billed monthly, per business.', valueText: (n, p) => n + ' employees, ' + p + ' a month' },
     terms: 'Prices are in US dollars and may change before online billing opens. Cancel any time and NEVORA keeps working through the month you paid for. If you don’t subscribe after the trial, NEVORA pauses for your team; the Owner can still open billing and export available payroll records.',
     over: ['More than 30 employees? ', 'Write to us for assisted setup', '. We reply within two business days.'],
-    closing: 'Websites and custom apps get a fixed written quote for each project.', project: 'Start a project', custom: 'See custom software' },
+    closing: 'Jose from Velani sets up your workplace with you. Free for 30 days, no card needed.', closingT: 'Ready to try NEVORA?', how: 'See how NEVORA works', project: 'Start a project', custom: 'See custom software' },
   es: PLANS_ES,
 };
 /** Plans (Nov 8, 2026: self-service subscriptions). The trial in the first screen with today's real end date, the 30 days as a
@@ -251,7 +252,7 @@ function plans(page, target, lang = 'en') {
     + '<p class="pc-note" data-note>' + e(t.card.note) + '</p></div>';
   const price = '<section class="chap day30" id="price" aria-labelledby="price-t"><div class="wrap days-grid price-grid"><div><h2 class="t2 rise" id="price-t">' + e(t.priceT) + '</h2><p class="price-mine" data-price-mine hidden></p><ul class="price-bands fade" aria-label="' + e(t.bandsLabel) + '">' + t.bands.map(([amt, per, who]) => '<li><b>' + e(amt) + ' <span>' + e(per) + '</span></b><span>' + e(who) + '</span></li>').join('') + '</ul><p class="price-inc fade">' + e(t.includes) + '</p>' + '<p class="days-fine">' + e(t.terms) + '</p><div class="hacts day-acts fade">' + trial + quote + '</div><p class="price-help">' + e(t.billingHelp[0]) + '<a href="/pages/nevora-billing">' + e(t.billingHelp[1]) + '</a></p></div>' + card + '</div></section>';
   const commerce = commerceBlock(target) + '<script type="module" src="' + asset('velani-commerce.js', target) + '"></script>';
-  return hero + price + days + shot + closing(target, { lang, line: t.closing, project: '/pages/contact?interest=custom-software', support: hb(t.custom, '/pages/custom-development') }) + commerce + '\n' + (lang === 'es' ? WORK_ES.zoom || [] : []).reduce((z, [a, b]) => z.split(a).join(b), zoomScript(target));
+  return hero + price + days + shot + closing(target, { lang, line: t.closing, title: t.closingT, trial: true, support: hb(t.how, '/pages/nevora') }) + commerce + '\n' + (lang === 'es' ? WORK_ES.zoom || [] : []).reduce((z, [a, b]) => z.split(a).join(b), zoomScript(target));
 }
 /** The signup and billing pages share one frame: the page's panel with its title and one line, then the step's own card
  * (velani-commerce.js fills it). Without a configured API the card says online signup and billing aren't open yet. */

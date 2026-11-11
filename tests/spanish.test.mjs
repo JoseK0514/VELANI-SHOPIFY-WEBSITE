@@ -122,8 +122,8 @@ test('the main-theme layout renders Spanish pages in Spanish with es_US metadata
   assert.match(html, /<meta property="og:locale" content="es_US"><meta property="og:locale:alternate" content="en_US">/);
   assert.match(html, /<link rel="canonical" href="https:\/\/www\.thevelani\.com\/pages\/es-nevora">/);
   assert.match(html, /<a class="skip" href="#main">Saltar al contenido<\/a>/);
-  assert.match(html, /<header class="gnav static" id="gnav">/);
-  assert.match(html, /<button class="gnav-ddbtn txt" type="button" aria-expanded="false" aria-controls="gnav-dd-nevora" data-cur>NEVORA/);
+  assert.match(html, /<header class="gnav" id="gnav">/);
+  assert.match(html, /<a href="[^"]*nevora[^"]*" aria-current="page">NEVORA<\/a>/);
   assert.match(html, /<a class="gnav-signin" href="\/pages\/es-entrar">Entrar<\/a>/);
   assert.match(html, /<a href="\/pages\/nevora" hreflang="en" lang="en" aria-label="English">EN<\/a>/);
   assert.match(html, /<a href="\/pages\/es-nevora" hreflang="es" lang="es" aria-label="Español" aria-current="true">ES<\/a>/);
@@ -172,4 +172,16 @@ test('while online signup is closed, the old trial page sends visitors to the tr
   const draft = await liquid.parseAndRender(en, { ...closed, theme: { role: 'unpublished', id: 77 } });
   assert.match(draft, /location\.replace\("\/\?preview_theme_id=77&view=velani-contact&interest=nevora-demo"\)/, 'a draft stays in the draft');
   assert.match(await liquid.parseAndRender(en, closed), /<a class="hb fill" href="\/pages\/contact\?interest=nevora-demo">/, 'the page still offers the request button without a script');
+});
+
+test('Phase 1: every page has the same header with the trial button, and every trial button says the same thing', async () => {
+  for (const path of ['/', '/pages/nevora', '/pages/plans', '/pages/custom-development', '/pages/about', '/pages/help', '/pages/sign-in', '/pages/es', '/pages/es-nevora', '/pages/es-planes']) {
+    const { html } = renderPage(path);
+    const es = path.startsWith('/pages/es');
+    assert.match(html, /<header class="gnav" id="gnav">/, path);
+    assert.match(html, new RegExp('class="pill gnav-cta" href="[^"]*interest=nevora-demo"><span class="cta-l">' + (es ? 'Pide la prueba gratis' : 'Request a free trial') + '</span><span class="cta-s">' + (es ? 'Prueba gratis' : 'Free trial') + '</span>'), path);
+    assert.match(html, /<a class="pill gmenu-trial"/, path + ': the phone menu opens with the trial');
+    assert.doesNotMatch(html, /Request (your )?free (NEVORA )?trial|Request a free NEVORA trial|Start free trial|Pide la prueba gratis de NEVORA/, path + ': one trial label');
+    assert.match(html, /velani-system\.css/, path + ': the system stylesheet loads on every page');
+  }
 });

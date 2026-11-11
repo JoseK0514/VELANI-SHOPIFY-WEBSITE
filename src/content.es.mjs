@@ -36,8 +36,8 @@ const es = (en, fields) => ({ lang: 'es', en, sections: [], ...fields });
 export const ES_ROUTES = {
   '/pages/es': es('/', {
     kind: 'home', title: 'Tu equipo, del primer turno al día de pago.', eyebrow: 'Velani',
-    name: 'NEVORA de Velani · Horarios, registro de tiempo y cálculo de nómina',
-    intro: 'NEVORA organiza los turnos de tu equipo, registra sus horas y calcula su pago. Gratis por 30 días, y Velani lo configura contigo. Velani también crea sitios web y apps para negocios.',
+    name: 'NEVORA · Horarios, registro de tiempo y cálculo de nómina',
+    intro: 'NEVORA organiza los turnos, registra las horas y calcula el pago de tu equipo. Gratis por 30 días, y Velani lo configura contigo.',
     og: ['velani-social.png', 'Velani. Más luz para tu trabajo.'],
   }),
   '/pages/es-nevora': es('/pages/nevora', {
@@ -84,7 +84,7 @@ ES_ROUTES['/pages/es-ayuda'] = es('/pages/help', {
     { heading: '¿Una consulta inicia un contrato?', text: 'No. Una consulta inicia una conversación. No compra un producto ni da inicio a trabajo pagado.' },
     { heading: '¿Dónde envío información confidencial?', text: 'No envíes contraseñas, claves de API, datos de pago ni registros confidenciales por un formulario público o por correo normal. Primero pide un canal adecuado.' },
     { heading: '¿Cómo contacto al soporte al cliente?', text: 'El soporte al cliente responde de ' + HOURS_ES + '. Escribe a support@thevelani.com o usa la página de contacto.' },
-    { heading: '¿Cómo funciona la prueba gratis de NEVORA?', text: 'Un negocio con hasta 30 empleados puede usar NEVORA gratis por 30 días desde el día en que su lugar de trabajo queda configurado. No se necesita tarjeta y no se cobra nada. El día 30 te suscribes o NEVORA queda en pausa para tu equipo. El dueño todavía puede abrir la facturación y exportar los registros de nómina disponibles, y los empleados todavía pueden ver sus propios comprobantes de nómina. Terminar la prueba no inicia ninguna eliminación automática. Para cerrar un lugar de trabajo o preguntar por sus registros, escribe a support@thevelani.com. Un equipo de más de 30 nos escribe primero: revisamos si califica y te damos una cotización, y los equipos aprobados reciben los mismos 30 días gratis. NEVORA calcula los comprobantes de nómina; no les paga a los empleados ni presenta impuestos de nómina.' },
+    { heading: '¿Cómo funciona la prueba gratis de NEVORA?', text: 'Un negocio con hasta 30 empleados puede usar NEVORA gratis por 30 días desde el día en que su lugar de trabajo queda configurado. No se necesita tarjeta y no se cobra nada. El día 30, el dueño elige un plan en NEVORA. No se cobra nada hasta que lo hagas; sin un plan, NEVORA queda en pausa para tu equipo. El dueño todavía puede abrir la facturación y exportar los registros de nómina disponibles, y los empleados todavía pueden ver sus propios comprobantes de nómina. Terminar la prueba no inicia ninguna eliminación automática. Para cerrar un lugar de trabajo o preguntar por sus registros, escribe a support@thevelani.com. Un equipo de más de 30 nos escribe primero: revisamos si califica y te damos una cotización, y los equipos aprobados reciben los mismos 30 días gratis. NEVORA calcula los comprobantes de nómina; no les paga a los empleados ni presenta impuestos de nómina.' },
   ],
 });
 
@@ -215,7 +215,7 @@ export const SIGNIN_ES = {
 export const CONTACT_ES = {
   kicker: ['NEVORA para tu equipo', 'Prueba gratis de NEVORA por 30 días', 'NEVORA Relay'],
   h1: ['Configura NEVORA para un equipo grande.', 'Pide tu prueba gratis de NEVORA.', 'Únete a la lista de NEVORA Relay.'],
-  fact: ['Un sitio web, una app, NEVORA u otra cosa. Te respondemos por correo en un plazo de dos días laborables.', 'Para equipos de más de 30 empleados. Revisamos lo que necesitas y configuramos tu lugar de trabajo contigo. Los equipos que califican reciben los mismos 30 días gratis. Respondemos en un plazo de dos días laborables.', 'Cuéntanos sobre tu equipo. Te respondemos en un plazo de dos días laborables y configuramos tu lugar de trabajo contigo. Tus 30 días gratis empiezan el día en que queda listo, y no necesitas tarjeta.', 'NEVORA Relay está en diseño y aún no tiene fechas. Te escribiremos cuando abra el acceso anticipado.'],
+  fact: ['Un sitio web, una app, NEVORA u otra cosa. Te respondemos por correo en un plazo de dos días laborables.', 'Para equipos de más de 30 empleados. Revisamos lo que necesitas y configuramos tu lugar de trabajo contigo. Los equipos que califican reciben los mismos 30 días gratis. Respondemos en un plazo de dos días laborables.', 'Cuéntanos sobre tu equipo. Jose, de Velani, te responde en un plazo de dos días laborables y configura tu lugar de trabajo contigo. Tus 30 días gratis empiezan el día en que queda listo, y no necesitas tarjeta.', 'NEVORA Relay está en diseño y aún no tiene fechas. Te escribiremos cuando abra el acceso anticipado.'],
   callK: '¿Prefieres hablar? Llámanos.', topicQ: '¿Sobre qué es?', preview: 'Vista previa. Este formulario revisa tu borrador y no envía nada.',
   tiles: [['custom-software', 'Web o app'], ['nevora', 'NEVORA'], ['other', 'Otra cosa']],
   previewNote: 'Vista previa del sitio web&nbsp;· revisa tu borrador, no envía nada',
@@ -227,7 +227,7 @@ export const CONTACT_ES = {
   message: 'Qué necesita funcionar mejor', messageOptional: 'Algo más',
   send: ['Enviar consulta', 'Pedir configuración asistida', 'Enviar solicitud de prueba', 'Unirme a la lista'], check: 'Revisar el borrador',
   sendNote: 'No envíes contraseñas ni datos de pago.', privacy: 'Aviso de privacidad ' + IN_ENGLISH,
-  fine: 'El día 30 te suscribes o NEVORA queda en pausa para tu equipo. El dueño todavía puede abrir la facturación y exportar los registros de nómina disponibles, y los empleados todavía pueden ver sus propios comprobantes de nómina. Terminar la prueba no inicia ninguna eliminación automática. Para cerrar un lugar de trabajo o preguntar por sus registros, escribe a support@thevelani.com. NEVORA calcula los comprobantes de nómina; no les paga a los empleados ni presenta impuestos de nómina.',
+  fine: 'El día 30, el dueño elige un plan en NEVORA. No se cobra nada hasta que lo hagas; sin un plan, NEVORA queda en pausa para tu equipo. El dueño todavía puede abrir la facturación y exportar los registros de nómina disponibles, y los empleados todavía pueden ver sus propios comprobantes de nómina. Terminar la prueba no inicia ninguna eliminación automática. Para cerrar un lugar de trabajo o preguntar por sus registros, escribe a support@thevelani.com. NEVORA calcula los comprobantes de nómina; no les paga a los empleados ni presenta impuestos de nómina.',
   sentPreview: 'Vista previa del sitio web&nbsp;· esto es lo que ven los visitantes después de enviar. No se envió nada.',
   sentH: 'Mensaje enviado.', sentP: 'Gracias por escribirnos. Te respondemos por correo en un plazo de dos días laborables.',
   sentFrom: ['Las respuestas llegan desde ', '. Si no ves nuestra respuesta en tu bandeja de entrada, revisa la carpeta de spam o de correo no deseado.'], back: 'Volver al inicio',
@@ -242,7 +242,7 @@ export const PLANS_ES = {
   bands: [['$19', 'al mes', 'Hasta 15 empleados'], ['$29', 'al mes', 'De 16 a 30 empleados']], bandsLabel: 'Precios',
   billingHelp: ['¿Ya usas NEVORA? El dueño del negocio abre la facturación desde NEVORA, en Configuración. ', 'Ayuda con la facturación'],
   daysT: 'Tus 30 días', calLabel: 'Una prueba de ejemplo en un calendario',
-  steps: [['Día 1', 'Tu lugar de trabajo está listo. Invitas a tu equipo y cada persona recibe un PIN para la tableta del registro de tiempo.'], ['Primera semana', 'Publicas el horario. Tu equipo ve sus turnos en el teléfono, cambia turnos y pide tiempo libre, en inglés o en español.'], ['Segunda semana', 'Apruebas las tarjetas de tiempo. NEVORA calcula la nómina a partir de las horas aprobadas y prepara un comprobante para cada empleado.'], ['Día 30', 'Suscríbete para seguir. Si te suscribes antes, igual tienes los 30 días gratis.']],
+  steps: [['Día 1', 'Tu lugar de trabajo está listo. Invitas a tu equipo y cada persona recibe un PIN para la tableta del registro de tiempo.'], ['Primera semana', 'Publicas el horario. Tu equipo ve sus turnos en el teléfono, cambia turnos y pide tiempo libre, en inglés o en español.'], ['Segunda semana', 'Apruebas las tarjetas de tiempo. NEVORA calcula la nómina a partir de las horas aprobadas y prepara un comprobante para cada empleado.'], ['Día 30', 'El día 30, el dueño elige un plan en NEVORA. No se cobra nada hasta que lo hagas.']],
   fine: 'NEVORA calcula los comprobantes de nómina. No les paga a los empleados ni presenta impuestos de nómina.',
   shotAlt: 'Horario de NEVORA para la semana: ocho personas, sus turnos de cada día y la semana publicada', shotCap: 'La semana de Carmen en Northside Coffee, un lugar de trabajo de ejemplo: ocho personas y todos los turnos publicados.',
   priceT: 'Después de 30 días, un precio mensual',
@@ -250,5 +250,5 @@ export const PLANS_ES = {
   card: { q: 'Tu equipo', unit: 'empleados', per: 'al mes', small: '1 a 15 · $19', team: '16 a 30 · $29', less: 'Un empleado menos', more: 'Un empleado más', note: 'Se cobra cada mes, por negocio.', valueText: (n, p) => n + ' empleados, ' + p + ' al mes' },
   terms: 'Los precios son en dólares estadounidenses y pueden cambiar antes de que abra la facturación en línea. Cancela cuando quieras y NEVORA sigue funcionando hasta el final del mes pagado. Si no te suscribes al terminar la prueba, NEVORA queda en pausa para tu equipo; el dueño todavía puede abrir la facturación y exportar los registros de nómina disponibles.',
   over: ['¿Más de 30 empleados? ', 'Escríbenos para una configuración asistida', '. Respondemos en un plazo de dos días laborables.'],
-  closing: 'Los sitios web y las apps a la medida reciben una cotización fija por escrito para cada proyecto.', project: 'Empieza un proyecto', custom: 'Mira el software a la medida',
+  closing: 'Jose, de Velani, configura tu lugar de trabajo contigo. Gratis por 30 días, sin tarjeta.', closingT: '¿Listo para probar NEVORA?', how: 'Mira cómo funciona NEVORA', project: 'Empieza un proyecto', custom: 'Mira el software a la medida',
 };

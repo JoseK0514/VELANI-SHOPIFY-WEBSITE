@@ -107,14 +107,26 @@ if (form && !justSent) {
       if (errors[key]) fields[key].setAttribute('aria-invalid', 'true'); else fields[key].removeAttribute('aria-invalid');
     }
   }
+  // Phase 1 (Nov 10): after a first try, each field clears its own error as soon as it is fixed, and the line above the button
+  // names the fields still to fix instead of reading like a failed send
+  let tried = false;
+  const es = /^es\b/i.test(document.documentElement.lang);
+  const labelOf = key => { const f = fields[key]; const l = f && form.querySelector('label[for="' + f.id + '"]'); return (l ? l.textContent : key).replace(/\s*[·•].*$/, '').trim(); };
+  const summary = errors => { const keys = Object.keys(errors).filter(k => fields[k]); const n = keys.length; if (!n) return ''; const list = keys.map(labelOf).join(', ');
+   return es ? (n === 1 ? '1 campo por revisar: ' : n + ' campos por revisar: ') + list + '.' : (n === 1 ? '1 field needs attention: ' : n + ' fields need attention: ') + list + '.'; };
+  const recheck = () => { if (!tried) return; const values = Object.fromEntries(Object.entries(fields).map(([key, input]) => [key, input?.value || ''])); const checked = validateInquiry(values); showErrors(checked.errors);
+   if (checked.valid) { if (status.dataset.state === 'invalid') { status.dataset.state = ''; status.textContent = ''; } } else { status.dataset.state = 'invalid'; status.textContent = summary(checked.errors); } };
+  for (const key of ['name', 'email', 'company', 'message', 'locations']) if (fields[key]) { fields[key].addEventListener('input', recheck); fields[key].addEventListener('blur', recheck); }
+  // The status line sits right above the send button, where the eye is when it fails
+  if (submitButton && status && submitButton.parentElement && !status.closest('.cform-done')) { const row = submitButton.closest('.ff-actions, .form-actions, .cform-send') || submitButton; row.parentElement.insertBefore(status, row); }
   form.addEventListener('submit', async event => {
     if (mode !== 'live') event.preventDefault();
     const values = Object.fromEntries(Object.entries(fields).map(([key, input]) => [key, input?.value || '']));
     const checked = validateInquiry(values);
     showErrors(checked.errors);
     if (!checked.valid) {
-      event.preventDefault();
-      status.dataset.state = 'invalid'; status.textContent = messages.invalid;
+      event.preventDefault(); tried = true;
+      status.dataset.state = 'invalid'; status.textContent = summary(checked.errors);
       fields[Object.keys(checked.errors)[0]]?.focus(); return;
     }
     if (mode === 'live') {
