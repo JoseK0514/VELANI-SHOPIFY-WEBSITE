@@ -18,6 +18,7 @@
     <div class="kio-step" id="kio-pin">
      <h3 class="kio-h" id="kio-pin-h" tabindex="-1" data-k-t="Enter your PIN">Enter your PIN</h3>
      <div class="kio-dots" id="kio-dots" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+     <p class="kio-err" id="kio-err" hidden data-k-t="PIN not recognized for this location. Try again or ask your manager.">PIN not recognized for this location. Try again or ask your manager.</p>
      <div class="kio-pad" role="group" aria-labelledby="kio-pin-h">
       <button type="button" data-d="1">1</button><button type="button" data-d="2">2</button><button type="button" data-d="3">3</button>
       <button type="button" data-d="4">4</button><button type="button" data-d="5">5</button><button type="button" data-d="6">6</button>
@@ -31,8 +32,8 @@
      <span class="kio-check">{{icon:check}}</span>
      <h3 class="kio-h" id="kio-ok-h" tabindex="-1" data-k-t="Clock-in recorded">Clock-in recorded</h3>
      <p class="kio-saved"><span data-k-t="Recorded at">Recorded at</span> <b id="kio-saved">Oct 27&nbsp;· 2:17 PM</b><span id="kio-dot">.</span></p>
-     <p class="kio-who" id="kio-who">Alexandra Rivera · Barista</p><p class="kio-demo" data-k-t="This demo keeps nothing.">This demo keeps nothing.</p><a class="kio-next" href="#approve" data-k-t="See her timecard">See her timecard</a>
-     <button type="button" class="kio-done" id="kio-done" data-k-t="Clock in again">Clock in again</button>
+     <p class="kio-who" id="kio-who">Alexandra Rivera · Barista</p><p class="kio-len" id="kio-len" hidden><span data-k-t="Shift length">Shift length</span> <b id="kio-len-v"></b></p><p class="kio-demo" data-k-t="This demo keeps nothing.">This demo keeps nothing.</p><a class="kio-next" href="#approve" data-k-t="See her timecard">See her timecard</a>
+     <button type="button" class="kio-done" id="kio-done" data-k-t="Done">Done</button>
     </div>
     <p class="sr" id="kio-live" aria-live="polite"></p>
    </div>

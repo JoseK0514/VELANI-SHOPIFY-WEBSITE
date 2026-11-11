@@ -1061,6 +1061,12 @@ button.hb:disabled{cursor:progress;opacity:.75}
 @media(min-width:601px) and (max-width:833px){.kio{max-width:560px}}
 @media(max-width:380px){.kio-ws{display:none}.kio-lang{padding:0 12px}}
 
+/* Unrecognized PIN and clock-out (Nov 10), per the Direction B round 2 mock */
+.kio-dots.err{box-shadow:inset 0 0 0 2px #b42318;background:#fdecea}
+.kio-dots.err i{box-shadow:inset 0 0 0 2px #e19a92}
+.kio-err{margin:-6px 0 14px;font-size:.9375rem;line-height:1.4;font-weight:500;color:#8f1c13;text-align:center}
+.kio-len{margin:6px 0 0;font-size:1rem;color:#3d5654}.kio-len b{font-weight:600;color:#0e2a2a;font-variant-numeric:tabular-nums}
+
 /* ---------- Rondo, Velani's AI adviser: a launcher pill and a chat panel on every page ---------- */
 .ast-root[hidden]{display:none}
 .ast-launch{position:fixed;right:20px;bottom:20px;z-index:80;display:inline-flex;align-items:center;gap:10px;min-height:48px;padding:0 18px 0 16px;border-radius:var(--r);background:var(--text);color:var(--bg);font-size:0.75rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;box-shadow:0 10px 30px -10px rgba(0,0,0,.8),0 0 0 1px rgba(255,255,255,.08);transition:transform .3s var(--out),background-color .3s}

@@ -104,17 +104,17 @@
   tabs=qa('[role=tab]'),panels=qa('[role=tabpanel]'),hrs=qa('[data-ph]'),pa=qa('[data-pp-amt]'),wkPay=q('[data-week-pay]'),wkH=q('[data-week-h]'),rondo=qa('[data-rondo]');
  let now=+D.now,timer=0,seen=true,paused=reduce,auto=!reduce,beat=0,tab=1,ask=0;const es=/^es\b/i.test(root.lang),binds=[...d.querySelectorAll('[data-b]')],asks=qa('[data-ask]'),rq=q('[data-rq]'),rsrc=q('[data-rsrc]');const END=16*60;
  const hm=m=>{const h=Math.floor(m/60)%12||12;return h+':'+String(m%60).padStart(2,'0')},full=m=>hm(m)+' '+(m<720?D.am:D.pm),dur=m=>Math.floor(m/60)+':'+String(m%60).padStart(2,'0'),fill=(t,o)=>t.replace(/\{(\w)\}/g,(_,k)=>o[k]),usd=v=>'$'+v.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});
- const worked=r=>r.dataset.state==='in'?Math.max(0,Math.min(now,+r.dataset.due+480)-r.dataset.in):0;
+ const worked=r=>r.dataset.state==='in'?Math.max(0,Math.min(r.dataset.out?+r.dataset.out:now,+r.dataset.due+480)-r.dataset.in):0;
  const clockIn=(row,at,byYou)=>{row.dataset.state='in';row.dataset.in=at;const st=row.querySelector('.day-st');
   if(!reduce){row.classList.remove('just');void row.offsetWidth;row.classList.add('just');st.classList.add('arrive')}
   if(byYou)say.textContent=fill(D.tSaid,{n:row.querySelector('b').textContent,t:full(at)});paint()};
  function paint(){face.textContent=hm(now);ampm.textContent=now<720?D.am:D.pm;let today=0,week=0,n=0,dueN=0;const notes=[],later=[],B={};
   rows.forEach((r,i)=>{const s=r.querySelector('[data-s]'),h=r.querySelector('[data-h]'),due=+r.dataset.due,st=r.dataset.state,name=r.querySelector('b').textContent,w=worked(r),wk=+r.dataset.week+w;today+=w;week+=wk;
-   if(st==='in'){n++;s.textContent=fill(D.tIn,{t:hm(+r.dataset.in)});h.textContent=dur(w);if(r.dataset.in-due>5)notes.push(fill(D.tRLatein,{n:name,t:hm(+r.dataset.in),m:r.dataset.in-due}))}
+   if(st==='in'){if(!r.dataset.out)n++;r.classList.toggle('out',!!r.dataset.out);s.textContent=r.dataset.out&&D.tOut?fill(D.tOut,{t:hm(+r.dataset.out)}):fill(D.tIn,{t:hm(+r.dataset.in)});h.textContent=dur(w);if(r.dataset.in-due>5)notes.push(fill(D.tRLatein,{n:name,t:hm(+r.dataset.in),m:r.dataset.in-due}))}
    else{h.textContent='';s.textContent=st==='late'?fill(D.tLate,{t:hm(due)}):fill(D.tStarts,{t:hm(due)});if(now>due+5)notes.push(fill(D.tRLate,{n:name,t:hm(due)}));else if(now<due)later.push(fill(D.tRLater,{n:name,t:hm(due)}))}
    if(now>=due)dueN++;
    if(hrs[i]){hrs[i].textContent=dur(wk);pa[i].textContent=usd(wk*rate/60)}B['t'+i]=dur(w);B['h'+i]=dur(wk);B['a'+i]=usd(wk*rate/60)});
-  const ar=rows[2],arW=worked(ar),jt=rows[3];Object.assign(B,{need:notes[0]||D.tNone,weekPay:usd(week*rate/60),weekH:dur(week),f3:jt.dataset.state==='in'?fill(D.tIn,{t:hm(+jt.dataset.in)}):fill(D.tLate,{t:hm(+jt.dataset.due)}),arWeek:dur(+ar.dataset.week+arW),arToday:dur(arW),arState:ar.dataset.state==='in'?fill(D.tPhIn,{t:full(+ar.dataset.in)}):D.tPhOut,brief:notes.concat(later,fill(D.tRSum,{c:n,s:dueN,p:usd(week*rate/60)})).join(' ')});
+  const ar=rows[2],arW=worked(ar),jt=rows[3];Object.assign(B,{need:notes[0]||D.tNone,needs:D.tNeeds1?fill(notes.length===1?D.tNeeds1:D.tNeedsN,{n:notes.length}):'',inN:D.tOf?fill(D.tOf,{c:n,s:dueN}):'',lateN:String(notes.length),weekPay:usd(week*rate/60),weekH:dur(week),f3:jt.dataset.state==='in'?fill(D.tIn,{t:hm(+jt.dataset.in)}):fill(D.tLate,{t:hm(+jt.dataset.due)}),arWeek:dur(+ar.dataset.week+arW),arToday:dur(arW),arState:ar.dataset.state==='in'?fill(D.tPhIn,{t:full(+ar.dataset.in)}):D.tPhOut,brief:notes.concat(later,fill(D.tRSum,{c:n,s:dueN,p:usd(week*rate/60)})).join(' ')});
   {const nm=r=>r.querySelector('b').textContent,list=a=>a.length>1?a.slice(0,-1).join(', ')+' '+D.tAnd+' '+a.at(-1):a[0],sun=rows.filter(r=>r.dataset.sun==='1'),off=rows.filter(r=>r.dataset.sun==='0'&&+r.dataset.sched<40),fullW=rows.filter(r=>r.dataset.sun==='0'&&+r.dataset.sched>=40);
    B.cov=fill(D.tCov,{w:list(sun.map(r=>{const st=+(r.dataset.sunt||r.dataset.due);return nm(r)+', '+hm(st)+(es?' a ':' to ')+hm(st+480)})),n:list(off.map(nm)),h:off.length?off[0].dataset.sched:''})+(fullW.length?' '+fill(D.tCovFull,{n:list(fullW.map(nm))}):'')}
   binds.forEach(e=>{const v=B[e.dataset.b];if(v===undefined)return;if(e.textContent!==v)e.textContent=v;if(e.dataset.b==='arState')e.classList.toggle('in',ar.dataset.state==='in')});
@@ -127,7 +127,7 @@
  const hands=()=>{auto=false};['pointerdown','keydown','focusin'].forEach(e=>day.addEventListener(e,hands,{passive:true}));
  pp.addEventListener('click',()=>setPaused(!paused));
  tabs.forEach((t,i)=>{t.addEventListener('click',()=>select(i));t.addEventListener('keydown',e=>{const k=e.key,to=k==='ArrowRight'?tab+1:k==='ArrowLeft'?tab-1:k==='Home'?0:k==='End'?tabs.length-1:null;if(to!==null){e.preventDefault();select(to,true)}})});
- window.NVWEEK={now:()=>now,clockIn:()=>{const r=rows[2];if(r.dataset.state!=='in')clockIn(r,now,true);return +r.dataset.in}};
+ window.NVWEEK={now:()=>now,isIn:()=>rows[2].dataset.state==='in'&&!rows[2].dataset.out,clockIn:()=>{const r=rows[2];if(r.dataset.out){delete r.dataset.out;paint();return now}if(r.dataset.state!=='in')clockIn(r,now,true);return +r.dataset.in},clockOut:()=>{const r=rows[2];r.dataset.out=now;paint();return{at:now,len:now-r.dataset.in}}};
  q('[data-clock]').addEventListener('click',e=>{const row=e.currentTarget.closest('.day-row');row.tabIndex=-1;clockIn(row,now,true);row.focus({preventScroll:true})});
  asks.forEach((b,i)=>b.addEventListener('click',()=>{ask=i;asks.forEach((x,k)=>x.setAttribute('aria-pressed',k===i));rq.textContent=b.textContent;rsrc.textContent=i?D.tSrc1:D.tSrc0;rondo.forEach((x,k)=>{x.classList.toggle('on',k===i);x.hidden=false;x.setAttribute('aria-hidden',k!==i)})}));
  const ok=d.querySelector('[data-approve]');
@@ -136,7 +136,7 @@
   d.querySelector('[data-cov-acts]').hidden=true;done.textContent=D.tApproved;done.tabIndex=-1;done.focus({preventScroll:true});paint()});
  const tcb=d.querySelector('[data-tc-approve]');if(tcb)tcb.addEventListener('click',()=>{const done=d.querySelector('[data-tc-done]');d.querySelector('[data-tc-acts]').hidden=true;d.querySelector('.tc-card').classList.add('ok');done.textContent=done.dataset.t;done.tabIndex=-1;done.focus({preventScroll:true})});
  d.addEventListener('visibilitychange',run);
- // On the NEVORA page the week keeps running while the visitor reads the sections that follow it
- if('IntersectionObserver' in window&&!d.getElementById('kio'))new IntersectionObserver(e=>{seen=e[0].isIntersecting;run()}).observe(day);
+ // The sample clock runs only while a live piece is on screen, on either page, and rests when none is
+ if('IntersectionObserver' in window){const live=new Set(),io=new IntersectionObserver(es=>{es.forEach(e=>live[e.isIntersecting?'add':'delete'](e.target));seen=live.size>0;run()});[day,...d.querySelectorAll('.hn-phone,.hn-cards,.rc-flow,#kio,.tc-card,.ps-card')].forEach(el=>io.observe(el))}
  rondo.forEach((x,k)=>{x.hidden=false;x.setAttribute('aria-hidden',k!==0)});select(1);setPaused(paused);paint();
 })();
