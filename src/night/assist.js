@@ -9,37 +9,37 @@ import { VelaniAssistant, safeSourceUrl } from './velani-assistant.js';
  const launch = $('ast-launch'), panel = $('ast'), body = $('ast-body'), intro = $('ast-intro'), log = $('ast-log'), form = $('ast-form'), input = $('ast-in'), send = $('ast-send');
  const status = $('ast-status'), statusT = $('ast-status-t'), retryBtn = $('ast-retry'), discardBtn = $('ast-discard'), contactLink = $('ast-contact'), verify = $('ast-verify'), confirm = $('ast-confirm'), clearBtn = $('ast-clear');
  const T = {
-  en: { launch: 'Ask Rondo', launchLabel: 'Ask Rondo on this site, Velani’s AI adviser', sub: ['On this site', ' · AI adviser for Velani and NEVORA'], hi: 'Hi, I’m {name}.', lede: 'I’m Velani’s AI adviser on this website. Ask me about NEVORA, the free trial, or the websites and apps we build.', scope: 'I can’t see employee accounts, and I can’t make changes, bookings or payments.',
-   ask: 'Ask Rondo a question', label: 'Your question for Rondo', send: 'Send', close: 'Close', del: 'Delete this conversation', lang: 'Language',
+  en: { launch: 'Ask Velani', launchLabel: 'Ask Velani, the AI assistant on this site', sub: ['On this site', ' · AI assistant for Velani and NEVORA'], hi: 'Hi, I’m {name}.', lede: 'I’m Velani’s AI assistant on this website. Ask me about NEVORA, the free trial, or the websites and apps we build.', scope: 'I can’t see employee accounts, and I can’t make changes, bookings or payments.',
+   ask: 'Ask Velani a question', label: 'Your question for Velani', send: 'Send', close: 'Close', del: 'Delete this conversation', lang: 'Language',
    confirm: 'Delete this conversation from our servers?', yes: 'Delete', keep: 'Keep',
    switchQ: 'Switch to Spanish? This conversation will be deleted and a new one started in Spanish.', switchYes: 'Switch', switchNo: 'Keep English', switched: 'New conversation in English.',
-   verify: 'Checking that your browser is not an automated program…', note: 'Rondo is an AI and can be wrong. Don’t share passwords, payment details or employee records. Conversations are kept for up to 30 days.', privacy: 'Privacy notice',
+   verify: 'Checking that your browser is not an automated program…', note: 'This assistant is an AI and can be wrong. Don’t share passwords, payment details or employee records. Conversations are kept for up to 30 days.', privacy: 'Privacy notice',
    retry: 'Retry', discard: 'Discard', edit: 'Edit question', contact: 'Contact page',
    sugg: ['How does the time clock work?', 'How does the free trial work?', 'Can you build our website or app?'],
    sources: 'Sources', newTab: '(opens in a new tab)', demo: 'Try the time clock', quote: 'Ask for a quote', support: 'NEVORA support', talk: 'Contact us',
    deleted: 'Conversation deleted. Inquiries sent through the contact form are kept separately.',
    ended: 'This conversation had already ended. It is removed from our servers within 30 days.',
    verifyFail: 'Verification couldn’t load.',
-   unavailable: 'Rondo isn’t available right now. Write to support@thevelani.com or use the contact page.',
+   unavailable: 'Velani isn’t available right now. Write to support@thevelani.com or use the contact page.',
    expired: 'This conversation expired. Your question is back in the box: send it to start a new conversation.',
-   thinking: 'Rondo is thinking…', slow: 'Still working. Answers can take up to 45 seconds.', verifying: 'Waiting for the verification below…', seconds: 's' },
-  es: { launch: 'Pregúntale a Rondo', launchLabel: 'Pregúntale a Rondo en este sitio, el asesor de IA de Velani', sub: ['En este sitio', ' · Asesor de IA de Velani y NEVORA'], hi: 'Hola, soy {name}.', lede: 'Soy el asesor de IA de Velani en este sitio web. Pregúntame sobre NEVORA, la prueba gratis o los sitios web y aplicaciones que desarrollamos.', scope: 'No puedo ver cuentas de empleados ni hacer cambios, reservas o pagos.',
-   ask: 'Escribe tu pregunta para Rondo', label: 'Tu pregunta para Rondo', send: 'Enviar', close: 'Cerrar', del: 'Eliminar esta conversación', lang: 'Idioma',
+   thinking: 'Velani is thinking…', slow: 'Still working. Answers can take up to 45 seconds.', verifying: 'Waiting for the verification below…', seconds: 's' },
+  es: { launch: 'Pregúntale a Velani', launchLabel: 'Pregúntale a Velani, el asistente de IA de este sitio', sub: ['En este sitio', ' · Asistente de IA de Velani y NEVORA'], hi: 'Hola, soy {name}.', lede: 'Soy el asesor de IA de Velani en este sitio web. Pregúntame sobre NEVORA, la prueba gratis o los sitios web y aplicaciones que desarrollamos.', scope: 'No puedo ver cuentas de empleados ni hacer cambios, reservas o pagos.',
+   ask: 'Escribe tu pregunta para Velani', label: 'Tu pregunta para Velani', send: 'Enviar', close: 'Cerrar', del: 'Eliminar esta conversación', lang: 'Idioma',
    confirm: '¿Eliminar esta conversación de nuestros servidores?', yes: 'Eliminar', keep: 'Conservar',
    switchQ: '¿Cambiar a inglés? Esta conversación se eliminará y empezará una nueva en inglés.', switchYes: 'Cambiar', switchNo: 'Seguir en español', switched: 'Nueva conversación en español.',
-   verify: 'Comprobando que tu navegador no es un programa automatizado…', note: 'Rondo es una IA y puede equivocarse. No compartas contraseñas, datos de pago ni registros de empleados. Las conversaciones se conservan hasta 30 días.', privacy: 'Aviso de privacidad (en inglés)',
+   verify: 'Comprobando que tu navegador no es un programa automatizado…', note: 'Este asistente es una IA y puede equivocarse. No compartas contraseñas, datos de pago ni registros de empleados. Las conversaciones se conservan hasta 30 días.', privacy: 'Aviso de privacidad (en inglés)',
    retry: 'Reintentar', discard: 'Descartar', edit: 'Editar pregunta', contact: 'Página de contacto',
    sugg: ['¿Cómo funciona el registro de tiempo?', '¿Cómo funciona la prueba gratis?', '¿Pueden crear nuestro sitio web o aplicación?'],
    sources: 'Fuentes', newTab: '(se abre en una pestaña nueva)', demo: 'Probar el registro de tiempo', quote: 'Pedir una cotización', support: 'Soporte de NEVORA', talk: 'Contáctanos',
    deleted: 'Conversación eliminada. Las consultas enviadas por el formulario de contacto se conservan por separado.',
    ended: 'Esta conversación ya había terminado. Se elimina de nuestros servidores en un plazo de 30 días.',
    verifyFail: 'No se pudo cargar la verificación.',
-   unavailable: 'Rondo no está disponible en este momento. Escribe a support@thevelani.com o usa la página de contacto.',
+   unavailable: 'Velani no está disponible en este momento. Escribe a support@thevelani.com o usa la página de contacto.',
    expired: 'Esta conversación caducó. Tu pregunta está de nuevo en el cuadro: envíala para empezar una conversación nueva.',
-   thinking: 'Rondo está pensando…', slow: 'Sigue trabajando. Las respuestas pueden tardar hasta 45 segundos.', verifying: 'Esperando la verificación de abajo…', seconds: 's' },
+   thinking: 'Velani está pensando…', slow: 'Sigue trabajando. Las respuestas pueden tardar hasta 45 segundos.', verifying: 'Esperando la verificación de abajo…', seconds: 's' },
  };
  let locale = /^es\b/i.test(document.documentElement.lang) ? 'es' : 'en', assistant = null, config = null, configPromise = null, configFailed = false;
- let activeWait = null, started = false, pending = null, countdown = 0, confirmMode = 'delete', switchTo = null, name = 'Rondo';
+ let activeWait = null, started = false, pending = null, countdown = 0, confirmMode = 'delete', switchTo = null, name = 'Velani';
  const t = key => { const v = T[locale][key]; return typeof v === 'string' ? v.replace('{name}', name) : v; };
  const small = matchMedia('(max-width:600px)'), coarse = matchMedia('(hover:none)');
 

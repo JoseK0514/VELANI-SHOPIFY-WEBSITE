@@ -65,7 +65,7 @@ const mainOf = src => between(src, '<main id="main">', '</main>').slice('<main i
 /** Inside <main> for Home, NEVORA and Products. The NEVORA local nav sits at the top of its section content. */
 export function homeMain(target, lang = 'en') { return localize(site(mainOf(SRC[lang].home), target, lang), lang); }
 // The global header is hidden on the NEVORA page, so its local nav carries the language switch (wide bar and narrow menu)
-export function nevoraMain(target, lang = 'en') { const src = SRC[lang].nevora; return localize(site(between(src, '<nav class="lnav"', '<main id="main">') + mainOf(src), target, lang).replace(/\{\{lang:([\w-]+)\}\}/g, (_, cls) => langSwitch(lang, { en: '/pages/nevora', es: '/pages/es-nevora' }, ' ' + cls)), lang); }
+export function nevoraMain(target, lang = 'en') { const src = SRC[lang].nevora; return localize(site(mainOf(src), target, lang).replace(/\{\{lang:([\w-]+)\}\}/g, (_, cls) => langSwitch(lang, { en: '/pages/nevora', es: '/pages/es-nevora' }, ' ' + cls)), lang); }
 export function productsMain(target, lang = 'en') { return localize(site(mainOf(SRC[lang].products), target, lang), lang); }
 
 /* Products: one header item with a short menu (NEVORA Workforce, Rondo, NEVORA Relay); the phone menu lists them under a Products label. */
@@ -81,7 +81,7 @@ const GROUPS = [
 const SIGN_IN = '/pages/sign-in';
 /** The words of the header, the phone menu and the language switch, per language (Spanish in src/content.es.mjs). */
 export const CHROME = {
-  en: { skip: 'Skip to content', home: 'Velani home', main: 'Main', mainMenu: 'Main menu', menu: 'Menu', products: 'Products', productsMenu: 'Products menu', productsList: PRODUCTS, nav: NAV, groups: GROUPS, signIn: 'Sign in', signInHref: SIGN_IN, rondoNevora: 'Rondo in NEVORA', rondoSoon: 'In development', relaySoon: 'Soon', contact: 'Contact', trial: 'Request a free trial', trialLong: 'Request a free NEVORA trial', project: 'Start a project', support: 'Client support', hours: company.hours, brandOf: 'Velani is a brand of ', langGroup: 'Language', closingLine: 'Try NEVORA free, or tell us what you want built.' },
+  en: { flat: [['NEVORA', '/pages/nevora', ['nevora', 'products']], ['Plans', '/pages/plans', ['plans']], ['Custom software', '/pages/custom-development', ['services', 'websites']], ['About', '/pages/about', ['about']]], menuMore: [['Support', '/pages/help'], ['Contact', '/pages/contact']], trialShort: 'Free trial', skip: 'Skip to content', home: 'Velani home', main: 'Main', mainMenu: 'Main menu', menu: 'Menu', products: 'Products', productsMenu: 'Products menu', productsList: PRODUCTS, nav: NAV, groups: GROUPS, signIn: 'Sign in', signInHref: SIGN_IN, rondoNevora: 'Rondo in NEVORA', rondoSoon: 'In development', relaySoon: 'Soon', contact: 'Contact', trial: 'Request a free trial', trialLong: 'Request a free NEVORA trial', project: 'Start a project', support: 'Client support', hours: company.hours, brandOf: 'Velani is a brand of ', langGroup: 'Language', closingLine: 'Try NEVORA free, or tell us what you want built.' },
   es: CHROME_ES,
 };
 /** In the Shopify layout the two destinations are computed once per page (main theme or draft), see renderShopifyLayout. */
@@ -109,12 +109,16 @@ export function header(current, target, { nevora = false, lang = 'en', hrefs = S
     : (keys.includes(current) ? ' data-cur' : '');
   const enOnly = href => lang === 'es' && !ES_PATHS[href.split(/[?#]/)[0]] ? ' hreflang="en"' : '';
   const plain = html => html.replace(/<[^>]+>/g, '');
-  const links = t.groups.map(([key, label, keys, items]) => `<li class="gnav-dd"><button class="gnav-ddbtn txt" type="button" aria-expanded="false" aria-controls="gnav-dd-${key}"${groupMark(keys)}>${label}${icon('caret-down')}</button><div class="gnav-ddmenu" id="gnav-dd-${key}"><ul aria-label="${plain(label)}">` + items.map(([name, href, note]) => `<li><a href="${href}"${enOnly(href)}><b>${name}</b><span>${note}</span></a></li>`).join('') + '</ul></div></li>').join('');
+  // Phase 1 (Nov 10): four flat links instead of three menus; the trial button stays in the header at every width
+  const flatMark = keys => target === 'shopify'
+    ? `{% if ${keys.map(k => `velani_nav == '${k}'`).join(' or ')} %} aria-current="page"{% endif %}`
+    : (keys.includes(current) ? ' aria-current="page"' : '');
+  const links = t.flat.map(([label, href, keys]) => `<li><a href="${href}"${enOnly(href)}${flatMark(keys)}>${label}</a></li>`).join('');
   const signIn = cls => `<a class="${cls}" href="${t.signInHref}"${enOnly(t.signInHref)}${mark('signin')}>${t.signIn}</a>`;
-  const menu = signIn('gmenu-signin') + t.groups.map(([, label, , items]) => `<p class="gmenu-k">${label}</p>` + items.map(([name, href]) => `<a class="gmenu-sub" href="${href}"${enOnly(href)}>${name}</a>`).join('')).join('');
-  const staticClass = target === 'shopify' ? `{% if velani_page == '${nevoraSlug}' %} static{% endif %}` : (nevora ? ' static' : '');
-  const cta = (cls, trial) => target === 'shopify' ? `{% if velani_nav == 'services' %}<a class="${cls}" href="/pages/contact?interest=custom-software">${t.project}</a>{% else %}<a class="${cls}" href="/pages/contact?interest=nevora-demo">${trial}</a>{% endif %}` : (current === 'services' ? `<a class="${cls}" href="/pages/contact?interest=custom-software">${t.project}</a>` : `<a class="${cls}" href="/pages/contact?interest=nevora-demo">${trial}</a>`);
-  const html = `<a class="skip" href="#main">${t.skip}</a><header class="gnav${staticClass}" id="gnav"><nav class="wrap gnav-in" aria-label="${t.main}"><a class="wordmark" href="/" aria-label="${t.home}">${WORDMARK}</a><ul class="gnav-links">${links}</ul>${langSwitch(lang, hrefs, ' gnav-lang')}${signIn('gnav-signin')}${cta('pill line', t.trial)}<button class="gnav-menu" id="gmenu-btn" type="button" aria-expanded="false" aria-controls="gmenu" aria-label="${t.menu}"><span class="i-open">${icon('list')}</span><span class="i-close" hidden>${icon('x')}</span></button></nav></header><div class="gmenu" id="gmenu" hidden><nav class="wrap" aria-label="${t.mainMenu}">${menu}${langSwitch(lang, hrefs, ' gmenu-lang')}${cta('pill', t.trialLong)}<small>${t.support} · <a href="mailto:${company.email}">${company.email}</a>${company.phone ? ` · <a href="tel:+1${company.phone.replace(/-/g, '')}">${company.phone}</a>` : ''} · ${t.hours}<br>${t.brandOf}${company.operator}.</small></nav></div>`;
+  const trialHref = '/pages/contact?interest=nevora-demo';
+  const cta = cls => `<a class="${cls}" href="${trialHref}"><span class="cta-l">${t.trial}</span><span class="cta-s">${t.trialShort}</span></a>`;
+  const menu = `<a class="pill gmenu-trial" href="${trialHref}">${t.trial}</a>` + t.flat.map(([label, href, keys]) => `<a class="gmenu-sub" href="${href}"${enOnly(href)}${flatMark(keys)}>${label}</a>`).join('') + t.menuMore.map(([label, href]) => `<a class="gmenu-sub" href="${href}"${enOnly(href)}>${label}</a>`).join('') + signIn('gmenu-sub gmenu-signin');
+  const html = `<a class="skip" href="#main">${t.skip}</a><header class="gnav" id="gnav"><nav class="wrap gnav-in" aria-label="${t.main}"><a class="wordmark" href="/" aria-label="${t.home}">${WORDMARK}</a><ul class="gnav-links">${links}</ul>${langSwitch(lang, hrefs, ' gnav-lang')}${signIn('gnav-signin')}${cta('pill gnav-cta')}<button class="gnav-menu" id="gmenu-btn" type="button" aria-expanded="false" aria-controls="gmenu" aria-label="${t.menu}"><span class="i-open">${icon('list')}</span><span class="i-close" hidden>${icon('x')}</span></button></nav></header><div class="gmenu" id="gmenu" hidden><nav class="wrap" aria-label="${t.mainMenu}">${menu}${langSwitch(lang, hrefs, ' gmenu-lang')}<small>${t.support} · <a href="mailto:${company.email}">${company.email}</a> · ${t.hours}<br>${t.brandOf}${company.operator}.</small></nav></div>`;
   return localize(html, lang);
 }
 export function footer(target, { lang = 'en', hrefs = SHOPIFY_LANG_HREFS } = {}) { return localize(site(read(lang === 'es' ? 'foot.es.html' : 'foot.html'), target).replace('{{lang}}', () => langSwitch(lang, hrefs, ' foot-lang')), lang); }
@@ -124,7 +128,7 @@ export function zoomScript(target) { return site(read('zoom.html'), target); }
 export function assistant(target, apiAttribute) { return site(read('assist.html'), target).replace('<div class="ast-root" id="ast-root" hidden>', '<div class="ast-root" id="ast-root" hidden data-api="' + apiAttribute + '">'); }
 
 export const nightAssets = {
-  css: { base: read('base.css'), home: read('home.css'), nevora: read('nevora.css'), pages: read('pages.css'), kiosk: read('kiosk.css'), assist: read('assist.css'), polish: read('polish.css') },
+  css: { base: read('base.css'), home: read('home.css'), nevora: read('nevora.css'), pages: read('pages.css'), kiosk: read('kiosk.css'), assist: read('assist.css'), polish: read('polish.css'), system: read('system.css') },
   js: { motion: read('motion.js'), nevora: read('nevora.js') + '\n' + read('kiosk.js'), assist: read('assist.js'), assistClient: read('velani-assistant.js'), commerce: read('commerce.js') },
 };
 
