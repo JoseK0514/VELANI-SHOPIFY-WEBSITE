@@ -173,3 +173,14 @@ test('while online signup is closed, the old trial page sends visitors to the tr
   assert.match(draft, /location\.replace\("\/\?preview_theme_id=77&view=velani-contact&interest=nevora-demo"\)/, 'a draft stays in the draft');
   assert.match(await liquid.parseAndRender(en, closed), /<a class="hb fill" href="\/pages\/contact\?interest=nevora-demo">/, 'the page still offers the request button without a script');
 });
+
+test('the home first screen carries the live sample day in both languages, with a pause control and a status region', async () => {
+  for (const [path, word] of [['/', 'Clock in'], ['/pages/es', 'Marcar entrada']]) {
+    const html = renderBody(path, { target: 'shopify' });
+    assert.match(html, /data-day data-now="478"/, path);
+    assert.match(html, new RegExp('data-clock[^>]*>' + word + '<'), path);
+    assert.match(html, /data-pp aria-label="[^"]+"/, path);
+    assert.match(html, /role="status" data-day-status/, path);
+    assert.equal((html.match(/class="hb fill"/g) || []).length >= 1, true);
+  }
+});

@@ -87,3 +87,36 @@
  cal.innerHTML='<p class="cal-h">'+head+'</p><div class="cal-g">'+wk.map(w=>'<span class="w">'+w+'</span>').join('')+cells+'</div><p class="cal-key">'+(es?'Ejemplo: un lugar de trabajo listo hoy. Tu día 1 es el día en que tu lugar de trabajo queda listo.':'Example: a workplace that’s ready today. Your day 1 is the day your workplace is ready.')+'</p>';
  cal.setAttribute('aria-label',cal.getAttribute('aria-label')+': '+long(d0)+' – '+long(d30));cal.hidden=false;
 })();
+/* Home first screen: the light that follows the pointer, and "A Saturday at Northside Coffee" (sample data, browser only). */
+(()=>{
+ const d=document,root=d.documentElement,hero=d.querySelector('.hpanel.sig');if(!hero)return;
+ const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches,fine=matchMedia('(hover: hover) and (pointer: fine)').matches;
+ // The launcher stays out of the first screen
+ if('IntersectionObserver' in window){root.classList.add('sig-top');new IntersectionObserver(e=>root.classList.toggle('sig-top',e[0].intersectionRatio>.35),{threshold:[0,.35,1]}).observe(hero)}
+ // Light: target from the pointer, eased with a slow lerp; runs only while it is still moving
+ const light=hero.querySelector('.hlight'),ph=hero.querySelector('.hph');
+ if(light&&fine&&!reduce){let tx=0,ty=0,x=0,y=0,raf=0;
+  const step=()=>{x+=(tx-x)*.045;y+=(ty-y)*.045;light.style.transform='translate3d('+(x*9).toFixed(2)+'vw,'+(y*7).toFixed(2)+'vh,0)';raf=Math.abs(tx-x)+Math.abs(ty-y)>.002?requestAnimationFrame(step):0};
+  hero.addEventListener('pointermove',e=>{const r=hero.getBoundingClientRect();tx=(e.clientX-r.left)/r.width*2-1;ty=(e.clientY-r.top)/r.height*2-1;if(!raf)raf=requestAnimationFrame(step)},{passive:true})}
+ // The day
+ const day=hero.querySelector('[data-day]');if(!day)return;
+ const D=day.dataset,rate=+D.rate,rows=[...day.querySelectorAll('.day-row')],face=day.querySelector('[data-clockface]'),ampm=day.querySelector('[data-ampm]'),pay=day.querySelector('[data-pay]'),on=day.querySelector('[data-on]'),say=day.querySelector('[data-day-status]'),pp=day.querySelector('[data-pp]');
+ let now=+D.now,timer=0,seen=true,paused=reduce;const END=16*60;
+ const hm=m=>{const h=Math.floor(m/60)%12||12;return h+':'+String(m%60).padStart(2,'0')},full=m=>hm(m)+' '+(m<720?D.am:D.pm),dur=m=>Math.floor(m/60)+':'+String(m%60).padStart(2,'0'),fill=(t,o)=>t.replace(/\{(\w)\}/g,(_,k)=>o[k]);
+ const clockIn=(row,at,byYou)=>{row.dataset.state='in';row.dataset.in=at;const st=row.querySelector('.day-st');
+  if(!reduce){row.classList.remove('just');void row.offsetWidth;row.classList.add('just');st.classList.add('arrive')}
+  if(byYou)say.textContent=fill(D.tSaid,{n:row.querySelector('b').textContent,t:full(at)});paint()};
+ function paint(){face.textContent=hm(now);ampm.textContent=now<720?D.am:D.pm;let mins=0,n=0;
+  rows.forEach(r=>{const s=r.querySelector('[data-s]'),h=r.querySelector('[data-h]'),due=+r.dataset.due,st=r.dataset.state;
+   if(st==='in'){const w=Math.max(0,Math.min(now,due+480)-r.dataset.in);mins+=w;n++;s.textContent=fill(D.tIn,{t:hm(+r.dataset.in)});h.textContent=dur(w)}
+   else{h.textContent='';s.textContent=st==='late'?fill(D.tLate,{t:hm(due)}):fill(D.tStarts,{t:hm(due)})}});
+  pay.textContent='$'+(mins*rate/60).toFixed(2);on.textContent=fill(D.tOn,{n:n})}
+ const tick=()=>{if(now>=END){stop();return}now++;rows.forEach(r=>{if(r.dataset.state!=='in'&&r.dataset.auto&&now>=+r.dataset.auto)clockIn(r,+r.dataset.auto)});paint()};
+ const stop=()=>{clearInterval(timer);timer=0},run=()=>{stop();if(!paused&&seen&&!d.hidden&&now<END)timer=setInterval(tick,1000)};
+ const setPaused=p=>{paused=p;day.toggleAttribute('data-paused',p);pp.setAttribute('aria-label',p?D.tPlay:D.tPause);run()};
+ pp.addEventListener('click',()=>setPaused(!paused));
+ day.querySelector('[data-clock]').addEventListener('click',e=>{const row=e.currentTarget.closest('.day-row');row.tabIndex=-1;clockIn(row,now,true);row.focus({preventScroll:true})});
+ d.addEventListener('visibilitychange',run);
+ if('IntersectionObserver' in window)new IntersectionObserver(e=>{seen=e[0].isIntersecting;run()}).observe(day);
+ setPaused(paused);paint();
+})();
