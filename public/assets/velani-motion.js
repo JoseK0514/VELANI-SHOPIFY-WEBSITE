@@ -140,3 +140,6 @@
  if('IntersectionObserver' in window){const live=new Set(),io=new IntersectionObserver(es=>{es.forEach(e=>live[e.isIntersecting?'add':'delete'](e.target));seen=live.size>0;run()});[day,...d.querySelectorAll('.hn-phone,.hn-cards,.rc-flow,#kio,.tc-card,.ps-card')].forEach(el=>io.observe(el))}
  rondo.forEach((x,k)=>{x.hidden=false;x.setAttribute('aria-hidden',k!==0)});select(1);setPaused(paused);paint();
 })();
+/* The chat launcher steps aside on phones while a form, a calendar, a table or a live piece is on screen (any page). */
+(()=>{const d=document,root=d.documentElement;if(!('IntersectionObserver' in window))return;const els=d.querySelectorAll('form.inquiry-form,.cal,.pcard,table,.day,.hn-phone,.hn-cards,.rc-flow,#kio,.ps-card');if(!els.length)return;
+ const on=new Set(),io=new IntersectionObserver(es=>{es.forEach(e=>on[e.isIntersecting?'add':'delete'](e.target));root.classList.toggle('quiet-chat',on.size>0)},{rootMargin:'0px 0px -8% 0px'});els.forEach(el=>io.observe(el))})();

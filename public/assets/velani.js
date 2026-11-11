@@ -99,6 +99,17 @@ if (form && !justSent) {
   const setBusy = busy => { submitButton.disabled = busy; form.setAttribute('aria-busy', String(busy)); };
   const messages = L.status;
   const controller = createInquiryController({ mode: 'preview', onState: state => { status.dataset.state = state.status; status.textContent = messages[state.status] || ''; setBusy(['checking', 'sending'].includes(state.status)); if (state.status === 'preview' && sent) { form.hidden = true; showSent(fields.interest?.value || '', true); } } });
+  // After the first submit attempt each field is checked again as it changes, so an error clears the moment it is fixed.
+  // The summary sits directly above the Send button and names the fields that still need attention.
+  let tried = false;
+  const isEs = /^es\b/i.test(document.documentElement.lang);
+  const labelOf = key => { const l = fields[key] && form.querySelector('label[for="' + fields[key].id + '"]'); if (!l) return key; const c = l.cloneNode(true); c.querySelectorAll('.opt,.v-n,.v-m,.v-r').forEach(n => { if (n.classList.contains('opt') || getComputedStyle(l.querySelector('.' + n.className.split(' ')[0]) || l).display === 'none') n.remove(); }); return c.textContent.replace(/\s+/g, ' ').trim(); };
+  const summarize = errors => { const keys = Object.keys(errors).filter(k => fields[k]); if (!keys.length) { status.textContent = ''; status.dataset.state = ''; status.setAttribute('role', 'status'); return; }
+    const names = keys.map(labelOf).join(', '); status.dataset.state = 'invalid'; status.setAttribute('role', 'alert');
+    status.textContent = isEs ? (keys.length === 1 ? '1 campo necesita atención: ' : keys.length + ' campos necesitan atención: ') + names + '.' : (keys.length === 1 ? '1 field needs attention: ' : keys.length + ' fields need attention: ') + names + '.'; };
+  const recheck = () => { if (!tried) return; const values = Object.fromEntries(Object.entries(fields).map(([key, input]) => [key, input?.value || ''])); const checked = validateInquiry(values); showErrors(checked.errors); summarize(checked.errors); };
+  form.addEventListener('input', recheck); form.addEventListener('focusout', recheck);
+  const sendRow = form.querySelector('.client-send'); if (sendRow && status.parentNode) sendRow.before(status);
   function showErrors(errors) {
     for (const key of ['name', 'email', 'company', 'message', 'locations']) {
       const message = form.querySelector('#error-' + key);
@@ -114,7 +125,7 @@ if (form && !justSent) {
     showErrors(checked.errors);
     if (!checked.valid) {
       event.preventDefault();
-      status.dataset.state = 'invalid'; status.textContent = messages.invalid;
+      tried = true; summarize(checked.errors);
       fields[Object.keys(checked.errors)[0]]?.focus(); return;
     }
     if (mode === 'live') {
