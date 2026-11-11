@@ -110,3 +110,31 @@ Source: NEVORA `origin/development`, `docs/product/rondo-operating-contract.md` 
 - The NEVORA page's time clock demo on this branch is still the older grey kiosk; the Direction B restyle lives on `claude/velani-home-gusto-20261110`.
 - The NEVORA page's hero and local nav are still the older dark blue-black, and the footer wordmark is unchanged.
 - Rondo's coverage answer states facts from the schedule; it does not compare real options the way the app would.
+
+## Round 5 (same branch, same preview 193311572282)
+
+- **Phone page check (hosted, 390×844, by scrolling):** the headline sits at 108px; the earlier full-page capture was an artefact. The long empty stretch was real in effect: the old NEVORA panel's phone waited at opacity 0 for its observer. That panel is gone. The new sections have no reveal that starts hidden; a check counts 0 elements at opacity 0.
+- **Home below the first screen** is three sections at natural height, built in HTML from the same rows as the piece:
+  - **Your team sees the week on their phones:** Alexandra's phone for the same Saturday. Her week's hours, today's hours and clock-in state follow the piece (clock her in above and it changes here).
+  - **Rondo tells the Owner what needs attention:** the briefing (the same text as the piece's Rondo view, live) and one prepared change, "Add Dana Kim on Sunday, November 8", with Approve. Approving shows "Approved. NEVORA checked the schedule again and added the shift", adds Dana's Sunday chip to the Schedule view, sets her week to 40 h and updates Rondo's coverage answer.
+  - **One monthly price, and we set it up with you:** $19 / $29 as a plain sentence, 30 days free with no card, the day-30 sentence, Jose and two business days, one filled trial button and a text link to Plans.
+- **Schedule view:** chips are 13px (12px below 1100px, where the week-total column is dropped to give the days room), rows 58px.
+- **Footer (sitewide in this theme):** the thin wordmark at 20px on teal-ink; the giant letters and the glow image are gone.
+- **Chat launcher:** hidden while the first screen, the phone or the Rondo cards are in view. Its dark style is unchanged.
+
+### Checks, round 5
+
+- `npm test` 51/51 (new: three live sections, shared numbers, one filled action below the first screen). `check:theme` clean.
+- axe WCAG 2.2 AA on the whole Home (main and footer), EN and ES, five widths: 0 violations in 10 runs; plus the piece's four views: 0 in 40 runs. Every h1 and h2 is two lines or fewer; no sideways scroll.
+- Shared data: before clock-in the phone says "Clock in on the Main Street tablet" and 24:00; after, "Clocked in at 7:59 AM", 24:02 on the phone and in the Pay view. The Rondo card's text equals the piece's Rondo answer.
+- Approve by keyboard: focus moves to the result; Dana's row reads 40 h with a 12–8 Sunday chip.
+- Layout shift 0.0003. Hosted: changed files match their checksums.
+
+### Still short
+
+- The white price section meets the dark closing with a hard edge.
+- The prepared change is a scripted sample: one fixed proposal, not a live Rondo result.
+- The phone is a rebuild of the app's employee home, not a capture; small details may differ from the app.
+- Chips are 12px below 1100px, under the 13px asked for.
+- NEVORA page: hero, local nav and the time clock demo are still the older look.
+- Not run: real iPhone, Safari, WebKit.
