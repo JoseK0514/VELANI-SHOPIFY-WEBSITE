@@ -94,29 +94,37 @@
  // The launcher stays out of the first screen
  if('IntersectionObserver' in window){root.classList.add('sig-top');new IntersectionObserver(e=>root.classList.toggle('sig-top',e[0].intersectionRatio>.35),{threshold:[0,.35,1]}).observe(hero)}
  // Light: target from the pointer, eased with a slow lerp; runs only while it is still moving
- const light=hero.querySelector('.hlight'),ph=hero.querySelector('.hph');
+ const light=hero.querySelector('.hlight');
  if(light&&fine&&!reduce){let tx=0,ty=0,x=0,y=0,raf=0;
   const step=()=>{x+=(tx-x)*.045;y+=(ty-y)*.045;light.style.transform='translate3d('+(x*9).toFixed(2)+'vw,'+(y*7).toFixed(2)+'vh,0)';raf=Math.abs(tx-x)+Math.abs(ty-y)>.002?requestAnimationFrame(step):0};
   hero.addEventListener('pointermove',e=>{const r=hero.getBoundingClientRect();tx=(e.clientX-r.left)/r.width*2-1;ty=(e.clientY-r.top)/r.height*2-1;if(!raf)raf=requestAnimationFrame(step)},{passive:true})}
- // The day
+ // The week: four views of one sample workplace. Every number comes from the same rows, so the views always agree.
  const day=hero.querySelector('[data-day]');if(!day)return;
- const D=day.dataset,rate=+D.rate,rows=[...day.querySelectorAll('.day-row')],face=day.querySelector('[data-clockface]'),ampm=day.querySelector('[data-ampm]'),pay=day.querySelector('[data-pay]'),on=day.querySelector('[data-on]'),say=day.querySelector('[data-day-status]'),pp=day.querySelector('[data-pp]');
- let now=+D.now,timer=0,seen=true,paused=reduce;const END=16*60;
- const hm=m=>{const h=Math.floor(m/60)%12||12;return h+':'+String(m%60).padStart(2,'0')},full=m=>hm(m)+' '+(m<720?D.am:D.pm),dur=m=>Math.floor(m/60)+':'+String(m%60).padStart(2,'0'),fill=(t,o)=>t.replace(/\{(\w)\}/g,(_,k)=>o[k]);
+ const D=day.dataset,rate=+D.rate,q=s=>day.querySelector(s),qa=s=>[...day.querySelectorAll(s)],rows=qa('.day-row'),face=q('[data-clockface]'),ampm=q('[data-ampm]'),pay=q('[data-pay]'),on=q('[data-on]'),say=q('[data-day-status]'),pp=q('[data-pp]'),
+  tabs=qa('[role=tab]'),panels=qa('[role=tabpanel]'),hrs=qa('[data-ph]'),pa=qa('[data-pp-amt]'),wkPay=q('[data-week-pay]'),wkH=q('[data-week-h]'),rondo=q('[data-rondo]');
+ let now=+D.now,timer=0,seen=true,paused=reduce,auto=!reduce,beat=0,tab=1;const END=16*60;
+ const hm=m=>{const h=Math.floor(m/60)%12||12;return h+':'+String(m%60).padStart(2,'0')},full=m=>hm(m)+' '+(m<720?D.am:D.pm),dur=m=>Math.floor(m/60)+':'+String(m%60).padStart(2,'0'),fill=(t,o)=>t.replace(/\{(\w)\}/g,(_,k)=>o[k]),usd=v=>'$'+v.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});
+ const worked=r=>r.dataset.state==='in'?Math.max(0,Math.min(now,+r.dataset.due+480)-r.dataset.in):0;
  const clockIn=(row,at,byYou)=>{row.dataset.state='in';row.dataset.in=at;const st=row.querySelector('.day-st');
   if(!reduce){row.classList.remove('just');void row.offsetWidth;row.classList.add('just');st.classList.add('arrive')}
   if(byYou)say.textContent=fill(D.tSaid,{n:row.querySelector('b').textContent,t:full(at)});paint()};
- function paint(){face.textContent=hm(now);ampm.textContent=now<720?D.am:D.pm;let mins=0,n=0;
-  rows.forEach(r=>{const s=r.querySelector('[data-s]'),h=r.querySelector('[data-h]'),due=+r.dataset.due,st=r.dataset.state;
-   if(st==='in'){const w=Math.max(0,Math.min(now,due+480)-r.dataset.in);mins+=w;n++;s.textContent=fill(D.tIn,{t:hm(+r.dataset.in)});h.textContent=dur(w)}
-   else{h.textContent='';s.textContent=st==='late'?fill(D.tLate,{t:hm(due)}):fill(D.tStarts,{t:hm(due)})}});
-  pay.textContent='$'+(mins*rate/60).toFixed(2);on.textContent=fill(D.tOn,{n:n})}
- const tick=()=>{if(now>=END){stop();return}now++;rows.forEach(r=>{if(r.dataset.state!=='in'&&r.dataset.auto&&now>=+r.dataset.auto)clockIn(r,+r.dataset.auto)});paint()};
- const stop=()=>{clearInterval(timer);timer=0},run=()=>{stop();if(!paused&&seen&&!d.hidden&&now<END)timer=setInterval(tick,1000)};
+ function paint(){face.textContent=hm(now);ampm.textContent=now<720?D.am:D.pm;let today=0,week=0,n=0,dueN=0;const notes=[];
+  rows.forEach((r,i)=>{const s=r.querySelector('[data-s]'),h=r.querySelector('[data-h]'),due=+r.dataset.due,st=r.dataset.state,name=r.querySelector('b').textContent,w=worked(r),wk=+r.dataset.week+w;today+=w;week+=wk;
+   if(st==='in'){n++;s.textContent=fill(D.tIn,{t:hm(+r.dataset.in)});h.textContent=dur(w);if(r.dataset.in-due>5)notes.push(fill(D.tRLatein,{n:name,t:hm(+r.dataset.in),m:r.dataset.in-due}))}
+   else{h.textContent='';s.textContent=st==='late'?fill(D.tLate,{t:hm(due)}):fill(D.tStarts,{t:hm(due)});if(now>due+5)notes.push(fill(D.tRLate,{n:name,t:hm(due)}))}
+   if(now>=due)dueN++;
+   hrs[i].textContent=dur(wk);pa[i].textContent=usd(wk*rate/60)});
+  pay.textContent=usd(today*rate/60);on.textContent=fill(D.tOn,{n:n});wkPay.textContent=usd(week*rate/60);wkH.textContent=fill(D.tHours,{h:dur(week)});
+  rondo.textContent=notes.concat(fill(D.tRSum,{c:n,s:dueN,p:usd(week*rate/60)})).join(' ')}
+ const select=(i,focus)=>{tab=(i+tabs.length)%tabs.length;tabs.forEach((t,k)=>{const on=k===tab;t.setAttribute('aria-selected',on);t.tabIndex=on?0:-1;panels[k].classList.toggle('on',on);panels[k].inert=!on});if(focus)tabs[tab].focus()};
+ const tick=()=>{if(auto&&++beat%7===0)select(tab+1);if(now>=END)return;now++;rows.forEach(r=>{if(r.dataset.state!=='in'&&r.dataset.auto&&now>=+r.dataset.auto)clockIn(r,+r.dataset.auto)});paint()};
+ const stop=()=>{clearInterval(timer);timer=0},run=()=>{stop();if(!paused&&seen&&!d.hidden)timer=setInterval(tick,1000)};
  const setPaused=p=>{paused=p;day.toggleAttribute('data-paused',p);pp.setAttribute('aria-label',p?D.tPlay:D.tPause);run()};
+ const hands=()=>{auto=false};['pointerdown','keydown','focusin'].forEach(e=>day.addEventListener(e,hands,{passive:true}));
  pp.addEventListener('click',()=>setPaused(!paused));
- day.querySelector('[data-clock]').addEventListener('click',e=>{const row=e.currentTarget.closest('.day-row');row.tabIndex=-1;clockIn(row,now,true);row.focus({preventScroll:true})});
+ tabs.forEach((t,i)=>{t.addEventListener('click',()=>select(i));t.addEventListener('keydown',e=>{const k=e.key,to=k==='ArrowRight'?tab+1:k==='ArrowLeft'?tab-1:k==='Home'?0:k==='End'?tabs.length-1:null;if(to!==null){e.preventDefault();select(to,true)}})});
+ q('[data-clock]').addEventListener('click',e=>{const row=e.currentTarget.closest('.day-row');row.tabIndex=-1;clockIn(row,now,true);row.focus({preventScroll:true})});
  d.addEventListener('visibilitychange',run);
  if('IntersectionObserver' in window)new IntersectionObserver(e=>{seen=e[0].isIntersecting;run()}).observe(day);
- setPaused(paused);paint();
+ select(1);setPaused(paused);paint();
 })();

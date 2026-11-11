@@ -184,3 +184,27 @@ test('the home first screen carries the live sample day in both languages, with 
     assert.equal((html.match(/class="hb fill"/g) || []).length >= 1, true);
   }
 });
+
+test('the four views of the live piece share one set of numbers: schedule, time clock, pay and Rondo agree', async () => {
+  for (const path of ['/', '/pages/es']) {
+    const html = renderBody(path, { target: 'shopify' });
+    assert.equal((html.match(/role="tab" /g) || []).length, 4, path);
+    assert.equal((html.match(/role="tabpanel"/g) || []).length, 4, path);
+    const rows = [...html.matchAll(/class="day-row" data-state="(\w+)" data-due="(\d+)" data-week="(\d+)"(?: data-auto="\d+")?(?: data-in="(\d+)")?/g)];
+    assert.equal(rows.length, 5, path);
+    // Mon–Fri minutes per person equal eight hours for every weekday chip in the schedule
+    const sched = [...html.matchAll(/<tr><th scope="row">[^<]+<\/th>(.*?)<td class="day-wk">(\d+) h<\/td><\/tr>/g)];
+    sched.forEach(([, cells, total], i) => {
+      const days = cells.split('</td>').slice(0, 7).map(c => c.includes('day-chip'));
+      assert.equal(days.filter(Boolean).length * 8, +total, 'weekly hours match the chips');
+      assert.equal(days.slice(0, 5).filter(Boolean).length * 480, +rows[i][3], 'Mon–Fri minutes match the schedule');
+      assert.equal(days[5], true, 'everyone on the Time clock view is scheduled on Saturday');
+    });
+    // At 7:58 the first paint agrees across views: today's pay and the week's pay at $15 an hour
+    const now = +html.match(/data-now="(\d+)"/)[1], rate = +html.match(/data-rate="(\d+)"/)[1];
+    const today = rows.reduce((m, r) => m + (r[4] ? now - r[4] : 0), 0), week = rows.reduce((m, r) => m + +r[3], 0) + today;
+    const usd = v => '$' + v.toLocaleString('en-US', { minimumFractionDigits: 2 });
+    assert.match(html, new RegExp('data-pay>' + usd(today * rate / 60).replace('$', '\\$') + '<'), path);
+    assert.match(html, new RegExp('data-week-pay>' + usd(week * rate / 60).replace(/[$]/g, '\\$') + '<'), path);
+  }
+});

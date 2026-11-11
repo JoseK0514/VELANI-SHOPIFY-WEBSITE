@@ -69,7 +69,7 @@ export function nevoraMain(target, lang = 'en') { const src = SRC[lang].nevora; 
 export function productsMain(target, lang = 'en') { return localize(site(mainOf(SRC[lang].products), target, lang), lang); }
 
 /* Products: one header item with a short menu (NEVORA Workforce, Rondo, NEVORA Relay); the phone menu lists them under a Products label. */
-const PRODUCTS = [['NEVORA Workforce', '/pages/nevora', 'Scheduling, time clock and payroll calculation'], ['Rondo in NEVORA<span class="nav-soon">In development</span>', '/pages/nevora#rondo', 'The AI assistant coming to NEVORA'], ['NEVORA Relay<span class="nav-soon">In design</span>', '/pages/nevora#relay', 'Orders, kitchen display and inventory']];
+const PRODUCTS = [['NEVORA Workforce', '/pages/nevora', 'Scheduling, time clock and payroll calculation'], ['Rondo in NEVORA', '/pages/nevora#rondo', 'The assistant that answers the Owner’s questions'], ['NEVORA Relay<span class="nav-soon">In design</span>', '/pages/nevora#relay', 'Orders, kitchen display and inventory']];
 const NAV = [['Websites', '/pages/custom-development#web-applications', 'websites'], ['Custom apps', '/pages/custom-development', 'services'], ['Plans', '/pages/plans', 'plans'], ['Support', '/pages/help', 'help'], ['About', '/pages/about', 'about']];
 /** Header menus (Nov 7 flow map): [key, label, nav keys that mark it current, items [name, href, note]]. */
 const GROUPS = [

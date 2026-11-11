@@ -178,3 +178,78 @@
 .sig-top .ast-launch{opacity:0;pointer-events:none;transform:translateY(8px)}
 .ast-launch{transition:opacity .2s var(--out),transform .2s var(--out),background-color .2s}
 .day-row:focus{outline:none}
+
+/* ---------- Round 3 (Nov 10): one colour family, and the piece shows the whole product in four views ---------- */
+/* The cinematic light leans to teal so it and NEVORA's teal are one family; the closing panel takes the same grade */
+#top.sig>.hph,#velani>.hph{filter:hue-rotate(-26deg) saturate(.9)}
+.hlight{background:radial-gradient(closest-side,rgba(130,214,220,.18),rgba(130,214,220,.06) 45%,rgba(130,214,220,0) 70%)}
+.hmorn{background:radial-gradient(ellipse 62% 100% at 50% 100%,rgba(160,222,226,.28) 0%,rgba(160,222,226,.11) 38%,rgba(160,222,226,0) 72%),linear-gradient(180deg,rgba(248,243,235,0) 0%,rgba(248,243,235,0) 58%,rgba(250,246,240,.06) 70%,rgba(251,247,241,.2) 81%,rgba(251,246,239,.5) 90%,rgba(249,244,236,.84) 96%,#f5f0e8 100%)}
+.hmorn::after{box-shadow:0 -1px 18px 2px rgba(255,238,212,.55),0 -2px 60px 10px rgba(170,226,228,.2)}
+/* The trial is the one filled action: clean white, ink text */
+:is(#top.sig,#velani) .hb.fill{background:#fff;border-color:#fff;color:#0e1716}
+@media(hover:hover) and (pointer:fine){:is(#top.sig,#velani) .hb.fill:hover{background:#eef4f3;border-color:#eef4f3}}
+/* Clock in is the piece's own action, quieter than the trial */
+.day-in{background:var(--tint);color:var(--teal);box-shadow:inset 0 0 0 1px rgba(11,110,105,.22)}
+@media(hover:hover) and (pointer:fine){.day-in:hover{background:#d5e9e5}}
+/* Tabs: one segmented control; the thumb is the selected tab's own fill, so nothing slides out of place */
+.day-card{padding-top:12px}
+.day-tabs{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;padding:3px;border-radius:12px;background:#f1eee8}
+.day-tab{position:relative;min-height:36px;border-radius:9px;color:var(--ink-2);font-size:.8125rem;font-weight:500;line-height:1;letter-spacing:0;white-space:nowrap;touch-action:manipulation;-webkit-user-select:none;user-select:none;transition:background-color .18s var(--out),color .18s var(--out),box-shadow .18s var(--out),transform .12s ease-out}
+.day-tab::after{content:"";position:absolute;inset:-5px 0}
+.day-tab[aria-selected=true]{background:#fff;color:var(--ink);font-weight:600;box-shadow:0 0 0 1px rgba(23,32,30,.06),0 1px 2px rgba(23,32,30,.10)}
+@media(hover:hover) and (pointer:fine){.day-tab[aria-selected=false]:hover{color:var(--ink)}}
+.day-tab:active{transform:scale(.97)}
+.day-tab:focus-visible{outline:2px solid var(--teal);outline-offset:1px}
+/* Panels share one grid cell, so the card is as tall as its tallest view and never jumps */
+.day-panels{display:grid;margin-top:12px}
+.day-p{grid-area:1/1;min-width:0;display:flex;flex-direction:column;visibility:hidden;opacity:0;transition:opacity .18s var(--out),visibility 0s .18s}
+.day-p.on{visibility:visible;opacity:1;transition:opacity .22s var(--out)}
+.day-p .day-foot{margin-top:auto}
+.day-ph{display:flex;align-items:center;justify-content:space-between;gap:8px;min-height:22px}
+.day-tag{margin:0;padding:2px 8px;border-radius:999px;background:var(--tint);color:var(--teal);font-size:.6875rem;font-weight:600;line-height:1.5}
+.day-fine{margin:auto 0 0;padding-top:12px;font-size:.75rem;line-height:1.45;color:var(--ink-2)}
+/* Schedule */
+.day-sched{width:100%;margin-top:8px;border-collapse:collapse;table-layout:fixed;font-size:.6875rem;line-height:1.2}
+.day-sched thead td:first-child,.day-sched tbody th{width:27%}
+.day-sched .day-wk{width:13%;text-align:right;color:var(--ink-2);font-weight:500}
+.day-sched thead th{padding:0 0 6px;font-weight:500;color:var(--ink-2);text-align:center}
+.day-sched thead th abbr{display:block;text-decoration:none}
+.day-sched thead th span{display:block;margin-top:1px;font-weight:600;color:var(--ink)}
+.day-sched tbody th{padding:0;font-size:.8125rem;font-weight:600;text-align:left;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.day-sched tbody td{height:50px;padding:0 1px;border-top:1px solid var(--hair);text-align:center}
+.day-sched tbody th{border-top:1px solid var(--hair)}
+.day-sched .now{background:linear-gradient(180deg,rgba(230,241,238,.0),rgba(230,241,238,.75) 12%,rgba(230,241,238,.75) 88%,rgba(230,241,238,0))}
+.day-sched thead .now span{color:var(--teal)}
+.day-chip{display:block;padding:7px 0;border-radius:7px;background:#eef3f1;color:#1d3f3b;font-weight:600;font-size:.625rem;letter-spacing:-.01em}
+.day-sched .now .day-chip{background:var(--teal);color:#fff}
+/* Pay */
+.day-payt{width:100%;margin-top:8px;border-collapse:collapse;font-size:.875rem;line-height:1.3}
+.day-payt thead th{padding:0 0 6px;font-size:.75rem;font-weight:500;color:var(--ink-2);text-align:right}
+.day-payt tbody th{padding:0;font-weight:600;text-align:left}
+.day-payt tbody :is(th,td){height:40px;border-top:1px solid var(--hair)}
+.day-payt td{text-align:right}
+.day-payt td[data-ph]{color:var(--ink-2)}
+.day-payt td[data-pp-amt]{font-weight:600;width:32%}
+.day-p .day-payt+.day-foot{margin-top:6px}
+.day-p .day-foot+.day-fine{margin-top:0;padding-top:10px}
+/* Rondo: the app's own shape, a question and one plain answer with its sources; no chat bubbles */
+.day-q{display:grid;grid-template-columns:32px minmax(0,1fr);align-items:center;column-gap:12px;margin:10px 0 0;font-size:.9375rem;line-height:1.35;font-weight:600}
+.day-a{margin-top:12px;padding:14px 14px 12px;border-radius:14px;background:#f6f9f8;box-shadow:inset 0 0 0 1px rgba(11,110,105,.14)}
+.day-ak{display:flex;align-items:center;gap:8px;margin:0;font-size:.75rem;font-weight:600;color:var(--teal)}
+.day-r{width:20px;height:20px;display:grid;place-items:center;border-radius:6px;background:var(--teal);color:#fff;font-size:.6875rem;font-weight:600}
+.day-at{margin:8px 0 0;font-size:.875rem;line-height:1.5;color:var(--ink);text-wrap:pretty}
+.day-src{margin:10px 0 0;padding-top:8px;border-top:1px solid rgba(11,110,105,.14);font-size:.75rem;line-height:1.4;color:var(--ink-2)}
+@media(prefers-reduced-motion:reduce){.day-p,.day-p.on{transition:none}}
+@media(min-width:834px) and (max-width:1100px){.day-tab{font-size:.75rem}.day-sched tbody th{font-size:.75rem}}
+@media(max-width:833px){.day-tab{min-height:40px}.day-tab::after{inset:-2px 0}}
+@media(max-width:380px){.day-sched thead td:first-child,.day-sched tbody th{width:24%}.day-chip{font-size:.5625rem}}
+@media(max-width:833px){
+ .hpanel.sig{padding-top:52px}
+ .hpanel.sig .hcopy>p:not(.hfact){margin-top:12px;font-size:1rem}
+ .hpanel.sig .hacts{margin-top:20px}
+ .hpanel.sig .hfact{margin-top:12px}
+ .day{margin-top:20px}
+ .day-band{padding:14px 16px 56px}
+ .day-clock{margin-top:12px;font-size:2.25rem}
+ .day-date{margin-top:4px}
+}
