@@ -39,8 +39,8 @@ h2,.t2,.hpanel h2{font-size:clamp(2.125rem,3.9vw,3.5rem);line-height:1.06}
 body{font-size:1.0625rem;line-height:1.6}
 .cap,.fine,.hfact{font-size:0.875rem;line-height:1.5;color:var(--ink-3)}
 @media(max-width:833px){
- h1,.t0,.t1,.hpanel h1,.hpanel.long h1,#main .nh-hero h1{font-size:clamp(1.75rem,8vw,2.125rem);line-height:1.06}
- h2,.t2,.hpanel h2,#main .nh-serif.nh-h2,.case-head .t1,.case-head h2{font-size:clamp(1.5rem,7vw,1.75rem);line-height:1.1}
+ h1,.t0,.t1,.hpanel h1,.hpanel.long h1,#main .nh-hero h1{font-size:clamp(1.75rem,8vw,3rem);line-height:1.06}
+ h2,.t2,.hpanel h2,#main .nh-serif.nh-h2,.case-head .t1,.case-head h2{font-size:clamp(1.5rem,7vw,2.25rem);line-height:1.1}
  .t3,h3{font-size:clamp(1.1875rem,5.4vw,1.375rem)}
  body{font-size:1rem}
 }
@@ -246,7 +246,7 @@ html{scroll-padding-bottom:88px}
 /* NEVORA hero title: the same two sizes as every page title */
 main .n-hero.hpanel.long h1{font-size:clamp(2.5rem,5.6vw,5rem);line-height:1.02;max-width:none}
 main .hpanel.n-hero .hcopy{max-width:920px}
-@media(max-width:833px){main .n-hero.hpanel.long h1{font-size:clamp(1.75rem,8vw,2.125rem);line-height:1.06}}
+@media(max-width:833px){main .n-hero.hpanel.long h1{font-size:clamp(1.75rem,8vw,3rem);line-height:1.06}}
 /* Typography details: tabular figures where numbers change or line up, pretty paragraphs, underlines from the font, 16px inputs */
 .pc-amt,.pc-n,.price-bands b,.nh-bands b,.kio-time,#kio-time,.cal-g,.days-k,.ff input[inputmode=numeric]{font-variant-numeric:tabular-nums}
 p,li,dd,.lede{text-wrap:pretty}
@@ -274,3 +274,42 @@ main>.hpanel:not(:first-child):not(.end) .hkick{color:var(--teal)}
 main>.hpanel:not(:first-child):not(.end) .hfact,main>.hpanel:not(:first-child):not(.end) .hcap{color:var(--ink-3)}
 main>.hpanel:not(:first-child):not(.end) .hfact a,main>.hpanel:not(:first-child):not(.end) .hcopy a:not(.hb):not(.pill){color:var(--ink)}
 .form-status[data-state=invalid]{display:block;margin:0 0 16px;padding:12px 14px;border-radius:var(--r);background:#fbeceb;color:#7a1c16;font-size:0.9375rem;font-weight:500}
+
+/* ---------- Gate pass (design-taste inspector): flat fields, flat buttons, fewer sizes, full-ink text ---------- */
+/* One flat teal field, no glows or ruled texture */
+main>.hpanel:first-child,main>.hpanel.end,.hpanel.end{background:var(--teal)}
+main>.hpanel:first-child::before,.hpanel.end::before,#main .nh-hero::before,#main .nh-hero::after{display:none}
+#main .nh-hero{background:var(--teal)}
+#main .nh-end-in{background:var(--teal)}
+#main .nh-end-in::before,#main .nh-end-in::after{display:none}
+.nh-case-ph{background:#15191d}
+/* Buttons are flat: no shadows or glows */
+#main .hb,#main .hb.fill,#main .nh-hero .hb.fill,#main .nh-end .hb.fill,.pill{box-shadow:none}
+/* Cards separate from paper by tone, not shadow; product frames and floating app cards keep the one product shadow */
+.tiles>*,.tile,.cf-card,.setup-card,.pcard,.cal,.days .cal,.help-card,.dir .tiles a,.rcard,#main .nh-card,#main .nh-case,#main .nh-panel{box-shadow:none}
+/* No ruled dividers between facts: space does the grouping */
+#main .nh-facts div{border-top:0;padding-top:0}
+/* The scale: 80/56 display, 28 card titles, 20 lead, 17 body and controls, 14 small, 12 legal */
+.gnav-links a,.gnav-signin,.gnav .pill,.gnav-cta,.pill,.hb,#main .hb,.nh-tab,#main .nh-tab,.nh-case-k,.nh-case-p,.nh-case-a,.nh-free,.more,.kio-next{font-size:1.0625rem}
+.lang-sw a,.lang-sep,.nh-fine,.hfact,.cap,.fine,.case-credit,.shot-cap,.price-help{font-size:0.875rem}
+#main .nh-h3,.nh-case-t,#main .nh-case-t{font-size:1.75rem;line-height:1.2}
+#main .nh-head p,#main .nh-lede,#main section>.wrap>p.fade{font-size:1.25rem;line-height:1.5}
+#main .nh-bands b,.price-bands li b{font-size:3.5rem;line-height:1}
+/* Running text in full ink; the muted ink is for notes */
+main p,main li,main dd,.lede,.hcopy p:not(.hkick):not(.hfact){color:var(--ink)}
+main .hfact,main .cap,main .fine,main .nh-fine,main .case-credit,main .shot-cap,main .days-fine{color:var(--ink-3)}
+main>.hpanel:first-child p,main>.hpanel:first-child li,.hpanel.end p,#main .nh-hero p,#main .nh-end p{color:#f3faf8}
+main>.hpanel:first-child .hfact,#main .nh-hero .hfact{color:#d6efe9}
+@media(max-width:833px){.pill,.hb,#main .hb,.gnav-cta,.gnav .pill{font-size:1rem}#main .nh-h3,.nh-case-t,#main .nh-case-t{font-size:1.375rem}#main .nh-head p,#main .nh-lede{font-size:1.125rem}#main .nh-bands b,.price-bands li b{font-size:2.5rem}}
+@media(max-width:833px){main .n-hero.hpanel:has(.hshot) .hcopy,main>.hpanel.hpanel:first-child>.hcopy{margin:0}}
+#main section:not(.nh-hero):not(.nh-end) p:not(.nh-fine):not(.nh-free):not(.hfact):not(.nh-ok-t):not(.nh-ok-n):not(.nh-ok-time),#main .nh-facts dd,#main .nh-facts dt{color:var(--ink)}
+#main section:not(.nh-hero) p.fade{font-size:1.25rem;line-height:1.5}
+#main .nh-copy p,#main .nh-case-p{font-size:1.0625rem;line-height:1.6}
+#main .nh-facts dd{font-size:1.0625rem}
+#main .nh-bands span,#main .nh-bands em{font-size:0.875rem}
+#main .nh-tab[aria-selected=true]{box-shadow:inset 0 0 0 1px var(--rule-2)}
+.foot-row{border-bottom:0}
+.foot-links button,.foot button{color:#eef5f3}
+@media(max-width:833px){#main section:not(.nh-hero) p.fade{font-size:1.125rem}}
+#main .nh-tab[aria-selected=true]{box-shadow:none;background:#fff}
+#main .nh-bands em{border-top:0;padding-top:0;margin-top:12px}
