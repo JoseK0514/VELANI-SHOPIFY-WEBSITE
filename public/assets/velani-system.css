@@ -313,3 +313,6 @@ main>.hpanel:first-child .hfact,#main .nh-hero .hfact{color:#d6efe9}
 @media(max-width:833px){#main section:not(.nh-hero) p.fade{font-size:1.125rem}}
 #main .nh-tab[aria-selected=true]{box-shadow:none;background:#fff}
 #main .nh-bands em{border-top:0;padding-top:0;margin-top:12px}
+main .days-fine,main .price-help,main .price-inc{font-size:1rem;line-height:1.6;color:var(--ink-2)}
+main .days-k{font-size:1.0625rem;font-weight:600}
+.band-in,.band .band-in,#help .band-in{background:#fff;background-image:none}
