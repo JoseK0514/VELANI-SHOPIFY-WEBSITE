@@ -138,3 +138,39 @@ Source: NEVORA `origin/development`, `docs/product/rondo-operating-contract.md` 
 - Chips are 12px below 1100px, under the 13px asked for.
 - NEVORA page: hero, local nav and the time clock demo are still the older look.
 - Not run: real iPhone, Safari, WebKit.
+
+## Round 6 (same branch, same preview 193311572282)
+
+**Home**
+- The white price section now deepens into the closing's teal light (the mirror of the top join).
+- Rondo's briefing adds who starts later ("Luis Medina starts at 12:00."), and the sources line sits right under the text.
+- The website chat launcher reads "Ask Velani" / "Pregúntale a Velani", in white and teal-ink, a 48px round button on phones, hidden over the live pieces, with `scroll-padding-bottom`.
+
+**NEVORA page, rebuilt (EN and ES).** It uses the site header (the page's own nav is gone) and the same engine and rows as Home, so both pages agree.
+1. First screen: the teal light, the NEVORA wordmark, "The whole week, from schedule to pay.", trial plus "Try the time clock", and the Owner's Today (what needs you, who is in, the week's pay).
+2. Plan: the week's schedule, large, "Published".
+3. Clock in: the Direction B round 2 time clock (ported from `claude/velani-home-gusto-20261110`), set to the page's sample Saturday. Any four digits clock in Alexandra by name; the result links to her timecard. The sample note is the frame's caption.
+4. Approve: the week's timecards with Jordan's late start flagged, and Approve timecards.
+5. Pay: Alexandra's pay statement, calculated from the same hours at the sample rate, with the calculation-only line.
+6. Rondo: the coverage question, the answer from the schedule, the prepared change and Approve.
+7. Price and start, six questions as disclosures, one line for Relay, then one ending.
+- Removed: the second story, the "Carmen's screen" repeat, the blue chat demo, "In development", the screenshot collage, the four endings, "eight people".
+- `velani-nevora.css` now bundles `home.css` first; `nevora.js` is a stub; `kiosk.js` reads the page's sample clock through `window.NVWEEK`.
+
+### Checks, round 6
+- `npm test` 52/52 (new: the NEVORA page's order, shared rows with Home, binds, time clock, six questions, three filled actions). `check:theme` clean.
+- axe WCAG 2.2 AA on main and footer, Home and NEVORA, EN and ES, five widths: 0 violations in 20 runs; the Home piece's four views: 0 in 40. Every h1 and h2 is two lines or fewer; no sideways scroll; 0 elements at opacity 0 at rest.
+- NEVORA flow in a browser: before, the time clock shows 7:58 AM Saturday; typing a PIN records "Alexandra Rivera · Barista · Nov 7 · 7:59 AM", moves focus to the result, and her timecard and pay statement follow (24:02, $360.50 two ticks later). Approve timecards and Rondo's Approve work from the keyboard; Dana's Sunday chip and 40 h appear in the schedule. Layout shift 0.0006.
+- Hosted: 13/13 changed files match their checksums, then `velani-motion.js` again after one more change. Viewport slices: `r6-nevora-1440-*`, `r6-nevora-390-*`, `r6-nevora-es-390-*`, `r6-home-1440-*`, `r6-home-390-*`.
+
+### For Codex
+- If the assistant service on the website introduces itself as Rondo, change it on the server to match "Ask Velani". Only the launcher label and avatar changed here; the chat panel's own header and replies were not touched.
+- Confirm Rondo's coverage flow in the app matches the page: it reads the published schedule, prepares a change, the Owner approves, and the server rechecks.
+- Confirm the timecard exception wording ("Late") and that approval precedes the pay calculation.
+
+### Still short
+- On the NEVORA page the sample clock keeps running while you read (so the sections stay in step); the pause button is only in the first screen.
+- Timecard approval and the prepared change are scripted samples, not live results. The pay statement shows hours, rate and calculated pay only.
+- The time clock demo's wrong-PIN and clock-out states do not exist in the demo.
+- The old NEVORA page styles and scripts were removed from the bundle, but other pages (Plans, Custom software, About, Support, Sign in, legal) are still the older dark look.
+- I looked at about a third of the hosted slices, not every one. Not run: real iPhone, Safari, WebKit.
