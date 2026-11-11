@@ -174,3 +174,42 @@ Source: NEVORA `origin/development`, `docs/product/rondo-operating-contract.md` 
 - The time clock demo's wrong-PIN and clock-out states do not exist in the demo.
 - The old NEVORA page styles and scripts were removed from the bundle, but other pages (Plans, Custom software, About, Support, Sign in, legal) are still the older dark look.
 - I looked at about a third of the hosted slices, not every one. Not run: real iPhone, Safari, WebKit.
+
+## Round 7 (same branch, same preview 193311572282)
+
+**NEVORA page**
+- The first screen's object is now the Owner's desktop Today for the sample Saturday (icon rail, teal band "1 thing needs you", clocked in, late, pay calculated this week, needs-you card, next payday, today's shifts). On phones the rail drops and it reads as the Owner's phone Today. It runs on the shared rows.
+- Sample clock: it runs only while a live piece is on screen (the Today, the time clock, the timecards, the pay statement, the Rondo flow, and on Home the phone and Rondo cards) and rests when none is. The pause button stays in the first screen.
+- Time clock demo: PIN 0000 turns the field red with the kiosk's message "PIN not recognized for this location. Try again or ask your manager." (shake only without reduced motion). After Alexandra is clocked in, a second PIN records "Clock-out recorded" with the shift length, and her row, timecard and pay stop accruing. Spanish included. The caption tells the visitor about both.
+
+**Plans**
+- First screen in the teal light with the trial button; then white and #F2F6F5 sections in the system: the team-size price control (ticks, steppers and slider in teal; the − / + now announce the new count and price through a polite status), "Your 30 days" with the calendar, terms at 16px, "More than 30 employees?" as the outline action, the billing help line.
+- Day 30 reads "On day 30, the Owner picks a plan in NEVORA. Nothing is charged until you do." in both languages.
+- The schedule screenshot is gone. The page has one ending: the trial, with Jose named. No custom-work offer.
+
+**Trial request page**
+- White form card on #F2F6F5, teal-ink text, teal Send button, errors in dark red. The lede names Jose and two business days. The long trial-end paragraph is now the day-30 sentence plus the calculation-only line. The header's own request button is not shown on this page.
+- The form's field names, values, validation and the preview/live switch were not touched.
+
+### Checks, round 7
+- `npm test` 52/52; `check:theme` clean.
+- axe WCAG 2.2 AA on header, main and footer of Plans, the trial request, NEVORA and Home, EN and ES, five widths: 0 violations in 40 runs. Every h1 and h2 is two lines or fewer; no sideways scroll (a 62px overflow on the request page at 834 was found and fixed).
+- NEVORA in a browser: Today shows "1 thing needs you", "2 of 3" clocked in; the clock rests with no live piece in view; 0000 shows the error and keeps focus on the keypad heading; a PIN clocks Alexandra in; a second PIN shows "Clock-out recorded", "Shift length 0:02", and her hours hold afterwards.
+- Request form (preview mode only): an empty submit marks 2 fields invalid and moves focus to Name.
+- Hosted: 11/11 files match their checksums, then `velani.css` again after a selector fix (Shopify wraps sections, so `main:has(> …)` did not match on the hosted theme). Slices: `r7-plans-*`, `r7-trial-*`, `r7-nevora-*` at 1440 and 390.
+
+### Not done in this round
+- Request form: the error summary still sits below the button with the old wording, errors do not clear per field as you fix them, and the success panel was not reworked. Labels sit inside the fields as before.
+- Plans has no live piece from the shared data, and "what's included" is still the existing paragraph.
+- No new tests were added for Plans or the request page; no mailto restyle.
+- I viewed about half of the hosted slices, not every one. Home `r7` slices were not re-shot.
+
+### Still short
+- Plans: the join from the pale section into the dark closing passes through grey. On phones the round chat button sits over the calendar's last column.
+- The price card's status announcement was not exercised with a screen reader.
+- After a clock-out, a third PIN resumes the same shift rather than starting a new one.
+- Not run: real iPhone, Safari, WebKit.
+
+### For Codex
+- Confirm the kiosk's wrong-PIN message and "Clock-out recorded" wording against the app, in English and Spanish.
+- Confirm that billing help on Plans still points Owners to Settings in NEVORA.
