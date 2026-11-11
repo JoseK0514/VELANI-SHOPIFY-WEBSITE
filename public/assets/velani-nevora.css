@@ -384,8 +384,6 @@
 @media(max-width:1100px){.day-sched .day-wk{display:none}.day-sched thead td:first-child,.day-sched tbody th{width:23%}.day-chip{font-size:.75rem;letter-spacing:-.02em}.day-chip i{font-size:.6875rem}}
 
 /* Round 6: the closing mirrors the top join (white deepening into the teal light), and the Rondo cards size to their content */
-#velani::after{content:"";position:absolute;z-index:0;left:0;right:0;top:-1px;height:220px;pointer-events:none;background:linear-gradient(180deg,#fff 0%,rgba(252,254,254,.94) 3%,rgba(246,252,252,.76) 9%,rgba(238,250,249,.48) 19%,rgba(230,247,246,.24) 32%,rgba(226,246,245,.10) 48%,rgba(225,246,245,.03) 66%,rgba(225,246,245,0) 100%)}
-@media(max-width:833px){#velani::after{height:150px}}
 .hn-cards .rc-src{margin-top:14px}
 .hn-cards .rc-acts{margin-top:14px}
 

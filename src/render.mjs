@@ -65,7 +65,7 @@ const WORK = {
 };
 function services_(page, target, lang = 'en') {
   const t = WORK[lang], to = '/pages/contact?interest=custom-software';
-  const hero = panel(target, { id: 'top', cls: 'dim long work-top', img: 'ai-glow', title: page.title, tag: 'h1', text: page.intro, acts: hb(t.project, to, true), first: true });
+  const hero = panel(target, { id: 'top', cls: 'dim long work-top', img: 'ai-light', title: page.title, tag: 'h1', text: page.intro, acts: hb(t.project, to, true), first: true });
   const shot = ([n, alt, w, h]) => '<figure class="shot slab"><img src="' + asset('night-' + n + '.webp', target) + '" alt="' + e(alt) + '" width="' + w + '" height="' + h + '" loading="lazy" decoding="async"></figure>';
   const phone = ([n, alt]) => '<figure class="shot slab phone"><img src="' + asset('night-' + n + '.webp', target) + '" alt="' + e(alt) + '" width="780" height="1688" loading="lazy" decoding="async"></figure>';
   // Each story is told the same way: what the client needed, what was decided, what was delivered
@@ -313,7 +313,7 @@ function commercePage(page, target, lang = 'en') {
   const offActs = hb(off.act, '/pages/contact?interest=nevora-demo', true);
   const script = commerceBlock(target) + '<script type="module" src="' + asset('velani-commerce.js', target) + '"></script>';
   if (page.step === 'verify') {
-    const hero = panel(target, { id: 'top', cls: 'dim', img: 'ai-glow', title: page.title, tag: 'h1', text: page.intro, first: true });
+    const hero = panel(target, { id: 'top', cls: 'dim', img: 'ai-light', title: page.title, tag: 'h1', text: page.intro, first: true });
     return hero + '<section class="chap cflow" id="flow" data-verify-retired><div class="wrap"><div class="cf-card"><p>' + e(SETUP_RETIRED[lang].line) + '</p><div class="hacts">' + offActs + '</div></div></div></section>' + script;
   }
   if (page.step === 'billing' || page.step === 'return') return accountPage(page, target, lang) + script;
@@ -323,10 +323,10 @@ function commercePage(page, target, lang = 'en') {
     const offBlock = '<div class="hacts fade" data-off>' + offActs + '</div>';
     const fact = '<p class="hfact fade">' + e(t.fact[0]) + '<a href="/pages/sign-in">' + e(t.fact[1]) + '</a>' + e(t.fact[2]) + '</p>';
     const offLine = '<p class="hfact fade" data-off>' + e(off.text) + '</p>';
-    const hero = panel(target, { id: 'top', cls: 'live long signup-top', img: 'ai-glow', title: page.title, tag: 'h1', text: page.intro, after: offLine + offBlock + fact, extra: phone, first: true });
+    const hero = panel(target, { id: 'top', cls: 'live long signup-top', img: 'ai-light', title: page.title, tag: 'h1', text: page.intro, after: offLine + offBlock + fact, extra: phone, first: true });
     return startRedirect(target, lang) + hero;
   }
-  const hero = panel(target, { id: 'top', cls: 'dim', img: 'ai-glow', title: page.title, tag: 'h1', text: page.intro, first: true });
+  const hero = panel(target, { id: 'top', cls: 'dim', img: 'ai-light', title: page.title, tag: 'h1', text: page.intro, first: true });
   const card = '<section class="chap cflow" id="flow" data-step="' + e(page.step) + '" aria-live="polite"><div class="wrap"><div class="cf-card" data-off><p>' + e(off.text) + '</p><div class="hacts">' + offActs + '</div></div></div></section>';
   return hero + card + script;
 }
@@ -373,7 +373,7 @@ const ABOUT = {
 };
 function about(page, target, lang = 'en') {
   const t = ABOUT[lang];
-  const hero = panel(target, { id: 'top', cls: 'dim long short about-hero', img: 'ai-glow', flip: true, title: t.h1, tag: 'h1', text: t.text, acts: hb(t.project, '/pages/contact?interest=custom-software', true), first: true });
+  const hero = panel(target, { id: 'top', cls: 'dim long short about-hero', img: 'ai-light', flip: true, title: t.h1, tag: 'h1', text: t.text, acts: hb(t.project, '/pages/contact?interest=custom-software', true), first: true });
   const item = ([h, x, link, href, img, alt, phone]) => '<div class="built-item fade"><figure class="shot built-shot' + (phone ? ' is-phone' : ' slab') + '"><img src="' + asset(img, target) + '" alt="' + e(alt) + '" width="' + (phone ? 780 : 2000) + '" height="' + (phone ? 1688 : 1250) + '" loading="lazy" decoding="async"></figure><h3 class="t3">' + e(h) + '</h3><p>' + e(x) + '</p>' + more(link, href) + '</div>';
   const built = '<section class="chap about-built" aria-labelledby="built-t"><div class="wrap"><h2 class="t2 rise" id="built-t">' + e(t.builtT) + '</h2><div class="built-row">' + t.built.map(item).join('') + '</div></div></section>';
   const call = callBlock(t.callK, '');
@@ -435,7 +435,7 @@ function assistantBlock(target) {
 }
 const preload = (target, extra = '') => '<link rel="preload" href="' + asset('dm-sans-latin-400-normal.woff2', target) + '" as="font" type="font/woff2" crossorigin><link rel="preload" href="' + asset('dm-sans-latin-600-normal.woff2', target) + '" as="font" type="font/woff2" crossorigin>' + extra;
 /** The first large image of each panel page, preloaded at high priority (it is the page's largest paint). */
-const heroOf = path => ({ home: 'night-ai-light.webp', nevora: 'night-ai-devices.webp', products: 'night-ai-devices.webp', services: 'night-ai-glow.webp', signin: 'night-ai-devices.webp', plans: 'night-ai-glow.webp' })[routes[path]?.kind] || (path === '/pages/about' || path === '/pages/es-nosotros' ? 'night-ai-glow.webp' : '');
+const heroOf = path => ({ home: 'night-ai-light.webp', nevora: 'night-ai-devices.webp', products: 'night-ai-devices.webp', services: 'night-ai-light.webp', signin: 'night-ai-devices.webp', plans: 'night-ai-light.webp' })[routes[path]?.kind] || (path === '/pages/about' || path === '/pages/es-nosotros' ? 'night-ai-light.webp' : '');
 /** Language versions: the English and Spanish paths of a page that has both, absolute on the main domain (hreflang). */
 const absolute = path => 'https://' + company.domain + path;
 const pairOf = path => { const other = counterpart(path); if (!other) return null; return langOf(path) === 'es' ? { en: other, es: path } : { en: path, es: other }; };

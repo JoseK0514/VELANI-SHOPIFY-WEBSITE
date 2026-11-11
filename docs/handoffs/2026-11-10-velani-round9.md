@@ -28,3 +28,5 @@
 
 ## Round 10
 - Items 3–5 + focus ring: support line now "If NEVORA is down and your team can’t clock in, email us." (ES equivalent) wherever the support block uses it; header button is the trial on every page (Custom software too, outline); About ends on the trial only with the quiet custom-software line; dark header focus ring is paper white.
+- Items 1–2: Custom software, About and the setup pages now use Home’s first-screen image, filter and shade. One shared join rule for every page (Home, NEVORA, Plans, Custom, About, setup): the dark side carries teal to the edge and brightens into white or #F2F6F5; the old per-page joins and Home’s .hmorn layer are retired. Phones: dark first screens keep 150px under the action; the copy scrim is off there as on Home.
+- Checks: npm test 57/57, check:theme clean, axe 0 violations in 100 runs (20 pages x 5 widths), no sideways scroll, headings <= 2 lines.
