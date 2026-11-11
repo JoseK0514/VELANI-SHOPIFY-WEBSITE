@@ -3,7 +3,7 @@ import { createPrivacyAdapter } from './privacy.js';
 // Every word this script shows, in the page's language (<html lang>): English, or Spanish on the Spanish pages
 const STRINGS = {
   en: {
-    sent: { 'nevora-demo': ['Trial request sent.', 'We’ll email you within two business days to set up your NEVORA workplace. Your 30 days start the day it’s ready.'], nevora: ['Request sent.', 'We’ll email you within two business days about your team and locations. Teams that qualify get the same 30 days free, starting the day the workplace is set up.'], relay: ['You’re on the Relay list.', 'We’ll email you when NEVORA Relay opens for early access. No dates yet.'], 'client-work': ['Request sent.', 'We reply by email within two business days. Paid work starts only after you approve a written quote.'], 'client-help': ['Sent to support.', 'We reply by email within two business days. If you can’t work, write to support@thevelani.com, Monday to Friday, 8 am to 9 pm ET.'] },
+    sent: { 'nevora-demo': ['Trial request sent.', 'Jose from Velani will email you within two business days to set up your workplace. Your 30 days start the day it’s ready.'], nevora: ['Request sent.', 'We’ll email you within two business days about your team and locations. Teams that qualify get the same 30 days free, starting the day the workplace is set up.'], relay: ['You’re on the Relay list.', 'We’ll email you when NEVORA Relay opens for early access. No dates yet.'], 'client-work': ['Request sent.', 'We reply by email within two business days. Paid work starts only after you approve a written quote.'], 'client-help': ['Sent to support.', 'We reply by email within two business days. If you can’t work, write to support@thevelani.com, Monday to Friday, 8 am to 9 pm ET.'] },
     sentTitle: 'Message sent', trialTitle: 'Free NEVORA trial', quoteTitle: 'NEVORA for your team', relayTitle: 'NEVORA Relay waitlist',
     quoteNote: 'Teams of more than 30 start with assisted setup instead of signing up online. Teams that qualify get the same 30 days free. What you typed is kept.',
     optional: 'Anything else <span class="opt">optional</span>',
@@ -13,7 +13,7 @@ const STRINGS = {
     privacyErrors: {},
   },
   es: {
-    sent: { 'nevora-demo': ['Solicitud de prueba enviada.', 'Te escribiremos en un plazo de dos días laborables para configurar tu lugar de trabajo de NEVORA. Tus 30 días empiezan el día en que esté listo.'], nevora: ['Solicitud enviada.', 'Te escribiremos en un plazo de dos días laborables sobre tu equipo y tus ubicaciones. Los equipos que califican reciben los mismos 30 días gratis, desde el día en que el lugar de trabajo queda configurado.'], relay: ['Ya estás en la lista de Relay.', 'Te escribiremos cuando NEVORA Relay abra el acceso anticipado. Aún sin fechas.'], 'client-work': ['Solicitud enviada.', 'Te respondemos por correo en un plazo de dos días laborables. El trabajo pagado empieza solo después de que apruebes una cotización por escrito.'], 'client-help': ['Enviado a soporte.', 'Te respondemos por correo en un plazo de dos días laborables. Si no pueden trabajar, escribe a support@thevelani.com, lunes a viernes, 8\u00a0a.\u00a0m. a 9\u00a0p.\u00a0m. ET.'] },
+    sent: { 'nevora-demo': ['Solicitud de prueba enviada.', 'Jose de Velani te escribirá en un plazo de dos días laborables para configurar tu lugar de trabajo. Tus 30 días empiezan el día en que esté listo.'], nevora: ['Solicitud enviada.', 'Te escribiremos en un plazo de dos días laborables sobre tu equipo y tus ubicaciones. Los equipos que califican reciben los mismos 30 días gratis, desde el día en que el lugar de trabajo queda configurado.'], relay: ['Ya estás en la lista de Relay.', 'Te escribiremos cuando NEVORA Relay abra el acceso anticipado. Aún sin fechas.'], 'client-work': ['Solicitud enviada.', 'Te respondemos por correo en un plazo de dos días laborables. El trabajo pagado empieza solo después de que apruebes una cotización por escrito.'], 'client-help': ['Enviado a soporte.', 'Te respondemos por correo en un plazo de dos días laborables. Si no pueden trabajar, escribe a support@thevelani.com, lunes a viernes, 8\u00a0a.\u00a0m. a 9\u00a0p.\u00a0m. ET.'] },
     sentTitle: 'Mensaje enviado', trialTitle: 'Prueba gratis de NEVORA', quoteTitle: 'NEVORA para tu equipo', relayTitle: 'Lista de espera de NEVORA Relay',
     quoteNote: 'Los equipos de más de 30 empiezan con una configuración asistida en lugar del registro en línea. Los que califican reciben los mismos 30 días gratis. Lo que escribiste se conserva.',
     optional: 'Algo más <span class="opt">opcional</span>',
@@ -36,6 +36,9 @@ function showSent(topic, preview) {
   if (copy) { sent.querySelector('[data-sent-h]').textContent = copy[0]; sent.querySelector('[data-sent-p]').textContent = copy[1]; }
   document.title = (copy ? copy[0].replace(/\.$/, '') : L.sentTitle) + ' · Velani';
   const note = sent.querySelector('[data-sent-preview]'); if (note) note.hidden = !preview;
+  // After a trial request the one filled action leads to the NEVORA page, and Home becomes a quiet text link
+  const next = sent.querySelector('[data-sent-next]'), back = sent.querySelector('[data-sent-back]');
+  if (next && back && topic === 'nevora-demo') { next.hidden = false; back.className = 'sent-back'; }
   sent.hidden = false; window.scrollTo(0, 0); sent.focus({ preventScroll: true });
 }
 const justSent = !!sent && !sent.hidden;

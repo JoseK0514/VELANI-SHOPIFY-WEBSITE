@@ -282,3 +282,18 @@ test('the request form has a real label for every field and a live summary that 
   assert.match(js, /campos necesitan atención: /); assert.match(js, /setAttribute\('role', 'alert'\)/);
   assert.match(js, /form\.addEventListener\('input', recheck\)/);
 });
+
+test('after a trial request the panel names Jose, leads to the NEVORA page and keeps Home as a quiet link', async () => {
+  const { readFile } = await import('node:fs/promises');
+  const js = await readFile(new URL('../public/assets/velani.js', import.meta.url), 'utf8');
+  assert.match(js, /Jose from Velani will email you within two business days to set up your workplace\. Your 30 days start the day it’s ready\./);
+  assert.match(js, /Jose de Velani te escribirá en un plazo de dos días laborables para configurar tu lugar de trabajo\. Tus 30 días empiezan el día en que esté listo\./);
+  assert.match(js, /topic === 'nevora-demo'\) \{ next\.hidden = false; back\.className = 'sent-back'; \}/);
+  for (const [path, next, nextHref, back, backHref] of [['/pages/contact', 'See how NEVORA works', '/pages/nevora', 'Back to home', '/'], ['/pages/es-contacto', 'Mira cómo funciona NEVORA', '/pages/es-nevora', 'Volver al inicio', '/pages/es']]) {
+    const html = renderBody(path, { target: 'local' });
+    assert.match(html, new RegExp('<a class="hb fill" data-sent-next hidden href="' + nextHref + '">' + next + '<svg'), path + ' filled action with the arrow');
+    assert.match(html, new RegExp('<a class="pill" data-sent-back href="' + backHref + '">' + back + '</a>'), path + ' way home');
+    assert.match(html, /data-sent-preview hidden/, path + ' preview note kept');
+    assert.equal((html.match(/data-sent-next/g) || []).length, 1, path);
+  }
+});

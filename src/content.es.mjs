@@ -229,7 +229,7 @@ export const CONTACT_ES = {
   fine: 'El día 30, el dueño elige un plan en NEVORA. No se cobra nada hasta entonces. NEVORA calcula los comprobantes de nómina; no les paga a los empleados ni presenta impuestos de nómina.',
   sentPreview: 'Vista previa del sitio web&nbsp;· esto es lo que ven los visitantes después de enviar. No se envió nada.',
   sentH: 'Mensaje enviado.', sentP: 'Gracias por escribirnos. Te respondemos por correo en un plazo de dos días laborables.',
-  sentFrom: ['Las respuestas llegan desde ', '. Si no ves nuestra respuesta en tu bandeja de entrada, revisa la carpeta de spam o de correo no deseado.'], back: 'Volver al inicio',
+  sentFrom: ['Las respuestas llegan desde ', '. Si no ves nuestra respuesta en tu bandeja de entrada, revisa la carpeta de spam o de correo no deseado.'], back: 'Volver al inicio', sentNext: 'Mira cómo funciona NEVORA',
   writeTitle: 'Escríbenos', writeText: 'Qué necesita funcionar mejor, quién lo usará y cómo funciona hoy. Te respondemos desde ', writeButton: 'Escribe a ', noSensitive: 'No envíes contraseñas, datos de pago ni registros confidenciales por correo.',
 };
 
