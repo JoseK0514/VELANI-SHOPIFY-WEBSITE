@@ -91,8 +91,8 @@
 (()=>{
  const d=document,root=d.documentElement,hero=d.querySelector('.hpanel.sig');if(!hero)return;
  const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches,fine=matchMedia('(hover: hover) and (pointer: fine)').matches;
- // The launcher stays out of the first screen
- if('IntersectionObserver' in window){root.classList.add('sig-top');new IntersectionObserver(e=>root.classList.toggle('sig-top',e[0].intersectionRatio>.35),{threshold:[0,.35,1]}).observe(hero)}
+ // The launcher stays out of the first screen and off the live objects below it
+ if('IntersectionObserver' in window){root.classList.add('sig-top');const busy=new Set([hero]),io=new IntersectionObserver(es=>{es.forEach(e=>busy[e.isIntersecting&&(e.target!==hero||e.intersectionRatio>.35)?'add':'delete'](e.target));root.classList.toggle('sig-top',busy.size>0)},{threshold:[0,.35,1]});[hero,...d.querySelectorAll('.hn-phone,.hn-cards')].forEach(el=>io.observe(el))}
  // Light: target from the pointer, eased with a slow lerp; runs only while it is still moving
  const light=hero.querySelector('.hlight');
  if(light&&fine&&!reduce){let tx=0,ty=0,x=0,y=0,raf=0;
