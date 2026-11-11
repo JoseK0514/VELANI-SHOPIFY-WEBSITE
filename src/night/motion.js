@@ -23,7 +23,7 @@
  if(mb){mb.addEventListener('click',()=>setMenu(mb.getAttribute('aria-expanded')!=='true'));
   mm.addEventListener('click',e=>{if(e.target.closest('a'))setMenu(false)});
   d.addEventListener('keydown',e=>{if(e.key==='Escape'&&mb.getAttribute('aria-expanded')==='true'){setMenu(false);mb.focus()}});
-  matchMedia('(min-width:834px)').addEventListener('change',e=>{if(e.matches)setMenu(false)});}
+  matchMedia('(min-width:1024px)').addEventListener('change',e=>{if(e.matches)setMenu(false)});}
  nav&&nav.addEventListener('focusin',()=>nav.classList.remove('tuck'));
  // Header menus (desktop): each is a disclosure with one open state, and only one is open at a time. Only its button opens
  // and closes it (click, Enter or Space; ArrowDown opens and focuses the first item); Escape, a click outside or focus leaving closes it.

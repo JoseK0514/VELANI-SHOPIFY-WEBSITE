@@ -31,15 +31,17 @@ main:has(> .hpanel){background:var(--paper)}
 
 /* ---------- Type: seven sizes ---------- */
 h1,h2,.t0,.t1,.t2,.hpanel h1,.hpanel h2,.nh-serif{font-family:var(--serif);font-weight:600;letter-spacing:-.02em;text-wrap:balance}
-h1,.t0,.t1,.hpanel h1,.hpanel.long h1{font-size:clamp(3rem,6.1vw,5.5rem);line-height:1.02}
+h1,.t0,.t1,.hpanel h1,.hpanel.long h1,#main .nh-hero h1{font-size:clamp(2.5rem,5.6vw,5rem);line-height:1.02}
+#main .nh-hero h1{max-width:1100px;margin-inline:auto}
 h2,.t2,.hpanel h2{font-size:clamp(2.125rem,3.9vw,3.5rem);line-height:1.06}
 .t3,h3{font-family:var(--font);font-weight:600;letter-spacing:-.01em;font-size:clamp(1.375rem,1.95vw,1.75rem);line-height:1.2}
 .lede,.hcopy p:not(.hkick):not(.hfact){font-size:clamp(1.125rem,1.4vw,1.25rem);line-height:1.5;color:var(--ink-2)}
 body{font-size:1.0625rem;line-height:1.6}
 .cap,.fine,.hfact{font-size:0.875rem;line-height:1.5;color:var(--ink-3)}
 @media(max-width:833px){
- h1,.t0,.t1,.hpanel h1,.hpanel.long h1{font-size:clamp(2.5rem,12.3vw,3rem);line-height:1.04}
- h2,.t2,.hpanel h2{font-size:clamp(1.875rem,8.7vw,2.125rem);line-height:1.08}
+ h1,.t0,.t1,.hpanel h1,.hpanel.long h1,#main .nh-hero h1{font-size:clamp(1.75rem,8vw,2.125rem);line-height:1.06}
+ h2,.t2,.hpanel h2,#main .nh-serif.nh-h2,.case-head .t1,.case-head h2{font-size:clamp(1.5rem,7vw,1.75rem);line-height:1.1}
+ .t3,h3{font-size:clamp(1.1875rem,5.4vw,1.375rem)}
  body{font-size:1rem}
 }
 /* Small headings inside cards and lists stay in the text face, one step down */
@@ -94,8 +96,8 @@ body{font-size:1.0625rem;line-height:1.6}
 .gnav-menu{color:var(--ink)}
 /* The trial page itself needs no trial button */
 .ask-demo .gnav-cta{display:none}
-@media(max-width:1100px) and (min-width:834px){.gnav-links a{padding:0 10px}.gnav-links a[aria-current]::after{left:10px;right:10px}.gnav-signin{padding:0 10px}}
-@media(max-width:833px){
+@media(max-width:1180px) and (min-width:1024px){.gnav-links a{padding:0 10px}.gnav-links a[aria-current]::after{left:10px;right:10px}.gnav-signin{padding:0 10px}}
+@media(max-width:1023px){
  .gnav-in{min-height:60px}
  .gnav-links,.gnav-signin,.gnav-lang{display:none}
  .gnav-in>.pill.gnav-cta{display:inline-flex;margin-left:auto;min-height:44px;padding:0 14px;font-size:0.875rem}
@@ -141,7 +143,7 @@ main>.hpanel:not(:first-child):not(.end) .hcopy p:not(.hkick){color:var(--ink-2)
 main>.hpanel:not(:first-child):not(.end) :focus-visible{outline-color:var(--teal)}
 #main>.hpanel:not(:first-child):not(.end) .hb{border-color:var(--rule-2);color:var(--ink)}
 #main>.hpanel:not(:first-child):not(.end) .hb.fill{background:var(--teal);border-color:var(--teal);color:#fff}
-@media(max-width:1023px){
+@media(max-width:1199px){
  main>.hpanel:first-child{grid-template-columns:minmax(0,1fr)}
  .hpanel .hshot,.hpanel .hweb,.hpanel .hchat,.hpanel .hwin,.hpanel .hduo,.hpanel .rcard{grid-column:1;grid-row:auto;margin-top:48px;justify-self:start}
  .hpanel .hweb,.hpanel .hwin,.hpanel .rcard{display:none}
@@ -239,3 +241,7 @@ html{scroll-padding-bottom:88px}
 .draw::before{transform:none!important;transition:none!important}
 .slab.phone .feed{transition-duration:.45s}
 @media(prefers-reduced-motion:reduce){.rise{opacity:1;transform:none}.fade{opacity:1}}
+/* NEVORA hero title: the same two sizes as every page title */
+main .n-hero.hpanel.long h1{font-size:clamp(2.5rem,5.6vw,5rem);line-height:1.02;max-width:none}
+main .hpanel.n-hero .hcopy{max-width:920px}
+@media(max-width:833px){main .n-hero.hpanel.long h1{font-size:clamp(1.75rem,8vw,2.125rem);line-height:1.06}}

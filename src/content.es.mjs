@@ -35,7 +35,7 @@ export const ES_NEAREST = Object.freeze({
 const es = (en, fields) => ({ lang: 'es', en, sections: [], ...fields });
 export const ES_ROUTES = {
   '/pages/es': es('/', {
-    kind: 'home', title: 'La semana de tu equipo, del primer turno al día de pago.', eyebrow: 'Velani',
+    kind: 'home', title: 'Tu equipo, del primer turno al día de pago.', eyebrow: 'Velani',
     name: 'NEVORA de Velani · Horarios, registro de tiempo y cálculo de nómina',
     intro: 'NEVORA organiza los turnos de tu equipo, registra sus horas y calcula su pago. Gratis por 30 días, y Velani lo configura contigo. Velani también crea sitios web y apps para negocios.',
     og: ['velani-social.png', 'Velani. Más luz para tu trabajo.'],
