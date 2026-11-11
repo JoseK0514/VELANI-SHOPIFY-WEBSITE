@@ -74,3 +74,39 @@ Source: NEVORA `origin/development`, `docs/product/rondo-operating-contract.md` 
 - Numbers after a clock-in and three ticks: today's pay $32.50 from rows $32.50; week $1,832.50 equals the sum of the Pay rows and Mon–Fri plus today.
 - Layout shift 0.0011. Reduced motion: stays on Time clock, clock paused at 7:58.
 - Hosted: 9/9 files match their checksums.
+
+## Round 4 (same branch, same preview 193311572282)
+
+- **One cool family below the first screen**, on Home and the NEVORA page: white and one pale teal-grey ground (#F2F6F5), teal-ink text (#0E2A2A), NEVORA teal (#0B6E69) for the filled action with white text, teal-grey hairlines and shadows. No cream, brown or black. The piece's frame is back in the cool family.
+- **Join:** the teal light brightens into white. One hue, no line.
+- **Home is NEVORA and Rondo:** the Tool Box and Yavi panels are gone from Home (EN and ES). The closing has the trial as its only filled action, then one quiet line linking to Custom software. The Custom software page and nav are untouched.
+- **Schedule view:** each chip shows start over end, Saturday marked, "Published".
+- **Rondo view:** two of the app's starter questions as buttons. The second, "Investigate coverage for tomorrow and compare my options.", answers from the schedule only: who is scheduled Sunday, who is off and under 40 hours, who is already at 40. The third starter ("What could go wrong with this plan?") is left out; the piece has no plan to reason about.
+- **Support line:** shortened to two lines at 390 in both languages.
+
+### Measured contrast
+
+| Pair | Ratio |
+|---|---|
+| Ink #0E2A2A on white / on #F2F6F5 | 15.2 / 13.9 |
+| Secondary #3D5654 on white / on #F2F6F5 | 7.9 / 7.3 |
+| Small notes #56706D on white / on #F2F6F5 | 5.3 / 4.9 |
+| White on teal button #0B6E69 | 6.1 |
+| "Sample data" line #4A6360 on the frame | 5.9 |
+| Teal "Clock in" on its tint | 5.3 |
+| Pressed question chip | 7.8 |
+
+### Checks, round 4
+
+- `npm test` 50/50 (new: Home has no client panels, one filled action in the closing, the quiet line, two question buttons). `check:theme` clean.
+- axe WCAG 2.2 AA, each view, EN and ES, five widths: 0 violations in 40 runs. The card height is the same across the four views and both Rondo answers.
+- Keyboard: tabs as before; the question buttons take focus with a ring and Enter switches the answer and its source line.
+- Phone 390×844: support line two lines; clock at 498–545; Alexandra's row with Clock in ends at 823.
+- Hosted: 5/5 changed files match their checksums.
+
+### Still short
+
+- Home is now three sections, so it is short. The NEVORA section is still the older panel with its own screens ("Welcome back, Alexandra", zeros).
+- The NEVORA page's time clock demo on this branch is still the older grey kiosk; the Direction B restyle lives on `claude/velani-home-gusto-20261110`.
+- The NEVORA page's hero and local nav are still the older dark blue-black, and the footer wordmark is unchanged.
+- Rondo's coverage answer states facts from the schedule; it does not compare real options the way the app would.
