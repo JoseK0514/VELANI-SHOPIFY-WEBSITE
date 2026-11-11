@@ -342,6 +342,8 @@ main:has(.contact-split) .client-form{padding:clamp(20px,3vw,36px);border-radius
 /* On the request page the header's own request button would point at the page you're on: it is not there, and Sign in ends the row */
 .ask-demo .gnav-in>.pill{display:none}
 .ask-demo .gnav-signin{margin-right:-12px}
+/* With the row ending on Sign in, the last menu opens from its right edge so it never leaves the window */
+.ask-demo .gnav-links .gnav-dd:last-child .gnav-ddmenu{left:auto;right:0}
 
 .plans-top::after{height:220px;background:radial-gradient(ellipse 70% 100% at 50% 100%,rgba(150,226,226,.26) 0%,rgba(150,226,226,.10) 40%,rgba(150,226,226,0) 74%),linear-gradient(180deg,rgba(225,246,245,0) 0%,rgba(225,246,245,.03) 34%,rgba(226,246,245,.10) 52%,rgba(230,247,246,.24) 68%,rgba(238,250,249,.48) 81%,rgba(246,252,252,.76) 91%,rgba(252,254,254,.94) 97%,#fff 100%)}
 main:has(.day30) .pc-meter i{background:#dfe7e5}
@@ -389,13 +391,13 @@ main:has(.contact-split) .sent .sent-back{display:inline-flex;align-items:center
 main:has(.contact-split) .sent :is(.hb,.sent-back):focus-visible{outline:2px solid #0b6e69;outline-offset:3px}
 
 /* ---------- Light header on pages with no dark first screen (round 8): white, teal-ink, the same wordmark and links ---------- */
-body:has(main .contact-split) .gnav{--text:#0e2a2a;--text-2:#3d5654;--text-3:#56706d;--panel:#fff;--panel-2:#f2f6f5;--line:rgba(14,42,42,.12);--line-2:rgba(14,42,42,.28);--accent:#0b6e69;--label:#3d5654;background:rgba(255,255,255,.92);color:#0e2a2a;box-shadow:inset 0 -1px 0 rgba(14,42,42,.1)}
-body:has(main .contact-split) .gnav :is(a,button,.wordmark,.wm-velani){color:#0e2a2a}
-body:has(main .contact-split) .gnav :is(a,button):not([aria-current]):not(.on){color:#3d5654}
-body:has(main .contact-split) .gnav :is(a,button):hover,body:has(main .contact-split) .gnav [aria-current]{color:#0e2a2a}
-body:has(main .contact-split) .gnav .wordmark,body:has(main .contact-split) .gnav .wm-velani{color:#0e2a2a}
-body:has(main .contact-split) .gnav :is(a,button):focus-visible{outline-color:#0b6e69}
-body:has(main .contact-split) .gnav .gnav-ddmenu{background:#fff;box-shadow:0 0 0 1px rgba(14,42,42,.1),0 22px 44px -22px rgba(10,60,58,.35)}
+body:has(main :is(.contact-split,.phero)) .gnav{--text:#0e2a2a;--text-2:#3d5654;--text-3:#56706d;--panel:#fff;--panel-2:#f2f6f5;--line:rgba(14,42,42,.12);--line-2:rgba(14,42,42,.28);--accent:#0b6e69;--label:#3d5654;background:rgba(255,255,255,.92);color:#0e2a2a;box-shadow:inset 0 -1px 0 rgba(14,42,42,.1)}
+body:has(main :is(.contact-split,.phero)) .gnav :is(a,button,.wordmark,.wm-velani){color:#0e2a2a}
+body:has(main :is(.contact-split,.phero)) .gnav :is(a,button):not([aria-current]):not(.on){color:#3d5654}
+body:has(main :is(.contact-split,.phero)) .gnav :is(a,button):hover,body:has(main :is(.contact-split,.phero)) .gnav [aria-current]{color:#0e2a2a}
+body:has(main :is(.contact-split,.phero)) .gnav .wordmark,body:has(main :is(.contact-split,.phero)) .gnav .wm-velani{color:#0e2a2a}
+body:has(main :is(.contact-split,.phero)) .gnav :is(a,button):focus-visible{outline-color:#0b6e69}
+body:has(main :is(.contact-split,.phero)) .gnav .gnav-ddmenu{background:#fff;box-shadow:0 0 0 1px rgba(14,42,42,.1),0 22px 44px -22px rgba(10,60,58,.35)}
 
 /* ---------- Closing join on Plans (round 9): Home's join exactly, starting from the pale ground instead of white ---------- */
 main:has(.day30) #velani::after{content:"";position:absolute;z-index:0;left:0;right:0;top:-1px;height:220px;pointer-events:none;background:linear-gradient(180deg,#f2f6f5 0%,rgba(242,246,245,.94) 3%,rgba(240,248,247,.76) 9%,rgba(236,249,248,.48) 19%,rgba(230,247,246,.24) 32%,rgba(226,246,245,.10) 48%,rgba(225,246,245,.03) 66%,rgba(225,246,245,0) 100%)}
@@ -410,8 +412,96 @@ main:has(.day30) #velani::after{content:"";position:absolute;z-index:0;left:0;ri
 @media(min-width:834px){.plans-top .hcopy{max-width:calc(100% - var(--pad)*2 - min(440px,40vw) - 56px)}}
 main:has(.day30) .price-grid{grid-template-columns:minmax(0,720px)}
 @media(max-width:833px){.plans-top .pcard{position:relative;right:auto;top:auto;transform:none;width:auto;margin:28px var(--pad) 0}.hpanel.dim.long.plans-top{justify-content:flex-start;min-height:0;padding-top:72px;padding-bottom:150px}}
-body:has(main .contact-split) .gnav{background:#fff}
+body:has(main :is(.contact-split,.phero)) .gnav{background:#fff}
 @media(min-width:834px){.plans-top .hcopy{max-width:min(600px,calc(100% - var(--pad)*2 - min(440px,40vw) - 56px))}}
 /* Below 1100px the control sits under the copy, so the headline keeps its two lines */
 @media(max-width:1100px){.hpanel.dim.long.plans-top{display:flex;flex-direction:column;justify-content:flex-start;height:auto;min-height:0;padding-top:96px;padding-bottom:150px}.plans-top .hcopy{position:relative;left:auto;top:auto;transform:none;max-width:none;margin:0 var(--pad)}.plans-top .pcard{position:relative;right:auto;top:auto;transform:none;width:auto;max-width:520px;margin:32px var(--pad) 0}}
 @media(max-width:833px){.hpanel.dim.long.plans-top{padding-top:72px}}
+
+/* ---------- Round 9: every page outside Home and NEVORA sits in the same light system. White and #F2F6F5 grounds, teal-ink
+   text, NEVORA teal for the one filled action; first screens and endings keep the teal cinematic light ---------- */
+main:not(:has(.sig)){--bg:#fff;--panel:#f2f6f5;--panel-2:#e6f1ee;--line:rgba(14,42,42,.12);--line-2:rgba(14,42,42,.28);--text:#0e2a2a;--text-2:#3d5654;--text-3:#56706d;--accent:#0b6e69;--label:#3d5654;--end:#fff;background:#fff;color:#0e2a2a}
+main:not(:has(.sig)):has(.contact-split,.about-how){--end:#f2f6f5}
+main:not(:has(.sig)) .hpanel{--text:#f4f6f9;--text-2:#dde3ee;--text-3:#c6d6d6;--accent:#bbd8ff;--label:#dbe3ee;--line:rgba(255,255,255,.08);--line-2:rgba(255,255,255,.15)}
+main:not(:has(.sig)) .hpanel>.hph:is([src*="ai-glow"],[src*="ai-light"]){filter:hue-rotate(-26deg) saturate(.9)}
+main:not(:has(.sig)) .hpanel .hb.fill{background:#fff;border-color:#fff;color:#0e1716}
+@media(hover:hover) and (pointer:fine){main:not(:has(.sig)) .hpanel .hb.fill:hover{background:#eef4f3;border-color:#eef4f3}}
+main:not(:has(.sig)) :is(.chap,.phero,.doc,.dir,.faq,.band,.contact) .hb,main:not(:has(.sig)) :is(.chap,.phero,.doc,.dir,.faq,.band,.contact) .pill.line{background:transparent;border-color:rgba(14,42,42,.38);color:#0e2a2a;-webkit-backdrop-filter:none;backdrop-filter:none}
+main:not(:has(.sig)) :is(.chap,.phero,.doc,.dir,.faq,.band,.contact) :is(.hb.fill,.pill:not(.line)){background:#0b6e69;border-color:#0b6e69;color:#fff}
+@media(hover:hover){main:not(:has(.sig)) :is(.chap,.phero,.doc,.dir,.faq,.band,.contact) :is(.hb,.pill.line):hover{background:#e6f1ee;border-color:rgba(14,42,42,.5)}main:not(:has(.sig)) :is(.chap,.phero,.doc,.dir,.faq,.band,.contact) :is(.hb.fill,.pill:not(.line)):hover{background:#095f5b;border-color:#095f5b}}
+main:not(:has(.sig)) :is(.chap,.phero,.doc,.dir,.faq,.band,.contact) :is(a,button,input,select,textarea,summary):focus-visible{outline:2px solid #0b6e69;outline-offset:3px}
+main:not(:has(.sig)) :is(.hb,.pill):active{transform:translateY(1px)}
+main:not(:has(.sig)) .lede{color:#3d5654}
+main:not(:has(.sig)) .hpanel .lede{color:inherit}
+/* Joins: a dark first screen eases into white; the ending deepens from the ground above it, the same way Home's does */
+main:not(:has(.sig,.plans-top)) .hpanel.dim::after{content:"";position:absolute;z-index:0;left:0;right:0;bottom:-1px;height:220px;pointer-events:none;background:linear-gradient(180deg,rgba(225,246,245,0) 0%,rgba(225,246,245,.03) 34%,rgba(226,246,245,.10) 52%,rgba(230,247,246,.24) 68%,rgba(238,250,249,.48) 81%,rgba(246,252,252,.76) 91%,rgba(252,254,254,.94) 97%,#fff 100%)}
+main:not(:has(.sig,.day30)) #velani::after{content:"";position:absolute;z-index:0;left:0;right:0;top:-1px;height:220px;pointer-events:none;background:linear-gradient(180deg,var(--end) 0%,rgba(246,250,250,.94) 3%,rgba(240,248,247,.76) 9%,rgba(236,249,248,.48) 19%,rgba(230,247,246,.24) 32%,rgba(226,246,245,.10) 48%,rgba(225,246,245,.03) 66%,rgba(225,246,245,0) 100%)}
+@media(max-width:833px){main:not(:has(.sig,.plans-top)) .hpanel.dim::after,main:not(:has(.sig,.day30)) #velani::after{height:150px}}
+/* The light header's request button is the outline secondary; the page keeps the one filled action */
+body:has(main :is(.contact-split,.phero)) .gnav .pill{background:transparent;border-color:rgba(14,42,42,.38);color:#0e2a2a}
+@media(hover:hover){body:has(main :is(.contact-split,.phero)) .gnav .pill:hover{background:#e6f1ee}}
+
+/* ---------- Custom software (round 9): two stories told the same way, screens in one frame family ---------- */
+.case{padding:var(--s2) 0}
+.case-app{background:#f2f6f5;--panel:#fff}
+.case-kind{margin-top:14px;font-size:1.125rem;font-weight:500;color:#0b6e69}
+.case-story{display:grid;gap:28px clamp(28px,4vw,56px);margin:clamp(32px,4vw,48px) 0 0}
+.case-web .case-story{grid-template-columns:repeat(3,minmax(0,1fr))}
+.case-story dt{margin:0 0 8px;font-size:1rem;line-height:1.3;font-weight:600;color:#0b6e69}
+.case-story dd{margin:0;max-width:34em;font-size:1.0625rem;line-height:1.55;color:#0e2a2a}
+.case-app .case-story{max-width:30em}
+.case .shot.slab{background:#fff;box-shadow:0 0 0 1px rgba(14,42,42,.08),0 24px 48px -28px rgba(10,60,58,.34)}
+.case .shot.slab::after{display:none}
+.case-phones .shot.phone{background:#0e1716;box-shadow:0 0 0 1px rgba(14,42,42,.12),0 28px 52px -28px rgba(10,60,58,.5)}
+.case-split{align-items:center}
+.how-page{padding:var(--s2) 0}
+.how-page .how-text{max-width:34em;color:#3d5654}
+.how-page .ul{color:#0b6e69;text-decoration:underline;text-decoration-color:rgba(11,110,105,.4);text-underline-offset:3px}
+@media(max-width:833px){.case-web .case-story{grid-template-columns:1fr}.case,.how-page{padding:72px 0}}
+
+/* ---------- Support family (round 9): Help, Sign in and the request form share the pale ground, white cards and one form system ---------- */
+main:not(:has(.sig)):has(.contact-split){background:#f2f6f5;--panel:#fff}
+main:has(.contact-split) .ff[hidden]{display:none}
+main:not(:has(.sig)) .kind{min-height:48px;border-radius:10px;background:#fff;border-color:rgba(14,42,42,.28)}
+main:not(:has(.sig)) .kind b{color:#3d5654}
+@media(hover:hover){main:not(:has(.sig)) .kind:hover{border-color:rgba(14,42,42,.5)}}
+main:not(:has(.sig)) .kind:has(input:checked){background:#e6f1ee;border-color:#0b6e69;box-shadow:inset 0 0 0 1px #0b6e69}
+main:not(:has(.sig)) .kind:has(input:checked) b{color:#0e2a2a}
+main:not(:has(.sig)) .kind:has(input:focus-visible){outline:2px solid #0b6e69;outline-offset:2px}
+main:has(.help-top) .help-top .client-form{padding:0;border-radius:0;background:none;box-shadow:none}
+.help-top .help-doors{gap:16px}
+.help-top .day-opt{border-radius:20px;background:#fff;box-shadow:0 0 0 1px rgba(14,42,42,.06),0 22px 44px -26px rgba(10,60,58,.26)}
+/* About (round 9) */
+.about-built{padding-bottom:var(--s2)}
+.about-built .slab{box-shadow:0 0 0 1px rgba(14,42,42,.08),0 24px 48px -28px rgba(10,60,58,.34)}
+.about-built .slab::after{display:none}
+@media(max-width:833px){.about-built{padding-bottom:72px}}
+
+/* ---------- Legal, policies, billing utility pages, 404 and Products in the light system (round 9) ---------- */
+main:not(:has(.sig)) :is(.doc-meta,.doc-aside-t){font-size:.875rem;letter-spacing:0;text-transform:none;color:#56706d}
+.doc-body section{display:block}
+.doc-body section>i{display:none}
+main:not(:has(.sig)) .doc-body a:not(.hb):not(.pill){color:#0b6e69}
+main:not(:has(.sig)) .doc-body :is(p,li){color:#3d5654}
+.dir .t2{margin-top:var(--s1)}
+.dir .t2:first-child{margin-top:0}
+.dir .tiles{gap:0 clamp(32px,5vw,72px);margin-top:20px;border-top:1px solid rgba(14,42,42,.12)}
+.dir .tile{position:relative;display:block;min-height:0;padding:22px 44px 22px 0;border-radius:0;background:none;box-shadow:inset 0 -1px 0 rgba(14,42,42,.12)}
+.dir .tile .t3{display:block;font-size:1.1875rem}
+.dir .tile p{margin-top:6px;font-size:1rem}
+.dir .tile .icon{position:absolute;right:4px;top:50%;margin-top:-10px;color:#0b6e69}
+@media(hover:hover){.dir .tile:hover{background:none;box-shadow:inset 0 -1px 0 #0b6e69}.dir .tile:hover .t3{color:#0b6e69}}
+@media(max-width:700px){.dir .tile{padding:20px 40px 20px 0}}
+.cflow{padding:var(--s1) 0 var(--s2)}
+.setup .client-form:has(>.setup-card[hidden]){display:none}
+.make{padding:0 0 var(--s2)}
+.make-row{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.make-card{position:relative;display:flex;flex-direction:column;padding:clamp(24px,2.6vw,36px);border-radius:20px;background:#f2f6f5;scroll-margin-top:calc(var(--anchor) + 16px)}
+.make-card .t3{margin:0}
+.make-card p{margin:14px 0 0;font-size:1.0625rem;line-height:1.55;color:#3d5654}
+.make-acts{display:flex;flex-wrap:wrap;align-items:center;gap:8px 20px;margin-top:auto;padding-top:28px}
+.make-acts .ul{display:inline-flex;align-items:center;min-height:44px;font-size:.9375rem;font-weight:500;color:#0b6e69;text-decoration:underline;text-decoration-color:rgba(11,110,105,.4);text-underline-offset:3px}
+.make-card .anchor{position:absolute;top:0}
+@media(max-width:1023px){.make-row{grid-template-columns:1fr}.make-acts{padding-top:24px}}
+/* At the narrowest phones a dark first screen's headline keeps its two lines */
+@media(max-width:379px){main:not(:has(.sig,.plans-top)) .hpanel.dim h1{font-size:1.875rem;letter-spacing:-.025em}}

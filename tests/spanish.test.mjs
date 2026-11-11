@@ -297,3 +297,27 @@ test('after a trial request the panel names Jose, leads to the NEVORA page and k
     assert.equal((html.match(/data-sent-next/g) || []).length, 1, path);
   }
 });
+
+test('custom software tells two stories the same way and ends on one action', () => {
+  for (const [path, labels, action] of [['/pages/custom-development', ['What they needed', 'What we decided', 'What we delivered'], 'Start a project'], ['/pages/es-a-la-medida', ['Lo que necesitaban', 'Lo que decidimos', 'Lo que entregamos'], 'Empieza un proyecto']]) {
+    const html = renderBody(path, { target: 'local' });
+    assert.equal((html.match(/<dl class="case-story">/g) || []).length, 2, path + ' two stories');
+    for (const label of labels) assert.equal(html.split('<dt>' + label + '</dt>').length - 1, 2, path + ' ' + label);
+    assert.doesNotMatch(html, /class="jump|class="rail|<i>0\d<\/i>|hkick/, path + ' no jump row, numbering or labels above headings');
+    assert.equal((html.match(/class="hb fill"/g) || []).length, 2, path + ' one filled action per dark screen');
+    assert.equal(html.split('>' + action + '<svg').length - 1, 2, path + ' the same action at the start and the end');
+    assert.doesNotMatch(html, /interest=nevora-demo/, path + ' no trial offer');
+    for (const img of ['night-tb-home', 'night-store', 'night-yavi-book', 'night-yavi-rewards']) assert.match(html, new RegExp(img), path + ' ' + img);
+  }
+});
+
+test('Products is one light page of three equal cards with one filled action; Legal has no labels above headings', () => {
+  for (const path of ['/pages/products', '/pages/es-productos']) {
+    const html = renderBody(path, { target: 'local' });
+    assert.equal((html.match(/class="make-card/g) || []).length, 3, path);
+    assert.equal((html.match(/class="hb fill"/g) || []).length, 2, path + ' one filled action in the cards and one in the ending');
+    assert.doesNotMatch(html, /kicker|hkick|in development|en desarrollo/, path);
+    for (const id of ['nevora', 'relay', 'websites', 'apps']) assert.match(html, new RegExp('id="' + id + '"'), path + ' keeps #' + id);
+  }
+  assert.doesNotMatch(renderBody('/pages/legal', { target: 'local' }), /hkick/);
+});

@@ -106,7 +106,7 @@ if (form && !justSent) {
   // The summary sits directly above the Send button and names the fields that still need attention.
   let tried = false;
   const isEs = /^es\b/i.test(document.documentElement.lang);
-  const labelOf = key => { const l = fields[key] && form.querySelector('label[for="' + fields[key].id + '"]'); if (!l) return key; const c = l.cloneNode(true); c.querySelectorAll('.opt,.v-n,.v-m,.v-r').forEach(n => { if (n.classList.contains('opt') || getComputedStyle(l.querySelector('.' + n.className.split(' ')[0]) || l).display === 'none') n.remove(); }); return c.textContent.replace(/\s+/g, ' ').trim(); };
+  const labelOf = key => { const l = fields[key] && form.querySelector('label[for="' + fields[key].id + '"]'); if (!l) return key; const c = l.cloneNode(true); c.querySelectorAll('[hidden]').forEach(n => n.remove()); c.querySelectorAll('.opt,.v-n,.v-m,.v-r').forEach(n => { if (n.classList.contains('opt') || getComputedStyle(l.querySelector('.' + n.className.split(' ')[0]) || l).display === 'none') n.remove(); }); return c.textContent.replace(/\s+/g, ' ').trim(); };
   const summarize = errors => { const keys = Object.keys(errors).filter(k => fields[k]); if (!keys.length) { status.textContent = ''; status.dataset.state = ''; status.setAttribute('role', 'status'); return; }
     const names = keys.map(labelOf).join(', '); status.dataset.state = 'invalid'; status.setAttribute('role', 'alert');
     status.textContent = isEs ? (keys.length === 1 ? '1 campo necesita atención: ' : keys.length + ' campos necesitan atención: ') + names + '.' : (keys.length === 1 ? '1 field needs attention: ' : keys.length + ' fields need attention: ') + names + '.'; };
