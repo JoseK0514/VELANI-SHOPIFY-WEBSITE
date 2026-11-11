@@ -296,23 +296,29 @@ main>.hpanel:first-child::before,.hpanel.end::before,#main .nh-hero::before,#mai
 #main .nh-head p,#main .nh-lede,#main section>.wrap>p.fade{font-size:1.25rem;line-height:1.5}
 #main .nh-bands b,.price-bands li b{font-size:3.5rem;line-height:1}
 /* Running text in full ink; the muted ink is for notes */
-main p,main li,main dd,.lede,.hcopy p:not(.hkick):not(.hfact){color:var(--ink)}
+main p,main li,main dd,.lede{color:var(--ink)}
 main .hfact,main .cap,main .fine,main .nh-fine,main .case-credit,main .shot-cap,main .days-fine{color:var(--ink-3)}
 main>.hpanel:first-child p,main>.hpanel:first-child li,.hpanel.end p,#main .nh-hero p,#main .nh-end p{color:#f3faf8}
 main>.hpanel:first-child .hfact,#main .nh-hero .hfact{color:#d6efe9}
 @media(max-width:833px){.pill,.hb,#main .hb,.gnav-cta,.gnav .pill{font-size:1rem}#main .nh-h3,.nh-case-t,#main .nh-case-t{font-size:1.375rem}#main .nh-head p,#main .nh-lede{font-size:1.125rem}#main .nh-bands b,.price-bands li b{font-size:2.5rem}}
 @media(max-width:833px){main .n-hero.hpanel:has(.hshot) .hcopy,main>.hpanel.hpanel:first-child>.hcopy{margin:0}}
-#main section:not(.nh-hero):not(.nh-end) p:not(.nh-fine):not(.nh-free):not(.hfact):not(.nh-ok-t):not(.nh-ok-n):not(.nh-ok-time),#main .nh-facts dd,#main .nh-facts dt{color:var(--ink)}
-#main section:not(.nh-hero) p.fade{font-size:1.25rem;line-height:1.5}
+#main section:not(.nh-hero):not(.nh-end):not(.hpanel) p:not(.nh-fine):not(.nh-free):not(.hfact):not(.nh-ok-t):not(.nh-ok-n):not(.nh-ok-time),#main .nh-facts dd,#main .nh-facts dt{color:var(--ink)}
+#main section:not(.nh-hero):not(.hpanel) p.fade{font-size:1.25rem;line-height:1.5}
 #main .nh-copy p,#main .nh-case-p{font-size:1.0625rem;line-height:1.6}
 #main .nh-facts dd{font-size:1.0625rem}
 #main .nh-bands span,#main .nh-bands em{font-size:0.875rem}
 #main .nh-tab[aria-selected=true]{box-shadow:inset 0 0 0 1px var(--rule-2)}
 .foot-row{border-bottom:0}
 .foot-links button,.foot button{color:#eef5f3}
-@media(max-width:833px){#main section:not(.nh-hero) p.fade{font-size:1.125rem}}
+@media(max-width:833px){#main section:not(.nh-hero):not(.hpanel) p.fade{font-size:1.125rem}}
 #main .nh-tab[aria-selected=true]{box-shadow:none;background:#fff}
 #main .nh-bands em{border-top:0;padding-top:0;margin-top:12px}
 main .days-fine,main .price-help,main .price-inc{font-size:1rem;line-height:1.6;color:var(--ink-2)}
 main .days-k{font-size:1.0625rem;font-weight:600}
 .band-in,.band .band-in,#help .band-in{background:#fff;background-image:none}
+
+/* Text on the teal fields stays light; text in mid-page panels stays ink */
+main .hpanel .hcopy p:not(.hkick):not(.hfact),main .hpanel .hcopy li,main .hpanel .lede{color:#f3faf8}
+main>.hpanel:not(:first-child):not(.end) .hcopy p:not(.hkick):not(.hfact){color:var(--ink)}
+main .hpanel.end .hcopy,main>.hpanel.end .hcopy{top:auto;bottom:auto}
+#main .nh-hero .nh-float p,#main .nh-hero .nh-ok p{color:var(--ink)}#main .nh-hero .nh-ok .nh-ok-n{color:var(--teal)}
