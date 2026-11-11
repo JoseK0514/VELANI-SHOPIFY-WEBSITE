@@ -519,4 +519,7 @@ main #velani::after{top:-1px;background:radial-gradient(ellipse 75% 100% at 50% 
 @media(max-width:833px){main .hpanel:is(.sig,.dim):not(.end)::after,main #velani::after{height:200px}}
 /* On phones a dark first screen keeps room under its action for the join */
 @media(max-width:833px){main:not(:has(.sig)) .hpanel.dim:not(.plans-top){padding-bottom:150px}}
-@media(max-width:833px){main:not(:has(.sig)) .hpanel.dim:not(.plans-top) .hcopy::before{display:none}}
+/* The copy's dark scrim would show its edge against the join: the shade alone carries the contrast, as on Home's phone layout */
+main:not(:has(.sig)) .hpanel.dim:not(.plans-top) .hcopy::before{display:none}
+/* On phones the ending is short: its join stays clear of the line of text */
+@media(max-width:833px){main #velani::after{height:150px}}
