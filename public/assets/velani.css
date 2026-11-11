@@ -1679,3 +1679,5 @@ main #velani::after{top:-1px;background:radial-gradient(ellipse 75% 100% at 50% 
 main:not(:has(.sig)) .hpanel.dim:not(.plans-top) .hcopy::before{display:none}
 /* On phones the ending is short: its join stays clear of the line of text */
 @media(max-width:833px){main #velani::after{height:150px}}
+/* NEVORA ends on the pale ground, so its ending join starts there */
+main:has(.hn-begin){--end:#f2f6f5}
