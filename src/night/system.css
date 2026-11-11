@@ -322,3 +322,6 @@ main .hpanel .hcopy p:not(.hkick):not(.hfact),main .hpanel .hcopy li,main .hpane
 main>.hpanel:not(:first-child):not(.end) .hcopy p:not(.hkick):not(.hfact){color:var(--ink)}
 main .hpanel.end .hcopy,main>.hpanel.end .hcopy{top:auto;bottom:auto}
 #main .nh-hero .nh-float p,#main .nh-hero .nh-ok p{color:var(--ink)}#main .nh-hero .nh-ok .nh-ok-n{color:var(--teal)}
+.band-in,.band .band-in,#help .band-in,.help-end .band-in{background:transparent}
+.price-bands b span{white-space:nowrap}
+@media(max-width:833px){.price-bands li b{font-size:2rem}.price-bands li b span{display:block;margin-top:4px;font-size:0.875rem}}
