@@ -6,3 +6,22 @@
 - Part B built locally: shared light system for every page outside Home/NEVORA (`main:not(:has(.sig))`), light header on every page starting with `.phero` or `.contact-split`; Custom software rewritten as two stories (needed / decided / delivered) + plain how-it-works, one action; About restyled (one hero action); Help/Sign in on pale ground with white cards, request-type control and hidden Urgency field fixed; Legal index as plain rows without labels; policy docs without 01–05 numbering (CSS) or uppercase labels; billing pages hide the empty card; verify page join; 404 actions with arrows; Products rebuilt as a light page of three equal cards (old dark panels said Rondo was in development).
 - Fixes found by checks: Company menu overflowed the window on the request page once the header slot was closed (menu now opens from its right edge there); summary named both wordings of the message label on Help; three 360px headlines wrapped to 3 lines.
 - Checks: npm test 57/57; check:theme clean; axe WCAG 2.2 AA 0 violations in 160 runs (32 pages x 5 widths, reduced motion), no sideways scroll, headings <= 2 lines; Help form by keyboard EN 1440 / ES 390 (preview mode).
+- Uploaded to 193311572282 (UNPUBLISHED) in three batches; every uploaded file's checksumMd5 matches the build: velani.css, velani.js, sections contact, es-contacto, help, es-ayuda, about, es-nosotros, custom-development, es-a-la-medida, products, es-productos, legal, not-found. settings_data.json untouched. Nothing published.
+- Fix round after looking at hosted slices: on Support the success panel was off-screen (page scrolled to top) and the hidden NEVORA action showed; both fixed (2761933). Summary no longer ends "?.".
+- Hosted evidence: evidence/signature-hero-20261110/r9-* (177 files): slices at 1440 and 390 for custom, about, help, sign-in (EN+ES), plans, trial, nevora-support, legal, privacy, nevora-privacy, products (EN+ES), billing, verify, 404, home; r9-trial-*-success, r9-helpform-*-error/success, r9-plans-join-*.
+- Commits: 01fac61 (9A), 88e5b0a (9B), 2761933 (fixes); pushed to origin claude/velani-signature-hero-20261110.
+
+## Still short / not done
+- Policy numbering 01–05 is hidden with CSS, not removed from markup (policy sections were not re-uploaded). Policy text still names Puerto Rico and the San Juan address: policy wording was not changed, by instruction.
+- The Yavi Barber screenshot shows the shop's own address line (Aguadilla). It is the client's real screen, not site copy.
+- Plans and every other ending now use Home's join exactly; Home's join passes through a neutral dark midtone, so "no grey midtone" depends on accepting Home's.
+- Dark-header focus ring is still the pale blue #bbd8ff (visible, 2px); light header ring is teal.
+- Hero image on Custom/About/verify is the same steel-teal glow as Plans, less vivid than Home's.
+- About's Yavi image sits in a pale box while the other two are framed screens. Billing page repeats the email address under the email button (existing copy).
+- Spanish pages for sign-in, verify, billing were checked by axe/overflow only, not by eye. About half of the 177 hosted slices were looked at. Not run: WebKit/Safari, a real phone, a screen reader. The live form was never submitted.
+- Old root scratch scripts (*.mjs, staged*.json) in the worktree are untracked leftovers from earlier rounds.
+
+## For Codex
+- Products page no longer says Rondo is "in development"; it says Rondo, the assistant for the Owner, is available. Confirm that is true in production.
+- The client request form (Help) and trial request keep the same field names, topics (client-work, client-help, nevora-demo) and preview/live switch; only velani.js presentation changed (success scroll, summary text, hidden second wording). Confirm the live contact form still posts after publish.
+- Products anchors kept: #nevora, #relay, #websites, #apps. Custom software dropped the in-page jump row; #web-applications, #online-stores, #booking, #business-systems, #how still exist.
