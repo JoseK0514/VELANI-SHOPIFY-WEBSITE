@@ -17,6 +17,7 @@
     "retention": "tsx --env-file-if-exists=.env scripts/retention.ts",
     "operations:check": "tsx scripts/operations-check.ts",
     "budget:operator": "tsx scripts/ai-budget.ts",
+    "build:operations": "node scripts/build-neon-operations.mjs",
     "eval": "tsx --env-file-if-exists=.env scripts/evaluate.ts",
     "provision:role": "tsx --env-file-if-exists=.env scripts/provision-app-role.ts",
     "leads": "tsx --env-file-if-exists=.env scripts/leads.ts",
@@ -26,6 +27,7 @@
   "dependencies": {
     "@fastify/cors": "^11.0.0",
     "@fastify/helmet": "^13.0.0",
+    "@neon/functions": "0.11.0",
     "@neondatabase/serverless": "^1.2.0",
     "@vercel/queue": "0.11.0",
     "fastify": "^5.0.0",
@@ -39,6 +41,7 @@
     "@types/node": "^24.0.0",
     "@types/pg": "^8.11.0",
     "@types/ws": "^8.18.2",
+    "esbuild": "0.28.2",
     "tsx": "^4.20.0",
     "typescript": "^5.9.0",
     "vitest": "4.1.12"

@@ -1,0 +1,17 @@
+{
+  "id": "686083cd-535e-422d-b027-9293601fe98c",
+  "providerBaseUrl": "https://br-snowy-brook-bcc6b3zm-api.ai.c-16.us-east-1.aws.neon.tech/v1",
+  "limitMicrousd": 10000000,
+  "validFrom": "2026-11-12T17:57:12Z",
+  "validUntil": "2026-12-01T04:00:00Z",
+  "approvedReference": "SCRUM-155 Jose 2026-11-12 USD10/month America/Puerto_Rico",
+  "models": [
+    {
+      "model": "gpt-6-astra",
+      "contextTokens": 922000,
+      "outputTokenLimit": 6000,
+      "inputMicrousdPerMillion": 25000000,
+      "outputMicrousdPerMillion": 75000000
+    }
+  ]
+}

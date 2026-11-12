@@ -189,6 +189,29 @@ describe.skipIf(!testUrl)('durable Rondo budget admission', () => {
     expect(JSON.stringify(status)).not.toContain(id);
   });
 
+  it('supports an aggregate-only monitor role without granting conversation, enquiry or budget writes', async () => {
+    await installBudgetAuthorization(pool, policy());
+    const monitorRole = role + '_monitor';
+    await pool.query('CREATE ROLE "' + monitorRole + '" NOLOGIN');
+    await pool.query('GRANT USAGE ON SCHEMA "' + schema + '" TO "' + monitorRole + '"');
+    try {
+      await pool.query('GRANT SELECT ON rondo_retention_status, rondo_budget_status TO "' + monitorRole + '"');
+      const url = new URL(connectionString);
+      url.searchParams.set('options', '-c search_path=' + schema + ',public -c role=' + monitorRole);
+      const monitor = new Pool({ connectionString: url.toString(), max: 1 });
+      try {
+        expect((await readRondoOperationsStatus(monitor, id)).budget.status).toBe('ok');
+        for (const table of ['sessions', 'messages', 'leads', 'client_hub_requests', 'ai_budget_authorizations']) {
+          await expect(monitor.query('SELECT * FROM ' + table + ' LIMIT 1')).rejects.toThrow();
+        }
+        await expect(monitor.query('UPDATE rondo_budget_status SET enabled=false')).rejects.toThrow();
+      } finally { await monitor.end(); }
+    } finally {
+      await pool.query('DROP OWNED BY "' + monitorRole + '"');
+      await pool.query('DROP ROLE "' + monitorRole + '"');
+    }
+  });
+
   it('fails closed if durable accounting is unavailable and does not leak SQL/connection details', async () => {
     await installBudgetAuthorization(pool, policy());
     await pool.query('ALTER TABLE ai_budget_authorizations RENAME TO fixture_budget_unavailable');
