@@ -1,0 +1,11 @@
+{
+  "sourceSha": "78cdae299457af6b79bb105878f3fb52bfc70f79",
+  "scenario": "paused-policy-no-provider-dispatch",
+  "status": 503,
+  "errorCode": "provider_unavailable",
+  "syntheticSessionDeletionStatus": 204,
+  "reservedBeforeMicrousd": 2670150,
+  "reservedAfterMicrousd": 2670150,
+  "authorizationRestoredEnabled": true,
+  "note": "Public API maps the private admission error to provider_unavailable; no reservation/provider dispatch occurred."
+}

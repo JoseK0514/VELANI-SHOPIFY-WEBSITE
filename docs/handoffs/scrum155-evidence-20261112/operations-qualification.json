@@ -1,0 +1,18 @@
+{
+  "sourceSha": "78cdae299457af6b79bb105878f3fb52bfc70f79",
+  "totalTests": 247,
+  "passed": 247,
+  "failed": 0,
+  "pending": 0,
+  "success": true,
+  "reportSha256": "ac78e02d007d3f2c94fc2ce1da0a397bc9783e05094fe607b925a7010491e2ac",
+  "checks": {
+    "typecheck": "passed",
+    "build": "passed",
+    "productionDependencyAuditVulnerabilities": 0
+  },
+  "limitations": [
+    "Author qualification; independent review not claimed.",
+    "Earlier Fastify deprecation warnings remain."
+  ]
+}

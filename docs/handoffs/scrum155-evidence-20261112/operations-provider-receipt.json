@@ -1,0 +1,101 @@
+{
+  "sourceSha": "78cdae299457af6b79bb105878f3fb52bfc70f79",
+  "policy": {
+    "id": "686083cd-535e-422d-b027-9293601fe98c",
+    "providerBaseUrl": "https://br-snowy-brook-bcc6b3zm-api.ai.c-16.us-east-1.aws.neon.tech/v1",
+    "limitMicrousd": 10000000,
+    "validFrom": "2026-11-12T17:57:12Z",
+    "validUntil": "2026-12-01T04:00:00Z",
+    "approvedReference": "SCRUM-155 Jose 2026-11-12 USD10/month America/Puerto_Rico",
+    "models": [
+      {
+        "model": "gpt-6-astra",
+        "contextTokens": 922000,
+        "outputTokenLimit": 6000,
+        "inputMicrousdPerMillion": 25000000,
+        "outputMicrousdPerMillion": 75000000
+      }
+    ]
+  },
+  "nativeEdge": {
+    "at": "2026-11-12T18:08:44.980Z",
+    "source": "66678b1ecb2e2893377b977ee6df314ff98b82a2",
+    "noCredentialsInstalled": true,
+    "results": [
+      {
+        "role": "monitor",
+        "forged": false,
+        "status": 401,
+        "body": "{\"state\":\"unauthorized\"}"
+      },
+      {
+        "role": "monitor",
+        "forged": true,
+        "status": 401,
+        "body": "{\"state\":\"unauthorized\"}"
+      },
+      {
+        "role": "retention",
+        "forged": false,
+        "status": 401,
+        "body": "{\"state\":\"unauthorized\"}"
+      },
+      {
+        "role": "retention",
+        "forged": true,
+        "status": 401,
+        "body": "{\"state\":\"unauthorized\"}"
+      }
+    ]
+  },
+  "aggregateReadback": {
+    "content": [
+      {
+        "type": "text",
+        "text": "[\n  {\n    \"retention\": {\n      \"scheduled_completed_at\": \"2026-11-12T18:33:35.568675+00:00\",\n      \"scheduled_fresh\": true,\n      \"overdue_sessions\": 0,\n      \"overdue_leads\": 0,\n      \"published_documents\": 16,\n      \"expired_documents\": 0,\n      \"expiring_documents\": 0,\n      \"earliest_knowledge_expiry\": \"2026-12-12T23:59:59.999+00:00\"\n    },\n    \"monitor\": [\n      {\n        \"scope\": \"development\",\n        \"state\": \"ok\",\n        \"incident_id\": \"b7f042ec-caab-4bb3-be24-41760f7bfe62\",\n        \"observed_at\": \"2026-11-12T18:29:53.345224+00:00\"\n      }\n    ],\n    \"total_mail_attempts\": \"2\",\n    \"budget\": [\n      {\n        \"id\": \"686083cd-535e-422d-b027-9293601fe98c\",\n        \"limit\": 10000000,\n        \"reserved\": 2670150,\n        \"enabled\": true,\n        \"validUntil\": \"2026-12-01T04:00:00+00:00\"\n      }\n    ]\n  }\n]"
+      }
+    ],
+    "structuredContent": null,
+    "isError": false
+  },
+  "monitorSchedule": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"type\": \"schedule\",\n  \"trigger_id\": \"trigger-79bb5df7-5a8e-4ae9-90bf-a3e21ba5adda\",\n  \"function_slug\": \"rondodevmonitor\",\n  \"name\": \"rondo-development-monitor\",\n  \"function_path\": \"/run\",\n  \"schedule\": {\n    \"cron\": \"15 * * * *\"\n  },\n  \"enabled\": true,\n  \"version\": 1584387,\n  \"next_run_at\": \"2026-11-12T19:15:00.000000Z\",\n  \"inherited\": false\n}"
+      }
+    ],
+    "structuredContent": null,
+    "isError": false
+  },
+  "retentionSchedule": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"type\": \"schedule\",\n  \"trigger_id\": \"trigger-bf09a170-7268-492a-87aa-705173a20a76\",\n  \"function_slug\": \"rondodevretention\",\n  \"name\": \"rondo-development-retention\",\n  \"function_path\": \"/run\",\n  \"schedule\": {\n    \"cron\": \"0 15 * * *\"\n  },\n  \"enabled\": true,\n  \"version\": 1584389,\n  \"next_run_at\": \"2026-11-13T15:00:00.000000Z\",\n  \"inherited\": false\n}"
+      }
+    ],
+    "structuredContent": null,
+    "isError": false
+  },
+  "emailTest": {
+    "approvedRecipient": "support@thevelani.com",
+    "approvedMaxTotal": 2,
+    "actualAttempts": 2,
+    "outage": {
+      "id": "01a1d103-28de-77c2-9515-f2461bf30043",
+      "status": "delivered"
+    },
+    "recovery": {
+      "id": "01a1d105-c816-7c33-9dba-7afb73470981",
+      "status": "delivered"
+    },
+    "closed": {
+      "monitorVersion": 6,
+      "mailEnabled": false,
+      "totalAttemptLimit": 0,
+      "mailCredentialRemovedFromFunction": true
+    },
+    "providerKey": "Unused domain-scoped test key remains in Resend; no active runtime holds it."
+  }
+}

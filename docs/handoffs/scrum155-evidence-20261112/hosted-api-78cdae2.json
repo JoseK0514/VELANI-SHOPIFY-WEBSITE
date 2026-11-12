@@ -1,0 +1,28 @@
+{
+  "sourceSha": "78cdae299457af6b79bb105878f3fb52bfc70f79",
+  "data": "synthetic-only",
+  "at": 1794507825.597983,
+  "config": {
+    "status": 200,
+    "requireCaptcha": false,
+    "assistantName": "Rondo"
+  },
+  "sessionStatus": 201,
+  "chat": {
+    "status": 200,
+    "keys": [
+      "message",
+      "sources",
+      "action",
+      "confidence",
+      "model"
+    ],
+    "errorCode": null
+  },
+  "replay": {
+    "status": 200,
+    "sameAnswer": true
+  },
+  "disabledClientHubStatus": 200,
+  "syntheticSessionDeletionStatus": 204
+}

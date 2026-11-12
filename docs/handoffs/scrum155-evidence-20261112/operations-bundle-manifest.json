@@ -1,0 +1,63 @@
+{
+  "sourceSha": "78cdae299457af6b79bb105878f3fb52bfc70f79",
+  "packageSha256": "fd0494a522f141e4a3b18b203bddc5c22899cbb77a4d2a28ae6787e88cf24fcc",
+  "lockSha256": "bc469dd0836f19384c5b268e04087d5954ce949ae4d73fb467878c744ea9f254",
+  "functions": [
+    {
+      "role": "monitor",
+      "sourceSha": "78cdae299457af6b79bb105878f3fb52bfc70f79",
+      "runtime": "nodejs24",
+      "archive": "monitor.zip",
+      "archiveSha256": "d9181d9b92607a402e075320332264d8e299d5407761932007dff6c0e4e021c1",
+      "bundleSha256": "3126cb944e35c7062fc35f19919cfd17b17adc46f36026c2948d61c73d950f81",
+      "inputs": [
+        {
+          "path": "functions/rondo-monitor.ts",
+          "sha256": "24b47c80615c3649b2b35edcf1333b5249d6370238fd9bc8219918186841b18f"
+        },
+        {
+          "path": "src/ai-budget.ts",
+          "sha256": "5a231773477811aa232cfa7b08b4dcde2ab805b377d303f6964ded3971463c15"
+        },
+        {
+          "path": "src/neon-operations.ts",
+          "sha256": "af012fccc84029f9da6d523a887437b28abbc837955d100230010e30cdf8d445"
+        },
+        {
+          "path": "src/operations-status.ts",
+          "sha256": "a4844b5d10a03930bdb2d4b8c7edd731f640ccdf16bb16a35b84cfff77317450"
+        },
+        {
+          "path": "src/rondo-monitor.ts",
+          "sha256": "3e1b004b0224fde25a985fe4d7942cbc2b5fe3ab8048483792d8018e4a244009"
+        },
+        {
+          "path": "src/rondo-notifier.ts",
+          "sha256": "0ed07e99b1ffdaf6881e1842b4ed9e90b120c240c6aeb86d4f8c5d80eec0f8f3"
+        }
+      ]
+    },
+    {
+      "role": "retention",
+      "sourceSha": "78cdae299457af6b79bb105878f3fb52bfc70f79",
+      "runtime": "nodejs24",
+      "archive": "retention.zip",
+      "archiveSha256": "326cfd5752c9f97532a57126c440ca90f5989ff3cdaada5bfb5abcc459c0e91b",
+      "bundleSha256": "d1bb2b76dae593e7509e9b452614d5985657d3671c7b563a30900ee30c6583d4",
+      "inputs": [
+        {
+          "path": "functions/rondo-retention.ts",
+          "sha256": "af07ec7d241ed0cd71d33c9f8f7b1e6011293b85dcc614b96ebf313739c064c8"
+        },
+        {
+          "path": "src/conversation-retention.ts",
+          "sha256": "0ce9072234c7205a3033c438c69513d597b4ec560fd9cd3f61e5554856aa28a5"
+        },
+        {
+          "path": "src/neon-operations.ts",
+          "sha256": "af012fccc84029f9da6d523a887437b28abbc837955d100230010e30cdf8d445"
+        }
+      ]
+    }
+  ]
+}
