@@ -23,7 +23,8 @@ Fastify deprecation warnings are retained below/in the evidence directory.
   prj_T9x5XwRzCkLSUy2wYk36nz8C3k9B; READY **Preview target** (API targetnull)
   dpl_2ev5SpkzzbSDvH2xRaHbHcSVoCft, exact78cdae2, Node24.x.
   [Protected development Preview](https://velani-rondo-development-1lfrwbpo0-josekarlo-5933s-projects.vercel.app).
-  SSOALL, no Git connection/auto-deploy or assigned public alias. Anonymous config
+  SSOALL, no Git connection/auto-deploy. Generated Preview aliases remain
+  SSO-protected; no custom domain/public production promotion occurred. Anonymous config
   returns302 to Vercel authentication. CLI's temporary automation bypass was
   removed and readback confirmed zero bypass entries, with SSOALL unchanged.
 - Fresh database `velani_rondo_development` in existing Neon project
