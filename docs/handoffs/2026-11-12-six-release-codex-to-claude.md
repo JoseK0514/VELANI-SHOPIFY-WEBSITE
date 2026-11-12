@@ -4,6 +4,16 @@ November 12, 2026. Issues: [60](https://thevelani-team.atlassian.net/browse/SCRU
 
 This packet finishes this chat's non-overlapping contract verification, policy/resource/permission inventory and UI handoff. Workforce hosted execution remains actively owned by the separate finisher; it is **not** certified complete here. Source/UI/business/device gates remain distinct.
 
+## Backend delivery and Claude starting point
+
+[Machine-readable development receipt](six-release-evidence-20261112/backend-development-delivery.json).
+
+The backend portion from this chat is **in NEVORA development**, independently verified by GitHub branch readback and fresh fetch at **`242a993897aee4a213a1a9aefdecee2e86394b1f`**. This satisfies Jose's instruction that this chat's backend delivery ends once it reaches development. It includes the document-navigation recovery patch, its JSON/RSC negotiation hardening, both functional recovery pages and the shell-free recovery layout. Claude can take over the UI from actual development and refine these pages while preserving the contracts below. The incoming90e7 diff is historical; do not apply it again.
+
+**Verification remains a separate open release gate.** The immutable242 candidate passed [all19 CI jobs](https://github.com/JoseK0514/NEVORA/actions/runs/43319872304) and [Mobile Access](https://github.com/JoseK0514/NEVORA/actions/runs/43319872231). Actual-development [Mobile43325639439 passed](https://github.com/JoseK0514/NEVORA/actions/runs/43325639439), but [CI43325639433 failed](https://github.com/JoseK0514/NEVORA/actions/runs/43325639433) its onboarding company-access foundation stage;18other jobs passed. The sole finisher reproduced a matching15-minute invitation-counter boundary failure, preserved all assertions, added deterministic fixture timing and a real-SQL rollover regression. Exact failed-CI counter timestamps were not captured. Its corrected candidate **612e211c57a7b3866b9174149c8ef4dee7d9670a** has passed Mobile; [candidate CI43329481517](https://github.com/JoseK0514/NEVORA/actions/runs/43329481517) separately failed management-review-ui and remains under investigation.612is **not** current development or an accepted release. No production code changed between242and612; the delta is test support, regression coverage, guides and evidence.
+
+The existing finisher retains those CI investigations, source publication and hosted acceptance. Read its latest source-bound checkpoint before merging UI work or relying on release qualification. Claude's UI implementation may proceed from development; whole-release acceptance, hosted activation, physical-device acceptance, business approvals and main/production promotion remain open. This packet does not close the six whole issues or any independent finding.
+
 ## Release policy and custody
 
 Development is Jose's primary working/operating and acceptance release. Apply production standards and verify the combined UI/backend there. Only promote the exact verified release to actual main/production after Jose approval. Preserve true environment names and synthetic-versus-real status. Codex owns backend/hosting; Claude owns UI. Existing paid/send/customer-data limits remain unchanged.
@@ -12,12 +22,12 @@ Read AGENTS.md, DESIGN.MD/CLAUDE.md where present, current source and uncommitte
 
 **Do not duplicate the active finisher.** At the ownership readback20:35UTC, “Finish NEVORA SCRUM-190 handoff” (`01a1d175-7de0-7a80-b607-5418fde6ed50`) explicitly took over from now-idle “Complete SCRUM-190 backend work”. Its preserved checkout is `/Users/josek0514/.codex/worktrees/nevora-worker-quota-repair-20261112`. It owns Home/communications CI investigation, source assembly, manuals/bundles, worker/monitor custody, quotas, hosted payroll/web-push/Stripe acceptance and final NEVORA development publication. Do not edit that checkout, operate its runtime, start a second candidate/CI workflow or reuse its finite allowance.
 
-The prior146/155 QA chat is idle after its local282-check checkpoint; private-admin work is separate. No other chat was messaged or interrupted by this packet. Read the actual latest finisher checkpoint before depending on its hosted results.
+The prior146/155 QA chat is idle after its local282-check checkpoint; private-admin work is separate. The initial packet did not message other chats. Jose subsequently authorized coordination with the existing finisher; the app-document recovery patch was incorporated into its single combined source. Read the latest finisher checkpoint before depending on hosted results.
 
 | Source | Bound identity |
 |---|---|
-| NEVORA development at this packet's initial read | `eee76416ec8d06435e73c3ecde9a77752ec0d446`; its actual post-push CI failed. Later local finisher checkpoints are not qualified release substitutes. Fetch/recheck before UI integration. |
-| Velani base | `482353871898c3f72154d284937a311757bf8e00`; this packet adds docs/fixtures/tests only on top. |
+| NEVORA development | `242a993897aee4a213a1a9aefdecee2e86394b1f`; actual remote API and fresh fetch verified, identical to the green candidate. Candidate CI43319872304 and Mobile43319872231 passed. Actual-development CI43325639433 failed onboarding; Mobile43325639439 passed. See the open-gate receipt above; re-fetch before UI work. |
+| Velani source | Initial packet base482353871898c3f72154d284937a311757bf8e00. This delivery update starts from freshly fetched development2c96707c0576a1c5806c8593184970d633d63aa0 and changes documentation only. Preserve the later migration/publication-guard and separately approved main-consolidation work. |
 | Existing public Rondo runtime | `3db0ea98bc3da6b3ae08b9e5d2c2b59a361e6a8d`; no promotion by this packet. |
 | Protected Rondo development runtime | `78cdae299457af6b79bb105878f3fb52bfc70f79`, Node24, SSO ALL, Preview/null target. Use its authenticated same-origin Preview or explicit local fixtures; do not broaden origins/bypass protection. |
 | Current Shopify MAIN | `193311572282`, signature design. |
@@ -25,6 +35,8 @@ The prior146/155 QA chat is idle after its local282-check checkpoint; private-ad
 
 Reference backend details instead of recreating them:
 - [Current signup/policy/Rondo facts](2026-11-12-signup-policy-rondo-backend.md).
+- [Newer Velani development backend receipt](2026-11-12-step1-velani-backend-truth.md), including the migration concurrency fix and261-test qualification. This packet's260-test receipt below remains bound to its earlier source.
+- [Rondo responder closeout](2026-11-12-rondo-responder-closeout.md): primary and backup assignments are recorded; independent outage coverage and actual acknowledgment remain open.
 - [Velani development closeout](2026-11-12-velani-development-closeout.md), including retained browser failures.
 - [Rondo155 current protected browser origin/operations](2026-11-12-scrum155-budget-and-retention.md).
 - [Existing client-hub UI contract](2026-11-12-claude-client-hub-ui.md) and [actual earlier acceptance](2026-11-12-client-hub-live-acceptance.md).
@@ -65,9 +77,21 @@ Actual hosted push display/click, delivery and account-revocation receipts are t
 
 Preserve current sign-in and role checks. Owner billing controls remain Owner-only. Employees/Managers contact their employer; a time-clock tablet shows paused/unavailable without payment controls. A billing-authority outage is unavailable, not a request to pay.
 
-The verified EEE development source has the recovery exceptions/status API but **does not yet contain the `/app/billing` or `/clocker/access/paused` page files**. Its gate redirects tablets but still answers `/app` documents with raw JSON. The separate local patch in this packet fixes app document303 redirects, preserves reason402/503 and excludes `/api` and `/app/api` requests; it also keeps the exact billing recovery GET independent of failed commerce binding. The finisher must integrate/qualify that patch before joined acceptance. Claude should reconcile/import the existing held recovery UI under169, rather than assume those pages are already in development or rebuild its backend. Do not reintroduce nonexistent `/app/pay` or bypass commerce gates. The Clocker recovery destination uses the established strict tablet-key validator and a full-page link. Current backend receipts distinguish unconfirmed commands, recorded time and photo outcomes; a UI recovery must never create a second punch just to dismiss a sheet.
+Jose explicitly reassigned the two functional recovery pages/layout to the active finisher: “do them so you can finish it and merge into dev, but claude will then remake them.” They are now implemented in the combined source. Claude should refine that implementation after development delivery, preserving its boundaries; the older missing-page/local-patch instructions are superseded.
 
-Shared layout is also a UI integration gate: the current `src/app/app/layout.tsx` still wraps admitted recovery pages in AppShell and its operational pollers/parallel sheet. Make the authenticated recovery composition independent of those failing counts/notifications without removing normal session/role checks. Earlier local recovery work is preserved at NEVORA ref `refs/codex-recovery/commerce-recovery-04fe4616`; its `recovery-boundary.tsx` is a reference, not a blind port of an older single-company layout into current isolated routing. Recheck the exact final company/session binding and retained-client-layout behavior.
+Use the final-source NEVORA handoff `docs/handoffs/2026-11-12-commerce-recovery-ui.md` and these actual components:
+
+- `src/app/app/billing/page.tsx`, `src/app/clocker/access/paused/page.tsx`.
+- `src/components/commerce-recovery/{billing.tsx,frame.tsx,recovery.module.css}`.
+- `src/lib/commerce/{recovery-boundary.tsx,recovery-routes.ts}`, `src/app/app/layout.tsx`, and `src/proxy.ts`.
+
+The app billing page requires current sign-in. Only Owners mount/read private billing status and initiate the existing handoff; non-Owners get contact-Owner guidance and eligible own-pay access. Use the existing no-store **GET /api/commerce/status** and explicit **POST /api/commerce/handoff**. Do not call internal access routes, supply company/customer IDs, treat a Stripe return as payment proof, or log/persist handoff tokens. Keep unavailable/denied/invalid status distinct from restricted/pay-now states and clear prior private details after failed or denied refresh. Preserve cancellation of stale requests and validated exact-origin `/pages/plans#handoff` navigation.
+
+Document GETs redirect303 to billing recovery; API/write/JSON/RSC requests retain their error contracts. Explicit data negotiation dominates navigation hints, and refused/invalid HTML quality values must not redirect. The tablet page has no private billing read or billing controls; its return destination is only a validated `/clocker/<key>` path with no arbitrary query/fragment. Do not reintroduce nonexistent `/app/pay` links.
+
+Recovery layout retains current session/native-role admission while avoiding operational shell readers, retained pollers and parallel sheets. Preserve the server-controlled presentation marker and client recovery boundary, including full-document re-entry into operational routes. The marker grants no authorization. Do not blind-port the older single-company04fe layout or the historical incoming90e7 diff. Current regression coverage and browser evidence are recorded in the NEVORA handoff.
+
+Clocker receipts distinguish unconfirmed commands, recorded time and photo outcomes; recovery must never create a second punch merely to dismiss a sheet.
 
 Phone acceptance: record source/deployment, device model/OS/browser/install mode, viewport/text size, native Back/edge gesture, keyboard/focus/scroll/tap behavior and retained failures. Browser emulation/CI alone does not satisfy physical-device acceptance. Preserve independent authors' closure authority.
 
@@ -128,9 +152,9 @@ Use genuine project results; avoid invented testimonials, metrics, customer reco
 
 ## Verification and return contract
 
-The Velani change adds only backend/UI seam tests, synthetic fixtures, inventories and this handoff. A separate **local NEVORA backend patch** restores document recovery; its reviewed diff and qualification are in `six-release-evidence-20261112/nevora-document-recovery.diff` and `nevora-recovery-qualification.json`. It is incoming work for the sole finisher, not a parallel NEVORA publication. No UI/theme/policy/permission/environment or deployment is changed here.
+The Velani change adds only backend/UI seam tests, synthetic fixtures, inventories and this handoff. The original local NEVORA patch and its qualification remain preserved in `six-release-evidence-20261112/nevora-document-recovery.diff` and `nevora-recovery-qualification.json` as historical evidence. The sole finisher has incorporated and hardened that patch, added the functional recovery pages/layout under Jose's reassignment, and retained source-bound qualification evidence separately. Actual-development qualification remains open as recorded above. Do not apply the historical diff over final development. No UI/theme/policy/permission/environment or deployment is changed here.
 
-Fresh verification:
+Original packet verification, bound to its recorded source:
 - Backend suite **260/260,0skips**, own loopback PostgreSQL17/pgvector, synthetic SDK/provider responses; typecheck/build pass.
 - New seam tests **13/13**; prior focused baseline64/64.
 - Website unit/build **80/80,0skips**,37routes; Theme Check zero offenses.
@@ -138,6 +162,6 @@ Fresh verification:
 - The initial fresh parallel SQL fixture hit the global pgvector extension-install race; both failed suite setups/26 skipped cases were retained. The required local extension was explicitly initialized and the unchanged full suite rerun passed260/260. No assertion or application/migration code was changed to hide the setup failure.
 - No email/push, model inference, live charge, cleanup/purge, hosted mutation or CI dispatch by this packet. All owned local DB/server/mount resources are closed at final receipt.
 
-Claude should return: exact source/diff; pages/files changed; desktop/mobile/keyboard/error/empty/loading checks and fixture/live distinction; actual unpublished theme ID/preview; remaining business/device/independent findings; and a small backend-gap list only where an existing API demonstrably fails. Keep60/147 and NEVORA recovery patch integration with the finisher; do not close whole issues from contract/local-only evidence. Future91/92/95/97/101 remain deferred under13 and are excluded from this work.
+Claude should return: exact source/diff; pages/files changed; desktop/mobile/keyboard/error/empty/loading checks and fixture/live distinction; actual unpublished theme ID/preview; remaining business/device/independent findings; and a small backend-gap list only where an existing API demonstrably fails. Keep hosted60/147 execution with the finisher; do not close whole issues from contract/local-only evidence. Future91/92/95/97/101 remain deferred under13 and are excluded from this work.
 
 Suggested skills: repository visual/design-system and accessibility skills, existing browser-testing/verification skills, and the project's UI delivery guidance. Review the approved reference and existing implementation first; no blanket redesign, new product scope or paid tooling is requested.
