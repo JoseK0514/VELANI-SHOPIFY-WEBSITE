@@ -1,0 +1,1853 @@
+PASS chromium 1440 /: 200 on theme 193179287866 (unpublished)
+PASS chromium 1440 /: lang=en
+PASS chromium 1440 /: no sideways overflow (0px; none)
+PASS chromium 1440 /: text stays inside its card (none)
+PASS chromium 1440 /: no text over visuals (none)
+PASS chromium 1440 /: every internal link stays on the preview (none)
+PASS chromium 1440 /: Rondo marks round with ring (26/26)
+PASS chromium 1440 /: chat launcher carries the mark
+PASS chromium 1440 /: no script errors (none)
+PASS chromium 1440 /: hreflang en/es/x-default
+PASS chromium 1440 /pages/products: 200 on theme 193179287866 (unpublished)
+PASS chromium 1440 /pages/products: lang=en
+PASS chromium 1440 /pages/products: no sideways overflow (0px; none)
+PASS chromium 1440 /pages/products: text stays inside its card (none)
+PASS chromium 1440 /pages/products: no text over visuals (none)
+PASS chromium 1440 /pages/products: every internal link stays on the preview (none)
+PASS chromium 1440 /pages/products: Rondo marks round with ring (26)
+PASS chromium 1440 /pages/products: chat launcher carries the mark
+PASS chromium 1440 /pages/products: no script errors (none)
+PASS chromium 1440 /pages/products: hreflang en/es/x-default
+PASS chromium 1440 /pages/custom-development: 200 on theme 193179287866 (unpublished)
+PASS chromium 1440 /pages/custom-development: lang=en
+PASS chromium 1440 /pages/custom-development: no sideways overflow (0px; none)
+PASS chromium 1440 /pages/custom-development: text stays inside its card (none)
+PASS chromium 1440 /pages/custom-development: no text over visuals (none)
+PASS chromium 1440 /pages/custom-development: every internal link stays on the preview (none)
+PASS chromium 1440 /pages/custom-development: Rondo marks round with ring (26)
+PASS chromium 1440 /pages/custom-development: chat launcher carries the mark
+PASS chromium 1440 /pages/custom-development: no script errors (none)
+PASS chromium 1440 /pages/nevora: 200 on theme 193179287866 (unpublished)
+PASS chromium 1440 /pages/nevora: lang=en
+PASS chromium 1440 /pages/nevora: no sideways overflow (0px; none)
+PASS chromium 1440 /pages/nevora: text stays inside its card (none)
+PASS chromium 1440 /pages/nevora: no text over visuals (none)
+PASS chromium 1440 /pages/nevora: every internal link stays on the preview (none)
+PASS chromium 1440 /pages/nevora: Rondo marks round with ring (24/26/26)
+PASS chromium 1440 /pages/nevora: chat launcher carries the mark
+PASS chromium 1440 /pages/nevora: no script errors (none)
+PASS chromium 1440 /pages/nevora: hreflang en/es/x-default
+PASS chromium 1440 /pages/about: 200 on theme 193179287866 (unpublished)
+PASS chromium 1440 /pages/about: lang=en
+PASS chromium 1440 /pages/about: no sideways overflow (0px; none)
+PASS chromium 1440 /pages/about: text stays inside its card (none)
+PASS chromium 1440 /pages/about: no text over visuals (none)
+PASS chromium 1440 /pages/about: every internal link stays on the preview (none)
+PASS chromium 1440 /pages/about: Rondo marks round with ring (26)
+PASS chromium 1440 /pages/about: chat launcher carries the mark
+PASS chromium 1440 /pages/about: no script errors (none)
+PASS chromium 1440 /pages/plans: 200 on theme 193179287866 (unpublished)
+PASS chromium 1440 /pages/plans: lang=en
+PASS chromium 1440 /pages/plans: no sideways overflow (0px; none)
+PASS chromium 1440 /pages/plans: text stays inside its card (none)
+PASS chromium 1440 /pages/plans: no text over visuals (none)
+PASS chromium 1440 /pages/plans: every internal link stays on the preview (none)
+PASS chromium 1440 /pages/plans: Rondo marks round with ring (26)
+PASS chromium 1440 /pages/plans: chat launcher carries the mark
+PASS chromium 1440 /pages/plans: no script errors (none)
+PASS chromium 1440 /pages/plans: hreflang en/es/x-default
+PASS chromium 1440 /pages/contact: 200 on theme 193179287866 (unpublished)
+PASS chromium 1440 /pages/contact: lang=en
+PASS chromium 1440 /pages/contact: no sideways overflow (0px; none)
+PASS chromium 1440 /pages/contact: text stays inside its card (none)
+PASS chromium 1440 /pages/contact: no text over visuals (none)
+PASS chromium 1440 /pages/contact: every internal link stays on the preview (none)
+PASS chromium 1440 /pages/contact: Rondo marks round with ring (26)
+PASS chromium 1440 /pages/contact: chat launcher carries the mark
+PASS chromium 1440 /pages/contact: no script errors (none)
+PASS chromium 1440 /pages/contact: hreflang en/es/x-default
+PASS chromium 1440 /pages/help: 200 on theme 193179287866 (unpublished)
+PASS chromium 1440 /pages/help: lang=en
+PASS chromium 1440 /pages/help: no sideways overflow (0px; none)
+PASS chromium 1440 /pages/help: text stays inside its card (none)
+PASS chromium 1440 /pages/help: no text over visuals (none)
+PASS chromium 1440 /pages/help: every internal link stays on the preview (none)
+PASS chromium 1440 /pages/help: Rondo marks round with ring (26)
+PASS chromium 1440 /pages/help: chat launcher carries the mark
+PASS chromium 1440 /pages/help: no script errors (none)
+PASS chromium 1440 /?view=velani-es: 200 on theme 193179287866 (unpublished)
+PASS chromium 1440 /?view=velani-es: lang=es
+PASS chromium 1440 /?view=velani-es: no sideways overflow (0px; none)
+PASS chromium 1440 /?view=velani-es: text stays inside its card (none)
+PASS chromium 1440 /?view=velani-es: no text over visuals (none)
+PASS chromium 1440 /?view=velani-es: every internal link stays on the preview (none)
+PASS chromium 1440 /?view=velani-es: Rondo marks round with ring (26/26)
+PASS chromium 1440 /?view=velani-es: chat launcher carries the mark
+PASS chromium 1440 /?view=velani-es: no script errors (none)
+PASS chromium 1440 /?view=velani-es: hreflang en/es/x-default
+PASS chromium 1440 /?view=velani-es-nevora: 200 on theme 193179287866 (unpublished)
+PASS chromium 1440 /?view=velani-es-nevora: lang=es
+PASS chromium 1440 /?view=velani-es-nevora: no sideways overflow (0px; none)
+PASS chromium 1440 /?view=velani-es-nevora: text stays inside its card (none)
+PASS chromium 1440 /?view=velani-es-nevora: no text over visuals (none)
+PASS chromium 1440 /?view=velani-es-nevora: every internal link stays on the preview (none)
+PASS chromium 1440 /?view=velani-es-nevora: Rondo marks round with ring (24/26/26)
+PASS chromium 1440 /?view=velani-es-nevora: chat launcher carries the mark
+PASS chromium 1440 /?view=velani-es-nevora: no script errors (none)
+PASS chromium 1440 /?view=velani-es-nevora: hreflang en/es/x-default
+PASS chromium 1440 /?view=velani-es-productos: 200 on theme 193179287866 (unpublished)
+PASS chromium 1440 /?view=velani-es-productos: lang=es
+PASS chromium 1440 /?view=velani-es-productos: no sideways overflow (0px; none)
+PASS chromium 1440 /?view=velani-es-productos: text stays inside its card (none)
+PASS chromium 1440 /?view=velani-es-productos: no text over visuals (none)
+PASS chromium 1440 /?view=velani-es-productos: every internal link stays on the preview (none)
+PASS chromium 1440 /?view=velani-es-productos: Rondo marks round with ring (26)
+PASS chromium 1440 /?view=velani-es-productos: chat launcher carries the mark
+PASS chromium 1440 /?view=velani-es-productos: no script errors (none)
+PASS chromium 1440 /?view=velani-es-productos: hreflang en/es/x-default
+PASS chromium 1440 /?view=velani-es-planes: 200 on theme 193179287866 (unpublished)
+PASS chromium 1440 /?view=velani-es-planes: lang=es
+PASS chromium 1440 /?view=velani-es-planes: no sideways overflow (0px; none)
+PASS chromium 1440 /?view=velani-es-planes: text stays inside its card (none)
+PASS chromium 1440 /?view=velani-es-planes: no text over visuals (none)
+PASS chromium 1440 /?view=velani-es-planes: every internal link stays on the preview (none)
+PASS chromium 1440 /?view=velani-es-planes: Rondo marks round with ring (26)
+PASS chromium 1440 /?view=velani-es-planes: chat launcher carries the mark
+PASS chromium 1440 /?view=velani-es-planes: no script errors (none)
+PASS chromium 1440 /?view=velani-es-planes: hreflang en/es/x-default
+PASS chromium 1440 /?view=velani-es-contacto: 200 on theme 193179287866 (unpublished)
+PASS chromium 1440 /?view=velani-es-contacto: lang=es
+PASS chromium 1440 /?view=velani-es-contacto: no sideways overflow (0px; none)
+PASS chromium 1440 /?view=velani-es-contacto: text stays inside its card (none)
+PASS chromium 1440 /?view=velani-es-contacto: no text over visuals (none)
+PASS chromium 1440 /?view=velani-es-contacto: every internal link stays on the preview (none)
+PASS chromium 1440 /?view=velani-es-contacto: Rondo marks round with ring (26)
+PASS chromium 1440 /?view=velani-es-contacto: chat launcher carries the mark
+PASS chromium 1440 /?view=velani-es-contacto: no script errors (none)
+PASS chromium 1440 /?view=velani-es-contacto: hreflang en/es/x-default
+PASS chromium 1440 /?view=velani-es-nosotros: 200 on theme 193179287866 (unpublished)
+PASS chromium 1440 /?view=velani-es-nosotros: lang=es
+PASS chromium 1440 /?view=velani-es-nosotros: no sideways overflow (0px; none)
+PASS chromium 1440 /?view=velani-es-nosotros: text stays inside its card (none)
+PASS chromium 1440 /?view=velani-es-nosotros: no text over visuals (none)
+PASS chromium 1440 /?view=velani-es-nosotros: every internal link stays on the preview (none)
+PASS chromium 1440 /?view=velani-es-nosotros: Rondo marks round with ring (26)
+PASS chromium 1440 /?view=velani-es-nosotros: chat launcher carries the mark
+PASS chromium 1440 /?view=velani-es-nosotros: no script errors (none)
+PASS chromium 1440 /?view=velani-es-nosotros: hreflang en/es/x-default
+PASS chromium 1440 /?view=velani-es-ayuda: 200 on theme 193179287866 (unpublished)
+PASS chromium 1440 /?view=velani-es-ayuda: lang=es
+PASS chromium 1440 /?view=velani-es-ayuda: no sideways overflow (0px; none)
+PASS chromium 1440 /?view=velani-es-ayuda: text stays inside its card (none)
+PASS chromium 1440 /?view=velani-es-ayuda: no text over visuals (none)
+PASS chromium 1440 /?view=velani-es-ayuda: every internal link stays on the preview (none)
+PASS chromium 1440 /?view=velani-es-ayuda: Rondo marks round with ring (26)
+PASS chromium 1440 /?view=velani-es-ayuda: chat launcher carries the mark
+PASS chromium 1440 /?view=velani-es-ayuda: no script errors (none)
+PASS chromium 1440 /?view=velani-es-ayuda: hreflang en/es/x-default
+PASS chromium 1440: /pages/nevora → ES (velani-es-nevora) → EN (velani-nevora)
+PASS chromium 1440: /pages/plans → ES (velani-es-planes) → EN (velani-plans)
+PASS chromium 1440: / → ES (velani-es) → EN (/)
+PASS chromium 1440: Spanish NEVORA menu is inline at this width
+PASS chromium 1440: Spanish NEVORA “Inicio de Velani” goes to the Spanish home
+PASS chromium 1440: chat opens on the Spanish home; header mark 32x32
+PASS chromium 1440: Spanish form labels, preview notice (Nombre · Correo electrónico · Empresa opcional · Tema · Tamaño del equipo · Número de ubicaciones)
+PASS chromium 1180 /: 200 on theme 193179287866 (unpublished)
+PASS chromium 1180 /: lang=en
+PASS chromium 1180 /: no sideways overflow (0px; none)
+PASS chromium 1180 /: text stays inside its card (none)
+PASS chromium 1180 /: no text over visuals (none)
+PASS chromium 1180 /: every internal link stays on the preview (none)
+PASS chromium 1180 /: Rondo marks round with ring (26/26)
+PASS chromium 1180 /: chat launcher carries the mark
+PASS chromium 1180 /: no script errors (none)
+PASS chromium 1180 /: hreflang en/es/x-default
+PASS chromium 1180 /pages/products: 200 on theme 193179287866 (unpublished)
+PASS chromium 1180 /pages/products: lang=en
+PASS chromium 1180 /pages/products: no sideways overflow (0px; none)
+PASS chromium 1180 /pages/products: text stays inside its card (none)
+PASS chromium 1180 /pages/products: no text over visuals (none)
+PASS chromium 1180 /pages/products: every internal link stays on the preview (none)
+PASS chromium 1180 /pages/products: Rondo marks round with ring (26)
+PASS chromium 1180 /pages/products: chat launcher carries the mark
+PASS chromium 1180 /pages/products: no script errors (none)
+PASS chromium 1180 /pages/products: hreflang en/es/x-default
+PASS chromium 1180 /pages/custom-development: 200 on theme 193179287866 (unpublished)
+PASS chromium 1180 /pages/custom-development: lang=en
+PASS chromium 1180 /pages/custom-development: no sideways overflow (0px; none)
+PASS chromium 1180 /pages/custom-development: text stays inside its card (none)
+PASS chromium 1180 /pages/custom-development: no text over visuals (none)
+PASS chromium 1180 /pages/custom-development: every internal link stays on the preview (none)
+PASS chromium 1180 /pages/custom-development: Rondo marks round with ring (26)
+PASS chromium 1180 /pages/custom-development: chat launcher carries the mark
+PASS chromium 1180 /pages/custom-development: no script errors (none)
+PASS chromium 1180 /pages/nevora: 200 on theme 193179287866 (unpublished)
+PASS chromium 1180 /pages/nevora: lang=en
+PASS chromium 1180 /pages/nevora: no sideways overflow (0px; none)
+PASS chromium 1180 /pages/nevora: text stays inside its card (none)
+PASS chromium 1180 /pages/nevora: no text over visuals (none)
+PASS chromium 1180 /pages/nevora: every internal link stays on the preview (none)
+PASS chromium 1180 /pages/nevora: Rondo marks round with ring (24/26/26)
+PASS chromium 1180 /pages/nevora: chat launcher carries the mark
+PASS chromium 1180 /pages/nevora: no script errors (none)
+PASS chromium 1180 /pages/nevora: hreflang en/es/x-default
+PASS chromium 1180 /pages/about: 200 on theme 193179287866 (unpublished)
+PASS chromium 1180 /pages/about: lang=en
+PASS chromium 1180 /pages/about: no sideways overflow (0px; none)
+PASS chromium 1180 /pages/about: text stays inside its card (none)
+PASS chromium 1180 /pages/about: no text over visuals (none)
+PASS chromium 1180 /pages/about: every internal link stays on the preview (none)
+PASS chromium 1180 /pages/about: Rondo marks round with ring (26)
+PASS chromium 1180 /pages/about: chat launcher carries the mark
+PASS chromium 1180 /pages/about: no script errors (none)
+PASS chromium 1180 /pages/plans: 200 on theme 193179287866 (unpublished)
+PASS chromium 1180 /pages/plans: lang=en
+PASS chromium 1180 /pages/plans: no sideways overflow (0px; none)
+PASS chromium 1180 /pages/plans: text stays inside its card (none)
+PASS chromium 1180 /pages/plans: no text over visuals (none)
+PASS chromium 1180 /pages/plans: every internal link stays on the preview (none)
+PASS chromium 1180 /pages/plans: Rondo marks round with ring (26)
+PASS chromium 1180 /pages/plans: chat launcher carries the mark
+PASS chromium 1180 /pages/plans: no script errors (none)
+PASS chromium 1180 /pages/plans: hreflang en/es/x-default
+PASS chromium 1180 /pages/contact: 200 on theme 193179287866 (unpublished)
+PASS chromium 1180 /pages/contact: lang=en
+PASS chromium 1180 /pages/contact: no sideways overflow (0px; none)
+PASS chromium 1180 /pages/contact: text stays inside its card (none)
+PASS chromium 1180 /pages/contact: no text over visuals (none)
+PASS chromium 1180 /pages/contact: every internal link stays on the preview (none)
+PASS chromium 1180 /pages/contact: Rondo marks round with ring (26)
+PASS chromium 1180 /pages/contact: chat launcher carries the mark
+PASS chromium 1180 /pages/contact: no script errors (none)
+PASS chromium 1180 /pages/contact: hreflang en/es/x-default
+PASS chromium 1180 /pages/help: 200 on theme 193179287866 (unpublished)
+PASS chromium 1180 /pages/help: lang=en
+PASS chromium 1180 /pages/help: no sideways overflow (0px; none)
+PASS chromium 1180 /pages/help: text stays inside its card (none)
+PASS chromium 1180 /pages/help: no text over visuals (none)
+PASS chromium 1180 /pages/help: every internal link stays on the preview (none)
+PASS chromium 1180 /pages/help: Rondo marks round with ring (26)
+PASS chromium 1180 /pages/help: chat launcher carries the mark
+PASS chromium 1180 /pages/help: no script errors (none)
+PASS chromium 1180 /?view=velani-es: 200 on theme 193179287866 (unpublished)
+PASS chromium 1180 /?view=velani-es: lang=es
+PASS chromium 1180 /?view=velani-es: no sideways overflow (0px; none)
+PASS chromium 1180 /?view=velani-es: text stays inside its card (none)
+PASS chromium 1180 /?view=velani-es: no text over visuals (none)
+PASS chromium 1180 /?view=velani-es: every internal link stays on the preview (none)
+PASS chromium 1180 /?view=velani-es: Rondo marks round with ring (26/26)
+PASS chromium 1180 /?view=velani-es: chat launcher carries the mark
+PASS chromium 1180 /?view=velani-es: no script errors (none)
+PASS chromium 1180 /?view=velani-es: hreflang en/es/x-default
+PASS chromium 1180 /?view=velani-es-nevora: 200 on theme 193179287866 (unpublished)
+PASS chromium 1180 /?view=velani-es-nevora: lang=es
+PASS chromium 1180 /?view=velani-es-nevora: no sideways overflow (0px; none)
+PASS chromium 1180 /?view=velani-es-nevora: text stays inside its card (none)
+PASS chromium 1180 /?view=velani-es-nevora: no text over visuals (none)
+PASS chromium 1180 /?view=velani-es-nevora: every internal link stays on the preview (none)
+PASS chromium 1180 /?view=velani-es-nevora: Rondo marks round with ring (24/26/26)
+PASS chromium 1180 /?view=velani-es-nevora: chat launcher carries the mark
+PASS chromium 1180 /?view=velani-es-nevora: no script errors (none)
+PASS chromium 1180 /?view=velani-es-nevora: hreflang en/es/x-default
+PASS chromium 1180 /?view=velani-es-productos: 200 on theme 193179287866 (unpublished)
+PASS chromium 1180 /?view=velani-es-productos: lang=es
+PASS chromium 1180 /?view=velani-es-productos: no sideways overflow (0px; none)
+PASS chromium 1180 /?view=velani-es-productos: text stays inside its card (none)
+PASS chromium 1180 /?view=velani-es-productos: no text over visuals (none)
+PASS chromium 1180 /?view=velani-es-productos: every internal link stays on the preview (none)
+PASS chromium 1180 /?view=velani-es-productos: Rondo marks round with ring (26)
+PASS chromium 1180 /?view=velani-es-productos: chat launcher carries the mark
+PASS chromium 1180 /?view=velani-es-productos: no script errors (none)
+PASS chromium 1180 /?view=velani-es-productos: hreflang en/es/x-default
+PASS chromium 1180 /?view=velani-es-planes: 200 on theme 193179287866 (unpublished)
+PASS chromium 1180 /?view=velani-es-planes: lang=es
+PASS chromium 1180 /?view=velani-es-planes: no sideways overflow (0px; none)
+PASS chromium 1180 /?view=velani-es-planes: text stays inside its card (none)
+PASS chromium 1180 /?view=velani-es-planes: no text over visuals (none)
+PASS chromium 1180 /?view=velani-es-planes: every internal link stays on the preview (none)
+PASS chromium 1180 /?view=velani-es-planes: Rondo marks round with ring (26)
+PASS chromium 1180 /?view=velani-es-planes: chat launcher carries the mark
+PASS chromium 1180 /?view=velani-es-planes: no script errors (none)
+PASS chromium 1180 /?view=velani-es-planes: hreflang en/es/x-default
+PASS chromium 1180 /?view=velani-es-contacto: 200 on theme 193179287866 (unpublished)
+PASS chromium 1180 /?view=velani-es-contacto: lang=es
+PASS chromium 1180 /?view=velani-es-contacto: no sideways overflow (0px; none)
+PASS chromium 1180 /?view=velani-es-contacto: text stays inside its card (none)
+PASS chromium 1180 /?view=velani-es-contacto: no text over visuals (none)
+PASS chromium 1180 /?view=velani-es-contacto: every internal link stays on the preview (none)
+PASS chromium 1180 /?view=velani-es-contacto: Rondo marks round with ring (26)
+PASS chromium 1180 /?view=velani-es-contacto: chat launcher carries the mark
+PASS chromium 1180 /?view=velani-es-contacto: no script errors (none)
+PASS chromium 1180 /?view=velani-es-contacto: hreflang en/es/x-default
+PASS chromium 1180 /?view=velani-es-nosotros: 200 on theme 193179287866 (unpublished)
+PASS chromium 1180 /?view=velani-es-nosotros: lang=es
+PASS chromium 1180 /?view=velani-es-nosotros: no sideways overflow (0px; none)
+PASS chromium 1180 /?view=velani-es-nosotros: text stays inside its card (none)
+PASS chromium 1180 /?view=velani-es-nosotros: no text over visuals (none)
+PASS chromium 1180 /?view=velani-es-nosotros: every internal link stays on the preview (none)
+PASS chromium 1180 /?view=velani-es-nosotros: Rondo marks round with ring (26)
+PASS chromium 1180 /?view=velani-es-nosotros: chat launcher carries the mark
+PASS chromium 1180 /?view=velani-es-nosotros: no script errors (none)
+PASS chromium 1180 /?view=velani-es-nosotros: hreflang en/es/x-default
+PASS chromium 1180 /?view=velani-es-ayuda: 200 on theme 193179287866 (unpublished)
+PASS chromium 1180 /?view=velani-es-ayuda: lang=es
+PASS chromium 1180 /?view=velani-es-ayuda: no sideways overflow (0px; none)
+PASS chromium 1180 /?view=velani-es-ayuda: text stays inside its card (none)
+PASS chromium 1180 /?view=velani-es-ayuda: no text over visuals (none)
+PASS chromium 1180 /?view=velani-es-ayuda: every internal link stays on the preview (none)
+PASS chromium 1180 /?view=velani-es-ayuda: Rondo marks round with ring (26)
+PASS chromium 1180 /?view=velani-es-ayuda: chat launcher carries the mark
+PASS chromium 1180 /?view=velani-es-ayuda: no script errors (none)
+PASS chromium 1180 /?view=velani-es-ayuda: hreflang en/es/x-default
+PASS chromium 1180: /pages/nevora → ES (velani-es-nevora) → EN (velani-nevora)
+PASS chromium 1180: /pages/plans → ES (velani-es-planes) → EN (velani-plans)
+PASS chromium 1180: / → ES (velani-es) → EN (/)
+PASS chromium 1180: Spanish NEVORA menu is inline at this width
+PASS chromium 1180: Spanish NEVORA “Inicio de Velani” goes to the Spanish home
+PASS chromium 1180: chat opens on the Spanish home; header mark 32x32
+PASS chromium 1180: Spanish form labels, preview notice (Nombre · Correo electrónico · Empresa opcional · Tema · Tamaño del equipo · Número de ubicaciones)
+PASS chromium 1024 /: 200 on theme 193179287866 (unpublished)
+PASS chromium 1024 /: lang=en
+PASS chromium 1024 /: no sideways overflow (0px; none)
+PASS chromium 1024 /: text stays inside its card (none)
+PASS chromium 1024 /: no text over visuals (none)
+PASS chromium 1024 /: every internal link stays on the preview (none)
+PASS chromium 1024 /: Rondo marks round with ring (26/26)
+PASS chromium 1024 /: chat launcher carries the mark
+PASS chromium 1024 /: no script errors (none)
+PASS chromium 1024 /: hreflang en/es/x-default
+PASS chromium 1024 /pages/products: 200 on theme 193179287866 (unpublished)
+PASS chromium 1024 /pages/products: lang=en
+PASS chromium 1024 /pages/products: no sideways overflow (0px; none)
+PASS chromium 1024 /pages/products: text stays inside its card (none)
+PASS chromium 1024 /pages/products: no text over visuals (none)
+PASS chromium 1024 /pages/products: every internal link stays on the preview (none)
+PASS chromium 1024 /pages/products: Rondo marks round with ring (26)
+PASS chromium 1024 /pages/products: chat launcher carries the mark
+PASS chromium 1024 /pages/products: no script errors (none)
+PASS chromium 1024 /pages/products: hreflang en/es/x-default
+PASS chromium 1024 /pages/custom-development: 200 on theme 193179287866 (unpublished)
+PASS chromium 1024 /pages/custom-development: lang=en
+PASS chromium 1024 /pages/custom-development: no sideways overflow (0px; none)
+PASS chromium 1024 /pages/custom-development: text stays inside its card (none)
+PASS chromium 1024 /pages/custom-development: no text over visuals (none)
+PASS chromium 1024 /pages/custom-development: every internal link stays on the preview (none)
+PASS chromium 1024 /pages/custom-development: Rondo marks round with ring (26)
+PASS chromium 1024 /pages/custom-development: chat launcher carries the mark
+PASS chromium 1024 /pages/custom-development: no script errors (none)
+PASS chromium 1024 /pages/nevora: 200 on theme 193179287866 (unpublished)
+PASS chromium 1024 /pages/nevora: lang=en
+PASS chromium 1024 /pages/nevora: no sideways overflow (0px; none)
+PASS chromium 1024 /pages/nevora: text stays inside its card (none)
+PASS chromium 1024 /pages/nevora: no text over visuals (none)
+PASS chromium 1024 /pages/nevora: every internal link stays on the preview (none)
+PASS chromium 1024 /pages/nevora: Rondo marks round with ring (24/26/26)
+PASS chromium 1024 /pages/nevora: chat launcher carries the mark
+PASS chromium 1024 /pages/nevora: no script errors (none)
+PASS chromium 1024 /pages/nevora: hreflang en/es/x-default
+PASS chromium 1024 /pages/about: 200 on theme 193179287866 (unpublished)
+PASS chromium 1024 /pages/about: lang=en
+PASS chromium 1024 /pages/about: no sideways overflow (0px; none)
+PASS chromium 1024 /pages/about: text stays inside its card (none)
+PASS chromium 1024 /pages/about: no text over visuals (none)
+PASS chromium 1024 /pages/about: every internal link stays on the preview (none)
+PASS chromium 1024 /pages/about: Rondo marks round with ring (26)
+PASS chromium 1024 /pages/about: chat launcher carries the mark
+PASS chromium 1024 /pages/about: no script errors (none)
+PASS chromium 1024 /pages/plans: 200 on theme 193179287866 (unpublished)
+PASS chromium 1024 /pages/plans: lang=en
+PASS chromium 1024 /pages/plans: no sideways overflow (0px; none)
+PASS chromium 1024 /pages/plans: text stays inside its card (none)
+PASS chromium 1024 /pages/plans: no text over visuals (none)
+PASS chromium 1024 /pages/plans: every internal link stays on the preview (none)
+PASS chromium 1024 /pages/plans: Rondo marks round with ring (26)
+PASS chromium 1024 /pages/plans: chat launcher carries the mark
+PASS chromium 1024 /pages/plans: no script errors (none)
+PASS chromium 1024 /pages/plans: hreflang en/es/x-default
+PASS chromium 1024 /pages/contact: 200 on theme 193179287866 (unpublished)
+PASS chromium 1024 /pages/contact: lang=en
+PASS chromium 1024 /pages/contact: no sideways overflow (0px; none)
+PASS chromium 1024 /pages/contact: text stays inside its card (none)
+PASS chromium 1024 /pages/contact: no text over visuals (none)
+PASS chromium 1024 /pages/contact: every internal link stays on the preview (none)
+PASS chromium 1024 /pages/contact: Rondo marks round with ring (26)
+PASS chromium 1024 /pages/contact: chat launcher carries the mark
+PASS chromium 1024 /pages/contact: no script errors (none)
+PASS chromium 1024 /pages/contact: hreflang en/es/x-default
+PASS chromium 1024 /pages/help: 200 on theme 193179287866 (unpublished)
+PASS chromium 1024 /pages/help: lang=en
+PASS chromium 1024 /pages/help: no sideways overflow (0px; none)
+PASS chromium 1024 /pages/help: text stays inside its card (none)
+PASS chromium 1024 /pages/help: no text over visuals (none)
+PASS chromium 1024 /pages/help: every internal link stays on the preview (none)
+PASS chromium 1024 /pages/help: Rondo marks round with ring (26)
+PASS chromium 1024 /pages/help: chat launcher carries the mark
+PASS chromium 1024 /pages/help: no script errors (none)
+PASS chromium 1024 /?view=velani-es: 200 on theme 193179287866 (unpublished)
+PASS chromium 1024 /?view=velani-es: lang=es
+PASS chromium 1024 /?view=velani-es: no sideways overflow (0px; none)
+PASS chromium 1024 /?view=velani-es: text stays inside its card (none)
+PASS chromium 1024 /?view=velani-es: no text over visuals (none)
+PASS chromium 1024 /?view=velani-es: every internal link stays on the preview (none)
+PASS chromium 1024 /?view=velani-es: Rondo marks round with ring (26/26)
+PASS chromium 1024 /?view=velani-es: chat launcher carries the mark
+PASS chromium 1024 /?view=velani-es: no script errors (none)
+PASS chromium 1024 /?view=velani-es: hreflang en/es/x-default
+PASS chromium 1024 /?view=velani-es-nevora: 200 on theme 193179287866 (unpublished)
+PASS chromium 1024 /?view=velani-es-nevora: lang=es
+PASS chromium 1024 /?view=velani-es-nevora: no sideways overflow (0px; none)
+PASS chromium 1024 /?view=velani-es-nevora: text stays inside its card (none)
+PASS chromium 1024 /?view=velani-es-nevora: no text over visuals (none)
+PASS chromium 1024 /?view=velani-es-nevora: every internal link stays on the preview (none)
+PASS chromium 1024 /?view=velani-es-nevora: Rondo marks round with ring (24/26/26)
+PASS chromium 1024 /?view=velani-es-nevora: chat launcher carries the mark
+PASS chromium 1024 /?view=velani-es-nevora: no script errors (none)
+PASS chromium 1024 /?view=velani-es-nevora: hreflang en/es/x-default
+PASS chromium 1024 /?view=velani-es-productos: 200 on theme 193179287866 (unpublished)
+PASS chromium 1024 /?view=velani-es-productos: lang=es
+PASS chromium 1024 /?view=velani-es-productos: no sideways overflow (0px; none)
+PASS chromium 1024 /?view=velani-es-productos: text stays inside its card (none)
+PASS chromium 1024 /?view=velani-es-productos: no text over visuals (none)
+PASS chromium 1024 /?view=velani-es-productos: every internal link stays on the preview (none)
+PASS chromium 1024 /?view=velani-es-productos: Rondo marks round with ring (26)
+PASS chromium 1024 /?view=velani-es-productos: chat launcher carries the mark
+PASS chromium 1024 /?view=velani-es-productos: no script errors (none)
+PASS chromium 1024 /?view=velani-es-productos: hreflang en/es/x-default
+PASS chromium 1024 /?view=velani-es-planes: 200 on theme 193179287866 (unpublished)
+PASS chromium 1024 /?view=velani-es-planes: lang=es
+PASS chromium 1024 /?view=velani-es-planes: no sideways overflow (0px; none)
+PASS chromium 1024 /?view=velani-es-planes: text stays inside its card (none)
+PASS chromium 1024 /?view=velani-es-planes: no text over visuals (none)
+PASS chromium 1024 /?view=velani-es-planes: every internal link stays on the preview (none)
+PASS chromium 1024 /?view=velani-es-planes: Rondo marks round with ring (26)
+PASS chromium 1024 /?view=velani-es-planes: chat launcher carries the mark
+PASS chromium 1024 /?view=velani-es-planes: no script errors (none)
+PASS chromium 1024 /?view=velani-es-planes: hreflang en/es/x-default
+PASS chromium 1024 /?view=velani-es-contacto: 200 on theme 193179287866 (unpublished)
+PASS chromium 1024 /?view=velani-es-contacto: lang=es
+PASS chromium 1024 /?view=velani-es-contacto: no sideways overflow (0px; none)
+PASS chromium 1024 /?view=velani-es-contacto: text stays inside its card (none)
+PASS chromium 1024 /?view=velani-es-contacto: no text over visuals (none)
+PASS chromium 1024 /?view=velani-es-contacto: every internal link stays on the preview (none)
+PASS chromium 1024 /?view=velani-es-contacto: Rondo marks round with ring (26)
+PASS chromium 1024 /?view=velani-es-contacto: chat launcher carries the mark
+PASS chromium 1024 /?view=velani-es-contacto: no script errors (none)
+PASS chromium 1024 /?view=velani-es-contacto: hreflang en/es/x-default
+PASS chromium 1024 /?view=velani-es-nosotros: 200 on theme 193179287866 (unpublished)
+PASS chromium 1024 /?view=velani-es-nosotros: lang=es
+PASS chromium 1024 /?view=velani-es-nosotros: no sideways overflow (0px; none)
+PASS chromium 1024 /?view=velani-es-nosotros: text stays inside its card (none)
+PASS chromium 1024 /?view=velani-es-nosotros: no text over visuals (none)
+PASS chromium 1024 /?view=velani-es-nosotros: every internal link stays on the preview (none)
+PASS chromium 1024 /?view=velani-es-nosotros: Rondo marks round with ring (26)
+PASS chromium 1024 /?view=velani-es-nosotros: chat launcher carries the mark
+PASS chromium 1024 /?view=velani-es-nosotros: no script errors (none)
+PASS chromium 1024 /?view=velani-es-nosotros: hreflang en/es/x-default
+PASS chromium 1024 /?view=velani-es-ayuda: 200 on theme 193179287866 (unpublished)
+PASS chromium 1024 /?view=velani-es-ayuda: lang=es
+PASS chromium 1024 /?view=velani-es-ayuda: no sideways overflow (0px; none)
+PASS chromium 1024 /?view=velani-es-ayuda: text stays inside its card (none)
+PASS chromium 1024 /?view=velani-es-ayuda: no text over visuals (none)
+PASS chromium 1024 /?view=velani-es-ayuda: every internal link stays on the preview (none)
+PASS chromium 1024 /?view=velani-es-ayuda: Rondo marks round with ring (26)
+PASS chromium 1024 /?view=velani-es-ayuda: chat launcher carries the mark
+PASS chromium 1024 /?view=velani-es-ayuda: no script errors (none)
+PASS chromium 1024 /?view=velani-es-ayuda: hreflang en/es/x-default
+PASS chromium 1024: /pages/nevora → ES (velani-es-nevora) → EN (velani-nevora)
+PASS chromium 1024: /pages/plans → ES (velani-es-planes) → EN (velani-plans)
+PASS chromium 1024: / → ES (velani-es) → EN (/)
+PASS chromium 1024: Spanish NEVORA menu is inline at this width
+PASS chromium 1024: Spanish NEVORA “Inicio de Velani” goes to the Spanish home
+PASS chromium 1024: chat opens on the Spanish home; header mark 32x32
+PASS chromium 1024: Spanish form labels, preview notice (Nombre · Correo electrónico · Empresa opcional · Tema · Tamaño del equipo · Número de ubicaciones)
+PASS chromium 834 /: 200 on theme 193179287866 (unpublished)
+PASS chromium 834 /: lang=en
+PASS chromium 834 /: no sideways overflow (0px; none)
+PASS chromium 834 /: text stays inside its card (none)
+PASS chromium 834 /: no text over visuals (none)
+PASS chromium 834 /: every internal link stays on the preview (none)
+PASS chromium 834 /: Rondo marks round with ring (26/26)
+PASS chromium 834 /: chat launcher carries the mark
+PASS chromium 834 /: no script errors (none)
+PASS chromium 834 /: hreflang en/es/x-default
+PASS chromium 834 /pages/products: 200 on theme 193179287866 (unpublished)
+PASS chromium 834 /pages/products: lang=en
+PASS chromium 834 /pages/products: no sideways overflow (0px; none)
+PASS chromium 834 /pages/products: text stays inside its card (none)
+PASS chromium 834 /pages/products: no text over visuals (none)
+PASS chromium 834 /pages/products: every internal link stays on the preview (none)
+PASS chromium 834 /pages/products: Rondo marks round with ring (26)
+PASS chromium 834 /pages/products: chat launcher carries the mark
+PASS chromium 834 /pages/products: no script errors (none)
+PASS chromium 834 /pages/products: hreflang en/es/x-default
+PASS chromium 834 /pages/custom-development: 200 on theme 193179287866 (unpublished)
+PASS chromium 834 /pages/custom-development: lang=en
+PASS chromium 834 /pages/custom-development: no sideways overflow (0px; none)
+PASS chromium 834 /pages/custom-development: text stays inside its card (none)
+PASS chromium 834 /pages/custom-development: no text over visuals (none)
+PASS chromium 834 /pages/custom-development: every internal link stays on the preview (none)
+PASS chromium 834 /pages/custom-development: Rondo marks round with ring (26)
+PASS chromium 834 /pages/custom-development: chat launcher carries the mark
+PASS chromium 834 /pages/custom-development: no script errors (none)
+PASS chromium 834 /pages/nevora: 200 on theme 193179287866 (unpublished)
+PASS chromium 834 /pages/nevora: lang=en
+PASS chromium 834 /pages/nevora: no sideways overflow (0px; none)
+PASS chromium 834 /pages/nevora: text stays inside its card (none)
+PASS chromium 834 /pages/nevora: no text over visuals (none)
+PASS chromium 834 /pages/nevora: every internal link stays on the preview (none)
+PASS chromium 834 /pages/nevora: Rondo marks round with ring (24/26/26)
+PASS chromium 834 /pages/nevora: chat launcher carries the mark
+PASS chromium 834 /pages/nevora: no script errors (none)
+PASS chromium 834 /pages/nevora: hreflang en/es/x-default
+PASS chromium 834 /pages/about: 200 on theme 193179287866 (unpublished)
+PASS chromium 834 /pages/about: lang=en
+PASS chromium 834 /pages/about: no sideways overflow (0px; none)
+PASS chromium 834 /pages/about: text stays inside its card (none)
+PASS chromium 834 /pages/about: no text over visuals (none)
+PASS chromium 834 /pages/about: every internal link stays on the preview (none)
+PASS chromium 834 /pages/about: Rondo marks round with ring (26)
+PASS chromium 834 /pages/about: chat launcher carries the mark
+PASS chromium 834 /pages/about: no script errors (none)
+PASS chromium 834 /pages/plans: 200 on theme 193179287866 (unpublished)
+PASS chromium 834 /pages/plans: lang=en
+PASS chromium 834 /pages/plans: no sideways overflow (0px; none)
+PASS chromium 834 /pages/plans: text stays inside its card (none)
+PASS chromium 834 /pages/plans: no text over visuals (none)
+PASS chromium 834 /pages/plans: every internal link stays on the preview (none)
+PASS chromium 834 /pages/plans: Rondo marks round with ring (26)
+PASS chromium 834 /pages/plans: chat launcher carries the mark
+PASS chromium 834 /pages/plans: no script errors (none)
+PASS chromium 834 /pages/plans: hreflang en/es/x-default
+PASS chromium 834 /pages/contact: 200 on theme 193179287866 (unpublished)
+PASS chromium 834 /pages/contact: lang=en
+PASS chromium 834 /pages/contact: no sideways overflow (0px; none)
+PASS chromium 834 /pages/contact: text stays inside its card (none)
+PASS chromium 834 /pages/contact: no text over visuals (none)
+PASS chromium 834 /pages/contact: every internal link stays on the preview (none)
+PASS chromium 834 /pages/contact: Rondo marks round with ring (26)
+PASS chromium 834 /pages/contact: chat launcher carries the mark
+PASS chromium 834 /pages/contact: no script errors (none)
+PASS chromium 834 /pages/contact: hreflang en/es/x-default
+PASS chromium 834 /pages/help: 200 on theme 193179287866 (unpublished)
+PASS chromium 834 /pages/help: lang=en
+PASS chromium 834 /pages/help: no sideways overflow (0px; none)
+PASS chromium 834 /pages/help: text stays inside its card (none)
+PASS chromium 834 /pages/help: no text over visuals (none)
+PASS chromium 834 /pages/help: every internal link stays on the preview (none)
+PASS chromium 834 /pages/help: Rondo marks round with ring (26)
+PASS chromium 834 /pages/help: chat launcher carries the mark
+PASS chromium 834 /pages/help: no script errors (none)
+PASS chromium 834 /?view=velani-es: 200 on theme 193179287866 (unpublished)
+PASS chromium 834 /?view=velani-es: lang=es
+PASS chromium 834 /?view=velani-es: no sideways overflow (0px; none)
+PASS chromium 834 /?view=velani-es: text stays inside its card (none)
+PASS chromium 834 /?view=velani-es: no text over visuals (none)
+PASS chromium 834 /?view=velani-es: every internal link stays on the preview (none)
+PASS chromium 834 /?view=velani-es: Rondo marks round with ring (26/26)
+PASS chromium 834 /?view=velani-es: chat launcher carries the mark
+PASS chromium 834 /?view=velani-es: no script errors (none)
+PASS chromium 834 /?view=velani-es: hreflang en/es/x-default
+PASS chromium 834 /?view=velani-es-nevora: 200 on theme 193179287866 (unpublished)
+PASS chromium 834 /?view=velani-es-nevora: lang=es
+PASS chromium 834 /?view=velani-es-nevora: no sideways overflow (0px; none)
+PASS chromium 834 /?view=velani-es-nevora: text stays inside its card (none)
+PASS chromium 834 /?view=velani-es-nevora: no text over visuals (none)
+PASS chromium 834 /?view=velani-es-nevora: every internal link stays on the preview (none)
+PASS chromium 834 /?view=velani-es-nevora: Rondo marks round with ring (24/26/26)
+PASS chromium 834 /?view=velani-es-nevora: chat launcher carries the mark
+PASS chromium 834 /?view=velani-es-nevora: no script errors (none)
+PASS chromium 834 /?view=velani-es-nevora: hreflang en/es/x-default
+PASS chromium 834 /?view=velani-es-productos: 200 on theme 193179287866 (unpublished)
+PASS chromium 834 /?view=velani-es-productos: lang=es
+PASS chromium 834 /?view=velani-es-productos: no sideways overflow (0px; none)
+PASS chromium 834 /?view=velani-es-productos: text stays inside its card (none)
+PASS chromium 834 /?view=velani-es-productos: no text over visuals (none)
+PASS chromium 834 /?view=velani-es-productos: every internal link stays on the preview (none)
+PASS chromium 834 /?view=velani-es-productos: Rondo marks round with ring (26)
+PASS chromium 834 /?view=velani-es-productos: chat launcher carries the mark
+PASS chromium 834 /?view=velani-es-productos: no script errors (none)
+PASS chromium 834 /?view=velani-es-productos: hreflang en/es/x-default
+PASS chromium 834 /?view=velani-es-planes: 200 on theme 193179287866 (unpublished)
+PASS chromium 834 /?view=velani-es-planes: lang=es
+PASS chromium 834 /?view=velani-es-planes: no sideways overflow (0px; none)
+PASS chromium 834 /?view=velani-es-planes: text stays inside its card (none)
+PASS chromium 834 /?view=velani-es-planes: no text over visuals (none)
+PASS chromium 834 /?view=velani-es-planes: every internal link stays on the preview (none)
+PASS chromium 834 /?view=velani-es-planes: Rondo marks round with ring (26)
+PASS chromium 834 /?view=velani-es-planes: chat launcher carries the mark
+PASS chromium 834 /?view=velani-es-planes: no script errors (none)
+PASS chromium 834 /?view=velani-es-planes: hreflang en/es/x-default
+PASS chromium 834 /?view=velani-es-contacto: 200 on theme 193179287866 (unpublished)
+PASS chromium 834 /?view=velani-es-contacto: lang=es
+PASS chromium 834 /?view=velani-es-contacto: no sideways overflow (0px; none)
+PASS chromium 834 /?view=velani-es-contacto: text stays inside its card (none)
+PASS chromium 834 /?view=velani-es-contacto: no text over visuals (none)
+PASS chromium 834 /?view=velani-es-contacto: every internal link stays on the preview (none)
+PASS chromium 834 /?view=velani-es-contacto: Rondo marks round with ring (26)
+PASS chromium 834 /?view=velani-es-contacto: chat launcher carries the mark
+PASS chromium 834 /?view=velani-es-contacto: no script errors (none)
+PASS chromium 834 /?view=velani-es-contacto: hreflang en/es/x-default
+PASS chromium 834 /?view=velani-es-nosotros: 200 on theme 193179287866 (unpublished)
+PASS chromium 834 /?view=velani-es-nosotros: lang=es
+PASS chromium 834 /?view=velani-es-nosotros: no sideways overflow (0px; none)
+PASS chromium 834 /?view=velani-es-nosotros: text stays inside its card (none)
+PASS chromium 834 /?view=velani-es-nosotros: no text over visuals (none)
+PASS chromium 834 /?view=velani-es-nosotros: every internal link stays on the preview (none)
+PASS chromium 834 /?view=velani-es-nosotros: Rondo marks round with ring (26)
+PASS chromium 834 /?view=velani-es-nosotros: chat launcher carries the mark
+PASS chromium 834 /?view=velani-es-nosotros: no script errors (none)
+PASS chromium 834 /?view=velani-es-nosotros: hreflang en/es/x-default
+PASS chromium 834 /?view=velani-es-ayuda: 200 on theme 193179287866 (unpublished)
+PASS chromium 834 /?view=velani-es-ayuda: lang=es
+PASS chromium 834 /?view=velani-es-ayuda: no sideways overflow (0px; none)
+PASS chromium 834 /?view=velani-es-ayuda: text stays inside its card (none)
+PASS chromium 834 /?view=velani-es-ayuda: no text over visuals (none)
+PASS chromium 834 /?view=velani-es-ayuda: every internal link stays on the preview (none)
+PASS chromium 834 /?view=velani-es-ayuda: Rondo marks round with ring (26)
+PASS chromium 834 /?view=velani-es-ayuda: chat launcher carries the mark
+PASS chromium 834 /?view=velani-es-ayuda: no script errors (none)
+PASS chromium 834 /?view=velani-es-ayuda: hreflang en/es/x-default
+PASS chromium 834: /pages/nevora → ES (velani-es-nevora) → EN (velani-nevora)
+PASS chromium 834: /pages/plans → ES (velani-es-planes) → EN (velani-plans)
+PASS chromium 834: / → ES (velani-es) → EN (/)
+PASS chromium 834: Spanish NEVORA menu closes and frees the page (nothing inert)
+PASS chromium 834: Spanish NEVORA “Inicio de Velani” goes to the Spanish home
+PASS chromium 834: chat opens on the Spanish home; header mark 32x32
+PASS chromium 834: Spanish form labels, preview notice (Nombre · Correo electrónico · Empresa opcional · Tema · Tamaño del equipo · Número de ubicaciones)
+PASS chromium 390 /: 200 on theme 193179287866 (unpublished)
+PASS chromium 390 /: lang=en
+PASS chromium 390 /: no sideways overflow (0px; none)
+PASS chromium 390 /: text stays inside its card (none)
+PASS chromium 390 /: no text over visuals (none)
+PASS chromium 390 /: every internal link stays on the preview (none)
+PASS chromium 390 /: Rondo marks round with ring (26)
+PASS chromium 390 /: chat launcher carries the mark
+PASS chromium 390 /: no script errors (none)
+PASS chromium 390 /: hreflang en/es/x-default
+PASS chromium 390 /pages/products: 200 on theme 193179287866 (unpublished)
+PASS chromium 390 /pages/products: lang=en
+PASS chromium 390 /pages/products: no sideways overflow (0px; none)
+PASS chromium 390 /pages/products: text stays inside its card (none)
+PASS chromium 390 /pages/products: no text over visuals (none)
+PASS chromium 390 /pages/products: every internal link stays on the preview (none)
+PASS chromium 390 /pages/products: Rondo marks round with ring (26)
+PASS chromium 390 /pages/products: chat launcher carries the mark
+PASS chromium 390 /pages/products: no script errors (none)
+PASS chromium 390 /pages/products: hreflang en/es/x-default
+PASS chromium 390 /pages/custom-development: 200 on theme 193179287866 (unpublished)
+PASS chromium 390 /pages/custom-development: lang=en
+PASS chromium 390 /pages/custom-development: no sideways overflow (0px; none)
+PASS chromium 390 /pages/custom-development: text stays inside its card (none)
+PASS chromium 390 /pages/custom-development: no text over visuals (none)
+PASS chromium 390 /pages/custom-development: every internal link stays on the preview (none)
+PASS chromium 390 /pages/custom-development: Rondo marks round with ring (26)
+PASS chromium 390 /pages/custom-development: chat launcher carries the mark
+PASS chromium 390 /pages/custom-development: no script errors (none)
+PASS chromium 390 /pages/nevora: 200 on theme 193179287866 (unpublished)
+PASS chromium 390 /pages/nevora: lang=en
+PASS chromium 390 /pages/nevora: no sideways overflow (0px; none)
+PASS chromium 390 /pages/nevora: text stays inside its card (none)
+PASS chromium 390 /pages/nevora: no text over visuals (none)
+PASS chromium 390 /pages/nevora: every internal link stays on the preview (none)
+PASS chromium 390 /pages/nevora: Rondo marks round with ring (24/22/26)
+PASS chromium 390 /pages/nevora: chat launcher carries the mark
+PASS chromium 390 /pages/nevora: no script errors (none)
+PASS chromium 390 /pages/nevora: hreflang en/es/x-default
+PASS chromium 390 /pages/about: 200 on theme 193179287866 (unpublished)
+PASS chromium 390 /pages/about: lang=en
+PASS chromium 390 /pages/about: no sideways overflow (0px; none)
+PASS chromium 390 /pages/about: text stays inside its card (none)
+PASS chromium 390 /pages/about: no text over visuals (none)
+PASS chromium 390 /pages/about: every internal link stays on the preview (none)
+PASS chromium 390 /pages/about: Rondo marks round with ring (26)
+PASS chromium 390 /pages/about: chat launcher carries the mark
+PASS chromium 390 /pages/about: no script errors (none)
+PASS chromium 390 /pages/plans: 200 on theme 193179287866 (unpublished)
+PASS chromium 390 /pages/plans: lang=en
+PASS chromium 390 /pages/plans: no sideways overflow (0px; none)
+PASS chromium 390 /pages/plans: text stays inside its card (none)
+PASS chromium 390 /pages/plans: no text over visuals (none)
+PASS chromium 390 /pages/plans: every internal link stays on the preview (none)
+PASS chromium 390 /pages/plans: Rondo marks round with ring (26)
+PASS chromium 390 /pages/plans: chat launcher carries the mark
+PASS chromium 390 /pages/plans: no script errors (none)
+PASS chromium 390 /pages/plans: hreflang en/es/x-default
+PASS chromium 390 /pages/contact: 200 on theme 193179287866 (unpublished)
+PASS chromium 390 /pages/contact: lang=en
+PASS chromium 390 /pages/contact: no sideways overflow (0px; none)
+PASS chromium 390 /pages/contact: text stays inside its card (none)
+PASS chromium 390 /pages/contact: no text over visuals (none)
+PASS chromium 390 /pages/contact: every internal link stays on the preview (none)
+PASS chromium 390 /pages/contact: Rondo marks round with ring (26)
+PASS chromium 390 /pages/contact: chat launcher carries the mark
+PASS chromium 390 /pages/contact: no script errors (none)
+PASS chromium 390 /pages/contact: hreflang en/es/x-default
+PASS chromium 390 /pages/help: 200 on theme 193179287866 (unpublished)
+PASS chromium 390 /pages/help: lang=en
+PASS chromium 390 /pages/help: no sideways overflow (0px; none)
+PASS chromium 390 /pages/help: text stays inside its card (none)
+PASS chromium 390 /pages/help: no text over visuals (none)
+PASS chromium 390 /pages/help: every internal link stays on the preview (none)
+PASS chromium 390 /pages/help: Rondo marks round with ring (26)
+PASS chromium 390 /pages/help: chat launcher carries the mark
+PASS chromium 390 /pages/help: no script errors (none)
+PASS chromium 390 /?view=velani-es: 200 on theme 193179287866 (unpublished)
+PASS chromium 390 /?view=velani-es: lang=es
+PASS chromium 390 /?view=velani-es: no sideways overflow (0px; none)
+PASS chromium 390 /?view=velani-es: text stays inside its card (none)
+PASS chromium 390 /?view=velani-es: no text over visuals (none)
+PASS chromium 390 /?view=velani-es: every internal link stays on the preview (none)
+PASS chromium 390 /?view=velani-es: Rondo marks round with ring (26)
+PASS chromium 390 /?view=velani-es: chat launcher carries the mark
+PASS chromium 390 /?view=velani-es: no script errors (none)
+PASS chromium 390 /?view=velani-es: hreflang en/es/x-default
+PASS chromium 390 /?view=velani-es-nevora: 200 on theme 193179287866 (unpublished)
+PASS chromium 390 /?view=velani-es-nevora: lang=es
+PASS chromium 390 /?view=velani-es-nevora: no sideways overflow (0px; none)
+PASS chromium 390 /?view=velani-es-nevora: text stays inside its card (none)
+PASS chromium 390 /?view=velani-es-nevora: no text over visuals (none)
+PASS chromium 390 /?view=velani-es-nevora: every internal link stays on the preview (none)
+PASS chromium 390 /?view=velani-es-nevora: Rondo marks round with ring (24/22/26)
+PASS chromium 390 /?view=velani-es-nevora: chat launcher carries the mark
+PASS chromium 390 /?view=velani-es-nevora: no script errors (none)
+PASS chromium 390 /?view=velani-es-nevora: hreflang en/es/x-default
+PASS chromium 390 /?view=velani-es-productos: 200 on theme 193179287866 (unpublished)
+PASS chromium 390 /?view=velani-es-productos: lang=es
+PASS chromium 390 /?view=velani-es-productos: no sideways overflow (0px; none)
+PASS chromium 390 /?view=velani-es-productos: text stays inside its card (none)
+PASS chromium 390 /?view=velani-es-productos: no text over visuals (none)
+PASS chromium 390 /?view=velani-es-productos: every internal link stays on the preview (none)
+PASS chromium 390 /?view=velani-es-productos: Rondo marks round with ring (26)
+PASS chromium 390 /?view=velani-es-productos: chat launcher carries the mark
+PASS chromium 390 /?view=velani-es-productos: no script errors (none)
+PASS chromium 390 /?view=velani-es-productos: hreflang en/es/x-default
+PASS chromium 390 /?view=velani-es-planes: 200 on theme 193179287866 (unpublished)
+PASS chromium 390 /?view=velani-es-planes: lang=es
+PASS chromium 390 /?view=velani-es-planes: no sideways overflow (0px; none)
+PASS chromium 390 /?view=velani-es-planes: text stays inside its card (none)
+PASS chromium 390 /?view=velani-es-planes: no text over visuals (none)
+PASS chromium 390 /?view=velani-es-planes: every internal link stays on the preview (none)
+PASS chromium 390 /?view=velani-es-planes: Rondo marks round with ring (26)
+PASS chromium 390 /?view=velani-es-planes: chat launcher carries the mark
+PASS chromium 390 /?view=velani-es-planes: no script errors (none)
+PASS chromium 390 /?view=velani-es-planes: hreflang en/es/x-default
+PASS chromium 390 /?view=velani-es-contacto: 200 on theme 193179287866 (unpublished)
+PASS chromium 390 /?view=velani-es-contacto: lang=es
+PASS chromium 390 /?view=velani-es-contacto: no sideways overflow (0px; none)
+PASS chromium 390 /?view=velani-es-contacto: text stays inside its card (none)
+PASS chromium 390 /?view=velani-es-contacto: no text over visuals (none)
+PASS chromium 390 /?view=velani-es-contacto: every internal link stays on the preview (none)
+PASS chromium 390 /?view=velani-es-contacto: Rondo marks round with ring (26)
+PASS chromium 390 /?view=velani-es-contacto: chat launcher carries the mark
+PASS chromium 390 /?view=velani-es-contacto: no script errors (none)
+PASS chromium 390 /?view=velani-es-contacto: hreflang en/es/x-default
+PASS chromium 390 /?view=velani-es-nosotros: 200 on theme 193179287866 (unpublished)
+PASS chromium 390 /?view=velani-es-nosotros: lang=es
+PASS chromium 390 /?view=velani-es-nosotros: no sideways overflow (0px; none)
+PASS chromium 390 /?view=velani-es-nosotros: text stays inside its card (none)
+PASS chromium 390 /?view=velani-es-nosotros: no text over visuals (none)
+PASS chromium 390 /?view=velani-es-nosotros: every internal link stays on the preview (none)
+PASS chromium 390 /?view=velani-es-nosotros: Rondo marks round with ring (26)
+PASS chromium 390 /?view=velani-es-nosotros: chat launcher carries the mark
+PASS chromium 390 /?view=velani-es-nosotros: no script errors (none)
+PASS chromium 390 /?view=velani-es-nosotros: hreflang en/es/x-default
+PASS chromium 390 /?view=velani-es-ayuda: 200 on theme 193179287866 (unpublished)
+PASS chromium 390 /?view=velani-es-ayuda: lang=es
+PASS chromium 390 /?view=velani-es-ayuda: no sideways overflow (0px; none)
+PASS chromium 390 /?view=velani-es-ayuda: text stays inside its card (none)
+PASS chromium 390 /?view=velani-es-ayuda: no text over visuals (none)
+PASS chromium 390 /?view=velani-es-ayuda: every internal link stays on the preview (none)
+PASS chromium 390 /?view=velani-es-ayuda: Rondo marks round with ring (26)
+PASS chromium 390 /?view=velani-es-ayuda: chat launcher carries the mark
+PASS chromium 390 /?view=velani-es-ayuda: no script errors (none)
+PASS chromium 390 /?view=velani-es-ayuda: hreflang en/es/x-default
+PASS chromium 390: /pages/nevora → ES (velani-es-nevora) → EN (velani-nevora)
+PASS chromium 390: /pages/plans → ES (velani-es-planes) → EN (velani-plans)
+PASS chromium 390: / → ES (velani-es) → EN (/)
+PASS chromium 390: Spanish NEVORA menu closes and frees the page (nothing inert)
+PASS chromium 390: Spanish NEVORA “Inicio de Velani” goes to the Spanish home
+PASS chromium 390: Spanish menu opens and Escape closes it
+PASS chromium 390: chat opens on the Spanish home; header mark 32x32
+PASS chromium 390: Spanish form labels, preview notice (Nombre · Correo electrónico · Empresa opcional · Tema · Tamaño del equipo · Número de ubicaciones)
+PASS chromium 320 /: 200 on theme 193179287866 (unpublished)
+PASS chromium 320 /: lang=en
+PASS chromium 320 /: no sideways overflow (0px; none)
+PASS chromium 320 /: text stays inside its card (none)
+PASS chromium 320 /: no text over visuals (none)
+PASS chromium 320 /: every internal link stays on the preview (none)
+PASS chromium 320 /: Rondo marks round with ring (26)
+PASS chromium 320 /: chat launcher carries the mark
+PASS chromium 320 /: no script errors (none)
+PASS chromium 320 /: hreflang en/es/x-default
+PASS chromium 320 /pages/products: 200 on theme 193179287866 (unpublished)
+PASS chromium 320 /pages/products: lang=en
+PASS chromium 320 /pages/products: no sideways overflow (0px; none)
+PASS chromium 320 /pages/products: text stays inside its card (none)
+PASS chromium 320 /pages/products: no text over visuals (none)
+PASS chromium 320 /pages/products: every internal link stays on the preview (none)
+PASS chromium 320 /pages/products: Rondo marks round with ring (26)
+PASS chromium 320 /pages/products: chat launcher carries the mark
+PASS chromium 320 /pages/products: no script errors (none)
+PASS chromium 320 /pages/products: hreflang en/es/x-default
+PASS chromium 320 /pages/custom-development: 200 on theme 193179287866 (unpublished)
+PASS chromium 320 /pages/custom-development: lang=en
+PASS chromium 320 /pages/custom-development: no sideways overflow (0px; none)
+PASS chromium 320 /pages/custom-development: text stays inside its card (none)
+PASS chromium 320 /pages/custom-development: no text over visuals (none)
+PASS chromium 320 /pages/custom-development: every internal link stays on the preview (none)
+PASS chromium 320 /pages/custom-development: Rondo marks round with ring (26)
+PASS chromium 320 /pages/custom-development: chat launcher carries the mark
+PASS chromium 320 /pages/custom-development: no script errors (none)
+PASS chromium 320 /pages/nevora: 200 on theme 193179287866 (unpublished)
+PASS chromium 320 /pages/nevora: lang=en
+PASS chromium 320 /pages/nevora: no sideways overflow (0px; none)
+PASS chromium 320 /pages/nevora: text stays inside its card (none)
+PASS chromium 320 /pages/nevora: no text over visuals (none)
+PASS chromium 320 /pages/nevora: every internal link stays on the preview (none)
+PASS chromium 320 /pages/nevora: Rondo marks round with ring (24/22/26)
+PASS chromium 320 /pages/nevora: chat launcher carries the mark
+PASS chromium 320 /pages/nevora: no script errors (none)
+PASS chromium 320 /pages/nevora: hreflang en/es/x-default
+PASS chromium 320 /pages/about: 200 on theme 193179287866 (unpublished)
+PASS chromium 320 /pages/about: lang=en
+PASS chromium 320 /pages/about: no sideways overflow (0px; none)
+PASS chromium 320 /pages/about: text stays inside its card (none)
+PASS chromium 320 /pages/about: no text over visuals (none)
+PASS chromium 320 /pages/about: every internal link stays on the preview (none)
+PASS chromium 320 /pages/about: Rondo marks round with ring (26)
+PASS chromium 320 /pages/about: chat launcher carries the mark
+PASS chromium 320 /pages/about: no script errors (none)
+PASS chromium 320 /pages/plans: 200 on theme 193179287866 (unpublished)
+PASS chromium 320 /pages/plans: lang=en
+PASS chromium 320 /pages/plans: no sideways overflow (0px; none)
+PASS chromium 320 /pages/plans: text stays inside its card (none)
+PASS chromium 320 /pages/plans: no text over visuals (none)
+PASS chromium 320 /pages/plans: every internal link stays on the preview (none)
+PASS chromium 320 /pages/plans: Rondo marks round with ring (26)
+PASS chromium 320 /pages/plans: chat launcher carries the mark
+PASS chromium 320 /pages/plans: no script errors (none)
+PASS chromium 320 /pages/plans: hreflang en/es/x-default
+PASS chromium 320 /pages/contact: 200 on theme 193179287866 (unpublished)
+PASS chromium 320 /pages/contact: lang=en
+PASS chromium 320 /pages/contact: no sideways overflow (0px; none)
+PASS chromium 320 /pages/contact: text stays inside its card (none)
+PASS chromium 320 /pages/contact: no text over visuals (none)
+PASS chromium 320 /pages/contact: every internal link stays on the preview (none)
+PASS chromium 320 /pages/contact: Rondo marks round with ring (26)
+PASS chromium 320 /pages/contact: chat launcher carries the mark
+PASS chromium 320 /pages/contact: no script errors (none)
+PASS chromium 320 /pages/contact: hreflang en/es/x-default
+PASS chromium 320 /pages/help: 200 on theme 193179287866 (unpublished)
+PASS chromium 320 /pages/help: lang=en
+PASS chromium 320 /pages/help: no sideways overflow (0px; none)
+PASS chromium 320 /pages/help: text stays inside its card (none)
+PASS chromium 320 /pages/help: no text over visuals (none)
+PASS chromium 320 /pages/help: every internal link stays on the preview (none)
+PASS chromium 320 /pages/help: Rondo marks round with ring (26)
+PASS chromium 320 /pages/help: chat launcher carries the mark
+PASS chromium 320 /pages/help: no script errors (none)
+PASS chromium 320 /?view=velani-es: 200 on theme 193179287866 (unpublished)
+PASS chromium 320 /?view=velani-es: lang=es
+PASS chromium 320 /?view=velani-es: no sideways overflow (0px; none)
+PASS chromium 320 /?view=velani-es: text stays inside its card (none)
+PASS chromium 320 /?view=velani-es: no text over visuals (none)
+PASS chromium 320 /?view=velani-es: every internal link stays on the preview (none)
+PASS chromium 320 /?view=velani-es: Rondo marks round with ring (26)
+PASS chromium 320 /?view=velani-es: chat launcher carries the mark
+PASS chromium 320 /?view=velani-es: no script errors (none)
+PASS chromium 320 /?view=velani-es: hreflang en/es/x-default
+PASS chromium 320 /?view=velani-es-nevora: 200 on theme 193179287866 (unpublished)
+PASS chromium 320 /?view=velani-es-nevora: lang=es
+PASS chromium 320 /?view=velani-es-nevora: no sideways overflow (0px; none)
+PASS chromium 320 /?view=velani-es-nevora: text stays inside its card (none)
+PASS chromium 320 /?view=velani-es-nevora: no text over visuals (none)
+PASS chromium 320 /?view=velani-es-nevora: every internal link stays on the preview (none)
+PASS chromium 320 /?view=velani-es-nevora: Rondo marks round with ring (24/22/26)
+PASS chromium 320 /?view=velani-es-nevora: chat launcher carries the mark
+PASS chromium 320 /?view=velani-es-nevora: no script errors (none)
+PASS chromium 320 /?view=velani-es-nevora: hreflang en/es/x-default
+PASS chromium 320 /?view=velani-es-productos: 200 on theme 193179287866 (unpublished)
+PASS chromium 320 /?view=velani-es-productos: lang=es
+PASS chromium 320 /?view=velani-es-productos: no sideways overflow (0px; none)
+PASS chromium 320 /?view=velani-es-productos: text stays inside its card (none)
+PASS chromium 320 /?view=velani-es-productos: no text over visuals (none)
+PASS chromium 320 /?view=velani-es-productos: every internal link stays on the preview (none)
+PASS chromium 320 /?view=velani-es-productos: Rondo marks round with ring (26)
+PASS chromium 320 /?view=velani-es-productos: chat launcher carries the mark
+PASS chromium 320 /?view=velani-es-productos: no script errors (none)
+PASS chromium 320 /?view=velani-es-productos: hreflang en/es/x-default
+PASS chromium 320 /?view=velani-es-planes: 200 on theme 193179287866 (unpublished)
+PASS chromium 320 /?view=velani-es-planes: lang=es
+PASS chromium 320 /?view=velani-es-planes: no sideways overflow (0px; none)
+PASS chromium 320 /?view=velani-es-planes: text stays inside its card (none)
+PASS chromium 320 /?view=velani-es-planes: no text over visuals (none)
+PASS chromium 320 /?view=velani-es-planes: every internal link stays on the preview (none)
+PASS chromium 320 /?view=velani-es-planes: Rondo marks round with ring (26)
+PASS chromium 320 /?view=velani-es-planes: chat launcher carries the mark
+PASS chromium 320 /?view=velani-es-planes: no script errors (none)
+PASS chromium 320 /?view=velani-es-planes: hreflang en/es/x-default
+PASS chromium 320 /?view=velani-es-contacto: 200 on theme 193179287866 (unpublished)
+PASS chromium 320 /?view=velani-es-contacto: lang=es
+PASS chromium 320 /?view=velani-es-contacto: no sideways overflow (0px; none)
+PASS chromium 320 /?view=velani-es-contacto: text stays inside its card (none)
+PASS chromium 320 /?view=velani-es-contacto: no text over visuals (none)
+PASS chromium 320 /?view=velani-es-contacto: every internal link stays on the preview (none)
+PASS chromium 320 /?view=velani-es-contacto: Rondo marks round with ring (26)
+PASS chromium 320 /?view=velani-es-contacto: chat launcher carries the mark
+PASS chromium 320 /?view=velani-es-contacto: no script errors (none)
+PASS chromium 320 /?view=velani-es-contacto: hreflang en/es/x-default
+PASS chromium 320 /?view=velani-es-nosotros: 200 on theme 193179287866 (unpublished)
+PASS chromium 320 /?view=velani-es-nosotros: lang=es
+PASS chromium 320 /?view=velani-es-nosotros: no sideways overflow (0px; none)
+PASS chromium 320 /?view=velani-es-nosotros: text stays inside its card (none)
+PASS chromium 320 /?view=velani-es-nosotros: no text over visuals (none)
+PASS chromium 320 /?view=velani-es-nosotros: every internal link stays on the preview (none)
+PASS chromium 320 /?view=velani-es-nosotros: Rondo marks round with ring (26)
+PASS chromium 320 /?view=velani-es-nosotros: chat launcher carries the mark
+PASS chromium 320 /?view=velani-es-nosotros: no script errors (none)
+PASS chromium 320 /?view=velani-es-nosotros: hreflang en/es/x-default
+PASS chromium 320 /?view=velani-es-ayuda: 200 on theme 193179287866 (unpublished)
+PASS chromium 320 /?view=velani-es-ayuda: lang=es
+PASS chromium 320 /?view=velani-es-ayuda: no sideways overflow (0px; none)
+PASS chromium 320 /?view=velani-es-ayuda: text stays inside its card (none)
+PASS chromium 320 /?view=velani-es-ayuda: no text over visuals (none)
+PASS chromium 320 /?view=velani-es-ayuda: every internal link stays on the preview (none)
+PASS chromium 320 /?view=velani-es-ayuda: Rondo marks round with ring (26)
+PASS chromium 320 /?view=velani-es-ayuda: chat launcher carries the mark
+PASS chromium 320 /?view=velani-es-ayuda: no script errors (none)
+PASS chromium 320 /?view=velani-es-ayuda: hreflang en/es/x-default
+PASS chromium 320: /pages/nevora → ES (velani-es-nevora) → EN (velani-nevora)
+PASS chromium 320: /pages/plans → ES (velani-es-planes) → EN (velani-plans)
+PASS chromium 320: / → ES (velani-es) → EN (/)
+PASS chromium 320: Spanish NEVORA menu closes and frees the page (nothing inert)
+PASS chromium 320: Spanish NEVORA “Inicio de Velani” goes to the Spanish home
+PASS chromium 320: Spanish menu opens and Escape closes it
+PASS chromium 320: chat opens on the Spanish home; header mark 32x32
+PASS chromium 320: Spanish form labels, preview notice (Nombre · Correo electrónico · Empresa opcional · Tema · Tamaño del equipo · Número de ubicaciones)
+PASS webkit 1440 /: 200 on theme 193179287866 (unpublished)
+PASS webkit 1440 /: lang=en
+PASS webkit 1440 /: no sideways overflow (0px; none)
+PASS webkit 1440 /: text stays inside its card (none)
+PASS webkit 1440 /: no text over visuals (none)
+PASS webkit 1440 /: every internal link stays on the preview (none)
+PASS webkit 1440 /: Rondo marks round with ring (26/26)
+PASS webkit 1440 /: chat launcher carries the mark
+PASS webkit 1440 /: no script errors (none)
+PASS webkit 1440 /: hreflang en/es/x-default
+PASS webkit 1440 /pages/products: 200 on theme 193179287866 (unpublished)
+PASS webkit 1440 /pages/products: lang=en
+PASS webkit 1440 /pages/products: no sideways overflow (0px; none)
+PASS webkit 1440 /pages/products: text stays inside its card (none)
+PASS webkit 1440 /pages/products: no text over visuals (none)
+PASS webkit 1440 /pages/products: every internal link stays on the preview (none)
+PASS webkit 1440 /pages/products: Rondo marks round with ring (26)
+PASS webkit 1440 /pages/products: chat launcher carries the mark
+PASS webkit 1440 /pages/products: no script errors (none)
+PASS webkit 1440 /pages/products: hreflang en/es/x-default
+PASS webkit 1440 /pages/custom-development: 200 on theme 193179287866 (unpublished)
+PASS webkit 1440 /pages/custom-development: lang=en
+PASS webkit 1440 /pages/custom-development: no sideways overflow (0px; none)
+PASS webkit 1440 /pages/custom-development: text stays inside its card (none)
+PASS webkit 1440 /pages/custom-development: no text over visuals (none)
+PASS webkit 1440 /pages/custom-development: every internal link stays on the preview (none)
+PASS webkit 1440 /pages/custom-development: Rondo marks round with ring (26)
+PASS webkit 1440 /pages/custom-development: chat launcher carries the mark
+PASS webkit 1440 /pages/custom-development: no script errors (none)
+PASS webkit 1440 /pages/nevora: 200 on theme 193179287866 (unpublished)
+PASS webkit 1440 /pages/nevora: lang=en
+PASS webkit 1440 /pages/nevora: no sideways overflow (0px; none)
+PASS webkit 1440 /pages/nevora: text stays inside its card (none)
+PASS webkit 1440 /pages/nevora: no text over visuals (none)
+PASS webkit 1440 /pages/nevora: every internal link stays on the preview (none)
+PASS webkit 1440 /pages/nevora: Rondo marks round with ring (24/26/26)
+PASS webkit 1440 /pages/nevora: chat launcher carries the mark
+PASS webkit 1440 /pages/nevora: no script errors (none)
+PASS webkit 1440 /pages/nevora: hreflang en/es/x-default
+PASS webkit 1440 /pages/about: 200 on theme 193179287866 (unpublished)
+PASS webkit 1440 /pages/about: lang=en
+PASS webkit 1440 /pages/about: no sideways overflow (0px; none)
+PASS webkit 1440 /pages/about: text stays inside its card (none)
+PASS webkit 1440 /pages/about: no text over visuals (none)
+PASS webkit 1440 /pages/about: every internal link stays on the preview (none)
+PASS webkit 1440 /pages/about: Rondo marks round with ring (26)
+PASS webkit 1440 /pages/about: chat launcher carries the mark
+PASS webkit 1440 /pages/about: no script errors (none)
+PASS webkit 1440 /pages/plans: 200 on theme 193179287866 (unpublished)
+PASS webkit 1440 /pages/plans: lang=en
+PASS webkit 1440 /pages/plans: no sideways overflow (0px; none)
+PASS webkit 1440 /pages/plans: text stays inside its card (none)
+PASS webkit 1440 /pages/plans: no text over visuals (none)
+PASS webkit 1440 /pages/plans: every internal link stays on the preview (none)
+PASS webkit 1440 /pages/plans: Rondo marks round with ring (26)
+PASS webkit 1440 /pages/plans: chat launcher carries the mark
+PASS webkit 1440 /pages/plans: no script errors (none)
+PASS webkit 1440 /pages/plans: hreflang en/es/x-default
+PASS webkit 1440 /pages/contact: 200 on theme 193179287866 (unpublished)
+PASS webkit 1440 /pages/contact: lang=en
+PASS webkit 1440 /pages/contact: no sideways overflow (0px; none)
+PASS webkit 1440 /pages/contact: text stays inside its card (none)
+PASS webkit 1440 /pages/contact: no text over visuals (none)
+PASS webkit 1440 /pages/contact: every internal link stays on the preview (none)
+PASS webkit 1440 /pages/contact: Rondo marks round with ring (26)
+PASS webkit 1440 /pages/contact: chat launcher carries the mark
+PASS webkit 1440 /pages/contact: no script errors (none)
+PASS webkit 1440 /pages/contact: hreflang en/es/x-default
+PASS webkit 1440 /pages/help: 200 on theme 193179287866 (unpublished)
+PASS webkit 1440 /pages/help: lang=en
+PASS webkit 1440 /pages/help: no sideways overflow (0px; none)
+PASS webkit 1440 /pages/help: text stays inside its card (none)
+PASS webkit 1440 /pages/help: no text over visuals (none)
+PASS webkit 1440 /pages/help: every internal link stays on the preview (none)
+PASS webkit 1440 /pages/help: Rondo marks round with ring (26)
+PASS webkit 1440 /pages/help: chat launcher carries the mark
+PASS webkit 1440 /pages/help: no script errors (none)
+PASS webkit 1440 /?view=velani-es: 200 on theme 193179287866 (unpublished)
+PASS webkit 1440 /?view=velani-es: lang=es
+PASS webkit 1440 /?view=velani-es: no sideways overflow (0px; none)
+PASS webkit 1440 /?view=velani-es: text stays inside its card (none)
+PASS webkit 1440 /?view=velani-es: no text over visuals (none)
+PASS webkit 1440 /?view=velani-es: every internal link stays on the preview (none)
+PASS webkit 1440 /?view=velani-es: Rondo marks round with ring (26/26)
+PASS webkit 1440 /?view=velani-es: chat launcher carries the mark
+PASS webkit 1440 /?view=velani-es: no script errors (none)
+PASS webkit 1440 /?view=velani-es: hreflang en/es/x-default
+PASS webkit 1440 /?view=velani-es-nevora: 200 on theme 193179287866 (unpublished)
+PASS webkit 1440 /?view=velani-es-nevora: lang=es
+PASS webkit 1440 /?view=velani-es-nevora: no sideways overflow (0px; none)
+PASS webkit 1440 /?view=velani-es-nevora: text stays inside its card (none)
+PASS webkit 1440 /?view=velani-es-nevora: no text over visuals (none)
+PASS webkit 1440 /?view=velani-es-nevora: every internal link stays on the preview (none)
+PASS webkit 1440 /?view=velani-es-nevora: Rondo marks round with ring (24/26/26)
+PASS webkit 1440 /?view=velani-es-nevora: chat launcher carries the mark
+PASS webkit 1440 /?view=velani-es-nevora: no script errors (none)
+PASS webkit 1440 /?view=velani-es-nevora: hreflang en/es/x-default
+PASS webkit 1440 /?view=velani-es-productos: 200 on theme 193179287866 (unpublished)
+PASS webkit 1440 /?view=velani-es-productos: lang=es
+PASS webkit 1440 /?view=velani-es-productos: no sideways overflow (0px; none)
+PASS webkit 1440 /?view=velani-es-productos: text stays inside its card (none)
+PASS webkit 1440 /?view=velani-es-productos: no text over visuals (none)
+PASS webkit 1440 /?view=velani-es-productos: every internal link stays on the preview (none)
+PASS webkit 1440 /?view=velani-es-productos: Rondo marks round with ring (26)
+PASS webkit 1440 /?view=velani-es-productos: chat launcher carries the mark
+PASS webkit 1440 /?view=velani-es-productos: no script errors (none)
+PASS webkit 1440 /?view=velani-es-productos: hreflang en/es/x-default
+PASS webkit 1440 /?view=velani-es-planes: 200 on theme 193179287866 (unpublished)
+PASS webkit 1440 /?view=velani-es-planes: lang=es
+PASS webkit 1440 /?view=velani-es-planes: no sideways overflow (0px; none)
+PASS webkit 1440 /?view=velani-es-planes: text stays inside its card (none)
+PASS webkit 1440 /?view=velani-es-planes: no text over visuals (none)
+PASS webkit 1440 /?view=velani-es-planes: every internal link stays on the preview (none)
+PASS webkit 1440 /?view=velani-es-planes: Rondo marks round with ring (26)
+PASS webkit 1440 /?view=velani-es-planes: chat launcher carries the mark
+PASS webkit 1440 /?view=velani-es-planes: no script errors (none)
+PASS webkit 1440 /?view=velani-es-planes: hreflang en/es/x-default
+PASS webkit 1440 /?view=velani-es-contacto: 200 on theme 193179287866 (unpublished)
+PASS webkit 1440 /?view=velani-es-contacto: lang=es
+PASS webkit 1440 /?view=velani-es-contacto: no sideways overflow (0px; none)
+PASS webkit 1440 /?view=velani-es-contacto: text stays inside its card (none)
+PASS webkit 1440 /?view=velani-es-contacto: no text over visuals (none)
+PASS webkit 1440 /?view=velani-es-contacto: every internal link stays on the preview (none)
+PASS webkit 1440 /?view=velani-es-contacto: Rondo marks round with ring (26)
+PASS webkit 1440 /?view=velani-es-contacto: chat launcher carries the mark
+PASS webkit 1440 /?view=velani-es-contacto: no script errors (none)
+PASS webkit 1440 /?view=velani-es-contacto: hreflang en/es/x-default
+PASS webkit 1440 /?view=velani-es-nosotros: 200 on theme 193179287866 (unpublished)
+PASS webkit 1440 /?view=velani-es-nosotros: lang=es
+PASS webkit 1440 /?view=velani-es-nosotros: no sideways overflow (0px; none)
+PASS webkit 1440 /?view=velani-es-nosotros: text stays inside its card (none)
+PASS webkit 1440 /?view=velani-es-nosotros: no text over visuals (none)
+PASS webkit 1440 /?view=velani-es-nosotros: every internal link stays on the preview (none)
+PASS webkit 1440 /?view=velani-es-nosotros: Rondo marks round with ring (26)
+PASS webkit 1440 /?view=velani-es-nosotros: chat launcher carries the mark
+PASS webkit 1440 /?view=velani-es-nosotros: no script errors (none)
+PASS webkit 1440 /?view=velani-es-nosotros: hreflang en/es/x-default
+PASS webkit 1440 /?view=velani-es-ayuda: 200 on theme 193179287866 (unpublished)
+PASS webkit 1440 /?view=velani-es-ayuda: lang=es
+PASS webkit 1440 /?view=velani-es-ayuda: no sideways overflow (0px; none)
+PASS webkit 1440 /?view=velani-es-ayuda: text stays inside its card (none)
+PASS webkit 1440 /?view=velani-es-ayuda: no text over visuals (none)
+PASS webkit 1440 /?view=velani-es-ayuda: every internal link stays on the preview (none)
+PASS webkit 1440 /?view=velani-es-ayuda: Rondo marks round with ring (26)
+PASS webkit 1440 /?view=velani-es-ayuda: chat launcher carries the mark
+PASS webkit 1440 /?view=velani-es-ayuda: no script errors (none)
+PASS webkit 1440 /?view=velani-es-ayuda: hreflang en/es/x-default
+PASS webkit 1440: /pages/nevora → ES (velani-es-nevora) → EN (velani-nevora)
+PASS webkit 1440: /pages/plans → ES (velani-es-planes) → EN (velani-plans)
+PASS webkit 1440: / → ES (velani-es) → EN (/)
+PASS webkit 1440: Spanish NEVORA menu is inline at this width
+PASS webkit 1440: Spanish NEVORA “Inicio de Velani” goes to the Spanish home
+PASS webkit 1440: chat opens on the Spanish home; header mark 32x32
+PASS webkit 1440: Spanish form labels, preview notice (Nombre · Correo electrónico · Empresa opcional · Tema · Tamaño del equipo · Número de ubicaciones)
+PASS webkit 1180 /: 200 on theme 193179287866 (unpublished)
+PASS webkit 1180 /: lang=en
+PASS webkit 1180 /: no sideways overflow (0px; none)
+PASS webkit 1180 /: text stays inside its card (none)
+PASS webkit 1180 /: no text over visuals (none)
+PASS webkit 1180 /: every internal link stays on the preview (none)
+PASS webkit 1180 /: Rondo marks round with ring (26/26)
+PASS webkit 1180 /: chat launcher carries the mark
+PASS webkit 1180 /: no script errors (none)
+PASS webkit 1180 /: hreflang en/es/x-default
+PASS webkit 1180 /pages/products: 200 on theme 193179287866 (unpublished)
+PASS webkit 1180 /pages/products: lang=en
+PASS webkit 1180 /pages/products: no sideways overflow (0px; none)
+PASS webkit 1180 /pages/products: text stays inside its card (none)
+PASS webkit 1180 /pages/products: no text over visuals (none)
+PASS webkit 1180 /pages/products: every internal link stays on the preview (none)
+PASS webkit 1180 /pages/products: Rondo marks round with ring (26)
+PASS webkit 1180 /pages/products: chat launcher carries the mark
+PASS webkit 1180 /pages/products: no script errors (none)
+PASS webkit 1180 /pages/products: hreflang en/es/x-default
+PASS webkit 1180 /pages/custom-development: 200 on theme 193179287866 (unpublished)
+PASS webkit 1180 /pages/custom-development: lang=en
+PASS webkit 1180 /pages/custom-development: no sideways overflow (0px; none)
+PASS webkit 1180 /pages/custom-development: text stays inside its card (none)
+PASS webkit 1180 /pages/custom-development: no text over visuals (none)
+PASS webkit 1180 /pages/custom-development: every internal link stays on the preview (none)
+PASS webkit 1180 /pages/custom-development: Rondo marks round with ring (26)
+PASS webkit 1180 /pages/custom-development: chat launcher carries the mark
+PASS webkit 1180 /pages/custom-development: no script errors (none)
+PASS webkit 1180 /pages/nevora: 200 on theme 193179287866 (unpublished)
+PASS webkit 1180 /pages/nevora: lang=en
+PASS webkit 1180 /pages/nevora: no sideways overflow (0px; none)
+PASS webkit 1180 /pages/nevora: text stays inside its card (none)
+PASS webkit 1180 /pages/nevora: no text over visuals (none)
+PASS webkit 1180 /pages/nevora: every internal link stays on the preview (none)
+PASS webkit 1180 /pages/nevora: Rondo marks round with ring (24/26/26)
+PASS webkit 1180 /pages/nevora: chat launcher carries the mark
+PASS webkit 1180 /pages/nevora: no script errors (none)
+PASS webkit 1180 /pages/nevora: hreflang en/es/x-default
+PASS webkit 1180 /pages/about: 200 on theme 193179287866 (unpublished)
+PASS webkit 1180 /pages/about: lang=en
+PASS webkit 1180 /pages/about: no sideways overflow (0px; none)
+PASS webkit 1180 /pages/about: text stays inside its card (none)
+PASS webkit 1180 /pages/about: no text over visuals (none)
+PASS webkit 1180 /pages/about: every internal link stays on the preview (none)
+PASS webkit 1180 /pages/about: Rondo marks round with ring (26)
+PASS webkit 1180 /pages/about: chat launcher carries the mark
+PASS webkit 1180 /pages/about: no script errors (none)
+PASS webkit 1180 /pages/plans: 200 on theme 193179287866 (unpublished)
+PASS webkit 1180 /pages/plans: lang=en
+PASS webkit 1180 /pages/plans: no sideways overflow (0px; none)
+PASS webkit 1180 /pages/plans: text stays inside its card (none)
+PASS webkit 1180 /pages/plans: no text over visuals (none)
+PASS webkit 1180 /pages/plans: every internal link stays on the preview (none)
+PASS webkit 1180 /pages/plans: Rondo marks round with ring (26)
+PASS webkit 1180 /pages/plans: chat launcher carries the mark
+PASS webkit 1180 /pages/plans: no script errors (none)
+PASS webkit 1180 /pages/plans: hreflang en/es/x-default
+PASS webkit 1180 /pages/contact: 200 on theme 193179287866 (unpublished)
+PASS webkit 1180 /pages/contact: lang=en
+PASS webkit 1180 /pages/contact: no sideways overflow (0px; none)
+PASS webkit 1180 /pages/contact: text stays inside its card (none)
+PASS webkit 1180 /pages/contact: no text over visuals (none)
+PASS webkit 1180 /pages/contact: every internal link stays on the preview (none)
+PASS webkit 1180 /pages/contact: Rondo marks round with ring (26)
+PASS webkit 1180 /pages/contact: chat launcher carries the mark
+PASS webkit 1180 /pages/contact: no script errors (none)
+PASS webkit 1180 /pages/contact: hreflang en/es/x-default
+PASS webkit 1180 /pages/help: 200 on theme 193179287866 (unpublished)
+PASS webkit 1180 /pages/help: lang=en
+PASS webkit 1180 /pages/help: no sideways overflow (0px; none)
+PASS webkit 1180 /pages/help: text stays inside its card (none)
+PASS webkit 1180 /pages/help: no text over visuals (none)
+PASS webkit 1180 /pages/help: every internal link stays on the preview (none)
+PASS webkit 1180 /pages/help: Rondo marks round with ring (26)
+PASS webkit 1180 /pages/help: chat launcher carries the mark
+PASS webkit 1180 /pages/help: no script errors (none)
+PASS webkit 1180 /?view=velani-es: 200 on theme 193179287866 (unpublished)
+PASS webkit 1180 /?view=velani-es: lang=es
+PASS webkit 1180 /?view=velani-es: no sideways overflow (0px; none)
+PASS webkit 1180 /?view=velani-es: text stays inside its card (none)
+PASS webkit 1180 /?view=velani-es: no text over visuals (none)
+PASS webkit 1180 /?view=velani-es: every internal link stays on the preview (none)
+PASS webkit 1180 /?view=velani-es: Rondo marks round with ring (26/26)
+PASS webkit 1180 /?view=velani-es: chat launcher carries the mark
+PASS webkit 1180 /?view=velani-es: no script errors (none)
+PASS webkit 1180 /?view=velani-es: hreflang en/es/x-default
+PASS webkit 1180 /?view=velani-es-nevora: 200 on theme 193179287866 (unpublished)
+PASS webkit 1180 /?view=velani-es-nevora: lang=es
+PASS webkit 1180 /?view=velani-es-nevora: no sideways overflow (0px; none)
+PASS webkit 1180 /?view=velani-es-nevora: text stays inside its card (none)
+PASS webkit 1180 /?view=velani-es-nevora: no text over visuals (none)
+PASS webkit 1180 /?view=velani-es-nevora: every internal link stays on the preview (none)
+PASS webkit 1180 /?view=velani-es-nevora: Rondo marks round with ring (24/26/26)
+PASS webkit 1180 /?view=velani-es-nevora: chat launcher carries the mark
+PASS webkit 1180 /?view=velani-es-nevora: no script errors (none)
+PASS webkit 1180 /?view=velani-es-nevora: hreflang en/es/x-default
+PASS webkit 1180 /?view=velani-es-productos: 200 on theme 193179287866 (unpublished)
+PASS webkit 1180 /?view=velani-es-productos: lang=es
+PASS webkit 1180 /?view=velani-es-productos: no sideways overflow (0px; none)
+PASS webkit 1180 /?view=velani-es-productos: text stays inside its card (none)
+PASS webkit 1180 /?view=velani-es-productos: no text over visuals (none)
+PASS webkit 1180 /?view=velani-es-productos: every internal link stays on the preview (none)
+PASS webkit 1180 /?view=velani-es-productos: Rondo marks round with ring (26)
+PASS webkit 1180 /?view=velani-es-productos: chat launcher carries the mark
+PASS webkit 1180 /?view=velani-es-productos: no script errors (none)
+PASS webkit 1180 /?view=velani-es-productos: hreflang en/es/x-default
+PASS webkit 1180 /?view=velani-es-planes: 200 on theme 193179287866 (unpublished)
+PASS webkit 1180 /?view=velani-es-planes: lang=es
+PASS webkit 1180 /?view=velani-es-planes: no sideways overflow (0px; none)
+PASS webkit 1180 /?view=velani-es-planes: text stays inside its card (none)
+PASS webkit 1180 /?view=velani-es-planes: no text over visuals (none)
+PASS webkit 1180 /?view=velani-es-planes: every internal link stays on the preview (none)
+PASS webkit 1180 /?view=velani-es-planes: Rondo marks round with ring (26)
+PASS webkit 1180 /?view=velani-es-planes: chat launcher carries the mark
+PASS webkit 1180 /?view=velani-es-planes: no script errors (none)
+PASS webkit 1180 /?view=velani-es-planes: hreflang en/es/x-default
+PASS webkit 1180 /?view=velani-es-contacto: 200 on theme 193179287866 (unpublished)
+PASS webkit 1180 /?view=velani-es-contacto: lang=es
+PASS webkit 1180 /?view=velani-es-contacto: no sideways overflow (0px; none)
+PASS webkit 1180 /?view=velani-es-contacto: text stays inside its card (none)
+PASS webkit 1180 /?view=velani-es-contacto: no text over visuals (none)
+PASS webkit 1180 /?view=velani-es-contacto: every internal link stays on the preview (none)
+PASS webkit 1180 /?view=velani-es-contacto: Rondo marks round with ring (26)
+PASS webkit 1180 /?view=velani-es-contacto: chat launcher carries the mark
+PASS webkit 1180 /?view=velani-es-contacto: no script errors (none)
+PASS webkit 1180 /?view=velani-es-contacto: hreflang en/es/x-default
+PASS webkit 1180 /?view=velani-es-nosotros: 200 on theme 193179287866 (unpublished)
+PASS webkit 1180 /?view=velani-es-nosotros: lang=es
+PASS webkit 1180 /?view=velani-es-nosotros: no sideways overflow (0px; none)
+PASS webkit 1180 /?view=velani-es-nosotros: text stays inside its card (none)
+PASS webkit 1180 /?view=velani-es-nosotros: no text over visuals (none)
+PASS webkit 1180 /?view=velani-es-nosotros: every internal link stays on the preview (none)
+PASS webkit 1180 /?view=velani-es-nosotros: Rondo marks round with ring (26)
+PASS webkit 1180 /?view=velani-es-nosotros: chat launcher carries the mark
+PASS webkit 1180 /?view=velani-es-nosotros: no script errors (none)
+PASS webkit 1180 /?view=velani-es-nosotros: hreflang en/es/x-default
+PASS webkit 1180 /?view=velani-es-ayuda: 200 on theme 193179287866 (unpublished)
+PASS webkit 1180 /?view=velani-es-ayuda: lang=es
+PASS webkit 1180 /?view=velani-es-ayuda: no sideways overflow (0px; none)
+PASS webkit 1180 /?view=velani-es-ayuda: text stays inside its card (none)
+PASS webkit 1180 /?view=velani-es-ayuda: no text over visuals (none)
+PASS webkit 1180 /?view=velani-es-ayuda: every internal link stays on the preview (none)
+PASS webkit 1180 /?view=velani-es-ayuda: Rondo marks round with ring (26)
+PASS webkit 1180 /?view=velani-es-ayuda: chat launcher carries the mark
+PASS webkit 1180 /?view=velani-es-ayuda: no script errors (none)
+PASS webkit 1180 /?view=velani-es-ayuda: hreflang en/es/x-default
+PASS webkit 1180: /pages/nevora → ES (velani-es-nevora) → EN (velani-nevora)
+PASS webkit 1180: /pages/plans → ES (velani-es-planes) → EN (velani-plans)
+PASS webkit 1180: / → ES (velani-es) → EN (/)
+PASS webkit 1180: Spanish NEVORA menu is inline at this width
+PASS webkit 1180: Spanish NEVORA “Inicio de Velani” goes to the Spanish home
+PASS webkit 1180: chat opens on the Spanish home; header mark 32x32
+PASS webkit 1180: Spanish form labels, preview notice (Nombre · Correo electrónico · Empresa opcional · Tema · Tamaño del equipo · Número de ubicaciones)
+PASS webkit 1024 /: 200 on theme 193179287866 (unpublished)
+PASS webkit 1024 /: lang=en
+PASS webkit 1024 /: no sideways overflow (0px; none)
+PASS webkit 1024 /: text stays inside its card (none)
+PASS webkit 1024 /: no text over visuals (none)
+PASS webkit 1024 /: every internal link stays on the preview (none)
+PASS webkit 1024 /: Rondo marks round with ring (26/26)
+PASS webkit 1024 /: chat launcher carries the mark
+PASS webkit 1024 /: no script errors (none)
+PASS webkit 1024 /: hreflang en/es/x-default
+PASS webkit 1024 /pages/products: 200 on theme 193179287866 (unpublished)
+PASS webkit 1024 /pages/products: lang=en
+PASS webkit 1024 /pages/products: no sideways overflow (0px; none)
+PASS webkit 1024 /pages/products: text stays inside its card (none)
+PASS webkit 1024 /pages/products: no text over visuals (none)
+PASS webkit 1024 /pages/products: every internal link stays on the preview (none)
+PASS webkit 1024 /pages/products: Rondo marks round with ring (26)
+PASS webkit 1024 /pages/products: chat launcher carries the mark
+PASS webkit 1024 /pages/products: no script errors (none)
+PASS webkit 1024 /pages/products: hreflang en/es/x-default
+PASS webkit 1024 /pages/custom-development: 200 on theme 193179287866 (unpublished)
+PASS webkit 1024 /pages/custom-development: lang=en
+PASS webkit 1024 /pages/custom-development: no sideways overflow (0px; none)
+PASS webkit 1024 /pages/custom-development: text stays inside its card (none)
+PASS webkit 1024 /pages/custom-development: no text over visuals (none)
+PASS webkit 1024 /pages/custom-development: every internal link stays on the preview (none)
+PASS webkit 1024 /pages/custom-development: Rondo marks round with ring (26)
+PASS webkit 1024 /pages/custom-development: chat launcher carries the mark
+PASS webkit 1024 /pages/custom-development: no script errors (none)
+PASS webkit 1024 /pages/nevora: 200 on theme 193179287866 (unpublished)
+PASS webkit 1024 /pages/nevora: lang=en
+PASS webkit 1024 /pages/nevora: no sideways overflow (0px; none)
+PASS webkit 1024 /pages/nevora: text stays inside its card (none)
+PASS webkit 1024 /pages/nevora: no text over visuals (none)
+PASS webkit 1024 /pages/nevora: every internal link stays on the preview (none)
+PASS webkit 1024 /pages/nevora: Rondo marks round with ring (24/26/26)
+PASS webkit 1024 /pages/nevora: chat launcher carries the mark
+PASS webkit 1024 /pages/nevora: no script errors (none)
+PASS webkit 1024 /pages/nevora: hreflang en/es/x-default
+PASS webkit 1024 /pages/about: 200 on theme 193179287866 (unpublished)
+PASS webkit 1024 /pages/about: lang=en
+PASS webkit 1024 /pages/about: no sideways overflow (0px; none)
+PASS webkit 1024 /pages/about: text stays inside its card (none)
+PASS webkit 1024 /pages/about: no text over visuals (none)
+PASS webkit 1024 /pages/about: every internal link stays on the preview (none)
+PASS webkit 1024 /pages/about: Rondo marks round with ring (26)
+PASS webkit 1024 /pages/about: chat launcher carries the mark
+PASS webkit 1024 /pages/about: no script errors (none)
+PASS webkit 1024 /pages/plans: 200 on theme 193179287866 (unpublished)
+PASS webkit 1024 /pages/plans: lang=en
+PASS webkit 1024 /pages/plans: no sideways overflow (0px; none)
+PASS webkit 1024 /pages/plans: text stays inside its card (none)
+PASS webkit 1024 /pages/plans: no text over visuals (none)
+PASS webkit 1024 /pages/plans: every internal link stays on the preview (none)
+PASS webkit 1024 /pages/plans: Rondo marks round with ring (26)
+PASS webkit 1024 /pages/plans: chat launcher carries the mark
+PASS webkit 1024 /pages/plans: no script errors (none)
+PASS webkit 1024 /pages/plans: hreflang en/es/x-default
+PASS webkit 1024 /pages/contact: 200 on theme 193179287866 (unpublished)
+PASS webkit 1024 /pages/contact: lang=en
+PASS webkit 1024 /pages/contact: no sideways overflow (0px; none)
+PASS webkit 1024 /pages/contact: text stays inside its card (none)
+PASS webkit 1024 /pages/contact: no text over visuals (none)
+PASS webkit 1024 /pages/contact: every internal link stays on the preview (none)
+PASS webkit 1024 /pages/contact: Rondo marks round with ring (26)
+PASS webkit 1024 /pages/contact: chat launcher carries the mark
+PASS webkit 1024 /pages/contact: no script errors (none)
+PASS webkit 1024 /pages/contact: hreflang en/es/x-default
+PASS webkit 1024 /pages/help: 200 on theme 193179287866 (unpublished)
+PASS webkit 1024 /pages/help: lang=en
+PASS webkit 1024 /pages/help: no sideways overflow (0px; none)
+PASS webkit 1024 /pages/help: text stays inside its card (none)
+PASS webkit 1024 /pages/help: no text over visuals (none)
+PASS webkit 1024 /pages/help: every internal link stays on the preview (none)
+PASS webkit 1024 /pages/help: Rondo marks round with ring (26)
+PASS webkit 1024 /pages/help: chat launcher carries the mark
+PASS webkit 1024 /pages/help: no script errors (none)
+PASS webkit 1024 /?view=velani-es: 200 on theme 193179287866 (unpublished)
+PASS webkit 1024 /?view=velani-es: lang=es
+PASS webkit 1024 /?view=velani-es: no sideways overflow (0px; none)
+PASS webkit 1024 /?view=velani-es: text stays inside its card (none)
+PASS webkit 1024 /?view=velani-es: no text over visuals (none)
+PASS webkit 1024 /?view=velani-es: every internal link stays on the preview (none)
+PASS webkit 1024 /?view=velani-es: Rondo marks round with ring (26/26)
+PASS webkit 1024 /?view=velani-es: chat launcher carries the mark
+PASS webkit 1024 /?view=velani-es: no script errors (none)
+PASS webkit 1024 /?view=velani-es: hreflang en/es/x-default
+PASS webkit 1024 /?view=velani-es-nevora: 200 on theme 193179287866 (unpublished)
+PASS webkit 1024 /?view=velani-es-nevora: lang=es
+PASS webkit 1024 /?view=velani-es-nevora: no sideways overflow (0px; none)
+PASS webkit 1024 /?view=velani-es-nevora: text stays inside its card (none)
+PASS webkit 1024 /?view=velani-es-nevora: no text over visuals (none)
+PASS webkit 1024 /?view=velani-es-nevora: every internal link stays on the preview (none)
+PASS webkit 1024 /?view=velani-es-nevora: Rondo marks round with ring (24/26/26)
+PASS webkit 1024 /?view=velani-es-nevora: chat launcher carries the mark
+PASS webkit 1024 /?view=velani-es-nevora: no script errors (none)
+PASS webkit 1024 /?view=velani-es-nevora: hreflang en/es/x-default
+PASS webkit 1024 /?view=velani-es-productos: 200 on theme 193179287866 (unpublished)
+PASS webkit 1024 /?view=velani-es-productos: lang=es
+PASS webkit 1024 /?view=velani-es-productos: no sideways overflow (0px; none)
+PASS webkit 1024 /?view=velani-es-productos: text stays inside its card (none)
+PASS webkit 1024 /?view=velani-es-productos: no text over visuals (none)
+PASS webkit 1024 /?view=velani-es-productos: every internal link stays on the preview (none)
+PASS webkit 1024 /?view=velani-es-productos: Rondo marks round with ring (26)
+PASS webkit 1024 /?view=velani-es-productos: chat launcher carries the mark
+PASS webkit 1024 /?view=velani-es-productos: no script errors (none)
+PASS webkit 1024 /?view=velani-es-productos: hreflang en/es/x-default
+PASS webkit 1024 /?view=velani-es-planes: 200 on theme 193179287866 (unpublished)
+PASS webkit 1024 /?view=velani-es-planes: lang=es
+PASS webkit 1024 /?view=velani-es-planes: no sideways overflow (0px; none)
+PASS webkit 1024 /?view=velani-es-planes: text stays inside its card (none)
+PASS webkit 1024 /?view=velani-es-planes: no text over visuals (none)
+PASS webkit 1024 /?view=velani-es-planes: every internal link stays on the preview (none)
+PASS webkit 1024 /?view=velani-es-planes: Rondo marks round with ring (26)
+PASS webkit 1024 /?view=velani-es-planes: chat launcher carries the mark
+PASS webkit 1024 /?view=velani-es-planes: no script errors (none)
+PASS webkit 1024 /?view=velani-es-planes: hreflang en/es/x-default
+PASS webkit 1024 /?view=velani-es-contacto: 200 on theme 193179287866 (unpublished)
+PASS webkit 1024 /?view=velani-es-contacto: lang=es
+PASS webkit 1024 /?view=velani-es-contacto: no sideways overflow (0px; none)
+PASS webkit 1024 /?view=velani-es-contacto: text stays inside its card (none)
+PASS webkit 1024 /?view=velani-es-contacto: no text over visuals (none)
+PASS webkit 1024 /?view=velani-es-contacto: every internal link stays on the preview (none)
+PASS webkit 1024 /?view=velani-es-contacto: Rondo marks round with ring (26)
+PASS webkit 1024 /?view=velani-es-contacto: chat launcher carries the mark
+PASS webkit 1024 /?view=velani-es-contacto: no script errors (none)
+PASS webkit 1024 /?view=velani-es-contacto: hreflang en/es/x-default
+PASS webkit 1024 /?view=velani-es-nosotros: 200 on theme 193179287866 (unpublished)
+PASS webkit 1024 /?view=velani-es-nosotros: lang=es
+PASS webkit 1024 /?view=velani-es-nosotros: no sideways overflow (0px; none)
+PASS webkit 1024 /?view=velani-es-nosotros: text stays inside its card (none)
+PASS webkit 1024 /?view=velani-es-nosotros: no text over visuals (none)
+PASS webkit 1024 /?view=velani-es-nosotros: every internal link stays on the preview (none)
+PASS webkit 1024 /?view=velani-es-nosotros: Rondo marks round with ring (26)
+PASS webkit 1024 /?view=velani-es-nosotros: chat launcher carries the mark
+PASS webkit 1024 /?view=velani-es-nosotros: no script errors (none)
+PASS webkit 1024 /?view=velani-es-nosotros: hreflang en/es/x-default
+PASS webkit 1024 /?view=velani-es-ayuda: 200 on theme 193179287866 (unpublished)
+PASS webkit 1024 /?view=velani-es-ayuda: lang=es
+PASS webkit 1024 /?view=velani-es-ayuda: no sideways overflow (0px; none)
+PASS webkit 1024 /?view=velani-es-ayuda: text stays inside its card (none)
+PASS webkit 1024 /?view=velani-es-ayuda: no text over visuals (none)
+PASS webkit 1024 /?view=velani-es-ayuda: every internal link stays on the preview (none)
+PASS webkit 1024 /?view=velani-es-ayuda: Rondo marks round with ring (26)
+PASS webkit 1024 /?view=velani-es-ayuda: chat launcher carries the mark
+PASS webkit 1024 /?view=velani-es-ayuda: no script errors (none)
+PASS webkit 1024 /?view=velani-es-ayuda: hreflang en/es/x-default
+PASS webkit 1024: /pages/nevora → ES (velani-es-nevora) → EN (velani-nevora)
+PASS webkit 1024: /pages/plans → ES (velani-es-planes) → EN (velani-plans)
+PASS webkit 1024: / → ES (velani-es) → EN (/)
+PASS webkit 1024: Spanish NEVORA menu is inline at this width
+PASS webkit 1024: Spanish NEVORA “Inicio de Velani” goes to the Spanish home
+PASS webkit 1024: chat opens on the Spanish home; header mark 32x32
+PASS webkit 1024: Spanish form labels, preview notice (Nombre · Correo electrónico · Empresa opcional · Tema · Tamaño del equipo · Número de ubicaciones)
+PASS webkit 834 /: 200 on theme 193179287866 (unpublished)
+PASS webkit 834 /: lang=en
+PASS webkit 834 /: no sideways overflow (0px; none)
+PASS webkit 834 /: text stays inside its card (none)
+PASS webkit 834 /: no text over visuals (none)
+PASS webkit 834 /: every internal link stays on the preview (none)
+PASS webkit 834 /: Rondo marks round with ring (26/26)
+PASS webkit 834 /: chat launcher carries the mark
+PASS webkit 834 /: no script errors (none)
+PASS webkit 834 /: hreflang en/es/x-default
+PASS webkit 834 /pages/products: 200 on theme 193179287866 (unpublished)
+PASS webkit 834 /pages/products: lang=en
+PASS webkit 834 /pages/products: no sideways overflow (0px; none)
+PASS webkit 834 /pages/products: text stays inside its card (none)
+PASS webkit 834 /pages/products: no text over visuals (none)
+PASS webkit 834 /pages/products: every internal link stays on the preview (none)
+PASS webkit 834 /pages/products: Rondo marks round with ring (26)
+PASS webkit 834 /pages/products: chat launcher carries the mark
+PASS webkit 834 /pages/products: no script errors (none)
+PASS webkit 834 /pages/products: hreflang en/es/x-default
+PASS webkit 834 /pages/custom-development: 200 on theme 193179287866 (unpublished)
+PASS webkit 834 /pages/custom-development: lang=en
+PASS webkit 834 /pages/custom-development: no sideways overflow (0px; none)
+PASS webkit 834 /pages/custom-development: text stays inside its card (none)
+PASS webkit 834 /pages/custom-development: no text over visuals (none)
+PASS webkit 834 /pages/custom-development: every internal link stays on the preview (none)
+PASS webkit 834 /pages/custom-development: Rondo marks round with ring (26)
+PASS webkit 834 /pages/custom-development: chat launcher carries the mark
+PASS webkit 834 /pages/custom-development: no script errors (none)
+PASS webkit 834 /pages/nevora: 200 on theme 193179287866 (unpublished)
+PASS webkit 834 /pages/nevora: lang=en
+PASS webkit 834 /pages/nevora: no sideways overflow (0px; none)
+PASS webkit 834 /pages/nevora: text stays inside its card (none)
+PASS webkit 834 /pages/nevora: no text over visuals (none)
+PASS webkit 834 /pages/nevora: every internal link stays on the preview (none)
+PASS webkit 834 /pages/nevora: Rondo marks round with ring (24/26/26)
+PASS webkit 834 /pages/nevora: chat launcher carries the mark
+PASS webkit 834 /pages/nevora: no script errors (none)
+PASS webkit 834 /pages/nevora: hreflang en/es/x-default
+PASS webkit 834 /pages/about: 200 on theme 193179287866 (unpublished)
+PASS webkit 834 /pages/about: lang=en
+PASS webkit 834 /pages/about: no sideways overflow (0px; none)
+PASS webkit 834 /pages/about: text stays inside its card (none)
+PASS webkit 834 /pages/about: no text over visuals (none)
+PASS webkit 834 /pages/about: every internal link stays on the preview (none)
+PASS webkit 834 /pages/about: Rondo marks round with ring (26)
+PASS webkit 834 /pages/about: chat launcher carries the mark
+PASS webkit 834 /pages/about: no script errors (none)
+PASS webkit 834 /pages/plans: 200 on theme 193179287866 (unpublished)
+PASS webkit 834 /pages/plans: lang=en
+PASS webkit 834 /pages/plans: no sideways overflow (0px; none)
+PASS webkit 834 /pages/plans: text stays inside its card (none)
+PASS webkit 834 /pages/plans: no text over visuals (none)
+PASS webkit 834 /pages/plans: every internal link stays on the preview (none)
+PASS webkit 834 /pages/plans: Rondo marks round with ring (26)
+PASS webkit 834 /pages/plans: chat launcher carries the mark
+PASS webkit 834 /pages/plans: no script errors (none)
+PASS webkit 834 /pages/plans: hreflang en/es/x-default
+PASS webkit 834 /pages/contact: 200 on theme 193179287866 (unpublished)
+PASS webkit 834 /pages/contact: lang=en
+PASS webkit 834 /pages/contact: no sideways overflow (0px; none)
+PASS webkit 834 /pages/contact: text stays inside its card (none)
+PASS webkit 834 /pages/contact: no text over visuals (none)
+PASS webkit 834 /pages/contact: every internal link stays on the preview (none)
+PASS webkit 834 /pages/contact: Rondo marks round with ring (26)
+PASS webkit 834 /pages/contact: chat launcher carries the mark
+PASS webkit 834 /pages/contact: no script errors (none)
+PASS webkit 834 /pages/contact: hreflang en/es/x-default
+PASS webkit 834 /pages/help: 200 on theme 193179287866 (unpublished)
+PASS webkit 834 /pages/help: lang=en
+PASS webkit 834 /pages/help: no sideways overflow (0px; none)
+PASS webkit 834 /pages/help: text stays inside its card (none)
+PASS webkit 834 /pages/help: no text over visuals (none)
+PASS webkit 834 /pages/help: every internal link stays on the preview (none)
+PASS webkit 834 /pages/help: Rondo marks round with ring (26)
+PASS webkit 834 /pages/help: chat launcher carries the mark
+PASS webkit 834 /pages/help: no script errors (none)
+PASS webkit 834 /?view=velani-es: 200 on theme 193179287866 (unpublished)
+PASS webkit 834 /?view=velani-es: lang=es
+PASS webkit 834 /?view=velani-es: no sideways overflow (0px; none)
+PASS webkit 834 /?view=velani-es: text stays inside its card (none)
+PASS webkit 834 /?view=velani-es: no text over visuals (none)
+PASS webkit 834 /?view=velani-es: every internal link stays on the preview (none)
+PASS webkit 834 /?view=velani-es: Rondo marks round with ring (26/26)
+PASS webkit 834 /?view=velani-es: chat launcher carries the mark
+PASS webkit 834 /?view=velani-es: no script errors (none)
+PASS webkit 834 /?view=velani-es: hreflang en/es/x-default
+PASS webkit 834 /?view=velani-es-nevora: 200 on theme 193179287866 (unpublished)
+PASS webkit 834 /?view=velani-es-nevora: lang=es
+PASS webkit 834 /?view=velani-es-nevora: no sideways overflow (0px; none)
+PASS webkit 834 /?view=velani-es-nevora: text stays inside its card (none)
+PASS webkit 834 /?view=velani-es-nevora: no text over visuals (none)
+PASS webkit 834 /?view=velani-es-nevora: every internal link stays on the preview (none)
+PASS webkit 834 /?view=velani-es-nevora: Rondo marks round with ring (24/26/26)
+PASS webkit 834 /?view=velani-es-nevora: chat launcher carries the mark
+PASS webkit 834 /?view=velani-es-nevora: no script errors (none)
+PASS webkit 834 /?view=velani-es-nevora: hreflang en/es/x-default
+PASS webkit 834 /?view=velani-es-productos: 200 on theme 193179287866 (unpublished)
+PASS webkit 834 /?view=velani-es-productos: lang=es
+PASS webkit 834 /?view=velani-es-productos: no sideways overflow (0px; none)
+PASS webkit 834 /?view=velani-es-productos: text stays inside its card (none)
+PASS webkit 834 /?view=velani-es-productos: no text over visuals (none)
+PASS webkit 834 /?view=velani-es-productos: every internal link stays on the preview (none)
+PASS webkit 834 /?view=velani-es-productos: Rondo marks round with ring (26)
+PASS webkit 834 /?view=velani-es-productos: chat launcher carries the mark
+PASS webkit 834 /?view=velani-es-productos: no script errors (none)
+PASS webkit 834 /?view=velani-es-productos: hreflang en/es/x-default
+PASS webkit 834 /?view=velani-es-planes: 200 on theme 193179287866 (unpublished)
+PASS webkit 834 /?view=velani-es-planes: lang=es
+PASS webkit 834 /?view=velani-es-planes: no sideways overflow (0px; none)
+PASS webkit 834 /?view=velani-es-planes: text stays inside its card (none)
+PASS webkit 834 /?view=velani-es-planes: no text over visuals (none)
+PASS webkit 834 /?view=velani-es-planes: every internal link stays on the preview (none)
+PASS webkit 834 /?view=velani-es-planes: Rondo marks round with ring (26)
+PASS webkit 834 /?view=velani-es-planes: chat launcher carries the mark
+PASS webkit 834 /?view=velani-es-planes: no script errors (none)
+PASS webkit 834 /?view=velani-es-planes: hreflang en/es/x-default
+PASS webkit 834 /?view=velani-es-contacto: 200 on theme 193179287866 (unpublished)
+PASS webkit 834 /?view=velani-es-contacto: lang=es
+PASS webkit 834 /?view=velani-es-contacto: no sideways overflow (0px; none)
+PASS webkit 834 /?view=velani-es-contacto: text stays inside its card (none)
+PASS webkit 834 /?view=velani-es-contacto: no text over visuals (none)
+PASS webkit 834 /?view=velani-es-contacto: every internal link stays on the preview (none)
+PASS webkit 834 /?view=velani-es-contacto: Rondo marks round with ring (26)
+PASS webkit 834 /?view=velani-es-contacto: chat launcher carries the mark
+PASS webkit 834 /?view=velani-es-contacto: no script errors (none)
+PASS webkit 834 /?view=velani-es-contacto: hreflang en/es/x-default
+PASS webkit 834 /?view=velani-es-nosotros: 200 on theme 193179287866 (unpublished)
+PASS webkit 834 /?view=velani-es-nosotros: lang=es
+PASS webkit 834 /?view=velani-es-nosotros: no sideways overflow (0px; none)
+PASS webkit 834 /?view=velani-es-nosotros: text stays inside its card (none)
+PASS webkit 834 /?view=velani-es-nosotros: no text over visuals (none)
+PASS webkit 834 /?view=velani-es-nosotros: every internal link stays on the preview (none)
+PASS webkit 834 /?view=velani-es-nosotros: Rondo marks round with ring (26)
+PASS webkit 834 /?view=velani-es-nosotros: chat launcher carries the mark
+PASS webkit 834 /?view=velani-es-nosotros: no script errors (none)
+PASS webkit 834 /?view=velani-es-nosotros: hreflang en/es/x-default
+PASS webkit 834 /?view=velani-es-ayuda: 200 on theme 193179287866 (unpublished)
+PASS webkit 834 /?view=velani-es-ayuda: lang=es
+PASS webkit 834 /?view=velani-es-ayuda: no sideways overflow (0px; none)
+PASS webkit 834 /?view=velani-es-ayuda: text stays inside its card (none)
+PASS webkit 834 /?view=velani-es-ayuda: no text over visuals (none)
+PASS webkit 834 /?view=velani-es-ayuda: every internal link stays on the preview (none)
+PASS webkit 834 /?view=velani-es-ayuda: Rondo marks round with ring (26)
+PASS webkit 834 /?view=velani-es-ayuda: chat launcher carries the mark
+PASS webkit 834 /?view=velani-es-ayuda: no script errors (none)
+PASS webkit 834 /?view=velani-es-ayuda: hreflang en/es/x-default
+PASS webkit 834: /pages/nevora → ES (velani-es-nevora) → EN (velani-nevora)
+PASS webkit 834: /pages/plans → ES (velani-es-planes) → EN (velani-plans)
+PASS webkit 834: / → ES (velani-es) → EN (/)
+PASS webkit 834: Spanish NEVORA menu closes and frees the page (nothing inert)
+PASS webkit 834: Spanish NEVORA “Inicio de Velani” goes to the Spanish home
+PASS webkit 834: chat opens on the Spanish home; header mark 32x32
+PASS webkit 834: Spanish form labels, preview notice (Nombre · Correo electrónico · Empresa opcional · Tema · Tamaño del equipo · Número de ubicaciones)
+PASS webkit 390 /: 200 on theme 193179287866 (unpublished)
+PASS webkit 390 /: lang=en
+PASS webkit 390 /: no sideways overflow (0px; none)
+PASS webkit 390 /: text stays inside its card (none)
+PASS webkit 390 /: no text over visuals (none)
+PASS webkit 390 /: every internal link stays on the preview (none)
+PASS webkit 390 /: Rondo marks round with ring (26)
+PASS webkit 390 /: chat launcher carries the mark
+PASS webkit 390 /: no script errors (none)
+PASS webkit 390 /: hreflang en/es/x-default
+PASS webkit 390 /pages/products: 200 on theme 193179287866 (unpublished)
+PASS webkit 390 /pages/products: lang=en
+PASS webkit 390 /pages/products: no sideways overflow (0px; none)
+PASS webkit 390 /pages/products: text stays inside its card (none)
+PASS webkit 390 /pages/products: no text over visuals (none)
+PASS webkit 390 /pages/products: every internal link stays on the preview (none)
+PASS webkit 390 /pages/products: Rondo marks round with ring (26)
+PASS webkit 390 /pages/products: chat launcher carries the mark
+PASS webkit 390 /pages/products: no script errors (none)
+PASS webkit 390 /pages/products: hreflang en/es/x-default
+PASS webkit 390 /pages/custom-development: 200 on theme 193179287866 (unpublished)
+PASS webkit 390 /pages/custom-development: lang=en
+PASS webkit 390 /pages/custom-development: no sideways overflow (0px; none)
+PASS webkit 390 /pages/custom-development: text stays inside its card (none)
+PASS webkit 390 /pages/custom-development: no text over visuals (none)
+PASS webkit 390 /pages/custom-development: every internal link stays on the preview (none)
+PASS webkit 390 /pages/custom-development: Rondo marks round with ring (26)
+PASS webkit 390 /pages/custom-development: chat launcher carries the mark
+PASS webkit 390 /pages/custom-development: no script errors (none)
+PASS webkit 390 /pages/nevora: 200 on theme 193179287866 (unpublished)
+PASS webkit 390 /pages/nevora: lang=en
+PASS webkit 390 /pages/nevora: no sideways overflow (0px; none)
+PASS webkit 390 /pages/nevora: text stays inside its card (none)
+PASS webkit 390 /pages/nevora: no text over visuals (none)
+PASS webkit 390 /pages/nevora: every internal link stays on the preview (none)
+PASS webkit 390 /pages/nevora: Rondo marks round with ring (24/22/26)
+PASS webkit 390 /pages/nevora: chat launcher carries the mark
+PASS webkit 390 /pages/nevora: no script errors (none)
+PASS webkit 390 /pages/nevora: hreflang en/es/x-default
+PASS webkit 390 /pages/about: 200 on theme 193179287866 (unpublished)
+PASS webkit 390 /pages/about: lang=en
+PASS webkit 390 /pages/about: no sideways overflow (0px; none)
+PASS webkit 390 /pages/about: text stays inside its card (none)
+PASS webkit 390 /pages/about: no text over visuals (none)
+PASS webkit 390 /pages/about: every internal link stays on the preview (none)
+PASS webkit 390 /pages/about: Rondo marks round with ring (26)
+PASS webkit 390 /pages/about: chat launcher carries the mark
+PASS webkit 390 /pages/about: no script errors (none)
+PASS webkit 390 /pages/plans: 200 on theme 193179287866 (unpublished)
+PASS webkit 390 /pages/plans: lang=en
+PASS webkit 390 /pages/plans: no sideways overflow (0px; none)
+PASS webkit 390 /pages/plans: text stays inside its card (none)
+PASS webkit 390 /pages/plans: no text over visuals (none)
+PASS webkit 390 /pages/plans: every internal link stays on the preview (none)
+PASS webkit 390 /pages/plans: Rondo marks round with ring (26)
+PASS webkit 390 /pages/plans: chat launcher carries the mark
+PASS webkit 390 /pages/plans: no script errors (none)
+PASS webkit 390 /pages/plans: hreflang en/es/x-default
+PASS webkit 390 /pages/contact: 200 on theme 193179287866 (unpublished)
+PASS webkit 390 /pages/contact: lang=en
+PASS webkit 390 /pages/contact: no sideways overflow (0px; none)
+PASS webkit 390 /pages/contact: text stays inside its card (none)
+PASS webkit 390 /pages/contact: no text over visuals (none)
+PASS webkit 390 /pages/contact: every internal link stays on the preview (none)
+PASS webkit 390 /pages/contact: Rondo marks round with ring (26)
+PASS webkit 390 /pages/contact: chat launcher carries the mark
+PASS webkit 390 /pages/contact: no script errors (none)
+PASS webkit 390 /pages/contact: hreflang en/es/x-default
+PASS webkit 390 /pages/help: 200 on theme 193179287866 (unpublished)
+PASS webkit 390 /pages/help: lang=en
+PASS webkit 390 /pages/help: no sideways overflow (0px; none)
+PASS webkit 390 /pages/help: text stays inside its card (none)
+PASS webkit 390 /pages/help: no text over visuals (none)
+PASS webkit 390 /pages/help: every internal link stays on the preview (none)
+PASS webkit 390 /pages/help: Rondo marks round with ring (26)
+PASS webkit 390 /pages/help: chat launcher carries the mark
+PASS webkit 390 /pages/help: no script errors (none)
+PASS webkit 390 /?view=velani-es: 200 on theme 193179287866 (unpublished)
+PASS webkit 390 /?view=velani-es: lang=es
+PASS webkit 390 /?view=velani-es: no sideways overflow (0px; none)
+PASS webkit 390 /?view=velani-es: text stays inside its card (none)
+PASS webkit 390 /?view=velani-es: no text over visuals (none)
+PASS webkit 390 /?view=velani-es: every internal link stays on the preview (none)
+PASS webkit 390 /?view=velani-es: Rondo marks round with ring (26)
+PASS webkit 390 /?view=velani-es: chat launcher carries the mark
+PASS webkit 390 /?view=velani-es: no script errors (none)
+PASS webkit 390 /?view=velani-es: hreflang en/es/x-default
+PASS webkit 390 /?view=velani-es-nevora: 200 on theme 193179287866 (unpublished)
+PASS webkit 390 /?view=velani-es-nevora: lang=es
+PASS webkit 390 /?view=velani-es-nevora: no sideways overflow (0px; none)
+PASS webkit 390 /?view=velani-es-nevora: text stays inside its card (none)
+PASS webkit 390 /?view=velani-es-nevora: no text over visuals (none)
+PASS webkit 390 /?view=velani-es-nevora: every internal link stays on the preview (none)
+PASS webkit 390 /?view=velani-es-nevora: Rondo marks round with ring (24/22/26)
+PASS webkit 390 /?view=velani-es-nevora: chat launcher carries the mark
+PASS webkit 390 /?view=velani-es-nevora: no script errors (none)
+PASS webkit 390 /?view=velani-es-nevora: hreflang en/es/x-default
+PASS webkit 390 /?view=velani-es-productos: 200 on theme 193179287866 (unpublished)
+PASS webkit 390 /?view=velani-es-productos: lang=es
+PASS webkit 390 /?view=velani-es-productos: no sideways overflow (0px; none)
+PASS webkit 390 /?view=velani-es-productos: text stays inside its card (none)
+PASS webkit 390 /?view=velani-es-productos: no text over visuals (none)
+PASS webkit 390 /?view=velani-es-productos: every internal link stays on the preview (none)
+PASS webkit 390 /?view=velani-es-productos: Rondo marks round with ring (26)
+PASS webkit 390 /?view=velani-es-productos: chat launcher carries the mark
+PASS webkit 390 /?view=velani-es-productos: no script errors (none)
+PASS webkit 390 /?view=velani-es-productos: hreflang en/es/x-default
+PASS webkit 390 /?view=velani-es-planes: 200 on theme 193179287866 (unpublished)
+PASS webkit 390 /?view=velani-es-planes: lang=es
+PASS webkit 390 /?view=velani-es-planes: no sideways overflow (0px; none)
+PASS webkit 390 /?view=velani-es-planes: text stays inside its card (none)
+PASS webkit 390 /?view=velani-es-planes: no text over visuals (none)
+PASS webkit 390 /?view=velani-es-planes: every internal link stays on the preview (none)
+PASS webkit 390 /?view=velani-es-planes: Rondo marks round with ring (26)
+PASS webkit 390 /?view=velani-es-planes: chat launcher carries the mark
+PASS webkit 390 /?view=velani-es-planes: no script errors (none)
+PASS webkit 390 /?view=velani-es-planes: hreflang en/es/x-default
+PASS webkit 390 /?view=velani-es-contacto: 200 on theme 193179287866 (unpublished)
+PASS webkit 390 /?view=velani-es-contacto: lang=es
+PASS webkit 390 /?view=velani-es-contacto: no sideways overflow (0px; none)
+PASS webkit 390 /?view=velani-es-contacto: text stays inside its card (none)
+PASS webkit 390 /?view=velani-es-contacto: no text over visuals (none)
+PASS webkit 390 /?view=velani-es-contacto: every internal link stays on the preview (none)
+PASS webkit 390 /?view=velani-es-contacto: Rondo marks round with ring (26)
+PASS webkit 390 /?view=velani-es-contacto: chat launcher carries the mark
+PASS webkit 390 /?view=velani-es-contacto: no script errors (none)
+PASS webkit 390 /?view=velani-es-contacto: hreflang en/es/x-default
+PASS webkit 390 /?view=velani-es-nosotros: 200 on theme 193179287866 (unpublished)
+PASS webkit 390 /?view=velani-es-nosotros: lang=es
+PASS webkit 390 /?view=velani-es-nosotros: no sideways overflow (0px; none)
+PASS webkit 390 /?view=velani-es-nosotros: text stays inside its card (none)
+PASS webkit 390 /?view=velani-es-nosotros: no text over visuals (none)
+PASS webkit 390 /?view=velani-es-nosotros: every internal link stays on the preview (none)
+PASS webkit 390 /?view=velani-es-nosotros: Rondo marks round with ring (26)
+PASS webkit 390 /?view=velani-es-nosotros: chat launcher carries the mark
+PASS webkit 390 /?view=velani-es-nosotros: no script errors (none)
+PASS webkit 390 /?view=velani-es-nosotros: hreflang en/es/x-default
+PASS webkit 390 /?view=velani-es-ayuda: 200 on theme 193179287866 (unpublished)
+PASS webkit 390 /?view=velani-es-ayuda: lang=es
+PASS webkit 390 /?view=velani-es-ayuda: no sideways overflow (0px; none)
+PASS webkit 390 /?view=velani-es-ayuda: text stays inside its card (none)
+PASS webkit 390 /?view=velani-es-ayuda: no text over visuals (none)
+PASS webkit 390 /?view=velani-es-ayuda: every internal link stays on the preview (none)
+PASS webkit 390 /?view=velani-es-ayuda: Rondo marks round with ring (26)
+PASS webkit 390 /?view=velani-es-ayuda: chat launcher carries the mark
+PASS webkit 390 /?view=velani-es-ayuda: no script errors (none)
+PASS webkit 390 /?view=velani-es-ayuda: hreflang en/es/x-default
+PASS webkit 390: /pages/nevora → ES (velani-es-nevora) → EN (velani-nevora)
+PASS webkit 390: /pages/plans → ES (velani-es-planes) → EN (velani-plans)
+PASS webkit 390: / → ES (velani-es) → EN (/)
+PASS webkit 390: Spanish NEVORA menu closes and frees the page (nothing inert)
+PASS webkit 390: Spanish NEVORA “Inicio de Velani” goes to the Spanish home
+PASS webkit 390: Spanish menu opens and Escape closes it
+PASS webkit 390: chat opens on the Spanish home; header mark 32x32
+PASS webkit 390: Spanish form labels, preview notice (Nombre · Correo electrónico · Empresa opcional · Tema · Tamaño del equipo · Número de ubicaciones)
+PASS webkit 320 /: 200 on theme 193179287866 (unpublished)
+PASS webkit 320 /: lang=en
+PASS webkit 320 /: no sideways overflow (0px; none)
+PASS webkit 320 /: text stays inside its card (none)
+PASS webkit 320 /: no text over visuals (none)
+PASS webkit 320 /: every internal link stays on the preview (none)
+PASS webkit 320 /: Rondo marks round with ring (26)
+PASS webkit 320 /: chat launcher carries the mark
+PASS webkit 320 /: no script errors (none)
+PASS webkit 320 /: hreflang en/es/x-default
+PASS webkit 320 /pages/products: 200 on theme 193179287866 (unpublished)
+PASS webkit 320 /pages/products: lang=en
+PASS webkit 320 /pages/products: no sideways overflow (0px; none)
+PASS webkit 320 /pages/products: text stays inside its card (none)
+PASS webkit 320 /pages/products: no text over visuals (none)
+PASS webkit 320 /pages/products: every internal link stays on the preview (none)
+PASS webkit 320 /pages/products: Rondo marks round with ring (26)
+PASS webkit 320 /pages/products: chat launcher carries the mark
+PASS webkit 320 /pages/products: no script errors (none)
+PASS webkit 320 /pages/products: hreflang en/es/x-default
+PASS webkit 320 /pages/custom-development: 200 on theme 193179287866 (unpublished)
+PASS webkit 320 /pages/custom-development: lang=en
+PASS webkit 320 /pages/custom-development: no sideways overflow (0px; none)
+PASS webkit 320 /pages/custom-development: text stays inside its card (none)
+PASS webkit 320 /pages/custom-development: no text over visuals (none)
+PASS webkit 320 /pages/custom-development: every internal link stays on the preview (none)
+PASS webkit 320 /pages/custom-development: Rondo marks round with ring (26)
+PASS webkit 320 /pages/custom-development: chat launcher carries the mark
+PASS webkit 320 /pages/custom-development: no script errors (none)
+PASS webkit 320 /pages/nevora: 200 on theme 193179287866 (unpublished)
+PASS webkit 320 /pages/nevora: lang=en
+PASS webkit 320 /pages/nevora: no sideways overflow (0px; none)
+PASS webkit 320 /pages/nevora: text stays inside its card (none)
+PASS webkit 320 /pages/nevora: no text over visuals (none)
+PASS webkit 320 /pages/nevora: every internal link stays on the preview (none)
+PASS webkit 320 /pages/nevora: Rondo marks round with ring (24/22/26)
+PASS webkit 320 /pages/nevora: chat launcher carries the mark
+PASS webkit 320 /pages/nevora: no script errors (none)
+PASS webkit 320 /pages/nevora: hreflang en/es/x-default
+PASS webkit 320 /pages/about: 200 on theme 193179287866 (unpublished)
+PASS webkit 320 /pages/about: lang=en
+PASS webkit 320 /pages/about: no sideways overflow (0px; none)
+PASS webkit 320 /pages/about: text stays inside its card (none)
+PASS webkit 320 /pages/about: no text over visuals (none)
+PASS webkit 320 /pages/about: every internal link stays on the preview (none)
+PASS webkit 320 /pages/about: Rondo marks round with ring (26)
+PASS webkit 320 /pages/about: chat launcher carries the mark
+PASS webkit 320 /pages/about: no script errors (none)
+PASS webkit 320 /pages/plans: 200 on theme 193179287866 (unpublished)
+PASS webkit 320 /pages/plans: lang=en
+PASS webkit 320 /pages/plans: no sideways overflow (0px; none)
+PASS webkit 320 /pages/plans: text stays inside its card (none)
+PASS webkit 320 /pages/plans: no text over visuals (none)
+PASS webkit 320 /pages/plans: every internal link stays on the preview (none)
+PASS webkit 320 /pages/plans: Rondo marks round with ring (26)
+PASS webkit 320 /pages/plans: chat launcher carries the mark
+PASS webkit 320 /pages/plans: no script errors (none)
+PASS webkit 320 /pages/plans: hreflang en/es/x-default
+PASS webkit 320 /pages/contact: 200 on theme 193179287866 (unpublished)
+PASS webkit 320 /pages/contact: lang=en
+PASS webkit 320 /pages/contact: no sideways overflow (0px; none)
+PASS webkit 320 /pages/contact: text stays inside its card (none)
+PASS webkit 320 /pages/contact: no text over visuals (none)
+PASS webkit 320 /pages/contact: every internal link stays on the preview (none)
+PASS webkit 320 /pages/contact: Rondo marks round with ring (26)
+PASS webkit 320 /pages/contact: chat launcher carries the mark
+PASS webkit 320 /pages/contact: no script errors (none)
+PASS webkit 320 /pages/contact: hreflang en/es/x-default
+PASS webkit 320 /pages/help: 200 on theme 193179287866 (unpublished)
+PASS webkit 320 /pages/help: lang=en
+PASS webkit 320 /pages/help: no sideways overflow (0px; none)
+PASS webkit 320 /pages/help: text stays inside its card (none)
+PASS webkit 320 /pages/help: no text over visuals (none)
+PASS webkit 320 /pages/help: every internal link stays on the preview (none)
+PASS webkit 320 /pages/help: Rondo marks round with ring (26)
+PASS webkit 320 /pages/help: chat launcher carries the mark
+PASS webkit 320 /pages/help: no script errors (none)
+PASS webkit 320 /?view=velani-es: 200 on theme 193179287866 (unpublished)
+PASS webkit 320 /?view=velani-es: lang=es
+PASS webkit 320 /?view=velani-es: no sideways overflow (0px; none)
+PASS webkit 320 /?view=velani-es: text stays inside its card (none)
+PASS webkit 320 /?view=velani-es: no text over visuals (none)
+PASS webkit 320 /?view=velani-es: every internal link stays on the preview (none)
+PASS webkit 320 /?view=velani-es: Rondo marks round with ring (26)
+PASS webkit 320 /?view=velani-es: chat launcher carries the mark
+PASS webkit 320 /?view=velani-es: no script errors (none)
+PASS webkit 320 /?view=velani-es: hreflang en/es/x-default
+PASS webkit 320 /?view=velani-es-nevora: 200 on theme 193179287866 (unpublished)
+PASS webkit 320 /?view=velani-es-nevora: lang=es
+PASS webkit 320 /?view=velani-es-nevora: no sideways overflow (0px; none)
+PASS webkit 320 /?view=velani-es-nevora: text stays inside its card (none)
+PASS webkit 320 /?view=velani-es-nevora: no text over visuals (none)
+PASS webkit 320 /?view=velani-es-nevora: every internal link stays on the preview (none)
+PASS webkit 320 /?view=velani-es-nevora: Rondo marks round with ring (24/22/26)
+PASS webkit 320 /?view=velani-es-nevora: chat launcher carries the mark
+PASS webkit 320 /?view=velani-es-nevora: no script errors (none)
+PASS webkit 320 /?view=velani-es-nevora: hreflang en/es/x-default
+PASS webkit 320 /?view=velani-es-productos: 200 on theme 193179287866 (unpublished)
+PASS webkit 320 /?view=velani-es-productos: lang=es
+PASS webkit 320 /?view=velani-es-productos: no sideways overflow (0px; none)
+PASS webkit 320 /?view=velani-es-productos: text stays inside its card (none)
+PASS webkit 320 /?view=velani-es-productos: no text over visuals (none)
+PASS webkit 320 /?view=velani-es-productos: every internal link stays on the preview (none)
+PASS webkit 320 /?view=velani-es-productos: Rondo marks round with ring (26)
+PASS webkit 320 /?view=velani-es-productos: chat launcher carries the mark
+PASS webkit 320 /?view=velani-es-productos: no script errors (none)
+PASS webkit 320 /?view=velani-es-productos: hreflang en/es/x-default
+PASS webkit 320 /?view=velani-es-planes: 200 on theme 193179287866 (unpublished)
+PASS webkit 320 /?view=velani-es-planes: lang=es
+PASS webkit 320 /?view=velani-es-planes: no sideways overflow (0px; none)
+PASS webkit 320 /?view=velani-es-planes: text stays inside its card (none)
+PASS webkit 320 /?view=velani-es-planes: no text over visuals (none)
+PASS webkit 320 /?view=velani-es-planes: every internal link stays on the preview (none)
+PASS webkit 320 /?view=velani-es-planes: Rondo marks round with ring (26)
+PASS webkit 320 /?view=velani-es-planes: chat launcher carries the mark
+PASS webkit 320 /?view=velani-es-planes: no script errors (none)
+PASS webkit 320 /?view=velani-es-planes: hreflang en/es/x-default
+PASS webkit 320 /?view=velani-es-contacto: 200 on theme 193179287866 (unpublished)
+PASS webkit 320 /?view=velani-es-contacto: lang=es
+PASS webkit 320 /?view=velani-es-contacto: no sideways overflow (0px; none)
+PASS webkit 320 /?view=velani-es-contacto: text stays inside its card (none)
+PASS webkit 320 /?view=velani-es-contacto: no text over visuals (none)
+PASS webkit 320 /?view=velani-es-contacto: every internal link stays on the preview (none)
+PASS webkit 320 /?view=velani-es-contacto: Rondo marks round with ring (26)
+PASS webkit 320 /?view=velani-es-contacto: chat launcher carries the mark
+PASS webkit 320 /?view=velani-es-contacto: no script errors (none)
+PASS webkit 320 /?view=velani-es-contacto: hreflang en/es/x-default
+PASS webkit 320 /?view=velani-es-nosotros: 200 on theme 193179287866 (unpublished)
+PASS webkit 320 /?view=velani-es-nosotros: lang=es
+PASS webkit 320 /?view=velani-es-nosotros: no sideways overflow (0px; none)
+PASS webkit 320 /?view=velani-es-nosotros: text stays inside its card (none)
+PASS webkit 320 /?view=velani-es-nosotros: no text over visuals (none)
+PASS webkit 320 /?view=velani-es-nosotros: every internal link stays on the preview (none)
+PASS webkit 320 /?view=velani-es-nosotros: Rondo marks round with ring (26)
+PASS webkit 320 /?view=velani-es-nosotros: chat launcher carries the mark
+PASS webkit 320 /?view=velani-es-nosotros: no script errors (none)
+PASS webkit 320 /?view=velani-es-nosotros: hreflang en/es/x-default
+PASS webkit 320 /?view=velani-es-ayuda: 200 on theme 193179287866 (unpublished)
+PASS webkit 320 /?view=velani-es-ayuda: lang=es
+PASS webkit 320 /?view=velani-es-ayuda: no sideways overflow (0px; none)
+PASS webkit 320 /?view=velani-es-ayuda: text stays inside its card (none)
+PASS webkit 320 /?view=velani-es-ayuda: no text over visuals (none)
+PASS webkit 320 /?view=velani-es-ayuda: every internal link stays on the preview (none)
+PASS webkit 320 /?view=velani-es-ayuda: Rondo marks round with ring (26)
+PASS webkit 320 /?view=velani-es-ayuda: chat launcher carries the mark
+PASS webkit 320 /?view=velani-es-ayuda: no script errors (none)
+PASS webkit 320 /?view=velani-es-ayuda: hreflang en/es/x-default
+PASS webkit 320: /pages/nevora → ES (velani-es-nevora) → EN (velani-nevora)
+PASS webkit 320: /pages/plans → ES (velani-es-planes) → EN (velani-plans)
+PASS webkit 320: / → ES (velani-es) → EN (/)
+PASS webkit 320: Spanish NEVORA menu closes and frees the page (nothing inert)
+PASS webkit 320: Spanish NEVORA “Inicio de Velani” goes to the Spanish home
+PASS webkit 320: Spanish menu opens and Escape closes it
+PASS webkit 320: chat opens on the Spanish home; header mark 32x32
+PASS webkit 320: Spanish form labels, preview notice (Nombre · Correo electrónico · Empresa opcional · Tema · Tamaño del equipo · Número de ubicaciones)
+all passed

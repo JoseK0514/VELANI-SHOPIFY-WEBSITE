@@ -2,19 +2,31 @@ import http from 'node:http';
 import { readFile, stat } from 'node:fs/promises';
 import path from 'node:path';
 import { build, root } from './build.mjs';
-import { renderPage } from '../src/render.mjs';
+import { renderPage, BOOT_JS } from '../src/render.mjs';
+import { createHash } from 'node:crypto';
+const bootHash = "'sha256-" + createHash('sha256').update(BOOT_JS).digest('base64') + "'";
 const args = process.argv.slice(2);
 const flag = (name, fallback) => { const i = args.indexOf(name); return i < 0 ? fallback : args[i + 1]; };
 const port = Number(flag('--port', '4173'));
+// VELANI_ASSISTANT_API (an origin such as http://127.0.0.1:3001) shows the assistant in the preview and opens the policy for it and for Cloudflare Turnstile.
+const assistantApi = (process.env.VELANI_ASSISTANT_API || '').trim();
+const assistantConnect = assistantApi ? ' ' + new URL(assistantApi).origin + ' https://challenges.cloudflare.com' : '';
+const assistantScript = assistantApi ? ' https://challenges.cloudflare.com' : '';
+// VELANI_COMMERCE_API (an origin such as http://127.0.0.1:4198, the local fixture) turns on the NEVORA billing pages in the preview.
+const commerceApi = (process.env.VELANI_COMMERCE_API || '').trim();
+const commerceConnect = commerceApi ? ' ' + new URL(commerceApi).origin : '';
+// VELANI_CLIENT_HUB_API (a local fake such as http://127.0.0.1:4199) makes the client request form live against that address, with Turnstile allowed.
+const hubApi = (process.env.VELANI_CLIENT_HUB_API || '').trim();
+const hubConnect = hubApi ? ' ' + new URL(hubApi).origin + (assistantApi ? '' : ' https://challenges.cloudflare.com') : '';
 const host = flag('--host', '0.0.0.0');
 await build();
 const dir = path.join(root, 'dist/preview');
-const types = { '.html': 'text/html; charset=utf-8', '.css': 'text/css; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.svg': 'image/svg+xml', '.woff2': 'font/woff2' };
+const types = { '.html': 'text/html; charset=utf-8', '.css': 'text/css; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.svg': 'image/svg+xml', '.woff2': 'font/woff2', '.webp': 'image/webp', '.png': 'image/png' };
 const server = http.createServer(async (req, res) => {
   res.setHeader('X-Content-Type-Options', 'nosniff');
   res.setHeader('Referrer-Policy', 'strict-origin-when-cross-origin');
   res.setHeader('Permissions-Policy', 'camera=(), microphone=(), geolocation=()');
-  res.setHeader('Content-Security-Policy', "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'");
+  res.setHeader('Content-Security-Policy', "default-src 'self'; script-src 'self' " + bootHash + assistantScript + (hubApi && !assistantApi ? ' https://challenges.cloudflare.com' : '') + "; style-src 'self'; style-src-attr 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'" + assistantConnect + commerceConnect + hubConnect + "; frame-src" + (assistantApi || hubApi ? " https://challenges.cloudflare.com" : " 'none'") + "; frame-ancestors 'none'; base-uri 'self'; form-action 'self'");
   res.setHeader('Cache-Control', 'no-store');
   if (req.method !== 'GET' && req.method !== 'HEAD') { req.resume(); res.writeHead(405, { Allow: 'GET, HEAD', 'Content-Type': 'text/plain' }); res.end('Preview only. No inquiry was sent.'); return; }
   let url;

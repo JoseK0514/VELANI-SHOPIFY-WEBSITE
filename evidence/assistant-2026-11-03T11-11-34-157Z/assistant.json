@@ -1,0 +1,172 @@
+{
+  "status": "failed",
+  "passed": 39,
+  "failed": 2,
+  "base": "http://127.0.0.1:4173",
+  "results": [
+    {
+      "status": "passed",
+      "message": "launcher shows \"Ask about NEVORA\"; panel closed"
+    },
+    {
+      "status": "passed",
+      "message": "panel opens and focus lands in the question field"
+    },
+    {
+      "status": "passed",
+      "message": "intro offers three questions; retention notice links to the privacy notice"
+    },
+    {
+      "status": "passed",
+      "message": "send is disabled while the field is empty"
+    },
+    {
+      "status": "passed",
+      "message": "a question gets an answer; the intro steps aside"
+    },
+    {
+      "status": "passed",
+      "message": "a greeting carries no sources; the delete control appears once the conversation exists"
+    },
+    {
+      "status": "passed",
+      "message": "a cited answer links its source on thevelani.com in a new tab"
+    },
+    {
+      "status": "failed",
+      "message": "show_demo offers the time clock on this page"
+    },
+    {
+      "status": "passed",
+      "message": "the demo action closes the panel and jumps to the demo"
+    },
+    {
+      "status": "failed",
+      "message": "reopening keeps the conversation"
+    },
+    {
+      "status": "passed",
+      "message": "lead_form offers the quote enquiry, never a form inside the chat"
+    },
+    {
+      "status": "passed",
+      "message": "human_help with a support citation offers NEVORA support"
+    },
+    {
+      "status": "passed",
+      "message": "paragraphs in an answer render as separate paragraphs"
+    },
+    {
+      "status": "passed",
+      "message": "answers render as text, never as markup"
+    },
+    {
+      "status": "passed",
+      "message": "a provider failure shows a plain explanation with Retry and Discard"
+    },
+    {
+      "status": "passed",
+      "message": "the unsent question is marked and sending waits for retry or discard"
+    },
+    {
+      "status": "passed",
+      "message": "retry replays the same request (still failing in the harness)"
+    },
+    {
+      "status": "passed",
+      "message": "discard removes the unsent question and frees the composer"
+    },
+    {
+      "status": "passed",
+      "message": "Escape closes the panel and focus returns to the launcher"
+    },
+    {
+      "status": "passed",
+      "message": "deleting asks for confirmation first"
+    },
+    {
+      "status": "passed",
+      "message": "the conversation is deleted on the server and the intro returns"
+    },
+    {
+      "status": "passed",
+      "message": "a new conversation starts after deletion"
+    },
+    {
+      "status": "passed",
+      "message": "axe with the panel open: clean"
+    },
+    {
+      "status": "passed",
+      "message": "no request leaves the local hosts: 127.0.0.1:4173 127.0.0.1:3001"
+    },
+    {
+      "status": "passed",
+      "message": "nothing in storage or cookies"
+    },
+    {
+      "status": "passed",
+      "message": "no script errors "
+    },
+    {
+      "status": "passed",
+      "message": "Español switches the panel text and language attributes"
+    },
+    {
+      "status": "passed",
+      "message": "the Spanish session answers in Spanish"
+    },
+    {
+      "status": "passed",
+      "message": "the language choice steps aside once a conversation has started"
+    },
+    {
+      "status": "passed",
+      "message": "phone launcher is a round icon button, at least 44px"
+    },
+    {
+      "status": "passed",
+      "message": "the panel fills the phone screen and the page behind stops scrolling"
+    },
+    {
+      "status": "passed",
+      "message": "on a touch screen focus goes to the heading, not the keyboard"
+    },
+    {
+      "status": "passed",
+      "message": "a suggested question sends and answers"
+    },
+    {
+      "status": "passed",
+      "message": "closing restores page scrolling"
+    },
+    {
+      "status": "passed",
+      "message": "no sideways scroll with the launcher present"
+    },
+    {
+      "status": "passed",
+      "message": "reduced motion: the panel appears without animation"
+    },
+    {
+      "status": "passed",
+      "message": "without JavaScript the launcher stays hidden"
+    },
+    {
+      "status": "passed",
+      "message": "an unreachable service is explained and the composer is disabled"
+    },
+    {
+      "status": "passed",
+      "message": "captcha harness and preview start"
+    },
+    {
+      "status": "passed",
+      "message": "with CAPTCHA required, the first message verifies once through Turnstile and then answers"
+    },
+    {
+      "status": "passed",
+      "message": "later messages reuse the session without a new challenge"
+    }
+  ]
+}

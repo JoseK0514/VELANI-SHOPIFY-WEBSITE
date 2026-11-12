@@ -1,0 +1,516 @@
+{
+  "status": "passed",
+  "passed": 127,
+  "failed": 0,
+  "base": "https://www.thevelani.com",
+  "results": [
+    {
+      "status": "passed",
+      "message": "desktop /: 200, one h1, one main"
+    },
+    {
+      "status": "passed",
+      "message": "desktop /: no password page"
+    },
+    {
+      "status": "passed",
+      "message": "desktop /: axe clean"
+    },
+    {
+      "status": "passed",
+      "message": "desktop /: console clean"
+    },
+    {
+      "status": "passed",
+      "message": "desktop /: no sideways scroll"
+    },
+    {
+      "status": "passed",
+      "message": "desktop /pages/products: 200, one h1, one main"
+    },
+    {
+      "status": "passed",
+      "message": "desktop /pages/products: no password page"
+    },
+    {
+      "status": "passed",
+      "message": "desktop /pages/products: axe clean"
+    },
+    {
+      "status": "passed",
+      "message": "desktop /pages/products: console clean"
+    },
+    {
+      "status": "passed",
+      "message": "desktop /pages/products: no sideways scroll"
+    },
+    {
+      "status": "passed",
+      "message": "desktop /pages/nevora: 200, one h1, one main"
+    },
+    {
+      "status": "passed",
+      "message": "desktop /pages/nevora: no password page"
+    },
+    {
+      "status": "passed",
+      "message": "desktop /pages/nevora: axe clean"
+    },
+    {
+      "status": "passed",
+      "message": "desktop /pages/nevora: console clean"
+    },
+    {
+      "status": "passed",
+      "message": "desktop /pages/nevora: no sideways scroll"
+    },
+    {
+      "status": "passed",
+      "message": "desktop /pages/custom-development: 200, one h1, one main"
+    },
+    {
+      "status": "passed",
+      "message": "desktop /pages/custom-development: no password page"
+    },
+    {
+      "status": "passed",
+      "message": "desktop /pages/custom-development: axe clean"
+    },
+    {
+      "status": "passed",
+      "message": "desktop /pages/custom-development: console clean"
+    },
+    {
+      "status": "passed",
+      "message": "desktop /pages/custom-development: no sideways scroll"
+    },
+    {
+      "status": "passed",
+      "message": "desktop /pages/about: 200, one h1, one main"
+    },
+    {
+      "status": "passed",
+      "message": "desktop /pages/about: no password page"
+    },
+    {
+      "status": "passed",
+      "message": "desktop /pages/about: axe clean"
+    },
+    {
+      "status": "passed",
+      "message": "desktop /pages/about: console clean"
+    },
+    {
+      "status": "passed",
+      "message": "desktop /pages/about: no sideways scroll"
+    },
+    {
+      "status": "passed",
+      "message": "desktop /pages/contact: 200, one h1, one main"
+    },
+    {
+      "status": "passed",
+      "message": "desktop /pages/contact: no password page"
+    },
+    {
+      "status": "passed",
+      "message": "desktop /pages/contact: axe clean"
+    },
+    {
+      "status": "passed",
+      "message": "desktop /pages/contact: console clean"
+    },
+    {
+      "status": "passed",
+      "message": "desktop /pages/contact: no sideways scroll"
+    },
+    {
+      "status": "passed",
+      "message": "desktop /pages/help: 200, one h1, one main"
+    },
+    {
+      "status": "passed",
+      "message": "desktop /pages/help: no password page"
+    },
+    {
+      "status": "passed",
+      "message": "desktop /pages/help: axe clean"
+    },
+    {
+      "status": "passed",
+      "message": "desktop /pages/help: console clean"
+    },
+    {
+      "status": "passed",
+      "message": "desktop /pages/help: no sideways scroll"
+    },
+    {
+      "status": "passed",
+      "message": "desktop /pages/legal: 200, one h1, one main"
+    },
+    {
+      "status": "passed",
+      "message": "desktop /pages/legal: no password page"
+    },
+    {
+      "status": "passed",
+      "message": "desktop /pages/legal: axe clean"
+    },
+    {
+      "status": "passed",
+      "message": "desktop /pages/legal: console clean"
+    },
+    {
+      "status": "passed",
+      "message": "desktop /pages/legal: no sideways scroll"
+    },
+    {
+      "status": "passed",
+      "message": "desktop /pages/privacy: 200, one h1, one main"
+    },
+    {
+      "status": "passed",
+      "message": "desktop /pages/privacy: no password page"
+    },
+    {
+      "status": "passed",
+      "message": "desktop /pages/privacy: axe clean"
+    },
+    {
+      "status": "passed",
+      "message": "desktop /pages/privacy: console clean"
+    },
+    {
+      "status": "passed",
+      "message": "desktop /pages/privacy: no sideways scroll"
+    },
+    {
+      "status": "passed",
+      "message": "desktop /pages/cookies: 200, one h1, one main"
+    },
+    {
+      "status": "passed",
+      "message": "desktop /pages/cookies: no password page"
+    },
+    {
+      "status": "passed",
+      "message": "desktop /pages/cookies: axe clean"
+    },
+    {
+      "status": "passed",
+      "message": "desktop /pages/cookies: console clean"
+    },
+    {
+      "status": "passed",
+      "message": "desktop /pages/cookies: no sideways scroll"
+    },
+    {
+      "status": "passed",
+      "message": "desktop /pages/website-terms: 200, one h1, one main"
+    },
+    {
+      "status": "passed",
+      "message": "desktop /pages/website-terms: no password page"
+    },
+    {
+      "status": "passed",
+      "message": "desktop /pages/website-terms: axe clean"
+    },
+    {
+      "status": "passed",
+      "message": "desktop /pages/website-terms: console clean"
+    },
+    {
+      "status": "passed",
+      "message": "desktop /pages/website-terms: no sideways scroll"
+    },
+    {
+      "status": "passed",
+      "message": "desktop /pages/software-project-terms: 200, one h1, one main"
+    },
+    {
+      "status": "passed",
+      "message": "desktop /pages/software-project-terms: no password page"
+    },
+    {
+      "status": "passed",
+      "message": "desktop /pages/software-project-terms: axe clean"
+    },
+    {
+      "status": "passed",
+      "message": "desktop /pages/software-project-terms: console clean"
+    },
+    {
+      "status": "passed",
+      "message": "desktop /pages/software-project-terms: no sideways scroll"
+    },
+    {
+      "status": "passed",
+      "message": "desktop /pages/accessibility: 200, one h1, one main"
+    },
+    {
+      "status": "passed",
+      "message": "desktop /pages/accessibility: no password page"
+    },
+    {
+      "status": "passed",
+      "message": "desktop /pages/accessibility: axe clean"
+    },
+    {
+      "status": "passed",
+      "message": "desktop /pages/accessibility: console clean"
+    },
+    {
+      "status": "passed",
+      "message": "desktop /pages/accessibility: no sideways scroll"
+    },
+    {
+      "status": "passed",
+      "message": "desktop /pages/nevora-support: 200, one h1, one main"
+    },
+    {
+      "status": "passed",
+      "message": "desktop /pages/nevora-support: no password page"
+    },
+    {
+      "status": "passed",
+      "message": "desktop /pages/nevora-support: axe clean"
+    },
+    {
+      "status": "passed",
+      "message": "desktop /pages/nevora-support: console clean"
+    },
+    {
+      "status": "passed",
+      "message": "desktop /pages/nevora-support: no sideways scroll"
+    },
+    {
+      "status": "passed",
+      "message": "desktop /pages/nevora-privacy: 200, one h1, one main"
+    },
+    {
+      "status": "passed",
+      "message": "desktop /pages/nevora-privacy: no password page"
+    },
+    {
+      "status": "passed",
+      "message": "desktop /pages/nevora-privacy: axe clean"
+    },
+    {
+      "status": "passed",
+      "message": "desktop /pages/nevora-privacy: console clean"
+    },
+    {
+      "status": "passed",
+      "message": "desktop /pages/nevora-privacy: no sideways scroll"
+    },
+    {
+      "status": "passed",
+      "message": "desktop /pages/nevora-terms: 200, one h1, one main"
+    },
+    {
+      "status": "passed",
+      "message": "desktop /pages/nevora-terms: no password page"
+    },
+    {
+      "status": "passed",
+      "message": "desktop /pages/nevora-terms: axe clean"
+    },
+    {
+      "status": "passed",
+      "message": "desktop /pages/nevora-terms: console clean"
+    },
+    {
+      "status": "passed",
+      "message": "desktop /pages/nevora-terms: no sideways scroll"
+    },
+    {
+      "status": "passed",
+      "message": "desktop /pages/nevora-account-deletion: 200, one h1, one main"
+    },
+    {
+      "status": "passed",
+      "message": "desktop /pages/nevora-account-deletion: no password page"
+    },
+    {
+      "status": "passed",
+      "message": "desktop /pages/nevora-account-deletion: axe clean"
+    },
+    {
+      "status": "passed",
+      "message": "desktop /pages/nevora-account-deletion: console clean"
+    },
+    {
+      "status": "passed",
+      "message": "desktop /pages/nevora-account-deletion: no sideways scroll"
+    },
+    {
+      "status": "passed",
+      "message": "desktop /pages/security: 200, one h1, one main"
+    },
+    {
+      "status": "passed",
+      "message": "desktop /pages/security: no password page"
+    },
+    {
+      "status": "passed",
+      "message": "desktop /pages/security: axe clean"
+    },
+    {
+      "status": "passed",
+      "message": "desktop /pages/security: console clean"
+    },
+    {
+      "status": "passed",
+      "message": "desktop /pages/security: no sideways scroll"
+    },
+    {
+      "status": "passed",
+      "message": "external link https://hcaptcha.com/privacy on /pages/contact (Shopify spam-protection notice, expected)"
+    },
+    {
+      "status": "passed",
+      "message": "external link https://hcaptcha.com/terms on /pages/contact (Shopify spam-protection notice, expected)"
+    },
+    {
+      "status": "passed",
+      "message": "53 internal links checked, 0 broken"
+    },
+    {
+      "status": "passed",
+      "message": "requests stay on the site, Shopify and its CDN: www.thevelani.com cdn.shopify.com otlp-http-production.shopifysvc.com"
+    },
+    {
+      "status": "passed",
+      "message": "home: hero image drifts (animation hdrift)"
+    },
+    {
+      "status": "passed",
+      "message": "home: scroll cue inside the first screen"
+    },
+    {
+      "status": "passed",
+      "message": "home: cue scrolls to the NEVORA panel (top at 110px; 56 once the panel scroll padding ships)"
+    },
+    {
+      "status": "passed",
+      "message": "home: header tucks away on the way down"
+    },
+    {
+      "status": "passed",
+      "message": "home: header returns on the way up"
+    },
+    {
+      "status": "passed",
+      "message": "phone /: 200, no sideways scroll"
+    },
+    {
+      "status": "passed",
+      "message": "phone /pages/products: 200, no sideways scroll"
+    },
+    {
+      "status": "passed",
+      "message": "phone /pages/nevora: 200, no sideways scroll"
+    },
+    {
+      "status": "passed",
+      "message": "phone /pages/custom-development: 200, no sideways scroll"
+    },
+    {
+      "status": "passed",
+      "message": "phone /pages/about: 200, no sideways scroll"
+    },
+    {
+      "status": "passed",
+      "message": "phone /pages/contact: 200, no sideways scroll"
+    },
+    {
+      "status": "passed",
+      "message": "phone /pages/help: 200, no sideways scroll"
+    },
+    {
+      "status": "passed",
+      "message": "phone /pages/legal: 200, no sideways scroll"
+    },
+    {
+      "status": "passed",
+      "message": "phone /pages/privacy: 200, no sideways scroll"
+    },
+    {
+      "status": "passed",
+      "message": "phone /pages/cookies: 200, no sideways scroll"
+    },
+    {
+      "status": "passed",
+      "message": "phone /pages/website-terms: 200, no sideways scroll"
+    },
+    {
+      "status": "passed",
+      "message": "phone /pages/software-project-terms: 200, no sideways scroll"
+    },
+    {
+      "status": "passed",
+      "message": "phone /pages/accessibility: 200, no sideways scroll"
+    },
+    {
+      "status": "passed",
+      "message": "phone /pages/nevora-support: 200, no sideways scroll"
+    },
+    {
+      "status": "passed",
+      "message": "phone /pages/nevora-privacy: 200, no sideways scroll"
+    },
+    {
+      "status": "passed",
+      "message": "phone /pages/nevora-terms: 200, no sideways scroll"
+    },
+    {
+      "status": "passed",
+      "message": "phone /pages/nevora-account-deletion: 200, no sideways scroll"
+    },
+    {
+      "status": "passed",
+      "message": "phone /pages/security: 200, no sideways scroll"
+    },
+    {
+      "status": "passed",
+      "message": "phone: menu opens with the demo action"
+    },
+    {
+      "status": "passed",
+      "message": "phone: Support page shows the hours"
+    },
+    {
+      "status": "passed",
+      "message": "phone: time clock demo records a demo clock-in"
+    },
+    {
+      "status": "passed",
+      "message": "phone: demo request page shows the demo wording with the topic preselected"
+    },
+    {
+      "status": "passed",
+      "message": "phone: contact form is the live Shopify form (SEND INQUIRY); not submitted"
+    },
+    {
+      "status": "passed",
+      "message": "assistant stays hidden until its API address is set"
+    },
+    {
+      "status": "passed",
+      "message": "phone: no script errors "
+    },
+    {
+      "status": "passed",
+      "message": "phone scroll /: 0 long frames (threshold 15)"
+    },
+    {
+      "status": "passed",
+      "message": "phone scroll /pages/nevora: 0 long frames (threshold 15)"
+    },
+    {
+      "status": "passed",
+      "message": "phone scroll /pages/custom-development: 0 long frames (threshold 15)"
+    }
+  ]
+}

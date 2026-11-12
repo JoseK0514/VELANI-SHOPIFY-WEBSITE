@@ -1,0 +1,30 @@
+<div class="ast-root" id="ast-root" hidden>
+ <button type="button" class="ast-launch" id="ast-launch" aria-expanded="false" aria-controls="ast" aria-label="Ask Velani, the AI adviser on this site"><span class="ast-av" aria-hidden="true">V</span><span id="ast-launch-t">Ask Velani</span></button>
+ <section class="ast" id="ast" role="dialog" aria-labelledby="ast-t" aria-describedby="ast-sub" hidden>
+  <div class="ast-head">
+   {{rondo:ast-av}}
+   <div class="ast-head-t" id="ast-head-t" tabindex="-1"><h2 class="ast-t" id="ast-t">Rondo</h2><p class="ast-sub" id="ast-sub">On this site · AI adviser for Velani and NEVORA</p></div>
+   <div class="ast-lang" id="ast-lang" role="group" aria-label="Language"><button type="button" data-locale="en" lang="en" aria-pressed="true">EN</button><button type="button" data-locale="es" lang="es" aria-pressed="false">ES</button></div>
+   <button type="button" class="ast-icon" id="ast-clear" aria-label="Delete this conversation" hidden>{{icon:trash}}</button>
+   <button type="button" class="ast-icon" id="ast-close" aria-label="Close">{{icon:x}}</button>
+  </div>
+  <div class="ast-body" id="ast-body">
+   <div class="ast-intro" id="ast-intro">
+    <p class="ast-hi" id="ast-hi">Hi, I’m Rondo.</p>
+    <p class="ast-lede" id="ast-lede">I’m Velani’s AI adviser on this website. Ask me about NEVORA, the free trial, or the websites and apps we build.</p>
+    <div class="ast-sugg" id="ast-sugg"></div>
+    <p class="ast-scope" id="ast-scope">I can’t see employee accounts, and I can’t make changes, bookings or payments.</p>
+   </div>
+   <div class="ast-log" id="ast-log" role="log" aria-live="polite"></div>
+   <div class="ast-confirm" id="ast-confirm" role="alertdialog" aria-labelledby="ast-confirm-t" hidden><p id="ast-confirm-t">Delete this conversation from our servers?</p><div><button type="button" class="pill ast-small" id="ast-confirm-yes">Delete</button><button type="button" class="pill line ast-small" id="ast-confirm-no">Keep</button></div></div>
+  </div>
+  <div class="ast-verify" id="ast-verify" hidden><p id="ast-verify-t">Checking that your browser is not an automated program…</p><div id="ast-turnstile"></div></div>
+  <div class="ast-status" id="ast-status" role="status" hidden><span id="ast-status-t"></span><button type="button" class="ast-link" id="ast-retry" hidden>Retry</button><button type="button" class="ast-link" id="ast-discard" hidden>Discard</button><a class="ast-link" id="ast-contact" href="/pages/contact" hidden>Contact page</a></div>
+  <form class="ast-form" id="ast-form">
+   <label class="sr" for="ast-in" id="ast-in-l">Your question for Rondo</label>
+   <textarea id="ast-in" rows="1" maxlength="4000" placeholder="Ask Rondo a question" autocomplete="off" enterkeyhint="send"></textarea>
+   <button type="submit" class="ast-send" id="ast-send" aria-label="Send" disabled>{{icon:arrow-up}}</button>
+  </form>
+  <p class="ast-note" id="ast-note"><span id="ast-note-t">Rondo is an AI and can be wrong. Don’t share passwords, payment details or employee records. Conversations are kept for up to 30 days.</span> <a href="/pages/privacy#section-4" id="ast-note-a">Privacy notice</a></p>
+ </section>
+</div>

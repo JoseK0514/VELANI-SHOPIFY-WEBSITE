@@ -55,8 +55,10 @@ for (const engine of engines) {
       const geometry = await page.evaluate(() => { const h = document.querySelector('h1'), style = getComputedStyle(h); return { width: innerWidth, client: document.documentElement.clientWidth, scroll: document.documentElement.scrollWidth, lines: h.getBoundingClientRect().height / parseFloat(style.lineHeight) }; });
       expect(geometry.scroll <= geometry.client + 1, 'Horizontal overflow');
       if (width === 969) expect(geometry.lines < 2.2, 'Approved desktop headline must keep its two lines');
-      if (width >= 969) expect(!await page.locator('[data-menu-toggle]').isVisible(), 'Mobile menu appears on desktop');
-      expect(await page.getByText('In development', { exact: true }).isVisible(), 'Product development status missing');
+      if (width >= 969) expect(!await page.locator('#gmenu-btn').isVisible(), 'Mobile menu appears on desktop');
+      expect(await page.locator('.status, .hkick').filter({ hasText: 'Available now' }).first().isVisible(), 'Product availability status missing');
+      const covered = await page.evaluate(() => [...document.querySelectorAll('main a, main button')].filter(el => { const b = el.getBoundingClientRect(); return b.width && b.top >= 0 && b.bottom <= innerHeight }).filter(el => { const b = el.getBoundingClientRect(); return !el.contains(document.elementFromPoint(b.left + b.width / 2, b.top + b.height / 2)) }).map(el => el.textContent.trim()));
+      expect(covered.length === 0, 'Visible links covered by another layer: ' + covered.join(', '));
       return geometry;
     });
     const shot = out + '/' + engine + '-home-' + width + '.png';
@@ -75,14 +77,25 @@ for (const engine of engines) {
       return { axeViolations: violations.length };
     });
   }
+  // With motion on (most visitors): nothing may cover the hero's links at common laptop sizes
+  const motion = await browser.newContext(); const motionPage = await motion.newPage();
+  for (const [w, h] of [[1440, 900], [1366, 768], [1280, 720]]) {
+    await motionPage.setViewportSize({ width: w, height: h });
+    await check(engine + ' home links clickable with motion ' + w + 'x' + h, async () => {
+      await motionPage.goto(base, { waitUntil: 'networkidle' }); await motionPage.waitForTimeout(600);
+      const covered = await motionPage.evaluate(() => [...document.querySelectorAll('main a, main button')].filter(el => { const b = el.getBoundingClientRect(); return b.width && b.top >= 0 && b.bottom <= innerHeight }).filter(el => { const b = el.getBoundingClientRect(); return !el.contains(document.elementFromPoint(b.left + b.width / 2, b.top + b.height / 2)) }).map(el => el.textContent.trim()));
+      expect(covered.length === 0, 'Visible links covered by another layer: ' + covered.join(', '));
+    });
+  }
+  await motion.close();
   await page.setViewportSize({ width: 390, height: 844 });
   await check(engine + ' mobile menu and keyboard return', async () => {
     await page.goto(base);
-    const button = page.locator('[data-menu-toggle]');
+    const button = page.locator('#gmenu-btn');
     await button.click(); expect(await button.getAttribute('aria-expanded') === 'true', 'Menu did not open');
     await page.keyboard.press('Escape'); expect(await button.getAttribute('aria-expanded') === 'false', 'Escape did not close menu');
     expect(await button.evaluate(el => el === document.activeElement), 'Menu focus not restored');
-    await button.click(); await page.locator('#primary-nav').getByRole('link', { name: 'Custom Development', exact: true }).click();
+    await button.click(); await page.locator('#gmenu').getByRole('link', { name: 'Custom apps', exact: true }).first().click();
     await page.waitForURL('**/pages/custom-development');
     expect((await page.locator('h1').innerText()).includes('Software for the work'), 'Wrong service destination');
   });
@@ -106,10 +119,10 @@ for (const engine of engines) {
     const opener = page.getByRole('button', { name: 'Open cookie choices' });
     await opener.click();
     await page.getByText('Local website preview:', { exact: false }).waitFor();
-    await page.getByRole('button', { name: 'Accept optional', exact: true }).click();
+    await page.getByRole('button', { name: 'Accept all optional', exact: true }).click();
     await page.getByText('Preview choices updated for this page.', { exact: true }).waitFor();
     expect(await page.locator('[data-consent="analytics"]').isChecked(), 'Explicit accept not reflected');
-    await page.getByRole('button', { name: 'Reject optional', exact: true }).click();
+    await page.getByRole('button', { name: 'Reject all optional', exact: true }).click();
     expect(!await page.locator('[data-consent="analytics"]').isChecked(), 'Reject did not clear analytics');
     const violations = (await new AxeBuilder({ page }).analyze()).violations;
     expect(violations.length === 0, 'Dialog accessibility: ' + JSON.stringify(violations.map(v => v.id)));
@@ -150,7 +163,7 @@ for (const engine of engines) {
   const noJsPage = await noJs.newPage();
   await check(engine + ' no-JavaScript navigation and no unsafe inquiry', async () => {
     await noJsPage.goto(base + '/pages/contact');
-    expect(await noJsPage.getByRole('link', { name: 'Products', exact: true }).isVisible(), 'No-JS navigation hidden');
+    expect(await noJsPage.locator('header').getByRole('link', { name: 'NEVORA', exact: true }).isVisible(), 'No-JS navigation hidden');
     expect(await noJsPage.locator('[data-inquiry-submit]').isDisabled(), 'No-JS preview could submit personal information');
   });
   await noJs.close(); await browser.close();

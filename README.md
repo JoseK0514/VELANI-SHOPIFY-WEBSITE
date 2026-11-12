@@ -1,21 +1,29 @@
 # The Velani company website
 
-Approved mockup 2 implemented as a 14-route local website and an **unpublished Shopify theme**. This is the software company site: own products and custom development. NEVORA remains **In development**.
+## Current development release — November 12, 2026
 
-## Review
+`development` combines Claude's website/client-hub UI at `17d35c2`, the qualified
+Rondo backend at `7a5696a` (runtime `3db0ea9`), and client-hub acceptance at
+`8505ed2`. Codex owns backend/hosting; Claude owns UI. Development is the primary
+working and acceptance release under Jose's November 12 policy. Promote only the
+exact verified release to main/production after Jose's approval.
 
-- Shopify theme: **192965443898**, role **UNPUBLISHED**. [Open preview](https://www.thevelani.com/?preview_theme_id=192965443898) or [open theme editor](https://admin.shopify.com/store/x19hvn-ar/themes/192965443898/editor). The existing storefront password blocks unauthenticated hosted inspection; sign in through your own Shopify account. The public site has not been changed.
-- Approved visual: [reference](docs/reference/approved-homepage.png).
-- Local source branch: `codex/velani-company-site-20261102`. This isolated repository is separate from NEVORA. GitHub repository: [JoseK0514/VELANI-SHOPIFY-WEBSITE](https://github.com/JoseK0514/VELANI-SHOPIFY-WEBSITE), **private**, with the full history and delivery artifacts on `main` and the preserved feature branch. See [completed GitHub transfer](docs/handoffs/github-transfer-complete-2026-11-02.md).
-- Page content and the policy directory are complete **for preview review**. Final published notices require verified website delivery, vendors, retention and commercial terms. This is not a legal compliance certification.
+Shopify MAIN is `193311572282`. The newer client-hub copy `193374224698` remains
+UNPUBLISHED, with its real-test flag returned to false after the authorized EN/ES
+acceptance. See [client-hub receipts](docs/handoffs/2026-11-12-client-hub-live-acceptance.md)
+and [Rondo/backend handoff](docs/handoffs/2026-11-12-signup-policy-rondo-backend.md).
+The dated sections below preserve older implementation context; their historical
+route counts, theme IDs and availability statements are not current release facts.
 
-## Downloads
+The Velani company website (www.thevelani.com): a static site generator that produces a local preview and a Shopify theme. It presents NEVORA, the scheduling, time clock and payroll calculation app for shift teams (in development, offered to businesses by quote), and Velani's custom development work. The current design is "Night" (`src/night/`), approved 2026-11-02; the earlier navy/paper mockup in `docs/reference/approved-homepage.png` is superseded.
 
-- [Complete source/evidence handoff](deliverables/2026-11-02/velani-company-website-daf95f6-handoff.zip), including the original MAIN theme backup, original mockups, complete-history source bundle, compiled preview, latest active ledger and reviews.
-- [Importable unpublished Shopify theme](deliverables/2026-11-02/velani-midnight-unpublished.zip).
-- [SHA256 checksums](deliverables/2026-11-02/SHA256SUMS).
+## Routes and themes
 
-These are immutable snapshots of application checkpoint `daf95f6`. Its original handoff describes the pre-GitHub state at the time it was created; the transfer status below is the current record.
+- 19 routes (`src/content.mjs`): home, NEVORA, products, custom development, about, contact, plans, help, legal index, website privacy notice, cookies and preferences, website terms, software and project terms, accessibility, security, and four NEVORA policy pages (support, privacy policy, terms of use, account deletion) generated from the NEVORA app's approved policy source (`src/nevora-policies.mjs`). Each route becomes `templates/page.<slug>.json` with a `sections/velani-<slug>.liquid` section, plus `templates/index.velani-<slug>.json` so unpublished drafts can be reviewed through `?preview_theme_id=…&view=velani-<slug>` without published page resources.
+- Spanish (es): five more routes mirror their English pages 1:1: `/pages/es` (home), `/pages/es-nevora`, `/pages/es-planes`, `/pages/es-productos` and `/pages/es-contacto` (templates `page.es`, `page.es-nevora`, …, plus `index.velani-es*` for drafts). Spanish copy is in `src/content.es.mjs` and `src/night/*.es.*`; terms in `docs/i18n/es-glossary.md`. Every page has an EN | ES switch (header, phone menu, NEVORA local nav, footer); paired pages carry reciprocal hreflang (en, es, x-default → English) on the main domain. The header and footer are per-language theme snippets (`snippets/velani-header-en|es`, `velani-footer-en|es`). To publish, the store needs five Page resources with those handles and template suffixes.
+- Shopify store `x19hvn-ar`. Theme IDs are recorded in the delivery notes under `docs/`; only unpublished themes are changed without the owner's explicit instruction to publish.
+- Historical snapshots of the first (navy/paper) delivery, including the original MAIN theme backup, are in `deliverables/2026-11-02/` with SHA256 checksums.
+- Page content and the policy directory are complete for review. Final published notices require verified website delivery, vendors, retention and commercial terms. This is not a legal compliance certification.
 
 ## Run locally
 
@@ -23,15 +31,19 @@ Node 24+ and Python 3 are needed for packaging. Run `npm ci`, then `npm run dev`
 
 Run `npm test`, `npm run build`, `npm run check:theme`, `npm run package:theme` and `npm run check:readback`. The importable archive is `dist/velani-midnight-unpublished.zip`; `dist/theme-manifest.json` records every file and the ZIP SHA256. Build replaces `dist`, so package after the final build.
 
+Acceptance scripts in `scripts/checks/` run against the local server in Chromium and write evidence under `evidence/`: `acceptance.mjs` (home and NEVORA journeys, the time-clock demo with mouse, touch and keyboard, Spanish, no-JavaScript and reduced-motion states, the NEVORA enquiry variant, axe), `scroll-stability.mjs` (finger-like scrolling on a phone: layout shift, long frames, header flips, overflow) and `clipping.mjs` (every route at 320px and 200% zoom). `spanish-pages.mjs` (Chromium and WebKit, 1440/834/390) covers the Spanish pages, the language switch, the Spanish contact variants, time clock and Rondo. `fixes-2026-11-05b.mjs` (Chromium and WebKit, 1440/1024/834/390) covers the second inspection pass: no text/visual overlap from 769 to 1920px, menus and focus, the PIN result, Rondo's expired, timeout and verification states, the contact form, cookie consent purposes and the copy changes. Set `VELANI_CHROMIUM_EXECUTABLE` when Playwright's own Chromium is not installed.
+
+The AI assistant (`src/night/assist.*`, built to `velani-assist.js` with the vendored headless client `velani-assistant.js` from `services/velani-ai/integration` on the `codex/velani-website-ai-backend` branch) appears only when the theme setting `assistant_api_url` holds the HTTPS origin of the deployed Velani AI service. Locally, start the harness (`node scripts/ai-harness/dev-server.mjs <services/velani-ai dir> 3001 http://127.0.0.1:4173 0`, which runs the real app with an in-memory store and a scripted model) and `VELANI_ASSISTANT_API=http://127.0.0.1:3001 npm run dev`; `scripts/checks/assistant.mjs` then exercises the widget, and with `VELANI_AI_DIR` set it also covers the CAPTCHA path with a fake Turnstile.
+
 Browser checks: install Playwright browsers and host dependencies using the supported installer, start the local server, then run `VELANI_ENGINES=chromium,firefox,webkit npm run check:browser`. `VELANI_BROWSER_RUN` chooses a new evidence directory; preserve failed runs. `VELANI_CHROMIUM_EXECUTABLE` can select an installed Chromium. `VELANI_PREVIEW_URL` defaults to `http://127.0.0.1:4173`. Browser run directories use timestamps by default and refuse existing names. `npm run check:privacy` runs the four asynchronous/no-JavaScript privacy regressions; use the same `VELANI_ENGINES` setting for three-engine coverage.
 
 ## Draft behavior
 
-The form validates a draft locally and states that nothing was sent. No field content is saved to browser storage. The Shopify `inquiries_enabled` setting is **false**, and native live delivery also requires the MAIN role. No real inquiry was sent or recipient tested.
+On drafts the form validates locally and states that nothing was sent; no field content is saved to browser storage. The Shopify `inquiries_enabled` setting defaults to **true** (owner-approved 2026-11-02): on the published MAIN theme the Contact page uses Shopify's native contact form, and inquiries go to the store's sender address. The `?interest=nevora` variant asks about team size and locations and makes the message optional; if the message is empty, the browser fills it with those details before the native submission.
 
 Cookie controls use the Shopify Customer Privacy API when available. The local version demonstrates choices only for the current document. Missing/failing platform consent never becomes a fake success, and no new optional analytics or marketing integration is included.
 
-Draft links use Shopify's supported alternate index templates (`?view=velani-privacy`, for example) and preserve the exact preview theme ID. This makes the 14 company destinations reviewable without publishing or assigning global Shopify Page resources. MAIN-role navigation has canonical `/pages/...` destinations; those resources must be separately prepared before any authorized launch.
+Draft links use Shopify's supported alternate index templates (`?view=velani-privacy`, for example) and preserve the exact preview theme ID, so every destination is reviewable on an unpublished theme without touching global Shopify Page resources. MAIN-role navigation has canonical `/pages/...` destinations; the 17 pages with matching handles and templates exist in the store.
 
 The new layout does not render inherited retail templates or global legacy policy text. Existing products, checkout capabilities, coffee policies, menus, other drafts, settings, DNS and password protection remain store resources and require a separate cutover decision. This theme does not disable those global systems.
 
@@ -41,11 +53,11 @@ See `evidence/` for actual browser, unit, theme and Shopify readback results, in
 
 Cloud WebKit uses already available user-space libraries linked only inside `.cache`; no application or machine configuration was changed. Playwright's host `ldconfig` check does not see those user-space libraries, so the cloud run explicitly skips that preflight while executing the real browser. WebKit's screenshot driver injects `body {}` to synchronize animations; the site correctly rejects it under its CSP. Those exact capture-time messages are retained separately from application runtime failures. See the diagnostic JSON and browser report; the site CSP was not relaxed.
 
-The source, original references, active ledger and review reports must be retained. Do not publish, enable delivery, merge into NEVORA or modify production as part of this preview task.
+The source, original references, active ledger and review reports must be retained. Publishing a theme, enabling live delivery, changing production store settings or merging into NEVORA happen only on the owner's explicit instruction.
 
 
 ## Website AI backend source
 
-The complete, separate website assistant lives in [services/velani-ai](services/velani-ai) on branch `codex/velani-website-ai-backend`. Start with [the Claude handoff](services/velani-ai/START-HERE-CLAUDE.md) and [Vercel setup](services/velani-ai/docs/VERCEL.md). This source handoff does not change the current Shopify theme or deploy the assistant.
+The separate website assistant and client-hub backend live in [services/velani-ai](services/velani-ai). Start with the current dated handoffs above and [Vercel setup](services/velani-ai/docs/VERCEL.md). The original `codex/velani-website-ai-backend` branch and source ZIP remain historical recovery artifacts.
 
 [Download the complete AI source ZIP](deliverables/2026-11-03/velani-ai-source.zip), including `src`, all three migrations, `package.json`, `Dockerfile`, `docs/api.md` and the complete integration directory. Real credentials, dependency folders and build output are excluded.

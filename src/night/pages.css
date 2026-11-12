@@ -1,0 +1,665 @@
+/* ---------- Inner pages: company, contact, help, legal and NEVORA policies ---------- */
+/* Text hero: a label, a big title, one paragraph */
+.phero{padding:clamp(88px,12vw,168px) 0 var(--s1)}
+@media(max-width:833px){.phero{padding-top:56px}}
+.phero .t1{max-width:16ch}
+.phero .lede{margin-top:24px;max-width:34em}
+.phero .acts{margin-top:32px}
+.doc-meta{margin-top:24px;font-size:0.75rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--text-3)}
+
+/* Sections with a heading on the left and the words on the right */
+.split{padding:48px 0 var(--s2)}
+.split>.wrap>*{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:12px 64px;padding:40px 0 44px;align-items:baseline;scroll-margin-top:calc(var(--anchor) - 12px)}
+.split h2{max-width:16ch}
+.split h3{font-size:1.1875rem;font-weight:600;letter-spacing:-.015em;line-height:1.35;color:var(--text);margin-bottom:10px}
+.split p{color:var(--text-2);max-width:36em}
+.split p+p{margin-top:14px}
+.split .more{margin-top:14px}
+@media(max-width:833px){.split>.wrap>*{grid-template-columns:1fr;padding:28px 0 32px}}
+
+/* Chapters on dark pages: a label and a title, then the content */
+.chap{padding-top:var(--s3);scroll-margin-top:calc(var(--anchor) + 48px - var(--s3))}
+.chap .head{max-width:780px}
+.chap .head .lede{margin-top:20px}
+.chap.chap-follow{padding-top:var(--s2);scroll-margin-top:calc(var(--anchor) + 48px - var(--s2))}
+
+/* Steps on one rail: "How a custom project works", "How your business gets NEVORA".
+   One line, one dot per step; the steps sit on the content edge. Below 1024px the rail turns vertical. */
+.rail{position:relative;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px;margin-top:var(--s1)}
+.rail.r3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.rail::before{content:"";position:absolute;left:0;right:0;top:0;height:1px;background:var(--line-2);transform-origin:0 50%;transform:scaleX(0);transition:transform 1.2s var(--out)}
+.rail.in::before,.no-js .rail::before,.still .rail::before{transform:none}
+.rail li{position:relative;padding-top:30px}
+.rail li::after{content:"";position:absolute;left:0;top:-4px;width:9px;height:9px;border-radius:50%;background:var(--bg);box-shadow:0 0 0 1px var(--line-2);transition:background .5s var(--out),box-shadow .5s var(--out)}
+.rail li.in::after,.no-js .rail li::after,.still .rail li::after{background:var(--accent);box-shadow:0 0 0 4px rgba(187,216,255,.12)}
+.rail li:nth-child(2)::after{transition-delay:.15s}.rail li:nth-child(3)::after{transition-delay:.3s}.rail li:nth-child(4)::after{transition-delay:.45s}
+.rail i{display:block;margin-bottom:10px;font-style:normal;font-size:0.75rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--text-3)}
+.rail b{display:block;font-size:1.25rem;font-weight:600;line-height:1.3;letter-spacing:-.01em;text-wrap:balance}
+.rail span{display:block;margin-top:8px;font-size:1.0625rem;line-height:1.55;color:var(--text-2);max-width:30em}
+@media(max-width:1023px){
+ .rail,.rail.r3{grid-template-columns:1fr;gap:28px}
+ .rail::before{left:4px;right:auto;top:6px;bottom:6px;width:1px;height:auto;transform-origin:50% 0;transform:scaleY(0)}
+ .rail li{padding:0 0 0 32px}
+ .rail li::after{top:.4em}
+}
+@media(prefers-reduced-motion:reduce){.rail li::after{transition:none}}
+.how-page{padding:var(--s3) 0 var(--s3)}
+.how .t2{max-width:16ch}
+
+/* Closing band: a hairline on the content edge, then a heading and its links (NEVORA help, Support) */
+.band{padding:var(--s2) 0}.faq+.band{padding-top:0}
+/* Custom development: the four services, one tap away */
+.jump{position:relative;z-index:1;display:flex;flex-wrap:wrap;gap:4px 28px;margin-top:40px}
+.jump a{display:inline-flex;align-items:center;min-height:44px;font-size:0.75rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--text-2);text-decoration:underline;text-decoration-color:var(--line-2);text-underline-offset:6px;text-decoration-thickness:1px;transition:color .2s,text-decoration-color .2s}
+@media(hover:hover){.jump a:hover{color:var(--text);text-decoration-color:currentColor}}
+@media(max-width:599px){.jump{display:grid;grid-template-columns:1fr 1fr;gap:0 16px;margin-top:28px}}
+/* Booking panel: the phone screen's step row sits behind the copy, so the scrim is deeper here */
+@media(min-width:834px){#booking .hph{object-position:0% 50%}#booking .hcopy{max-width:460px}}
+/* Business tools: a real NEVORA web screen shown straight, in a window over the softened room photo */
+.hwin{position:absolute;z-index:1;right:max(var(--pad),calc(50% - 620px));top:50%;width:min(680px,48vw);transform:translateY(-50%);border-radius:var(--r2);overflow:hidden;box-shadow:0 0 0 1px rgba(255,255,255,.12),0 60px 120px -30px rgba(0,0,0,.9)}
+.hwin img{display:block;width:100%;height:auto}
+.hcopy p.hcap{margin:20px 0 0;font-size:0.8125rem;line-height:1.5;color:var(--label);max-width:30em}
+.hpanel.right .hwin{right:auto;left:max(var(--pad),calc(50% - 620px))}
+@media(min-width:834px){#online-stores .hcopy{max-width:440px}}
+@media(min-width:834px){#business-systems .hcopy{max-width:440px}}
+@media(min-width:834px) and (max-width:1180px){.hwin{width:min(520px,46vw)}}
+.hduo{position:absolute;z-index:1;right:max(var(--pad),calc(50% - 600px));top:50%;transform:translateY(-50%);display:flex;align-items:flex-start;gap:24px}
+.hduo .ph{width:250px;padding:7px;border-radius:40px;background:#0b0d10;box-shadow:0 0 0 1px rgba(255,255,255,.14),inset 0 0 0 1px rgba(255,255,255,.05),0 50px 100px -30px rgba(0,0,0,.9)}
+.hduo .ph img{display:block;width:100%;height:auto;border-radius:33px}
+.hduo .ph+.ph{margin-top:64px}
+@media(min-width:834px) and (max-width:1180px){.hduo{gap:16px}.hduo .ph{width:200px;padding:6px;border-radius:34px}.hduo .ph img{border-radius:28px}}
+@media(min-width:834px) and (max-height:760px){.hduo .ph{width:190px}}
+@media(max-width:833px){.hduo{position:relative;right:auto;top:auto;transform:none;order:-1;justify-content:center;gap:14px;margin:48px var(--pad) 32px}.hduo .ph{width:calc(50% - 7px);max-width:210px;padding:4px;border-radius:26px}.hduo .ph img{border-radius:22px}.hduo .ph+.ph{margin-top:40px}.hpanel:has(.hduo){min-height:0;justify-content:flex-start}.hpanel:has(.hduo) .hcopy{margin-top:0}}
+@media(max-width:833px){.hpanel.svc .hwin{position:absolute;left:var(--pad);right:var(--pad);top:calc((75vw - (100vw - var(--pad)*2)/1.6)/2);width:auto;transform:none;border-radius:12px}}
+@media(max-width:833px){#booking .hshade{background:linear-gradient(0deg,rgba(0,0,0,.95) 0%,rgba(0,0,0,.86) 44%,rgba(0,0,0,.45) 66%,rgba(0,0,0,0) 84%)}}
+.band-in{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:16px 64px;align-items:baseline;padding-top:32px;background:linear-gradient(var(--line),var(--line)) var(--pad) 0/calc(100% - var(--pad)*2) 1px no-repeat}
+.band-in p{color:var(--text-2);max-width:34em}
+.band-links{display:grid;grid-template-columns:repeat(2,minmax(0,max-content));gap:6px 40px;margin-top:8px}
+@media(max-width:599px){.band-links{grid-template-columns:1fr}}
+@media(max-width:1023px){.band-in{grid-template-columns:1fr;gap:12px 0}}
+
+/* Facts: a label over each value (client support, NEVORA specs) */
+.spec{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:40px clamp(24px,3vw,48px);margin-top:var(--s1)}
+.spec dt{font-size:0.75rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--text-3)}
+.spec dd{margin:10px 0 0;font-size:1.0625rem;line-height:1.5;color:var(--text);text-wrap:pretty}
+.spec dd a{color:inherit;text-decoration:underline;text-underline-offset:4px;text-decoration-thickness:1px;text-decoration-color:var(--line-2)}@media(hover:hover){.spec dd a:hover{text-decoration-color:currentColor}}
+.spec.big dd{font-size:clamp(1.3125rem,2vw,1.875rem);line-height:1.2;font-weight:600;letter-spacing:-.022em}
+.spec dd small{display:block;margin-top:8px;font-size:0.875rem;font-weight:400;letter-spacing:0;color:var(--text-2)}
+@media(max-width:959px){.spec{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:599px){.spec{grid-template-columns:1fr;gap:28px}}
+.support{padding-bottom:var(--s2)}
+.support .acts{margin-top:var(--s1)}
+
+/* Plans: facts, what is included, and what happens on day 30 */
+.plans{padding-bottom:var(--s2)}
+.plans .spec.big{margin-top:0;grid-template-columns:repeat(4,minmax(0,1fr))}
+@media(max-width:959px){.plans .spec.big{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:599px){.plans .spec.big{grid-template-columns:1fr}}
+.plans .inc{margin-top:var(--s2)}
+.plans .inc .hkick{margin-bottom:12px}
+.plans .inc h2{max-width:16ch}
+.plans .inc .lede{margin-top:16px;max-width:34em}
+.plans .fine{margin-top:32px;max-width:48em}
+/* Questions (the Help page, and the list on NEVORA) */
+.faq{padding-bottom:var(--s2)}
+.faq-list{margin-top:var(--s1);padding-bottom:0}
+@media(min-width:1024px){.qa{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:16px 64px;align-items:start}.qa .faq-list{margin-top:0}}
+.faq details{max-width:880px;border-top:1px solid var(--line)}
+.faq details:last-of-type{border-bottom:1px solid var(--line)}
+.faq summary{display:flex;align-items:center;justify-content:space-between;gap:24px;min-height:72px;padding:18px 0;font-size:clamp(1.0625rem,1.4vw,1.25rem);font-weight:500;letter-spacing:-.01em;cursor:pointer;list-style:none}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary .icon{font-size:1.125rem;color:var(--text-3);transition:transform .3s var(--out)}
+.faq details[open] summary .icon{transform:rotate(45deg) scale(.78)}
+.faq details p{padding:0 48px 26px 0;color:var(--text-2);max-width:40em}
+@media(hover:hover){.faq summary:hover{color:var(--accent)}}
+.faq .acts{margin-top:var(--s1)}
+
+/* Directory of links: flat tiles */
+.dir{padding-bottom:var(--s3)}
+.dir .hkick{margin-top:var(--s2)}
+.dir .hkick:first-child{margin-top:0}
+.tiles{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:24px}
+.tile{display:flex;flex-direction:column;gap:8px;min-height:188px;padding:24px;border-radius:var(--r2);background:var(--panel);box-shadow:0 0 0 1px var(--line);transition:background-color .25s,box-shadow .25s}
+.tile p{color:var(--text-2);max-width:34em}
+.tile .icon{margin-top:auto;align-self:flex-end;font-size:1.25rem;color:var(--text-2);transition:transform .35s var(--out),color .2s}
+@media(hover:hover){.tile:hover{background:var(--panel-2);box-shadow:0 0 0 1px var(--line-2)}.tile:hover .icon{transform:translateX(5px);color:var(--text)}}
+@media(max-width:700px){.tiles{grid-template-columns:1fr}.tile{min-height:0;padding:24px}}
+
+/* Long documents: legal notices and NEVORA policies. Numbered sections, a quiet contents column, no hairlines. */
+.doc{padding-bottom:var(--s3)}
+.doc-grid{display:grid;grid-template-columns:minmax(0,3fr) minmax(0,8fr);gap:48px 96px;align-items:start}
+.doc-aside{position:sticky;top:88px;display:flex;flex-direction:column;gap:4px}
+.doc-aside-t{margin:28px 0 8px;font-size:0.75rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--text-3)}
+.doc-aside-t:first-child{margin-top:0}
+.doc-toc{display:contents}.doc-toc summary{list-style:none;cursor:default;display:flex;align-items:center;justify-content:space-between}.doc-toc summary::-webkit-details-marker{display:none}.doc-toc summary::after{content:"";display:none;width:8px;height:8px;border-right:1px solid var(--text-2);border-bottom:1px solid var(--text-2);transform:rotate(45deg);transition:transform .2s}.doc-toc[open] summary::after{transform:rotate(225deg)}
+.doc-aside nav{display:flex;flex-direction:column}
+.doc-aside a{padding:6px 0 6px 14px;border-left:1px solid var(--line);font-size:0.875rem;line-height:1.4;color:var(--text-2);transition:color .2s,border-color .2s}
+@media(hover:hover){.doc-aside a:hover{color:var(--text);border-color:var(--text)}}
+.doc-body{max-width:38em}
+.doc-body section{display:grid;grid-template-columns:56px minmax(0,1fr);gap:4px 16px;padding:0 0 56px}
+.doc-body section>i{grid-row:1/span 9;padding-top:.45em;font-style:normal;font-size:0.75rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--text-3)}
+.doc-body section>*:not(i){grid-column:2}
+.doc-body h2{font-size:clamp(1.5rem,2vw,2rem);font-weight:600;letter-spacing:-.025em;line-height:1.15;margin-bottom:12px}
+.doc-body p,.doc-body li{color:var(--text-2);font-size:1.0625rem;line-height:1.65}
+.doc-body p+p,.doc-body p+ul,.doc-body ul+p{margin-top:14px}
+.doc-body ul,.doc-body ol{display:flex;flex-direction:column;gap:10px}
+.doc-body ol{counter-reset:step}.doc-body ol li{counter-increment:step;padding-left:28px}.doc-body ol li::before{content:counter(step) ".";width:auto;height:auto;top:0;left:0;background:none;font-size:0.9375rem;font-weight:500;color:var(--text-2);font-variant-numeric:tabular-nums;line-height:1.85}
+.doc-body li{position:relative;padding-left:22px}
+.doc-body li::before{content:"";position:absolute;left:2px;top:.78em;width:6px;height:1px;background:var(--text-3)}
+.doc-body strong{color:var(--text);font-weight:600}
+.doc-body a,.doc-contact a,.contact-aside a,.split p a,.faq details p a,.support a.ul{color:var(--text);text-decoration:underline;text-underline-offset:4px;text-decoration-thickness:1px;text-decoration-color:var(--line-2)}
+@media(hover:hover){.doc-body a:hover,.doc-contact a:hover,.contact-aside a:hover,.split p a:hover,.faq details p a:hover{text-decoration-color:currentColor}}
+.doc-end{margin-top:8px;padding-top:40px;color:var(--text-2);font-size:1.0625rem;line-height:1.65;max-width:40em}
+.phero .kicker a{text-decoration:underline;text-underline-offset:4px;text-decoration-thickness:1px;text-decoration-color:var(--line-2)}
+.doc-end .hkick{margin-bottom:10px}
+.doc-end .acts{margin-top:24px}
+.doc-body .pill{margin:20px 0 36px}
+@media(min-width:834px){.doc-end,.doc-body>.pill{margin-left:72px}}
+@media(max-width:833px){
+ .doc-grid{grid-template-columns:1fr;gap:32px}
+ .doc-aside{position:static}
+ .doc-toc{display:block;margin-bottom:16px}.doc-toc summary{cursor:pointer;min-height:44px;margin:0;padding:0 2px;border-bottom:1px solid var(--line);color:var(--text)}.doc-toc summary::after{display:block;margin-top:-4px}.doc-aside .doc-toc nav{flex-direction:column;gap:0;padding:8px 0 4px}
+ .doc-aside .doc-aside-t{margin-top:0}
+ .doc-aside nav:last-of-type{flex-direction:row;flex-wrap:wrap;gap:8px}
+ .doc-aside a{display:inline-flex;align-items:center;min-height:44px;padding:0 14px;border:1px solid var(--line-2);border-radius:var(--r);font-size:0.75rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--text)}
+ .doc-toc a{display:block;min-height:0;padding:9px 0 9px 14px;border:0;border-left:1px solid var(--line);border-radius:0;font-size:0.9375rem;font-weight:400;letter-spacing:0;text-transform:none;color:var(--text-2)}
+ .doc-body section{grid-template-columns:1fr;padding-bottom:44px}
+ .doc-body section>i{grid-row:auto}
+ .doc-body section>*:not(i){grid-column:1}
+}
+
+/* Contact: one centred column, large quiet fields with the label inside */
+.cform-hero{text-align:center;padding-bottom:40px}
+.cform-hero .t1{margin-inline:auto;max-width:14ch}
+.cform-hero .hfact{margin:16px auto 0;max-width:34em}
+.contact{padding:0 0 var(--s2)}
+.cform{max-width:calc(var(--pad)*2 + 560px)}
+.inquiry-form fieldset{border:0;margin:0;padding:0;min-width:0;display:block}
+.ff{position:relative;margin-top:12px}
+.ff input,.ff select,.ff textarea{display:block;width:100%;min-height:58px;padding:26px 16px 10px;font:inherit;font-size:1.0625rem;line-height:1.3;color:var(--text);background:var(--panel-2);border:1px solid transparent;border-radius:var(--r2);transition:border-color .15s,box-shadow .15s;appearance:none;-webkit-appearance:none}
+.ff label{position:absolute;left:16px;top:29px;transform:translateY(-50%);font-size:1.0625rem;line-height:1;color:var(--text-3);pointer-events:none;transition:top .15s var(--out),font-size .15s var(--out),color .15s}
+.ff .opt{color:var(--text-3)}.ff .opt::before{content:"· "}
+.ff input:focus+label,.ff input:not(:placeholder-shown)+label,.ff textarea:focus+label,.ff textarea:not(:placeholder-shown)+label,.ff.sel select:focus+label,.ff.sel select:not(:has(option[value=""]:checked))+label{top:10px;transform:none;font-size:0.75rem;color:var(--text-2)}
+.ff.area label{top:28px}
+.ff.area textarea{min-height:140px;resize:none;line-height:1.5;padding-top:30px}
+.ff.sel{background:linear-gradient(45deg,transparent 50%,var(--text-2) 50%),linear-gradient(135deg,var(--text-2) 50%,transparent 50%);background-position:calc(100% - 22px) 50%,calc(100% - 17px) 50%;background-size:5px 5px;background-repeat:no-repeat;border-radius:var(--r2)}
+.ff.sel select{background-color:transparent;position:relative;cursor:pointer;padding-right:44px}
+.ff.sel{background-color:var(--panel-2)}
+@media(hover:hover){.ff input:hover,.ff select:hover,.ff textarea:hover{border-color:rgba(255,255,255,.14)}}
+/* Fields take the site's focus ring: 2px light blue */
+.ff input:focus-visible,.ff select:focus-visible,.ff textarea:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-color:rgba(255,255,255,.5)}
+.ff [aria-invalid="true"],.ff [aria-invalid="true"]:hover,.ff [aria-invalid="true"]:focus-visible{border-color:#ff9b8f}
+.field-error{margin:6px 16px 0;font-size:0.8125rem;line-height:1.5;color:#ffb3a9}
+.field-error:empty{display:none}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.frow .ff{margin-top:12px}
+.cform .pill{width:100%;margin-top:24px;cursor:pointer}
+.cform .pill:disabled{opacity:.6;cursor:default}
+.send-note{margin:16px 0 0;text-align:center;font-size:0.875rem;color:var(--text-3)}
+.send-note a{color:var(--text-2);text-decoration:underline;text-underline-offset:3px}
+.contact .fine{margin:20px auto 0;text-align:center;max-width:42em}
+.form-legal,.form-legal p{margin:16px 0 0;text-align:center;font-size:0.75rem;line-height:1.5;color:var(--text-3)}.form-legal p{margin:0}.form-legal a{color:var(--text-2);text-decoration:underline;text-underline-offset:3px}
+.form-status{margin-top:16px;text-align:center;font-size:0.875rem;color:var(--text-2)}
+.form-status:empty{display:none}
+.form-status[data-state="invalid"],.form-status[role="alert"]{color:#ffb3a9}
+.form-status[data-state="accepted"],.form-status[data-state="preview"]{color:var(--accent)}
+.note{margin:0 0 16px;text-align:center;font-size:0.75rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--text-3)}
+.contact-aside{margin:56px 0 0;text-align:center;font-size:0.875rem;line-height:1.7;color:var(--text-3)}
+.contact-aside a{display:inline-block;min-height:24px;color:var(--text-2);text-decoration:underline;text-decoration-color:var(--line-2);text-underline-offset:3px}
+.panel{background:var(--panel);border-radius:var(--r2);padding:clamp(24px,3.4vw,44px);box-shadow:0 0 0 1px var(--line)}
+.panel .t3{margin-bottom:12px}
+.panel>p{color:var(--text-2)}
+.panel .acts{margin-top:28px}
+.field-help.mail{margin-top:16px;font-size:0.875rem;color:var(--text-3)}
+@media(max-width:600px){
+ .frow{grid-template-columns:1fr;gap:0}
+ .contact-aside{margin-top:48px}
+}
+
+/* Cookie choices */
+.cookie-dialog{width:min(560px,calc(100% - 32px));max-height:calc(100% - 32px);overflow:auto;border:0;border-radius:var(--r2);padding:clamp(24px,4vw,36px);background:var(--panel);color:var(--text);box-shadow:0 0 0 1px var(--line-2),0 40px 120px rgba(0,0,0,.7)}
+.cookie-dialog::backdrop{background:rgba(2,5,9,.7);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+.dialog-heading{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:12px}
+.dialog-heading h2{font-size:1.5rem;font-weight:600;letter-spacing:-.02em}
+.icon-button{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;margin-right:-10px;border-radius:var(--r);font-size:1.25rem}
+@media(hover:hover){.icon-button:hover{background:rgba(255,255,255,.06)}}
+.cookie-dialog>p{font-size:0.875rem;color:var(--text-2)}
+.cookie-dialog a{color:var(--accent);text-decoration:underline;text-underline-offset:3px}
+.cookie-option{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:16px 0;border-bottom:1px solid var(--line);font-size:0.875rem}
+#cookie-summary{padding-bottom:16px;border-bottom:1px solid var(--line)}
+.cookie-option strong{display:block;font-weight:600}
+.cookie-option p,.cookie-option span span{display:block;color:var(--text-3);font-size:0.875rem}
+.cookie-option input{width:22px;height:22px;accent-color:var(--accent);flex:none}
+.always-on{font-size:0.75rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--text-3);white-space:nowrap}
+.cookie-context{margin-top:14px;font-size:0.875rem;color:var(--text-3)}@media(max-width:600px){.cookie-context{padding-bottom:8px}.consent-status:not(:empty){position:sticky;bottom:140px;padding:8px 0;background:var(--panel)}}
+.consent-status{font-size:0.875rem;color:var(--accent);margin-top:8px}
+.consent-status:empty{display:none}
+.cookie-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}
+.cookie-actions .pill{min-height:44px;padding:0 16px;font-size:0.75rem}
+.cookie-actions button:disabled{opacity:.6}
+.cookie-nojs-note{font-size:0.8125rem}
+/* Phones: the dialog scrolls, and its actions stay in reach at the bottom */
+@media(max-width:600px){.cookie-dialog{padding:20px}.cookie-option{padding:12px 0}.cookie-actions{display:grid;grid-template-columns:1fr 1fr;gap:10px;position:sticky;bottom:0;margin:12px -20px -20px;padding:12px 20px 20px;background:var(--panel)}.cookie-actions .pill{min-width:0;padding:0 10px;font-size:0.6875rem;white-space:normal}.cookie-actions .pill:last-child{grid-column:1/-1}}
+
+.field[hidden],.form-row[hidden],[data-nevora-fields][hidden]{display:none}
+/* NEVORA enquiry variant: the boot script adds .ask-nevora before paint, so nothing changes after the page shows */
+.ask-nevora .v-d,html:not(.ask-nevora) .v-n,html:not(.ask-demo) .v-m,.ask-demo .v-n:not(.v-nm){display:none}
+/* Relay waitlist (?interest=relay): its own label, heading and fact line; the form keeps the general wording */
+html:not(.ask-relay) .v-r,.ask-relay .cform-hero .v-d{display:none}
+.ask-nevora [data-nevora-fields]{display:grid}
+.ask-nevora .field-topic{display:none}
+.how-text{max-width:40em;margin-top:24px;color:var(--text-2)}
+.how-page .acts{margin-top:32px}
+/* Custom software (Nov 7): case studies on the page background, client screens large, no full-screen photo per section.
+   Screens use the .slab frame from the NEVORA page; phones use .slab.phone */
+.case{padding:clamp(88px,10vw,144px) 0}
+.case .anchor{position:relative;top:-80px;display:block}
+.case-head{max-width:760px}
+.case-kind{margin-top:12px;font-size:1.125rem;color:var(--accent)}
+.case-head .lede{margin-top:20px;color:var(--text-2);max-width:40em}
+.case-shots{display:grid;gap:clamp(20px,2.5vw,32px);margin-top:clamp(40px,5vw,64px)}
+.case-shots.two{grid-template-columns:1.25fr 1fr;align-items:start}
+.case .shot{position:relative;margin:0;border-radius:16px}
+.case .shot img{display:block;width:100%;height:auto}
+.case-credit{margin-top:24px;font-size:0.9375rem;color:var(--text-3)}
+.case-split{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(40px,6vw,96px);align-items:center}
+.case-phones{display:flex;gap:clamp(16px,2vw,28px);justify-content:center}
+.case-phones .shot.phone{width:min(260px,44%);aspect-ratio:auto;border-radius:30px;background:#0b0d10;padding:6px}
+.case-phones .shot.phone img{border-radius:24px}
+.case-phones .shot.phone+.shot.phone{margin-top:48px}
+.case-more{padding:0 0 clamp(72px,8vw,112px)}
+.case-more .lede{max-width:40em;color:var(--text-2)}
+.case-cols{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(40px,6vw,96px)}
+.case-cols h3{margin-top:0}
+@media(max-width:833px){
+ .case-split,.case-cols{grid-template-columns:1fr}
+ .case-phones{order:2}
+ .case-shots.two{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;overscroll-behavior-x:contain;margin-inline:calc(var(--pad)*-1);padding-inline:var(--pad);scroll-padding-inline:var(--pad);scrollbar-width:none}
+ .case-shots.two::-webkit-scrollbar{display:none}
+ .case-shots.two .shot{flex:0 0 88%;scroll-snap-align:start}
+ .case-phones .shot.phone{width:46%}
+ .case-phones .shot.phone+.shot.phone{margin-top:32px}
+}
+
+/* Sign in: a full first screen for NEVORA (the Home panel's real web and phone screens), then a split for Velani clients:
+   the question and the phone number on the left, the request form on the right; the company close ends the page */
+@media(min-width:1181px){
+ .shots-hero .hweb{right:max(var(--pad),calc(50% - 620px));width:min(600px,42vw)}
+ .shots-hero .hshot{right:calc(max(var(--pad),calc(50% - 620px)) + min(600px,42vw) - 96px);width:240px;top:56%}
+ .shots-hero .hcopy{max-width:min(520px,calc(100% - var(--pad)*2 - min(600px,42vw) - 200px))}
+}
+.client{padding:var(--s2) 0}
+.client-grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:clamp(48px,7vw,112px);align-items:start}
+.client-side{position:sticky;top:104px}
+.client-side .t2{margin:0;max-width:16ch}
+.client-side .lede{margin:24px 0 0;max-width:27em}
+.client-call{margin-top:56px}
+.client-call p{margin:0;font-size:0.9375rem;line-height:1.6;color:var(--text-2)}
+.client-tel{display:inline-block;margin:4px 0 6px;font-size:clamp(1.875rem,2.8vw,2.5rem);font-weight:600;letter-spacing:-.025em;line-height:1.15;color:var(--text);text-decoration:none;transition:color .2s var(--out)}
+.client-tel:hover{color:var(--accent)}
+.client-call a[href^="mailto"]{color:var(--text-2);text-decoration:underline;text-decoration-color:var(--line-2);text-underline-offset:3px}
+.client-call a[href^="mailto"]:hover{text-decoration-color:currentColor}
+.inquiry-form .kinds{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:0;padding:0;border:0;min-width:0}
+.kind{position:relative;display:flex;align-items:center;min-height:60px;padding:0 16px;border-radius:var(--r2);border:1px solid transparent;background:var(--panel-2);cursor:pointer;transition:background-color .2s var(--out),border-color .2s var(--out)}
+.kind input{position:absolute;inset:0;width:100%;height:100%;margin:0;opacity:0;cursor:pointer}
+.kind b{font-size:1.0625rem;font-weight:500;color:var(--text-2)}
+.kind:hover{border-color:rgba(255,255,255,.14)}
+.kind:has(input:checked){background:#f0f0fa;border-color:#f0f0fa}
+.kind:has(input:checked) b{color:#06121e}
+.kind:has(input:focus-visible){outline:2px solid var(--accent);outline-offset:2px}
+.client-send{display:flex;align-items:center;flex-wrap:wrap;gap:16px 24px;margin-top:24px}
+.client-send .pill{margin:0;cursor:pointer}
+.client-send .pill:disabled{opacity:.6;cursor:default}
+.client-note{margin:0;font-size:0.875rem;line-height:1.5;color:var(--text-3)}
+.client-note a{color:var(--text-2);text-decoration:underline;text-underline-offset:3px}
+.client-preview{margin:20px 0 0;font-size:0.875rem;line-height:1.5;color:var(--text-3)}
+.client .form-status{text-align:left}
+.client-write .t3{margin:0 0 12px}.client-write p{color:var(--text-2)}.client-write .acts{margin-top:28px}
+body:has(#inquiry-sent:not([hidden])) :is(.signin-top,.client-side){display:none}
+.client-grid:has(#inquiry-sent:not([hidden])){display:block}
+@media(prefers-reduced-motion:reduce){.kind,.client-tel{transition:none}}
+@media(max-width:833px){
+ .shots-hero .hshot{width:34%;margin:32px auto 24px}
+ .client{padding:72px 0}
+ .client-grid{display:flex;flex-direction:column;gap:0}
+ .client-side,.contact-side{display:contents}
+ .client-side .t2{max-width:none}
+ .contact-side .lede{margin-bottom:32px}
+ .client-side .lede{margin-bottom:32px}
+ .client-form{order:2}
+ .client-call{order:3;margin-top:56px}
+}
+@media(max-width:600px){
+ .client-send{flex-direction:column;align-items:stretch}
+ .client-send .pill{width:100%}
+}
+
+/* Plans: the trial in the first screen with its real end date, the 30 days as a calendar beside what happens in them, one NEVORA
+   screen large, the two ways the trial ends as two equal panels; custom work sits in the closing panel */
+.days,.plans-shot,.day30{padding:var(--s2) 0 0}
+.days-grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:clamp(48px,7vw,112px);align-items:start}
+.days-grid .t2{margin:0}
+.days-list{list-style:none;margin:36px 0 0;padding:0;display:grid;gap:28px}
+.days-list li{margin:0;padding:0}
+.days-list p{margin:0}
+.days-k{font-size:0.9375rem;font-weight:600;color:var(--accent)}
+.days-list .days-k+p{margin-top:6px;max-width:30em;font-size:1.0625rem;line-height:1.5;color:var(--text)}
+.days-fine{margin:32px 0 0;max-width:34em;font-size:0.875rem;line-height:1.5;color:var(--text-3)}
+.cal{padding:clamp(20px,2.4vw,32px);border-radius:var(--r2);background:var(--panel)}
+.cal-h{margin:0 0 18px;font-size:1.0625rem;font-weight:600;color:var(--text)}
+.cal-g{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:6px}
+.cal-g .w{padding-bottom:4px;font-size:0.8125rem;text-align:center;color:var(--text-3)}
+.cal-g .c{display:flex;flex-direction:column;justify-content:space-between;aspect-ratio:1;min-width:0;padding:8px 9px;border-radius:8px;font-size:0.875rem;line-height:1.2;color:var(--text-3)}
+.cal-g .c b{font-weight:500;white-space:nowrap}
+.cal-g .c.in{background:var(--panel-2);color:var(--text)}
+.cal-g .c.d1,.cal-g .c.d30{background:#f0f0fa;color:#06121e}
+.cal-g .c i{font-style:normal;font-size:0.75rem;font-weight:600;white-space:nowrap}
+.plans-shot .shot{margin:0}
+.shot-cap{margin:16px 0 0;font-size:0.875rem;line-height:1.5;color:var(--text-3)}
+.day-opts{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:clamp(40px,5vw,56px) 0 0}
+.day-opt{padding:clamp(28px,3vw,40px);border-radius:var(--r2);background:var(--panel)}
+.day-opt .t3{margin:0}
+.day-opt p{margin:14px 0 0;max-width:32em;font-size:1.0625rem;line-height:1.5;color:var(--text-2)}
+.day-opt p a{color:var(--text);text-decoration:underline;text-decoration-color:var(--line-2);text-underline-offset:3px}
+.day-acts{margin-top:32px}
+.day30{padding-bottom:var(--s2)}
+@media(max-width:833px){.days-grid{display:flex;flex-direction:column;gap:0}.days-grid>div:first-child{display:contents}.days-grid .t2{order:0}.cal{order:1;margin-top:32px;width:100%;max-width:none}.days-list{order:2;margin-top:40px}.days-fine{order:3}}
+@media(max-width:833px){
+ .days,.plans-shot,.day30{padding-top:72px}
+ .day30{padding-bottom:72px}
+ .day-opts{grid-template-columns:1fr}
+}
+@media(max-width:600px){
+ .cal{padding:16px}
+ .cal-g{gap:4px}
+ .cal-g .c{padding:5px 6px;font-size:0.75rem;border-radius:6px}
+ .cal-g .c i{display:none}
+}
+@media(max-width:359px){.hpanel.long h1{font-size:1.875rem}}
+
+/* Contact: the Sign in split. The heading changes with the topic; the phone sits under it; the form keeps the contact behaviour */
+.contact-split{padding:clamp(56px,7vw,104px) 0 var(--s2)}
+.contact-split .cform-hero{padding:0;text-align:left}
+.contact-split .cform-hero .t1{margin:0;max-width:none;font-size:clamp(2.5rem,3.6vw,3.25rem);line-height:1.04}
+.contact-split .cform-hero .lede{margin:24px 0 0;max-width:28em}
+.contact-split .fine{margin:20px 0 0;max-width:42em;text-align:left}
+.contact-split .form-status{text-align:left}
+.client-send .send-note{margin:0;text-align:left}
+.sent .note{font-size:0.875rem;font-weight:400;letter-spacing:0;text-transform:none}
+@media(max-width:1023px){.contact-split .client-grid{grid-template-columns:1fr;gap:40px}.contact-split .cform-hero .t1{max-width:16ch}}
+@media(max-width:833px){.contact-split{padding:48px 0 72px}.contact-split .cform-hero .t1{font-size:2.375rem;max-width:none}}
+@media(max-width:400px){.contact-split .cform-hero .t1{font-size:2rem}}
+@media(max-width:359px){.contact-split .cform-hero .t1{font-size:1.75rem}}
+.contact-side .client-call{margin:56px 0 0;text-align:left;font-size:inherit;line-height:inherit;color:inherit}
+.contact-side .client-call a.client-tel{display:inline-flex;align-items:center;min-height:44px;color:var(--text);text-decoration:none}
+.contact-side .client-call a.client-tel:hover{color:var(--accent)}
+.inquiry-form .topics{grid-template-columns:repeat(3,minmax(0,1fr));margin:0 0 12px}
+.topics .kind b{font-size:1rem}
+.ask-nevora .topics{display:none}
+@media(max-width:600px){.topics .kind{padding:0 12px}.topics .kind b{font-size:0.9375rem;line-height:1.2}}
+@media(max-width:833px){.contact-split .client-grid{gap:0}.contact-split .cform-hero .lede{margin-bottom:32px}}
+@media(max-width:379px){.inquiry-form .topics{grid-template-columns:1fr}}
+
+/* Support: the Contact split; two equal doors on the right, then the questions */
+.help-doors{display:grid;gap:12px;grid-auto-rows:1fr}
+.help-door{display:flex;flex-direction:column}
+.help-door .hacts{margin-top:28px}
+.help-top{padding-bottom:var(--s1)}
+:is(.help-top,.client)+.faq{padding-top:var(--s1)}
+:is(.help-top,.client)+.faq .qa{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:clamp(48px,7vw,112px)}
+@media(max-width:1023px){:is(.help-top,.client)+.faq .qa{grid-template-columns:1fr;gap:32px}}
+:is(.help-top,.client)+.faq .faq-list{margin-top:0}
+
+/* About: short hero with the reason for Velani set large, the three things we built (one picture size), the company beside the phone */
+.about-hero .hcopy p:not(.hkick){max-width:24em;font-size:clamp(1.25rem,1.9vw,1.625rem);line-height:1.4;color:#eef2f8}
+.about-built{padding:var(--s2) 0 0}
+.about-built .t2{margin:0}
+.built-row{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(20px,2.4vw,32px);margin-top:clamp(40px,5vw,56px)}
+.built-shot{margin:0;aspect-ratio:16/10;overflow:hidden;border-radius:var(--r2)}
+.built-shot img{width:100%;height:100%;object-fit:cover;object-position:50% 0}
+.built-shot.is-phone{display:flex;align-items:flex-start;justify-content:center;background:var(--panel);padding-top:6%}
+.built-shot.is-phone img{width:46%;height:auto;object-fit:initial;border-radius:16px 16px 0 0}
+.built-item .t3{margin:24px 0 0}
+.built-item p{margin:10px 0 0;max-width:30em;font-size:1rem;line-height:1.5;color:var(--text-2)}
+.built-item{display:flex;flex-direction:column}
+.built-item .more{margin-top:auto;padding-top:12px;align-self:flex-start}
+.about-how{padding-bottom:var(--s2)}
+.about-how .client-call{margin-top:40px}
+@media(max-width:833px){.about-built{padding-top:72px}.about-how{padding-bottom:72px}}
+@media(max-width:699px){.built-row{grid-template-columns:1fr;gap:48px}}
+@media(min-width:1024px){.about-how .days-grid{grid-template-columns:1fr 1fr;gap:clamp(24px,3vw,40px)}}
+.days-fine a{color:var(--text-2);text-decoration:underline;text-decoration-color:var(--line-2);text-underline-offset:3px}
+.days-fine a:hover{text-decoration-color:currentColor}
+/* About hero on phones and tablets: a short panel with the page's side margins (short sets margin:0, dim.long sets a full screen) */
+@media(min-width:834px){.hpanel.about-hero .hcopy{margin-left:max(var(--pad),calc(50% - 620px))}}
+/* Dim heroes on phones (About, Plans, Custom software): a short panel that ends after its actions, never a screen of dark;
+   the light in the photo is moved into view (its left edge is black) */
+@media(max-width:833px){.hpanel.dim.long{min-height:0;justify-content:flex-end;padding:132px 0 56px}.hpanel.dim.long .hcopy{margin:0 var(--pad)}.hpanel.dim.long .hph{object-position:72% 40%}}
+/* Pre-launch sweep: 44px touch targets for the phone link and the language switch on phones; legal headlines fit two lines at 320 */
+.client-tel{display:inline-flex;align-items:center;min-height:44px}
+@media(max-width:833px){.lang-sw a[href]{min-width:44px}}
+@media(max-width:359px){.phero .t1{font-size:2rem}}
+
+/* ---------- Pre-launch inspection (Nov 7) ---------- */
+/* Split pages (Sign in, Contact, Support): heading top left, form on the right, the phone block under the heading; one column below 1024 in reading order */
+.client-side{position:static}
+.client-grid{grid-template-rows:auto 1fr}
+.client-grid>.client-side,.client-grid>.contact-side{grid-column:1;grid-row:1}
+.client-grid>.client-form{grid-column:2;grid-row:1/3}
+.client-grid>.client-call{grid-column:1;grid-row:2;align-self:start;margin:56px 0 0;text-align:left;font-size:inherit;line-height:inherit;color:inherit}
+.client-grid>.client-call a.client-tel{display:inline-flex;align-items:center;min-height:44px;color:var(--text);text-decoration:none}
+.client-grid>.client-call a.client-tel:hover{color:var(--accent)}
+@media(max-width:1023px){
+ .client-grid,.contact-split .client-grid{display:flex;flex-direction:column;gap:0}
+ .client-grid>.client-side,.client-grid>.contact-side{display:block;margin-bottom:32px}
+ .client-grid .client-side .lede,.client-grid .contact-side .lede{margin-bottom:0}
+ .client-grid>.client-form,.client-grid>.client-call{order:0}
+ .client-grid .client-side .t2,.client-grid .contact-side .t1{max-width:none}
+}
+/* Fields in a row keep their own height when the neighbour shows an error */
+.inquiry-form .frow{align-items:start}
+/* Choices: a visible question; the chosen one is outlined in the accent, so it never competes with the white send button */
+.kinds-q{margin:0 0 10px;font-size:0.9375rem;color:var(--text-2)}
+.kind b{white-space:nowrap}
+.kind:has(input:checked){background:#14243a;border-color:var(--accent)}
+.kind:has(input:checked) b{color:var(--text)}
+@media(max-width:379px){.inquiry-form .kinds{grid-template-columns:1fr}}
+.ask-nevora .kinds-q.field-topic,.ask-relay .kinds-q.field-topic,.ask-relay .topics{display:none}
+/* Floating labels stay on one line */
+.ff label{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:calc(100% - 32px)}
+.ff.sel label{max-width:calc(100% - 60px)}
+/* Calendar: month names shrink away on phones and a key explains the two highlighted days */
+.cal-key{display:block;margin:16px 0 0;font-size:0.875rem;line-height:1.5;color:var(--text-2)}
+@media(max-width:1023px){.cal-g .c .mo,.cal-g .c i{display:none}.cal-key{display:block}}
+/* About: the statement in the hero reads as body copy, one step up; the Yavi phone fades out instead of being cut */
+.about-hero .hcopy p:not(.hkick){font-size:clamp(1.125rem,1.5vw,1.375rem)}
+.built-shot.is-phone img{-webkit-mask-image:linear-gradient(180deg,#000 70%,transparent);mask-image:linear-gradient(180deg,#000 70%,transparent)}
+/* Custom software: both Tool Box screenshots one height, the Yavi phones without an empty band, the case studies closer together */
+@media(min-width:834px){.case-shots.two{grid-template-columns:1fr 1fr;align-items:start}}
+.case-shots.two .shot{aspect-ratio:16/10}
+.case-shots.two .shot img{width:100%;height:100%;object-fit:cover;object-position:top}
+.case-phones .shot.phone{aspect-ratio:780/1688}
+.case-phones .shot.phone img{height:100%;object-fit:cover;object-position:top}
+.chap.case{padding-top:var(--s2)}
+.case-split{align-items:start}
+/* The zoom button's focus ring sits inside the rounded frame */
+.zoom-btn:focus-visible{outline-offset:-4px}
+@media(max-width:359px){html[lang=es] .hpanel h2{font-size:2rem}}
+/* Plans price (Nov 8, 2026): the words beside one team-size card, as the 30 days sit beside the calendar. The card's 30 marks
+   are the two bands (15 + 15); lit marks are your team, the soft ones the rest of your band. */
+@media(min-width:834px){.price-grid{align-items:center}}
+@media(max-width:833px){.price-grid{align-items:stretch}}
+.price-inc{margin:28px 0 0;max-width:34em;font-size:1.0625rem;line-height:1.55;color:var(--text)}
+.price-over{margin:14px 0 0;font-size:1.0625rem;line-height:1.5;color:var(--text-2)}
+.price-over a{color:var(--text);text-decoration:underline;text-decoration-color:var(--line-2);text-underline-offset:3px}
+.price-over a:hover{text-decoration-color:currentColor}
+.pcard{padding:clamp(24px,3vw,40px);border-radius:var(--r2);background:var(--panel)}
+.pc-top{display:flex;justify-content:space-between;align-items:baseline;gap:16px}
+.pc-q{font-size:1.0625rem;font-weight:600;color:var(--text)}
+.pc-n{margin:0;font-size:1.0625rem;color:var(--text-2);font-variant-numeric:tabular-nums}
+.pc-n output{color:var(--text);font-weight:600}
+.pc-amt{display:flex;align-items:baseline;gap:10px;margin:clamp(20px,2.4vw,28px) 0 0;color:var(--text)}
+.pc-amt b{font-size:clamp(3.5rem,6vw,5rem);line-height:1;font-weight:600;letter-spacing:-.04em;font-variant-numeric:tabular-nums}
+.pc-amt span{font-size:1.0625rem;color:var(--text-2)}
+.pc-amt span[hidden]{display:none}
+.pc-meter{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:clamp(24px,3vw,36px) 0 0}
+.pc-g{display:grid;grid-template-columns:repeat(15,minmax(0,1fr));gap:4px}
+.pc-meter i{display:block;height:32px;border-radius:3px;background:var(--line);transition:background-color .2s var(--out)}
+.pc-meter i.pc-in{background:var(--line-2)}
+.pc-meter i.pc-on{background:#f0f0fa}
+.pc-scale{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:10px;font-size:0.875rem;color:var(--text-3)}
+.pcard[data-n] .pc-scale span:first-child{color:var(--text-2)}
+.pc-ctl{display:flex;align-items:center;gap:12px;margin-top:clamp(20px,2.4vw,28px)}
+.pc-step{display:inline-flex;align-items:center;justify-content:center;flex:none;width:44px;height:44px;padding:0;border-radius:var(--r);background:rgba(0,0,0,.5);border:1px solid rgba(240,240,250,.35);color:#f0f0fa;cursor:pointer}
+.pc-step .icon{font-size:1.125rem}
+.pc-step[hidden]{display:none}
+.pc-step:disabled{opacity:.35;cursor:default}
+@media(hover:hover){.pc-step:not(:disabled):hover{background:rgba(0,0,0,.7);border-color:rgba(240,240,250,.6)}}
+.pc-step:active:not(:disabled){transform:scale(.96)}
+.pc-range{flex:1;min-width:0;height:44px;margin:0;background:none;accent-color:#f0f0fa;cursor:pointer}
+.pc-range:disabled{display:none}
+.pc-step:focus-visible,.pc-range:focus-visible{outline:2px solid #f0f0fa;outline-offset:3px}
+.pc-note{margin:clamp(16px,2vw,22px) 0 0;font-size:0.875rem;line-height:1.5;color:var(--text-3)}
+@media(max-width:833px){.price-grid .pcard{order:1;margin-top:32px}.price-grid .price-inc{order:2}.price-grid .price-over{order:3}.price-grid .days-fine{order:4}.price-grid .day-acts{order:5}}
+@media(prefers-reduced-motion:reduce){.pc-meter i{transition:none}}
+#price .days-fine{margin-top:20px;max-width:34em}
+button.hb{font-family:inherit;cursor:pointer}
+button.hb:disabled{cursor:progress;opacity:.75}
+.hacts[hidden],.hcopy p[hidden]{display:none}
+/* Signup and billing pages: the step's card under the panel. */
+.cflow{padding:0 0 var(--s2)}
+.cf-card{max-width:640px;padding:clamp(28px,3vw,40px);border-radius:var(--r2);background:var(--panel)}
+.cf-card>p{margin:0;font-size:1.0625rem;line-height:1.5;color:var(--text)}
+.cf-card .hacts{margin-top:24px}
+/* Signup (Nov 8, 2026): the email field and its button in the first screen, one row on wider screens. */
+.sform{margin-top:32px;max-width:520px}
+.sform[hidden],.hcopy [data-off][hidden],.hfact[hidden]{display:none}
+.sform-row{display:flex;gap:12px;align-items:stretch}
+.sform .ff{flex:1;min-width:0;margin:0}
+.sform .ff input{background:rgba(13,22,32,.82);border-color:rgba(240,240,250,.18);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+.sform .hb{flex:none;min-height:58px}
+.sform .field-error{margin:10px 0 0;font-size:0.875rem}
+.signup-top [data-sent]{margin-top:32px}
+@media(max-width:600px){.sform-row{flex-direction:column}.sform .hb{width:100%}}
+.signup-top .hfact a{color:var(--text);text-decoration:underline;text-decoration-color:rgba(240,240,250,.4);text-underline-offset:3px}
+.signup-top .hfact a:hover{text-decoration-color:currentColor}
+/* On phones the email form comes first; the NEVORA screen follows it, smaller. */
+@media(max-width:833px){.signup-top .hshot{order:2;width:40%;margin:48px auto 40px}.hpanel.signup-top:has(.hshot) .hcopy{margin-top:72px}}
+/* Setup (Nov 8, 2026): the Contact split; the form, then progress and the ready details in the same column. */
+.setup-form fieldset{margin:0 0 28px;padding:0;border:0;min-width:0}
+.setup-form legend.kinds-q{padding:0;margin:0 0 2px}
+.setup .field-help{margin:6px 16px 0;font-size:0.8125rem;line-height:1.5;color:var(--text-3)}
+.setup .field-help a{color:var(--text-2);text-decoration:underline;text-decoration-color:var(--line-2);text-underline-offset:3px}
+.setup .ff.pw input{padding-right:84px}
+.pw-toggle{position:absolute;right:8px;top:7px;min-width:64px;height:44px;padding:0 12px;border:0;border-radius:var(--r);background:none;color:var(--text-2);font:inherit;font-size:0.875rem;font-weight:600;cursor:pointer}
+.pw-toggle:hover{color:var(--text)}
+.pw-toggle:focus-visible{outline:2px solid var(--accent);outline-offset:0}
+.setup .client-send .pill{cursor:pointer}
+.setup .client-send .pill:disabled{opacity:.6;cursor:progress}
+.setup .form-status{margin-top:16px;text-align:left;color:#ffb3a9}
+.setup-form[hidden],.setup-card[hidden],.setup [data-off][hidden],.setup-acts[hidden]{display:none}
+.setup-acts{margin-top:32px}
+.setup-card{padding:clamp(24px,3vw,40px);border-radius:var(--r2);background:var(--panel)}
+.setup-steps{list-style:none;margin:0;padding:0;display:grid;gap:4px}
+.setup-steps li{position:relative;display:flex;align-items:center;gap:14px;min-height:52px;font-size:1.0625rem;color:var(--text-3)}
+.setup-steps li::before{content:"";flex:none;width:12px;height:12px;border-radius:50%;border:1.5px solid var(--line-2)}
+.setup-steps li[data-state="done"]{color:var(--text-2)}
+.setup-steps li[data-state="done"]::before{background:var(--text-2);border-color:var(--text-2)}
+.setup-steps li[data-state="now"]{color:var(--text);font-weight:600}
+.setup-steps li[data-state="now"]::before{border-color:#f0f0fa;box-shadow:0 0 0 4px rgba(240,240,250,.12);animation:setup-pulse 1.6s var(--io) infinite}
+@keyframes setup-pulse{50%{box-shadow:0 0 0 7px rgba(240,240,250,.04)}}
+.setup-note{margin:20px 0 0;font-size:0.9375rem;line-height:1.5;color:var(--text-2)}
+.setup-facts{margin:0;padding:0;border-top:1px solid var(--line)}
+.setup-facts>div{display:flex;justify-content:space-between;align-items:center;gap:16px;min-height:60px;border-bottom:1px solid var(--line)}
+.setup-facts dt{flex:none;font-size:0.9375rem;color:var(--text-3)}
+.setup-facts dd{display:flex;align-items:center;gap:12px;min-width:0;margin:0;font-size:1.0625rem;font-weight:600;color:var(--text);text-align:right}
+.setup-facts dd span{min-width:0;overflow-wrap:anywhere}
+.setup-facts a{color:var(--text);text-decoration:underline;text-decoration-color:var(--line-2);text-underline-offset:3px}
+.setup-facts .copy{flex:none;min-height:44px;padding:0 12px;border:1px solid var(--line-2);border-radius:var(--r);background:none;color:var(--text-2);font:inherit;font-size:0.8125rem;font-weight:600;cursor:pointer}
+.setup-facts .copy:hover{color:var(--text);border-color:rgba(240,240,250,.4)}
+.setup-facts .copy:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+@media(prefers-reduced-motion:reduce){.setup-steps li[data-state="now"]::before{animation:none}}
+@media(max-width:600px){.setup-facts>div{flex-direction:column;align-items:flex-start;justify-content:center;gap:4px;padding:12px 0}.setup-facts dd{text-align:left}}
+.setup-out{display:inline-flex;align-items:center;min-height:44px;margin-top:8px;padding:0;border:0;background:none;color:var(--text-2);font:inherit;font-size:0.9375rem;text-decoration:underline;text-decoration-color:var(--line-2);text-underline-offset:3px;cursor:pointer}
+.setup-out:hover{color:var(--text)}
+.setup-out:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.setup [data-setup-lede][hidden]{display:none}
+.billing-form .client-send{margin-top:20px}
+/* Headings receive focus only so screen readers announce a new step; they are not controls, so no focus box. */
+:is(.setup,.signup-top,#top) h1[tabindex="-1"]:focus{outline:none}
+/* ---------- Premium pass (Nov 8, 2026): calmer state changes and details ---------- */
+/* A card or row of buttons that appears after a step arrives with a short rise instead of a jump. */
+@keyframes v-arrive{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.setup-card:not([hidden]),.setup-form:not([hidden]),.setup-acts:not([hidden]),.signup-top [data-sent],.sform:not([hidden]){animation:v-arrive .42s var(--out) both}
+@media(prefers-reduced-motion:reduce){.setup-card:not([hidden]),.setup-form:not([hidden]),.setup-acts:not([hidden]),.signup-top [data-sent],.sform:not([hidden]){animation:none}}
+/* Countdown labels keep their digits the same width. */
+:is([data-sent],[data-setup-acts]) .hb{font-variant-numeric:tabular-nums}
+/* On setup, billing and payment pages the phone line supports the task instead of leading it. */
+.setup .client-call .client-tel{font-size:clamp(1.375rem,1.8vw,1.625rem);font-weight:600;letter-spacing:-.01em}
+.setup .client-call{margin-top:48px}
+/* A finished step shows a check, so progress reads at a glance. */
+.setup-steps li[data-state="done"]::before{background:var(--text-2) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256'%3E%3Cpath fill='%2305090e' d='M229.66 77.66l-128 128a8 8 0 0 1-11.32 0l-56-56a8 8 0 0 1 11.32-11.32L96 188.69 218.34 66.34a8 8 0 0 1 11.32 11.32Z'/%3E%3C/svg%3E") center/9px no-repeat;width:16px;height:16px;border:0}
+.setup-steps li::before{width:16px;height:16px;box-sizing:border-box}
+/* The price slider in the site's own look: a thin track and a white handle, the same in every browser. */
+.pc-range{-webkit-appearance:none;appearance:none;background:transparent}
+.pc-range::-webkit-slider-runnable-track{height:4px;border-radius:2px;background:var(--line-2)}
+.pc-range::-moz-range-track{height:4px;border-radius:2px;background:var(--line-2)}
+.pc-range::-webkit-slider-thumb{-webkit-appearance:none;width:22px;height:22px;margin-top:-9px;border-radius:50%;background:#f0f0fa;border:0;box-shadow:0 0 0 6px rgba(240,240,250,.08);transition:box-shadow .18s var(--out)}
+.pc-range::-moz-range-thumb{width:22px;height:22px;border-radius:50%;background:#f0f0fa;border:0;box-shadow:0 0 0 6px rgba(240,240,250,.08)}
+.pc-range:hover::-webkit-slider-thumb,.pc-range:focus-visible::-webkit-slider-thumb{box-shadow:0 0 0 9px rgba(240,240,250,.12)}
+.pc-range:focus-visible{outline:none}
+.pc-range:focus-visible::-webkit-slider-thumb{outline:2px solid #f0f0fa;outline-offset:3px}
+.pc-range:focus-visible::-moz-range-thumb{outline:2px solid #f0f0fa;outline-offset:3px}
+/* The Owner's own plan: no trial walkthrough and no Start free trial in the header. */
+.owner-view .chap.days,.owner-view .gnav-in>.pill{display:none}
+
+/* An Owner's handoff: hide the marketing hero copy until their own plan is ready (no flash of the trial pitch). */
+.owner-loading #top .hcopy>*{visibility:hidden}
+.owner-loading .chap.days,.owner-loading .gnav-in>.pill{display:none}
+/* Standalone links on the account pages get a full 44px target. */
+.setup-facts dd a,.setup .client-call a[href^="mailto"]{display:inline-flex;align-items:center;min-height:44px}
+.setup .client-call .client-tel{font-size:1.25rem}
+
+/* Plans: the live price line beside the team-size card (one price story: your team, your last free day, your price). */
+.price-mine{margin:28px 0 0;max-width:30em;font-size:1.25rem;line-height:1.45;color:var(--text-2)}
+.price-mine b{font-weight:600;color:var(--text)}
+.price-mine[hidden],.owner-view .price-mine{display:none}
+.price-mine+.price-inc{margin-top:16px}
+/* Setup ready: the Owner's own Today screen under the details, in the site's screenshot frame. */
+.setup-shot{margin:16px 0 0;animation:v-arrive .5s var(--out) .12s both}
+.setup-shot img{display:block;width:100%;height:auto;border-radius:var(--r2);box-shadow:0 0 0 1px var(--line-2),0 30px 60px -30px rgba(0,0,0,.8)}
+.setup-shot figcaption{margin:12px 0 0;font-size:0.875rem;line-height:1.5;color:var(--text-3)}
+@media(prefers-reduced-motion:reduce){.setup-shot{animation:none}}
+/* Phone off (Nov 9): the support email takes the large line in call blocks, one step smaller so the whole address fits a phone column */
+.client-call a.client-mail{color:var(--text);text-decoration:none;font-size:clamp(1.25rem,1.9vw,1.625rem);letter-spacing:-.01em;overflow-wrap:anywhere}
+.client-call a.client-mail:hover{color:var(--accent)}
+/* Sign in (Nov 9): how NEVORA sign-in works, as three short facts under the hero line instead of a link to a parked address */
+.signin-facts{margin:22px 0 0;padding:0;max-width:34em;display:grid;gap:14px}
+.signin-facts>div{padding-left:14px;border-left:2px solid var(--line-2)}
+.signin-facts dt{font-size:0.9375rem;font-weight:600;line-height:1.4;color:var(--text)}
+.signin-facts dd{margin:2px 0 0;font-size:0.9375rem;line-height:1.5;color:var(--text-2)}
+.signin-facts+.hacts,.hacts+.signin-facts{margin-top:22px}
+/* Owner view on Plans (Nov 9): the billing language choice under the plan line. Two equal 44px targets, the chosen one filled. */
+.owner-lang{display:inline-flex;gap:4px;margin-top:18px;padding:4px;border:1px solid var(--line-2);border-radius:999px}
+.owner-lang button{min-height:44px;min-width:96px;padding:0 16px;border:0;border-radius:999px;background:transparent;color:var(--text-2);font:inherit;font-size:0.9375rem;cursor:pointer}
+.owner-lang button[aria-pressed="true"]{background:var(--text);color:var(--bg,#05060a)}
+.owner-lang button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+@media(hover:hover){.owner-lang button[aria-pressed="false"]:hover{color:var(--text)}}
+/* Sign in on wide screens: the copy column (now with the three sign-in facts) stops 32px before the phone, whose left edge is
+   the screen width less both page margins, the web screenshot and the phone's own 240 - 96 overhang. */
+@media(min-width:1181px){.signin-top .hcopy{max-width:min(520px,calc(100vw - 2*max(var(--pad),50vw - 620px) - min(600px,42vw) - 192px))}}
+
+/* Nov 10 inspection. Plans: the two prices as two quiet boxes before the words; billing help as a line under the actions. */
+.price-bands{list-style:none;margin:28px 0 0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;max-width:34em}
+.price-bands li{display:grid;gap:6px;padding:20px 22px;border-radius:var(--r2);background:var(--panel)}
+.price-bands b{font-size:1.75rem;font-weight:600;line-height:1.1;letter-spacing:-.01em;color:var(--text)}
+.price-bands b span{font-size:1rem;font-weight:400;letter-spacing:0;color:var(--text-2)}
+.price-bands li>span{font-size:0.9375rem;line-height:1.4;color:var(--text-2)}
+.price-help{margin:24px 0 0;max-width:34em;font-size:0.9375rem;line-height:1.5;color:var(--text-2)}
+.price-help a{color:var(--text);text-decoration:underline;text-decoration-color:var(--line-2);text-underline-offset:3px}
+.price-help a:hover{text-decoration-color:currentColor}
+/* Sign-in guidance: the three facts as the Support doors (no buttons inside); the help-page ending band sits below. */
+.signin-doors{grid-auto-rows:auto}
+.signin-top .cform-hero .hacts{margin-top:32px}
+.help-end{padding-bottom:clamp(64px,8vw,112px)}
+@media(max-width:833px){.price-grid .price-help{order:6}}

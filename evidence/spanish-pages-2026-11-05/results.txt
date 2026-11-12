@@ -1,0 +1,44 @@
+PASS chromium 1440 /pages/es: lang=es, no horizontal overflow (0px)
+PASS chromium 1440 /pages/es: no text/visual or text/text overlap (none)
+PASS chromium 1440 /pages/es: no element runs past the right edge (none)
+PASS chromium 1440 /pages/es-nevora: lang=es, no horizontal overflow (0px)
+PASS chromium 1440 /pages/es-nevora: no text/visual or text/text overlap (none)
+PASS chromium 1440 /pages/es-nevora: no element runs past the right edge (none)
+PASS chromium 1440 /pages/es-planes: lang=es, no horizontal overflow (0px)
+PASS chromium 1440 /pages/es-planes: no text/visual or text/text overlap (none)
+PASS chromium 1440 /pages/es-planes: no element runs past the right edge (none)
+PASS chromium 1440 /pages/es-productos: lang=es, no horizontal overflow (0px)
+PASS chromium 1440 /pages/es-productos: no text/visual or text/text overlap (none)
+PASS chromium 1440 /pages/es-productos: no element runs past the right edge (none)
+PASS chromium 1440 /pages/es-contacto: lang=es, no horizontal overflow (0px)
+PASS chromium 1440 /pages/es-contacto: no text/visual or text/text overlap (none)
+PASS chromium 1440 /pages/es-contacto: no element runs past the right edge (none)
+PASS chromium 1440: header in Spanish (Productos Sitios web Apps a la medida Planes Soporte Nosotros EN | ES Prueba gratis)
+PASS chromium 1440: Products menu opens on hover, Spanish names, descriptions and status chips
+PASS chromium 1440: Escape closes the Products menu
+PASS chromium 1440: first Tab lands on "Saltar al contenido"
+PASS chromium 1440: footer in Spanish, notes that legal pages are in English
+PASS chromium 1440: cookie dialog in Spanish with the four purposes
+PASS chromium 1440: saving choices reports in Spanish
+PASS chromium 1440: Escape closes the cookie dialog and returns focus
+PASS chromium 1440: switch (.gnav-lang) / → /pages/es → /
+PASS chromium 1440: switch (.lnav-lang) /pages/nevora → /pages/es-nevora → /pages/nevora
+PASS chromium 1440: switch (.gnav-lang) /pages/plans → /pages/es-planes → /pages/plans
+PASS chromium 1440: switch (.gnav-lang) /pages/products → /pages/es-productos → /pages/products
+PASS chromium 1440: switch (.gnav-lang) /pages/contact → /pages/es-contacto → /pages/contact
+PASS chromium 1440: switching from the trial form keeps the trial (/pages/es-contacto?interest=nevora-demo)
+PASS chromium 1440: an English page with no Spanish version offers Spanish home
+PASS chromium 1440: trial variant heading, title and button in Spanish (Revisar el borrador)
+PASS chromium 1440: more than 30 switches to a quote with the Spanish note; the submitted value stays the English one
+PASS chromium 1440: back to 11–20 returns to the trial
+PASS chromium 1440: a blank submit shows Spanish errors and focuses the first field
+PASS chromium 1440: locations error in Spanish; a NEVORA topic makes the message "Algo más (opcional)"
+PASS chromium 1440: preview check for "website" shows the Spanish sent panel ("Mensaje enviado.")
+PASS chromium 1440: preview check for "custom-software" shows the Spanish sent panel ("Mensaje enviado.")
+PASS chromium 1440: preview check for "nevora" shows the Spanish sent panel ("Solicitud de cotización enviada.")
+PASS chromium 1440: preview check for "nevora-demo" shows the Spanish sent panel ("Solicitud de prueba enviada.")
+PASS chromium 1440: preview check for "relay" shows the Spanish sent panel ("Ya estás en la lista de Relay.")
+PASS chromium 1440: preview check for "other" shows the Spanish sent panel ("Mensaje enviado.")
+PASS chromium 1440: time clock starts in Spanish (Jueves, 5 de noviembre · p. m.)
+PASS chromium 1440: Spanish result, focus on it, announced "Entrada registrada a las 1:02 p. m." (Registrada el 5 nov · 1:02 p. m.)
+PASS chromium 1440: the demo can switch to English

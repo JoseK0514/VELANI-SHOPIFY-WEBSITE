@@ -1,0 +1,23 @@
+Preview theme 193004142906 "Velani calmer layout (preview)", role UNPUBLISHED, duplicated from the live theme 192986808634 on 2026-11-03.
+Upsert job gid://shopify/Job/1ad7defa-9169-4b81-b73a-5eacf3d0449b finished (done: true). Readback by checksumMd5 against dist/theme from commit ebb47d3:
+
+assets/velani-home.css                      d34dd7f8514924c85f6b045efed44098  match
+assets/velani-motion.js                     9c3862c4ca992bade622dcd826067b59  match
+assets/velani-nevora.css                    e43573ef58653709196c2345c7ee4394  match
+assets/velani-nevora.js                     c8461867b542505beea3db84cee1ac19  match
+assets/velani.css                           6b7599171aa301385d3e5ade32f77d13  match
+assets/velani.js                            ff8e36ba628bdb452ee9e28083383b81  match
+layout/theme.liquid                         1e5d99c9f051bbe4f1557c560893d24c  match
+sections/velani-about.liquid                67bcd3f858864371a4f9bb7bb48eb2f4  match
+sections/velani-contact.liquid              df59a115b5ff02ea73c7ea357ed0a9ac  match
+sections/velani-custom-development.liquid   b166c9878ff89cc7479163e8ab389b5c  match
+sections/velani-help.liquid                 643a8de3e0fb55a040c10d0089893950  match
+sections/velani-home.liquid                 5bff2c70da86bca14df8bdf770069e49  match
+sections/velani-nevora.liquid               202354f837954af750caf2c10f2d87a8  match
+
+Not uploaded, unchanged in meaning:
+config/settings_data.json   live copy kept (Shopify header comment; assistant_api_url absent equals the blank default)
+templates/*.json            live copies kept (same sections and order; Shopify adds its header and "settings": {})
+
+All other theme files are identical to the live theme by checksum. The live theme 192986808634 was not written.
+Preview: https://www.thevelani.com/?preview_theme_id=193004142906

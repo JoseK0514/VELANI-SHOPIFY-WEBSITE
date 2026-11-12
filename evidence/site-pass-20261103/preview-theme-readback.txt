@@ -1,0 +1,57 @@
+Preview theme 193011548474 "Velani site pass (preview)" (UNPUBLISHED), duplicated from live theme 192986808634 on 2026-11-03.
+24 files uploaded (stagedUploadsCreate -> POST 201 -> themeFilesUpsert); checksumMd5 read back from Shopify equals the local build (dist/theme):
+assets/inquiry.js d6e5ade7fbc35b50e65ba39b2576fd38
+assets/night-ai-dash.webp 3638b2ef1d4474fdc1982736a7fe2afb
+assets/night-ai-devices.webp 66e465b464cc83b0018a531fcbc60d4d
+assets/night-ai-glow.webp d07c971935f522d49a64224414b575ef
+assets/night-ai-laptop.webp acc7467db3dac2fcab37ed5d114da49d
+assets/night-ai-light.webp 9c6d288d94ddc16babd8c6cd980d1957
+assets/night-ai-phone.webp 496b10ebb700b0cdd68d09b6cb617cae
+assets/night-ai-store.webp 1e481ceed57b6bb336c6592f19958e98
+assets/night-booking.webp 64d51b4da76b2a07c24dea070dc584ab
+assets/velani-home.css 4e276d02998a14256e406e25b7f3f5d9
+assets/velani-motion.js 9c3862c4ca992bade622dcd826067b59
+assets/velani-nevora.css b4b31e0842e47a5edd18c4003a95dd69
+assets/velani-nevora.js c8461867b542505beea3db84cee1ac19
+assets/velani.css a04ea3c3052bd4a5b1cd11f7b02b65d5
+assets/velani.js 6a63fa872484f37620aa853fd2b39f97
+layout/theme.liquid ad9eadef3903439948b9ca0a8bc6f127
+sections/velani-about.liquid 19d990b8522eeedfe5f60d225b294308
+sections/velani-contact.liquid 127d2c1c3bb56dd2989662d793b22add
+sections/velani-custom-development.liquid 856253af623d1f7b304b51ba0e7fa1b0
+sections/velani-help.liquid 258f8eed1a79df9d5fd7659eca9fb3e4
+sections/velani-home.liquid 65e104203187d5da8043a3d20b07912f
+sections/velani-nevora.liquid f8cf19ee8eb9710ab98ac71bb5e03995
+sections/velani-not-found.liquid eb442c556c1c1de445737c588551fbf3
+sections/velani-products.liquid 99de97e7709f77603927275e71ea1a6f
+Every other file (templates, config, locales, the other legal sections, fonts, icons, screenshots) already matched the live theme by checksum and was not touched. assets/arrow-right.svg already existed on the live theme with the same checksum.
+Not done: publishing, DNS, storefront password, store menus, policies, settings, live inquiries, real messages.
+
+Second upsert (support hours "Monday to Friday, 8 am to 9 pm ET"), same theme 193011548474; checksumMd5 read back equals the local build:
+layout/theme.liquid de290b0e8faef5485c7cf753f9f10284
+sections/velani-home.liquid 244c322ff996076b2ec5249508bebf7c
+sections/velani-help.liquid 178c2fd4705314fa0d91924bb04a1078
+sections/velani-contact.liquid d36d4822bd6265b8a54df301f96c10b5
+sections/velani-about.liquid 72effed0da4a7c1c8e2e52a4d0f76175
+sections/velani-products.liquid cbd60f9fe0e204aefdeb1a6722b248a9
+sections/velani-custom-development.liquid e4d6c4a7b18cdf1a90c133f0f1167bf0
+
+Third upsert (hero motion and scroll cue, legal and policy restyle, smoothness pass), same theme 193011548474; checksumMd5 read back equals the local build:
+assets/velani-nevora.css a1b099a095e1808cbbf15ed08b2ae283
+assets/velani.css a2b3e9f2698620e7168a98a65d44e541
+layout/theme.liquid 6da7c2abdc0898ba3249ffbfb4ad2bd6
+sections/velani-accessibility.liquid 2877e209b4e52299daa5aa4e9cb316e2
+sections/velani-cookies.liquid 809eb72d502440328071e6a8e99e1905
+sections/velani-custom-development.liquid be6494a523fc045b03fe2095acfd202b
+sections/velani-home.liquid c1c111d5c497ee7979f888e861255344
+sections/velani-legal.liquid a4c646453bc49c8c48d46361e6d29817
+sections/velani-nevora-account-deletion.liquid b38ad881bc9913ba8889e77610c0fb68
+sections/velani-nevora-privacy.liquid 2e39e1b4fe792453b991b13a762bc3b1
+sections/velani-nevora-support.liquid 107f30b7153fa8953537efa33b2c788a
+sections/velani-nevora-terms.liquid 75d43200a3cbda3623cdebb2d344ba3f
+sections/velani-nevora.liquid f90fd07c5886550e7c1aaa6366d2a99f
+sections/velani-privacy.liquid d3e7f4a9b66f81ef52ed405514447035
+sections/velani-products.liquid 405cae15ab246e468817f2119aefe011
+sections/velani-security.liquid e436d2a35cbadb9de8bdc08ff6db23bc
+sections/velani-software-project-terms.liquid 35d40199e09834636510d4dc2d71ee26
+sections/velani-website-terms.liquid 69ae330657b0610ee710e5a26e059a9a

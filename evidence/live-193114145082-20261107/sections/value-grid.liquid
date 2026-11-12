@@ -1,0 +1,35 @@
+<section class="value-section section-shell page-width">
+  <p class="eyebrow">{{ section.settings.eyebrow }}</p>
+  <h2 class="section-title">{{ section.settings.heading }}</h2>
+  <div class="value-grid">
+    {% for block in section.blocks %}
+      <article class="value-item" {{ block.shopify_attributes }}><span class="value-item__number">0{{ forloop.index }}</span><h3>{{ block.settings.heading }}</h3><p>{{ block.settings.text }}</p></article>
+    {% endfor %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Velani values",
+  "max_blocks": 4,
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "The Velani standard" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Considered from every angle." }
+  ],
+  "blocks": [
+    { "type": "value", "name": "Value", "settings": [
+      { "type": "text", "id": "heading", "label": "Heading" },
+      { "type": "textarea", "id": "text", "label": "Text" }
+    ] }
+  ],
+  "presets": [{
+    "name": "Velani values",
+    "blocks": [
+      { "type": "value", "settings": { "heading": "Modern, not cold", "text": "Clean and refined, while still carrying warmth, personality and joy." } },
+      { "type": "value", "settings": { "heading": "Functional, not decorative", "text": "Comfort, proportion and ease of use are considered from the beginning." } },
+      { "type": "value", "settings": { "heading": "Detailed, not overdesigned", "text": "Quiet details that reward attention without competing for it." } },
+      { "type": "value", "settings": { "heading": "Premium, yet welcoming", "text": "Special and giftable without feeling exclusive or intimidating." } }
+    ]
+  }]
+}
+{% endschema %}

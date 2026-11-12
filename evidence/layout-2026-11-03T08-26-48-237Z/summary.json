@@ -1,0 +1,160 @@
+{
+ "status": "failed",
+ "passed": 18,
+ "failed": 1,
+ "rows": [
+  {
+   "label": "desktop",
+   "path": "/",
+   "name": "screens",
+   "value": 5.5,
+   "max": 5.5,
+   "pass": true
+  },
+  {
+   "label": "desktop",
+   "path": "/",
+   "name": "text sizes",
+   "value": 7,
+   "max": 9,
+   "pass": true
+  },
+  {
+   "label": "desktop",
+   "path": "/",
+   "name": "text edges",
+   "value": 3,
+   "max": 6,
+   "pass": true
+  },
+  {
+   "label": "desktop",
+   "path": "/",
+   "name": "separator lines",
+   "value": 3,
+   "max": 6,
+   "pass": true
+  },
+  {
+   "label": "desktop",
+   "path": "/pages/nevora",
+   "name": "screens",
+   "value": 8.8,
+   "max": 9.5,
+   "pass": true
+  },
+  {
+   "label": "desktop",
+   "path": "/pages/nevora",
+   "name": "text sizes",
+   "value": 9,
+   "max": 9,
+   "pass": true
+  },
+  {
+   "label": "desktop",
+   "path": "/pages/nevora",
+   "name": "text edges",
+   "value": 3,
+   "max": 6,
+   "pass": true
+  },
+  {
+   "label": "desktop",
+   "path": "/pages/nevora",
+   "name": "separator lines",
+   "value": 5,
+   "max": 12,
+   "pass": true
+  },
+  {
+   "label": "desktop",
+   "path": "/pages/nevora",
+   "name": "words",
+   "value": 646,
+   "max": 650,
+   "pass": true
+  },
+  {
+   "label": "desktop",
+   "path": "/pages/nevora",
+   "name": "top-bar links",
+   "value": 9,
+   "max": 8,
+   "pass": false
+  },
+  {
+   "label": "phone",
+   "path": "/",
+   "name": "screens",
+   "value": 7.3,
+   "max": 8,
+   "pass": true
+  },
+  {
+   "label": "phone",
+   "path": "/",
+   "name": "text sizes",
+   "value": 8,
+   "max": 9,
+   "pass": true
+  },
+  {
+   "label": "phone",
+   "path": "/",
+   "name": "text edges",
+   "value": 2,
+   "max": 6,
+   "pass": true
+  },
+  {
+   "label": "phone",
+   "path": "/",
+   "name": "separator lines",
+   "value": 3,
+   "max": 6,
+   "pass": true
+  },
+  {
+   "label": "phone",
+   "path": "/pages/nevora",
+   "name": "screens",
+   "value": 11.8,
+   "max": 12,
+   "pass": true
+  },
+  {
+   "label": "phone",
+   "path": "/pages/nevora",
+   "name": "text sizes",
+   "value": 9,
+   "max": 9,
+   "pass": true
+  },
+  {
+   "label": "phone",
+   "path": "/pages/nevora",
+   "name": "text edges",
+   "value": 2,
+   "max": 6,
+   "pass": true
+  },
+  {
+   "label": "phone",
+   "path": "/pages/nevora",
+   "name": "separator lines",
+   "value": 5,
+   "max": 12,
+   "pass": true
+  },
+  {
+   "label": "phone",
+   "path": "/pages/nevora",
+   "name": "words",
+   "value": 605,
+   "max": 650,
+   "pass": true
+  }
+ ],
+ "evidence": "evidence/layout-2026-11-03T08-26-48-237Z"
+}

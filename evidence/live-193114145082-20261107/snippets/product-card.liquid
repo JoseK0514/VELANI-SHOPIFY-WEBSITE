@@ -1,0 +1,14 @@
+<article class="product-card">
+  <div class="product-card__media">
+    <a href="{{ product.url }}" aria-label="{{ product.title | escape }}">
+    {% if product.featured_media %}
+      {{ product.featured_media | image_url: width: 1000 | image_tag: widths: '350,500,750,1000', sizes: '(min-width: 990px) 25vw, 50vw', loading: 'lazy', alt: product.featured_media.alt }}
+    {% else %}
+      {{ 'product-1' | placeholder_svg_tag: 'product-card__placeholder' }}
+    {% endif %}
+    </a>
+    {% if product.available %}{% form 'product', product %}<input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}"><button class="product-card__quick" type="submit">Quick add</button>{% endform %}{% endif %}
+  </div>
+  <p class="product-card__category">{{ product.type | default: 'Velani essential' }}</p>
+  <div class="product-card__meta"><h3><a href="{{ product.url }}">{{ product.title }}</a></h3><span class="product-card__price">{{ product.price | money }}</span></div>
+</article>

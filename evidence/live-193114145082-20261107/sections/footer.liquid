@@ -1,0 +1,41 @@
+<footer class="site-footer">
+  <div class="footer-brand">
+    <a class="wordmark" href="{{ routes.root_url }}" aria-label="{{ shop.name }} home"><span class="wordmark__mark" aria-hidden="true">●</span><span>VELANI</span></a>
+    <p>{{ section.settings.description }}</p>
+    <span class="footer-tagline">{{ settings.tagline }}</span>
+  </div>
+
+  {% for i in (1..3) %}
+    {% assign menu_key = 'menu_' | append: i %}
+    {% assign title_key = 'title_' | append: i %}
+    <div class="footer-menu">
+      <h3>{{ section.settings[title_key] }}</h3>
+      {% if section.settings[menu_key] != blank %}
+        {% for link in section.settings[menu_key].links %}<a href="{{ link.url }}">{{ link.title | escape }}</a>{% endfor %}
+      {% elsif i == 1 %}
+        <a href="/collections/dogs">Dogs</a><a href="/collections/cats">Cats</a><a href="/collections/bandanas">Bandanas</a><a href="{{ routes.all_products_collection_url }}">Everyday essentials</a>
+      {% elsif i == 2 %}
+        <a href="/pages/our-story">Our story</a><a href="/pages/contact">Contact</a><a href="/pages/faq">FAQ</a>
+      {% else %}
+        <a href="/pages/shipping-returns">Shipping & returns</a><a href="/pages/size-guide">Size guide</a><a href="/pages/care-guide">Care guide</a><a href="/policies/privacy-policy">Privacy</a>
+      {% endif %}
+    </div>
+  {% endfor %}
+
+  <div class="footer-bottom"><span>© {{ 'now' | date: '%Y' }} {{ shop.name }}</span><span>thevelani.com · {{ settings.instagram_handle }}</span></div>
+</footer>
+
+{% schema %}
+{
+  "name": "Footer",
+  "settings": [
+    { "type": "textarea", "id": "description", "label": "Description", "default": "Modern pet accessories for dogs, cats and the people who call them family." },
+    { "type": "text", "id": "title_1", "label": "First menu heading", "default": "Shop" },
+    { "type": "link_list", "id": "menu_1", "label": "First menu" },
+    { "type": "text", "id": "title_2", "label": "Second menu heading", "default": "Velani" },
+    { "type": "link_list", "id": "menu_2", "label": "Second menu" },
+    { "type": "text", "id": "title_3", "label": "Third menu heading", "default": "Help" },
+    { "type": "link_list", "id": "menu_3", "label": "Third menu" }
+  ]
+}
+{% endschema %}

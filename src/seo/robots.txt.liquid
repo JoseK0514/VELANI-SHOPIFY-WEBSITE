@@ -1,0 +1,9 @@
+{%- assign velani_ai_agents = 'GPTBot,OAI-SearchBot,ChatGPT-User,ClaudeBot,Claude-SearchBot,Claude-User,PerplexityBot,Perplexity-User,Google-Extended,Applebot-Extended,Amazonbot,meta-externalagent,DuckAssistBot,MistralAI-User,CCBot' | split: ',' -%}
+{%- capture nl %}
+{% endcapture -%}
+# Velani (thevelani.com). Search engines and AI assistants may read and cite the public pages of this site.
+# Shopify's default rules are kept; the AI crawlers below are named in the same group, so they get exactly the same rules.
+# Agent summary of the business: https://www.thevelani.com/llms.txt
+{% for group in robots.default_groups -%}
+{{ nl }}User-agent: {{ group.user_agent.value }}{{ nl }}{%- if group.user_agent.value == '*' -%}{%- for agent in velani_ai_agents -%}User-agent: {{ agent }}{{ nl }}{%- endfor -%}{%- endif -%}{%- for rule in group.rules -%}{{ rule.directive }}: {{ rule.value }}{{ nl }}{%- endfor -%}{%- if group.sitemap != blank -%}Sitemap: {{ group.sitemap.value }}{{ nl }}{%- endif -%}
+{%- endfor -%}

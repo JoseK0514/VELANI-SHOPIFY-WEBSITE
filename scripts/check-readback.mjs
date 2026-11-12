@@ -32,7 +32,7 @@ for (const file of original.files) {
 }
 if (response.original.files.nodes.length !== original.files.length) throw new Error('Original file inventory changed');
 const settings = response.draft.files.nodes.find(file => file.filename === 'config/settings_data.json');
-if (json(settings.body.content).current.inquiries_enabled !== false) throw new Error('Inquiry gate enabled');
+if (json(settings.body.content).current.inquiries_enabled !== true) throw new Error('Inquiry form should be enabled (owner-approved 2026-11-02)');
 const packageNames = new Set(expected.entries.map(file => file.filename));
 const inherited = response.draft.files.nodes.filter(file => !packageNames.has(file.filename)).map(file => ({ filename: file.filename, md5: file.checksumMd5 }));
 for (const file of inherited) if (original.files.find(item => item.filename === file.filename)?.md5 !== file.md5) throw new Error('Inherited file does not match original: ' + file.filename);
@@ -40,6 +40,6 @@ const summary = { status: 'passed', draftId: response.draft.id, role: response.d
   totalDraftFiles: response.draft.files.nodes.length, verifiedPackageFiles: files.length, retainedInheritedFiles: inherited.length, inherited,
   exactByteMatches: files.filter(file => file.exactBytes).length, platformNormalizedJsonMatches: files.filter(file => file.semanticallyEqual).length,
   originalTheme: response.original.id, originalRole: response.original.role, unchangedOriginalFiles: original.files.length,
-  inquiriesEnabled: false, hostedAcceptance: 'blocked by existing storefront password; no password or global resources changed', files };
+  inquiriesEnabled: true, hostedAcceptance: 'blocked by existing storefront password; no password or global resources changed', files };
 await writeFile(output, JSON.stringify(summary, null, 2) + '\n');
 console.log(JSON.stringify({ ...summary, files: undefined, inherited: undefined }));

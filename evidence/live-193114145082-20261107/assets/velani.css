@@ -1,0 +1,937 @@
+@font-face{font-family:"DM Sans";font-weight:400;font-display:swap;src:url(dm-sans-latin-400-normal.woff2) format("woff2")}
+@font-face{font-family:"DM Sans";font-weight:500;font-display:swap;src:url(dm-sans-latin-500-normal.woff2) format("woff2")}
+@font-face{font-family:"DM Sans";font-weight:600;font-display:swap;src:url(dm-sans-latin-600-normal.woff2) format("woff2")}
+
+/* Night. One continuous near-black, white type, square outlined actions, uppercase labels, full-screen imagery. */
+:root{
+ --bg:#05090e;--panel:#0d1620;--panel-2:#101c29;--line:rgba(255,255,255,.08);--line-2:rgba(255,255,255,.15);
+ --text:#f4f6f9;--text-2:#a3b1c1;--text-3:#7a8a9c;--accent:#bbd8ff;--label:#c9d6ea;
+ --font:"DM Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+ --wrap:1240px;--pad:clamp(20px,4.4vw,48px);--r:4px;--r2:12px;
+ --s1:clamp(48px,5vw,72px);--s2:clamp(72px,8vw,120px);--s3:clamp(88px,10vw,136px);
+ --out:cubic-bezier(.16,1,.3,1);--io:cubic-bezier(.65,0,.35,1);
+}
+*{box-sizing:border-box}
+/* Anchors land below the sticky header through each target's scroll margin (--anchor), not scroll-padding on html:
+   scroll-padding makes Chrome scroll the page whenever focus moves inside the sticky header itself */
+html{--anchor:110px;background:var(--bg);-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+:where(main [id]){scroll-margin-top:var(--anchor)}
+body{margin:0;background:var(--bg);color:var(--text);font:400 17px/1.55 var(--font);-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;overflow-x:clip}
+h1,h2,h3,h4,p,ul,ol,figure,dl,dd{margin:0}ul,ol{padding:0;list-style:none}
+h1,h2,h3,.t1,.t2,.t3,.lede{text-wrap:balance}p,li{text-wrap:pretty}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer}
+img{display:block;max-width:100%;height:auto}
+.icon{width:1em;height:1em;flex:none;display:block;fill:currentColor}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.wrap{width:100%;max-width:calc(var(--wrap) + var(--pad)*2);margin-inline:auto;padding-inline:var(--pad)}
+.sr{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.nw{white-space:nowrap}
+.skip{position:fixed;left:16px;top:10px;z-index:200;background:var(--text);color:var(--bg);padding:10px 16px;border-radius:var(--r);transform:translateY(-200%)}
+.skip:focus{transform:none}
+
+/* Four heading sizes, by importance */
+/* Spacing ladder: --s3 separates unrelated chapters, --s2 a chapter from its follow-up, --s1 a heading from its content */
+.t0{font-size:clamp(2.75rem,5.6vw,5.25rem);line-height:.98;font-weight:600;letter-spacing:-.03em}
+@media(max-width:833px){.t0{font-size:clamp(2.25rem,10.5vw,2.75rem);line-height:1.02}}
+.t1{font-size:clamp(2.5rem,5.6vw,5.25rem);line-height:1;font-weight:600;letter-spacing:-.03em}
+.t2{font-size:clamp(1.75rem,3vw,2.75rem);line-height:1.1;font-weight:600;letter-spacing:-.03em}
+.t3{font-size:clamp(1.3125rem,2vw,1.875rem);line-height:1.18;font-weight:600;letter-spacing:-.02em}
+.lede{font-size:clamp(1.0625rem,1.4vw,1.25rem);line-height:1.5;color:#dde3ee;letter-spacing:-.004em}
+.cap{font-size:0.875rem;line-height:1.5;color:var(--text-3)}
+.fine{margin-top:20px;font-size:0.875rem;color:var(--text-3)}
+/* Uppercase labels: above every title, in the header and the footer */
+.kicker,.hkick{margin:0 0 16px;font-size:0.75rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--label)}
+.kicker a{color:inherit}
+@media(hover:hover){.kicker a:hover{color:var(--text)}}
+
+/* Actions: one square outlined button, filled white for the primary one */
+.acts{display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin-top:32px}
+.hacts{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
+.pill,.hb{display:inline-flex;align-items:center;justify-content:center;gap:12px;min-height:50px;padding:1px 20px 0;border-radius:var(--r);background:rgba(0,0,0,.5);border:1px solid rgba(240,240,250,.35);color:#f0f0fa;font-size:0.875rem;font-weight:500;line-height:1.2;letter-spacing:.1em;text-transform:uppercase;text-align:center;transition:background-color .2s,border-color .2s,transform .15s ease-out}
+.pill:not(.line),.hb.fill{background:#f0f0fa;color:#06121e;border-color:#f0f0fa}
+.hb .icon{font-size:1rem}
+.pill::after{content:"";width:1em;height:1em;flex:none;background:currentColor;-webkit-mask:url(arrow-right.svg) center/contain no-repeat;mask:url(arrow-right.svg) center/contain no-repeat}
+.pill.na::after,.gnav .pill::after,.cookie-actions .pill::after,.ast .pill::after{display:none}
+@media(hover:hover){.pill.line:hover,.hb:hover{background:rgba(0,0,0,.7);border-color:rgba(240,240,250,.6)}.pill:not(.line):hover,.hb.fill:hover{background:#fff}}
+.pill:active,.hb:active{transform:scale(.96)}
+.pill:disabled{opacity:.5;cursor:default;transform:none}
+.more{display:inline-flex;align-items:center;gap:8px;min-height:44px;font-size:0.75rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--text)}
+.more .icon{font-size:0.75rem;transition:transform .35s var(--out)}
+@media(hover:hover){.more:hover .icon{transform:translateX(4px)}.more:hover span{text-decoration:underline;text-underline-offset:6px;text-decoration-thickness:1px}}
+
+/* Global nav: tucks away when you scroll down, returns when you scroll up */
+.gnav{position:sticky;top:0;z-index:60;background:rgba(5,9,14,.78);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);box-shadow:inset 0 -1px 0 transparent;transition:transform .45s var(--out),box-shadow .3s}
+.gnav.scrolled{box-shadow:inset 0 -1px 0 var(--line)}
+.gnav.tuck{transform:translateY(-100%);transition-duration:.4s}
+.gnav:not(.tuck){transition:transform .28s cubic-bezier(.2,.8,.2,1),box-shadow .3s}
+.gnav-in{min-height:56px;display:flex;align-items:center;gap:6px}
+.wordmark{min-height:44px;display:inline-flex;align-items:center;margin-right:auto}.wm-velani{display:block;height:15px;width:auto;color:var(--text)}@media(min-width:834px){.wm-velani{height:16px}}
+.gnav-links{display:flex;align-items:center;margin-right:14px}
+.gnav-links a{display:inline-flex;align-items:center;min-height:44px;padding:0 14px;white-space:nowrap;font-size:0.75rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--text-2);transition:color .2s}
+.gnav-links a[aria-current]{color:var(--text)}@media(hover:hover){.gnav-links a:hover{color:var(--text)}}
+.gnav .pill{min-height:34px;padding:0 14px;font-size:0.75rem;position:relative;white-space:nowrap;flex:none;backdrop-filter:none;-webkit-backdrop-filter:none}
+.gnav .pill::before{content:"";position:absolute;inset:-6px -2px}
+.gnav-menu{display:none;width:44px;height:44px;margin-right:-10px;align-items:center;justify-content:center;font-size:1.375rem}
+/* Phone menu: a full-screen sheet in the same uppercase language, with the demo and client support at the bottom */
+.gmenu{position:fixed;inset:56px 0 0;z-index:70;background:var(--bg);padding:8px 0 40px;overflow:auto}
+.gmenu nav{display:flex;flex-direction:column;min-height:100%}
+.gmenu nav>a:not(.pill){display:flex;align-items:center;min-height:60px;font-size:1rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;border-bottom:1px solid var(--line)}
+.gmenu .pill{margin-top:32px;width:100%}
+.gmenu nav>a[aria-current]{color:var(--accent)}
+.gmenu small{display:block;margin-top:24px;font-size:0.8125rem;line-height:1.6;color:var(--text-3)}
+.gmenu small a{white-space:nowrap;color:var(--text-2);text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--line-2)}
+@media(min-width:834px) and (max-width:959px){.gnav-links a{padding:0 9px}.gnav-links{margin-right:8px}}
+@media(max-width:833px){.gnav-links,.gnav-in>.pill{display:none}.gnav-menu{display:inline-flex}}
+
+/* ---------- Full-screen panels: one subject each, a big visual, a short title and one or two actions ---------- */
+main:has(> .hpanel){background:#000}
+/* On panel pages an anchor lands right under the 56px header (inner pages keep the 110px breathing room for headings) */
+html:has(main > .hpanel){--anchor:56px}
+.hpanel{position:relative;height:100vh;height:100svh;min-height:700px;overflow:hidden;background:#000;color:#f4f6f9}
+.hpanel.short{height:auto;min-height:0;padding:clamp(88px,12vw,160px) 0}
+.hph{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 50%}
+.hph.flip{transform:scaleX(-1)}
+.hshade{position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,.72) 0%,rgba(0,0,0,.35) 45%,rgba(0,0,0,0) 70%)}
+.hpanel.right .hshade{background:linear-gradient(270deg,rgba(0,0,0,.72) 0%,rgba(0,0,0,.35) 45%,rgba(0,0,0,0) 70%)}
+.hpanel.dim .hshade{background:linear-gradient(90deg,rgba(0,0,0,.8) 0%,rgba(0,0,0,.55) 50%,rgba(0,0,0,.3) 100%)}
+.hpanel.end .hshade{background:linear-gradient(0deg,rgba(0,0,0,.92) 0%,rgba(0,0,0,.55) 38%,rgba(0,0,0,0) 68%)}
+.hcopy{position:absolute;z-index:1;left:max(var(--pad),calc(50% - 620px));top:50%;transform:translateY(-50%);max-width:620px}
+.hcopy::before{content:"";position:absolute;z-index:-1;inset:-30% -24% -22% -28%;background:radial-gradient(ellipse at 50% 52%,rgba(0,0,0,.62) 0%,rgba(0,0,0,.42) 44%,rgba(0,0,0,0) 74%);pointer-events:none}
+/* Labels over imagery are set in near-white: the label grey loses 15% of its contrast against a light streak */
+.hpanel .hkick{color:#e6ecf5}
+.hpanel.end .hcopy::before{display:none}
+.hpanel.right .hcopy{left:auto;right:max(var(--pad),calc(50% - 620px))}
+.hpanel.end .hcopy{left:0;right:0;top:auto;bottom:88px;transform:none;max-width:none;text-align:center}
+.hpanel.short .hcopy{position:relative;left:auto;top:auto;transform:none;max-width:720px;margin-left:max(0px,calc(50% - 620px))}
+.hpanel.short .wrap .hcopy{margin-left:0}
+.hpanel h1,.hpanel h2{margin:0;font-size:4rem;line-height:1.04;font-weight:600;letter-spacing:-.03em;text-wrap:balance}
+.hpanel h1{font-size:5.25rem;line-height:1}
+.hpanel.long h1{font-size:4rem;line-height:1.04}
+.hpanel h2 img{display:block;height:52px;width:auto}
+.hcopy p:not(.hkick){margin:16px 0 0;max-width:30em;font-size:1.0625rem;line-height:1.5;color:#dde3ee}
+.hpanel.end .hcopy p{margin-inline:auto}
+.hwm{margin:0}.hwm .wm-velani{height:44px;width:auto;display:block;margin:0 auto;color:#f4f6f9}
+.hpanel.end .hacts{justify-content:center}
+.hcopy .more{margin-top:16px}
+/* The fact line: the offer's terms right under the offer, in the body size, never inside the button */
+.hfact{margin:16px 0 0;font-size:0.875rem;line-height:1.5;color:var(--label)}
+.hcopy .hfact{max-width:30em}
+.acts+.hfact{margin-top:14px}
+.hshot{position:absolute;right:max(var(--pad),calc(50% - 500px));top:50%;width:300px;transform:translateY(-50%);padding:8px;border-radius:44px;background:#0b0d10;box-shadow:0 0 0 1px rgba(255,255,255,.14),inset 0 0 0 1px rgba(255,255,255,.05),0 50px 110px -20px rgba(0,0,0,.95)}
+.hshot img{display:block;width:100%;aspect-ratio:390/800;object-fit:cover;object-position:0 0;border-radius:36px}
+/* The phone rises into the NEVORA panel, then one notification arrives; still under reduced motion and without JavaScript */
+.hshot.fade{transition:opacity .9s var(--out),transform 1.1s var(--out)}
+@media(min-width:834px){.hshot.fade{transform:translateY(-50%) translateY(48px)}.hshot.fade.in{transform:translateY(-50%)}}
+.notif{position:absolute;left:8px;right:8px;top:14px;margin:0;display:grid;grid-template-columns:34px 1fr;grid-template-rows:auto auto;column-gap:10px;align-items:center;padding:10px 12px 11px;border-radius:18px;background:rgb(248,250,253,.96);color:#0b1220;box-shadow:0 1px 0 rgba(255,255,255,.6) inset,0 10px 30px -8px rgba(0,0,0,.45);font-size:0.8125rem;line-height:1.3;opacity:0;transform:translateY(-24px);transition:opacity .45s var(--out) 1.25s,transform .55s var(--out) 1.25s}
+.hshot.in .notif,.no-js .notif,.still .notif{opacity:1;transform:none}
+.notif-ic{grid-row:1/span 2;width:34px;height:34px;border-radius:9px;background:#0d1620;color:#bbd8ff;display:grid;place-items:center;font-weight:600;font-size:1rem;letter-spacing:0}
+.notif-t{display:flex;justify-content:space-between;align-items:baseline;gap:8px}
+.notif-t b{font-weight:600;letter-spacing:.04em;font-size:0.75rem}
+.notif-t i{font-style:normal;font-size:0.6875rem;color:#5c6878}
+.notif-m{display:block;margin-top:1px;font-weight:400}
+.hweb{position:absolute;right:max(var(--pad),calc(50% - 620px));top:50%;width:430px;transform:translateY(-50%);border-radius:var(--r2);overflow:hidden;box-shadow:0 0 0 1px rgba(255,255,255,.12),0 60px 120px -30px rgba(0,0,0,.9)}
+.hweb img{display:block;width:100%}
+/* Hero buttons sit over imagery, so they get the glass; buttons elsewhere stay flat (cheaper to scroll) */
+.hpanel .hb{-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+/* The opening image drifts slowly, like a still from a film; the chevron invites the first scroll */
+@keyframes hdrift{from{transform:scale(1.06) translate3d(.8%,0,0)}to{transform:scale(1.14) translate3d(-.8%,-.8%,0)}}
+.hpanel.live .hph{animation:hdrift 30s ease-in-out infinite alternate;will-change:transform}
+/* The opening panel ends at the bottom of the first screen (the sticky header takes the top 56px) */
+.hpanel.live{height:calc(100vh - 56px);height:calc(100svh - 56px)}
+.hcue{position:absolute;left:50%;bottom:18px;z-index:2;display:flex;align-items:center;justify-content:center;width:44px;height:44px;margin-left:-22px;color:#f0f0fa;font-size:1.25rem;opacity:.85;animation:hbob 2.4s ease-in-out infinite}
+@keyframes hbob{0%,100%{transform:translateY(0)}50%{transform:translateY(6px)}}
+@media(hover:hover){.hcue:hover{opacity:1;animation-play-state:paused}}.hcue:focus-visible{opacity:1;animation-play-state:paused}
+/* Entrance: the copy rises once, the shots fade in (motion.js adds .in; reduced motion crossfades) */
+.hpanel .fade,.hpanel .rise{transition-duration:.9s}
+@media(max-width:1180px){.hweb{display:none}.hpanel.right .hph{object-position:100% 50%}.hpanel:not(.right):not(.live):not(.end) .hph{object-position:0% 50%}.hpanel.right .hcopy::before{inset:-30% -30% -26% -30%;background:radial-gradient(ellipse at 50% 50%,rgba(0,0,0,.86) 0%,rgba(0,0,0,.84) 42%,rgba(0,0,0,.55) 62%,rgba(0,0,0,0) 80%)}}
+@media(min-width:834px) and (max-height:760px){.hshot{width:240px}}
+@media(max-width:833px){
+ /* Panels lay out in flow: the shot (if any) at the top, the copy pushed to the bottom; enlarged text makes the panel taller instead of clipping */
+ .hpanel{display:flex;flex-direction:column;justify-content:flex-end;height:auto;min-height:760px;padding-bottom:64px}
+ .hpanel:has(.hshot){min-height:0;justify-content:flex-start}
+ .hpanel:has(.hshot) .hcopy{margin-top:0}
+ .hpanel.short{min-height:0;padding:72px 0 64px}
+ .hcopy,.hpanel.right .hcopy{position:relative;left:auto;right:auto;top:auto;bottom:auto;transform:none;max-width:none;margin:auto var(--pad) 0}
+ .hpanel.short .hcopy{margin:0}
+ .hshade,.hpanel.right .hshade,.hpanel.dim .hshade,.hpanel.end .hshade{background:linear-gradient(0deg,rgba(0,0,0,.94) 0%,rgba(0,0,0,.8) 32%,rgba(0,0,0,.42) 58%,rgba(0,0,0,0) 80%)}
+ .hcopy::before{inset:-26% -10% -24% -12%;background:radial-gradient(ellipse at 50% 56%,rgba(0,0,0,.7) 0%,rgba(0,0,0,.48) 46%,rgba(0,0,0,0) 76%)}
+ .hpanel.live .hph{object-position:58% 34%}
+ .hpanel h1{font-size:2.875rem;line-height:1.02}.hpanel h2{font-size:2.375rem}.hpanel.long h1{font-size:2.375rem}.hpanel h2 img{height:40px}
+ .pill,.hb{min-height:46px;padding:0 16px;font-size:0.75rem}
+ .gnav .pill{min-height:34px;font-size:0.75rem}
+ .hshot{position:relative;left:auto;right:auto;top:auto;width:46%;margin:56px auto 32px;transform:none;padding:5px;border-radius:28px;flex:none;order:-1;z-index:1}
+ .hshot.fade{transform:translateY(40px)}
+ .hshot.fade.in{transform:none}
+ .notif{left:5px;right:5px;top:6px;grid-template-columns:24px 1fr;column-gap:8px;padding:5px 8px 6px;border-radius:12px;font-size:0.6875rem;line-height:1.25}
+ .notif-ic{width:24px;height:24px;border-radius:7px;font-size:0.75rem}
+ .notif-t b{font-size:0.625rem}.notif-t i{font-size:0.5625rem}
+ .hshot img{border-radius:24px}
+ .hpanel.end .hcopy{bottom:auto;margin-bottom:8px}
+ .hpanel.dim.long{justify-content:center;min-height:calc(100svh - 56px);padding-bottom:24px}
+ .hpanel.dim.long .hcopy{margin-top:0}
+ .hpanel.end .hacts .hb,.hpanel.end .hacts .pill{width:100%}
+ /* One button rule on phones: actions stack at full width */
+ .hacts,.acts{flex-direction:column;align-items:stretch}
+ .hacts .hb,.acts .pill{width:100%;justify-content:center}
+ /* The closing panel keeps its line and actions; the footer carries the wordmark */
+ .hpanel.end .hwm{display:none}
+ .hpanel.end{min-height:440px}
+ .t3{font-size:1.25rem}
+ .hpanel.live{height:auto;min-height:calc(100svh - 56px);padding-bottom:56px;justify-content:center}
+ .hpanel.live .hcopy{margin-top:0}
+ .hpanel.end{min-height:560px}
+ /* Service panels on phones: the device in a framed 4:3 image, the heading straight under it */
+ .hpanel.svc{justify-content:flex-start;min-height:0;padding:0 0 64px}
+ .hpanel.svc .hph{position:relative;inset:auto;height:auto;aspect-ratio:4/3;flex:none}
+ .hpanel.svc .hshade,.hpanel.svc.right .hshade{inset:0 0 auto;height:75vw;background:linear-gradient(0deg,#000 0%,rgba(0,0,0,.5) 22%,rgba(0,0,0,0) 48%)}
+ .hpanel.svc .hcopy{margin:8px var(--pad) 0}
+ .hpanel.svc .hcopy::before{display:none}
+ #web-applications .hph,#websites .hph{object-position:30% 60%}#booking .hph{object-position:42% 40%}#online-stores .hph{object-position:18% 70%}#business-systems .hph{object-position:72% 50%}
+ .hcue{left:auto;right:8px;bottom:14px;margin:0}
+ .hwm .wm-velani{height:34px}
+}
+
+/* Real screens sit on the page like objects: a fine top edge, a tight contact shadow and a long soft one */
+.slab{position:relative;overflow:hidden;background:#fff;border-radius:var(--r2);box-shadow:0 0 0 1px rgba(255,255,255,.07),0 1px 1px rgba(0,0,0,.4),0 12px 24px -12px rgba(0,0,0,.6),0 48px 96px -32px rgba(0,0,0,.85)}
+.slab::after{content:"";position:absolute;inset:0;border-radius:inherit;box-shadow:inset 0 1px 0 rgba(255,255,255,.35);pointer-events:none}
+.slab img{width:100%}
+.slab.phone{border-radius:clamp(24px,2.6vw,38px);aspect-ratio:390/844}
+.slab.phone .feed{position:absolute;left:0;top:0;width:100%;transform:translateY(var(--y,0%));transition:transform .9s cubic-bezier(.45,0,.15,1)}
+.slab.phone .bar{position:absolute;left:0;right:0;bottom:0;width:100%}
+
+/* Text motion: headings rise word by word from behind a mask; nothing else fades */
+.rise .w{display:inline-block;overflow:hidden;vertical-align:top;padding-bottom:.24em;margin-bottom:-.24em}
+.rise .w>span{display:inline-block;transform:translateY(105%);transition:transform .85s var(--out);transition-delay:calc(var(--i,0)*40ms)}
+.pre .rise{visibility:hidden}
+.rise.in .w>span{transform:none}
+.no-js .rise .w>span{transform:none}
+.draw{position:relative}
+.draw::before{content:"";position:absolute;left:0;right:0;top:0;height:1px;background:var(--line-2);transform-origin:0 50%;transform:scaleX(0);transition:transform 1.2s var(--out)}
+.draw.in::before{transform:none}
+.draw:nth-child(2)::before{transition-delay:70ms}.draw:nth-child(3)::before{transition-delay:140ms}.draw:nth-child(4)::before{transition-delay:210ms}
+.no-js .draw::before,.still .draw::before{transform:none}
+.fade{opacity:0;transition:opacity .7s var(--out)}
+.fade.in{opacity:1}
+.no-js .fade,.still .fade{opacity:1}
+
+/* Plain lists */
+.rows>*{display:grid;grid-template-columns:minmax(0,1fr) 24px;gap:10px 24px;align-items:baseline;padding:28px 0 30px}
+.rows .t3{grid-column:1}
+.rows p{grid-column:1;font-size:1.0625rem;line-height:1.55;color:var(--text-2);max-width:38em}
+.rows .icon{grid-column:2;grid-row:1;align-self:center;justify-self:end;font-size:1.125rem;color:var(--text-3);transition:transform .35s var(--out),color .2s}
+@media(hover:hover){.rows a:hover .icon{transform:translateX(5px);color:var(--text)}.rows a:hover .t3{color:var(--accent)}}
+
+/* Footer */
+.foot{container-type:inline-size;border-top:1px solid var(--line);color:var(--text-3);font-size:0.875rem;line-height:1.5;padding:28px 0 28px;background:var(--bg)}
+.foot-row{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px 32px;padding-bottom:18px;border-bottom:1px solid var(--line)}
+.foot-nav{display:flex;flex-wrap:wrap;gap:0 4px;margin-left:-10px}
+.foot-nav a{display:inline-flex;align-items:center;min-height:44px;padding:0 10px;color:var(--text);font-size:0.75rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase}
+.foot-support,.foot-legal{font-size:0.875rem}
+.foot-support{margin:0;color:var(--text-2)}.foot-support a{color:var(--text);white-space:nowrap}
+.foot-links{display:flex;flex-wrap:wrap;gap:0 18px}.foot-links a,.foot-links button{display:inline-flex;align-items:center;min-height:36px;color:var(--text-2);font-size:inherit;line-height:inherit}
+@media(hover:hover){.foot-nav a:hover,.foot-links a:hover,.foot-links button:hover{text-decoration:underline;text-underline-offset:4px}}
+.foot-links button:disabled{opacity:1;cursor:pointer}.no-js .foot-links button:disabled{opacity:.5;cursor:default}
+.foot-note{padding:8px 0 0;max-width:84ch;font-size:0.75rem}
+/* Home hero: a short conversation with the NEVORA assistant plays once over eight seconds; still under reduced motion and without JavaScript */
+.hchat{position:absolute;right:max(var(--pad),calc(50% - 620px));top:50%;transform:translateY(-52%);width:360px;display:flex;flex-direction:column;gap:8px;padding:14px;border-radius:18px;background:rgba(10,16,24,.62);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);box-shadow:0 0 0 1px rgba(255,255,255,.1),0 30px 60px -30px rgba(0,0,0,.9);z-index:1;font-size:0.875rem;line-height:1.4}
+.hchat-h{margin:0 0 6px;display:flex;align-items:center;gap:10px;font-size:0.75rem;color:var(--text-2)}
+.hchat-h b{width:26px;height:26px;border-radius:7px;background:#0d1620;color:#bbd8ff;display:grid;place-items:center;font-weight:600;font-size:0.8125rem;box-shadow:0 0 0 1px rgba(255,255,255,.12)}
+.hchat-h span{font-weight:500;color:var(--text);white-space:nowrap}
+.hchat-h i{margin-left:auto;font-style:normal;font-size:0.6875rem;letter-spacing:.06em;text-transform:uppercase;color:#e2a54a;display:flex;align-items:center;gap:6px;white-space:nowrap}
+.hchat-h i::before{content:"";width:6px;height:6px;border-radius:50%;background:#e2a54a}
+.msg{margin:0;max-width:86%;padding:9px 12px;border-radius:14px;opacity:0;transform:translateY(10px);animation:8s linear forwards;position:relative}
+.msg.me{align-self:flex-end;background:#bbd8ff;color:#06121e;border-bottom-right-radius:4px}
+.msg.ai{align-self:flex-start;background:rgba(255,255,255,.1);color:#f4f6f9;border-bottom-left-radius:4px}
+/* while the assistant "types", the bubble is there with three dots and the text is still transparent */
+.msg.ai::before{content:"";position:absolute;left:12px;top:50%;width:6px;height:6px;margin-top:-3px;border-radius:50%;background:rgba(244,246,249,.75);box-shadow:10px 0 0 rgba(244,246,249,.75),20px 0 0 rgba(244,246,249,.75);opacity:0;animation:8s linear forwards}
+.js .hchat:not(.in) .msg,.js .hchat:not(.in) .msg.ai::before{animation-play-state:paused}
+.msg.m1{animation-name:m1}.msg.a1{animation-name:a1}.msg.a1::before{animation-name:t1}.msg.m2{animation-name:m2}.msg.a2{animation-name:a2}.msg.a2::before{animation-name:t2}
+@keyframes m1{0%,11%{opacity:0;transform:translateY(10px)}16%,100%{opacity:1;transform:none}}
+@keyframes a1{0%,20%{opacity:0;transform:translateY(10px);color:rgba(244,246,249,0)}25%,41%{opacity:1;transform:none;color:rgba(244,246,249,0)}46%,100%{opacity:1;transform:none;color:#f4f6f9}}
+@keyframes t1{0%,24%{opacity:0}26%,37%{opacity:1}40%,100%{opacity:0}}
+@keyframes m2{0%,60%{opacity:0;transform:translateY(10px)}65%,100%{opacity:1;transform:none}}
+@keyframes a2{0%,70%{opacity:0;transform:translateY(10px);color:rgba(244,246,249,0)}75%,87%{opacity:1;transform:none;color:rgba(244,246,249,0)}92%,100%{opacity:1;transform:none;color:#f4f6f9}}
+@keyframes t2{0%,74%{opacity:0}76%,83%{opacity:1}86%,100%{opacity:0}}
+.no-js .msg,.still .msg{opacity:1;transform:none;animation:none;color:inherit}.no-js .msg.ai::before,.still .msg.ai::before{display:none}
+@media(max-width:1180px){.hchat{width:320px}.hchat-h{font-size:0.6875rem;gap:8px}.hchat-h i{font-size:0.625rem}}
+@media(max-width:833px){.hchat{position:relative;left:auto;right:auto;top:auto;transform:none;align-self:flex-start;width:calc(100% - var(--pad)*2);max-width:460px;margin:28px var(--pad) 0;order:1;gap:5px;padding:10px 10px 12px;font-size:0.75rem;line-height:1.4;border-radius:14px}.hchat-h{margin-bottom:4px;font-size:0.6875rem}.hchat-h b{width:22px;height:22px;font-size:0.75rem}.hchat-h i{font-size:0.625rem}.msg{padding:7px 10px;max-width:90%}.msg.ai::before{left:10px}}
+@media(max-height:600px) and (max-width:833px){.hchat{display:none}}
+@media(prefers-reduced-motion:reduce){.msg{opacity:1;transform:none;animation:none}.msg.ai::before{display:none}}
+/* The wordmark closes the page the way the hero opens it: full width, cut by the bottom edge, the hero light behind it */
+.foot-wm{position:relative;overflow:hidden;height:calc((100cqw - var(--pad)*2) * .1792 * .58);margin-top:40px;padding:0 var(--pad)}
+.foot-glow{position:absolute;inset:-40% 0 0;width:100%;height:auto;min-height:140%;object-fit:cover;object-position:50% 70%;opacity:.28;-webkit-mask-image:linear-gradient(0deg,#000 0%,rgba(0,0,0,.6) 50%,transparent 100%);mask-image:linear-gradient(0deg,#000 0%,rgba(0,0,0,.6) 50%,transparent 100%);pointer-events:none}
+.foot-wm .wm-velani{position:absolute;left:var(--pad);right:var(--pad);top:0;width:calc(100% - var(--pad)*2);height:auto;color:#f4f6f9;opacity:.92}
+/* The cut only reads as deliberate when it is the page edge, so no footer padding below it */
+.foot:has(.foot-wm){padding-bottom:0}
+.foot-legal{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:4px 24px;padding-top:10px}
+.foot-legal a{color:var(--text-2)}
+@media(max-width:833px){
+ .foot-legal{flex-direction:column;align-items:flex-start}
+}
+/* Phones: the footer becomes two aligned columns, not wrapped rows */
+@media(max-width:600px){
+ .foot{padding:24px 0 28px}
+ .foot-row{display:block;padding-bottom:20px}
+ .foot-nav{display:grid;grid-template-columns:1fr 1fr;gap:0 16px;margin-left:0}
+ .foot-nav a{min-height:44px;padding:0}
+ .foot-support{margin-top:12px;padding-top:16px;border-top:1px solid var(--line)}
+ .foot-legal{align-items:stretch;gap:12px;padding-top:16px}
+ .foot-links{display:grid;grid-template-columns:1fr 1fr;gap:0 16px}
+ .foot-links a,.foot-links button{min-height:44px;justify-content:flex-start;text-align:left}
+ /* Phones show the whole wordmark: a near-complete cut on a narrow screen reads as a rendering fault.
+    The extra 28px keeps the glow running to the page edge under the word, so there is no seam */
+ .foot-wm{height:calc((100cqw - var(--pad)*2) * .1792 + 28px);margin-top:32px}
+}
+
+@media(prefers-reduced-motion:reduce){
+ *,*::before,*::after{animation-duration:.01ms!important;animation-delay:0s!important;transition-duration:0s!important;transition-delay:0s!important;scroll-behavior:auto!important}
+ .rise .w>span{transform:none}.draw::before,.rail::before{transform:none}.fade{opacity:1}
+ .gnav.tuck{transform:none}
+ .hpanel.live .hph{animation:none;transform:none}.hcue{animation:none}
+ .hshot.fade{transform:translateY(-50%)}.notif{transform:none;transition:opacity .5s}
+ @media(max-width:833px){.hshot.fade{transform:none}}
+}
+
+/* Status line: dot stays with the first line when it wraps */
+.status{display:flex;align-items:baseline;gap:8px;font-size:0.9375rem;color:var(--text-2)}
+.status i{width:7px;height:7px;border-radius:50%;background:#e2a54a;flex:none;align-self:flex-start;margin:.5em 0 0!important;vertical-align:0!important}
+/* Screens that set down on a shared baseline */
+.setdown figure{opacity:0;transform:translateY(32px);transition:opacity 1s var(--out),transform 1.1s var(--out)}
+.setdown.in figure{opacity:1;transform:none}
+.setdown.in figure:nth-child(2){transition-delay:.09s}.setdown.in figure:nth-child(3){transition-delay:.18s}
+.no-js .setdown figure,.still .setdown figure{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.setdown figure{opacity:1;transform:none}}
+.ul{text-decoration:underline;text-decoration-color:var(--line-2);text-underline-offset:3px}@media(hover:hover){.ul:hover{text-decoration-color:currentColor}}
+/* Without JavaScript (or if the script never runs), the header links wrap under the wordmark on phones; anchors land closer to the top */
+@media(max-width:833px){.no-js .gnav-in,.still .gnav-in{flex-wrap:wrap}.no-js .gnav-links,.still .gnav-links{display:flex;flex-wrap:wrap;order:3;width:100%;margin:0 0 4px -14px}.no-js .gnav-menu,.still .gnav-menu{display:none}html{--anchor:64px}}
+/* Phones keep the 17px body size */
+
+/* ---------- Inner pages: company, contact, help, legal and NEVORA policies ---------- */
+/* Text hero: a label, a big title, one paragraph */
+.phero{padding:clamp(88px,12vw,168px) 0 var(--s1)}
+@media(max-width:833px){.phero{padding-top:56px}}
+.phero .t1{max-width:16ch}
+.phero .lede{margin-top:24px;max-width:34em}
+.phero .acts{margin-top:32px}
+.doc-meta{margin-top:24px;font-size:0.75rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--text-3)}
+
+/* Sections with a heading on the left and the words on the right */
+.split{padding:48px 0 var(--s2)}
+.split>.wrap>*{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:12px 64px;padding:40px 0 44px;align-items:baseline;scroll-margin-top:calc(var(--anchor) - 12px)}
+.split h2{max-width:16ch}
+.split h3{font-size:1.1875rem;font-weight:600;letter-spacing:-.015em;line-height:1.35;color:var(--text);margin-bottom:10px}
+.split p{color:var(--text-2);max-width:36em}
+.split p+p{margin-top:14px}
+.split .more{margin-top:14px}
+@media(max-width:833px){.split>.wrap>*{grid-template-columns:1fr;padding:28px 0 32px}}
+
+/* Chapters on dark pages: a label and a title, then the content */
+.chap{padding-top:var(--s3);scroll-margin-top:calc(var(--anchor) + 48px - var(--s3))}
+.chap .head{max-width:780px}
+.chap .head .lede{margin-top:20px}
+.chap.chap-follow{padding-top:var(--s2);scroll-margin-top:calc(var(--anchor) + 48px - var(--s2))}
+
+/* Steps on one rail: "How a custom project works", "How your business gets NEVORA".
+   One line, one dot per step; the steps sit on the content edge. Below 1024px the rail turns vertical. */
+.rail{position:relative;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px;margin-top:var(--s1)}
+.rail.r3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.rail::before{content:"";position:absolute;left:0;right:0;top:0;height:1px;background:var(--line-2);transform-origin:0 50%;transform:scaleX(0);transition:transform 1.2s var(--out)}
+.rail.in::before,.no-js .rail::before,.still .rail::before{transform:none}
+.rail li{position:relative;padding-top:30px}
+.rail li::after{content:"";position:absolute;left:0;top:-4px;width:9px;height:9px;border-radius:50%;background:var(--bg);box-shadow:0 0 0 1px var(--line-2);transition:background .5s var(--out),box-shadow .5s var(--out)}
+.rail li.in::after,.no-js .rail li::after,.still .rail li::after{background:var(--accent);box-shadow:0 0 0 4px rgba(187,216,255,.12)}
+.rail li:nth-child(2)::after{transition-delay:.15s}.rail li:nth-child(3)::after{transition-delay:.3s}.rail li:nth-child(4)::after{transition-delay:.45s}
+.rail i{display:block;margin-bottom:10px;font-style:normal;font-size:0.75rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--text-3)}
+.rail b{display:block;font-size:1.25rem;font-weight:600;line-height:1.3;letter-spacing:-.01em;text-wrap:balance}
+.rail span{display:block;margin-top:8px;font-size:1.0625rem;line-height:1.55;color:var(--text-2);max-width:30em}
+@media(max-width:1023px){
+ .rail,.rail.r3{grid-template-columns:1fr;gap:28px}
+ .rail::before{left:4px;right:auto;top:6px;bottom:6px;width:1px;height:auto;transform-origin:50% 0;transform:scaleY(0)}
+ .rail li{padding:0 0 0 32px}
+ .rail li::after{top:.4em}
+}
+@media(prefers-reduced-motion:reduce){.rail li::after{transition:none}}
+.how-page{padding:var(--s3) 0 var(--s3)}
+.how .t2{max-width:16ch}
+
+/* Closing band: a hairline on the content edge, then a heading and its links (NEVORA help, Support) */
+.band{padding:var(--s2) 0}.faq+.band{padding-top:0}
+/* Custom development: the four services, one tap away */
+.jump{position:relative;z-index:1;display:flex;flex-wrap:wrap;gap:4px 28px;margin-top:40px}
+.jump a{display:inline-flex;align-items:center;min-height:44px;font-size:0.75rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--text-2);text-decoration:underline;text-decoration-color:var(--line-2);text-underline-offset:6px;text-decoration-thickness:1px;transition:color .2s,text-decoration-color .2s}
+@media(hover:hover){.jump a:hover{color:var(--text);text-decoration-color:currentColor}}
+@media(max-width:599px){.jump{display:grid;grid-template-columns:1fr 1fr;gap:0 16px;margin-top:28px}}
+/* Booking panel: the phone screen's step row sits behind the copy, so the scrim is deeper here */
+@media(min-width:834px){#booking .hph{object-position:0% 50%}#booking .hcopy{max-width:460px}}
+/* Business tools: a real NEVORA web screen shown straight, in a window over the softened room photo */
+.hwin{position:absolute;z-index:1;right:max(var(--pad),calc(50% - 620px));top:50%;width:min(680px,48vw);transform:translateY(-50%);border-radius:var(--r2);overflow:hidden;box-shadow:0 0 0 1px rgba(255,255,255,.12),0 60px 120px -30px rgba(0,0,0,.9)}
+.hwin img{display:block;width:100%;height:auto}
+.hcopy p.hcap{margin:20px 0 0;font-size:0.8125rem;line-height:1.5;color:var(--label);max-width:30em}
+.hpanel.right .hwin{right:auto;left:max(var(--pad),calc(50% - 620px))}
+@media(min-width:834px){#online-stores .hcopy{max-width:440px}}
+@media(min-width:834px){#business-systems .hcopy{max-width:440px}}
+@media(min-width:834px) and (max-width:1180px){.hwin{width:min(520px,46vw)}}
+.hduo{position:absolute;z-index:1;right:max(var(--pad),calc(50% - 600px));top:50%;transform:translateY(-50%);display:flex;align-items:flex-start;gap:24px}
+.hduo .ph{width:250px;padding:7px;border-radius:40px;background:#0b0d10;box-shadow:0 0 0 1px rgba(255,255,255,.14),inset 0 0 0 1px rgba(255,255,255,.05),0 50px 100px -30px rgba(0,0,0,.9)}
+.hduo .ph img{display:block;width:100%;height:auto;border-radius:33px}
+.hduo .ph+.ph{margin-top:64px}
+@media(min-width:834px) and (max-width:1180px){.hduo{gap:16px}.hduo .ph{width:200px;padding:6px;border-radius:34px}.hduo .ph img{border-radius:28px}}
+@media(min-width:834px) and (max-height:760px){.hduo .ph{width:190px}}
+@media(max-width:833px){.hduo{position:relative;right:auto;top:auto;transform:none;order:-1;justify-content:center;gap:14px;margin:48px var(--pad) 32px}.hduo .ph{width:calc(50% - 7px);max-width:210px;padding:4px;border-radius:26px}.hduo .ph img{border-radius:22px}.hduo .ph+.ph{margin-top:40px}.hpanel:has(.hduo){min-height:0;justify-content:flex-start}.hpanel:has(.hduo) .hcopy{margin-top:0}}
+@media(max-width:833px){.hpanel.svc .hwin{position:absolute;left:var(--pad);right:var(--pad);top:calc((75vw - (100vw - var(--pad)*2)/1.6)/2);width:auto;transform:none;border-radius:12px}}
+@media(max-width:833px){#booking .hshade{background:linear-gradient(0deg,rgba(0,0,0,.95) 0%,rgba(0,0,0,.86) 44%,rgba(0,0,0,.45) 66%,rgba(0,0,0,0) 84%)}}
+.band-in{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:16px 64px;align-items:baseline;padding-top:32px;background:linear-gradient(var(--line),var(--line)) var(--pad) 0/calc(100% - var(--pad)*2) 1px no-repeat}
+.band-in p{color:var(--text-2);max-width:34em}
+.band-links{display:grid;grid-template-columns:repeat(2,minmax(0,max-content));gap:6px 40px;margin-top:8px}
+@media(max-width:599px){.band-links{grid-template-columns:1fr}}
+@media(max-width:1023px){.band-in{grid-template-columns:1fr;gap:12px 0}}
+
+/* Facts: a label over each value (client support, NEVORA specs) */
+.spec{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:40px clamp(24px,3vw,48px);margin-top:var(--s1)}
+.spec dt{font-size:0.75rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--text-3)}
+.spec dd{margin:10px 0 0;font-size:1.0625rem;line-height:1.5;color:var(--text);text-wrap:pretty}
+.spec dd a{color:inherit;text-decoration:underline;text-underline-offset:4px;text-decoration-thickness:1px;text-decoration-color:var(--line-2)}@media(hover:hover){.spec dd a:hover{text-decoration-color:currentColor}}
+.spec.big dd{font-size:clamp(1.3125rem,2vw,1.875rem);line-height:1.2;font-weight:600;letter-spacing:-.022em}
+.spec dd small{display:block;margin-top:8px;font-size:0.875rem;font-weight:400;letter-spacing:0;color:var(--text-2)}
+@media(max-width:959px){.spec{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:599px){.spec{grid-template-columns:1fr;gap:28px}}
+.support{padding-bottom:var(--s2)}
+.support .acts{margin-top:var(--s1)}
+
+/* Plans: facts, what is included, and what happens on day 30 */
+.plans{padding-bottom:var(--s2)}
+.plans .spec.big{margin-top:0;grid-template-columns:repeat(4,minmax(0,1fr))}
+@media(max-width:959px){.plans .spec.big{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:599px){.plans .spec.big{grid-template-columns:1fr}}
+.plans .inc{margin-top:var(--s2)}
+.plans .inc .hkick{margin-bottom:12px}
+.plans .inc h2{max-width:16ch}
+.plans .inc .lede{margin-top:16px;max-width:34em}
+.plans .fine{margin-top:32px;max-width:48em}
+/* Questions (the Help page, and the list on NEVORA) */
+.faq{padding-bottom:var(--s2)}
+.faq-list{margin-top:var(--s1);padding-bottom:0}
+@media(min-width:1024px){.qa{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:16px 64px;align-items:start}.qa .faq-list{margin-top:0}}
+.faq details{max-width:880px;border-top:1px solid var(--line)}
+.faq details:last-of-type{border-bottom:1px solid var(--line)}
+.faq summary{display:flex;align-items:center;justify-content:space-between;gap:24px;min-height:72px;padding:18px 0;font-size:clamp(1.0625rem,1.4vw,1.25rem);font-weight:500;letter-spacing:-.01em;cursor:pointer;list-style:none}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary .icon{font-size:1.125rem;color:var(--text-3);transition:transform .3s var(--out)}
+.faq details[open] summary .icon{transform:rotate(45deg) scale(.78)}
+.faq details p{padding:0 48px 26px 0;color:var(--text-2);max-width:40em}
+@media(hover:hover){.faq summary:hover{color:var(--accent)}}
+.faq .acts{margin-top:var(--s1)}
+
+/* Directory of links: flat tiles */
+.dir{padding-bottom:var(--s3)}
+.dir .hkick{margin-top:var(--s2)}
+.dir .hkick:first-child{margin-top:0}
+.tiles{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:24px}
+.tile{display:flex;flex-direction:column;gap:8px;min-height:188px;padding:24px;border-radius:var(--r2);background:var(--panel);box-shadow:0 0 0 1px var(--line);transition:background-color .25s,box-shadow .25s}
+.tile p{color:var(--text-2);max-width:34em}
+.tile .icon{margin-top:auto;align-self:flex-end;font-size:1.25rem;color:var(--text-2);transition:transform .35s var(--out),color .2s}
+@media(hover:hover){.tile:hover{background:var(--panel-2);box-shadow:0 0 0 1px var(--line-2)}.tile:hover .icon{transform:translateX(5px);color:var(--text)}}
+@media(max-width:700px){.tiles{grid-template-columns:1fr}.tile{min-height:0;padding:24px}}
+
+/* Long documents: legal notices and NEVORA policies. Numbered sections, a quiet contents column, no hairlines. */
+.doc{padding-bottom:var(--s3)}
+.doc-grid{display:grid;grid-template-columns:minmax(0,3fr) minmax(0,8fr);gap:48px 96px;align-items:start}
+.doc-aside{position:sticky;top:88px;display:flex;flex-direction:column;gap:4px}
+.doc-aside-t{margin:28px 0 8px;font-size:0.75rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--text-3)}
+.doc-aside-t:first-child{margin-top:0}
+.doc-toc{display:contents}.doc-toc summary{list-style:none;cursor:default;display:flex;align-items:center;justify-content:space-between}.doc-toc summary::-webkit-details-marker{display:none}.doc-toc summary::after{content:"";display:none;width:8px;height:8px;border-right:1px solid var(--text-2);border-bottom:1px solid var(--text-2);transform:rotate(45deg);transition:transform .2s}.doc-toc[open] summary::after{transform:rotate(225deg)}
+.doc-aside nav{display:flex;flex-direction:column}
+.doc-aside a{padding:6px 0 6px 14px;border-left:1px solid var(--line);font-size:0.875rem;line-height:1.4;color:var(--text-2);transition:color .2s,border-color .2s}
+@media(hover:hover){.doc-aside a:hover{color:var(--text);border-color:var(--text)}}
+.doc-body{max-width:38em}
+.doc-body section{display:grid;grid-template-columns:56px minmax(0,1fr);gap:4px 16px;padding:0 0 56px}
+.doc-body section>i{grid-row:1/span 9;padding-top:.45em;font-style:normal;font-size:0.75rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--text-3)}
+.doc-body section>*:not(i){grid-column:2}
+.doc-body h2{font-size:clamp(1.5rem,2vw,2rem);font-weight:600;letter-spacing:-.025em;line-height:1.15;margin-bottom:12px}
+.doc-body p,.doc-body li{color:var(--text-2);font-size:1.0625rem;line-height:1.65}
+.doc-body p+p,.doc-body p+ul,.doc-body ul+p{margin-top:14px}
+.doc-body ul,.doc-body ol{display:flex;flex-direction:column;gap:10px}
+.doc-body ol{counter-reset:step}.doc-body ol li{counter-increment:step;padding-left:28px}.doc-body ol li::before{content:counter(step) ".";width:auto;height:auto;top:0;left:0;background:none;font-size:0.9375rem;font-weight:500;color:var(--text-2);font-variant-numeric:tabular-nums;line-height:1.85}
+.doc-body li{position:relative;padding-left:22px}
+.doc-body li::before{content:"";position:absolute;left:2px;top:.78em;width:6px;height:1px;background:var(--text-3)}
+.doc-body strong{color:var(--text);font-weight:600}
+.doc-body a,.doc-contact a,.contact-aside a,.split p a,.faq details p a,.support a.ul{color:var(--text);text-decoration:underline;text-underline-offset:4px;text-decoration-thickness:1px;text-decoration-color:var(--line-2)}
+@media(hover:hover){.doc-body a:hover,.doc-contact a:hover,.contact-aside a:hover,.split p a:hover,.faq details p a:hover{text-decoration-color:currentColor}}
+.doc-end{margin-top:8px;padding-top:40px;color:var(--text-2);font-size:1.0625rem;line-height:1.65;max-width:40em}
+.phero .kicker a{text-decoration:underline;text-underline-offset:4px;text-decoration-thickness:1px;text-decoration-color:var(--line-2)}
+.doc-end .hkick{margin-bottom:10px}
+.doc-end .acts{margin-top:24px}
+.doc-body .pill{margin:20px 0 36px}
+@media(min-width:834px){.doc-end,.doc-body>.pill{margin-left:72px}}
+@media(max-width:833px){
+ .doc-grid{grid-template-columns:1fr;gap:32px}
+ .doc-aside{position:static}
+ .doc-toc{display:block;margin-bottom:16px}.doc-toc summary{cursor:pointer;min-height:44px;margin:0;padding:0 2px;border-bottom:1px solid var(--line);color:var(--text)}.doc-toc summary::after{display:block;margin-top:-4px}.doc-aside .doc-toc nav{flex-direction:column;gap:0;padding:8px 0 4px}
+ .doc-aside .doc-aside-t{margin-top:0}
+ .doc-aside nav:last-of-type{flex-direction:row;flex-wrap:wrap;gap:8px}
+ .doc-aside a{display:inline-flex;align-items:center;min-height:44px;padding:0 14px;border:1px solid var(--line-2);border-radius:var(--r);font-size:0.75rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--text)}
+ .doc-toc a{display:block;min-height:0;padding:9px 0 9px 14px;border:0;border-left:1px solid var(--line);border-radius:0;font-size:0.9375rem;font-weight:400;letter-spacing:0;text-transform:none;color:var(--text-2)}
+ .doc-body section{grid-template-columns:1fr;padding-bottom:44px}
+ .doc-body section>i{grid-row:auto}
+ .doc-body section>*:not(i){grid-column:1}
+}
+
+/* Contact: one centred column, large quiet fields with the label inside */
+.cform-hero{text-align:center;padding-bottom:40px}
+.cform-hero .t1{margin-inline:auto;max-width:14ch}
+.cform-hero .hfact{margin:16px auto 0;max-width:34em}
+.contact{padding:0 0 var(--s2)}
+.cform{max-width:calc(var(--pad)*2 + 560px)}
+.inquiry-form fieldset{border:0;margin:0;padding:0;min-width:0;display:block}
+.ff{position:relative;margin-top:12px}
+.ff input,.ff select,.ff textarea{display:block;width:100%;min-height:58px;padding:26px 16px 10px;font:inherit;font-size:1.0625rem;line-height:1.3;color:var(--text);background:var(--panel-2);border:1px solid transparent;border-radius:var(--r2);transition:border-color .15s,box-shadow .15s;appearance:none;-webkit-appearance:none}
+.ff label{position:absolute;left:16px;top:29px;transform:translateY(-50%);font-size:1.0625rem;line-height:1;color:var(--text-3);pointer-events:none;transition:top .15s var(--out),font-size .15s var(--out),color .15s}
+.ff .opt{color:var(--text-3)}.ff .opt::before{content:"· "}
+.ff input:focus+label,.ff input:not(:placeholder-shown)+label,.ff textarea:focus+label,.ff textarea:not(:placeholder-shown)+label,.ff.sel select:focus+label,.ff.sel select:not(:has(option[value=""]:checked))+label{top:10px;transform:none;font-size:0.75rem;color:var(--text-2)}
+.ff.area label{top:28px}
+.ff.area textarea{min-height:140px;resize:none;line-height:1.5;padding-top:30px}
+.ff.sel{background:linear-gradient(45deg,transparent 50%,var(--text-2) 50%),linear-gradient(135deg,var(--text-2) 50%,transparent 50%);background-position:calc(100% - 22px) 50%,calc(100% - 17px) 50%;background-size:5px 5px;background-repeat:no-repeat;border-radius:var(--r2)}
+.ff.sel select{background-color:transparent;position:relative;cursor:pointer;padding-right:44px}
+.ff.sel{background-color:var(--panel-2)}
+@media(hover:hover){.ff input:hover,.ff select:hover,.ff textarea:hover{border-color:rgba(255,255,255,.14)}}
+/* Fields take the site's focus ring: 2px light blue */
+.ff input:focus-visible,.ff select:focus-visible,.ff textarea:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-color:rgba(255,255,255,.5)}
+.ff [aria-invalid="true"],.ff [aria-invalid="true"]:hover,.ff [aria-invalid="true"]:focus-visible{border-color:#ff9b8f}
+.field-error{margin:6px 16px 0;font-size:0.8125rem;line-height:1.5;color:#ffb3a9}
+.field-error:empty{display:none}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.frow .ff{margin-top:12px}
+.cform .pill{width:100%;margin-top:24px;cursor:pointer}
+.cform .pill:disabled{opacity:.6;cursor:default}
+.send-note{margin:16px 0 0;text-align:center;font-size:0.875rem;color:var(--text-3)}
+.send-note a{color:var(--text-2);text-decoration:underline;text-underline-offset:3px}
+.contact .fine{margin:20px auto 0;text-align:center;max-width:42em}
+.form-legal,.form-legal p{margin:16px 0 0;text-align:center;font-size:0.75rem;line-height:1.5;color:var(--text-3)}.form-legal p{margin:0}.form-legal a{color:var(--text-2);text-decoration:underline;text-underline-offset:3px}
+.form-status{margin-top:16px;text-align:center;font-size:0.875rem;color:var(--text-2)}
+.form-status:empty{display:none}
+.form-status[data-state="invalid"],.form-status[role="alert"]{color:#ffb3a9}
+.form-status[data-state="accepted"],.form-status[data-state="preview"]{color:var(--accent)}
+.note{margin:0 0 16px;text-align:center;font-size:0.75rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--text-3)}
+.contact-aside{margin:56px 0 0;text-align:center;font-size:0.875rem;line-height:1.7;color:var(--text-3)}
+.contact-aside a{display:inline-block;min-height:24px;color:var(--text-2);text-decoration:underline;text-decoration-color:var(--line-2);text-underline-offset:3px}
+.panel{background:var(--panel);border-radius:var(--r2);padding:clamp(24px,3.4vw,44px);box-shadow:0 0 0 1px var(--line)}
+.panel .t3{margin-bottom:12px}
+.panel>p{color:var(--text-2)}
+.panel .acts{margin-top:28px}
+.field-help.mail{margin-top:16px;font-size:0.875rem;color:var(--text-3)}
+@media(max-width:600px){
+ .frow{grid-template-columns:1fr;gap:0}
+ .contact-aside{margin-top:48px}
+}
+
+/* Cookie choices */
+.cookie-dialog{width:min(560px,calc(100% - 32px));max-height:calc(100% - 32px);overflow:auto;border:0;border-radius:var(--r2);padding:clamp(24px,4vw,36px);background:var(--panel);color:var(--text);box-shadow:0 0 0 1px var(--line-2),0 40px 120px rgba(0,0,0,.7)}
+.cookie-dialog::backdrop{background:rgba(2,5,9,.7);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+.dialog-heading{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:12px}
+.dialog-heading h2{font-size:1.5rem;font-weight:600;letter-spacing:-.02em}
+.icon-button{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;margin-right:-10px;border-radius:var(--r);font-size:1.25rem}
+@media(hover:hover){.icon-button:hover{background:rgba(255,255,255,.06)}}
+.cookie-dialog>p{font-size:0.875rem;color:var(--text-2)}
+.cookie-dialog a{color:var(--accent);text-decoration:underline;text-underline-offset:3px}
+.cookie-option{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:16px 0;border-bottom:1px solid var(--line);font-size:0.875rem}
+#cookie-summary{padding-bottom:16px;border-bottom:1px solid var(--line)}
+.cookie-option strong{display:block;font-weight:600}
+.cookie-option p,.cookie-option span span{display:block;color:var(--text-3);font-size:0.875rem}
+.cookie-option input{width:22px;height:22px;accent-color:var(--accent);flex:none}
+.always-on{font-size:0.75rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--text-3);white-space:nowrap}
+.cookie-context{margin-top:14px;font-size:0.875rem;color:var(--text-3)}@media(max-width:600px){.cookie-context{padding-bottom:8px}.consent-status:not(:empty){position:sticky;bottom:140px;padding:8px 0;background:var(--panel)}}
+.consent-status{font-size:0.875rem;color:var(--accent);margin-top:8px}
+.consent-status:empty{display:none}
+.cookie-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}
+.cookie-actions .pill{min-height:44px;padding:0 16px;font-size:0.75rem}
+.cookie-actions button:disabled{opacity:.6}
+.cookie-nojs-note{font-size:0.8125rem}
+/* Phones: the dialog scrolls, and its actions stay in reach at the bottom */
+@media(max-width:600px){.cookie-dialog{padding:20px}.cookie-option{padding:12px 0}.cookie-actions{display:grid;grid-template-columns:1fr 1fr;gap:10px;position:sticky;bottom:0;margin:12px -20px -20px;padding:12px 20px 20px;background:var(--panel)}.cookie-actions .pill{min-width:0;padding:0 10px;font-size:0.6875rem;white-space:normal}.cookie-actions .pill:last-child{grid-column:1/-1}}
+
+.field[hidden],.form-row[hidden],[data-nevora-fields][hidden]{display:none}
+/* NEVORA enquiry variant: the boot script adds .ask-nevora before paint, so nothing changes after the page shows */
+.ask-nevora .v-d,html:not(.ask-nevora) .v-n,html:not(.ask-demo) .v-m,.ask-demo .v-n:not(.v-nm){display:none}
+/* Relay waitlist (?interest=relay): its own label, heading and fact line; the form keeps the general wording */
+html:not(.ask-relay) .v-r,.ask-relay .cform-hero .v-d{display:none}
+.ask-nevora [data-nevora-fields]{display:grid}
+.ask-nevora .field-topic{display:none}
+
+/* Try the time clock: a working copy of the NEVORA PIN screen. Light surface, like the real tablet. */
+.kio-note{display:inline-flex;flex-wrap:wrap;gap:4px 6px;margin-top:var(--s1);padding:10px 16px;border-radius:var(--r);background:var(--panel);box-shadow:0 0 0 1px var(--line);font-size:0.875rem;line-height:1.4;color:var(--text-2)}
+.kio-note b{font-weight:600;color:var(--text)}
+.kio-note+.kio{margin-top:16px}
+.try-acts{margin-top:28px}
+.kio{--k-ink:#1b2a28;--k-mute:#5d6b68;--k-teal:#0f6e66;--k-side:#f3f6f5;--k-key:#f1f4f3;--k-line:#e4e9e7;position:relative;margin-top:var(--s1);display:grid;grid-template-columns:minmax(0,39fr) minmax(0,61fr);max-width:1040px;background:#fff;color:var(--k-ink);border-radius:clamp(18px,2vw,28px);overflow:hidden;box-shadow:0 0 0 1px rgba(255,255,255,.07),0 1px 1px rgba(0,0,0,.4),0 12px 24px -12px rgba(0,0,0,.6),0 48px 96px -32px rgba(0,0,0,.85)}
+.kio button:focus-visible{outline:2px solid #1f7ab8;outline-offset:2px}
+.kio-side{display:flex;flex-direction:column;padding:clamp(24px,3vw,40px);background:var(--k-side);border-right:1px solid var(--k-line)}
+.kio-brand img{display:block;height:15px;width:auto;filter:brightness(0);opacity:.86}
+.kio-brand span{display:block;margin-top:6px;font-size:0.875rem;color:var(--k-mute)}
+.kio-now{margin:auto 0}
+.kio-loc{display:flex;align-items:center;gap:8px;font-size:1.0625rem}
+.kio-loc .icon{flex:none;font-size:1.25rem;color:var(--k-teal)}
+.kio-time{display:flex;align-items:baseline;gap:10px;margin-top:18px;font-size:clamp(3.5rem,6.4vw,5.5rem);line-height:1;font-weight:500;letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+.kio-time small{font-size:1rem;letter-spacing:0}
+.kio-date{margin-top:14px;font-size:1rem;color:var(--k-mute)}
+.kio-main{display:grid;place-items:center;padding:clamp(28px,4vw,56px) clamp(20px,4vw,56px)}
+.kio-step{grid-area:1/1;display:flex;flex-direction:column;width:min(100%,360px)}
+.kio-step[hidden]{display:flex;visibility:hidden}
+.kio-h{font-size:1.75rem;line-height:1.2;font-weight:600;letter-spacing:-.02em;text-align:center;outline:none}
+.kio-dots{display:flex;justify-content:center;align-items:center;gap:22px;height:64px;margin-top:20px;border-radius:14px;background:var(--k-key)}
+.kio-dots i{width:14px;height:14px;border-radius:50%;box-shadow:inset 0 0 0 1.5px #6b7976;transition:background-color .15s,box-shadow .15s,transform .25s var(--out)}
+.kio-dots i.on{background:var(--k-teal);box-shadow:none;transform:scale(1.08)}
+.kio-pad{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:14px}
+.kio-pad button{display:grid;place-items:center;height:64px;border-radius:12px;background:var(--k-key);color:var(--k-ink);font-size:1.5rem;font-variant-numeric:tabular-nums;transition:background-color .12s,transform .12s;touch-action:manipulation;-webkit-tap-highlight-color:transparent}
+@media(hover:hover){.kio-pad button:hover{background:#e7ecea}.kio-done:hover{background:#f1f4f3}.kio-lang:hover{color:var(--k-teal)}}
+.kio-pad button:active{background:#dde4e1;transform:scale(.97)}
+.kio-pad .kio-soft{font-size:1rem;font-weight:600;color:var(--k-teal)}
+.kio-pad .icon{font-size:1.375rem}
+.kio-go{display:flex;align-items:center;justify-content:center;gap:8px;height:52px;margin-top:16px;border-radius:12px;background:var(--k-teal);color:#fff;font-size:1.0625rem;font-weight:600;transition:background-color .2s,color .2s}
+.kio-go:disabled{background:#e9eeec;color:#5d6b68;cursor:default}
+.kio-foot{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-top:18px;font-size:0.9375rem;line-height:1.45;color:var(--k-mute)}
+.kio-lang{display:inline-flex;align-items:center;gap:6px;flex:none;min-height:44px;color:#3d4b48;font-size:0.9375rem}
+.kio-ok{align-items:center;text-align:center}
+.kio-check{display:grid;place-items:center;width:88px;height:88px;border-radius:50%;background:var(--k-teal);color:#fff;font-size:2.75rem;animation:kio-pop .5s var(--out)}
+.kio-ok .kio-h{margin-top:24px}
+.kio-saved{margin-top:20px;line-height:1.55;color:var(--k-mute);text-wrap:pretty}
+.kio-demo{margin-top:10px;font-size:0.9375rem;font-weight:500;color:var(--k-teal)}
+.kio-saved b{font-weight:500;color:var(--k-ink);font-variant-numeric:tabular-nums}
+.kio-done{width:100%;height:52px;margin-top:28px;border-radius:12px;box-shadow:inset 0 0 0 1px #cfd8d5;color:var(--k-teal);font-size:1.0625rem;font-weight:600}
+@keyframes kio-pop{from{transform:scale(.6);opacity:0}to{transform:none;opacity:1}}
+@keyframes kio-shake{20%,60%{transform:translateX(-6px)}40%,80%{transform:translateX(6px)}}
+.kio-dots.shake{animation:kio-shake .32s}
+@media(prefers-reduced-motion:reduce){.kio-check,.kio-dots.shake{animation:none}.kio-dots i,.kio-pad button{transition:none}}
+@media(max-width:833px){
+ .kio{grid-template-columns:1fr}
+ .kio-side{flex-direction:row;align-items:center;justify-content:space-between;gap:12px;padding:16px 18px;border-right:0;border-bottom:1px solid var(--k-line)}
+ .kio-now{margin:0;text-align:right}
+ .kio-loc{justify-content:flex-end;font-size:0.8125rem}.kio-loc .icon{font-size:1rem}
+ .kio-time{justify-content:flex-end;gap:6px;margin-top:4px;font-size:2rem}.kio-time small{font-size:0.8125rem}
+ .kio-date{display:none}
+ .kio-main{padding:26px 18px 28px}
+ .kio-h{font-size:1.5rem}
+ .kio-pad button{height:58px}
+ .kio-foot{font-size:0.875rem}
+}
+@media(min-width:601px) and (max-width:833px){.kio{max-width:560px}}
+
+@media(max-width:360px){.kio-loc{font-size:0.75rem}.kio-loc b{white-space:nowrap}}
+
+/* ---------- Rondo, Velani's AI adviser: a launcher pill and a chat panel on every page ---------- */
+.ast-root[hidden]{display:none}
+.ast-launch{position:fixed;right:20px;bottom:20px;z-index:80;display:inline-flex;align-items:center;gap:10px;min-height:48px;padding:0 18px 0 16px;border-radius:var(--r);background:var(--text);color:var(--bg);font-size:0.75rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;box-shadow:0 10px 30px -10px rgba(0,0,0,.8),0 0 0 1px rgba(255,255,255,.08);transition:transform .3s var(--out),background-color .3s}
+.ast-launch .ast-av{width:24px;height:24px;font-size:0.75rem;letter-spacing:0;background:#0d1620;color:var(--accent)}
+.ast-av{display:grid;place-items:center;flex:none;width:30px;height:30px;border-radius:7px;background:var(--panel-2);color:var(--accent);font-size:0.875rem;font-weight:600;font-style:normal;box-shadow:0 0 0 1px rgba(255,255,255,.12)}
+@media(hover:hover){.ast-launch:hover{background:#fff}}
+.ast-launch:active{transform:scale(.97)}
+.ast-launch[aria-expanded=true]{visibility:hidden}
+.ast{position:fixed;right:20px;bottom:20px;z-index:90;display:flex;flex-direction:column;width:min(420px,calc(100vw - 40px));height:min(680px,calc(100vh - 40px));height:min(680px,calc(100svh - 40px));background:var(--panel);color:var(--text);border-radius:var(--r2);box-shadow:0 0 0 1px var(--line-2),0 40px 120px rgba(0,0,0,.7);overflow:hidden}
+.ast[hidden]{display:none}
+.js .ast{opacity:0;transform:translateY(8px);transition:opacity .25s var(--out),transform .3s var(--out)}
+.js .ast.in{opacity:1;transform:none}
+.ast-head{display:flex;align-items:center;gap:10px;padding:12px 8px 12px 18px;border-bottom:1px solid var(--line)}
+.ast-head-t{flex:1;min-width:0;outline:none}
+.ast-t{font-size:1.0625rem;font-weight:600;letter-spacing:-.01em;line-height:1.3}
+.ast-sub{margin-top:2px;font-size:0.75rem;color:var(--text-3)}
+.ast-icon[hidden],.ast-link[hidden],.ast-launch[hidden]{display:none}
+.ast-icon{display:inline-flex;align-items:center;justify-content:center;flex:none;width:44px;height:44px;border-radius:var(--r);font-size:1.25rem;color:var(--text-2)}
+@media(hover:hover){.ast-icon:hover{background:rgba(255,255,255,.06);color:var(--text)}}
+.ast-body{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;padding:18px 22px}
+.ast-intro{padding-bottom:6px}
+.ast-intro[hidden]{display:none}
+.ast-hi{font-size:1.25rem;font-weight:600;letter-spacing:-.015em;line-height:1.3;color:var(--text)}
+.ast-lede{margin-top:6px;font-size:1rem;line-height:1.5;color:var(--text-2)}
+.ast-scope{margin-top:16px;font-size:0.75rem;line-height:1.45;color:var(--text-3)}
+.ast-sugg{display:flex;flex-direction:column;align-items:flex-start;gap:8px;margin-top:16px}
+.ast-sugg button,.ast-acts a{display:inline-flex;align-items:center;min-height:40px;padding:8px 14px;border-radius:var(--r);box-shadow:inset 0 0 0 1px var(--line-2);font-size:0.875rem;line-height:1.3;color:var(--text);text-align:left;transition:background-color .2s}
+@media(hover:hover){.ast-sugg button:hover,.ast-acts a:hover{background:rgba(255,255,255,.06)}}
+.ast-lang{display:flex;flex:none;padding:2px;border-radius:var(--r);box-shadow:inset 0 0 0 1px var(--line-2);font-size:0.6875rem;font-weight:500;letter-spacing:.06em}
+.ast-lang button{min-width:36px;min-height:40px;padding:0 8px;border-radius:2px;color:var(--text-3)}
+@media(hover:hover){.ast-lang button:hover{color:var(--text)}}
+.ast-lang button[aria-pressed=true]{background:rgba(255,255,255,.08);color:var(--text)}
+.ast-log{display:flex;flex-direction:column;gap:16px}
+.ast-log:empty{display:none}
+.ast-msg{font-size:1rem;line-height:1.5;word-wrap:break-word;overflow-wrap:anywhere}
+.ast-msg.you{align-self:flex-end;max-width:88%;padding:10px 14px;border-radius:var(--r2) var(--r2) var(--r) var(--r2);background:var(--panel-2)}
+.ast-msg.you[data-unsent]{opacity:.6}
+.ast-msg.ai p+p{margin-top:10px}
+.ast-who{font-size:0.75rem;font-weight:500;letter-spacing:.04em;color:var(--accent)}
+.ast-msg.ai .ast-who+p{margin-top:4px}
+.ast-src{margin-top:8px;font-size:0.75rem;line-height:1.5;color:var(--text-3)}
+.ast-src a{color:var(--text-2);text-decoration:underline;text-underline-offset:3px}
+.ast-acts{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.ast-wait{display:flex;align-items:center;gap:10px;padding:6px 0;font-size:0.875rem;color:var(--text-3)}
+.ast-dots{display:inline-flex;gap:5px}
+.ast-wait i{width:6px;height:6px;border-radius:50%;background:var(--text-3);animation:ast-dot 1.2s infinite}
+.ast-wait i:nth-child(2){animation-delay:.2s}.ast-wait i:nth-child(3){animation-delay:.4s}
+@keyframes ast-dot{0%,80%,100%{opacity:.3}40%{opacity:1}}
+.ast-verify{padding:10px 22px 0;font-size:0.75rem;color:var(--text-3)}
+.ast-verify[hidden]{display:none}
+#ast-turnstile:not(:empty){margin-top:8px}
+.ast-form{display:flex;align-items:flex-end;gap:8px;padding:10px 12px 10px 22px;border-top:1px solid var(--line)}
+.ast-form textarea{flex:1;min-width:0;max-height:140px;padding:11px 0;font:inherit;font-size:1rem;line-height:1.4;color:var(--text);background:none;border:0;resize:none;outline:none}
+.ast-form textarea::placeholder{color:var(--text-3)}
+.ast-form textarea:focus-visible{outline:none}
+.ast-form:focus-within{border-top-color:var(--line-2)}
+/* The question box shows the site's focus ring while it has the keyboard */
+.ast-form:has(textarea:focus-visible){outline:2px solid var(--accent);outline-offset:-4px;border-radius:var(--r2)}
+.ast-send{display:inline-flex;align-items:center;justify-content:center;flex:none;width:44px;height:44px;border-radius:var(--r);background:var(--text);color:#06121e;font-size:1.125rem;transition:background-color .2s,opacity .2s}
+.ast-send:disabled{opacity:.35;cursor:default}
+.ast-status{display:flex;flex-wrap:wrap;align-items:center;gap:2px 14px;padding:8px 22px 0;font-size:0.75rem;line-height:1.45;color:#ffb3a9}
+.ast-status[hidden]{display:none}
+.ast-status[data-kind=info]{color:var(--text-3)}
+a.ast-link{display:inline-flex;align-items:center}
+.ast-link{min-height:32px;color:var(--accent);font-size:0.75rem;text-decoration:underline;text-underline-offset:3px}
+.ast-link:disabled{opacity:.5;text-decoration:none;cursor:default}
+.ast-note{padding:8px 22px 14px;font-size:0.75rem;line-height:1.45;color:var(--text-3)}
+.ast-note a{color:var(--text-2);text-decoration:underline;text-underline-offset:3px}
+.ast-confirm{margin-top:16px;padding:14px 16px;border-radius:var(--r);background:var(--panel-2);font-size:0.875rem;line-height:1.45}
+.ast-confirm[hidden]{display:none}
+.ast-confirm div{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.ast-small{min-height:36px;padding:0 12px;font-size:0.6875rem}
+@media(max-width:600px){
+ .ast{right:0;bottom:0;width:100%;height:100%;height:100svh;border-radius:0;box-shadow:none}
+ .ast-launch{right:16px;bottom:16px;min-height:44px;padding:0 14px 0 10px;gap:8px}
+ .ast-head{padding-left:16px}
+ .ast-sub-x{display:none}
+ .ast-body{padding:16px 18px}
+ .ast-msg.you{max-width:92%}
+}
+/* The launcher steps aside: on phones over the first screen and the footer, at every width while a page field has the keyboard */
+.ast-launch{transition:opacity .25s var(--out),transform .3s var(--out),visibility 0s,background-color .3s}
+.ast-tucked .ast-launch{opacity:0;transform:translateY(16px);visibility:hidden;pointer-events:none;transition:opacity .2s,transform .2s,visibility 0s .2s}
+/* …and is gone while a full-screen menu is open (motion.js and nevora.js also make it inert) */
+body:has(#gmenu-btn[aria-expanded=true]) .ast-launch,body:has(#lnav-tog[aria-expanded=true]) .ast-launch{display:none}
+@media(prefers-reduced-motion:reduce){.ast-wait i{animation:none;opacity:.6}.js .ast{transition:none}}
+
+/* ---------- Polish pass 2 (Nov 4) ---------- */
+/* Anything you click reads in sentence case; small tracked caps stay for labels only (kickers, meta, step numbers) */
+.pill,.hb{padding:0 22px;font-size:0.9375rem;letter-spacing:0;text-transform:none}
+.gnav .pill{font-size:0.875rem}
+.gnav-links a{font-size:0.875rem;letter-spacing:0;text-transform:none}
+.gmenu nav>a:not(.pill){font-size:1.375rem;letter-spacing:-.01em;text-transform:none}
+.foot-nav a{font-size:0.875rem;letter-spacing:0;text-transform:none}
+.more,.jump a{font-size:0.9375rem;letter-spacing:0;text-transform:none}
+/* The sticky bar stays readable over moving content instead of ghosting it */
+.gnav{background:rgba(5,9,14,.97)}
+/* Inline footer contacts get a 44px tap height without moving the line */
+.foot-support a{display:inline-block;padding:12px 0;margin:-12px 0}
+/* Custom development: the filled "Start a project" opens and closes the page; each service keeps a quiet text link */
+:is(#web-applications,#booking,#online-stores,#business-systems) .hacts{align-items:flex-start}
+:is(#web-applications,#booking,#online-stores,#business-systems) .hacts .hb:not(.fill){width:auto;min-height:44px;padding:0;gap:10px;background:none;border:0;-webkit-backdrop-filter:none;backdrop-filter:none;justify-content:flex-start}
+@media(hover:hover){:is(#web-applications,#booking,#online-stores,#business-systems) .hacts .hb:not(.fill):hover{background:none;text-decoration:underline;text-underline-offset:5px}}
+@media(max-width:833px){
+ .pill,.hb{padding:0 18px;font-size:0.9375rem}
+ .gnav .pill{font-size:0.875rem}
+ .doc-aside a{font-size:0.875rem;letter-spacing:0;text-transform:none}
+ /* The closing panel keeps a short band of light above its line, not a screen of it */
+ .hpanel.end{min-height:400px}
+}
+/* Tablets (601–833px): actions sit side by side at their own width and the headline gets tablet size */
+@media(min-width:601px) and (max-width:833px){
+ .hacts,.acts{flex-direction:row;align-items:center}
+ .hacts .hb,.acts .pill,.hpanel.end .hacts .hb,.hpanel.end .hacts .pill{width:auto}
+ .hpanel h1{font-size:3.75rem}
+}
+
+/* ---------- Polish pass 3 (Nov 4): client work and plans ---------- */
+/* Client credit: the client's name leads, the work follows */
+.hcopy p.hcap b{font-weight:500;color:#e6ecf5}
+/* Client screenshots open full screen. The whole picture is the button; the corner mark says so */
+/* .hwin is already positioned by the panel layout; only the phone frames need a box for the button */
+.hduo .ph.can-zoom{position:relative}
+.zoom-btn{position:absolute;inset:0;z-index:1;display:block;width:100%;height:100%;padding:0;border:0;border-radius:inherit;background:none;color:#fff;cursor:zoom-in;-webkit-tap-highlight-color:transparent}
+.zoom-btn .icon{position:absolute;right:12px;bottom:12px;box-sizing:content-box;width:16px;height:16px;padding:8px;border-radius:50%;background:rgba(5,9,14,.72);box-shadow:0 0 0 1px rgba(255,255,255,.18);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);opacity:0;transition:opacity .2s}
+.zoom-btn:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.zoom-btn:focus-visible .icon{opacity:1}
+@media(hover:hover){.zoom-btn:hover .icon{opacity:1}}
+@media(hover:none){.zoom-btn .icon{opacity:1}}
+.hduo .zoom-btn .icon{right:14px;bottom:14px}
+.zoom{position:fixed;inset:0;width:100%;max-width:none;height:100%;max-height:none;margin:0;padding:0;border:0;background:#03070c;color:var(--text);overflow:hidden}
+.zoom[open]{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:76px 0 32px}
+.zoom:focus{outline:none}
+.zoom::backdrop{background:rgba(2,5,9,.6)}
+html:has(.zoom[open]){overflow:hidden}
+.zoom-sc{display:flex;max-width:100%;overflow:auto;overscroll-behavior:contain;outline:none}
+.zoom-sc:focus-visible{outline:2px solid var(--accent);outline-offset:-2px}
+.zoom-sc img{display:block;flex:none;width:auto;height:auto;max-width:min(92vw,1600px);max-height:calc(100svh - 240px);border-radius:14px;box-shadow:0 0 0 1px rgba(255,255,255,.12)}
+.zoom:not(.wide) .zoom-sc img{border-radius:28px}
+.zoom-cap{margin:20px var(--pad) 0;max-width:40em;text-align:center;font-size:0.875rem;line-height:1.5;color:var(--text-2)}
+.zoom-tip{display:none}
+.zoom-x{position:absolute;z-index:1;top:max(16px,env(safe-area-inset-top));right:max(16px,env(safe-area-inset-right));display:grid;place-items:center;width:44px;height:44px;padding:0;border:0;border-radius:50%;background:rgba(255,255,255,.1);box-shadow:0 0 0 1px rgba(255,255,255,.16);color:#fff;cursor:pointer}
+.zoom-x .icon{width:20px;height:20px}
+@media(hover:hover){.zoom-x:hover{background:rgba(255,255,255,.18)}}
+@media(max-width:833px){
+ /* The client credit sits directly under the screenshot it describes */
+ .hpanel.svc .hcopy,#booking .hcopy{display:flex;flex-direction:column;align-items:flex-start}
+ .hpanel.svc .hcopy>*,#booking .hcopy>*{max-width:100%}
+ .hcopy p.hcap{order:-1;margin:0 0 32px}
+ .hpanel.svc .hcopy p.hcap{margin-top:-20px}
+ .zoom:not(.wide) .zoom-sc img{max-height:calc(100svh - 220px);border-radius:24px}
+}
+@media(max-width:600px){
+ /* Phones: each website screenshot shows its most telling part, large enough to read */
+ .hpanel.svc .hwin{height:calc((100vw - var(--pad)*2)/1.6)}
+ .hpanel.svc .hwin img{width:calc(var(--z,1)*100%);max-width:none;translate:calc(var(--x,0%)*-1) calc(var(--y,0%)*-1)}
+ /* A desktop screenshot opens at a readable height and pans sideways */
+ .zoom.wide .zoom-sc{width:100%}
+ .zoom.wide .zoom-sc::before,.zoom.wide .zoom-sc::after{content:"";flex:none;width:var(--pad)}
+ .zoom.wide .zoom-sc img{max-width:none;max-height:none;height:min(60svh,560px)}
+ .zoom.wide .zoom-tip{display:block;margin:8px 0 0;font-size:0.8125rem;color:var(--text-3)}
+}
+@media(prefers-reduced-motion:reduce){.zoom-btn .icon{transition:none}}
+/* Plans: what the demo includes, as one calm checklist */
+.checks{list-style:none;margin:var(--s1) 0 0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 clamp(24px,4vw,64px);max-width:920px}
+.checks li{display:flex;align-items:flex-start;gap:14px;padding:16px 0;border-top:1px solid var(--line);font-size:1.0625rem;line-height:1.5;color:var(--text)}
+.checks .icon{flex:none;width:18px;height:18px;margin-top:4px;color:var(--accent)}
+@media(max-width:599px){.checks{grid-template-columns:1fr}.checks li{padding:14px 0}}
+
+/* ---------- Polish pass 4 (Nov 4): the last small tap targets on phones and tablets ---------- */
+@media(max-width:833px){
+ /* "On this page" reads as one list, one link per row, each a full-height target */
+ .doc-aside .doc-toc nav:last-of-type,.doc-aside .doc-toc nav{flex-direction:column;flex-wrap:nowrap;gap:0}
+ .doc-toc a{display:flex;align-items:center;min-height:44px;padding-top:0;padding-bottom:0}
+ .foot-links a,.foot-links button{min-height:44px}
+}
+
+/* ---------- Rondo (Nov 4): the AI badge on its menu link ---------- */
+.nav-rondo{gap:0}
+.nav-ai{display:inline-block;margin-left:6px;padding:2px 5px;border-radius:5px;font-size:0.625rem;font-weight:600;line-height:1.2;letter-spacing:.06em;color:#bbd8ff;background:rgba(187,216,255,.12);box-shadow:inset 0 0 0 1px rgba(187,216,255,.3);vertical-align:2px;text-transform:uppercase}
+.gmenu .nav-ai{font-size:0.6875rem;vertical-align:5px}
+
+/* ---------- Products menu, Relay and the "what it does" card (Nov 4) ---------- */
+/* Header: one Products item opens a short menu on hover or keyboard focus; the word itself links to the Products page */
+.gnav-dd{position:relative}
+.gnav-dd{display:flex;align-items:center}
+.gnav-links .gnav-ddlink{padding-right:2px}
+.gnav-ddbtn{display:inline-flex;align-items:center;justify-content:center;min-width:28px;min-height:44px;padding:0 10px 0 4px;color:var(--text-2)}
+.gnav-ddbtn .icon{width:11px;height:11px;transition:transform .2s var(--out)}
+@media(hover:hover){.gnav-ddbtn:hover{color:var(--text)}}
+.gnav-ddmenu{position:absolute;left:50%;top:100%;z-index:70;padding-top:6px;opacity:0;visibility:hidden;transform:translate(-50%,6px);transition:opacity .18s var(--out),transform .18s var(--out),visibility 0s linear .18s}
+/* Open on hover, keyboard focus or the caret button; Escape adds .shut until the pointer or focus leaves */
+.gnav-dd:is(:hover,:focus-within,.open):not(.shut) .gnav-ddmenu{opacity:1;visibility:visible;transform:translate(-50%,0);transition-delay:0s}
+.gnav-ddbtn[aria-expanded=true] .icon{transform:rotate(180deg)}
+.gnav-ddmenu ul{list-style:none;margin:0;padding:8px;width:340px;display:flex;flex-direction:column;border-radius:14px;background:#0a1017;box-shadow:0 0 0 1px rgba(255,255,255,.1),0 24px 60px rgba(0,0,0,.6)}
+.gnav-links .gnav-ddmenu a{display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:2px;min-height:56px;padding:10px 12px;border-radius:10px;white-space:normal;letter-spacing:0;text-transform:none;color:var(--text)}
+.gnav-ddmenu b{display:flex;align-items:center;font-size:0.9375rem;font-weight:500}
+.gnav-ddmenu a>span{font-size:0.8125rem;line-height:1.4;color:var(--text-2)}
+@media(hover:hover){.gnav-links .gnav-ddmenu a:hover{background:rgba(255,255,255,.06)}}
+.gnav-links .gnav-ddmenu a:focus-visible{outline-offset:-2px}
+.nav-soon{display:inline-block;margin-left:8px;padding:2px 6px;border-radius:5px;font-size:0.75rem;font-weight:600;line-height:1.2;letter-spacing:.06em;text-transform:uppercase;color:#e2a54a;background:rgba(226,165,74,.12);box-shadow:inset 0 0 0 1px rgba(226,165,74,.3);vertical-align:2px}
+@media(prefers-reduced-motion:reduce){.gnav-ddmenu,.gnav-ddbtn .icon{transition:none}}
+/* Phone menu: the three products sit under a small Products label */
+.gmenu-k{margin:16px 0 0;padding-bottom:4px;font-size:0.75rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--text-3)}
+.gmenu nav>a.gmenu-sub{min-height:52px;padding-left:16px;font-size:1.125rem}
+.gmenu .nav-soon{font-size:0.75rem;vertical-align:4px}
+/* The "what it does" card beside a panel's copy (home Rondo, Products Relay) */
+.rcard{position:absolute;z-index:1;left:max(var(--pad),calc(50% - 620px));top:50%;transform:translateY(-50%);width:min(420px,38vw);margin:0;padding:6px 22px;list-style:none;border-radius:20px;background:rgba(10,16,24,.66);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);box-shadow:0 0 0 1px rgba(255,255,255,.1),0 30px 60px -30px rgba(0,0,0,.9)}
+.rcard li{display:grid;grid-template-columns:22px minmax(0,1fr);column-gap:14px;padding:16px 0;border-top:1px solid rgba(255,255,255,.08);font-size:0.9375rem;line-height:1.45;color:var(--text-2)}
+.rcard li:first-child{border-top:0}
+.rcard .icon{width:22px;height:22px;margin-top:1px;color:#bbd8ff}
+.rcard b{display:block;color:var(--text);font-weight:600}
+.rcard li.rcard-more{display:block;font-size:0.8125rem;color:var(--text-3)}
+@media(max-width:833px){.rcard{position:relative;left:auto;top:auto;transform:none;width:auto;max-width:460px;margin:28px var(--pad) 0;order:1}}
+@media(max-width:833px){#relay.hpanel{padding-top:56px}}
+
+/* Sent confirmation: replaces the form after a successful send, so the visitor knows it went and what happens next */
+body:has(#inquiry-sent:not([hidden])) .cform-hero{display:none}
+.sent{text-align:center;padding:clamp(56px,9vw,104px) 0 8px;outline:none}
+.sent-i{display:block;width:48px;height:48px;margin:0 auto 24px;color:var(--accent)}
+.sent .note{margin:0 0 16px}
+.sent-h{margin:0 auto;max-width:16ch}
+.sent-p{margin:16px auto 0;max-width:30em;font-size:1.0625rem;line-height:1.55;color:var(--text-2)}
+.sent-from{margin:16px auto 0;max-width:30em;font-size:0.875rem;line-height:1.5;color:var(--text-3)}
+.sent-from a{color:var(--text-2)}
+.sent .pill{margin-top:32px}
+@media(prefers-reduced-motion:no-preference){.sent:not([hidden]){animation:sent-in .5s var(--out) both}}
+@keyframes sent-in{from{opacity:0;transform:translateY(8px)}}
+
+/* ---------- Inspection fixes (Nov 5) ---------- */
+/* Plans: the trial ends one of two ways */
+.rail.r2{grid-template-columns:repeat(2,minmax(0,1fr))}
+@media(max-width:1023px){.rail.r2{grid-template-columns:1fr;gap:28px}}
+/* Trial form: a team of more than 30 turns the request into a quote; the note says so next to the button */
+.quote-note{color:var(--text-2)}
+
+/* ---------- Inspection fixes 2 (Nov 5) ---------- */
+/* Tablets and small laptops (834–1199px): a panel with a visual stacks, copy first, then the visual centred and no wider
+   than 560px, so the two never overlap. The home hero keeps its own two-track row (home.css). Phones keep their own order. */
+@media(min-width:834px) and (max-width:1199px){
+ .hpanel:not(.live):has(>.hshot,>.hwin,>.rcard,>.hduo){display:flex;flex-direction:column;align-items:stretch;height:auto;min-height:0;padding:clamp(112px,13vw,144px) 0 clamp(96px,11vw,128px)}
+ .hpanel:not(.live):has(>.hshot,>.hwin,>.rcard,>.hduo) .hcopy{position:relative;left:auto;right:auto;top:auto;bottom:auto;transform:none;max-width:640px;margin:0 var(--pad)}
+ .hpanel:not(.live):has(>.hshot,>.hwin,>.rcard,>.hduo) .hshade{background:linear-gradient(180deg,rgba(0,0,0,.74) 0%,rgba(0,0,0,.5) 42%,rgba(0,0,0,.42) 70%,rgba(0,0,0,.66) 100%)}
+ .hpanel:not(.live):has(>.hshot,>.hwin,>.rcard,>.hduo)>:is(.hshot,.hwin,.rcard,.hduo){position:relative;left:auto;right:auto;top:auto;transform:none;flex:none;margin:56px auto 0}
+ .hpanel:not(.live):has(>.hshot,>.hwin,>.rcard,>.hduo)>.hshot{width:280px}
+ .hpanel:not(.live):has(>.hshot,>.hwin,>.rcard,>.hduo)>:is(.hwin,.rcard){width:min(560px,calc(100% - var(--pad)*2))}
+ .hpanel:not(.live):has(>.hshot,>.hwin,>.rcard,>.hduo)>.hduo{justify-content:center;width:min(560px,calc(100% - var(--pad)*2))}
+ .hpanel:not(.live):has(>.hshot,>.hwin,>.rcard,>.hduo) .hduo .ph{width:calc(50% - 12px);max-width:220px}
+ .hpanel:not(.live):has(>.hshot,>.hwin,>.rcard,>.hduo)>.hweb{display:none}
+ .hpanel:not(.live):has(>.hshot,>.hwin,>.rcard,>.hduo)>.hshot.fade{transform:translateY(40px)}
+ .hpanel:not(.live):has(>.hshot,>.hwin,>.rcard,>.hduo)>.hshot.fade.in,.no-js .hpanel:has(>.hshot)>.hshot.fade,.still .hpanel:has(>.hshot)>.hshot.fade{transform:none}
+}
+@media(min-width:834px) and (max-width:1199px) and (prefers-reduced-motion:reduce){.hpanel:not(.live):has(>.hshot)>.hshot.fade{transform:none}}
+/* Products, Websites: the laptop's own screen sits behind the copy, so a deeper shade on that side and a narrower column */
+@media(min-width:834px){
+ .hpanel.laptop .hshade{background:linear-gradient(90deg,rgba(0,0,0,.9) 0%,rgba(0,0,0,.86) 38%,rgba(0,0,0,.5) 54%,rgba(0,0,0,0) 70%)}
+ .hpanel.laptop .hcopy{max-width:520px}
+}
+/* The first section shows at first paint: its heading and intro are never hidden while scripts load. They settle in with CSS alone */
+main>section:first-of-type .fade{opacity:1}
+.pre main>section:first-of-type .rise{visibility:visible}
+@media(prefers-reduced-motion:no-preference){.js main>section:first-of-type :is(.rise,.fade:not(.hshot)){animation:first-in .8s var(--out) both}}
+@keyframes first-in{from{transform:translateY(14px)}}
+/* Example chat on the home hero: say it is an example */
+.hchat-cap{margin:4px 2px 0;font-size:0.75rem;line-height:1.4;color:var(--text-3)}
+/* Status chips and labels: 12px at the smallest */
+.hchat-h i{font-size:0.75rem}
+@media(max-width:1180px){.hchat-h i{font-size:0.75rem}}
+@media(max-width:833px){.hchat-h i{font-size:0.75rem}}
+/* The phone's notification is a solid card; screenshot frames are dark while their image loads */
+.notif{background:#f8fafd}
+.hwin,.slab.owner{background:#0b1118}
+/* Windows High Contrast and other forced colours: PIN dots, the NEVORA wordmark and the Rondo button keep their shape */
+@media(forced-colors:active){
+ .kio-dots i{forced-color-adjust:none;box-shadow:none;border:2px solid CanvasText;background:transparent}
+ .kio-dots i.on{background:CanvasText}
+ .hpanel h2 img,.lnav-t img,.hcopy h2 img{forced-color-adjust:none;background:#05090e;padding:6px;border-radius:4px;box-sizing:content-box}
+ .kio-brand img{forced-color-adjust:none;background:#fff;padding:4px;border-radius:4px;box-sizing:content-box}
+ .ast-launch{border:2px solid ButtonText}
+ .ast-av{border:1px solid CanvasText}
+}
+/* Language switch (EN | ES): two quiet links in the nav's own type; the current language is white, the other grey */
+.lang-sw{display:inline-flex;align-items:center;flex:none;font-size:0.8125rem;font-weight:500;letter-spacing:.04em;line-height:1;color:var(--text-3)}
+.lang-sw a{display:inline-flex;align-items:center;justify-content:center;min-width:32px;min-height:44px;padding:0 6px;color:var(--text-2);text-decoration:none;transition:color .2s}
+.lang-sw a[aria-current]{color:var(--text)}
+@media(hover:hover){.lang-sw a:hover{color:var(--text);text-decoration:underline;text-underline-offset:4px}}
+.lang-sep{padding:0 1px;user-select:none}
+.gnav-lang{margin-right:10px}
+@media(min-width:834px) and (max-width:1023px){.gnav-lang{margin-right:4px}.gnav-lang a{min-width:28px;padding:0 4px}}
+@media(max-width:833px){.gnav-lang{display:none}}
+.gmenu .gmenu-lang{margin-top:16px;margin-left:-6px;font-size:1rem}
+.foot-links .foot-lang a{min-height:36px}
+@media(max-width:600px){.foot-links .foot-lang a{min-height:44px;justify-content:center}}
+/* Spanish nav words are longer: at tablet widths the links sit a little closer so the bar still fits on one line */
+@media(min-width:834px) and (max-width:959px){html[lang=es] .gnav-links a{padding:0 5px}html[lang=es] .gnav-links{margin-right:4px}}
+/* NEVORA page: the global header is hidden, so the local bar carries the switch; in its narrow menu it sits with the company links */
+.lnav-lang{margin-right:8px}
+@media(max-width:959px){.lnav-lang{display:none}}
+.lnav .lnav-by .lnav-by-lang{width:100%;margin-left:-6px}
+.lnav .lnav-by .lnav-by-lang a{min-height:44px;font-size:0.875rem;padding:0 6px;color:var(--text-2)}
+.lnav .lnav-by .lnav-by-lang a[aria-current]{color:var(--text)}
+@media(min-width:960px) and (max-width:1099px){.lnav-lang{margin-right:2px}.lnav-lang a{min-width:26px;padding:0 3px}html[lang=es] .lnav ul a{padding:0 6px}html[lang=es] .lnav ul{margin-right:6px}}
+@media(min-width:960px) and (max-width:1023px){html[lang=es] .lnav ul a{padding:0 4px}}
+
+/* ---------- Rondo's mark: round, with a three-quarter ring of light (one design for every place Rondo appears) ---------- */
+b.rmark,.hchat-h b.rmark,.rondo-kick .rmark,.ast-launch .rmark,.ast-head .rmark,.ast-who .rmark{position:relative;display:grid;place-items:center;flex:none;border-radius:50%;background:radial-gradient(circle at 35% 28%,#1c3049 0,#0f1a29 58%,#0a121c 100%);color:#dcebff;font-style:normal;font-weight:600;letter-spacing:0;line-height:1;box-shadow:none;border:0}
+.rmark svg{position:absolute;inset:0;width:100%;height:100%;fill:none;stroke-width:1.5;stroke-linecap:round;pointer-events:none}
+.rmark svg circle{stroke:rgba(187,216,255,.18)}
+.rmark svg path{stroke:#bbd8ff}
+.ast-head .rmark{width:32px;height:32px;font-size:0.875rem}
+.ast-launch .rmark{width:26px;height:26px;font-size:0.75rem}
+.ast-who{display:flex;align-items:center;gap:8px}
+.ast-who .rmark{width:22px;height:22px;font-size:0.6875rem}
+@media(forced-colors:active){.rmark{forced-color-adjust:none;background:Canvas;color:CanvasText}.rmark svg path{stroke:CanvasText}.rmark svg circle{stroke:GrayText}}
+/* Example chat header: a longer name (Spanish) moves the status label to its own line instead of past the card edge */
+.hchat-h{flex-wrap:wrap;row-gap:4px}
+.hchat-h span{min-width:0}

@@ -1,0 +1,36 @@
+<header class="site-header">
+  <button class="mobile-menu-button" type="button" data-mobile-menu aria-controls="VelaniNav" aria-expanded="false" aria-label="{{ 'general.menu' | t }}"><span></span><span></span></button>
+
+  <a class="wordmark" href="{{ routes.root_url }}" aria-label="{{ shop.name }} home">
+    {% if settings.logo != blank %}
+      {{ settings.logo | image_url: width: settings.logo_width | image_tag: widths: '120,180,240,300', width: settings.logo_width, alt: shop.name }}
+    {% else %}
+      <span class="wordmark__mark" aria-hidden="true">●</span><span>VELANI</span>
+    {% endif %}
+  </a>
+
+  <nav class="site-nav" id="VelaniNav" data-mobile-nav aria-label="Main navigation">
+    {% if section.settings.menu != blank %}
+      {% for link in section.settings.menu.links %}<a href="{{ link.url }}">{{ link.title | escape }}</a>{% endfor %}
+    {% else %}
+      <a href="{{ routes.all_products_collection_url }}">Shop</a>
+      <a href="/collections/dogs">Dogs</a>
+      <a href="/collections/cats">Cats</a>
+      <a href="/pages/our-story">Our story</a>
+    {% endif %}
+  </nav>
+
+  <div class="header-actions">
+    <a class="header-search" href="{{ routes.search_url }}">{{ 'general.search' | t }}</a>
+    <a href="{{ routes.cart_url }}" aria-label="{{ 'general.cart' | t }} with {{ cart.item_count }} items">{{ 'general.cart' | t }} <span class="cart-count">{{ cart.item_count }}</span></a>
+  </div>
+</header>
+
+{% schema %}
+{
+  "name": "Header",
+  "settings": [
+    { "type": "link_list", "id": "menu", "label": "Menu" }
+  ]
+}
+{% endschema %}

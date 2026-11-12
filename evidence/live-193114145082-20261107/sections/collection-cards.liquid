@@ -1,0 +1,58 @@
+<section class="section-shell page-width">
+  <div class="section-heading">
+    <div><p class="eyebrow">{{ section.settings.eyebrow }}</p><h2 class="section-title">{{ section.settings.heading }}</h2></div>
+    {% if section.settings.link_label != blank %}<a class="arrow-link" href="{{ section.settings.link | default: routes.all_products_collection_url }}">{{ section.settings.link_label }} →</a>{% endif %}
+  </div>
+  <div class="collection-cards">
+    {% for block in section.blocks %}
+      {% assign card_collection = block.settings.collection %}
+      {% assign card_image = block.settings.image | default: card_collection.featured_image %}
+      <a class="collection-card" href="{{ card_collection.url | default: routes.all_products_collection_url }}" {{ block.shopify_attributes }}>
+        {% if card_image != blank %}
+          {{ card_image | image_url: width: 1400 | image_tag: widths: '500,800,1100,1400', sizes: '(min-width: 990px) 33vw, 100vw', loading: 'lazy', alt: card_image.alt }}
+        {% else %}
+          {% case forloop.index %}
+            {% when 1 %}<img src="{{ 'velani-hero.png' | asset_url }}" alt="Velani dog accessories" width="1350" height="1350" loading="lazy">
+            {% when 2 %}<img src="{{ 'velani-bandanas.png' | asset_url }}" alt="Velani bandanas" width="1402" height="1128" loading="lazy">
+            {% else %}<img src="{{ 'velani-cat-collars.png' | asset_url }}" alt="Velani cat accessories" width="1402" height="1128" loading="lazy">
+          {% endcase %}
+        {% endif %}
+        <span class="collection-card__shade"></span>
+        <span class="collection-card__content"><span class="collection-card__index">0{{ forloop.index }}</span><h3>{{ block.settings.heading | default: card_collection.title }}</h3><span class="collection-card__copy">{{ block.settings.text }}</span><span class="collection-card__link">Shop collection →</span></span>
+      </a>
+    {% endfor %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Collection cards",
+  "max_blocks": 3,
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "The Velani edit" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Made for good company." },
+    { "type": "text", "id": "link_label", "label": "Link label", "default": "Discover all pieces" },
+    { "type": "url", "id": "link", "label": "Link" }
+  ],
+  "blocks": [
+    {
+      "type": "collection",
+      "name": "Collection",
+      "settings": [
+        { "type": "collection", "id": "collection", "label": "Collection" },
+        { "type": "image_picker", "id": "image", "label": "Custom image" },
+        { "type": "text", "id": "heading", "label": "Heading" },
+        { "type": "textarea", "id": "text", "label": "Text" }
+      ]
+    }
+  ],
+  "presets": [{
+    "name": "Collection cards",
+    "blocks": [
+      { "type": "collection", "settings": { "heading": "For dogs", "text": "Collars, leashes and everyday essentials designed to belong together." } },
+      { "type": "collection", "settings": { "heading": "Bandanas", "text": "Easy personality for ordinary days and memorable ones." } },
+      { "type": "collection", "settings": { "heading": "For cats", "text": "A lighter touch for the smallest members of the family." } }
+    ]
+  }]
+}
+{% endschema %}

@@ -1,0 +1,1506 @@
+[
+  {
+    "page": "/",
+    "widths": {
+      "320": {
+        "jsTextChars": 1518,
+        "hScroll": false,
+        "scrollW": 320,
+        "themeId": 193114145082,
+        "themeName": "Velani tab icon (preview)",
+        "errs": [
+          "Cannot read properties of null (reading 'appendChild')",
+          "Cannot read properties of null (reading 'appendChild')"
+        ],
+        "axe": null
+      },
+      "390": {
+        "jsTextChars": 1518,
+        "hScroll": false,
+        "scrollW": 390,
+        "themeId": 193114145082,
+        "themeName": "Velani tab icon (preview)",
+        "errs": [
+          "Cannot read properties of null (reading 'appendChild')",
+          "Cannot read properties of null (reading 'appendChild')"
+        ],
+        "axe": []
+      },
+      "1440": {
+        "jsTextChars": 1944,
+        "hScroll": false,
+        "scrollW": 1440,
+        "themeId": 193114145082,
+        "themeName": "Velani tab icon (preview)",
+        "errs": [
+          "Cannot read properties of null (reading 'appendChild')",
+          "Cannot read properties of null (reading 'appendChild')"
+        ],
+        "axe": []
+      }
+    },
+    "status": 200,
+    "nojs": {
+      "title": "Velani · Software, websites and custom apps for your business",
+      "lang": "en",
+      "description": "Velani builds websites, booking systems, online stores and business tools, and makes NEVORA, scheduling, time clock and payroll calculation for shift teams.",
+      "canonical": "https://www.thevelani.com/",
+      "robots": null,
+      "ogImage": "https://www.thevelani.com/cdn/shop/t/27/assets/velani-social.png?v=135402056566845986321793900320",
+      "h1": [
+        "Brighter work ahead."
+      ],
+      "hreflang": [
+        "en=/",
+        "es=/pages/es",
+        "x-default=/"
+      ],
+      "jsonld": [
+        "Organization"
+      ],
+      "textChars": 1932,
+      "imgsNoAlt": 0,
+      "esLink": "/pages/es",
+      "enLink": "/"
+    }
+  },
+  {
+    "page": "/pages/about",
+    "widths": {
+      "320": {
+        "jsTextChars": 1341,
+        "hScroll": false,
+        "scrollW": 320,
+        "themeId": 193114145082,
+        "themeName": "Velani tab icon (preview)",
+        "errs": [
+          "Cannot read properties of null (reading 'appendChild')",
+          "Cannot read properties of null (reading 'appendChild')"
+        ],
+        "axe": null
+      },
+      "390": {
+        "jsTextChars": 1341,
+        "hScroll": false,
+        "scrollW": 390,
+        "themeId": 193114145082,
+        "themeName": "Velani tab icon (preview)",
+        "errs": [
+          "Cannot read properties of null (reading 'appendChild')",
+          "Cannot read properties of null (reading 'appendChild')"
+        ],
+        "axe": []
+      },
+      "1440": {
+        "jsTextChars": 1430,
+        "hScroll": false,
+        "scrollW": 1440,
+        "themeId": 193114145082,
+        "themeName": "Velani tab icon (preview)",
+        "errs": [
+          "Cannot read properties of null (reading 'appendChild')",
+          "Cannot read properties of null (reading 'appendChild')"
+        ],
+        "axe": []
+      }
+    },
+    "status": 200,
+    "nojs": {
+      "title": "About · Velani",
+      "lang": "en",
+      "description": "Velani, operated by VELANI LLC in San Juan, makes NEVORA for scheduling, time clock and payroll calculation, and builds custom software for businesses.",
+      "canonical": "https://www.thevelani.com/pages/about",
+      "robots": null,
+      "ogImage": "https://www.thevelani.com/cdn/shop/t/27/assets/velani-social.png?v=135402056566845986321793900320",
+      "h1": [
+        "A software company. Two ways to work with us."
+      ],
+      "hreflang": [],
+      "jsonld": [
+        "Organization"
+      ],
+      "textChars": 1418,
+      "imgsNoAlt": 0,
+      "esLink": "/pages/es",
+      "enLink": "/pages/about"
+    }
+  },
+  {
+    "page": "/pages/nevora",
+    "widths": {
+      "320": {
+        "jsTextChars": 4504,
+        "hScroll": false,
+        "scrollW": 320,
+        "themeId": 193114145082,
+        "themeName": "Velani tab icon (preview)",
+        "errs": [
+          "Cannot read properties of null (reading 'appendChild')",
+          "Cannot read properties of null (reading 'appendChild')"
+        ],
+        "axe": null
+      },
+      "390": {
+        "jsTextChars": 4504,
+        "hScroll": false,
+        "scrollW": 390,
+        "themeId": 193114145082,
+        "themeName": "Velani tab icon (preview)",
+        "errs": [
+          "Cannot read properties of null (reading 'appendChild')",
+          "Cannot read properties of null (reading 'appendChild')"
+        ],
+        "axe": []
+      },
+      "1440": {
+        "jsTextChars": 4658,
+        "hScroll": false,
+        "scrollW": 1440,
+        "themeId": 193114145082,
+        "themeName": "Velani tab icon (preview)",
+        "errs": [
+          "Cannot read properties of null (reading 'appendChild')",
+          "Cannot read properties of null (reading 'appendChild')"
+        ],
+        "axe": []
+      }
+    },
+    "status": 200,
+    "nojs": {
+      "title": "NEVORA · Velani",
+      "lang": "en",
+      "description": "Scheduling, time clock and payroll calculation for shift teams: plan on the web, check shifts on the phone and clock in at a shared tablet with a PIN.",
+      "canonical": "https://www.thevelani.com/pages/nevora",
+      "robots": null,
+      "ogImage": "https://www.thevelani.com/cdn/shop/t/27/assets/velani-social-nevora.png?v=25365142512259377171793900320",
+      "h1": [
+        "Scheduling, time clock and payroll calculation for shift teams."
+      ],
+      "hreflang": [
+        "en=/pages/nevora",
+        "es=/pages/es-nevora",
+        "x-default=/pages/nevora"
+      ],
+      "jsonld": [
+        "Organization"
+      ],
+      "textChars": 4351,
+      "imgsNoAlt": 0,
+      "esLink": "/pages/es-nevora",
+      "enLink": "/pages/nevora"
+    }
+  },
+  {
+    "page": "/pages/products",
+    "widths": {
+      "320": {
+        "jsTextChars": 1720,
+        "hScroll": false,
+        "scrollW": 320,
+        "themeId": 193114145082,
+        "themeName": "Velani tab icon (preview)",
+        "errs": [
+          "Cannot read properties of null (reading 'appendChild')",
+          "Cannot read properties of null (reading 'appendChild')"
+        ],
+        "axe": null
+      },
+      "390": {
+        "jsTextChars": 1720,
+        "hScroll": false,
+        "scrollW": 390,
+        "themeId": 193114145082,
+        "themeName": "Velani tab icon (preview)",
+        "errs": [
+          "Cannot read properties of null (reading 'appendChild')",
+          "Cannot read properties of null (reading 'appendChild')"
+        ],
+        "axe": []
+      },
+      "1440": {
+        "jsTextChars": 1809,
+        "hScroll": false,
+        "scrollW": 1440,
+        "themeId": 193114145082,
+        "themeName": "Velani tab icon (preview)",
+        "errs": [
+          "Cannot read properties of null (reading 'appendChild')",
+          "Cannot read properties of null (reading 'appendChild')"
+        ],
+        "axe": []
+      }
+    },
+    "status": 200,
+    "nojs": {
+      "title": "Products · Velani",
+      "lang": "en",
+      "description": "NEVORA Workforce for scheduling, time clock and payroll calculation, free for 30 days. NEVORA Relay for orders and inventory, in design. Websites and apps.",
+      "canonical": "https://www.thevelani.com/pages/products",
+      "robots": null,
+      "ogImage": "https://www.thevelani.com/cdn/shop/t/27/assets/velani-social.png?v=135402056566845986321793900320",
+      "h1": [
+        "What we make."
+      ],
+      "hreflang": [
+        "en=/pages/products",
+        "es=/pages/es-productos",
+        "x-default=/pages/products"
+      ],
+      "jsonld": [
+        "Organization"
+      ],
+      "textChars": 1797,
+      "imgsNoAlt": 0,
+      "esLink": "/pages/es-productos",
+      "enLink": "/pages/products"
+    }
+  },
+  {
+    "page": "/pages/custom-development",
+    "widths": {
+      "320": {
+        "jsTextChars": 2052,
+        "hScroll": false,
+        "scrollW": 320,
+        "themeId": 193114145082,
+        "themeName": "Velani tab icon (preview)",
+        "errs": [
+          "Cannot read properties of null (reading 'appendChild')",
+          "Cannot read properties of null (reading 'appendChild')"
+        ],
+        "axe": null
+      },
+      "390": {
+        "jsTextChars": 2052,
+        "hScroll": false,
+        "scrollW": 390,
+        "themeId": 193114145082,
+        "themeName": "Velani tab icon (preview)",
+        "errs": [
+          "Cannot read properties of null (reading 'appendChild')",
+          "Cannot read properties of null (reading 'appendChild')"
+        ],
+        "axe": []
+      },
+      "1440": {
+        "jsTextChars": 2138,
+        "hScroll": false,
+        "scrollW": 1440,
+        "themeId": 193114145082,
+        "themeName": "Velani tab icon (preview)",
+        "errs": [
+          "Cannot read properties of null (reading 'appendChild')",
+          "Cannot read properties of null (reading 'appendChild')"
+        ],
+        "axe": []
+      }
+    },
+    "status": 200,
+    "nojs": {
+      "title": "Custom development · Velani",
+      "lang": "en",
+      "description": "Websites, booking systems, online stores and business tools. Built for how your business works.",
+      "canonical": "https://www.thevelani.com/pages/custom-development",
+      "robots": null,
+      "ogImage": "https://www.thevelani.com/cdn/shop/t/27/assets/velani-social-custom.png?v=6914905088097484241793900320",
+      "h1": [
+        "Software for the work your business needs to do."
+      ],
+      "hreflang": [],
+      "jsonld": [
+        "Organization"
+      ],
+      "textChars": 2126,
+      "imgsNoAlt": 0,
+      "esLink": "/pages/es",
+      "enLink": "/pages/custom-development"
+    }
+  },
+  {
+    "page": "/pages/plans",
+    "widths": {
+      "320": {
+        "jsTextChars": 2014,
+        "hScroll": false,
+        "scrollW": 320,
+        "themeId": 193114145082,
+        "themeName": "Velani tab icon (preview)",
+        "errs": [
+          "Cannot read properties of null (reading 'appendChild')",
+          "Cannot read properties of null (reading 'appendChild')"
+        ],
+        "axe": null
+      },
+      "390": {
+        "jsTextChars": 2014,
+        "hScroll": false,
+        "scrollW": 390,
+        "themeId": 193114145082,
+        "themeName": "Velani tab icon (preview)",
+        "errs": [
+          "Cannot read properties of null (reading 'appendChild')",
+          "Cannot read properties of null (reading 'appendChild')"
+        ],
+        "axe": []
+      },
+      "1440": {
+        "jsTextChars": 2103,
+        "hScroll": false,
+        "scrollW": 1440,
+        "themeId": 193114145082,
+        "themeName": "Velani tab icon (preview)",
+        "errs": [
+          "Cannot read properties of null (reading 'appendChild')",
+          "Cannot read properties of null (reading 'appendChild')"
+        ],
+        "axe": []
+      }
+    },
+    "status": 200,
+    "nojs": {
+      "title": "Plans · Velani",
+      "lang": "en",
+      "description": "Free 30-day NEVORA trial for teams of up to 30 employees, with no card and no automatic charge. Then one price per business, set by quote.",
+      "canonical": "https://www.thevelani.com/pages/plans",
+      "robots": null,
+      "ogImage": "https://www.thevelani.com/cdn/shop/t/27/assets/velani-social-plans.png?v=139684260027288150961793900320",
+      "h1": [
+        "Free for 30 days. Then one price per business."
+      ],
+      "hreflang": [
+        "en=/pages/plans",
+        "es=/pages/es-planes",
+        "x-default=/pages/plans"
+      ],
+      "jsonld": [
+        "Organization"
+      ],
+      "textChars": 2091,
+      "imgsNoAlt": 0,
+      "esLink": "/pages/es-planes",
+      "enLink": "/pages/plans"
+    }
+  },
+  {
+    "page": "/pages/contact",
+    "widths": {
+      "320": {
+        "jsTextChars": 992,
+        "hScroll": false,
+        "scrollW": 320,
+        "themeId": 193114145082,
+        "themeName": "Velani tab icon (preview)",
+        "errs": [
+          "Cannot read properties of null (reading 'appendChild')",
+          "Cannot read properties of null (reading 'appendChild')"
+        ],
+        "axe": null
+      },
+      "390": {
+        "jsTextChars": 992,
+        "hScroll": false,
+        "scrollW": 390,
+        "themeId": 193114145082,
+        "themeName": "Velani tab icon (preview)",
+        "errs": [
+          "Cannot read properties of null (reading 'appendChild')",
+          "Cannot read properties of null (reading 'appendChild')"
+        ],
+        "axe": []
+      },
+      "1440": {
+        "jsTextChars": 1081,
+        "hScroll": false,
+        "scrollW": 1440,
+        "themeId": 193114145082,
+        "themeName": "Velani tab icon (preview)",
+        "errs": [
+          "Cannot read properties of null (reading 'appendChild')",
+          "Cannot read properties of null (reading 'appendChild')"
+        ],
+        "axe": []
+      }
+    },
+    "status": 200,
+    "nojs": {
+      "title": "Contact · Velani",
+      "lang": "en",
+      "description": "Tell us what needs to work better and who will use it. We aim to reply by email within two business days.",
+      "canonical": "https://www.thevelani.com/pages/contact",
+      "robots": null,
+      "ogImage": "https://www.thevelani.com/cdn/shop/t/27/assets/velani-social.png?v=135402056566845986321793900320",
+      "h1": [
+        "Start with the problem.Ask for a NEVORA quote.Request your free NEVORA trial.Join the NEVORA Relay waitlist."
+      ],
+      "hreflang": [
+        "en=/pages/contact",
+        "es=/pages/es-contacto",
+        "x-default=/pages/contact"
+      ],
+      "jsonld": [
+        "Organization"
+      ],
+      "textChars": 1069,
+      "imgsNoAlt": 0,
+      "esLink": "/pages/es-contacto",
+      "enLink": "/pages/contact"
+    }
+  },
+  {
+    "page": "/pages/help",
+    "widths": {
+      "320": {
+        "jsTextChars": 1290,
+        "hScroll": false,
+        "scrollW": 320,
+        "themeId": 193114145082,
+        "themeName": "Velani tab icon (preview)",
+        "errs": [
+          "Cannot read properties of null (reading 'appendChild')",
+          "Cannot read properties of null (reading 'appendChild')"
+        ],
+        "axe": null
+      },
+      "390": {
+        "jsTextChars": 1290,
+        "hScroll": false,
+        "scrollW": 390,
+        "themeId": 193114145082,
+        "themeName": "Velani tab icon (preview)",
+        "errs": [
+          "Cannot read properties of null (reading 'appendChild')",
+          "Cannot read properties of null (reading 'appendChild')"
+        ],
+        "axe": []
+      },
+      "1440": {
+        "jsTextChars": 1379,
+        "hScroll": false,
+        "scrollW": 1440,
+        "themeId": 193114145082,
+        "themeName": "Velani tab icon (preview)",
+        "errs": [
+          "Cannot read properties of null (reading 'appendChild')",
+          "Cannot read properties of null (reading 'appendChild')"
+        ],
+        "axe": []
+      }
+    },
+    "status": 200,
+    "nojs": {
+      "title": "Support · Velani",
+      "lang": "en",
+      "description": "Client support, answers about our work, and help for people who use NEVORA.",
+      "canonical": "https://www.thevelani.com/pages/help",
+      "robots": null,
+      "ogImage": "https://www.thevelani.com/cdn/shop/t/27/assets/velani-social.png?v=135402056566845986321793900320",
+      "h1": [
+        "Here to help."
+      ],
+      "hreflang": [],
+      "jsonld": [
+        "Organization"
+      ],
+      "textChars": 1516,
+      "imgsNoAlt": 0,
+      "esLink": "/pages/es",
+      "enLink": "/pages/help"
+    }
+  },
+  {
+    "page": "/pages/legal",
+    "widths": {
+      "320": {
+        "jsTextChars": 1308,
+        "hScroll": false,
+        "scrollW": 320,
+        "themeId": 193114145082,
+        "themeName": "Velani tab icon (preview)",
+        "errs": [
+          "Cannot read properties of null (reading 'appendChild')",
+          "Cannot read properties of null (reading 'appendChild')"
+        ],
+        "axe": null
+      },
+      "390": {
+        "jsTextChars": 1308,
+        "hScroll": false,
+        "scrollW": 390,
+        "themeId": 193114145082,
+        "themeName": "Velani tab icon (preview)",
+        "errs": [
+          "Cannot read properties of null (reading 'appendChild')",
+          "Cannot read properties of null (reading 'appendChild')"
+        ],
+        "axe": []
+      },
+      "1440": {
+        "jsTextChars": 1397,
+        "hScroll": false,
+        "scrollW": 1440,
+        "themeId": 193114145082,
+        "themeName": "Velani tab icon (preview)",
+        "errs": [
+          "Cannot read properties of null (reading 'appendChild')",
+          "Cannot read properties of null (reading 'appendChild')"
+        ],
+        "axe": []
+      }
+    },
+    "status": 200,
+    "nojs": {
+      "title": "Legal · Velani",
+      "lang": "en",
+      "description": "The notices for this company website. Product use and paid engagements have their own terms.",
+      "canonical": "https://www.thevelani.com/pages/legal",
+      "robots": null,
+      "ogImage": "https://www.thevelani.com/cdn/shop/t/27/assets/velani-social.png?v=135402056566845986321793900320",
+      "h1": [
+        "The details matter."
+      ],
+      "hreflang": [],
+      "jsonld": [
+        "Organization"
+      ],
+      "textChars": 1541,
+      "imgsNoAlt": 0,
+      "esLink": "/pages/es",
+      "enLink": "/pages/legal"
+    }
+  },
+  {
+    "page": "/pages/privacy",
+    "widths": {
+      "320": {
+        "jsTextChars": 3989,
+        "hScroll": false,
+        "scrollW": 320,
+        "themeId": 193114145082,
+        "themeName": "Velani tab icon (preview)",
+        "errs": [
+          "Cannot read properties of null (reading 'appendChild')",
+          "Cannot read properties of null (reading 'appendChild')"
+        ],
+        "axe": null
+      },
+      "390": {
+        "jsTextChars": 3989,
+        "hScroll": false,
+        "scrollW": 390,
+        "themeId": 193114145082,
+        "themeName": "Velani tab icon (preview)",
+        "errs": [
+          "Cannot read properties of null (reading 'appendChild')",
+          "Cannot read properties of null (reading 'appendChild')"
+        ],
+        "axe": []
+      },
+      "1440": {
+        "jsTextChars": 4296,
+        "hScroll": false,
+        "scrollW": 1440,
+        "themeId": 193114145082,
+        "themeName": "Velani tab icon (preview)",
+        "errs": [
+          "Cannot read properties of null (reading 'appendChild')",
+          "Cannot read properties of null (reading 'appendChild')"
+        ],
+        "axe": []
+      }
+    },
+    "status": 200,
+    "nojs": {
+      "title": "Website privacy notice · Velani",
+      "lang": "en",
+      "description": "How information is handled on this company website and through a project inquiry.",
+      "canonical": "https://www.thevelani.com/pages/privacy",
+      "robots": null,
+      "ogImage": "https://www.thevelani.com/cdn/shop/t/27/assets/velani-social.png?v=135402056566845986321793900320",
+      "h1": [
+        "Privacy, in plain language."
+      ],
+      "hreflang": [],
+      "jsonld": [
+        "Organization"
+      ],
+      "textChars": 4284,
+      "imgsNoAlt": 0,
+      "esLink": "/pages/es",
+      "enLink": "/pages/privacy"
+    }
+  },
+  {
+    "page": "/pages/cookies",
+    "widths": {
+      "320": {
+        "jsTextChars": 2137,
+        "hScroll": false,
+        "scrollW": 320,
+        "themeId": 193114145082,
+        "themeName": "Velani tab icon (preview)",
+        "errs": [
+          "Cannot read properties of null (reading 'appendChild')",
+          "Cannot read properties of null (reading 'appendChild')"
+        ],
+        "axe": null
+      },
+      "390": {
+        "jsTextChars": 2137,
+        "hScroll": false,
+        "scrollW": 390,
+        "themeId": 193114145082,
+        "themeName": "Velani tab icon (preview)",
+        "errs": [
+          "Cannot read properties of null (reading 'appendChild')",
+          "Cannot read properties of null (reading 'appendChild')"
+        ],
+        "axe": []
+      },
+      "1440": {
+        "jsTextChars": 2354,
+        "hScroll": false,
+        "scrollW": 1440,
+        "themeId": 193114145082,
+        "themeName": "Velani tab icon (preview)",
+        "errs": [
+          "Cannot read properties of null (reading 'appendChild')",
+          "Cannot read properties of null (reading 'appendChild')"
+        ],
+        "axe": []
+      }
+    },
+    "status": 200,
+    "nojs": {
+      "title": "Cookies and preferences · Velani",
+      "lang": "en",
+      "description": "How this website uses storage, and the optional choices you can make.",
+      "canonical": "https://www.thevelani.com/pages/cookies",
+      "robots": null,
+      "ogImage": "https://www.thevelani.com/cdn/shop/t/27/assets/velani-social.png?v=135402056566845986321793900320",
+      "h1": [
+        "Your website choices."
+      ],
+      "hreflang": [],
+      "jsonld": [
+        "Organization"
+      ],
+      "textChars": 2429,
+      "imgsNoAlt": 0,
+      "esLink": "/pages/es",
+      "enLink": "/pages/cookies"
+    }
+  },
+  {
+    "page": "/pages/website-terms",
+    "widths": {
+      "320": {
+        "jsTextChars": 2355,
+        "hScroll": false,
+        "scrollW": 320,
+        "themeId": 193114145082,
+        "themeName": "Velani tab icon (preview)",
+        "errs": [
+          "Cannot read properties of null (reading 'appendChild')",
+          "Cannot read properties of null (reading 'appendChild')"
+        ],
+        "axe": null
+      },
+      "390": {
+        "jsTextChars": 2355,
+        "hScroll": false,
+        "scrollW": 390,
+        "themeId": 193114145082,
+        "themeName": "Velani tab icon (preview)",
+        "errs": [
+          "Cannot read properties of null (reading 'appendChild')",
+          "Cannot read properties of null (reading 'appendChild')"
+        ],
+        "axe": []
+      },
+      "1440": {
+        "jsTextChars": 2594,
+        "hScroll": false,
+        "scrollW": 1440,
+        "themeId": 193114145082,
+        "themeName": "Velani tab icon (preview)",
+        "errs": [
+          "Cannot read properties of null (reading 'appendChild')",
+          "Cannot read properties of null (reading 'appendChild')"
+        ],
+        "axe": []
+      }
+    },
+    "status": 200,
+    "nojs": {
+      "title": "Website terms · Velani",
+      "lang": "en",
+      "description": "These terms describe this informational website and its inquiry flow.",
+      "canonical": "https://www.thevelani.com/pages/website-terms",
+      "robots": null,
+      "ogImage": "https://www.thevelani.com/cdn/shop/t/27/assets/velani-social.png?v=135402056566845986321793900320",
+      "h1": [
+        "Using the company website."
+      ],
+      "hreflang": [],
+      "jsonld": [
+        "Organization"
+      ],
+      "textChars": 2582,
+      "imgsNoAlt": 0,
+      "esLink": "/pages/es",
+      "enLink": "/pages/website-terms"
+    }
+  },
+  {
+    "page": "/pages/software-project-terms",
+    "widths": {
+      "320": {
+        "jsTextChars": 2326,
+        "hScroll": false,
+        "scrollW": 320,
+        "themeId": 193114145082,
+        "themeName": "Velani tab icon (preview)",
+        "errs": [
+          "Cannot read properties of null (reading 'appendChild')",
+          "Cannot read properties of null (reading 'appendChild')"
+        ],
+        "axe": null
+      },
+      "390": {
+        "jsTextChars": 2326,
+        "hScroll": false,
+        "scrollW": 390,
+        "themeId": 193114145082,
+        "themeName": "Velani tab icon (preview)",
+        "errs": [
+          "Cannot read properties of null (reading 'appendChild')",
+          "Cannot read properties of null (reading 'appendChild')"
+        ],
+        "axe": []
+      },
+      "1440": {
+        "jsTextChars": 2577,
+        "hScroll": false,
+        "scrollW": 1440,
+        "themeId": 193114145082,
+        "themeName": "Velani tab icon (preview)",
+        "errs": [
+          "Cannot read properties of null (reading 'appendChild')",
+          "Cannot read properties of null (reading 'appendChild')"
+        ],
+        "axe": []
+      }
+    },
+    "status": 200,
+    "nojs": {
+      "title": "Software and project terms · Velani",
+      "lang": "en",
+      "description": "An inquiry is a starting point. A product or project agreement sets the commitments.",
+      "canonical": "https://www.thevelani.com/pages/software-project-terms",
+      "robots": null,
+      "ogImage": "https://www.thevelani.com/cdn/shop/t/27/assets/velani-social.png?v=135402056566845986321793900320",
+      "h1": [
+        "Before paid work begins."
+      ],
+      "hreflang": [],
+      "jsonld": [
+        "Organization"
+      ],
+      "textChars": 2565,
+      "imgsNoAlt": 0,
+      "esLink": "/pages/es",
+      "enLink": "/pages/software-project-terms"
+    }
+  },
+  {
+    "page": "/pages/accessibility",
+    "widths": {
+      "320": {
+        "jsTextChars": 1451,
+        "hScroll": false,
+        "scrollW": 320,
+        "themeId": 193114145082,
+        "themeName": "Velani tab icon (preview)",
+        "errs": [
+          "Cannot read properties of null (reading 'appendChild')",
+          "Cannot read properties of null (reading 'appendChild')"
+        ],
+        "axe": null
+      },
+      "390": {
+        "jsTextChars": 1451,
+        "hScroll": false,
+        "scrollW": 390,
+        "themeId": 193114145082,
+        "themeName": "Velani tab icon (preview)",
+        "errs": [
+          "Cannot read properties of null (reading 'appendChild')",
+          "Cannot read properties of null (reading 'appendChild')"
+        ],
+        "axe": []
+      },
+      "1440": {
+        "jsTextChars": 1593,
+        "hScroll": false,
+        "scrollW": 1440,
+        "themeId": 193114145082,
+        "themeName": "Velani tab icon (preview)",
+        "errs": [
+          "Cannot read properties of null (reading 'appendChild')",
+          "Cannot read properties of null (reading 'appendChild')"
+        ],
+        "axe": []
+      }
+    },
+    "status": 200,
+    "nojs": {
+      "title": "Accessibility · Velani",
+      "lang": "en",
+      "description": "Our design target is WCAG 2.2 AA. A target is not a completed compliance audit.",
+      "canonical": "https://www.thevelani.com/pages/accessibility",
+      "robots": null,
+      "ogImage": "https://www.thevelani.com/cdn/shop/t/27/assets/velani-social.png?v=135402056566845986321793900320",
+      "h1": [
+        "A website people can use."
+      ],
+      "hreflang": [],
+      "jsonld": [
+        "Organization"
+      ],
+      "textChars": 1734,
+      "imgsNoAlt": 0,
+      "esLink": "/pages/es",
+      "enLink": "/pages/accessibility"
+    }
+  },
+  {
+    "page": "/pages/security",
+    "widths": {
+      "320": {
+        "jsTextChars": 1390,
+        "hScroll": false,
+        "scrollW": 320,
+        "themeId": 193114145082,
+        "themeName": "Velani tab icon (preview)",
+        "errs": [
+          "Cannot read properties of null (reading 'appendChild')",
+          "Cannot read properties of null (reading 'appendChild')"
+        ],
+        "axe": null
+      },
+      "390": {
+        "jsTextChars": 1390,
+        "hScroll": false,
+        "scrollW": 390,
+        "themeId": 193114145082,
+        "themeName": "Velani tab icon (preview)",
+        "errs": [
+          "Cannot read properties of null (reading 'appendChild')",
+          "Cannot read properties of null (reading 'appendChild')"
+        ],
+        "axe": []
+      },
+      "1440": {
+        "jsTextChars": 1524,
+        "hScroll": false,
+        "scrollW": 1440,
+        "themeId": 193114145082,
+        "themeName": "Velani tab icon (preview)",
+        "errs": [
+          "Cannot read properties of null (reading 'appendChild')",
+          "Cannot read properties of null (reading 'appendChild')"
+        ],
+        "axe": []
+      }
+    },
+    "status": 200,
+    "nojs": {
+      "title": "Security · Velani",
+      "lang": "en",
+      "description": "Help us understand a suspected issue without putting people or systems at risk.",
+      "canonical": "https://www.thevelani.com/pages/security",
+      "robots": null,
+      "ogImage": "https://www.thevelani.com/cdn/shop/t/27/assets/velani-social.png?v=135402056566845986321793900320",
+      "h1": [
+        "Report a concern privately."
+      ],
+      "hreflang": [],
+      "jsonld": [
+        "Organization"
+      ],
+      "textChars": 1665,
+      "imgsNoAlt": 0,
+      "esLink": "/pages/es",
+      "enLink": "/pages/security"
+    }
+  },
+  {
+    "page": "/pages/nevora-privacy",
+    "widths": {
+      "320": {
+        "jsTextChars": 8320,
+        "hScroll": false,
+        "scrollW": 320,
+        "themeId": 193114145082,
+        "themeName": "Velani tab icon (preview)",
+        "errs": [
+          "Cannot read properties of null (reading 'appendChild')",
+          "Cannot read properties of null (reading 'appendChild')"
+        ],
+        "axe": null
+      },
+      "390": {
+        "jsTextChars": 8320,
+        "hScroll": false,
+        "scrollW": 390,
+        "themeId": 193114145082,
+        "themeName": "Velani tab icon (preview)",
+        "errs": [
+          "Cannot read properties of null (reading 'appendChild')",
+          "Cannot read properties of null (reading 'appendChild')"
+        ],
+        "axe": []
+      },
+      "1440": {
+        "jsTextChars": 8657,
+        "hScroll": false,
+        "scrollW": 1440,
+        "themeId": 193114145082,
+        "themeName": "Velani tab icon (preview)",
+        "errs": [
+          "Cannot read properties of null (reading 'appendChild')",
+          "Cannot read properties of null (reading 'appendChild')"
+        ],
+        "axe": []
+      }
+    },
+    "status": 200,
+    "nojs": {
+      "title": "NEVORA privacy policy · Velani",
+      "lang": "en",
+      "description": "How NEVORA handles information when you use it on the web or in its apps.",
+      "canonical": "https://www.thevelani.com/pages/nevora-privacy",
+      "robots": null,
+      "ogImage": "https://www.thevelani.com/cdn/shop/t/27/assets/velani-social.png?v=135402056566845986321793900320",
+      "h1": [
+        "NEVORA privacy policy"
+      ],
+      "hreflang": [],
+      "jsonld": [
+        "Organization"
+      ],
+      "textChars": 8788,
+      "imgsNoAlt": 0,
+      "esLink": "/pages/es",
+      "enLink": "/pages/nevora-privacy"
+    }
+  },
+  {
+    "page": "/pages/nevora-terms",
+    "widths": {
+      "320": {
+        "jsTextChars": 3727,
+        "hScroll": false,
+        "scrollW": 320,
+        "themeId": 193114145082,
+        "themeName": "Velani tab icon (preview)",
+        "errs": [
+          "Cannot read properties of null (reading 'appendChild')",
+          "Cannot read properties of null (reading 'appendChild')"
+        ],
+        "axe": null
+      },
+      "390": {
+        "jsTextChars": 3727,
+        "hScroll": false,
+        "scrollW": 390,
+        "themeId": 193114145082,
+        "themeName": "Velani tab icon (preview)",
+        "errs": [
+          "Cannot read properties of null (reading 'appendChild')",
+          "Cannot read properties of null (reading 'appendChild')"
+        ],
+        "axe": []
+      },
+      "1440": {
+        "jsTextChars": 3992,
+        "hScroll": false,
+        "scrollW": 1440,
+        "themeId": 193114145082,
+        "themeName": "Velani tab icon (preview)",
+        "errs": [
+          "Cannot read properties of null (reading 'appendChild')",
+          "Cannot read properties of null (reading 'appendChild')"
+        ],
+        "axe": []
+      }
+    },
+    "status": 200,
+    "nojs": {
+      "title": "NEVORA terms of use · Velani",
+      "lang": "en",
+      "description": "The rules for using NEVORA, Velani’s scheduling, time clock and payroll calculation app for authorized workplace use, including the app license.",
+      "canonical": "https://www.thevelani.com/pages/nevora-terms",
+      "robots": null,
+      "ogImage": "https://www.thevelani.com/cdn/shop/t/27/assets/velani-social.png?v=135402056566845986321793900320",
+      "h1": [
+        "NEVORA terms of use"
+      ],
+      "hreflang": [],
+      "jsonld": [
+        "Organization"
+      ],
+      "textChars": 4125,
+      "imgsNoAlt": 0,
+      "esLink": "/pages/es",
+      "enLink": "/pages/nevora-terms"
+    }
+  },
+  {
+    "page": "/pages/nevora-support",
+    "widths": {
+      "320": {
+        "jsTextChars": 2547,
+        "hScroll": false,
+        "scrollW": 320,
+        "themeId": 193114145082,
+        "themeName": "Velani tab icon (preview)",
+        "errs": [
+          "Cannot read properties of null (reading 'appendChild')",
+          "Cannot read properties of null (reading 'appendChild')"
+        ],
+        "axe": null
+      },
+      "390": {
+        "jsTextChars": 2547,
+        "hScroll": false,
+        "scrollW": 390,
+        "themeId": 193114145082,
+        "themeName": "Velani tab icon (preview)",
+        "errs": [
+          "Cannot read properties of null (reading 'appendChild')",
+          "Cannot read properties of null (reading 'appendChild')"
+        ],
+        "axe": []
+      },
+      "1440": {
+        "jsTextChars": 2736,
+        "hScroll": false,
+        "scrollW": 1440,
+        "themeId": 193114145082,
+        "themeName": "Velani tab icon (preview)",
+        "errs": [
+          "Cannot read properties of null (reading 'appendChild')",
+          "Cannot read properties of null (reading 'appendChild')"
+        ],
+        "axe": []
+      }
+    },
+    "status": 200,
+    "nojs": {
+      "title": "NEVORA support · Velani",
+      "lang": "en",
+      "description": "Get help with NEVORA, a workforce scheduling and operations product of VELANI LLC.",
+      "canonical": "https://www.thevelani.com/pages/nevora-support",
+      "robots": null,
+      "ogImage": "https://www.thevelani.com/cdn/shop/t/27/assets/velani-social.png?v=135402056566845986321793900320",
+      "h1": [
+        "NEVORA support"
+      ],
+      "hreflang": [],
+      "jsonld": [
+        "Organization"
+      ],
+      "textChars": 2724,
+      "imgsNoAlt": 0,
+      "esLink": "/pages/es",
+      "enLink": "/pages/nevora-support"
+    }
+  },
+  {
+    "page": "/pages/nevora-account-deletion",
+    "widths": {
+      "320": {
+        "jsTextChars": 3299,
+        "hScroll": false,
+        "scrollW": 320,
+        "themeId": 193114145082,
+        "themeName": "Velani tab icon (preview)",
+        "errs": [
+          "Cannot read properties of null (reading 'appendChild')",
+          "Cannot read properties of null (reading 'appendChild')"
+        ],
+        "axe": null
+      },
+      "390": {
+        "jsTextChars": 3299,
+        "hScroll": false,
+        "scrollW": 390,
+        "themeId": 193114145082,
+        "themeName": "Velani tab icon (preview)",
+        "errs": [
+          "Cannot read properties of null (reading 'appendChild')",
+          "Cannot read properties of null (reading 'appendChild')"
+        ],
+        "axe": []
+      },
+      "1440": {
+        "jsTextChars": 3492,
+        "hScroll": false,
+        "scrollW": 1440,
+        "themeId": 193114145082,
+        "themeName": "Velani tab icon (preview)",
+        "errs": [
+          "Cannot read properties of null (reading 'appendChild')",
+          "Cannot read properties of null (reading 'appendChild')"
+        ],
+        "axe": []
+      }
+    },
+    "status": 200,
+    "nojs": {
+      "title": "Delete your NEVORA account · Velani",
+      "lang": "en",
+      "description": "You can ask us to delete your NEVORA account and the information linked to it, in the app or on the web.",
+      "canonical": "https://www.thevelani.com/pages/nevora-account-deletion",
+      "robots": null,
+      "ogImage": "https://www.thevelani.com/cdn/shop/t/27/assets/velani-social.png?v=135402056566845986321793900320",
+      "h1": [
+        "Delete your NEVORA account"
+      ],
+      "hreflang": [],
+      "jsonld": [
+        "Organization"
+      ],
+      "textChars": 3480,
+      "imgsNoAlt": 0,
+      "esLink": "/pages/es",
+      "enLink": "/pages/nevora-account-deletion"
+    }
+  },
+  {
+    "page": "/pages/es",
+    "widths": {
+      "320": {
+        "jsTextChars": 1878,
+        "hScroll": false,
+        "scrollW": 320,
+        "themeId": 193114145082,
+        "themeName": "Velani tab icon (preview)",
+        "errs": [
+          "Cannot read properties of null (reading 'appendChild')",
+          "Cannot read properties of null (reading 'appendChild')"
+        ],
+        "axe": null
+      },
+      "390": {
+        "jsTextChars": 1878,
+        "hScroll": false,
+        "scrollW": 390,
+        "themeId": 193114145082,
+        "themeName": "Velani tab icon (preview)",
+        "errs": [
+          "Cannot read properties of null (reading 'appendChild')",
+          "Cannot read properties of null (reading 'appendChild')"
+        ],
+        "axe": []
+      },
+      "1440": {
+        "jsTextChars": 2351,
+        "hScroll": false,
+        "scrollW": 1440,
+        "themeId": 193114145082,
+        "themeName": "Velani tab icon (preview)",
+        "errs": [
+          "Cannot read properties of null (reading 'appendChild')",
+          "Cannot read properties of null (reading 'appendChild')"
+        ],
+        "axe": []
+      }
+    },
+    "status": 200,
+    "nojs": {
+      "title": "Velani · Software, sitios web y apps a la medida para tu negocio",
+      "lang": "es",
+      "description": "Creamos sitios web, apps de reservas, tiendas en línea y herramientas de negocio, y NEVORA: horarios, registro de tiempo y nómina para equipos por turnos.",
+      "canonical": "https://www.thevelani.com/pages/es",
+      "robots": null,
+      "ogImage": "https://www.thevelani.com/cdn/shop/t/27/assets/velani-social.png?v=135402056566845986321793900320",
+      "h1": [
+        "Más luz para tu trabajo."
+      ],
+      "hreflang": [
+        "en=/",
+        "es=/pages/es",
+        "x-default=/"
+      ],
+      "jsonld": [
+        "Organization"
+      ],
+      "textChars": 2330,
+      "imgsNoAlt": 0,
+      "esLink": "/pages/es",
+      "enLink": "/"
+    }
+  },
+  {
+    "page": "/pages/es-nevora",
+    "widths": {
+      "320": {
+        "jsTextChars": 5327,
+        "hScroll": false,
+        "scrollW": 320,
+        "themeId": 193114145082,
+        "themeName": "Velani tab icon (preview)",
+        "errs": [
+          "Cannot read properties of null (reading 'appendChild')",
+          "Cannot read properties of null (reading 'appendChild')"
+        ],
+        "axe": null
+      },
+      "390": {
+        "jsTextChars": 5327,
+        "hScroll": false,
+        "scrollW": 390,
+        "themeId": 193114145082,
+        "themeName": "Velani tab icon (preview)",
+        "errs": [
+          "Cannot read properties of null (reading 'appendChild')",
+          "Cannot read properties of null (reading 'appendChild')"
+        ],
+        "axe": []
+      },
+      "1440": {
+        "jsTextChars": 5514,
+        "hScroll": false,
+        "scrollW": 1440,
+        "themeId": 193114145082,
+        "themeName": "Velani tab icon (preview)",
+        "errs": [
+          "Cannot read properties of null (reading 'appendChild')",
+          "Cannot read properties of null (reading 'appendChild')"
+        ],
+        "axe": []
+      }
+    },
+    "status": 200,
+    "nojs": {
+      "title": "NEVORA · Horarios, registro de tiempo y nómina · Velani",
+      "lang": "es",
+      "description": "Horarios, registro de tiempo y cálculo de nómina para equipos por turnos: planifica en la web, consulta turnos en el teléfono y marca entrada con un PIN.",
+      "canonical": "https://www.thevelani.com/pages/es-nevora",
+      "robots": null,
+      "ogImage": "https://www.thevelani.com/cdn/shop/t/27/assets/velani-social-nevora.png?v=25365142512259377171793900320",
+      "h1": [
+        "Horarios, registro de tiempo y cálculo de nómina para equipos por turnos."
+      ],
+      "hreflang": [
+        "en=/pages/nevora",
+        "es=/pages/es-nevora",
+        "x-default=/pages/nevora"
+      ],
+      "jsonld": [
+        "Organization"
+      ],
+      "textChars": 5113,
+      "imgsNoAlt": 0,
+      "esLink": "/pages/es-nevora",
+      "enLink": "/pages/nevora"
+    }
+  },
+  {
+    "page": "/pages/es-productos",
+    "widths": {
+      "320": {
+        "jsTextChars": 2055,
+        "hScroll": false,
+        "scrollW": 320,
+        "themeId": 193114145082,
+        "themeName": "Velani tab icon (preview)",
+        "errs": [
+          "Cannot read properties of null (reading 'appendChild')",
+          "Cannot read properties of null (reading 'appendChild')"
+        ],
+        "axe": null
+      },
+      "390": {
+        "jsTextChars": 2055,
+        "hScroll": false,
+        "scrollW": 390,
+        "themeId": 193114145082,
+        "themeName": "Velani tab icon (preview)",
+        "errs": [
+          "Cannot read properties of null (reading 'appendChild')",
+          "Cannot read properties of null (reading 'appendChild')"
+        ],
+        "axe": []
+      },
+      "1440": {
+        "jsTextChars": 2160,
+        "hScroll": false,
+        "scrollW": 1440,
+        "themeId": 193114145082,
+        "themeName": "Velani tab icon (preview)",
+        "errs": [
+          "Cannot read properties of null (reading 'appendChild')",
+          "Cannot read properties of null (reading 'appendChild')"
+        ],
+        "axe": []
+      }
+    },
+    "status": 200,
+    "nojs": {
+      "title": "Productos · Velani",
+      "lang": "es",
+      "description": "NEVORA Workforce: horarios, registro de tiempo y cálculo de nómina, gratis por 30 días. NEVORA Relay: pedidos e inventario, en diseño. Sitios web y apps.",
+      "canonical": "https://www.thevelani.com/pages/es-productos",
+      "robots": null,
+      "ogImage": "https://www.thevelani.com/cdn/shop/t/27/assets/velani-social.png?v=135402056566845986321793900320",
+      "h1": [
+        "Lo que hacemos."
+      ],
+      "hreflang": [
+        "en=/pages/products",
+        "es=/pages/es-productos",
+        "x-default=/pages/products"
+      ],
+      "jsonld": [
+        "Organization"
+      ],
+      "textChars": 2139,
+      "imgsNoAlt": 0,
+      "esLink": "/pages/es-productos",
+      "enLink": "/pages/products"
+    }
+  },
+  {
+    "page": "/pages/es-planes",
+    "widths": {
+      "320": {
+        "jsTextChars": 2415,
+        "hScroll": false,
+        "scrollW": 320,
+        "themeId": 193114145082,
+        "themeName": "Velani tab icon (preview)",
+        "errs": [
+          "Cannot read properties of null (reading 'appendChild')",
+          "Cannot read properties of null (reading 'appendChild')"
+        ],
+        "axe": null
+      },
+      "390": {
+        "jsTextChars": 2415,
+        "hScroll": false,
+        "scrollW": 390,
+        "themeId": 193114145082,
+        "themeName": "Velani tab icon (preview)",
+        "errs": [
+          "Cannot read properties of null (reading 'appendChild')",
+          "Cannot read properties of null (reading 'appendChild')"
+        ],
+        "axe": []
+      },
+      "1440": {
+        "jsTextChars": 2520,
+        "hScroll": false,
+        "scrollW": 1440,
+        "themeId": 193114145082,
+        "themeName": "Velani tab icon (preview)",
+        "errs": [
+          "Cannot read properties of null (reading 'appendChild')",
+          "Cannot read properties of null (reading 'appendChild')"
+        ],
+        "axe": []
+      }
+    },
+    "status": 200,
+    "nojs": {
+      "title": "Planes · Velani",
+      "lang": "es",
+      "description": "Prueba gratis de NEVORA por 30 días para equipos de hasta 30 empleados, sin tarjeta ni cargos automáticos. Luego, un solo precio por negocio, por cotización.",
+      "canonical": "https://www.thevelani.com/pages/es-planes",
+      "robots": null,
+      "ogImage": "https://www.thevelani.com/cdn/shop/t/27/assets/velani-social-plans.png?v=139684260027288150961793900320",
+      "h1": [
+        "Gratis por 30 días. Luego, un solo precio por negocio."
+      ],
+      "hreflang": [
+        "en=/pages/plans",
+        "es=/pages/es-planes",
+        "x-default=/pages/plans"
+      ],
+      "jsonld": [
+        "Organization"
+      ],
+      "textChars": 2499,
+      "imgsNoAlt": 0,
+      "esLink": "/pages/es-planes",
+      "enLink": "/pages/plans"
+    }
+  },
+  {
+    "page": "/pages/es-contacto",
+    "widths": {
+      "320": {
+        "jsTextChars": 1218,
+        "hScroll": false,
+        "scrollW": 320,
+        "themeId": 193114145082,
+        "themeName": "Velani tab icon (preview)",
+        "errs": [
+          "Cannot read properties of null (reading 'appendChild')",
+          "Cannot read properties of null (reading 'appendChild')"
+        ],
+        "axe": null
+      },
+      "390": {
+        "jsTextChars": 1218,
+        "hScroll": false,
+        "scrollW": 390,
+        "themeId": 193114145082,
+        "themeName": "Velani tab icon (preview)",
+        "errs": [
+          "Cannot read properties of null (reading 'appendChild')",
+          "Cannot read properties of null (reading 'appendChild')"
+        ],
+        "axe": []
+      },
+      "1440": {
+        "jsTextChars": 1323,
+        "hScroll": false,
+        "scrollW": 1440,
+        "themeId": 193114145082,
+        "themeName": "Velani tab icon (preview)",
+        "errs": [
+          "Cannot read properties of null (reading 'appendChild')",
+          "Cannot read properties of null (reading 'appendChild')"
+        ],
+        "axe": []
+      }
+    },
+    "status": 200,
+    "nojs": {
+      "title": "Contacto · Velani",
+      "lang": "es",
+      "description": "Cuéntanos qué necesita funcionar mejor y quién lo usará. Procuramos responderte por correo en un plazo de dos días laborables.",
+      "canonical": "https://www.thevelani.com/pages/es-contacto",
+      "robots": null,
+      "ogImage": "https://www.thevelani.com/cdn/shop/t/27/assets/velani-social.png?v=135402056566845986321793900320",
+      "h1": [
+        "Empieza por el problema.Pide una cotización de NEVORA.Pide tu prueba gratis de NEVORA.Únete a la lista de espera de NEVORA Relay."
+      ],
+      "hreflang": [
+        "en=/pages/contact",
+        "es=/pages/es-contacto",
+        "x-default=/pages/contact"
+      ],
+      "jsonld": [
+        "Organization"
+      ],
+      "textChars": 1302,
+      "imgsNoAlt": 0,
+      "esLink": "/pages/es-contacto",
+      "enLink": "/pages/contact"
+    }
+  }
+]

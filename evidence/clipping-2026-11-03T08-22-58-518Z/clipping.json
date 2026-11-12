@@ -1,0 +1,22 @@
+{
+  "status": "failed",
+  "routes": 18,
+  "findings": [
+    {
+      "label": "320px",
+      "path": "/",
+      "problems": [
+        "past edge B. \"Employees\" right=516",
+        "past edge B. \"At work\" right=772"
+      ]
+    },
+    {
+      "label": "200% zoom",
+      "path": "/",
+      "problems": [
+        "past edge B. \"Employees\" right=516",
+        "past edge B. \"At work\" right=772"
+      ]
+    }
+  ]
+}

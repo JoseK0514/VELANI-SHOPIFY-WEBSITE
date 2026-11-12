@@ -1,0 +1,119 @@
+{
+  "status": "passed",
+  "thresholds": {
+    "cls": "< 0.05 per route",
+    "long": "< 15 frames over 50 ms",
+    "overflowX": 0,
+    "errors": 0
+  },
+  "rows": [
+    {
+      "path": "/",
+      "cls": 0,
+      "shifts": [],
+      "long": 0,
+      "flips": 2,
+      "overflowX": 0,
+      "flipsAtBottom": 1,
+      "errors": [],
+      "height": 4402,
+      "ok": true
+    },
+    {
+      "path": "/pages/nevora",
+      "cls": 0,
+      "shifts": [],
+      "long": 3,
+      "flips": 0,
+      "overflowX": 0,
+      "flipsAtBottom": 0,
+      "errors": [],
+      "height": 7841,
+      "ok": true
+    },
+    {
+      "path": "/pages/products",
+      "cls": 0,
+      "shifts": [],
+      "long": 0,
+      "flips": 2,
+      "overflowX": 0,
+      "flipsAtBottom": 1,
+      "errors": [],
+      "height": 3891,
+      "ok": true
+    },
+    {
+      "path": "/pages/custom-development",
+      "cls": 0,
+      "shifts": [],
+      "long": 0,
+      "flips": 2,
+      "overflowX": 0,
+      "flipsAtBottom": 1,
+      "errors": [],
+      "height": 5930,
+      "ok": true
+    },
+    {
+      "path": "/pages/about",
+      "cls": 0,
+      "shifts": [],
+      "long": 0,
+      "flips": 2,
+      "overflowX": 0,
+      "flipsAtBottom": 1,
+      "errors": [],
+      "height": 2898,
+      "ok": true
+    },
+    {
+      "path": "/pages/contact",
+      "cls": 0,
+      "shifts": [],
+      "long": 0,
+      "flips": 2,
+      "overflowX": 0,
+      "flipsAtBottom": 1,
+      "errors": [],
+      "height": 2166,
+      "ok": true
+    },
+    {
+      "path": "/pages/help",
+      "cls": 0,
+      "shifts": [],
+      "long": 0,
+      "flips": 2,
+      "overflowX": 0,
+      "flipsAtBottom": 1,
+      "errors": [],
+      "height": 3293,
+      "ok": true
+    },
+    {
+      "path": "/pages/privacy",
+      "cls": 0,
+      "shifts": [],
+      "long": 0,
+      "flips": 2,
+      "overflowX": 0,
+      "flipsAtBottom": 1,
+      "errors": [],
+      "height": 4208,
+      "ok": true
+    },
+    {
+      "path": "/pages/nevora-privacy",
+      "cls": 0,
+      "shifts": [],
+      "long": 0,
+      "flips": 2,
+      "overflowX": 0,
+      "flipsAtBottom": 1,
+      "errors": [],
+      "height": 8184,
+      "ok": true
+    }
+  ]
+}

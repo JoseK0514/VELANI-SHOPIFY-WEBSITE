@@ -1,0 +1,15 @@
+{% if section.settings.text != blank %}
+  {% if section.settings.link != blank %}<a href="{{ section.settings.link }}" class="announcement-bar">{% else %}<div class="announcement-bar">{% endif %}
+    {{ section.settings.text | escape }}
+  {% if section.settings.link != blank %}</a>{% else %}</div>{% endif %}
+{% endif %}
+
+{% schema %}
+{
+  "name": "Announcement bar",
+  "settings": [
+    { "type": "text", "id": "text", "label": "Text", "default": "Modern essentials for life together" },
+    { "type": "url", "id": "link", "label": "Link" }
+  ]
+}
+{% endschema %}

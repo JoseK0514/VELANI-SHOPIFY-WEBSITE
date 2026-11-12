@@ -1,0 +1,167 @@
+Theme gid://shopify/OnlineStoreTheme/193020428602 "Velani precision pass (preview)" role UNPUBLISHED
+Duplicated from the live theme 193011548474 on 2026-11-03. Read back with theme.files(filenames:) after themeFilesUpsert (URL bodies from stagedUploadsCreate; every staged POST returned 201).
+
+file                                        local md5 (dist/theme)             remote checksumMd5                 size
+assets/velani-nevora.css                    769ab947e711882ab21dbd1e40a2807e   769ab947e711882ab21dbd1e40a2807e   11042  match
+assets/velani-social.png                    9cdf93c8bf12db1fb8d10c4392260e49   9cdf93c8bf12db1fb8d10c4392260e49   465809 match
+assets/velani.css                           662ec824975585348832c3107eda2b28   662ec824975585348832c3107eda2b28   46384  match
+layout/theme.liquid                         efca19323ff87f05d98c68786d033241   efca19323ff87f05d98c68786d033241   26770  match
+sections/velani-about.liquid                3eee90908ad3d14881e27f87a0cfa028   3eee90908ad3d14881e27f87a0cfa028   7405   match
+sections/velani-custom-development.liquid   b147eb75dad44a006f27327d6e81b6d4   b147eb75dad44a006f27327d6e81b6d4   10960  match
+sections/velani-help.liquid                 ba45a7bfbb01a66bff9f58f6513d90f9   ba45a7bfbb01a66bff9f58f6513d90f9   12325  match
+sections/velani-home.liquid                 29cbcfaed2e34caace9d41e5301c3d35   29cbcfaed2e34caace9d41e5301c3d35   10772  match
+sections/velani-nevora.liquid               549c57df85caf478298e565f3f3aa244   549c57df85caf478298e565f3f3aa244   24039  match
+sections/velani-plans.liquid                258939e6a1533e2abb4cab2d45b0699e   258939e6a1533e2abb4cab2d45b0699e   8128   match (new section)
+templates/page.plans.json                   6b2de68949b006914fcc944e341ad9f6   ddb605d9554107eead07a46a552e8353   76     Shopify re-serialises JSON templates (102 -> 76 bytes); same pattern as every other page.*.json in the theme
+templates/index.velani-plans.json           6b2de68949b006914fcc944e341ad9f6   ddb605d9554107eead07a46a552e8353   76     same
+
+Not done: themeFilesDelete is refused by the Shopify connector's safety policy (category "destructive"), so the 39 unreferenced leftovers stay in the theme. None is loaded by any template, section, layout, CSS or JS in dist/theme. List for a later cleanup in admin or with Shopify CLI:
+assets/base.css assets/calendar-blank.svg assets/clock.svg assets/code-simple.svg assets/file-text.svg assets/global.js assets/list.svg assets/night-k-pin.webp assets/night-k-saved.webp assets/plus.svg assets/velani-bandanas.png assets/velani-cat-collars.png assets/velani-collars.png assets/velani-hero.png assets/velani-social.webp assets/x.svg assets/zz-velani-bundle7.css
+sections/announcement-bar.liquid sections/collection-cards.liquid sections/featured-products.liquid sections/footer-group.json sections/footer.liquid sections/header-group.json sections/header.liquid sections/hero-velani.liquid sections/main-404.liquid sections/main-cart.liquid sections/main-collection-grid.liquid sections/main-list-collections.liquid sections/main-page.liquid sections/main-product.liquid sections/main-search.liquid sections/newsletter.liquid sections/story-split.liquid sections/value-grid.liquid sections/velani-products.liquid
+snippets/product-card.liquid templates/index.velani-products.json templates/page.products.json
+Kept on purpose: templates/gift_card.liquid (Shopify default, not part of the build).
+
+Shopify page for /pages/plans: gid://shopify/Page/167254720826, handle "plans", template suffix "plans", created UNPUBLISHED. Jose publishes the page and the theme together in admin.
+
+Contact page pass (same day), second upsert to the same theme, read back:
+assets/velani.css                 59c8a0a2b3ae4920f8432371ae5a93d1   48738  match
+assets/velani.js                  995ff38a08e1ec8ff7c6c613a1053c97   7216   match
+sections/velani-contact.liquid    8e205ee66bc39b7a279da1253ab75ec8   11472  match
+layout/theme.liquid               77de86c47fdcab66e0451df0355f6a99   27147  match (contact meta description and the footer links)
+
+Contact page, sentence form (third pass), upsert to the same theme, read back:
+assets/velani.css                 95503169ff86eacc1efed1283c423244   47783  match
+assets/velani.js                  77b81844e6a81f0628857dd76c620649   8388   match
+sections/velani-contact.liquid    283577ec2692f37d36f65ef16768af32   8662   match
+layout/theme.liquid               77de86c47fdcab66e0451df0355f6a99   27147  unchanged since the previous upload
+
+Contact page, plain centred form (fourth pass), upsert to the same theme, read back:
+assets/velani.css                 dd088f0a37d1b7bcd58e165d52ddd3ca   47659  match
+assets/velani.js                  e40aadc7bab5e50fdb15d872ba060379   8300   match
+sections/velani-contact.liquid    0ca4ce216e13c9161d98c2d9aa223a28   7980   match
+
+Three additions (phone notification, laptop screen, footer wordmark), upsert to the same theme, read back:
+assets/velani.css                 de53378561bde007831fe7ae49cf34fc   50226  match
+assets/night-ai-laptop.webp       f1c8a69ef3ae4c59a6e03458956f4744   56228  match
+sections/velani-home.liquid       b55678dcb55e1b1ecc3eb41dab302b84   10961  match
+layout/theme.liquid               53ba41f93970a521cceb46dec0460a32   30795  match (footer wordmark)
+
+Client work on the devices and the hero sequence, upsert to the same theme, read back:
+assets/velani.css                 0b62d0e39a52b253a768a31dd4cacb14   52218  match
+sections/velani-home.liquid       1dea9df815adfd78fddae3fb042f37f2   11399  match
+layout/theme.liquid               9807b75106b9d64437e1e09ed4dd3fc7   30852  match (footer note)
+assets/night-ai-phone.webp        0c10f2d24eea9904c8f93d58ad1ee890   46220  match (Yavi Barber rewards on the phone)
+assets/night-ai-laptop.webp       d8ecd52d803b002b7effc79721a9a435   62448  match (Tool Box homepage on the laptop)
+assets/night-booking.webp         47bebb79d901531726fdee3f8432b626   20078  match (Yavi rewards in the Home phone frame)
+
+Hero conversation, upsert to the same theme, read back:
+assets/velani.css                 ac87dd069da4b2b962ac9bda135db3b2   53769  match
+sections/velani-home.liquid       2306b9fa2ff0afcd8490bc181e5012c4   11500  match
+
+Audit F01–F25 pass, upsert to the same theme, read back:
+assets/inquiry.js                 cd51d8712de09ed14cf1b0ba5a237af7   3024   match
+assets/velani-nevora.css          ad1c82a2afc4468bd08fba3c01b08017   11068  match
+assets/velani.css                 5062695c745c6fade27bde51957b7240   54274  match
+assets/velani.js                  bf2a37eaaa630ac47df8d964c287faac   9045   match
+layout/theme.liquid               3babda2596a5713e092c16e2d393fe95   33281  match (policy aliases, retired-template noindex)
+sections/velani-contact.liquid    1a6da965371094005d2ac0b67403702c   8062   match
+sections/velani-help.liquid       5dd8d1eec2c42c691a232bcbf748b5ad   12370  match
+sections/velani-home.liquid       d222c1e081b697cb66516e0cf3306102   11514  match
+sections/velani-nevora.liquid     7837510384e050497753285144fe91ef   24161  match
+sections/velani-plans.liquid      bb6195f0ebdd915a10f6b73c3c49bfd6   8238   match
+
+Decisions pass (availability, day-30 deletion, sign-in guidance), 2026-11-04, upsert to the same theme, read back:
+layout/theme.liquid                               e6a9513f9783905af43710c7c02a1bce   33223  match
+sections/velani-about.liquid                      d5112d8a23610085ae7d528895275b6f   7404   match
+sections/velani-contact.liquid                    98c51821eb41047675755b094d52259e   8004   match
+sections/velani-home.liquid                       6229c9f2f437c43b327c6860cdb026f0   11513  match
+sections/velani-nevora-account-deletion.liquid    6af79d12b6dbbda2fbcd70ac83625d12   4692   match
+sections/velani-nevora-support.liquid             06e13a185914a3beebb8d8912611b04d   4546   match
+sections/velani-nevora.liquid                     00d5dd27e91fecdf54c2a47f3a0c1691   24159  match
+sections/velani-plans.liquid                      3d5c4ed05eee00363da59ac7d7511352   8139   match
+sections/velani-software-project-terms.liquid     103eee62438c0f38a14061b6eda0f647   3644   match
+sections/velani-website-terms.liquid              d056cfc096a868cf47e6cb874ab35bde   3739   match
+
+Full-site inspection pass, 2026-11-04, upsert to the same theme (job done), read back: all 24 match the local build
+assets/velani-home.css                            25e56a9c3e1d999eccb6d8b29460fcc3  635  match
+assets/velani-motion.js                           5aafd9aff80f47633215f24e6c5b9531  5477  match
+assets/velani-nevora.css                          69e2fc2fc5189b4be8e2e7a7e17bdda0  11504  match
+assets/velani.css                                 a448fadd1df97e477f740a05d23255b6  57283  match
+assets/velani.js                                  5b19b797e443482f0a03861005638d25  9480  match
+layout/theme.liquid                               55a9c52e8fded2a2738d8795f804d749  33285  match
+sections/velani-about.liquid                      eaa76163436ef8e84316970db7595fe2  7332  match
+sections/velani-accessibility.liquid              e1a2a6cf3de44e3ba6eb2deed40b4209  2472  match
+sections/velani-contact.liquid                    7402f305c4ae76877ecc1cb42e7f0ca8  8075  match
+sections/velani-cookies.liquid                    f13f16feb8f1cbd8393edd4421536e9c  3394  match
+sections/velani-custom-development.liquid         f6010addb9dd73f2f3f12e7adbe55d82  10905  match
+sections/velani-help.liquid                       3e802609805a8cc514fe92e712dfb40b  12350  match
+sections/velani-home.liquid                       7fc13b6de88415b091cbc2e800d43a0e  11453  match
+sections/velani-legal.liquid                      50306749e983d2c3499c892e4d64e205  6301  match
+sections/velani-nevora-account-deletion.liquid    da78f9859822bd215bcf51071a1f2190  5059  match
+sections/velani-nevora-privacy.liquid             e4e78d0c71afe9b5df17d5a9d12e496e  10754  match
+sections/velani-nevora-support.liquid             d174cec1b07d664f6330a7b46690f3b2  4504  match
+sections/velani-nevora-terms.liquid               749a28bc67047bfaa5e1718a383952e1  6193  match
+sections/velani-nevora.liquid                     572480879f442b07a6bc3ea59f31dbd7  24220  match
+sections/velani-plans.liquid                      2619cf7be5d1668a7ad54338d471d763  8077  match
+sections/velani-privacy.liquid                    86da9a5a282695f20a68917ff9bd910f  5470  match
+sections/velani-security.liquid                   51c33e929e041fded97e6c659427de61  2393  match
+sections/velani-software-project-terms.liquid     80e801026fac85cad9271b9fa3c23ef2  3691  match
+sections/velani-website-terms.liquid              76f74dc4f9b569fbd5db06b526817f49  3826  match
+
+Custom development refinement (Codex review), 2026-11-04, upsert to the same theme (job done), read back:
+assets/night-ai-dash.webp                         2d44e70369aead92dfeb37c4da09eb7d  41038  match
+assets/velani.css                                 2268db54bed801ecd4a77711e0feebd5  58879  match
+layout/theme.liquid                               b63b671cbda1d0bcedefbc4491238c29  33577  match
+sections/velani-custom-development.liquid         0f15b91c1f10dea182585a345176a70a  11153  match
+sections/velani-home.liquid                       e915b5eecddfae222353b7c61e3e8bab  11457  match
+
+Straight screens and second Codex review, 2026-11-04, upsert to the same theme (job done), read back:
+assets/night-ai-dash.webp                         3638b2ef1d4474fdc1982736a7fe2afb  36454  match
+assets/night-ai-phone.webp                        6076c4b363f4bb886d19c9ee36a16815  47084  match
+assets/night-ai-room.webp                         ae6ea1cf6b5d301ddd909ff8894b4a9e  12546  match
+assets/velani.css                                 ed74fd778bd166e88c618973e7af03e2  59650  match
+layout/theme.liquid                               833925d3265d758fb761253edb9c689c  33874  match
+sections/velani-custom-development.liquid         de59167d2648608091218d95d1c8dc39  11406  match
+sections/velani-home.liquid                       78fb73c8762fe1d3c94c5c8e883feb0a  11465  match
+
+Second decisions pass (all demo data deleted, NEVORA presented as finished, Codex review 3 fixes), 2026-11-04, upsert to the same theme (job done), read back: all 13 match
+assets/velani-nevora.css                          5cd2227ea9158d498ee1a4157becdc6c  11600  match
+assets/velani.js                                  8709e259ceebe186cf827c124c3d94c8  9496  match
+layout/theme.liquid                               f6124006cd2f0bbf71b14cb4ce789443  33913  match
+sections/velani-about.liquid                      06d24fa5c2e51984494325dfa6c03e0f  7303  match
+sections/velani-contact.liquid                    cd5054afe7330ff37a332bb4c4fb97d6  8153  match
+sections/velani-help.liquid                       5a85a0633220e6de2bbd5b02521d6e6e  12437  match
+sections/velani-home.liquid                       8e2f955cb8d9f56fda3037aa5700b935  11443  match
+sections/velani-nevora-account-deletion.liquid    98bec8c300a537828eabab275b17c821  5170  match
+sections/velani-nevora-privacy.liquid             256896f856199ced59c06a859a385238  11079  match
+sections/velani-nevora.liquid                     ac61d548a9a56c1679d6ca783b99b222  24114  match
+sections/velani-plans.liquid                      d69e313dea62893928e55142794f659a  8627  match
+sections/velani-software-project-terms.liquid     3ec0352a06883d0ed730d39932e02feb  3654  match
+sections/velani-website-terms.liquid              b899cb2647b287bb4fa73f9b541a3e2e  3789  match
+
+Stores and captions pass, 2026-11-04, upsert to the same theme (job done), read back: all 8 match
+assets/inquiry.js                                 51a7055d9b12ffbf0dbc9b12f13236db  3248  match
+assets/night-ai-phone.webp                        4716e9af7bceb7a00ed41b459897d9fb  49502  match
+assets/night-ai-store-soft.webp                   5b7cb411fe9537a878663b37eac360db  13380  match (new)
+assets/night-store.webp                           d3686b2d06048e7bb2d6a1d0abbdefe6  57072  match (new)
+assets/velani.css                                 c48be2a089dcb45b6edb31104543b6ce  59886  match
+sections/velani-cookies.liquid                    37ab0714669e1ee851fa0fe63d55808d  3414  match
+sections/velani-custom-development.liquid         0cd45dd5a586266c58b6d63253976901  12039  match
+sections/velani-privacy.liquid                    0fb564c14b3b9909cd9024ba46080817  5512  match
+
+2026-11-04 straight screens + phone polish
+Theme: gid://shopify/OnlineStoreTheme/193073316154 "Velani straight screens + phone polish (preview)", role UNPUBLISHED (themeDuplicate of MAIN 193020428602; MAIN not written)
+Upserted 11 files via staged URLs (all 201), job b7b4cff3-add3-429b-8e70-93db70299a01 done; readback checksums equal local build:
+6cc074c6fe93dd3fa66b16aa6b0ec4cf assets/night-ai-laptop-soft.webp
+032c1ccee1a1f47c5b2595f05201ff72 assets/night-ai-phone-soft.webp
+199a7ce1bc67ffeb4b51d1e6d980c069 assets/night-tb-home.webp
+c8f952574ca38e39223c148475966d74 assets/night-yavi-book.webp
+80d1b126c93e08c51a9d4e4b942142a2 assets/night-yavi-rewards.webp
+c4c75b15c3f874aecf839c1712e0eb11 assets/velani-assist.js
+f0be58193e8b015c97edca8608227e07 assets/velani-nevora.css
+72404ff7d4ab501e7fa275768471a483 assets/velani.css
+d3c96e438ed20b51b235c20025b90d04 assets/velani.js
+bbb4ffecd52a89f4cd67aa9441649e22 sections/velani-custom-development.liquid
+76573ceba2f3bdfc83939c6ae9e91093 sections/velani-home.liquid
+All other non-JSON files matched before upload; JSON templates/settings unchanged from last shipped build (Shopify normalizes their bytes).
+Checks: npm test 34/34, check:theme [], check:privacy passed, check:browser passed, acceptance 77/77, clipping 18 routes at 320px and 200%, layout-audit 19/19, scroll-stability 8/8, probe phone+desktop 0 findings (1 chat-bubble contrast sample taken mid-animation; computed #06121e on #bbd8ff).

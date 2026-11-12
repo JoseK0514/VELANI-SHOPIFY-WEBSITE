@@ -4,8 +4,8 @@ import { routes, company } from '../src/content.mjs';
 import { renderPage, escapeHtml } from '../src/render.mjs';
 
 test('both business paths and every required company/legal destination exist', () => {
-  for (const path of ['/', '/pages/products', '/pages/nevora', '/pages/custom-development', '/pages/about', '/pages/contact', '/pages/help', '/pages/legal', '/pages/privacy', '/pages/cookies', '/pages/website-terms', '/pages/software-project-terms', '/pages/accessibility', '/pages/security']) assert.ok(routes[path], path);
-  assert.equal(company.name, 'The Velani');
+  for (const path of ['/', '/pages/nevora', '/pages/custom-development', '/pages/about', '/pages/contact', '/pages/help', '/pages/plans', '/pages/legal', '/pages/privacy', '/pages/cookies', '/pages/website-terms', '/pages/software-project-terms', '/pages/accessibility', '/pages/security']) assert.ok(routes[path], path);
+  assert.equal(company.name, 'Velani');
   assert.equal(company.operator, 'VELANI LLC');
   assert.equal(company.email, 'support@thevelani.com');
 });
@@ -19,15 +19,16 @@ test('all public routes have a document title, one main, one h1 and working lega
     assert.equal(status, 200, path);
     assert.match(html, /<title>[^<]+<\/title>/, path);
     assert.equal((html.match(/<main\b/g) || []).length, 1, path);
-    assert.equal((html.match(/<h1\b/g) || []).length, 1, path);
+    // One visible h1: the contact page also carries the sent confirmation, hidden until a message is sent (its heading replaces the hero's)
+    assert.equal((html.replace(/<div class="sent" id="inquiry-sent" tabindex="-1" hidden>[\s\S]*?<\/div>/, '').match(/<h1\b/g) || []).length, 1, path);
     for (const key of ['privacy', 'cookies', 'website-terms', 'accessibility']) assert.ok(html.includes('/pages/' + key), path + ':' + key);
     assert.doesNotMatch(html, /Fuel Coffee Drive|Coffee Bags|Sample Product|CONFIRM_|\[LEGAL_COMPANY_NAME\]/, path);
   }
 });
-test('product pages do not turn development into a launch or checkout claim', () => {
-  for (const path of ['/', '/pages/products', '/pages/nevora']) {
+test('product pages state availability without a checkout claim', () => {
+  for (const path of ['/', '/pages/nevora']) {
     const { html } = renderPage(path, { target: 'preview' });
-    assert.match(html, /In development/);
+    assert.match(html, /available now/i);
     assert.doesNotMatch(html, /href=["'][^"']*(?:\/cart|\/checkout|\/account\/register)/);
   }
 });
@@ -46,4 +47,20 @@ test('local previews do not advertise themselves as public indexed pages', () =>
   const { html } = renderPage('/', { target: 'preview' });
   assert.match(html, /name="robots" content="noindex, nofollow"/);
   assert.doesNotMatch(html, /application\/ld\+json[^]*AggregateRating/);
+});
+test('NEVORA policy pages are public and published pages carry no preview wording', () => {
+  for (const path of ['/pages/nevora-support', '/pages/nevora-privacy', '/pages/nevora-terms', '/pages/nevora-account-deletion']) assert.ok(routes[path], path);
+  for (const path of Object.keys(routes)) {
+    // The contact form and the Support client form show a preview form off the main theme (Shopify's form on the main theme)
+    if (path === '/pages/contact' || path === '/pages/help') continue;
+    const { html } = renderPage(path, { target: 'preview' });
+    const text = html.replace(/<script[^]*?<\/script>|<[^>]+>/g, ' ');
+    assert.doesNotMatch(text, /\bpreview\b|\bdraft\b|unpublished|must (?:be )?verif/i, path);
+    assert.doesNotMatch(html, /Prototype|proto-toast/, path);
+  }
+});
+test('NEVORA payroll is described as calculation, never payment or tax filing', () => {
+  const { html } = renderPage('/pages/nevora', { target: 'preview' });
+  assert.match(html, /calculates payroll/);
+  assert.doesNotMatch(html, /NEVORA (?:pays|runs payroll|files)/);
 });

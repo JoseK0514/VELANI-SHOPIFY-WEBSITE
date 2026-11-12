@@ -8,6 +8,10 @@ test('inquiries require a name, reply email and meaningful message', () => {
   assert.equal(result.valid, false);
   assert.deepEqual(Object.keys(result.errors).sort(), ['email', 'message', 'name']);
 });
+test('locations must be a positive whole number when given', () => {
+  for (const bad of ['-1', '0', '2.5', 'two', '10000']) assert.equal(validateInquiry({ ...valid, locations: bad }).errors.locations !== undefined, true, bad);
+  for (const ok of ['', '1', '12', '9999']) assert.equal(validateInquiry({ ...valid, locations: ok }).errors.locations, undefined, ok);
+});
 test('unicode names and ordinary message characters survive normalization', () => {
   const result = validateInquiry({ ...valid, message: '  Equipo — mañana 👋  ' });
   assert.equal(result.valid, true);
@@ -75,7 +79,7 @@ test('local privacy demonstration stays in memory and saves a real choice', asyn
   assert.equal((await api.read()).mode, 'local');
   const result = await api.save({ analytics: false, marketing: false, preferences: true });
   assert.equal(result.ok, true);
-  assert.deepEqual((await api.read()).choices, { analytics: false, marketing: false, preferences: true });
+  assert.deepEqual((await api.read()).choices, { analytics: false, marketing: false, preferences: true, sale_of_data: false });
 });
 test('missing Shopify privacy API cannot silently switch to demo consent', async () => {
   const api = createPrivacyAdapter({}, { platform: 'shopify' });
@@ -107,3 +111,24 @@ test('malformed consent values do not become truthy permission', async () => {
   assert.equal(calls, 0);
 });
 
+
+test('NEVORA enquiries ask about the team, so the message is optional', () => {
+  assert.equal(validateInquiry({ ...valid, interest: 'custom-software', message: '' }).valid, false);
+  const nevora = validateInquiry({ ...valid, interest: 'nevora', message: '' });
+  assert.equal(nevora.valid, true);
+  assert.equal(nevora.values.interest, 'nevora');
+  assert.equal(validateInquiry({ ...valid, interest: 'nevora', locations: 'x'.repeat(121) }).valid, false);
+});
+
+test('cookie choices set every Shopify consent purpose, including the sale or sharing opt-out', async () => {
+  const calls = [];
+  const host = { Shopify: { customerPrivacy: { currentVisitorConsent: () => ({ analytics: 'yes', marketing: 'no', preferences: 'yes', sale_of_data: 'no' }), setTrackingConsent: (v, cb) => { calls.push(v); cb(); } } } };
+  const api = createPrivacyAdapter(host, { platform: 'shopify', timeoutMs: 100 });
+  assert.deepEqual((await api.read()).choices, { analytics: true, marketing: false, preferences: true, sale_of_data: false });
+  assert.equal((await api.save({ analytics: false, marketing: true, preferences: false, sale_of_data: true })).ok, true);
+  assert.deepEqual(calls.at(-1), { analytics: false, marketing: true, preferences: false, sale_of_data: true });
+  // Leaving the sale/share choice out never allows it
+  assert.equal((await api.save({ analytics: true, marketing: true, preferences: true })).ok, true);
+  assert.deepEqual(calls.at(-1), { analytics: true, marketing: true, preferences: true, sale_of_data: false });
+  assert.equal((await api.save({ analytics: true, marketing: true, preferences: true, sale_of_data: 'yes' })).ok, false);
+});

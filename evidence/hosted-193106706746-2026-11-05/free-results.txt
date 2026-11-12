@@ -1,0 +1,88 @@
+PASS chromium 1440: page is the unpublished Rondo theme (193106706746 unpublished)
+PASS chromium 1440 /: launcher "R ASK RONDO" visible, no sideways scroll
+PASS chromium 1440 /: launcher covers no control at first view / after one screen on phones (none)
+PASS chromium 1440 /pages/nevora: launcher "R ASK RONDO" visible, no sideways scroll
+PASS chromium 1440 /pages/nevora: launcher covers no control at first view / after one screen on phones (none)
+PASS chromium 1440 /pages/plans: launcher "R ASK RONDO" visible, no sideways scroll
+PASS chromium 1440 /pages/plans: launcher covers no control at first view / after one screen on phones (none)
+PASS chromium 1440 /pages/contact?interest=nevora-demo: launcher "R ASK RONDO" visible, no sideways scroll
+PASS chromium 1440 /pages/contact?interest=nevora-demo: launcher covers no control at first view / after one screen on phones (none)
+PASS chromium 1440 /pages/products: launcher "R ASK RONDO" visible, no sideways scroll
+PASS chromium 1440 /pages/products: launcher covers no control at first view / after one screen on phones (none)
+   config seen: 
+PASS chromium 1440: hosted config loads across origins; panel titled Rondo
+PASS chromium 1440: Escape closes; focus back on the launcher
+PASS chromium 1440: Spanish before any conversation switches at once
+PASS chromium 1440: real Turnstile widget renders with the configured key; panel says it is waiting for verification (Waiting for the verification below…)
+PASS chromium 1440: no session is requested without a verification token
+PASS chromium 1440: no chat request reached the API (no AI cost)
+PASS chromium 1440: no page errors (%c%d font-size:0;color:transparent NaN | %c%d font-size:0;color:transparent NaN | %c%o font-size:0;color:transparent {})
+   api: GET /v1/config 200
+PASS chromium 390: page is the unpublished Rondo theme (193106706746 unpublished)
+PASS chromium 390 /: phone launcher stays off the first screen
+PASS chromium 390 /: launcher "R ASK RONDO" visible, no sideways scroll
+PASS chromium 390 /: launcher covers no control at first view / after one screen on phones (none)
+PASS chromium 390 /pages/nevora: phone launcher stays off the first screen
+PASS chromium 390 /pages/nevora: launcher "R ASK RONDO" visible, no sideways scroll
+PASS chromium 390 /pages/nevora: launcher covers no control at first view / after one screen on phones (none)
+PASS chromium 390 /pages/plans: phone launcher stays off the first screen
+PASS chromium 390 /pages/plans: launcher "R ASK RONDO" visible, no sideways scroll
+PASS chromium 390 /pages/plans: launcher covers no control at first view / after one screen on phones (none)
+PASS chromium 390 /pages/contact?interest=nevora-demo: phone launcher stays off the first screen
+PASS chromium 390 /pages/contact?interest=nevora-demo: launcher "R ASK RONDO" visible, no sideways scroll
+FAIL chromium 390 /pages/contact?interest=nevora-demo: launcher covers no control at first view / after one screen on phones (support@thevelani.com)
+PASS chromium 390 /pages/products: phone launcher stays off the first screen
+PASS chromium 390 /pages/products: launcher "R ASK RONDO" visible, no sideways scroll
+PASS chromium 390 /pages/products: launcher covers no control at first view / after one screen on phones (none)
+   config seen: 
+PASS chromium 390: hosted config loads across origins; panel titled Rondo
+PASS chromium 390: Escape closes; focus back on the launcher
+PASS chromium 390: Spanish before any conversation switches at once
+PASS chromium 390: real Turnstile widget renders with the configured key; panel says it is waiting for verification (Waiting for the verification below…)
+PASS chromium 390: no session is requested without a verification token
+PASS chromium 390: no chat request reached the API (no AI cost)
+PASS chromium 390: no page errors (%c%d font-size:0;color:transparent NaN | %c%d font-size:0;color:transparent NaN | %c%o font-size:0;color:transparent {})
+   api: GET /v1/config 200
+PASS webkit 1440: page is the unpublished Rondo theme (193106706746 unpublished)
+PASS webkit 1440 /: launcher "R ASK RONDO" visible, no sideways scroll
+PASS webkit 1440 /: launcher covers no control at first view / after one screen on phones (none)
+PASS webkit 1440 /pages/nevora: launcher "R ASK RONDO" visible, no sideways scroll
+PASS webkit 1440 /pages/nevora: launcher covers no control at first view / after one screen on phones (none)
+PASS webkit 1440 /pages/plans: launcher "R ASK RONDO" visible, no sideways scroll
+PASS webkit 1440 /pages/plans: launcher covers no control at first view / after one screen on phones (none)
+PASS webkit 1440 /pages/contact?interest=nevora-demo: launcher "R ASK RONDO" visible, no sideways scroll
+PASS webkit 1440 /pages/contact?interest=nevora-demo: launcher covers no control at first view / after one screen on phones (none)
+PASS webkit 1440 /pages/products: launcher "R ASK RONDO" visible, no sideways scroll
+PASS webkit 1440 /pages/products: launcher covers no control at first view / after one screen on phones (none)
+   config seen: 
+PASS webkit 1440: hosted config loads across origins; panel titled Rondo
+PASS webkit 1440: Escape closes; focus back on the launcher
+PASS webkit 1440: Spanish before any conversation switches at once
+PASS webkit 1440: real Turnstile widget renders with the configured key; panel says it is waiting for verification (Waiting for the verification below…)
+PASS webkit 1440: no session is requested without a verification token
+PASS webkit 1440: no chat request reached the API (no AI cost)
+PASS webkit 1440: no page errors (Failed to load resource: the server responded with a status of 401 () | Failed to load resource: the server responded with a status of 401 () | Failed to load resource: the server responded with a status of 401 ())
+   api: GET /v1/config 200
+PASS webkit 390: page is the unpublished Rondo theme (193106706746 unpublished)
+PASS webkit 390 /: phone launcher stays off the first screen
+PASS webkit 390 /: launcher "R ASK RONDO" visible, no sideways scroll
+PASS webkit 390 /: launcher covers no control at first view / after one screen on phones (none)
+PASS webkit 390 /pages/nevora: phone launcher stays off the first screen
+PASS webkit 390 /pages/nevora: launcher "R ASK RONDO" visible, no sideways scroll
+PASS webkit 390 /pages/nevora: launcher covers no control at first view / after one screen on phones (none)
+PASS webkit 390 /pages/plans: phone launcher stays off the first screen
+PASS webkit 390 /pages/plans: launcher "R ASK RONDO" visible, no sideways scroll
+PASS webkit 390 /pages/plans: launcher covers no control at first view / after one screen on phones (none)
+PASS webkit 390 /pages/contact?interest=nevora-demo: phone launcher stays off the first screen
+PASS webkit 390 /pages/contact?interest=nevora-demo: launcher "R ASK RONDO" visible, no sideways scroll
+FAIL webkit 390 /pages/contact?interest=nevora-demo: launcher covers no control at first view / after one screen on phones (support@thevelani.com)
+PASS webkit 390 /pages/products: phone launcher stays off the first screen
+PASS webkit 390 /pages/products: launcher "R ASK RONDO" visible, no sideways scroll
+PASS webkit 390 /pages/products: launcher covers no control at first view / after one screen on phones (none)
+   config seen: 
+PASS webkit 390: hosted config loads across origins; panel titled Rondo
+PASS webkit 390: Escape closes; focus back on the launcher
+PASS webkit 390: Spanish before any conversation switches at once
+PASS webkit 390: no chat request reached the API (no AI cost)
+PASS webkit 390: no page errors (Failed to load resource: the server responded with a status of 401 () | Failed to load resource: the server responded with a status of 401 () | Failed to load resource: the server responded with a status of 401 ())
+   api: GET /v1/config 200
