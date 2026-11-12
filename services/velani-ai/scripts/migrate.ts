@@ -12,7 +12,9 @@ export async function migrate(pool: Pool, directory = resolve(process.cwd(), 'mi
   const applied: string[] = [];
   try {
     await client.query('BEGIN');
-    await client.query("SELECT pg_advisory_xact_lock(hashtext(current_database()), hashtext(current_schema() || ':velani-migrations'))");
+    // Extensions are database-wide even when application tables use separate
+    // schemas. Coordinate their installation across every migration schema.
+    await client.query("SELECT pg_advisory_xact_lock(hashtext(current_database()), hashtext('velani-migrations'))");
     await client.query(`CREATE TABLE IF NOT EXISTS schema_migrations (
       name text PRIMARY KEY, checksum text NOT NULL, applied_at timestamptz NOT NULL DEFAULT clock_timestamp()
     )`);
