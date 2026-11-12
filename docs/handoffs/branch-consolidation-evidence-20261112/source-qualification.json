@@ -1,0 +1,15 @@
+{
+  "beforeMain": "5680168611f6b366a3a0ce5397bca039c855ed70",
+  "beforeDevelopment": "afd453d7506f427784b2948f4b02a00b8b0fcf9c",
+  "qualifiedApplicationSource": "a456364bade4a32d3114980c7cc24bf2bb321725",
+  "uiReconciliationMerge": "5ddf213e14d0f106bd617136d10bc2ec1742063e",
+  "publicationGuardMerge": "a456364bade4a32d3114980c7cc24bf2bb321725",
+  "retiredUniqueUiCommits": 13,
+  "retainedDetachedGuardCommits": 2,
+  "applicationChangesAgainstDevelopment": [
+    "src/render.mjs: existing publication guard restored",
+    "tests/commerce-publish-guard.test.mjs: existing20 Liquid role regressions restored"
+  ],
+  "backendRuntimeUnchanged": true,
+  "mergeConflictsRemaining": []
+}

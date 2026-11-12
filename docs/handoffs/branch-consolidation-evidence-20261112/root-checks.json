@@ -1,0 +1,19 @@
+[
+  {
+    "name": "root-tests",
+    "exitCode": 0,
+    "command": [
+      "npm",
+      "test"
+    ]
+  },
+  {
+    "name": "theme-check",
+    "exitCode": 0,
+    "command": [
+      "npm",
+      "run",
+      "check:theme"
+    ]
+  }
+]

@@ -1,0 +1,28 @@
+✔ main role on /pages/plans cannot use a leftover staging setting (9.220333ms)
+✔ demo role on /pages/plans cannot use a leftover staging setting (1.377625ms)
+✔ missing role on /pages/plans cannot use a leftover staging setting (0.970167ms)
+✔ unpublished /pages/plans retains the sandbox API for acceptance (1.162375ms)
+✔ development /pages/plans retains the sandbox API for acceptance (0.766834ms)
+✔ main role on /pages/nevora-billing cannot use a leftover staging setting (0.234125ms)
+✔ demo role on /pages/nevora-billing cannot use a leftover staging setting (0.134541ms)
+✔ missing role on /pages/nevora-billing cannot use a leftover staging setting (0.181333ms)
+✔ unpublished /pages/nevora-billing retains the sandbox API for acceptance (0.212584ms)
+✔ development /pages/nevora-billing retains the sandbox API for acceptance (0.207208ms)
+✔ main role on /pages/nevora-billing-return cannot use a leftover staging setting (0.136125ms)
+✔ demo role on /pages/nevora-billing-return cannot use a leftover staging setting (0.108625ms)
+✔ missing role on /pages/nevora-billing-return cannot use a leftover staging setting (0.101167ms)
+✔ unpublished /pages/nevora-billing-return retains the sandbox API for acceptance (0.115958ms)
+✔ development /pages/nevora-billing-return retains the sandbox API for acceptance (0.120167ms)
+✔ main role on /pages/es-facturacion cannot use a leftover staging setting (0.419416ms)
+✔ demo role on /pages/es-facturacion cannot use a leftover staging setting (0.103334ms)
+✔ missing role on /pages/es-facturacion cannot use a leftover staging setting (0.092792ms)
+✔ unpublished /pages/es-facturacion retains the sandbox API for acceptance (0.107125ms)
+✔ development /pages/es-facturacion retains the sandbox API for acceptance (0.094083ms)
+ℹ tests 20
+ℹ suites 0
+ℹ pass 20
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 95.594375

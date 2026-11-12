@@ -1,0 +1,32 @@
+[
+  {
+    "name": "backend-tests",
+    "exitCode": 0,
+    "command": [
+      "npm",
+      "test",
+      "--",
+      "--reporter=default",
+      "--reporter=json",
+      "--outputFile=/Users/josek0514/.codex/worktrees/velani-main-consolidation-20261112/docs/handoffs/branch-consolidation-evidence-20261112/backend-tests.json"
+    ]
+  },
+  {
+    "name": "backend-typecheck",
+    "exitCode": 0,
+    "command": [
+      "npm",
+      "run",
+      "typecheck"
+    ]
+  },
+  {
+    "name": "backend-build",
+    "exitCode": 0,
+    "command": [
+      "npm",
+      "run",
+      "build"
+    ]
+  }
+]

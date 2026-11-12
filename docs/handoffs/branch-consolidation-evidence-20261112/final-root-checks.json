@@ -1,0 +1,28 @@
+[
+  {
+    "name": "publication-guard-green",
+    "command": [
+      "node",
+      "--test",
+      "tests/commerce-publish-guard.test.mjs"
+    ],
+    "exitCode": 0
+  },
+  {
+    "name": "root-tests-final",
+    "command": [
+      "npm",
+      "test"
+    ],
+    "exitCode": 0
+  },
+  {
+    "name": "theme-check-final",
+    "command": [
+      "npm",
+      "run",
+      "check:theme"
+    ],
+    "exitCode": 0
+  }
+]

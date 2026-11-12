@@ -1,0 +1,26 @@
+{
+  "data": {
+    "themes": {
+      "nodes": [
+        {
+          "id": "gid://shopify/OnlineStoreTheme/193311572282",
+          "name": "Velani signature hero (preview)",
+          "role": "MAIN",
+          "updatedAt": "2026-11-11T04:20:44Z",
+          "files": {
+            "nodes": [
+              {
+                "filename": "config/settings_data.json",
+                "checksumMd5": "ab40fc74281c31b97e2a4c9839f603f4"
+              }
+            ]
+          }
+        }
+      ],
+      "pageInfo": {
+        "hasNextPage": false,
+        "endCursor": "eyJsYXN0X2lkIjoxOTMzMTE1NzIyODIsImxhc3RfdmFsdWUiOjE5MzMxMTU3MjI4Mn0="
+      }
+    }
+  }
+}

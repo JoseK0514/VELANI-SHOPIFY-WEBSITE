@@ -50,5 +50,17 @@
   {
     "tag": "archive/velani-20261112/codex/velani-website-ai-backend",
     "sha": "953e47a4840b90921a913a03e7eb635f201d5e42"
+  },
+  {
+    "tag": "archive/velani-20261112/pre-consolidation-main",
+    "sha": "5680168611f6b366a3a0ce5397bca039c855ed70"
+  },
+  {
+    "tag": "archive/velani-20261112/pre-consolidation-development",
+    "sha": "afd453d7506f427784b2948f4b02a00b8b0fcf9c"
+  },
+  {
+    "tag": "archive/velani-20261112/detached-publish-guard",
+    "sha": "d2a633cd2f0b570698562641e8839924e013489b"
   }
 ]
