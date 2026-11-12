@@ -2,9 +2,8 @@ import http from 'node:http';
 import { readFile, stat } from 'node:fs/promises';
 import path from 'node:path';
 import { build, root } from './build.mjs';
-import { renderPage, BOOT_JS } from '../src/render.mjs';
+import { renderPage } from '../src/render.mjs';
 import { createHash } from 'node:crypto';
-const bootHash = "'sha256-" + createHash('sha256').update(BOOT_JS).digest('base64') + "'";
 const args = process.argv.slice(2);
 const flag = (name, fallback) => { const i = args.indexOf(name); return i < 0 ? fallback : args[i + 1]; };
 const port = Number(flag('--port', '4173'));
@@ -22,11 +21,20 @@ const host = flag('--host', '0.0.0.0');
 await build();
 const dir = path.join(root, 'dist/preview');
 const types = { '.html': 'text/html; charset=utf-8', '.css': 'text/css; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.svg': 'image/svg+xml', '.woff2': 'font/woff2', '.webp': 'image/webp', '.png': 'image/png' };
+// Only trusted, compiled page bytes supply these hashes. Pages can contain a
+// sample-data initializer or an old-trial redirect as well as the shared boot.
+// Unrelated inline scripts and event handlers remain blocked.
+function contentSecurityPolicy(html = '') {
+  const hashes = [...new Set([...html.matchAll(/<script\b([^>]*)>([\s\S]*?)<\/script>/gi)]
+    .filter(([, attrs]) => !/\bsrc\s*=/i.test(attrs))
+    .map(([, , code]) => "'sha256-" + createHash('sha256').update(code).digest('base64') + "'"))];
+  return "default-src 'self'; script-src 'self' " + hashes.join(' ') + assistantScript + (hubApi && !assistantApi ? ' https://challenges.cloudflare.com' : '') + "; style-src 'self'; style-src-attr 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'" + assistantConnect + commerceConnect + hubConnect + "; frame-src" + (assistantApi || hubApi ? " https://challenges.cloudflare.com" : " 'none'") + "; frame-ancestors 'none'; base-uri 'self'; form-action 'self'";
+}
 const server = http.createServer(async (req, res) => {
   res.setHeader('X-Content-Type-Options', 'nosniff');
   res.setHeader('Referrer-Policy', 'strict-origin-when-cross-origin');
   res.setHeader('Permissions-Policy', 'camera=(), microphone=(), geolocation=()');
-  res.setHeader('Content-Security-Policy', "default-src 'self'; script-src 'self' " + bootHash + assistantScript + (hubApi && !assistantApi ? ' https://challenges.cloudflare.com' : '') + "; style-src 'self'; style-src-attr 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'" + assistantConnect + commerceConnect + hubConnect + "; frame-src" + (assistantApi || hubApi ? " https://challenges.cloudflare.com" : " 'none'") + "; frame-ancestors 'none'; base-uri 'self'; form-action 'self'");
+  res.setHeader('Content-Security-Policy', contentSecurityPolicy());
   res.setHeader('Cache-Control', 'no-store');
   if (req.method !== 'GET' && req.method !== 'HEAD') { req.resume(); res.writeHead(405, { Allow: 'GET, HEAD', 'Content-Type': 'text/plain' }); res.end('Preview only. No inquiry was sent.'); return; }
   let url;
@@ -40,12 +48,15 @@ const server = http.createServer(async (req, res) => {
     const file = await stat(dest);
     if (!file.isFile()) throw Object.assign(new Error('not a file'), { code: 'ENOENT' });
     const data = await readFile(dest);
+    if (path.extname(dest) === '.html') res.setHeader('Content-Security-Policy', contentSecurityPolicy(data.toString('utf8')));
     res.writeHead(200, { 'Content-Type': types[path.extname(dest)] || 'application/octet-stream' });
     res.end(req.method === 'HEAD' ? undefined : data);
   } catch (error) {
     if (error.code !== 'ENOENT' && error.code !== 'ENOTDIR') { res.writeHead(500); res.end('Preview unavailable'); return; }
+    const html = renderPage('/not-found').html;
+    res.setHeader('Content-Security-Policy', contentSecurityPolicy(html));
     res.writeHead(404, { 'Content-Type': 'text/html; charset=utf-8' });
-    res.end(req.method === 'HEAD' ? undefined : renderPage('/not-found').html);
+    res.end(req.method === 'HEAD' ? undefined : html);
   }
 });
 server.on('error', error => { console.error(error.message); process.exitCode = 1; });

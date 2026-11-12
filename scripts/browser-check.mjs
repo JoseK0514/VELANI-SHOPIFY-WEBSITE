@@ -56,8 +56,10 @@ for (const engine of engines) {
       expect(geometry.scroll <= geometry.client + 1, 'Horizontal overflow');
       if (width === 969) expect(geometry.lines < 2.2, 'Approved desktop headline must keep its two lines');
       if (width >= 969) expect(!await page.locator('#gmenu-btn').isVisible(), 'Mobile menu appears on desktop');
-      expect(await page.locator('.status, .hkick').filter({ hasText: 'Available now' }).first().isVisible(), 'Product availability status missing');
-      const covered = await page.evaluate(() => [...document.querySelectorAll('main a, main button')].filter(el => { const b = el.getBoundingClientRect(); return b.width && b.top >= 0 && b.bottom <= innerHeight }).filter(el => { const b = el.getBoundingClientRect(); return !el.contains(document.elementFromPoint(b.left + b.width / 2, b.top + b.height / 2)) }).map(el => el.textContent.trim()));
+      const trial = page.locator('main').getByRole('link', { name: 'Request a free trial', exact: true }).first();
+      expect(await trial.isVisible() && await trial.getAttribute('href') === '/pages/contact?interest=nevora-demo', 'Assisted trial request is unavailable');
+      expect((await page.locator('main').innerText()).includes('Jose from Velani sets up your workplace with you. Free for 30 days, no card.'), 'The assisted trial and no-card boundary is missing');
+      const covered = await page.evaluate(() => [...document.querySelectorAll('main a, main button')].filter(el => el.checkVisibility({ opacityProperty: true, visibilityProperty: true })).filter(el => { const b = el.getBoundingClientRect(); return b.width && b.top >= 0 && b.bottom <= innerHeight }).filter(el => { const b = el.getBoundingClientRect(); return !el.contains(document.elementFromPoint(b.left + b.width / 2, b.top + b.height / 2)) }).map(el => el.textContent.trim()));
       expect(covered.length === 0, 'Visible links covered by another layer: ' + covered.join(', '));
       return geometry;
     });
@@ -83,8 +85,14 @@ for (const engine of engines) {
     await motionPage.setViewportSize({ width: w, height: h });
     await check(engine + ' home links clickable with motion ' + w + 'x' + h, async () => {
       await motionPage.goto(base, { waitUntil: 'networkidle' }); await motionPage.waitForTimeout(600);
-      const covered = await motionPage.evaluate(() => [...document.querySelectorAll('main a, main button')].filter(el => { const b = el.getBoundingClientRect(); return b.width && b.top >= 0 && b.bottom <= innerHeight }).filter(el => { const b = el.getBoundingClientRect(); return !el.contains(document.elementFromPoint(b.left + b.width / 2, b.top + b.height / 2)) }).map(el => el.textContent.trim()));
+      const covered = await motionPage.evaluate(() => [...document.querySelectorAll('main a, main button')].filter(el => el.checkVisibility({ opacityProperty: true, visibilityProperty: true })).filter(el => { const b = el.getBoundingClientRect(); return b.width && b.top >= 0 && b.bottom <= innerHeight }).filter(el => { const b = el.getBoundingClientRect(); return !el.contains(document.elementFromPoint(b.left + b.width / 2, b.top + b.height / 2)) }).map(el => el.textContent.trim()));
       expect(covered.length === 0, 'Visible links covered by another layer: ' + covered.join(', '));
+      // Hidden tab panels are not visible targets. Exercise the Rondo panel too,
+      // so excluding its initially hidden questions cannot conceal a blocked action.
+      await motionPage.getByRole('tab', { name: 'Rondo', exact: true }).click();
+      const question = motionPage.getByRole('button', { name: 'Investigate coverage for tomorrow and compare my options.', exact: true });
+      await question.click();
+      expect(await question.getAttribute('aria-pressed') === 'true', 'The visible Rondo sample question could not be selected');
     });
   }
   await motion.close();
@@ -95,21 +103,23 @@ for (const engine of engines) {
     await button.click(); expect(await button.getAttribute('aria-expanded') === 'true', 'Menu did not open');
     await page.keyboard.press('Escape'); expect(await button.getAttribute('aria-expanded') === 'false', 'Escape did not close menu');
     expect(await button.evaluate(el => el === document.activeElement), 'Menu focus not restored');
-    await button.click(); await page.locator('#gmenu').getByRole('link', { name: 'Custom apps', exact: true }).first().click();
-    await page.waitForURL('**/pages/custom-development');
-    expect((await page.locator('h1').innerText()).includes('Software for the work'), 'Wrong service destination');
+    await button.click(); await page.locator('#gmenu').getByRole('link', { name: 'Websites', exact: true }).first().click();
+    await page.waitForURL('**/pages/custom-development#web-applications');
+    expect((await page.locator('h1').innerText()).includes('Websites and apps for your business.'), 'Wrong service destination');
+    expect(await page.locator('#web-applications').count() === 1, 'The selected service fragment is missing');
   });
   await check(engine + ' inquiry validation and no delivery', async () => {
     await page.goto(base + '/pages/contact?interest=nevora');
     expect(await page.locator('#inquiry-interest').inputValue() === 'nevora', 'Known topic not selected');
-    await page.getByRole('button', { name: 'Check draft inquiry' }).click();
+    await page.locator('[data-inquiry-submit]').click();
     expect(await page.locator('#inquiry-name').getAttribute('aria-invalid') === 'true', 'Missing name accepted');
     expect(await page.locator('#inquiry-name').evaluate(el => el === document.activeElement), 'Invalid-field focus missing');
     await page.locator('#inquiry-name').fill('José Example');
     await page.locator('#inquiry-email').fill('example@example.com');
     await page.locator('#inquiry-message').fill('<img src=x onerror=alert(1)> A fictional project inquiry.');
-    await page.getByRole('button', { name: 'Check draft inquiry' }).click();
-    await page.locator('.form-status').filter({ hasText: 'Nothing was sent' }).waitFor();
+    await page.locator('[data-inquiry-submit]').click();
+    await page.locator('#inquiry-sent').waitFor({ state: 'visible' });
+    expect((await page.locator('#inquiry-sent').innerText()).includes('Nothing was sent.'), 'Preview outcome must explicitly confirm non-delivery');
     expect(await page.locator('[onerror]').count() === 0, 'User input became HTML');
     expect(await page.evaluate(() => [localStorage, sessionStorage].every(storage => !Object.values(storage).some(value => value.includes('José Example') || value.includes('fictional project inquiry')))), 'Personal form data persisted');
     const shot = out + '/' + engine + '-contact-390.png'; await capture(page, { path: shot, fullPage: true }); screenshots.push(shot);
