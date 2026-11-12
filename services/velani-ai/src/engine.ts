@@ -17,7 +17,7 @@ function providerHint(error: APIError): ProviderHint | undefined {
   // Reduce upstream text to fixed diagnostic labels; never retain its text, headers or body.
   const message = error.message.slice(0, 4096);
   if (/(output|completion|reasoning).{0,40}(token|budget).{0,40}(exceed|limit|insufficient|small)|max_(?:completion_)?tokens.{0,40}(exceed|invalid|must)/i.test(message)) return 'token_budget';
-  if (/content_filter|content policy|safety filter|moderation|jailbreak|prompt injection/i.test(message)) return 'safety_filter';
+  if (/content_filter|content policy|safety filter|moderation|jailbreak|prompt injection|flagged for possible cybersecurity risk/i.test(message)) return 'safety_filter';
   if (/response_format|invalid.{0,30}json|json.{0,30}(invalid|parse|malformed|failed)/i.test(message)) return 'structured_output';
   return undefined;
 }

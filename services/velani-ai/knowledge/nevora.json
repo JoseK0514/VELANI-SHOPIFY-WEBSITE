@@ -4,8 +4,8 @@
     "title": "NEVORA: product purpose and team workflows",
     "url": "https://www.thevelani.com/pages/nevora",
     "locale": "en",
-    "reviewedAt": "2026-11-04",
-    "validUntil": "2026-12-04",
+    "reviewedAt": "2026-11-12",
+    "validUntil": "2026-12-12",
     "isCore": true,
     "content": "NEVORA is Velani's workforce product for shift teams. Its published product page now advertises availability with workplace setup by the team, not instant self-service signup by this chat. Managers plan shifts and approve hours on the web. Employees view shifts, respond to swaps and request time off on phones. Approved hours feed payroll calculations and pay statements. It works on web, phones and shared tablets, with English or Spanish chosen by each person. Published capabilities do not establish specific integrations, automated legal compliance, guaranteed savings or same-day setup. The website assistant provides advice, not authenticated employer-account operations. The separate trial article contains the current commercial limits."
   },
@@ -14,8 +14,8 @@
     "title": "NEVORA: propósito del producto y trabajo por turnos",
     "url": "https://www.thevelani.com/pages/nevora",
     "locale": "es",
-    "reviewedAt": "2026-11-04",
-    "validUntil": "2026-12-04",
+    "reviewedAt": "2026-11-12",
+    "validUntil": "2026-12-12",
     "isCore": true,
     "content": "NEVORA es el producto de Velani para equipos por turnos. Su página pública ahora anuncia disponibilidad con configuración por el equipo, no registro instantáneo mediante este chat. Los administradores organizan turnos y aprueban horas en la web. Los empleados consultan turnos, responden a intercambios y solicitan tiempo libre desde teléfonos. Las horas aprobadas alimentan el cálculo de nómina y los comprobantes. Funciona en web, teléfonos y tabletas compartidas, con inglés o español elegido por cada persona. Estas funciones no establecen integraciones específicas, cumplimiento legal automático, ahorros garantizados ni configuración el mismo día. El asistente del sitio orienta, no opera cuentas de empresas. El artículo de prueba contiene los límites comerciales actuales."
   },
@@ -24,8 +24,8 @@
     "title": "Shared PIN time clock, languages and demonstration limits",
     "url": "https://www.thevelani.com/pages/nevora",
     "locale": "en",
-    "reviewedAt": "2026-11-04",
-    "validUntil": "2026-12-04",
+    "reviewedAt": "2026-11-12",
+    "validUntil": "2026-12-12",
     "content": "The published NEVORA page offers a public sample time clock. Visitors may enter any four sample digits; the screen clears for the next person. The page says nothing entered in this demonstration is saved or sent. It is a fictional workplace, not real attendance, payroll or account access. Never enter a real employee PIN in the sample. The actual product uses a four-digit PIN on a shared-tablet clock, separate from the portal password. English and Spanish are available, chosen by each person. Managers review real attendance in the authenticated workplace. This assistant cannot clock someone in, generate PINs or create accounts. A requested demonstration may use show_demo with this source, without claiming it has already been opened."
   },
   {
@@ -33,8 +33,8 @@
     "title": "Reloj compartido con PIN, idiomas y límites de la demostración",
     "url": "https://www.thevelani.com/pages/nevora",
     "locale": "es",
-    "reviewedAt": "2026-11-04",
-    "validUntil": "2026-12-04",
+    "reviewedAt": "2026-11-12",
+    "validUntil": "2026-12-12",
     "content": "La página pública de NEVORA ofrece un reloj de muestra. Se pueden escribir cuatro dígitos de ejemplo y la pantalla se limpia para la siguiente persona. La página indica que nada de lo introducido se guarda ni se envía. Es un espacio ficticio, no asistencia real, nómina ni acceso a cuentas. No se debe usar un PIN real de empleado. El producto utiliza un PIN de cuatro dígitos en una tableta compartida, separado de la contraseña del portal. Cada persona elige inglés o español. Los administradores revisan asistencia real en su espacio autenticado. Este asistente no ficha, genera PIN ni crea cuentas. Si se solicita una demostración, puede usarse show_demo con esta fuente, sin afirmar que ya se abrió."
   },
   {
@@ -42,8 +42,8 @@
     "title": "Payroll calculations and employer responsibilities",
     "url": "https://www.thevelani.com/pages/nevora",
     "locale": "en",
-    "reviewedAt": "2026-11-04",
-    "validUntil": "2026-12-04",
+    "reviewedAt": "2026-11-12",
+    "validUntil": "2026-12-12",
     "isCore": true,
     "content": "The described NEVORA payroll workflow calculates payroll from approved hours. A manager reviews the calculations and publishes employee pay statements. NEVORA does not pay employees and does not file payroll taxes; those tasks remain the employer's responsibility. Do not describe the product as a payroll-payment service, direct-deposit service, tax-filing service or replacement for the employer's payroll provider unless newly reviewed official documentation expressly confirms that capability. There is no verified list here of supported payroll integrations, export formats, overtime rules, tax jurisdictions or deductions. Ask about the employer's current approval and payroll process when helpful, and refer detailed compatibility or legal-compliance questions to the team. The website assistant cannot read, calculate from, modify or publish a real employee's payroll records."
   },
@@ -52,8 +52,8 @@
     "title": "Cálculo de nómina y responsabilidades del empleador",
     "url": "https://www.thevelani.com/pages/nevora",
     "locale": "es",
-    "reviewedAt": "2026-11-04",
-    "validUntil": "2026-12-04",
+    "reviewedAt": "2026-11-12",
+    "validUntil": "2026-12-12",
     "isCore": true,
     "content": "El flujo de nómina descrito de NEVORA calcula la nómina a partir de horas aprobadas. Un administrador revisa los cálculos y publica los comprobantes de pago de los empleados. NEVORA no paga a los empleados ni presenta impuestos de nómina; esas tareas siguen siendo responsabilidad del empleador. No se debe presentar el producto como servicio de pago, depósito directo o presentación de impuestos, ni como sustituto del proveedor de nómina, salvo que nueva documentación oficial revisada confirme expresamente esa función. Aquí no hay una lista verificada de integraciones de nómina, formatos de exportación, reglas de horas extras, jurisdicciones fiscales o deducciones. Cuando ayude, conviene preguntar cómo se aprueban y procesan las horas actualmente y remitir dudas específicas de compatibilidad o cumplimiento al equipo. El asistente no puede consultar, modificar ni publicar la nómina real de un trabajador."
   },
@@ -62,86 +62,86 @@
     "title": "Trial, setup, pricing and end-of-trial choices",
     "url": "https://www.thevelani.com/pages/plans",
     "locale": "en",
-    "reviewedAt": "2026-11-09",
-    "validUntil": "2026-12-09",
+    "reviewedAt": "2026-11-12",
+    "validUntil": "2026-12-12",
     "isCore": true,
-    "content": "Jose-confirmed rules, November 9, 2026: NEVORA's standard trial is free for 30 days with no card and no automatic charge on day 30. It begins when the workplace is provisioned, not at form submission or email verification. Standard setup covers up to 30 employees. Over 30 requires assisted setup and a quote: Velani reviews eligibility; approved teams receive the same 30-day no-card trial starting at provisioning. support@thevelani.com responds to assisted-setup requests within two business days. Do not promise automatic eligibility, instant setup or an activation date. Public self-service signup is not launched yet; use https://www.thevelani.com/pages/contact?interest=nevora-demo until a working signup address is confirmed. At unpaid expiry, operational access is restricted. The Owner retains billing and available payroll exports; employees retain their own available pay statements. Trial expiry starts no automatic workplace-deletion timer. Do not repeat the old three-day deletion claim, promise a future 30-day deletion timer, or promise indefinite storage. Record-retention duties and verified account-deletion requests remain separate. Rondo's 30-day conversation retention is not workplace retention. Recommend exporting needed records without inventing a deletion deadline. Public commercial prices require confirmation: sandbox Stripe prices are not approved live rates. A quote enquiry is nonbinding. This assistant cannot activate trials. Use existing team-size and location context."
+    "content": "NEVORA's published Plans page advertises a free 30-day trial with no card and no automatic charge on day 30. The trial begins when the workplace is provisioned, not at form submission or email verification. Standard setup covers up to 30 employees. The published monthly prices are $19 per business for up to 15 employees and $29 for 16 to 30; the site warns that prices may change before online billing opens. These advertised prices do not mean this chat can issue a binding quote, subscribe someone or charge a card. More than 30 employees requires assisted eligibility review and a quote; approved teams receive the same no-card 30-day trial starting at provisioning. support@thevelani.com responds to assisted-setup requests within two business days. Do not promise automatic eligibility, instant setup or an activation date. Public self-service signup is not open: the signup config currently says signupEnabled=false. Direct trial requests to the published contact form with interest=nevora-demo; a connected domain alone is not an available signup service. At unpaid expiry, operational access is restricted. The Owner retains billing and available payroll exports; employees retain their own available pay statements. Trial expiry starts no automatic workplace-deletion timer. Do not repeat the old three-day deletion claim, present the unshipped 30-day deletion proposal as live, or promise indefinite storage. Record-retention duties and verified account-deletion requests remain separate. Rondo conversation retention is separate from workplace retention. Suggest exporting needed records without inventing a deletion deadline. This website assistant cannot activate trials."
   },
   {
     "id": "nevora-availability-es",
     "title": "Prueba, configuración, precios y fin de la prueba",
     "url": "https://www.thevelani.com/pages/plans",
     "locale": "es",
-    "reviewedAt": "2026-11-09",
-    "validUntil": "2026-12-09",
+    "reviewedAt": "2026-11-12",
+    "validUntil": "2026-12-12",
     "isCore": true,
-    "content": "Reglas confirmadas por Jose el 9 de noviembre de 2026: la prueba estándar de NEVORA es gratuita durante 30 días, sin tarjeta ni cargo automático el día 30. Comienza cuando se provisiona el espacio de trabajo, no al enviar un formulario ni verificar el correo. La configuración estándar cubre hasta 30 empleados. Más de 30 requiere configuración asistida y cotización: Velani revisa la elegibilidad; los equipos aprobados reciben la misma prueba de 30 días sin tarjeta desde la provisión. support@thevelani.com responde a solicitudes de configuración asistida en dos días laborables. No prometas elegibilidad automática, activación instantánea ni fecha de configuración. El registro público de autoservicio aún no se ha lanzado; utiliza https://www.thevelani.com/pages/contact?interest=nevora-demo hasta confirmar una dirección operativa. Al vencer una prueba sin pago, se restringe el uso operativo. El Owner conserva facturación y exportaciones de nómina disponibles; cada empleado conserva sus propios comprobantes disponibles. El fin de la prueba no inicia un plazo de eliminación automática del espacio. No repitas la eliminación antigua en tres días, prometas una futura de 30 días ni almacenamiento indefinido. Las obligaciones de conservación y solicitudes verificadas de eliminación son distintas. La conservación del chat durante 30 días no es la del espacio. Recomienda exportar sin inventar una fecha de eliminación. Las tarifas comerciales requieren confirmación: los precios de prueba de Stripe no son tarifas aprobadas. Una consulta no es vinculante. Este asistente no activa pruebas. Usa el tamaño del equipo y ubicaciones ya indicados."
+    "content": "La página pública de Planes anuncia una prueba gratuita de 30 días, sin tarjeta ni cobro automático el día 30. Empieza cuando se provisiona el espacio de trabajo, no al enviar el formulario ni verificar el correo. La configuración estándar cubre hasta 30 empleados. Los precios mensuales publicados son $19 por empresa para hasta 15 empleados y $29 para 16 a 30; el sitio advierte que pueden cambiar antes de abrir la facturación en línea. Estos precios anunciados no significan que este chat pueda emitir una cotización vinculante, suscribir a alguien ni cobrar una tarjeta. Más de 30 empleados requiere revisión de elegibilidad, configuración asistida y cotización; los equipos aprobados reciben los mismos 30 días sin tarjeta desde la provisión. support@thevelani.com responde las solicitudes asistidas en dos días laborables. No prometas elegibilidad automática, configuración instantánea ni una fecha de activación. El registro público de autoservicio no está abierto: la configuración de registro indica signupEnabled=false. Usa el formulario publicado de contacto con interest=nevora-demo; un dominio conectado no demuestra que se pueda registrar una empresa. Al vencer sin pagar, se restringe el acceso operativo. El Owner conserva facturación y exportaciones de nómina disponibles; cada empleado conserva sus propios comprobantes disponibles. El vencimiento no inicia un temporizador automático de eliminación del espacio. No repitas la antigua eliminación a los tres días, presentes la propuesta no publicada de 30 días como activa ni prometas conservación indefinida. Las obligaciones de conservación y las solicitudes verificadas de eliminación son distintas. La conservación de conversaciones de Rondo es independiente de los registros laborales. Sugiere exportar lo necesario sin inventar una fecha de eliminación. Este asistente web no activa pruebas."
   },
   {
     "id": "nevora-support-en",
     "title": "Employee account help and privacy boundaries",
     "url": "https://www.thevelani.com/pages/nevora-support",
     "locale": "en",
-    "reviewedAt": "2026-11-09",
-    "validUntil": "2026-12-09",
+    "reviewedAt": "2026-11-12",
+    "validUntil": "2026-12-12",
     "isCore": true,
-    "content": "Owners, Managers, Leads and Employees normally sign in at their own workplace address with their company-local Employee ID and password. Email verifies registration and supports invitations and recovery; it is not the normal sign-in ID. Each provisioned workplace has its own registered address. Do not direct people to the parked nevora.team apex or invent an address or an email-based workplace finder. The four-digit shared-tablet clock PIN is separate from the portal password. Use Forgot access with Employee ID and registered email for password recovery; contact the manager or Owner if the email or workplace address is unavailable. The workplace administrator handles PIN resets. Employee accounts come from the employer. For personal schedules, timecards or pay statements contact the employer or support@thevelani.com. This website assistant has no access to employer accounts, directories, wages, PINs, passwords, schedules or payroll. It cannot reset credentials, edit punches, approve leave or delete accounts. Never request credentials, government IDs, financial details or employee records in chat. Privacy and account-deletion pages: https://www.thevelani.com/pages/nevora-privacy and https://www.thevelani.com/pages/nevora-account-deletion. Trial expiry starts no automatic workplace-deletion timer; retention duties and verified individual deletion requests are separate. Do not promise indefinite retention. United States/Northern Virginia hosting, encrypted connections and role-based access are product statements, not independent certification. Do not invent SOC 2, HIPAA, labor-law compliance or contractual guarantees."
+    "content": "Owners, Managers, Leads and Employees normally sign in at their own workplace address with their company-local Employee ID and password. Email verifies registration and supports invitations and recovery; it is not the normal sign-in ID. Each provisioned workplace has its own registered address. The nevora.team apex points to signup, not a workplace finder or a shared employee login. Use the address supplied for that workplace; do not invent an address or a finder by email. The four-digit shared-tablet clock PIN is separate from the portal password. Use Forgot access with Employee ID and registered email for password recovery; contact the manager or Owner if the email or workplace address is unavailable. The workplace administrator handles PIN resets. Employee accounts come from the employer. For personal schedules, timecards or pay statements contact the employer or support@thevelani.com. This website assistant has no access to employer accounts, directories, wages, PINs, passwords, schedules or payroll. It cannot reset credentials, edit punches, approve leave or delete accounts. Never request credentials, government IDs, financial details or employee records in chat. Privacy and account-deletion pages: https://www.thevelani.com/pages/nevora-privacy and https://www.thevelani.com/pages/nevora-account-deletion. Trial expiry starts no automatic workplace-deletion timer; retention duties and verified individual deletion requests are separate. Do not promise indefinite retention. United States/Northern Virginia hosting, encrypted connections and role-based access are product statements, not independent certification. Do not invent SOC 2, HIPAA, labor-law compliance or contractual guarantees."
   },
   {
     "id": "nevora-support-es",
     "title": "Ayuda con cuentas de empleados y límites de privacidad",
     "url": "https://www.thevelani.com/pages/nevora-support",
     "locale": "es",
-    "reviewedAt": "2026-11-09",
-    "validUntil": "2026-12-09",
+    "reviewedAt": "2026-11-12",
+    "validUntil": "2026-12-12",
     "isCore": true,
-    "content": "Owners, Managers, Leads y Employees normalmente inician sesión en la dirección de su propio espacio con su Employee ID (ID de empleado de esa empresa) y contraseña. El correo verifica el registro y sirve para invitaciones y recuperación; no es el identificador habitual. Cada espacio provisionado tiene su propia dirección registrada. No envíes personas al dominio nevora.team aparcado ni inventes una dirección o un buscador de espacios por correo. El PIN de cuatro dígitos del reloj compartido es distinto de la contraseña. Usa Forgot access con ID de empleado y correo registrado para recuperar la contraseña; consulta al administrador o al Owner si no tienes el correo o la dirección. El administrador del espacio gestiona el restablecimiento del PIN. El empleador proporciona las cuentas. Para horarios, registros de horas o comprobantes personales, contacta al empleador o a support@thevelani.com. Este asistente no accede a cuentas, directorios, salarios, PIN, contraseñas, horarios ni nóminas. No restablece credenciales, modifica fichajes, aprueba permisos ni elimina cuentas. No pidas credenciales, documentos de identidad, datos financieros o expedientes en el chat. Privacidad y eliminación: https://www.thevelani.com/pages/nevora-privacy y https://www.thevelani.com/pages/nevora-account-deletion. El fin de la prueba no inicia eliminación automática del espacio; las obligaciones de conservación y las solicitudes individuales verificadas son distintas. No prometas conservación indefinida. El alojamiento en Estados Unidos/Virginia del Norte, cifrado y permisos por roles son declaraciones del producto, no certificación independiente. No inventes SOC 2, cumplimiento HIPAA o laboral ni garantías contractuales."
+    "content": "Owners, Managers, Leads y Employees normalmente inician sesión en la dirección de su propio espacio con su Employee ID (ID de empleado de esa empresa) y contraseña. El correo verifica el registro y sirve para invitaciones y recuperación; no es el identificador habitual. Cada espacio provisionado tiene su propia dirección registrada. El dominio nevora.team lleva al registro, no a un buscador de espacios ni a un inicio de sesión compartido. Usa la dirección indicada para ese espacio; no inventes una dirección ni un buscador por correo. El PIN de cuatro dígitos del reloj compartido es distinto de la contraseña. Usa Forgot access con ID de empleado y correo registrado para recuperar la contraseña; consulta al administrador o al Owner si no tienes el correo o la dirección. El administrador del espacio gestiona el restablecimiento del PIN. El empleador proporciona las cuentas. Para horarios, registros de horas o comprobantes personales, contacta al empleador o a support@thevelani.com. Este asistente no accede a cuentas, directorios, salarios, PIN, contraseñas, horarios ni nóminas. No restablece credenciales, modifica fichajes, aprueba permisos ni elimina cuentas. No pidas credenciales, documentos de identidad, datos financieros o expedientes en el chat. Privacidad y eliminación: https://www.thevelani.com/pages/nevora-privacy y https://www.thevelani.com/pages/nevora-account-deletion. El fin de la prueba no inicia eliminación automática del espacio; las obligaciones de conservación y las solicitudes individuales verificadas son distintas. No prometas conservación indefinida. El alojamiento en Estados Unidos/Virginia del Norte, cifrado y permisos por roles son declaraciones del producto, no certificación independiente. No inventes SOC 2, cumplimiento HIPAA o laboral ni garantías contractuales."
   },
   {
     "id": "velani-enquiries-en",
     "title": "Velani, custom development and commercial enquiries",
     "url": "https://www.thevelani.com/pages/contact?interest=nevora",
     "locale": "en",
-    "reviewedAt": "2026-11-05",
-    "validUntil": "2026-12-05",
-    "content": "Velani is a brand of VELANI LLC. Alongside NEVORA, its site describes websites, online stores, booking systems, custom web and mobile applications, business systems and integrations; custom project scope and pricing require a discussion with the team. Custom-development information is at https://www.thevelani.com/pages/custom-development and enquiries can use https://www.thevelani.com/pages/contact?interest=custom-software (websites: ?interest=website). NEVORA quote enquiries use https://www.thevelani.com/pages/contact?interest=nevora, free trial requests use ?interest=nevora-demo, and NEVORA Relay waitlist sign-ups use ?interest=relay. After a successful send, the contact page replaces the form with a confirmation that says what happens next; replies come by email from support@thevelani.com, and the published contact page says the team replies within two business days. Velani does not send an automatic confirmation email. A helpful assistant answers the visitor's product question before suggesting a quote or follow-up. Mentioning an email address in chat does not mean a lead was saved, an email was sent or a meeting was booked; the language model cannot perform these actions and must not claim completion. Do not invent a booking URL or a named sales representative."
+    "reviewedAt": "2026-11-12",
+    "validUntil": "2026-12-12",
+    "content": "Velani is a brand of VELANI LLC. Alongside NEVORA, its site describes websites, online stores, booking systems, custom web and mobile applications, business systems and integrations; custom project scope and pricing require a discussion with the team. Custom-development information is at https://www.thevelani.com/pages/custom-development and enquiries can use https://www.thevelani.com/pages/contact?interest=custom-software (websites: ?interest=website). NEVORA quote enquiries use https://www.thevelani.com/pages/contact?interest=nevora, free trial requests use ?interest=nevora-demo, and NEVORA Relay waitlist sign-ups use ?interest=relay. After a successful send, the contact page replaces the form with a confirmation that says what happens next; replies come by email from support@thevelani.com, and the published contact page says the team replies within two business days. The separate client-hub request backend can send bilingual confirmations with a VEL reference; that does not establish that the current contact form uses it. Only a successful server response confirms receipt; the model itself cannot send or confirm an email. A helpful assistant answers the visitor's product question before suggesting a quote or follow-up. Mentioning an email address in chat does not mean a lead was saved, an email was sent or a meeting was booked; the language model cannot perform these actions and must not claim completion. Do not invent a booking URL or a named sales representative."
   },
   {
     "id": "velani-enquiries-es",
     "title": "Velani, desarrollo a medida y consultas comerciales",
     "url": "https://www.thevelani.com/pages/contact?interest=nevora",
     "locale": "es",
-    "reviewedAt": "2026-11-05",
-    "validUntil": "2026-12-05",
-    "content": "Velani es una marca de VELANI LLC. Además de NEVORA, su sitio describe sitios web, tiendas en línea, sistemas de reservas, aplicaciones web y móviles a la medida, sistemas de negocio e integraciones; el alcance y el precio de un proyecto a la medida requieren hablar con el equipo. La información sobre desarrollo a la medida está en https://www.thevelani.com/pages/custom-development y las consultas pueden usar https://www.thevelani.com/pages/contact?interest=custom-software (sitios web: ?interest=website). Las consultas de cotización de NEVORA usan https://www.thevelani.com/pages/contact?interest=nevora, las solicitudes de prueba gratuita usan ?interest=nevora-demo y la lista de espera de NEVORA Relay usa ?interest=relay. Tras un envío correcto, la página de contacto reemplaza el formulario con una confirmación que explica el siguiente paso; las respuestas llegan por correo desde support@thevelani.com, y la página de contacto publicada indica que el equipo responde en un plazo de dos días laborables. Velani no envía un correo de confirmación automático. Un buen asistente responde primero la pregunta del visitante antes de sugerir una cotización o un seguimiento. Mencionar un correo electrónico en el chat no significa que se haya guardado una consulta, enviado un correo o reservado una reunión; el modelo de lenguaje no puede hacer esas acciones y no debe afirmar que se completaron. No inventes un enlace de reservas ni un representante de ventas con nombre."
+    "reviewedAt": "2026-11-12",
+    "validUntil": "2026-12-12",
+    "content": "Velani es una marca de VELANI LLC. Además de NEVORA, su sitio describe sitios web, tiendas en línea, sistemas de reservas, aplicaciones web y móviles a la medida, sistemas de negocio e integraciones; el alcance y el precio de un proyecto a la medida requieren hablar con el equipo. La información sobre desarrollo a la medida está en https://www.thevelani.com/pages/custom-development y las consultas pueden usar https://www.thevelani.com/pages/contact?interest=custom-software (sitios web: ?interest=website). Las consultas de cotización de NEVORA usan https://www.thevelani.com/pages/contact?interest=nevora, las solicitudes de prueba gratuita usan ?interest=nevora-demo y la lista de espera de NEVORA Relay usa ?interest=relay. Tras un envío correcto, la página de contacto reemplaza el formulario con una confirmación que explica el siguiente paso; las respuestas llegan por correo desde support@thevelani.com, y la página de contacto publicada indica que el equipo responde en un plazo de dos días laborables. El backend separado del centro de clientes puede enviar confirmaciones bilingües con referencia VEL; esto no demuestra que el formulario de contacto actual lo use. Solo una respuesta correcta del servidor confirma la recepción; el modelo no puede enviar ni confirmar un correo. Un buen asistente responde primero la pregunta del visitante antes de sugerir una cotización o un seguimiento. Mencionar un correo electrónico en el chat no significa que se haya guardado una consulta, enviado un correo o reservado una reunión; el modelo de lenguaje no puede hacer esas acciones y no debe afirmar que se completaron. No inventes un enlace de reservas ni un representante de ventas con nombre."
   },
   {
     "id": "nevora-rondo-en",
-    "title": "Rondo: website advice and planned in-app assistance",
+    "title": "Rondo: website advice and Owner access boundaries",
     "url": "https://www.thevelani.com/pages/nevora",
     "locale": "en",
-    "reviewedAt": "2026-11-05",
-    "validUntil": "2026-12-05",
+    "reviewedAt": "2026-11-12",
+    "validUntil": "2026-12-12",
     "isCore": true,
-    "content": "Rondo is the name of NEVORA's AI assistant, and the same name is used for the website adviser, available through \"Ask Rondo\" wherever chat is enabled, including the Shopify preview. Availability in the preview does not mean the chat has been published on the main site. The website Rondo is a product adviser: it explains published information about NEVORA, the free trial, NEVORA Relay and Velani's websites and apps, helps reason through workflows and points to the right page or contact form. It has no authenticated workforce access and cannot read attendance, rank actual employees, remember priorities across accounts, prepare real schedule changes, approve actions, book meetings, send email or take payments. The in-app owner assistant inside NEVORA is labelled in development on the public product page. Its planned experience includes morning briefings, identifying possible cover, reviewing timecards before payday and remembering owner priorities, with owner approval before changes. The examples use fictional people, not evidence of live capabilities. Do not promise these planned functions as available today. Explain the distinction naturally when asked about Rondo or operational actions."
+    "content": "Rondo is NEVORA's AI assistant. The website product adviser and the signed-in Owner assistant are distinct services. The website adviser explains NEVORA, trials, Relay and Velani's websites and apps, reasons through business workflows and points to reviewed pages or contact forms. It has no authenticated workforce access and cannot read attendance, rank actual employees, change schedules, approve timecards, reset credentials, book meetings, send email or take payments. Owner Rondo is implemented in the application with Owner-only authorization, an enabled feature flag, separate provider/data approval and current-workplace checks. Development and synthetic test success do not establish that it is enabled for a customer's hosted workplace. Current public illustrations describe reviewing records and preparing changes for Owner approval; confirm actual workplace availability with Velani rather than promising it is included or usable today. The website examples use fictional people. Do not claim the public website adviser can carry out those Owner actions. Never promise infallibility, universal intelligence, legal compliance or autonomous payroll decisions."
   },
   {
     "id": "nevora-rondo-es",
-    "title": "Rondo: orientación web y asistencia prevista en la aplicación",
+    "title": "Rondo: asesor web y límites del acceso del Owner",
     "url": "https://www.thevelani.com/pages/nevora",
     "locale": "es",
-    "reviewedAt": "2026-11-05",
-    "validUntil": "2026-12-05",
+    "reviewedAt": "2026-11-12",
+    "validUntil": "2026-12-12",
     "isCore": true,
-    "content": "Rondo es el nombre del asistente de IA de NEVORA, y el mismo nombre se usa para el asesor del sitio web, disponible mediante \"Ask Rondo\" (\"Pregúntale a Rondo\") donde el chat esté habilitado, incluida la vista previa de Shopify. Que funcione en la vista previa no significa que el chat esté publicado en el sitio principal. El Rondo del sitio web es un asesor de producto: explica la información publicada sobre NEVORA, la prueba gratuita, NEVORA Relay y los sitios web y aplicaciones de Velani, ayuda a razonar sobre flujos de trabajo y señala la página o el formulario de contacto adecuado. No tiene acceso autenticado a datos laborales y no puede leer asistencia, clasificar empleados reales, recordar prioridades entre cuentas, preparar cambios reales de horario, aprobar acciones, reservar reuniones, enviar correos ni cobrar pagos. El asistente para propietarios dentro de NEVORA figura como en desarrollo en la página pública del producto. Su experiencia prevista incluye resúmenes por la mañana, detectar posibles reemplazos, revisar registros de tiempo antes del día de pago y recordar las prioridades del propietario, siempre con su aprobación antes de cambiar algo. Los ejemplos usan personas ficticias y no demuestran funciones disponibles. No prometas estas funciones previstas como disponibles hoy. Explica la diferencia con naturalidad cuando pregunten por Rondo o por acciones operativas."
+    "content": "Rondo es el asistente de IA de NEVORA. El asesor del sitio web y el asistente del Owner dentro de su sesión son servicios distintos. El asesor web explica NEVORA, la prueba, Relay y los sitios y aplicaciones de Velani, ayuda a razonar sobre procesos de negocio y señala páginas revisadas o formularios. No tiene acceso autenticado a datos laborales y no puede leer asistencia, clasificar empleados reales, cambiar horarios, aprobar horas, restablecer credenciales, reservar reuniones, enviar correos ni cobrar. El Rondo del Owner está implementado en la aplicación con autorización exclusiva del Owner, una función habilitada expresamente, aprobación separada del proveedor y del uso de datos y comprobaciones del espacio actual. Que funcione en desarrollo o en pruebas ficticias no demuestra que esté habilitado en el espacio alojado de un cliente. Las ilustraciones públicas describen revisar registros y preparar cambios para aprobación del Owner; confirma con Velani la disponibilidad real antes de prometer que se incluye o se puede usar hoy. Los ejemplos del sitio usan personas ficticias. No afirmes que el asesor web puede ejecutar esas acciones del Owner. Nunca prometas infalibilidad, inteligencia universal, cumplimiento legal ni decisiones autónomas de nómina."
   },
   {
     "id": "velani-relay-en",
     "title": "NEVORA Relay: orders, kitchen display and inventory (coming soon)",
     "url": "https://www.thevelani.com/pages/products#relay",
     "locale": "en",
-    "reviewedAt": "2026-11-05",
-    "validUntil": "2026-12-05",
+    "reviewedAt": "2026-11-12",
+    "validUntil": "2026-12-12",
     "content": "NEVORA Relay is a planned Velani product for businesses that take orders, such as cafés, restaurants and counters. The public Products page lists it as coming soon, in design, with no dates yet. It is described as one system for orders entered at the counter and sent to the right preparation screen, a kitchen display where staff accept, prepare and complete orders without paper tickets, and inventory that updates as orders are completed with a warning before stock runs low. Pickup and delivery handoffs and a live dashboard are described as following later. It is described as working on its own and with NEVORA Workforce. Relay is not available to buy or try today; do not quote prices, launch dates, hardware, integrations or payment processing. Visitors can join the waitlist at https://www.thevelani.com/pages/contact?interest=relay with a name and email; joining does not reserve a price or a launch slot."
   },
   {
@@ -149,8 +149,8 @@
     "title": "NEVORA Relay: pedidos, pantalla de cocina e inventario (próximamente)",
     "url": "https://www.thevelani.com/pages/products#relay",
     "locale": "es",
-    "reviewedAt": "2026-11-05",
-    "validUntil": "2026-12-05",
+    "reviewedAt": "2026-11-12",
+    "validUntil": "2026-12-12",
     "content": "NEVORA Relay es un producto previsto de Velani para negocios que toman pedidos, como cafeterías, restaurantes y mostradores. La página pública de productos lo presenta como próximamente, en diseño y sin fechas todavía. Se describe como un solo sistema para pedidos tomados en el mostrador y enviados a la pantalla de preparación correcta, una pantalla de cocina donde el personal acepta, prepara y completa pedidos sin tickets de papel, e inventario que se actualiza al completar pedidos con un aviso antes de que se agoten las existencias. Las entregas para recoger y a domicilio y un panel en vivo se describen como pasos posteriores. Se describe como un sistema que funciona por sí solo y con NEVORA Workforce. Relay no se puede comprar ni probar hoy; no indiques precios, fechas de lanzamiento, equipos, integraciones ni procesamiento de pagos. Los visitantes pueden unirse a la lista de espera en https://www.thevelani.com/pages/contact?interest=relay con su nombre y correo; unirse no reserva un precio ni un lugar de lanzamiento."
   }
 ]

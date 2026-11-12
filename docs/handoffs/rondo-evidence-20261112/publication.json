@@ -1,0 +1,13 @@
+{
+  "verifiedAt": "2026-11-12T11:20:26.262Z",
+  "project": "wild-leaf-57992989",
+  "branch": "br-snowy-brook-bcc6b3zm",
+  "database": "velani_ai",
+  "published": 16,
+  "hashesVerified": 16,
+  "reviewedAt": "2026-11-12",
+  "validUntil": "2026-12-12T23:59:59.999Z",
+  "rollbackPrepared": true,
+  "rollbackExecuted": false,
+  "noModelCallsForPublication": true
+}

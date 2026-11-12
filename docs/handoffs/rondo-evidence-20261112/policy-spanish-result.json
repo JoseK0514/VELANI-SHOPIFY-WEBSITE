@@ -1,0 +1,27 @@
+{
+  "status": "received",
+  "answer": {
+    "message": "Para su cafetería de 12 empleados, los 30 días gratis empiezan cuando se habilita el espacio de trabajo, no al enviar el formulario ni verificar el correo. La prueba no requiere tarjeta y no hay cobro automático al día 30.\n\nSi termina la prueba y no eligen un plan de pago, se restringe el acceso operativo. El propietario conserva acceso a facturación y a las exportaciones de nómina disponibles; cada empleado conserva sus propios comprobantes disponibles. El vencimiento no inicia una eliminación automática de los registros, pero tampoco implica conservación indefinida. Como precaución, les sugiero exportar los registros que necesiten conservar.\n\nEste chat no puede abrir la cuenta, activar la prueba ni cambiar sus turnos. La configuración la realiza el equipo de Velani; después, sus administradores pueden organizar turnos desde la web. Si desean solicitar la prueba, pueden usar el formulario de contacto.",
+    "sources": [
+      {
+        "id": "nevora-availability-es",
+        "title": "Prueba, configuración, precios y fin de la prueba",
+        "url": "https://www.thevelani.com/pages/plans"
+      },
+      {
+        "id": "nevora-rondo-es",
+        "title": "Rondo: asesor web y límites del acceso del Owner",
+        "url": "https://www.thevelani.com/pages/nevora"
+      },
+      {
+        "id": "nevora-overview-es",
+        "title": "NEVORA: propósito del producto y trabajo por turnos",
+        "url": "https://www.thevelani.com/pages/nevora"
+      }
+    ],
+    "action": "lead_form",
+    "confidence": "grounded",
+    "model": "gpt-6-1-sol"
+  },
+  "latencyMs": 8123
+}

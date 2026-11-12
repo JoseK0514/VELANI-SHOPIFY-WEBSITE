@@ -1,0 +1,17 @@
+{
+  "status": "received",
+  "answer": {
+    "message": "No—neither is correct. For your café with 12 employees, the 30-day trial starts when your workplace is provisioned, not when you chat here or submit a form. This chat cannot open the account or activate the trial.\n\nIf the trial expires without payment, operational access is restricted, but there is no automatic three-day deletion countdown. The owner retains access to billing and available payroll exports, and employees retain their own available pay statements. That does not guarantee indefinite storage.\n\nThe owner should use the contact form to request setup, then export any records the café needs to retain before the trial ends and decide whether to continue on a paid plan. The trial requires no card and does not automatically charge you on day 30.",
+    "sources": [
+      {
+        "id": "nevora-availability-en",
+        "title": "Trial, setup, pricing and end-of-trial choices",
+        "url": "https://www.thevelani.com/pages/plans"
+      }
+    ],
+    "action": "lead_form",
+    "confidence": "grounded",
+    "model": "gpt-6-1-sol"
+  },
+  "latencyMs": 8394
+}

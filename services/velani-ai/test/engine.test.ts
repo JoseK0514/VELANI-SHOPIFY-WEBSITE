@@ -197,6 +197,7 @@ describe('ModelEngine contract and trust boundaries', () => {
   it.each([
     ['output token budget exceeded', 'token_budget'],
     ['request blocked by content_filter', 'safety_filter'],
+    ['ai gateway upstream model rejected the request: This content was flagged for possible cybersecurity risk.', 'safety_filter'],
     ['invalid JSON generated', 'structured_output'],
     ['unclassified private diagnostic', undefined],
   ])('reduces provider diagnostic text to a fixed label: %s', async (message, hint) => {

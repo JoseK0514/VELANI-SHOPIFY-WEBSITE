@@ -51,3 +51,13 @@ it('reports a failed job without exposing database errors and allows a later ret
   expect(await response.text()).toBe('{"status":"error","code":"retention_failed"}');
   expect((await fetch(url, { headers })).status).toBe(200);
 });
+
+it('labels authenticated timer and operator runs separately without trusting user-agent for access', async () => {
+  const { url, run } = await serve(environment);
+  expect((await fetch(url, { headers: { 'User-Agent': 'vercel-cron/1.0' } })).status).toBe(401);
+  expect(run).not.toHaveBeenCalled();
+  expect((await fetch(url, { headers: { ...headers, 'User-Agent': 'vercel-cron/1.0' } })).status).toBe(200);
+  expect(run).toHaveBeenLastCalledWith('scheduler');
+  expect((await fetch(url, { headers })).status).toBe(200);
+  expect(run).toHaveBeenLastCalledWith('operator');
+});

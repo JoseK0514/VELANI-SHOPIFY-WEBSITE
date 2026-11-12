@@ -1,0 +1,38 @@
+{
+  "status": "ok",
+  "deployment": {
+    "id": "dpl_2yjDbRBcm8vc6ujPm1mqz34qLRhT",
+    "url": "https://velani-8mchj78oz-josekarlo-5933s-projects.vercel.app",
+    "productionUrl": "https://velani-ai.vercel.app",
+    "inspectorUrl": "https://vercel.com/josekarlo-5933s-projects/velani-ai/2yjDbRBcm8vc6ujPm1mqz34qLRhT",
+    "readyState": "READY",
+    "target": "production",
+    "environment": "production",
+    "deploymentApiUrl": "https://api.vercel.com/v13/deployments/dpl_2yjDbRBcm8vc6ujPm1mqz34qLRhT",
+    "buildMachine": {
+      "cores": 2,
+      "memory": 8192,
+      "machine": "basic",
+      "selectionType": "fixed",
+      "selectionSource": "plan-default"
+    },
+    "deploymentProtection": [
+      "vercel_authentication"
+    ]
+  },
+  "message": "Deployment velani-8mchj78oz-josekarlo-5933s-projects.vercel.app ready. Production URL: https://velani-ai.vercel.app",
+  "next": [
+    {
+      "command": "vercel curl https://velani-ai.vercel.app",
+      "when": "Verify deployment, including when Deployment Protection is enabled"
+    },
+    {
+      "command": "vercel inspect velani-8mchj78oz-josekarlo-5933s-projects.vercel.app --scope josekarlo-5933s-projects",
+      "when": "Inspect deployment"
+    },
+    {
+      "command": "vercel deploy --prod --scope josekarlo-5933s-projects",
+      "when": "Promote to production"
+    }
+  ]
+}

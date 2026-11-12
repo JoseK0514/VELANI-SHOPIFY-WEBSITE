@@ -1,0 +1,100 @@
+{
+  "authorizedAt": "2026-11-12",
+  "budgetAdditionalUsd": 2,
+  "priorAuthorizedCumulativeUsd": 3.35,
+  "priorReservedUpperBoundUsd": 3.225423,
+  "actualBilling": "unknown",
+  "model": "gpt-6-1-sol",
+  "pricingSource": "https://neon.com/models.json",
+  "pricingCheckedAt": "2026-11-12T10:54:21.863Z",
+  "publishedRates": {
+    "input": 2,
+    "output": 10,
+    "cache_read": 0.1,
+    "cache_write": 2.5,
+    "tiers": [
+      {
+        "input": 4,
+        "output": 15,
+        "cache_read": 0.2,
+        "cache_write": 5,
+        "tier": {
+          "type": "context",
+          "size": 272000
+        }
+      }
+    ],
+    "context_over_200k": {
+      "input": 4,
+      "output": 15,
+      "cache_read": 0.2,
+      "cache_write": 5
+    }
+  },
+  "accountingRates": {
+    "inputPerMillion": 5,
+    "outputPerMillion": 15
+  },
+  "scope": "Synthetic browser chat only, no plan calls. Reserve before every send, failed calls remain reserved. Server has no automatic fallback/retry.",
+  "reservedUpperBoundUsd": 1.617785,
+  "calls": [
+    {
+      "id": "compound-spanish-repro-1",
+      "reservedAt": "2026-11-12T10:54:21.864Z",
+      "inputBoundBytes": 100000,
+      "maxCompletionTokens": 3000,
+      "reservedUpperBoundUsd": 0.55012,
+      "status": "failed-provider-http-400",
+      "inputScope": "Fresh session, no profile/plan/history; all16 published documents plus system and synthetic question below 100KB bound.",
+      "requestId": "2cmf4-1794480892823-76b94b1cacf9",
+      "completedAt": "2026-11-12T10:55:27.302Z"
+    },
+    {
+      "id": "compound-direct-diagnostic",
+      "reservedAt": "2026-11-12T10:59:22.586Z",
+      "inputBoundBytes": 32570,
+      "maxCompletionTokens": 3000,
+      "reservedUpperBoundUsd": 0.21297,
+      "status": "failed-provider-http-400-safety-filter"
+    },
+    {
+      "id": "spanish-workflow",
+      "reservedAt": "2026-11-12T11:03:43.173Z",
+      "inputBoundBytes": 32184,
+      "maxCompletionTokens": 3000,
+      "reservedUpperBoundUsd": 0.21104,
+      "status": "failed-local-sdk-transport-8ms-billing-unknown"
+    },
+    {
+      "id": "spanish-workflow-fetch-transport",
+      "reservedAt": "2026-11-12T11:04:44.434Z",
+      "inputBoundBytes": 32184,
+      "maxCompletionTokens": 3000,
+      "reservedUpperBoundUsd": 0.21104,
+      "status": "received-real-spanish-workflow-validator-passed"
+    },
+    {
+      "id": "spanish-reviewed-policy",
+      "reservedAt": "2026-11-12T11:14:53.145Z",
+      "inputBoundBytes": 32630,
+      "maxCompletionTokens": 3000,
+      "reservedUpperBoundUsd": 0.21327,
+      "status": "received-spanish-policy-validator-passed"
+    },
+    {
+      "id": "english-followup-policy-memory",
+      "reservedAt": "2026-11-12T11:15:36.676Z",
+      "inputBoundBytes": 33845,
+      "maxCompletionTokens": 3000,
+      "reservedUpperBoundUsd": 0.219345,
+      "status": "received-english-followup-validator-passed"
+    }
+  ],
+  "closedAt": "2026-11-12T11:16:00.450Z",
+  "temporaryCredentialRevoked": true,
+  "paidTransmissionsObserved": 5,
+  "localTransportFailureReservations": 1,
+  "furtherCalls": false,
+  "temporaryCredentialRevokedAt": "2026-11-12T11:16:00Z",
+  "temporaryCredentialRevocationVerified": true
+}

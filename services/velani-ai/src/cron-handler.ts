@@ -1,7 +1,9 @@
 import { createHash, timingSafeEqual } from 'node:crypto';
 import type { IncomingMessage, ServerResponse } from 'node:http';
 
-export function createCronHandler<T extends object>(environment: NodeJS.ProcessEnv, run: () => Promise<T>, codes: { notConfigured: string; failed: string }) {
+export type CronTrigger = 'scheduler' | 'operator';
+
+export function createCronHandler<T extends object>(environment: NodeJS.ProcessEnv, run: (trigger: CronTrigger) => Promise<T>, codes: { notConfigured: string; failed: string }) {
   return async (request: IncomingMessage, response: ServerResponse): Promise<void> => {
     response.setHeader('Cache-Control', 'no-store'); response.setHeader('Content-Type', 'application/json; charset=utf-8');
     const send = (status: number, body: object) => { response.statusCode = status; response.end(JSON.stringify(body)); };
@@ -10,7 +12,9 @@ export function createCronHandler<T extends object>(environment: NodeJS.ProcessE
     const digest = (value: string) => createHash('sha256').update(value).digest();
     if (!timingSafeEqual(digest(request.headers.authorization ?? ''),digest(`Bearer ${secret}`))) { send(401,{status:'error',code:'unauthorized'}); return; }
     if (request.method !== 'GET') { response.setHeader('Allow','GET'); send(405,{status:'error',code:'method_not_allowed'}); return; }
-    try { send(200,{status:'ok',...await run()}); }
+    // A diagnostic provenance label after authentication, not an authentication factor.
+    const trigger = request.headers['user-agent'] === 'vercel-cron/1.0' ? 'scheduler' : 'operator';
+    try { send(200,{status:'ok',...await run(trigger)}); }
     catch { send(500,{status:'error',code:codes.failed}); }
   };
 }
