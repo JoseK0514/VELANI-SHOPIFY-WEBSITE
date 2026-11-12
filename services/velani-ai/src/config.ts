@@ -1,3 +1,5 @@
+import { z } from 'zod';
+
 export interface Config {
   nodeEnv: string;
   port: number;
@@ -15,6 +17,7 @@ export interface Config {
   sessionTtlHours: number;
   dailyAiRequestLimit: number;
   modelTimeoutMs: number;
+  aiBudgetAuthorizationId?: string;
 }
 
 export function readConfig(env: NodeJS.ProcessEnv = process.env): Config {
@@ -56,9 +59,11 @@ export function readConfig(env: NodeJS.ProcessEnv = process.env): Config {
     const url = new URL(aiBaseUrl);
     if (url.protocol !== 'https:' || url.username || url.password || url.search || url.hash) throw new Error('AI_BASE_URL must be a credential-free HTTPS URL');
   }
+  const aiBudgetAuthorizationId = env.AI_BUDGET_AUTHORIZATION_ID?.trim() || undefined;
+  if (aiBudgetAuthorizationId && !z.uuid().safeParse(aiBudgetAuthorizationId).success) throw new Error('Invalid configuration: AI_BUDGET_AUTHORIZATION_ID');
   return {
     nodeEnv, port: integer('PORT', 3001, 1, 65535), databaseUrl: required('DATABASE_URL'),
-    aiApiKey: required('AI_API_KEY'), aiBaseUrl, aiModel: required('AI_MODEL'), sessionHashSecret,
+    aiApiKey: required('AI_API_KEY'), aiBaseUrl, aiModel: required('AI_MODEL'), sessionHashSecret, aiBudgetAuthorizationId,
     allowedOrigins, trustProxy, requireCaptcha, turnstileSecret, turnstileSiteKey,
     planModel: env.AI_PLAN_MODEL?.trim() || undefined,
     sessionTtlHours: integer('SESSION_TTL_HOURS', 24, 1, 168),

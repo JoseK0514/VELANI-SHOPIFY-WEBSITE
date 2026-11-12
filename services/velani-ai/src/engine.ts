@@ -57,6 +57,8 @@ export interface ModelEngineOptions {
   timeoutMs?: number;
   /** Dependency injection for deterministic contract tests; production uses the OpenAI-compatible API. */
   complete?: (request: ModelRequest, signal: AbortSignal) => Promise<ModelCompletion>;
+  /** Runtime must commit a durable budget reservation before dispatch. */
+  authorize?: (request: ModelRequest) => Promise<void>;
   now?: () => Date;
 }
 
@@ -134,6 +136,12 @@ export class ModelEngine implements AnswerEngine {
         };
       };
     }
+    const complete = this.complete;
+    this.complete = async (request, signal) => {
+      await options.authorize?.(request);
+      if (signal.aborted) throw new ModelError('provider_timeout');
+      return complete(request, signal);
+    };
   }
 
   async answer(input: Parameters<AnswerEngine['answer']>[0]): Promise<Answer> {

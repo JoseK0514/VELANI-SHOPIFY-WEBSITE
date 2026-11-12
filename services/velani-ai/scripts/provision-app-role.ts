@@ -21,6 +21,7 @@ try {
   await client.query('GRANT SELECT, INSERT, UPDATE ON rate_limits TO velani_ai_app');
   await client.query('GRANT SELECT ON knowledge_documents TO velani_ai_app');
   await client.query('GRANT SELECT, INSERT, UPDATE ON retention_heartbeats TO velani_ai_app');
+  await client.query('GRANT SELECT, UPDATE (reserved_microusd) ON ai_budget_authorizations TO velani_ai_app');
   await client.query('GRANT USAGE, SELECT ON SEQUENCE messages_id_seq TO velani_ai_app');
   await client.query('GRANT SELECT, INSERT, UPDATE ON session_profiles, plan_requests TO velani_ai_app');
   await client.query('GRANT SELECT, INSERT ON workflow_plans TO velani_ai_app');

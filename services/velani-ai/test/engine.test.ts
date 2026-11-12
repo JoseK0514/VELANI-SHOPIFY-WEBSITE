@@ -19,6 +19,31 @@ const options = { apiKey: 'test-key-never-sent', model: 'chosen-frontier-model',
 afterEach(() => vi.useRealTimers());
 
 describe('ModelEngine contract and trust boundaries', () => {
+  it('does not contact the provider when durable budget admission is denied', async () => {
+    let providerCalls = 0;
+    const engine = new ModelEngine({
+      ...options,
+      authorize: async () => { throw new Error('budget_not_authorized'); },
+      complete: async () => { providerCalls++; return completion(); },
+    });
+    await expect(engine.answer(input)).rejects.toMatchObject({ code: 'provider_unavailable' });
+    expect(providerCalls).toBe(0);
+  });
+
+  it('waits for budget admission before dispatching and stops after cancellation', async () => {
+    let release!: () => void;
+    let providerCalls = 0;
+    const engine = new ModelEngine({
+      ...options, timeoutMs: 20,
+      authorize: () => new Promise<void>(resolve => { release = resolve; }),
+      complete: async () => { providerCalls++; return completion(); },
+    });
+    await expect(engine.answer(input)).rejects.toMatchObject({ code: 'provider_timeout' });
+    release();
+    await new Promise(resolve => setTimeout(resolve, 10));
+    expect(providerCalls).toBe(0);
+  });
+
   it('uses the explicitly configured model and maps only reviewed source metadata', async () => {
     const complete = vi.fn(async (_request: ModelRequest) => completion());
     const engine = new ModelEngine({ ...options, complete });

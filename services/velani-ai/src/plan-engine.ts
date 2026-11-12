@@ -69,6 +69,12 @@ export class PlanModelEngine implements PlanEngine {
         return { content: choice?.message.content ?? null, finishReason: choice?.finish_reason ?? null, refusal: choice?.message.refusal ?? null };
       };
     }
+    const complete = this.complete;
+    this.complete = async (request, signal) => {
+      await options.authorize?.(request);
+      if (signal.aborted) throw new ModelError('provider_timeout');
+      return complete(request, signal);
+    };
   }
 
   async generate(input: Parameters<PlanEngine['generate']>[0]): Promise<WorkflowPlan> {

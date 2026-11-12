@@ -16,6 +16,7 @@
     "seed": "tsx --env-file-if-exists=.env scripts/seed.ts",
     "retention": "tsx --env-file-if-exists=.env scripts/retention.ts",
     "operations:check": "tsx scripts/operations-check.ts",
+    "budget:operator": "tsx scripts/ai-budget.ts",
     "eval": "tsx --env-file-if-exists=.env scripts/evaluate.ts",
     "provision:role": "tsx --env-file-if-exists=.env scripts/provision-app-role.ts",
     "leads": "tsx --env-file-if-exists=.env scripts/leads.ts",

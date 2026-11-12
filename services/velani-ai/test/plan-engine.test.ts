@@ -36,6 +36,17 @@ const completion = (body: unknown = output()): ModelCompletion => ({ content: JS
 afterEach(() => vi.useRealTimers());
 
 describe('validated plan generation', () => {
+  it('does not dispatch a plan model call without durable budget admission', async () => {
+    let providerCalls = 0;
+    const engine = new PlanModelEngine({
+      ...options,
+      authorize: async () => { throw new Error('budget_not_authorized'); },
+      complete: async () => { providerCalls++; return completion(); },
+    });
+    await expect(engine.generate(input)).rejects.toMatchObject({ code: 'provider_unavailable' });
+    expect(providerCalls).toBe(0);
+  });
+
   it('uses the explicit model and maps evidence from server-owned metadata', async () => {
     const complete = vi.fn(async (_request: ModelRequest) => completion());
     const result = await new PlanModelEngine({ ...options, complete }).generate(input);
