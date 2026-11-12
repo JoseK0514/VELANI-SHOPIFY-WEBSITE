@@ -1,9 +1,9 @@
 diff --git a/docs/handoffs/2026-11-12-six-release-recovery-patch.md b/docs/handoffs/2026-11-12-six-release-recovery-patch.md
 new file mode 100644
-index 00000000..d12194e4
+index 00000000..540cb894
 --- /dev/null
 +++ b/docs/handoffs/2026-11-12-six-release-recovery-patch.md
-@@ -0,0 +1,32 @@
+@@ -0,0 +1,31 @@
 +# Incoming recovery patch for the sole SCRUM-190 finisher
 +
 +November12,2026. Base: eee76416ec8d06435e73c3ecde9a77752ec0d446. This is a local detached patch, not a second NEVORA integration/publication.
@@ -35,7 +35,6 @@ index 00000000..d12194e4
 +At the inspected development source, the /app/billing and /clocker/access/paused UI page files are still absent. Reconcile the held existing UI under169. The shared app layout still mounts operational AppShell loaders/pollers and parallel sheets around recovery content; Claude must adapt recovery composition to current company/session binding without weakening guards. Earlier04fe recovery-boundary/layout is reference only, not a blind single-company port.
 +
 +The corresponding detailed Claude handoff and source-bound Velani fixtures live in VELANI-SHOPIFY-WEBSITE docs/handoffs/2026-11-12-six-release-codex-to-claude.md. Six overall issues stay open until their UI/business/device/hosted criteria are evidenced. Development is the operating/acceptance line under Jose's November12 policy; main/production still needs separate approval.
-+
 diff --git a/src/lib/commerce/access.ts b/src/lib/commerce/access.ts
 index c9bda33b..00543918 100644
 --- a/src/lib/commerce/access.ts
@@ -61,10 +60,10 @@ index c9bda33b..00543918 100644
      const query=new URLSearchParams({reason:code,from:path});
 diff --git a/src/proxy.commerce-recovery.test.ts b/src/proxy.commerce-recovery.test.ts
 new file mode 100644
-index 00000000..9ff0bc55
+index 00000000..15244764
 --- /dev/null
 +++ b/src/proxy.commerce-recovery.test.ts
-@@ -0,0 +1,82 @@
+@@ -0,0 +1,81 @@
 +import {afterEach,beforeEach,expect,it,vi} from 'vitest';
 +import type {NextRequest} from 'next/server';
 +import {proxy} from './proxy';
@@ -146,7 +145,6 @@ index 00000000..9ff0bc55
 +  const url=new URL(response!.headers.get('location')!);
 +  expect(url.pathname).toBe('/app/billing');expect(url.search).toBe('?reason=billing_status_unavailable');
 +});
-+
 diff --git a/src/proxy.ts b/src/proxy.ts
 index c31e8455..59e247f5 100644
 --- a/src/proxy.ts

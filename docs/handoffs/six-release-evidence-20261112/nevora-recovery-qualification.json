@@ -1,6 +1,6 @@
 {
   "base": "eee76416ec8d06435e73c3ecde9a77752ec0d446",
-  "localCommit": "bc0013f5",
+  "localCommit": "90e7b101c90abaddba71039c8ec5350ef045a81b",
   "state": "local detached patch; not merged/deployed or CI-qualified",
   "tests": {
     "newRed": {
@@ -20,5 +20,15 @@
     "No active-finisher checkout/runtime changes",
     "No NEVORA publication, CI dispatch or hosted acceptance",
     "Recovery UI pages and shared-layout composition remain Claude integration work"
-  ]
+  ],
+  "implementationCommit": "bc0013f5",
+  "finalSourceFocusedRerun": {
+    "passed": 76,
+    "failed": 0
+  },
+  "reviews": {
+    "spec": "CLEAR/APPROVE; independently repeated22recovery and13seam checks",
+    "standards": "CLEAR/APPROVE",
+    "limit": "Pinned behavior reviewed; subsequent EOF-only normalization and metadata receipts do not certify final release"
+  }
 }

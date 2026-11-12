@@ -55,7 +55,7 @@
   "qualifiedFiles": [
     {
       "path": "services/velani-ai/test/release-ui-contract.test.mjs",
-      "sha256": "30cd8969cd850f51e4e1c79740449a6b58c9b426a82cebfda84e9364ab37d9fa"
+      "sha256": "ffd2907f947f4086fc569a9aec432136aca39ec8dff0cd1b469cc64de9cbae13"
     },
     {
       "path": "docs/handoffs/six-release-evidence-20261112/rondo-ui-fixtures.json",
@@ -83,5 +83,12 @@
     "No paid model inference, real message, public resource mutation, deployment or CI dispatch.",
     "No physical-device or whole-release acceptance.",
     "Known website UI failures preserved; website not all-green."
-  ]
+  ],
+  "fullSuiteBehaviorCommit": "53ceae7",
+  "finalNewSeamRerun": {
+    "passed": 13,
+    "failed": 0,
+    "skipped": 0
+  },
+  "postSuiteChanges": "EOF-only normalization and documentation/receipt updates; no runtime/assertion change"
 }

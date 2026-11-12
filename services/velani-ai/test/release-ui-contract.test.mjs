@@ -118,4 +118,3 @@ it('keeps the documented configuration public-only and session admission protect
   expect(s.repository.createSession).not.toHaveBeenCalled();
   expect(s.engine.answer).not.toHaveBeenCalled();
 });
-

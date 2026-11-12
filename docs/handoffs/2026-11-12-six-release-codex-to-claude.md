@@ -141,4 +141,3 @@ Fresh verification:
 Claude should return: exact source/diff; pages/files changed; desktop/mobile/keyboard/error/empty/loading checks and fixture/live distinction; actual unpublished theme ID/preview; remaining business/device/independent findings; and a small backend-gap list only where an existing API demonstrably fails. Keep60/147 and NEVORA recovery patch integration with the finisher; do not close whole issues from contract/local-only evidence. Future91/92/95/97/101 remain deferred under13 and are excluded from this work.
 
 Suggested skills: repository visual/design-system and accessibility skills, existing browser-testing/verification skills, and the project's UI delivery guidance. Review the approved reference and existing implementation first; no blanket redesign, new product scope or paid tooling is requested.
-
