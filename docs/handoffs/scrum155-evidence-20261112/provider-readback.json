@@ -1,0 +1,51 @@
+{
+  "observedAt": "2026-11-12T16:56Z",
+  "neonAggregateRead": [
+    {
+      "observed_at": "2026-11-12T16:56:07.169Z",
+      "scheduler_completed_at": "2026-11-12T15:45:43.570Z",
+      "overdue_sessions": "0",
+      "overdue_leads": "0",
+      "published_documents": "16",
+      "expired_documents": "0",
+      "runtime_budget_table": null
+    }
+  ],
+  "neonMetadata": {
+    "projectId": "wild-leaf-57992989",
+    "branchId": "br-snowy-brook-bcc6b3zm",
+    "database": "velani_ai",
+    "name": "velani-website-ai-development",
+    "region": "aws-us-east-1",
+    "historyRetentionSeconds": 86400
+  },
+  "render": {
+    "id": "srv-dbqqnktbedkc73ef2k60",
+    "name": "nevora-web-workforce-staging-ya0s",
+    "branch": "development",
+    "autoDeploy": "no",
+    "autoDeployTrigger": "off",
+    "suspended": "suspended",
+    "updatedAt": "2026-11-12T16:55:38.355996Z",
+    "serviceDetails": {
+      "url": "https://nevora-web-workforce-staging-ya0s.onrender.com",
+      "plan": "0.5c-512mb"
+    },
+    "observedAt": "2026-11-12T16:56Z"
+  },
+  "rondoProduction": {
+    "projectId": "prj_E1Vl2AEpTlJlBam4MTKG7oEHB7x2",
+    "deploymentId": "dpl_2yjDbRBcm8vc6ujPm1mqz34qLRhT",
+    "readyState": "READY",
+    "createGitDeployments": "disabled",
+    "disableRepositoryDispatchEvents": true,
+    "productionBranch": "main",
+    "readAt": "2026-11-12T17:00Z"
+  },
+  "boundaries": {
+    "productionMutations": false,
+    "modelInference": false,
+    "realMessages": false,
+    "newSpend": false
+  }
+}
