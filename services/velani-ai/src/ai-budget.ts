@@ -12,16 +12,21 @@ const integer = z.number().int().positive().max(1_000_000_000_000);
 const modelPrice = z.object({
   model: z.string().min(1).max(120).regex(/^[a-zA-Z0-9][a-zA-Z0-9._:/-]*$/),
   // Verified provider input-context ceiling, including internal message framing.
-  // Reserve the entire ceiling: no guessed tokenizer ratio or unbilled reasoning.
   contextTokens: z.number().int().min(1).max(10_000_000),
   outputTokenLimit: z.number().int().min(1).max(1_000_000),
   inputMicrousdPerMillion: integer, outputMicrousdPerMillion: integer,
 }).strict();
-function reservationMicrousd(price: z.infer<typeof modelPrice>, outputTokens: number): bigint {
-  const numerator = BigInt(price.contextTokens) * BigInt(price.inputMicrousdPerMillion)
+function reservationMicrousd(price: z.infer<typeof modelPrice>, outputTokens: number, inputTokens = price.contextTokens): bigint {
+  const numerator = BigInt(inputTokens) * BigInt(price.inputMicrousdPerMillion)
     + BigInt(outputTokens) * BigInt(price.outputMicrousdPerMillion);
   return (numerator + 999_999n) / 1_000_000n;
 }
+const modelRequestSchema = z.object({
+  model: z.string().min(1).max(120),
+  messages: z.array(z.object({ role: z.enum(['system', 'user']), content: z.string().min(1).max(512000) }).strict()).min(1).max(3),
+  response_format: z.object({ type: z.literal('json_object') }).strict(),
+  max_completion_tokens: z.number().int().min(1).max(1_000_000), stream: z.literal(false),
+}).strict();
 function providerBase(value: string): string {
   const url = new URL(value);
   if (url.protocol !== 'https:' || url.username || url.password || url.search || url.hash || value.length > 500) throw new Error('Invalid provider');
@@ -75,6 +80,10 @@ export class PostgresAiBudget {
 
   async authorize(request: ModelRequest): Promise<void> {
     if (!this.authorizationId || !z.uuid().safeParse(this.authorizationId).success) throw new AiBudgetError('ai_budget_not_configured');
+    // Only the reviewed text-only protocol has a pricing bound. New tools,
+    // modalities, messages or request fields need a fresh adapter/pricing review.
+    const parsedRequest = modelRequestSchema.safeParse(request);
+    if (!parsedRequest.success) throw new AiBudgetError('ai_budget_policy_mismatch');
     let client;
     try {
       client = await this.pool.connect();
@@ -89,7 +98,12 @@ export class PostgresAiBudget {
       const price = policy.models.find(value => value.model === request.model);
       if (row.provider_base_url !== this.provider || !price || !Number.isSafeInteger(request.max_completion_tokens)
         || request.max_completion_tokens < 1 || request.max_completion_tokens > price.outputTokenLimit) throw new AiBudgetError('ai_budget_policy_mismatch');
-      const reservation = reservationMicrousd(price, request.max_completion_tokens);
+      // A conservative byte-level text-token envelope plus4096 framing tokens
+      // per message; cap at the provider's physical input ceiling. No average
+      // characters-per-token guess, cached discount or unbounded tool loop.
+      const inputEnvelope = Math.min(price.contextTokens, parsedRequest.data.messages.reduce(
+        (tokens, message) => tokens + Buffer.byteLength(message.content, 'utf8') + 4096, 0));
+      const reservation = reservationMicrousd(price, request.max_completion_tokens, inputEnvelope);
       if (BigInt(row.reserved_microusd) + reservation > BigInt(row.limit_microusd)) throw new AiBudgetError('ai_budget_exhausted');
       // SELECT target expressions can be evaluated before a row-lock wait. Check
       // the live authorization window again in the actual counter mutation.

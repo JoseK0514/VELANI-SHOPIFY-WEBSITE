@@ -24,14 +24,22 @@ counter; it cannot install, delete, pause, raise or extend an authorization.
 
 All amounts use integer microdollars:1 USD =1,000,000 microdollars. Arithmetic
 uses BigInt and rounds reservations upward. For each attempt the conservative
-bound is the **entire verified model input-context ceiling**, plus its requested
-output allowance, at approved maximum applicable rates. Do not substitute the
-usual request size, a guessed tokenizer ratio, discounted cached-input prices or
-old evaluation rates. Cover context/cache/reasoning surcharges that can apply.
-This is deliberately conservative: reserved usage is not the provider invoice,
-and unused reservations are not released. A small allowance may not fund even
-one worst-case attempt. Review that consequence before activation; do not lower
-the verified context ceiling to manufacture more headroom.
+input envelope is the actual UTF8 content-byte count plus4096 framing tokens per
+message, capped at the verified model input-context ceiling. The reviewed adapter
+allows at most three text-only system/user messages and the fixed JSON-answer
+request; tools, other modalities, extra fields or message shapes fail closed.
+Add the requested output allowance and apply maximum approved rates. There is no
+average characters-per-token guess, cached discount or unbounded tool loop.
+Cover context/cache/reasoning surcharges that can apply. The byte-level tokenizer
+and padded Chat protocol are assumptions to requalify with the exact provider/
+model; this is a conservative admission estimate, not a metered token receipt.
+[OpenAI token-count guidance](https://developers.openai.com/cookbook/examples/how_to_count_tokens_with_tiktoken)
+also distinguishes message framing and warns that model/protocol rules can
+change. New adapters require review rather than silently inheriting this bound.
+Reserved usage is not the provider invoice, and unused reservations are not
+released. A small allowance can fund a short request while refusing a much larger
+one. Review both normal and worst-case headroom before activation; do not lower
+the verified physical context ceiling to manufacture a cheaper bound.
 
 This controls this application's admission at the reviewed rates/limits. It does
 not cap other applications, credentials, provider-account charges, database/
@@ -54,8 +62,10 @@ gpt-6-astra with input922000/output128000/context1050000 tokens. Its base
 input/output rates are $10/$50 per million; the listed context tier rises to
 $20/$75, and cache-write entries reach$25. These are a dated catalog read,
 not approval or proof of this deployment's selected model/servable catalog.
-At input922000 and conservative input$25/output$75, the full bound is
+At input922000 and conservative input$25/output$75, the maximum full-context bound is
 $23.275 per3000-output chat attempt or$23.50 per6000-output plan attempt.
+Shorter requests use the smaller padded byte envelope; these figures are not a
+per-question charge or minimum reservation.
 Recheck the selected branch, exact model, all applicable rates and context
 limits at actual activation. No model inference was performed for this receipt.
 
@@ -100,7 +110,7 @@ account setting was changed.
 4. Run npm run budget:operator -- --file=/absolute/private/approval.json.
    This is an offline proposal only:applied=false,targetVerified=false. It does
    not connect to a database or buy credits. Review the worst-case per-attempt
-   reservation against the approved total before applying.
+   reservation range against the approved total before applying.
 5. Through the existing approved owner secret injection, supply only
    DATABASE_URL_UNPOOLED and run the same command with --apply,
    --expected-host=THE-EXACT-DIRECT-HOST and --expected-database=velani_ai.

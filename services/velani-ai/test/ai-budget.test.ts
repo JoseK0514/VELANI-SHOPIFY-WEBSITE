@@ -236,6 +236,25 @@ describe.skipIf(!testUrl)('durable Rondo budget admission', () => {
     await expect(budget().authorize({ ...request, max_completion_tokens: 1 })).rejects.toMatchObject({ code: 'ai_budget_exhausted' });
   });
 
+  it('reserves a conservative text-byte allowance instead of charging every short question for the full model context', async () => {
+    await installBudgetAuthorization(pool, policy({ limitMicrousd: 20228, models: [{ ...prices[0], contextTokens: 10000 }] }));
+    await budget().authorize(request);
+    //18 UTF8 content bytes +4096 framing tokens, plus3000 output at twice the rate.
+    expect(await used()).toBe('10114');
+    await budget().authorize(request);
+    expect(await used()).toBe('20228');
+    await expect(budget().authorize(request)).rejects.toMatchObject({ code: 'ai_budget_exhausted' });
+  });
+
+  it('counts UTF8 bytes and rejects new non-text/tools request shapes before spending', async () => {
+    await installBudgetAuthorization(pool, policy({ models: [{ ...prices[0], contextTokens: 10000 }] }));
+    await budget().authorize({ ...request, messages: [{ role: 'user', content: 'café' }], max_completion_tokens: 1 });
+    //café is5 bytes, not4;4096 framing +5 input +2 output =4103 microdollars.
+    expect(await used()).toBe('4103');
+    await expect(budget().authorize({ ...request, tools: [] } as ModelRequest)).rejects.toMatchObject({ code: 'ai_budget_policy_mismatch' });
+    expect(await used()).toBe('4103');
+  });
+
   it('does not admit an allowance that expires while its row lock is waiting', async () => {
     const expires = Date.now() + 1000;
     await installBudgetAuthorization(pool, policy({ validUntil: new Date(expires).toISOString() }));
