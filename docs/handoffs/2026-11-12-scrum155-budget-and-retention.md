@@ -1,5 +1,18 @@
 # SCRUM-155 development delivery and operating limits
 
+## November12,19:10UTC — usable protected browser origin
+
+The current READY Preview is dpl_FCstLg1pNhXKtEsBnuhb7k72dD1o, exact backend
+78cdae299457af6b79bb105878f3fb52bfc70f79, Node24.x, targetnull. Its stable
+[protected development address](https://velani-rondo-development-git-de-3f1ea3-josekarlo-5933s-projects.vercel.app)
+is now the explicit allowed Origin. The initial API tests below used a reserved
+test Origin; that configuration needed this correction for actual browser use.
+The updated runtime passed config200, same-origin session creation201 and
+deletion204. No additional model call was made. SSOALL and zero automation
+bypass entries were reverified. The $10policy/counter and native schedules are
+unchanged; earlier model/pause receipts remain bound to their initial deployment.
+See hosted-browser-origin-78cdae2.json in the evidence directory.
+
 ## November12,18:35UTC — current evidence supersedes dated sections below
 
 Jose approved USD10 per calendar month in America/Puerto_Rico, followed by
