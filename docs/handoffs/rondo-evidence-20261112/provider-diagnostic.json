@@ -1,0 +1,7 @@
+{
+  "status": 400,
+  "latencyMs": 39710,
+  "errorCode": "BAD_REQUEST",
+  "errorMessage": "ai gateway upstream model rejected the request: This content was flagged for possible cybersecurity risk. If this seems wrong, try rephrasing your request. If you’re doing authorized security work that requires more cyber permissive safeguards, apply for Daybreak access via https://platform.openai.com/settings/organization/status-and-access before retrying.",
+  "usage": null
+}

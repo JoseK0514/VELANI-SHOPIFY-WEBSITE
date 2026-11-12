@@ -1,0 +1,130 @@
+[
+  {
+    "id": "nevora-availability-en",
+    "content_hash": "75942ec3a0ba93f0974de82ec533316bb4dd383d08a751304de3d1e1bfcd5d1c",
+    "reviewed_at": "2026-11-12 00:00:00+00",
+    "valid_until": "2026-12-12 23:59:59.999+00",
+    "updated_at": "2026-11-12 11:19:24.245557+00",
+    "status": "published"
+  },
+  {
+    "id": "nevora-availability-es",
+    "content_hash": "de8e90cfc05e15ae2affb9c75e857cfd4c33608eee3c62ccd4b14d315c482d7e",
+    "reviewed_at": "2026-11-12 00:00:00+00",
+    "valid_until": "2026-12-12 23:59:59.999+00",
+    "updated_at": "2026-11-12 11:19:24.251372+00",
+    "status": "published"
+  },
+  {
+    "id": "nevora-overview-en",
+    "content_hash": "aae3742465a1b57fa5a1da299eb5d948b8c5adcef191352d6191029945aff468",
+    "reviewed_at": "2026-11-12 00:00:00+00",
+    "valid_until": "2026-12-12 23:59:59.999+00",
+    "updated_at": "2026-11-12 11:19:24.232549+00",
+    "status": "published"
+  },
+  {
+    "id": "nevora-overview-es",
+    "content_hash": "e4c10340de70fb653f3f0c45cbb943adcec6e28b9c26976a52cd390493a39d5e",
+    "reviewed_at": "2026-11-12 00:00:00+00",
+    "valid_until": "2026-12-12 23:59:59.999+00",
+    "updated_at": "2026-11-12 11:19:24.245414+00",
+    "status": "published"
+  },
+  {
+    "id": "nevora-payroll-en",
+    "content_hash": "21cba76793bb38151632f47693029ccf8dc67bb942cf657dfa003a8fa6042765",
+    "reviewed_at": "2026-11-12 00:00:00+00",
+    "valid_until": "2026-12-12 23:59:59.999+00",
+    "updated_at": "2026-11-12 11:19:24.247157+00",
+    "status": "published"
+  },
+  {
+    "id": "nevora-payroll-es",
+    "content_hash": "204051131b2ebb40541097feb1a049568f182d4cd5d8616466e494fd20ba0311",
+    "reviewed_at": "2026-11-12 00:00:00+00",
+    "valid_until": "2026-12-12 23:59:59.999+00",
+    "updated_at": "2026-11-12 11:19:24.247352+00",
+    "status": "published"
+  },
+  {
+    "id": "nevora-rondo-en",
+    "content_hash": "0ff2eac5b41989c8c7735a04618d6af608651463ac8ec1417ff93b6016ba5851",
+    "reviewed_at": "2026-11-12 00:00:00+00",
+    "valid_until": "2026-12-12 23:59:59.999+00",
+    "updated_at": "2026-11-12 11:19:24.24747+00",
+    "status": "published"
+  },
+  {
+    "id": "nevora-rondo-es",
+    "content_hash": "e926ca485064fa979814cd2b1000b53abc5ef9bc127bdceeba67dfb59f36e093",
+    "reviewed_at": "2026-11-12 00:00:00+00",
+    "valid_until": "2026-12-12 23:59:59.999+00",
+    "updated_at": "2026-11-12 11:19:24.248687+00",
+    "status": "published"
+  },
+  {
+    "id": "nevora-support-en",
+    "content_hash": "cfb557ad1b2743625f90c1b1e851dc5a22dcf29a1caa38a8d13166f1b557f466",
+    "reviewed_at": "2026-11-12 00:00:00+00",
+    "valid_until": "2026-12-12 23:59:59.999+00",
+    "updated_at": "2026-11-12 11:19:24.251612+00",
+    "status": "published"
+  },
+  {
+    "id": "nevora-support-es",
+    "content_hash": "64a33921f7f8bb3267a0b3d53e74f2419ed96a17804b854a4ba737572e7ca84c",
+    "reviewed_at": "2026-11-12 00:00:00+00",
+    "valid_until": "2026-12-12 23:59:59.999+00",
+    "updated_at": "2026-11-12 11:19:24.251808+00",
+    "status": "published"
+  },
+  {
+    "id": "nevora-time-clock-en",
+    "content_hash": "53c6b6cf9503107ea4473a315b873c1993ca48ce9e1914ae3b043f8d51a401eb",
+    "reviewed_at": "2026-11-12 00:00:00+00",
+    "valid_until": "2026-12-12 23:59:59.999+00",
+    "updated_at": "2026-11-12 11:19:24.249323+00",
+    "status": "published"
+  },
+  {
+    "id": "nevora-time-clock-es",
+    "content_hash": "552be9b4e42974c7499ec30e6e4974ed269ffa85e2f4a4fa1ed1e3ea89d8d82b",
+    "reviewed_at": "2026-11-12 00:00:00+00",
+    "valid_until": "2026-12-12 23:59:59.999+00",
+    "updated_at": "2026-11-12 11:19:24.24946+00",
+    "status": "published"
+  },
+  {
+    "id": "velani-enquiries-en",
+    "content_hash": "f49b73006a553534b38096249f5a8eb160cfb6da6d984819b7ee99130d1c013d",
+    "reviewed_at": "2026-11-12 00:00:00+00",
+    "valid_until": "2026-12-12 23:59:59.999+00",
+    "updated_at": "2026-11-12 11:19:24.250153+00",
+    "status": "published"
+  },
+  {
+    "id": "velani-enquiries-es",
+    "content_hash": "5b01f4d216b48d2531b335eacbe04229a7e8e9c3058bb58a248fc8a97c3e4db5",
+    "reviewed_at": "2026-11-12 00:00:00+00",
+    "valid_until": "2026-12-12 23:59:59.999+00",
+    "updated_at": "2026-11-12 11:19:24.250838+00",
+    "status": "published"
+  },
+  {
+    "id": "velani-relay-en",
+    "content_hash": "d3a677ea1ac57f316d74d5d0ac00dd1b8fd37b3389a29cfd14004ff6fedc1a2b",
+    "reviewed_at": "2026-11-12 00:00:00+00",
+    "valid_until": "2026-12-12 23:59:59.999+00",
+    "updated_at": "2026-11-12 11:19:24.251043+00",
+    "status": "published"
+  },
+  {
+    "id": "velani-relay-es",
+    "content_hash": "ef443527e9ba5869382b9a13a2bd2a2b78d4bd0afa81e14cc12f49233d32de2b",
+    "reviewed_at": "2026-11-12 00:00:00+00",
+    "valid_until": "2026-12-12 23:59:59.999+00",
+    "updated_at": "2026-11-12 11:19:24.251218+00",
+    "status": "published"
+  }
+]

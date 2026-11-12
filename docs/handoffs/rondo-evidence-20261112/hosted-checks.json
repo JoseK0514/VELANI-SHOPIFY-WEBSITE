@@ -1,0 +1,147 @@
+{
+  "checkedAt": "2026-11-12T11:24:46.871Z",
+  "deployment": "dpl_2yjDbRBcm8vc6ujPm1mqz34qLRhT",
+  "source": "3db0ea98bc3da6b3ae08b9e5d2c2b59a361e6a8d",
+  "noModelCalls": true,
+  "noEmailCalls": true,
+  "results": [
+    {
+      "id": "live",
+      "path": "/health/live",
+      "status": 200,
+      "expected": 200,
+      "passed": true,
+      "cacheControl": "no-store",
+      "cors": null,
+      "body": {
+        "status": "ok"
+      }
+    },
+    {
+      "id": "ready",
+      "path": "/health/ready",
+      "status": 200,
+      "expected": 200,
+      "passed": true,
+      "cacheControl": "no-store",
+      "cors": null,
+      "body": {
+        "status": "ready"
+      }
+    },
+    {
+      "id": "config",
+      "path": "/v1/config",
+      "status": 200,
+      "expected": 200,
+      "passed": true,
+      "cacheControl": "no-store",
+      "cors": "https://www.thevelani.com",
+      "body": {
+        "assistantName": "Rondo",
+        "requireCaptcha": true,
+        "turnstileSiteKey": "0x4AAAAAAF0PYGQhwxiU91hz"
+      }
+    },
+    {
+      "id": "hub-config",
+      "path": "/v1/client-hub/config",
+      "status": 200,
+      "expected": 200,
+      "passed": true,
+      "cacheControl": "no-store",
+      "cors": "https://www.thevelani.com",
+      "body": {
+        "enabled": true,
+        "turnstileSiteKey": "0x4AAAAAAF0PYGQhwxiU91hz",
+        "turnstileAction": "velani-client-hub"
+      }
+    },
+    {
+      "id": "preflight",
+      "path": "/v1/chat",
+      "status": 204,
+      "expected": 204,
+      "passed": true,
+      "cacheControl": "no-store",
+      "cors": "https://www.thevelani.com",
+      "body": {
+        "nonJson": true
+      }
+    },
+    {
+      "id": "unauthenticated-chat",
+      "path": "/v1/chat",
+      "status": 401,
+      "expected": 401,
+      "passed": true,
+      "cacheControl": "no-store",
+      "cors": "https://www.thevelani.com",
+      "body": {
+        "error": {
+          "code": "session_required",
+          "message": "Please start a new chat session."
+        },
+        "requestId": "req-5"
+      }
+    },
+    {
+      "id": "wrong-origin",
+      "path": "/v1/chat",
+      "status": 403,
+      "expected": 403,
+      "passed": true,
+      "cacheControl": "no-store",
+      "cors": null,
+      "body": {
+        "error": {
+          "code": "origin_not_allowed",
+          "message": "This origin is not allowed."
+        },
+        "requestId": "req-6"
+      }
+    },
+    {
+      "id": "missing-captcha",
+      "path": "/v1/sessions",
+      "status": 403,
+      "expected": 403,
+      "passed": true,
+      "cacheControl": "no-store",
+      "cors": "https://www.thevelani.com",
+      "body": {
+        "error": {
+          "code": "captcha_required",
+          "message": "Please complete the verification and try again."
+        },
+        "requestId": "req-7"
+      }
+    },
+    {
+      "id": "unauthorized-retention",
+      "path": "/api/cron/retention",
+      "status": 401,
+      "expected": 401,
+      "passed": true,
+      "cacheControl": "no-store",
+      "cors": null,
+      "body": {
+        "status": "error",
+        "code": "unauthorized"
+      }
+    },
+    {
+      "id": "unauthorized-maintenance",
+      "path": "/api/cron/client-hub",
+      "status": 401,
+      "expected": 401,
+      "passed": true,
+      "cacheControl": "no-store",
+      "cors": null,
+      "body": {
+        "status": "error",
+        "code": "unauthorized"
+      }
+    }
+  ]
+}
