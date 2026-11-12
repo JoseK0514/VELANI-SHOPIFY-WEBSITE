@@ -1,0 +1,22 @@
+{
+  "id": "dpl_FCQMSbDG6ZkVPi8Lpi3VcTqogQiu",
+  "url": "velani-e8196xlb6-josekarlo-5933s-projects.vercel.app",
+  "target": "production",
+  "readyState": "BLOCKED",
+  "createdAt": 1794523772866,
+  "ready": 1794523772866,
+  "projectId": "prj_E1Vl2AEpTlJlBam4MTKG7oEHB7x2",
+  "gitSource": {
+    "ref": "main",
+    "repoId": 1443058200,
+    "sha": "d69c42609dd9a689d80ad6da5f8e7518b838d863",
+    "type": "github",
+    "prId": null
+  },
+  "meta": {
+    "githubCommitSha": "d69c42609dd9a689d80ad6da5f8e7518b838d863",
+    "githubCommitRef": "main",
+    "githubCommitMessage": "docs: qualify Velani main consolidation and branch retirement [skip ci]"
+  },
+  "observedAt": "2026-11-12T22:53:07.018474+00:00"
+}

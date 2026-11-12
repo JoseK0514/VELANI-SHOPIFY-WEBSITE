@@ -1,0 +1,31 @@
+{
+  "recordedAt": "2026-11-12T22:54:30.371326+00:00",
+  "payloadCommit": "d69c42609dd9a689d80ad6da5f8e7518b838d863",
+  "qualifiedApplicationSource": "a456364bade4a32d3114980c7cc24bf2bb321725",
+  "mainAndDevelopmentPayloadVerified": true,
+  "promotion": "atomic fast-forward of both refs, followed by documentation-only receipt commit",
+  "remoteBranchesRemaining": [
+    "development",
+    "main"
+  ],
+  "localBranchesRemaining": [
+    "development",
+    "main"
+  ],
+  "deletedRemoteBranches": 13,
+  "deletedLocalFeatureBranches": 6,
+  "remoteRecoveryTagsVerified": 16,
+  "originalChangedAndUntrackedFilesPreserved": 909,
+  "existingPr1State": "MERGED",
+  "existingPr1MergedAt": "2026-11-12T22:49:22Z",
+  "shopifyMainUnchanged": true,
+  "publicAiAliasDeploymentUnchanged": "dpl_2yjDbRBcm8vc6ujPm1mqz34qLRhT",
+  "newGitCandidateState": "BLOCKED; never treated as serving runtime",
+  "runtimeActivated": false,
+  "shopifyPublished": false,
+  "ciDispatched": false,
+  "externalMessagesSent": false,
+  "paidInference": false,
+  "nevoraRepositoryChanged": false,
+  "nextOwner": "Claude for the existing UI/legal-page findings; Jose for public deployment/publication/business decisions"
+}

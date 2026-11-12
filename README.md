@@ -1,12 +1,20 @@
 # The Velani company website
 
-## Current development release — November 12, 2026
+## Current source and production status — November 12, 2026
 
-`development` combines Claude's website/client-hub UI at `17d35c2`, the qualified
-Rondo backend at `7a5696a` (runtime `3db0ea9`), and client-hub acceptance at
-`8505ed2`. Codex owns backend/hosting; Claude owns UI. Development is the primary
-working and acceptance release under Jose's November 12 policy. Promote only the
-exact verified release to main/production after Jose's approval.
+Only **`development` (dev)** and **`main`** remain as working branches. Jose
+authorized their source consolidation; retired feature commits are preserved in
+history and recovery tags. Start new work from freshly fetched development. Use
+detached worktrees, preserve existing files, and follow [AGENTS.md](AGENTS.md).
+Codex owns backend/hosting; Claude owns UI. Development remains the primary
+operating/acceptance release; future main/public promotion requires authorization.
+
+The [consolidation report](docs/handoffs/2026-11-12-velani-main-consolidation.md)
+records branch dispositions, the restored sandbox-publication safeguard, checks,
+cleanup and remaining Claude page work. The
+[Step1 contract](docs/handoffs/2026-11-12-step1-velani-backend-truth.md) records
+claim, trial, inquiry and Rondo boundaries. Their receipts identify exact source;
+source integration does not activate a runtime.
 
 Shopify MAIN is `193311572282`. The newer client-hub copy `193374224698` remains
 UNPUBLISHED, with its real-test flag returned to false after the authorized EN/ES
@@ -15,7 +23,12 @@ and [Rondo/backend handoff](docs/handoffs/2026-11-12-signup-policy-rondo-backend
 The dated sections below preserve older implementation context; their historical
 route counts, theme IDs and availability statements are not current release facts.
 
-Current checks, domain routing, remaining UI gates and release boundaries are in
+Consolidation checks:261backend tests and100website tests pass,37routes build,
+and service typecheck/build and Theme Check pass. Actual Chrome still reports
+87passed/2existing UI failures (Relay target and no-JS navigation). The public AI
+alias remains on separately deployed source `3db0ea9`; protected development Rondo
+and its finite cost guard are separate. Consult the reports above before using
+older runtime/branch instructions. Earlier domain/release evidence is retained in
 the [development closeout](docs/handoffs/2026-11-12-velani-development-closeout.md).
 `npm test` builds its required theme artifacts first. Run browser/preview builds
 serially in a checkout: they share `dist/` and may use different local API fixtures.

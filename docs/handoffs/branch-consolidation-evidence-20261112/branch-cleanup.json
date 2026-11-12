@@ -1,0 +1,28 @@
+{
+  "remoteBranches": [
+    "refs/heads/development",
+    "refs/heads/main"
+  ],
+  "localBranches": [
+    "refs/heads/development",
+    "refs/heads/main"
+  ],
+  "detachedPreservedWorktrees": [
+    {
+      "path": "/Users/josek0514/Desktop/VELANI-SHOPIFY-WEBSITE",
+      "head": "1f093021560c23390b8aba2b8c87d1f2a4aea456",
+      "retiredBranch": "refs/heads/claude/velani-home-mock-20261107"
+    },
+    {
+      "path": "/private/tmp/claude-501/-Users-josek0514-Desktop-NEVORA-UI-READINESS/1738624c-3cc0-422a-b25a-92a5127865f6/scratchpad/hero",
+      "head": "17d35c2e9a146c54fcdfa1393348bfb642bdcf90",
+      "retiredBranch": "refs/heads/claude/velani-signature-hero-20261110"
+    }
+  ],
+  "retiredRemoteBranches": 13,
+  "retiredLocalBranches": 6,
+  "originalDirtyAndUntrackedFilesHashVerified": 909,
+  "originalFilesChanged": [],
+  "sourcePayload": "d69c42609dd9a689d80ad6da5f8e7518b838d863",
+  "branchCleanupUsedNoForcePushUpdate": true
+}

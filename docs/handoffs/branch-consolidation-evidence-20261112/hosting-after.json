@@ -1,0 +1,21 @@
+{
+  "observedAt": "2026-11-12T22:51:37.890067+00:00",
+  "projects": [
+    {
+      "project": "velani-rondo-development",
+      "gitDeployments": {
+        "createDeployments": "disabled",
+        "disableRepositoryDispatchEvents": true
+      },
+      "production": "dpl_HbY1sZ5JzceQw8hCpeUkmSdqB4n2"
+    },
+    {
+      "project": "velani-ai",
+      "gitDeployments": {
+        "createDeployments": "disabled",
+        "disableRepositoryDispatchEvents": true
+      },
+      "production": "dpl_FCQMSbDG6ZkVPi8Lpi3VcTqogQiu"
+    }
+  ]
+}

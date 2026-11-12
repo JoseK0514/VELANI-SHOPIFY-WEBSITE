@@ -6,9 +6,14 @@ and leaving only development (dev) and main. This replaces the earlier Git-main
 hold for this source-consolidation task. It does not authorize Shopify publication,
 runtime deployment, public signup, real billing, mail, paid inference or Step2.
 
-**Qualification is complete; remote delivery and deletion are recorded in the
-follow-up receipt after the source push is verified.** Source/runtime qualification
-and actual public publication remain separate.
+**Delivered and cleaned up.** Payload `d69c42609dd9a689d80ad6da5f8e7518b838d863`
+was atomically fast-forwarded to both remote main and development, with16verified
+recovery tags.13remote branches and6local feature branches were then deleted.
+Only local/remote development and main remain. This final documentation/policy
+update records that completed delivery without changing the qualified application.
+See [delivery receipt](branch-consolidation-evidence-20261112/delivery.json) and
+[cleanup/file-preservation proof](branch-consolidation-evidence-20261112/branch-cleanup.json).
+Source/runtime qualification and actual public publication remain separate.
 
 ## What was missing from main
 
@@ -156,6 +161,16 @@ is part of this task. Preserve existing worktree directories and ignored secrets
    still require their own authorization; the source merge does not perform them.
 
 ## Ownership and release position
+
+Fresh provider readback after promotion confirms Shopify MAIN193311572282 and its
+settings checksum unchanged. Vercel recorded a **BLOCKED** Git-main candidate
+`dpl_FCQMSbDG6ZkVPi8Lpi3VcTqogQiu` for payloadd69c426; this is not a running
+production replacement. Direct alias readback proves `velani-ai.vercel.app` still
+serves the prior READY `dpl_2yjDbRBcm8vc6ujPm1mqz34qLRhT`. Automatic Git deployment
+remains disabled. Project latest-target metadata alone must not be called the
+serving release. The evidence retains this observation and the serving alias.
+GitHub automatically marked existing PR1 **MERGED** at22:49:22UTC when its head
+became reachable from main; it was not closed unmerged or given a new comment.
 
 Engineering accepts source consolidation with the restored tested safeguard;
 Security retains least-privilege/secret custody, closed publication transport and
