@@ -2,7 +2,7 @@
 
 Claude's UI commit `17d35c2` is on `claude/velani-signature-hero-20261110`, worktree `/private/tmp/claude-501/-Users-josek0514-Desktop-NEVORA-UI-READINESS/1738624c-3cc0-422a-b25a-92a5127865f6/scratchpad/hero`. Existing backend `https://velani-ai.vercel.app` and the November7 fixed interface remain unchanged. Production service runtime is `3db0ea98bc3da6b3ae08b9e5d2c2b59a361e6a8d` (later Rondo work; hub transport unchanged).
 
-Unpublished acceptance theme **193374224698**, duplicated from MAIN. No MAIN edits or publication. Its explicit `client_hub_preview_submissions` setting was enabled only for the authorized real test; other previews default to sending nothing. Live sending excludes review fixtures. Disable the acceptance setting after review; publish remains Jose's action.
+Unpublished acceptance theme **193374224698**, duplicated from MAIN. No MAIN edits or publication. Its explicit `client_hub_preview_submissions` setting was enabled only for the authorized real test; other previews default to sending nothing. Live sending excludes review fixtures. After acceptance Codex set this one flag back to **false** through the connected Shopify API and verified an exact file readback with every other byte preserved. The theme remained UNPUBLISHED. Publication remains Jose's action; the published UI sends for real independently of this preview-only flag.
 
 ## Actual Safari and inbox acceptance
 
