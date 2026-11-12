@@ -10,8 +10,9 @@ No runtime or provider was changed for this update.
 
 Primary responder: **Jose Natal**. Jose answered "Jose Natal (me)" in the
 consolidated finishing chat `01a1d175-7de0-7a80-b607-5418fde6ed50`, replying to the
-question asking for primary and backup responders. Backup: **unassigned**.
-Self-identification establishes primary assignment; it is not evidence of
+question asking for primary and backup responders. Jose subsequently named
+**Ilianis Soto** as backup in that same chat on November12. These responses
+establish the two assignments; they are not evidence of either responder
 receiving an incident alert, accepting a response target or completing a drill.
 
 Development remains the primary operating/acceptance release, with production
@@ -51,8 +52,8 @@ disabled/attempt limit0. Do not rerun them to manufacture acknowledgment.
 
 ## Remaining joined acceptance
 
-Claude's UI, independent outage/monitor heartbeat coverage, named backup and
-actual responder acknowledgment remain open. The recurring USD10/month
+Claude's UI, independent outage/monitor heartbeat coverage and actual responder
+acknowledgment remain open. Primary and backup names are now recorded. The recurring USD10/month
 approval still uses finite calendar-month authorization rows and preserves all
 reservations. No extra model call, budget reset, key deletion, schedule change,
 Shopify publication, main merge or public deployment occurred here.
@@ -62,3 +63,8 @@ record, relative-link checks and `git diff --check`. No application test or
 hosted verification is claimed for a documentation-only update. The original
 checkout and its five untracked evidence directories are preserved; this update
 uses a separate detached worktree.
+
+Backup assignment update starts from freshly fetched development
+`f5082ed5be0e65bb322fe4047dd624ad73e9d493`, preserving the separately authorized
+main consolidation. This update changes only the two responder runbooks on
+development; it makes no main or provider change. No message to Ilianis was sent.

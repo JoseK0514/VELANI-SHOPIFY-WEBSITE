@@ -59,15 +59,15 @@ delivery or a responder's acknowledgement.
 The journal shares the database being observed. Database unavailability can
 prevent both journaling and email; a 503/console event is not an external alarm.
 Independent monitor-of-monitor coverage, actual delivery/response acceptance
-and named backup coverage remain explicit operating gates.
+remain explicit operating gates; the primary and backup assignments are below.
 
 ## Responder custody — November 12 update
 
 Jose Natal is the primary responder. Jose supplied his own name in the
 consolidated finisher chat (`01a1d175-7de0-7a80-b607-5418fde6ed50`) when asked for
-primary and backup ownership. No backup was named. This records the assignment;
-it does not establish an alert acknowledgment, response drill or continuous
-coverage. See the [remaining operating handoff](../../../docs/handoffs/2026-11-12-rondo-responder-closeout.md).
+primary and backup ownership. In a subsequent answer in the same chat, Jose
+named Ilianis Soto as backup. This records both assignments; it does not establish
+either responder's alert acknowledgment, response drill or continuous coverage. See the [remaining operating handoff](../../../docs/handoffs/2026-11-12-rondo-responder-closeout.md).
 
 ## Pause and rollback
 
