@@ -131,11 +131,14 @@ export async function readBudgetStatus(pool: Pool, authorizationId?: string) {
   const policy = decodePolicy(row);
   if (!policy) return { status: 'policy_mismatch' as const };
   const reserved = BigInt(row.reserved_microusd), limit = BigInt(row.limit_microusd);
-  const largestAttempt = policy.models.reduce((largest, price) => {
-    const amount = reservationMicrousd(price, price.outputTokenLimit);
+  // A full model context can legitimately cost more than the entire allowance.
+  // Admission prices each actual request; status must not alarm on an unused
+  // small policy. Warn at80% or when even the output ceiling cannot be funded.
+  const largestOutput = policy.models.reduce((largest, price) => {
+    const amount = reservationMicrousd(price, price.outputTokenLimit, 0);
     return amount > largest ? amount : largest;
   }, 0n);
   const status = !row.enabled ? 'paused' : !row.started || !row.unexpired ? 'expired'
-    : reserved >= limit ? 'exhausted' : reserved * 100n >= limit * 80n || limit - reserved < largestAttempt ? 'near_limit' : 'ok';
+    : reserved >= limit ? 'exhausted' : reserved * 100n >= limit * 80n || limit - reserved < largestOutput ? 'near_limit' : 'ok';
   return { status, reservedMicrousd: reserved.toString(), limitMicrousd: limit.toString(), validUntil: row.valid_until.toISOString() };
 }

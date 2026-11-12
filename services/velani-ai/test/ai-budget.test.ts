@@ -118,7 +118,7 @@ describe.skipIf(!testUrl)('durable Rondo budget admission', () => {
     expect(await readBudgetStatus(pool, id)).toMatchObject({ status: 'paused' });
   });
 
-  it('warns when remaining headroom cannot fund a fully approved attempt even below80percent usage', async () => {
+  it('warns when remaining headroom cannot fund the approved output ceiling even below80percent usage', async () => {
     await installBudgetAuthorization(pool, policy({ limitMicrousd: 20_000 }));
     await budget().authorize(request);
     //35% reserved,13000 left: a6000-output plan still fits exactly.
@@ -126,6 +126,19 @@ describe.skipIf(!testUrl)('durable Rondo budget admission', () => {
     await budget().authorize(request);
     //70% reserved,6000 left: neither a7000 chat nor13000 plan fits.
     expect(await readBudgetStatus(pool, id)).toMatchObject({ status: 'near_limit', reservedMicrousd: '14000' });
+  });
+
+  it('does not alarm on an unused small allowance merely because a full model context costs more than the allowance', async () => {
+    await installBudgetAuthorization(pool, policy({ limitMicrousd: 10_000_000, models: [{
+      model: 'fixture-chat', contextTokens: 922000, outputTokenLimit: 6000,
+      inputMicrousdPerMillion: 25_000_000, outputMicrousdPerMillion: 75_000_000,
+    }] }));
+    expect(await readBudgetStatus(pool, id)).toMatchObject({ status: 'ok', reservedMicrousd: '0' });
+    await budget().authorize(request);
+    expect(await readBudgetStatus(pool, id)).toMatchObject({ status: 'ok' });
+    // The same allowance still refuses an unaffordable full-context request.
+    await expect(budget().authorize({ ...request, messages: [{ role: 'user', content: 'x'.repeat(500000) }] }))
+      .rejects.toMatchObject({ code: 'ai_budget_exhausted' });
   });
 
   it('refuses a future window and reports malformed provider pricing as attention', async () => {
