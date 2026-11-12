@@ -1681,3 +1681,19 @@ main:not(:has(.sig)) .hpanel.dim:not(.plans-top) .hcopy::before{display:none}
 @media(max-width:833px){main #velani::after{height:150px}}
 /* NEVORA ends on the pale ground, so its ending join starts there */
 main:has(.hn-begin){--end:#f2f6f5}
+/* Client hub (Nov 12): the request form on Support sends to the client hub. Its extra pieces: the unavailable notice with the
+   address as selectable text, the security check slot, the reference on the saved panel. */
+.hub-off{margin:0 0 20px;padding:16px 18px;border-radius:14px;border:1px solid var(--line);font-size:.9375rem;line-height:1.5;color:var(--text-2)}
+.hub-off p{margin:0}
+.hub-off .hub-mail{margin-top:6px;font-size:1.0625rem;font-weight:600;color:var(--text);user-select:all;-webkit-user-select:all;overflow-wrap:anywhere}
+.inquiry-form fieldset:disabled{opacity:.55}
+.hub-verify{margin-top:16px}
+.hub-verify:empty{display:none}
+.client .form-status:not(:empty){margin-top:20px;padding:12px 14px;border-radius:10px;border:1px solid var(--line);font-size:.9375rem;line-height:1.5;outline:none}
+.client-send .pill [hidden]{display:none}
+.sent-ref{margin:28px auto 0;max-width:22rem;padding:20px;border-radius:16px;border:1px solid var(--line)}
+.sent-ref-k{margin:0;font-size:.875rem;line-height:1.4;color:var(--text-3)}
+.sent-ref-v{margin:6px 0 0;font-size:clamp(1.5rem,5vw,1.875rem);line-height:1.2;font-weight:600;letter-spacing:.02em;font-variant-numeric:tabular-nums;color:var(--text);user-select:all;-webkit-user-select:all}
+.sent-copy{margin-top:14px;min-height:44px;padding:0 18px;border-radius:999px;border:1px solid var(--line);background:none;color:var(--text);font:inherit;font-size:.9375rem;font-weight:500;cursor:pointer}
+@media(hover:hover){.sent-copy:hover{border-color:var(--text-2)}}
+.sent-copy:focus-visible{outline:2px solid var(--accent);outline-offset:3px}

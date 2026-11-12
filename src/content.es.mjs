@@ -210,7 +210,10 @@ export const SIGNIN_ES = {
   urgency: ['Urgencia', [['It can wait', 'Puede esperar'], ["It's slowing us down", 'Nos está atrasando'], ["We can't work", 'No podemos trabajar']]],
   send: ['Enviar solicitud', 'Enviar a soporte'], check: 'Revisar el borrador', note: 'No envíes contraseñas ni datos de pago.',
   preview: 'Vista previa. Este formulario revisa tu borrador y no envía nada.',
-  writeT: 'Escríbenos', writeText: 'Cuéntanos qué necesitas o qué pasó, y de qué sitio web o app se trata. Respondemos desde ',
+  project: 'Sitio web o app', refK: 'Tu referencia', refCopy: 'Copiar referencia',
+  hubNote: 'Usamos estos datos solo para responder tu solicitud. Los registros de solicitudes se guardan hasta 90 días; las copias por correo pueden durar más. No se crea ninguna cuenta.',
+  hubOff: 'Ahora mismo no se pueden enviar solicitudes desde esta página. No se envió nada de lo que escribiste. Escríbenos a:',
+  hubNoscript: 'Este formulario necesita JavaScript. También puedes escribir a ',
 };
 export const CONTACT_ES = {
   kicker: ['NEVORA para tu equipo', 'Prueba gratis de NEVORA por 30 días', 'NEVORA Relay'],

@@ -14,7 +14,7 @@ export async function build() {
   for (const weight of [400, 500, 600]) await copyFile(path.join(root, 'node_modules/@fontsource/dm-sans/files/dm-sans-latin-' + weight + '-normal.woff2'), path.join(root, 'public/assets/dm-sans-latin-' + weight + '-normal.woff2'));
   for (const name of ['check', 'arrow-right']) await copyFile(path.join(root, 'node_modules/@phosphor-icons/core/assets/regular/' + name + '.svg'), path.join(root, 'public/assets/' + name + '.svg'));
   for (const name of ['favicon.svg', 'favicon-32.png', 'apple-touch-icon.png']) await copyFile(path.join(root, 'src/brand', name), path.join(root, 'public/assets', name));
-  for (const name of ['inquiry', 'privacy']) {
+  for (const name of ['inquiry', 'privacy', 'client-hub']) {
     try { await copyFile(path.join(root, 'src/' + name + '.mjs'), path.join(root, 'public/assets/' + name + '.js')); }
     catch (error) { if (error.code !== 'ENOENT') throw error; }
   }
@@ -31,7 +31,7 @@ export async function build() {
   await cp(path.join(root, 'public/assets'), path.join(out, 'theme/assets'), { recursive: true });
   // Module imports between theme assets carry a content fingerprint, so Shopify's CDN and browsers never serve a stale copy
   // of a dependency after it changes (asset_url versions only the files the layout links directly).
-  for (const [file, deps] of [['velani.js', ['inquiry.js', 'privacy.js']], ['velani-assist.js', ['velani-assistant.js']]]) {
+  for (const [file, deps] of [['velani-hub.js', ['client-hub.js']], ['velani.js', ['inquiry.js', 'privacy.js', 'velani-hub.js']], ['velani-assist.js', ['velani-assistant.js']]]) {
     const target = path.join(out, 'theme/assets', file);
     let code = await readFile(target, 'utf8');
     for (const dep of deps) {

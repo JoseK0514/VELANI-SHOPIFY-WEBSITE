@@ -1,5 +1,6 @@
 import { validateInquiry, createInquiryController } from './inquiry.js';
 import { createPrivacyAdapter } from './privacy.js';
+import { initHubForm } from './velani-hub.js';
 // Every word this script shows, in the page's language (<html lang>): English, or Spanish on the Spanish pages
 const STRINGS = {
   en: {
@@ -46,7 +47,10 @@ function showSent(topic, preview) {
 }
 const justSent = !!sent && !sent.hidden;
 if (justSent) { let topic = ''; try { topic = sessionStorage.getItem('v-inquiry-topic') || ''; sessionStorage.removeItem('v-inquiry-topic'); sessionStorage.removeItem('v-inquiry-draft'); } catch {} showSent(topic, false); }
-if (form && !justSent) {
+// The client request form on Support sends to the client hub (velani-hub.js); every other form keeps the code below
+const hubForm = !!form && form.dataset.inquiryMode === 'hub';
+if (hubForm && sent) initHubForm(form, sent);
+if (form && !justSent && !hubForm) {
   const mode = form.dataset.inquiryMode || form.querySelector('[data-inquiry-mode]')?.dataset.inquiryMode || 'preview';
   const submitButton = form.querySelector('[data-inquiry-submit]');
   const fieldset = form.querySelector('fieldset');

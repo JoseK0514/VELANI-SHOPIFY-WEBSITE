@@ -1,4 +1,5 @@
 import { company, routes, services, legalUpdated, langOf, counterpart } from './content.mjs';
+import { HUB_API } from './client-hub.mjs';
 import { CONSENT_ES, CONTACT_ES, PLANS_ES, HOURS_ES, ABOUT_ES, FAQ_ES, ES_NEAREST, IN_ENGLISH, WORK_ES, SIGNIN_ES } from './content.es.mjs';
 import { header as nightHeader, footer as nightFooter, homeMain, nevoraMain, productsMain, policyMain, zoomScript, assistant as nightAssistant, icon, WORDMARK, CHROME, localize } from './night.mjs';
 export function escapeHtml(value) {
@@ -144,31 +145,44 @@ const SIGNIN = {
     urgency: ['Urgency', [['It can wait', 'It can wait'], ["It's slowing us down", 'It’s slowing us down'], ["We can't work", 'We can’t work']]],
     send: ['Send request', 'Send to support'], check: 'Check draft request', note: 'Don’t send passwords or payment details.',
     preview: 'Preview. This form checks your draft and sends nothing.',
-    writeT: 'Write to us', writeText: 'Tell us what you need or what happened, and which website or app it is about. We reply from ' },
+    project: 'Website or app', refK: 'Your reference', refCopy: 'Copy reference',
+    hubNote: 'We use this only to answer your request. Request records are kept up to 90 days; email copies can stay longer. No account is created.',
+    hubOff: 'Requests can’t be sent from this page right now. Nothing you typed was sent. Please write to us instead:',
+    hubNoscript: 'This form needs JavaScript. You can also write to ' },
   es: SIGNIN_ES,
 };
-function clientFields(live, lang) {
+function clientFields(lang) {
   const t = SIGNIN[lang], c = CONTACT[lang], opt = ' <span class="opt">' + c.optional + '</span>';
   const k = (work, help) => '<span data-k="work">' + work + '</span><span data-k="help" hidden>' + help + '</span>';
-  const ff = (id, name, label, extra, value = '') => '<div class="ff"><input id="inquiry-' + id + '" name="contact[' + name + ']" placeholder=" " ' + extra + (value ? ' value="' + value + '"' : '') + '><label for="inquiry-' + id + '">' + label + '</label><p class="field-error" id="error-' + id + '"></p></div>';
-  const kinds = '<p class="kinds-q" aria-hidden="true">' + t.need + '</p><fieldset class="kinds"><legend class="sr">' + t.need + '</legend>' + ['client-work', 'client-help'].map((value, i) => '<label class="kind"><input type="radio" name="client_kind" value="' + value + '"' + (i ? '' : ' checked') + '><b>' + t.kinds[i][0] + '</b></label>').join('') + '</fieldset><input type="hidden" id="inquiry-interest" name="contact[interest]" value="client-work">';
-  const select = (key, id, [label, options], hidden) => '<div class="ff sel" data-k="' + key + '"' + (hidden ? ' hidden' : '') + '><select id="inquiry-' + id + '" name="contact[' + id + ']"' + (hidden ? ' disabled' : '') + '><option value=""></option>' + options.map(([value, text]) => '<option value="' + e(value) + '">' + text + '</option>').join('') + '</select><label for="inquiry-' + id + '">' + label + '</label></div>';
-  const message = '<div class="ff area"><textarea id="inquiry-message" name="contact[body]" placeholder=" " rows="4" maxlength="4000" required aria-describedby="error-message" data-min="140">' + (live ? '{{ form.body | escape }}' : '') + '</textarea><label for="inquiry-message">' + k(...t.message) + '</label><p class="field-error" id="error-message"></p></div>';
-  const send = '<div class="client-send"><button class="pill" type="submit" data-inquiry-submit>' + k(...t.send) + '</button><p class="client-note">' + t.note + ' <a href="/pages/privacy"' + enOnly(lang) + '>' + c.privacy + '</a></p></div>';
-  return '<fieldset' + (live ? '' : ' disabled') + '><legend class="sr">' + t.clientT + '</legend>' + kinds
-    + '<div class="frow">' + ff('name', 'name', c.name, 'autocomplete="name" maxlength="120" required aria-describedby="error-name"', live ? '{{ form.name | escape }}' : '')
-    + ff('email', 'email', c.email, 'type="email" autocomplete="email" maxlength="254" required aria-describedby="error-email"', live ? '{{ form.email | escape }}' : '') + '</div>'
-    + '<div class="frow">' + ff('company', 'company', t.business + opt, 'autocomplete="organization" maxlength="160" aria-describedby="error-company"') + select('work', 'timing', t.timing, false) + select('help', 'urgency', t.urgency, true) + '</div>'
+  // No name attributes: this form is never posted by the browser. velani.js sends it to the client hub as JSON.
+  const ff = (id, label, extra) => '<div class="ff"><input id="inquiry-' + id + '" placeholder=" " ' + extra + ' aria-describedby="error-' + id + '"><label for="inquiry-' + id + '">' + label + '</label><p class="field-error" id="error-' + id + '"></p></div>';
+  const kinds = '<p class="kinds-q" aria-hidden="true">' + t.need + '</p><fieldset class="kinds"><legend class="sr">' + t.need + '</legend>' + ['client-work', 'client-help'].map((value, i) => '<label class="kind"><input type="radio" name="client_kind" value="' + value + '"' + (i ? '' : ' checked') + '><b>' + t.kinds[i][0] + '</b></label>').join('') + '</fieldset><input type="hidden" id="inquiry-interest" value="client-work">';
+  const select = (key, id, [label, options], hidden) => '<div class="ff sel" data-k="' + key + '"' + (hidden ? ' hidden' : '') + '><select id="inquiry-' + id + '"' + (hidden ? ' disabled' : '') + '><option value=""></option>' + options.map(([value, text]) => '<option value="' + e(value) + '">' + text + '</option>').join('') + '</select><label for="inquiry-' + id + '">' + label + '</label></div>';
+  const message = '<div class="ff area"><textarea id="inquiry-message" placeholder=" " rows="4" maxlength="4000" required aria-describedby="error-message" data-min="140"></textarea><label for="inquiry-message">' + k(...t.message) + '</label><p class="field-error" id="error-message"></p></div>';
+  const send = '<div class="hub-verify" id="hub-turnstile"></div><div class="client-send"><button class="pill" type="submit" data-inquiry-submit>' + k(...t.send) + '</button><p class="client-note">' + t.hubNote + ' ' + t.note + ' <a href="/pages/privacy"' + enOnly(lang) + '>' + c.privacy + '</a></p></div>';
+  return '<fieldset disabled><legend class="sr">' + t.clientT + '</legend>' + kinds
+    + '<div class="frow">' + ff('name', c.name, 'autocomplete="name" maxlength="120" required') + ff('email', c.email, 'type="email" autocomplete="email" maxlength="254" required') + '</div>'
+    + '<div class="frow">' + ff('company', t.business + opt, 'autocomplete="organization" maxlength="200"') + ff('project', t.project + '<span data-k="work">' + opt + '</span>', 'autocomplete="off" maxlength="200"') + '</div>'
+    + select('work', 'timing', t.timing, false) + select('help', 'urgency', t.urgency, true)
     + message + send + '</fieldset>';
 }
-/** The Velani client request form (new work or help), with the support block beside it. Shown on Support (#client). */
+/** The Velani client request form (new work or help). Shown on Support (#client). It sends to the client hub
+ * (src/client-hub.mjs) and never through Shopify's contact form. On the published theme it is live; on an unpublished theme
+ * and in the local preview it checks the draft and sends nothing (VELANI_CLIENT_HUB_API points the local preview at a local
+ * fake so the live states can be tested). #hub-state=… shows each state for review, never on the published theme. */
 function clientSection(target, lang) {
   const t = SIGNIN[lang], c = CONTACT[lang];
-  const preview = '<form id="project-inquiry" class="inquiry-form" method="post" action="/?velani_preview_inquiry=1" data-inquiry-mode="preview" novalidate>' + clientFields(false, lang) + '<div class="form-status" role="status" aria-live="polite" tabindex="-1"></div><p class="client-preview">' + t.preview + '</p><noscript><p>' + c.noscript + '</p></noscript></form>';
-  const email = '<div class="client-write"><h3 class="t3">' + t.writeT + '</h3><p>' + t.writeText + company.email + '.</p><div class="acts"><a class="pill" href="mailto:' + company.email + '">' + c.writeButton + company.email + '</a></div></div>';
-  const native = "{% if settings.inquiries_enabled and theme.role == 'main' %}{% form 'contact', id: 'project-inquiry', class: 'inquiry-form', novalidate: 'novalidate' %}{% if form.posted_successfully? %}{{ velani_sent }}{% else %}<div data-inquiry-mode=\"live\">" + clientFields(true, lang) + "</div>{% if form.errors %}<div class=\"form-status\" role=\"alert\">{{ form.errors | default_errors }}</div>{% endif %}<div class=\"form-legal\">{{ 'shopify.online_store.spam_detection.disclaimer_html' | t }}</div>{% endif %}{% endform %}{% elsif theme.role == 'main' %}" + email + '{% else %}' + preview + "{{ velani_sent | replace: 'id=\"inquiry-sent\" tabindex=\"-1\"', 'id=\"inquiry-sent\" tabindex=\"-1\" hidden' }}{% endif %}";
+  const localApi = target === 'shopify' ? '' : (process.env.VELANI_CLIENT_HUB_API || '').trim();
+  const mode = target === 'shopify' ? "{% if theme.role == 'main' %}live{% else %}preview{% endif %}" : localApi ? 'live' : 'preview';
+  const fixtures = target === 'shopify' ? "{% unless theme.role == 'main' %} data-hub-fixtures{% endunless %}" : ' data-hub-fixtures';
+  const previewNote = '<p class="client-preview">' + t.preview + '</p>';
+  const off = '<div class="hub-off" data-hub-off hidden><p>' + t.hubOff + '</p><p class="hub-mail">' + company.email + '</p></div>';
+  const form = '<form id="project-inquiry" class="inquiry-form" data-inquiry-mode="hub" data-hub="' + mode + '" data-hub-api="' + e(localApi || HUB_API) + '"' + fixtures + ' novalidate>' + off + clientFields(lang)
+    + '<div class="form-status" role="status" aria-live="polite" tabindex="-1"></div>' + (target === 'shopify' ? "{% unless theme.role == 'main' %}" + previewNote + '{% endunless %}' : localApi ? '' : previewNote)
+    + '<noscript><p>' + t.hubNoscript + company.email + '.</p></noscript></form>';
+  const ref = '<div class="sent-ref" data-sent-ref hidden><p class="sent-ref-k">' + t.refK + '</p><p class="sent-ref-v" data-ref></p><button type="button" class="sent-copy" data-ref-copy>' + t.refCopy + '</button><p class="sr" role="status" data-ref-live></p></div>';
   const side = '<div class="client-side"><h2 class="t2 rise" id="client-t">' + e(t.clientT) + '</h2><p class="lede fade">' + e(t.clientText) + '</p></div>';
-  return (target === 'shopify' ? '{% capture velani_sent %}' + sentPanel(false, lang) + '{% endcapture %}' : '') + '<section class="chap client" id="client" aria-labelledby="client-t"><div class="wrap client-grid">' + side + '<div class="client-form">' + (target === 'shopify' ? native : preview + sentPanel(true, lang)) + '</div></div></section>';
+  return '<section class="chap client" id="client" aria-labelledby="client-t"><div class="wrap client-grid">' + side + '<div class="client-form">' + form + sentPanel(true, lang).replace('<p class="sent-p"', ref + '<p class="sent-p"') + '</div></div></section>';
 }
 /** Sign in (Nov 10 inspection): sign-in guidance in the Support layout. The title says it is guidance; the three facts sit where
  * Support has its doors; it ends on the next step for this task (NEVORA support), with no product or project offer. */
