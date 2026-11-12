@@ -352,7 +352,7 @@ function commercePage(page, target, lang = 'en') {
 /** The NEVORA billing API's address for the commerce pages: the theme setting on Shopify, VELANI_COMMERCE_API locally. Empty
  * means billing isn't available yet; the pages say so instead of guessing an endpoint. */
 function commerceBlock(target) {
-  const api = target === 'shopify' ? '{{ settings.commerce_api_url | strip | escape }}' : e((process.env.VELANI_COMMERCE_API || '').trim());
+  const api = target === 'shopify' ? "{% if theme.role == 'unpublished' or theme.role == 'development' %}{{ settings.commerce_api_url | strip | escape }}{% endif %}" : e((process.env.VELANI_COMMERCE_API || '').trim());
   return '<template id="velani-commerce" data-api="' + api + '"></template>';
 }
 /** The Support page's words (Spanish in src/content.es.mjs). */
