@@ -1,0 +1,87 @@
+{
+  "schemaVersion": 1,
+  "base": "482353871898c3f72154d284937a311757bf8e00",
+  "scope": "Velani docs, synthetic contract fixtures and seam tests only; separate NEVORA patch must be integrated by its sole finisher.",
+  "backend": {
+    "numTotalTests": 260,
+    "numPassedTests": 260,
+    "numFailedTests": 0,
+    "numPendingTests": 0,
+    "success": true
+  },
+  "typecheck": "passed",
+  "serviceBuild": "passed",
+  "website": {
+    "tests": 80,
+    "passed": 80,
+    "failed": 0,
+    "skipped": 0,
+    "builtRoutes": 37,
+    "themeOffenses": 0
+  },
+  "browser": {
+    "implementation": "existing installed Chrome via explicit executable override",
+    "passed": 87,
+    "failed": 2,
+    "blocked": 0,
+    "runtimeErrors": [],
+    "failures": [
+      {
+        "name": "chromium all internal links and fragments",
+        "status": "failed",
+        "error": "Missing fragment /pages/nevora#relay"
+      },
+      {
+        "name": "chromium no-JavaScript navigation and no unsafe inquiry",
+        "status": "failed",
+        "error": "No-JS navigation hidden"
+      }
+    ]
+  },
+  "retainedInitialFailures": [
+    {
+      "kind": "parallel PostgreSQL fixture extension setup",
+      "passed": 234,
+      "pending": 26,
+      "success": false,
+      "cause": "Concurrent CREATE EXTENSION vector in separate schemas hit global pg_extension_name_index. Explicitly initialized required extension before unchanged full-suite rerun; no test assertion or migration changed."
+    },
+    {
+      "kind": "browser launch",
+      "blocked": 1,
+      "cause": "Pinned Playwright cached executable absent. Used existing installed Chrome through supported override; no browser download."
+    }
+  ],
+  "qualifiedFiles": [
+    {
+      "path": "services/velani-ai/test/release-ui-contract.test.mjs",
+      "sha256": "30cd8969cd850f51e4e1c79740449a6b58c9b426a82cebfda84e9364ab37d9fa"
+    },
+    {
+      "path": "docs/handoffs/six-release-evidence-20261112/rondo-ui-fixtures.json",
+      "sha256": "bfedb6d5a48f1809eff3815ee2fe51a17bfbc75927f1f6e0d4290268228a7e5a"
+    },
+    {
+      "path": "services/velani-ai/src/app.ts",
+      "sha256": "a392197b849f3ccf3dac3929a4d7783b448247b919d88496c93046985e14107e"
+    },
+    {
+      "path": "services/velani-ai/integration/velani-assistant.js",
+      "sha256": "add851a64a9fc4aff15659672bf7365aa5f71f295e37ca3e361d2f851c46e0c4"
+    },
+    {
+      "path": "src/night/velani-assistant.js",
+      "sha256": "add851a64a9fc4aff15659672bf7365aa5f71f295e37ca3e361d2f851c46e0c4"
+    }
+  ],
+  "cleanup": {
+    "ownedPostgresStopped": true,
+    "ownedMountEjected": true,
+    "ownedPreviewPort4197Closed": true
+  },
+  "limits": [
+    "No paid model inference, real message, public resource mutation, deployment or CI dispatch.",
+    "No physical-device or whole-release acceptance.",
+    "Known website UI failures preserved; website not all-green."
+  ]
+}

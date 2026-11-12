@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "source": "482353871898c3f72154d284937a311757bf8e00",
+  "scope": "Exact current assets for SCRUM-158 permission/provenance handoff, not a permission grant or a new publication.",
+  "assets": [
+    {
+      "asset": "public/assets/night-tb-home.webp",
+      "business": "Tool Box LLC",
+      "use": "Homepage/custom-development portfolio",
+      "bytes": 73984,
+      "sha256": "b95d2640a4843a7d355050941c67e034440603379b34791cb3a51b3bd6804816",
+      "permissionEvidence": "Not found in reviewed source and imported chats; business-owner confirmation remains required."
+    },
+    {
+      "asset": "public/assets/night-store.webp",
+      "business": "Tool Box LLC",
+      "use": "Online-store portfolio",
+      "bytes": 57072,
+      "sha256": "03733461600c20562a81a1afcb8e813a7c67f79900c9cde6e65e7f36cea1131c",
+      "permissionEvidence": "Not found in reviewed source and imported chats; business-owner confirmation remains required."
+    },
+    {
+      "asset": "public/assets/night-yavi-book.webp",
+      "business": "Yavi Barber",
+      "use": "Booking portfolio",
+      "bytes": 69510,
+      "sha256": "0a77b038c5908f86f84a37a984a3ab7b71fae7a2606b1aa711f3ecb445f3cf1a",
+      "permissionEvidence": "Not found in reviewed source and imported chats; business-owner confirmation remains required."
+    },
+    {
+      "asset": "public/assets/night-yavi-rewards.webp",
+      "business": "Yavi Barber",
+      "use": "Rewards portfolio",
+      "bytes": 53192,
+      "sha256": "e1ee8d51fe0de40ec844fd5764d7bebc40e63fb0e4915a36107d3ff96ed31e16",
+      "permissionEvidence": "Not found in reviewed source and imported chats; business-owner confirmation remains required."
+    }
+  ]
+}

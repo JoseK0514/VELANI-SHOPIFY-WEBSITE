@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "mode": "local-fixture-only",
+  "recordedAgainst": {
+    "website": "482353871898c3f72154d284937a311757bf8e00",
+    "runtimeBackend": "78cdae299457af6b79bb105878f3fb52bfc70f79"
+  },
+  "notes": [
+    "Synthetic responses validated against the real Fastify handlers with an in-memory repository and injected model failure. No real database, provider, CAPTCHA verification or paid model request.",
+    "requestId is a correlation placeholder, not an authentication credential. Fixtures must be explicitly selected in local UI tests and never substitute production responses."
+  ],
+  "config": {
+    "status": 200,
+    "body": {
+      "assistantName": "Rondo",
+      "requireCaptcha": true,
+      "turnstileSiteKey": "fixture-public-key"
+    }
+  },
+  "rejections": [
+    {
+      "name": "safety",
+      "status": 422,
+      "retryAfter": null,
+      "body": {
+        "error": {
+          "code": "provider_request_rejected",
+          "message": "This request could not be processed by the AI provider. Ask about your workflow without requests for hidden instructions, credentials or private records."
+        },
+        "requestId": "fixture-request-id"
+      }
+    },
+    {
+      "name": "unclassified",
+      "status": 503,
+      "retryAfter": null,
+      "body": {
+        "error": {
+          "code": "provider_request_rejected",
+          "message": "This request could not be processed. Please rephrase it or ask one question at a time."
+        },
+        "requestId": "fixture-request-id"
+      }
+    }
+  ],
+  "outage": {
+    "status": 503,
+    "retryAfter": "10",
+    "body": {
+      "error": {
+        "code": "provider_unavailable",
+        "message": "The assistant could not answer right now. Please retry, or contact Velani."
+      },
+      "requestId": "fixture-request-id"
+    }
+  }
+}

@@ -1,0 +1,166 @@
+diff --git a/docs/handoffs/2026-11-12-six-release-recovery-patch.md b/docs/handoffs/2026-11-12-six-release-recovery-patch.md
+new file mode 100644
+index 00000000..d12194e4
+--- /dev/null
++++ b/docs/handoffs/2026-11-12-six-release-recovery-patch.md
+@@ -0,0 +1,32 @@
++# Incoming recovery patch for the sole SCRUM-190 finisher
++
++November12,2026. Base: eee76416ec8d06435e73c3ecde9a77752ec0d446. This is a local detached patch, not a second NEVORA integration/publication.
++
++Jose asked this chat to finish its non-overlapping part of60/147/73/156/157/158 and hand UI work to Claude. Read-only ownership check establishes “Finish NEVORA SCRUM-190 handoff” (01a1d175-7de0-7a80-b607-5418fde6ed50) as the active integration/hosting finisher. Its checkout/runtime/CI were not touched.
++
++## Cause and fix
++
++The current gate redirects Clocker documents but returns raw402/503JSON for GET /app documents. The earlier local04fe4616 recovery commit did not fully land in development; it is now preserved at refs/codex-recovery/commerce-recovery-04fe4616.
++
++- Actual HTML or Sec-Fetch-Mode:navigate GETs under /app now303 to exact /app/billing with only reason=subscription_required or billing_status_unavailable.
++- /api and /app/api requests, writes and explicit JSON/RSC reads retain the JSON402/503 contract, including callers with navigation-like headers.
++- No original query/return path is forwarded. Redirects are same-origin, no-store and no-referrer.
++- Exact GET /app/billing bypasses commerce-binding resolution, matching its existing gate exception and preventing an unavailable binding from redirecting its recovery page forever. It does not bypass page/session/role checks. Writes and descendants remain gated.
++- Existing strict Clocker recovery handling is unchanged. No private status field, role grant, billing plan, endpoint or environment changed.
++
++## Evidence
++
++Before the fix:22 new tests,14 failed/8 passed; failures reproduce raw document JSON and recovery-binding dependency. After the fix:76/76 tests across6 files, including all22 new controls, access/cache lifetime, recovery exceptions, tablet keys and authenticated Owner status. Scoped ESLint and project typecheck pass.
++
++The old local dependency folder lacked the already-declared @neon/functions package. The exact existing0.11.0 installation was linked into this checkout only; no package/lockfile changed. Initial typecheck failures and RED receipts remain in the external six-release audit evidence.
++
++The full default unit suite, source-bound manuals, build, candidate/post-push Actions and hosted acceptance belong to the sole finisher's next combined candidate; they were not duplicated or certified here. No hosted window, send, charge, quota change, runtime operation or CI dispatch occurred.
++
++## Integration and Claude boundary
++
++Import the reviewed patch into the current combined source; do not replace it with EEE or operate another candidate in parallel. Re-run affected checks, source/manual/inventory gates and full required candidate/development checks. Regenerate source-bound artifacts rather than relabel an older bundle.
++
++At the inspected development source, the /app/billing and /clocker/access/paused UI page files are still absent. Reconcile the held existing UI under169. The shared app layout still mounts operational AppShell loaders/pollers and parallel sheets around recovery content; Claude must adapt recovery composition to current company/session binding without weakening guards. Earlier04fe recovery-boundary/layout is reference only, not a blind single-company port.
++
++The corresponding detailed Claude handoff and source-bound Velani fixtures live in VELANI-SHOPIFY-WEBSITE docs/handoffs/2026-11-12-six-release-codex-to-claude.md. Six overall issues stay open until their UI/business/device/hosted criteria are evidenced. Development is the operating/acceptance line under Jose's November12 policy; main/production still needs separate approval.
++
+diff --git a/src/lib/commerce/access.ts b/src/lib/commerce/access.ts
+index c9bda33b..00543918 100644
+--- a/src/lib/commerce/access.ts
++++ b/src/lib/commerce/access.ts
+@@ -86,7 +86,18 @@ export async function requireOperationalCommerce() {
+ /** Tablet-safe recovery only. The return path is a bounded local Clocker key;
+  * request query strings and caller-provided destinations are never forwarded. */
+ export const CLOCKER_PAUSED_PATH='/clocker/access/paused';
++export const APP_BILLING_RECOVERY_PATH='/app/billing';
+ export function commerceDenial(path:string,method:string,code:'subscription_required'|'billing_status_unavailable',request?:Request):Response {
++  const appPage=path==='/app'||path.startsWith('/app/');
++  const appApi=path==='/app/api'||path.startsWith('/app/api/');
++  const document=request&&(request.headers.get('sec-fetch-mode')==='navigate'||
++    (request.headers.get('accept')??'').split(',').some(part=>part.split(';')[0].trim().toLowerCase()==='text/html'));
++  if(request&&method==='GET'&&appPage&&!appApi&&path!==APP_BILLING_RECOVERY_PATH&&document){
++    return new Response(null,{status:303,headers:{
++      location:new URL(APP_BILLING_RECOVERY_PATH+'?'+new URLSearchParams({reason:code}),request.url).href,
++      'cache-control':'no-store','referrer-policy':'no-referrer',
++    }});
++  }
+   const locationKey=path.startsWith('/clocker/')?path.slice('/clocker/'.length):'';
+   if(request&&method==='GET'&&locationKey.length<=64&&/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(locationKey)&&!request.headers.get('accept')?.includes('application/json')){
+     const query=new URLSearchParams({reason:code,from:path});
+diff --git a/src/proxy.commerce-recovery.test.ts b/src/proxy.commerce-recovery.test.ts
+new file mode 100644
+index 00000000..9ff0bc55
+--- /dev/null
++++ b/src/proxy.commerce-recovery.test.ts
+@@ -0,0 +1,82 @@
++import {afterEach,beforeEach,expect,it,vi} from 'vitest';
++import type {NextRequest} from 'next/server';
++import {proxy} from './proxy';
++import {resetCommerceAccessCache} from './lib/commerce/access';
++
++const fixture=vi.hoisted(()=>({bind:vi.fn()}));
++vi.mock('./lib/commerce/isolated-connection.server',()=>({
++  withCommerceRequest:fixture.bind,
++  isolatedCommerceConnection:async()=>({origin:'https://billing.example.test',installationId:'fictional',secret:'a'.repeat(43)}),
++}));
++beforeEach(()=>{
++  vi.stubEnv('NEVORA_COMMERCE_ENABLED','true');
++  vi.stubEnv('NEVORA_WORKSPACE_MODE','isolated');
++  fixture.bind.mockReset().mockImplementation(async(_request,work)=>work());
++});
++afterEach(()=>{vi.unstubAllEnvs();vi.unstubAllGlobals();resetCommerceAccessCache();});
++const request=(path:string,headers:Record<string,string>,method='GET')=>
++  Object.assign(new Request('https://company.example.test'+path,{method,headers}),{
++    nextUrl:new URL('https://company.example.test'+path),
++  }) as NextRequest;
++function authority(state:'restricted'|'unavailable'){
++  const fetcher=vi.fn(async()=>{
++    if(state==='unavailable')throw Error('Synthetic billing outage');
++    return Response.json({state:'restricted',operational:false,validUntil:Date.now()+10000});
++  });
++  vi.stubGlobal('fetch',fetcher);return fetcher;
++}
++const documentHeaders:Record<string,string>[]=[{accept:'text/html'},{'sec-fetch-mode':'navigate'}];
++const documents=['/app','/app/schedule','/app/notifications'].flatMap(path=>
++  (['restricted','unavailable'] as const).flatMap(state=>
++    documentHeaders.map(headers=>({path,state,headers}))));
++it.each(documents)('redirects $state document $path to the signed-in recovery route',async({path,state,headers})=>{
++  authority(state);
++  const response=await proxy(request(path+'?private-query=must-not-forward',headers));
++  expect(response?.status).toBe(303);
++  const target=new URL(response!.headers.get('location')!);
++  expect(target.origin).toBe('https://company.example.test');
++  expect(target.pathname).toBe('/app/billing');
++  expect([...target.searchParams.keys()]).toEqual(['reason']);
++  expect(target.searchParams.get('reason')).toBe(state==='restricted'?'subscription_required':'billing_status_unavailable');
++  expect(response!.headers.get('cache-control')).toBe('no-store');
++  expect(response!.headers.get('referrer-policy')).toBe('no-referrer');
++  expect(await response!.text()).toBe('');
++});
++const apiPaths=['/api/notifications','/app/api/push/status','/app/api/push/test'];
++it.each(apiPaths.flatMap(path=>(['restricted','unavailable'] as const).map(state=>({path,state}))))(
++  'retains JSON for $state API $path despite navigation-like headers',async({path,state})=>{
++    authority(state);
++    const response=await proxy(request(path,{accept:'text/html','sec-fetch-mode':'navigate'}));
++    expect(response?.status).toBe(state==='restricted'?402:503);
++    expect(response!.headers.has('location')).toBe(false);
++    expect(await response!.json()).toEqual({error:{code:state==='restricted'?'subscription_required':'billing_status_unavailable'}});
++  });
++it.each(['restricted','unavailable'] as const)('keeps writes and explicit JSON/RSC reads gated when $state',async state=>{
++  authority(state);
++  for(const req of [
++    request('/app/schedule',{accept:'text/html','sec-fetch-mode':'navigate'},'POST'),
++    request('/app/schedule',{accept:'application/json'}),
++    request('/app/schedule',{accept:'text/x-component','sec-fetch-mode':'cors'}),
++  ]){
++    const response=await proxy(req);
++    expect(response?.status).toBe(state==='restricted'?402:503);
++    expect(response!.headers.has('location')).toBe(false);
++  }
++});
++it('keeps the exact recovery GET independent of commerce binding and avoids redirect loops',async()=>{
++  const fetcher=authority('unavailable');
++  fixture.bind.mockRejectedValue(new Error('Synthetic binding unavailable'));
++  expect(await proxy(request('/app/billing?reason=billing_status_unavailable',{accept:'text/html'}))).toBeUndefined();
++  expect(fixture.bind).not.toHaveBeenCalled();expect(fetcher).not.toHaveBeenCalled();
++  const write=await proxy(request('/app/billing',{accept:'text/html'},'POST'));
++  expect(write?.status).toBe(503);expect(write!.headers.has('location')).toBe(false);
++});
++it('redirects document binding failures as unavailable without exposing query data',async()=>{
++  authority('restricted');
++  fixture.bind.mockRejectedValue(new Error('Synthetic binding unavailable'));
++  const response=await proxy(request('/app/settings?secret=discard',{'sec-fetch-mode':'navigate'}));
++  expect(response?.status).toBe(303);
++  const url=new URL(response!.headers.get('location')!);
++  expect(url.pathname).toBe('/app/billing');expect(url.search).toBe('?reason=billing_status_unavailable');
++});
++
+diff --git a/src/proxy.ts b/src/proxy.ts
+index c31e8455..59e247f5 100644
+--- a/src/proxy.ts
++++ b/src/proxy.ts
+@@ -1,8 +1,10 @@
+ import type { NextRequest } from "next/server";
+-import { CLOCKER_PAUSED_PATH,commerceGate,commerceDenial,commerceEnabled,publicOnboardingPath } from "./lib/commerce/access";
++import { APP_BILLING_RECOVERY_PATH,CLOCKER_PAUSED_PATH,commerceGate,commerceDenial,commerceEnabled,publicOnboardingPath } from "./lib/commerce/access";
+ /** Billing enrollment is opt-in; all normal application authorization remains in place. */
+ export async function proxy(request: NextRequest) {
+-  if(!commerceEnabled()||request.nextUrl.pathname.startsWith('/api/billing/')||publicOnboardingPath(request.nextUrl.pathname)||(request.method==='GET'&&request.nextUrl.pathname===CLOCKER_PAUSED_PATH))return undefined;
++  // These exact recovery GETs retain normal page/session/role checks, but must
++  // not depend on the commerce binding whose failure they explain.
++  if(!commerceEnabled()||request.nextUrl.pathname.startsWith('/api/billing/')||publicOnboardingPath(request.nextUrl.pathname)||(request.method==='GET'&&[CLOCKER_PAUSED_PATH,APP_BILLING_RECOVERY_PATH].includes(request.nextUrl.pathname)))return undefined;
+   if(process.env.NEVORA_WORKSPACE_MODE==='isolated'){
+     if(request.nextUrl.pathname.startsWith('/api/auth/')||request.nextUrl.pathname.startsWith('/api/passkeys/'))return undefined;
+     try{return await (await import('./lib/commerce/isolated-connection.server')).withCommerceRequest(request,async()=>await commerceGate(request.nextUrl.pathname,request.method,fetch,request)??undefined);}

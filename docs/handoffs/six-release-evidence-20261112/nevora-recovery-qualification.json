@@ -1,0 +1,24 @@
+{
+  "base": "eee76416ec8d06435e73c3ecde9a77752ec0d446",
+  "localCommit": "bc0013f5",
+  "state": "local detached patch; not merged/deployed or CI-qualified",
+  "tests": {
+    "newRed": {
+      "failed": 14,
+      "passed": 8
+    },
+    "focusedFinal": {
+      "passed": 76,
+      "failed": 0,
+      "files": 6
+    }
+  },
+  "eslint": "passed",
+  "projectTypecheck": "passed after linking the locally missing, already-declared existing SDK0.11.0; no source/package/lockfile change",
+  "integrationOwnerChat": "01a1d175-7de0-7a80-b607-5418fde6ed50",
+  "limits": [
+    "No active-finisher checkout/runtime changes",
+    "No NEVORA publication, CI dispatch or hosted acceptance",
+    "Recovery UI pages and shared-layout composition remain Claude integration work"
+  ]
+}

@@ -1,0 +1,454 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-11-12T20:44:03.054667+00:00",
+  "method": "Read-only GET and Shopify inventory; no submissions, model inference or hosting mutation",
+  "sources": {
+    "nevoraDevelopment": "eee76416ec8d06435e73c3ecde9a77752ec0d446",
+    "velaniBase": "482353871898c3f72154d284937a311757bf8e00",
+    "publicRondoRuntime": "3db0ea98bc3da6b3ae08b9e5d2c2b59a361e6a8d",
+    "protectedRondoRuntime": "78cdae299457af6b79bb105878f3fb52bfc70f79"
+  },
+  "readbacks": [
+    {
+      "url": "https://signup.nevora.team/api/onboarding/config",
+      "status": 200,
+      "body": {
+        "schemaVersion": 1,
+        "signupEnabled": false,
+        "locales": [
+          "en",
+          "es"
+        ]
+      },
+      "cacheControl": "no-store, private"
+    },
+    {
+      "url": "https://velani-ai.vercel.app/v1/config",
+      "status": 200,
+      "body": {
+        "assistantName": "Rondo",
+        "requireCaptcha": true,
+        "turnstileSiteKey": "0x4AAAAAAF0PYGQhwxiU91hz"
+      },
+      "cacheControl": "no-store"
+    },
+    {
+      "url": "https://velani-ai.vercel.app/v1/client-hub/config",
+      "status": 200,
+      "body": {
+        "enabled": true,
+        "turnstileSiteKey": "0x4AAAAAAF0PYGQhwxiU91hz",
+        "turnstileAction": "velani-client-hub"
+      },
+      "cacheControl": "no-store"
+    },
+    {
+      "url": "https://www.thevelani.com/pages/nevora-privacy",
+      "status": 200,
+      "observations": [
+        "Unpaid-trial operational restriction and available Owner export/own employee statements described.",
+        "Explicitly states trial expiry does not start an automatic workplace-deletion timer.",
+        "Spanish language switch points to /pages/es-nevora, not a translated legal page."
+      ]
+    },
+    {
+      "url": "https://www.thevelani.com/pages/nevora-account-deletion",
+      "status": 200,
+      "observations": [
+        "No three-day trial-deletion promise found in sampled rendered text.",
+        "Spanish language switch points to /pages/es-nevora."
+      ]
+    },
+    {
+      "url": "https://www.thevelani.com/pages/es-nevora-privacy",
+      "status": 404
+    },
+    {
+      "url": "https://www.thevelani.com/pages/es-privacy",
+      "status": 404
+    }
+  ],
+  "shopify": {
+    "themes": {
+      "nodes": [
+        {
+          "id": "gid://shopify/OnlineStoreTheme/187254899002",
+          "name": "Canyon",
+          "role": "UNPUBLISHED",
+          "updatedAt": "2026-06-07T17:38:41Z"
+        },
+        {
+          "id": "gid://shopify/OnlineStoreTheme/188816359738",
+          "name": "Balance",
+          "role": "UNPUBLISHED",
+          "updatedAt": "2026-06-11T13:31:49Z"
+        },
+        {
+          "id": "gid://shopify/OnlineStoreTheme/193179287866",
+          "name": "Velani quick fixes Nov 7 (preview)",
+          "role": "UNPUBLISHED",
+          "updatedAt": "2026-11-07T14:06:30Z"
+        },
+        {
+          "id": "gid://shopify/OnlineStoreTheme/193180827962",
+          "name": "Velani launch Nov 9",
+          "role": "UNPUBLISHED",
+          "updatedAt": "2026-11-09T12:49:35Z"
+        },
+        {
+          "id": "gid://shopify/OnlineStoreTheme/193244496186",
+          "name": "Velani no phone Nov 9 (preview)",
+          "role": "UNPUBLISHED",
+          "updatedAt": "2026-11-10T02:48:37Z"
+        },
+        {
+          "id": "gid://shopify/OnlineStoreTheme/193268777274",
+          "name": "Velani website contract Nov 9 (preview)",
+          "role": "UNPUBLISHED",
+          "updatedAt": "2026-11-10T15:51:03Z"
+        },
+        {
+          "id": "gid://shopify/OnlineStoreTheme/193285849402",
+          "name": "Copy of Velani website contract Nov 9 (preview)",
+          "role": "UNPUBLISHED",
+          "updatedAt": "2026-11-10T12:42:53Z"
+        },
+        {
+          "id": "gid://shopify/OnlineStoreTheme/193290043706",
+          "name": "Velani inspection fixes Nov 10 (preview)",
+          "role": "UNPUBLISHED",
+          "updatedAt": "2026-11-11T04:20:44Z"
+        },
+        {
+          "id": "gid://shopify/OnlineStoreTheme/193306198330",
+          "name": "Velani follow-ups Nov 10 (preview)",
+          "role": "UNPUBLISHED",
+          "updatedAt": "2026-11-10T22:48:43Z"
+        },
+        {
+          "id": "gid://shopify/OnlineStoreTheme/193306460474",
+          "name": "Velani warm light Home + NEVORA (preview)",
+          "role": "UNPUBLISHED",
+          "updatedAt": "2026-11-10T22:59:58Z"
+        },
+        {
+          "id": "gid://shopify/OnlineStoreTheme/193310425402",
+          "name": "Velani phase 1 one look (preview)",
+          "role": "UNPUBLISHED",
+          "updatedAt": "2026-11-11T01:32:14Z"
+        },
+        {
+          "id": "gid://shopify/OnlineStoreTheme/193311572282",
+          "name": "Velani signature hero (preview)",
+          "role": "MAIN",
+          "updatedAt": "2026-11-11T04:20:44Z"
+        },
+        {
+          "id": "gid://shopify/OnlineStoreTheme/193374224698",
+          "name": "Velani client hub forms (preview)",
+          "role": "UNPUBLISHED",
+          "updatedAt": "2026-11-12T12:55:37Z"
+        }
+      ],
+      "pageInfo": {
+        "hasNextPage": false,
+        "endCursor": "eyJsYXN0X2lkIjoxOTMzNzQyMjQ2OTgsImxhc3RfdmFsdWUiOjE5MzM3NDIyNDY5OH0="
+      }
+    },
+    "pages": {
+      "nodes": [
+        {
+          "id": "gid://shopify/Page/147618857274",
+          "title": "Contact",
+          "handle": "contact",
+          "isPublished": true,
+          "updatedAt": "2026-11-02T21:14:39Z"
+        },
+        {
+          "id": "gid://shopify/Page/147618890042",
+          "title": "Your Privacy Choices",
+          "handle": "data-sharing-opt-out",
+          "isPublished": false,
+          "updatedAt": "2026-06-12T16:13:02Z"
+        },
+        {
+          "id": "gid://shopify/Page/160787431738",
+          "title": "Contact Us:",
+          "handle": "contact-us",
+          "isPublished": false,
+          "updatedAt": "2026-06-12T16:13:02Z"
+        },
+        {
+          "id": "gid://shopify/Page/162171846970",
+          "title": "About Us:",
+          "handle": "about-us",
+          "isPublished": false,
+          "updatedAt": "2026-06-12T16:13:02Z"
+        },
+        {
+          "id": "gid://shopify/Page/167208485178",
+          "title": "NEVORA privacy policy",
+          "handle": "nevora-privacy",
+          "isPublished": true,
+          "updatedAt": "2026-11-02T21:14:38Z"
+        },
+        {
+          "id": "gid://shopify/Page/167208517946",
+          "title": "NEVORA terms of use",
+          "handle": "nevora-terms",
+          "isPublished": true,
+          "updatedAt": "2026-11-02T21:14:38Z"
+        },
+        {
+          "id": "gid://shopify/Page/167208550714",
+          "title": "NEVORA support",
+          "handle": "nevora-support",
+          "isPublished": true,
+          "updatedAt": "2026-11-02T21:14:38Z"
+        },
+        {
+          "id": "gid://shopify/Page/167208583482",
+          "title": "Delete your NEVORA account",
+          "handle": "nevora-account-deletion",
+          "isPublished": true,
+          "updatedAt": "2026-11-02T21:14:38Z"
+        },
+        {
+          "id": "gid://shopify/Page/167208911162",
+          "title": "Products",
+          "handle": "products",
+          "isPublished": true,
+          "updatedAt": "2026-11-02T21:14:38Z"
+        },
+        {
+          "id": "gid://shopify/Page/167208943930",
+          "title": "NEVORA",
+          "handle": "nevora",
+          "isPublished": true,
+          "updatedAt": "2026-11-02T21:14:38Z"
+        },
+        {
+          "id": "gid://shopify/Page/167208976698",
+          "title": "Custom development",
+          "handle": "custom-development",
+          "isPublished": true,
+          "updatedAt": "2026-11-02T21:14:39Z"
+        },
+        {
+          "id": "gid://shopify/Page/167209009466",
+          "title": "About",
+          "handle": "about",
+          "isPublished": true,
+          "updatedAt": "2026-11-02T21:14:39Z"
+        },
+        {
+          "id": "gid://shopify/Page/167209042234",
+          "title": "Help",
+          "handle": "help",
+          "isPublished": true,
+          "updatedAt": "2026-11-02T21:14:39Z"
+        },
+        {
+          "id": "gid://shopify/Page/167209075002",
+          "title": "Legal",
+          "handle": "legal",
+          "isPublished": true,
+          "updatedAt": "2026-11-02T21:14:39Z"
+        },
+        {
+          "id": "gid://shopify/Page/167209107770",
+          "title": "Website privacy notice",
+          "handle": "privacy",
+          "isPublished": true,
+          "updatedAt": "2026-11-02T21:14:39Z"
+        },
+        {
+          "id": "gid://shopify/Page/167209140538",
+          "title": "Cookies and preferences",
+          "handle": "cookies",
+          "isPublished": true,
+          "updatedAt": "2026-11-02T21:14:39Z"
+        },
+        {
+          "id": "gid://shopify/Page/167209173306",
+          "title": "Website terms",
+          "handle": "website-terms",
+          "isPublished": true,
+          "updatedAt": "2026-11-02T21:14:39Z"
+        },
+        {
+          "id": "gid://shopify/Page/167209206074",
+          "title": "Software and project terms",
+          "handle": "software-project-terms",
+          "isPublished": true,
+          "updatedAt": "2026-11-02T21:14:39Z"
+        },
+        {
+          "id": "gid://shopify/Page/167209238842",
+          "title": "Accessibility",
+          "handle": "accessibility",
+          "isPublished": true,
+          "updatedAt": "2026-11-02T21:14:39Z"
+        },
+        {
+          "id": "gid://shopify/Page/167209271610",
+          "title": "Security",
+          "handle": "security",
+          "isPublished": true,
+          "updatedAt": "2026-11-02T21:14:39Z"
+        },
+        {
+          "id": "gid://shopify/Page/167254720826",
+          "title": "Plans",
+          "handle": "plans",
+          "isPublished": true,
+          "updatedAt": "2026-11-05T10:19:53Z"
+        },
+        {
+          "id": "gid://shopify/Page/167348961594",
+          "title": "Inicio (español)",
+          "handle": "es",
+          "isPublished": true,
+          "updatedAt": "2026-11-05T17:33:46Z"
+        },
+        {
+          "id": "gid://shopify/Page/167348994362",
+          "title": "NEVORA (español)",
+          "handle": "es-nevora",
+          "isPublished": true,
+          "updatedAt": "2026-11-05T17:33:46Z"
+        },
+        {
+          "id": "gid://shopify/Page/167349027130",
+          "title": "Productos",
+          "handle": "es-productos",
+          "isPublished": true,
+          "updatedAt": "2026-11-05T17:33:46Z"
+        },
+        {
+          "id": "gid://shopify/Page/167349059898",
+          "title": "Planes",
+          "handle": "es-planes",
+          "isPublished": true,
+          "updatedAt": "2026-11-05T17:33:46Z"
+        },
+        {
+          "id": "gid://shopify/Page/167349092666",
+          "title": "Contacto",
+          "handle": "es-contacto",
+          "isPublished": true,
+          "updatedAt": "2026-11-05T17:33:46Z"
+        },
+        {
+          "id": "gid://shopify/Page/167412138298",
+          "title": "Nosotros",
+          "handle": "es-nosotros",
+          "isPublished": true,
+          "updatedAt": "2026-11-09T12:45:25Z"
+        },
+        {
+          "id": "gid://shopify/Page/167412171066",
+          "title": "Soporte",
+          "handle": "es-ayuda",
+          "isPublished": true,
+          "updatedAt": "2026-11-09T12:45:26Z"
+        },
+        {
+          "id": "gid://shopify/Page/167420657978",
+          "title": "Software a la medida",
+          "handle": "es-a-la-medida",
+          "isPublished": true,
+          "updatedAt": "2026-11-09T12:45:26Z"
+        },
+        {
+          "id": "gid://shopify/Page/167427375418",
+          "title": "Sign in",
+          "handle": "sign-in",
+          "isPublished": true,
+          "updatedAt": "2026-11-09T12:45:26Z"
+        },
+        {
+          "id": "gid://shopify/Page/167427408186",
+          "title": "Entrar",
+          "handle": "es-entrar",
+          "isPublished": true,
+          "updatedAt": "2026-11-09T12:45:26Z"
+        },
+        {
+          "id": "gid://shopify/Page/167479771450",
+          "title": "Start your NEVORA trial",
+          "handle": "nevora-start",
+          "isPublished": true,
+          "updatedAt": "2026-11-09T12:45:25Z"
+        },
+        {
+          "id": "gid://shopify/Page/167479804218",
+          "title": "Set up your NEVORA workplace",
+          "handle": "nevora-verify",
+          "isPublished": true,
+          "updatedAt": "2026-11-09T12:45:25Z"
+        },
+        {
+          "id": "gid://shopify/Page/167479836986",
+          "title": "NEVORA billing",
+          "handle": "nevora-billing",
+          "isPublished": true,
+          "updatedAt": "2026-11-09T12:45:25Z"
+        },
+        {
+          "id": "gid://shopify/Page/167479869754",
+          "title": "Confirming payment",
+          "handle": "nevora-billing-return",
+          "isPublished": true,
+          "updatedAt": "2026-11-09T12:45:25Z"
+        },
+        {
+          "id": "gid://shopify/Page/167479902522",
+          "title": "Empieza tu prueba de NEVORA",
+          "handle": "es-prueba",
+          "isPublished": true,
+          "updatedAt": "2026-11-09T12:45:25Z"
+        },
+        {
+          "id": "gid://shopify/Page/167479935290",
+          "title": "Configura tu lugar de trabajo de NEVORA",
+          "handle": "es-configurar",
+          "isPublished": true,
+          "updatedAt": "2026-11-09T12:45:25Z"
+        },
+        {
+          "id": "gid://shopify/Page/167479968058",
+          "title": "Facturación de NEVORA",
+          "handle": "es-facturacion",
+          "isPublished": true,
+          "updatedAt": "2026-11-09T12:45:25Z"
+        },
+        {
+          "id": "gid://shopify/Page/167480000826",
+          "title": "Confirmando el pago",
+          "handle": "es-pago",
+          "isPublished": true,
+          "updatedAt": "2026-11-09T12:45:25Z"
+        }
+      ],
+      "pageInfo": {
+        "hasNextPage": false,
+        "endCursor": "eyJsYXN0X2lkIjoxNjc0ODAwMDA4MjYsImxhc3RfdmFsdWUiOiIyMDI2LTExLTA5IDEyOjI3OjM3LjAwMDAwMCJ9"
+      }
+    }
+  },
+  "providerRetention": {
+    "source": "https://neon.com/docs/ai-gateway/data-retention.md",
+    "readAt": "2026-11-12",
+    "facts": [
+      "Most gateway models are served through Databricks Model Serving.",
+      "Databricks may retain inputs/outputs up to30days for abuse monitoring; applicable partner safety retention is separate.",
+      "Deleting an application conversation does not prove removal of every provider, backup or mailbox copy."
+    ]
+  },
+  "limitations": [
+    "Public GETs establish the sampled HTTP/configuration/copy, not joined signup, delivery, model or authenticated Owner acceptance.",
+    "Shopify publication and content permissions remain separate owner decisions.",
+    "Actual NEVORA hosted acceptance remains with the active SCRUM-190 finisher."
+  ]
+}
