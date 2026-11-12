@@ -9,7 +9,7 @@ const width = Number(widthArg), view = lang === 'es' ? 'velani-es-ayuda' : 'vela
 const url = hash => 'https://www.thevelani.com/?preview_theme_id=' + theme + '&view=' + view + '&interest=client-help' + hash;
 await mkdir(out, { recursive: true });
 const browser = await chromium.launch({ executablePath: process.env.HOME + '/Library/Caches/ms-playwright/chromium_headless_shell-1243/chrome-headless-shell-mac-arm64/chrome-headless-shell' });
-const hub = [], results = [];
+const hub = [], results = []; let hubConfig = null;
 const ok = (name, pass, detail = '') => results.push((pass ? 'ok ' : 'FAIL ') + name + (pass ? '' : ' :: ' + detail));
 async function open(hash) {
   const context = await browser.newContext({ viewport: { width, height: width > 600 ? 900 : 844 } });
@@ -18,6 +18,7 @@ async function open(hash) {
   await page.route('**/*', r => { const u = new URL(r.request().url());
     if (u.hostname === 'velani-ai.vercel.app') { hub.push(r.request().method() + ' ' + u.pathname); if (kind === 'real' && r.request().method() === 'GET' && u.pathname === '/v1/client-hub/config') return r.continue(); return r.abort(); }
     return r.continue(); });
+  page.on('response', async r => { if (r.url().endsWith('/v1/client-hub/config') && r.request().method() === 'GET') { try { hubConfig = { status: r.status(), ...(await r.json()) }; } catch { hubConfig = { status: r.status() }; } } });
   await page.goto(url(hash), { waitUntil: 'load' });
   await page.waitForFunction(() => { const f = document.querySelector('#project-inquiry > fieldset'); return f && (!f.disabled || !document.querySelector('[data-hub-off]').hidden); }, null, { timeout: 15000 });
   return { page, context };
@@ -50,8 +51,15 @@ try {
     ok('theme ' + JSON.stringify(info), String(info.id) === theme && info.role !== 'main' && info.hub === 'live' && !info.fx && info.notice.length > 0);
     ok('#hub-state does nothing: form is on', await page.locator('#project-inquiry > fieldset').isEnabled() && await page.locator('[data-hub-off]').isHidden());
     ok('test notice visible', await page.locator('[data-hub-test]').isVisible());
+    await page.waitForTimeout(1500);
     ok('config GET asked once, no POST', hub.join() === 'GET /v1/client-hub/config', hub.join(', '));
-    const turnstile = await page.evaluate(() => window.__hubWarm ? window.__hubWarm().then(() => !!document.querySelector('#hub-turnstile iframe, #hub-turnstile input[name="cf-turnstile-response"]'), () => false) : null);
+    ok('config GET succeeded: enabled, action velani-client-hub, site key present', hubConfig?.status === 200 && hubConfig.enabled === true && hubConfig.turnstileAction === 'velani-client-hub' && !!hubConfig.turnstileSiteKey, JSON.stringify({ ...hubConfig, turnstileSiteKey: hubConfig?.turnstileSiteKey ? 'present' : 'missing' }));
+    // Entering the form loads Cloudflare's script (the form's own warm-up). The widget is then rendered here in a scratch slot with the
+    // served site key and action, only to see that it renders on this host. Its token goes nowhere.
+    await page.focus('#inquiry-name');
+    const loaded = await page.waitForFunction(() => !!window.turnstile, null, { timeout: 20000 }).then(() => true, () => false);
+    ok('Turnstile script loads when the form is entered', loaded);
+    const turnstile = loaded && await page.evaluate(key => new Promise(resolve => { const slot = document.querySelector('#hub-turnstile'); try { window.turnstile.render(slot, { sitekey: key, action: 'velani-client-hub', appearance: 'always' }); } catch (e) { return resolve('throw ' + e.message); } let n = 0; const t = setInterval(() => { if (slot.querySelector('iframe') || slot.querySelector('input[name="cf-turnstile-response"]')) { clearInterval(t); resolve(true); } else if (++n > 50) { clearInterval(t); resolve('no widget'); } }, 200); }), hubConfig?.turnstileSiteKey);
     ok('Turnstile widget renders', turnstile === true, String(turnstile));
     await page.click('[data-inquiry-submit]'); await page.waitForTimeout(400);
     ok('empty Send only shows field errors, still no POST', (await page.locator('#error-name').textContent()) !== '' && !hub.some(h => h.startsWith('POST')));
