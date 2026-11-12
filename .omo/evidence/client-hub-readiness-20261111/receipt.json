@@ -1,0 +1,111 @@
+{
+  "checkedAt": "2026-11-12T00:13:25.380177+00:00",
+  "branch": "codex/client-hub-20261107",
+  "baseline": "ef9dbe2943e722b92f8ff14de0b935d4d069c678",
+  "clientHubRuntimeUnchangedFrom": "d89350bd4019bc2746373bba8b75ff70d05039c8",
+  "journeyTestSha256": "5a26ab2649b8903f3ffad0a1e19e89373a731a2b1e9d8baacc9779bec4ea73ba",
+  "checks": {
+    "focusedBaseline": {
+      "passed": 27,
+      "failed": 0
+    },
+    "newDatabaseJourneys": {
+      "passed": 4,
+      "failed": 0
+    },
+    "fullServiceSuite": {
+      "passed": 193,
+      "failed": 0,
+      "skipped": 0,
+      "files": 21
+    },
+    "typecheck": "passed",
+    "build": "passed",
+    "productionDependencyAudit": {
+      "vulnerabilities": 0
+    }
+  },
+  "warnings": [
+    "Existing Fastify FSTDEP023 deprecation warnings remain unchanged."
+  ],
+  "fixture": {
+    "postgresRelease": "Postgres.app 2.9.6 / PostgreSQL 17",
+    "pgvectorAvailable": true,
+    "releaseSha256": "b38bb00b8c8702a568270aab85995c550f7f93d1503b818efdc5ff9a519b7168",
+    "bind": "127.0.0.1",
+    "productionCredentialsUsed": false,
+    "databaseStoppedAndRemoved": true
+  },
+  "liveReadOnlyProbes": [
+    {
+      "method": "GET",
+      "path": "/v1/client-hub/config",
+      "origin": "https://www.thevelani.com",
+      "status": 200,
+      "enabled": true,
+      "turnstileAction": "velani-client-hub",
+      "cacheControl": "no-store"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/v1/client-hub/requests",
+      "origin": "https://www.thevelani.com",
+      "status": 204,
+      "allowOrigin": "https://www.thevelani.com",
+      "allowHeaders": [
+        "Content-Type",
+        "Idempotency-Key"
+      ],
+      "exposedHeaders": [
+        "Retry-After"
+      ]
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/v1/client-hub/requests",
+      "origin": "https://thevelani.com",
+      "status": 204,
+      "allowOrigin": "https://thevelani.com",
+      "allowHeaders": [
+        "Content-Type",
+        "Idempotency-Key"
+      ],
+      "exposedHeaders": [
+        "Retry-After"
+      ]
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/v1/client-hub/requests",
+      "origin": "https://x19hvn-ar.myshopify.com",
+      "status": 204,
+      "allowOrigin": "https://x19hvn-ar.myshopify.com",
+      "allowHeaders": [
+        "Content-Type",
+        "Idempotency-Key"
+      ],
+      "exposedHeaders": [
+        "Retry-After"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/v1/client-hub/config",
+      "origin": "https://unapproved.example",
+      "status": 403,
+      "error": "origin_not_allowed",
+      "allowOrigin": null
+    }
+  ],
+  "notPerformed": [
+    "Live POST/email/inbox test",
+    "Paid AI call",
+    "Production data or credential change",
+    "Theme mutation or publication",
+    "CI dispatch",
+    "Deployment",
+    "Fresh automatic maintenance or queue execution proof"
+  ],
+  "providerMetadataAccess": "Connected Vercel project lookups returned 404; no fresh deployment provenance claim.",
+  "nextOwner": "Claude: integrate forms against fixed contract; obtain approved inbox/send scope before genuine email acceptance."
+}
