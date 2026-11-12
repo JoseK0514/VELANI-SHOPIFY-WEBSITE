@@ -48,14 +48,15 @@ export function initHubForm(form, sent, deps = {}) {
   const lang = /^es\b/i.test(document.documentElement.lang) ? 'es' : 'en', L = STRINGS[lang];
   const live = form.dataset.hub === 'live';
   // Review states (#hub-state=pending and so on) exist only where the page says so: never on the published theme
-  const wanted = form.hasAttribute('data-hub-fixtures') ? (/^#hub-state=([a-z]+)$/.exec(location.hash) || [])[1] : '';
+  const wanted = !live && form.hasAttribute('data-hub-fixtures') ? (/^#hub-state=([a-z]+)$/.exec(location.hash) || [])[1] : '';
   const fixture = FIXTURES.includes(wanted) ? wanted : '';
   const client = live && !fixture ? (deps.createClient || createHubClient)({ api: form.dataset.hubApi }) : null;
   const fieldset = form.querySelector('fieldset'), button = form.querySelector('[data-inquiry-submit]'), status = form.querySelector('.form-status'), off = form.querySelector('[data-hub-off]');
   const fields = Object.fromEntries(['name', 'email', 'company', 'project', 'message', 'interest', 'timing', 'urgency'].map(key => [key, form.querySelector('#inquiry-' + key)]));
   form.querySelector('.client-send').before(status); // the summary sits directly above the Send button
   const shown = ['name', 'email', 'company', 'project', 'message'];
-  const read = () => Object.fromEntries(Object.entries(fields).map(([key, input]) => [key, input && !input.disabled ? input.value : '']));
+  const read = () => Object.fromEntries(Object.entries(fields).map(([key, input]) => [key, input && !input.closest('[data-k][hidden]') ? input.value : '']));
+  const print = values => JSON.stringify(values);
   const kindKey = () => fields.interest.value === 'client-help' ? 'help' : 'work';
 
   // Two kinds of request share the form: the choice sets the topic, the wording, and timing or urgency
@@ -85,7 +86,12 @@ export function initHubForm(form, sent, deps = {}) {
   }
   let serverErrors = {};
   const check = () => { const checked = validateHub(read()); const errors = { ...checked.errors }; for (const k of Object.keys(serverErrors)) if (!errors[k]) errors[k] = serverErrors[k]; return { ...checked, errors, valid: checked.valid }; };
-  const setButton = () => { button.disabled = busy || !!waitTimer; form.setAttribute('aria-busy', String(busy));
+  // While the security check runs and while the request is on its way, every field and both request kinds are locked,
+  // so what is sent is exactly what was checked. They open again with the outcome, values kept.
+  const controls = [...form.querySelectorAll('input:not([type="hidden"]), textarea, select')]; let locked = false;
+  function lock(on) { if (on === locked) return; locked = on; fieldset.classList.toggle('is-locked', on); fieldset.setAttribute('aria-busy', String(on));
+    for (const el of controls) { if (el.matches('textarea, input:not([type="radio"])')) el.readOnly = on; else if (on) { el.dataset.wasOff = String(el.disabled); el.disabled = true; } else { el.disabled = el.dataset.wasOff === 'true'; delete el.dataset.wasOff; } } }
+  const setButton = () => { lock(busy); button.disabled = busy || !!waitTimer; form.setAttribute('aria-busy', String(busy));
     button.querySelectorAll('[data-k]').forEach(el => { el.hidden = retryLabel || el.dataset.k !== kindKey(); });
     let r = button.querySelector('[data-retry]'); if (!r) { r = document.createElement('span'); r.dataset.retry = ''; r.textContent = L.retry; button.append(r); } r.hidden = !retryLabel; };
   // Any edit starts a new logical submission: a server error on that field is gone, the retry wording and any wait end
@@ -178,6 +184,10 @@ export function initHubForm(form, sent, deps = {}) {
     if (!config?.available) { busy = false; setButton(); return turnOff(); }
     let token;
     try { token = await freshToken(config); } catch { return outcome({ kind: 'verify' }, topic, false); }
+    // Second guard behind the lock: if anything changed while the check ran, nothing is sent. The form is checked again
+    // and the next Send starts a new submission with a new key.
+    const now = validateHub(read());
+    if (print(now.values) !== print(checked.values)) { busy = false; say('', ''); setButton(); tried = true; showErrors(now.errors); summarize(now.errors); return; }
     say('sending', L.status.sending);
     outcome(await client.submit(checked.values, { language: lang, turnstileToken: token }), topic, false);
   });
@@ -186,5 +196,7 @@ export function initHubForm(form, sent, deps = {}) {
   if (fixture === 'unavailable') { turnOff(); form.scrollIntoView({ block: 'center' }); return; }
   fieldset.disabled = false; setButton();
   if (fixture) form.scrollIntoView({ block: 'center' });
-  if (client) { config = client.loadConfig(); config.then(c => { if (!c.available) turnOff(); }); }
+  if (client) { config = client.loadConfig(); config.then(c => { if (!c.available) turnOff(); });
+    // The security check's script loads when the visitor first enters the form, so Send does not wait for it
+    form.addEventListener('focusin', () => { Promise.resolve(config).then(c => { if (c?.available) loadTurnstile().catch(() => {}); }); }, { once: true }); }
 }

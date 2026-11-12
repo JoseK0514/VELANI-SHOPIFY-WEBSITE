@@ -24,7 +24,7 @@ const fake = http.createServer((req, res) => {
     if (req.method === 'POST' && req.url === '/v1/client-hub/requests') {
       hub.posts.push({ key: req.headers['idempotency-key'], type: req.headers['content-type'], cookie: req.headers.cookie, referer: req.headers.referer, body: JSON.parse(raw) });
       const step = hub.plan.shift() || { status: 201, body: { status: 'received', reference: 'VEL-2611-0007', confirmationEmail: 'submitted' } };
-      res.writeHead(step.status, { ...cors, 'Content-Type': 'application/json', ...(step.headers || {}) }); res.end(JSON.stringify(step.body ?? {})); return;
+      setTimeout(() => { res.writeHead(step.status, { ...cors, 'Content-Type': 'application/json', ...(step.headers || {}) }); res.end(JSON.stringify(step.body ?? {})); }, step.delay || 0); return;
     }
     res.writeHead(404, cors); res.end();
   });
@@ -40,15 +40,15 @@ for (let i = 0; i < 80; i++) { try { if ((await fetch(base + route)).ok) break; 
 
 const browser = await chromium.launch({ executablePath: process.env.HOME + '/Library/Caches/ms-playwright/chromium_headless_shell-1243/chrome-headless-shell-mac-arm64/chrome-headless-shell' });
 const outside = [], consoleErrors = [], net = { drop: false };
-const TURNSTILE = `window.__ts={n:0,fail:false,opts:null};window.turnstile={render(sel,o){window.__ts.opts=o;window.__ts.sel=sel;this.run();return 'w1'},reset(){this.run()},run(){const s=window.__ts;setTimeout(()=>{if(s.fail){s.opts['error-callback']('x')}else{s.opts.callback('token-'+(++s.n))}},30)}};`;
-async function open(hash = '', { reduced = false, strip = false, turnstileFail = false } = {}) {
+const TURNSTILE = `window.__ts={n:0,fail:false,opts:null,delay:30};window.turnstile={render(sel,o){window.__ts.opts=o;window.__ts.sel=sel;this.run();return 'w1'},reset(){this.run()},run(){const s=window.__ts;setTimeout(()=>{if(s.fail){s.opts['error-callback']('x')}else{s.opts.callback('token-'+(++s.n))}},s.delay)}};`;
+async function open(hash = '', { reduced = false, strip = false, turnstileFail = false, turnstileDelay = 0 } = {}) {
   const context = await browser.newContext({ viewport: { width, height: width > 600 ? 900 : 844 }, reducedMotion: reduced ? 'reduce' : 'no-preference', permissions: ['clipboard-read', 'clipboard-write'] });
   const page = await context.newPage();
   page.on('console', m => { if (m.type() === 'error' && !/Failed to load resource/.test(m.text())) consoleErrors.push(m.text().slice(0, 160)); });
   page.on('pageerror', e => consoleErrors.push('pageerror ' + e.message.slice(0, 160)));
   await page.route('**/*', async r => {
     const url = new URL(r.request().url());
-    if (url.hostname === 'challenges.cloudflare.com') return r.fulfill({ contentType: 'text/javascript', body: TURNSTILE + (turnstileFail ? 'window.__ts.fail=true;' : '') });
+    if (url.hostname === 'challenges.cloudflare.com') return r.fulfill({ contentType: 'text/javascript', body: TURNSTILE + (turnstileFail ? 'window.__ts.fail=true;' : '') + (turnstileDelay ? 'window.__ts.delay=' + turnstileDelay + ';' : '') });
     if (url.hostname !== '127.0.0.1') { outside.push(r.request().method() + ' ' + url.origin + url.pathname); return r.abort(); }
     // A lost connection: the request is cut in the browser (a real reset on a reused socket makes Chromium resend by itself)
     if (net.drop && r.request().method() === 'POST' && url.pathname === '/v1/client-hub/requests') { net.drop = false; const h = r.request().headers(); hub.posts.push({ key: h['idempotency-key'], type: h['content-type'], body: r.request().postDataJSON() }); return r.abort('connectionreset'); }
@@ -67,7 +67,7 @@ const savedShown = page => page.waitForFunction(() => !document.querySelector('#
 let axeRuns = 0, axeViolations = 0, shotCount = 0;
 async function audit(page, name) {
   // Clear of the fixed header, so a field under it is not measured as a covered target
-  await page.evaluate(() => { const el = document.querySelector('#inquiry-sent:not([hidden])') || document.querySelector('#project-inquiry'); window.scrollTo(0, el.getBoundingClientRect().top + scrollY - 160); });
+  await page.evaluate(() => { const el = document.querySelector('#inquiry-sent:not([hidden])') || document.querySelector('#project-inquiry'); window.scrollTo({ top: el.getBoundingClientRect().top + scrollY - 160, behavior: 'instant' }); return new Promise(r => requestAnimationFrame(() => requestAnimationFrame(r))); });
   // Measure the settled page, not a frame of the panel fading in or a label moving
   await page.evaluate(() => Promise.race([Promise.all(document.getAnimations().filter(a => a.effect?.getComputedTiming().iterations !== Infinity).map(a => a.finished.catch(() => {}))), new Promise(r => setTimeout(r, 1500))]));
   const { violations } = await new AxeBuilder({ page }).include('#client').withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'wcag22aa']).analyze();
@@ -192,6 +192,48 @@ try {
     ok('422: the email error clears when edited', (await page.locator('#error-email').textContent()) === '');
     await context.close();
 
+
+    // ---------- Codex review: nothing stale can be sent. Fields and request kinds are locked while the security check runs
+    // and while the request is on its way; a change forced past the lock cancels the send.
+    const lockedNow = page => page.evaluate(() => { const f = document.querySelector('#project-inquiry'); const els = [...f.querySelectorAll('input:not([type="hidden"]), textarea, select')];
+      return els.every(el => el.matches('textarea, input:not([type="radio"])') ? el.readOnly : el.disabled) && f.getAttribute('aria-busy') === 'true' && f.querySelector('fieldset').getAttribute('aria-busy') === 'true' && f.querySelector('[data-inquiry-submit]').disabled; });
+    const typeInto = async (page, id, text) => { await page.locator('#inquiry-' + id).click({ force: true }).catch(() => {}); await page.keyboard.type(text); };
+    const force = (page, id, value) => page.evaluate(([id, value]) => { const el = document.querySelector('#inquiry-' + id); el.value = value; el.dispatchEvent(new Event('input', { bubbles: true })); }, [id, value]);
+    const unlocked = page => page.waitForFunction(() => document.querySelector('#project-inquiry').getAttribute('aria-busy') === 'false' && !document.querySelector('#inquiry-email').readOnly, null, { timeout: 6000 }).then(() => true, () => false);
+    reset(); ({ page, context } = await open('', { turnstileDelay: 1500 })); await fill(page); await send(page);
+    ok('lock: verifying state', await state(page, 'verifying'));
+    ok('lock: every field and both kinds locked during the security check', await lockedNow(page));
+    await audit(page, 'locked-verifying');
+    await typeInto(page, 'email', 'x'); await typeInto(page, 'message', ' more'); await page.locator('label.kind >> nth=0').click({ force: true }).catch(() => {});
+    ok('lock: typing and switching kind change nothing while pending', await page.inputValue('#inquiry-email') === 'ana@example.com' && await page.inputValue('#inquiry-message') === 'The contact page stops responding after sending.' && await page.inputValue('#inquiry-interest') === 'client-help');
+    ok('lock: saved with the checked values only', await savedShown(page) && hub.posts.length === 1 && hub.posts[0].body.email === 'ana@example.com' && hub.posts[0].body.description === 'The contact page stops responding after sending.', JSON.stringify(hub.posts.map(p => p.body.email)));
+    await context.close();
+    reset(); ({ page, context } = await open('', { turnstileDelay: 1200 })); await fill(page); await send(page); await state(page, 'verifying');
+    await force(page, 'email', 'corrected@example.com'); await force(page, 'message', 'The checkout page shows an error after paying.');
+    ok('stale guard: a change forced during the check cancels the send, nothing with old values goes out', await unlocked(page) && hub.posts.length === 0 && await page.locator('#inquiry-sent').isHidden(), String(hub.posts.length));
+    await page.evaluate(() => { window.__ts.delay = 30; }); await send(page);
+    ok('stale guard: the next Send carries the corrected values', await savedShown(page) && hub.posts.length === 1 && hub.posts[0].body.email === 'corrected@example.com' && hub.posts[0].body.description === 'The checkout page shows an error after paying.');
+    await context.close();
+    reset(); hub.plan = [{ status: 503, delay: 1200, body: { error: { code: 'service_unavailable' } } }];
+    ({ page, context } = await open()); await fill(page); await send(page);
+    ok('lock: sending state', await state(page, 'sending'));
+    ok('lock: every field and both kinds locked while the request is on its way', await lockedNow(page));
+    await typeInto(page, 'email', 'x');
+    ok('lock: typing changes nothing during the POST', await page.inputValue('#inquiry-email') === 'ana@example.com');
+    await force(page, 'message', 'The checkout page shows an error after paying.');
+    ok('edit during POST: outcome arrives, fields open again with the values kept', await state(page, 'unknown') && await unlocked(page) && await page.inputValue('#inquiry-name') === 'Ana Example');
+    await send(page);
+    ok('edit during POST: what was sent was what was checked; the changed request goes out under a new key', await savedShown(page) && hub.posts.length === 2 && hub.posts[0].body.description === 'The contact page stops responding after sending.' && hub.posts[1].body.description === 'The checkout page shows an error after paying.' && hub.posts[0].key !== hub.posts[1].key, hub.posts.map(p => p.key.slice(0, 8) + ':' + p.body.description.slice(4, 14)).join(' | '));
+    await context.close();
+
+    // ---------- acceptance-copy analog (real sending on a non-main page): test notice shown, review states off
+    reset(); ({ page, context } = await open('#hub-state=unavailable'));
+    ok('real sending: test notice visible', await page.locator('[data-hub-test]').isVisible() && /Acceptance test copy|Copia de prueba de aceptación/.test(await page.locator('[data-hub-test]').textContent()));
+    ok('real sending: #hub-state does nothing', await page.locator('[data-hub-off]').isHidden() && await page.locator('#project-inquiry > fieldset').isEnabled() && hub.gets === 1);
+    await fill(page); await send(page);
+    ok('real sending: #hub-state does not fake an outcome, the request really goes out', await savedShown(page) && hub.posts.length === 1 && await page.locator('[data-ref]').textContent() === 'VEL-2611-0007' && await page.locator('[data-sent-preview]').isHidden());
+    await context.close();
+
     // disabled, and config unavailable: no sending, calm notice, address as selectable text
     for (const [name, config] of [['disabled', { enabled: false, turnstileSiteKey: 'k', turnstileAction: 'velani-client-hub' }], ['config-down', 'down']]) {
       reset(); hub.config = config; ({ page, context } = await open());
@@ -205,6 +247,7 @@ try {
     // ---------- preview guard: checks the draft, sends nothing, asks the client hub nothing
     reset(); let { page, context } = await open();
     await audit(page, 'preview-idle');
+    ok('preview: no test notice', (await page.locator('[data-hub-test]').count()) === 0);
     await fill(page); await send(page);
     ok('preview: saved panel labelled as a preview with a sample reference', await savedShown(page) && await page.locator('[data-sent-preview]').isVisible() && await page.locator('[data-ref]').textContent() === 'VEL-0000-0000' && /Sample reference|Referencia de ejemplo/.test(await page.locator('.sent-ref-k').textContent()));
     await audit(page, 'preview-saved');

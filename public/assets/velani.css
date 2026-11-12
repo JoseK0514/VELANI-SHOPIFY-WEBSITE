@@ -1700,3 +1700,5 @@ main:has(.hn-begin){--end:#f2f6f5}
 .client .sent-from a{text-decoration:underline;text-underline-offset:3px}
 .inquiry-form fieldset[hidden]{display:none}
 .client .sent .note{color:#3d5654}
+.hub-test{margin:0 0 20px;padding:12px 14px;border-radius:10px;background:#fff4d6;color:#4a3500;font-size:.9375rem;line-height:1.45;font-weight:500}
+.inquiry-form fieldset.is-locked :is(input,textarea,select,.kind){cursor:progress}

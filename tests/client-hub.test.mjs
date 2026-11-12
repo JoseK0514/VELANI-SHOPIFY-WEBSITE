@@ -168,9 +168,7 @@ test('Support (EN and ES): the client form is a client-hub form with no Shopify 
   for (const route of ['/pages/help', '/pages/es-ayuda']) {
     const theme = renderBody(route, { target: 'shopify' }), form = formOf(theme);
     assert.match(form, /data-inquiry-mode="hub"/);
-    assert.match(form, /data-hub="\{% if theme\.role == 'main' %\}live\{% else %\}preview\{% endif %\}"/, 'live only on the published theme');
     assert.match(form, /data-hub-api="https:\/\/velani-ai\.vercel\.app"/);
-    assert.match(form, /\{% unless theme\.role == 'main' %\} data-hub-fixtures\{% endunless %\}/, 'review states never on the published theme');
     assert.doesNotMatch(theme, /\{% form 'contact'/, 'no Shopify contact form on Support');
     assert.doesNotMatch(form, /contact\[/);
     assert.doesNotMatch(form, / action=| method=/, 'nothing for the browser to post by itself');
@@ -199,9 +197,31 @@ test('the page script hands only the hub form to the client hub, and the hub scr
   assert.match(main, /if \(form && !justSent && !hubForm\) \{/);
   const hub = await readFile(new URL('../public/assets/velani-hub.js', import.meta.url), 'utf8');
   assert.doesNotMatch(hub, /sessionStorage|localStorage|indexedDB|document\.cookie|console\.|sendBeacon|history\.(push|replace)State/);
-  assert.match(hub, /form\.hasAttribute\('data-hub-fixtures'\)/);
-  assert.match(hub, /const client = live && !fixture \?/, 'a preview never builds a client, so it cannot send');
   const lib = await readFile(new URL('../src/client-hub.mjs', import.meta.url), 'utf8');
   assert.doesNotMatch(lib, /sessionStorage|localStorage|console\.|sendBeacon/);
-  assert.equal((lib.match(/fetchImpl\(/g) || []).length, 2, 'two endpoints only');
+});
+
+// ---------- the three sending modes, rendered through Liquid as Shopify would
+import { Liquid } from 'liquidjs';
+import { renderShopifySnippets } from '../src/render.mjs';
+test('sending modes: published = real; unpublished = preview guard; unpublished with the setting = real, with a test notice and no review states', async () => {
+  const liquid = new Liquid({ templates: Object.fromEntries(Object.entries(renderShopifySnippets()).map(([name, src]) => [name + '.liquid', src])), extname: '.liquid' });
+  for (const route of ['/pages/help', '/pages/es-ayuda']) {
+    const section = renderBody(route, { target: 'shopify' });
+    const render = async (role, on) => formOf(await liquid.parseAndRender(section, { theme: { role, id: 1 }, settings: { client_hub_preview_submissions: on, inquiries_enabled: true }, routes: { root_url: '/' } }));
+    const main = await render('main', false), mainOn = await render('main', true), draft = await render('unpublished', false), accept = await render('unpublished', true);
+    for (const form of [main, mainOn]) { assert.match(form, /data-hub="live"/); assert.doesNotMatch(form, /data-hub-fixtures|data-hub-test|client-preview/); }
+    assert.match(draft, /data-hub="preview"/); assert.match(draft, /data-hub-fixtures/); assert.match(draft, /class="client-preview"/); assert.doesNotMatch(draft, /data-hub-test/);
+    assert.match(accept, /data-hub="live"/); assert.doesNotMatch(accept, /data-hub-fixtures|client-preview/, 'review states and the preview note are off when sending is real');
+    assert.match(accept, /data-hub-test>(Acceptance test copy\. Requests sent from this page are real and go to Velani support\.|Copia de prueba de aceptación\. Las solicitudes enviadas desde esta página son reales y llegan al soporte de Velani\.)</);
+  }
+});
+
+test('the theme setting exists, is off by default, and the build never turns it on', async () => {
+  const dist = new URL('../dist/theme/config/', import.meta.url);
+  const schema = JSON.parse(await readFile(new URL('settings_schema.json', dist), 'utf8'));
+  const setting = schema.flatMap(group => group.settings || []).find(x => x.id === 'client_hub_preview_submissions');
+  assert.deepEqual({ type: setting?.type, default: setting?.default }, { type: 'checkbox', default: false });
+  const data = JSON.parse(await readFile(new URL('settings_data.json', dist), 'utf8'));
+  assert.equal(data.current.client_hub_preview_submissions, false);
 });

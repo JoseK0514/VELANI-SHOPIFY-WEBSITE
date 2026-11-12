@@ -213,6 +213,7 @@ export const SIGNIN_ES = {
   project: 'Sitio web o app', refK: 'Tu referencia', refCopy: 'Copiar referencia',
   hubNote: 'Usamos estos datos solo para responder tu solicitud. Los registros de solicitudes se guardan hasta 90 días; las copias por correo pueden durar más. No se crea ninguna cuenta.',
   hubOff: 'Ahora mismo no se pueden enviar solicitudes desde esta página. No se envió nada de lo que escribiste. Escríbenos a:',
+  hubTest: 'Copia de prueba de aceptación. Las solicitudes enviadas desde esta página son reales y llegan al soporte de Velani.',
   hubNoscript: 'Este formulario necesita JavaScript. También puedes escribir a ',
 };
 export const CONTACT_ES = {

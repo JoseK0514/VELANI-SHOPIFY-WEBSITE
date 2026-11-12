@@ -148,6 +148,7 @@ const SIGNIN = {
     project: 'Website or app', refK: 'Your reference', refCopy: 'Copy reference',
     hubNote: 'We use this only to answer your request. Request records are kept up to 90 days; email copies can stay longer. No account is created.',
     hubOff: 'Requests can’t be sent from this page right now. Nothing you typed was sent. Please write to us instead:',
+    hubTest: 'Acceptance test copy. Requests sent from this page are real and go to Velani support.',
     hubNoscript: 'This form needs JavaScript. You can also write to ' },
   es: SIGNIN_ES,
 };
@@ -173,12 +174,16 @@ function clientFields(lang) {
 function clientSection(target, lang) {
   const t = SIGNIN[lang], c = CONTACT[lang];
   const localApi = target === 'shopify' ? '' : (process.env.VELANI_CLIENT_HUB_API || '').trim();
-  const mode = target === 'shopify' ? "{% if theme.role == 'main' %}live{% else %}preview{% endif %}" : localApi ? 'live' : 'preview';
-  const fixtures = target === 'shopify' ? "{% unless theme.role == 'main' %} data-hub-fixtures{% endunless %}" : ' data-hub-fixtures';
+  // Real sending: the published theme, or an unpublished acceptance copy whose theme setting client_hub_preview_submissions is on
+  const real = "theme.role == 'main' or settings.client_hub_preview_submissions";
+  const mode = target === 'shopify' ? '{% if ' + real + ' %}live{% else %}preview{% endif %}' : localApi ? 'live' : 'preview';
+  const fixtures = target === 'shopify' ? '{% unless ' + real + ' %} data-hub-fixtures{% endunless %}' : localApi ? '' : ' data-hub-fixtures';
+  const testNote = '<p class="hub-test" data-hub-test>' + t.hubTest + '</p>';
+  const test = target === 'shopify' ? "{% if theme.role != 'main' and settings.client_hub_preview_submissions %}" + testNote + '{% endif %}' : localApi ? testNote : '';
   const previewNote = '<p class="client-preview">' + t.preview + '</p>';
   const off = '<div class="hub-off" data-hub-off hidden><p>' + t.hubOff + '</p><p class="hub-mail">' + company.email + '</p></div>';
-  const form = '<form id="project-inquiry" class="inquiry-form" data-inquiry-mode="hub" data-hub="' + mode + '" data-hub-api="' + e(localApi || HUB_API) + '"' + fixtures + ' novalidate>' + off + clientFields(lang)
-    + '<div class="form-status" role="status" aria-live="polite" tabindex="-1"></div>' + (target === 'shopify' ? "{% unless theme.role == 'main' %}" + previewNote + '{% endunless %}' : localApi ? '' : previewNote)
+  const form = '<form id="project-inquiry" class="inquiry-form" data-inquiry-mode="hub" data-hub="' + mode + '" data-hub-api="' + e(localApi || HUB_API) + '"' + fixtures + ' novalidate>' + test + off + clientFields(lang)
+    + '<div class="form-status" role="status" aria-live="polite" tabindex="-1"></div>' + (target === 'shopify' ? '{% unless ' + real + ' %}' + previewNote + '{% endunless %}' : localApi ? '' : previewNote)
     + '<noscript><p>' + t.hubNoscript + company.email + '.</p></noscript></form>';
   const ref = '<div class="sent-ref" data-sent-ref hidden><p class="sent-ref-k">' + t.refK + '</p><p class="sent-ref-v" data-ref></p><button type="button" class="sent-copy" data-ref-copy>' + t.refCopy + '</button><p class="sr" role="status" data-ref-live></p></div>';
   const side = '<div class="client-side"><h2 class="t2 rise" id="client-t">' + e(t.clientT) + '</h2><p class="lede fade">' + e(t.clientText) + '</p></div>';
