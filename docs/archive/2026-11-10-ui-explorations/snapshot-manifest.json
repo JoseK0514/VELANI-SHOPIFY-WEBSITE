@@ -1,0 +1,170 @@
+{
+  "sourceCommit": "950919faedd356a6c1ffa4097239f2a77ac4c202",
+  "mergeBase": "53d9a0c91de37c39d1747ed5dee35011c6db6405",
+  "files": [
+    {
+      "path": "docs/handoffs/2026-11-10-velani-new-home.md",
+      "sha256": "366c914b176bc383b0629957e34f4a6d005e4cc76b116ee91c1dcd61997db000"
+    },
+    {
+      "path": "docs/handoffs/2026-11-10-velani-phase1.md",
+      "sha256": "f3a733ee657d8c128d688ed29c9594a6710b81ff608bf9180951d8df3909d59a"
+    },
+    {
+      "path": "docs/licenses/fraunces.txt",
+      "sha256": "cd3384cafac6f2bddc3955273958a2e029f97027c8037ac539ef5744a77b579e"
+    },
+    {
+      "path": "public/assets/fraunces-latin-600-normal.woff2",
+      "sha256": "3a1de7711d147bad4422825045f87597fd77cca72e7c96d3b0a81735d00dda82"
+    },
+    {
+      "path": "public/assets/night-b2-clocker.webp",
+      "sha256": "cd37dc59ab2e2324c98195b50489e7e300e1b88fcacd5abb9cb49c4dd294be3b"
+    },
+    {
+      "path": "public/assets/night-b2-phone-home.webp",
+      "sha256": "5722937a8ce69d3a57977ffa3f138426465fe668179027f4aa220c7d27a2fd78"
+    },
+    {
+      "path": "public/assets/night-photo-barista.webp",
+      "sha256": "dacf757d0f5df15036331331b096e1d706bb873f97d71f835c71d805c50d0444"
+    },
+    {
+      "path": "public/assets/velani-assist.js",
+      "sha256": "209ebb22075228af1568802004fc2168b6608e0601c51a32353047017074f6b5"
+    },
+    {
+      "path": "public/assets/velani-home.css",
+      "sha256": "147ba5366e92202683d629edbe3ff3b383c596dc93a291c1caa0719db7aa7222"
+    },
+    {
+      "path": "public/assets/velani-motion.js",
+      "sha256": "96e814d478ee5275403236f5518d3fab5f2e3a36b07342680470eda0766b210d"
+    },
+    {
+      "path": "public/assets/velani-nevora.js",
+      "sha256": "1be6b7c2059bc6dd3496e7fee8ce9962075ac734e6ae87a152866943298d00b3"
+    },
+    {
+      "path": "public/assets/velani-system.css",
+      "sha256": "034faaeb9b404097d542b7ba19905813c26e6a964b8fd49bf4e8208fafd4d882"
+    },
+    {
+      "path": "public/assets/velani.css",
+      "sha256": "561d8b97c5f2c248d22e66811d34ca76d829d93364e9937878d3d18c9161148e"
+    },
+    {
+      "path": "public/assets/velani.js",
+      "sha256": "52d2f084447200fce517f89ab60f7f6cb95d6b6ebb797d3767128b59ecccd87b"
+    },
+    {
+      "path": "scripts/build.mjs",
+      "sha256": "536a5eeacebc4de3c2fd583a1602dbbed8a20c158072b2bdb5e28789ef05c147"
+    },
+    {
+      "path": "src/content.es.mjs",
+      "sha256": "5eed2eb65f960d5d12124c61dc73dd6e168a061fb03be55a0c6581faacee64a2"
+    },
+    {
+      "path": "src/content.mjs",
+      "sha256": "55dec42a6d733236e689b82dd773a8cd6e71c915f3f8d2ae27d444f5d9180276"
+    },
+    {
+      "path": "src/night.mjs",
+      "sha256": "b387052335212348d1a4caa8c2703e947959527405fd29de2ef9896904535766"
+    },
+    {
+      "path": "src/night/assist.html",
+      "sha256": "39c30c52fd45c2fcc1545ddaef69cc0f3e522d64f86b3daa0c79481f542a45db"
+    },
+    {
+      "path": "src/night/assist.js",
+      "sha256": "209ebb22075228af1568802004fc2168b6608e0601c51a32353047017074f6b5"
+    },
+    {
+      "path": "src/night/foot.es.html",
+      "sha256": "fb81d3766b66bca71a4680df0dec8b43c8816ff33d4cbda3b6cc322b1c088d79"
+    },
+    {
+      "path": "src/night/foot.html",
+      "sha256": "75d5466315b8f1ae281c9fb4ee187fd3e38114d3d9c71c610a2137739a27ec65"
+    },
+    {
+      "path": "src/night/home.body.html",
+      "sha256": "8f7562d474a02c74935e31b2ec0535a811ebef5088de9d353bc93911e9098f59"
+    },
+    {
+      "path": "src/night/home.css",
+      "sha256": "147ba5366e92202683d629edbe3ff3b383c596dc93a291c1caa0719db7aa7222"
+    },
+    {
+      "path": "src/night/home.es.body.html",
+      "sha256": "b5a54bc95f4a17af63e9894582e445e532d5194d8a80f31881382e2470918f8c"
+    },
+    {
+      "path": "src/night/kiosk.css",
+      "sha256": "cf47cb1bc81fca358f941af19061936c9f457af0c7804820dc94495b3a392927"
+    },
+    {
+      "path": "src/night/kiosk.html",
+      "sha256": "bb07c2fa14ddffd68e25bde71ea69d572a168cc204fd08ce88084f7d973d6e78"
+    },
+    {
+      "path": "src/night/kiosk.js",
+      "sha256": "707d565d068bbc48b2584efc9a0b83c14765bd51eea3f7f06666e59c8538cb5a"
+    },
+    {
+      "path": "src/night/motion.js",
+      "sha256": "96e814d478ee5275403236f5518d3fab5f2e3a36b07342680470eda0766b210d"
+    },
+    {
+      "path": "src/night/nevora.body.html",
+      "sha256": "1458ff5e138e3f8b444b672028c54ee627805103b3a58530e18c82299d3de970"
+    },
+    {
+      "path": "src/night/nevora.es.body.html",
+      "sha256": "70b62eb06371a0976051df3f510bf2d0107b589383d09fa7a3c8008d7cd527ed"
+    },
+    {
+      "path": "src/night/nevora.js",
+      "sha256": "e08a15de8566e9158c57da06cc1c93bdc4619012187c1e43276d0206aa603a22"
+    },
+    {
+      "path": "src/night/pages.css",
+      "sha256": "8315b9b98fc7376c96517cc4a57f1cbc36069e313e07c97a534e9d27570961be"
+    },
+    {
+      "path": "src/night/polish.css",
+      "sha256": "a443a1ea421d6b6e31fc26ae179eed500f01ca2d84ce848d129535aba8cb82a0"
+    },
+    {
+      "path": "src/night/products.body.html",
+      "sha256": "6f8ec7852ac0d554ac4a384f7a048204e1ddc5c51f9baa272ab2e952a3d6aba9"
+    },
+    {
+      "path": "src/night/products.es.body.html",
+      "sha256": "ef77bd47ae6d31e7129714b67cbdf08c7e02dc9c2fb1151e596f1e2bce4edf6b"
+    },
+    {
+      "path": "src/night/system.css",
+      "sha256": "034faaeb9b404097d542b7ba19905813c26e6a964b8fd49bf4e8208fafd4d882"
+    },
+    {
+      "path": "src/render.mjs",
+      "sha256": "99d65ba400b0fbd2e697a96a9f7a30eb768b2042d54109c068041429c4eaeb06"
+    },
+    {
+      "path": "tests/native-preview.test.mjs",
+      "sha256": "f9a032bc639ffb48b096737bd3dc1ffd85a0d2b953642c9ad01a03d4cb780ecb"
+    },
+    {
+      "path": "tests/site.test.mjs",
+      "sha256": "d7af5dbe371b7ac1bc3546a91efb064de216408e7faf9bf4e9a9f07e7f7b88e9"
+    },
+    {
+      "path": "tests/spanish.test.mjs",
+      "sha256": "fc260137f58b0c23b16f8219df1f0b64b47e2f99f2269ebd8bb5e616e0d5495c"
+    }
+  ]
+}

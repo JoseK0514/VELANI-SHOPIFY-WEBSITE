@@ -1,0 +1,156 @@
+[
+  {
+    "ref": "refs/heads/claude/velani-home-gusto-20261110",
+    "sha": "044b6d2e4ea9662c37dfdd3928ca4d4490208ef0",
+    "missingFromMain": 125,
+    "missingFromDevelopment": 2,
+    "disposition": "13 historical UI exploration commits reconciled with later signature UI; exact snapshot and history retained; current runtime preserved"
+  },
+  {
+    "ref": "refs/heads/claude/velani-home-mock-20261107",
+    "sha": "1f093021560c23390b8aba2b8c87d1f2a4aea456",
+    "missingFromMain": 121,
+    "missingFromDevelopment": 0,
+    "disposition": "already included in development; promoted unchanged with the combined application"
+  },
+  {
+    "ref": "refs/heads/claude/velani-hub-20261107",
+    "sha": "a2469961d648457591a1da2b5f577c06b6b08660",
+    "missingFromMain": 71,
+    "missingFromDevelopment": 0,
+    "disposition": "already included in development; promoted unchanged with the combined application"
+  },
+  {
+    "ref": "refs/heads/claude/velani-phase1-system-20261110",
+    "sha": "950919faedd356a6c1ffa4097239f2a77ac4c202",
+    "missingFromMain": 136,
+    "missingFromDevelopment": 13,
+    "disposition": "13 historical UI exploration commits reconciled with later signature UI; exact snapshot and history retained; current runtime preserved"
+  },
+  {
+    "ref": "refs/heads/claude/velani-signature-hero-20261110",
+    "sha": "17d35c2e9a146c54fcdfa1393348bfb642bdcf90",
+    "missingFromMain": 159,
+    "missingFromDevelopment": 0,
+    "disposition": "already included in development; promoted unchanged with the combined application"
+  },
+  {
+    "ref": "refs/heads/claude/velani-warm-light-20261110",
+    "sha": "53d9a0c91de37c39d1747ed5dee35011c6db6405",
+    "missingFromMain": 123,
+    "missingFromDevelopment": 0,
+    "disposition": "already included in development; promoted unchanged with the combined application"
+  },
+  {
+    "ref": "refs/heads/main",
+    "sha": "5680168611f6b366a3a0ce5397bca039c855ed70",
+    "missingFromMain": 0,
+    "missingFromDevelopment": 0,
+    "disposition": "already included in development; promoted unchanged with the combined application"
+  },
+  {
+    "ref": "refs/remotes/origin/claude/rondo-website-ui-20261105",
+    "sha": "a69802d92c34d5e3f719f08b878f424afbbfa55c",
+    "missingFromMain": 68,
+    "missingFromDevelopment": 0,
+    "disposition": "already included in development; promoted unchanged with the combined application"
+  },
+  {
+    "ref": "refs/remotes/origin/claude/velani-home-gusto-20261110",
+    "sha": "044b6d2e4ea9662c37dfdd3928ca4d4490208ef0",
+    "missingFromMain": 125,
+    "missingFromDevelopment": 2,
+    "disposition": "13 historical UI exploration commits reconciled with later signature UI; exact snapshot and history retained; current runtime preserved"
+  },
+  {
+    "ref": "refs/remotes/origin/claude/velani-home-mock-20261107",
+    "sha": "1f093021560c23390b8aba2b8c87d1f2a4aea456",
+    "missingFromMain": 121,
+    "missingFromDevelopment": 0,
+    "disposition": "already included in development; promoted unchanged with the combined application"
+  },
+  {
+    "ref": "refs/remotes/origin/claude/velani-hub-20261107",
+    "sha": "a2469961d648457591a1da2b5f577c06b6b08660",
+    "missingFromMain": 71,
+    "missingFromDevelopment": 0,
+    "disposition": "already included in development; promoted unchanged with the combined application"
+  },
+  {
+    "ref": "refs/remotes/origin/claude/velani-night-nevora-setup-k9sbcy",
+    "sha": "9d291b8c17759a8690f4b5b83dfa46cb60f40969",
+    "missingFromMain": 58,
+    "missingFromDevelopment": 0,
+    "disposition": "already included in development; promoted unchanged with the combined application"
+  },
+  {
+    "ref": "refs/remotes/origin/claude/velani-night-redesign",
+    "sha": "2fed7e0925fcb04cb3427e05502d91be3a06aa86",
+    "missingFromMain": 2,
+    "missingFromDevelopment": 0,
+    "disposition": "already included in development; promoted unchanged with the combined application"
+  },
+  {
+    "ref": "refs/remotes/origin/claude/velani-phase1-system-20261110",
+    "sha": "950919faedd356a6c1ffa4097239f2a77ac4c202",
+    "missingFromMain": 136,
+    "missingFromDevelopment": 13,
+    "disposition": "13 historical UI exploration commits reconciled with later signature UI; exact snapshot and history retained; current runtime preserved"
+  },
+  {
+    "ref": "refs/remotes/origin/claude/velani-signature-hero-20261110",
+    "sha": "17d35c2e9a146c54fcdfa1393348bfb642bdcf90",
+    "missingFromMain": 159,
+    "missingFromDevelopment": 0,
+    "disposition": "already included in development; promoted unchanged with the combined application"
+  },
+  {
+    "ref": "refs/remotes/origin/claude/velani-warm-light-20261110",
+    "sha": "53d9a0c91de37c39d1747ed5dee35011c6db6405",
+    "missingFromMain": 123,
+    "missingFromDevelopment": 0,
+    "disposition": "already included in development; promoted unchanged with the combined application"
+  },
+  {
+    "ref": "refs/remotes/origin/codex/client-hub-20261107",
+    "sha": "34b61ecb360fe7907566b0baf8314a1690823331",
+    "missingFromMain": 34,
+    "missingFromDevelopment": 0,
+    "disposition": "already included in development; promoted unchanged with the combined application"
+  },
+  {
+    "ref": "refs/remotes/origin/codex/rondo-backend-readiness-20261104",
+    "sha": "fb6a79b26d3748da9e556149e74de4dd1b6a57b4",
+    "missingFromMain": 28,
+    "missingFromDevelopment": 0,
+    "disposition": "already included in development; promoted unchanged with the combined application"
+  },
+  {
+    "ref": "refs/remotes/origin/codex/velani-company-site-20261102",
+    "sha": "5680168611f6b366a3a0ce5397bca039c855ed70",
+    "missingFromMain": 0,
+    "missingFromDevelopment": 0,
+    "disposition": "already included in development; promoted unchanged with the combined application"
+  },
+  {
+    "ref": "refs/remotes/origin/codex/velani-website-ai-backend",
+    "sha": "953e47a4840b90921a913a03e7eb635f201d5e42",
+    "missingFromMain": 11,
+    "missingFromDevelopment": 0,
+    "disposition": "already included in development; promoted unchanged with the combined application"
+  },
+  {
+    "ref": "refs/remotes/origin/development",
+    "sha": "afd453d7506f427784b2948f4b02a00b8b0fcf9c",
+    "missingFromMain": 221,
+    "missingFromDevelopment": 0,
+    "disposition": "already included in development; promoted unchanged with the combined application"
+  },
+  {
+    "ref": "refs/remotes/origin/main",
+    "sha": "5680168611f6b366a3a0ce5397bca039c855ed70",
+    "missingFromMain": 0,
+    "missingFromDevelopment": 0,
+    "disposition": "already included in development; promoted unchanged with the combined application"
+  }
+]
