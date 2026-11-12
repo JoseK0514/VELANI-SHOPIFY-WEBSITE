@@ -92,6 +92,9 @@ export function buildApp(config: Config, repository: Repository, engine: AnswerE
     else if (error instanceof StaleTurnError) mapped = new ApiError(409, 'turn_expired', 'Please retry this message.');
     else if (error instanceof ProfileChangedError) mapped = new ApiError(409, 'profile_changed', 'Business details changed. Review them before generating a new plan.');
     else if (error instanceof PlanKnowledgeUnavailableError) mapped = new ApiError(503, 'knowledge_unavailable', 'Current product information is unavailable. Please contact Velani.');
+    else if (error instanceof ModelError && error.providerStatus === 400 && error.providerHint === 'safety_filter') {
+      mapped = new ApiError(422, 'provider_request_rejected', 'This request could not be processed by the AI provider. Ask about your workflow without requests for hidden instructions, credentials or private records.');
+    }
     else if (error instanceof ModelError && error.providerStatus === 400) {
       mapped = new ApiError(503, 'provider_request_rejected', 'This request could not be processed. Please rephrase it or ask one question at a time.');
     }

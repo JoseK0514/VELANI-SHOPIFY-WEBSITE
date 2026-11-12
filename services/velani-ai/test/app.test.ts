@@ -116,6 +116,18 @@ describe('public assistant API', () => {
     expect(response.body).not.toContain('providerStatus');
     expect(repository.failTurn).toHaveBeenCalledOnce();
   });
+  it('does not present a known provider safety rejection as a retryable outage or a model answer', async () => {
+    const { app, create, engine, repository } = setup();
+    engine.answer.mockRejectedValueOnce(new ModelError('provider_unavailable', 400, 'safety_filter'));
+    const response = await app.inject({ method: 'POST', url: '/v1/chat', headers: await create(), payload: { requestId: randomUUID(), message: 'Synthetic compound question', locale: 'es' } });
+    expect(response.statusCode).toBe(422);
+    expect(response.json().error).toEqual({ code: 'provider_request_rejected', message: 'This request could not be processed by the AI provider. Ask about your workflow without requests for hidden instructions, credentials or private records.' });
+    expect(response.headers['retry-after']).toBeUndefined();
+    expect(response.body).not.toMatch(/safety_filter|cybersecurity|providerStatus|sourceIds/);
+    expect(engine.answer).toHaveBeenCalledOnce();
+    expect(repository.failTurn).toHaveBeenCalledOnce();
+    expect(repository.completeTurn).not.toHaveBeenCalled();
+  });
   it('blocks model cost when a persistent quota is exhausted', async () => {
     const { app, create, engine, repository } = setup(); const headers = await create();
     vi.mocked(repository.consumeRateLimit).mockImplementation(async key => !key.startsWith('global:'));

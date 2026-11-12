@@ -8,6 +8,7 @@ import { migrate } from '../scripts/migrate.js';
 import { seedKnowledge } from '../scripts/seed.js';
 import { runRetention } from '../scripts/retention.js';
 import { runConversationRetention } from '../src/conversation-retention.js';
+import { readOperationsStatus } from '../src/operations-status.js';
 import { createDatabasePool } from '../src/db-pool.js';
 
 // Never fall back to DATABASE_URL: this suite creates and removes its own schema only
@@ -79,7 +80,7 @@ describe.skipIf(!testUrl)('PostgreSQL repository integration', () => {
   }, 30_000);
 
   beforeEach(async () => {
-    await pool.query('TRUNCATE sessions, knowledge_documents, rate_limits, leads RESTART IDENTITY CASCADE');
+    await pool.query('TRUNCATE sessions, knowledge_documents, rate_limits, leads, retention_heartbeats RESTART IDENTITY CASCADE');
   });
 
   afterAll(async () => {
@@ -270,6 +271,34 @@ describe.skipIf(!testUrl)('PostgreSQL repository integration', () => {
     expect(await runConversationRetention(pool)).toEqual({ sessions: 0 });
   });
 
+  it('records a scheduled completion atomically and keeps operator runs separate', async () => {
+    const one = await session();
+    await pool.query("UPDATE sessions SET expires_at = now() - interval '1 second' WHERE id = $1", [one.id]);
+    expect(await runConversationRetention(pool, 'scheduler')).toEqual({ sessions: 1 });
+    const scheduled = (await pool.query("SELECT completed_at, sessions_deleted FROM retention_heartbeats WHERE trigger_source = 'scheduler'")).rows;
+    expect(scheduled).toHaveLength(1);
+    expect(scheduled[0].sessions_deleted).toBe('1');
+    await runConversationRetention(pool);
+    expect((await pool.query("SELECT completed_at, sessions_deleted FROM retention_heartbeats WHERE trigger_source = 'scheduler'")).rows).toEqual(scheduled);
+    expect((await pool.query("SELECT sessions_deleted FROM retention_heartbeats WHERE trigger_source = 'operator'")).rows).toEqual([{ sessions_deleted: '0' }]);
+  });
+
+  it('alerts on a missing/stale scheduler, overdue data and expiring knowledge without returning private data', async () => {
+    await seedKnowledge(pool, [document('operations')]);
+    await pool.query("UPDATE knowledge_documents SET reviewed_at = now() - interval '2 days', valid_until = now() + interval '3 days'");
+    await runConversationRetention(pool);
+    expect((await readOperationsStatus(pool)).alerts).toEqual(['retention_scheduler_unobserved', 'knowledge_review_due']);
+    await runConversationRetention(pool, 'scheduler');
+    expect((await readOperationsStatus(pool)).alerts).toEqual(['knowledge_review_due']);
+    await pool.query("UPDATE retention_heartbeats SET completed_at = now() - interval '27 hours' WHERE trigger_source = 'scheduler'");
+    const one = await session();
+    await pool.query("UPDATE sessions SET expires_at = now() - interval '27 hours' WHERE id = $1", [one.id]);
+    const status = await readOperationsStatus(pool);
+    expect(status.alerts).toEqual(['retention_scheduler_stale', 'conversation_retention_overdue', 'knowledge_review_due']);
+    expect(status.overdueSessions).toBe(1);
+    expect(JSON.stringify(status)).not.toContain(one.id);
+  });
+
   it('lets manual cleanup waiting behind cron see the committed deletion', async () => {
     const one = await session();
     await pool.query("UPDATE sessions SET expires_at = now() - interval '1 second' WHERE id = $1", [one.id]);
@@ -311,6 +340,7 @@ describe.skipIf(!testUrl)('PostgreSQL repository integration', () => {
     try {
       await expect(runConversationRetention(pool)).rejects.toThrow('Synthetic deletion failure');
       expect((await pool.query('SELECT id FROM sessions')).rows).toEqual([{ id: one.id }]);
+      expect((await pool.query('SELECT * FROM retention_heartbeats')).rows).toEqual([]);
     } finally {
       await pool.query('DROP TRIGGER reject_retention_test ON sessions');
       await pool.query('DROP FUNCTION reject_retention_test()');

@@ -1,0 +1,63 @@
+# Signup, policy facts and Rondo backend — November 12, 2026
+
+Codex owns backend/contracts and factual verification. Claude owns onboarding screens, Shopify legal pages, copy and icon placement. Jose publishes Shopify themes. This packet does not open customer signup or publish a theme.
+
+## Signup contract for Claude
+
+The owning signup chat has delivered backend source `f39c1e23badb3ddc056dece2eeca60c8ad69d500` to NEVORA development. Use its `docs/handoffs/2026-11-11-signup-backend-closeout.md`, preserving the combined billing source. Exact-candidate qualification passed; the separate development run was still being checked when this draft was written. Do not independently replace its checkout or use a tree-copy commit as source authority.
+
+The current hosted application remains source3922df94, deployment `dpl_5WsYDzYbdFnXwUZtBDfcQNNgigSX` on `nevora-signup`. Fresh public readback: `https://nevora.team` redirects to `https://signup.nevora.team/`; `GET /api/onboarding/config` returns200, schemaVersion1, signupEnabledfalse, en/es. Keep the website trial-request CTA until combined backend/UI hosted acceptance and admission approval. The existing public creation allowance is2 total/1 new dispatch per day, not general customer capacity.
+
+The API contract is stable: signup config, registrations, verification, current registration, workspaces, operations/current, bootstrap grants and Owner activation; company-host Owner `GET /api/onboarding/state`, POST steps/people/invitation-batches and GET invitation batch. Writes carry schemaVersion1, operationId UUID, expectedVersion decimal string, payload. Preserve identical operation/body through202/unknown; changed input uses a new operation. Verification does not mean workplace ready. Owner activation remains202 until the same workspace/incarnation APP route is ready, then SIGN_IN; it does not create a login session. Owner/Manager/Employee normal login is workplace-local Employee ID plus password. Tablet PIN is separate.
+
+Remaining joined acceptance: actual invitation delivery to already-approved `support@thevelani.com`, activation through its delivered link, ordinary sign-in, and Claude's first-sign-in setup UI across desktop/mobile/keyboard/error/recovery. No new external mail was sent in this Rondo task.
+
+## Copy-ready factual boundaries
+
+| Topic | Verified facts | Claude action |
+|---|---|---|
+| Trial |30 days, no card; starts on original workplace provisioning. Public self-service closed. >30 is assisted eligibility/quote; approved teams receive the same trial; response within two business days. |Use the same rule in EN/ES forms, plans, help and onboarding. Do not promise instant eligibility/activation.|
+| Unpaid trial |Operational access restricted; Owner billing/available payroll export and own available employee pay statements remain recovery surfaces. No automatic workplace-deletion timer is shipped. The approved future30-day deletion policy is still separate/unshipped.|Remove3-day wording and avoid advertising an automatic30-day eraser or indefinite retention. Individual deletion requests and recordkeeping duties remain separate.|
+| Backups |Current production control `broad-wildflower-15946455`, commerce `young-cloud-57498411` and synthetic workplace `muddy-poetry-11517489` report604800-second/seven-day restore history. Their launch snapshots expire November17,14:30UTC. Rondo's separate `wild-leaf-57992989` has86400-second/one-day history. Metadata is not a fresh restore rehearsal or proof that every provider/log/archive is erased. |Scope the seven-day statement to the verified workplace database. Do not promise universal immediate/permanent erasure or zero provider retention.|
+| Owner Rondo |Implemented in NEVORA source with OWNER authorization, current company authority, feature flag and separate provider/data approval. The signup hosting project's current environment inventory has no OWNER_ADVISOR flags; no new hosted Owner session was verified here. |Do not promise included/live Owner AI from fictional website examples. Use conditional availability until the actual customer deployment is qualified. Website chat has no workforce access.|
+| Payroll |Calculations and employee statements; employer pays wages and files taxes.|Keep this distinction in both languages.|
+
+Suggested bilingual trial retention sentences, subject to Claude's normal copy review:
+
+AI-provider retention must be disclosed separately from application database cleanup: [Neon's current gateway retention documentation](https://neon.com/docs/ai-gateway/data-retention) says Databricks may retain request/response content for abuse monitoring for up to30days, with separate partner safety-retention terms. The app's Delete conversation button does not prove erasure from all provider systems. No zero-retention or no-human-review promise was verified. Review the linked authoritative provider terms before final privacy copy.
+
+EN: “If the trial ends without a plan, workplace operations pause. The Owner can open billing and export available payroll records, and employees can view their own available pay statements. Trial expiry does not start an automatic workplace-deletion timer. Record-retention duties and verified deletion requests still apply.”
+
+ES: “Si la prueba termina sin un plan, se pausa la operación del espacio. El Owner puede abrir la facturación y exportar los registros de nómina disponibles; cada empleado puede consultar sus propios comprobantes disponibles. El vencimiento de la prueba no inicia un temporizador automático de eliminación del espacio. Siguen aplicándose las obligaciones de conservación y las solicitudes verificadas de eliminación.”
+
+Fresh published route checks: `/pages/privacy` ES links to `/pages/es-ayuda`; `/pages/nevora-privacy` and `/pages/nevora-account-deletion` ES links go to `/pages/es-nevora`. `/pages/es-privacy` and `/pages/es-nevora-privacy` return404. Claude must create the Spanish legal content and repair the language map in an unpublished theme; switching to Help/product is not a translation. No Shopify global policies were modified.
+
+## Rondo rejection contract
+
+Exact historical compound Spanish workflow+forged-private-instruction message reproduced via real browser: HTTP503 after about34seconds. A separately approved AI-only development credential exposed the bounded provider reason: upstream HTTP400, BAD_REQUEST, flagged for possible cybersecurity risk. This is a provider safety refusal, not evidence that Spanish is unsupported, a timeout or a token shortage. No filter bypass, prompt laundering or alternate-model fallback was added.
+
+Backend fix recognizes that diagnostic as the existing safe `safety_filter` label and returns **HTTP422**, existing code **`provider_request_rejected`**, no Retry-After, no answer/source/action object. Other unclassified upstream400 remains503 with the same existing non-retryable code. Claude's client should offer Edit/new question and human help; never auto-resend a rejected message. Edited payload uses a fresh requestId. Local regression tests prove the turn lease is released, no successful answer is saved and provider details are not exposed. Existing reference integration client already treats this code as non-retryable in both languages; its API contract is unchanged.
+
+A normal Spanish workflow/correction question succeeded through the actual model and real answer validator: three stores/18staff, Wednesday cutoff/Thursday payment, manual two-week responsibilities and backup, change cutoff and two metrics; no sales, employee-record access or invented product automation. The exact compound security challenge is not counted as a successful answer. Full synthetic evidence and separate additional-$2 ledger are retained outside the checkout at `/Users/josek0514/.codex/rondo-closeout-20261112/`.
+
+## Cleanup and cost controls
+
+Live Vercel project `prj_E1Vl2AEpTlJlBam4MTKG7oEHB7x2` registers/enables `/api/cron/retention` at15:00UTC daily and client-hub maintenance at16:00UTC. Existing public runtime is `dpl_8ChbePq8yvGTPJxi3LAspPyCtwnG`, source d89350bd. Read-only counts show no overdue conversations or90-day leads. Hobby log retention prevented checking yesterday's timer tick; schedule registration/empty backlog alone are not execution proof.
+
+Migration005 adds two bounded aggregate `retention_heartbeats` rows (scheduler/operator), with no PII. The authenticated cron records its completion timestamp and deletion count in the SAME transaction as cleanup; rollback cannot leave a success receipt. Manual runs cannot refresh the scheduler row. User-agent is a diagnostic source label after secret authentication, not a new security factor or cryptographic scheduler attestation. Existing runtime gets only SELECT/INSERT/UPDATE on this aggregate table; no extra workforce or conversation-delete authority.
+
+`npm run operations:check` uses explicit `RONDO_OPERATIONS_DATABASE_URL` (approved read-only role; no application/owner credential fallback). It emits aggregate alert codes for missing/stale (>26hours) scheduled receipt, overdue conversations/leads and missing/expired/within-seven-days-expiring knowledge. Exit1 means attention/unavailable; exit0 means these bounded checks pass. It is an operator check, not a newly activated notification subscription or monitor. There is no public operations endpoint.
+
+Cost verification: model calls go to Neon, not Vercel AI Gateway. Production request count cap500/day plus per-session limits, one provider attempt,45second/3000token chat bound. Neon billing UI currently shows an enabled organization-wide $20 spending email notification checked every15minutes and AI auto-reload ON. This is not a Rondo-specific hard dollar cap; no monthly hard-cap guarantee is made. Vercel AI Gateway budgets are irrelevant to this route. No auto-reload or recurring budget was changed, and no credits were bought.
+
+## Knowledge, naming and UI
+
+All16 EN/ES public knowledge records were reviewed November12 and prepared with December12 expiry, before the old December4 deadline. Current prices are described as advertised19/29 with the site's pre-billing caveat. Signup remains by request, apex is no longer described as parked, trial retention has no live deletion timer, Owner assistant availability is conditional, and the new client-hub email capability is distinguished from the legacy contact form. Publication/rollback use exact old/new hashes and timestamps; live publication receipt will be appended after review.
+
+Backend `/v1/config` still returns assistantNameRondo. The live website's launcher now says Ask Velani; reconcile the launcher, accessible names, panel title, greeting and both languages with Jose's requested Rondo identity. Keep website advice distinct from authenticated Owner actions. **The icon direction is already approved: concept1, Lantern.** Jose's November7 instruction was “Go with Rondo concept 1 (Lantern). Refine it and build the final set for the NEVORA app and the Velani site.” Continue that direction; do not reopen concept selection or substitute a coquí/Shiba/R mark. Final vector/app/site asset exports and UI implementation remain unverified and belong to Claude's UI work. No icon or UI was changed here.
+
+## Verification, deployment and rollback
+
+Local disposable PostgreSQL17 with pgvector:198/198 tests pass,0skipped; typecheck/build pass. Vitest4.1.12 replaces the vulnerable3.x dev runner; explicit source-suite include preserves all21 existing test files and avoids compiled dist duplicates. Full dependency audit reports0 vulnerabilities. Existing Fastify disableRequestLogging deprecation remains a warning, not a failed request. Independent Spec/Standards review and final commit/deployment receipts are pending in this draft.
+
+Before runtime deployment: retain previous Vercel production target, apply additive migration005, verify runtime aggregate grants, deploy only the reviewed backend service without UI edits, recheck health/config/CORS/auth and observe an actual scheduler-labelled receipt after the next automatic tick. Do not manually label a run scheduled to pass the gate. Old runtime remains compatible with the additive table; rollback selects prior deployment and leaves the table in place. No customer deletion is performed as a test. Runtime deployment approval, a genuine automatic tick, and continuous alert delivery are separate states and remain open until evidenced.
