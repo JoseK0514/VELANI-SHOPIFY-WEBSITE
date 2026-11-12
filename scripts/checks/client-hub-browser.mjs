@@ -68,6 +68,8 @@ let axeRuns = 0, axeViolations = 0, shotCount = 0;
 async function audit(page, name) {
   // Clear of the fixed header, so a field under it is not measured as a covered target
   await page.evaluate(() => { const el = document.querySelector('#inquiry-sent:not([hidden])') || document.querySelector('#project-inquiry'); window.scrollTo(0, el.getBoundingClientRect().top + scrollY - 160); });
+  // Measure the settled page, not a frame of the panel fading in or a label moving
+  await page.evaluate(() => Promise.race([Promise.all(document.getAnimations().filter(a => a.effect?.getComputedTiming().iterations !== Infinity).map(a => a.finished.catch(() => {}))), new Promise(r => setTimeout(r, 1500))]));
   const { violations } = await new AxeBuilder({ page }).include('#client').withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'wcag22aa']).analyze();
   axeRuns++; axeViolations += violations.length;
   ok(name + ': axe WCAG 2.2 AA', violations.length === 0, violations.map(v => v.id + ' ' + v.nodes[0]?.target).join('; '));

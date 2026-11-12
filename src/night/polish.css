@@ -543,3 +543,4 @@ main:has(.hn-begin){--end:#f2f6f5}
 .sent-copy:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
 .client .sent-from a{text-decoration:underline;text-underline-offset:3px}
 .inquiry-form fieldset[hidden]{display:none}
+.client .sent .note{color:#3d5654}
