@@ -1,5 +1,31 @@
 # Step 1 — Velani backend truth and Claude contract
 
+## Development delivery update after Jose's review follow-up
+
+Jose's follow-up requested completion of Codex's development integration. The
+backend fix and original evidence packet were fast-forwarded to remote Velani
+`development`, from `1c6c84b417b21fe6fa4d67e9f825b9a5e38453ea` to
+`8f6ab1d6e4dcd8d9690b084fa2f20554a20df699`, with no conflicts or force push.
+Fresh fetch confirmed both the backend commit `e11473b96f2e7cb649aef34db4f5df729ab84711`
+and original packet are ancestors of remote development. This update and its
+receipt are a subsequent documentation-only commit; the qualified backend is
+unchanged. The original local-only snapshot below remains historical evidence.
+
+Repository rules on development returned no bypass requirement. The repository
+contains no GitHub workflows; no CI was dispatched and all delivery commits retain
+`[skip ci]`. Both Velani Vercel projects still report automatic Git deployment
+disabled. Public production remains `dpl_2yjDbRBcm8vc6ujPm1mqz34qLRhT`; GitHub main
+remains `5680168611f6b366a3a0ce5397bca039c855ed70`. No runtime deployment, hosted
+migration, Shopify publication, NEVORA edit or Step2 work occurred.
+
+The existing source-bound verification remains261/261 backend tests,80/80 root
+tests, passing typecheck/build/Theme Check, and87passed/2existing UI browser
+failures. No new application change justified repeating those checks. The
+PostgreSQL17/hosted and Claude UI gates below remain open; source integration
+does not close them. See [delivery receipt](step1-backend-evidence-20261112/development-delivery.json).
+
+## Original Step 1 review snapshot
+
 November 12, 2026. Prepared for Jose's review. **Step 2 has not started.**
 
 One backend defect was independently reproduced and repaired: concurrent

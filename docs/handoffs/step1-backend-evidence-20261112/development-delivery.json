@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-12",
+  "authorization": "Jose follow-up requesting completion of Codex development integration",
+  "repository": "JoseK0514/VELANI-SHOPIFY-WEBSITE",
+  "branch": "development",
+  "before": "1c6c84b417b21fe6fa4d67e9f825b9a5e38453ea",
+  "pushedPayloadCommit": "8f6ab1d6e4dcd8d9690b084fa2f20554a20df699",
+  "backendCommit": "e11473b96f2e7cb649aef34db4f5df729ab84711",
+  "delivery": "non-force fast-forward; successful push and fresh remote fetch",
+  "remotePayloadAndBackendAncestryVerified": true,
+  "qualifiedBackendUnchanged": true,
+  "mainUnchanged": "5680168611f6b366a3a0ce5397bca039c855ed70",
+  "productionDeploymentUnchanged": "dpl_2yjDbRBcm8vc6ujPm1mqz34qLRhT",
+  "gitAutoDeployment": "disabled in both inspected Velani Vercel projects",
+  "githubBranchRules": [],
+  "ciDispatched": false,
+  "runtimeDeployed": false,
+  "shopifyPublished": false,
+  "nevoraChanged": false,
+  "step2Started": false,
+  "receiptCustody": "This receipt is committed after the verified payload delivery; it changes documentation only.",
+  "verificationReused": {
+    "backendPassed": 261,
+    "backendFailed": 0,
+    "backendSkipped": 0,
+    "rootPassed": 80,
+    "browserPassed": 87,
+    "browserExistingUiFailures": 2,
+    "localPostgres": "16.2; hosted17 equivalence remains open"
+  }
+}
