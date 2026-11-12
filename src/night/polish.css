@@ -541,3 +541,5 @@ main:has(.hn-begin){--end:#f2f6f5}
 .sent-copy{margin-top:14px;min-height:44px;padding:0 18px;border-radius:999px;border:1px solid var(--line);background:none;color:var(--text);font:inherit;font-size:.9375rem;font-weight:500;cursor:pointer}
 @media(hover:hover){.sent-copy:hover{border-color:var(--text-2)}}
 .sent-copy:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.client .sent-from a{text-decoration:underline;text-underline-offset:3px}
+.inquiry-form fieldset[hidden]{display:none}

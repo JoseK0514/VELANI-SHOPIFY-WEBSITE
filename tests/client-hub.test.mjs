@@ -158,3 +158,50 @@ test('Retry-After: seconds or a date', () => {
   assert.equal(retryAfterSeconds(''), 0);
   assert.equal(retryAfterSeconds('soon'), 0);
 });
+
+// ---------- what the pages render
+import { renderPage, renderBody } from '../src/render.mjs';
+import { readFile } from 'node:fs/promises';
+const formOf = html => html.slice(html.indexOf('<form id="project-inquiry"'), html.indexOf('</form>', html.indexOf('<form id="project-inquiry"')));
+
+test('Support (EN and ES): the client form is a client-hub form with no Shopify transport or contact[...] names', () => {
+  for (const route of ['/pages/help', '/pages/es-ayuda']) {
+    const theme = renderBody(route, { target: 'shopify' }), form = formOf(theme);
+    assert.match(form, /data-inquiry-mode="hub"/);
+    assert.match(form, /data-hub="\{% if theme\.role == 'main' %\}live\{% else %\}preview\{% endif %\}"/, 'live only on the published theme');
+    assert.match(form, /data-hub-api="https:\/\/velani-ai\.vercel\.app"/);
+    assert.match(form, /\{% unless theme\.role == 'main' %\} data-hub-fixtures\{% endunless %\}/, 'review states never on the published theme');
+    assert.doesNotMatch(theme, /\{% form 'contact'/, 'no Shopify contact form on Support');
+    assert.doesNotMatch(form, /contact\[/);
+    assert.doesNotMatch(form, / action=| method=/, 'nothing for the browser to post by itself');
+    assert.match(form, /<fieldset disabled>/, 'off until the script takes over');
+    for (const id of ['name', 'email', 'company', 'project', 'timing', 'urgency', 'message']) assert.match(form, new RegExp('id="inquiry-' + id + '"'));
+    assert.match(form, /value="client-work" checked/); assert.match(form, /value="client-help"/);
+    assert.match(theme, /data-sent-ref hidden/);
+    const local = formOf(renderPage(route).html);
+    assert.match(local, /data-hub="preview"/); assert.match(local, /data-hub-fixtures/);
+  }
+});
+
+test('NEVORA trial, quote, Relay and general inquiries keep the Shopify contact transport', () => {
+  for (const route of ['/pages/contact', '/pages/es-contacto']) {
+    const theme = renderBody(route, { target: 'shopify' });
+    assert.match(theme, /\{% if settings\.inquiries_enabled and theme\.role == 'main' %\}\{% form 'contact', id: 'project-inquiry'/);
+    for (const name of ['name', 'email', 'company', 'interest', 'team_size', 'body']) assert.match(theme, new RegExp('name="contact\\[' + name + '\\]"'));
+    assert.match(theme, /name="topic_choice" value="nevora"/);
+    assert.doesNotMatch(theme, /data-hub|velani-ai\.vercel\.app|client-hub/);
+  }
+});
+
+test('the page script hands only the hub form to the client hub, and the hub script keeps nothing', async () => {
+  const main = await readFile(new URL('../public/assets/velani.js', import.meta.url), 'utf8');
+  assert.match(main, /const hubForm = !!form && form\.dataset\.inquiryMode === 'hub';/);
+  assert.match(main, /if \(form && !justSent && !hubForm\) \{/);
+  const hub = await readFile(new URL('../public/assets/velani-hub.js', import.meta.url), 'utf8');
+  assert.doesNotMatch(hub, /sessionStorage|localStorage|indexedDB|document\.cookie|console\.|sendBeacon|history\.(push|replace)State/);
+  assert.match(hub, /form\.hasAttribute\('data-hub-fixtures'\)/);
+  assert.match(hub, /const client = live && !fixture \?/, 'a preview never builds a client, so it cannot send');
+  const lib = await readFile(new URL('../src/client-hub.mjs', import.meta.url), 'utf8');
+  assert.doesNotMatch(lib, /sessionStorage|localStorage|console\.|sendBeacon/);
+  assert.equal((lib.match(/fetchImpl\(/g) || []).length, 2, 'two endpoints only');
+});
