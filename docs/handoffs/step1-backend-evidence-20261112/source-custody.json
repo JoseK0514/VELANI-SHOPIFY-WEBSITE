@@ -1,0 +1,23 @@
+{
+  "recordedAt": "2026-11-12T22:22:50.064614+00:00",
+  "velani": {
+    "baseline": "1c6c84b417b21fe6fa4d67e9f825b9a5e38453ea",
+    "backendCommit": "e11473b96f2e7cb649aef34db4f5df729ab84711",
+    "remoteDevelopment": "1c6c84b417b21fe6fa4d67e9f825b9a5e38453ea",
+    "remoteMain": "5680168611f6b366a3a0ce5397bca039c855ed70",
+    "branch": "",
+    "worktree": "/Users/josek0514/.codex/worktrees/velani-step1-backend-20261112"
+  },
+  "nevora": {
+    "inspected": "eee76416ec8d06435e73c3ecde9a77752ec0d446",
+    "remoteDevelopment": "eee76416ec8d06435e73c3ecde9a77752ec0d446",
+    "remoteMain": "46d6dc76922bb273379baccd329e0af636d1dcb6",
+    "trackedOrUntrackedChanges": ""
+  },
+  "push": false,
+  "CI": false,
+  "deployment": false,
+  "shopifyWrite": false,
+  "paidInference": false,
+  "externalMessages": false
+}

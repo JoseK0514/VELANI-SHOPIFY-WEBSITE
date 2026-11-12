@@ -1,0 +1,203 @@
+{
+  "schemaVersion": 1,
+  "recordedDuring": "November 12, 2026 Step 1 read-only calls in this chat; separate from earlier hosted acceptance",
+  "methods": "Read-only connected Shopify/Jira/Neon/Stripe; exact Vercel GET metadata through existing CLI auth store after MCP 404; no credential values retained.",
+  "themes": {
+    "main": {
+      "id": "gid://shopify/OnlineStoreTheme/193311572282",
+      "role": "MAIN",
+      "settings": {
+        "inquiries_enabled": true,
+        "assistant_api_url": "https://velani-ai.vercel.app",
+        "commerce_api_url": ""
+      }
+    },
+    "acceptance": {
+      "id": "gid://shopify/OnlineStoreTheme/193374224698",
+      "role": "UNPUBLISHED",
+      "settings": {
+        "inquiries_enabled": true,
+        "assistant_api_url": "https://velani-ai.vercel.app",
+        "commerce_api_url": "",
+        "client_hub_preview_submissions": false
+      }
+    }
+  },
+  "themeCapabilities": {
+    "main": {
+      "hasClientHubAssets": false,
+      "helpMd5": "fb39888fa16f5beb903baf30f1be970a"
+    },
+    "acceptance": {
+      "hasClientHubAssets": true,
+      "clientHubMd5": "e23f75ffa53f010ded95f8dcbe982c98",
+      "helpMd5": "edd0904e6b95901ee3237490cb5be954"
+    }
+  },
+  "publicRondo": [
+    {
+      "scheduled_completed_at": "2026-11-12T15:45:43.570Z",
+      "overdue_sessions": "0",
+      "overdue_leads": "0",
+      "published_documents": "16",
+      "expired_documents": "0",
+      "budget_table": null
+    }
+  ],
+  "developmentBudget": [
+    {
+      "id": "686083cd-535e-422d-b027-9293601fe98c",
+      "limit_microusd": "10000000",
+      "reserved_microusd": "2670150",
+      "valid_from": "2026-11-12T17:57:12.000Z",
+      "valid_until": "2026-12-01T04:00:00.000Z",
+      "enabled": true
+    }
+  ],
+  "developmentOperations": {
+    "scheduledCompletedAt": "2026-11-12T18:33:35.568Z",
+    "scheduledFresh": true,
+    "overdueSessions": 0,
+    "overdueLeads": 0,
+    "publishedDocuments": 16,
+    "expiredDocuments": 0,
+    "earliestKnowledgeExpiry": "2026-12-12T23:59:59.999Z",
+    "monitorState": "ok",
+    "monitorObservedAt": "2026-11-12T21:18:08.610Z",
+    "triggers": [
+      {
+        "name": "rondo-development-monitor",
+        "slug": "rondodevmonitor",
+        "enabled": true,
+        "cron": "15 * * * *"
+      },
+      {
+        "name": "rondo-development-retention",
+        "slug": "rondodevretention",
+        "enabled": true,
+        "cron": "0 15 * * *"
+      }
+    ],
+    "monitorDeploymentId": 6,
+    "monitorEnvironmentNames": [
+      "AI_BUDGET_AUTHORIZATION_ID",
+      "AWS_ACCESS_KEY_ID",
+      "AWS_ENDPOINT_URL_S3",
+      "AWS_REGION",
+      "AWS_SECRET_ACCESS_KEY",
+      "DATABASE_URL",
+      "DATABASE_URL_UNPOOLED",
+      "NEON_AI_GATEWAY_BASE_URL",
+      "NEON_AI_GATEWAY_TOKEN",
+      "PGDATABASE",
+      "PGHOST",
+      "PGHOST_UNPOOLED",
+      "PGPASSWORD",
+      "PGUSER",
+      "RONDO_ALERT_MAIL_ENABLED",
+      "RONDO_ALERT_MAX_TOTAL",
+      "RONDO_OPERATIONS_BRANCH_ID",
+      "RONDO_OPERATIONS_DATABASE_URL",
+      "RONDO_OPERATIONS_ENABLED",
+      "RONDO_OPERATIONS_SOURCE_SHA"
+    ],
+    "sourceAttestation": "Version metadata corroborated; no fresh ZIP download/source audit or paid invocation."
+  },
+  "inquiryFixtures": [
+    {
+      "reference": "VEL-2611-0001",
+      "requests": "1",
+      "email_jobs": "2",
+      "delivery": [
+        {
+          "kind": "confirmation",
+          "state": "submitted",
+          "attempts": 1,
+          "providerReceiptPresent": true
+        },
+        {
+          "kind": "support",
+          "state": "submitted",
+          "attempts": 1,
+          "providerReceiptPresent": true
+        }
+      ]
+    },
+    {
+      "reference": "VEL-2611-0002",
+      "requests": "1",
+      "email_jobs": "2",
+      "delivery": [
+        {
+          "kind": "confirmation",
+          "state": "submitted",
+          "attempts": 1,
+          "providerReceiptPresent": true
+        },
+        {
+          "kind": "support",
+          "state": "submitted",
+          "attempts": 1,
+          "providerReceiptPresent": true
+        }
+      ]
+    }
+  ],
+  "stripeSandbox": {
+    "stripe_context": "acct_1UZZK1HT1nhEuOJ2",
+    "livemode": false,
+    "prices": [
+      {
+        "id": "price_1UZb7JHT1nhEuOJ2MsMXV7Gf",
+        "active": true,
+        "currency": "usd",
+        "unit_amount": 1900,
+        "interval": "month",
+        "plan": "small"
+      },
+      {
+        "id": "price_1UZb7KHT1nhEuOJ22VvjXawN",
+        "active": true,
+        "currency": "usd",
+        "unit_amount": 2900,
+        "interval": "month",
+        "plan": "team"
+      }
+    ],
+    "commercialApproval": "Sandbox configuration is not approval of live commercial terms."
+  },
+  "jira": [
+    {
+      "key": "SCRUM-171",
+      "status": "In Review"
+    },
+    {
+      "key": "SCRUM-130",
+      "status": "In Progress"
+    },
+    {
+      "key": "SCRUM-155",
+      "status": "In Progress"
+    },
+    {
+      "key": "SCRUM-172",
+      "status": "In Progress"
+    },
+    {
+      "key": "SCRUM-190",
+      "status": "In Progress"
+    }
+  ],
+  "readFailures": [
+    {
+      "operation": "Vercel MCP deployment metadata",
+      "status": 404,
+      "resolution": "Existing authenticated CLI-store scoped GET succeeded; no permissions changed."
+    },
+    {
+      "operation": "Hub aggregate read using Rondo application role",
+      "sqlstate": "42501",
+      "resolution": "Expected service-role separation; corrected to documented velani_client_hub_app and SELECT succeeded."
+    }
+  ]
+}

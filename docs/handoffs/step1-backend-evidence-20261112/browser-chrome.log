@@ -1,0 +1,28 @@
+
+> velani-company-site@0.1.0 check:browser
+> node scripts/browser-check.mjs
+
+{
+  "status": "failed",
+  "passed": 87,
+  "failed": 2,
+  "blocked": 0,
+  "results": [
+    {
+      "name": "chromium all internal links and fragments",
+      "status": "failed",
+      "error": "Missing fragment /pages/nevora#relay"
+    },
+    {
+      "name": "chromium no-JavaScript navigation and no unsafe inquiry",
+      "status": "failed",
+      "error": "No-JS navigation hidden"
+    }
+  ],
+  "screenshots": 8,
+  "runtimeErrors": [],
+  "captureDiagnostics": [],
+  "posts": [],
+  "externalRequests": [],
+  "scope": "Actual local browser and compiled site; no hosted Shopify, live email or publication acceptance"
+}

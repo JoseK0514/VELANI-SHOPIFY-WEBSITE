@@ -1,0 +1,23 @@
+
+> velani-company-site@0.1.0 check:browser
+> node scripts/browser-check.mjs
+
+{
+  "status": "failed",
+  "passed": 0,
+  "failed": 0,
+  "blocked": 1,
+  "results": [
+    {
+      "name": "chromium launch",
+      "status": "blocked",
+      "error": "browserType.launch: Executable doesn't exist at /Users/josek0514/Library/Caches/ms-playwright/chromium_headless_shell-1194/chrome-mac/headless_shell\n╔═════════════════════════════════════════════════════════════════════════╗\n║ Looks like Playwright Test or Playwright was just installed or updated. ║\n║ Please run the following command to download new browsers:              ║\n║                                                                         ║\n║     npx playwright install                                              ║\n║                                                                         ║\n║ <3 Playwright Team                                                      ║\n╚═════════════════════════════════════════════════════════════════════════╝"
+    }
+  ],
+  "screenshots": 0,
+  "runtimeErrors": [],
+  "captureDiagnostics": [],
+  "posts": [],
+  "externalRequests": [],
+  "scope": "Actual local browser and compiled site; no hosted Shopify, live email or publication acceptance"
+}

@@ -1,0 +1,132 @@
+{
+  "observedAt": "2026-11-12T22:14:51.392495+00:00",
+  "teamId": "team_Lzbw410WwXGWHTuUXuamRI1N",
+  "deployments": [
+    {
+      "id": "dpl_FCstLg1pNhXKtEsBnuhb7k72dD1o",
+      "url": "velani-rondo-development-eg8z6ne2f-josekarlo-5933s-projects.vercel.app",
+      "readyState": "READY",
+      "target": null,
+      "gitSource": {
+        "type": "github",
+        "repoId": 1443058200,
+        "ref": "development",
+        "sha": "78cdae299457af6b79bb105878f3fb52bfc70f79"
+      },
+      "projectId": "prj_T9x5XwRzCkLSUy2wYk36nz8C3k9B",
+      "nodeVersion": "24.x",
+      "sourceSha": "78cdae299457af6b79bb105878f3fb52bfc70f79",
+      "releaseEnvironment": "development",
+      "dataClassification": "synthetic-only"
+    },
+    {
+      "id": "dpl_2yjDbRBcm8vc6ujPm1mqz34qLRhT",
+      "url": "velani-8mchj78oz-josekarlo-5933s-projects.vercel.app",
+      "readyState": "READY",
+      "target": "production",
+      "gitSource": null,
+      "projectId": "prj_E1Vl2AEpTlJlBam4MTKG7oEHB7x2",
+      "nodeVersion": "26.x",
+      "sourceSha": "3db0ea98bc3da6b3ae08b9e5d2c2b59a361e6a8d",
+      "releaseEnvironment": null,
+      "dataClassification": null
+    },
+    {
+      "id": "dpl_5WsYDzYbdFnXwUZtBDfcQNNgigSX",
+      "url": "nevora-signup-fnsd9iezf-josekarlo-5933s-projects.vercel.app",
+      "readyState": "READY",
+      "target": "production",
+      "gitSource": null,
+      "projectId": "prj_jPVvFBEx2mMZM125KVJzRiBZfgDE",
+      "nodeVersion": null,
+      "sourceSha": "3922df940deef009b3a357ed2788cc7bb28e3fed",
+      "releaseEnvironment": null,
+      "dataClassification": null
+    }
+  ],
+  "projects": [
+    {
+      "id": "prj_T9x5XwRzCkLSUy2wYk36nz8C3k9B",
+      "name": "velani-rondo-development",
+      "ssoProtection": {
+        "deploymentType": "all"
+      },
+      "automationBypassCount": 0,
+      "gitDeployments": {
+        "createDeployments": "disabled",
+        "disableRepositoryDispatchEvents": true
+      },
+      "productionBranch": null,
+      "productionDeployment": {
+        "id": "dpl_HbY1sZ5JzceQw8hCpeUkmSdqB4n2",
+        "url": "velani-rondo-development-k5imwasmi-josekarlo-5933s-projects.vercel.app",
+        "readyState": "CANCELED"
+      },
+      "ownerAdvisorEnvironmentNames": [],
+      "crons": null
+    },
+    {
+      "id": "prj_E1Vl2AEpTlJlBam4MTKG7oEHB7x2",
+      "name": "velani-ai",
+      "ssoProtection": {
+        "deploymentType": "preview"
+      },
+      "automationBypassCount": 0,
+      "gitDeployments": {
+        "createDeployments": "disabled",
+        "disableRepositoryDispatchEvents": true
+      },
+      "productionBranch": "main",
+      "productionDeployment": {
+        "id": "dpl_2yjDbRBcm8vc6ujPm1mqz34qLRhT",
+        "url": "velani-8mchj78oz-josekarlo-5933s-projects.vercel.app",
+        "readyState": "READY"
+      },
+      "ownerAdvisorEnvironmentNames": [],
+      "crons": {
+        "enabledAt": 1793668229140,
+        "disabledAt": null,
+        "updatedAt": 1794482640886,
+        "deploymentId": "dpl_2yjDbRBcm8vc6ujPm1mqz34qLRhT",
+        "definitions": [
+          {
+            "host": "velani-8mchj78oz-josekarlo-5933s-projects.vercel.app",
+            "path": "/api/cron/client-hub",
+            "schedule": "0 16 * * *"
+          },
+          {
+            "host": "velani-8mchj78oz-josekarlo-5933s-projects.vercel.app",
+            "path": "/api/cron/retention",
+            "schedule": "0 15 * * *"
+          }
+        ]
+      }
+    },
+    {
+      "id": "prj_jPVvFBEx2mMZM125KVJzRiBZfgDE",
+      "name": "nevora-signup",
+      "ssoProtection": {
+        "deploymentType": "all_except_custom_domains"
+      },
+      "automationBypassCount": 0,
+      "gitDeployments": {
+        "createDeployments": "disabled",
+        "disableRepositoryDispatchEvents": true
+      },
+      "productionBranch": null,
+      "productionDeployment": {
+        "id": "dpl_5WsYDzYbdFnXwUZtBDfcQNNgigSX",
+        "url": "nevora-signup-fnsd9iezf-josekarlo-5933s-projects.vercel.app",
+        "readyState": "READY"
+      },
+      "ownerAdvisorEnvironmentNames": [],
+      "crons": {
+        "enabledAt": 1794316971657,
+        "disabledAt": null,
+        "updatedAt": 1794319711248,
+        "deploymentId": "dpl_5WsYDzYbdFnXwUZtBDfcQNNgigSX",
+        "definitions": []
+      }
+    }
+  ]
+}

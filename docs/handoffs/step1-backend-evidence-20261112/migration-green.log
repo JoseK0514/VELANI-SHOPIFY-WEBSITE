@@ -1,0 +1,14 @@
+
+> velani-ai-backend@0.2.2 test
+> vitest run test/migration-concurrency.test.ts
+
+
+[1m[30m[46m RUN [49m[39m[22m [36mv4.1.12 [39m[90m/Users/josek0514/.codex/worktrees/velani-step1-backend-20261112/services/velani-ai[39m
+
+ [32m✓[39m test/migration-concurrency.test.ts [2m([22m[2m1 test[22m[2m)[22m[33m 757[2mms[22m[39m
+   [33m[2m✓[22m[39m installs the shared vector extension once during concurrent fresh-schema migrations [33m 756[2mms[22m[39m
+
+[2m Test Files [22m [1m[32m1 passed[39m[22m[90m (1)[39m
+[2m      Tests [22m [1m[32m1 passed[39m[22m[90m (1)[39m
+[2m   Start at [22m 18:13:26
+[2m   Duration [22m 864ms[2m (transform 14ms, setup 0ms, import 50ms, tests 757ms, environment 0ms)[22m

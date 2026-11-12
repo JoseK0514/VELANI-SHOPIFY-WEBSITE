@@ -1,0 +1,39 @@
+
+> velani-ai-backend@0.2.2 test
+> vitest run test/migration-concurrency.test.ts
+
+
+[1m[30m[46m RUN [49m[39m[22m [36mv4.1.12 [39m[90m/Users/josek0514/.codex/worktrees/velani-step1-backend-20261112/services/velani-ai[39m
+
+ [31m❯[39m test/migration-concurrency.test.ts [2m([22m[2m1 test[22m[2m | [22m[31m1 failed[39m[2m)[22m[33m 513[2mms[22m[39m
+[31m   [31m×[31m installs the shared vector extension once during concurrent fresh-schema migrations[39m[33m 512[2mms[22m[39m
+
+[31m⎯⎯⎯⎯⎯⎯⎯[39m[1m[41m Failed Tests 1 [49m[22m[31m⎯⎯⎯⎯⎯⎯⎯[39m
+
+[41m[1m FAIL [22m[49m test/migration-concurrency.test.ts[2m > [22minstalls the shared vector extension once during concurrent fresh-schema migrations
+[31m[1mAssertionError[22m: expected [ 'rejected', 'fulfilled' ] to deeply equal [ 'fulfilled', 'fulfilled' ][39m
+
+[32m- Expected[39m
+[31m+ Received[39m
+
+[2m  [[22m
+[32m-   "fulfilled",[39m
+[31m+   "rejected",[39m
+[2m    "fulfilled",[22m
+[2m  ][22m
+
+[36m [2m❯[22m test/migration-concurrency.test.ts:[2m38:50[22m[39m
+    [90m 36|[39m     }
+    [90m 37|[39m     const results = await Promise.allSettled(pools.map(pool => migrate…
+    [90m 38|[39m     expect(results.map(result => result.status)).toEqual(['fulfilled',…
+    [90m   |[39m                                                  [31m^[39m
+    [90m 39|[39m     const files = (await readdir('migrations')).filter(file => /^\d+_[…
+    [90m 40|[39m     [35mfor[39m ([35mconst[39m [index[33m,[39m pool] [35mof[39m pools[33m.[39m[34mentries[39m()) {
+
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯[22m[39m
+
+
+[2m Test Files [22m [1m[31m1 failed[39m[22m[90m (1)[39m
+[2m      Tests [22m [1m[31m1 failed[39m[22m[90m (1)[39m
+[2m   Start at [22m 18:13:04
+[2m   Duration [22m 630ms[2m (transform 17ms, setup 0ms, import 56ms, tests 513ms, environment 0ms)[22m

@@ -1,0 +1,11 @@
+{
+  "postgresVersion": "16.2",
+  "port": 56571,
+  "dataPath": "/Users/josek0514/.codex/visualizations/2026/11/12/01a1d1ca-db98-7ed2-8ff7-138dcb511643/velani-step1-pg-xiixqhuw/data",
+  "pgCtlStopExit": 0,
+  "postmasterPidPresent": false,
+  "noHostedDatabaseMutation": true,
+  "previewPort": 4179,
+  "previewReachable": false,
+  "postgresReachable": false
+}

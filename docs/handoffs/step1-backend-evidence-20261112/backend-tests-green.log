@@ -1,0 +1,106 @@
+
+> velani-ai-backend@0.2.2 test
+> vitest run --reporter=default --reporter=json --outputFile=/Users/josek0514/.codex/worktrees/velani-step1-backend-20261112/docs/handoffs/step1-backend-evidence-20261112/backend-tests-green.json
+
+
+[1m[30m[46m RUN [49m[39m[22m [36mv4.1.12 [39m[90m/Users/josek0514/.codex/worktrees/velani-step1-backend-20261112/services/velani-ai[39m
+
+ [32m✓[39m test/rondo-monitor.test.ts [2m([22m[2m7 tests[22m[2m)[22m[32m 252[2mms[22m[39m
+ [32m✓[39m test/client-hub-repository.test.ts [2m([22m[2m9 tests[22m[2m)[22m[33m 430[2mms[22m[39m
+(node:97578) [FSTDEP023] FastifyDeprecation: disableRequestLogging option is deprecated. Use the logController option with disableRequestLogging or isLogDisabled override instead. The disableRequestLogging top-level option will be removed in `fastify@6`.
+(Use `node --trace-warnings ...` to show where the warning was created)
+ [32m✓[39m test/experience-repository.test.ts [2m([22m[2m11 tests[22m[2m)[22m[33m 471[2mms[22m[39m
+(node:97578) [FSTDEP023] FastifyDeprecation: disableRequestLogging option is deprecated. Use the logController option with disableRequestLogging or isLogDisabled override instead. The disableRequestLogging top-level option will be removed in `fastify@6`.
+ [32m✓[39m test/client-hub-journey.test.ts [2m([22m[2m4 tests[22m[2m)[22m[33m 433[2mms[22m[39m
+(node:97578) [FSTDEP023] FastifyDeprecation: disableRequestLogging option is deprecated. Use the logController option with disableRequestLogging or isLogDisabled override instead. The disableRequestLogging top-level option will be removed in `fastify@6`.
+(node:97578) [FSTDEP023] FastifyDeprecation: disableRequestLogging option is deprecated. Use the logController option with disableRequestLogging or isLogDisabled override instead. The disableRequestLogging top-level option will be removed in `fastify@6`.
+(node:97578) [FSTDEP023] FastifyDeprecation: disableRequestLogging option is deprecated. Use the logController option with disableRequestLogging or isLogDisabled override instead. The disableRequestLogging top-level option will be removed in `fastify@6`.
+(node:97578) [FSTDEP023] FastifyDeprecation: disableRequestLogging option is deprecated. Use the logController option with disableRequestLogging or isLogDisabled override instead. The disableRequestLogging top-level option will be removed in `fastify@6`.
+(node:97627) [FSTDEP023] FastifyDeprecation: disableRequestLogging option is deprecated. Use the logController option with disableRequestLogging or isLogDisabled override instead. The disableRequestLogging top-level option will be removed in `fastify@6`.
+(Use `node --trace-warnings ...` to show where the warning was created)
+ [32m✓[39m test/repository.test.ts [2m([22m[2m24 tests[22m[2m)[22m[33m 617[2mms[22m[39m
+(node:97627) [FSTDEP023] FastifyDeprecation: disableRequestLogging option is deprecated. Use the logController option with disableRequestLogging or isLogDisabled override instead. The disableRequestLogging top-level option will be removed in `fastify@6`.
+(node:97627) [FSTDEP023] FastifyDeprecation: disableRequestLogging option is deprecated. Use the logController option with disableRequestLogging or isLogDisabled override instead. The disableRequestLogging top-level option will be removed in `fastify@6`.
+(node:97627) [FSTDEP023] FastifyDeprecation: disableRequestLogging option is deprecated. Use the logController option with disableRequestLogging or isLogDisabled override instead. The disableRequestLogging top-level option will be removed in `fastify@6`.
+(node:97627) [FSTDEP023] FastifyDeprecation: disableRequestLogging option is deprecated. Use the logController option with disableRequestLogging or isLogDisabled override instead. The disableRequestLogging top-level option will be removed in `fastify@6`.
+(node:97627) [FSTDEP023] FastifyDeprecation: disableRequestLogging option is deprecated. Use the logController option with disableRequestLogging or isLogDisabled override instead. The disableRequestLogging top-level option will be removed in `fastify@6`.
+(node:97578) [FSTDEP023] FastifyDeprecation: disableRequestLogging option is deprecated. Use the logController option with disableRequestLogging or isLogDisabled override instead. The disableRequestLogging top-level option will be removed in `fastify@6`.
+(node:97627) [FSTDEP023] FastifyDeprecation: disableRequestLogging option is deprecated. Use the logController option with disableRequestLogging or isLogDisabled override instead. The disableRequestLogging top-level option will be removed in `fastify@6`.
+ [32m✓[39m test/client-hub-app.test.ts [2m([22m[2m9 tests[22m[2m)[22m[32m 86[2mms[22m[39m
+(node:97627) [FSTDEP023] FastifyDeprecation: disableRequestLogging option is deprecated. Use the logController option with disableRequestLogging or isLogDisabled override instead. The disableRequestLogging top-level option will be removed in `fastify@6`.
+(node:97627) [FSTDEP023] FastifyDeprecation: disableRequestLogging option is deprecated. Use the logController option with disableRequestLogging or isLogDisabled override instead. The disableRequestLogging top-level option will be removed in `fastify@6`.
+(node:97627) [FSTDEP023] FastifyDeprecation: disableRequestLogging option is deprecated. Use the logController option with disableRequestLogging or isLogDisabled override instead. The disableRequestLogging top-level option will be removed in `fastify@6`.
+(node:97627) [FSTDEP023] FastifyDeprecation: disableRequestLogging option is deprecated. Use the logController option with disableRequestLogging or isLogDisabled override instead. The disableRequestLogging top-level option will be removed in `fastify@6`.
+(node:97627) [FSTDEP023] FastifyDeprecation: disableRequestLogging option is deprecated. Use the logController option with disableRequestLogging or isLogDisabled override instead. The disableRequestLogging top-level option will be removed in `fastify@6`.
+(node:97627) [FSTDEP023] FastifyDeprecation: disableRequestLogging option is deprecated. Use the logController option with disableRequestLogging or isLogDisabled override instead. The disableRequestLogging top-level option will be removed in `fastify@6`.
+ [32m✓[39m test/release-ui-contract.test.mjs [2m([22m[2m13 tests[22m[2m)[22m[32m 124[2mms[22m[39m
+(node:97663) [FSTDEP023] FastifyDeprecation: disableRequestLogging option is deprecated. Use the logController option with disableRequestLogging or isLogDisabled override instead. The disableRequestLogging top-level option will be removed in `fastify@6`.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:97578) [FSTDEP023] FastifyDeprecation: disableRequestLogging option is deprecated. Use the logController option with disableRequestLogging or isLogDisabled override instead. The disableRequestLogging top-level option will be removed in `fastify@6`.
+(node:97663) [FSTDEP023] FastifyDeprecation: disableRequestLogging option is deprecated. Use the logController option with disableRequestLogging or isLogDisabled override instead. The disableRequestLogging top-level option will be removed in `fastify@6`.
+(node:97663) [FSTDEP023] FastifyDeprecation: disableRequestLogging option is deprecated. Use the logController option with disableRequestLogging or isLogDisabled override instead. The disableRequestLogging top-level option will be removed in `fastify@6`.
+(node:97663) [FSTDEP023] FastifyDeprecation: disableRequestLogging option is deprecated. Use the logController option with disableRequestLogging or isLogDisabled override instead. The disableRequestLogging top-level option will be removed in `fastify@6`.
+ [32m✓[39m test/vercel-handler.test.ts [2m([22m[2m3 tests[22m[2m)[22m[32m 101[2mms[22m[39m
+(node:97663) [FSTDEP023] FastifyDeprecation: disableRequestLogging option is deprecated. Use the logController option with disableRequestLogging or isLogDisabled override instead. The disableRequestLogging top-level option will be removed in `fastify@6`.
+ [32m✓[39m test/experience-api.test.ts [2m([22m[2m8 tests[22m[2m)[22m[33m 651[2mms[22m[39m
+(node:97663) [FSTDEP023] FastifyDeprecation: disableRequestLogging option is deprecated. Use the logController option with disableRequestLogging or isLogDisabled override instead. The disableRequestLogging top-level option will be removed in `fastify@6`.
+(node:97663) [FSTDEP023] FastifyDeprecation: disableRequestLogging option is deprecated. Use the logController option with disableRequestLogging or isLogDisabled override instead. The disableRequestLogging top-level option will be removed in `fastify@6`.
+(node:97663) [FSTDEP023] FastifyDeprecation: disableRequestLogging option is deprecated. Use the logController option with disableRequestLogging or isLogDisabled override instead. The disableRequestLogging top-level option will be removed in `fastify@6`.
+(node:97663) [FSTDEP023] FastifyDeprecation: disableRequestLogging option is deprecated. Use the logController option with disableRequestLogging or isLogDisabled override instead. The disableRequestLogging top-level option will be removed in `fastify@6`.
+(node:97663) [FSTDEP023] FastifyDeprecation: disableRequestLogging option is deprecated. Use the logController option with disableRequestLogging or isLogDisabled override instead. The disableRequestLogging top-level option will be removed in `fastify@6`.
+(node:97663) [FSTDEP023] FastifyDeprecation: disableRequestLogging option is deprecated. Use the logController option with disableRequestLogging or isLogDisabled override instead. The disableRequestLogging top-level option will be removed in `fastify@6`.
+(node:97663) [FSTDEP023] FastifyDeprecation: disableRequestLogging option is deprecated. Use the logController option with disableRequestLogging or isLogDisabled override instead. The disableRequestLogging top-level option will be removed in `fastify@6`.
+(node:97663) [FSTDEP023] FastifyDeprecation: disableRequestLogging option is deprecated. Use the logController option with disableRequestLogging or isLogDisabled override instead. The disableRequestLogging top-level option will be removed in `fastify@6`.
+(node:97663) [FSTDEP023] FastifyDeprecation: disableRequestLogging option is deprecated. Use the logController option with disableRequestLogging or isLogDisabled override instead. The disableRequestLogging top-level option will be removed in `fastify@6`.
+(node:97663) [FSTDEP023] FastifyDeprecation: disableRequestLogging option is deprecated. Use the logController option with disableRequestLogging or isLogDisabled override instead. The disableRequestLogging top-level option will be removed in `fastify@6`.
+(node:97663) [FSTDEP023] FastifyDeprecation: disableRequestLogging option is deprecated. Use the logController option with disableRequestLogging or isLogDisabled override instead. The disableRequestLogging top-level option will be removed in `fastify@6`.
+(node:97663) [FSTDEP023] FastifyDeprecation: disableRequestLogging option is deprecated. Use the logController option with disableRequestLogging or isLogDisabled override instead. The disableRequestLogging top-level option will be removed in `fastify@6`.
+ [32m✓[39m test/migration-concurrency.test.ts [2m([22m[2m1 test[22m[2m)[22m[33m 999[2mms[22m[39m
+   [33m[2m✓[22m[39m installs the shared vector extension once during concurrent fresh-schema migrations [33m 998[2mms[22m[39m
+ [32m✓[39m test/app.test.ts [2m([22m[2m18 tests[22m[2m)[22m[32m 204[2mms[22m[39m
+ [32m✓[39m test/retention-cron.test.ts [2m([22m[2m5 tests[22m[2m)[22m[32m 57[2mms[22m[39m
+ [32m✓[39m test/integration-client.test.mjs [2m([22m[2m4 tests[22m[2m)[22m[32m 20[2mms[22m[39m
+ [32m✓[39m test/engine.test.ts [2m([22m[2m36 tests[22m[2m)[22m[32m 76[2mms[22m[39m
+ [32m✓[39m test/frontend.test.ts [2m([22m[2m3 tests[22m[2m)[22m[32m 74[2mms[22m[39m
+[90mstdout[2m | test/neon-operations.test.ts[2m > [22m[2mreports a scheduled attention result as unavailable without returning private exception text
+[22m[39m{"event":"rondo_development_operations","role":"monitor","state":"attention","notice":"none"}
+
+[90mstderr[2m | test/neon-operations.test.ts[2m > [22m[2mreports a scheduled attention result as unavailable without returning private exception text
+[22m[39m{"event":"rondo_development_operations","role":"monitor","state":"unavailable"}
+
+ [32m✓[39m test/neon-operations.test.ts [2m([22m[2m5 tests[22m[2m)[22m[32m 44[2mms[22m[39m
+ [32m✓[39m test/client-hub-email.test.ts [2m([22m[2m8 tests[22m[2m)[22m[32m 19[2mms[22m[39m
+ [32m✓[39m test/client-hub-delivery.test.ts [2m([22m[2m4 tests[22m[2m)[22m[32m 3[2mms[22m[39m
+ [32m✓[39m test/client-hub-validation.test.ts [2m([22m[2m15 tests[22m[2m)[22m[32m 10[2mms[22m[39m
+ [32m✓[39m test/client-hub-config.test.ts [2m([22m[2m3 tests[22m[2m)[22m[32m 5[2mms[22m[39m
+ [32m✓[39m test/client-hub-queue.test.ts [2m([22m[2m3 tests[22m[2m)[22m[32m 3[2mms[22m[39m
+ [32m✓[39m test/plan-engine.test.ts [2m([22m[2m27 tests[22m[2m)[22m[32m 14[2mms[22m[39m
+ [32m✓[39m test/evaluation-budget.test.ts [2m([22m[2m2 tests[22m[2m)[22m[32m 2[2mms[22m[39m
+ [32m✓[39m test/client-hub-maintenance.test.ts [2m([22m[2m2 tests[22m[2m)[22m[32m 2[2mms[22m[39m
+ [32m✓[39m test/client-hub-queue-http.test.ts [2m([22m[2m3 tests[22m[2m)[22m[32m 3[2mms[22m[39m
+ [32m✓[39m test/ai-budget-operator.test.ts [2m([22m[2m6 tests[22m[2m)[22m[33m 1311[2mms[22m[39m
+(node:97579) [FSTDEP023] FastifyDeprecation: disableRequestLogging option is deprecated. Use the logController option with disableRequestLogging or isLogDisabled override instead. The disableRequestLogging top-level option will be removed in `fastify@6`.
+(Use `node --trace-warnings ...` to show where the warning was created)
+[90mstderr[2m | test/ai-budget.test.ts[2m > [22m[2mdurable Rondo budget admission[2m > [22m[2mwires both real runtime model paths through admission when no approval is installed
+[22m[39m{"event":"rondo_cost_control","code":"ai_budget_not_configured"}
+
+{"level":40,"time":1794521609032,"pid":97579,"hostname":"Mac.lan","reqId":"req-3","code":"provider_unavailable","requestId":"req-3","msg":"Request could not be completed"}
+[90mstderr[2m | test/ai-budget.test.ts[2m > [22m[2mdurable Rondo budget admission[2m > [22m[2mwires both real runtime model paths through admission when no approval is installed
+[22m[39m{"event":"rondo_cost_control","code":"ai_budget_not_configured"}
+
+{"level":40,"time":1794521609037,"pid":97579,"hostname":"Mac.lan","reqId":"req-4","code":"provider_unavailable","requestId":"req-4","msg":"Request could not be completed"}
+(node:97579) [FSTDEP023] FastifyDeprecation: disableRequestLogging option is deprecated. Use the logController option with disableRequestLogging or isLogDisabled override instead. The disableRequestLogging top-level option will be removed in `fastify@6`.
+{"level":40,"time":1794521609065,"pid":97579,"hostname":"Mac.lan","reqId":"req-5","code":"invalid_model_response","requestId":"req-5","msg":"Request could not be completed"}
+[90mstderr[2m | test/ai-budget.test.ts[2m > [22m[2mdurable Rondo budget admission[2m > [22m[2mcommits before SDK dispatch, preserves saved-answer replay and charges a failed plan to the same cap
+[22m[39m{"event":"rondo_cost_control","code":"ai_budget_exhausted"}
+
+{"level":40,"time":1794521609068,"pid":97579,"hostname":"Mac.lan","reqId":"req-6","code":"provider_unavailable","requestId":"req-6","msg":"Request could not be completed"}
+ [32m✓[39m test/ai-budget.test.ts [2m([22m[2m28 tests[22m[2m)[22m[33m 1496[2mms[22m[39m
+     [33m[2m✓[22m[39m does not admit an allowance that expires while its row lock is waiting [33m 1035[2mms[22m[39m
+
+[2m Test Files [22m [1m[32m27 passed[39m[22m[90m (27)[39m
+[2m      Tests [22m [1m[32m261 passed[39m[22m[90m (261)[39m
+[2m   Start at [22m 18:13:27
+[2m   Duration [22m 2.01s[2m (transform 710ms, setup 0ms, import 3.03s, tests 7.51s, environment 6ms)[22m
+
+JSON report written to /Users/josek0514/.codex/worktrees/velani-step1-backend-20261112/docs/handoffs/step1-backend-evidence-20261112/backend-tests-green.json

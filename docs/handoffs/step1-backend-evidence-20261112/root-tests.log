@@ -1,0 +1,101 @@
+
+> velani-company-site@0.1.0 pretest
+> npm run build
+
+
+> velani-company-site@0.1.0 build
+> node scripts/build.mjs
+
+{"routes":37,"preview":"/Users/josek0514/.codex/worktrees/velani-step1-backend-20261112/dist/preview","theme":"/Users/josek0514/.codex/worktrees/velani-step1-backend-20261112/dist/theme"}
+
+> velani-company-site@0.1.0 test
+> node --test --test-concurrency=1 tests/*.test.mjs
+
+✔ only the two client topics map to the client hub, and the base address is the fixed one (2.883791ms)
+✔ support body: exact contract fields, trimmed, urgency mapped, no contact[...] names or extras (0.333917ms)
+✔ new work body: no urgency, blank optional fields left out, timing carried in the description (0.138709ms)
+✔ client-side limits use the contract codes (0.152ms)
+✔ config: enabled with the expected action is available; disabled, wrong action or failure is not (13.364209ms)
+✔ 201: correct request, headers and reference; submitted and pending are both saved (4.792583ms)
+✔ 200 replay is the same saved success (2.122292ms)
+✔ one key through timeout, 503, 429 and 403 while the values are unchanged; a fresh token each time (413.02775ms)
+✔ network failure is an unknown outcome and never a reference (5.074375ms)
+✔ a new key after any edit, and after a saved request (8.504459ms)
+✔ 409 conflict: reported, and the next send uses a new key (4.242917ms)
+✔ 422: server field errors map to the form fields with the contract codes (3.052542ms)
+✔ other refusals are rejected without a reference (4.17325ms)
+✔ Retry-After: seconds or a date (0.253875ms)
+✔ Support (EN and ES): the client form is a client-hub form with no Shopify transport or contact[...] names (3.879916ms)
+✔ NEVORA trial, quote, Relay and general inquiries keep the Shopify contact transport (0.636875ms)
+✔ the page script hands only the hub form to the client hub, and the hub script keeps nothing (2.102209ms)
+✔ sending modes: published = real; unpublished = preview guard; unpublished with the setting = real, with a test notice and no review states (44.72125ms)
+✔ the theme setting exists, is off by default, and the build never turns it on (0.9665ms)
+✔ inquiries require a name, reply email and meaningful message (1.029375ms)
+✔ locations must be a positive whole number when given (0.145167ms)
+✔ unicode names and ordinary message characters survive normalization (0.241583ms)
+✔ length boundaries prevent unbounded form values (0.126958ms)
+✔ non-string fields do not get coerced into accepted personal information (0.057041ms)
+✔ unexpected inquiry categories cannot become query-provided HTML (0.053375ms)
+✔ preview submission never calls a supplied delivery transport (0.14ms)
+✔ invalid inquiries stop before transport and retain no copy in controller state (0.064459ms)
+✔ repeat clicks while sending share the original attempt (0.110417ms)
+✔ rejected transport is not turned into acceptance (0.117875ms)
+✔ lost response remains uncertain and does not automatically retry (0.079167ms)
+✔ unsupported delivery mode fails closed (0.169959ms)
+✔ local privacy demonstration stays in memory and saves a real choice (0.133958ms)
+✔ missing Shopify privacy API cannot silently switch to demo consent (0.060333ms)
+✔ consent is saved only after an explicit supported API acknowledgement (2.13725ms)
+✔ failing or silent privacy provider cannot report saved consent (15.995333ms)
+✔ malformed consent values do not become truthy permission (0.078375ms)
+✔ NEVORA enquiries ask about the team, so the message is optional (0.073083ms)
+✔ cookie choices set every Shopify consent purpose, including the sale or sharing opt-out (0.097917ms)
+✔ unpublished navigation stays in the exact draft without published page resources (4.26475ms)
+✔ main-theme links retain canonical company page destinations (1.203417ms)
+✔ native layout includes the real social card and uses theme page metadata (0.606042ms)
+✔ the published theme is indexable while drafts stay noindex (11.060958ms)
+✔ the NEVORA page loads its own assets and marks its nav item (3.893542ms)
+✔ live contact page never shows the preview form on the published theme (2.457875ms)
+✔ the assistant appears only when an API address is configured (6.832791ms)
+✔ preview CSP permits the compiled inline scripts at / (120.540417ms)
+✔ preview CSP permits the compiled inline scripts at /pages/nevora-start (1.740833ms)
+✔ preview CSP permits the compiled inline scripts at /pages/es-prueba (0.988125ms)
+✔ preview CSP permits the compiled inline scripts at /missing-page (0.942459ms)
+✔ both business paths and every required company/legal destination exist (0.325167ms)
+✔ unknown routes have a real missing-resource result (0.912458ms)
+✔ all public routes have a document title, one main, one h1 and working legal navigation (6.975333ms)
+✔ product pages state availability without a checkout claim (0.58825ms)
+✔ preview inquiry cannot point at the real contact transport (0.182209ms)
+✔ untrusted strings are encoded as text, including attribute-breaking input (0.04875ms)
+✔ local previews do not advertise themselves as public indexed pages (0.238167ms)
+✔ NEVORA policy pages are public and published pages carry no preview wording (4.559667ms)
+✔ NEVORA payroll is described as calculation, never payment or tax filing (0.264041ms)
+✔ the thirteen Spanish routes exist, pair with their English pages and use the same components (0.61225ms)
+✔ each Spanish page is lang=es with one h1 and a Spanish title and description of 70 to 160 characters (4.907792ms)
+✔ Spanish pages link to the Spanish version of a page whenever one exists (2.436167ms)
+✔ no English UI is left in the Spanish header, phone menu, footer, cookie dialog or contact form (2.594167ms)
+✔ the Spanish contact form sends the same topic values and team size as the English one (0.639ms)
+✔ the NEVORA time clock demo starts in Spanish on the Spanish page and offers English (0.482625ms)
+✔ every page has a language switch; it round-trips between the pairs and falls back to the closest Spanish page (3.42775ms)
+✔ hreflang pairs are reciprocal, absolute and default to English on the main theme (89.711583ms)
+✔ the main-theme layout renders Spanish pages in Spanish with es_US metadata and the Spanish chrome (13.530334ms)
+✔ on an unpublished theme the switch and Spanish links stay in the same draft, and the page stays noindex (9.468667ms)
+✔ billing and setup utility pages are noindex on the main theme; acquisition pages are not (30.176375ms)
+✔ while online signup is closed, the old trial page sends visitors to the trial request in their language (1.029833ms)
+✔ the home first screen carries the live sample day in both languages, with a pause control and a status region (1.253625ms)
+✔ the four views of the live piece share one set of numbers: schedule, time clock, pay and Rondo agree (3.049083ms)
+✔ Home is NEVORA and Rondo: no client panels, one filled action in the closing, and one quiet line to custom software (0.334583ms)
+✔ Home below the first screen is three live sections that read the same week as the piece (0.371333ms)
+✔ the NEVORA page tells the week in order from the same sample data as Home, and its time clock clocks Alexandra in (0.970291ms)
+✔ Plans puts the team-size price control in its first screen, once, and ends on the trial only (0.232667ms)
+✔ the request form has a real label for every field and a live summary that names the fields to fix (2.952583ms)
+✔ after a trial request the panel names Jose, leads to the NEVORA page and keeps Home as a quiet link (0.337417ms)
+✔ custom software tells two stories the same way and ends on one action (0.338792ms)
+✔ Products is one light page of three equal cards with one filled action; Legal has no labels above headings (0.156541ms)
+ℹ tests 80
+ℹ suites 0
+ℹ pass 80
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1124.497875

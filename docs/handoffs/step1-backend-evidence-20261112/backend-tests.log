@@ -1,0 +1,225 @@
+
+> velani-ai-backend@0.2.2 test
+> vitest run --reporter=default --reporter=json --outputFile=/Users/josek0514/.codex/worktrees/velani-step1-backend-20261112/docs/handoffs/step1-backend-evidence-20261112/backend-tests.json
+
+
+[1m[30m[46m RUN [49m[39m[22m [36mv4.1.12 [39m[90m/Users/josek0514/.codex/worktrees/velani-step1-backend-20261112/services/velani-ai[39m
+
+ [32m✓[39m test/plan-engine.test.ts [2m([22m[2m27 tests[22m[2m)[22m[32m 20[2mms[22m[39m
+ [32m✓[39m test/engine.test.ts [2m([22m[2m36 tests[22m[2m)[22m[32m 65[2mms[22m[39m
+(node:96685) [FSTDEP023] FastifyDeprecation: disableRequestLogging option is deprecated. Use the logController option with disableRequestLogging or isLogDisabled override instead. The disableRequestLogging top-level option will be removed in `fastify@6`.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:96685) [FSTDEP023] FastifyDeprecation: disableRequestLogging option is deprecated. Use the logController option with disableRequestLogging or isLogDisabled override instead. The disableRequestLogging top-level option will be removed in `fastify@6`.
+(node:96685) [FSTDEP023] FastifyDeprecation: disableRequestLogging option is deprecated. Use the logController option with disableRequestLogging or isLogDisabled override instead. The disableRequestLogging top-level option will be removed in `fastify@6`.
+(node:96685) [FSTDEP023] FastifyDeprecation: disableRequestLogging option is deprecated. Use the logController option with disableRequestLogging or isLogDisabled override instead. The disableRequestLogging top-level option will be removed in `fastify@6`.
+(node:96685) [FSTDEP023] FastifyDeprecation: disableRequestLogging option is deprecated. Use the logController option with disableRequestLogging or isLogDisabled override instead. The disableRequestLogging top-level option will be removed in `fastify@6`.
+(node:96685) [FSTDEP023] FastifyDeprecation: disableRequestLogging option is deprecated. Use the logController option with disableRequestLogging or isLogDisabled override instead. The disableRequestLogging top-level option will be removed in `fastify@6`.
+(node:96685) [FSTDEP023] FastifyDeprecation: disableRequestLogging option is deprecated. Use the logController option with disableRequestLogging or isLogDisabled override instead. The disableRequestLogging top-level option will be removed in `fastify@6`.
+(node:96685) [FSTDEP023] FastifyDeprecation: disableRequestLogging option is deprecated. Use the logController option with disableRequestLogging or isLogDisabled override instead. The disableRequestLogging top-level option will be removed in `fastify@6`.
+(node:96685) [FSTDEP023] FastifyDeprecation: disableRequestLogging option is deprecated. Use the logController option with disableRequestLogging or isLogDisabled override instead. The disableRequestLogging top-level option will be removed in `fastify@6`.
+(node:96685) [FSTDEP023] FastifyDeprecation: disableRequestLogging option is deprecated. Use the logController option with disableRequestLogging or isLogDisabled override instead. The disableRequestLogging top-level option will be removed in `fastify@6`.
+(node:96685) [FSTDEP023] FastifyDeprecation: disableRequestLogging option is deprecated. Use the logController option with disableRequestLogging or isLogDisabled override instead. The disableRequestLogging top-level option will be removed in `fastify@6`.
+(node:96685) [FSTDEP023] FastifyDeprecation: disableRequestLogging option is deprecated. Use the logController option with disableRequestLogging or isLogDisabled override instead. The disableRequestLogging top-level option will be removed in `fastify@6`.
+(node:96685) [FSTDEP023] FastifyDeprecation: disableRequestLogging option is deprecated. Use the logController option with disableRequestLogging or isLogDisabled override instead. The disableRequestLogging top-level option will be removed in `fastify@6`.
+(node:96685) [FSTDEP023] FastifyDeprecation: disableRequestLogging option is deprecated. Use the logController option with disableRequestLogging or isLogDisabled override instead. The disableRequestLogging top-level option will be removed in `fastify@6`.
+(node:96685) [FSTDEP023] FastifyDeprecation: disableRequestLogging option is deprecated. Use the logController option with disableRequestLogging or isLogDisabled override instead. The disableRequestLogging top-level option will be removed in `fastify@6`.
+(node:96685) [FSTDEP023] FastifyDeprecation: disableRequestLogging option is deprecated. Use the logController option with disableRequestLogging or isLogDisabled override instead. The disableRequestLogging top-level option will be removed in `fastify@6`.
+(node:96685) [FSTDEP023] FastifyDeprecation: disableRequestLogging option is deprecated. Use the logController option with disableRequestLogging or isLogDisabled override instead. The disableRequestLogging top-level option will be removed in `fastify@6`.
+ [32m✓[39m test/app.test.ts [2m([22m[2m18 tests[22m[2m)[22m[32m 122[2mms[22m[39m
+ [31m❯[39m test/experience-api.test.ts [2m([22m[2m8 tests[22m[2m | [22m[33m8 skipped[39m[2m)[22m[32m 136[2mms[22m[39m
+     [2m[90m↓[39m[22m persists corrected business details and passes them to chat independently of history
+     [2m[90m↓[39m[22m generates and replays one plan without a second model invocation
+     [2m[90m↓[39m[22m rejects stale profile revisions before generation and releases the failed claim
+     [2m[90m↓[39m[22m rejects a profile change during generation instead of saving a stale plan
+     [2m[90m↓[39m[22m sanitizes a model failure, releases its lease and permits same-ID retry
+     [2m[90m↓[39m[22m prevents another session from viewing, editing, downloading, discussing or sharing a plan
+     [2m[90m↓[39m[22m edits only actions and notes, preserves generated claims, and downloads the current escaped plan
+     [2m[90m↓[39m[22m requires explicit consent and preserves the exact shared plan across edits, retries and chat deletion
+ [31m❯[39m test/client-hub-journey.test.ts [2m([22m[2m4 tests[22m[2m | [22m[33m4 skipped[39m[2m)[22m[32m 160[2mms[22m[39m
+     [2m[90m↓[39m[22m saves EN new work and ES support with references and two correctly addressed emails each
+     [2m[90m↓[39m[22m deduplicates concurrent HTTP retries through SQL leases and replays after CAPTCHA expiry
+     [2m[90m↓[39m[22m keeps a saved request successful during partial email failure and recovers only the pending job
+     [2m[90m↓[39m[22m saves nothing on queue failure and accepts a retry using the original key
+ [31m❯[39m test/client-hub-repository.test.ts [2m([22m[2m9 tests[22m[2m | [22m[33m9 skipped[39m[2m)[22m[32m 250[2mms[22m[39m
+     [2m[90m↓[39m[22m creates one reference and two immutable email jobs under concurrent identical retries
+     [2m[90m↓[39m[22m allocates distinct references concurrently and enforces the email quota before allocation
+     [2m[90m↓[39m[22m rolls back the request, reference counter and outbox together when storage fails
+     [2m[90m↓[39m[22m leases each email once, fences stale completions and never resends a submitted confirmation
+     [2m[90m↓[39m[22m blocks expired ambiguous sends and permanent failures instead of duplicating emails
+     [2m[90m↓[39m[22m purges old requests and cascaded jobs while preserving references, fresh requests and other service data
+     [2m[90m↓[39m[22m counts accepted requests in a real rolling day even after an IP counter window resets
+     [2m[90m↓[39m[22m does not consume a clients allowance when the global rolling cap rejects the request
+     [2m[90m↓[39m[22m safely retries a definitively refused message beyond one day while preserving earlier ambiguity
+ [31m❯[39m test/repository.test.ts [2m([22m[2m24 tests[22m[2m | [22m[33m17 skipped[39m[2m)[22m[32m 185[2mms[22m[39m
+     [32m✓[39m rejects unsupported source input before connecting[32m 7[2mms[22m[39m
+     [32m✓[39m rejects unsupported source input before connecting[32m 0[2mms[22m[39m
+     [32m✓[39m rejects unsupported source input before connecting[32m 0[2mms[22m[39m
+     [32m✓[39m uses pg by default even when a proxy is present[32m 0[2mms[22m[39m
+     [32m✓[39m keeps local PostgreSQL on pg when Neon transport is enabled[32m 0[2mms[22m[39m
+     [32m✓[39m uses Neon Pool only with explicit WebSocket opt-in[32m 0[2mms[22m[39m
+     [32m✓[39m rejects missing or unsupported explicit proxy configuration[32m 0[2mms[22m[39m
+     [2m[90m↓[39m[22m only finds the session matching a token hash and excludes expired sessions
+     [2m[90m↓[39m[22m permits one concurrent turn per session across independent repository instances
+     [2m[90m↓[39m[22m rejects reused IDs with changed payloads and replays completed answers exactly once
+     [2m[90m↓[39m[22m fences stale completions and failures after an expired lease is reclaimed
+     [2m[90m↓[39m[22m keeps ordered history isolated to its session and cascades conversation deletion
+     [2m[90m↓[39m[22m enforces an atomic shared rate limit and resets expired windows
+     [2m[90m↓[39m[22m requires consent and stores one lead per submission under concurrent retry
+     [2m[90m↓[39m[22m always retrieves core constraints while excluding expired, future, and unpublished knowledge
+     [2m[90m↓[39m[22m keeps date-only sources valid through the end of their UTC expiry day
+     [2m[90m↓[39m[22m seeds deterministically and archives removed seed documents
+     [2m[90m↓[39m[22m checks migration checksums and skips already applied migrations
+     [2m[90m↓[39m[22m previews retention by default and separately applies conversation and lead retention
+     [2m[90m↓[39m[22m automatically removes expired/old conversation children, preserves enquiries and recent chats, and tolerates concurrent delivery
+     [2m[90m↓[39m[22m records a scheduled completion atomically and keeps operator runs separate
+     [2m[90m↓[39m[22m alerts on a missing/stale scheduler, overdue data and expiring knowledge without returning private data
+     [2m[90m↓[39m[22m lets manual cleanup waiting behind cron see the committed deletion
+     [2m[90m↓[39m[22m rolls back a failed cleanup and releases its connection for a later run
+ [31m❯[39m test/ai-budget.test.ts [2m([22m[2m28 tests[22m[2m | [22m[33m28 skipped[39m[2m)[22m[32m 128[2mms[22m[39m
+     [2m[90m↓[39m[22m blocks missing approval without opening a provider allowance
+     [2m[90m↓[39m[22m admits exactly two concurrent independent instances at the cap and never resets on restart
+     [2m[90m↓[39m[22m charges chat and plan attempts to the same allowance and retains uncertain/failed attempts
+     [2m[90m↓[39m[22m blocks wrong provider, model, expired approval and oversized outputs without consuming allowance
+     [2m[90m↓[39m[22m pauses new calls immediately through owner-only configuration and reports attention before exhaustion
+     [2m[90m↓[39m[22m warns when remaining headroom cannot fund the approved output ceiling even below80percent usage
+     [2m[90m↓[39m[22m does not alarm on an unused small allowance merely because a full model context costs more than the allowance
+     [2m[90m↓[39m[22m refuses a future window and reports malformed provider pricing as attention
+     [2m[90m↓[39m[22m never overwrites approval, resets usage, extends pricing or permits a runtime-role budget increase
+     [2m[90m↓[39m[22m permits reservation with the actual restricted-role grants but forbids policy changes
+     [2m[90m↓[39m[22m includes missing/near-limit budget status in retention operations attention without private data
+     [2m[90m↓[39m[22m supports an aggregate-only monitor role without granting conversation, enquiry or budget writes
+     [2m[90m↓[39m[22m fails closed if durable accounting is unavailable and does not leak SQL/connection details
+     [2m[90m↓[39m[22m does not admit a call after an acknowledged database commit is lost to the caller
+     [2m[90m↓[39m[22m rounds sub-microdollar reservations upward without floating point undercounting
+     [2m[90m↓[39m[22m reserves a conservative text-byte allowance instead of charging every short question for the full model context
+     [2m[90m↓[39m[22m counts UTF8 bytes and rejects new non-text/tools request shapes before spending
+     [2m[90m↓[39m[22m does not admit an allowance that expires while its row lock is waiting
+     [2m[90m↓[39m[22m rejects malformed runtime allowance IDs instead of selecting or inventing an approval
+     [2m[90m↓[39m[22m wires both real runtime model paths through admission when no approval is installed
+     [2m[90m↓[39m[22m commits before SDK dispatch, preserves saved-answer replay and charges a failed plan to the same cap
+     [2m[90m↓[39m[22m rejects invalid approval input before inserting a policy: {"limitMicrousd":0}
+     [2m[90m↓[39m[22m rejects invalid approval input before inserting a policy: {"limitMicrousd":1.1}
+     [2m[90m↓[39m[22m rejects invalid approval input before inserting a policy: {"limitMicrousd":9007199254740992}
+     [2m[90m↓[39m[22m rejects invalid approval input before inserting a policy: {"approvedReference":""}
+     [2m[90m↓[39m[22m rejects invalid approval input before inserting a policy: {"providerBaseUrl":"https://user:secret@ai.example.test/v1"}
+     [2m[90m↓[39m[22m rejects invalid approval input before inserting a policy: {"models":[{"model":"fixture-chat","contextTokens":1000,"outputTokenLimit":6000,"inputMicrousdPerMillion":0,"outputMicrousdPerMillion":2000000}]}
+     [2m[90m↓[39m[22m rejects invalid approval input before inserting a policy: {"models":[{"model":"fixture-chat","contextTokens":1000,"outputTokenLimit":6000,"inputMicrousdPerMillion":1000000,"outputMicrousdPerMillion":2000000},{"model":"fixture-chat","contextTokens":1000,"outputTokenLimit":6000,"inputMicrousdPerMillion":1000000,"outputMicrousdPerMillion":2000000}]}
+ [32m✓[39m test/client-hub-app.test.ts [2m([22m[2m9 tests[22m[2m)[22m[32m 105[2mms[22m[39m
+ [32m✓[39m test/client-hub-delivery.test.ts [2m([22m[2m4 tests[22m[2m)[22m[32m 6[2mms[22m[39m
+(node:96716) [FSTDEP023] FastifyDeprecation: disableRequestLogging option is deprecated. Use the logController option with disableRequestLogging or isLogDisabled override instead. The disableRequestLogging top-level option will be removed in `fastify@6`.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:96716) [FSTDEP023] FastifyDeprecation: disableRequestLogging option is deprecated. Use the logController option with disableRequestLogging or isLogDisabled override instead. The disableRequestLogging top-level option will be removed in `fastify@6`.
+(node:96716) [FSTDEP023] FastifyDeprecation: disableRequestLogging option is deprecated. Use the logController option with disableRequestLogging or isLogDisabled override instead. The disableRequestLogging top-level option will be removed in `fastify@6`.
+[90mstdout[2m | test/neon-operations.test.ts[2m > [22m[2mreports a scheduled attention result as unavailable without returning private exception text
+[22m[39m{"event":"rondo_development_operations","role":"monitor","state":"attention","notice":"none"}
+
+[90mstderr[2m | test/neon-operations.test.ts[2m > [22m[2mreports a scheduled attention result as unavailable without returning private exception text
+[22m[39m{"event":"rondo_development_operations","role":"monitor","state":"unavailable"}
+
+ [32m✓[39m test/neon-operations.test.ts [2m([22m[2m5 tests[22m[2m)[22m[32m 27[2mms[22m[39m
+(node:96716) [FSTDEP023] FastifyDeprecation: disableRequestLogging option is deprecated. Use the logController option with disableRequestLogging or isLogDisabled override instead. The disableRequestLogging top-level option will be removed in `fastify@6`.
+(node:96716) [FSTDEP023] FastifyDeprecation: disableRequestLogging option is deprecated. Use the logController option with disableRequestLogging or isLogDisabled override instead. The disableRequestLogging top-level option will be removed in `fastify@6`.
+(node:96716) [FSTDEP023] FastifyDeprecation: disableRequestLogging option is deprecated. Use the logController option with disableRequestLogging or isLogDisabled override instead. The disableRequestLogging top-level option will be removed in `fastify@6`.
+(node:96716) [FSTDEP023] FastifyDeprecation: disableRequestLogging option is deprecated. Use the logController option with disableRequestLogging or isLogDisabled override instead. The disableRequestLogging top-level option will be removed in `fastify@6`.
+(node:96716) [FSTDEP023] FastifyDeprecation: disableRequestLogging option is deprecated. Use the logController option with disableRequestLogging or isLogDisabled override instead. The disableRequestLogging top-level option will be removed in `fastify@6`.
+(node:96716) [FSTDEP023] FastifyDeprecation: disableRequestLogging option is deprecated. Use the logController option with disableRequestLogging or isLogDisabled override instead. The disableRequestLogging top-level option will be removed in `fastify@6`.
+(node:96716) [FSTDEP023] FastifyDeprecation: disableRequestLogging option is deprecated. Use the logController option with disableRequestLogging or isLogDisabled override instead. The disableRequestLogging top-level option will be removed in `fastify@6`.
+ [32m✓[39m test/retention-cron.test.ts [2m([22m[2m5 tests[22m[2m)[22m[32m 61[2mms[22m[39m
+(node:96716) [FSTDEP023] FastifyDeprecation: disableRequestLogging option is deprecated. Use the logController option with disableRequestLogging or isLogDisabled override instead. The disableRequestLogging top-level option will be removed in `fastify@6`.
+(node:96716) [FSTDEP023] FastifyDeprecation: disableRequestLogging option is deprecated. Use the logController option with disableRequestLogging or isLogDisabled override instead. The disableRequestLogging top-level option will be removed in `fastify@6`.
+(node:96716) [FSTDEP023] FastifyDeprecation: disableRequestLogging option is deprecated. Use the logController option with disableRequestLogging or isLogDisabled override instead. The disableRequestLogging top-level option will be removed in `fastify@6`.
+ [32m✓[39m test/client-hub-email.test.ts [2m([22m[2m8 tests[22m[2m)[22m[32m 20[2mms[22m[39m
+ [32m✓[39m test/vercel-handler.test.ts [2m([22m[2m3 tests[22m[2m)[22m[32m 94[2mms[22m[39m
+ [32m✓[39m test/release-ui-contract.test.mjs [2m([22m[2m13 tests[22m[2m)[22m[32m 142[2mms[22m[39m
+ [32m✓[39m test/client-hub-validation.test.ts [2m([22m[2m15 tests[22m[2m)[22m[32m 23[2mms[22m[39m
+ [32m✓[39m test/client-hub-config.test.ts [2m([22m[2m3 tests[22m[2m)[22m[32m 5[2mms[22m[39m
+ [32m✓[39m test/rondo-monitor.test.ts [2m([22m[2m7 tests[22m[2m)[22m[32m 212[2mms[22m[39m
+ [32m✓[39m test/experience-repository.test.ts [2m([22m[2m11 tests[22m[2m)[22m[33m 647[2mms[22m[39m
+ [32m✓[39m test/client-hub-maintenance.test.ts [2m([22m[2m2 tests[22m[2m)[22m[32m 3[2mms[22m[39m
+ [32m✓[39m test/client-hub-queue.test.ts [2m([22m[2m3 tests[22m[2m)[22m[32m 4[2mms[22m[39m
+ [32m✓[39m test/integration-client.test.mjs [2m([22m[2m4 tests[22m[2m)[22m[32m 28[2mms[22m[39m
+ [32m✓[39m test/evaluation-budget.test.ts [2m([22m[2m2 tests[22m[2m)[22m[32m 4[2mms[22m[39m
+ [32m✓[39m test/client-hub-queue-http.test.ts [2m([22m[2m3 tests[22m[2m)[22m[32m 15[2mms[22m[39m
+ [32m✓[39m test/frontend.test.ts [2m([22m[2m3 tests[22m[2m)[22m[32m 60[2mms[22m[39m
+ [32m✓[39m test/ai-budget-operator.test.ts [2m([22m[2m6 tests[22m[2m)[22m[33m 1010[2mms[22m[39m
+   [33m[2m✓[22m[39m prints an offline proposal without a database connection or activation [33m 399[2mms[22m[39m
+
+[31m⎯⎯⎯⎯⎯⎯[39m[1m[41m Failed Suites 5 [49m[22m[31m⎯⎯⎯⎯⎯⎯⎯[39m
+
+[41m[1m FAIL [22m[49m test/ai-budget.test.ts[2m > [22mdurable Rondo budget admission
+[31m[1merror[22m: duplicate key value violates unique constraint "pg_extension_name_index"[39m
+[90m [2m❯[22m node_modules/pg/lib/client.js:[2m694:17[22m[39m
+[36m [2m❯[22m migrate scripts/migrate.ts:[2m27:7[22m[39m
+    [90m 25|[39m         [35mcontinue[39m[33m;[39m
+    [90m 26|[39m       }
+    [90m 27|[39m       [35mawait[39m client[33m.[39m[34mquery[39m(sql)[33m;[39m
+    [90m   |[39m       [31m^[39m
+    [90m 28|[39m       await client.query('INSERT INTO schema_migrations (name, checksu…
+    [90m 29|[39m       applied[33m.[39m[34mpush[39m(file)[33m;[39m
+[90m [2m❯[22m test/ai-budget.test.ts:[2m40:5[22m[39m
+
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/5]⎯[22m[39m
+
+[41m[1m FAIL [22m[49m test/client-hub-journey.test.ts[2m > [22mClient hub isolated request-to-outbox journey
+[31m[1merror[22m: duplicate key value violates unique constraint "pg_extension_name_index"[39m
+[90m [2m❯[22m node_modules/pg/lib/client.js:[2m694:17[22m[39m
+[36m [2m❯[22m migrate scripts/migrate.ts:[2m27:7[22m[39m
+    [90m 25|[39m         [35mcontinue[39m[33m;[39m
+    [90m 26|[39m       }
+    [90m 27|[39m       [35mawait[39m client[33m.[39m[34mquery[39m(sql)[33m;[39m
+    [90m   |[39m       [31m^[39m
+    [90m 28|[39m       await client.query('INSERT INTO schema_migrations (name, checksu…
+    [90m 29|[39m       applied[33m.[39m[34mpush[39m(file)[33m;[39m
+[90m [2m❯[22m test/client-hub-journey.test.ts:[2m42:5[22m[39m
+
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/5]⎯[22m[39m
+
+[41m[1m FAIL [22m[49m test/client-hub-repository.test.ts[2m > [22mClient hub isolated PostgreSQL integration
+[31m[1merror[22m: duplicate key value violates unique constraint "pg_extension_name_index"[39m
+[90m [2m❯[22m node_modules/pg/lib/client.js:[2m694:17[22m[39m
+[36m [2m❯[22m migrate scripts/migrate.ts:[2m27:7[22m[39m
+    [90m 25|[39m         [35mcontinue[39m[33m;[39m
+    [90m 26|[39m       }
+    [90m 27|[39m       [35mawait[39m client[33m.[39m[34mquery[39m(sql)[33m;[39m
+    [90m   |[39m       [31m^[39m
+    [90m 28|[39m       await client.query('INSERT INTO schema_migrations (name, checksu…
+    [90m 29|[39m       applied[33m.[39m[34mpush[39m(file)[33m;[39m
+[90m [2m❯[22m test/client-hub-repository.test.ts:[2m17:68[22m[39m
+
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/5]⎯[22m[39m
+
+[41m[1m FAIL [22m[49m test/experience-api.test.ts[2m > [22mExperience HTTP API with PostgreSQL
+[31m[1merror[22m: duplicate key value violates unique constraint "pg_extension_name_index"[39m
+[90m [2m❯[22m node_modules/pg/lib/client.js:[2m694:17[22m[39m
+[36m [2m❯[22m migrate scripts/migrate.ts:[2m27:7[22m[39m
+    [90m 25|[39m         [35mcontinue[39m[33m;[39m
+    [90m 26|[39m       }
+    [90m 27|[39m       [35mawait[39m client[33m.[39m[34mquery[39m(sql)[33m;[39m
+    [90m   |[39m       [31m^[39m
+    [90m 28|[39m       await client.query('INSERT INTO schema_migrations (name, checksu…
+    [90m 29|[39m       applied[33m.[39m[34mpush[39m(file)[33m;[39m
+[90m [2m❯[22m test/experience-api.test.ts:[2m61:5[22m[39m
+
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/5]⎯[22m[39m
+
+[41m[1m FAIL [22m[49m test/repository.test.ts[2m > [22mPostgreSQL repository integration
+[31m[1merror[22m: duplicate key value violates unique constraint "pg_extension_name_index"[39m
+[90m [2m❯[22m node_modules/pg/lib/client.js:[2m694:17[22m[39m
+[36m [2m❯[22m migrate scripts/migrate.ts:[2m27:7[22m[39m
+    [90m 25|[39m         [35mcontinue[39m[33m;[39m
+    [90m 26|[39m       }
+    [90m 27|[39m       [35mawait[39m client[33m.[39m[34mquery[39m(sql)[33m;[39m
+    [90m   |[39m       [31m^[39m
+    [90m 28|[39m       await client.query('INSERT INTO schema_migrations (name, checksu…
+    [90m 29|[39m       applied[33m.[39m[34mpush[39m(file)[33m;[39m
+[90m [2m❯[22m test/repository.test.ts:[2m79:5[22m[39m
+
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/5]⎯[22m[39m
+
+
+[2m Test Files [22m [1m[31m5 failed[39m[22m[2m | [22m[1m[32m21 passed[39m[22m[90m (26)[39m
+[2m      Tests [22m [1m[32m194 passed[39m[22m[2m | [22m[33m66 skipped[39m[90m (260)[39m
+[2m   Start at [22m 18:10:50
+[2m   Duration [22m 1.66s[2m (transform 909ms, setup 0ms, import 2.83s, tests 3.53s, environment 3ms)[22m
+
+JSON report written to /Users/josek0514/.codex/worktrees/velani-step1-backend-20261112/docs/handoffs/step1-backend-evidence-20261112/backend-tests.json
