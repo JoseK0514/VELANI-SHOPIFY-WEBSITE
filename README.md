@@ -15,6 +15,11 @@ and [Rondo/backend handoff](docs/handoffs/2026-11-12-signup-policy-rondo-backend
 The dated sections below preserve older implementation context; their historical
 route counts, theme IDs and availability statements are not current release facts.
 
+Current checks, domain routing, remaining UI gates and release boundaries are in
+the [development closeout](docs/handoffs/2026-11-12-velani-development-closeout.md).
+`npm test` builds its required theme artifacts first. Run browser/preview builds
+serially in a checkout: they share `dist/` and may use different local API fixtures.
+
 The Velani company website (www.thevelani.com): a static site generator that produces a local preview and a Shopify theme. It presents NEVORA, the scheduling, time clock and payroll calculation app for shift teams (in development, offered to businesses by quote), and Velani's custom development work. The current design is "Night" (`src/night/`), approved 2026-11-02; the earlier navy/paper mockup in `docs/reference/approved-homepage.png` is superseded.
 
 ## Routes and themes

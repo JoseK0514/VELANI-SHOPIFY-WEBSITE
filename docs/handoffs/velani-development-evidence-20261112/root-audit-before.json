@@ -1,0 +1,411 @@
+{
+  "auditReportVersion": 2,
+  "vulnerabilities": {
+    "@shopify/theme-check-common": {
+      "name": "@shopify/theme-check-common",
+      "severity": "moderate",
+      "isDirect": false,
+      "via": [
+        "minimatch"
+      ],
+      "effects": [
+        "@shopify/theme-check-docs-updater",
+        "@shopify/theme-check-node",
+        "@shopify/theme-graph"
+      ],
+      "range": "*",
+      "nodes": [
+        "node_modules/@shopify/theme-check-common"
+      ],
+      "fixAvailable": false
+    },
+    "@shopify/theme-check-docs-updater": {
+      "name": "@shopify/theme-check-docs-updater",
+      "severity": "moderate",
+      "isDirect": false,
+      "via": [
+        "@shopify/theme-check-common"
+      ],
+      "effects": [
+        "@shopify/theme-check-node"
+      ],
+      "range": "*",
+      "nodes": [
+        "node_modules/@shopify/theme-check-docs-updater"
+      ],
+      "fixAvailable": false
+    },
+    "@shopify/theme-check-node": {
+      "name": "@shopify/theme-check-node",
+      "severity": "moderate",
+      "isDirect": true,
+      "via": [
+        "@shopify/theme-check-common",
+        "@shopify/theme-check-docs-updater",
+        "@shopify/theme-graph"
+      ],
+      "effects": [],
+      "range": "*",
+      "nodes": [
+        "node_modules/@shopify/theme-check-node"
+      ],
+      "fixAvailable": false
+    },
+    "@shopify/theme-graph": {
+      "name": "@shopify/theme-graph",
+      "severity": "moderate",
+      "isDirect": false,
+      "via": [
+        "@shopify/theme-check-common"
+      ],
+      "effects": [
+        "@shopify/theme-check-node"
+      ],
+      "range": "*",
+      "nodes": [
+        "node_modules/@shopify/theme-graph"
+      ],
+      "fixAvailable": false
+    },
+    "liquidjs": {
+      "name": "liquidjs",
+      "severity": "critical",
+      "isDirect": true,
+      "via": [
+        {
+          "source": 1114439,
+          "name": "liquidjs",
+          "dependency": "liquidjs",
+          "title": "liquidjs has a path traversal fallback vulnerability",
+          "url": "https://github.com/advisories/GHSA-wmfp-5q7x-987x",
+          "severity": "high",
+          "cwe": [
+            "CWE-22"
+          ],
+          "cvss": {
+            "score": 0,
+            "vectorString": null
+          },
+          "range": "<10.25.0"
+        },
+        {
+          "source": 1115624,
+          "name": "liquidjs",
+          "dependency": "liquidjs",
+          "title": "LiquidJS: memoryLimit Bypass through Negative Range Values Leads to Process Crash",
+          "url": "https://github.com/advisories/GHSA-9r5m-9576-7f6x",
+          "severity": "high",
+          "cwe": [
+            "CWE-20",
+            "CWE-400"
+          ],
+          "cvss": {
+            "score": 7.5,
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+          },
+          "range": "<=10.24.0"
+        },
+        {
+          "source": 1116336,
+          "name": "liquidjs",
+          "dependency": "liquidjs",
+          "title": "LiquidJS: `renderFile()` / `parseFile()` bypass configured `root` and allow arbitrary file read",
+          "url": "https://github.com/advisories/GHSA-v273-448j-v4qj",
+          "severity": "moderate",
+          "cwe": [
+            "CWE-22"
+          ],
+          "cvss": {
+            "score": 0,
+            "vectorString": null
+          },
+          "range": "<=10.25.4"
+        },
+        {
+          "source": 1116337,
+          "name": "liquidjs",
+          "dependency": "liquidjs",
+          "title": "LiquidJS: ownPropertyOnly bypass via sort_natural filter — prototype property information disclosure through sorting side-channel",
+          "url": "https://github.com/advisories/GHSA-rv5g-f82m-qrvv",
+          "severity": "moderate",
+          "cwe": [
+            "CWE-200"
+          ],
+          "cvss": {
+            "score": 5.3,
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N"
+          },
+          "range": "<=10.25.3"
+        },
+        {
+          "source": 1116340,
+          "name": "liquidjs",
+          "dependency": "liquidjs",
+          "title": "LiquidJS Has Memory Limit Bypass via Quadratic Amplification in `replace` Filter",
+          "url": "https://github.com/advisories/GHSA-mmg9-6m6j-jqqx",
+          "severity": "low",
+          "cwe": [
+            "CWE-400"
+          ],
+          "cvss": {
+            "score": 3.7,
+            "vectorString": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:L"
+          },
+          "range": "<=10.25.2"
+        },
+        {
+          "source": 1116474,
+          "name": "liquidjs",
+          "dependency": "liquidjs",
+          "title": "LiquidJS: Root restriction bypass for partial and layout loading through symlinked templates",
+          "url": "https://github.com/advisories/GHSA-56p5-8mhr-2fph",
+          "severity": "high",
+          "cwe": [
+            "CWE-61"
+          ],
+          "cvss": {
+            "score": 7.5,
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N"
+          },
+          "range": "<=10.25.2"
+        },
+        {
+          "source": 1118680,
+          "name": "liquidjs",
+          "dependency": "liquidjs",
+          "title": "liquidjs has a Denial of Service via circular block reference in layout",
+          "url": "https://github.com/advisories/GHSA-4rc3-7j7w-m548",
+          "severity": "high",
+          "cwe": [
+            "CWE-674"
+          ],
+          "cvss": {
+            "score": 7.5,
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+          },
+          "range": "<10.25.7"
+        },
+        {
+          "source": 1119623,
+          "name": "liquidjs",
+          "dependency": "liquidjs",
+          "title": "LiquidJS is Vulnerable to Remote Code Execution",
+          "url": "https://github.com/advisories/GHSA-gf2q-c269-pqgc",
+          "severity": "critical",
+          "cwe": [
+            "CWE-94"
+          ],
+          "cvss": {
+            "score": 10,
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H"
+          },
+          "range": "<10.26.0"
+        },
+        {
+          "source": 1122851,
+          "name": "liquidjs",
+          "dependency": "liquidjs",
+          "title": "LiquidJS Vulnerable to ReDoS via Quadratic Backtracking in `strip_html` Filter Regex",
+          "url": "https://github.com/advisories/GHSA-r7g9-xpmj-5fcq",
+          "severity": "high",
+          "cwe": [
+            "CWE-1333"
+          ],
+          "cvss": {
+            "score": 7.5,
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+          },
+          "range": "<10.26.0"
+        },
+        {
+          "source": 1124277,
+          "name": "liquidjs",
+          "dependency": "liquidjs",
+          "title": "LiquidJS: `pop` filter bypasses `memoryLimit` accounting that its array-filter siblings enforce",
+          "url": "https://github.com/advisories/GHSA-g357-x5c3-c72p",
+          "severity": "high",
+          "cwe": [
+            "CWE-770"
+          ],
+          "cvss": {
+            "score": 0,
+            "vectorString": null
+          },
+          "range": "<=10.27.0"
+        },
+        {
+          "source": 1193669,
+          "name": "liquidjs",
+          "dependency": "liquidjs",
+          "title": "LiquidJS: Uncontrolled Resource Consumption in `join` filter allows template authors to bypass `memoryLimit` and crash the process",
+          "url": "https://github.com/advisories/GHSA-4r6h-5v86-94p3",
+          "severity": "high",
+          "cwe": [
+            "CWE-400"
+          ],
+          "cvss": {
+            "score": 7.5,
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+          },
+          "range": "<=10.27.1"
+        },
+        {
+          "source": 1241408,
+          "name": "liquidjs",
+          "dependency": "liquidjs",
+          "title": "LiquidJS: ownPropertyOnly bypass for inherited array indices in first/last/join/reverse/slice/compact, `.first`/`.last`, negative index, and for-loop iteration",
+          "url": "https://github.com/advisories/GHSA-fwxr-j5w2-587m",
+          "severity": "moderate",
+          "cwe": [
+            "CWE-200"
+          ],
+          "cvss": {
+            "score": 0,
+            "vectorString": null
+          },
+          "range": "<=10.27.1"
+        },
+        {
+          "source": 1243445,
+          "name": "liquidjs",
+          "dependency": "liquidjs",
+          "title": "LiquidJS's `{% render %}` tag silently bypasses per-render `ownPropertyOnly:true` via `Context.spawn()`",
+          "url": "https://github.com/advisories/GHSA-9x9p-qf8f-mvjg",
+          "severity": "moderate",
+          "cwe": [
+            "CWE-693"
+          ],
+          "cvss": {
+            "score": 5.3,
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N"
+          },
+          "range": "<10.26.0"
+        },
+        {
+          "source": 1243446,
+          "name": "liquidjs",
+          "dependency": "liquidjs",
+          "title": "LiquidJS has a renderLimit DoS guard bypass via empty `{% for %}` body",
+          "url": "https://github.com/advisories/GHSA-8xx9-69p8-7jp3",
+          "severity": "moderate",
+          "cwe": [
+            "CWE-400"
+          ],
+          "cvss": {
+            "score": 6.5,
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+          },
+          "range": "<10.26.0"
+        },
+        {
+          "source": 1243447,
+          "name": "liquidjs",
+          "dependency": "liquidjs",
+          "title": "LiquidJS's strip_html filter bypass via newline characters in HTML tags enables XSS",
+          "url": "https://github.com/advisories/GHSA-2qv6-9wx5-cwv4",
+          "severity": "moderate",
+          "cwe": [
+            "CWE-79"
+          ],
+          "cvss": {
+            "score": 6.1,
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N"
+          },
+          "range": "<10.26.0"
+        },
+        {
+          "source": 1243550,
+          "name": "liquidjs",
+          "dependency": "liquidjs",
+          "title": "LiquidJS has a memory and render limit bypass via unbounded width padding in `date` filter (strftime)",
+          "url": "https://github.com/advisories/GHSA-hh27-hf48-9f5q",
+          "severity": "high",
+          "cwe": [
+            "CWE-400"
+          ],
+          "cvss": {
+            "score": 7.5,
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+          },
+          "range": "<=10.25.7"
+        },
+        {
+          "source": 1243931,
+          "name": "liquidjs",
+          "dependency": "liquidjs",
+          "title": "LiquidJS has Exponential Memory Amplification through its replace_first Filter $& Pattern",
+          "url": "https://github.com/advisories/GHSA-6q5m-63h6-5x4v",
+          "severity": "high",
+          "cwe": [
+            "CWE-20",
+            "CWE-400"
+          ],
+          "cvss": {
+            "score": 7.5,
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+          },
+          "range": "<10.25.1"
+        }
+      ],
+      "effects": [],
+      "range": "<=10.27.1",
+      "nodes": [
+        "node_modules/liquidjs"
+      ],
+      "fixAvailable": {
+        "name": "liquidjs",
+        "version": "10.30.1",
+        "isSemVerMajor": false
+      }
+    },
+    "minimatch": {
+      "name": "minimatch",
+      "severity": "moderate",
+      "isDirect": false,
+      "via": [
+        {
+          "source": 1244623,
+          "name": "minimatch",
+          "dependency": "minimatch",
+          "title": "minimatch has potential denial of service via globparts amplification",
+          "url": "https://github.com/advisories/GHSA-g3hv-75wg-m249",
+          "severity": "moderate",
+          "cwe": [
+            "CWE-405"
+          ],
+          "cvss": {
+            "score": 0,
+            "vectorString": null
+          },
+          "range": ">=7.0.0 <11.0.1"
+        }
+      ],
+      "effects": [
+        "@shopify/theme-check-common"
+      ],
+      "range": "7.0.0 - 11.0.0",
+      "nodes": [
+        "node_modules/minimatch"
+      ],
+      "fixAvailable": false
+    }
+  },
+  "metadata": {
+    "vulnerabilities": {
+      "info": 0,
+      "low": 0,
+      "moderate": 5,
+      "high": 0,
+      "critical": 1,
+      "total": 6
+    },
+    "dependencies": {
+      "prod": 1,
+      "dev": 55,
+      "optional": 1,
+      "peer": 1,
+      "peerOptional": 0,
+      "total": 55
+    }
+  }
+}

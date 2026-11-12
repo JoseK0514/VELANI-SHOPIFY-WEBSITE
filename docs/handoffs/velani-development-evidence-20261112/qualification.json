@@ -1,0 +1,1041 @@
+{
+  "rootTests": {
+    "passed": 80,
+    "failed": 0
+  },
+  "backendTests": {
+    "passed": 198,
+    "failed": 0,
+    "skipped": 0,
+    "files": 21
+  },
+  "themeCheck": "no offenses",
+  "buildRoutes": 37,
+  "privacyBrowser": {
+    "passed": 4,
+    "failed": 0
+  },
+  "clientHubBrowser": {
+    "completeConfigurations": 8,
+    "liveChecks": 340,
+    "previewChecks": 148,
+    "axeRuns": 92,
+    "axeViolations": 0,
+    "originalFailedAttemptPreserved": true,
+    "unchangedIsolatedRetry": {
+      "checks": 85,
+      "failed": 0
+    }
+  },
+  "broadBrowser": {
+    "passed": 87,
+    "failed": 2,
+    "runtimeErrors": 0
+  },
+  "rootDependencyAudit": 0,
+  "backendDependencyAudit": 0,
+  "typecheck": "pass",
+  "backendBuild": "pass",
+  "fullWebsiteAcceptance": "HELD for the two preserved UI failures",
+  "verifiedCodeCommit": "2aa0d3f87d1fda40235f7a68db9bfcc38b3a115f",
+  "backendRuntimeUnchangedFrom": "3db0ea98bc3da6b3ae08b9e5d2c2b59a361e6a8d",
+  "uiSourceUnchangedFrom": "17d35c2e9a146c54fcdfa1393348bfb642bdcf90",
+  "sourceSha256": [
+    {
+      "path": "package-lock.json",
+      "sha256": "36ab7a2cbc85c2399cdc08e71fe0119b2fefc353d198c5b1ad67a4671293f761"
+    },
+    {
+      "path": "package.json",
+      "sha256": "77a48e63e7ff23669a4775410139be9c70e4eb624c1658179107b808270e8bfa"
+    },
+    {
+      "path": "public/assets/apple-touch-icon.png",
+      "sha256": "6d0a0aef03bf5e1ec28843d00f78d46f20e89487a3bb80208ee72465c793b3ce"
+    },
+    {
+      "path": "public/assets/arrow-right.svg",
+      "sha256": "e45bc4a12592b8723110db42c6deffdf177e4fe7704cf50324963fa0a59b2d74"
+    },
+    {
+      "path": "public/assets/check.svg",
+      "sha256": "cbb89a8c42f283d4f846eb935e05d88c1be04462f16480e068c0f82b9ce40b12"
+    },
+    {
+      "path": "public/assets/client-hub.js",
+      "sha256": "7ab7ab83025484c42929492871ac30fa432a496952913c54e7e0bbe6dcc1531e"
+    },
+    {
+      "path": "public/assets/dm-sans-latin-400-normal.woff2",
+      "sha256": "4ab51eb2cd7305d177187908d6397474d4520663f6c6e572feb0a64f4fa80006"
+    },
+    {
+      "path": "public/assets/dm-sans-latin-500-normal.woff2",
+      "sha256": "19bf1984956517c35c2bd35b6cdedac12a21d6fcd3596c614ecdfb88b648909d"
+    },
+    {
+      "path": "public/assets/dm-sans-latin-600-normal.woff2",
+      "sha256": "6bb2b2645ba5eeaecf56322c543fa3a75b87b927977b9c03b1dabc4205089120"
+    },
+    {
+      "path": "public/assets/favicon-32.png",
+      "sha256": "54e4c2f094d4d7d43a48d811def6ceadf9dc74f03ac6900ad9d1ca14c4918715"
+    },
+    {
+      "path": "public/assets/favicon.svg",
+      "sha256": "ed6ff4a970611243096e685cd4192c78bf445e55c067cf2c009050c8b5c6f1b2"
+    },
+    {
+      "path": "public/assets/inquiry.js",
+      "sha256": "ebc0308f56e50b60d30887ec8a3eaa91b69cce473336c44f1782ab6ee6d0c324"
+    },
+    {
+      "path": "public/assets/privacy.js",
+      "sha256": "b75b3e1849de0a047e05bf8d299ad776acf50c584a3dedf1b12d5bec0159bc4e"
+    },
+    {
+      "path": "public/assets/velani-assist.js",
+      "sha256": "1c5b54f7d46ca0fb9a0a5c3de10b436723ace077843c697046cf0df0f98ec876"
+    },
+    {
+      "path": "public/assets/velani-assistant.js",
+      "sha256": "add851a64a9fc4aff15659672bf7365aa5f71f295e37ca3e361d2f851c46e0c4"
+    },
+    {
+      "path": "public/assets/velani-commerce.js",
+      "sha256": "54e41e6f32348188bbf64a2117628db37742a705d6b38d14fe8fc1ea75a3d603"
+    },
+    {
+      "path": "public/assets/velani-home.css",
+      "sha256": "5adf99824a750edb22bf4ecedc0375ece858e19d61b4103c9f23d2f9b33674cc"
+    },
+    {
+      "path": "public/assets/velani-hub.js",
+      "sha256": "24f5d7f0fec911e813686e5f6cba94a3cdba778a6e11eb835a94e1d355686d12"
+    },
+    {
+      "path": "public/assets/velani-motion.js",
+      "sha256": "160634f9eef9a7843d5894b0b5514ba632afe8cdea1ba9ceedb9c98e269d538a"
+    },
+    {
+      "path": "public/assets/velani-nevora.css",
+      "sha256": "be40a14cc58c92fee1777631235850b77c758ede8ea8cdf7236a1220030b3e88"
+    },
+    {
+      "path": "public/assets/velani-nevora.js",
+      "sha256": "aa01c5831109ac7c8c151da83ba62911d659430ed1de45d08231eac6143eb297"
+    },
+    {
+      "path": "public/assets/velani.css",
+      "sha256": "69503d58b607611e661014a395c0d8651c4cb4f300892c31ce8d26b4bb154a88"
+    },
+    {
+      "path": "public/assets/velani.js",
+      "sha256": "e0abba9e6b29861bb73aae9e755f62778c50f8ccf9ef3f8e984e1cddb450fe50"
+    },
+    {
+      "path": "scripts/ai-harness/dev-server.mjs",
+      "sha256": "01b30dc100404668d7fe98f32ea6d9094883968efb58d915ca821b5429f93b3d"
+    },
+    {
+      "path": "scripts/ai-harness/memory-repository.mjs",
+      "sha256": "3a9d5563b1a772c29872b6b8c0474baf49a5cd062a7c956eeb566d1545fd900a"
+    },
+    {
+      "path": "scripts/ai-harness/stub-engine.mjs",
+      "sha256": "78f029f32a8055e9d3ad57d0636a4d82e9ae106e521fce02f1cbfd3a5c5ea6dd"
+    },
+    {
+      "path": "scripts/browser-check.mjs",
+      "sha256": "b659e219634bb363ef1b44d69568821eb76047954401b5bcb920fb681026bf87"
+    },
+    {
+      "path": "scripts/build.mjs",
+      "sha256": "c5e6c21ac891c92deb7fb7627bf9718dbfebcfd9f597f12a67e78c3899e38fcf"
+    },
+    {
+      "path": "scripts/check-live-parity.mjs",
+      "sha256": "672316e07ec8cb69f289d251ab43794b110da77568236af8818f855fe6ccac29"
+    },
+    {
+      "path": "scripts/check-readback.mjs",
+      "sha256": "d6025eab77ca1d1edc39e9f2ce0bdba84e90a6cf1abb86a45664951d68e90f1f"
+    },
+    {
+      "path": "scripts/check-theme.mjs",
+      "sha256": "573dc7eac2ef90f813816d13ef413348a33f6ffc0c02da4a21daf0647bd53e09"
+    },
+    {
+      "path": "scripts/checks/acceptance.mjs",
+      "sha256": "e4ee6de71b5153423cdabcbaf7f87fffcc08a6b2d63b9c92246b93047a5fb505"
+    },
+    {
+      "path": "scripts/checks/assistant.mjs",
+      "sha256": "119dd1d7e7f1cb691004c5c1c0483d1436d7dbdb2c5ce0f1d90e84342f64db49"
+    },
+    {
+      "path": "scripts/checks/baseline-pages.mjs",
+      "sha256": "4689f0a0ef0b0ac91d037fa88a3a5035d546905cffd94b84370e6e2db00fcd5c"
+    },
+    {
+      "path": "scripts/checks/client-hub-browser.mjs",
+      "sha256": "2bf9e0a8985381797905309b7ae6efdd1edb4d6a968a1cc5abb698a6d11dd6ee"
+    },
+    {
+      "path": "scripts/checks/client-hub-hosted.mjs",
+      "sha256": "7cfc3980197dd449c8a86752ccf3812d8d942522ad79ee66ed9402950671316c"
+    },
+    {
+      "path": "scripts/checks/clipping.mjs",
+      "sha256": "7c16eb3432c0df88576590718249ec3e6df08e2f5bf6eca1d8cc84b7b4abc98f"
+    },
+    {
+      "path": "scripts/checks/fixes-2026-11-05b.mjs",
+      "sha256": "640849b0e23a761e3224d3aca1d5fb9a0e7d07941568246054665ca2bcfe77bb"
+    },
+    {
+      "path": "scripts/checks/hosted-fixes.mjs",
+      "sha256": "9257c6b0d2d68850fd7b1ed65d3d98eb7be5b096835502ba0533e66b76124170"
+    },
+    {
+      "path": "scripts/checks/hosted-overlap.mjs",
+      "sha256": "10f5fd26127f37e0b65af12e28c9eae7fa36df67912fa452502024ba5989d2df"
+    },
+    {
+      "path": "scripts/checks/hosted-quick-fixes-20261107.mjs",
+      "sha256": "8287ee9024f3fc58f120d1aa45924d03ef03a208deecc79e6388e050a1962e7f"
+    },
+    {
+      "path": "scripts/checks/hosted-spanish-mark.mjs",
+      "sha256": "bea3f89f23f6fadc294d7e1a3ebc6abc057422a71ff998733e75a613d6ba5c30"
+    },
+    {
+      "path": "scripts/checks/inspection-fixes.mjs",
+      "sha256": "d6491380bcd429957dbd7b00fde1d33f3097e5238bf1349365c779f602fb654d"
+    },
+    {
+      "path": "scripts/checks/layout-audit.mjs",
+      "sha256": "a88a0bfc31e931f4493eeb6a44b4c798b6e91947110a5a1ed26a92b2b81364e2"
+    },
+    {
+      "path": "scripts/checks/live-inspect.mjs",
+      "sha256": "e96cb17cf7c3969e4c298e06696989f7b87dd51bb9fe3a8552b1543f172295ad"
+    },
+    {
+      "path": "scripts/checks/rondo-hosted-free.mjs",
+      "sha256": "367f520243cc5dac35969a55d863bf10337d54d2b8c7855fff48c0dca5047eb4"
+    },
+    {
+      "path": "scripts/checks/rondo-ui.mjs",
+      "sha256": "2f6e43eb6e58da3abd3571855d7bca3878e20f8de8c774e6721fff8114d49c7e"
+    },
+    {
+      "path": "scripts/checks/scroll-stability.mjs",
+      "sha256": "8f2821d65f6c91fa89e6cedd7e46508b3f6a5755628e7863e5a6e386afe765de"
+    },
+    {
+      "path": "scripts/checks/spanish-pages.mjs",
+      "sha256": "ca842b9630415d97fe2605b2e68f5ebb496efd79b6c4088ca470bab74b392ea4"
+    },
+    {
+      "path": "scripts/commerce-fixture.mjs",
+      "sha256": "e109048ea48a52a9f4dc37c112efcdbd16e466aaf0979d0b4955c632cbe9c923"
+    },
+    {
+      "path": "scripts/export-original-theme.py",
+      "sha256": "26afc81a6983cd0d2be727d0a9b56f3c2649d8c55c11d2545f106f8a84346a8d"
+    },
+    {
+      "path": "scripts/favicon-png.mjs",
+      "sha256": "6d4b081a4cbf2b385e5934e1225f154ef78e0fb47e1fd4f6a88a570a88b93ee6"
+    },
+    {
+      "path": "scripts/og/make-share-images.mjs",
+      "sha256": "31c4a475a68102f3a4df8c090ef95a52cb094d3f8ef79cc6be345ecd7eeb0bb1"
+    },
+    {
+      "path": "scripts/package-theme.mjs",
+      "sha256": "a3bdadd56b79b2911a266b0fa0c75a2cc525b6890098b92c85ac8cc81e27f8c2"
+    },
+    {
+      "path": "scripts/privacy-regression.mjs",
+      "sha256": "56dbca0a4784b0bba7d3939bf2d68c7c48e3702b8e38886ef63089cc88be5322"
+    },
+    {
+      "path": "scripts/serve.mjs",
+      "sha256": "d9b77a3a229f084d161628795161c1a393dcb78a8de167571b6c164dfe2a6582"
+    },
+    {
+      "path": "services/velani-ai/.dockerignore",
+      "sha256": "c5feff8f0e2dcb9817cfb79186890ed3442846729b499e2951fabb8d73374fcf"
+    },
+    {
+      "path": "services/velani-ai/.env.example",
+      "sha256": "c22c39752b263e2f900be02734bc2c2869951d5a652a651f6843d3494b493c33"
+    },
+    {
+      "path": "services/velani-ai/.gitignore",
+      "sha256": "f25d4503aa7ef8c8cce1dd8d3ea509584ad6ccdfb5831780d8d7fe5a1e6f571e"
+    },
+    {
+      "path": "services/velani-ai/Dockerfile",
+      "sha256": "eb2f0730dee22ae494c995d9fea1ce9fb81dca5e1948fc52c97ba3435e3c46d3"
+    },
+    {
+      "path": "services/velani-ai/README.md",
+      "sha256": "384e76682a560a94e97965c8a99ffa04297722477ccd1cb6cb95b28d3b34d02f"
+    },
+    {
+      "path": "services/velani-ai/START-HERE-CLAUDE.md",
+      "sha256": "e1e9fd4e8c218b0df2cc5306286bcd5d2e7061d9f7338fa4cc7e910871328282"
+    },
+    {
+      "path": "services/velani-ai/api/client-hub-email.ts",
+      "sha256": "5ba66acaac9d3f511af15d3bf7525859cffdfbeb5eef584d62d8d8cc5dfc6b12"
+    },
+    {
+      "path": "services/velani-ai/api/client-hub.ts",
+      "sha256": "8f74c321113103070fd8caeec3b46620b7717ec1a5d414f74be21dade032fe99"
+    },
+    {
+      "path": "services/velani-ai/api/cron/client-hub.ts",
+      "sha256": "9d18cb360ca8675ab871de61b2a4a0ddcb12dfbef6ae0ac5dc8df0164fa34ea3"
+    },
+    {
+      "path": "services/velani-ai/api/cron/retention.ts",
+      "sha256": "bddb8f6217bbc10d08d95ec67c4f35e17fc06b8e5f17b67a745b1dd9443fd7ff"
+    },
+    {
+      "path": "services/velani-ai/api/index.ts",
+      "sha256": "3d51ba4569fd56edeb5e9587e0c63f290559a0e5bfad453dd551f4cb2ecb5179"
+    },
+    {
+      "path": "services/velani-ai/docs/AI-EXPERIENCE-ROADMAP.md",
+      "sha256": "15dc67828e775c8635918cadc04477a1c40f2fccd8c1e1f8c16c7351b2f47603"
+    },
+    {
+      "path": "services/velani-ai/docs/CLAUDE-HANDOFF.md",
+      "sha256": "b488f02ff805e3ed10fcaa4585e509d188e39c2e41e9865466312aa7ebdade3c"
+    },
+    {
+      "path": "services/velani-ai/docs/CLAUDE-UI-START-HERE.md",
+      "sha256": "67d1a4c156d46ffa1236e89c03bad88ebb5dada0f4e04cf625f885ad5019ea54"
+    },
+    {
+      "path": "services/velani-ai/docs/ENTRANCE-ANIMATION.md",
+      "sha256": "9c8291c44d5ec411cb45ff16cb7c101e28adfd6b784a4c561ddb375a943f4ef5"
+    },
+    {
+      "path": "services/velani-ai/docs/LAUNCH-STATUS-2026-11-03.md",
+      "sha256": "d4bf1d5c871cc8358aeb9704e251e206feee738fd081b201b242ae91556cdf44"
+    },
+    {
+      "path": "services/velani-ai/docs/PUBLICATION-STATUS.md",
+      "sha256": "151c6b815a909df72c55306b4b5393a424e55466d719fad317c171c88328e63d"
+    },
+    {
+      "path": "services/velani-ai/docs/RELEASE-0.2.md",
+      "sha256": "f2831e3db0d73a9541470b25dc964b25e946c58a1defda7011fa99ae20a8fdff"
+    },
+    {
+      "path": "services/velani-ai/docs/RETENTION-REFRESH-2026-11-05.md",
+      "sha256": "697ea5a66ecefbb0c32f138c848e4aa40fee3b8f91667a97f64a9839775314ab"
+    },
+    {
+      "path": "services/velani-ai/docs/RONDO-BACKEND-SPEC.md",
+      "sha256": "f6a1c5e89b583b4759e19139ce89edb7751ef5e0fa90155e66307c5328ad2d7f"
+    },
+    {
+      "path": "services/velani-ai/docs/RONDO-VALIDATION-2026-11-05.md",
+      "sha256": "8b96e83702cff567e5158412495cd5ddc3bf851ed155ea746be66d206d0bf19b"
+    },
+    {
+      "path": "services/velani-ai/docs/SHOPIFY-ACTIVATION.md",
+      "sha256": "213f721c866661cb342dec5593085a44a1438ba839395c92e1f1c31bfa6eac23"
+    },
+    {
+      "path": "services/velani-ai/docs/START-HERE-CLAUDE.md",
+      "sha256": "d425f84c3e0c58e5dfe4b4ef42cbff294b39aac160db1532389a04d34f16be02"
+    },
+    {
+      "path": "services/velani-ai/docs/VALIDATION-0.2.md",
+      "sha256": "a40860709ab14fcf04179a7dc580d8079b076a4c2a79b357e934dc0c75bc0566"
+    },
+    {
+      "path": "services/velani-ai/docs/VERCEL.md",
+      "sha256": "9835c300e7ee27761365c7d1ea387b9aed541fd6b7faa32b6ecfb106f2f2cb60"
+    },
+    {
+      "path": "services/velani-ai/docs/api.md",
+      "sha256": "9ab3db35532a84157ba335dd4c2d07f8e5ebda3d5017e39bbd07b9e1c35bd050"
+    },
+    {
+      "path": "services/velani-ai/docs/architecture.md",
+      "sha256": "a7f37364137566f491934039bf8534c9ec2d0b80204571cc2de877dd3bcff004"
+    },
+    {
+      "path": "services/velani-ai/docs/browser-desktop.png",
+      "sha256": "a63bcc9365d63c0aced78a3b23bf0c0b57564499956a18d92c3dc3fc59c51980"
+    },
+    {
+      "path": "services/velani-ai/docs/browser-mobile.png",
+      "sha256": "9fe7ce3e90281e31f1a270cf36b16d6abf125709f98db2c761aef3ee48d89440"
+    },
+    {
+      "path": "services/velani-ai/docs/design-plan.md",
+      "sha256": "1f989073edacdfc3eabd9d427c8299ef107b11b168d4d673bd18b403de43984d"
+    },
+    {
+      "path": "services/velani-ai/docs/entrance-design-plan.md",
+      "sha256": "969fa9b66d39ba09ef5516fe7a7c1770be2d702fd8f1ec46cfd1402efa4fae74"
+    },
+    {
+      "path": "services/velani-ai/docs/entrance-desktop.png",
+      "sha256": "d8cba9d319984799d9c311b4755027a4e98ab526c94476cf28bfb6b40a39dc45"
+    },
+    {
+      "path": "services/velani-ai/docs/entrance-mobile.png",
+      "sha256": "334e0481080976e63f24c8ea6ff2bb067c35a724aeb7d0bf0b0fabf7380b12da"
+    },
+    {
+      "path": "services/velani-ai/docs/entrance-revealed-desktop.png",
+      "sha256": "a89d533e63b56f1668e6d2c340f89af54707c5838f78b76c9331949ff98ff07c"
+    },
+    {
+      "path": "services/velani-ai/docs/entrance-revealed-mobile.png",
+      "sha256": "d75024d907554fad4709db20cec6c4452bab8444ba91247b4cc2e45edfda6b95"
+    },
+    {
+      "path": "services/velani-ai/docs/evaluation-results.json",
+      "sha256": "30e0f66e576b127fe09e5caeaa933716edbfae45251db7f199f4c240b34ee9bb"
+    },
+    {
+      "path": "services/velani-ai/docs/evaluation.md",
+      "sha256": "697425fa64f600277c4edb0d614577d38de77f7608684c624de4df37b052f08d"
+    },
+    {
+      "path": "services/velani-ai/docs/evidence/knowledge-rollback-2026-11-05.sql",
+      "sha256": "6c7ed0dc7303d900939cd2326e0dc796d37ac5cb28da3393d7c0d97b1e9bf057"
+    },
+    {
+      "path": "services/velani-ai/docs/evidence/retention-activation-2026-11-05.json",
+      "sha256": "3edfda03578e327250629cb51df3347ff290c7176d0a184289c4d8c826abf2cd"
+    },
+    {
+      "path": "services/velani-ai/docs/example-workflow-plan.md",
+      "sha256": "b1b4b70ba340f9e48583d449c2aa70bd39e5cde09e5972b980428a466bc42b36"
+    },
+    {
+      "path": "services/velani-ai/docs/guide-browser-test.json",
+      "sha256": "86d3282d699e129793b0b51681537ada85bb63e116de2d4b06725e02ee2dd7a0"
+    },
+    {
+      "path": "services/velani-ai/docs/guide-desktop.png",
+      "sha256": "fabc79d3160f262fb40cba4ab09fe75a8c2e96fbf24cf98c88fcd1abdcf4d123"
+    },
+    {
+      "path": "services/velani-ai/docs/guide-plan-desktop.png",
+      "sha256": "a2985e1888296e4d6cf524d9dc9f4b8df66be90f86ab11edf585a5a38b246c99"
+    },
+    {
+      "path": "services/velani-ai/docs/guide-plan-mobile.png",
+      "sha256": "4b2f244fc0943d866af7cb48027034d163099f5ff4b29dd2b7d9dfab6312c062"
+    },
+    {
+      "path": "services/velani-ai/docs/live-smoke.json",
+      "sha256": "9510044d8623bbc19e05ec4fc3a0d3ef5d3b58e8272b09e1b2f9a85c91b5af14"
+    },
+    {
+      "path": "services/velani-ai/docs/model-comparison-results.json",
+      "sha256": "e08a2eaea9fd166f71c643f90ef37030fa0a69c09a6ef3abcbc0bed9ea4b9bc8"
+    },
+    {
+      "path": "services/velani-ai/docs/model-comparison.md",
+      "sha256": "98be92ad2ea1896f69dce00f26f86b00af1a17c1526515fca58e3c4b93df0301"
+    },
+    {
+      "path": "services/velani-ai/docs/plan-model-comparison.json",
+      "sha256": "26f19f70355714efb633593ae42e053e453fc9fd5952034ca671bb6d46a47ba6"
+    },
+    {
+      "path": "services/velani-ai/docs/plan-model-comparison.md",
+      "sha256": "67e771d8a1cf01f0b078add3f423a7f22e0818baa3d15ea75fde15caada03e6b"
+    },
+    {
+      "path": "services/velani-ai/docs/rondo-live-results-2026-11-05.json",
+      "sha256": "7232e92184a0adcfd6427efa61fd597446afb2a047e83e5aa29a6a84738312b2"
+    },
+    {
+      "path": "services/velani-ai/docs/validation.md",
+      "sha256": "c339788e6d850c2675f3df7029d826ac2e5df69c42bd6ba8ec576f45f0ea8a7f"
+    },
+    {
+      "path": "services/velani-ai/docs/velani-entrance-desktop.mp4",
+      "sha256": "f73f17330b6f4978b33c91fcd80a4e4f8baac6e65373249fc25c219b09dce312"
+    },
+    {
+      "path": "services/velani-ai/docs/velani-entrance-mobile.mp4",
+      "sha256": "733d2826519aa3197eddf06a6c471cb596052b1a6a7e69c59f76bfc9bde9194c"
+    },
+    {
+      "path": "services/velani-ai/docs/velani-entrance.gif",
+      "sha256": "2f03bc0c4a6f0f0d927fc26f15bb876a00cefdb6e6ba8842d4ee8651b9f5b03f"
+    },
+    {
+      "path": "services/velani-ai/integration/README.md",
+      "sha256": "91e5c9f645d624ba9e830c1cbc21adf88846fa31b8a051490c00c6831828dceb"
+    },
+    {
+      "path": "services/velani-ai/integration/example.html",
+      "sha256": "4c41ca78c6257e7a92c0f5da7110613a434224c1d0d3924e54c269fee682fab1"
+    },
+    {
+      "path": "services/velani-ai/integration/shopify/velani-entrance.liquid",
+      "sha256": "d3aa2e47caaea38db5379c3ff800503d9b4790755d990df70e6c5718bbe04838"
+    },
+    {
+      "path": "services/velani-ai/integration/velani-assistant.js",
+      "sha256": "add851a64a9fc4aff15659672bf7365aa5f71f295e37ca3e361d2f851c46e0c4"
+    },
+    {
+      "path": "services/velani-ai/knowledge/comparison-cases.json",
+      "sha256": "ef4ce58c8fca935ce4b38924e3a5d0c2a50781d25cd341033a85a7b7175c0c2c"
+    },
+    {
+      "path": "services/velani-ai/knowledge/evals.json",
+      "sha256": "60398be4f6a08db4bcafefd8fd6b5138e392830127865756be3eb58d519ec376"
+    },
+    {
+      "path": "services/velani-ai/knowledge/nevora.json",
+      "sha256": "321b8c7da72bb28ea8d960e8520be0c64448d96f34bd5f6f61896514381322d7"
+    },
+    {
+      "path": "services/velani-ai/knowledge/rondo-hard-evals.json",
+      "sha256": "03766badc79a62dcfea68d317a5edbda754f7a590889922cffedcc408d5b60cd"
+    },
+    {
+      "path": "services/velani-ai/migrations/001_initial.sql",
+      "sha256": "83a5e33df8dfe9e3b3a2e3be1751d202fe9c72a38367c16135ef68b948eccede"
+    },
+    {
+      "path": "services/velani-ai/migrations/002_experience.sql",
+      "sha256": "94fff8846854375f1d1ad03aacb7dec8e15e5ad30ce1b85d948e959efcfb9999"
+    },
+    {
+      "path": "services/velani-ai/migrations/003_plan_brief.sql",
+      "sha256": "1809a05c817432ee5bc931844db63d5b2c6eb89c37ad103a744606ac95af7d22"
+    },
+    {
+      "path": "services/velani-ai/migrations/004_client_hub.sql",
+      "sha256": "7d733ace5cd677a7358acbe30a77d5b707622a27f429d7fffaa1c21fa23519d4"
+    },
+    {
+      "path": "services/velani-ai/migrations/005_retention_heartbeat.sql",
+      "sha256": "0b85153e20cd99d935b319350ad9d902d74ae12fe07be3a71af6c1db9bb8233e"
+    },
+    {
+      "path": "services/velani-ai/package-lock.json",
+      "sha256": "a144d5f0bcb8dc1ab6d46346116085041eec3cb0dc89e693e1a0a8eed72a59d6"
+    },
+    {
+      "path": "services/velani-ai/package.json",
+      "sha256": "cf8889edde7c061fdf818c183d0346e2efd070d1c34208a6fdcdbdcee93deccc"
+    },
+    {
+      "path": "services/velani-ai/public/app.js",
+      "sha256": "42a296822fe1a3ca11cf2e4c5c47ad34eefa7562782ad8c6eed66a60fca5a243"
+    },
+    {
+      "path": "services/velani-ai/public/assets/fonts-LICENSE.txt",
+      "sha256": "5051b760253db921366e1da6b2aa2c1a2c3a24c49660ad3c66e2e56cc99d4e93"
+    },
+    {
+      "path": "services/velani-ai/public/assets/manrope.woff2",
+      "sha256": "2d5c6071ac7cf84eb2b3bbb1594724620cd29bb5cc4166c61b6530efce57d0bc"
+    },
+    {
+      "path": "services/velani-ai/public/assets/nevora-clock.webp",
+      "sha256": "07d405aa642f7b3e84f2ec7bb6f4f0dc573cb041c3d84434b1a8fc4334958322"
+    },
+    {
+      "path": "services/velani-ai/public/assets/velani-text.woff2",
+      "sha256": "f29688692e8d86655e50c8ca42e8d3c973cd7680f2f4bdc917f91cad1540964a"
+    },
+    {
+      "path": "services/velani-ai/public/entrance-renderer.js",
+      "sha256": "b64b569d4afc53cbdf576931f7633f8902e8be823e78a5d7a1a5ba319ec09e58"
+    },
+    {
+      "path": "services/velani-ai/public/entrance.css",
+      "sha256": "999faea9f475f2fa8dc5edb9b2c06304d06d5bb73f6c40e3e36e9aeaeb53694c"
+    },
+    {
+      "path": "services/velani-ai/public/entrance.js",
+      "sha256": "79c57caca6c96d857e01c61509d2bbd6e1df7b418f64c423d0c0e4ce4fb73cd9"
+    },
+    {
+      "path": "services/velani-ai/public/index.html",
+      "sha256": "0c7f48b0af8e5de8abc5fb6503eaad4c199695f863b8700bbcf244148d620b7e"
+    },
+    {
+      "path": "services/velani-ai/public/styles.css",
+      "sha256": "fc77b4a632eeb6c87bbc6801f81eb758bb3afd941195a07c1ffe0b3a8707e598"
+    },
+    {
+      "path": "services/velani-ai/public/velani-entrance.woff2",
+      "sha256": "2d5c6071ac7cf84eb2b3bbb1594724620cd29bb5cc4166c61b6530efce57d0bc"
+    },
+    {
+      "path": "services/velani-ai/scripts/compare-models.ts",
+      "sha256": "53ceb79c26bd2c83cb2308ee868842bc8e25f4d5b4a7f0f560e05bbec88fa38b"
+    },
+    {
+      "path": "services/velani-ai/scripts/evaluate-rondo.ts",
+      "sha256": "64c6d74d13e125791f04f0d1d408d3468cd61907833ec1bcfa4ea5bcac2c6bec"
+    },
+    {
+      "path": "services/velani-ai/scripts/evaluate.ts",
+      "sha256": "7841d1692b388f9a7452352fb068398c16e5c55dc2396909f98f133267912c98"
+    },
+    {
+      "path": "services/velani-ai/scripts/evaluation-budget.ts",
+      "sha256": "52905e6554d9085bd0639248f142d1bf01bb379d866bd17a2ce24ab6ce48c6a2"
+    },
+    {
+      "path": "services/velani-ai/scripts/experience-smoke.ts",
+      "sha256": "c3838fa9f2ce30506410023ea5c80a0872deaf24fceaf11453c493ca9265e9c4"
+    },
+    {
+      "path": "services/velani-ai/scripts/leads.ts",
+      "sha256": "7b92ba5535ea319c681e6221029a5443dafa6cf7328203f3efa634c84427e477"
+    },
+    {
+      "path": "services/velani-ai/scripts/migrate.ts",
+      "sha256": "cfc2adcf92e36ae261976e1d9604023acabe9488f58471d8d3736ea0d2d410fa"
+    },
+    {
+      "path": "services/velani-ai/scripts/operations-check.ts",
+      "sha256": "dada362d9ff827f166c77f03802254b881a12ff6a952d38929c7a48f1d73e6e2"
+    },
+    {
+      "path": "services/velani-ai/scripts/provision-app-role.ts",
+      "sha256": "b31706d950ca38c3e8403e3df112f822f6a1b3aaddde916609983cc0042a334a"
+    },
+    {
+      "path": "services/velani-ai/scripts/retention.ts",
+      "sha256": "3537c4229d4a23e04f0cb5de8db5b05a9b774b0fe99a2c123d52d8593a4827d1"
+    },
+    {
+      "path": "services/velani-ai/scripts/seed.ts",
+      "sha256": "8af76fe8d67950cb7f958bf537626c0766eec056a6a7a0aa9d514314387af92d"
+    },
+    {
+      "path": "services/velani-ai/scripts/smoke.ts",
+      "sha256": "6f1c0281e6515ce7556d41922b82b9bd18356f4ed2b3b40c5065e37cf47b73e4"
+    },
+    {
+      "path": "services/velani-ai/src/app.ts",
+      "sha256": "a392197b849f3ccf3dac3929a4d7783b448247b919d88496c93046985e14107e"
+    },
+    {
+      "path": "services/velani-ai/src/client-hub/app.ts",
+      "sha256": "a963884bf0297c22dfc96c28cfdb4045cbb8ac74cb4a46dcf2cf082f1818c672"
+    },
+    {
+      "path": "services/velani-ai/src/client-hub/config.ts",
+      "sha256": "8339ffc7f979dac9874e4e093d6a83dd1f4c6b312d2003e9f1294e84f3832b39"
+    },
+    {
+      "path": "services/velani-ai/src/client-hub/delivery.ts",
+      "sha256": "2d1390341377a21de38d3da84323771f11e9ec3d219c72fed53010742615322e"
+    },
+    {
+      "path": "services/velani-ai/src/client-hub/email.ts",
+      "sha256": "9e21592e51306b003d93ca8ebb00af63b97fdbbc8f6083e23d38be251b974ff8"
+    },
+    {
+      "path": "services/velani-ai/src/client-hub/maintenance.ts",
+      "sha256": "5701de3cecaa23b62cc649d85de4347f036d40e97ff4cc0490d8a6ebc3540f1f"
+    },
+    {
+      "path": "services/velani-ai/src/client-hub/queue-work.ts",
+      "sha256": "f6b6779aea9cb772cd7a4dffae1f2bd1d5f33658b040d303a61dc766cea48c36"
+    },
+    {
+      "path": "services/velani-ai/src/client-hub/queue.ts",
+      "sha256": "64d2492b53bef6431268669180f992446ebe94d05f2de63abf5e35dcff7f39db"
+    },
+    {
+      "path": "services/velani-ai/src/client-hub/repository.ts",
+      "sha256": "90a032454c31ce2602450c857b5d53bbda5ec419d4a8b54d79a0774f6ee5a0aa"
+    },
+    {
+      "path": "services/velani-ai/src/client-hub/runtime.ts",
+      "sha256": "5161ff230ce28c19cb34710f32708d30324a1bdc7c3413cc16b41ffde8689940"
+    },
+    {
+      "path": "services/velani-ai/src/client-hub/types.ts",
+      "sha256": "94cc4b00b95bf618d2805313b9b33a36b62c9979abd76029eaa6a4c48ed1d8b2"
+    },
+    {
+      "path": "services/velani-ai/src/client-hub/validation.ts",
+      "sha256": "9c2a3788c44b68bb8e8ff8735255f185ac333c2ef8e22b76a6858bfb31380132"
+    },
+    {
+      "path": "services/velani-ai/src/config.ts",
+      "sha256": "e453c0f3be4333464f3ec9dfd01d8e71907cd7cb93fc1eeebe51ee16881a309f"
+    },
+    {
+      "path": "services/velani-ai/src/conversation-retention.ts",
+      "sha256": "0ce9072234c7205a3033c438c69513d597b4ec560fd9cd3f61e5554856aa28a5"
+    },
+    {
+      "path": "services/velani-ai/src/cron-handler.ts",
+      "sha256": "615dce0dc0fed501aa68afba74981b149c414b66e457bb699ac2c6bf6cc1c2ad"
+    },
+    {
+      "path": "services/velani-ai/src/db-pool.ts",
+      "sha256": "340cbba4439e5c4c39e23e4c08bfaffe64f26d8da895d62bffc208852a909b89"
+    },
+    {
+      "path": "services/velani-ai/src/engine.ts",
+      "sha256": "30a3ab79ea568d2cf1f25392a3f45e1236af17b685bf968676eb47b9f629da3d"
+    },
+    {
+      "path": "services/velani-ai/src/experience-repository.ts",
+      "sha256": "380a2a6afa41156751a27a8cdf1cd39c99a7c4fbc4b1dcc35d1a05ebb589ae52"
+    },
+    {
+      "path": "services/velani-ai/src/experience-routes.ts",
+      "sha256": "0aa54e56e6813eece7469bc56f8b1c0f0fc14595f6d2ef2d358c56797ba131e6"
+    },
+    {
+      "path": "services/velani-ai/src/experience-types.ts",
+      "sha256": "02850c6c1c81f9df20c0876282de06103c061b6974b77988dc93d0a35af2a8d0"
+    },
+    {
+      "path": "services/velani-ai/src/experience-validation.ts",
+      "sha256": "fae510571ebf753c8767f3e54457cf81804cff74e3baedcb5dfc8482274b5cfb"
+    },
+    {
+      "path": "services/velani-ai/src/frontend.ts",
+      "sha256": "f81081978917582efc6b44fb3eb7c2cb21c4578b9216e59bc0cdb9bce73c749c"
+    },
+    {
+      "path": "services/velani-ai/src/http-errors.ts",
+      "sha256": "f4fa5771d5d783608663b156a661c6db3d56a0822ff05fdb0563369ceddd3bea"
+    },
+    {
+      "path": "services/velani-ai/src/operations-status.ts",
+      "sha256": "b4dc405eef31cb242e8932d81d99b2bc3598fb1c5fd72485ce6fde5d4e2b1d10"
+    },
+    {
+      "path": "services/velani-ai/src/plan-engine.ts",
+      "sha256": "77bda1f4a9699fa5829f653df26abf7614d5a05413ca62ae66fa8a79e3d6f2f1"
+    },
+    {
+      "path": "services/velani-ai/src/plan-prompts.ts",
+      "sha256": "422b1b5d1dfda34b1d73af64302c8b0583cb3ba34af7c08af4a4c0919dfc5fe3"
+    },
+    {
+      "path": "services/velani-ai/src/prompts.ts",
+      "sha256": "26c534be714cab36ad828543ca692a1272d72bce6e305eba87c758e81ce454ef"
+    },
+    {
+      "path": "services/velani-ai/src/repository.ts",
+      "sha256": "f8de503d6de79a9c0724e545bc81c1e690638b9dfd0c8e8474f33cf22445240c"
+    },
+    {
+      "path": "services/velani-ai/src/retention-handler.ts",
+      "sha256": "c1736102f44bcbdfd54f64ca546e38493cdabaad76322eb68b3c44fb4b941410"
+    },
+    {
+      "path": "services/velani-ai/src/runtime.ts",
+      "sha256": "76eff2e290f30fb597c622160819f82d649c60d39d8231768a9113b53c9deab8"
+    },
+    {
+      "path": "services/velani-ai/src/server.ts",
+      "sha256": "72886692e42c76e19a97af5f585e1f0e47d452440b930f06f0c99242fcf21c85"
+    },
+    {
+      "path": "services/velani-ai/src/types.ts",
+      "sha256": "9b0535da89515f1a5ca96b16c4a5b51672bdb47b36d31db3ef8481e9db41d6cc"
+    },
+    {
+      "path": "services/velani-ai/src/vercel-handler.ts",
+      "sha256": "78413e4cda7cec26dea97c1fcf719825c2940e74ae7e07853c230bc7b2ef6954"
+    },
+    {
+      "path": "services/velani-ai/test/app.test.ts",
+      "sha256": "17ee56b0e1fb2cb8310249ece970a87eb84fa33d74f06972c29c37b36c8f2deb"
+    },
+    {
+      "path": "services/velani-ai/test/client-hub-app.test.ts",
+      "sha256": "9dd893498aa841e3db70eb64ed7c5548bfab02a0750dd888da4cb1cd18472109"
+    },
+    {
+      "path": "services/velani-ai/test/client-hub-config.test.ts",
+      "sha256": "7d286f6ff7cf59bf8ff9ef9d252adb4b1b2bdeb2bdfea1d7232cff34025424a6"
+    },
+    {
+      "path": "services/velani-ai/test/client-hub-delivery.test.ts",
+      "sha256": "41f10c690549eb16d0d770be82943b8a09ac8e5ae23d2e5546fb81f14278c71a"
+    },
+    {
+      "path": "services/velani-ai/test/client-hub-email.test.ts",
+      "sha256": "933503f86a90ff488ff630dc06c89d8d0de36898d8aecda923f154ae65c88522"
+    },
+    {
+      "path": "services/velani-ai/test/client-hub-journey.test.ts",
+      "sha256": "5a26ab2649b8903f3ffad0a1e19e89373a731a2b1e9d8baacc9779bec4ea73ba"
+    },
+    {
+      "path": "services/velani-ai/test/client-hub-maintenance.test.ts",
+      "sha256": "a4952069e0073edc7729f221d3d636cda8bce435c4110a8ecbe179c6f58e786c"
+    },
+    {
+      "path": "services/velani-ai/test/client-hub-queue-http.test.ts",
+      "sha256": "2e5d883cb22ebdd6a11570bc02660ff8521202a05e821e7e0870a1a6647d0821"
+    },
+    {
+      "path": "services/velani-ai/test/client-hub-queue.test.ts",
+      "sha256": "75c7ecaca7105b9dd0f978b2281edd6c233c6ca0dc0d0f955e65c6ac67f984e1"
+    },
+    {
+      "path": "services/velani-ai/test/client-hub-repository.test.ts",
+      "sha256": "d4ff72a1a569a2cb6c3d2e50e874d751c82c56beed08d12d85a20ae50bd7141f"
+    },
+    {
+      "path": "services/velani-ai/test/client-hub-validation.test.ts",
+      "sha256": "c12de97a2f2c479a044a7dd0b91761bd8d45ef5e2045aca8e4cda9604f742975"
+    },
+    {
+      "path": "services/velani-ai/test/engine.test.ts",
+      "sha256": "1b85de20fc1ae448247a2df8d60b0e03ec509fd8fb1b670bc6fb8a7cc88eb29e"
+    },
+    {
+      "path": "services/velani-ai/test/evaluation-budget.test.ts",
+      "sha256": "eb17e879425125724424b03445a5e3753bfe1f0071d64840aeb45263d94cb526"
+    },
+    {
+      "path": "services/velani-ai/test/experience-api.test.ts",
+      "sha256": "f0b5ab71b9d6abd335afc2562501a3b357c6536ff94a7769d019432209250cb8"
+    },
+    {
+      "path": "services/velani-ai/test/experience-repository.test.ts",
+      "sha256": "bc07bc12d3559ca6c51ec052db940e11f3952aa3faea95812d31ca7e7397ad25"
+    },
+    {
+      "path": "services/velani-ai/test/frontend.test.ts",
+      "sha256": "013127c3cf7b749031fb3ec0abd77e5dcdb08cd02c91650be5b8256b14fd47ba"
+    },
+    {
+      "path": "services/velani-ai/test/integration-client.test.mjs",
+      "sha256": "9fee8351fdf26163a10f13e6f4b9700612d0b5ef0a81ceec4784cb383d2efe8a"
+    },
+    {
+      "path": "services/velani-ai/test/plan-engine.test.ts",
+      "sha256": "b1186503f1b60bda581beef5e435cc3751fabab33859e11092a1496227abb1ca"
+    },
+    {
+      "path": "services/velani-ai/test/repository.test.ts",
+      "sha256": "c7eb2e49265f5341f50c7d03d625a70977c4da20c5eece46731fbeb7cbdc5571"
+    },
+    {
+      "path": "services/velani-ai/test/retention-cron.test.ts",
+      "sha256": "1c8592e575eaffb932b686622cf5934855a5ed24340a8e492c44c6ef885d0880"
+    },
+    {
+      "path": "services/velani-ai/test/vercel-handler.test.ts",
+      "sha256": "b3e461554561a5846a9aa0775b2549b1bd79461afdcda2448f6daf188e70735a"
+    },
+    {
+      "path": "services/velani-ai/tsconfig.json",
+      "sha256": "d113850dd765f77317976d02c2e3a636067714aff7c61f5daf0c4055fa80e589"
+    },
+    {
+      "path": "services/velani-ai/vercel.json",
+      "sha256": "e5c23be5f9b0fae80972b97961278b3871646c61a37610e2e0731ac705a74c84"
+    },
+    {
+      "path": "services/velani-ai/vitest.config.ts",
+      "sha256": "b4a5c62837a279b12f99fad1218ae7829778232f60cba095ea0d80be8ff65090"
+    },
+    {
+      "path": "src/brand/apple-touch-icon.png",
+      "sha256": "6d0a0aef03bf5e1ec28843d00f78d46f20e89487a3bb80208ee72465c793b3ce"
+    },
+    {
+      "path": "src/brand/favicon-32.png",
+      "sha256": "54e4c2f094d4d7d43a48d811def6ceadf9dc74f03ac6900ad9d1ca14c4918715"
+    },
+    {
+      "path": "src/brand/favicon.svg",
+      "sha256": "ed6ff4a970611243096e685cd4192c78bf445e55c067cf2c009050c8b5c6f1b2"
+    },
+    {
+      "path": "src/brand/velani-wordmark.svg",
+      "sha256": "576752362106340f30f32dbebfdbef8d9fc667ed8bb3ff9a029ac33582e60a0b"
+    },
+    {
+      "path": "src/client-hub.mjs",
+      "sha256": "7ab7ab83025484c42929492871ac30fa432a496952913c54e7e0bbe6dcc1531e"
+    },
+    {
+      "path": "src/content.es.mjs",
+      "sha256": "52b1659d538892b84398b76eaa35952cfbb36c9766f08da4c5b7312c1613d9af"
+    },
+    {
+      "path": "src/content.mjs",
+      "sha256": "ac08da4fdcef91affdceddd02e13ff5999355d0a1d3b50ee464f521d92007505"
+    },
+    {
+      "path": "src/inquiry.mjs",
+      "sha256": "ebc0308f56e50b60d30887ec8a3eaa91b69cce473336c44f1782ab6ee6d0c324"
+    },
+    {
+      "path": "src/nevora-policies.mjs",
+      "sha256": "2dd33751ad9cab75d5b5dc63c72d1a1bb549307bf91e6a9c0aef67636acc612a"
+    },
+    {
+      "path": "src/night.mjs",
+      "sha256": "ea886751dc1ca4e80c8908c9a1e8a8fc5c356fb0a82ff10fcb56ddb7a54e053b"
+    },
+    {
+      "path": "src/night/assist.css",
+      "sha256": "3f93b7b12fb6824a5d8dd75d017a4f61ac912e576303db1bc29e267d506ddebd"
+    },
+    {
+      "path": "src/night/assist.html",
+      "sha256": "d0c437fd82f292f115ea0580610d7e7d1418e339b7bb53145ac2622968330171"
+    },
+    {
+      "path": "src/night/assist.js",
+      "sha256": "1c5b54f7d46ca0fb9a0a5c3de10b436723ace077843c697046cf0df0f98ec876"
+    },
+    {
+      "path": "src/night/base.css",
+      "sha256": "0f32f97347a39c68820f0a79d54bebeef7ccb76995a8d03fc5aa1d5d34b9ed2f"
+    },
+    {
+      "path": "src/night/commerce.js",
+      "sha256": "54e41e6f32348188bbf64a2117628db37742a705d6b38d14fe8fc1ea75a3d603"
+    },
+    {
+      "path": "src/night/foot.es.html",
+      "sha256": "3b36077aff99d1dca7e4342d547403aa95e418d66a3832bd948cc9c95597abb1"
+    },
+    {
+      "path": "src/night/foot.html",
+      "sha256": "a80ced7592c60c5b6786a2d29a2a466962763105d749adf9198b7d51836ba50b"
+    },
+    {
+      "path": "src/night/home.body.html",
+      "sha256": "0e0e3f102e74fe55c4b303060fd7d986e98249213de63ae652b3cc85d3062725"
+    },
+    {
+      "path": "src/night/home.css",
+      "sha256": "5adf99824a750edb22bf4ecedc0375ece858e19d61b4103c9f23d2f9b33674cc"
+    },
+    {
+      "path": "src/night/home.es.body.html",
+      "sha256": "483234ed9a64b01383e39d012ff9929622b17dcef8da8253f2a5503481c4d325"
+    },
+    {
+      "path": "src/night/kiosk.css",
+      "sha256": "5910357687656030e6021513ecaeec240b12c9c662ec71105b204c6beb9cad9b"
+    },
+    {
+      "path": "src/night/kiosk.html",
+      "sha256": "c591badd6c25169f800ca3c9b10c3e8739e3b64c4a8f3ca7336be2423187f7e6"
+    },
+    {
+      "path": "src/night/kiosk.js",
+      "sha256": "2035e85c2a6fb3b51c6ab37964ff30a06642c25d5ad5756867a5a2d23484008a"
+    },
+    {
+      "path": "src/night/motion.js",
+      "sha256": "160634f9eef9a7843d5894b0b5514ba632afe8cdea1ba9ceedb9c98e269d538a"
+    },
+    {
+      "path": "src/night/nevora.body.html",
+      "sha256": "661b71dd479e038886250571d415fecffc13fd629235e5cb7f511270f8add5dc"
+    },
+    {
+      "path": "src/night/nevora.css",
+      "sha256": "6fc5d75fed30d3208a56994f2229ca682bdc6a3165d228678bc729aed71ffe1f"
+    },
+    {
+      "path": "src/night/nevora.es.body.html",
+      "sha256": "6769b6513616d7c7e72195f730775f48c0928642410d9e02367808ed3017d9a7"
+    },
+    {
+      "path": "src/night/nevora.js",
+      "sha256": "489947ab5a95ae6452523ebeae42e58bfd3022ee9ee8450663ec022bfc689bc4"
+    },
+    {
+      "path": "src/night/pages.css",
+      "sha256": "88a282776c2dbd396f2163c334b3782930b2c4d3b78edbc249c204214c32c37a"
+    },
+    {
+      "path": "src/night/polish.css",
+      "sha256": "41bb6ea89dc9dca697a506d3cd1129198b355b81c30a38681799d80d111cc8f3"
+    },
+    {
+      "path": "src/night/products.body.html",
+      "sha256": "a138263876ba11b2221d20b19a5638b5aca3bf535898fdde1ba62244bd302b20"
+    },
+    {
+      "path": "src/night/products.es.body.html",
+      "sha256": "840bb9638e0f7b65d7a1b6077b1b811186b0699610724c783d635bc6465d7588"
+    },
+    {
+      "path": "src/night/velani-assistant.js",
+      "sha256": "add851a64a9fc4aff15659672bf7365aa5f71f295e37ca3e361d2f851c46e0c4"
+    },
+    {
+      "path": "src/night/zoom.html",
+      "sha256": "f9e24b4a51f455334dea52ade676623f942cbfcbad9550f595357d37584b3deb"
+    },
+    {
+      "path": "src/privacy.mjs",
+      "sha256": "b75b3e1849de0a047e05bf8d299ad776acf50c584a3dedf1b12d5bec0159bc4e"
+    },
+    {
+      "path": "src/render.mjs",
+      "sha256": "aedbedefa6663968ca3d75fba802fad65670c983a01d2660d96fe0c4ba0df77b"
+    },
+    {
+      "path": "src/seo/llms.txt.liquid",
+      "sha256": "8fd4bafb9f796ef95ea84e66219601f76043bf624dbc4e7951e0c4edf1c7a646"
+    },
+    {
+      "path": "src/seo/robots.txt.liquid",
+      "sha256": "b5a6f64d71186bde50e25924d6062a2caa8f35c1108f6c31ae894c84deb806ba"
+    },
+    {
+      "path": "tests/client-hub.test.mjs",
+      "sha256": "6323ea4c07f9ed4d38791004f8f9a6a5aaea1be9fd1a16138bc2894df3ef5521"
+    },
+    {
+      "path": "tests/interactions.test.mjs",
+      "sha256": "010c95c405b02b07415440316fb2212fd9c634b896c2cfb82b48969a4e3ba6a2"
+    },
+    {
+      "path": "tests/native-preview.test.mjs",
+      "sha256": "de53355803dc8616c9354da1aded3d4ddb99882bde66a729abe1dce61d7732d4"
+    },
+    {
+      "path": "tests/preview-csp.test.mjs",
+      "sha256": "b3766dd08fc91eadcb4ef35de18698acd03ebde172f4e9d9c5ee2b67009f3925"
+    },
+    {
+      "path": "tests/site.test.mjs",
+      "sha256": "c27a3d42ff7c36759c76fc49f69dfb03afcdf005e78ffd54de7adb15533f779b"
+    },
+    {
+      "path": "tests/spanish.test.mjs",
+      "sha256": "5aaf3e998435962186eeb0e54182654aa5cf2f6670bfb7c7c80c62375e1f26f7"
+    }
+  ]
+}

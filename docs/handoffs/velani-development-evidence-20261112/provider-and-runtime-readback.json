@@ -1,0 +1,112 @@
+{
+  "checkedAt": "2026-11-12",
+  "environmentPolicy": "Development is the primary working/acceptance release. Main and production promotion require Jose approval. Codex owns backend/hosting; Claude owns UI.",
+  "syntheticDataOnly": true,
+  "sources": {
+    "clientHubAcceptance": "8505ed25e4265912ad68222e69d9c26165d80326",
+    "rondoQualified": "7a5696a06bb02ad8c8c9a184e949cdbb536d93ec",
+    "rondoRuntime": "3db0ea98bc3da6b3ae08b9e5d2c2b59a361e6a8d",
+    "claudeUI": "17d35c2e9a146c54fcdfa1393348bfb642bdcf90",
+    "assembly": "dc962db",
+    "githubMainBefore": "5680168611f6b366a3a0ce5397bca039c855ed70"
+  },
+  "clientHubDatabaseReadback": [
+    {
+      "reference": "VEL-2611-0001",
+      "request_type": "new_work",
+      "language": "en",
+      "created_at": "2026-11-12T12:30:21.936Z",
+      "email_jobs": [
+        {
+          "kind": "confirmation",
+          "status": "submitted",
+          "attempts": 1,
+          "provider_id": "01a1cfbc-d795-75d0-8215-8ddcce6e1a33"
+        },
+        {
+          "kind": "support",
+          "status": "submitted",
+          "attempts": 1,
+          "provider_id": "01a1cfbc-d754-742d-873e-0286eb480638"
+        }
+      ]
+    },
+    {
+      "reference": "VEL-2611-0002",
+      "request_type": "project_support",
+      "language": "es",
+      "created_at": "2026-11-12T12:32:58.213Z",
+      "email_jobs": [
+        {
+          "kind": "confirmation",
+          "status": "submitted",
+          "attempts": 1,
+          "provider_id": "01a1cfbf-39d1-7f2b-8f7c-af118816dd59"
+        },
+        {
+          "kind": "support",
+          "status": "submitted",
+          "attempts": 1,
+          "provider_id": "01a1cfbf-399f-704a-857a-40b388362d01"
+        }
+      ]
+    }
+  ],
+  "deliveredProviderMessages": [
+    {
+      "id": "01a1cfbc-d795-75d0-8215-8ddcce6e1a33",
+      "status": "delivered",
+      "source": "Fresh authenticated Resend get_email read; no new sends"
+    },
+    {
+      "id": "01a1cfbc-d754-742d-873e-0286eb480638",
+      "status": "delivered",
+      "source": "Fresh authenticated Resend get_email read; no new sends"
+    },
+    {
+      "id": "01a1cfbf-39d1-7f2b-8f7c-af118816dd59",
+      "status": "delivered",
+      "source": "Fresh authenticated Resend get_email read; no new sends"
+    },
+    {
+      "id": "01a1cfbf-399f-704a-857a-40b388362d01",
+      "status": "delivered",
+      "source": "Fresh authenticated Resend get_email read; no new sends"
+    }
+  ],
+  "shopify": {
+    "mainTheme": "193311572282",
+    "acceptanceTheme": "193374224698",
+    "acceptanceRole": "UNPUBLISHED",
+    "previewRealSubmissionFlag": false,
+    "source": "Fresh connected Shopify role/settings read",
+    "publicationPerformed": false
+  },
+  "rondoOperationsReadback": [
+    {
+      "status": {
+        "checked_at": "2026-11-12T16:07:42.594783+00:00",
+        "overdue_leads": 0,
+        "overdue_sessions": 0,
+        "expired_documents": 0,
+        "heartbeat_receipts": [
+          {
+            "source": "scheduler",
+            "completed_at": "2026-11-12T15:45:43.570451+00:00",
+            "sessions_deleted": 0
+          }
+        ],
+        "published_documents": 16,
+        "earliest_knowledge_expiry": "2026-12-12T23:59:59.999+00:00"
+      }
+    }
+  ],
+  "inboxEvidence": {
+    "original": "docs/handoffs/2026-11-12-client-hub-live-acceptance.md",
+    "originalActualInboxMessageCount": 4,
+    "freshInboxRead": false,
+    "reason": "Gmail connector requires reauthentication. Existing prior inbox acceptance preserved; fresh provider and database receipts independently verified."
+  },
+  "liveHostedReplayLimit": "Original hosted repeated clicks did not duplicate saved rows/jobs. A raw-key lost-response/replay was not captured; actual PostgreSQL/HTTP journey and browser-fixture tests cover this seam.",
+  "noNewEmailModelOrProductionActions": true
+}

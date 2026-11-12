@@ -1,0 +1,82 @@
+{
+  "checkedAt": "2026-11-12T16:19:38.640987+00:00",
+  "method": "read-only GET and TLS; no DNS or project changes",
+  "http": [
+    {
+      "url": "https://nevora.team/",
+      "status": 307,
+      "location": "https://signup.nevora.team/",
+      "cacheControl": "public, max-age=0, must-revalidate",
+      "allowOrigin": null
+    },
+    {
+      "url": "https://www.nevora.team/",
+      "status": 307,
+      "location": "https://signup.nevora.team/",
+      "cacheControl": "public, max-age=0, must-revalidate",
+      "allowOrigin": null
+    },
+    {
+      "url": "https://signup.nevora.team/api/onboarding/config",
+      "status": 200,
+      "location": null,
+      "cacheControl": "no-store, private",
+      "allowOrigin": null,
+      "body": {
+        "schemaVersion": 1,
+        "signupEnabled": false,
+        "locales": [
+          "en",
+          "es"
+        ]
+      }
+    },
+    {
+      "url": "https://velani-ai.vercel.app/v1/client-hub/config",
+      "status": 200,
+      "location": null,
+      "cacheControl": "no-store",
+      "allowOrigin": "https://www.thevelani.com",
+      "body": {
+        "enabled": true,
+        "turnstileSiteKey": "0x4AAAAAAF0PYGQhwxiU91hz",
+        "turnstileAction": "velani-client-hub"
+      }
+    }
+  ],
+  "tls": [
+    {
+      "host": "nevora.team",
+      "hostnameValidated": true,
+      "notAfter": "Feb  8 13:18:00 2027 GMT",
+      "subjectAltName": [
+        [
+          "DNS",
+          "nevora.team"
+        ]
+      ]
+    },
+    {
+      "host": "www.nevora.team",
+      "hostnameValidated": true,
+      "notAfter": "Feb  8 23:59:59 2027 GMT",
+      "subjectAltName": [
+        [
+          "DNS",
+          "www.nevora.team"
+        ]
+      ]
+    },
+    {
+      "host": "signup.nevora.team",
+      "hostnameValidated": true,
+      "notAfter": "Feb  8 12:24:26 2027 GMT",
+      "subjectAltName": [
+        [
+          "DNS",
+          "signup.nevora.team"
+        ]
+      ]
+    }
+  ]
+}

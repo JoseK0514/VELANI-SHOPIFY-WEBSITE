@@ -1,0 +1,6 @@
+{"mode":"live","width":1440,"lang":"en","checks":65,"failed":2,"axeRuns":10,"axeViolations":0,"screenshots":0}
+FAIL stale guard: a change forced during the check cancels the send, nothing with old values goes out :: 0
+FAIL run completed :: page.evaluate: TypeError: Cannot set properties of undefined (setting 'delay')
+    at eval (eval at evaluate (:290:30), <anonymous>:1:27)
+    at UtilityScript.evaluate (<anonymous>:292:16)
+    at UtilityScript.<anonymous> (<anonymous>:1:44)

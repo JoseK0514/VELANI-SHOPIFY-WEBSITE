@@ -1,0 +1,1 @@
+{"mode":"live","width":1440,"lang":"en","checks":85,"failed":0,"axeRuns":12,"axeViolations":0,"screenshots":0}

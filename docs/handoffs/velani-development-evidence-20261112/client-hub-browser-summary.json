@@ -1,0 +1,46 @@
+[
+  {
+    "name": "hub-live-1440-en",
+    "exit": 1,
+    "summary": "    at UtilityScript.<anonymous> (<anonymous>:1:44)",
+    "initialFailureRetained": "hub-live-1440-en.txt",
+    "isolatedRetryReceipt": "hub-live-1440-en-isolated.txt",
+    "isolatedRetryExit": 0,
+    "isolatedRetrySummary": "{\"mode\":\"live\",\"width\":1440,\"lang\":\"en\",\"checks\":85,\"failed\":0,\"axeRuns\":12,\"axeViolations\":0,\"screenshots\":0}"
+  },
+  {
+    "name": "hub-live-1440-es",
+    "exit": 0,
+    "summary": "{\"mode\":\"live\",\"width\":1440,\"lang\":\"es\",\"checks\":85,\"failed\":0,\"axeRuns\":12,\"axeViolations\":0,\"screenshots\":0}"
+  },
+  {
+    "name": "hub-live-390-en",
+    "exit": 0,
+    "summary": "{\"mode\":\"live\",\"width\":390,\"lang\":\"en\",\"checks\":85,\"failed\":0,\"axeRuns\":12,\"axeViolations\":0,\"screenshots\":0}"
+  },
+  {
+    "name": "hub-live-390-es",
+    "exit": 0,
+    "summary": "{\"mode\":\"live\",\"width\":390,\"lang\":\"es\",\"checks\":85,\"failed\":0,\"axeRuns\":12,\"axeViolations\":0,\"screenshots\":0}"
+  },
+  {
+    "name": "hub-preview-1440-en",
+    "exit": 0,
+    "summary": "{\"mode\":\"preview\",\"width\":1440,\"lang\":\"en\",\"checks\":37,\"failed\":0,\"axeRuns\":11,\"axeViolations\":0,\"screenshots\":0}"
+  },
+  {
+    "name": "hub-preview-1440-es",
+    "exit": 0,
+    "summary": "{\"mode\":\"preview\",\"width\":1440,\"lang\":\"es\",\"checks\":37,\"failed\":0,\"axeRuns\":11,\"axeViolations\":0,\"screenshots\":0}"
+  },
+  {
+    "name": "hub-preview-390-en",
+    "exit": 0,
+    "summary": "{\"mode\":\"preview\",\"width\":390,\"lang\":\"en\",\"checks\":37,\"failed\":0,\"axeRuns\":11,\"axeViolations\":0,\"screenshots\":0}"
+  },
+  {
+    "name": "hub-preview-390-es",
+    "exit": 0,
+    "summary": "{\"mode\":\"preview\",\"width\":390,\"lang\":\"es\",\"checks\":37,\"failed\":0,\"axeRuns\":11,\"axeViolations\":0,\"screenshots\":0}"
+  }
+]

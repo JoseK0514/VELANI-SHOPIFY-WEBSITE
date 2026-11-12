@@ -1,0 +1,22 @@
+{
+  "id": "prj_E1Vl2AEpTlJlBam4MTKG7oEHB7x2",
+  "name": "velani-ai",
+  "rootDirectory": "services/velani-ai",
+  "gitProviderOptions": {
+    "createDeployments": "disabled",
+    "disableRepositoryDispatchEvents": true
+  },
+  "commandForIgnoringBuildStep": null,
+  "gitDeploymentEnabled": null,
+  "enableAffectedProjectsDeployments": true,
+  "previewDeploymentsEnabled": null,
+  "link": {
+    "type": "github",
+    "repo": "VELANI-SHOPIFY-WEBSITE",
+    "repoId": 1443058200,
+    "org": "JoseK0514",
+    "repoOwnerId": 319002654,
+    "productionBranch": "main",
+    "deployHooks": []
+  }
+}

@@ -1,0 +1,58 @@
+✖ preview CSP permits the compiled inline scripts at / (166.009333ms)
+✖ preview CSP permits the compiled inline scripts at /pages/nevora-start (3.756875ms)
+✖ preview CSP permits the compiled inline scripts at /pages/es-prueba (2.755625ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 0
+ℹ fail 3
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 218.034208
+
+✖ failing tests:
+
+test at tests/preview-csp.test.mjs:29:3
+✖ preview CSP permits the compiled inline scripts at / (166.009333ms)
+  AssertionError [ERR_ASSERTION]: The actual compiled script is blocked by CSP
+      at TestContext.<anonymous> (file:///Users/josek0514/Documents/Codex/2026-11-04/https-www-thevelani-com-preview-theme-2/work/velani-client-hub/tests/preview-csp.test.mjs:39:14)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tests/preview-csp.test.mjs:29:3
+✖ preview CSP permits the compiled inline scripts at /pages/nevora-start (3.756875ms)
+  AssertionError [ERR_ASSERTION]: The actual compiled script is blocked by CSP
+      at TestContext.<anonymous> (file:///Users/josek0514/Documents/Codex/2026-11-04/https-www-thevelani-com-preview-theme-2/work/velani-client-hub/tests/preview-csp.test.mjs:39:14)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tests/preview-csp.test.mjs:29:3
+✖ preview CSP permits the compiled inline scripts at /pages/es-prueba (2.755625ms)
+  AssertionError [ERR_ASSERTION]: The actual compiled script is blocked by CSP
+      at TestContext.<anonymous> (file:///Users/josek0514/Documents/Codex/2026-11-04/https-www-thevelani-com-preview-theme-2/work/velani-client-hub/tests/preview-csp.test.mjs:39:14)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }

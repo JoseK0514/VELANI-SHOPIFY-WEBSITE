@@ -1,0 +1,50 @@
+{
+  "exit": 0,
+  "domains": [
+    {
+      "name": "www.nevora.team",
+      "projectId": "prj_jPVvFBEx2mMZM125KVJzRiBZfgDE",
+      "redirect": "signup.nevora.team",
+      "redirectStatusCode": 307,
+      "verified": true,
+      "gitBranch": null,
+      "customEnvironmentId": null
+    },
+    {
+      "name": "nevora.team",
+      "projectId": "prj_jPVvFBEx2mMZM125KVJzRiBZfgDE",
+      "redirect": "signup.nevora.team",
+      "redirectStatusCode": 307,
+      "verified": true,
+      "gitBranch": null,
+      "customEnvironmentId": null
+    },
+    {
+      "name": "*.portal.nevora.team",
+      "projectId": "prj_jPVvFBEx2mMZM125KVJzRiBZfgDE",
+      "redirect": null,
+      "redirectStatusCode": null,
+      "verified": true,
+      "gitBranch": null,
+      "customEnvironmentId": null
+    },
+    {
+      "name": "signup.nevora.team",
+      "projectId": "prj_jPVvFBEx2mMZM125KVJzRiBZfgDE",
+      "redirect": null,
+      "redirectStatusCode": null,
+      "verified": true,
+      "gitBranch": null,
+      "customEnvironmentId": null
+    },
+    {
+      "name": "nevora-signup.vercel.app",
+      "projectId": "prj_jPVvFBEx2mMZM125KVJzRiBZfgDE",
+      "redirect": null,
+      "redirectStatusCode": null,
+      "verified": true,
+      "gitBranch": null,
+      "customEnvironmentId": null
+    }
+  ]
+}

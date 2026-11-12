@@ -1,0 +1,35 @@
+{
+  "exit": 0,
+  "rows": [
+    {
+      "type": "log",
+      "data": {
+        "timestamp": "2026-11-12T15:45:43.578Z",
+        "projectId": "prj_E1Vl2AEpTlJlBam4MTKG7oEHB7x2",
+        "requestId": "l85gb-1794498342097-56e77f83b355",
+        "branch": "",
+        "deploymentId": "dpl_2yjDbRBcm8vc6ujPm1mqz34qLRhT",
+        "domain": "velani-8mchj78oz-josekarlo-5933s-projects.vercel.app",
+        "environment": "production",
+        "requestPath": "/api/cron/retention",
+        "requestMethod": "GET",
+        "source": "function",
+        "service": "",
+        "isSystemLog": false,
+        "region": "iad1",
+        "runtime": "nodejs26.x",
+        "level": "info",
+        "message": "{\"event\":\"conversation_retention\",\"status\":\"ok\",\"trigger\":\"scheduler\",\"sessions\":0,\"completedAt\":\"2026-11-12T15:45:43.577Z\"}",
+        "stream": "stdout",
+        "traceId": "",
+        "spanId": "",
+        "attributes": {},
+        "truncated": false
+      }
+    },
+    {
+      "type": "summary"
+    }
+  ],
+  "stderr": ""
+}

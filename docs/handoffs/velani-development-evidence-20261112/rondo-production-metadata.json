@@ -1,0 +1,29 @@
+{
+  "projectId": "prj_E1Vl2AEpTlJlBam4MTKG7oEHB7x2",
+  "name": "velani-ai",
+  "crons": {
+    "enabledAt": 1793668229140,
+    "disabledAt": null,
+    "updatedAt": 1794482640886,
+    "deploymentId": "dpl_2yjDbRBcm8vc6ujPm1mqz34qLRhT",
+    "definitions": [
+      {
+        "host": "velani-8mchj78oz-josekarlo-5933s-projects.vercel.app",
+        "path": "/api/cron/client-hub",
+        "schedule": "0 16 * * *"
+      },
+      {
+        "host": "velani-8mchj78oz-josekarlo-5933s-projects.vercel.app",
+        "path": "/api/cron/retention",
+        "schedule": "0 15 * * *"
+      }
+    ]
+  },
+  "production": {
+    "id": "dpl_2yjDbRBcm8vc6ujPm1mqz34qLRhT",
+    "url": "velani-8mchj78oz-josekarlo-5933s-projects.vercel.app",
+    "readyState": "READY",
+    "target": "production"
+  },
+  "source": {}
+}

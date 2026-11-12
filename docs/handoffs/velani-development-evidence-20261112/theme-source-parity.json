@@ -1,0 +1,44 @@
+{
+  "themeId": "193374224698",
+  "role": "UNPUBLISHED",
+  "acceptanceFlag": false,
+  "readbackSource": "connected Shopify GraphQL read during this task",
+  "files": [
+    {
+      "path": "assets/client-hub.js",
+      "localMd5": "e23f75ffa53f010ded95f8dcbe982c98",
+      "shopifyMd5": "e23f75ffa53f010ded95f8dcbe982c98",
+      "match": true
+    },
+    {
+      "path": "assets/velani-hub.js",
+      "localMd5": "822f0ada757974c5b1910ef33d4e057e",
+      "shopifyMd5": "822f0ada757974c5b1910ef33d4e057e",
+      "match": true
+    },
+    {
+      "path": "config/settings_schema.json",
+      "localMd5": "c845d0c00764ab269d92ee3095448056",
+      "shopifyMd5": "c845d0c00764ab269d92ee3095448056",
+      "match": true
+    },
+    {
+      "path": "sections/velani-es-ayuda.liquid",
+      "localMd5": "c8ac07302dfde2c21ec0de8ad9a3bf6b",
+      "shopifyMd5": "c8ac07302dfde2c21ec0de8ad9a3bf6b",
+      "match": true
+    },
+    {
+      "path": "sections/velani-help.liquid",
+      "localMd5": "edd0904e6b95901ee3237490cb5be954",
+      "shopifyMd5": "edd0904e6b95901ee3237490cb5be954",
+      "match": true
+    },
+    {
+      "path": "sections/velani-privacy.liquid",
+      "localMd5": "72aba39fcf9d946be930d2a56c12b5ce",
+      "shopifyMd5": "72aba39fcf9d946be930d2a56c12b5ce",
+      "match": true
+    }
+  ]
+}
