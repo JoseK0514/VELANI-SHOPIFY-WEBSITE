@@ -1,0 +1,143 @@
+{
+  "passed": 8,
+  "failed": 8,
+  "externalRequests": [],
+  "results": [
+    {
+      "engine": "chromium",
+      "lang": "en",
+      "width": 390,
+      "reducedMotion": "no-preference",
+      "result": "FAIL",
+      "error": "locator.click: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#ast-launch')\u001b[22m\n\u001b[2m    - locator resolved to <button lang=\"en\" type=\"button\" id=\"ast-launch\" class=\"ast-launch\" aria-controls=\"ast\" aria-expanded=\"false\" aria-label=\"Ask Velani, the AI adviser on this site\">…</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <p>After you approve the timecards, each person find…</p> from <main id=\"main\" tabindex=\"-1\">…</main> subtree intercepts pointer events\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <p>After you approve the timecards, each person find…</p> from <main id=\"main\" tabindex=\"-1\">…</main> subtree intercepts pointer events\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    28 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m       - element is visible, enabled and stable\u001b[22m\n\u001b[2m       - scrolling into view if needed\u001b[22m\n\u001b[2m       - done scrolling\u001b[22m\n\u001b[2m       - <p>After you approve the timecards, each person find…</p> from <main id=\"main\" tabindex=\"-1\">…</main> subtree intercepts pointer events\u001b[22m\n\u001b[2m     - retrying click action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n"
+    },
+    {
+      "engine": "chromium",
+      "lang": "en",
+      "width": 390,
+      "reducedMotion": "reduce",
+      "result": "FAIL",
+      "error": "locator.click: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#ast-launch')\u001b[22m\n\u001b[2m    - locator resolved to <button lang=\"en\" type=\"button\" id=\"ast-launch\" class=\"ast-launch\" aria-controls=\"ast\" aria-expanded=\"false\" aria-label=\"Ask Velani, the AI adviser on this site\">…</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <p>After you approve the timecards, each person find…</p> from <main id=\"main\" tabindex=\"-1\">…</main> subtree intercepts pointer events\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <p>After you approve the timecards, each person find…</p> from <main id=\"main\" tabindex=\"-1\">…</main> subtree intercepts pointer events\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    29 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m       - element is visible, enabled and stable\u001b[22m\n\u001b[2m       - scrolling into view if needed\u001b[22m\n\u001b[2m       - done scrolling\u001b[22m\n\u001b[2m       - <p>After you approve the timecards, each person find…</p> from <main id=\"main\" tabindex=\"-1\">…</main> subtree intercepts pointer events\u001b[22m\n\u001b[2m     - retrying click action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n"
+    },
+    {
+      "engine": "chromium",
+      "lang": "en",
+      "width": 1440,
+      "reducedMotion": "no-preference",
+      "result": "PASS",
+      "animation": "rondo-lantern-orbit",
+      "posts": 1
+    },
+    {
+      "engine": "chromium",
+      "lang": "en",
+      "width": 1440,
+      "reducedMotion": "reduce",
+      "result": "PASS",
+      "animation": "none",
+      "posts": 1
+    },
+    {
+      "engine": "chromium",
+      "lang": "es",
+      "width": 390,
+      "reducedMotion": "no-preference",
+      "result": "FAIL",
+      "error": "locator.click: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#ast-launch')\u001b[22m\n\u001b[2m    - locator resolved to <button lang=\"es\" type=\"button\" id=\"ast-launch\" class=\"ast-launch\" aria-controls=\"ast\" aria-expanded=\"false\" aria-label=\"Pregúntale a Velani, el asesor de IA de este sitio\">…</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <p>Cuando apruebas las tarjetas de tiempo, cada pers…</p> from <main id=\"main\" tabindex=\"-1\">…</main> subtree intercepts pointer events\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <p>Cuando apruebas las tarjetas de tiempo, cada pers…</p> from <main id=\"main\" tabindex=\"-1\">…</main> subtree intercepts pointer events\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    28 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m       - element is visible, enabled and stable\u001b[22m\n\u001b[2m       - scrolling into view if needed\u001b[22m\n\u001b[2m       - done scrolling\u001b[22m\n\u001b[2m       - <p>Cuando apruebas las tarjetas de tiempo, cada pers…</p> from <main id=\"main\" tabindex=\"-1\">…</main> subtree intercepts pointer events\u001b[22m\n\u001b[2m     - retrying click action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n"
+    },
+    {
+      "engine": "chromium",
+      "lang": "es",
+      "width": 390,
+      "reducedMotion": "reduce",
+      "result": "FAIL",
+      "error": "locator.click: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#ast-launch')\u001b[22m\n\u001b[2m    - locator resolved to <button lang=\"es\" type=\"button\" id=\"ast-launch\" class=\"ast-launch\" aria-controls=\"ast\" aria-expanded=\"false\" aria-label=\"Pregúntale a Velani, el asesor de IA de este sitio\">…</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <p>Cuando apruebas las tarjetas de tiempo, cada pers…</p> from <main id=\"main\" tabindex=\"-1\">…</main> subtree intercepts pointer events\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <p>Cuando apruebas las tarjetas de tiempo, cada pers…</p> from <main id=\"main\" tabindex=\"-1\">…</main> subtree intercepts pointer events\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    29 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m       - element is visible, enabled and stable\u001b[22m\n\u001b[2m       - scrolling into view if needed\u001b[22m\n\u001b[2m       - done scrolling\u001b[22m\n\u001b[2m       - <p>Cuando apruebas las tarjetas de tiempo, cada pers…</p> from <main id=\"main\" tabindex=\"-1\">…</main> subtree intercepts pointer events\u001b[22m\n\u001b[2m     - retrying click action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n"
+    },
+    {
+      "engine": "chromium",
+      "lang": "es",
+      "width": 1440,
+      "reducedMotion": "no-preference",
+      "result": "PASS",
+      "animation": "rondo-lantern-orbit",
+      "posts": 1
+    },
+    {
+      "engine": "chromium",
+      "lang": "es",
+      "width": 1440,
+      "reducedMotion": "reduce",
+      "result": "PASS",
+      "animation": "none",
+      "posts": 1
+    },
+    {
+      "engine": "webkit",
+      "lang": "en",
+      "width": 390,
+      "reducedMotion": "no-preference",
+      "result": "FAIL",
+      "error": "locator.click: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#ast-launch')\u001b[22m\n\u001b[2m    - locator resolved to <button lang=\"en\" type=\"button\" id=\"ast-launch\" class=\"ast-launch\" aria-controls=\"ast\" aria-expanded=\"false\" aria-label=\"Ask Velani, the AI adviser on this site\">…</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    - waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m    - element is not visible\u001b[22m\n\u001b[2m  - retrying click action\u001b[22m\n\u001b[2m    - waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m    - element is visible, enabled and stable\u001b[22m\n\u001b[2m    - scrolling into view if needed\u001b[22m\n\u001b[2m    - done scrolling\u001b[22m\n\u001b[2m    - <p>After you approve the timecards, each person find…</p> from <main id=\"main\" tabindex=\"-1\">…</main> subtree intercepts pointer events\u001b[22m\n\u001b[2m  - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <div class=\"hn-copy\">…</div> from <main id=\"main\" tabindex=\"-1\">…</main> subtree intercepts pointer events\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    14 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m       - element is visible, enabled and stable\u001b[22m\n\u001b[2m       - scrolling into view if needed\u001b[22m\n\u001b[2m       - done scrolling\u001b[22m\n\u001b[2m       - <div class=\"hn-copy\">…</div> from <main id=\"main\" tabindex=\"-1\">…</main> subtree intercepts pointer events\u001b[22m\n\u001b[2m     - retrying click action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n\u001b[2m    13 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m       - element is visible, enabled and stable\u001b[22m\n\u001b[2m       - scrolling into view if needed\u001b[22m\n\u001b[2m       - done scrolling\u001b[22m\n\u001b[2m       - <p>After you approve the timecards, each person find…</p> from <main id=\"main\" tabindex=\"-1\">…</main> subtree intercepts pointer events\u001b[22m\n\u001b[2m     - retrying click action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n"
+    },
+    {
+      "engine": "webkit",
+      "lang": "en",
+      "width": 390,
+      "reducedMotion": "reduce",
+      "result": "FAIL",
+      "error": "locator.click: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#ast-launch')\u001b[22m\n\u001b[2m    - locator resolved to <button lang=\"en\" type=\"button\" id=\"ast-launch\" class=\"ast-launch\" aria-controls=\"ast\" aria-expanded=\"false\" aria-label=\"Ask Velani, the AI adviser on this site\">…</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <div class=\"hn-copy\">…</div> from <main id=\"main\" tabindex=\"-1\">…</main> subtree intercepts pointer events\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <div class=\"hn-copy\">…</div> from <main id=\"main\" tabindex=\"-1\">…</main> subtree intercepts pointer events\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    27 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m       - element is visible, enabled and stable\u001b[22m\n\u001b[2m       - scrolling into view if needed\u001b[22m\n\u001b[2m       - done scrolling\u001b[22m\n\u001b[2m       - <div class=\"hn-copy\">…</div> from <main id=\"main\" tabindex=\"-1\">…</main> subtree intercepts pointer events\u001b[22m\n\u001b[2m     - retrying click action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n"
+    },
+    {
+      "engine": "webkit",
+      "lang": "en",
+      "width": 1440,
+      "reducedMotion": "no-preference",
+      "result": "PASS",
+      "animation": "rondo-lantern-orbit",
+      "posts": 1
+    },
+    {
+      "engine": "webkit",
+      "lang": "en",
+      "width": 1440,
+      "reducedMotion": "reduce",
+      "result": "PASS",
+      "animation": "none",
+      "posts": 1
+    },
+    {
+      "engine": "webkit",
+      "lang": "es",
+      "width": 390,
+      "reducedMotion": "no-preference",
+      "result": "FAIL",
+      "error": "locator.click: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#ast-launch')\u001b[22m\n\u001b[2m    - locator resolved to <button lang=\"es\" type=\"button\" id=\"ast-launch\" class=\"ast-launch\" aria-controls=\"ast\" aria-expanded=\"false\" aria-label=\"Pregúntale a Velani, el asesor de IA de este sitio\">…</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <p>Cuando apruebas las tarjetas de tiempo, cada pers…</p> from <main id=\"main\" tabindex=\"-1\">…</main> subtree intercepts pointer events\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    27 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m       - element is visible, enabled and stable\u001b[22m\n\u001b[2m       - scrolling into view if needed\u001b[22m\n\u001b[2m       - done scrolling\u001b[22m\n\u001b[2m       - <p>Cuando apruebas las tarjetas de tiempo, cada pers…</p> from <main id=\"main\" tabindex=\"-1\">…</main> subtree intercepts pointer events\u001b[22m\n\u001b[2m     - retrying click action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n"
+    },
+    {
+      "engine": "webkit",
+      "lang": "es",
+      "width": 390,
+      "reducedMotion": "reduce",
+      "result": "FAIL",
+      "error": "locator.click: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#ast-launch')\u001b[22m\n\u001b[2m    - locator resolved to <button lang=\"es\" type=\"button\" id=\"ast-launch\" class=\"ast-launch\" aria-controls=\"ast\" aria-expanded=\"false\" aria-label=\"Pregúntale a Velani, el asesor de IA de este sitio\">…</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <p>Cuando apruebas las tarjetas de tiempo, cada pers…</p> from <main id=\"main\" tabindex=\"-1\">…</main> subtree intercepts pointer events\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <p>Cuando apruebas las tarjetas de tiempo, cada pers…</p> from <main id=\"main\" tabindex=\"-1\">…</main> subtree intercepts pointer events\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    27 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m       - element is visible, enabled and stable\u001b[22m\n\u001b[2m       - scrolling into view if needed\u001b[22m\n\u001b[2m       - done scrolling\u001b[22m\n\u001b[2m       - <p>Cuando apruebas las tarjetas de tiempo, cada pers…</p> from <main id=\"main\" tabindex=\"-1\">…</main> subtree intercepts pointer events\u001b[22m\n\u001b[2m     - retrying click action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n\u001b[2m    - waiting for element to be visible, enabled and stable\u001b[22m\n"
+    },
+    {
+      "engine": "webkit",
+      "lang": "es",
+      "width": 1440,
+      "reducedMotion": "no-preference",
+      "result": "PASS",
+      "animation": "rondo-lantern-orbit",
+      "posts": 1
+    },
+    {
+      "engine": "webkit",
+      "lang": "es",
+      "width": 1440,
+      "reducedMotion": "reduce",
+      "result": "PASS",
+      "animation": "none",
+      "posts": 1
+    }
+  ]
+}

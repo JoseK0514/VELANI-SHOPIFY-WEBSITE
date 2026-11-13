@@ -1,0 +1,127 @@
+{
+  "applicationCommit": "33dd782c25dc58edcab11fbe63f8bdc56fff1b02",
+  "scope": "Actual local browser and owned fixture; separate from physical-device, independent review and hosted-theme publication acceptance",
+  "sourceFiles": [
+    {
+      "path": "src/night.mjs",
+      "sha256": "dafb4acfd6d1da2a7871992cf6bd71632c8b45733921418a03e7c9ad247b0e81"
+    },
+    {
+      "path": "src/night/assist.html",
+      "sha256": "e0088fc6bacfb352b954642db08f21a618ad171f46e14de63ce0d93c5cab962d"
+    },
+    {
+      "path": "src/night/assist.js",
+      "sha256": "402d2357727de2f458c03e7543ed07194b308da596a80dd243dd516bee0e8014"
+    },
+    {
+      "path": "src/night/polish.css",
+      "sha256": "7c94d1473bda159b2dee8f81f6cb61d7286d71610032eb5ccbffafec71111902"
+    },
+    {
+      "path": "src/night/home.body.html",
+      "sha256": "8edaf3b11f00389b8fb2b9807bba11873530b5b2c424d4dbcf59a304f61c8b09"
+    },
+    {
+      "path": "src/night/home.es.body.html",
+      "sha256": "51d5b331255b4996b2ddb0afba4282f6f4330eeee86ddbc5594b5aec1d65c6d1"
+    },
+    {
+      "path": "src/night/nevora.body.html",
+      "sha256": "9e30d211c0fc2b4361dd18455e2bdea1274a89f30e14279bb75a7fb0f6098f98"
+    },
+    {
+      "path": "src/night/nevora.es.body.html",
+      "sha256": "13e48a95d8e1722c0438ac01e2c25cabb1f28540ab2e7e22b80200740820758c"
+    },
+    {
+      "path": "scripts/build.mjs",
+      "sha256": "a406475323247747af1fee7d131c7213eb42cd808dafdec01511e07f40920d6f"
+    },
+    {
+      "path": "scripts/checks/rondo-lantern-browser.mjs",
+      "sha256": "dfc93a481f0f7019abfdd6bad1cb936f03ee5a4ba2384d3359e48b8c4a7daf64"
+    },
+    {
+      "path": "public/assets/velani-assist.js",
+      "sha256": "402d2357727de2f458c03e7543ed07194b308da596a80dd243dd516bee0e8014"
+    },
+    {
+      "path": "public/assets/velani.css",
+      "sha256": "07d0dd9e5cf3fa4fe8aa1e7403ef9e1e5bcad3b6d920a9840be3fd573d66a3e8"
+    },
+    {
+      "path": "src/brand/rondo-lantern-16.svg",
+      "sha256": "bd4e06355eab82b7d95c7870f505daff7b04b4cdfabf165d67c60ae34de52194"
+    },
+    {
+      "path": "src/brand/rondo-lantern-app.svg",
+      "sha256": "48f5be522d49cbf2004c29bcbfe8192a2fb450d4bf72dfa0558d286244792c30"
+    },
+    {
+      "path": "src/brand/rondo-lantern-site.svg",
+      "sha256": "d86a9c0300c45b728932391f265f1739cef03eaf70c38944e02503746835cca4"
+    },
+    {
+      "path": "src/brand/rondo-lantern.svg",
+      "sha256": "e16c96bb76ec0d69a2777752c94a6cab039769c1e4e789abefd57c7be7f7f540"
+    }
+  ],
+  "evidence": [
+    {
+      "path": "chromium-en-desktop-pending.png",
+      "bytes": 126335,
+      "sha256": "f351d1190e3ed9db0ddc31784909cf0b2e5f2b1edc2c3a8183266d2435a74db4"
+    },
+    {
+      "path": "export-contrast-report.json",
+      "bytes": 274,
+      "sha256": "1a56527da4e4041a4a49f1cc3ce77f6d9b58b5d74fbd491c4be8e96db5d939b9"
+    },
+    {
+      "path": "export-gallery-chromium.png",
+      "bytes": 37082,
+      "sha256": "41641e6c9f5ccb718048a4cd138613dd7981b08ebd7c7dea60ff0c592452e0e4"
+    },
+    {
+      "path": "export-gallery-webkit.png",
+      "bytes": 41644,
+      "sha256": "e91598670fd3c7d9225d4de48bc0b9c838f02d97c5190b35f336a37e12b00d50"
+    },
+    {
+      "path": "full-browser-report.json.gz",
+      "bytes": 1917,
+      "sha256": "e54e5a6a05824c490226d03e4e2f30a7d243ae1b74ce18b9eee4ab097678af71"
+    },
+    {
+      "path": "lantern-browser-report.json",
+      "bytes": 3159,
+      "sha256": "70c7506190b7d23d51e20b221a3ca0c9b3a1c838e7bc2f5670f064081f8eba5d"
+    },
+    {
+      "path": "original-contact-phone-control.json",
+      "bytes": 11482,
+      "sha256": "3101c44cbbe1a007ed3336a33b2d4f8ea4eb9f86b156b108521dbe3c0c0da479"
+    },
+    {
+      "path": "original-home-phone-control.json",
+      "bytes": 18780,
+      "sha256": "8321551794df45b9adfae55ab3bf4cd422e70168b01b56893300b70eabb9530a"
+    },
+    {
+      "path": "source-tests.log.gz",
+      "bytes": 3786,
+      "sha256": "f3ee5791e419e6e406999772cb0b275175d231201de8dc7e693d909018be62ed"
+    },
+    {
+      "path": "theme-check.log",
+      "bytes": 76,
+      "sha256": "65ab85816c960be8cd99d5525a358609b2f1e6585cfaa2ba5e14110eabd19ce7"
+    },
+    {
+      "path": "webkit-es-phone-reduced-motion.png",
+      "bytes": 31132,
+      "sha256": "a012f277ad1343aa11b5e6e6828daf691588489eec531ec489ab69642ac33e2f"
+    }
+  ]
+}

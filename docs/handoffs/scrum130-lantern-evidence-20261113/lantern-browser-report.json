@@ -1,0 +1,151 @@
+{
+  "passed": 16,
+  "failed": 0,
+  "externalRequests": [],
+  "results": [
+    {
+      "engine": "chromium",
+      "lang": "en",
+      "width": 390,
+      "reducedMotion": "no-preference",
+      "result": "PASS",
+      "animation": "rondo-lantern-orbit",
+      "posts": 1
+    },
+    {
+      "engine": "chromium",
+      "lang": "en",
+      "width": 390,
+      "reducedMotion": "reduce",
+      "result": "PASS",
+      "animation": "none",
+      "posts": 1
+    },
+    {
+      "engine": "chromium",
+      "lang": "en",
+      "width": 1440,
+      "reducedMotion": "no-preference",
+      "result": "PASS",
+      "animation": "rondo-lantern-orbit",
+      "posts": 1
+    },
+    {
+      "engine": "chromium",
+      "lang": "en",
+      "width": 1440,
+      "reducedMotion": "reduce",
+      "result": "PASS",
+      "animation": "none",
+      "posts": 1
+    },
+    {
+      "engine": "chromium",
+      "lang": "es",
+      "width": 390,
+      "reducedMotion": "no-preference",
+      "result": "PASS",
+      "animation": "rondo-lantern-orbit",
+      "posts": 1
+    },
+    {
+      "engine": "chromium",
+      "lang": "es",
+      "width": 390,
+      "reducedMotion": "reduce",
+      "result": "PASS",
+      "animation": "none",
+      "posts": 1
+    },
+    {
+      "engine": "chromium",
+      "lang": "es",
+      "width": 1440,
+      "reducedMotion": "no-preference",
+      "result": "PASS",
+      "animation": "rondo-lantern-orbit",
+      "posts": 1
+    },
+    {
+      "engine": "chromium",
+      "lang": "es",
+      "width": 1440,
+      "reducedMotion": "reduce",
+      "result": "PASS",
+      "animation": "none",
+      "posts": 1
+    },
+    {
+      "engine": "webkit",
+      "lang": "en",
+      "width": 390,
+      "reducedMotion": "no-preference",
+      "result": "PASS",
+      "animation": "rondo-lantern-orbit",
+      "posts": 1
+    },
+    {
+      "engine": "webkit",
+      "lang": "en",
+      "width": 390,
+      "reducedMotion": "reduce",
+      "result": "PASS",
+      "animation": "none",
+      "posts": 1
+    },
+    {
+      "engine": "webkit",
+      "lang": "en",
+      "width": 1440,
+      "reducedMotion": "no-preference",
+      "result": "PASS",
+      "animation": "rondo-lantern-orbit",
+      "posts": 1
+    },
+    {
+      "engine": "webkit",
+      "lang": "en",
+      "width": 1440,
+      "reducedMotion": "reduce",
+      "result": "PASS",
+      "animation": "none",
+      "posts": 1
+    },
+    {
+      "engine": "webkit",
+      "lang": "es",
+      "width": 390,
+      "reducedMotion": "no-preference",
+      "result": "PASS",
+      "animation": "rondo-lantern-orbit",
+      "posts": 1
+    },
+    {
+      "engine": "webkit",
+      "lang": "es",
+      "width": 390,
+      "reducedMotion": "reduce",
+      "result": "PASS",
+      "animation": "none",
+      "posts": 1
+    },
+    {
+      "engine": "webkit",
+      "lang": "es",
+      "width": 1440,
+      "reducedMotion": "no-preference",
+      "result": "PASS",
+      "animation": "rondo-lantern-orbit",
+      "posts": 1
+    },
+    {
+      "engine": "webkit",
+      "lang": "es",
+      "width": 1440,
+      "reducedMotion": "reduce",
+      "result": "PASS",
+      "animation": "none",
+      "posts": 1
+    }
+  ]
+}
