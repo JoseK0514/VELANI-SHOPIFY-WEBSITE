@@ -12,8 +12,11 @@ Primary responder: **Jose Natal**. Jose answered "Jose Natal (me)" in the
 consolidated finishing chat `01a1d175-7de0-7a80-b607-5418fde6ed50`, replying to the
 question asking for primary and backup responders. Jose subsequently named
 **Ilianis Soto** as backup in that same chat on November12. These responses
-establish the two assignments; they are not evidence of either responder
-receiving an incident alert, accepting a response target or completing a drill.
+establish the two assignments. Jose later explicitly confirmed: "Yes, I reviewed
+both", answering whether he received and reviewed the existing incident alert
+and recovery notice at the support inbox. Record primary human acknowledgment
+of those two messages. Ilianis has not independently acknowledged an alert or
+completed a drill here; no response target or continuous coverage is inferred.
 
 Development remains the primary operating/acceptance release, with production
 standards. Codex owns backend/hosting and Claude owns UI. Promote only the exact
@@ -52,8 +55,9 @@ disabled/attempt limit0. Do not rerun them to manufacture acknowledgment.
 
 ## Remaining joined acceptance
 
-Claude's UI, independent outage/monitor heartbeat coverage and actual responder
-acknowledgment remain open. Primary and backup names are now recorded. The recurring USD10/month
+Claude's UI, independent outage/monitor heartbeat coverage, backup acknowledgment
+and the response drill remain open. Primary and backup names and Jose's review
+of both original notices are now recorded. The recurring USD10/month
 approval still uses finite calendar-month authorization rows and preserves all
 reservations. No extra model call, budget reset, key deletion, schedule change,
 Shopify publication, main merge or public deployment occurred here.
@@ -68,3 +72,8 @@ Backup assignment update starts from freshly fetched development
 `f5082ed5be0e65bb322fe4047dd624ad73e9d493`, preserving the separately authorized
 main consolidation. This update changes only the two responder runbooks on
 development; it makes no main or provider change. No message to Ilianis was sent.
+
+Primary acknowledgment update starts from freshly fetched development
+`ea7e6e6c8d5d590f61342ce73196a077ce4bb30c`. Jose's direct answer is recorded
+in the same finishing chat. No new notice, provider attempt, model call, schedule,
+main or runtime change is authorized or performed by recording that answer.
