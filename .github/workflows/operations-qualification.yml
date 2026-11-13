@@ -1,0 +1,119 @@
+name: Velani operations qualification
+
+on:
+  push:
+    branches: [development]
+    tags: ['candidate/velani-operations/**']
+  pull_request:
+    branches: [development]
+
+permissions:
+  contents: read
+
+jobs:
+  website:
+    name: Website build and theme
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '24.19.0'
+      - run: npm ci
+      - name: Website tests and theme validation
+        run: |
+          npm test > "$RUNNER_TEMP/website-tests.log" 2>&1
+          npm run check:theme > "$RUNNER_TEMP/website-theme.log" 2>&1
+      - name: Bind results to the complete source
+        run: node scripts/ci-source-receipt.mjs "$RUNNER_TEMP/website-source.json"
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: velani-qualification-website-${{ github.sha }}
+          path: |
+            ${{ runner.temp }}/website-tests.log
+            ${{ runner.temp }}/website-theme.log
+            ${{ runner.temp }}/website-source.json
+          if-no-files-found: error
+          retention-days: 14
+
+  backend:
+    name: PostgreSQL backend and independent watchdog
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    services:
+      postgres:
+        image: pgvector/pgvector@sha256:feb68f4f15446397d8cac7f4fe48fe4586de83160d1fc48b46283312d1a33966
+        env:
+          POSTGRES_USER: velani_operations_fixture
+          POSTGRES_PASSWORD: synthetic-ci-only
+          POSTGRES_DB: velani_rondo_development
+        ports: ['5432:5432']
+        options: >-
+          --health-cmd "pg_isready -U velani_operations_fixture -d velani_rondo_development"
+          --health-interval 5s --health-timeout 5s --health-retries 12
+    env:
+      TEST_DATABASE_URL: postgresql://velani_operations_fixture:synthetic-ci-only@127.0.0.1:5432/velani_rondo_development
+    defaults:
+      run:
+        working-directory: services/velani-ai
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '24.19.0'
+      - run: npm ci
+      - name: Types, build and all actual PostgreSQL tests
+        run: |
+          npm run typecheck > "$RUNNER_TEMP/backend-types.log" 2>&1
+          npm run build > "$RUNNER_TEMP/backend-build.log" 2>&1
+          npm test -- --maxWorkers=2 --reporter=json --outputFile="$RUNNER_TEMP/backend-tests.json" > "$RUNNER_TEMP/backend-tests.log" 2>&1
+      - name: Compile the existing closed native operations artifacts
+        run: npm run build:operations -- "$RUNNER_TEMP/rondo-native-operations" > "$RUNNER_TEMP/backend-native-build.log" 2>&1
+      - name: Reject skipped tests and bind results to the complete source
+        working-directory: .
+        run: node scripts/ci-source-receipt.mjs "$RUNNER_TEMP/backend-source.json" "$RUNNER_TEMP/backend-tests.json"
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: velani-qualification-backend-${{ github.sha }}
+          path: |
+            ${{ runner.temp }}/backend-types.log
+            ${{ runner.temp }}/backend-build.log
+            ${{ runner.temp }}/backend-tests.log
+            ${{ runner.temp }}/backend-tests.json
+            ${{ runner.temp }}/backend-source.json
+            ${{ runner.temp }}/backend-native-build.log
+            ${{ runner.temp }}/rondo-native-operations/
+          if-no-files-found: error
+          retention-days: 14
+
+  qualify:
+    name: Verify current-run source evidence
+    if: always()
+    needs: [website, backend]
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - name: Require both executed gates
+        env:
+          WEBSITE: ${{ needs.website.result }}
+          BACKEND: ${{ needs.backend.result }}
+        run: test "$WEBSITE" = success && test "$BACKEND" = success
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '24.19.0'
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          pattern: velani-qualification-*-${{ github.sha }}
+          path: ${{ runner.temp }}/velani-qualification
+      - name: Verify this source, run, attempt and complete hash sets
+        run: node scripts/ci-source-receipt.mjs --verify "$RUNNER_TEMP/velani-qualification"
