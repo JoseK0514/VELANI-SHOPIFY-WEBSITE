@@ -42,8 +42,11 @@ function kiosk(lang) {
     .replace('Oct 27&nbsp;· 2:17 PM</b><span id="kio-dot">.</span>', '27 oct&nbsp;· 2:17 p.\u00a0m.</b><span id="kio-dot"></span>');
 }
 /** Turn a prototype fragment into site markup: icons inline, images from theme assets, real routes. */
-/** Rondo's mark: a round badge with the R and a three-quarter ring of light (the same markup everywhere; size comes from the context) */
-const RONDO_MARK = (cls = '') => '<b class="rmark' + (cls ? ' ' + cls : '') + '" aria-hidden="true"><svg viewBox="0 0 32 32" focusable="false"><circle cx="16" cy="16" r="14.25"/><path d="M16 1.75A14.25 14.25 0 1 1 1.75 16"/></svg>R</b>';
+/** Jose's approved Lantern concept 1; see docs/brand/rondo-lantern.md for provenance.
+ * Adjacent text names Rondo, so these repeated marks are decorative. The exported SVG is named when used alone. */
+const RONDO_SVG = readFileSync(path.join(root, 'src/brand/rondo-lantern.svg'), 'utf8')
+  .replace(/\s(width|height)="[^"]*"/g, '').replace('role="img" aria-label="Rondo"', 'focusable="false"').trim();
+const RONDO_MARK = (cls = '') => '<b class="rmark' + (cls ? ' ' + cls : '') + '" aria-hidden="true">' + RONDO_SVG + '</b>';
 export function site(html, target, lang = 'en') {
   return html
     .replace('{{kiosk}}', () => kiosk(lang))

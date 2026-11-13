@@ -156,11 +156,11 @@ import { VelaniAssistant, safeSourceUrl } from './velani-assistant.js';
  const addYou = text => { const li = document.createElement('div'); li.className = 'ast-msg you'; li.textContent = text; log.append(li); intro.hidden = true; scroll(); return li; };
  const addWait = () => {
   const li = document.createElement('div'); li.className = 'ast-wait'; li.setAttribute('role', 'status');
-  const dots = document.createElement('span'); dots.className = 'ast-dots'; dots.setAttribute('aria-hidden', 'true'); dots.append(...[0, 1, 2].map(() => document.createElement('i')));
-  const label = document.createElement('span'); li.append(dots, label);
+  const mark = panel.querySelector('.ast-head .rmark').cloneNode(true);
+  const label = document.createElement('span'); li.append(mark, label);
   // Honest progress: while the visitor's browser is being verified nothing is being answered yet; the 45-second note starts only once the question is sent
-  let slow = 0; const thinking = () => { label.textContent = t('thinking'); clearTimeout(slow); slow = setTimeout(() => { label.textContent = t('slow'); }, 10000); };
-  li.verifying = () => { clearTimeout(slow); label.textContent = t('verifying'); }; li.thinking = thinking; thinking();
+  let slow = 0; const thinking = () => { mark.classList.add('is-thinking'); label.textContent = t('thinking'); clearTimeout(slow); slow = setTimeout(() => { label.textContent = t('slow'); }, 10000); };
+  li.verifying = () => { mark.classList.remove('is-thinking'); clearTimeout(slow); label.textContent = t('verifying'); }; li.thinking = thinking; thinking();
   li.done = () => { clearTimeout(slow); li.remove(); log.removeAttribute('aria-busy'); if (activeWait === li) activeWait = null; };
   log.append(li); log.setAttribute('aria-busy', 'true'); scroll(); activeWait = li; return li;
  };

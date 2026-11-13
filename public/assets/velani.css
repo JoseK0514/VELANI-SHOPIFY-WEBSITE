@@ -1387,16 +1387,20 @@ main>section:first-of-type .fade{opacity:1}
 @media(min-width:960px) and (max-width:1099px){.lnav-lang{margin-right:2px}.lnav-lang a{min-width:26px;padding:0 3px}html[lang=es] .lnav ul a{padding:0 6px}html[lang=es] .lnav ul{margin-right:6px}}
 @media(min-width:960px) and (max-width:1023px){html[lang=es] .lnav ul a{padding:0 4px}}
 
-/* ---------- Rondo's mark: round, with a three-quarter ring of light (one design for every place Rondo appears) ---------- */
-b.rmark,.hchat-h b.rmark,.rondo-kick .rmark,.ast-launch .rmark,.ast-head .rmark,.ast-who .rmark{position:relative;display:grid;place-items:center;flex:none;border-radius:50%;background:radial-gradient(circle at 35% 28%,#1c3049 0,#0f1a29 58%,#0a121c 100%);color:#dcebff;font-style:normal;font-weight:600;letter-spacing:0;line-height:1;box-shadow:none;border:0}
-.rmark svg{position:absolute;inset:0;width:100%;height:100%;fill:none;stroke-width:1.5;stroke-linecap:round;pointer-events:none}
-.rmark svg circle{stroke:rgba(187,216,255,.18)}
-.rmark svg path{stroke:#bbd8ff}
+/* ---------- Approved Rondo Lantern: one ring and its light; static unless an answer is actually pending ---------- */
+b.rmark,.hchat-h b.rmark,.rondo-kick .rmark,.ast-launch .rmark,.ast-head .rmark,.ast-who .rmark{position:relative;display:grid;place-items:center;flex:none;width:26px;height:26px;border-radius:50%;background:#101c29;color:#bbd8ff;font-style:normal;font-weight:600;letter-spacing:0;line-height:1;box-shadow:none;border:0}
+.rmark svg{display:block;width:100%;height:100%;pointer-events:none}
+.rmark.day-r{width:20px;height:20px;border-radius:6px;background:var(--teal);color:#fff}
+.rmark-orbit{transform-origin:24px 24px}
+.rmark.is-thinking .rmark-orbit{animation:rondo-lantern-orbit 3.2s linear infinite}
+@keyframes rondo-lantern-orbit{to{transform:rotate(360deg)}}
+@media(prefers-reduced-motion:reduce){.rmark.is-thinking .rmark-orbit{animation:none}}
 .ast-head .rmark{width:32px;height:32px;font-size:0.875rem}
 .ast-launch .rmark{width:26px;height:26px;font-size:0.75rem}
 .ast-who{display:flex;align-items:center;gap:8px}
 .ast-who .rmark{width:22px;height:22px;font-size:0.6875rem}
-@media(forced-colors:active){.rmark{forced-color-adjust:none;background:Canvas;color:CanvasText}.rmark svg path{stroke:CanvasText}.rmark svg circle{stroke:GrayText}}
+.ast-wait .rmark{width:22px;height:22px}
+@media(forced-colors:active){b.rmark,.rmark.day-r{background:Canvas;color:CanvasText}.rmark path{stroke-opacity:1}}
 /* Example chat header: a longer name (Spanish) moves the status label to its own line instead of past the card edge */
 .hchat-h{flex-wrap:wrap;row-gap:4px}
 .hchat-h span{min-width:0}
