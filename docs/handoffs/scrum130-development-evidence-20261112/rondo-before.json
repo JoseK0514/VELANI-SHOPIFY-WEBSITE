@@ -1,0 +1,63 @@
+{
+  "passed": 4,
+  "failed": 4,
+  "externalRequests": [],
+  "results": [
+    {
+      "engine": "chromium",
+      "lang": "en",
+      "status": 422,
+      "result": "FAIL",
+      "error": "Human help remains available\n\nfalse !== true\n"
+    },
+    {
+      "engine": "chromium",
+      "lang": "en",
+      "status": 503,
+      "result": "PASS",
+      "requests": 3
+    },
+    {
+      "engine": "chromium",
+      "lang": "es",
+      "status": 422,
+      "result": "FAIL",
+      "error": "Human help remains available\n\nfalse !== true\n"
+    },
+    {
+      "engine": "chromium",
+      "lang": "es",
+      "status": 503,
+      "result": "PASS",
+      "requests": 3
+    },
+    {
+      "engine": "webkit",
+      "lang": "en",
+      "status": 422,
+      "result": "FAIL",
+      "error": "Human help remains available\n\nfalse !== true\n"
+    },
+    {
+      "engine": "webkit",
+      "lang": "en",
+      "status": 503,
+      "result": "PASS",
+      "requests": 3
+    },
+    {
+      "engine": "webkit",
+      "lang": "es",
+      "status": 422,
+      "result": "FAIL",
+      "error": "Human help remains available\n\nfalse !== true\n"
+    },
+    {
+      "engine": "webkit",
+      "lang": "es",
+      "status": 503,
+      "result": "PASS",
+      "requests": 3
+    }
+  ]
+}
