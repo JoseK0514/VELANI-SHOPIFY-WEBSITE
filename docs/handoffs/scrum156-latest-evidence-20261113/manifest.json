@@ -1,0 +1,89 @@
+{
+  "files": [
+    {
+      "path": "browser-report.json.gz",
+      "bytes": 9606,
+      "sha256": "abd4444d8670024812d15dd8639629fd0aac1127e95ca7b3bdd4c5d5a502ab65"
+    },
+    {
+      "path": "browser-summary.json",
+      "bytes": 6574,
+      "sha256": "3f4e4c42ee2bf8bcc3e6a45322e0bd5582b7d12d86c1b40ffe0e8c7068a51a37"
+    },
+    {
+      "path": "browser.log.gz",
+      "bytes": 195,
+      "sha256": "f3a7c09af9409e7272d7671aac6c9ebcd7ea8699a93bbe507790663c7321bc3d"
+    },
+    {
+      "path": "browser.mjs",
+      "bytes": 6844,
+      "sha256": "923129d4d98c04911b9b292193cd514539f2714699f2be3a1d362b98c69a9818"
+    },
+    {
+      "path": "build.log.gz",
+      "bytes": 161,
+      "sha256": "51c6bab9b4695086b17493a67632cc3f8f54a1aa3b4d4f0b33c4aefb4409be02"
+    },
+    {
+      "path": "chromium-1440-privacy.png",
+      "bytes": 672322,
+      "sha256": "e34ae1487fae9c6ec55ea81d98b27e6b2742dc8a42ae59c3c35484756da84cb9"
+    },
+    {
+      "path": "chromium-390-privacy.png",
+      "bytes": 570354,
+      "sha256": "108c31e60ba9577e6067a7c047cf6cdfd2894906a3b1946856c40f6b25141fba"
+    },
+    {
+      "path": "expected-preview-files.json",
+      "bytes": 43764,
+      "sha256": "97079c74a1fdf258dc67bcbb82859ad047eb6ef6c50f69ecf6c49e928ef2d13c"
+    },
+    {
+      "path": "generated-source-files.json",
+      "bytes": 30004,
+      "sha256": "2eb2b7834bbc1ed7efbebf4caa121db62b94cea5170456b16f0476a1ddf097a0"
+    },
+    {
+      "path": "preview-settings.json",
+      "bytes": 260,
+      "sha256": "1e2ddb0ffa97acd2a2751585ee14b6c9f96d22239c60788107f7adcbeb294fa8"
+    },
+    {
+      "path": "tests.log.gz",
+      "bytes": 3783,
+      "sha256": "0f459fc98096c169a3c332fbfb463459627d26c6dc0a989c2287e92df3de434a"
+    },
+    {
+      "path": "theme-after.json",
+      "bytes": 62597,
+      "sha256": "5fa73581d3b9f3890e4740cd4af874f5e11ce1feaf0868f2283c1e752aac69bb"
+    },
+    {
+      "path": "theme-before.json",
+      "bytes": 61981,
+      "sha256": "157ed052e414e78f41c112b7c1835ec3c52d00741b9cf84756a6a5d5eb9be13f"
+    },
+    {
+      "path": "theme-verification.json",
+      "bytes": 675,
+      "sha256": "e6591d4c73294e2787cc7e4baaa2dadc45dc6fc1fe49fc2f2d16913a00760059"
+    },
+    {
+      "path": "theme.log.gz",
+      "bytes": 99,
+      "sha256": "ece29c2237da4de89630b7e612883d27cdb464181c4faf55d0cfd1a197c142c3"
+    },
+    {
+      "path": "webkit-1440-privacy.png",
+      "bytes": 1109517,
+      "sha256": "a6e331430ee72f28e12a3004371495d845296811a527e2f4e70ed9d603878519"
+    },
+    {
+      "path": "webkit-390-privacy.png",
+      "bytes": 1136945,
+      "sha256": "f58ca1240b35ca8355a8086d33a580e44b46b8045977659628d3dd3f73523237"
+    }
+  ]
+}

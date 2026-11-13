@@ -1,0 +1,16 @@
+{
+  "source": "4671b614846fe47c75fdc29c9315ba97391b6669",
+  "themeId": "193401127226",
+  "role": "UNPUBLISHED",
+  "requiredFiles": 212,
+  "byteMatched": 121,
+  "unchangedNormalizedJson": 91,
+  "matchedLatestTextFiles": 11,
+  "unchangedRequiredFilesFromPriorVerifiedSource": 201,
+  "retainedUnusedFiles": 38,
+  "parent231FilesUnchanged": true,
+  "currentSettingsUnchanged": true,
+  "settingsBefore": "4671-settings-before.json",
+  "normalization": "91 JSON files retain the previously verified Shopify formatting/defaults; config settings retain only the four explicit preview runtime overrides. All those remote checksums are unchanged.",
+  "oldRequiredFileRemoval": false
+}
