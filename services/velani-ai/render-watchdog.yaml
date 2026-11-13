@@ -13,7 +13,6 @@ services:
     startCommand: node dist/scripts/watchdog-host.js
     autoDeployTrigger: 'off'
     numInstances: 1
-    maxShutdownDelaySeconds: 45
     disk:
       name: rondo-watchdog-state
       mountPath: /var/data
