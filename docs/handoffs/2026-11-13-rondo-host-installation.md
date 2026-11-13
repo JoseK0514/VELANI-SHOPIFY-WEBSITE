@@ -1,5 +1,10 @@
 # Rondo independent host installation
 
+This document preserves the reviewed installation proposal and procedure.
+The later [installed-host acceptance receipt](2026-11-13-rondo-host-acceptance.md)
+supersedes its preparation-time statements about uncreated resources, NOLOGIN,
+pending account ownership and disabled sending. Keep both records.
+
 Prepared for Jose's November 13 request to complete SCRUM-155 and integrate
 development. Codex owns backend/hosting; Claude owns UI. Development remains
 the primary operating and acceptance line at production standards. No main,
