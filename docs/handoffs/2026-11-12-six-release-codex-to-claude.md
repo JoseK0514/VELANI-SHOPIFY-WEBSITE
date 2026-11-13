@@ -34,6 +34,8 @@ The prior146/155 QA chat is idle after its local282-check checkpoint; private-ad
 | New client-hub acceptance copy | `193374224698`, UNPUBLISHED; real-preview-submit flag was returned false after the earlier approved test. |
 
 Reference backend details instead of recreating them:
+
+- [SCRUM-153 backend integration and corrected Claude entry documents](2026-11-12-scrum153-rondo-backend-integration.md): source/handoff work completed in development151bfd82; runtime155 and UI157 acceptance remain open.
 - [Current signup/policy/Rondo facts](2026-11-12-signup-policy-rondo-backend.md).
 - [Newer Velani development backend receipt](2026-11-12-step1-velani-backend-truth.md), including the migration concurrency fix and261-test qualification. This packet's260-test receipt below remains bound to its earlier source.
 - [Rondo responder closeout](2026-11-12-rondo-responder-closeout.md): primary and backup assignments are recorded; independent outage coverage and actual acknowledgment remain open.
