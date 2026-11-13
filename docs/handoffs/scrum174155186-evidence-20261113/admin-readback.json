@@ -1,0 +1,17 @@
+{
+  "recordedAt": "2026-11-13T08:08:29.197438-04:00",
+  "readOnly": true,
+  "checks": [
+    {
+      "host": "admin.thevelani.com",
+      "status": 503,
+      "vercelError": "DEPLOYMENT_PAUSED"
+    },
+    {
+      "host": "admin-staging.thevelani.com",
+      "status": 200,
+      "finalHost": "vercel.com",
+      "vercelError": null
+    }
+  ]
+}

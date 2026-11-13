@@ -1,0 +1,27 @@
+{
+  "account": "acct_1UZZK1HT1nhEuOJ2",
+  "livemode": false,
+  "readOnly": true,
+  "invoice": {
+    "id": "in_1UZb6lHT1nhEuOJ24GyALKHY",
+    "status": "open",
+    "currency": "usd",
+    "total": 100,
+    "amountPaid": 0,
+    "amountRemaining": 100,
+    "autoAdvance": false,
+    "collectionMethod": "send_invoice",
+    "automaticTaxEnabled": false,
+    "fictional": true
+  },
+  "taxSettings": {
+    "status": "pending",
+    "missingFields": [
+      "head_office"
+    ]
+  },
+  "limits": [
+    "Existing fictional sandbox invoice readback; no invoice or customer created, finalized, sent or paid in this task.",
+    "Sandbox Tax settings are not evidence of legal registration, classification or production authority."
+  ]
+}

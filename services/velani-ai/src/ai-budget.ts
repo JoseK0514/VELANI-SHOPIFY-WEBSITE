@@ -123,7 +123,7 @@ export class PostgresAiBudget {
 }
 
 /** Aggregate-only output; no prompts, sessions, addresses, approval text or keys. */
-export async function readBudgetStatus(pool: Pool, authorizationId?: string) {
+export async function readBudgetStatus(pool: Pick<Pool, 'query'>, authorizationId?: string) {
   if (!authorizationId || !z.uuid().safeParse(authorizationId).success) return { status: 'not_configured' as const };
   const result = await pool.query<BudgetRow>(`SELECT ${columns} FROM rondo_budget_status WHERE id=$1`, [authorizationId]);
   const row = result.rows[0];
