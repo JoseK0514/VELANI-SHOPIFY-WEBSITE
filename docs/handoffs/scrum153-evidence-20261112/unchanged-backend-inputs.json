@@ -1,0 +1,490 @@
+[
+  {
+    "path": "services/velani-ai/.dockerignore",
+    "gitBlob": "35dc52472a10942d5e54b285f2c3623a11c5c15a"
+  },
+  {
+    "path": "services/velani-ai/.env.example",
+    "gitBlob": "80eef605368871c41048edbb75a776fecd5905c2"
+  },
+  {
+    "path": "services/velani-ai/.gitignore",
+    "gitBlob": "74cdcbf1d60d24f7045312b511d6aebd826cf089"
+  },
+  {
+    "path": "services/velani-ai/Dockerfile",
+    "gitBlob": "d43f96ef8d4e55f089ad118d8bd28b58fc49255d"
+  },
+  {
+    "path": "services/velani-ai/api/client-hub-email.ts",
+    "gitBlob": "fb0639ecf19dc5a7fd222f7926219a91425c4088"
+  },
+  {
+    "path": "services/velani-ai/api/client-hub.ts",
+    "gitBlob": "f16d9cd35eed53ad7fa21399441878c47ac70f9c"
+  },
+  {
+    "path": "services/velani-ai/api/cron/client-hub.ts",
+    "gitBlob": "03c22b7da9a860757e6e028d45c7de7ad005e62f"
+  },
+  {
+    "path": "services/velani-ai/api/cron/retention.ts",
+    "gitBlob": "ea9f6d6a1ab945a34d92b6af533b9e7e3d420cc5"
+  },
+  {
+    "path": "services/velani-ai/api/index.ts",
+    "gitBlob": "49092543c93a91e79a7c8e266abaa05aca742789"
+  },
+  {
+    "path": "services/velani-ai/functions/rondo-monitor.ts",
+    "gitBlob": "e39147613b8c07b6893ca7c274edcad210855f02"
+  },
+  {
+    "path": "services/velani-ai/functions/rondo-retention.ts",
+    "gitBlob": "0de742258655db24a2325456205cd57ff6c421ba"
+  },
+  {
+    "path": "services/velani-ai/integration/example.html",
+    "gitBlob": "5b74fa360b9ee8a41ddb22fe6dd564acfa707951"
+  },
+  {
+    "path": "services/velani-ai/integration/shopify/velani-entrance.liquid",
+    "gitBlob": "653e277a01970994f395e130b179848b645b6d27"
+  },
+  {
+    "path": "services/velani-ai/integration/velani-assistant.js",
+    "gitBlob": "f9ab868f765b2c819e5152b60a66d997d0f29b7c"
+  },
+  {
+    "path": "services/velani-ai/knowledge/comparison-cases.json",
+    "gitBlob": "0251d4bf4a4407dcef8eb4a3503083accec1caa8"
+  },
+  {
+    "path": "services/velani-ai/knowledge/evals.json",
+    "gitBlob": "417a8621db4689d23396f06068b7cc0fef5592d8"
+  },
+  {
+    "path": "services/velani-ai/knowledge/nevora.json",
+    "gitBlob": "2fe5717a339594f731c030098dbdfb29aa4a47e0"
+  },
+  {
+    "path": "services/velani-ai/knowledge/rondo-hard-evals.json",
+    "gitBlob": "558423e889e5e3ac52ecd4b9f9f323794f79ee8f"
+  },
+  {
+    "path": "services/velani-ai/migrations/001_initial.sql",
+    "gitBlob": "167ba64959a065afe3fbdceda443b1737055afd5"
+  },
+  {
+    "path": "services/velani-ai/migrations/002_experience.sql",
+    "gitBlob": "ba9e15a65f391f18323d3f19d619dbbd6601f68e"
+  },
+  {
+    "path": "services/velani-ai/migrations/003_plan_brief.sql",
+    "gitBlob": "271d219a23471da5d6b7194267e51260d6d26940"
+  },
+  {
+    "path": "services/velani-ai/migrations/004_client_hub.sql",
+    "gitBlob": "29d43b171c3f6257d78579ef6009f6784c46433d"
+  },
+  {
+    "path": "services/velani-ai/migrations/005_retention_heartbeat.sql",
+    "gitBlob": "6165b72f5d6447208837a1bd69464636a65e540c"
+  },
+  {
+    "path": "services/velani-ai/migrations/006_ai_budget.sql",
+    "gitBlob": "6b7a3a37ef7eb5d97d06ea7d3a88c3662816f5db"
+  },
+  {
+    "path": "services/velani-ai/migrations/007_operations_views.sql",
+    "gitBlob": "2bdc94a0a341759c47278e4c33c79497e97823ef"
+  },
+  {
+    "path": "services/velani-ai/migrations/008_monitor_journal.sql",
+    "gitBlob": "20a6c8436d01096b1a52f0e41bae173aff14f64c"
+  },
+  {
+    "path": "services/velani-ai/ops/development-budget-2026-11.json",
+    "gitBlob": "2450d1e4df6152f96db7200e48569a49c1fd06cc"
+  },
+  {
+    "path": "services/velani-ai/package-lock.json",
+    "gitBlob": "7e4b86a82123513283f66d6a628d8ff8b9b5f64d"
+  },
+  {
+    "path": "services/velani-ai/package.json",
+    "gitBlob": "18dccbca30786be1c600ccc0541d2a8840e5797c"
+  },
+  {
+    "path": "services/velani-ai/public/app.js",
+    "gitBlob": "61b6b6b5b2db15a99f55b7b8bb43f2c60c00e16a"
+  },
+  {
+    "path": "services/velani-ai/public/assets/fonts-LICENSE.txt",
+    "gitBlob": "b47a5684bfa23dafcdb66db6a39c993ec2b367db"
+  },
+  {
+    "path": "services/velani-ai/public/assets/manrope.woff2",
+    "gitBlob": "0cb529fb4dc1e0a8a52a51fb0781663934a95bf1"
+  },
+  {
+    "path": "services/velani-ai/public/assets/nevora-clock.webp",
+    "gitBlob": "76271cf5baa500f606f473a22e4519a126915c2d"
+  },
+  {
+    "path": "services/velani-ai/public/assets/velani-text.woff2",
+    "gitBlob": "0a77d615f49b9ba5303c170d0a92d403930b745a"
+  },
+  {
+    "path": "services/velani-ai/public/entrance-renderer.js",
+    "gitBlob": "fe58d0ff89e732ecbca1f6e24636375625c439b8"
+  },
+  {
+    "path": "services/velani-ai/public/entrance.css",
+    "gitBlob": "504b6143fcc1aab9a348f0b0941d97bc877204b3"
+  },
+  {
+    "path": "services/velani-ai/public/entrance.js",
+    "gitBlob": "8948fafe404fa16917ca99105bc63cd46f253bac"
+  },
+  {
+    "path": "services/velani-ai/public/index.html",
+    "gitBlob": "2892422fc0604666854db8994298ec6e32ea3142"
+  },
+  {
+    "path": "services/velani-ai/public/styles.css",
+    "gitBlob": "4753cf0304cfaf4760dd289a591db67998b04f0d"
+  },
+  {
+    "path": "services/velani-ai/public/velani-entrance.woff2",
+    "gitBlob": "0cb529fb4dc1e0a8a52a51fb0781663934a95bf1"
+  },
+  {
+    "path": "services/velani-ai/scripts/ai-budget.ts",
+    "gitBlob": "bd3f4d24d9ab68a9f4a6a81f865c061e6e0371fb"
+  },
+  {
+    "path": "services/velani-ai/scripts/build-neon-operations.mjs",
+    "gitBlob": "5a050226382e2fc8e3f5daf2606faebed6fa7807"
+  },
+  {
+    "path": "services/velani-ai/scripts/compare-models.ts",
+    "gitBlob": "3f0f02a188941ffcb6cca3b6bf4d94503728a56d"
+  },
+  {
+    "path": "services/velani-ai/scripts/evaluate-rondo.ts",
+    "gitBlob": "07bca4b263681710235a5cc3b35a813b3fde57d1"
+  },
+  {
+    "path": "services/velani-ai/scripts/evaluate.ts",
+    "gitBlob": "f6f542cf593d859c0a61cf128cc9fab5a898b74f"
+  },
+  {
+    "path": "services/velani-ai/scripts/evaluation-budget.ts",
+    "gitBlob": "18c485d61fb16cf8860ccac72b2594a72bc4afc2"
+  },
+  {
+    "path": "services/velani-ai/scripts/experience-smoke.ts",
+    "gitBlob": "29bd7c803aa628cd824ea4524032a98d9cb768e7"
+  },
+  {
+    "path": "services/velani-ai/scripts/leads.ts",
+    "gitBlob": "f2b071138366a2c42600f422a22cfc92d7a88c31"
+  },
+  {
+    "path": "services/velani-ai/scripts/migrate.ts",
+    "gitBlob": "6fb0726cda435b5af505cced13f74ce71f0dd976"
+  },
+  {
+    "path": "services/velani-ai/scripts/operations-check.ts",
+    "gitBlob": "a60d9fd871a0c1ebddb4ce4052728f18048ce200"
+  },
+  {
+    "path": "services/velani-ai/scripts/provision-app-role.ts",
+    "gitBlob": "f4c644404c8125a9678e94942a75967f898f9039"
+  },
+  {
+    "path": "services/velani-ai/scripts/retention.ts",
+    "gitBlob": "19c487dd105970018365da23a82efa7f76b9fd17"
+  },
+  {
+    "path": "services/velani-ai/scripts/seed.ts",
+    "gitBlob": "2a2048eff1732b2f35ba4caa3abf321cb3f02056"
+  },
+  {
+    "path": "services/velani-ai/scripts/smoke.ts",
+    "gitBlob": "660c3755f12d217c5c7e535747f2bef745c96d90"
+  },
+  {
+    "path": "services/velani-ai/src/ai-budget.ts",
+    "gitBlob": "4bbc7276f1ead731f3b4fd89bb0445c1e58f17d2"
+  },
+  {
+    "path": "services/velani-ai/src/app.ts",
+    "gitBlob": "66ca8c640c06e2b454c3aec05e5aba5808a81869"
+  },
+  {
+    "path": "services/velani-ai/src/client-hub/app.ts",
+    "gitBlob": "0722fe5a87030ac9b9fa2f69ac647bd3fbab7ad5"
+  },
+  {
+    "path": "services/velani-ai/src/client-hub/config.ts",
+    "gitBlob": "573f2b3550d4322eb48a2549b31dca5721c3d90b"
+  },
+  {
+    "path": "services/velani-ai/src/client-hub/delivery.ts",
+    "gitBlob": "aedb888a7d7a3ce6a2e2240cf324082792319af6"
+  },
+  {
+    "path": "services/velani-ai/src/client-hub/email.ts",
+    "gitBlob": "3c59cc26888691508aa6aa7772ec649b6e2bb329"
+  },
+  {
+    "path": "services/velani-ai/src/client-hub/maintenance.ts",
+    "gitBlob": "f599e08029f895acabc71cec2c116306f5be7223"
+  },
+  {
+    "path": "services/velani-ai/src/client-hub/queue-work.ts",
+    "gitBlob": "8b416c94595d6a83fc1574a6f5e8be32614bf97f"
+  },
+  {
+    "path": "services/velani-ai/src/client-hub/queue.ts",
+    "gitBlob": "2ba785e4c68f0eb3620ca7ece1bda4b3da15fc9c"
+  },
+  {
+    "path": "services/velani-ai/src/client-hub/repository.ts",
+    "gitBlob": "ec45b00756108434ce74165708ce8069302f7db1"
+  },
+  {
+    "path": "services/velani-ai/src/client-hub/runtime.ts",
+    "gitBlob": "997fb40ccb666d8a391b3d59b115462888dabd25"
+  },
+  {
+    "path": "services/velani-ai/src/client-hub/types.ts",
+    "gitBlob": "8f8e9e83e8b6d34f2170e4f7ef37695bd2494fb9"
+  },
+  {
+    "path": "services/velani-ai/src/client-hub/validation.ts",
+    "gitBlob": "4c95b6e66f0d4ab3a042fbfd32aa229a824d298d"
+  },
+  {
+    "path": "services/velani-ai/src/config.ts",
+    "gitBlob": "0de0518d717ec1ffb97377b6391fdd3c82f8c6b6"
+  },
+  {
+    "path": "services/velani-ai/src/conversation-retention.ts",
+    "gitBlob": "aee76e8c66f6f6065a8a8df71aef40ef4f9228c4"
+  },
+  {
+    "path": "services/velani-ai/src/cron-handler.ts",
+    "gitBlob": "1940cf51dec8e2284dc22befee4aecee07db3731"
+  },
+  {
+    "path": "services/velani-ai/src/db-pool.ts",
+    "gitBlob": "57e558cbe754b45fd3259d6a3b6aa8b9787d7880"
+  },
+  {
+    "path": "services/velani-ai/src/engine.ts",
+    "gitBlob": "dadb4d0d53f3a12dc08b86a610d9e2a2f3696d82"
+  },
+  {
+    "path": "services/velani-ai/src/experience-repository.ts",
+    "gitBlob": "71e84d626d4ac8734ac4744040ad70e4b91ed206"
+  },
+  {
+    "path": "services/velani-ai/src/experience-routes.ts",
+    "gitBlob": "b53201f5bd8678940ddf7b50ad6842d23cafc737"
+  },
+  {
+    "path": "services/velani-ai/src/experience-types.ts",
+    "gitBlob": "e699592f89d03bb366d9622f1af7614464b3b291"
+  },
+  {
+    "path": "services/velani-ai/src/experience-validation.ts",
+    "gitBlob": "d32e99e7f3e8f4f510de3436277915e5f8fbb391"
+  },
+  {
+    "path": "services/velani-ai/src/frontend.ts",
+    "gitBlob": "13120195d87f732374167bf77b9db563b7823270"
+  },
+  {
+    "path": "services/velani-ai/src/http-errors.ts",
+    "gitBlob": "d2018462fec43cda5097ec36912b54e0ced7237b"
+  },
+  {
+    "path": "services/velani-ai/src/neon-operations.ts",
+    "gitBlob": "c5b0869f8ae3c5ca9fcb2f68ace82ee9ef0672a8"
+  },
+  {
+    "path": "services/velani-ai/src/operations-status.ts",
+    "gitBlob": "eacd09ec8cddceef4140990adb342dfc922ac73c"
+  },
+  {
+    "path": "services/velani-ai/src/plan-engine.ts",
+    "gitBlob": "0c38ef53162776d5953704e4e68c505572f8b0e1"
+  },
+  {
+    "path": "services/velani-ai/src/plan-prompts.ts",
+    "gitBlob": "538bf584846784cf93c12257796d9e7a5a86ee55"
+  },
+  {
+    "path": "services/velani-ai/src/prompts.ts",
+    "gitBlob": "22800dbd9d18a19ebab899275ae0e3e1403a132b"
+  },
+  {
+    "path": "services/velani-ai/src/repository.ts",
+    "gitBlob": "e7d019c789f1e12da4de0db87a7a73a1101c0571"
+  },
+  {
+    "path": "services/velani-ai/src/retention-handler.ts",
+    "gitBlob": "520ed7a6efcec073e0b9e5329881642aa27d42bb"
+  },
+  {
+    "path": "services/velani-ai/src/rondo-monitor.ts",
+    "gitBlob": "28c0d7e9f2215e9459640ec019b9dddd5cde4f41"
+  },
+  {
+    "path": "services/velani-ai/src/rondo-notifier.ts",
+    "gitBlob": "0087a553e9591fb7f33f848e4582e25df17a20f0"
+  },
+  {
+    "path": "services/velani-ai/src/runtime.ts",
+    "gitBlob": "620fdc6e70fcbb361fbd59b4f4a665a4b4fccb32"
+  },
+  {
+    "path": "services/velani-ai/src/server.ts",
+    "gitBlob": "45096300746c06be7c653801b67148717444563d"
+  },
+  {
+    "path": "services/velani-ai/src/types.ts",
+    "gitBlob": "f1a5c876dfc06593555bea00dbfa389a7393b1e8"
+  },
+  {
+    "path": "services/velani-ai/src/vercel-handler.ts",
+    "gitBlob": "f3b751163e832442a050a2bb16aebf8441cc5a80"
+  },
+  {
+    "path": "services/velani-ai/test/ai-budget-operator.test.ts",
+    "gitBlob": "836d85e0bc83e2e6663b8d30a8633be10b1322e7"
+  },
+  {
+    "path": "services/velani-ai/test/ai-budget.test.ts",
+    "gitBlob": "fe3736d1419fb6741f21b369e2a67ddc63dafdb1"
+  },
+  {
+    "path": "services/velani-ai/test/app.test.ts",
+    "gitBlob": "eccf82eaa8149920f7333a232ac2aefd61cf83ed"
+  },
+  {
+    "path": "services/velani-ai/test/client-hub-app.test.ts",
+    "gitBlob": "b5df9669b82a1baea5ddbf2bb66546ea54fef226"
+  },
+  {
+    "path": "services/velani-ai/test/client-hub-config.test.ts",
+    "gitBlob": "632a9ce1dd9962e64e4bf3c6c3ba297a11a39ef8"
+  },
+  {
+    "path": "services/velani-ai/test/client-hub-delivery.test.ts",
+    "gitBlob": "7ea5f657f1258318c427fc515b16a17da01312f2"
+  },
+  {
+    "path": "services/velani-ai/test/client-hub-email.test.ts",
+    "gitBlob": "2669f4d42af1310cf4dff4ff6d2fa23c002f61f3"
+  },
+  {
+    "path": "services/velani-ai/test/client-hub-journey.test.ts",
+    "gitBlob": "c40935d3ef1f191224e8608c4404417e08f06058"
+  },
+  {
+    "path": "services/velani-ai/test/client-hub-maintenance.test.ts",
+    "gitBlob": "37dee5599bc7121a8582a9943de9916b34d16111"
+  },
+  {
+    "path": "services/velani-ai/test/client-hub-queue-http.test.ts",
+    "gitBlob": "0075cd42a2c9b9de40188cd46ec323db668acc18"
+  },
+  {
+    "path": "services/velani-ai/test/client-hub-queue.test.ts",
+    "gitBlob": "1edf7279049f7121a45ee5ff2fb5b8fea40ced81"
+  },
+  {
+    "path": "services/velani-ai/test/client-hub-repository.test.ts",
+    "gitBlob": "e3ae9d2fbb6c6d22f01df8f6431dd812359b4fe7"
+  },
+  {
+    "path": "services/velani-ai/test/client-hub-validation.test.ts",
+    "gitBlob": "c4e254f3a8d2f72de3f5b6b56e1cd38cb413692b"
+  },
+  {
+    "path": "services/velani-ai/test/engine.test.ts",
+    "gitBlob": "eb947793201690b0022e724cced5caf4141a1472"
+  },
+  {
+    "path": "services/velani-ai/test/evaluation-budget.test.ts",
+    "gitBlob": "242957e75136ff556e7a1cfc0cec3be7ba19bd5a"
+  },
+  {
+    "path": "services/velani-ai/test/experience-api.test.ts",
+    "gitBlob": "d1171634156788bb280cb287965766077d440bec"
+  },
+  {
+    "path": "services/velani-ai/test/experience-repository.test.ts",
+    "gitBlob": "e58350010909754631e7077369626a4281c6f840"
+  },
+  {
+    "path": "services/velani-ai/test/frontend.test.ts",
+    "gitBlob": "6cb56ed6388ce4852d4bc3aa3d54f156832cf059"
+  },
+  {
+    "path": "services/velani-ai/test/integration-client.test.mjs",
+    "gitBlob": "6fe04ec725476db874192ee2f2fc2299b30c49a0"
+  },
+  {
+    "path": "services/velani-ai/test/migration-concurrency.test.ts",
+    "gitBlob": "cb4cd91a3377f9d382b15e4873c069a4fffd7533"
+  },
+  {
+    "path": "services/velani-ai/test/neon-operations.test.ts",
+    "gitBlob": "8f0ca33f81d3d8b4bb4787133240494efdd6c66b"
+  },
+  {
+    "path": "services/velani-ai/test/plan-engine.test.ts",
+    "gitBlob": "51d5e9d7c610870461838b6b259c415996403946"
+  },
+  {
+    "path": "services/velani-ai/test/release-ui-contract.test.mjs",
+    "gitBlob": "ef8551514242d99756c29fa13e3a4e22180854b5"
+  },
+  {
+    "path": "services/velani-ai/test/repository.test.ts",
+    "gitBlob": "13371cb8dfbc9e6cd3e58c96aa602ded906d1bb1"
+  },
+  {
+    "path": "services/velani-ai/test/retention-cron.test.ts",
+    "gitBlob": "59ee8b586c7bc5d83bf202d2a66c8cc325886922"
+  },
+  {
+    "path": "services/velani-ai/test/rondo-monitor.test.ts",
+    "gitBlob": "6d31230e6f97fc12f9cb94de8469753f05ca523d"
+  },
+  {
+    "path": "services/velani-ai/test/vercel-handler.test.ts",
+    "gitBlob": "922d367ee58fa12215cf6035ac145ee48d73dbab"
+  },
+  {
+    "path": "services/velani-ai/tsconfig.json",
+    "gitBlob": "c27f5fc5e2fdf2a07eb7c903f5d1a12ecc76d925"
+  },
+  {
+    "path": "services/velani-ai/vercel.json",
+    "gitBlob": "07b559ce637b71705aa8089609c59676492ee96f"
+  },
+  {
+    "path": "services/velani-ai/vitest.config.ts",
+    "gitBlob": "4307044323d6efcda55bb13aa91a2835ea0a79cf"
+  },
+  {
+    "path": "src/night/velani-assistant.js",
+    "gitBlob": "f9ab868f765b2c819e5152b60a66d997d0f29b7c"
+  }
+]

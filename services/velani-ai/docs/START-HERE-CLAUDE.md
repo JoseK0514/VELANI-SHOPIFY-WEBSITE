@@ -1,52 +1,57 @@
-# Start here — Velani / NEVORA website AI source
+# Start here — Rondo backend source
 
-**Current task:** [Complete UI handoff](CLAUDE-UI-START-HERE.md) · [Verified launch status](LAUNCH-STATUS-2026-11-03.md) · [Shopify activation](SHOPIFY-ACTIVATION.md). Read these first; they reflect the existing Vercel project, installed credentials and current preview theme.
+Updated November 12, 2026 for SCRUM-153. The public website assistant is in
+`JoseK0514/VELANI-SHOPIFY-WEBSITE`, under `services/velani-ai`.
 
-This is the original source built in the Codex workspace, not an API reconstructed from database tables.
+## Source and checkout
 
-## Source location
+Start ordinary new work from freshly fetched **development**. The source reviewed
+for this handoff is `daca3fc17f35fc8142c8ec7ccf91c6ccab39c261`. Keep only the
+approved `development` and `main` working branches. Historical backend/UI branches
+have been consolidated and retired; do not fetch them into new working refs.
+Their evidence remains recoverable through Git history and the recorded archive
+tags in the [consolidation handoff](../../../docs/handoffs/2026-11-12-velani-main-consolidation.md).
 
-The original implementation was local to the Codex workspace. The complete source is now provided in the existing private website repository so the same GitHub connection can reach it:
-
-- Repository: https://github.com/JoseK0514/VELANI-SHOPIFY-WEBSITE
-- Branch: `codex/velani-website-ai-backend`
-- Service directory: `services/velani-ai`
-- [Open the source](https://github.com/JoseK0514/VELANI-SHOPIFY-WEBSITE/tree/codex/velani-website-ai-backend/services/velani-ai)
+Preserve your current branch and dirty work. In an existing clean repository,
+fetch the source without switching another chat's checkout:
 
 ```sh
-git clone --branch codex/velani-website-ai-backend --single-branch https://github.com/JoseK0514/VELANI-SHOPIFY-WEBSITE.git
-cd VELANI-SHOPIFY-WEBSITE/services/velani-ai
-npm ci
-npm run typecheck
-npm test
-npm run build
+git fetch origin development
+git rev-parse FETCH_HEAD
+# Only for a NEW, unused sibling path:
+git worktree add --detach ../velani-ai-reference FETCH_HEAD
 ```
 
-This branch contains the source without changing the current Shopify theme or the NEVORA workforce repository. The service has its own package.json and deployment root. README, API documentation, release notes, Dockerfile, migrations and the integration client are ordinary Git files here.
+Use an existing owned worktree if it already contains your work. Recheck the
+latest source and active ownership before combining changes. Main promotion,
+Shopify publication, runtime activation and spending are separate approvals.
 
-The public website assistant is a separate service from the private NEVORA workforce application. Its existing development Neon project is named velani-website-ai-development, project ID wild-leaf-57992989, development branch br-snowy-brook-bcc6b3zm, database velani_ai. These identifiers are not credentials. Do not assume that similarly named tables in another database are this service's tables.
+## Read next
 
-## Read in this order
+1. [Current Claude UI contract](CLAUDE-UI-START-HERE.md).
+2. [Backend boundaries and source map](CLAUDE-HANDOFF.md).
+3. [SCRUM-153 review and integration receipt](../../../docs/handoffs/2026-11-12-scrum153-rondo-backend-integration.md).
+4. [Current six-issue UI packet](../../../docs/handoffs/2026-11-12-six-release-codex-to-claude.md).
+5. [Development operations](DEVELOPMENT-OPERATIONS.md) and
+   [remaining operating acceptance](../../../docs/handoffs/2026-11-12-rondo-responder-closeout.md).
 
-1. docs/CLAUDE-UI-START-HERE.md and docs/LAUNCH-STATUS-2026-11-03.md — current UI implementation and remaining deployment blocker. Then README.md for local setup.
-2. docs/RELEASE-0.2.md — current AI profile/plan behavior, API additions and database changes. Versions 0.2.1–0.2.2 add frontend entrance animation; the AI implementation remains this release.
-3. docs/api.md and docs/CLAUDE-HANDOFF.md — HTTP contract and handoff constraints.
-4. src/app.ts and src/experience-routes.ts — authoritative route handlers and validation.
-5. src/engine.ts, src/plan-engine.ts, src/prompts.ts and src/plan-prompts.ts — chat/plan orchestration and prompts.
-6. src/repository.ts and src/experience-repository.ts — transactions, session ownership, retries and persistence.
-7. migrations/001_initial.sql, 002_experience.sql and 003_plan_brief.sql — original schema migrations.
-8. test/ and docs/VALIDATION-0.2.md — tests and validation evidence.
+The source contains the actual routes, persistence, migrations, headless clients,
+provider adapters, tests and deployment files. Do not reconstruct the API from
+tables or put this public service into the NEVORA workforce application.
 
-Use these route handlers as the data contract. Database table definitions alone do not describe request validation, bearer authentication, consent, revision conflicts or idempotency behavior.
+## Local verification
 
-## Continue the implementation
+Inspect package scripts and use Node 24 with the committed lockfile. Typecheck
+and build only compile TypeScript. Full database tests require an explicitly
+owned, disposable `TEST_DATABASE_URL`; missing database cases can skip and do
+not establish a full integration pass. Existing deployed databases are not test
+fixtures. Migration, seed, role-provisioning, retention/apply and evaluation
+commands have effects and are not part of a normal documentation/UI check.
 
-Check out the branch above and work from services/velani-ai. Install locked dependencies with npm ci, then run npm run typecheck, npm test and npm run build. Obtain runtime credentials through the owner's secure environment. No real .env files, database passwords or model tokens are included; .env.example documents the required names.
+Use explicit synthetic fixtures for UI development. Obtain any separately
+approved runtime access through the existing secure store. No secret, session
+bearer or production connection belongs in source, chat, Jira or an archive.
 
-The assistant database already had migrations applied in the Codex development work. Compare its current migration history/schema with these files before running administrative commands; another agent may have made later changes. Do not recreate tables to compensate for the earlier missing repository handoff.
-
-Use Vercel with Root Directory `services/velani-ai`; see [Vercel setup](VERCEL.md). Preserve the existing restricted runtime database role and separation from the NEVORA employee database. The existing service project is `velani-ai` (`prj_E1Vl2AEpTlJlBam4MTKG7oEHB7x2`) in team `team_Lzbw410WwXGWHTuUXuamRI1N`. Do not create another project or alter the NEVORA workforce application. The required Turnstile credentials still block healthy startup; consult the current launch status.
-
-## Package contents
-
-This package contains the source, migrations, knowledge, tests, deployment files, integration code and documentation. The Git branch also preserves visual evidence. Local dependencies, build output and real credentials are excluded.
+Dated November 3/5 validation documents remain historical receipts. Their source,
+model, expiry, database and deployment claims do not select today's environment
+or grant a new paid test allowance.
