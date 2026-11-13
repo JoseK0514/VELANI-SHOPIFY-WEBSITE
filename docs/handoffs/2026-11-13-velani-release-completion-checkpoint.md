@@ -31,7 +31,7 @@ remain the explicit gates described below.
 | --- | --- | --- |
 | Rondo | Dedicated independent Render watchdog, durable attempt journal, actual reader outage/recovery and independent stopped-runner alerts; scheduled cleanup and budget readbacks. Runtime 5232ea0, provider receipts in the installed-host handoff. Jose confirmed Ilianis's access and explicitly accepted/closed that requirement; Jose remains the incident owner. | Stopped native-monitor and retention-scheduler drills at their real thresholds; combined UI acceptance; reviewed budget-preserving public-runtime promotion. No additional backup-response questionnaire is required. |
 | Private admin | Development b18e8c1, 158 tests and passing candidate/development Actions. Synthetic staging Google/two-passkey/UI acceptance remains separate. | Commercial hosting/headroom, per-environment independent worker/alert delivery verification, production Google and two-passkey enrollment, then explicit activation approval. Production stays paused until those gates are met. |
-| Client hub | Accepted hosted EN/ES submissions and four delivered/inbox-confirmed messages. Backend concurrency/replay tests exist. | Hosted lost-response replay with captured request key and exactly-once persistence/outbox evidence; reviewed current theme and Jose's final publication. Existing acceptance theme 193374224698 remains unpublished, preview submissions off. |
+| Client hub | Accepted hosted EN/ES submissions plus the November 13 hosted lost-response receipt: first201, same-key200, one persisted request, two email jobs with one attempt each, both provider-delivered. | Reviewed current theme and Jose's final publication. Existing acceptance theme 193374224698 remains unpublished; its original settings bytes are restored and preview submissions are off. See the hosted replay receipt for the browser/UI evidence boundary. |
 | Billing policy | Existing implementation/source acceptance is separate from legal/business applicability. | Accountant review of merchant, head office, registrations/jurisdictions, product classification and inclusive/exclusive terms. Tax collection stays off. No inferred address or activation. |
 
 Routine Rondo alert authority ends **December 1, 2026 at 00:00 America/Puerto_Rico
@@ -59,11 +59,11 @@ reply or staging credential.
   health, preserving real cadence/freshness assertions and cumulative budgets.
 - [ ] Prepare and execute only authorized drills; retain provider and actual
   human receipts, restore the exact affected schedule/configuration afterward.
-- [ ] Capture the client-hub hosted lost-response receipt without duplicate
-  requests/email jobs, or record the precise remaining authorization/access gate.
-- [ ] Reconcile the exact public-runtime promotion and admin activation packets,
+- [x] Capture the client-hub hosted lost-response receipt without duplicate
+  requests/email jobs: VEL-2611-0003; see the linked receipt below.
+- [x] Reconcile the exact public-runtime promotion and admin activation packets,
   including closed flags, current source/build hashes and rollback.
-- [ ] Leave Tax off pending accountant review; record source/environment and
+- [x] Leave Tax off pending accountant review; record source/environment and
   unresolved human/approval gates in the completion report.
 
 This is a dated start-of-execution checkpoint, not a claim that unchecked gates
@@ -75,5 +75,10 @@ write follows from this checklist.
 The [public cutover preparation](2026-11-13-rondo-public-cutover.md) records the
 newly reproduced production-target code gap, the bounded correction, exact
 targets, allowance-preserving sequence and remaining environment gates.
+
+The [hosted replay receipt](2026-11-13-client-hub-hosted-replay.md) closes the
+missing HTTP/persistence/provider receipt. The
+[completion report](2026-11-13-velani-release-completion.md) distinguishes
+completed infrastructure/source work from unperformed drills and production gates.
 
 Reference: [GitHub Actions billing](https://docs.github.com/en/billing/concepts/product-billing/github-actions).

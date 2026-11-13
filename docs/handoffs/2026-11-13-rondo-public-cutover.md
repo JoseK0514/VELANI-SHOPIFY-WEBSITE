@@ -54,8 +54,13 @@ Local GREEN: all292 service tests pass with zero skipped/failed/todo against an
 owned PostgreSQL16.2/vector fixture; types/build pass. The seven added tests cover
 target/trigger rejection, truthful alert labels, SQL scope separation, independent
 policy counters and operator entry-point binding. The first SQL run and separate
-operator-entry RED are retained. PostgreSQL17/vector candidate and development
-Actions must independently qualify the committed source and rebuilt archives.
+operator-entry RED are retained. PostgreSQL17/vector candidate run43473611773
+and actual development run43474114327 both passed for
+fa1463f7289f33aed7947bbc191a095602610078. Each independently verified all2,430
+tracked source hashes,30 backend test files,292 passed assertions, website100/100
+and both rebuilt native archives. Vercel Preview
+dpl_55FddUQhMG1vZHbwrzZU5aUBJUx6 is READY with author JoseK0514. These archives
+are qualified artifacts; they have not been installed in hosted functions.
 
 ## Exact cutover procedure after release approval
 
@@ -131,6 +136,9 @@ Keep the compatible reviewed guarded source closed until the issue is resolved.
   theme file readback. The earlier two-request/four-email acceptance is consumed;
   no additional real mail is authorized by this document. Final publication is
   Jose's action. Production is not a disposable database fixture.
+  **Completed:** the approved first201/same-key200 receipt, exactly-once
+  persistence/outbox readback and both provider-delivered messages are captured
+  in [the hosted replay receipt](2026-11-13-client-hub-hosted-replay.md).
 - **Admin:** source b18e8c1 remains accepted (158/158; new public Actions attempt
   2 passed). Source changes since worker c528949 are CI/test/docs only. Production
   `velani-admin` is paused, app/writes false; production function/trigger
