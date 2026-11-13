@@ -210,7 +210,7 @@ import { VelaniAssistant, safeSourceUrl } from './velani-assistant.js';
   }
   showStatus(error.message, 'error');
   const f = getAssistant().failedRequest;
-  if (error.code === 'rejected') { discardBtn.hidden = false; discardBtn.textContent = t('edit'); discardBtn.dataset.mode = 'edit'; return; }
+  if (error.code === 'rejected') { discardBtn.hidden = false; discardBtn.textContent = t('edit'); discardBtn.dataset.mode = 'edit'; contactLink.hidden = false; return; }
   discardBtn.textContent = t('discard'); discardBtn.dataset.mode = 'discard';
   if (f?.retryable) {
    retryBtn.hidden = false; discardBtn.hidden = false;
