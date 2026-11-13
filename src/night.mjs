@@ -114,10 +114,13 @@ export function header(current, target, { nevora = false, lang = 'en', hrefs = S
   const signIn = cls => `<a class="${cls}" href="${t.signInHref}"${enOnly(t.signInHref)}${mark('signin')}>${t.signIn}</a>`;
   const menu = signIn('gmenu-signin') + t.groups.map(([, label, , items]) => `<p class="gmenu-k">${label}</p>` + items.map(([name, href]) => `<a class="gmenu-sub" href="${href}"${enOnly(href)}>${name}</a>`).join('')).join('');
   const staticClass = '';
+  // Real links remain usable when the disclosure controller cannot run.
+  const fallback = `<noscript><nav class="wrap gnav-fallback" aria-label="${t.mainMenu}"><a href="/pages/nevora">NEVORA</a>`
+    + t.nav.map(([label, href]) => `<a href="${href}"${enOnly(href)}>${label}</a>`).join('') + '</nav></noscript>';
   // One header action on every page: the trial (the Custom software page keeps Start a project as its own first-screen action)
   const cta = (cls, trial) => `<a class="${cls}" href="/pages/contact?interest=nevora-demo">${trial}</a>`;
   const html = `<a class="skip" href="#main">${t.skip}</a><header class="gnav${staticClass}" id="gnav"><nav class="wrap gnav-in" aria-label="${t.main}"><a class="wordmark" href="/" aria-label="${t.home}">${WORDMARK}</a><ul class="gnav-links">${links}</ul>${langSwitch(lang, hrefs, ' gnav-lang')}${signIn('gnav-signin')}${cta('pill line', t.trial)}<button class="gnav-menu" id="gmenu-btn" type="button" aria-expanded="false" aria-controls="gmenu" aria-label="${t.menu}"><span class="i-open">${icon('list')}</span><span class="i-close" hidden>${icon('x')}</span></button></nav></header><div class="gmenu" id="gmenu" hidden><nav class="wrap" aria-label="${t.mainMenu}">${menu}${langSwitch(lang, hrefs, ' gmenu-lang')}${cta('pill', t.trialLong)}<small>${t.support} · <a href="mailto:${company.email}">${company.email}</a>${company.phone ? ` · <a href="tel:+1${company.phone.replace(/-/g, '')}">${company.phone}</a>` : ''} · ${t.hours}<br>${t.brandOf}${company.operator}.</small></nav></div>`;
-  return localize(html, lang);
+  return localize(html.replace('</header>', fallback + '</header>'), lang);
 }
 export function footer(target, { lang = 'en', hrefs = SHOPIFY_LANG_HREFS } = {}) { return localize(site(read(lang === 'es' ? 'foot.es.html' : 'foot.html'), target).replace('{{lang}}', () => langSwitch(lang, hrefs, ' foot-lang')), lang); }
 /** Custom development: client screenshots open full screen (an inline script at the end of the section). */

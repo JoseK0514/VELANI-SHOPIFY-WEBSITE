@@ -305,6 +305,9 @@ html:has(main > .hpanel){--anchor:56px}
 .ul{text-decoration:underline;text-decoration-color:var(--line-2);text-underline-offset:3px}@media(hover:hover){.ul:hover{text-decoration-color:currentColor}}
 /* Without JavaScript (or if the script never runs), the header links wrap under the wordmark on phones; anchors land closer to the top */
 @media(max-width:833px){.no-js .gnav-in,.still .gnav-in{flex-wrap:wrap}.no-js .gnav-links,.still .gnav-links{display:flex;flex-wrap:wrap;order:3;width:100%;margin:0 0 4px -14px}.no-js .gnav-menu,.still .gnav-menu{display:none}html{--anchor:64px}}
+.no-js .gnav .gnav-links,.no-js .gnav .gnav-menu{display:none}
+.gnav-fallback{display:flex;flex-wrap:wrap;column-gap:20px;padding-bottom:8px}
+.gnav-fallback a{display:inline-flex;align-items:center;min-height:44px;color:var(--text-2);font-size:.875rem}
 /* Phones keep the 17px body size */
 
 /* ---------- Inner pages: company, contact, help, legal and NEVORA policies ---------- */
