@@ -1,6 +1,6 @@
 import { company, routes, services, legalUpdated, langOf, counterpart } from './content.mjs';
 import { HUB_API } from './client-hub.mjs';
-import { CONSENT_ES, CONTACT_ES, PLANS_ES, HOURS_ES, ABOUT_ES, FAQ_ES, ES_NEAREST, IN_ENGLISH, WORK_ES, SIGNIN_ES } from './content.es.mjs';
+import { CONSENT_ES, CONTACT_ES, PLANS_ES, HOURS_ES, ABOUT_ES, FAQ_ES, ES_PATHS, ES_NEAREST, IN_ENGLISH, WORK_ES, SIGNIN_ES } from './content.es.mjs';
 import { header as nightHeader, footer as nightFooter, homeMain, nevoraMain, productsMain, policyMain, zoomScript, assistant as nightAssistant, icon, WORDMARK, CHROME, localize } from './night.mjs';
 export function escapeHtml(value) {
   return String(value ?? '').replace(/[&<>"']/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[char]);
@@ -79,7 +79,7 @@ function services_(page, target, lang = 'en') {
 }
 /** The contact page's words (Spanish in src/content.es.mjs). Topic values never change, so the email Velani receives is the same. */
 const CONTACT = {
-  en: { kicker: ['NEVORA for your team', 'Free 30-day NEVORA trial', 'NEVORA Relay'], h1: ['Set up NEVORA for a larger team.', 'Request your free NEVORA trial.', 'Join the NEVORA Relay waitlist.'], fact: ['A website, an app, NEVORA or something else. We reply by email within two business days.', 'For teams of more than 30 employees. We check what you need and set up your workplace with you. Teams that qualify get the same 30 days free. We reply within two business days.', 'Tell us about your team. Jose from Velani replies within two business days and sets up your workplace with you. Your 30 free days start the day it’s ready, with no card.', 'NEVORA Relay is in design, with no dates yet. We’ll email you when early access opens.'],
+  en: { kicker: ['NEVORA for your team', 'Free 30-day NEVORA trial', 'NEVORA Relay'], h1: ['Set up NEVORA for a larger team.', 'Request your free NEVORA trial.', 'Join the NEVORA Relay waitlist.'], fact: ['A website, an app, NEVORA or something else. We reply by email within two business days.', 'For teams of more than 30 employees. We check what you need and set up your workplace with you. Teams that qualify get the same 30 days free. We reply within two business days.', 'Tell us about your team. Jose from Velani replies within two business days and sets up your workplace with you. Your 30 free days start when your workplace is provisioned (created in NEVORA), with no card.', 'NEVORA Relay is in design, with no dates yet. We’ll email you when early access opens.'],
     callK: 'Prefer to talk? Call us.', topicQ: 'What is it about?', preview: 'Preview. This form checks your draft and sends nothing.',
     tiles: [['custom-software', 'Web or app'], ['nevora', 'NEVORA'], ['other', 'Other']],
     previewNote: 'Website preview&nbsp;· checks your draft, sends nothing', noscript: 'The preview form needs JavaScript. No messages are sent from this preview.', legend: 'Inquiry',
@@ -92,7 +92,7 @@ const CONTACT = {
   es: CONTACT_ES,
 };
 /** Links to pages that exist only in English say so to browsers and assistive technology on Spanish pages. */
-const enOnly = lang => lang === 'es' ? ' hreflang="en"' : '';
+const enOnly = (lang, href) => lang === 'es' && !ES_PATHS[href] ? ' hreflang="en"' : '';
 /** A plain form in one column: the label sits inside the field and lifts when the field is used; errors sit under their field. */
 function fields(live = false, lang = 'en') {
   const t = CONTACT[lang], opt = ' <span class="opt">' + t.optional + '</span>';
@@ -106,7 +106,7 @@ function fields(live = false, lang = 'en') {
   const big = CONTACT.en.bigTeam, bigOption = t.bigTeam === big ? '<option>' + big + '</option>' : '<option value="' + big + '">' + t.bigTeam + '</option>';
   const team = '<div class="frow" data-nevora-fields hidden><div class="ff sel"><select id="inquiry-team" name="contact[team_size]"><option value=""></option><option>1–10</option><option>11–20</option><option>21–30</option>' + bigOption + '</select><label for="inquiry-team">' + t.team + '</label></div>' + ff('locations', 'locations', t.locations, 'maxlength="120" aria-describedby="error-locations" inputmode="numeric"') + '</div>';
   const message = '<div class="ff area"><textarea id="inquiry-message" name="contact[body]" placeholder=" " rows="4" maxlength="4000" required aria-describedby="error-message" data-min="140">' + (live ? '{{ form.body | escape }}' : '') + '</textarea><label for="inquiry-message">' + v(t.message, t.messageOptional + opt) + '</label><p class="field-error" id="error-message"></p></div>';
-  const send = '<div class="client-send"><button class="pill" type="submit" data-inquiry-submit>' + v(...t.send) + '</button><p class="send-note">' + t.sendNote + ' <a href="/pages/privacy"' + enOnly(lang) + '>' + t.privacy + '</a></p></div><p class="fine v-m">' + t.fine + '</p>';
+  const send = '<div class="client-send"><button class="pill" type="submit" data-inquiry-submit>' + v(...t.send) + '</button><p class="send-note">' + t.sendNote + ' <a href="/pages/privacy"' + enOnly(lang, '/pages/privacy') + '>' + t.privacy + '</a></p></div><p class="fine v-m">' + t.fine + '</p>';
   return '<fieldset' + (live ? '' : ' disabled') + '><legend class="sr">' + t.legend + '</legend>' + topic + '<div class="frow">' + name + email + '</div>' + company + team + message + send + '</fieldset>';
 }
 /** The contact page carries the general, the NEVORA quote and the demo wording; the boot script marks the document before paint and CSS shows one. */
@@ -160,7 +160,7 @@ function clientFields(lang) {
   const kinds = '<p class="kinds-q" aria-hidden="true">' + t.need + '</p><fieldset class="kinds"><legend class="sr">' + t.need + '</legend>' + ['client-work', 'client-help'].map((value, i) => '<label class="kind"><input type="radio" name="client_kind" value="' + value + '"' + (i ? '' : ' checked') + '><b>' + t.kinds[i][0] + '</b></label>').join('') + '</fieldset><input type="hidden" id="inquiry-interest" value="client-work">';
   const select = (key, id, [label, options], hidden) => '<div class="ff sel" data-k="' + key + '"' + (hidden ? ' hidden' : '') + '><select id="inquiry-' + id + '"' + (hidden ? ' disabled' : '') + '><option value=""></option>' + options.map(([value, text]) => '<option value="' + e(value) + '">' + text + '</option>').join('') + '</select><label for="inquiry-' + id + '">' + label + '</label></div>';
   const message = '<div class="ff area"><textarea id="inquiry-message" placeholder=" " rows="4" maxlength="4000" required aria-describedby="error-message" data-min="140"></textarea><label for="inquiry-message">' + k(...t.message) + '</label><p class="field-error" id="error-message"></p></div>';
-  const send = '<div class="hub-verify" id="hub-turnstile"></div><div class="client-send"><button class="pill" type="submit" data-inquiry-submit>' + k(...t.send) + '</button><p class="client-note">' + t.hubNote + ' ' + t.note + ' <a href="/pages/privacy"' + enOnly(lang) + '>' + c.privacy + '</a></p></div>';
+  const send = '<div class="hub-verify" id="hub-turnstile"></div><div class="client-send"><button class="pill" type="submit" data-inquiry-submit>' + k(...t.send) + '</button><p class="client-note">' + t.hubNote + ' ' + t.note + ' <a href="/pages/privacy"' + enOnly(lang, '/pages/privacy') + '>' + c.privacy + '</a></p></div>';
   return '<fieldset disabled><legend class="sr">' + t.clientT + '</legend>' + kinds
     + '<div class="frow">' + ff('name', c.name, 'autocomplete="name" maxlength="120" required') + ff('email', c.email, 'type="email" autocomplete="email" maxlength="254" required') + '</div>'
     + '<div class="frow">' + ff('company', t.business + opt, 'autocomplete="organization" maxlength="200"') + ff('project', t.project + '<span data-k="work">' + opt + '</span>', 'autocomplete="off" maxlength="200"') + '</div>'
@@ -193,10 +193,10 @@ function clientSection(target, lang) {
  * Support has its doors; it ends on the next step for this task (NEVORA support), with no product or project offer. */
 function signin(page, target, lang = 'en') {
   const t = SIGNIN[lang];
-  const side = '<div class="cform-hero contact-side"><h1 class="t1 rise">' + e(t.h1) + '</h1><p class="lede fade">' + e(t.appText) + '</p><div class="hacts fade">' + hb(t.support, '/pages/nevora-support', true, enOnly(lang)) + '</div></div>';
+  const side = '<div class="cform-hero contact-side"><h1 class="t1 rise">' + e(t.h1) + '</h1><p class="lede fade">' + e(t.appText) + '</p><div class="hacts fade">' + hb(t.support, '/pages/nevora-support', true, enOnly(lang, '/pages/nevora-support')) + '</div></div>';
   const facts = '<div class="help-doors signin-doors" role="list" aria-label="' + e(t.factsLabel) + '">' + t.facts.map(([k, v]) => '<div class="day-opt help-door fade" role="listitem"><h2 class="t3">' + e(k) + '</h2><p>' + e(v) + '</p></div>').join('') + '</div>';
   const top = '<section class="contact contact-split help-top signin-top"><div class="wrap client-grid">' + side + '<div class="client-form">' + facts + '</div></div></section>';
-  return localize(top + helpEnd(t.endT, t.endLinks.map(([x, href]) => [x, href, href.startsWith('/pages/nevora-support') ? enOnly(lang) : ''])), lang);
+  return localize(top + helpEnd(t.endT, t.endLinks.map(([x, href]) => [x, href, href.startsWith('/pages/nevora-support') ? enOnly(lang, href) : ''])), lang);
 }
 /** The cookie choices dialog's words (Spanish in src/content.es.mjs). */
 const CONSENT = {
@@ -213,11 +213,15 @@ function consent(lang = 'en') {
 }
 const num = i => '<i>0' + (i + 1) + '</i>';
 const docEnd = () => '<div class="doc-end"><h2 class="t3">Questions</h2><p>Write to <a href="mailto:' + company.email + '">' + company.email + '</a>, or to ' + e(company.operator) + ', ' + e(company.address) + '.</p><div class="acts"><a class="pill line" href="/pages/contact">Contact</a></div></div>';
-function legalDoc(page) {
+function legalDoc(page, lang = 'en') {
+  const t = lang === 'es'
+    ? { updated: 'Actualizado el', toc: 'En esta página', contents: 'Contenido de la página', more: 'Más información', legal: 'Información legal', all: 'Toda la información legal (en inglés)', privacy: 'Política de privacidad de NEVORA', questions: 'Preguntas', write: 'Escribe a', postal: ', o por correo postal a ', contact: 'Contacto' }
+    : { updated: 'Last updated', toc: 'On this page', contents: 'Page contents', more: 'More', legal: 'Legal', all: 'All legal information', privacy: 'NEVORA privacy policy', questions: 'Questions', write: 'Write to', postal: ', or to ', contact: 'Contact' };
   const toc = page.sections.map((s, i) => '<a href="#section-' + i + '">' + e(s.heading) + '</a>').join('');
   const body = page.sections.map((s, i) => '<section id="section-' + i + '"><h2>' + e(s.heading) + '</h2><p>' + linkEmail(e(s.text)) + '</p></section>').join('');
   const cookie = page.cookieAction ? '<button class="pill line" type="button" data-cookie-open disabled>Open cookie choices</button><noscript><p class="cookie-nojs-note">Cookie controls need JavaScript. Write to ' + company.email + ' about privacy choices.</p></noscript>' : '';
-  return pageHero(page, { meta: '<p class="doc-meta">Last updated ' + e(legalUpdated) + '</p>' }) + '<section class="doc"><div class="wrap doc-grid"><div class="doc-aside"><details class="doc-toc" open><summary class="doc-aside-t">On this page</summary><nav aria-label="Page contents">' + toc + '</nav></details><p class="doc-aside-t">More</p><nav aria-label="Legal"><a href="/pages/legal">All legal information</a><a href="/pages/nevora-privacy">NEVORA privacy policy</a></nav></div><div class="doc-body">' + body + cookie + docEnd() + '</div></div></section>';
+  const end = '<div class="doc-end"><h2 class="t3">' + t.questions + '</h2><p>' + t.write + ' <a href="mailto:' + company.email + '">' + company.email + '</a>' + t.postal + e(company.operator) + ', ' + e(company.address) + '.</p><div class="acts"><a class="pill line" href="/pages/contact">' + t.contact + '</a></div></div>';
+  return localize(pageHero(page, { meta: '<p class="doc-meta">' + t.updated + ' ' + e(page.updated || legalUpdated) + '</p>' }) + '<section class="doc"><div class="wrap doc-grid"><div class="doc-aside"><details class="doc-toc" open><summary class="doc-aside-t">' + t.toc + '</summary><nav aria-label="' + t.contents + '">' + toc + '</nav></details><p class="doc-aside-t">' + t.more + '</p><nav aria-label="' + t.legal + '"><a href="/pages/legal"' + enOnly(lang) + '>' + t.all + '</a><a href="/pages/nevora-privacy">' + t.privacy + '</a></nav></div><div class="doc-body">' + body + cookie + end + '</div></div></section>', lang);
 }
 function legalIndex() {
   const tile = ([text, href, note]) => '<a class="tile" href="' + href + '"><span class="t3">' + e(text) + '</span><p>' + e(note) + '</p>' + icon('arrow-right') + '</a>';
@@ -232,7 +236,7 @@ function legalIndex() {
  * "Day 1" and "Day 30". */
 const PLANS = {
   en: { h1: 'Try NEVORA free for 30 days.', text: 'Your whole team gets the complete app, with no card. Then one monthly price for your business: $19 for up to 15 employees, $29 for 16 to 30.',
-    date: 'Your 30 free days start the day your workplace is ready. Ask for a trial and we reply within two business days to set it up with you.',
+    date: 'Your 30 free days start when your workplace is provisioned (created in NEVORA). Ask for a trial and we reply within two business days to set it up with you.',
     trial: 'Request a free trial', quote: 'More than 30 employees?',
     bands: [['$19', 'a month', 'Up to 15 employees'], ['$29', 'a month', '16 to 30 employees']], bandsLabel: 'Prices',
     billingHelp: ['Already on NEVORA? The business Owner opens billing from NEVORA, in Settings. ', 'Billing help'],
@@ -371,11 +375,11 @@ function faq(page, target, lang = 'en') {
   const t = FAQ[lang];
   const side = '<div class="cform-hero contact-side"><h1 class="t1 rise">' + e(t.h1) + '</h1><p class="lede fade">' + e(t.text) + '</p></div>';
   const call = callBlock(t.callK, (lang === 'es' ? HOURS_ES : company.hours));
-  const doors = '<div class="help-doors" role="list" aria-label="' + e(t.doorsLabel) + '">' + t.doors.map(([h, x, b, href, fill]) => '<div class="day-opt help-door fade" role="listitem"><h2 class="t3">' + e(h) + '</h2><p>' + e(x) + '</p><div class="hacts">' + hb(b, href, fill, href.includes('nevora-support') ? enOnly(lang) : '') + '</div></div>').join('') + '</div>';
+  const doors = '<div class="help-doors" role="list" aria-label="' + e(t.doorsLabel) + '">' + t.doors.map(([h, x, b, href, fill]) => '<div class="day-opt help-door fade" role="listitem"><h2 class="t3">' + e(h) + '</h2><p>' + e(x) + '</p><div class="hacts">' + hb(b, href, fill, href.includes('nevora-support') ? enOnly(lang, href) : '') + '</div></div>').join('') + '</div>';
   const top = '<section class="contact contact-split help-top"><div class="wrap client-grid">' + side + '<div class="client-form">' + doors + '</div>' + call + '</div></section>';
   const qs = page.sections.filter(x => !FAQ_SKIP.test(x.heading));
   const questions = '<section class="faq" aria-labelledby="faq-t"><div class="wrap"><div class="qa"><div class="head"><h2 class="t2 rise" id="faq-t">' + e(t.qT) + '</h2></div><div class="faq-list">' + qs.map(x => '<details><summary>' + e(x.heading) + icon('plus') + '</summary><p>' + (company.phone ? linkEmail(e(x.text)).split(company.phone).join('<a href="' + tel() + '">' + e(company.phone) + '</a>') : linkEmail(e(x.text))) + '</p></details>').join('') + '</div></div></div></section>';
-  return localize(top + clientSection(target, lang) + questions + helpEnd(t.endT, t.endLinks.map(([x, href]) => [x, href, href.startsWith('/pages/nevora-support') ? enOnly(lang) : ''])), lang);
+  return localize(top + clientSection(target, lang) + questions + helpEnd(t.endT, t.endLinks.map(([x, href]) => [x, href, href.startsWith('/pages/nevora-support') ? enOnly(lang, href) : ''])), lang);
 }
 /** About (Nov 7, v2): who we are without names or photos. A short hero with Jose's reason for Velani set large, the three things we
  * have built (one size of picture each, the year), and the company: the phone beside three facts. Then the closing. */
@@ -410,7 +414,7 @@ function renderRawBody(path, target) {
     case 'home': return homeMain(target, lang);
     case 'nevora': return nevoraMain(target, lang);
     case 'products': return productsMain(target, lang);
-    case 'policy': return policyMain(page.slug);
+    case 'policy': return policyMain(page.slug, lang);
     case 'services': return services_(page, target, lang);
     case 'contact': return localize((target === 'shopify' ? '{% capture velani_sent %}' + sentPanel(false, lang) + '{% endcapture %}' : '') + contact(page, target, lang), lang);
     case 'signin': return signin(page, target, lang);
@@ -418,7 +422,7 @@ function renderRawBody(path, target) {
     case 'faq': return faq(page, target, lang);
     case 'plans': return localize(plans(page, target, lang), lang);
     case 'legal-index': return pageHero(page) + legalIndex();
-    default: return page.legal ? legalDoc(page) : about(page, target, lang);
+    default: return page.legal ? legalDoc(page, lang) : about(page, target, lang);
   }
 }
 /** Large screenshots also ship a 1000px copy (night-NAME-1000.webp): phones pick it through srcset, desktops keep the full size. */

@@ -1,0 +1,77 @@
+{
+  "preparedAt": "2026-11-13 01:43:19 UTC",
+  "clientDate": "2026-11-12",
+  "websiteBase": "ece3d003e6ab9457027a850ee9b86a792386af4c",
+  "nevoraBase": "f6baaaa6d988f34fb1c3388d0e1fe4c410bcbfd5",
+  "nevoraLocalCommit": "a8de13a9a65cdcc8d920645fbb38f3acc483fd7b",
+  "sourceInputsUnchanged": true,
+  "websiteTests": {
+    "passed": 100,
+    "failed": 0
+  },
+  "themeIssues": 0,
+  "appLegalTests": {
+    "passed": 22,
+    "failed": 0
+  },
+  "appTypecheck": 0,
+  "appScopedLint": 0,
+  "browserCells": 20,
+  "browserAxeViolations": 0,
+  "externalBrowserRequests": 0,
+  "browserWrites": 0,
+  "ownedServersClosed": true,
+  "clockerBaseline": {
+    "source": "f6baaaa6d988f34fb1c3388d0e1fe4c410bcbfd5",
+    "checks": 90,
+    "errors": [],
+    "scope": "unchanged local source; no CI repair or hosted acceptance claim"
+  },
+  "ciFailure": {
+    "run": 43335913599,
+    "job": 131591912371,
+    "artifact": 13998916498,
+    "sha256": "23d5cc96b5ada15b3c6008691176c8dee5637b4fdd9d5aa68f18142a93b21a57",
+    "failure": "WebKit End Break wait at scripts/phase-c-punch-ui-qa.mjs:101; original cause unproven"
+  },
+  "retainedLocalFailures": {
+    "root": "/workspace/scratch/scrum-five-evidence",
+    "files": [
+      "velani-test-first.log",
+      "velani-routes-second.log",
+      "legal-browser.log",
+      "legal-browser-diagnostic.log",
+      "legal-browser-final.log",
+      "operations-unit.log"
+    ],
+    "interpretation": "Initial expected-route/copy assertions were updated for translated destinations and provisioning wording. Text-resize overflow was fixed; the first interaction harness selected a hidden desktop language switch at phone width and was corrected to exercise the visible footer switch. Initial operations run had 3 failures (directory-mode fixture under restrictive umask and 2 CLI deadlines); the separate unchanged managed-runtime suite passed all 12 under umask022. The original deadline causes remain unproven."
+  },
+  "openGates": [
+    "NEVORA finisher app-patch integration and exact combined-source release qualification",
+    "Business/legal acceptance",
+    "Selected-source hosted EN/ES readback and Shopify Page/publication decisions",
+    "Worker/monitor/Stripe finite-window acceptance owned by active finisher",
+    "Actual main/production authorization"
+  ],
+  "files": {
+    "app-legal-tests.log": "732566656dd61b567e086b45183ce3e9dd3ed716ccd58e2d9a49e55b804bdda0",
+    "browser-report.json": "c07043ec2357d2a3f2347057d030995582e51def9f5b6d97bceb24c901f0c9a1",
+    "clocker-baseline-report.json": "85e222a823ec3eae81a76d8eb6074c075fe78a0cfa6223fcdc5380cc50ac3bf0",
+    "nevora-policy-clarification.patch": "f9fef0b767ade75d645dd18017afeab6028d9d98634a7d20a090457bf0b73411",
+    "spanish-privacy-desktop.png": "49da76650484fcb564ad83926b5a02a7531a23ae5a94047614bb6fa0f3c55ee0",
+    "spanish-privacy-mobile.png": "4ac959c859a963889d5db060fba198467062a08b64e3fd3b95a08bb74c226a5b",
+    "text-resize-before.png": "b1afc87beb9a52c6d6cbea73f5c80cc88122417b4dcb35cf7617285cddd7d81c",
+    "theme-check.log": "65ab85816c960be8cd99d5525a358609b2f1e6585cfaa2ba5e14110eabd19ce7",
+    "website-tests.log": "d42540f0c26eeca1094a8f1b86f19ced6962372c64e3b05404787b962c274c14"
+  },
+  "renderMetadata": {
+    "serviceId": "srv-dbqqnktbedkc73ef2k60",
+    "workspaceId": "tea-dbmr3t6c6qcc73cbf0jg",
+    "name": "nevora-web-workforce-staging-ya0s",
+    "suspended": "suspended",
+    "autoDeploy": "no",
+    "branch": "development",
+    "plan": "0.5c-512mb",
+    "readOnly": true
+  }
+}

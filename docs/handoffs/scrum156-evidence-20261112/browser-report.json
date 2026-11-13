@@ -1,0 +1,237 @@
+{
+  "base": "ece3d003e6ab9457027a850ee9b86a792386af4c",
+  "inputs": {
+    "public/assets/velani-commerce.js": "eb9c004a2f82bdd5806e8333d32f9b3dd745cb32ca26348653f770a28dc54458",
+    "public/assets/velani.js": "64a02d58bc96eea696428dfb84235df14b8f79b9428a66307389f315c463f781",
+    "src/brand/apple-touch-icon.png": "6d0a0aef03bf5e1ec28843d00f78d46f20e89487a3bb80208ee72465c793b3ce",
+    "src/brand/favicon-32.png": "54e4c2f094d4d7d43a48d811def6ceadf9dc74f03ac6900ad9d1ca14c4918715",
+    "src/brand/favicon.svg": "ed6ff4a970611243096e685cd4192c78bf445e55c067cf2c009050c8b5c6f1b2",
+    "src/brand/velani-wordmark.svg": "576752362106340f30f32dbebfdbef8d9fc667ed8bb3ff9a029ac33582e60a0b",
+    "src/client-hub.mjs": "7ab7ab83025484c42929492871ac30fa432a496952913c54e7e0bbe6dcc1531e",
+    "src/content.es.mjs": "55c30d2ada2aab817734d1656874e7ef639cd6c2c157c64ef929c37486696289",
+    "src/content.mjs": "cfb3e1237fb4eed2c8f205ecb0842de4068dd761df80c75c7512d693e8a68351",
+    "src/inquiry.mjs": "ebc0308f56e50b60d30887ec8a3eaa91b69cce473336c44f1782ab6ee6d0c324",
+    "src/legal.es.mjs": "20d2480ce94b57e9408c7c27c02a0fe28149f21f414822105d64041c7af4a04a",
+    "src/nevora-policies.es.mjs": "e6abe92803377920cbdc7b1c41042989b820890ebcffc4c5e9c86ef427fd2dfd",
+    "src/nevora-policies.mjs": "e124a36ad0143ae9629aebafd9fb3045c01116bd1933104902f246f5fa862da4",
+    "src/night.mjs": "576b4c10169c8cf11a8cf595f8d9d72b64d23765c722cff56904d1fd015d43cb",
+    "src/night/assist.css": "3f93b7b12fb6824a5d8dd75d017a4f61ac912e576303db1bc29e267d506ddebd",
+    "src/night/assist.html": "d0c437fd82f292f115ea0580610d7e7d1418e339b7bb53145ac2622968330171",
+    "src/night/assist.js": "1c5b54f7d46ca0fb9a0a5c3de10b436723ace077843c697046cf0df0f98ec876",
+    "src/night/base.css": "0f32f97347a39c68820f0a79d54bebeef7ccb76995a8d03fc5aa1d5d34b9ed2f",
+    "src/night/commerce.js": "eb9c004a2f82bdd5806e8333d32f9b3dd745cb32ca26348653f770a28dc54458",
+    "src/night/foot.es.html": "463321ed44a7f6f8a047cc11930e01ec98dec7106d80c8c575aa7b605787031b",
+    "src/night/foot.html": "a80ced7592c60c5b6786a2d29a2a466962763105d749adf9198b7d51836ba50b",
+    "src/night/home.body.html": "cb68872c3fdfb0ce294b4fc7f9367f3b412bc98e21812a7e721ccbf46cdacc05",
+    "src/night/home.css": "5adf99824a750edb22bf4ecedc0375ece858e19d61b4103c9f23d2f9b33674cc",
+    "src/night/home.es.body.html": "163dac5bca24c8e477189b0c04ff2d50614cf982598bc986781ffc1c3f18ea21",
+    "src/night/kiosk.css": "5910357687656030e6021513ecaeec240b12c9c662ec71105b204c6beb9cad9b",
+    "src/night/kiosk.html": "c591badd6c25169f800ca3c9b10c3e8739e3b64c4a8f3ca7336be2423187f7e6",
+    "src/night/kiosk.js": "2035e85c2a6fb3b51c6ab37964ff30a06642c25d5ad5756867a5a2d23484008a",
+    "src/night/motion.js": "160634f9eef9a7843d5894b0b5514ba632afe8cdea1ba9ceedb9c98e269d538a",
+    "src/night/nevora.body.html": "46f43bb0057826cdb0f900aaba91142b65f5d4c401850bc5a431c7f6b3efed26",
+    "src/night/nevora.css": "6fc5d75fed30d3208a56994f2229ca682bdc6a3165d228678bc729aed71ffe1f",
+    "src/night/nevora.es.body.html": "8ab593d4047196d96629f4a4bea5687e3e88603c321a57897b398fe0e96c557f",
+    "src/night/nevora.js": "489947ab5a95ae6452523ebeae42e58bfd3022ee9ee8450663ec022bfc689bc4",
+    "src/night/pages.css": "be50cd30e5de517f00a94c43c7233698c997e9611ae1b163ac1f58004f1a1da4",
+    "src/night/polish.css": "41bb6ea89dc9dca697a506d3cd1129198b355b81c30a38681799d80d111cc8f3",
+    "src/night/products.body.html": "a138263876ba11b2221d20b19a5638b5aca3bf535898fdde1ba62244bd302b20",
+    "src/night/products.es.body.html": "840bb9638e0f7b65d7a1b6077b1b811186b0699610724c783d635bc6465d7588",
+    "src/night/velani-assistant.js": "add851a64a9fc4aff15659672bf7365aa5f71f295e37ca3e361d2f851c46e0c4",
+    "src/night/zoom.html": "f9e24b4a51f455334dea52ade676623f942cbfcbad9550f595357d37584b3deb",
+    "src/privacy.mjs": "b75b3e1849de0a047e05bf8d299ad776acf50c584a3dedf1b12d5bec0159bc4e",
+    "src/render.mjs": "b1e77f8533d7df68605b5e6f05cc9d3a467b45eb8839a1d53d83c6a5de9afffa",
+    "src/seo/llms.txt.liquid": "8fd4bafb9f796ef95ea84e66219601f76043bf624dbc4e7951e0c4edf1c7a646",
+    "src/seo/robots.txt.liquid": "b5a6f64d71186bde50e25924d6062a2caa8f35c1108f6c31ae894c84deb806ba"
+  },
+  "checks": [
+    {
+      "engine": "chromium",
+      "width": 390,
+      "path": "es-privacy",
+      "axeViolations": 0,
+      "languageRoundTrip": true,
+      "links": 3,
+      "enlargedText": 200
+    },
+    {
+      "engine": "chromium",
+      "width": 390,
+      "path": "es-nevora-privacy",
+      "axeViolations": 0,
+      "languageRoundTrip": true,
+      "links": 5,
+      "enlargedText": 200
+    },
+    {
+      "engine": "chromium",
+      "width": 390,
+      "path": "es-nevora-terms",
+      "axeViolations": 0,
+      "languageRoundTrip": true,
+      "links": 6,
+      "enlargedText": 200
+    },
+    {
+      "engine": "chromium",
+      "width": 390,
+      "path": "es-nevora-support",
+      "axeViolations": 0,
+      "languageRoundTrip": true,
+      "links": 6,
+      "enlargedText": 200
+    },
+    {
+      "engine": "chromium",
+      "width": 390,
+      "path": "es-nevora-account-deletion",
+      "axeViolations": 0,
+      "languageRoundTrip": true,
+      "links": 4,
+      "enlargedText": 200
+    },
+    {
+      "engine": "chromium",
+      "width": 1440,
+      "path": "es-privacy",
+      "axeViolations": 0,
+      "languageRoundTrip": true,
+      "links": 3,
+      "enlargedText": 200
+    },
+    {
+      "engine": "chromium",
+      "width": 1440,
+      "path": "es-nevora-privacy",
+      "axeViolations": 0,
+      "languageRoundTrip": true,
+      "links": 5,
+      "enlargedText": 200
+    },
+    {
+      "engine": "chromium",
+      "width": 1440,
+      "path": "es-nevora-terms",
+      "axeViolations": 0,
+      "languageRoundTrip": true,
+      "links": 6,
+      "enlargedText": 200
+    },
+    {
+      "engine": "chromium",
+      "width": 1440,
+      "path": "es-nevora-support",
+      "axeViolations": 0,
+      "languageRoundTrip": true,
+      "links": 6,
+      "enlargedText": 200
+    },
+    {
+      "engine": "chromium",
+      "width": 1440,
+      "path": "es-nevora-account-deletion",
+      "axeViolations": 0,
+      "languageRoundTrip": true,
+      "links": 4,
+      "enlargedText": 200
+    },
+    {
+      "engine": "webkit",
+      "width": 390,
+      "path": "es-privacy",
+      "axeViolations": 0,
+      "languageRoundTrip": true,
+      "links": 3,
+      "enlargedText": 200
+    },
+    {
+      "engine": "webkit",
+      "width": 390,
+      "path": "es-nevora-privacy",
+      "axeViolations": 0,
+      "languageRoundTrip": true,
+      "links": 5,
+      "enlargedText": 200
+    },
+    {
+      "engine": "webkit",
+      "width": 390,
+      "path": "es-nevora-terms",
+      "axeViolations": 0,
+      "languageRoundTrip": true,
+      "links": 6,
+      "enlargedText": 200
+    },
+    {
+      "engine": "webkit",
+      "width": 390,
+      "path": "es-nevora-support",
+      "axeViolations": 0,
+      "languageRoundTrip": true,
+      "links": 6,
+      "enlargedText": 200
+    },
+    {
+      "engine": "webkit",
+      "width": 390,
+      "path": "es-nevora-account-deletion",
+      "axeViolations": 0,
+      "languageRoundTrip": true,
+      "links": 4,
+      "enlargedText": 200
+    },
+    {
+      "engine": "webkit",
+      "width": 1440,
+      "path": "es-privacy",
+      "axeViolations": 0,
+      "languageRoundTrip": true,
+      "links": 3,
+      "enlargedText": 200
+    },
+    {
+      "engine": "webkit",
+      "width": 1440,
+      "path": "es-nevora-privacy",
+      "axeViolations": 0,
+      "languageRoundTrip": true,
+      "links": 5,
+      "enlargedText": 200
+    },
+    {
+      "engine": "webkit",
+      "width": 1440,
+      "path": "es-nevora-terms",
+      "axeViolations": 0,
+      "languageRoundTrip": true,
+      "links": 6,
+      "enlargedText": 200
+    },
+    {
+      "engine": "webkit",
+      "width": 1440,
+      "path": "es-nevora-support",
+      "axeViolations": 0,
+      "languageRoundTrip": true,
+      "links": 6,
+      "enlargedText": 200
+    },
+    {
+      "engine": "webkit",
+      "width": 1440,
+      "path": "es-nevora-account-deletion",
+      "axeViolations": 0,
+      "languageRoundTrip": true,
+      "links": 4,
+      "enlargedText": 200
+    }
+  ],
+  "errors": [],
+  "externalRequests": [],
+  "writes": [],
+  "limits": [
+    "Local source with uncommitted changes, synthetic loopback only. No hosted Shopify/Page publication or legal approval.",
+    "200% check enlarges root text; it is not a physical device or native browser zoom certification."
+  ],
+  "serverClosed": true
+}

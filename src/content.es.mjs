@@ -3,12 +3,14 @@
 // Page bodies with their own markup live in src/night/*.es.body.html; the browser scripts keep their own EN/ES tables
 // (public/assets/velani.js, src/night/assist.js, kiosk.js, motion.js, nevora.js).
 // Facts must match the English pages exactly: no added claims.
+import { LEGAL_ES_PATHS, LEGAL_ES_ROUTES } from './legal.es.mjs';
 
 /** Hours as they appear in lists and sentences ("lunes a viernes, 8 a. m. a 9 p. m. ET"); spaces inside the times never break. */
 export const HOURS_ES = 'lunes a viernes, 8 a. m. a 9 p. m. ET';
 
 /** English route → Spanish route, for every page that has a Spanish version. Links on Spanish pages follow this map. */
 export const ES_PATHS = Object.freeze({
+  ...LEGAL_ES_PATHS,
   '/': '/pages/es',
   '/pages/nevora': '/pages/es-nevora',
   '/pages/plans': '/pages/es-planes',
@@ -26,14 +28,14 @@ export const ES_PATHS = Object.freeze({
 
 /** English-only pages whose closest Spanish page is not the Spanish home: the ES switch goes there instead. */
 export const ES_NEAREST = Object.freeze({
-  '/pages/legal': '/pages/es-ayuda', '/pages/privacy': '/pages/es-ayuda', '/pages/cookies': '/pages/es-ayuda', '/pages/website-terms': '/pages/es-ayuda',
+  '/pages/legal': '/pages/es-ayuda', '/pages/cookies': '/pages/es-ayuda', '/pages/website-terms': '/pages/es-ayuda',
   '/pages/software-project-terms': '/pages/es-ayuda', '/pages/accessibility': '/pages/es-ayuda', '/pages/security': '/pages/es-ayuda',
-  '/pages/nevora-support': '/pages/es-nevora', '/pages/nevora-privacy': '/pages/es-nevora', '/pages/nevora-terms': '/pages/es-nevora', '/pages/nevora-account-deletion': '/pages/es-nevora',
 });
 
 /** Spanish routes: same kinds (and so the same components, images and order) as their English pages. */
 const es = (en, fields) => ({ lang: 'es', en, sections: [], ...fields });
 export const ES_ROUTES = {
+  ...LEGAL_ES_ROUTES,
   '/pages/es': es('/', {
     kind: 'home', title: 'Todo tu equipo, en un solo lugar.', eyebrow: 'Velani',
     name: 'Velani · Software, sitios web y apps a la medida para tu negocio',
@@ -84,7 +86,7 @@ ES_ROUTES['/pages/es-ayuda'] = es('/pages/help', {
     { heading: '¿Una consulta inicia un contrato?', text: 'No. Una consulta inicia una conversación. No compra un producto ni da inicio a trabajo pagado.' },
     { heading: '¿Dónde envío información confidencial?', text: 'No envíes contraseñas, claves de API, datos de pago ni registros confidenciales por un formulario público o por correo normal. Primero pide un canal adecuado.' },
     { heading: '¿Cómo contacto al soporte al cliente?', text: 'El soporte al cliente responde de ' + HOURS_ES + '. Escribe a support@thevelani.com o usa la página de contacto.' },
-    { heading: '¿Cómo funciona la prueba gratis de NEVORA?', text: 'Un negocio con hasta 30 empleados puede usar NEVORA gratis por 30 días desde el día en que su lugar de trabajo queda configurado. No se necesita tarjeta y no se cobra nada. El día 30 te suscribes o NEVORA queda en pausa para tu equipo. El dueño todavía puede abrir la facturación y exportar los registros de nómina disponibles, y los empleados todavía pueden ver sus propios comprobantes de nómina. Terminar la prueba no inicia ninguna eliminación automática. Para cerrar un lugar de trabajo o preguntar por sus registros, escribe a support@thevelani.com. Un equipo de más de 30 nos escribe primero: revisamos si califica y te damos una cotización, y los equipos aprobados reciben los mismos 30 días gratis. NEVORA calcula los comprobantes de nómina; no les paga a los empleados ni presenta impuestos de nómina.' },
+    { heading: '¿Cómo funciona la prueba gratis de NEVORA?', text: 'Un negocio con hasta 30 empleados puede usar NEVORA gratis por 30 días desde que se crea su lugar de trabajo en NEVORA. No se necesita tarjeta y no se cobra nada. El día 30 te suscribes o NEVORA queda en pausa para tu equipo. El dueño todavía puede abrir la facturación y exportar los registros de nómina disponibles, y los empleados todavía pueden ver sus propios comprobantes de nómina. Terminar la prueba no inicia ninguna eliminación automática. Para cerrar un lugar de trabajo o preguntar por sus registros, escribe a support@thevelani.com. Un equipo de más de 30 nos escribe primero: revisamos si califica y te damos una cotización, y los equipos aprobados reciben los mismos 30 días gratis. NEVORA calcula los comprobantes de nómina; no les paga a los empleados ni presenta impuestos de nómina.' },
   ],
 });
 
@@ -147,7 +149,7 @@ export const ABOUT_ES = { h1: 'Software para pequeños negocios.', text: 'Empeza
   facts: [['Fundada en 2026', 'Velani es una marca de VELANI LLC.'], ['Inglés y español', 'Trabajamos, escribimos y creamos en los dos idiomas.'], ['Respuesta en dos días laborables', 'El soporte al cliente atiende de ' + HOURS_ES + '.']] };
 export const FAQ_ES = {
   h1: 'Pide ayuda a Velani.', text: 'Preguntas sobre un sitio web o una app que creamos, sobre NEVORA o sobre cómo trabajamos. Leemos el correo de ' + HOURS_ES + ', y respondemos en un plazo de dos días laborables.',
-  endT: '¿Todavía necesitas ayuda?', endLinks: [['Escribe a support@thevelani.com', 'mailto:support@thevelani.com'], ['Soporte de NEVORA (en inglés)', '/pages/nevora-support']],
+  endT: '¿Todavía necesitas ayuda?', endLinks: [['Escribe a support@thevelani.com', 'mailto:support@thevelani.com'], ['Soporte de NEVORA', '/pages/nevora-support']],
   callK: 'Si tu equipo no puede trabajar, llámanos.',
   doors: [['Un sitio web o una app que creamos', 'Algo dejó de funcionar o necesitas un cambio.', 'Pide ayuda', '/pages/help?interest=client-help#client', true], ['NEVORA', 'Cómo entrar, tu cuenta, tus datos y cómo eliminar tu cuenta. La página está en inglés.', 'Soporte de NEVORA', '/pages/nevora-support', false]],
   doorsLabel: 'Formas de recibir ayuda', qT: 'Preguntas', contactPage: 'Página de contacto',
@@ -196,8 +198,8 @@ export const CONSENT_ES = {
 /** The contact page: hero variants, form labels, the sent confirmation, the inquiry-off panel and the aside. */
 /** Sign in page (Spanish). Values sent with a request stay in English, like the contact topics. */
 export const SIGNIN_ES = {
-  h1: 'Cómo entrar a NEVORA.', appText: 'NEVORA no tiene una página de entrada compartida. Cada lugar de trabajo tiene su propia dirección, y entras ahí con tu ID de empleado y tu contraseña.', support: 'Soporte de NEVORA (en inglés)', factsLabel: 'Ayuda para entrar',
-  endT: '¿Todavía no puedes entrar?', endLinks: [['Soporte de NEVORA (en inglés)', '/pages/nevora-support'], ['Escribe a support@thevelani.com', 'mailto:support@thevelani.com']],
+  h1: 'Cómo entrar a NEVORA.', appText: 'NEVORA no tiene una página de entrada compartida. Cada lugar de trabajo tiene su propia dirección, y entras ahí con tu ID de empleado y tu contraseña.', support: 'Soporte de NEVORA', factsLabel: 'Ayuda para entrar',
+  endT: '¿Todavía no puedes entrar?', endLinks: [['Soporte de NEVORA', '/pages/nevora-support'], ['Escribe a support@thevelani.com', 'mailto:support@thevelani.com']],
   facts: [['Tu dirección y tu ID', 'Están en el correo de invitación de tu lugar de trabajo. ¿Lo perdiste? Pregúntale a tu empleador.'],
     ['¿Olvidaste tu contraseña?', 'Elige ¿Olvidaste tu contraseña? en la página para entrar de tu lugar de trabajo. Vas a necesitar tu ID de empleado y el correo que tu lugar de trabajo tiene registrado.'],
     ['Tu PIN de 4 dígitos', 'Es solo para marcar entrada en la tableta de tu lugar de trabajo, no para entrar a NEVORA. ¿Lo olvidaste? Pide al dueño del negocio que te ponga uno nuevo.']],
@@ -219,7 +221,7 @@ export const SIGNIN_ES = {
 export const CONTACT_ES = {
   kicker: ['NEVORA para tu equipo', 'Prueba gratis de NEVORA por 30 días', 'NEVORA Relay'],
   h1: ['Configura NEVORA para un equipo grande.', 'Pide tu prueba gratis de NEVORA.', 'Únete a la lista de NEVORA Relay.'],
-  fact: ['Un sitio web, una app, NEVORA u otra cosa. Te respondemos por correo en un plazo de dos días laborables.', 'Para equipos de más de 30 empleados. Revisamos lo que necesitas y configuramos tu lugar de trabajo contigo. Los equipos que califican reciben los mismos 30 días gratis. Respondemos en un plazo de dos días laborables.', 'Cuéntanos sobre tu equipo. Jose, de Velani, te responde en un plazo de dos días laborables y configura tu lugar de trabajo contigo. Tus 30 días gratis empiezan el día en que queda listo, sin tarjeta.', 'NEVORA Relay está en diseño y aún no tiene fechas. Te escribiremos cuando abra el acceso anticipado.'],
+  fact: ['Un sitio web, una app, NEVORA u otra cosa. Te respondemos por correo en un plazo de dos días laborables.', 'Para equipos de más de 30 empleados. Revisamos lo que necesitas y configuramos tu lugar de trabajo contigo. Los equipos que califican reciben los mismos 30 días gratis. Respondemos en un plazo de dos días laborables.', 'Cuéntanos sobre tu equipo. Jose, de Velani, te responde en un plazo de dos días laborables y configura tu lugar de trabajo contigo. Tus 30 días gratis comienzan cuando se crea tu lugar de trabajo en NEVORA, sin tarjeta.', 'NEVORA Relay está en diseño y aún no tiene fechas. Te escribiremos cuando abra el acceso anticipado.'],
   callK: '¿Prefieres hablar? Llámanos.', topicQ: '¿Sobre qué es?', preview: 'Vista previa. Este formulario revisa tu borrador y no envía nada.',
   tiles: [['custom-software', 'Web o app'], ['nevora', 'NEVORA'], ['other', 'Otra cosa']],
   previewNote: 'Vista previa del sitio web&nbsp;· revisa tu borrador, no envía nada',
@@ -230,7 +232,7 @@ export const CONTACT_ES = {
   team: 'Tamaño del equipo', bigTeam: 'Más de 30 (configuración asistida)', locations: 'Número de ubicaciones',
   message: 'Qué necesita funcionar mejor', messageOptional: 'Algo más',
   send: ['Enviar consulta', 'Pedir configuración asistida', 'Enviar solicitud de prueba', 'Unirme a la lista'], check: 'Revisar el borrador',
-  sendNote: 'No envíes contraseñas ni datos de pago.', privacy: 'Aviso de privacidad ' + IN_ENGLISH,
+  sendNote: 'No envíes contraseñas ni datos de pago.', privacy: 'Aviso de privacidad',
   fine: 'El día 30, el dueño elige un plan en NEVORA. No se cobra nada hasta entonces. NEVORA calcula los comprobantes de nómina; no les paga a los empleados ni presenta impuestos de nómina.',
   sentPreview: 'Vista previa del sitio web&nbsp;· esto es lo que ven los visitantes después de enviar. No se envió nada.',
   sentH: 'Mensaje enviado.', sentP: 'Gracias por escribirnos. Te respondemos por correo en un plazo de dos días laborables.',
@@ -241,7 +243,7 @@ export const CONTACT_ES = {
 /** The plans page below its hero. */
 export const PLANS_ES = {
   h1: 'Prueba NEVORA gratis por 30 días.', text: 'Todo tu equipo usa la app completa, sin tarjeta. Después pagas un solo precio mensual por tu negocio: $19 para hasta 15 empleados y $29 para 16 a 30.',
-  date: 'Tus 30 días gratis empiezan el día en que tu lugar de trabajo queda listo. Pide una prueba y te respondemos en un plazo de dos días laborables para configurarlo contigo.',
+  date: 'Tus 30 días gratis comienzan cuando se crea tu lugar de trabajo en NEVORA. Pide una prueba y te respondemos en un plazo de dos días laborables para configurarlo contigo.',
   trial: 'Pide la prueba gratis', quote: '¿Más de 30 empleados?',
   bands: [['$19', 'al mes', 'Hasta 15 empleados'], ['$29', 'al mes', 'De 16 a 30 empleados']], bandsLabel: 'Precios',
   billingHelp: ['¿Ya usas NEVORA? El dueño del negocio abre la facturación desde NEVORA, en Configuración. ', 'Ayuda con la facturación'],

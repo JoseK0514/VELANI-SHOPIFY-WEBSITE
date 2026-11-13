@@ -1,6 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { routes, company } from '../src/content.mjs';
+import { routes, company, langOf } from '../src/content.mjs';
+import { ES_PATHS } from '../src/content.es.mjs';
 import { renderPage, escapeHtml } from '../src/render.mjs';
 
 test('both business paths and every required company/legal destination exist', () => {
@@ -21,7 +22,10 @@ test('all public routes have a document title, one main, one h1 and working lega
     assert.equal((html.match(/<main\b/g) || []).length, 1, path);
     // One visible h1: the contact page also carries the sent confirmation, hidden until a message is sent (its heading replaces the hero's)
     assert.equal((html.replace(/<div class="sent" id="inquiry-sent" tabindex="-1" hidden>[\s\S]*?<\/div>/, '').match(/<h1\b/g) || []).length, 1, path);
-    for (const key of ['privacy', 'cookies', 'website-terms', 'accessibility']) assert.ok(html.includes('/pages/' + key), path + ':' + key);
+    for (const key of ['privacy', 'cookies', 'website-terms', 'accessibility']) {
+      const href = '/pages/' + key;
+      assert.ok(html.includes('href="' + (langOf(path) === 'es' ? ES_PATHS[href] || href : href) + '"'), path + ':' + key);
+    }
     assert.doesNotMatch(html, /Fuel Coffee Drive|Coffee Bags|Sample Product|CONFIRM_|\[LEGAL_COMPANY_NAME\]/, path);
   }
 });
