@@ -1,0 +1,13 @@
+{
+  "themeId": "gid://shopify/OnlineStoreTheme/193401127226",
+  "role": "UNPUBLISHED",
+  "processing": false,
+  "processingFailed": false,
+  "current": {
+    "inquiries_enabled": false,
+    "assistant_api_url": "",
+    "commerce_api_url": "",
+    "client_hub_preview_submissions": false
+  },
+  "checksumMd5": "e911ec69410576025eaac4bb12f45fc4"
+}

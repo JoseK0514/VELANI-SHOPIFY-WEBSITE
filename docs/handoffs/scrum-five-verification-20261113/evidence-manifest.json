@@ -1,0 +1,144 @@
+{
+  "files": [
+    {
+      "path": "manual-review.json",
+      "bytes": 611,
+      "sha256": "842edc73af07c9421f46567507871fd055a1703e1831331d72bcdb7fc5a9fcaf"
+    },
+    {
+      "path": "nevora-build-source.json",
+      "bytes": 3343163,
+      "sha256": "64283c0ce67e76cabab1e6b26cc870a25163d4393777c984e7a625c6122b8405"
+    },
+    {
+      "path": "nevora-unit-initial-failed.log.gz",
+      "bytes": 1848,
+      "sha256": "cd5a7011fe3b245eb23c92d30e3e36aec10177940569fd225cdf72d4d497dd5e"
+    },
+    {
+      "path": "nevora-unit-passed.log.gz",
+      "bytes": 603,
+      "sha256": "1f66e744ac3f39a706a421729ffa17c1989b5c4252d948b84ddbc49c51145b69"
+    },
+    {
+      "path": "release-engineering.log.gz",
+      "bytes": 8809,
+      "sha256": "717167df079e9fa2c897b52840dc5e2deb93b6f9283e60e8ff74620f013dd913"
+    },
+    {
+      "path": "run-with-reaper.py",
+      "bytes": 1285,
+      "sha256": "ccafd60208ff36b6cff82c84f6a37b580171928a63213355494778532716ba49"
+    },
+    {
+      "path": "shopify-legal/browser-combined-report.json.gz",
+      "bytes": 1769,
+      "sha256": "1689964c79fc09cab394417fc1c1e0ed061738e4811645906a652141c6bfc188"
+    },
+    {
+      "path": "shopify-legal/browser-diagnostic-report.json.gz",
+      "bytes": 8995,
+      "sha256": "24156a56c65ddf1dac0fe8a790c18883a0fae73c397b14b5a2494e7de6567e78"
+    },
+    {
+      "path": "shopify-legal/browser-loaded.log",
+      "bytes": 299,
+      "sha256": "9f716fb98e96d6179f2a10e7d1a554c144971a75cc914c6b861e1d86fbd1d577"
+    },
+    {
+      "path": "shopify-legal/browser.mjs",
+      "bytes": 6844,
+      "sha256": "a20577e2aff2c392f5d2eeeecd5a8f20e8bf0083f1d2d1cfa68583d0c9bbe844"
+    },
+    {
+      "path": "shopify-legal/chromium-1440-privacy.png",
+      "bytes": 672322,
+      "sha256": "e34ae1487fae9c6ec55ea81d98b27e6b2742dc8a42ae59c3c35484756da84cb9"
+    },
+    {
+      "path": "shopify-legal/chromium-390-privacy.png",
+      "bytes": 570354,
+      "sha256": "108c31e60ba9577e6067a7c047cf6cdfd2894906a3b1946856c40f6b25141fba"
+    },
+    {
+      "path": "shopify-legal/latest-local-manifest.json",
+      "bytes": 42960,
+      "sha256": "4b578644d339f192de985f7eccf1399f97f1dc9404b755b31eecfd492a69a56f"
+    },
+    {
+      "path": "shopify-legal/latest-readback.json",
+      "bytes": 63481,
+      "sha256": "1c59acd234d90377a9ced4bace26e534cac1b7a7d4f1b0c3ce81903d0339637d"
+    },
+    {
+      "path": "shopify-legal/public-readback.json",
+      "bytes": 4024,
+      "sha256": "8af7022cb539d2fc526003bc86c9307f4c29973b3363f16f987c05c1f81d6681"
+    },
+    {
+      "path": "shopify-legal/readback.json",
+      "bytes": 618,
+      "sha256": "55f88a8bc61f6eee66158fd92d3af42e673594ef1bb1a911bef65e16b9237bcc"
+    },
+    {
+      "path": "shopify-legal/report.json",
+      "bytes": 498813,
+      "sha256": "06100565e5b1487b496c12010049ecc74b1d6fba9850443f141e4bc8bc54b5b6"
+    },
+    {
+      "path": "shopify-legal/service-worker-control.json",
+      "bytes": 1421,
+      "sha256": "0f77bec3a19b552add0e020408bb75f1e97c1f7460ced14624015a751cb30f1d"
+    },
+    {
+      "path": "shopify-legal/service-worker-control.mjs",
+      "bytes": 1160,
+      "sha256": "e6e413b517a1aac767d82b1db73bddd11c6f31acf067f0b755d63de44f59056e"
+    },
+    {
+      "path": "shopify-legal/settings-readback.json",
+      "bytes": 346,
+      "sha256": "cf167098b8a44c160c92cb1f89b4ffeaf45a2a716fd358f6794b7b20c1cf745e"
+    },
+    {
+      "path": "shopify-legal/webkit-1440-privacy.png",
+      "bytes": 1109517,
+      "sha256": "a6e331430ee72f28e12a3004371495d845296811a527e2f4e70ed9d603878519"
+    },
+    {
+      "path": "shopify-legal/webkit-390-privacy.png",
+      "bytes": 1136945,
+      "sha256": "f58ca1240b35ca8355a8086d33a580e44b46b8045977659628d3dd3f73523237"
+    },
+    {
+      "path": "stripe-original-readback.json",
+      "bytes": 2071,
+      "sha256": "41f4aadaffc190c66230961e86ceeef3130b311b39bc79d71c572f3b52c959fb"
+    },
+    {
+      "path": "velani-backend-tests.log.gz",
+      "bytes": 1918,
+      "sha256": "bd572c74d3992057f93bfd145c7946e82f6aaa1afbb94610cc88b20d1008efa3"
+    },
+    {
+      "path": "verification.json",
+      "bytes": 874,
+      "sha256": "fe040b6fea66eab6ab826880ac547715fe19cbadb04e8edc8940b823241bf23d"
+    },
+    {
+      "path": "website-4dde3c8-tests.log.gz",
+      "bytes": 3808,
+      "sha256": "2d6b40dbfd7138c9d7b8bf50dacca64df5b2c77a05f26f3ff6b0022a89f57535"
+    },
+    {
+      "path": "website-4dde3c8-theme.log.gz",
+      "bytes": 115,
+      "sha256": "1e15618b2e7e5e63dfc1d16f08a6b4055eb8de01e0b09c4a5350686a8a9d5a03"
+    },
+    {
+      "path": "worker-environment-check.log.gz",
+      "bytes": 225,
+      "sha256": "ac2e021a427d11b55bf0f8558086126c63db5b427309ea5326068d6854071557"
+    }
+  ]
+}
