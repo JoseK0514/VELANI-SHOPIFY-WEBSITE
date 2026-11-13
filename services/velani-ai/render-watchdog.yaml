@@ -1,0 +1,43 @@
+# Reviewable installation proposal. Applying it starts paid compute; no sync has
+# occurred. Enable only after persistent state and independent alerts are ready.
+services:
+  - type: worker
+    name: velani-rondo-development-watchdog
+    runtime: node
+    repo: https://github.com/JoseK0514/VELANI-SHOPIFY-WEBSITE
+    branch: development
+    region: virginia
+    plan: 0.5c-512mb
+    rootDir: services/velani-ai
+    buildCommand: npm ci --ignore-scripts && npm run build
+    startCommand: node dist/scripts/watchdog-host.js
+    autoDeployTrigger: 'off'
+    numInstances: 1
+    maxShutdownDelaySeconds: 45
+    disk:
+      name: rondo-watchdog-state
+      mountPath: /var/data
+      sizeGB: 1
+    envVars:
+      - key: NODE_VERSION
+        value: 24.19.0
+      - key: RONDO_WATCHDOG_ENABLED
+        value: 'false'
+      - key: RONDO_ALERT_MAIL_ENABLED
+        value: 'false'
+      - key: RONDO_WATCHDOG_STATE_DIR
+        value: /var/data/rondo-watchdog
+      - key: RONDO_WATCHDOG_POLICY_FILE
+        value: docs/watchdog-unarmed-policy.json
+      - key: RONDO_WATCHDOG_BUDGET_AUTHORIZATION_ID
+        value: 686083cd-535e-422d-b027-9293601fe98c
+      - key: RONDO_WATCHDOG_SOURCE_SHA
+        sync: false
+      - key: RONDO_WATCHDOG_DATABASE_URL
+        sync: false
+      - key: RONDO_WATCHDOG_HEARTBEAT_URL
+        sync: false
+      - key: RONDO_WATCHDOG_HEARTBEAT_UNTIL
+        sync: false
+      - key: RONDO_WATCHDOG_HEARTBEAT_APPROVAL
+        sync: false
