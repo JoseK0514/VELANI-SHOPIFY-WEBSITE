@@ -9,6 +9,7 @@ import { promisify } from 'node:util';
 import { afterEach, beforeEach, expect, it } from 'vitest';
 import { initializeWatchdog, observeWatchdog, type WatchdogPolicy } from '../src/watchdog-journal.js';
 import { sampleRondoWatchdog } from '../src/rondo-watchdog.js';
+import { runWatchdog } from '../scripts/watchdog.js';
 
 let root: string, directory: string, policy: WatchdogPolicy;
 const source = 'a'.repeat(40), now = Date.parse('2026-11-14T12:00:00Z');
@@ -24,6 +25,31 @@ beforeEach(async () => {
 });
 afterEach(async () => { await rm(root, { recursive: true, force: true }); });
 const state = async () => JSON.parse(await readFile(join(directory, 'watchdog.json'), 'utf8'));
+
+it('refuses a policy for the wrong deployment at the operator entry point before creating any journal', async () => {
+  const file = join(root, 'operator-policy.json'), destination = join(root, 'operator-journal');
+  await writeFile(file, JSON.stringify(policy), { mode: 0o600 });
+  const environment = { RONDO_WATCHDOG_ENVIRONMENT: 'production', RONDO_WATCHDOG_POLICY_FILE: file, RONDO_WATCHDOG_STATE_DIR: destination };
+  await expect(runWatchdog('initialize', environment)).rejects.toThrow('watchdog_configuration_invalid');
+  await expect(lstat(destination)).rejects.toMatchObject({ code: 'ENOENT' });
+  await writeFile(file, JSON.stringify({ ...policy, scope: 'production', target: 'velani_ai' }), { mode: 0o600 });
+  expect(await runWatchdog('initialize', environment)).toMatchObject({ status: 'initialized', maxAttempts: 2 });
+});
+
+it('keeps production policy and finite attempts separate and refuses a crossed target or retargeting an existing journal', async () => {
+  const production = { ...policy, scope: 'production' as const, target: 'velani_ai' as const };
+  const destination = join(root, 'production-journal');
+  await initializeWatchdog(destination, production);
+  let calls = 0;
+  const notify = async () => { calls++; return { id: randomUUID() }; };
+  await observeWatchdog(destination, production, source, unavailable, notify, { now: () => now });
+  await observeWatchdog(destination, production, source, unavailable, notify, { now: () => now });
+  expect(calls).toBe(1);
+  expect(JSON.parse(await readFile(join(destination, 'watchdog.json'), 'utf8')).used).toBe(1);
+  await expect(observeWatchdog(directory, production, source, unavailable, notify, { now: () => now })).rejects.toThrow('watchdog_policy_changed');
+  await expect(initializeWatchdog(join(root, 'crossed-policy'), { ...production, target: 'velani_rondo_development' })).rejects.toThrow();
+  expect((await state()).used).toBe(0);
+});
 
 it('alerts when the observed database is unavailable and commits its intent outside that database before dispatch', async () => {
   const sent: string[] = [];

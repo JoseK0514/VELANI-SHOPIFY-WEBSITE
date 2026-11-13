@@ -23,6 +23,18 @@ describe.skipIf(!testUrl)('independent Rondo incident monitor', () => {
     if (admin) { await admin.query('DROP SCHEMA IF EXISTS "' + schema + '" CASCADE'); await admin.end(); }
   });
   const sample = (status: 'ok' | 'attention') => async () => ({ status });
+  it('journals production incidents under their own scope and preserves development notices', async () => {
+    const sent: string[] = [];
+    const notify = async (_kind: 'outage' | 'recovery', key: string) => { sent.push(key); return { id: randomUUID() }; };
+    await processRondoObservation(pool, policy, sample('attention'), notify);
+    await processRondoObservation(pool, { ...policy, scope: 'production' }, sample('attention'), notify);
+    await processRondoObservation(pool, { ...policy, scope: 'production' }, sample('attention'), notify);
+    expect(sent).toHaveLength(2);
+    expect(sent[0]).toMatch(/^rondo-ops\/development\//);
+    expect(sent[1]).toMatch(/^rondo-ops\/production\//);
+    expect((await pool.query('SELECT scope,attempts FROM rondo_monitor_notices ORDER BY scope')).rows)
+      .toEqual([{ scope: 'development', attempts: 1 }, { scope: 'production', attempts: 1 }]);
+  });
   it('sends one outage and one recovery across concurrent ticks and keeps healthy startup quiet', async () => {
     const sent: { kind: string; key: string }[] = [];
     const notify = async (kind: 'outage' | 'recovery', key: string) => { sent.push({ kind, key }); return { id: randomUUID() }; };

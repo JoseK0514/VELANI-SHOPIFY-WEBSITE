@@ -1,5 +1,10 @@
+import { rondoTarget } from './rondo-target.js';
+
 type Env = Readonly<Record<string, string | undefined>>;
 export function createRondoNotifier(env: Env, fetcher: typeof fetch = fetch) {
+  const scope = rondoTarget(env.RONDO_OPERATIONS_ENVIRONMENT ?? env.RONDO_WATCHDOG_ENVIRONMENT).scope;
+  if (env.RONDO_OPERATIONS_ENVIRONMENT && env.RONDO_WATCHDOG_ENVIRONMENT
+    && env.RONDO_OPERATIONS_ENVIRONMENT !== env.RONDO_WATCHDOG_ENVIRONMENT) throw Error('rondo_alert_configuration_invalid');
   const enabled = env.RONDO_ALERT_MAIL_ENABLED === 'true';
   const recipient = env.RONDO_ALERT_RECIPIENT?.trim().toLowerCase();
   if (enabled && (!env.RONDO_ALERT_API_KEY?.trim() || !env.RONDO_ALERT_APPROVAL_REF?.trim()
@@ -12,9 +17,9 @@ export function createRondoNotifier(env: Env, fetcher: typeof fetch = fetch) {
       headers: { Authorization: 'Bearer ' + env.RONDO_ALERT_API_KEY, 'Content-Type': 'application/json', 'Idempotency-Key': key },
       body: JSON.stringify({
         from: 'Velani operations <requests@thevelani.com>', to: [recipient],
-        subject: '[Development] Rondo operations: ' + (recovery ? 'recovered' : 'attention required'),
-        text: recovery ? 'Rondo development operations have recovered. Review SCRUM-155 and the saved aggregate operations receipt.'
-          : 'Rondo development operations require attention. Review SCRUM-155 and the saved aggregate operations receipt.',
+        subject: '[' + (scope === 'production' ? 'Production' : 'Development') + '] Rondo operations: ' + (recovery ? 'recovered' : 'attention required'),
+        text: 'Rondo ' + scope + ' operations ' + (recovery ? 'have recovered.' : 'require attention.')
+          + ' Review SCRUM-155 and the saved aggregate operations receipt.',
       }),
     });
     if (!response.ok) throw Error('rondo_alert_outcome_unknown');

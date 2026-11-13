@@ -2,18 +2,21 @@ import { readFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { createDatabasePool } from '../src/db-pool.js';
-import { sampleRondoWatchdog, watchdogDsn, WATCHDOG_DATABASE, WATCHDOG_ROLE } from '../src/rondo-watchdog.js';
+import { sampleRondoWatchdog, watchdogDsn } from '../src/rondo-watchdog.js';
+import { rondoTarget } from '../src/rondo-target.js';
 import { initializeWatchdog, observeWatchdog, type WatchdogPolicy } from '../src/watchdog-journal.js';
 import { createRondoNotifier } from '../src/rondo-notifier.js';
 
 export async function runWatchdog(command: string | undefined, environment: NodeJS.ProcessEnv = process.env) {
   if (!['check', 'initialize', 'observe'].includes(command ?? '')) throw Error('watchdog_configuration_invalid');
+  const target = rondoTarget(environment.RONDO_WATCHDOG_ENVIRONMENT);
   let policy: WatchdogPolicy | undefined;
   if (command !== 'check') {
     if (!environment.RONDO_WATCHDOG_POLICY_FILE || !environment.RONDO_WATCHDOG_STATE_DIR) throw Error('watchdog_configuration_invalid');
     const raw = await readFile(environment.RONDO_WATCHDOG_POLICY_FILE, 'utf8');
     if (Buffer.byteLength(raw) > 8192) throw Error('watchdog_configuration_invalid');
     policy = JSON.parse(raw);
+    if (policy!.scope !== target.scope || policy!.target !== target.database) throw Error('watchdog_configuration_invalid');
     if (command === 'initialize') {
       await initializeWatchdog(environment.RONDO_WATCHDOG_STATE_DIR, policy!);
       return { status: 'initialized', mailEnabled: policy!.mailEnabled, maxAttempts: policy!.maxAttempts };
@@ -27,7 +30,7 @@ export async function runWatchdog(command: string | undefined, environment: Node
   const connectionString = watchdogDsn(environment);
   const pool = createDatabasePool({ connectionString, max: 1, connectionTimeoutMillis: 3000, statement_timeout: 5000 }, environment);
   pool.on('error', () => undefined);
-  const sample = () => sampleRondoWatchdog(pool, { database: WATCHDOG_DATABASE, role: WATCHDOG_ROLE, authorizationId });
+  const sample = () => sampleRondoWatchdog(pool, { database: target.database, role: target.watchdogRole, authorizationId, scope: target.scope });
   try {
     if (command === 'check') return await sample();
     return await observeWatchdog(environment.RONDO_WATCHDOG_STATE_DIR!, policy!, environment.RONDO_WATCHDOG_SOURCE_SHA ?? '',

@@ -42,6 +42,32 @@ it('binds direct verify-full DSNs to the exact development database, role and pr
     expect(() => developmentOperationsDsn('monitor', { RONDO_OPERATIONS_DATABASE_URL: bad })).toThrow();
   }
 });
+it('accepts an explicit production database with its dedicated role and rejects crossed development bindings', async () => {
+  const dsn = 'postgresql://velani_rondo_prod_monitor:fixture@ep-withered-pine-bcnflkeq.c-16.us-east-1.aws.neon.tech/velani_ai?sslmode=verify-full';
+  const production = { RONDO_OPERATIONS_ENVIRONMENT: 'production', RONDO_OPERATIONS_DATABASE_URL: dsn };
+  expect(developmentOperationsDsn('monitor', production)).toBe(dsn);
+  for (const change of [{ RONDO_OPERATIONS_ENVIRONMENT: 'development' }, { RONDO_OPERATIONS_ENVIRONMENT: 'prod' },
+    { RONDO_OPERATIONS_DATABASE_URL: dsn.replace('/velani_ai?', '/velani_rondo_development?') },
+    { RONDO_OPERATIONS_DATABASE_URL: dsn.replace('prod_monitor', 'dev_monitor') }]) {
+    expect(() => developmentOperationsDsn('monitor', { ...production, ...change })).toThrow();
+  }
+  let ran = 0;
+  const handler = createNeonOperationsHandler('monitor', { ...env, RONDO_OPERATIONS_ENVIRONMENT: 'production', RONDO_OPERATIONS_ENABLED: 'true' }, source,
+    async () => { ran++; return { state: 'ok' }; });
+  expect((await handler(invocation('rondo-development-monitor'))).status).toBe(403);
+  expect((await handler(invocation('rondo-production-monitor'))).status).toBe(200);
+  expect(ran).toBe(1);
+});
+it('labels a production incident using the selected operating environment', async () => {
+  let sent: { subject: string; text: string } | undefined;
+  const notify = createRondoNotifier({ RONDO_WATCHDOG_ENVIRONMENT: 'production', RONDO_ALERT_MAIL_ENABLED: 'true',
+    RONDO_ALERT_API_KEY: 'synthetic-only', RONDO_ALERT_APPROVAL_REF: 'SYNTHETIC', RONDO_ALERT_RECIPIENT: 'support@thevelani.com' },
+  async (_url, init) => { sent = JSON.parse(String(init?.body)); return Response.json({ id: 'fixture-production' }); });
+  await notify('outage', 'synthetic-production-key');
+  expect(sent?.subject).toBe('[Production] Rondo operations: attention required');
+  expect(sent?.text).toContain('Rondo production operations');
+  expect(() => createRondoNotifier({ RONDO_WATCHDOG_ENVIRONMENT: 'prod' })).toThrow();
+});
 it('reports a scheduled attention result as unavailable without returning private exception text', async () => {
   const enabled = { ...env, RONDO_OPERATIONS_ENABLED: 'true' };
   expect((await createNeonOperationsHandler('monitor', enabled, source, async () => ({ state: 'attention' }))(invocation())).status).toBe(503);

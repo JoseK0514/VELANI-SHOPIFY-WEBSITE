@@ -6,13 +6,14 @@ import { z } from 'zod';
 import type { WatchdogSample } from './rondo-watchdog.js';
 
 const policySchema = z.object({
-  id: z.uuid(), scope: z.literal('development'), target: z.literal('velani_rondo_development'),
+  id: z.uuid(), scope: z.enum(['development','production']), target: z.enum(['velani_rondo_development','velani_ai']),
   approvalReference: z.string().trim().min(1).max(160),
   recipient: z.enum(['support@thevelani.com', 'josekarlo-@hotmail.com']),
   validFrom: z.iso.datetime(), validUntil: z.iso.datetime(),
   mailEnabled: z.boolean(), maxAttempts: z.number().int().min(0).max(100),
 }).strict().refine(p => Date.parse(p.validUntil) > Date.parse(p.validFrom)
-  && Date.parse(p.validUntil) - Date.parse(p.validFrom) <= 31 * 86_400_000);
+  && Date.parse(p.validUntil) - Date.parse(p.validFrom) <= 31 * 86_400_000
+  && p.target === (p.scope === 'development' ? 'velani_rondo_development' : 'velani_ai'));
 export type WatchdogPolicy = z.infer<typeof policySchema>;
 const noticeSchema = z.object({
   kind: z.enum(['outage', 'recovery']), id: z.uuid(),

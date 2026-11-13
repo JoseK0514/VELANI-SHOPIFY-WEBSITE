@@ -1,5 +1,6 @@
 import type { Pool, PoolClient } from 'pg';
 import { readRondoOperationsStatus } from './operations-status.js';
+import { rondoTarget, type RondoEnvironment } from './rondo-target.js';
 
 export interface WatchdogSample {
   status: 'ok' | 'attention' | 'unavailable';
@@ -14,13 +15,14 @@ export const WATCHDOG_DATABASE = 'velani_rondo_development';
 export function watchdogDsn(environment: Readonly<Record<string, string | undefined>>): string {
   const raw = environment.RONDO_WATCHDOG_DATABASE_URL;
   try {
+    const target = rondoTarget(environment.RONDO_WATCHDOG_ENVIRONMENT);
     if (!raw || raw.length > 2048) throw Error();
     const url = new URL(raw);
     if (!['postgres:', 'postgresql:'].includes(url.protocol)
-      || url.hostname !== 'ep-withered-pine-bcnflkeq.c-16.us-east-1.aws.neon.tech'
+      || url.hostname !== target.host
       || (url.port && url.port !== '5432') || url.hash
-      || decodeURIComponent(url.username) !== WATCHDOG_ROLE || !url.password
-      || decodeURIComponent(url.pathname.slice(1)) !== WATCHDOG_DATABASE
+      || decodeURIComponent(url.username) !== target.watchdogRole || !url.password
+      || decodeURIComponent(url.pathname.slice(1)) !== target.database
       || url.searchParams.getAll('sslmode').length !== 1 || url.searchParams.get('sslmode') !== 'verify-full'
       || url.searchParams.getAll('channel_binding').length > 1
       || (url.searchParams.has('channel_binding') && url.searchParams.get('channel_binding') !== 'require')
@@ -33,7 +35,7 @@ export function watchdogDsn(environment: Readonly<Record<string, string | undefi
  * Destroying the checked-out connection cancels pending queries on timeout;
  * a connection acquired after the deadline is also immediately destroyed. */
 export async function sampleRondoWatchdog(
-  pool: Pool, identity: { database: string; role: string; authorizationId: string; schema?: string }, timeoutMs = 5000,
+  pool: Pool, identity: { database: string; role: string; authorizationId: string; schema?: string; scope?: RondoEnvironment }, timeoutMs = 5000,
 ): Promise<WatchdogSample> {
   if (!Number.isInteger(timeoutMs) || timeoutMs < 10 || timeoutMs > 10_000) throw Error('rondo_watchdog_configuration_invalid');
   let client: PoolClient | undefined, released = false, terminal = false;
@@ -67,7 +69,8 @@ export async function sampleRondoWatchdog(
         || role.role !== identity.role || role.session_role !== identity.role
         || role.privileged || role.membership || role.private_access || role.schema_create || role.database_owner) throw Error('wrong_identity');
       const operations = await readRondoOperationsStatus(client, identity.authorizationId);
-      const native = (await client.query<{ state: string | null; completed_at: Date | null; fresh: boolean }>('SELECT * FROM rondo_monitor_status')).rows[0];
+      const native = (await client.query<{ state: string | null; completed_at: Date | null; fresh: boolean }>(
+        'SELECT state,completed_at,fresh FROM rondo_monitor_status WHERE scope=$1', [identity.scope ?? 'development'])).rows[0];
       if (!native) throw Error('missing_monitor_view');
       const alerts = [...operations.alerts];
       if (!native.fresh) alerts.push(native.completed_at ? 'native_monitor_stale' : 'native_monitor_unobserved');

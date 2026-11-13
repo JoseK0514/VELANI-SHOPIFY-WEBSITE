@@ -29,7 +29,7 @@ remain the explicit gates described below.
 
 | Workstream | Established evidence | Remaining acceptance |
 | --- | --- | --- |
-| Rondo | Dedicated independent Render watchdog, durable attempt journal, actual reader outage/recovery and independent stopped-runner alerts; scheduled cleanup and budget readbacks. Runtime 5232ea0, provider receipts in the installed-host handoff. | Ilianis's actual access, notice acknowledgment and responder drill; stopped native-monitor and retention-scheduler drills at their real thresholds; combined UI acceptance; reviewed budget-preserving public-runtime promotion. |
+| Rondo | Dedicated independent Render watchdog, durable attempt journal, actual reader outage/recovery and independent stopped-runner alerts; scheduled cleanup and budget readbacks. Runtime 5232ea0, provider receipts in the installed-host handoff. Jose confirmed Ilianis's access and explicitly accepted/closed that requirement; Jose remains the incident owner. | Stopped native-monitor and retention-scheduler drills at their real thresholds; combined UI acceptance; reviewed budget-preserving public-runtime promotion. No additional backup-response questionnaire is required. |
 | Private admin | Development b18e8c1, 158 tests and passing candidate/development Actions. Synthetic staging Google/two-passkey/UI acceptance remains separate. | Commercial hosting/headroom, per-environment independent worker/alert delivery verification, production Google and two-passkey enrollment, then explicit activation approval. Production stays paused until those gates are met. |
 | Client hub | Accepted hosted EN/ES submissions and four delivered/inbox-confirmed messages. Backend concurrency/replay tests exist. | Hosted lost-response replay with captured request key and exactly-once persistence/outbox evidence; reviewed current theme and Jose's final publication. Existing acceptance theme 193374224698 remains unpublished, preview submissions off. |
 | Billing policy | Existing implementation/source acceptance is separate from legal/business applicability. | Accountant review of merchant, head office, registrations/jurisdictions, product classification and inclusive/exclusive terms. Tax collection stays off. No inferred address or activation. |
@@ -49,9 +49,13 @@ reply or staging credential.
 
 ## Execution checklist
 
-- [ ] Qualify current website development using public standard Actions runners.
-- [ ] Reconfirm the accepted admin source with a fresh public-run qualification.
-- [ ] Inspect exact native monitor/retention schedules and current aggregate
+- [x] Qualify website development b73c52f using public standard Actions runners:
+  run 43469797110, website100/100, backend285/285, 2,427 source hashes and both
+  native archives independently verified. Subsequent runtime changes need their
+  own exact-source qualification.
+- [x] Reconfirm admin b18e8c1: run43438335064 attempt2, 158/158 in21files;
+  all317 tracked source hashes and report/run identities independently verified.
+- [x] Inspect exact native monitor/retention schedules and current aggregate
   health, preserving real cadence/freshness assertions and cumulative budgets.
 - [ ] Prepare and execute only authorized drills; retain provider and actual
   human receipts, restore the exact affected schedule/configuration afterward.
@@ -67,5 +71,9 @@ are complete. Final receipts are retained under the current task's visualization
 directory and referenced from the completion report. No main merge, Shopify
 publication, production unpause, model call, new subscription or real customer
 write follows from this checklist.
+
+The [public cutover preparation](2026-11-13-rondo-public-cutover.md) records the
+newly reproduced production-target code gap, the bounded correction, exact
+targets, allowance-preserving sequence and remaining environment gates.
 
 Reference: [GitHub Actions billing](https://docs.github.com/en/billing/concepts/product-billing/github-actions).

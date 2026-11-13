@@ -1,4 +1,5 @@
 import { parseTriggerDelivery } from '@neon/functions/triggers';
+import { rondoTarget } from './rondo-target.js';
 
 export const INERT_PROVIDER_ENV = Object.freeze({
   DATABASE_URL: 'postgresql://disabled.invalid/disabled', DATABASE_URL_UNPOOLED: 'postgresql://disabled.invalid/disabled',
@@ -10,19 +11,18 @@ export const INERT_PROVIDER_ENV = Object.freeze({
 });
 type Role = 'monitor' | 'retention';
 type Env = Readonly<Record<string, string | undefined>>;
-const branch = 'br-snowy-brook-bcc6b3zm';
-const host = 'ep-withered-pine-bcnflkeq.c-16.us-east-1.aws.neon.tech';
 const answer = (state: string, status: number) => Response.json({ state }, { status, headers: { 'cache-control': 'no-store' } });
 
 export function developmentOperationsDsn(role: Role, env: Env): string {
   const raw = env.RONDO_OPERATIONS_DATABASE_URL;
   try {
+    const target = rondoTarget(env.RONDO_OPERATIONS_ENVIRONMENT);
     if (!raw || raw.length > 2048) throw Error();
     const url = new URL(raw);
-    const expectedRole = role === 'monitor' ? 'velani_rondo_dev_monitor' : 'velani_rondo_dev_app';
-    if (!['postgres:', 'postgresql:'].includes(url.protocol) || url.hostname !== host
+    const expectedRole = role === 'monitor' ? target.monitorRole : target.appRole;
+    if (!['postgres:', 'postgresql:'].includes(url.protocol) || url.hostname !== target.host || url.hash
       || url.port && url.port !== '5432' || decodeURIComponent(url.username) !== expectedRole
-      || !url.password || decodeURIComponent(url.pathname.slice(1)) !== 'velani_rondo_development'
+      || !url.password || decodeURIComponent(url.pathname.slice(1)) !== target.database
       || url.searchParams.get('sslmode') !== 'verify-full'
       || [...url.searchParams.keys()].some(key => !['sslmode','channel_binding'].includes(key))
       || url.searchParams.getAll('sslmode').length !== 1 || url.searchParams.getAll('channel_binding').length > 1
@@ -62,19 +62,20 @@ export function createNeonOperationsHandler(role: Role, env: Env, expectedSource
     try {
       const parsed = parseTriggerDelivery({ headers: request.headers, body: await body(request) });
       if (!parsed.ok) return answer('unauthorized',401);
-      if (parsed.invocation.type !== 'schedule' || parsed.invocation.trigger.name !== 'rondo-development-' + role
+      const target = rondoTarget(env.RONDO_OPERATIONS_ENVIRONMENT);
+      if (parsed.invocation.type !== 'schedule' || parsed.invocation.trigger.name !== 'rondo-' + target.scope + '-' + role
         || !Number.isFinite(Date.parse(parsed.invocation.data.scheduledAt))) return answer('wrong_trigger',403);
       if (!/^[a-f0-9]{40}$/.test(expectedSource) || env.RONDO_OPERATIONS_SOURCE_SHA !== expectedSource
-        || env.RONDO_OPERATIONS_BRANCH_ID !== branch || env.NEON_BRANCH_ID !== branch
+        || env.RONDO_OPERATIONS_BRANCH_ID !== target.branch || env.NEON_BRANCH_ID !== target.branch
         || !['true','false'].includes(env.RONDO_OPERATIONS_ENABLED ?? '')
         || !Object.entries(INERT_PROVIDER_ENV).every(([key,value]) => env[key] === value)) return answer('not_ready',503);
       if (env.RONDO_OPERATIONS_ENABLED === 'false') return answer('disabled',200);
       const result = await run();
       const ok = ['ok','completed','busy'].includes(result.state) && !['uncertain','capped'].includes(result.notice ?? '');
-      console.info(JSON.stringify({ event: 'rondo_development_operations', role, state: ok ? result.state : 'attention', notice: result.notice ?? 'none' }));
+      console.info(JSON.stringify({ event: 'rondo_' + target.scope + '_operations', role, state: ok ? result.state : 'attention', notice: result.notice ?? 'none' }));
       return answer(ok ? result.state : 'attention', ok ? 200 : 503);
     } catch {
-      console.warn(JSON.stringify({ event: 'rondo_development_operations', role, state: 'unavailable' }));
+      console.warn(JSON.stringify({ event: 'rondo_operations', role, state: 'unavailable' }));
       return answer('unavailable',503);
     }
   };

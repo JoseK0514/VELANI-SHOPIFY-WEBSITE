@@ -15,6 +15,15 @@ it('binds the independent reader to its dedicated role, exact development target
     expect(() => watchdogDsn({ RONDO_WATCHDOG_DATABASE_URL: bad, DATABASE_URL: sourceDsn })).toThrow('rondo_watchdog_configuration_invalid');
   }
 });
+it('binds production observations to the production-only reader without a development or owner fallback', () => {
+  const dsn = sourceDsn.replace('dev_watchdog', 'prod_watchdog').replace('/velani_rondo_development?', '/velani_ai?');
+  const environment = { RONDO_WATCHDOG_ENVIRONMENT: 'production', RONDO_WATCHDOG_DATABASE_URL: dsn };
+  expect(watchdogDsn(environment)).toBe(dsn);
+  for (const change of [{ RONDO_WATCHDOG_ENVIRONMENT: 'development' }, { RONDO_WATCHDOG_ENVIRONMENT: 'prod' },
+    { RONDO_WATCHDOG_DATABASE_URL: sourceDsn }, { RONDO_WATCHDOG_DATABASE_URL: dsn.replace('prod_watchdog', 'prod_monitor') }]) {
+    expect(() => watchdogDsn({ ...environment, ...change })).toThrow();
+  }
+});
 
 const testUrl = process.env.TEST_DATABASE_URL;
 describe.skipIf(!testUrl)('independent Rondo SELECT-only observer', () => {
@@ -65,6 +74,14 @@ describe.skipIf(!testUrl)('independent Rondo SELECT-only observer', () => {
     expect(await probe()).toMatchObject({ status: 'ok', alerts: [] });
     await owner.query("UPDATE rondo_monitor_state SET state='attention'");
     expect((await probe()).alerts).toContain('native_monitor_attention');
+  });
+  it('does not use a healthy development heartbeat to mask a stale production monitor', async () => {
+    await owner.query("INSERT INTO rondo_monitor_state(scope,state,observed_at) VALUES('development','ok',clock_timestamp()),('production','ok',clock_timestamp()-interval '2 hours')");
+    const identity = { database, role: WATCHDOG_ROLE, authorizationId: id, schema, scope: 'production' as const };
+    expect((await sampleRondoWatchdog(reader, identity)).alerts).toContain('native_monitor_stale');
+    expect(await probe()).toMatchObject({ status: 'ok', alerts: [] });
+    await owner.query("UPDATE rondo_monitor_state SET observed_at=clock_timestamp() WHERE scope='production'");
+    expect(await sampleRondoWatchdog(reader, identity)).toMatchObject({ status: 'ok', alerts: [] });
   });
   it('detects stopped retention and paused budget without spending or repairing either one', async () => {
     await owner.query("INSERT INTO rondo_monitor_state(scope,state) VALUES('development','ok')");
