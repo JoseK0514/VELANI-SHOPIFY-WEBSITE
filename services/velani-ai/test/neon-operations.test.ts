@@ -1,16 +1,16 @@
 import { randomUUID } from 'node:crypto';
-import { expect, it } from 'vitest';
+import { expect, it, vi } from 'vitest';
 import { createNeonOperationsHandler, INERT_PROVIDER_ENV, developmentOperationsDsn } from '../src/neon-operations.js';
 import { createRondoNotifier } from '../src/rondo-notifier.js';
 
 const source = 'b'.repeat(40);
 const env = { ...INERT_PROVIDER_ENV, RONDO_OPERATIONS_ENABLED: 'false', RONDO_OPERATIONS_SOURCE_SHA: source,
   RONDO_OPERATIONS_BRANCH_ID: 'br-snowy-brook-bcc6b3zm', NEON_BRANCH_ID: 'br-snowy-brook-bcc6b3zm' };
-function invocation(name = 'rondo-development-monitor', withHeader = true) {
+function invocation(name = 'rondo-development-monitor', withHeader = true, scheduledAt = new Date().toISOString()) {
   const id = randomUUID();
   return new Request('https://native.example/run', { method: 'POST',
     headers: { 'content-type': 'application/json', ...(withHeader ? { 'x-neon-trigger-invocation-id': id } : {}) },
-    body: JSON.stringify({ version: 1, invocation_id: id, trigger: { id: 'fixture', type: 'schedule', name }, data: { scheduled_at: new Date().toISOString() } }),
+    body: JSON.stringify({ version: 1, invocation_id: id, trigger: { id: 'fixture', type: 'schedule', name }, data: { scheduled_at: scheduledAt } }),
   });
 }
 it('refuses public work before callback/configuration and keeps a valid closed schedule inert', async () => {
@@ -89,4 +89,68 @@ it('refuses email without an explicit finite recipient/approval and sends only a
   expect(body.to).toEqual(['support@thevelani.com']);
   expect(body.from).toContain('requests@thevelani.com');
   expect(body.text).not.toMatch(/conversation|synthetic-key|SYNTHETIC-ONLY/);
+});
+
+const drill = {
+  RONDO_DRILL_PAUSE_FROM: '2026-11-13T20:00:00.000Z',
+  RONDO_DRILL_PAUSE_UNTIL: '2026-11-14T17:01:00.000Z',
+  RONDO_DRILL_ENVIRONMENT: 'development', RONDO_DRILL_ROLE: 'monitor',
+  RONDO_DRILL_APPROVAL_ID: '00000000-0000-4000-8000-000000000001',
+};
+it('stops actual job work only inside the finite drill window and automatically resumes at expiry', async () => {
+  const clock = vi.spyOn(Date, 'now');
+  let ran = 0;
+  try {
+    const handler = createNeonOperationsHandler('monitor', { ...env, ...drill, RONDO_OPERATIONS_ENABLED: 'true' }, source,
+      async () => { ran++; return { state: 'ok' }; });
+    clock.mockReturnValue(Date.parse(drill.RONDO_DRILL_PAUSE_FROM) - 1);
+    expect(await (await handler(invocation())).json()).toEqual({ state: 'ok' });
+    expect(ran).toBe(1);
+    clock.mockReturnValue(Date.parse(drill.RONDO_DRILL_PAUSE_FROM));
+    expect(await (await handler(invocation())).json()).toEqual({ state: 'drill_paused' });
+    expect(ran).toBe(1);
+    clock.mockReturnValue(Date.parse(drill.RONDO_DRILL_PAUSE_UNTIL));
+    expect(await (await handler(invocation())).json()).toEqual({ state: 'ok' });
+    expect(ran).toBe(2);
+  } finally { clock.mockRestore(); }
+});
+it('uses current runtime time so delayed or future schedule timestamps cannot extend or escape a drill', async () => {
+  const clock = vi.spyOn(Date, 'now'); let ran = 0;
+  try {
+    const handler = createNeonOperationsHandler('retention', { ...env, ...drill, RONDO_DRILL_ROLE: 'retention', RONDO_OPERATIONS_ENABLED: 'true' }, source,
+      async () => { ran++; return { state: 'completed' }; });
+    clock.mockReturnValue(Date.parse(drill.RONDO_DRILL_PAUSE_FROM) + 1);
+    expect(await (await handler(invocation('rondo-development-retention', true, '2026-12-01T00:00:00.000Z'))).json()).toEqual({ state: 'drill_paused' });
+    expect(ran).toBe(0);
+    clock.mockReturnValue(Date.parse(drill.RONDO_DRILL_PAUSE_UNTIL) + 1);
+    expect(await (await handler(invocation('rondo-development-retention', true, drill.RONDO_DRILL_PAUSE_FROM))).json()).toEqual({ state: 'completed' });
+    expect(ran).toBe(1);
+  } finally { clock.mockRestore(); }
+});
+it('rejects partial, malformed, overlong and crossed-environment or crossed-role drill configuration', async () => {
+  let ran = 0;
+  for (const change of [
+    { RONDO_DRILL_PAUSE_UNTIL: '' }, { RONDO_DRILL_PAUSE_FROM: 'invalid' },
+    { RONDO_DRILL_PAUSE_FROM: '2026-02-31T20:00:00.000Z' },
+    { RONDO_DRILL_PAUSE_UNTIL: drill.RONDO_DRILL_PAUSE_FROM },
+    { RONDO_DRILL_PAUSE_UNTIL: '2026-11-15T02:00:00.001Z' },
+    { RONDO_DRILL_APPROVAL_ID: '' }, { RONDO_DRILL_ENVIRONMENT: 'production' }, { RONDO_DRILL_ROLE: 'retention' },
+  ]) {
+    const handler = createNeonOperationsHandler('monitor', { ...env, ...drill, ...change, RONDO_OPERATIONS_ENABLED: 'true' }, source,
+      async () => { ran++; return { state: 'ok' }; });
+    const response = await handler(invocation());
+    expect(response.status).toBe(503); expect(await response.json()).toEqual({ state: 'unavailable' });
+  }
+  expect(ran).toBe(0);
+});
+it('keeps authentication, exact source/branch and a disabled job ahead of drill handling', async () => {
+  let ran = 0;
+  const callback = async () => { ran++; return { state: 'ok' }; };
+  const active = { ...env, ...drill, RONDO_OPERATIONS_ENABLED: 'true' };
+  expect((await createNeonOperationsHandler('monitor', active, source, callback)(invocation(undefined, false))).status).toBe(401);
+  expect((await createNeonOperationsHandler('monitor', active, source, callback)(invocation('rondo-production-monitor'))).status).toBe(403);
+  expect((await createNeonOperationsHandler('monitor', { ...active, NEON_BRANCH_ID: 'br-wrong' }, source, callback)(invocation())).status).toBe(503);
+  expect((await createNeonOperationsHandler('monitor', { ...active, RONDO_OPERATIONS_SOURCE_SHA: 'a'.repeat(40) }, source, callback)(invocation())).status).toBe(503);
+  expect(await (await createNeonOperationsHandler('monitor', { ...active, RONDO_OPERATIONS_ENABLED: 'false' }, source, callback)(invocation())).json()).toEqual({ state: 'disabled' });
+  expect(ran).toBe(0);
 });

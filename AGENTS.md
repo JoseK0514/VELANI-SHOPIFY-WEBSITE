@@ -14,6 +14,14 @@ live billing, customer-data changes or new spending. See
 `docs/handoffs/2026-11-12-velani-main-consolidation.md` for the completed audit and
 remaining Claude-owned UI/page work.
 
+Jose reaffirmed on November13 that **development is the canonical source for
+main and production**. Finish acceptance on development, then align the release
+to that exact verified source. His stated plan is to replace legacy main from
+development when this work is complete; do not delete or replace main as a
+preparatory step. Preserve the old head in a recovery reference and retain
+provider rollback custody before the approved final alignment. Do not reassemble
+development from the older main or copy old production configuration blindly.
+
 ## Git author attribution for Vercel
 
 For Jose-authorized changes made on his behalf in this repository, use his

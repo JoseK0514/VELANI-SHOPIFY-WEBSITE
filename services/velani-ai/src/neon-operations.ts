@@ -13,6 +13,27 @@ type Role = 'monitor' | 'retention';
 type Env = Readonly<Record<string, string | undefined>>;
 const answer = (state: string, status: number) => Response.json({ state }, { status, headers: { 'cache-control': 'no-store' } });
 
+/** Operator-only, finite fault injection. Schedules keep running, but no work or
+ * completion heartbeat is produced during the pause. Expiry restores ordinary
+ * execution without a control-plane credential or a live supervising process. */
+function drillPaused(role: Role, scope: string, env: Env): boolean {
+  const values = ['RONDO_DRILL_PAUSE_FROM','RONDO_DRILL_PAUSE_UNTIL','RONDO_DRILL_ENVIRONMENT',
+    'RONDO_DRILL_ROLE','RONDO_DRILL_APPROVAL_ID'].map(key => env[key]);
+  if (values.every(value => value === undefined)) return false;
+  const [from, until, environment, selectedRole, approval] = values;
+  const absolute = (value: string | undefined) => {
+    if (!value || !/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{3}Z$/.test(value)) throw Error('invalid_drill_window');
+    const timestamp = Date.parse(value);
+    if (!Number.isFinite(timestamp) || new Date(timestamp).toISOString() !== value) throw Error('invalid_drill_window');
+    return timestamp;
+  };
+  const start = absolute(from), end = absolute(until), now = Date.now();
+  if (environment !== scope || selectedRole !== role || !approval
+    || !/^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$/.test(approval)
+    || end <= start || end - start > 30 * 60 * 60_000 || !Number.isFinite(now)) throw Error('invalid_drill_window');
+  return start <= now && now < end;
+}
+
 export function developmentOperationsDsn(role: Role, env: Env): string {
   const raw = env.RONDO_OPERATIONS_DATABASE_URL;
   try {
@@ -70,6 +91,10 @@ export function createNeonOperationsHandler(role: Role, env: Env, expectedSource
         || !['true','false'].includes(env.RONDO_OPERATIONS_ENABLED ?? '')
         || !Object.entries(INERT_PROVIDER_ENV).every(([key,value]) => env[key] === value)) return answer('not_ready',503);
       if (env.RONDO_OPERATIONS_ENABLED === 'false') return answer('disabled',200);
+      if (drillPaused(role, target.scope, env)) {
+        console.info(JSON.stringify({ event: 'rondo_' + target.scope + '_operations', role, state: 'drill_paused' }));
+        return answer('drill_paused',200);
+      }
       const result = await run();
       const ok = ['ok','completed','busy'].includes(result.state) && !['uncertain','capped'].includes(result.notice ?? '');
       console.info(JSON.stringify({ event: 'rondo_' + target.scope + '_operations', role, state: ok ? result.state : 'attention', notice: result.notice ?? 'none' }));
