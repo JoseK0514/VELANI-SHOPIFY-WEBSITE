@@ -14,6 +14,20 @@ live billing, customer-data changes or new spending. See
 `docs/handoffs/2026-11-12-velani-main-consolidation.md` for the completed audit and
 remaining Claude-owned UI/page work.
 
+## Git author attribution for Vercel
+
+For Jose-authorized changes made on his behalf in this repository, use his
+GitHub-mapped commit identity:
+`Jose Karlo Natal Muniz <319002654+JoseK0514@users.noreply.github.com>`.
+Configure it with repository-local
+`user.name`/`user.email`; keep `user.useConfigOnly=true`. Before committing, check
+both `git var GIT_AUTHOR_IDENT` and `git var GIT_COMMITTER_IDENT`. Do not override
+this identity with a generic agent address or an inferred Mac-local email.
+Other contributors must use their own GitHub-mapped identities and authorized
+Vercel access. Do not rewrite published history to repair attribution. See
+`docs/handoffs/2026-11-13-vercel-commit-author-mapping.md` for evidence, verification
+and the separation from application/CI failures.
+
 ## Website controls
 
 The user selected the second displayed mockup and authorized this build. docs/reference/approved-homepage.png is the exact target. Preserve its navy/white identity and the confirmed company facts.
