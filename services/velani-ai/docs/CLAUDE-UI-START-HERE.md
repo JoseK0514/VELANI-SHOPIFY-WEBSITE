@@ -4,6 +4,12 @@ Updated November 12, 2026 for SCRUM-153. Read [source and checkout](START-HERE-C
 and the [current integration receipt](../../../docs/handoffs/2026-11-12-scrum153-rondo-backend-integration.md)
 first. Backend source is integrated into development; Claude owns UI.
 
+## Current development acceptance entry
+
+Use the [November13 closeout](../../../docs/handoffs/2026-11-13-velani-rondo-development-closeout.md) and the [protected development instructions](START-HERE-CLAUDE.md#november13-development-operating-entry). They supersede dated source/deployment selections below without changing these HTTP contracts.
+
+Missing client-hub rendered same-logical-request retry and0003 Inbox proof are now captured; preserve accepted EN/ES delivery and provider replay evidence rather than sending more mail. Two bounded UI findings remain yours: holdFor in public/assets/velani-hub.js caps Retry-After86400 to3600 (server quota still applies), and final success focus was not established in Shopify preview. Fix only the confirmed delay behavior with its boundary case and investigate focus in the real selected theme; no redesign or publication is requested.
+
 ## Starting implementation
 
 Reuse `src/night/assist.js`, `src/night/velani-assistant.js` and existing markup,

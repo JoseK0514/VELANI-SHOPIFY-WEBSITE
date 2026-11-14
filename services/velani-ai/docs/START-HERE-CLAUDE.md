@@ -3,6 +3,16 @@
 Updated November 12, 2026 for SCRUM-153. The public website assistant is in
 `JoseK0514/VELANI-SHOPIFY-WEBSITE`, under `services/velani-ai`.
 
+## November13 development operating entry
+
+Read the [current Chat2 closeout](../../../docs/handoffs/2026-11-13-velani-rondo-development-closeout.md) before the older SCRUM-153 receipts below. Chat2 alone integrates website/Rondo/client-hub backend; Claude owns UI. Chat1 owns NEVORA/Stripe and Chat3 owns admin. Development remains canonical; main/public/Shopify activation needs its separate approval.
+
+The existing [protected development service](https://velani-rondo-development-git-de-3f1ea3-josekarlo-5933s-projects.vercel.app) now has qualified source3bc34ec installed in Preview deployment3LmsZeQBVk9ctbTKSe2n1EMQoz9X. Its following documentation-only source is qualified/deployed by the same closeout owner; exact final SHA/run/deployment receipts are in VELANI-RONDO-CLOSEOUT.md beside the three-chat ownership map linked from that handoff. Do not use the historical reviewed SHA below as today's freeze.
+
+Use normal Vercel sign-in and the same-origin hosted guide/API. SSOALL, exact allowed Origin and existing development verification settings remain in force. An anonymous302 is protection, not a health check. The credential-omitting Shopify client cannot use this protected cross-origin API directly; preserve its existing contract and use explicit local fixtures until joined runtime selection is approved. No automation bypass or production credential is needed.
+
+Chat/plans share the existing immutable686083cd-535e-422d-b027-9293601fe98c authorization: gpt-6-astra only, USD10 ceiling, ending December1 at00:00 Puerto Rico. Latest observed reserved amount was USD2.67015 at Nov13 23:50PR; recheck the live counter before inference. This is conservative reservation headroom, not provider invoice spend or a second allowance. Client-hub new mail is disabled here; the operational email envelope does not authorize form mail. Existing saved-request/EN/ES receipts are reused. Native completion/retention drill and independent monitoring continue on their original finite schedules; their future cleanup/recovery is not passed yet.
+
 ## Source and checkout
 
 Start ordinary new work from freshly fetched **development**. The source reviewed
