@@ -1,0 +1,336 @@
+{
+  "runtimeSource": "b794ed1ae9e79f4075e3c9a29cd8146c21fc3442",
+  "recordedAt": "2026-11-14 03:36:54 UTC",
+  "knowledge": [
+    {
+      "target": "velani_rondo_development",
+      "published": 16,
+      "sourceContentHashesMatch": true,
+      "records": [
+        {
+          "id": "nevora-availability-en",
+          "locale": "en",
+          "contentHash": "75942ec3a0ba93f0974de82ec533316bb4dd383d08a751304de3d1e1bfcd5d1c",
+          "reviewedAt": "2026-11-12T00:00:00.000Z",
+          "validUntil": "2026-12-12T23:59:59.999Z"
+        },
+        {
+          "id": "nevora-availability-es",
+          "locale": "es",
+          "contentHash": "de8e90cfc05e15ae2affb9c75e857cfd4c33608eee3c62ccd4b14d315c482d7e",
+          "reviewedAt": "2026-11-12T00:00:00.000Z",
+          "validUntil": "2026-12-12T23:59:59.999Z"
+        },
+        {
+          "id": "nevora-overview-en",
+          "locale": "en",
+          "contentHash": "aae3742465a1b57fa5a1da299eb5d948b8c5adcef191352d6191029945aff468",
+          "reviewedAt": "2026-11-12T00:00:00.000Z",
+          "validUntil": "2026-12-12T23:59:59.999Z"
+        },
+        {
+          "id": "nevora-overview-es",
+          "locale": "es",
+          "contentHash": "e4c10340de70fb653f3f0c45cbb943adcec6e28b9c26976a52cd390493a39d5e",
+          "reviewedAt": "2026-11-12T00:00:00.000Z",
+          "validUntil": "2026-12-12T23:59:59.999Z"
+        },
+        {
+          "id": "nevora-payroll-en",
+          "locale": "en",
+          "contentHash": "21cba76793bb38151632f47693029ccf8dc67bb942cf657dfa003a8fa6042765",
+          "reviewedAt": "2026-11-12T00:00:00.000Z",
+          "validUntil": "2026-12-12T23:59:59.999Z"
+        },
+        {
+          "id": "nevora-payroll-es",
+          "locale": "es",
+          "contentHash": "204051131b2ebb40541097feb1a049568f182d4cd5d8616466e494fd20ba0311",
+          "reviewedAt": "2026-11-12T00:00:00.000Z",
+          "validUntil": "2026-12-12T23:59:59.999Z"
+        },
+        {
+          "id": "nevora-rondo-en",
+          "locale": "en",
+          "contentHash": "0ff2eac5b41989c8c7735a04618d6af608651463ac8ec1417ff93b6016ba5851",
+          "reviewedAt": "2026-11-12T00:00:00.000Z",
+          "validUntil": "2026-12-12T23:59:59.999Z"
+        },
+        {
+          "id": "nevora-rondo-es",
+          "locale": "es",
+          "contentHash": "e926ca485064fa979814cd2b1000b53abc5ef9bc127bdceeba67dfb59f36e093",
+          "reviewedAt": "2026-11-12T00:00:00.000Z",
+          "validUntil": "2026-12-12T23:59:59.999Z"
+        },
+        {
+          "id": "nevora-support-en",
+          "locale": "en",
+          "contentHash": "cfb557ad1b2743625f90c1b1e851dc5a22dcf29a1caa38a8d13166f1b557f466",
+          "reviewedAt": "2026-11-12T00:00:00.000Z",
+          "validUntil": "2026-12-12T23:59:59.999Z"
+        },
+        {
+          "id": "nevora-support-es",
+          "locale": "es",
+          "contentHash": "64a33921f7f8bb3267a0b3d53e74f2419ed96a17804b854a4ba737572e7ca84c",
+          "reviewedAt": "2026-11-12T00:00:00.000Z",
+          "validUntil": "2026-12-12T23:59:59.999Z"
+        },
+        {
+          "id": "nevora-time-clock-en",
+          "locale": "en",
+          "contentHash": "53c6b6cf9503107ea4473a315b873c1993ca48ce9e1914ae3b043f8d51a401eb",
+          "reviewedAt": "2026-11-12T00:00:00.000Z",
+          "validUntil": "2026-12-12T23:59:59.999Z"
+        },
+        {
+          "id": "nevora-time-clock-es",
+          "locale": "es",
+          "contentHash": "552be9b4e42974c7499ec30e6e4974ed269ffa85e2f4a4fa1ed1e3ea89d8d82b",
+          "reviewedAt": "2026-11-12T00:00:00.000Z",
+          "validUntil": "2026-12-12T23:59:59.999Z"
+        },
+        {
+          "id": "velani-enquiries-en",
+          "locale": "en",
+          "contentHash": "f49b73006a553534b38096249f5a8eb160cfb6da6d984819b7ee99130d1c013d",
+          "reviewedAt": "2026-11-12T00:00:00.000Z",
+          "validUntil": "2026-12-12T23:59:59.999Z"
+        },
+        {
+          "id": "velani-enquiries-es",
+          "locale": "es",
+          "contentHash": "5b01f4d216b48d2531b335eacbe04229a7e8e9c3058bb58a248fc8a97c3e4db5",
+          "reviewedAt": "2026-11-12T00:00:00.000Z",
+          "validUntil": "2026-12-12T23:59:59.999Z"
+        },
+        {
+          "id": "velani-relay-en",
+          "locale": "en",
+          "contentHash": "d3a677ea1ac57f316d74d5d0ac00dd1b8fd37b3389a29cfd14004ff6fedc1a2b",
+          "reviewedAt": "2026-11-12T00:00:00.000Z",
+          "validUntil": "2026-12-12T23:59:59.999Z"
+        },
+        {
+          "id": "velani-relay-es",
+          "locale": "es",
+          "contentHash": "ef443527e9ba5869382b9a13a2bd2a2b78d4bd0afa81e14cc12f49233d32de2b",
+          "reviewedAt": "2026-11-12T00:00:00.000Z",
+          "validUntil": "2026-12-12T23:59:59.999Z"
+        }
+      ]
+    },
+    {
+      "target": "velani_ai",
+      "published": 16,
+      "sourceContentHashesMatch": true,
+      "records": [
+        {
+          "id": "nevora-availability-en",
+          "locale": "en",
+          "contentHash": "75942ec3a0ba93f0974de82ec533316bb4dd383d08a751304de3d1e1bfcd5d1c",
+          "reviewedAt": "2026-11-12T00:00:00.000Z",
+          "validUntil": "2026-12-12T23:59:59.999Z"
+        },
+        {
+          "id": "nevora-availability-es",
+          "locale": "es",
+          "contentHash": "de8e90cfc05e15ae2affb9c75e857cfd4c33608eee3c62ccd4b14d315c482d7e",
+          "reviewedAt": "2026-11-12T00:00:00.000Z",
+          "validUntil": "2026-12-12T23:59:59.999Z"
+        },
+        {
+          "id": "nevora-overview-en",
+          "locale": "en",
+          "contentHash": "aae3742465a1b57fa5a1da299eb5d948b8c5adcef191352d6191029945aff468",
+          "reviewedAt": "2026-11-12T00:00:00.000Z",
+          "validUntil": "2026-12-12T23:59:59.999Z"
+        },
+        {
+          "id": "nevora-overview-es",
+          "locale": "es",
+          "contentHash": "e4c10340de70fb653f3f0c45cbb943adcec6e28b9c26976a52cd390493a39d5e",
+          "reviewedAt": "2026-11-12T00:00:00.000Z",
+          "validUntil": "2026-12-12T23:59:59.999Z"
+        },
+        {
+          "id": "nevora-payroll-en",
+          "locale": "en",
+          "contentHash": "21cba76793bb38151632f47693029ccf8dc67bb942cf657dfa003a8fa6042765",
+          "reviewedAt": "2026-11-12T00:00:00.000Z",
+          "validUntil": "2026-12-12T23:59:59.999Z"
+        },
+        {
+          "id": "nevora-payroll-es",
+          "locale": "es",
+          "contentHash": "204051131b2ebb40541097feb1a049568f182d4cd5d8616466e494fd20ba0311",
+          "reviewedAt": "2026-11-12T00:00:00.000Z",
+          "validUntil": "2026-12-12T23:59:59.999Z"
+        },
+        {
+          "id": "nevora-rondo-en",
+          "locale": "en",
+          "contentHash": "0ff2eac5b41989c8c7735a04618d6af608651463ac8ec1417ff93b6016ba5851",
+          "reviewedAt": "2026-11-12T00:00:00.000Z",
+          "validUntil": "2026-12-12T23:59:59.999Z"
+        },
+        {
+          "id": "nevora-rondo-es",
+          "locale": "es",
+          "contentHash": "e926ca485064fa979814cd2b1000b53abc5ef9bc127bdceeba67dfb59f36e093",
+          "reviewedAt": "2026-11-12T00:00:00.000Z",
+          "validUntil": "2026-12-12T23:59:59.999Z"
+        },
+        {
+          "id": "nevora-support-en",
+          "locale": "en",
+          "contentHash": "cfb557ad1b2743625f90c1b1e851dc5a22dcf29a1caa38a8d13166f1b557f466",
+          "reviewedAt": "2026-11-12T00:00:00.000Z",
+          "validUntil": "2026-12-12T23:59:59.999Z"
+        },
+        {
+          "id": "nevora-support-es",
+          "locale": "es",
+          "contentHash": "64a33921f7f8bb3267a0b3d53e74f2419ed96a17804b854a4ba737572e7ca84c",
+          "reviewedAt": "2026-11-12T00:00:00.000Z",
+          "validUntil": "2026-12-12T23:59:59.999Z"
+        },
+        {
+          "id": "nevora-time-clock-en",
+          "locale": "en",
+          "contentHash": "53c6b6cf9503107ea4473a315b873c1993ca48ce9e1914ae3b043f8d51a401eb",
+          "reviewedAt": "2026-11-12T00:00:00.000Z",
+          "validUntil": "2026-12-12T23:59:59.999Z"
+        },
+        {
+          "id": "nevora-time-clock-es",
+          "locale": "es",
+          "contentHash": "552be9b4e42974c7499ec30e6e4974ed269ffa85e2f4a4fa1ed1e3ea89d8d82b",
+          "reviewedAt": "2026-11-12T00:00:00.000Z",
+          "validUntil": "2026-12-12T23:59:59.999Z"
+        },
+        {
+          "id": "velani-enquiries-en",
+          "locale": "en",
+          "contentHash": "f49b73006a553534b38096249f5a8eb160cfb6da6d984819b7ee99130d1c013d",
+          "reviewedAt": "2026-11-12T00:00:00.000Z",
+          "validUntil": "2026-12-12T23:59:59.999Z"
+        },
+        {
+          "id": "velani-enquiries-es",
+          "locale": "es",
+          "contentHash": "5b01f4d216b48d2531b335eacbe04229a7e8e9c3058bb58a248fc8a97c3e4db5",
+          "reviewedAt": "2026-11-12T00:00:00.000Z",
+          "validUntil": "2026-12-12T23:59:59.999Z"
+        },
+        {
+          "id": "velani-relay-en",
+          "locale": "en",
+          "contentHash": "d3a677ea1ac57f316d74d5d0ac00dd1b8fd37b3389a29cfd14004ff6fedc1a2b",
+          "reviewedAt": "2026-11-12T00:00:00.000Z",
+          "validUntil": "2026-12-12T23:59:59.999Z"
+        },
+        {
+          "id": "velani-relay-es",
+          "locale": "es",
+          "contentHash": "ef443527e9ba5869382b9a13a2bd2a2b78d4bd0afa81e14cc12f49233d32de2b",
+          "reviewedAt": "2026-11-12T00:00:00.000Z",
+          "validUntil": "2026-12-12T23:59:59.999Z"
+        }
+      ]
+    }
+  ],
+  "sourceMigrations": [
+    {
+      "name": "001_initial.sql",
+      "checksum": "83a5e33df8dfe9e3b3a2e3be1751d202fe9c72a38367c16135ef68b948eccede"
+    },
+    {
+      "name": "002_experience.sql",
+      "checksum": "94fff8846854375f1d1ad03aacb7dec8e15e5ad30ce1b85d948e959efcfb9999"
+    },
+    {
+      "name": "003_plan_brief.sql",
+      "checksum": "1809a05c817432ee5bc931844db63d5b2c6eb89c37ad103a744606ac95af7d22"
+    },
+    {
+      "name": "004_client_hub.sql",
+      "checksum": "7d733ace5cd677a7358acbe30a77d5b707622a27f429d7fffaa1c21fa23519d4"
+    },
+    {
+      "name": "005_retention_heartbeat.sql",
+      "checksum": "0b85153e20cd99d935b319350ad9d902d74ae12fe07be3a71af6c1db9bb8233e"
+    },
+    {
+      "name": "006_ai_budget.sql",
+      "checksum": "40171ab2fe2b5f6b80f6dc09658b4a6c22bf05a8e457c9bd6d7709dc1ad8e82f"
+    },
+    {
+      "name": "007_operations_views.sql",
+      "checksum": "ecb7b6c6022d03fe7371a5d7e12880a798d489d099c92a02e63eb2a67943f231"
+    },
+    {
+      "name": "008_monitor_journal.sql",
+      "checksum": "1c927ca289f8289945bf5f2d0ddf6c25a13abbef41f897832b73a4059baa0727"
+    },
+    {
+      "name": "009_watchdog_status.sql",
+      "checksum": "6beffbe703dffa3c65a855b835a4aad83cca66dc24fd3cc7eafaa836b3d3d1b2"
+    },
+    {
+      "name": "010_monitor_environment_scope.sql",
+      "checksum": "1f65c663baea0794b77ee8858234a38670c06750e3ed9e5c5904c45345df985a"
+    }
+  ],
+  "publicApplied": [
+    {
+      "name": "001_initial.sql",
+      "checksum": "83a5e33df8dfe9e3b3a2e3be1751d202fe9c72a38367c16135ef68b948eccede"
+    },
+    {
+      "name": "002_experience.sql",
+      "checksum": "94fff8846854375f1d1ad03aacb7dec8e15e5ad30ce1b85d948e959efcfb9999"
+    },
+    {
+      "name": "003_plan_brief.sql",
+      "checksum": "1809a05c817432ee5bc931844db63d5b2c6eb89c37ad103a744606ac95af7d22"
+    },
+    {
+      "name": "004_client_hub.sql",
+      "checksum": "7d733ace5cd677a7358acbe30a77d5b707622a27f429d7fffaa1c21fa23519d4"
+    },
+    {
+      "name": "005_retention_heartbeat.sql",
+      "checksum": "0b85153e20cd99d935b319350ad9d902d74ae12fe07be3a71af6c1db9bb8233e"
+    }
+  ],
+  "publicMissing": [
+    {
+      "name": "006_ai_budget.sql",
+      "checksum": "40171ab2fe2b5f6b80f6dc09658b4a6c22bf05a8e457c9bd6d7709dc1ad8e82f"
+    },
+    {
+      "name": "007_operations_views.sql",
+      "checksum": "ecb7b6c6022d03fe7371a5d7e12880a798d489d099c92a02e63eb2a67943f231"
+    },
+    {
+      "name": "008_monitor_journal.sql",
+      "checksum": "1c927ca289f8289945bf5f2d0ddf6c25a13abbef41f897832b73a4059baa0727"
+    },
+    {
+      "name": "009_watchdog_status.sql",
+      "checksum": "6beffbe703dffa3c65a855b835a4aad83cca66dc24fd3cc7eafaa836b3d3d1b2"
+    },
+    {
+      "name": "010_monitor_environment_scope.sql",
+      "checksum": "1f65c663baea0794b77ee8858234a38670c06750e3ed9e5c5904c45345df985a"
+    }
+  ],
+  "publicChangesPerformed": false,
+  "budgetPolicy": "686083cd-535e-422d-b027-9293601fe98c",
+  "reservationMicrousd": 2670150,
+  "limitMicrousd": 10000000,
+  "model": "gpt-6-astra",
+  "modelCallsThisPass": 0
+}

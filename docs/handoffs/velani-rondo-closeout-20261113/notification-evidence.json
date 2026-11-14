@@ -1,0 +1,43 @@
+{
+  "observedAt": "2026-11-14T03:03:31.971724+00:00",
+  "mailbox": "Existing approved business mailbox; account identity retained privately in local receipt.",
+  "hubInbox": {
+    "search": "in:inbox after:2026/11/13 \"VEL-2611-0003\"",
+    "matches": [
+      {
+        "subject": "Request received \u00b7 VEL-2611-0003",
+        "timePR": "Nov13 13:48"
+      },
+      {
+        "subject": "VEL-2611-0003 \u00b7 Project support",
+        "timePR": "Nov13 13:48"
+      }
+    ],
+    "placement": "Inbox",
+    "messageBodiesNotExported": true
+  },
+  "rondoOutage": {
+    "renderFirstAttention": "2026-11-13T23:08:54.942336522Z",
+    "persistentRoutinePolicy": "8e759da9-083e-4a7d-a55b-5bb9154ad8ed",
+    "persistentUsed": 1,
+    "persistentCap": 20,
+    "persistentNoticeId": "af1ff9a0-099d-4cd5-9e5c-97af859485e4",
+    "persistentNoticeStatus": "submitted",
+    "persistentSource": "5232ea04e8ba4776bf60ec0c318327004c33f4ec",
+    "resendId": "01a1d72b-cd86-75b9-a217-13af4feda6b3",
+    "resendStatus": "delivered",
+    "healthchecksEvent": "up\u2192down; Sent an email to support@thevelani.com, Nov13 19:08PR; continuous failure pings through22:54PR",
+    "inboxSubjects": [
+      "DOWN | velani-rondo-development-watchdog",
+      "[Development] Rondo operations: attention required"
+    ],
+    "inboxTimePR": "Nov13 19:08",
+    "mailboxPlacement": "Inbox",
+    "historicalConversations": "Each outage thread contains an older same-subject alert too; current19:08 entries match this drill. Historical10:25/11:10 recovery messages are not drill recovery."
+  },
+  "limits": [
+    "No new mail was sent by this readback.",
+    "Current rendered retry/retention cleanup/recovery remain unperformed or unmatured.",
+    "Browser readback and sanitized Render Web Shell; shell exited. No ping secret exported."
+  ]
+}

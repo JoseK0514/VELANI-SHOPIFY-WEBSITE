@@ -1,0 +1,59 @@
+{
+  "observedAt": "2026-11-14T03:19:49.927730+00:00",
+  "themeId": 193374224698,
+  "themeRole": "unpublished",
+  "reference": "VEL-2611-0003",
+  "method": "Page-local diagnostic reinitialized the already hosted form module and its real transport on a cloned form; seeded only the UUID factory with the retained saved key. No hosted theme files/settings changed.",
+  "guard": {
+    "onlySavedKeyAndLogicalBody": true,
+    "maximumHttpPosts": 2,
+    "otherAiPostsBlocked": true,
+    "captcha": "Normal real Turnstile; Jose explicitly authorized first checkbox click; retry check succeeded automatically."
+  },
+  "before": "Existing saved synthetic request, two submitted outbox jobs with attempts1, no ambiguity.",
+  "firstReplay": {
+    "actualStatus": 200,
+    "sameSavedKey": true,
+    "sameLogicalFields": true,
+    "confirmationEmail": "submitted",
+    "responseIntentionallyLost": true,
+    "renderedUnknownMessage": true,
+    "renderedTryAgainButton": true
+  },
+  "renderedRetry": {
+    "actualStatus": 200,
+    "sameSavedKey": true,
+    "sameLogicalFields": true,
+    "confirmationEmail": "submitted",
+    "reference": "VEL-2611-0003",
+    "successPanelVisible": true,
+    "title": "Request received \u00b7 Velani"
+  },
+  "transportReport": {
+    "attempts": 2,
+    "uuidCalls": 1,
+    "blocked": 0,
+    "complete": true
+  },
+  "afterPersistence": {
+    "matchingRequests": 1,
+    "jobs": 2,
+    "eachAttempts": 1,
+    "providerIdsUnchanged": true,
+    "submissionUncertain": false
+  },
+  "restoration": {
+    "reloadedOnlyOwnedSupportTab": true,
+    "previewMode": "Preview. This form checks your draft and sends nothing.",
+    "hookRemovedByReload": true,
+    "hostedSettingsNeverChanged": true,
+    "noNewRequestOrEmail": true
+  },
+  "limits": [
+    "Historical201\u2192200 remains separate existing proof; this new rendered check was saved200\u2192lost response\u2192rendered200.",
+    "English rendered replay only. Existing real EN/ES success/inbox proof reused; language is part of fingerprint and was not changed.",
+    "Final activeElement read was PBarNextFrame: Shopify preview bar, so final success-focus acceptance is not claimed.",
+    "One Claude-owned UI defect found: one-hour client wait cap conflicts with backend24-hour Retry-After; no UI change by Chat2.",
+    "Raw key/body/challenge excluded from this receipt; original private receipt retained separately."
+  ]
+}
