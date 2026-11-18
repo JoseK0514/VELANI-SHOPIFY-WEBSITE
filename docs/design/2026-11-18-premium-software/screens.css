@@ -265,3 +265,13 @@
 
 .py-scene .hrs{transition:opacity .35s}
 .py-scene .hrs.pend{opacity:.35}
+
+/* ---------- employee schedule + requests ---------- */
+.wkstrip{display:grid;grid-template-columns:repeat(7,1fr);gap:6px;margin-top:18px;text-align:center;font-size:11.5px;font-weight:600;color:rgba(255,255,255,.7)}
+.wkstrip span{border-radius:14px;padding:8px 0;background:rgba(255,255,255,.08)}
+.wkstrip b{display:block;font-size:17px;color:#fff;margin-top:2px}
+.wkstrip .has{background:rgba(255,255,255,.18);box-shadow:inset 0 0 0 1px rgba(255,255,255,.22)}
+.wkstrip .has::after{content:"";display:block;width:5px;height:5px;border-radius:50%;background:#6FE0CF;margin:5px auto 0}
+.dt{width:44px;text-align:center;font-size:11.5px;font-weight:600;color:#6A7176;flex:none}
+.dt b{display:block;font-size:19px;color:#111517;letter-spacing:-.02em}
+.ch .a .i{width:18px;height:18px}

@@ -37,7 +37,7 @@ Version 1 (dark ink chapters, dense dashboards) was rejected as generic and gloo
 | Route (EN / ES) | Plan |
 |---|---|
 | `/` · `/pages/es` | Rebuild as in the mockup: hero with Owner Home, product index, the week, statement, Rondo, bilingual, Relay, plans |
-| `/pages/nevora` · `/pages/es-nevora` | The deep story: the week scene in full (schedule, Clocker with the PIN demo, timecards, pay), Rondo, plans. Reuse the existing working Clocker demo, restyled to Direction B |
+| `/pages/nevora` · `/pages/es-nevora` | **Mocked up** (`velani-nevora.html`): local section nav, a hero that zooms into the Owner's screen, a highlights carousel, then working demos for publishing the schedule, the PIN time clock (same rules as today's demo: any PIN clocks in, 0000 is refused, a second PIN clocks out), approving timecards, the pay statement in English and Spanish, and Rondo answering picked questions; the team's app, plans, questions and a closing call to action |
 | `/pages/products` · `/pages/es-productos` | Becomes the product index plus a short status note per product |
 | `/pages/plans` · `/pages/es-planes` | Keep content, restyle: price at display size, conditions as a plain list |
 | Relay | New section on Products and Home; waitlist goes through the existing contact `?interest=relay` path (preview delivery stays off) |
