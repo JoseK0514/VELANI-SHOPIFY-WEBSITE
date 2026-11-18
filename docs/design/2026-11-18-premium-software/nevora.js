@@ -37,8 +37,7 @@
     var S=Math.max(innerWidth*1.04/sw,ph*1.04/sh);
     var t=ease(clamp(p/.72));
     dev.style.setProperty('--zs',(1+(S-1)*t).toFixed(4));
-    var b=clamp((p-.15)/.5),c1=[251,251,253],c2=[6,64,60];
-    pin.style.setProperty('--zbg','rgb('+c1.map(function(v,i){return Math.round(v+(c2[i]-v)*b)}).join(',')+')');
+    pin.style.setProperty('--zbg','rgba(6,64,60,'+clamp((p-.15)/.5).toFixed(3)+')');
     call.classList.toggle('show',p>.8);
   }
 
@@ -177,8 +176,29 @@
   })});
   showAns(0);
 
+  /* ---------------- one sky for the whole page ---------------- */
+  var SK={dawn:[[217,211,230],[242,210,196],[251,237,228],[255,196,150,.6],80],morning:[[188,216,242],[220,235,247],[247,250,253],[255,238,206,.5],46],
+    noon:[[207,230,248],[238,246,252],[255,255,255],[255,255,236,.5],12],golden:[[242,207,158],[249,227,196],[255,246,234],[255,186,110,.55],58],
+    night:[[7,12,28],[13,21,48],[24,33,63],[90,120,200,.18],30],white:[[251,251,253],[251,251,253],[251,251,253],[255,255,255,0],50]};
+  var atmo=$('#atmo'),skies=$$('[data-sky]');
+  function mixc(a,b,t){return a.map(function(v,i){return i===3?+(v+(b[i]-v)*t).toFixed(3):Math.round(v+(b[i]-v)*t)})}
+  function skyTick(){
+    var mid=innerHeight/2,a=null,b=null;
+    skies.forEach(function(s){var r=s.getBoundingClientRect(),c=r.top+Math.min(r.height,innerHeight*1.4)/2;if(c<=mid)a={c:c,k:s.dataset.sky};else if(!b)b={c:c,k:s.dataset.sky}});
+    var A=SK[(a||b).k],B=SK[(b||a).k],t=a&&b?clamp((mid-a.c)/(b.c-a.c)):0;t=t*t*(3-2*t);
+    var s=atmo.style;
+    s.setProperty('--sa','rgb('+mixc(A[0],B[0],t).join(',')+')');
+    s.setProperty('--sb','rgb('+mixc(A[1],B[1],t).join(',')+')');
+    s.setProperty('--sc','rgb('+mixc(A[2],B[2],t).join(',')+')');
+    s.setProperty('--gl','rgba('+mixc(A[3],B[3],t).join(',')+')');
+    s.setProperty('--gy',(A[4]+(B[4]-A[4])*t).toFixed(1)+'%');
+  }
+  /* ---------------- content settles in ---------------- */
+  var rvs=$$('[data-rv]');
+  function rvTick(){rvs.forEach(function(el){var v=rm()?1:ease(clamp((innerHeight*.98-el.getBoundingClientRect().top)/(innerHeight*.34)));el.style.setProperty('--rv',v.toFixed(3))})}
+
   /* ---------------- loop ---------------- */
-  function tick(){heroTick();navTick();fanTick()}
+  function tick(){heroTick();navTick();fanTick();skyTick();rvTick()}
   var raf=0;addEventListener('scroll',function(){if(!raf)raf=requestAnimationFrame(function(){raf=0;tick()})},{passive:true});
   addEventListener('resize',function(){fit();tick();hlState()});
   live();setInterval(live,15000);fit();tick();hlState();
