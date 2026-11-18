@@ -20,6 +20,17 @@ CHECK = '<svg viewBox="0 0 256 256" aria-hidden="true"><path fill="currentColor"
 STRIP = ''.join(f'<span>{d}</span>' for d in range(10)) + '<span></span>'
 PH = os.path.join(REPO, 'node_modules/@phosphor-icons/core/assets/bold')
 
+def make_grain():
+    """A 128px tile of faint noise that hides banding in large gradients."""
+    import io, random, base64
+    from PIL import Image
+    random.seed(7)
+    im = Image.new('RGBA', (128, 128))
+    im.putdata([(v, v, v, 9) for v in (random.choice((0, 255)) for _ in range(128 * 128))])
+    b = io.BytesIO(); im.save(b, 'PNG', optimize=True)
+    return base64.b64encode(b.getvalue()).decode()
+GRAIN = make_grain()
+
 def block(start, end):
     a = HOME.index(start); b = HOME.index(end, a)
     return HOME[a:b]
@@ -50,6 +61,7 @@ def render(t, extra=None):
     t = re.sub(r'\{\{I:([a-z-]+)\}\}', lambda m: f'<svg class="i" aria-hidden="true"><use href="#i-{m.group(1)}"/></svg>', t)
     t = t.replace('<header class="gn"', sprite + '\n<header class="gn"', 1)
     rep = {
+      '{{GRAIN}}': 'data:image/png;base64,' + GRAIN,
       '{{VELANI}}': svg.replace('<svg ', '<svg class="wm" role="img" aria-label="Velani" ', 1),
       '{{CHEV}}': CHEV, '{{CHECK}}': CHECK, '{{STRIP}}': STRIP,
       '{{NV_WHITE}}': 'data:image/png;base64,' + open(os.path.join(B64, 'nv-white.b64')).read(),

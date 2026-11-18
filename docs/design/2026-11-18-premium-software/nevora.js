@@ -30,15 +30,18 @@
   /* ---------------- hero: zoom into the screen ---------------- */
   var zh=$('#zh'),pin=$('#zh-pin'),dev=$('#zh-dev'),call=$('#zh-call');
   function heroTick(){
-    if(rm()){dev.style.removeProperty('--zs');pin.style.removeProperty('--zbg');call.classList.remove('show');return}
+    if(rm()){dev.style.removeProperty('--zs');dev.style.removeProperty('--zy');dev.style.opacity='';pin.style.removeProperty('--zbg');call.classList.remove('show');return}
     var r=zh.getBoundingClientRect(),ph=pin.offsetHeight,tot=r.height-ph;
     var p=clamp((52-r.top)/tot);
     var w=dev.offsetWidth,sw=w*1280/1500,sh=w*800/1500;
     var S=Math.max(innerWidth*1.04/sw,ph*1.04/sh);
-    var t=ease(clamp(p/.72));
+    var t=ease(clamp(p/.72)),out=clamp((p-.9)/.1);
+    var pad=parseFloat(getComputedStyle(pin).paddingTop)||0,dy=(ph/2-(pad+dev.offsetHeight*.475))*t;
     dev.style.setProperty('--zs',(1+(S-1)*t).toFixed(4));
-    pin.style.setProperty('--zbg','rgba(6,64,60,'+clamp((p-.15)/.5).toFixed(3)+')');
-    call.classList.toggle('show',p>.8);
+    dev.style.setProperty('--zy',dy.toFixed(1));
+    dev.style.opacity=(1-out).toFixed(3);
+    pin.style.setProperty('--zbg','rgba(6,64,60,'+(clamp((p-.15)/.5)*(1-out)).toFixed(3)+')');
+    call.classList.toggle('show',p>.78&&p<.92);
   }
 
   /* ---------------- local nav: section spy + dark ---------------- */
@@ -49,7 +52,7 @@
     links.forEach(function(a,i){a.classList.toggle('on',i===cur);if(i===cur)a.setAttribute('aria-current','true');else a.removeAttribute('aria-current')});
     var dark=false;
     $$('[data-dark]').forEach(function(el){var r=el.getBoundingClientRect();if(r.top<=y&&r.bottom>y)dark=true});
-    var pr=pin.getBoundingClientRect();if(!rm()&&pr.top<=y&&pr.bottom>y&&+(dev.style.getPropertyValue('--zs')||1)>1.6)dark=true;
+    var pr=pin.getBoundingClientRect();if(!rm()&&pr.top<=y&&pr.bottom>y&&+(dev.style.getPropertyValue('--zs')||1)>1.6&&+(dev.style.opacity||1)>.5)dark=true;
     ln.classList.toggle('dark',dark);
   }
 
