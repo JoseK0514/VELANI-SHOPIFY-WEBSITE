@@ -77,6 +77,7 @@ Events, each tagged with `lang`: `cta_click {cta, location}`, `product_view`, `t
 - The lock-screen notification uses NEVORA's real "Horario publicado" (schedule published) notification. The hero tablet's clock shows the viewer's real time.
 - Rondo's chat is a scripted sample in English and Spanish. The Approve button changes nothing.
 - Relay's kitchen screen is a concept and says so on the screen.
-- The **Tweaks** button (bottom right) shows design notes, switches to DM Sans and previews reduced motion.
+- Version 3 adds: real Phosphor bold icons in every NEVORA screen; a hero sky that follows the visitor's time of day (dawn, day, golden hour, night) with matching greetings; a continuous clock that runs minute by minute between moments; window light that crosses the room; scenes that play with scroll (the notification arrives, the PIN fills and the check draws, Rondo's answer types in, punches land in order, pay resolves person by person); device labels saying whose screen it is; a trial button where the day ends; a Spanish Rondo screen in the product tiles so no screen repeats; and a hero sized so the MacBook shows in the first view.
+- The **Tweaks** button (bottom right) shows design notes, switches to DM Sans, previews reduced motion and lets you pick the hero sky.
 - Source: `home.template.html` (page), `screens.html` and `screens.css` (NEVORA screens), `build.py` (assembles `velani-premium-home.html`).
 - The UI/UX Pro Max search database isn't installed in this environment, so its built-in rule tables were used instead of database queries.

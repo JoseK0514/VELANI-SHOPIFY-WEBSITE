@@ -208,3 +208,60 @@
 .inv b{color:#fff;font-size:15px;margin-right:6px}
 .inv span{height:34px;padding:0 14px;border-radius:17px;background:#2A2116;color:#F2C477;display:inline-flex;align-items:center;font-weight:600}
 .kfoot{font-size:14px;color:#6F7780;display:flex;justify-content:space-between}
+
+/* ---------- v3: real Phosphor bold icons ---------- */
+.nv .i,.lock .i{width:18px;height:18px;flex:none;display:block}
+.snav span .i{width:18px;height:18px;opacity:.9}
+.srch .i{width:15px;height:15px;margin-right:8px;opacity:.85}
+.dh .bt .i{width:16px;height:16px;margin-right:6px}
+.ic .i{width:17px;height:17px}
+.sg .nm .av .i{width:14px;height:14px}
+.ckb .loc{display:inline-flex;align-items:center;gap:6px}
+.ckb .loc .i{width:15px;height:15px}
+.keys .lt .i{width:26px;height:26px}
+.tabs span::before{content:none}
+.tabs span .i{width:22px;height:22px}
+.tabs span.on .i{color:#0B6E69}
+.ptop .bk i .i{width:15px;height:15px}
+.rbar i .i{width:18px;height:18px;color:#fff}
+.rbar i::before{content:none}
+.lbtn{display:grid;place-items:center;color:#fff}
+.lbtn .i{width:24px;height:24px}
+
+/* ---------- v3: scenes that play (driven by scroll in the day) ---------- */
+.lk-n{opacity:var(--n0,1);transform:translateY(calc((1 - var(--n0,1)) * -46px)) scale(calc(.94 + .06 * var(--n0,1)))}
+
+.ck-scene .ckr{position:relative}
+.ck-scene .ckc{transition:opacity .45s cubic-bezier(.22,1,.36,1),transform .6s cubic-bezier(.22,1,.36,1)}
+.ck-scene .donec{position:absolute;opacity:0;transform:scale(.94)}
+.ck-scene[data-ck="5"] .pinc{opacity:0;transform:scale(.96)}
+.ck-scene[data-ck="5"] .donec{opacity:1;transform:none}
+.pin i{transition:background .2s,box-shadow .2s}
+.ck-scene[data-ck="1"] .pin i:nth-child(-n+1),.ck-scene[data-ck="2"] .pin i:nth-child(-n+2),.ck-scene[data-ck="3"] .pin i:nth-child(-n+3),.ck-scene[data-ck="4"] .pin i:nth-child(-n+4){background:#0B6E69;box-shadow:none}
+.ck-scene[data-ck="4"] .cont{background:#0B6E69;color:#fff}
+.okc path{stroke-dasharray:40;stroke-dashoffset:40;transition:stroke-dashoffset .6s .25s cubic-bezier(.22,1,.36,1)}
+.ck-scene[data-ck="5"] .okc path{stroke-dashoffset:0}
+.ck:not(.ck-scene) .okc path{stroke-dashoffset:0}
+
+.ro-scene .ro1,.ro-scene .ro2,.ro-scene .ro3{transition:opacity .5s cubic-bezier(.22,1,.36,1),transform .7s cubic-bezier(.22,1,.36,1)}
+.ro-scene[data-ro="0"] .ro1,.ro-scene[data-ro="0"] .ro2,.ro-scene[data-ro="1"] .ro2{opacity:0;transform:translateY(18px)}
+.ro-scene[data-ro="0"] .ro3,.ro-scene[data-ro="1"] .ro3,.ro-scene[data-ro="2"] .ro3{opacity:0;transform:translateY(14px)}
+.ro-scene[data-ro="2"] .pp.ro3,.ro-scene[data-ro="1"] .pp.ro3,.ro-scene[data-ro="0"] .pp.ro3{display:block}
+.rbar .typed{display:none;color:#111517}
+.rbar .hint{display:block}
+.ro-scene[data-ro="0"] .rbar .typed{display:block}
+.ro-scene[data-ro="0"] .rbar .hint{display:none}
+.ro-scene[data-ro="0"] .rbar .typed::after{content:"";display:inline-block;width:1.5px;height:17px;background:#0B6E69;margin-left:2px;vertical-align:-3px;animation:caret 1s steps(1) infinite}
+@keyframes caret{50%{opacity:0}}
+[data-words] .wd{transition:opacity .25s}
+[data-words] .wd.off{opacity:.12}
+
+.tm-scene .tr{transition:opacity .45s cubic-bezier(.22,1,.36,1),transform .6s cubic-bezier(.22,1,.36,1),background .5s}
+.tm-scene .tr.off{opacity:0;transform:translateX(24px)}
+.tm-scene .late-row{background:#FFFBF4}
+.tm-scene .late-row.off{background:#fff}
+.tm-scene .late-row .cp{transition:transform .5s cubic-bezier(.34,1.56,.64,1)}
+.tm-scene .late-row.off .cp{transform:scale(0)}
+
+.py-scene .hrs{transition:opacity .35s}
+.py-scene .hrs.pend{opacity:.35}

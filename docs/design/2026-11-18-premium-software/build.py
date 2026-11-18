@@ -15,6 +15,16 @@ for k, v in parts.items():
     t = t.replace('{{' + k + '}}', v.strip())
 t = t.replace('{{SCREEN_CSS}}', css)
 t = re.sub(r'\{\{SB:([0-9:]+)\}\}', sb, t)
+ICONS = sorted(set(re.findall(r'\{\{I:([a-z-]+)\}\}', t)))
+PH = os.path.join(REPO, 'node_modules/@phosphor-icons/core/assets/bold')
+syms = []
+for n in ICONS:
+    s = open(os.path.join(PH, n + '-bold.svg')).read()
+    inner = re.search(r'<svg[^>]*>(.*)</svg>', s, re.S).group(1)
+    syms.append(f'<symbol id="i-{n}" viewBox="0 0 256 256">{inner}</symbol>')
+SPRITE = '<svg width="0" height="0" style="position:absolute" aria-hidden="true">' + ''.join(syms) + '</svg>'
+t = re.sub(r'\{\{I:([a-z-]+)\}\}', lambda m: f'<svg class="i" aria-hidden="true"><use href="#i-{m.group(1)}"/></svg>', t)
+t = t.replace('<header class="gn"', SPRITE + '\n<header class="gn"', 1)
 CHEV = '<svg class="chev" viewBox="0 0 10 10" aria-hidden="true"><path d="M3 1l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>'
 CHECK = '<svg viewBox="0 0 256 256" aria-hidden="true"><path fill="currentColor" d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"/></svg>'
 STRIP = ''.join(f'<span>{d}</span>' for d in range(10)) + '<span></span>'
