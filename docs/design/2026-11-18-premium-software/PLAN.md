@@ -14,18 +14,23 @@ November 18, 2026. Planning and mockup only. No theme was uploaded, published or
 | Websites, booking apps, online stores and business tools are sold as services | Gone from the header, home, products page and footer |
 | Abstract teal light-swirl images and a large empty wordmark band | The product is the picture: real NEVORA screens, built in HTML |
 | Product cards in a three-up grid | A typographic product index: three names, three statuses |
-| Same fade-in on every block | One scroll device per chapter: settle-in hero, pinned week, word-lit statement, staged Rondo chat, sideways Relay rail |
-| NEVORA shown in the older app look | NEVORA shown in Direction B (Inter, teal band, glass figures, 22px white cards, ink payday tile) |
+| Same fade-in on every block | One scroll moment per chapter: a sunrise hero, a pinned day with a rolling clock and changing sky, a word-lit statement, a staged Rondo chat, Apple-style product tiles |
+| Mostly dark pages | Mostly light pages; night appears only where the story reaches it |
+| NEVORA shown in the older app look | NEVORA shown in Direction B (Inter, teal band, glass figures, 22px white cards, ink payday tile) on MacBook, iPad and iPhone frames |
 
-What stays: the Velani wordmark, DM Sans, the night ink `#05090E`, published prices ($19 up to 15 employees, $29 for 16 to 30), "Request a free trial", the EN/ES pairs, the legal and NEVORA policy pages, the preview inquiry safeguards and the commerce publication guard.
+What stays: the Velani wordmark, published prices ($19 up to 15 employees, $29 for 16 to 30), "Request a free trial", the EN/ES pairs, the legal and NEVORA policy pages, the preview inquiry safeguards and the commerce publication guard.
 
-## 2. Design system
+## 2. Design system (version 2, "Open to close")
 
-- **Chapters alternate** between Velani ink `#05090E`, NEVORA canvas `#F2F5F4`, white, and the Direction B ink tile `#0C1918` (Rondo only). No site-level gradients, glows or stock imagery; the only gradients on the page are inside real NEVORA UI.
-- **Type**: DM Sans for the site (display 48–112px, tracking −0.045em, weight 600). Inter appears only inside product screens because NEVORA uses it.
-- **Accent**: NEVORA teal `#0B6E69` on light chapters, mint `#6FE0CF` and sky `#BBD8FF` on dark ones. Amber and green appear only as product status.
-- **Status words** are fixed: NEVORA "Available · 30 days free", Rondo "Included in NEVORA", Relay "In design · Waitlist".
-- **Motion**: transform and opacity only, ease `cubic-bezier(.16,1,.3,1)`, nothing over 800ms. Native scroll everywhere; no scroll hijacking, snapping or smooth-scroll library.
+Version 1 (dark ink chapters, dense dashboards) was rejected as generic and gloomy. It is kept as `v1-velani-premium-home.html` for the record.
+
+- **Concept**: the homepage is one Saturday at a café in San Juan. A pinned "day" chapter moves the sky and a rolling clock from 5:45 AM to 10:00 PM as you scroll, with one NEVORA moment per hour: the schedule notification, clock-in, Rondo finding cover, timecards, payroll.
+- **Light first**: page `#FBFBFD`, tiles `#F5F5F7`, ink `#1D1D1F`. Dawn sky in the hero; the day's sky is interpolated between dawn, morning, noon, golden hour, dusk and night. Rondo lives in the night `#0A1024` that the day ends on.
+- **Type**: the system face (SF Pro on Apple devices, Inter elsewhere) for the site, set large and tight; a thin weight for the clock. DM Sans stays available as a tweak if Jose prefers the current brand face. Inter appears inside NEVORA screens because the app uses it.
+- **Product imagery**: real Direction B screens inside crafted MacBook, iPad and iPhone frames; the NEVORA app icon from the iOS project on the lock screen. No stock photos or AI renders.
+- **Accent**: NEVORA teal `#0B6E69` for actions and links; mint `#7FE3D5` on night. Amber and green only as product status.
+- **Status words** are fixed: NEVORA "Available now", Rondo "Included in NEVORA", Relay "In design".
+- **Motion**: transform, opacity and color only; ease `cubic-bezier(.22,1,.36,1)`. Native scroll everywhere; no scroll hijacking, snapping or smooth-scroll library. Reduced motion keeps the moments and colors but drops movement.
 
 ## 3. Pages
 
@@ -68,8 +73,10 @@ Events, each tagged with `lang`: `cta_click {cta, location}`, `product_view`, `t
 
 ## 7. Notes on the mockup
 
-- Every person, place and figure is fictional sample data from the existing site and NEVORA mocks. Pay figures follow the schedule (Alexandra 32:02 × $15.00 = $480.50).
-- Rondo's chat is a scripted sample. The Approve button changes nothing.
-- Relay's screen is a concept and is labelled as one.
-- The **Tweaks** button (bottom right) shows design notes for each section and previews reduced motion.
+- Every person, place and figure is fictional sample data from the existing site and NEVORA mocks. Figures add up: 21 shifts and 168 scheduled hours; 167:44 approved hours × the $15.00 sample rate = $2,516.00; today's punches total 35:47.
+- The lock-screen notification uses NEVORA's real "Horario publicado" (schedule published) notification. The hero tablet's clock shows the viewer's real time.
+- Rondo's chat is a scripted sample in English and Spanish. The Approve button changes nothing.
+- Relay's kitchen screen is a concept and says so on the screen.
+- The **Tweaks** button (bottom right) shows design notes, switches to DM Sans and previews reduced motion.
+- Source: `home.template.html` (page), `screens.html` and `screens.css` (NEVORA screens), `build.py` (assembles `velani-premium-home.html`).
 - The UI/UX Pro Max search database isn't installed in this environment, so its built-in rule tables were used instead of database queries.
