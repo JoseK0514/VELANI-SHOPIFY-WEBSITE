@@ -24,7 +24,7 @@ What stays: the Velani wordmark, published prices ($19 up to 15 employees, $29 f
 
 Version 1 (dark ink chapters, dense dashboards) was rejected as generic and gloomy. It is kept as `v1-velani-premium-home.html` for the record.
 
-- **Concept**: the homepage is one Saturday at a café in San Juan. A pinned "day" chapter moves the sky and a rolling clock from 5:45 AM to 10:00 PM as you scroll, with one NEVORA moment per hour: the schedule notification, clock-in, Rondo finding cover, timecards, payroll.
+- **Concept**: the homepage is one Saturday at a small business (the sample café, Northside Café). A pinned "day" chapter moves the sky and a rolling clock from 5:45 AM to 10:00 PM as you scroll, with one NEVORA moment per hour: the schedule notification, clock-in, Rondo finding cover, timecards, payroll.
 - **Light first**: page `#FBFBFD`, tiles `#F5F5F7`, ink `#1D1D1F`. Dawn sky in the hero; the day's sky is interpolated between dawn, morning, noon, golden hour, dusk and night. Rondo lives in the night `#0A1024` that the day ends on.
 - **Type**: the system face (SF Pro on Apple devices, Inter elsewhere) for the site, set large and tight; a thin weight for the clock. DM Sans stays available as a tweak if Jose prefers the current brand face. Inter appears inside NEVORA screens because the app uses it.
 - **Product imagery**: real Direction B screens inside crafted MacBook, iPad and iPhone frames; the NEVORA app icon from the iOS project on the lock screen. No stock photos or AI renders.
@@ -42,7 +42,7 @@ Version 1 (dark ink chapters, dense dashboards) was rejected as generic and gloo
 | `/pages/plans` · `/pages/es-planes` | Keep content, restyle: price at display size, conditions as a plain list |
 | Relay | New section on Products and Home; waitlist goes through the existing contact `?interest=relay` path (preview delivery stays off) |
 | `/pages/custom-development` · `/pages/es-a-la-medida` | Repurpose in place to a short "Custom work by request" page linked from the footer and Contact only. No deletion and no redirect in this build |
-| `/pages/about` | Velani company page: San Juan, the products, how NEVORA started. No client gallery |
+| `/pages/about` | Velani company page: the products and how NEVORA started. No location callout and no client gallery |
 | Contact, Help, legal, NEVORA policies | Keep; restyle only the shared header and footer |
 
 ## 4. Build phases
