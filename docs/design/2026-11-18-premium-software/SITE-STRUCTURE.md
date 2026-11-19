@@ -39,11 +39,10 @@ Velani (home)                       /                          ES /pages/es
     ├── NEVORA privacy policy       /pages/nevora-privacy
     ├── NEVORA terms of use         /pages/nevora-terms
     ├── Accessibility               /pages/accessibility
-    ├── Security contact            /pages/security
-    └── Software and project terms  /pages/software-project-terms   (decision 2)
+    └── Security contact            /pages/security
 
-Kept out of menus:  /pages/products  (lightweight product index, decision 3)
-Retired:            /pages/custom-development, /pages/es-a-la-medida  (decision 2)
+Kept out of menus:  /pages/products, /pages/es-productos  (light product index, decision 3)
+Removed:            /pages/custom-development, /pages/es-a-la-medida, /pages/software-project-terms  (decision 2)
 ```
 
 ## 3. Header
@@ -88,8 +87,8 @@ Bottom bar: `© 2026 VELANI LLC` · Privacy · Cookies · Website terms · NEVOR
 | 2 | Statement | "Software for small businesses…" | none | Mocked |
 | 3 | The day (5:45 AM to 10:00 PM) | Show NEVORA working, one hour at a time | Free trial at 10:00 PM | Mocked |
 | 4 | Rondo | Ask in plain words, EN/ES | Learn about Rondo → /pages/rondo | Mocked |
-| 5 | **How starting works** (new) | Lower the risk: request → Jose replies in two business days → set up together → pick a plan on day 30 | Request a free trial | To design |
-| 6 | Products | NEVORA, Rondo, Relay tiles | Learn more · Join the waitlist | Mocked |
+| 5 | Products | NEVORA, Rondo, Relay tiles | Learn more · Join the waitlist | Mocked |
+| 6 | How starting works | Lower the risk: request → Jose replies within two business days → set up together → pick a plan on day 30 | Request a free trial · See plans | Mocked |
 | 7 | Plans | $19 / $29, what's included | See plans | Mocked |
 | 8 | En español | Bilingual promise | none | Mocked |
 | 9 | Footer | Section 4 | | Restyle |
@@ -101,15 +100,15 @@ Reserved, only with real material: a signed note from Jose (before Plans) and a 
 | Page | Job | Sections | Light | Status |
 |---|---|---|---|---|
 | **NEVORA** | Let an owner try NEVORA before asking | Zoom hero · highlights · schedule · team · time clock · Rondo · timecards · payroll · plans · questions · closing | full day | Mocked |
-| **Rondo** (new) | Explain the assistant honestly | Hero question that types itself · pick-a-question demo (EN/ES) · "You approve every change" · what it can and can't do · who sees it (Owner only) · questions | noon to night | To design |
-| **Relay** (new) | Collect waitlist sign-ups without promising dates | Kitchen screen concept · three things it will do (orders, kitchen screen, inventory) · "In design" status · waitlist form · questions | golden hour | To design |
+| **Rondo** (new, approved) | Explain the assistant honestly | Hero question that types itself · pick-a-question demo (EN/ES) · "You approve every change" · what it can and can't do · who sees it (Owner only) · questions | noon to night | To design |
+| **Relay** (new, approved) | Collect waitlist sign-ups without promising dates | Kitchen screen concept · three things it will do (orders, kitchen screen, inventory) · "In design" status · waitlist form · questions | golden hour | To design |
 | **Plans** | Decide and start | Two plan cards · everything included · day-30 timeline · more than 30 employees · questions | dawn | Restyle |
 | **About** | Who builds this and why | Velani in one line · why NEVORA exists · how we work with you (setup, support hours, languages) · contact | morning | Rewrite |
 | **Help** | Find an answer or a person | Search-style topic tiles (sign in, PINs, schedule, pay statements, billing, account deletion) · contact · support hours | white | Restyle |
 | **Contact** | One form for trial, Relay waitlist and questions | Topic picker driven by `?interest=` · form · reply promise | white | Restyle, keep form logic and preview safeguards |
 | Sign in, free trial, set up, billing, billing return | Product flows | Same content, new header, footer and type | white | Restyle only |
 | Legal (8 pages) and NEVORA policies (4) | Trust | Same text, readable policy typography, new header and footer | white | Restyle only |
-| Products | Index for old links | Three product tiles | white | Keep light, out of menus (decision 3) |
+| Products | Index for old links | Three product tiles | white | Keep light, out of menus |
 | 404 | Get people back | "This page closed early." · links to Home, NEVORA, Help | night | To design |
 | Cookie banner | Consent | Same choices, new style | | Restyle |
 
@@ -123,17 +122,17 @@ Reserved, only with real material: a signed note from Jose (before Plans) and a 
 | `/pages/about`, `/pages/es-nosotros` | Rewrite (no location, no client gallery) |
 | `/pages/help`, `/pages/es-ayuda` | Restyle |
 | `/pages/contact`, `/pages/es-contacto` | Restyle; add the Relay waitlist topic |
-| `/pages/products`, `/pages/es-productos` | Decision 3 |
-| `/pages/custom-development`, `/pages/es-a-la-medida` | Decision 2 |
+| `/pages/products`, `/pages/es-productos` | Keep as a light index outside the menus (decision 3) |
+| `/pages/custom-development`, `/pages/es-a-la-medida` | Remove (decision 2) |
 | `/pages/sign-in`, `/pages/es-entrar` | Restyle |
 | `/pages/nevora-start`, `/pages/es-prueba` | Restyle |
 | `/pages/nevora-verify`, `/pages/es-configurar` | Restyle |
 | `/pages/nevora-billing`, `/pages/es-facturacion` | Restyle |
 | `/pages/nevora-billing-return`, `/pages/es-pago` | Restyle |
 | `/pages/legal`, `/pages/privacy`, `/pages/cookies`, `/pages/website-terms`, `/pages/accessibility`, `/pages/security` | Restyle |
-| `/pages/software-project-terms` | Decision 2 |
+| `/pages/software-project-terms` | Remove (decision 2) |
 | `/pages/nevora-support`, `/pages/nevora-privacy`, `/pages/nevora-terms`, `/pages/nevora-account-deletion` | Restyle |
-| New: `/pages/rondo`, `/pages/es-rondo`, `/pages/relay`, `/pages/es-relay` | Build; going live needs four new Shopify Page resources (Jose's go-ahead) |
+| New: `/pages/rondo`, `/pages/es-rondo`, `/pages/relay`, `/pages/es-relay` | Build (approved); the four Shopify Page resources are created at publish time with Jose's go-ahead |
 
 ## 8. Where buttons go
 
@@ -156,10 +155,10 @@ Preview inquiry delivery stays disabled; nothing sends until Jose turns it on.
 5. **Legal pages, 404 and cookie banner**, restyled.
 6. **Checks:** `npm test`, build, theme check, browser checks in three engines, reduced motion, no JavaScript, phone widths, links and hreflang. Then the unpublished theme, only with Jose's go-ahead.
 
-## 10. Decisions for Jose
+## 10. Decisions (Jose, November 19)
 
-1. **Rondo status:** "Included in NEVORA" (used in the mockups) or "In development" (current menu)?
-2. **Custom work:** remove the custom development pages and the software and project terms, or keep one quiet "custom work by request" page for existing clients, linked only from Contact?
-3. **Products page:** keep it as a light index outside the menus, or retire it later with a redirect to `/pages/nevora` (needs the live page removed first)?
-4. **Rondo and Relay pages:** approve the two new pages (and their four Shopify Page resources when it's time to publish)?
-5. **"How starting works" section** on the homepage: add it?
+1. **Rondo is included in NEVORA.** Every page uses "Included in NEVORA". The old "In development" label goes away.
+2. **Custom work is removed.** The custom development pages (EN and ES) and the software and project terms leave the site, menus, footer, legal index and every page that links to them. In the theme this is a source change. Deleting the live Shopify Page resources and adding 301 redirects (custom development → Contact, its Spanish pair → Contacto, project terms → Legal) happens only at publish time, with Jose's go-ahead.
+3. **Products page (Claude's recommendation, accepted):** keep it at its URL as a light three-tile index, outside the menus, so old links still work with no store change. Retire it with a redirect to NEVORA in the same publish step as item 2 if traffic shows nobody needs it.
+4. **Rondo and Relay pages are approved,** EN and ES. Their four Shopify Page resources are created only at publish time, with Jose's go-ahead.
+5. **"How starting works" is added (Claude's recommendation, accepted)** between the product tiles and Plans: Today → within two business days → setup day → day 30. It is in the homepage mockup.
