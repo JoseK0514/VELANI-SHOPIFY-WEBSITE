@@ -117,7 +117,7 @@ const SENT_ICON = '<svg class="sent-i" aria-hidden="true" focusable="false" xmln
 const sentPanel = (hidden = false, lang = 'en') => { const t = CONTACT[lang]; return '<div class="sent" id="inquiry-sent" tabindex="-1"' + (hidden ? ' hidden' : '') + '>' + SENT_ICON + '<p class="note" data-sent-preview hidden>' + t.sentPreview + '</p><h2 class="t2 sent-h" data-sent-h>' + t.sentH + '</h2><p class="sent-p" data-sent-p>' + t.sentP + '</p><p class="sent-from">' + t.sentFrom[0] + '<a href="mailto:' + company.email + '">' + company.email + '</a>' + t.sentFrom[1] + '</p><div class="sent-acts"><a class="hb fill" data-sent-next hidden href="' + (lang === 'es' ? '/pages/es-nevora' : '/pages/nevora') + '">' + t.sentNext + icon('arrow-right') + '</a><a class="pill" data-sent-back href="' + (lang === 'es' ? '/pages/es' : '/') + '">' + t.back + '</a></div></div>'; };
 /** Contact on the Day design (Nov 20): four topics instead of custom work; the side follows the topic (the boot script's ask-*
  * classes, kept in step by velani-day-contact.js); the form is Jose's form, with the same live/preview/email safeguards. */
-const DAY_HELP = { en: { client: ['Already a Velani client?', 'Get help with your website or app, or ask for a change to it.'] } };
+const DAY_HELP = { en: { client: ['Already a Velani client?', 'Get help with your website or app, or ask for a change to it.'] }, es: { client: ['¿Ya eres cliente de Velani?', 'Pide ayuda con tu sitio web o tu app, o pide un cambio.'] } };
 const DAY_CONTACT = {
   en: {
     tiles: [['nevora-demo', 'Free trial', 'Up to 30 employees'], ['nevora', 'More than 30', 'Assisted setup'], ['relay', 'Relay waitlist', 'In design'], ['other', 'Something else', 'Any question']],
@@ -131,6 +131,19 @@ const DAY_CONTACT = {
     },
     steps: 'What happens next', prefer: 'Prefer email?', hours: 'Monday to Friday, 8 am to 9 pm ET, in English or Spanish.',
     work: ['Can’t sign in at work?', 'Your account comes from your workplace, not from this website. Help has the answers for your team.', 'Sign-in help'],
+  },
+  es: {
+    tiles: [['nevora-demo', 'Prueba gratis', 'Hasta 30 empleados'], ['nevora', 'Más de 30', 'Configuración asistida'], ['relay', 'Lista de Relay', 'En diseño'], ['other', 'Otra cosa', 'Cualquier pregunta']],
+    topics: {
+      trial: ['Prueba gratis por 30 días', 'Pide tu prueba gratis de NEVORA.', 'Cuéntanos sobre tu equipo. Jose, de Velani, te responde en un plazo de dos días laborables y configura tu lugar de trabajo contigo. Tus 30 días gratis comienzan cuando se crea tu lugar de trabajo en NEVORA, sin tarjeta.',
+        [['Jose te responde', 'En dos días laborables, por correo.'], ['Configuramos tu lugar de trabajo juntos', 'Jose lo configura contigo, en español o en inglés.'], ['Empiezan tus 30 días', 'Cuando se crea tu lugar de trabajo en NEVORA. Sin tarjeta.'], ['Día 30: elige un plan', '$19 o $29 al mes. No se cobra nada hasta que lo elijas.']]],
+      big: ['Más de 30 empleados', 'Configura NEVORA para un equipo grande.', 'Para equipos de más de 30 empleados. Revisamos lo que necesitas y configuramos tu lugar de trabajo contigo. Los equipos que califican reciben los mismos 30 días gratis.',
+        [['Te respondemos', 'En dos días laborables, por correo.'], ['Revisamos lo que necesitas', 'Revisamos tu equipo y te damos una cotización.'], ['30 días gratis', 'Para los equipos que califican, desde el día en que se crea el lugar de trabajo.']]],
+      relay: ['Lista de espera de Relay', 'Únete a la lista de NEVORA Relay.', 'NEVORA Relay está en diseño y aún no tiene fechas. Te escribiremos cuando abra el acceso anticipado.', [['Ya estás en la lista', 'Con el nombre y el correo que nos des.'], ['Abre el acceso anticipado', 'Te escribimos. Aún sin fecha.']]],
+      other: ['Contacto', 'Cuéntanos qué necesitas.', 'Una pregunta sobre NEVORA, Rondo, Relay o Velani. Te respondemos por correo en un plazo de dos días laborables.', []],
+    },
+    steps: 'Lo que sigue', prefer: '¿Prefieres escribir?', hours: 'De lunes a viernes, 8 a. m. a 9 p. m. ET, en español o en inglés.',
+    work: ['¿No puedes entrar en el trabajo?', 'Tu cuenta viene de tu lugar de trabajo, no de este sitio web. La ayuda tiene las respuestas para tu equipo.', 'Ayuda para entrar'],
   },
 };
 function dayContact(page, target, lang = 'en') {
@@ -445,7 +458,7 @@ function renderRawBody(path, target) {
   // A page that has moved to the Day design renders its Day body (src/day/)
   // Plans keeps Jose's billing pieces: the commerce settings template and velani-commerce.js (team-size card, Owner handoff)
   // Help keeps Jose's client request section, folded into one quiet line for existing clients
-  if (page.day === 'help') return dayMain(page.day, lang, target).replace('<!--client-->', () => '<details class="clientd" id="client-d"><summary><span>' + e(DAY_HELP[lang].client[0]) + '<span>' + e(DAY_HELP[lang].client[1]) + '</span></span>' + dayIcon('caret-down') + '</summary>' + clientSection(target, lang) + '</details>');
+  if (page.day === 'help') return dayMain(page.day, lang, target).replace('<!--client-->', () => '<details class="clientd" id="client-d"><summary><span>' + e(DAY_HELP[lang].client[0]) + '<span>' + e(DAY_HELP[lang].client[1]) + '</span></span>' + dayIcon('caret-down') + '</summary>' + localize(clientSection(target, lang), lang) + '</details>');
   if (page.day && page.day !== 'contact') return dayMain(page.day, lang, target) + (page.day === 'plans' ? commerceBlock(target) + '<script type="module" src="' + asset('velani-commerce.js', target) + '"></script>' : '');
   switch (page.kind) {
     case 'home': return homeMain(target, lang);

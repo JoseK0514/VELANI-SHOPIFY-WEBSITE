@@ -42,7 +42,7 @@ export const DAY_CHROME = {
     nav: [['NEVORA', '/pages/nevora', ['nevora']], ['Rondo', '/pages/rondo', ['rondo']], ['Relay', '/pages/relay', ['relay']], ['Planes', '/pages/plans', ['plans']], ['Soporte', '/pages/help', ['help', 'contact', 'nevora-help']]],
     signIn: 'Entrar', trialShort: 'Prueba gratis', trial: 'Pide la prueba gratis',
     footer: 'Pie de página', legal: 'Legal', cookies: 'Opciones de cookies',
-    disc: ['Las pantallas de este sitio vienen de la app NEVORA, con personas y lugares ficticios.', 'NEVORA calcula la paga a partir de las horas aprobadas. No paga a los empleados ni presenta impuestos de nómina. Rondo prepara cambios; el Owner los aprueba. Relay está en diseño y no tiene fecha de lanzamiento.'],
+    disc: ['Las pantallas de este sitio vienen de la app NEVORA, con personas y lugares ficticios.', 'NEVORA calcula la paga a partir de las horas aprobadas. No paga a los empleados ni presenta impuestos de nómina. Rondo prepara cambios; el dueño los aprueba. Relay está en diseño y no tiene fecha de lanzamiento.'],
     cols: [
       ['Productos', [['NEVORA Workforce', '/pages/nevora'], ['Rondo', '/pages/rondo'], ['Relay', '/pages/relay', 'En diseño']]],
       ['Empieza', [['Pide la prueba gratis', '/pages/contact?interest=nevora-demo'], ['Planes', '/pages/plans'], ['Entrar', '/pages/sign-in']]],
@@ -106,8 +106,14 @@ function sprite(html) {
 /** Theme images used by the screens and tiles, with their real sizes (width and height stop the page from shifting). */
 const IMAGES = { NV_INK: ['night-nevora-wm-ink.png', 907, 122], NV_WHITE: ['night-nevora-wm-white.png', 907, 122], ICON: ['day-nevora-icon.png', 120, 120] };
 /** A page body: screens and icons filled in, images from theme assets, real routes kept, Spanish links moved by localize(). */
-function body(name, target) {
-  const html = read(name).replace(/\{\{(SCR_\w+)\}\}/g, (_, k) => { if (!SCREENS[k]) throw new Error('day: no screen ' + k); return SCREENS[k]; })
+/** A Spanish page is its English body with each phrase pair from src/day/es/<page>.json applied (English stays the one source).
+ * Every pair must match, so a change to the English wording stops the build until the Spanish follows it. */
+function spanish(kind) {
+  const pairs = JSON.parse(read('es/' + kind + '.json'));
+  return pairs.reduce((html, [en, es]) => { if (!html.includes(en)) throw new Error('day: Spanish ' + kind + ' phrase no longer in the English body: ' + en.slice(0, 80)); return html.split(en).join(es); }, read(BODIES[kind].en));
+}
+function body(name, target, raw) {
+  const html = (raw ?? read(name)).replace(/\{\{(SCR_\w+)\}\}/g, (_, k) => { if (!SCREENS[k]) throw new Error('day: no screen ' + k); return SCREENS[k]; })
     .replace(/\{\{SB:([0-9:]+)\}\}/g, (_, t) => statusBar(t)).replace(/\{\{STRIP\}\}/g, STRIP)
     .replace(/src="\{\{(NV_INK|NV_WHITE|ICON)\}\}"/g, (_, k) => { const [file, w, h] = IMAGES[k]; return `src="${asset(file, target)}" width="${w}" height="${h}"`; })
     .replace(/\{\{icon:([\w-]+)\}\}/g, (_, n) => dayIcon(n)).replace(/\{\{chev\}\}/g, CHEV)
@@ -121,6 +127,10 @@ const BODIES = { about: { en: 'about.body.html' }, home: { en: 'home.body.html' 
 /** Pages with their own stylesheet and script beside the shared Day ones. */
 export const DAY_PAGE_ASSETS = { home: ['velani-day-devices.css', 'velani-day-home.css', 'velani-day-home.js'], nevora: ['velani-day-devices.css', 'velani-day-nevora.css', 'velani-day-nevora.js'], plans: ['velani-day-plans.css', 'velani-day-plans.js'], contact: ['velani-day-contact.css', 'velani-day-contact.js'], help: ['velani-day-contact.css', 'velani-day-help.css', 'velani-day-help.js'], signin: ['velani-day-help.css', 'velani-day-signin.css', 'velani-day-signin.js'], rondo: ['velani-day-devices.css', 'velani-day-product.css', 'velani-day-rondo.css', 'velani-day-rondo.js'], relay: ['velani-day-devices.css', 'velani-day-product.css', 'velani-day-relay.css', 'velani-day-relay.js'] };
 export function dayMain(kind, lang = 'en', target = 'preview') {
+  if (lang === 'es') {
+    // Links to pages that exist only in English say so (localize() moves the rest to their Spanish pages)
+    return localize(body(null, target, spanish(kind)), 'es').replace(/href="(\/pages\/(?!es\b|es-)[^"#?]*)([^"]*)"(?! hreflang)/g, (m, path) => ES_PATHS[path] ? m : m + ' hreflang="en"');
+  }
   const file = BODIES[kind]?.[lang];
   if (!file) throw new Error('day: no ' + lang + ' body for ' + kind);
   return localize(body(file, target), lang);

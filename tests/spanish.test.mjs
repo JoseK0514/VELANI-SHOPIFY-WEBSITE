@@ -53,15 +53,19 @@ test('Spanish pages link to the Spanish version of a page whenever one exists', 
 test('no English UI is left in the Spanish header, phone menu, footer, cookie dialog or contact form', () => {
   for (const path of ES) {
     const html = renderPage(path).html;
-    const chrome = between(html, '<a class="skip"', '</nav></div>') + between(html, '<footer class="foot">', '</footer>') + between(html, '<dialog class="cookie-dialog"', '</dialog>');
+    // Night: header to the end of its nav and footer.foot; Day: header and phone menu up to <main>, and footer.ft
+    const day = html.includes('<header class="gn"');
+    const chrome = (day ? between(html, '<a class="skip"', '<main') + between(html, '<footer class="ft"', '</footer>') : between(html, '<a class="skip"', '</nav></div>') + between(html, '<footer class="foot">', '</footer>')) + between(html, '<dialog class="cookie-dialog"', '</dialog>');
     const hit = text(chrome).match(DENY);
     assert.equal(hit, null, path + ': ' + (hit && hit[0]));
   }
-  const contact = renderPage('/pages/es-contacto').html;
-  const form = between(contact, '<div class="cform-hero contact-side">', '<div class="client-form">') + between(contact, '<form id="project-inquiry"', '</form>') + between(contact, '<div class="sent"', '</div>');
+  const contact = renderPage('/pages/es-contacto').html, dayContact = contact.includes('<section class="ct"');
+  const side = dayContact ? between(contact, '<section class="ct"', '<div class="ct-card') + between(contact, '<div class="ct-side ct-more">', '</section>') : between(contact, '<div class="cform-hero contact-side">', '<div class="client-form">');
+  const form = side + between(contact, '<form id="project-inquiry"', '</form>') + between(contact, '<div class="sent"', '</div>');
   const hit = text(form).match(DENY);
   assert.equal(hit, null, 'contact form: ' + (hit && hit[0]));
-  assert.match(contact, /<input type="radio" name="topic_choice" value="custom-software"><b>Web o app<\/b>/);
+  if (dayContact) assert.match(contact, /<input type="radio" name="topic_choice" value="nevora-demo"><b>Prueba gratis<\/b><small>Hasta 30 empleados<\/small>/);
+  else assert.match(contact, /<input type="radio" name="topic_choice" value="custom-software"><b>Web o app<\/b>/);
 });
 test('the Spanish contact form sends the same topic values and team size as the English one', () => {
   const values = html => [...between(html, '<fieldset class="kinds topics field-topic">', '</fieldset>').matchAll(/value="([^"]*)"/g)].map(m => m[1]);
@@ -79,6 +83,14 @@ test('the Spanish contact form sends the same topic values and team size as the 
 });
 test('the NEVORA time clock demo starts in Spanish on the Spanish page and offers English', () => {
   const html = renderPage('/pages/es-nevora').html;
+  if (routes['/pages/es-nevora'].day) {
+    // Day time clock: the same English keys (data-t) with Spanish words, and the switch offers English
+    assert.match(html, /<div class="nv ck kio" data-kio lang="es" data-lang="es">/);
+    assert.match(html, /data-t="Enter your PIN">Ingresa tu PIN</);
+    assert.match(html, /<h3 class="kd-t">Entrada registrada<\/h3>/);
+    assert.match(html, /<span lang="en">English<\/span><\/button>/);
+    return;
+  }
   assert.match(html, /<div class="kio" id="kio" lang="es">/);
   assert.match(html, /data-k-t="Enter your PIN">Ingresa tu PIN</);
   assert.match(html, /data-k-t="Clock-in recorded">Entrada registrada</);
@@ -127,9 +139,10 @@ test('the main-theme layout renders Spanish pages in Spanish with es_US metadata
   assert.match(html, /<meta property="og:locale" content="es_US"><meta property="og:locale:alternate" content="en_US">/);
   assert.match(html, /<link rel="canonical" href="https:\/\/www\.thevelani\.com\/pages\/es-nevora">/);
   assert.match(html, /<a class="skip" href="#main">Saltar al contenido<\/a>/);
-  assert.match(html, /<header class="gnav" id="gnav">/);
-  assert.match(html, /<button class="gnav-ddbtn txt" type="button" aria-expanded="false" aria-controls="gnav-dd-nevora" data-cur>NEVORA/);
-  assert.match(html, /<a class="gnav-signin" href="\/pages\/es-entrar">Entrar<\/a>/);
+  // The Spanish NEVORA page is on the Day design: its header marks NEVORA current and signs in on the Spanish page
+  assert.match(html, /<header class="gn" id="gn">/);
+  assert.match(html, /<nav class="gnav" aria-label="Principal"><a href="\/pages\/es-nevora" aria-current="page">NEVORA<\/a>/);
+  assert.match(html, /<a class="signin" href="\/pages\/es-entrar">Entrar<\/a>/);
   assert.match(html, /<a href="\/pages\/nevora" hreflang="en" lang="en" aria-label="English">EN<\/a>/);
   assert.match(html, /<a href="\/pages\/es-nevora" hreflang="es" lang="es" aria-label="Español" aria-current="true">ES<\/a>/);
   assert.match(html, /Opciones de cookies/);
@@ -248,12 +261,12 @@ test('Home below the first screen is three live sections that read the same week
 test('the NEVORA page tells the week in order from the same sample data as Home, and its time clock clocks Alexandra in', async () => {
   // The NEVORA pages share the sample week with the Night home (Home on Day draws its own screens from the same people)
   for (const [path, home] of [['/pages/nevora', NIGHT_HOMES[0]], ['/pages/es-nevora', NIGHT_HOMES[0]]].filter(([p]) => !routes[p].day)) {
-    const html = renderBody(path, { target: 'local' }), h = renderBody(home, { target: 'local' });
+    const html = renderBody(path, { target: 'local' }), h = home ? renderBody(home, { target: 'local' }) : '';
     const order = ['id="top"', 'id="plan"', 'id="clock"', 'id="approve"', 'id="pay"', 'id="rondo"', 'id="begin"', 'id="velani"'].map(k => html.indexOf(k));
     assert.ok(order.every((v, i) => v > -1 && (i === 0 || v > order[i - 1])), path + ' sections in week order');
     const rows = s => [...s.matchAll(/class="day-row" data-state="\w+" data-due="\d+" data-week="\d+" data-sched="\d+" data-sun="\d"/g)].map(m => m[0]).join('|');
-    assert.equal(rows(html), rows(h), 'the same five rows as Home');
-    assert.equal(html.match(/data-now="(\d+)" data-rate="(\d+)"/)[0], h.match(/data-now="(\d+)" data-rate="(\d+)"/)[0]);
+    // Only while a Night home still carries the live piece (the Day homes draw their own screens)
+    if (home) { assert.equal(rows(html), rows(h), 'the same five rows as Home'); assert.equal(html.match(/data-now="(\d+)" data-rate="(\d+)"/)[0], h.match(/data-now="(\d+)" data-rate="(\d+)"/)[0]); }
     for (const b of ['need', 'weekPay', 'weekH', 'h2', 'a2', 'cov', 'f3', 't0', 't4']) assert.match(html, new RegExp('data-b="' + b + '"'), path + ' ' + b);
     assert.match(html, /id="kio-who">Alexandra Rivera/);
     assert.match(html, /id="kio-date">(Saturday, November 7|Sábado, 7 de noviembre)</);

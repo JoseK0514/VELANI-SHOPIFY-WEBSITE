@@ -1,0 +1,234 @@
+[
+[
+">Try NEVORA free for 30 days.<",
+">Prueba NEVORA gratis por 30 días.<"
+],
+[
+"Your whole team gets the complete app, with no card. Then one monthly price for your business: $19 for up to 15 employees, $29 for 16 to 30.",
+"Todo tu equipo usa la app completa, sin tarjeta. Después pagas un solo precio mensual por tu negocio: $19 para hasta 15 empleados y $29 para 16 a 30."
+],
+[
+">Request a free trial<",
+">Pide la prueba gratis<"
+],
+[
+"See your 30 days{{chev}}",
+"Mira tus 30 días{{chev}}"
+],
+[
+"Your 30 free days start when your workplace is provisioned (created in NEVORA). Ask for a trial and we reply within two business days to set it up with you.",
+"Tus 30 días gratis comienzan cuando se crea tu lugar de trabajo en NEVORA. Pide una prueba y te respondemos en un plazo de dos días laborables para configurarlo contigo."
+],
+[
+">How many employees do you have?<",
+">¿Cuántos empleados tienes?<"
+],
+[
+"<small data-unit>employees</small>",
+"<small data-unit>empleados</small>"
+],
+[
+">After 30 days<",
+">Después de 30 días<"
+],
+[
+"<small data-per>a month</small>",
+"<small data-per>al mes</small>"
+],
+[
+">$2.38 per employee<",
+">$2.38 por empleado<"
+],
+[
+">1 to 15 · $19<",
+">1 a 15 · $19<"
+],
+[
+">16 to 30 · $29<",
+">16 a 30 · $29<"
+],
+[
+"aria-label=\"One fewer employee\"",
+"aria-label=\"Un empleado menos\""
+],
+[
+"aria-label=\"One more employee\"",
+"aria-label=\"Un empleado más\""
+],
+[
+"aria-valuetext=\"8 employees, $19 a month\"",
+"aria-valuetext=\"8 empleados, $19 al mes\""
+],
+[
+"Owners aren’t counted. One price for the whole business, billed monthly.",
+"Los dueños no cuentan. Un solo precio para todo el negocio, facturado cada mes."
+],
+[
+"<h2 id=\"two-t\" class=\"sr\">Plans</h2>",
+"<h2 id=\"two-t\" class=\"sr\">Planes</h2>"
+],
+[
+">Up to 15 employees<",
+">Hasta 15 empleados<"
+],
+[
+"<span class=\"yours\">Your plan</span>",
+"<span class=\"yours\">Tu plan</span>"
+],
+[
+"<small>/month</small>",
+"<small>/mes</small>"
+],
+[
+">One price per business.<",
+">Un precio por negocio.<"
+],
+[
+">16 to 30 employees<",
+">De 16 a 30 empleados<"
+],
+[
+"More than 30 employees? <a class=\"inl\" href=\"/pages/contact?interest=nevora\">Write to us for assisted setup</a>. We reply within two business days.",
+"¿Más de 30 empleados? <a class=\"inl\" href=\"/pages/contact?interest=nevora\">Escríbenos para la configuración asistida</a>. Te respondemos en dos días laborables."
+],
+[
+"Already on NEVORA? The business Owner opens billing from NEVORA, in Settings. <a class=\"inl\" href=\"/pages/nevora-billing\">Billing help</a>",
+"¿Ya usas NEVORA? El dueño del negocio abre la facturación desde NEVORA, en Configuración. <a class=\"inl\" href=\"/pages/nevora-billing\">Ayuda con la facturación</a>"
+],
+[
+">Every plan<",
+">Todos los planes<"
+],
+[
+">The whole app, in every plan.<",
+">La app completa, en todos los planes.<"
+],
+[
+"The price depends only on how many employees you have, and owners aren’t counted.",
+"El precio depende solo de cuántos empleados tienes, y los dueños no cuentan."
+],
+[
+"<b>Scheduling</b><span>Publish the week, open shifts, swaps and time off.</span>",
+"<b>Horarios</b><span>Publica la semana, turnos abiertos, cambios de turno y tiempo libre.</span>"
+],
+[
+"<b>Tablet time clock</b><span>A PIN for each person on a shared tablet.</span>",
+"<b>Reloj de tiempo en tableta</b><span>Un PIN para cada persona en una tableta compartida.</span>"
+],
+[
+"<b>Timecards</b><span>Late starts flagged, corrections with a reason, approved by you.</span>",
+"<b>Tarjetas de tiempo</b><span>Llegadas tarde marcadas, correcciones con su razón, aprobadas por ti.</span>"
+],
+[
+"<b>Payroll calculation</b><span>Pay statements from approved hours, ready to export.</span>",
+"<b>Cálculo de nómina</b><span>Comprobantes de nómina con las horas aprobadas, listos para exportar.</span>"
+],
+[
+"<span>The Owner’s assistant, with every change approved.</span>",
+"<span>El asistente del dueño, con cada cambio aprobado.</span>"
+],
+[
+"<b>English and Spanish</b><span>For the Owner and for every person on the team.</span>",
+"<b>Español e inglés</b><span>Para el dueño y para cada persona del equipo.</span>"
+],
+[
+"<b>Your team’s app</b><span>Shifts, requests and pay statements, in any browser.</span>",
+"<b>La app de tu equipo</b><span>Turnos, solicitudes y comprobantes de nómina, en cualquier navegador.</span>"
+],
+[
+"<b>Setup with Jose</b><span>We set up your workplace with you.</span>",
+"<b>Configuración con Jose</b><span>Configuramos tu lugar de trabajo contigo.</span>"
+],
+[
+"<b>Support</b><span>Monday to Friday, 8 am to 9 pm ET.</span>",
+"<b>Soporte</b><span>De lunes a viernes, 8 a. m. a 9 p. m. ET.</span>"
+],
+[
+"<p class=\"eyebrow\">Your 30 days</p>",
+"<p class=\"eyebrow\">Tus 30 días</p>"
+],
+[
+">Thirty days, on a real calendar.<",
+">Treinta días, en un calendario de verdad.<"
+],
+[
+"Your free days start when your workplace is created in NEVORA. If that were today:",
+"Tus días gratis comienzan cuando se crea tu lugar de trabajo en NEVORA. Si fuera hoy:"
+],
+[
+"<small>Day</small>",
+"<small>Día</small>"
+],
+[
+"<p class=\"k\">Day 1</p><h3>Your workplace is ready</h3><p>You invite your team, and each person gets a PIN for the time clock tablet.</p>",
+"<p class=\"k\">Día 1</p><h3>Tu lugar de trabajo está listo</h3><p>Invitas a tu equipo, y cada persona recibe un PIN para la tableta del reloj de tiempo.</p>"
+],
+[
+"<p class=\"k\">First week</p><h3>Publish the schedule</h3><p>Your team sees their shifts, swaps shifts and asks for time off, in English or Spanish.</p>",
+"<p class=\"k\">Primera semana</p><h3>Publica el horario</h3><p>Tu equipo ve sus turnos, cambia turnos y pide tiempo libre, en español o en inglés.</p>"
+],
+[
+"<p class=\"k\">Second week</p><h3>Approve timecards</h3><p>NEVORA calculates payroll from the approved hours and makes a pay statement for each employee.</p>",
+"<p class=\"k\">Segunda semana</p><h3>Aprueba las tarjetas de tiempo</h3><p>NEVORA calcula la nómina con las horas aprobadas y prepara un comprobante de nómina para cada empleado.</p>"
+],
+[
+"<p class=\"k\">Day 30</p><h3>Pick a plan</h3><p>The Owner picks a plan in NEVORA. Nothing is charged until you do.</p>",
+"<p class=\"k\">Día 30</p><h3>Elige un plan</h3><p>El dueño elige un plan en NEVORA. No se cobra nada hasta que lo elijas.</p>"
+],
+[
+"Dates follow your calendar. To start, ask for a trial and Jose replies within two business days.",
+"Las fechas siguen tu calendario. Para empezar, pide una prueba y Jose te responde en dos días laborables."
+],
+[
+"<p class=\"eyebrow\">Day 30</p><h2 id=\"en-t\">Two ways day 30 can go.</h2>",
+"<p class=\"eyebrow\">Día 30</p><h2 id=\"en-t\">Dos maneras de llegar al día 30.</h2>"
+],
+[
+"<p class=\"k\">You pick a plan</p><h3>NEVORA keeps running.</h3><p>Billing starts, monthly, per business. Cancel any time and NEVORA keeps working through the month you paid for.</p>",
+"<p class=\"k\">Eliges un plan</p><h3>NEVORA sigue funcionando.</h3><p>Empieza la facturación, cada mes, por negocio. Cancela cuando quieras y NEVORA sigue funcionando hasta que termine el mes que pagaste.</p>"
+],
+[
+"<p class=\"k\">You don’t</p><h3>NEVORA pauses for your team.</h3><p>The Owner can still open billing and export available payroll records.</p>",
+"<p class=\"k\">No eliges</p><h3>NEVORA se pausa para tu equipo.</h3><p>El dueño todavía puede abrir la facturación y exportar los registros de nómina disponibles.</p>"
+],
+[
+"<h2 id=\"fq-t\">Questions</h2>",
+"<h2 id=\"fq-t\">Preguntas</h2>"
+],
+[
+"Who counts as an employee?{{icon:caret-down}}</summary><p>Every person on your team in NEVORA. Owners aren’t counted.",
+"¿Quién cuenta como empleado?{{icon:caret-down}}</summary><p>Cada persona de tu equipo en NEVORA. Los dueños no cuentan."
+],
+[
+"How am I billed?{{icon:caret-down}}</summary><p>Monthly, per business, in US dollars. One price covers the whole app for everyone on your team.",
+"¿Cómo se factura?{{icon:caret-down}}</summary><p>Cada mes, por negocio, en dólares estadounidenses. Un solo precio cubre la app completa para todo tu equipo."
+],
+[
+"Can the prices change?{{icon:caret-down}}</summary><p>Prices are in US dollars and may change before online billing opens.",
+"¿Pueden cambiar los precios?{{icon:caret-down}}</summary><p>Los precios están en dólares estadounidenses y pueden cambiar antes de que abra la facturación en línea."
+],
+[
+"Can I cancel?{{icon:caret-down}}</summary><p>Yes, any time. NEVORA keeps working through the month you paid for.",
+"¿Puedo cancelar?{{icon:caret-down}}</summary><p>Sí, cuando quieras. NEVORA sigue funcionando hasta que termine el mes que pagaste."
+],
+[
+"What if I have more than 30 employees?{{icon:caret-down}}</summary><p>Write to us for assisted setup. We review what you need and give you a quote; teams we approve get the same 30 days free.",
+"¿Y si tengo más de 30 empleados?{{icon:caret-down}}</summary><p>Escríbenos para la configuración asistida. Revisamos lo que necesitas y te damos una cotización; los equipos que aprobamos reciben los mismos 30 días gratis."
+],
+[
+"Does NEVORA pay my employees or file payroll taxes?{{icon:caret-down}}</summary><p>No. NEVORA calculates pay statements from the hours you approve. It does not pay employees or file payroll taxes.",
+"¿NEVORA les paga a mis empleados o presenta los impuestos de nómina?{{icon:caret-down}}</summary><p>No. NEVORA calcula los comprobantes de nómina con las horas que apruebas. No les paga a los empleados ni presenta impuestos de nómina."
+],
+[
+">Start your 30 days.<",
+">Empieza tus 30 días.<"
+],
+[
+"Try NEVORA free for 30 days, and Jose from Velani sets it up with you.",
+"Prueba NEVORA gratis por 30 días, y Jose, de Velani, lo configura contigo."
+],
+[
+"See NEVORA{{chev}}",
+"Ver NEVORA{{chev}}"
+]
+]

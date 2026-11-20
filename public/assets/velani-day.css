@@ -35,6 +35,7 @@ a,button,summary,label{-webkit-tap-highlight-color:transparent}
 .pillbtn:not(:disabled):active{scale:.96}
 .more{color:var(--link);font-size:19px;display:inline-flex;align-items:center;min-height:44px}
 .more .dic{width:.6em;height:.6em;margin-left:.3em}
+.dic.chev{display:inline-block;width:.55em;height:.55em;margin-left:.25em;vertical-align:.02em}
 .inl{color:var(--link);text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1px}
 @media (hover:hover){.pillbtn:hover{background:var(--teal-d)}.more:hover{text-decoration:underline}}
 

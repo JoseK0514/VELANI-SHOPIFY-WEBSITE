@@ -228,3 +228,7 @@ test('Relay on Day: in design, no date or price, and the waitlist is the Contact
   assert.doesNotMatch(html, /<form|<input|type="email"|nothing is sent|mockup/i);
   assert.match(html, /Concept screen/);
 });
+
+test('no designer notes from the mockups reach a Day page', () => {
+  for (const path of dayRoutes) assert.doesNotMatch(renderBody(path), /class="dn"|Apple's|Apple’s "|Tweaks/, path);
+});

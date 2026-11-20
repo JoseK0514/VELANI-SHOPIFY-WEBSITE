@@ -3,6 +3,7 @@
   var V=window.VD,$=V.$,$$=V.$$;
 
   /* Search and topic chips filter the same list of answers. */
+  var ES=/^es\b/i.test(document.documentElement.lang),W=ES?{none:'No hay respuestas',one:' respuesta',many:' respuestas',inn:' en ',forr:' para ',copied:'Copiado',selected:'Seleccionado',copy:'Copiar',saidC:'Correo copiado.',saidS:'Correo seleccionado.'}:{none:'No answers',one:' answer',many:' answers',inn:' in ',forr:' for ',copied:'Copied',selected:'Selected',copy:'Copy',saidC:'Email address copied.',saidS:'Email address selected.'};
   var q=$('#q'),chips=$$('.chip-b'),items=$$('#answers-list details'),grps=$$('[data-grp]'),st=$('#ans-st'),empty=$('#empty'),topic='';
   var TOTAL=items.length;
   function norm(s){return s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/[“”"’']/g,'')}
@@ -16,7 +17,7 @@
     grps.forEach(function(g){g.hidden=!$$('details',g).some(function(d){return !d.hidden})});
     empty.hidden=n>0;
     var label=topic?$('.chip-b[data-topic="'+topic+'"]').textContent:'';
-    st.textContent=(n===0?'No answers':n+(n===1?' answer':' answers'))+(label?' in '+label:'')+(q.value.trim()?' for “'+q.value.trim()+'”':'');
+    st.textContent=(n===0?W.none:n+(n===1?W.one:W.many))+(label?W.inn+label:'')+(q.value.trim()?W.forr+'“'+q.value.trim()+'”':'');
     if(n===1&&(words.length||topic))items.filter(function(d){return !d.hidden})[0].open=true;
   }
   q.addEventListener('input',apply);
@@ -26,7 +27,7 @@
     apply();
   })});
   $('#clear').addEventListener('click',function(){q.value='';topic='';chips.forEach(function(x){x.setAttribute('aria-pressed','false')});apply();q.focus()});
-  st.textContent=TOTAL+' answers';
+  st.textContent=TOTAL+W.many;
 
   /* The PIN fills in as its card scrolls into view, then clocks in. */
   var pv=$('#pv'),dots=$$('.pv-d i',pv),ok=$('.pv-ok',pv);
@@ -40,9 +41,9 @@
   /* Copy the support address. */
   var btn=$('#copy'),cs=$('#copy-st'),mail=$('#mail');
   btn.addEventListener('click',function(){
-    function done(t){btn.textContent=t;cs.textContent=t==='Copied'?'Email address copied.':'Email address selected.';setTimeout(function(){btn.textContent='Copy'},1800)}
-    function selectIt(){var r=document.createRange();r.selectNodeContents(mail);var s=getSelection();s.removeAllRanges();s.addRange(r);done('Selected')}
-    try{navigator.clipboard.writeText(mail.textContent).then(function(){done('Copied')},selectIt)}catch(e){selectIt()}
+    function done(t){btn.textContent=t;cs.textContent=t===W.copied?W.saidC:W.saidS;setTimeout(function(){btn.textContent=W.copy},1800)}
+    function selectIt(){var r=document.createRange();r.selectNodeContents(mail);var s=getSelection();s.removeAllRanges();s.addRange(r);done(W.selected)}
+    try{navigator.clipboard.writeText(mail.textContent).then(function(){done(W.copied)},selectIt)}catch(e){selectIt()}
   });
 
   /* Existing clients: a link to #client (or ?interest=client-…) opens the request form */

@@ -37,13 +37,13 @@ const es = (en, fields) => ({ lang: 'es', en, sections: [], ...fields });
 export const ES_ROUTES = {
   ...LEGAL_ES_ROUTES,
   '/pages/es': es('/', {
-    kind: 'home', title: 'Todo tu equipo, en un solo lugar.', eyebrow: 'Velani',
-    name: 'Velani · Software, sitios web y apps a la medida para tu negocio',
-    intro: 'Creamos sitios web, apps de reservas, tiendas en línea y herramientas de negocio, y NEVORA: horarios, registro de tiempo y cálculo de nómina por turnos.',
+    kind: 'home', day: 'home', title: 'De abrir a cerrar.', eyebrow: 'Velani',
+    name: 'Velani · Horarios, registro de tiempo y nómina para pequeños negocios',
+    intro: 'NEVORA planifica la semana, registra cada hora y calcula la paga. Rondo le dice al dueño qué necesita hoy. Gratis por 30 días, sin tarjeta.',
     og: ['velani-social.png', 'Velani. Más luz para tu trabajo.'],
   }),
   '/pages/es-nevora': es('/pages/nevora', {
-    kind: 'nevora', nav: 'nevora', eyebrow: 'NEVORA',
+    kind: 'nevora', day: 'nevora', nav: 'nevora', eyebrow: 'NEVORA',
     title: 'NEVORA · Horarios, registro de tiempo y cálculo de nómina para equipos por turnos',
     name: 'NEVORA · Horarios, registro de tiempo y nómina',
     intro: 'Horarios, registro de tiempo y cálculo de nómina para equipos por turnos: planifica en la web, consulta turnos en el teléfono y marca entrada con un PIN.',
@@ -55,30 +55,30 @@ export const ES_ROUTES = {
     og: ['velani-social.png', 'Velani. Productos de software y desarrollo a la medida.'],
   }),
   '/pages/es-planes': es('/pages/plans', {
-    kind: 'plans', nav: 'plans', eyebrow: 'Planes', name: 'Planes',
+    kind: 'plans', day: 'plans', nav: 'plans', eyebrow: 'Planes', name: 'Planes',
     title: 'Prueba NEVORA gratis por 30 días.',
     intro: 'Prueba NEVORA gratis por 30 días, sin tarjeta. Luego $19 al mes para hasta 15 empleados o $29 al mes para 16 a 30, por negocio.',
     lede: 'Pide tu prueba gratis de NEVORA, sin tarjeta. Luego un precio mensual por negocio.',
     og: ['velani-social-plans.png', 'Planes de NEVORA: gratis por 30 días y luego un precio mensual por negocio'],
   }),
   '/pages/es-contacto': es('/pages/contact', {
-    kind: 'contact', nav: 'contact', eyebrow: 'Contacto', title: 'Cuéntanos qué necesitas.', name: 'Contacto',
-    intro: 'Cuéntanos qué necesita funcionar mejor y quién lo usará. Te respondemos por correo en un plazo de dos días laborables.',
+    kind: 'contact', day: 'contact', nav: 'contact', eyebrow: 'Contacto', title: 'Cuéntanos qué necesitas.', name: 'Contacto',
+    intro: 'Pide una prueba gratis de NEVORA, configuración asistida para más de 30 empleados, la lista de Relay o lo que necesites. Respondemos en dos días laborables.',
     og: ['velani-social.png', 'Velani. Escríbenos sobre tu proyecto o sobre NEVORA.'],
   }),
 };
 
 ES_ROUTES['/pages/es-nosotros'] = es('/pages/about', {
-  nav: 'about', eyebrow: 'Sobre Velani', name: 'Nosotros',
+  nav: 'about', day: 'about', eyebrow: 'Sobre Velani', name: 'Nosotros',
   title: 'Software para pequeños negocios.',
-  intro: 'Empezamos Velani en 2026 para crear software para pequeños negocios: alcance y precio fijo por escrito antes del trabajo pagado, entregas por hitos que pruebas funcionando, y todo en inglés y en español.',
-  desc: 'Velani, de VELANI LLC, hace NEVORA para horarios, registro de tiempo y cálculo de nómina, y diseña y crea sitios web y apps para negocios.',
+  intro: 'Velani empezó en 2026. Hacemos NEVORA, Rondo y Relay para equipos que trabajan por turnos, en español y en inglés.',
+  desc: 'Velani, de VELANI LLC, hace NEVORA para horarios, registro de tiempo y cálculo de nómina; Rondo, el asistente del dueño en NEVORA; y Relay, en diseño.',
 });
 ES_ROUTES['/pages/es-ayuda'] = es('/pages/help', {
-  kind: 'faq', nav: 'help', eyebrow: 'Soporte', name: 'Soporte',
-  desc: 'Soporte al cliente de Velani: ayuda con un sitio web o una app que creamos, cómo obtener NEVORA, cómo funciona la prueba gratis y cómo escribirnos.',
-  title: 'Aquí para ayudarte.',
-  intro: 'Soporte al cliente, respuestas sobre nuestro trabajo y ayuda para quienes usan NEVORA.',
+  kind: 'faq', nav: 'help', day: 'help', eyebrow: 'Soporte', name: 'Ayuda',
+  desc: 'Respuestas sobre NEVORA para tu equipo y para dueños: entrar, el PIN, turnos y paga, tu cuenta, la prueba y los planes. Una persona responde en dos días.',
+  title: '¿Cómo te ayudamos?',
+  intro: 'Respuestas sobre NEVORA para tu equipo y para dueños. Una persona responde en dos días laborables.',
   sections: [
     { heading: '¿Cómo consigue mi negocio NEVORA?', text: 'Pide una prueba gratis de 30 días en la página de Planes. El registro en línea todavía no está abierto, así que configuramos tu lugar de trabajo contigo. Después de la prueba, el negocio paga $19 al mes para hasta 15 empleados o $29 al mes para 16 a 30, con la app completa. Los negocios con más de 30 empleados nos escriben primero para una configuración asistida. Los empleados reciben su cuenta de su lugar de trabajo, no de este sitio web.' },
     { heading: '¿Velani desarrolla software a la medida?', text: 'Sí. Describe en la página de contacto la aplicación, el proceso interno o la integración que necesitas.' },
@@ -113,7 +113,7 @@ ES_ROUTES['/pages/es-pago'] = es('/pages/nevora-billing-return', {
   desc: 'Facturación de un lugar de trabajo de NEVORA. El dueño del negocio abre la facturación desde NEVORA, en Configuración.',
 });
 ES_ROUTES['/pages/es-entrar'] = es('/pages/sign-in', {
-  kind: 'signin', nav: 'signin', eyebrow: '', name: 'Cómo entrar a NEVORA',
+  kind: 'signin', nav: 'signin', day: 'signin', eyebrow: '', name: 'Cómo entrar a NEVORA',
   title: 'Cómo entrar a NEVORA.',
   intro: 'Cómo entrar a NEVORA en la dirección de tu lugar de trabajo, qué hacer si olvidaste tu contraseña y para qué sirve tu PIN.',
   desc: 'Cómo entrar a NEVORA: la dirección de tu lugar de trabajo, tu ID de empleado y tu contraseña, y qué hacer si olvidaste tu contraseña o tu PIN.',

@@ -1,0 +1,538 @@
+[
+[
+"<nav aria-label=\"NEVORA sections\"><a href=\"#schedule\">Schedule</a><a href=\"#team\">Your team</a><a href=\"#clock\">Time clock</a><a href=\"#rondo\">Rondo</a><a href=\"#timecards\">Timecards</a><a href=\"#payroll\">Payroll</a><a href=\"#plans\">Plans</a></nav>",
+"<nav aria-label=\"Secciones de NEVORA\"><a href=\"#schedule\">Horario</a><a href=\"#team\">Tu equipo</a><a href=\"#clock\">Reloj de tiempo</a><a href=\"#rondo\">Rondo</a><a href=\"#timecards\">Tarjetas</a><a href=\"#payroll\">Nómina</a><a href=\"#plans\">Planes</a></nav>"
+],
+[
+"<span class=\"l\">Request a free trial</span><span class=\"s\">Free trial</span>",
+"<span class=\"l\">Pide la prueba gratis</span><span class=\"s\">Prueba gratis</span>"
+],
+[
+">Request a free trial<",
+">Pide la prueba gratis<"
+],
+[
+">The whole week, from schedule to pay.<",
+">Toda la semana, del horario a la paga.<"
+],
+[
+"NEVORA plans the shifts, records the hours and calculates the pay. Rondo answers the Owner's questions.",
+"NEVORA planifica los turnos, registra las horas y calcula la paga. Rondo responde las preguntas del dueño."
+],
+[
+"Try the time clock{{chev}}",
+"Prueba el reloj de tiempo{{chev}}"
+],
+[
+"Available now in any browser, in English and Spanish.",
+"Disponible ahora en cualquier navegador, en español y en inglés."
+],
+[
+"aria-label=\"NEVORA Owner Home on a MacBook. Sample data from Northside Café.\"",
+"aria-label=\"Inicio del dueño en NEVORA, en una MacBook. Datos de muestra de Northside Café.\""
+],
+[
+">Who's on the clock right now<",
+">Quién está trabajando ahora<"
+],
+[
+">What needs you, and the action<",
+">Lo que te necesita, y la acción<"
+],
+[
+">Payday, and what's left before it<",
+">El día de pago, y lo que falta<"
+],
+[
+">Get the highlights.<",
+">Lo más importante.<"
+],
+[
+"aria-label=\"Highlights, scroll sideways\"",
+"aria-label=\"Lo más importante, desliza de lado\""
+],
+[
+"<h3>Publish the week once.</h3>",
+"<h3>Publica la semana una vez.</h3>"
+],
+[
+"<span>Week of Nov 9 – 15</span><span class=\"cp te\">Published</span>",
+"<span>Semana del 9 al 15 de nov.</span><span class=\"cp te\">Publicado</span>"
+],
+[
+">4 shifts · notified<",
+">4 turnos · notificado<"
+],
+[
+"<h3>Clock in with a PIN.</h3>",
+"<h3>Marca entrada con un PIN.</h3>"
+],
+[
+">Enter your PIN</div>",
+">Ingresa tu PIN</div>"
+],
+[
+"Clock-in recorded · 7:58 AM",
+"Entrada registrada · 7:58 a. m."
+],
+[
+"<h3>Late starts stand out.</h3>",
+"<h3>Las llegadas tarde se notan.</h3>"
+],
+[
+"<span class=\"cp am\">Late</span>",
+"<span class=\"cp am\">Tarde</span>"
+],
+[
+"In 7:52 · due 7:30",
+"Entró 7:52 · debía 7:30"
+],
+[
+"<h3>Pay, calculated from approved hours.</h3>",
+"<h3>La paga, calculada con las horas aprobadas.</h3>"
+],
+[
+"Alexandra Rivera · 32:02 h × $15.00 sample rate",
+"Alexandra Rivera · 32:02 h × $15.00 tarifa de ejemplo"
+],
+[
+"<h3>Rondo, for the Owner.</h3>",
+"<h3>Rondo, para el dueño.</h3>"
+],
+[
+">Who can cover Sunday?<",
+">¿Quién puede cubrir el domingo?<"
+],
+[
+">Dana Kim is off Sunday and at 32 hours. Prepared: add Dana, 12:00 to 8:00.<",
+">Dana Kim está libre el domingo y lleva 32 horas. Preparado: añadir a Dana, 12:00 a 8:00.<"
+],
+[
+">Approve</div>",
+">Aprobar</div>"
+],
+[
+"<h3>Every screen in two languages.</h3>",
+"<h3>Cada pantalla en dos idiomas.</h3>"
+],
+[
+"<div><b>Schedule</b><span lang=\"es\">Horario</span></div><div><b>Clock in</b><span lang=\"es\">Marcar entrada</span></div><div><b>Timecards</b><span lang=\"es\">Tarjetas de tiempo</span></div><div><b>Pay statement</b><span lang=\"es\">Comprobante de nómina</span></div><div><b>Time off</b><span lang=\"es\">Tiempo libre</span></div>",
+"<div><b>Horario</b><span lang=\"en\">Schedule</span></div><div><b>Marcar entrada</b><span lang=\"en\">Clock in</span></div><div><b>Tarjetas de tiempo</b><span lang=\"en\">Timecards</span></div><div><b>Comprobante de nómina</b><span lang=\"en\">Pay statement</span></div><div><b>Tiempo libre</b><span lang=\"en\">Time off</span></div>"
+],
+[
+"aria-label=\"Previous highlight\"",
+"aria-label=\"Anterior\""
+],
+[
+"aria-label=\"Next highlight\"",
+"aria-label=\"Siguiente\""
+],
+[
+"<span class=\"tm\">5:45 AM</span>Schedule</p>",
+"<span class=\"tm\">5:45 a. m.</span>Horario</p>"
+],
+[
+">Plan the week. Publish it once.<",
+">Planifica la semana. Publícala una vez.<"
+],
+[
+"Carmen publishes before sunrise. Each person sees their own shifts on their phone and can ask for a swap or time off. Try it: publish next week.",
+"Carmen publica antes del amanecer. Cada persona ve sus propios turnos en su teléfono y puede pedir un cambio o tiempo libre. Pruébalo: publica la semana que viene."
+],
+[
+"<h3>Week of Nov 9 – 15 · Main Street</h3>",
+"<h3>Semana del 9 al 15 de nov. · Main Street</h3>"
+],
+[
+"id=\"sd-chip\">Not published<",
+"id=\"sd-chip\">Sin publicar<"
+],
+[
+"id=\"pub\">Publish<",
+"id=\"pub\">Publicar<"
+],
+[
+">Mon<b>",
+">lun<b>"
+],
+[
+">Tue<b>",
+">mar<b>"
+],
+[
+">Wed<b>",
+">mié<b>"
+],
+[
+">Thu<b>",
+">jue<b>"
+],
+[
+">Fri<b>",
+">vie<b>"
+],
+[
+">Sat<b>",
+">sáb<b>"
+],
+[
+">Sun<b>",
+">dom<b>"
+],
+[
+"<span class=\"dhd\">Week</span>",
+"<span class=\"dhd\">Semana</span>"
+],
+[
+"<h3>Templates</h3><p>Start a week from one you already built.</p>",
+"<h3>Plantillas</h3><p>Empieza una semana a partir de una que ya creaste.</p>"
+],
+[
+"<h3>Open shifts</h3><p>Invite people to cover a shift that needs someone.</p>",
+"<h3>Turnos abiertos</h3><p>Invita a personas a cubrir un turno que necesita a alguien.</p>"
+],
+[
+"<h3>Swaps and time off</h3><p>Your team asks from their phone. You approve.</p>",
+"<h3>Cambios y tiempo libre</h3><p>Tu equipo lo pide desde su teléfono. Tú apruebas.</p>"
+],
+[
+"<h3>Coverage</h3><p>See the days that are short before they arrive.</p>",
+"<h3>Cobertura</h3><p>Ve los días con poco personal antes de que lleguen.</p>"
+],
+[
+"<span class=\"tm\">7:41 AM</span>Your team</p>",
+"<span class=\"tm\">7:41 a. m.</span>Tu equipo</p>"
+],
+[
+">Your team has NEVORA too.<",
+">Tu equipo también tiene NEVORA.<"
+],
+[
+"Each person sees their own shifts, asks for a swap or time off and reads their pay statement, in the language they pick.",
+"Cada persona ve sus propios turnos, pide un cambio o tiempo libre y lee su comprobante de nómina, en el idioma que elija."
+],
+[
+"aria-label=\"Three phones: Alexandra's home screen, her schedule and her requests.\"",
+"aria-label=\"Tres teléfonos: la pantalla de inicio de Alexandra, su horario y sus solicitudes.\""
+],
+[
+"<h3>Their shifts</h3><p>The week appears the moment you publish it.</p>",
+"<h3>Sus turnos</h3><p>La semana aparece en cuanto la publicas.</p>"
+],
+[
+"<h3>Their requests</h3><p>Time off and swaps, sent to you to approve.</p>",
+"<h3>Sus solicitudes</h3><p>Tiempo libre y cambios, enviados a ti para aprobar.</p>"
+],
+[
+"<h3>Their pay statements</h3><p>Each person sees only their own.</p>",
+"<h3>Sus comprobantes de nómina</h3><p>Cada persona ve solo los suyos.</p>"
+],
+[
+"<h3>Any browser</h3><p>Available now. The phone app is coming to the App Store and Google Play.</p>",
+"<h3>Cualquier navegador</h3><p>Disponible ahora. La app para teléfonos llegará al App Store y a Google Play.</p>"
+],
+[
+"<span class=\"tm\">7:58 AM</span>Time clock</p>",
+"<span class=\"tm\">7:58 a. m.</span>Reloj de tiempo</p>"
+],
+[
+">Clock in on a tablet, with a PIN.<",
+">Marca entrada en una tableta, con un PIN.<"
+],
+[
+"It's your café's iPad. Type any four digits and tap Continue, and Alexandra clocks in.",
+"Es el iPad de tu café. Escribe cuatro dígitos cualquiera y toca Continuar, y Alexandra marca su entrada."
+],
+[
+"<div class=\"nv ck kio\" data-kio>",
+"<div class=\"nv ck kio\" data-kio lang=\"es\" data-lang=\"es\">"
+],
+[
+"data-t=\"TIME CLOCK\">TIME CLOCK<",
+"data-t=\"TIME CLOCK\">REGISTRO DE TIEMPO<"
+],
+[
+"data-live-date>Saturday, November 7<",
+"data-live-date>sábado, 7 de noviembre<"
+],
+[
+"data-t=\"Enter your PIN\">Enter your PIN<",
+"data-t=\"Enter your PIN\">Ingresa tu PIN<"
+],
+[
+"aria-live=\"polite\">Your PIN is separate from your portal password.<",
+"aria-live=\"polite\">Tu PIN es distinto de tu contraseña del portal.<"
+],
+[
+"data-t=\"Clear\">Clear<",
+"data-t=\"Clear\">Borrar<"
+],
+[
+"aria-label=\"Delete digit\"",
+"aria-label=\"Borrar un dígito\""
+],
+[
+"data-t=\"Continue\">Continue<",
+"data-t=\"Continue\">Continuar<"
+],
+[
+"<span>Español</span></button>",
+"<span lang=\"en\">English</span></button>"
+],
+[
+"<h3 class=\"kd-t\">Clock-in recorded</h3>",
+"<h3 class=\"kd-t\">Entrada registrada</h3>"
+],
+[
+"data-t=\"Done\">Done<",
+"data-t=\"Done\">Listo<"
+],
+[
+"This is a sample. Nothing you type is saved or sent. Type 0000 to see a PIN that isn't recognized, and enter a second PIN to clock out. You can also type on your keyboard.",
+"Esto es una muestra. Nada de lo que escribas se guarda ni se envía. Escribe 0000 para ver un PIN que no se reconoce, y escribe un segundo PIN para marcar salida. También puedes usar tu teclado."
+],
+[
+"<h3>One shared tablet</h3><p>Register a tablet to a location and leave it at the counter.</p>",
+"<h3>Una tableta compartida</h3><p>Registra una tableta en una localidad y déjala en el mostrador.</p>"
+],
+[
+"<h3>A PIN for each person</h3><p>Separate from their portal password.</p>",
+"<h3>Un PIN para cada persona</h3><p>Distinto de su contraseña del portal.</p>"
+],
+[
+"<h3>Time and place</h3><p>Every punch records when and where.</p>",
+"<h3>Hora y lugar</h3><p>Cada marca registra cuándo y dónde.</p>"
+],
+[
+"<h3>English or Spanish</h3><p>One tap switches the tablet's language.</p>",
+"<h3>Español o inglés</h3><p>Un toque cambia el idioma de la tableta.</p>"
+],
+[
+"<span class=\"tm\">12:30 PM</span>Rondo</p>",
+"<span class=\"tm\">12:30 p. m.</span>Rondo</p>"
+],
+[
+">Ask Rondo. Approve what it prepares.<",
+">Pregúntale a Rondo. Aprueba lo que prepara.<"
+],
+[
+"Rondo answers the Owner's questions from your workplace's records and shows where each answer came from. Pick a question.",
+"Rondo responde las preguntas del dueño con los registros de tu lugar de trabajo y muestra de dónde salió cada respuesta. Elige una pregunta."
+],
+[
+"aria-label=\"Questions for Rondo\"",
+"aria-label=\"Preguntas para Rondo\""
+],
+[
+"data-q=\"0\">What needs my attention today?<",
+"data-q=\"0\">¿Qué necesita mi atención hoy?<"
+],
+[
+"data-q=\"1\">Who can cover Sunday, 12 to 8?<",
+"data-q=\"1\">¿Quién puede cubrir el domingo de 12 a 8?<"
+],
+[
+"data-q=\"2\" lang=\"es\">¿Quién llegó tarde esta semana?<",
+"data-q=\"2\" lang=\"en\">Who was late this week?<"
+],
+[
+"Rondo is for the business Owner and is included in NEVORA. NEVORA checks every prepared change again before it applies. Sample answers.",
+"Rondo es para el dueño del negocio y está incluido en NEVORA. NEVORA revisa de nuevo cada cambio preparado antes de aplicarlo. Respuestas de muestra."
+],
+[
+"<span class=\"tm\">4:00 PM</span>Timecards</p>",
+"<span class=\"tm\">4:00 p. m.</span>Tarjetas de tiempo</p>"
+],
+[
+">Approve the hours before payroll.<",
+">Aprueba las horas antes de la nómina.<"
+],
+[
+"Every punch lands on a timecard. NEVORA flags what needs a look, and you approve the week.",
+"Cada entrada y salida llega a su tarjeta de tiempo. NEVORA marca lo que hay que revisar, y tú apruebas la semana."
+],
+[
+"<b>Late starts and missed punches stand out</b><span>So you sort them out this week, not on payday.</span>",
+"<b>Las llegadas tarde y las marcas que faltan se notan</b><span>Así las resuelves esta semana, no el día de pago.</span>"
+],
+[
+"<b>Corrections keep a reason</b><span>Fix a missed punch and note why.</span>",
+"<b>Las correcciones guardan su razón</b><span>Corrige una marca que falta y anota por qué.</span>"
+],
+[
+"Timecards · Nov 2 – 8<span class=\"pl\" id=\"tc-pill\">1 to check</span>",
+"Tarjetas de tiempo · 2 – 8 de nov.<span class=\"pl\" id=\"tc-pill\">1 por revisar</span>"
+],
+[
+"id=\"tc-ok\">Approve week<",
+"id=\"tc-ok\">Aprobar semana<"
+],
+[
+"<div class=\"s\">5 shifts</div>",
+"<div class=\"s\">5 turnos</div>"
+],
+[
+"<div class=\"s\">4 shifts</div>",
+"<div class=\"s\">4 turnos</div>"
+],
+[
+"<small>on schedule</small>",
+"<small>según el horario</small>"
+],
+[
+"<span class=\"cp am\">Late Sat</span>",
+"<span class=\"cp am\">Tarde el sáb.</span>"
+],
+[
+"<small>check</small>",
+"<small>revisar</small>"
+],
+[
+">5 people · ready to approve<",
+">5 personas · listas para aprobar<"
+],
+[
+"<span class=\"tm\">10:00 PM</span>Payroll</p>",
+"<span class=\"tm\">10:00 p. m.</span>Nómina</p>"
+],
+[
+">NEVORA calculates each person's pay.<",
+">NEVORA calcula la paga de cada persona.<"
+],
+[
+"From the hours you approved, with a pay statement for every person on the team.",
+"Con las horas que aprobaste, y un comprobante de nómina para cada persona del equipo."
+],
+[
+"Calculated pay · Nov 2 – 8 · 5 people · sample rate $15.00 an hour",
+"Paga calculada · 2 – 8 de nov. · 5 personas · tarifa de ejemplo de $15.00 la hora"
+],
+[
+"aria-label=\"Pay statement language\"><button type=\"button\" aria-pressed=\"true\" data-l=\"en\">English</button><button type=\"button\" aria-pressed=\"false\" data-l=\"es\">Español</button>",
+"aria-label=\"Idioma del comprobante\"><button type=\"button\" aria-pressed=\"false\" data-l=\"en\" lang=\"en\">English</button><button type=\"button\" aria-pressed=\"true\" data-l=\"es\">Español</button>"
+],
+[
+"data-es=\"Comprobante de nómina\">Pay statement<",
+"data-es=\"Comprobante de nómina\">Comprobante de nómina<"
+],
+[
+"data-es=\"Barista · 2 – 8 de nov.\">Barista · Nov 2 – 8<",
+"data-es=\"Barista · 2 – 8 de nov.\">Barista · 2 – 8 de nov.<"
+],
+[
+"data-es=\"Horas\">Hours<",
+"data-es=\"Horas\">Horas<"
+],
+[
+"data-es=\"Tarifa de ejemplo, por hora\">Sample rate, per hour<",
+"data-es=\"Tarifa de ejemplo, por hora\">Tarifa de ejemplo, por hora<"
+],
+[
+"data-es=\"Pago calculado\">Pay, calculated<",
+"data-es=\"Pago calculado\">Pago calculado<"
+],
+[
+"<div class=\"k\">Payday <span",
+"<div class=\"k\">Día de pago <span"
+],
+[
+"Hours approved",
+"Horas aprobadas"
+],
+[
+">Friday, Nov 13<",
+">viernes, 13 de nov.<"
+],
+[
+">Pay period Nov 2 – 8 · 5 people<",
+">Período de pago 2 – 8 de nov. · 5 personas<"
+],
+[
+"<span>Pay, calculated</span>",
+"<span>Paga calculada</span>"
+],
+[
+"{{I:export}}Export for payroll",
+"{{I:export}}Exportar para la nómina"
+],
+[
+"NEVORA calculates pay. It doesn't pay employees or file payroll taxes.",
+"NEVORA calcula la paga. No les paga a los empleados ni presenta impuestos de nómina."
+],
+[
+">One price for the whole team.<",
+">Un precio para todo el equipo.<"
+],
+[
+"Free for 30 days. No card. Rondo included.",
+"Gratis por 30 días. Sin tarjeta. Rondo incluido."
+],
+[
+">Up to 15 employees<",
+">Hasta 15 empleados<"
+],
+[
+"<small>/month</small>",
+"<small>/mes</small>"
+],
+[
+">One price per business.<",
+">Un precio por negocio.<"
+],
+[
+">16 to 30 employees<",
+">De 16 a 30 empleados<"
+],
+[
+"More than 30 employees? Write to support@thevelani.com. Prices are in US dollars and may change before online billing opens.",
+"¿Más de 30 empleados? Escribe a support@thevelani.com. Los precios están en dólares estadounidenses y pueden cambiar antes de que abra la facturación en línea."
+],
+[
+"<h2 id=\"fq-h\">Questions</h2>",
+"<h2 id=\"fq-h\">Preguntas</h2>"
+],
+[
+"Can my business start using NEVORA now?{{I:caret-down}}</summary><p>Yes. Ask for a free 30-day trial. We reply within two business days and set up your workplace with you. NEVORA is available now in any browser, and the phone app is coming to the App Store and Google Play.",
+"¿Mi negocio puede empezar a usar NEVORA ya?{{I:caret-down}}</summary><p>Sí. Pide una prueba gratis de 30 días. Te respondemos en dos días laborables y configuramos tu lugar de trabajo contigo. NEVORA está disponible ahora en cualquier navegador, y la app para teléfonos llegará al App Store y a Google Play."
+],
+[
+"Does NEVORA pay my employees or file payroll taxes?{{I:caret-down}}</summary><p>No. NEVORA calculates pay from the hours you approve and makes a pay statement for each person. You still pay your team and file payroll taxes.",
+"¿NEVORA les paga a mis empleados o presenta los impuestos de nómina?{{I:caret-down}}</summary><p>No. NEVORA calcula la paga con las horas que apruebas y prepara un comprobante de nómina para cada persona. Tú sigues pagándole a tu equipo y presentando los impuestos de nómina."
+],
+[
+"What happens on day 30?{{I:caret-down}}</summary><p>On day 30, the Owner picks a plan in NEVORA. Nothing is charged until you do. Without a plan, NEVORA pauses for your team.",
+"¿Qué pasa el día 30?{{I:caret-down}}</summary><p>El día 30, el dueño elige un plan en NEVORA. No se cobra nada hasta que lo elijas. Sin plan, NEVORA se pausa para tu equipo."
+],
+[
+"What can Rondo do?{{I:caret-down}}</summary><p>Rondo answers the Owner's questions about today's team, coverage and recorded hours from your workplace's records, and can prepare a coverage change for the Owner to approve. It is for the Owner only.",
+"¿Qué puede hacer Rondo?{{I:caret-down}}</summary><p>Rondo responde las preguntas del dueño sobre el equipo de hoy, la cobertura y las horas registradas con los registros de tu lugar de trabajo, y puede preparar un cambio de cobertura para que el dueño lo apruebe. Es solo para el dueño."
+],
+[
+"Does it work in Spanish?{{I:caret-down}}</summary><p>Yes. Each person picks English or Spanish, and the time clock switches with one tap.",
+"¿Funciona en español?{{I:caret-down}}</summary><p>Sí. Cada persona elige español o inglés, y el reloj de tiempo cambia con un toque."
+],
+[
+"I use NEVORA at work. How do I get an account?{{I:caret-down}}</summary><p>Your workplace gives you your account. Ask your manager, then sign in from the Sign in page.",
+"Uso NEVORA en el trabajo. ¿Cómo obtengo una cuenta?{{I:caret-down}}</summary><p>Tu lugar de trabajo te da tu cuenta. Pregúntale a tu gerente, y luego entra desde la página para entrar."
+],
+[
+">Start with 30 days free.<",
+">Empieza con 30 días gratis.<"
+],
+[
+"Jose from Velani replies within two business days and sets up your workplace with you.",
+"Jose, de Velani, te responde en dos días laborables y configura tu lugar de trabajo contigo."
+],
+[
+"See plans{{chev}}",
+"Ver planes{{chev}}"
+],
+[
+"Coming next: Relay, for orders, the kitchen screen and inventory.",
+"Lo próximo: Relay, para pedidos, la pantalla de cocina y el inventario."
+],
+[
+"Join the waitlist{{chev}}",
+"Únete a la lista de espera{{chev}}"
+]
+]

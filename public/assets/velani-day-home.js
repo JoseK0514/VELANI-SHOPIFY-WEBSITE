@@ -172,7 +172,9 @@
   addEventListener('scroll',function(){requestAnimationFrame(startTick)},{passive:true});startTick();
 
   /* ---------------- Rondo: approve + language ---------------- */
-  var ok=document.getElementById('ok'),okm=document.getElementById('ok-m'),lang='en';
+  var ok=document.getElementById('ok'),okm=document.getElementById('ok-m'),seg0=document.querySelector('.seg [aria-pressed="true"]'),lang=seg0&&seg0.dataset.lang||'en';
+  /* the Spanish page starts the conversation in Spanish */
+  if(convo)convo.setAttribute('lang',lang);
   function okText(){if(ok.getAttribute('aria-pressed')==='true'){ok.textContent=lang==='es'?'Aprobado':'Approved';okm.textContent=lang==='es'?'Dana cubre el domingo, 12:00 a 8:00. Es solo una muestra.':'Dana is on Sunday, 12:00 to 8:00. Sample only.'}}
   ok.addEventListener('click',function(){ok.setAttribute('aria-pressed','true');okText()});
   convo.addEventListener('focusin',function(){if(!convo.classList.contains('on')){convo.classList.add('instant','on');if(!typed)typeAnswer()}});

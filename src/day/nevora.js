@@ -1,6 +1,8 @@
 /* NEVORA on the Day design: zoom hero, section bar, highlights, schedule, team fan, time clock, Rondo, timecards, pay. Ported from the approved mockup. */
 (function(){
   var root=document.documentElement;
+  /* Spanish page: the demos speak Spanish (T picks the words by the page language) */
+  var ESP=/^es\b/i.test(root.lang);function T(en,es){return ESP?es:en}
   if(matchMedia('(prefers-reduced-motion: reduce)').matches) root.classList.add('rm');
   function rm(){return root.classList.contains('rm')}
   function clamp(v){return v<0?0:v>1?1:v}
@@ -67,26 +69,26 @@
 
   /* ---------------- schedule: publish ---------------- */
   var pub=$('#pub'),chip=$('#sd-chip'),toasts=$('#toasts'),sst=$('#sd-status');
-  var PEOPLE=[['AC','Ana Colón','5 shifts · 40 h'],['DK','Dana Kim','4 shifts · 32 h'],['AR','Alexandra Rivera','4 shifts · 32 h'],['JT','Jordan Torres','4 shifts · 32 h'],['LM','Luis Medina','4 shifts · 32 h']];
+  var S4=T('4 shifts · 32 h','4 turnos · 32 h'),PEOPLE=[['AC','Ana Colón',T('5 shifts · 40 h','5 turnos · 40 h')],['DK','Dana Kim',S4],['AR','Alexandra Rivera',S4],['JT','Jordan Torres',S4],['LM','Luis Medina',S4]];
   pub.addEventListener('click',function(){
-    pub.disabled=true;pub.textContent='Published';chip.textContent='Published';chip.className='cp te';
+    pub.disabled=true;pub.textContent=T('Published','Publicado');chip.textContent=T('Published','Publicado');chip.className='cp te';
     toasts.innerHTML='';
     PEOPLE.forEach(function(p,i){
       var t=document.createElement('div');t.className='toast';
-      t.innerHTML='<div class="av">'+p[0]+'</div><div><b>'+p[1]+'</b><small>Notified · '+p[2]+'</small></div>';
+      t.innerHTML='<div class="av">'+p[0]+'</div><div><b>'+p[1]+'</b><small>'+T('Notified · ','Notificado · ')+p[2]+'</small></div>';
       toasts.appendChild(t);
       setTimeout(function(){t.classList.add('in')},rm()?0:120+i*140);
       setTimeout(function(){t.classList.add('out')},3200+i*90);
     });
-    sst.innerHTML='5 people notified. Each sees their own shifts. <button class="reset" type="button" id="sd-reset">Reset the demo</button>';
-    $('#sd-reset').addEventListener('click',function(){pub.disabled=false;pub.textContent='Publish';chip.textContent='Not published';chip.className='cp gy';toasts.innerHTML='';sst.textContent='';pub.focus()});
+    sst.innerHTML=T('5 people notified. Each sees their own shifts. ','5 personas notificadas. Cada una ve sus propios turnos. ')+'<button class="reset" type="button" id="sd-reset">'+T('Reset the demo','Reiniciar la demostración')+'</button>';
+    $('#sd-reset').addEventListener('click',function(){pub.disabled=false;pub.textContent=T('Publish','Publicar');chip.textContent=T('Not published','Sin publicar');chip.className='cp gy';toasts.innerHTML='';sst.textContent='';pub.focus()});
   });
 
   /* ---------------- time clock (works in the iPad and as a card on phones) ---------------- */
   var ES={'TIME CLOCK':'REGISTRO DE TIEMPO','Enter your PIN':'Ingresa tu PIN','Clear':'Borrar','Continue':'Continuar','Your PIN is separate from your portal password.':'Tu PIN es distinto de tu contraseña del portal.','Done':'Listo','Tablet registered · Main Street iPad':'Tableta registrada · iPad de Main Street'};
   var kios=[];
   function makeKiosk(el){
-    var st={pin:'',lang:'en',inAt:null,timer:0};
+    var st={pin:'',lang:ESP?'es':'en',inAt:null,timer:0};
     var dots=$$('.pin i',el),pinBox=$('.pin',el),msg=$('.kmsg',el),cont=$('.cont',el),vPin=$('.kv-pin',el),vDone=$('.kv-done',el),okc=$('.okc',el),kt=$('.kd-t',el),ks=$('.kd-s',el),lb=$('.lang-b span',el);
     function tr(s){return st.lang==='es'&&ES[s]?ES[s]:s}
     function texts(){
@@ -133,7 +135,7 @@
       else if(e.key==='Enter'&&!cont.disabled&&vDone.hidden){go();e.preventDefault()}
       else if(e.key==='Escape'){reset()}
     });
-    draw();
+    draw();if(st.lang!=='en')texts();
     return {el:el};
   }
   var k1=$('[data-kio]');
@@ -146,9 +148,9 @@
   /* ---------------- timecards: approve ---------------- */
   var tcb=$('#tc-ok'),tcRows=$$('.tcard .r'),tcp=$('#tc-pill'),tcs=$('#tc-st');
   tcb.addEventListener('click',function(){
-    tcb.disabled=true;tcb.textContent='Approved';
-    tcRows.forEach(function(r,i){setTimeout(function(){r.classList.add('is-ok');var s=r.querySelector('.wk small');if(s)s.textContent='approved'},rm()?0:i*120)});
-    setTimeout(function(){tcp.textContent='Approved';tcp.style.background='#E7F4EC';tcp.style.color='#1D6B45';tcs.textContent='Approved. Ready for payroll.'},rm()?0:650);
+    tcb.disabled=true;tcb.textContent=T('Approved','Aprobado');
+    tcRows.forEach(function(r,i){setTimeout(function(){r.classList.add('is-ok');var s=r.querySelector('.wk small');if(s)s.textContent=T('approved','aprobado')},rm()?0:i*120)});
+    setTimeout(function(){tcp.textContent=T('Approved','Aprobado');tcp.style.background='#E7F4EC';tcp.style.color='#1D6B45';tcs.textContent=T('Approved. Ready for payroll.','Aprobado. Listo para la nómina.')},rm()?0:650);
   });
 
   /* ---------------- pay statement language ---------------- */
@@ -167,13 +169,19 @@
     {lang:'en',who:'Rondo',text:'Dana Kim is off on Sunday and at 32 hours this week, so this shift brings her to 40. Ana Colón is already at 40.',src:'From the published schedule, Nov 2 – 8',prep:{t:'Add Dana Kim on Sunday, November 8',d:'Register, 12:00 to 8:00, with Luis Medina.'}},
     {lang:'es',who:'Rondo',text:'Solo Jordan Torres. El sábado marcó entrada a las 7:52 y su turno empezaba a las 7:30.',src:'Registros de tiempo, 2 – 8 de nov.'}
   ];
+  /* the Spanish page mirrors the English one: two questions in Spanish, one in English */
+  if(ESP)ANS=[
+    {lang:'es',who:'Rondo',text:'Jordan Torres debía entrar a las 7:30 y no ha marcado entrada. Alexandra Rivera empieza a las 8:00. El domingo hay un turno abierto en caja, de 12:00 a 8:00.',src:'De las marcas de hoy y el horario publicado'},
+    {lang:'es',who:'Rondo',text:'Dana Kim está libre el domingo y lleva 32 horas esta semana, así que este turno la lleva a 40. Ana Colón ya tiene 40.',src:'Del horario publicado, 2 – 8 de nov.',prep:{t:'Añadir a Dana Kim el domingo 8 de noviembre',d:'Caja, 12:00 a 8:00, con Luis Medina.'}},
+    {lang:'en',who:'Rondo',text:'Only Jordan Torres. On Saturday he clocked in at 7:52, and his shift started at 7:30.',src:'Timecards, Nov 2 – 8'}
+  ];
   var ans=$('#ans');
   function esc(s){return s.replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
   function showAns(i){
     var a=ANS[i],h='<div class="c-a fade" lang="'+a.lang+'"><div class="c-who"><span class="rm-badge">R</span>'+a.who+'</div><p>'+esc(a.text)+'</p><span class="src"><i></i><span>'+esc(a.src)+'</span></span>';
-    if(a.prep) h+='<div class="prep"><h4>'+esc(a.prep.t)+'</h4><p class="d">'+esc(a.prep.d)+'</p><div class="row"><button class="ok" type="button" aria-pressed="false" id="ans-ok">Approve</button><small id="ans-m">Nothing changes until you approve.</small></div></div>';
+    if(a.prep) h+='<div class="prep"><h4>'+esc(a.prep.t)+'</h4><p class="d">'+esc(a.prep.d)+'</p><div class="row"><button class="ok" type="button" aria-pressed="false" id="ans-ok">'+T('Approve','Aprobar')+'</button><small id="ans-m">'+T('Nothing changes until you approve.','Nada cambia hasta que apruebes.')+'</small></div></div>';
     ans.innerHTML=h+'</div>';
-    var ok=$('#ans-ok');if(ok)ok.addEventListener('click',function(){ok.setAttribute('aria-pressed','true');ok.textContent='Approved';$('#ans-m').textContent='Dana is on Sunday, 12:00 to 8:00. Sample only.'});
+    var ok=$('#ans-ok');if(ok)ok.addEventListener('click',function(){ok.setAttribute('aria-pressed','true');ok.textContent=T('Approved','Aprobado');$('#ans-m').textContent=T('Dana is on Sunday, 12:00 to 8:00. Sample only.','Dana cubre el domingo, 12:00 a 8:00. Es solo una muestra.')});
   }
   $$('.chips button').forEach(function(b){b.addEventListener('click',function(){
     $$('.chips button').forEach(function(x){x.setAttribute('aria-pressed',String(x===b))});showAns(+b.dataset.q);

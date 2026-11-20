@@ -22,7 +22,7 @@ The approved "Day" design (mockups and reviews in `docs/design/2026-11-18-premiu
 | Help (EN) | Done | Ported by `scripts/port-day-help.py` (one-time). Search and topic chips over 13 answers, two keys, deletion steps; Jose's client request section (hub form, live/preview branches unchanged) sits in a closed "Already a Velani client?" disclosure that a `#client` or `?interest=client-…` link opens |
 | Sign in (EN) | Done | Jose's three sign-in facts, the two keys, and NEVORA support at the end; no client form or offer, as on Jose's page | Contact keeps the live/preview inquiry safeguards from `src/render.mjs`; Help keeps existing-client support as one quiet line (recommended November 20) |
 | Rondo, Relay (EN) | Done, new routes | `/pages/rondo` and `/pages/relay`, ported by `scripts/port-day-products.py` (one-time) with `src/day/product.css` (the NEVORA styles their designs use). Header, footer, Home and About now link to them. Relay has no form of its own: Join the waitlist opens Contact on the Relay topic. **At publish time** these two need Shopify Page resources (handles `rondo` and `relay`, templates `page.rondo` and `page.relay`); creating them is a store change for Jose's go-ahead. Until then they work on the theme preview through `?view=velani-rondo` and `?view=velani-relay` |
-| Spanish pages | After English | Day chrome already has Spanish words; `localize()` moves links |
+| Spanish pages | Done | `/pages/es`, `es-nevora`, `es-planes`, `es-contacto`, `es-ayuda`, `es-entrar`, `es-nosotros`. Each is its English body plus `src/day/es/<page>.json` (exact phrase pairs; the build fails if an English phrase changes without its Spanish), using Jose's terms (el dueño, lugar de trabajo, tarjetas de tiempo, comprobantes de nómina, ¿Olvidaste tu contraseña?, Perfil, Eliminar mi cuenta). Page scripts pick their words by the page language; the NEVORA time clock and the Home Rondo conversation start in Spanish. The drawn app screens stay in English (sample illustrations); translating them is open. Rondo and Relay have no Spanish pages yet; Spanish pages link them marked `hreflang="en"`. `es-productos`, `es-a-la-medida` and the Spanish trial/billing helper pages stay Night |
 | Legal and NEVORA policy pages | Last | Restyle only; wording is Jose's |
 
 ## Facts to carry into the next pages
@@ -32,6 +32,13 @@ The approved "Day" design (mockups and reviews in `docs/design/2026-11-18-premiu
 - For Jose (found while porting Plans): `velani-commerce.js` picks the quote link with `#price a[href*="interest=nevora"]`, which also matches `interest=nevora-demo`. The Night Plans page put the trial link first in `#price`, so an Owner over 30 coming from NEVORA could get the trial link instead of assisted setup. The Day page keeps only the quote and billing links in `#price`, and the fixture's `over-30` handoff now shows Contact Velani → `?interest=nevora`. Matching `interest=nevora"` or `[href$="interest=nevora"]` in the script would remove the trap for any future layout.
 - For Jose: the Rondo page keeps the approved wording "included in every NEVORA plan, and in the free 30-day trial". The website privacy notice says the Owner assistant in NEVORA depends on workplace availability and authorization; confirm the page wording matches what Owners get.
 - Assigned UI findings still open (from `services/velani-ai/docs/CLAUDE-UI-START-HERE.md`): the Retry-After cap in `public/assets/velani-hub.js` and final success focus in the Shopify preview.
+
+## Verification (November 20, Spanish)
+
+- `npm test`: 118/118. Spanish Night tests now follow the Day markup where the page moved (chrome, contact form, NEVORA kiosk, Shopify layout render), with the same intent. New test: no designer notes reach a Day page.
+- `npm run check:theme`: 0 offenses. `scripts/browser-check.mjs`: 103/103 (`evidence/day-spanish-20261120`).
+- Day check: 147/147 on the seven Spanish pages and 189/189 on the nine English ones. Spanish flows 25/25: no visible English outside drawn screens and `lang="en"`, demos in Spanish (kiosk, publish, Rondo, timecards, Help search, Plans price and calendar, Contact topic, button and errors), no sends.
+- Found and fixed: a designer's note from the NEVORA mockup was visible on the English NEVORA page; the NEVORA team phones were exposed to screen readers; the arrow after links was oversized on Plans; the Spanish Help client form linked the English privacy notice.
 
 ## Verification (November 20, Rondo and Relay)
 
