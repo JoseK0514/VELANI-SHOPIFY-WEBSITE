@@ -110,3 +110,26 @@ test('Home device screens are pictures: named once, hidden from screen readers i
   assert.match(html, /src="\{\{ 'day-nevora-icon\.png' \| asset_url \}\}"/);
   assert.doesNotMatch(html, /data:image/);
 });
+
+test('NEVORA on Day: one chapter per job in order, the anchors the header uses, facts and FAQ', () => {
+  const html = renderBody('/pages/nevora');
+  assert.equal((html.match(/<h1/g) || []).length, 1);
+  const order = ['id="ln"', 'class="zh"', 'class="hl"', 'id="schedule"', 'id="team"', 'id="clock"', 'id="rondo"', 'id="timecards"', 'id="payroll"', 'id="plans"', 'id="faq"', 'id="close"'].map(k => html.indexOf(k));
+  assert.ok(order.every((v, i) => v > -1 && (i === 0 || v > order[i - 1])), 'chapters in order');
+  assert.match(html, /<p class="relay" id="relay">/, 'the header and footer Relay link lands on the Relay line');
+  assert.match(html, /href="\/pages\/contact\?interest=relay">Join the waitlist/);
+  assert.match(html, /<nav aria-label="NEVORA sections">/);
+  assert.equal((html.match(/<details>/g) || []).length, 6);
+  assert.match(html, /On day 30, the Owner picks a plan in NEVORA\. Nothing is charged until you do\./);
+  assert.match(html, /Prices are in US dollars and may change before online billing opens\./);
+  assert.match(html, /The phone app is coming to the App Store and Google Play\./);
+  assert.match(html, /id="sd-chip">Not published</);
+  assert.doesNotMatch(html, /\bDraft\b|claude\.ai|\{\{|custom-development|style="padding-top/);
+});
+
+test('every in-page link on a Day page lands on an element of that page', () => {
+  for (const path of dayRoutes) {
+    const html = renderPage(path).html;
+    for (const [, id] of html.matchAll(/href="#([\w-]+)"/g)) assert.ok(html.includes('id="' + id + '"'), path + ' #' + id);
+  }
+});

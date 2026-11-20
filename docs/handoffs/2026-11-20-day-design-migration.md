@@ -16,7 +16,8 @@ The approved "Day" design (mockups and reviews in `docs/design/2026-11-18-premiu
 | --- | --- | --- |
 | About (EN) | Done | Products-only facts; route description updated |
 | Home (EN) | Done | Ported by `scripts/port-day-home.py` (one-time); trial start and fine print follow Jose's current wording; device screens are pictures (`role="img"`, inner screens hidden) |
-| NEVORA, Plans, Help, Contact, Sign in | Next | Contact keeps the live/preview inquiry safeguards from `src/render.mjs`; Help keeps existing-client support as one quiet line (recommended November 20) |
+| NEVORA (EN) | Done | Ported by `scripts/port-day-nevora.py` (one-time); device, plan and app-screen styles moved to `src/day/devices.css` (Home and NEVORA); the schedule demo says "Not published" instead of "Draft" (public pages never say draft); `#relay` is the closing Relay line; the section bar carries the trial |
+| Plans, Help, Contact, Sign in | Next | Contact keeps the live/preview inquiry safeguards from `src/render.mjs`; Help keeps existing-client support as one quiet line (recommended November 20) |
 | Rondo, Relay | New routes | Until then the header and footer link `/pages/nevora#rondo` and `#relay` |
 | Spanish pages | After English | Day chrome already has Spanish words; `localize()` moves links |
 | Legal and NEVORA policy pages | Last | Restyle only; wording is Jose's |
@@ -26,6 +27,13 @@ The approved "Day" design (mockups and reviews in `docs/design/2026-11-18-premiu
 - The 30 free days run from workplace provisioning (creation in NEVORA), per `development` commit 5d2e545. The mockups say "the day your workplace is ready"; use the provisioning wording in the theme.
 - Custom work is removed (decision 2 in `SITE-STRUCTURE.md`). Existing-client support stays on Help as one quiet line using the client request service (decided November 20); no new custom work is offered.
 - Assigned UI findings still open (from `services/velani-ai/docs/CLAUDE-UI-START-HERE.md`): the Retry-After cap in `public/assets/velani-hub.js` and final success focus in the Shopify preview.
+
+## Verification (November 20, NEVORA)
+
+- `npm test`: 110/110, with Day NEVORA tests and a check that every in-page link on a Day page has its target. Night NEVORA tests run only while a NEVORA page is still on Night (the Spanish one).
+- `npm run check:theme`: 0 offenses.
+- `scripts/browser-check.mjs`: first run 98/99 kept (`evidence/day-nevora-20261120`: the section bar linked `#top`, which the theme names `#main`; the hero is now `#top`). Rerun 99/99 (`evidence/day-nevora-20261120-rerun`).
+- Day check on Home, NEVORA and About: 63/63; NEVORA demos 12/12 (publish, PIN clock-in, Rondo questions and Spanish, timecards, highlights, section bar).
 
 ## Verification (November 20, Home)
 

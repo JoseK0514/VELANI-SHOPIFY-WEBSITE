@@ -79,7 +79,8 @@ test('the NEVORA time clock demo starts in Spanish on the Spanish page and offer
   assert.match(html, /data-k-t="Enter your PIN">Ingresa tu PIN</);
   assert.match(html, /data-k-t="Clock-in recorded">Entrada registrada</);
   assert.match(html, /<span id="kio-lang-t" lang="en">English<\/span>/);
-  assert.match(renderPage('/pages/nevora').html, /data-k-t="Enter your PIN">Enter your PIN</);
+  // The English NEVORA page has its own Day time clock (tests/day.test.mjs) once it moves
+  if (!routes['/pages/nevora'].day) assert.match(renderPage('/pages/nevora').html, /data-k-t="Enter your PIN">Enter your PIN</);
 });
 test('every page has a language switch; it round-trips between the pairs and falls back to the closest Spanish page', () => {
   const sw = html => [...html.matchAll(/<span class="lang-sw[^"]*" role="group" aria-label="([^"]+)"><a href="([^"]+)" hreflang="en" lang="en" aria-label="English"( aria-current="true")?>EN<\/a><span class="lang-sep" aria-hidden="true">\|<\/span><a href="([^"]+)" hreflang="es" lang="es" aria-label="Español"( aria-current="true")?>ES<\/a><\/span>/g)];
@@ -242,7 +243,7 @@ test('Home below the first screen is three live sections that read the same week
 
 test('the NEVORA page tells the week in order from the same sample data as Home, and its time clock clocks Alexandra in', async () => {
   // The NEVORA pages share the sample week with the Night home (Home on Day draws its own screens from the same people)
-  for (const [path, home] of [['/pages/nevora', NIGHT_HOMES[0]], ['/pages/es-nevora', NIGHT_HOMES[0]]]) {
+  for (const [path, home] of [['/pages/nevora', NIGHT_HOMES[0]], ['/pages/es-nevora', NIGHT_HOMES[0]]].filter(([p]) => !routes[p].day)) {
     const html = renderBody(path, { target: 'local' }), h = renderBody(home, { target: 'local' });
     const order = ['id="top"', 'id="plan"', 'id="clock"', 'id="approve"', 'id="pay"', 'id="rondo"', 'id="begin"', 'id="velani"'].map(k => html.indexOf(k));
     assert.ok(order.every((v, i) => v > -1 && (i === 0 || v > order[i - 1])), path + ' sections in week order');

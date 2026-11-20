@@ -43,11 +43,11 @@ test('the published theme is indexable while drafts stay noindex', async () => {
 test('the NEVORA page loads its own assets and marks its nav item', async () => {
   const layout = renderShopifyLayout();
   const html = await liquid.parseAndRender(layout, { theme: { role: 'main', id: 9 }, routes: { root_url: '/' }, template: { name: 'page', suffix: 'nevora' }, request: { locale: { iso_code: 'en' }, page_type: 'page' }, settings: {} });
-  assert.match(html, /velani-nevora\.js/);
-  assert.match(html, /class="gnav"/);
-  // NEVORA lives under the NEVORA menu: its button carries the current-section mark; the phone menu lists it
-  assert.match(html, /<button class="gnav-ddbtn txt" type="button" aria-expanded="false" aria-controls="gnav-dd-nevora" data-cur>NEVORA/);
-  assert.match(html, /<a class="gmenu-sub" href="\/pages\/nevora">NEVORA Workforce<\/a>/);
+  // NEVORA is on the Day design: shared device styles, its own stylesheet and script, and its header link marked current
+  assert.match(html, /velani-day-devices\.css[^]*velani-day-nevora\.css[^]*velani-day-nevora\.js/);
+  assert.doesNotMatch(html, /velani-nevora\.(js|css)|velani-motion\.js/);
+  assert.match(html, /<nav class="gnav" aria-label="Main"><a href="\/pages\/nevora" aria-current="page">NEVORA<\/a>/);
+  assert.match(html, /<nav class="mm-nav" aria-label="Main"><a href="\/pages\/nevora" aria-current="page">NEVORA<\/a>/);
 });
 test('live contact page never shows the preview form on the published theme', async () => {
   const body = renderBody('/pages/contact', { target: 'shopify' }).replace(/\{% form [^%]*%\}/, '<form>').replace('{% endform %}', '</form>').replace(/\{\{ 'shopify[^}]*\}\}/, '');

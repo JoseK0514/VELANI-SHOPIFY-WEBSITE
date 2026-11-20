@@ -116,12 +116,12 @@ function body(name, target) {
   if (left && left.some(x => !x.startsWith('{{I:'))) throw new Error('day: unfilled ' + left.join(' '));
   return sprite(html);
 }
-const BODIES = { about: { en: 'about.body.html' }, home: { en: 'home.body.html' } };
+const BODIES = { about: { en: 'about.body.html' }, home: { en: 'home.body.html' }, nevora: { en: 'nevora.body.html' } };
 /** Pages with their own stylesheet and script beside the shared Day ones. */
-export const DAY_PAGE_ASSETS = { home: ['velani-day-home.css', 'velani-day-home.js'] };
+export const DAY_PAGE_ASSETS = { home: ['velani-day-devices.css', 'velani-day-home.css', 'velani-day-home.js'], nevora: ['velani-day-devices.css', 'velani-day-nevora.css', 'velani-day-nevora.js'] };
 export function dayMain(kind, lang = 'en', target = 'preview') {
   const file = BODIES[kind]?.[lang];
   if (!file) throw new Error('day: no ' + lang + ' body for ' + kind);
   return localize(body(file, target), lang);
 }
-export const dayAssets = { css: read('day.css'), js: read('day.js'), pages: { home: { css: read('home.css'), js: read('home.js') } } };
+export const dayAssets = { css: read('day.css'), js: read('day.js'), pages: { devices: { css: read('devices.css') }, home: { css: read('home.css'), js: read('home.js') }, nevora: { css: read('nevora.css'), js: read('nevora.js') } } };

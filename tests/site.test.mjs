@@ -65,6 +65,7 @@ test('NEVORA policy pages are public and published pages carry no preview wordin
 });
 test('NEVORA payroll is described as calculation, never payment or tax filing', () => {
   const { html } = renderPage('/pages/nevora', { target: 'preview' });
-  assert.match(html, /calculates payroll/);
+  assert.match(html, /calculates (?:payroll|pay)\b/);
+  assert.match(html, /doesn(?:'|’)t pay employees or file payroll taxes/);
   assert.doesNotMatch(html, /NEVORA (?:pays|runs payroll|files)/);
 });

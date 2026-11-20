@@ -28,7 +28,7 @@ export async function build() {
   const nightTokens = css.base.match(/:root\{([^}]*)\}/)[1];
   await writeFile(path.join(root, 'public/assets/velani-day.css'), dayAssets.css + '\n.ast-root{' + nightTokens + '}\n' + css.assist);
   await writeFile(path.join(root, 'public/assets/velani-day.js'), dayAssets.js);
-  for (const [name, page] of Object.entries(dayAssets.pages)) { await writeFile(path.join(root, 'public/assets/velani-day-' + name + '.css'), page.css); await writeFile(path.join(root, 'public/assets/velani-day-' + name + '.js'), page.js); }
+  for (const [name, page] of Object.entries(dayAssets.pages)) { await writeFile(path.join(root, 'public/assets/velani-day-' + name + '.css'), page.css); if (page.js) await writeFile(path.join(root, 'public/assets/velani-day-' + name + '.js'), page.js); }
   await copyFile(path.join(root, 'src/day/day-nevora-icon.png'), path.join(root, 'public/assets/day-nevora-icon.png'));
   await copyFile(path.join(root, 'src/day/day-grain.png'), path.join(root, 'public/assets/day-grain.png'));
   await writeFile(path.join(root, 'public/assets/velani-nevora.js'), js.nevora);
