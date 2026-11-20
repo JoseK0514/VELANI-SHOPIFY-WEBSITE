@@ -1,0 +1,32 @@
+<header class="gn" id="gn">
+  <div class="wrap">
+    <a class="logo" href="{{HOME_URL}}" aria-label="Velani home">{{VELANI}}</a>
+    <nav class="gnav" aria-label="Main"><a href="{{NEVORA_URL}}"{{CUR_NEVORA}}>NEVORA</a><a href="{{RONDO_URL}}"{{CUR_RONDO}}>Rondo</a><a href="{{RELAY_URL}}"{{CUR_RELAY}}>Relay</a><a href="{{PLANS_URL}}">Plans</a><a href="#ft">Support</a></nav>
+    <span class="lang"><a href="#top" lang="en" aria-current="true">EN</a><a href="#top" lang="es" hreflang="es">ES</a></span>
+    <a class="signin" href="#ft">Sign in</a>
+    <a class="cta" href="{{TRIAL_URL}}">Free trial</a>
+    <button class="mb" type="button" aria-expanded="false" aria-controls="mm" aria-label="Open menu">{{I:list}}</button>
+  </div>
+</header>
+<div class="mm" id="mm" role="dialog" aria-modal="true" aria-label="Menu" hidden>
+  <div class="mm-top"><a class="logo" href="{{HOME_URL}}" aria-label="Velani home">{{VELANI}}</a><button class="mx" type="button" aria-label="Close menu">{{I:x}}</button></div>
+  <nav class="mm-nav" aria-label="Main"><a href="{{NEVORA_URL}}"{{CUR_NEVORA}}>NEVORA</a><a href="{{RONDO_URL}}"{{CUR_RONDO}}>Rondo</a><a href="{{RELAY_URL}}"{{CUR_RELAY}}>Relay</a><a href="{{PLANS_URL}}">Plans</a><a href="#ft">Support</a></nav>
+  <div class="mm-2"><a class="pillbtn" href="{{TRIAL_URL}}">Request a free trial</a><a class="mm-s" href="#ft">Sign in</a><span class="mm-l"><a href="#top" lang="en" aria-current="true">English</a><a href="#top" lang="es" hreflang="es">Español</a></span></div>
+</div>
+<script>
+(function(){
+  document.documentElement.lang='en';
+  var b=document.querySelector('.gn .mb'),m=document.getElementById('mm'),x=m.querySelector('.mx'),last=null;
+  function open(){last=document.activeElement;m.hidden=false;b.setAttribute('aria-expanded','true');document.documentElement.classList.add('mm-open');requestAnimationFrame(function(){requestAnimationFrame(function(){m.classList.add('in')})});x.focus()}
+  function close(){m.classList.remove('in');m.hidden=true;b.setAttribute('aria-expanded','false');document.documentElement.classList.remove('mm-open');if(last&&last.focus)last.focus()}
+  b.addEventListener('click',open);x.addEventListener('click',close);
+  m.addEventListener('keydown',function(e){
+    if(e.key==='Escape'){close();return}
+    if(e.key!=='Tab')return;
+    var f=[].slice.call(m.querySelectorAll('a[href],button')),i=f.indexOf(document.activeElement);
+    if(e.shiftKey&&i<=0){f[f.length-1].focus();e.preventDefault()}else if(!e.shiftKey&&i===f.length-1){f[0].focus();e.preventDefault()}
+  });
+  [].slice.call(m.querySelectorAll('a[href]')).forEach(function(a){a.addEventListener('click',close)});
+  addEventListener('resize',function(){if(innerWidth>820&&!m.hidden)close()});
+})();
+</script>

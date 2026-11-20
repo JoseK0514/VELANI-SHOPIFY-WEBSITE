@@ -41,21 +41,48 @@ button{font:inherit;color:inherit}
 .num{font-variant-numeric:tabular-nums}
 .chev{display:inline-block;width:.55em;height:.55em;margin-left:.25em;vertical-align:.02em}
 .more{color:var(--link);font-size:19px;display:inline-flex;align-items:center;min-height:44px}
-.more:hover{text-decoration:underline}
+@media (hover:hover){.more:hover{text-decoration:underline}}
 .pillbtn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 22px;border-radius:980px;background:var(--teal);color:#fff;font-size:17px;font-weight:400;transition:background .25s,transform .25s var(--ease)}
-.pillbtn:hover{background:#0A5E5A}
-.pillbtn:active{transform:scale(.97)}
+@media (hover:hover){.pillbtn:hover{background:#0A5E5A}}
+.pillbtn:not([aria-disabled="true"]):active{transform:scale(.96)}
 
-/* ---------------- global nav ---------------- */
-.gn{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;height:48px;background:rgba(251,251,253,.72);-webkit-backdrop-filter:saturate(1.8) blur(20px);backdrop-filter:saturate(1.8) blur(20px);color:var(--ink);transition:background .5s var(--ease),color .5s var(--ease)}
-.gn .wrap{height:100%;display:flex;align-items:center;gap:34px}
-.gn .wm{height:12px;width:auto;display:block}
-.gn nav{display:flex;gap:34px;margin-left:auto;font-size:12.5px;letter-spacing:-.01em;opacity:.86}
-.gn nav a{padding:14px 0}
-.gn .lang{font-size:12.5px;opacity:.7}
-.gn .cta{font-size:12.5px;padding:0 13px;min-height:28px;border-radius:980px;background:var(--teal);color:#fff;display:inline-flex;align-items:center}
+/* ---------------- global nav (shared: header.html) ---------------- */
+.gn{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;height:48px;background:rgba(251,251,253,.72);-webkit-backdrop-filter:saturate(1.8) blur(20px);backdrop-filter:saturate(1.8) blur(20px);color:var(--ink);transition:background-color .5s var(--ease),color .5s var(--ease)}
+.gn .wrap{height:100%;display:flex;align-items:center;gap:28px}
+.gn .logo,.mm .logo{display:flex;align-items:center;min-height:44px}
+.gn .wm,.mm .wm{height:12px;width:auto;display:block}
+.gn .gnav{display:flex;gap:30px;margin-left:auto;font-size:12.5px;letter-spacing:-.01em}
+.gn .gnav a{padding:14px 0;opacity:.82;transition:opacity .15s}
+.gn .gnav a[aria-current="page"]{opacity:1;font-weight:600}
+.gn .lang{display:flex;gap:0;font-size:12.5px}
+.gn .lang a{opacity:.55;padding:14px 5px;min-width:24px;text-align:center}.gn .lang a[aria-current]{opacity:1}
+.gn .signin{font-size:12.5px;opacity:.82;padding:14px 0}
+.gn .cta{position:relative;font-size:12.5px;padding:0 13px;min-height:28px;border-radius:980px;background:var(--teal);color:#fff;display:inline-flex;align-items:center;white-space:nowrap}
+.gn .cta::after,.ln .cta::after{content:"";position:absolute;inset:-8px -4px}
+.gn .mb{all:unset;display:none;cursor:pointer;width:44px;height:44px;place-items:center;margin-right:-10px}
+.gn .mb .i,.mm .mx .i{width:22px;height:22px;display:block}
+.gn .mb:focus-visible,.mm .mx:focus-visible{outline:2px solid var(--link);outline-offset:-4px;border-radius:12px}
 .gn.dark{background:rgba(10,16,36,.62);color:var(--on-night)}
-@media (max-width:820px){.gn nav,.gn .lang{display:none}.gn .cta{margin-left:auto}}
+@media (max-width:820px){.gn .gnav,.gn .lang,.gn .signin{display:none}.gn .cta{margin-left:auto}.gn .mb{display:grid}}
+.mm{position:fixed;inset:0;z-index:90;overflow-y:auto;overscroll-behavior:contain;background:rgba(251,251,253,.97);-webkit-backdrop-filter:blur(24px) saturate(1.4);backdrop-filter:blur(24px) saturate(1.4);color:var(--ink);padding:env(safe-area-inset-top,0px) max(22px,env(safe-area-inset-right,0px)) calc(32px + env(safe-area-inset-bottom,0px)) max(22px,env(safe-area-inset-left,0px))}
+.mm-top{display:flex;justify-content:space-between;align-items:center;height:48px}
+.mm .mx{all:unset;cursor:pointer;width:44px;height:44px;display:grid;place-items:center;margin-right:-10px}
+.mm-nav{display:flex;flex-direction:column;margin-top:28px}
+.mm-nav a{font:600 clamp(30px,8.5vw,40px)/1.1 var(--display);letter-spacing:-.035em;padding:10px 0;min-height:44px}
+.mm-nav a[aria-current="page"]{color:var(--teal)}
+.mm-2{margin-top:36px;display:flex;flex-direction:column;align-items:flex-start;gap:6px}
+.mm-2 .pillbtn{margin-bottom:12px}
+.mm-s{font-size:19px;padding:10px 0}
+.mm-l{display:flex;gap:18px;font-size:17px;color:var(--ink-2)}
+.mm-l a{padding:10px 0}.mm-l a[aria-current]{color:var(--ink);font-weight:600}
+html.mm-open{overflow:hidden}
+@media (prefers-reduced-motion:no-preference){
+  html:not(.rm) .mm-nav,html:not(.rm) .mm-2{opacity:0;transform:translateY(12px);filter:blur(4px);transition-property:opacity,transform,filter;transition-duration:.3s;transition-timing-function:ease-out}
+  html:not(.rm) .mm-2{transition-delay:.1s}
+}
+.mm.in .mm-nav,.mm.in .mm-2{opacity:1;transform:none;filter:none}
+a,button,summary{-webkit-tap-highlight-color:transparent}
+@media (hover:hover){.gn .gnav a:hover,.gn .signin:hover{opacity:1}}
 
 /* ---------------- devices (natural size, scaled with zoom) ---------------- */
 .fit{display:block}
@@ -163,12 +190,12 @@ button{font:inherit;color:inherit}
 .scr.on{opacity:1}
 .timeline{position:absolute;left:0;right:0;bottom:22px}
 .tl{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}
-.tl button{all:unset;cursor:pointer;display:flex;flex-direction:column;gap:9px;line-height:1.2;font-size:12.5px;font-weight:600;opacity:.5;transition:opacity .4s;padding-top:4px;min-height:44px}
+.tl button{all:unset;cursor:pointer;display:flex;flex-direction:column;gap:9px;line-height:1.2;font-size:12.5px;font-weight:600;opacity:.75;transition:opacity .4s;padding-top:4px;min-height:44px}
 .tl button::before{content:"";height:3px;border-radius:2px;background:currentColor;opacity:.25}
 .tl button.on,.tl button.done{opacity:1}
 .tl button.on::before,.tl button.done::before{opacity:1}
 .tl button:focus-visible{outline:2px solid currentColor;outline-offset:4px;border-radius:4px}
-.tl small{font-weight:400;opacity:.7;display:block;margin-top:-5px}
+.tl small{font-weight:400;opacity:.82;display:block;margin-top:-5px}
 .tl b{font-weight:600;white-space:nowrap}
 @media (max-width:820px){
   .day-in{grid-template-columns:minmax(0,1fr);grid-template-rows:auto minmax(0,1fr);gap:8px;padding-top:64px;padding-bottom:78px;align-items:stretch}
@@ -194,6 +221,7 @@ button{font:inherit;color:inherit}
 .convo{max-width:820px;margin:clamp(56px,7vw,96px) auto 0;display:flex;flex-direction:column;gap:18px;font-family:var(--app)}
 .c-q,.c-a{opacity:0;transform:translateY(28px);transition:opacity .9s var(--ease),transform 1.1s var(--ease)}
 .convo.on .c-q,.convo.on .c-a{opacity:1;transform:none}
+.convo.instant .c-q,.convo.instant .c-a{transition:none}
 .convo.on .c-a:nth-of-type(2){transition-delay:.35s}
 .convo.on .c-a:nth-of-type(3){transition-delay:.75s}
 .c-q{align-self:flex-end;max-width:84%;background:#0B6E69;color:#fff;border-radius:28px 28px 8px 28px;padding:18px 24px;font-size:clamp(19px,2vw,26px);line-height:1.3;letter-spacing:-.02em;font-weight:500}
@@ -208,7 +236,7 @@ button{font:inherit;color:inherit}
 .prep .d{margin-top:4px;color:#5A6166;font-size:15px}
 .prep .row{margin-top:16px;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
 .ok{all:unset;cursor:pointer;height:46px;padding:0 26px;border-radius:23px;background:#0B6E69;color:#fff;font-weight:700;font-size:16px;display:inline-grid;place-items:center;transition:transform .2s var(--ease),background .3s}
-.ok:active{transform:scale(.96)}
+.ok:not([disabled]):active{transform:scale(.96)}
 .ok:focus-visible{outline:2px solid #0B6E69;outline-offset:3px}
 .ok[aria-pressed="true"]{background:#E7F4EC;color:#1D6B45}
 .prep small{font-size:14px;color:#6A7176}
@@ -270,13 +298,13 @@ html.rm .track{--sp:1!important}html.rm .stp::before{transition:none}
 .incl ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px 28px;font-size:17px}
 .incl li{display:flex;gap:12px;align-items:flex-start}
 .incl svg{width:18px;height:18px;flex:none;margin-top:3px;color:var(--teal)}
-.plans .fine{max-width:980px;margin:36px auto 0;font-size:13px;color:var(--ink-3)}
+.plans .fine{max-width:980px;margin:36px auto 0;font-size:13px;color:var(--ink-2)}
 @media (max-width:820px){.pgrid{grid-template-columns:1fr}.incl{grid-template-columns:1fr}.incl ul{grid-template-columns:1fr}}
 
 /* ---------------- bilingual ---------------- */
 .sj{padding-block:clamp(110px,13vw,180px);border-top:1px solid var(--line)}
 .sj .big{font-family:var(--display);font-size:clamp(52px,9.6vw,140px);line-height:.94;letter-spacing:-.055em;font-weight:600}
-.sj .big span{display:block;color:#C7C7CC}
+.sj .big span{display:block;color:#86868B}
 .sj-row{margin-top:48px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:40px;align-items:end}
 .sj-row p{font-size:clamp(19px,1.6vw,22px);line-height:1.45;color:var(--ink-2);max-width:40ch}
 .coord{font-size:14px;color:var(--ink-3);text-align:right;letter-spacing:.02em}
@@ -286,10 +314,16 @@ html.rm .track{--sp:1!important}html.rm .stp::before{transition:none}
 .ft{background:var(--tile);color:var(--ink-2);font-size:12px;line-height:1.5;padding-block:20px 28px}
 .ft .disc{border-bottom:1px solid var(--line);padding-bottom:16px;display:grid;gap:8px}
 .ft .cols{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px;padding-block:24px}
-.ft h6{margin:0 0 10px;font-size:12px;font-weight:600;color:var(--ink)}
-.ft .cols a{display:block;padding:4px 0}
-.ft .cols a:hover{text-decoration:underline;color:var(--ink)}
-.ft .base{border-top:1px solid var(--line);padding-top:14px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
+.ft .fh{margin:0 0 10px;font:600 12px/1.4 var(--text);letter-spacing:0;color:var(--ink)}
+.ft .fs{font-size:11px;color:var(--ink-2);margin-left:4px}
+.ft .legal{display:flex;flex-wrap:wrap;gap:4px 16px}
+.ft .legal a,.ft .flang a{padding:4px 0}
+@media (hover:hover){.ft .legal a:hover,.ft .flang a:hover{text-decoration:underline;color:var(--ink)}}
+.ft .flang{display:flex;gap:12px}.ft .flang a[aria-current]{color:var(--ink);font-weight:600}
+.ft .sup{margin-top:12px}
+.ft .cols a{display:block;padding:6px 0}
+@media (hover:hover){.ft .cols a:hover{text-decoration:underline;color:var(--ink)}}
+.ft .base{border-top:1px solid var(--line);padding-top:14px;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:10px 24px}
 @media (max-width:820px){.ft .cols{grid-template-columns:repeat(2,minmax(0,1fr))}}
 
 /* ---------------- notes + tweaks ---------------- */
@@ -399,7 +433,7 @@ html.rm .tile .img{transform:none}
 .sg .nm{display:flex;align-items:center;gap:9px;font-weight:600;font-size:14px}
 .sg .nm .av{width:30px;height:30px;font-size:11px}
 .sh{height:50px;border-radius:12px;background:#E8F3F1;color:#0B6E69;display:flex;flex-direction:column;align-items:center;justify-content:center;font-weight:700;font-size:13px;line-height:1.2}
-.sh small{font-weight:500;color:#3F7F7A;font-size:11px}
+.sh small{font-weight:500;color:#2D6964;font-size:11px}
 .sh.t{background:#0B6E69;color:#fff}.sh.t small{color:rgba(255,255,255,.75)}
 .sh.op{background:#fff;box-shadow:inset 0 0 0 1.5px #B9C3C1;color:#6A7176}
 .sg .tot{text-align:right;font-weight:600;color:#3F464B}
@@ -522,7 +556,7 @@ html.rm .tile .img{transform:none}
 .inv{display:flex;gap:12px;align-items:center;flex-wrap:wrap;padding:14px 16px;border-radius:16px;background:#16191D;font-size:15px;color:#9AA1A9}
 .inv b{color:#fff;font-size:15px;margin-right:6px}
 .inv span{height:34px;padding:0 14px;border-radius:17px;background:#2A2116;color:#F2C477;display:inline-flex;align-items:center;font-weight:600}
-.kfoot{font-size:14px;color:#6F7780;display:flex;justify-content:space-between}
+.kfoot{font-size:14px;color:#8E959D;display:flex;justify-content:space-between}
 
 /* ---------- v3: real Phosphor bold icons ---------- */
 .nv .i,.lock .i{width:18px;height:18px;flex:none;display:block}
@@ -593,15 +627,40 @@ html.rm .tile .img{transform:none}
 
 </style>
 
-<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="i-arrow-up" viewBox="0 0 256 256"><path d="M208.49,120.49a12,12,0,0,1-17,0L140,69V216a12,12,0,0,1-24,0V69L64.49,120.49a12,12,0,0,1-17-17l72-72a12,12,0,0,1,17,0l72,72A12,12,0,0,1,208.49,120.49Z"/></symbol><symbol id="i-backspace" viewBox="0 0 256 256"><path d="M216,36H68.53a20.09,20.09,0,0,0-17.15,9.71L5.71,121.83a12,12,0,0,0,0,12.34l45.67,76.12A20.09,20.09,0,0,0,68.53,220H216a20,20,0,0,0,20-20V56A20,20,0,0,0,216,36Zm-4,160H70.8L30,128,70.8,60H212ZM103.51,143.51,119,128l-15.52-15.51a12,12,0,0,1,17-17L136,111l15.51-15.52a12,12,0,0,1,17,17L153,128l15.52,15.51a12,12,0,0,1-17,17L136,145l-15.51,15.52a12,12,0,0,1-17-17Z"/></symbol><symbol id="i-calendar-blank" viewBox="0 0 256 256"><path d="M208,28H188V24a12,12,0,0,0-24,0v4H92V24a12,12,0,0,0-24,0v4H48A20,20,0,0,0,28,48V208a20,20,0,0,0,20,20H208a20,20,0,0,0,20-20V48A20,20,0,0,0,208,28ZM68,52a12,12,0,0,0,24,0h72a12,12,0,0,0,24,0h16V76H52V52ZM52,204V100H204V204Z"/></symbol><symbol id="i-camera" viewBox="0 0 256 256"><path d="M208,52H182.42L170,33.34A12,12,0,0,0,160,28H96a12,12,0,0,0-10,5.34L73.57,52H48A28,28,0,0,0,20,80V192a28,28,0,0,0,28,28H208a28,28,0,0,0,28-28V80A28,28,0,0,0,208,52Zm4,140a4,4,0,0,1-4,4H48a4,4,0,0,1-4-4V80a4,4,0,0,1,4-4H80a12,12,0,0,0,10-5.34L102.42,52h51.15L166,70.66A12,12,0,0,0,176,76h32a4,4,0,0,1,4,4ZM128,84a48,48,0,1,0,48,48A48.05,48.05,0,0,0,128,84Zm0,72a24,24,0,1,1,24-24A24,24,0,0,1,128,156Z"/></symbol><symbol id="i-caret-left" viewBox="0 0 256 256"><path d="M168.49,199.51a12,12,0,0,1-17,17l-80-80a12,12,0,0,1,0-17l80-80a12,12,0,0,1,17,17L97,128Z"/></symbol><symbol id="i-clock" viewBox="0 0 256 256"><path d="M128,20A108,108,0,1,0,236,128,108.12,108.12,0,0,0,128,20Zm0,192a84,84,0,1,1,84-84A84.09,84.09,0,0,1,128,212Zm68-84a12,12,0,0,1-12,12H128a12,12,0,0,1-12-12V72a12,12,0,0,1,24,0v44h44A12,12,0,0,1,196,128Z"/></symbol><symbol id="i-flashlight" viewBox="0 0 256 256"><path d="M184,12H72A20,20,0,0,0,52,32V77.33a20.12,20.12,0,0,0,4,12L76,116V224a20,20,0,0,0,20,20h64a20,20,0,0,0,20-20V116l20-26.67a20.12,20.12,0,0,0,4-12V32A20,20,0,0,0,184,12Zm-4,24V52H76V36Zm-20,66.67a20.12,20.12,0,0,0-4,12V220H100V114.67a20.12,20.12,0,0,0-4-12L76,76H180ZM140,120v32a12,12,0,0,1-24,0V120a12,12,0,0,1,24,0Z"/></symbol><symbol id="i-house" viewBox="0 0 256 256"><path d="M222.14,105.85l-80-80a20,20,0,0,0-28.28,0l-80,80A19.86,19.86,0,0,0,28,120v96a12,12,0,0,0,12,12h64a12,12,0,0,0,12-12V164h24v52a12,12,0,0,0,12,12h64a12,12,0,0,0,12-12V120A19.86,19.86,0,0,0,222.14,105.85ZM204,204H164V152a12,12,0,0,0-12-12H104a12,12,0,0,0-12,12v52H52V121.65l76-76,76,76Z"/></symbol><symbol id="i-magnifying-glass" viewBox="0 0 256 256"><path d="M232.49,215.51,185,168a92.12,92.12,0,1,0-17,17l47.53,47.54a12,12,0,0,0,17-17ZM44,112a68,68,0,1,1,68,68A68.07,68.07,0,0,1,44,112Z"/></symbol><symbol id="i-map-pin" viewBox="0 0 256 256"><path d="M128,60a44,44,0,1,0,44,44A44.05,44.05,0,0,0,128,60Zm0,64a20,20,0,1,1,20-20A20,20,0,0,1,128,124Zm0-112a92.1,92.1,0,0,0-92,92c0,77.36,81.64,135.4,85.12,137.83a12,12,0,0,0,13.76,0,259,259,0,0,0,42.18-39C205.15,170.57,220,136.37,220,104A92.1,92.1,0,0,0,128,12Zm31.3,174.71A249.35,249.35,0,0,1,128,216.89a249.35,249.35,0,0,1-31.3-30.18C80,167.37,60,137.31,60,104a68,68,0,0,1,136,0C196,137.31,176,167.37,159.3,186.71Z"/></symbol><symbol id="i-money" viewBox="0 0 256 256"><path d="M240,52H16A12,12,0,0,0,4,64V192a12,12,0,0,0,12,12H240a12,12,0,0,0,12-12V64A12,12,0,0,0,240,52ZM181.21,180H74.79A60.18,60.18,0,0,0,28,133.21V122.79A60.18,60.18,0,0,0,74.79,76H181.21A60.18,60.18,0,0,0,228,122.79v10.42A60.18,60.18,0,0,0,181.21,180ZM228,97.94A36.23,36.23,0,0,1,206.06,76H228ZM49.94,76A36.23,36.23,0,0,1,28,97.94V76ZM28,158.06A36.23,36.23,0,0,1,49.94,180H28ZM206.06,180A36.23,36.23,0,0,1,228,158.06V180ZM128,88a40,40,0,1,0,40,40A40,40,0,0,0,128,88Zm0,56a16,16,0,1,1,16-16A16,16,0,0,1,128,144Z"/></symbol><symbol id="i-paper-plane-tilt" viewBox="0 0 256 256"><path d="M230.14,25.86a20,20,0,0,0-19.57-5.11l-.22.07L18.44,79a20,20,0,0,0-3.06,37.25L99,157l40.71,83.65a19.81,19.81,0,0,0,18,11.38c.57,0,1.15,0,1.73-.07A19.82,19.82,0,0,0,177,237.56L235.18,45.65a1.42,1.42,0,0,0,.07-.22A20,20,0,0,0,230.14,25.86ZM156.91,221.07l-34.37-70.64,46-45.95a12,12,0,0,0-17-17l-46,46L34.93,99.09,210,46Z"/></symbol><symbol id="i-plus" viewBox="0 0 256 256"><path d="M228,128a12,12,0,0,1-12,12H140v76a12,12,0,0,1-24,0V140H40a12,12,0,0,1,0-24h76V40a12,12,0,0,1,24,0v76h76A12,12,0,0,1,228,128Z"/></symbol><symbol id="i-tray" viewBox="0 0 256 256"><path d="M208,28H48A20,20,0,0,0,28,48V208a20,20,0,0,0,20,20H208a20,20,0,0,0,20-20V48A20,20,0,0,0,208,28Zm-4,24v92H179.31a19.86,19.86,0,0,0-14.14,5.86L147,168H109L90.83,149.86A19.86,19.86,0,0,0,76.69,144H52V52ZM52,204V168H75l18.14,18.14A19.86,19.86,0,0,0,107.31,192h41.38a19.86,19.86,0,0,0,14.14-5.86L181,168h23v36Z"/></symbol><symbol id="i-users" viewBox="0 0 256 256"><path d="M125.18,156.94a64,64,0,1,0-82.36,0,100.23,100.23,0,0,0-39.49,32,12,12,0,0,0,19.35,14.2,76,76,0,0,1,122.64,0,12,12,0,0,0,19.36-14.2A100.33,100.33,0,0,0,125.18,156.94ZM44,108a40,40,0,1,1,40,40A40,40,0,0,1,44,108Zm206.1,97.67a12,12,0,0,1-16.78-2.57A76.31,76.31,0,0,0,172,172a12,12,0,0,1,0-24,40,40,0,1,0-10.3-78.67,12,12,0,1,1-6.16-23.19,64,64,0,0,1,57.64,110.8,100.23,100.23,0,0,1,39.49,32A12,12,0,0,1,250.1,205.67Z"/></symbol><symbol id="i-wallet" viewBox="0 0 256 256"><path d="M196,136a16,16,0,1,1-16-16A16,16,0,0,1,196,136Zm40-36v80a32,32,0,0,1-32,32H60a32,32,0,0,1-32-32V60.92A32,32,0,0,1,60,28H192a12,12,0,0,1,0,24H60a8,8,0,0,0-8,8.26v.08A8.32,8.32,0,0,0,60.48,68H204A32,32,0,0,1,236,100Zm-24,0a8,8,0,0,0-8-8H60.48A33.72,33.72,0,0,1,52,90.92V180a8,8,0,0,0,8,8H204a8,8,0,0,0,8-8Z"/></symbol><symbol id="i-warning" viewBox="0 0 256 256"><path d="M240.26,186.1,152.81,34.23h0a28.74,28.74,0,0,0-49.62,0L15.74,186.1a27.45,27.45,0,0,0,0,27.71A28.31,28.31,0,0,0,40.55,228h174.9a28.31,28.31,0,0,0,24.79-14.19A27.45,27.45,0,0,0,240.26,186.1Zm-20.8,15.7a4.46,4.46,0,0,1-4,2.2H40.55a4.46,4.46,0,0,1-4-2.2,3.56,3.56,0,0,1,0-3.73L124,46.2a4.77,4.77,0,0,1,8,0l87.44,151.87A3.56,3.56,0,0,1,219.46,201.8ZM116,136V104a12,12,0,0,1,24,0v32a12,12,0,0,1-24,0Zm28,40a16,16,0,1,1-16-16A16,16,0,0,1,144,176Z"/></symbol></svg>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="i-arrow-up" viewBox="0 0 256 256"><path d="M208.49,120.49a12,12,0,0,1-17,0L140,69V216a12,12,0,0,1-24,0V69L64.49,120.49a12,12,0,0,1-17-17l72-72a12,12,0,0,1,17,0l72,72A12,12,0,0,1,208.49,120.49Z"/></symbol><symbol id="i-backspace" viewBox="0 0 256 256"><path d="M216,36H68.53a20.09,20.09,0,0,0-17.15,9.71L5.71,121.83a12,12,0,0,0,0,12.34l45.67,76.12A20.09,20.09,0,0,0,68.53,220H216a20,20,0,0,0,20-20V56A20,20,0,0,0,216,36Zm-4,160H70.8L30,128,70.8,60H212ZM103.51,143.51,119,128l-15.52-15.51a12,12,0,0,1,17-17L136,111l15.51-15.52a12,12,0,0,1,17,17L153,128l15.52,15.51a12,12,0,0,1-17,17L136,145l-15.51,15.52a12,12,0,0,1-17-17Z"/></symbol><symbol id="i-calendar-blank" viewBox="0 0 256 256"><path d="M208,28H188V24a12,12,0,0,0-24,0v4H92V24a12,12,0,0,0-24,0v4H48A20,20,0,0,0,28,48V208a20,20,0,0,0,20,20H208a20,20,0,0,0,20-20V48A20,20,0,0,0,208,28ZM68,52a12,12,0,0,0,24,0h72a12,12,0,0,0,24,0h16V76H52V52ZM52,204V100H204V204Z"/></symbol><symbol id="i-camera" viewBox="0 0 256 256"><path d="M208,52H182.42L170,33.34A12,12,0,0,0,160,28H96a12,12,0,0,0-10,5.34L73.57,52H48A28,28,0,0,0,20,80V192a28,28,0,0,0,28,28H208a28,28,0,0,0,28-28V80A28,28,0,0,0,208,52Zm4,140a4,4,0,0,1-4,4H48a4,4,0,0,1-4-4V80a4,4,0,0,1,4-4H80a12,12,0,0,0,10-5.34L102.42,52h51.15L166,70.66A12,12,0,0,0,176,76h32a4,4,0,0,1,4,4ZM128,84a48,48,0,1,0,48,48A48.05,48.05,0,0,0,128,84Zm0,72a24,24,0,1,1,24-24A24,24,0,0,1,128,156Z"/></symbol><symbol id="i-caret-left" viewBox="0 0 256 256"><path d="M168.49,199.51a12,12,0,0,1-17,17l-80-80a12,12,0,0,1,0-17l80-80a12,12,0,0,1,17,17L97,128Z"/></symbol><symbol id="i-clock" viewBox="0 0 256 256"><path d="M128,20A108,108,0,1,0,236,128,108.12,108.12,0,0,0,128,20Zm0,192a84,84,0,1,1,84-84A84.09,84.09,0,0,1,128,212Zm68-84a12,12,0,0,1-12,12H128a12,12,0,0,1-12-12V72a12,12,0,0,1,24,0v44h44A12,12,0,0,1,196,128Z"/></symbol><symbol id="i-flashlight" viewBox="0 0 256 256"><path d="M184,12H72A20,20,0,0,0,52,32V77.33a20.12,20.12,0,0,0,4,12L76,116V224a20,20,0,0,0,20,20h64a20,20,0,0,0,20-20V116l20-26.67a20.12,20.12,0,0,0,4-12V32A20,20,0,0,0,184,12Zm-4,24V52H76V36Zm-20,66.67a20.12,20.12,0,0,0-4,12V220H100V114.67a20.12,20.12,0,0,0-4-12L76,76H180ZM140,120v32a12,12,0,0,1-24,0V120a12,12,0,0,1,24,0Z"/></symbol><symbol id="i-house" viewBox="0 0 256 256"><path d="M222.14,105.85l-80-80a20,20,0,0,0-28.28,0l-80,80A19.86,19.86,0,0,0,28,120v96a12,12,0,0,0,12,12h64a12,12,0,0,0,12-12V164h24v52a12,12,0,0,0,12,12h64a12,12,0,0,0,12-12V120A19.86,19.86,0,0,0,222.14,105.85ZM204,204H164V152a12,12,0,0,0-12-12H104a12,12,0,0,0-12,12v52H52V121.65l76-76,76,76Z"/></symbol><symbol id="i-list" viewBox="0 0 256 256"><path d="M228,128a12,12,0,0,1-12,12H40a12,12,0,0,1,0-24H216A12,12,0,0,1,228,128ZM40,76H216a12,12,0,0,0,0-24H40a12,12,0,0,0,0,24ZM216,180H40a12,12,0,0,0,0,24H216a12,12,0,0,0,0-24Z"/></symbol><symbol id="i-magnifying-glass" viewBox="0 0 256 256"><path d="M232.49,215.51,185,168a92.12,92.12,0,1,0-17,17l47.53,47.54a12,12,0,0,0,17-17ZM44,112a68,68,0,1,1,68,68A68.07,68.07,0,0,1,44,112Z"/></symbol><symbol id="i-map-pin" viewBox="0 0 256 256"><path d="M128,60a44,44,0,1,0,44,44A44.05,44.05,0,0,0,128,60Zm0,64a20,20,0,1,1,20-20A20,20,0,0,1,128,124Zm0-112a92.1,92.1,0,0,0-92,92c0,77.36,81.64,135.4,85.12,137.83a12,12,0,0,0,13.76,0,259,259,0,0,0,42.18-39C205.15,170.57,220,136.37,220,104A92.1,92.1,0,0,0,128,12Zm31.3,174.71A249.35,249.35,0,0,1,128,216.89a249.35,249.35,0,0,1-31.3-30.18C80,167.37,60,137.31,60,104a68,68,0,0,1,136,0C196,137.31,176,167.37,159.3,186.71Z"/></symbol><symbol id="i-money" viewBox="0 0 256 256"><path d="M240,52H16A12,12,0,0,0,4,64V192a12,12,0,0,0,12,12H240a12,12,0,0,0,12-12V64A12,12,0,0,0,240,52ZM181.21,180H74.79A60.18,60.18,0,0,0,28,133.21V122.79A60.18,60.18,0,0,0,74.79,76H181.21A60.18,60.18,0,0,0,228,122.79v10.42A60.18,60.18,0,0,0,181.21,180ZM228,97.94A36.23,36.23,0,0,1,206.06,76H228ZM49.94,76A36.23,36.23,0,0,1,28,97.94V76ZM28,158.06A36.23,36.23,0,0,1,49.94,180H28ZM206.06,180A36.23,36.23,0,0,1,228,158.06V180ZM128,88a40,40,0,1,0,40,40A40,40,0,0,0,128,88Zm0,56a16,16,0,1,1,16-16A16,16,0,0,1,128,144Z"/></symbol><symbol id="i-paper-plane-tilt" viewBox="0 0 256 256"><path d="M230.14,25.86a20,20,0,0,0-19.57-5.11l-.22.07L18.44,79a20,20,0,0,0-3.06,37.25L99,157l40.71,83.65a19.81,19.81,0,0,0,18,11.38c.57,0,1.15,0,1.73-.07A19.82,19.82,0,0,0,177,237.56L235.18,45.65a1.42,1.42,0,0,0,.07-.22A20,20,0,0,0,230.14,25.86ZM156.91,221.07l-34.37-70.64,46-45.95a12,12,0,0,0-17-17l-46,46L34.93,99.09,210,46Z"/></symbol><symbol id="i-plus" viewBox="0 0 256 256"><path d="M228,128a12,12,0,0,1-12,12H140v76a12,12,0,0,1-24,0V140H40a12,12,0,0,1,0-24h76V40a12,12,0,0,1,24,0v76h76A12,12,0,0,1,228,128Z"/></symbol><symbol id="i-tray" viewBox="0 0 256 256"><path d="M208,28H48A20,20,0,0,0,28,48V208a20,20,0,0,0,20,20H208a20,20,0,0,0,20-20V48A20,20,0,0,0,208,28Zm-4,24v92H179.31a19.86,19.86,0,0,0-14.14,5.86L147,168H109L90.83,149.86A19.86,19.86,0,0,0,76.69,144H52V52ZM52,204V168H75l18.14,18.14A19.86,19.86,0,0,0,107.31,192h41.38a19.86,19.86,0,0,0,14.14-5.86L181,168h23v36Z"/></symbol><symbol id="i-users" viewBox="0 0 256 256"><path d="M125.18,156.94a64,64,0,1,0-82.36,0,100.23,100.23,0,0,0-39.49,32,12,12,0,0,0,19.35,14.2,76,76,0,0,1,122.64,0,12,12,0,0,0,19.36-14.2A100.33,100.33,0,0,0,125.18,156.94ZM44,108a40,40,0,1,1,40,40A40,40,0,0,1,44,108Zm206.1,97.67a12,12,0,0,1-16.78-2.57A76.31,76.31,0,0,0,172,172a12,12,0,0,1,0-24,40,40,0,1,0-10.3-78.67,12,12,0,1,1-6.16-23.19,64,64,0,0,1,57.64,110.8,100.23,100.23,0,0,1,39.49,32A12,12,0,0,1,250.1,205.67Z"/></symbol><symbol id="i-wallet" viewBox="0 0 256 256"><path d="M196,136a16,16,0,1,1-16-16A16,16,0,0,1,196,136Zm40-36v80a32,32,0,0,1-32,32H60a32,32,0,0,1-32-32V60.92A32,32,0,0,1,60,28H192a12,12,0,0,1,0,24H60a8,8,0,0,0-8,8.26v.08A8.32,8.32,0,0,0,60.48,68H204A32,32,0,0,1,236,100Zm-24,0a8,8,0,0,0-8-8H60.48A33.72,33.72,0,0,1,52,90.92V180a8,8,0,0,0,8,8H204a8,8,0,0,0,8-8Z"/></symbol><symbol id="i-warning" viewBox="0 0 256 256"><path d="M240.26,186.1,152.81,34.23h0a28.74,28.74,0,0,0-49.62,0L15.74,186.1a27.45,27.45,0,0,0,0,27.71A28.31,28.31,0,0,0,40.55,228h174.9a28.31,28.31,0,0,0,24.79-14.19A27.45,27.45,0,0,0,240.26,186.1Zm-20.8,15.7a4.46,4.46,0,0,1-4,2.2H40.55a4.46,4.46,0,0,1-4-2.2,3.56,3.56,0,0,1,0-3.73L124,46.2a4.77,4.77,0,0,1,8,0l87.44,151.87A3.56,3.56,0,0,1,219.46,201.8ZM116,136V104a12,12,0,0,1,24,0v32a12,12,0,0,1-24,0Zm28,40a16,16,0,1,1-16-16A16,16,0,0,1,144,176Z"/></symbol><symbol id="i-x" viewBox="0 0 256 256"><path d="M208.49,191.51a12,12,0,0,1-17,17L128,145,64.49,208.49a12,12,0,0,1-17-17L111,128,47.51,64.49a12,12,0,0,1,17-17L128,111l63.51-63.52a12,12,0,0,1,17,17L145,128Z"/></symbol></svg>
 <header class="gn" id="gn">
   <div class="wrap">
-    <a href="#top" aria-label="Velani home"><svg class="wm" role="img" aria-label="Velani" xmlns="http://www.w3.org/2000/svg" viewBox="0.0 689.0 1957.0 350.6" fill="currentColor"><path d="M 269.87 753.98 L 174.58 985.88 L 80 753.98 C 70.69 730.57 65.91 710.03 65.91 692.36 L 0 692.36 L 0 696.42 C 6.45 702.39 10.98 706.45 13.37 708.6 C 18.15 713.14 28.66 726.27 34.63 741.32 L 155.95 1034.84 L 187.72 1034.84 L 187.72 1033.88 C 187.72 1027.2 191.78 1015.02 199.89 997.11 L 307.13 741.32 C 311.43 730.57 316.21 722.45 321.94 716.24 C 325.28 712.66 325.76 711.46 329.58 707.64 C 331.49 705.97 332.93 704.78 333.64 704.06 C 335.07 702.87 341.04 697.38 342.24 696.42 L 342.24 692.36 L 283.96 692.36 C 283.96 711.7 279.19 732.24 269.87 753.98"/><path d="M 632.85 999.73 C 623.06 1004.75 610.16 1007.37 594.64 1007.37 L 468.7 1007.37 L 468.7 863.3 L 555 863.3 C 563.11 863.3 572.91 865.92 584.37 871.18 L 586.28 871.18 L 586.28 831.54 L 584.37 831.54 C 579.36 834.4 573.62 835.83 567.18 835.83 L 468.7 835.83 L 468.7 719.82 L 570.04 719.82 C 584.13 719.82 594.64 721.73 601.57 725.32 C 608.49 728.9 614.22 735.59 619 745.38 L 620.91 745.38 L 620.91 689.02 L 619 689.02 C 613.99 691.17 605.15 692.36 592.02 692.36 L 422.61 692.36 L 422.61 696.42 C 428.58 705.02 431.45 713.85 431.45 722.69 L 431.45 1004.51 C 431.45 1013.58 428.58 1022.42 422.61 1031.02 L 422.61 1034.84 L 622.34 1034.84 C 627.12 1034.84 633.57 1035.79 641.45 1037.7 L 661.99 980.62 L 660.08 979.19 C 651.72 987.79 642.64 994.71 632.85 999.73"/><path d="M 944.63 999.73 C 934.84 1004.75 921.95 1007.37 906.42 1007.37 L 794.89 1007.37 L 794.89 722.69 C 794.89 716 797.76 707.17 803.73 696.42 L 803.73 692.36 L 748.8 692.36 L 748.8 696.42 C 754.77 705.02 757.64 713.85 757.64 722.69 L 757.64 1004.51 C 757.64 1013.58 754.77 1022.42 748.8 1031.02 L 748.8 1034.84 L 934.12 1034.84 C 938.9 1034.84 945.35 1035.79 953.23 1037.7 L 973.77 980.62 L 971.86 979.19 C 963.5 987.79 954.43 994.71 944.63 999.73"/><path d="M 1170.97 835.89 L 1208.93 747.78 L 1246.55 835.89 Z M 1350.8 985.86 L 1224.69 692.34 L 1185.06 692.34 L 1185.06 696.43 C 1191.98 706.92 1192.94 718.14 1187.44 730.08 L 1075.42 985.86 C 1072.34 993.3 1068.51 1000.21 1064.2 1006.16 C 1059.66 1012.14 1056.31 1016.46 1053.71 1018.84 C 1051.07 1021.22 1046.76 1025.27 1040.33 1031.03 L 1040.33 1034.82 L 1097.88 1034.82 C 1097.88 1016.46 1102.68 995.9 1112.23 973.22 L 1139.45 909.54 L 1147.32 891.06 L 1159.04 863.59 L 1258.38 863.59 L 1270.09 891.06 L 1270.35 891.69 L 1305.44 973.22 C 1314.74 994.49 1319.53 1015.01 1319.53 1034.82 L 1385.45 1034.82 L 1385.45 1031.03 C 1379.46 1025.75 1374.93 1021.7 1372.29 1019.06 C 1366.79 1013.6 1357.27 1000.92 1350.8 985.86"/><path d="M 1957.02 696.42 L 1957.02 692.36 L 1902.32 692.36 L 1902.32 696.42 C 1908.3 705.02 1911.16 713.86 1911.16 722.69 L 1911.16 1004.51 C 1911.16 1013.58 1908.3 1022.42 1902.32 1031.02 L 1902.32 1034.84 L 1957.02 1034.84 L 1957.02 1031.02 C 1951.04 1022.42 1948.18 1013.58 1948.18 1004.51 L 1948.18 722.69 C 1948.18 713.86 1951.04 705.02 1957.02 696.42"/><path d="M 1741.2 749.2 L 1741.2 954.11 L 1515.51 692.36 L 1463.69 692.36 L 1463.69 696.42 C 1473.95 703.11 1482.32 719.59 1482.32 736.07 L 1482.32 1004.51 C 1482.32 1013.58 1479.45 1022.42 1473.48 1031.02 L 1473.48 1034.84 L 1523.87 1034.84 C 1516.95 1022.66 1513.6 1003.79 1513.6 978 L 1513.6 744.9 L 1768.43 1039.61 L 1772.49 1039.61 L 1772.49 722.69 C 1772.49 713.38 1775.36 704.78 1781.09 696.42 L 1781.09 692.36 L 1730.93 692.36 C 1737.86 704.54 1741.2 723.41 1741.2 749.2"/></svg></a>
-    <nav aria-label="Main"><a href="https://claude.ai/artifact/Q2eKrGUyxAtdXzniZrtT13">NEVORA</a><a href="https://claude.ai/artifact/EZNKQDGCQPJ9Pg2kdndHL9">Rondo</a><a href="https://claude.ai/artifact/VDE3KAXUcc3NWqNigGGfBa">Relay</a><a href="#plans">Plans</a><a href="#ft">About</a><a href="#ft">Support</a></nav>
-    <span class="lang">ES</span>
-    <a class="cta" href="#plans">Free trial</a>
+    <a class="logo" href="https://claude.ai/artifact/UJJ24djMRv8NiskiGmx2PA" aria-label="Velani home"><svg class="wm" role="img" aria-label="Velani" xmlns="http://www.w3.org/2000/svg" viewBox="0.0 689.0 1957.0 350.6" fill="currentColor"><path d="M 269.87 753.98 L 174.58 985.88 L 80 753.98 C 70.69 730.57 65.91 710.03 65.91 692.36 L 0 692.36 L 0 696.42 C 6.45 702.39 10.98 706.45 13.37 708.6 C 18.15 713.14 28.66 726.27 34.63 741.32 L 155.95 1034.84 L 187.72 1034.84 L 187.72 1033.88 C 187.72 1027.2 191.78 1015.02 199.89 997.11 L 307.13 741.32 C 311.43 730.57 316.21 722.45 321.94 716.24 C 325.28 712.66 325.76 711.46 329.58 707.64 C 331.49 705.97 332.93 704.78 333.64 704.06 C 335.07 702.87 341.04 697.38 342.24 696.42 L 342.24 692.36 L 283.96 692.36 C 283.96 711.7 279.19 732.24 269.87 753.98"/><path d="M 632.85 999.73 C 623.06 1004.75 610.16 1007.37 594.64 1007.37 L 468.7 1007.37 L 468.7 863.3 L 555 863.3 C 563.11 863.3 572.91 865.92 584.37 871.18 L 586.28 871.18 L 586.28 831.54 L 584.37 831.54 C 579.36 834.4 573.62 835.83 567.18 835.83 L 468.7 835.83 L 468.7 719.82 L 570.04 719.82 C 584.13 719.82 594.64 721.73 601.57 725.32 C 608.49 728.9 614.22 735.59 619 745.38 L 620.91 745.38 L 620.91 689.02 L 619 689.02 C 613.99 691.17 605.15 692.36 592.02 692.36 L 422.61 692.36 L 422.61 696.42 C 428.58 705.02 431.45 713.85 431.45 722.69 L 431.45 1004.51 C 431.45 1013.58 428.58 1022.42 422.61 1031.02 L 422.61 1034.84 L 622.34 1034.84 C 627.12 1034.84 633.57 1035.79 641.45 1037.7 L 661.99 980.62 L 660.08 979.19 C 651.72 987.79 642.64 994.71 632.85 999.73"/><path d="M 944.63 999.73 C 934.84 1004.75 921.95 1007.37 906.42 1007.37 L 794.89 1007.37 L 794.89 722.69 C 794.89 716 797.76 707.17 803.73 696.42 L 803.73 692.36 L 748.8 692.36 L 748.8 696.42 C 754.77 705.02 757.64 713.85 757.64 722.69 L 757.64 1004.51 C 757.64 1013.58 754.77 1022.42 748.8 1031.02 L 748.8 1034.84 L 934.12 1034.84 C 938.9 1034.84 945.35 1035.79 953.23 1037.7 L 973.77 980.62 L 971.86 979.19 C 963.5 987.79 954.43 994.71 944.63 999.73"/><path d="M 1170.97 835.89 L 1208.93 747.78 L 1246.55 835.89 Z M 1350.8 985.86 L 1224.69 692.34 L 1185.06 692.34 L 1185.06 696.43 C 1191.98 706.92 1192.94 718.14 1187.44 730.08 L 1075.42 985.86 C 1072.34 993.3 1068.51 1000.21 1064.2 1006.16 C 1059.66 1012.14 1056.31 1016.46 1053.71 1018.84 C 1051.07 1021.22 1046.76 1025.27 1040.33 1031.03 L 1040.33 1034.82 L 1097.88 1034.82 C 1097.88 1016.46 1102.68 995.9 1112.23 973.22 L 1139.45 909.54 L 1147.32 891.06 L 1159.04 863.59 L 1258.38 863.59 L 1270.09 891.06 L 1270.35 891.69 L 1305.44 973.22 C 1314.74 994.49 1319.53 1015.01 1319.53 1034.82 L 1385.45 1034.82 L 1385.45 1031.03 C 1379.46 1025.75 1374.93 1021.7 1372.29 1019.06 C 1366.79 1013.6 1357.27 1000.92 1350.8 985.86"/><path d="M 1957.02 696.42 L 1957.02 692.36 L 1902.32 692.36 L 1902.32 696.42 C 1908.3 705.02 1911.16 713.86 1911.16 722.69 L 1911.16 1004.51 C 1911.16 1013.58 1908.3 1022.42 1902.32 1031.02 L 1902.32 1034.84 L 1957.02 1034.84 L 1957.02 1031.02 C 1951.04 1022.42 1948.18 1013.58 1948.18 1004.51 L 1948.18 722.69 C 1948.18 713.86 1951.04 705.02 1957.02 696.42"/><path d="M 1741.2 749.2 L 1741.2 954.11 L 1515.51 692.36 L 1463.69 692.36 L 1463.69 696.42 C 1473.95 703.11 1482.32 719.59 1482.32 736.07 L 1482.32 1004.51 C 1482.32 1013.58 1479.45 1022.42 1473.48 1031.02 L 1473.48 1034.84 L 1523.87 1034.84 C 1516.95 1022.66 1513.6 1003.79 1513.6 978 L 1513.6 744.9 L 1768.43 1039.61 L 1772.49 1039.61 L 1772.49 722.69 C 1772.49 713.38 1775.36 704.78 1781.09 696.42 L 1781.09 692.36 L 1730.93 692.36 C 1737.86 704.54 1741.2 723.41 1741.2 749.2"/></svg></a>
+    <nav class="gnav" aria-label="Main"><a href="https://claude.ai/artifact/Q2eKrGUyxAtdXzniZrtT13">NEVORA</a><a href="https://claude.ai/artifact/EZNKQDGCQPJ9Pg2kdndHL9">Rondo</a><a href="https://claude.ai/artifact/VDE3KAXUcc3NWqNigGGfBa">Relay</a><a href="#plans">Plans</a><a href="#ft">Support</a></nav>
+    <span class="lang"><a href="#top" lang="en" aria-current="true">EN</a><a href="#top" lang="es" hreflang="es">ES</a></span>
+    <a class="signin" href="#ft">Sign in</a>
+    <a class="cta" href="#start">Free trial</a>
+    <button class="mb" type="button" aria-expanded="false" aria-controls="mm" aria-label="Open menu"><svg class="i" aria-hidden="true"><use href="#i-list"/></svg></button>
   </div>
 </header>
+<div class="mm" id="mm" role="dialog" aria-modal="true" aria-label="Menu" hidden>
+  <div class="mm-top"><a class="logo" href="https://claude.ai/artifact/UJJ24djMRv8NiskiGmx2PA" aria-label="Velani home"><svg class="wm" role="img" aria-label="Velani" xmlns="http://www.w3.org/2000/svg" viewBox="0.0 689.0 1957.0 350.6" fill="currentColor"><path d="M 269.87 753.98 L 174.58 985.88 L 80 753.98 C 70.69 730.57 65.91 710.03 65.91 692.36 L 0 692.36 L 0 696.42 C 6.45 702.39 10.98 706.45 13.37 708.6 C 18.15 713.14 28.66 726.27 34.63 741.32 L 155.95 1034.84 L 187.72 1034.84 L 187.72 1033.88 C 187.72 1027.2 191.78 1015.02 199.89 997.11 L 307.13 741.32 C 311.43 730.57 316.21 722.45 321.94 716.24 C 325.28 712.66 325.76 711.46 329.58 707.64 C 331.49 705.97 332.93 704.78 333.64 704.06 C 335.07 702.87 341.04 697.38 342.24 696.42 L 342.24 692.36 L 283.96 692.36 C 283.96 711.7 279.19 732.24 269.87 753.98"/><path d="M 632.85 999.73 C 623.06 1004.75 610.16 1007.37 594.64 1007.37 L 468.7 1007.37 L 468.7 863.3 L 555 863.3 C 563.11 863.3 572.91 865.92 584.37 871.18 L 586.28 871.18 L 586.28 831.54 L 584.37 831.54 C 579.36 834.4 573.62 835.83 567.18 835.83 L 468.7 835.83 L 468.7 719.82 L 570.04 719.82 C 584.13 719.82 594.64 721.73 601.57 725.32 C 608.49 728.9 614.22 735.59 619 745.38 L 620.91 745.38 L 620.91 689.02 L 619 689.02 C 613.99 691.17 605.15 692.36 592.02 692.36 L 422.61 692.36 L 422.61 696.42 C 428.58 705.02 431.45 713.85 431.45 722.69 L 431.45 1004.51 C 431.45 1013.58 428.58 1022.42 422.61 1031.02 L 422.61 1034.84 L 622.34 1034.84 C 627.12 1034.84 633.57 1035.79 641.45 1037.7 L 661.99 980.62 L 660.08 979.19 C 651.72 987.79 642.64 994.71 632.85 999.73"/><path d="M 944.63 999.73 C 934.84 1004.75 921.95 1007.37 906.42 1007.37 L 794.89 1007.37 L 794.89 722.69 C 794.89 716 797.76 707.17 803.73 696.42 L 803.73 692.36 L 748.8 692.36 L 748.8 696.42 C 754.77 705.02 757.64 713.85 757.64 722.69 L 757.64 1004.51 C 757.64 1013.58 754.77 1022.42 748.8 1031.02 L 748.8 1034.84 L 934.12 1034.84 C 938.9 1034.84 945.35 1035.79 953.23 1037.7 L 973.77 980.62 L 971.86 979.19 C 963.5 987.79 954.43 994.71 944.63 999.73"/><path d="M 1170.97 835.89 L 1208.93 747.78 L 1246.55 835.89 Z M 1350.8 985.86 L 1224.69 692.34 L 1185.06 692.34 L 1185.06 696.43 C 1191.98 706.92 1192.94 718.14 1187.44 730.08 L 1075.42 985.86 C 1072.34 993.3 1068.51 1000.21 1064.2 1006.16 C 1059.66 1012.14 1056.31 1016.46 1053.71 1018.84 C 1051.07 1021.22 1046.76 1025.27 1040.33 1031.03 L 1040.33 1034.82 L 1097.88 1034.82 C 1097.88 1016.46 1102.68 995.9 1112.23 973.22 L 1139.45 909.54 L 1147.32 891.06 L 1159.04 863.59 L 1258.38 863.59 L 1270.09 891.06 L 1270.35 891.69 L 1305.44 973.22 C 1314.74 994.49 1319.53 1015.01 1319.53 1034.82 L 1385.45 1034.82 L 1385.45 1031.03 C 1379.46 1025.75 1374.93 1021.7 1372.29 1019.06 C 1366.79 1013.6 1357.27 1000.92 1350.8 985.86"/><path d="M 1957.02 696.42 L 1957.02 692.36 L 1902.32 692.36 L 1902.32 696.42 C 1908.3 705.02 1911.16 713.86 1911.16 722.69 L 1911.16 1004.51 C 1911.16 1013.58 1908.3 1022.42 1902.32 1031.02 L 1902.32 1034.84 L 1957.02 1034.84 L 1957.02 1031.02 C 1951.04 1022.42 1948.18 1013.58 1948.18 1004.51 L 1948.18 722.69 C 1948.18 713.86 1951.04 705.02 1957.02 696.42"/><path d="M 1741.2 749.2 L 1741.2 954.11 L 1515.51 692.36 L 1463.69 692.36 L 1463.69 696.42 C 1473.95 703.11 1482.32 719.59 1482.32 736.07 L 1482.32 1004.51 C 1482.32 1013.58 1479.45 1022.42 1473.48 1031.02 L 1473.48 1034.84 L 1523.87 1034.84 C 1516.95 1022.66 1513.6 1003.79 1513.6 978 L 1513.6 744.9 L 1768.43 1039.61 L 1772.49 1039.61 L 1772.49 722.69 C 1772.49 713.38 1775.36 704.78 1781.09 696.42 L 1781.09 692.36 L 1730.93 692.36 C 1737.86 704.54 1741.2 723.41 1741.2 749.2"/></svg></a><button class="mx" type="button" aria-label="Close menu"><svg class="i" aria-hidden="true"><use href="#i-x"/></svg></button></div>
+  <nav class="mm-nav" aria-label="Main"><a href="https://claude.ai/artifact/Q2eKrGUyxAtdXzniZrtT13">NEVORA</a><a href="https://claude.ai/artifact/EZNKQDGCQPJ9Pg2kdndHL9">Rondo</a><a href="https://claude.ai/artifact/VDE3KAXUcc3NWqNigGGfBa">Relay</a><a href="#plans">Plans</a><a href="#ft">Support</a></nav>
+  <div class="mm-2"><a class="pillbtn" href="#start">Request a free trial</a><a class="mm-s" href="#ft">Sign in</a><span class="mm-l"><a href="#top" lang="en" aria-current="true">English</a><a href="#top" lang="es" hreflang="es">Español</a></span></div>
+</div>
+<script>
+(function(){
+  document.documentElement.lang='en';
+  var b=document.querySelector('.gn .mb'),m=document.getElementById('mm'),x=m.querySelector('.mx'),last=null;
+  function open(){last=document.activeElement;m.hidden=false;b.setAttribute('aria-expanded','true');document.documentElement.classList.add('mm-open');requestAnimationFrame(function(){requestAnimationFrame(function(){m.classList.add('in')})});x.focus()}
+  function close(){m.classList.remove('in');m.hidden=true;b.setAttribute('aria-expanded','false');document.documentElement.classList.remove('mm-open');if(last&&last.focus)last.focus()}
+  b.addEventListener('click',open);x.addEventListener('click',close);
+  m.addEventListener('keydown',function(e){
+    if(e.key==='Escape'){close();return}
+    if(e.key!=='Tab')return;
+    var f=[].slice.call(m.querySelectorAll('a[href],button')),i=f.indexOf(document.activeElement);
+    if(e.shiftKey&&i<=0){f[f.length-1].focus();e.preventDefault()}else if(!e.shiftKey&&i===f.length-1){f[0].focus();e.preventDefault()}
+  });
+  [].slice.call(m.querySelectorAll('a[href]')).forEach(function(a){a.addEventListener('click',close)});
+  addEventListener('resize',function(){if(innerWidth>820&&!m.hidden)close()});
+})();
+</script>
+
 
 <main id="top">
 
@@ -1033,18 +1092,24 @@ html.rm .tile .img{transform:none}
 <footer class="ft" id="ft">
   <div class="wrap">
     <div class="disc">
-      <p>People, places and figures on this page are samples. Northside Café is fictional.</p>
+      <p>People, places and figures on these pages are samples. Northside Café is fictional. Demos keep nothing and send nothing.</p>
       <p>NEVORA calculates pay from approved hours. It doesn't pay employees or file payroll taxes. Rondo prepares changes; the Owner approves them. Relay is in design and has no release date.</p>
     </div>
     <div class="cols">
-      <div><h6>Products</h6><a href="https://claude.ai/artifact/Q2eKrGUyxAtdXzniZrtT13">NEVORA Workforce</a><a href="https://claude.ai/artifact/EZNKQDGCQPJ9Pg2kdndHL9">Rondo</a><a href="https://claude.ai/artifact/VDE3KAXUcc3NWqNigGGfBa">Relay</a><a href="#plans">Plans</a></div>
-      <div><h6>Velani</h6><a href="#ft">About</a><a href="#ft">Contact</a><a href="#ft">Sign in</a></div>
-      <div><h6>Support</h6><a href="#ft">Help</a><span style="display:block;padding:4px 0;user-select:all">support@thevelani.com</span><span style="display:block;padding:4px 0">Monday to Friday, 8 am to 9 pm ET</span></div>
-      <div><h6>Legal</h6><a href="#ft">Privacy</a><a href="#ft">Terms</a><a href="#ft">Accessibility</a><a href="#ft">Security</a></div>
+      <div><h2 class="fh">Products</h2><a href="https://claude.ai/artifact/Q2eKrGUyxAtdXzniZrtT13">NEVORA Workforce</a><a href="https://claude.ai/artifact/EZNKQDGCQPJ9Pg2kdndHL9">Rondo</a><a href="https://claude.ai/artifact/VDE3KAXUcc3NWqNigGGfBa">Relay <span class="fs">In design</span></a></div>
+      <div><h2 class="fh">Get started</h2><a href="#start">Request a free trial</a><a href="#plans">Plans</a><a href="#ft">Sign in</a><a href="#ft">Set up your workplace</a></div>
+      <div><h2 class="fh">Support</h2><a href="#ft">Help</a><a href="#ft">Contact</a><a href="#ft">NEVORA support</a><a href="#ft">Delete your account</a></div>
+      <div><h2 class="fh">Company</h2><a href="#ft">About</a><a href="#ft">Security</a><a href="#ft">Accessibility</a></div>
     </div>
-    <div class="base"><span>Copyright © 2026 VELANI LLC. All rights reserved.</span><span>English · Español</span></div>
+    <div class="base">
+      <span>Copyright © 2026 VELANI LLC. All rights reserved.</span>
+      <nav class="legal" aria-label="Legal"><a href="#ft">Privacy</a><a href="#ft">Cookies</a><a href="#ft">Website terms</a><a href="#ft">NEVORA privacy</a><a href="#ft">NEVORA terms</a><a href="#ft">Legal</a></nav>
+      <span class="flang"><a href="#top" lang="en" aria-current="true">English</a><a href="#top" lang="es" hreflang="es">Español</a></span>
+    </div>
+    <p class="sup">support@thevelani.com · Monday to Friday, 8 am to 9 pm ET</p>
   </div>
 </footer>
+
 
 <button class="tw-b" type="button" id="tw-b" aria-expanded="false" aria-controls="tw">Tweaks</button>
 <div class="tw" id="tw" hidden>
@@ -1107,7 +1172,7 @@ html.rm .tile .img{transform:none}
     el.innerHTML=html; return [].slice.call(el.querySelectorAll('.'+cls.split(' ')[0]));
   }
   var lit=document.querySelector('[data-lit]'),litW=[];
-  if(lit){lit.setAttribute('aria-label',lit.textContent.trim());litW=words(lit,'w','span');litW.forEach(function(w){w.setAttribute('aria-hidden','true')})}
+  if(lit){var full=lit.textContent.trim();litW=words(lit,'w','span');litW.forEach(function(w){w.setAttribute('aria-hidden','true')});var sr=document.createElement('span');sr.className='sr';sr.textContent=full;lit.appendChild(sr)}
 
   /* ---------------- the day ---------------- */
   var day=document.getElementById('day');
@@ -1155,7 +1220,7 @@ html.rm .tile .img{transform:none}
   }
   function setMoment(i){
     cur=i; day.dataset.i=i;
-    mos.forEach(function(m,k){m.classList.toggle('on',k===i)});
+    mos.forEach(function(m,k){m.classList.toggle('on',k===i);m.inert=k!==i});
     var si=i===1?0:i; scrs.forEach(function(s){s.classList.toggle('on',+s.dataset.s===si)});
     lbls.forEach(function(l,k){l.classList.toggle('on',k===LBL[i])});
     tl.forEach(function(b,k){b.classList.toggle('on',k===i);b.classList.toggle('done',k<i);if(k===i)b.setAttribute('aria-current','step');else b.removeAttribute('aria-current')});
@@ -1232,6 +1297,7 @@ html.rm .tile .img{transform:none}
   var ok=document.getElementById('ok'),okm=document.getElementById('ok-m'),lang='en';
   function okText(){if(ok.getAttribute('aria-pressed')==='true'){ok.textContent=lang==='es'?'Aprobado':'Approved';okm.textContent=lang==='es'?'Dana cubre el domingo, 12:00 a 8:00. Es solo una muestra.':'Dana is on Sunday, 12:00 to 8:00. Sample only.'}}
   ok.addEventListener('click',function(){ok.setAttribute('aria-pressed','true');okText()});
+  convo.addEventListener('focusin',function(){if(!convo.classList.contains('on')){convo.classList.add('instant','on');if(!typed)typeAnswer()}});
   document.querySelectorAll('.seg button').forEach(function(b){b.addEventListener('click',function(){
     lang=b.dataset.lang;
     document.querySelectorAll('.seg button').forEach(function(x){x.setAttribute('aria-pressed',String(x===b))});

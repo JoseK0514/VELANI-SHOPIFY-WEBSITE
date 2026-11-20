@@ -36,9 +36,9 @@
 .diff .dr:first-child{border-top:0}
 .diff .dr .t{flex:1;min-width:0}
 .diff .dr .t b{display:block;font-weight:600}
-.diff .dr .t span{font-size:13.5px;color:#6A7176}
+.diff .dr .t span{font-size:13.5px;color:#545B60}
 .diff .new{background:#E7F4EC;margin:0 -18px;padding:12px 18px;border-top-color:transparent}
-.diff .old{opacity:.55}
+.diff .old b{color:#5F6368}
 .diff .old b{text-decoration:line-through}
 .hrsline{margin-top:14px;display:flex;align-items:center;gap:10px;font-size:15px;color:#3F464B}
 .hrsline .bar{flex:1;height:8px;border-radius:4px;background:#E3E8E7;overflow:hidden;position:relative}
@@ -88,18 +88,12 @@ html.rm [data-rv]{opacity:1;transform:none}
 {{SCREEN_CSS}}
 </style>
 
-<header class="gn" id="gn">
-  <div class="wrap">
-    <a href="{{HOME_URL}}" aria-label="Velani home">{{VELANI}}</a>
-    <nav aria-label="Main"><a href="{{NEVORA_URL}}">NEVORA</a><a href="#top" aria-current="page">Rondo</a><a href="{{RELAY_URL}}">Relay</a><a href="{{NEVORA_URL}}">Plans</a><a href="#faq">Support</a></nav>
-    <span class="lang">ES</span>
-  </div>
-</header>
+{{HEADER}}
 <div class="ln" id="ln">
   <div class="wrap">
     <a class="nm" href="#top">Rondo</a>
     <nav aria-label="Rondo sections"><a href="#ask">Ask</a><a href="#approve">Approvals</a><a href="#knows">What it reads</a><a href="#owner">Owner only</a><a href="#faq">Questions</a></nav>
-    <a class="cta" href="#close">Request a free trial</a>
+    <a class="cta" href="#close"><span class="l">Request a free trial</span><span class="s">Free trial</span></a>
   </div>
 </div>
 

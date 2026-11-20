@@ -21,12 +21,14 @@
 /* ---------------- local nav ---------------- */
 .ln{position:sticky;top:env(safe-area-inset-top,0px);z-index:49;height:52px;background:rgba(251,251,253,.6);-webkit-backdrop-filter:saturate(1.8) blur(20px);backdrop-filter:saturate(1.8) blur(20px);border-bottom:1px solid rgba(0,0,0,.08);color:var(--ink);transition:background .5s var(--ease),color .5s var(--ease),border-color .5s}
 .ln .wrap{height:100%;display:flex;align-items:center;gap:28px}
-.ln .nm{font:600 21px/1 var(--display);letter-spacing:-.022em;white-space:nowrap}
+.ln .nm{font:600 21px/1 var(--display);letter-spacing:-.022em;white-space:nowrap;padding-block:12px}
+.ln .cta .s{display:none}
+@media (max-width:420px){.ln .nm{font-size:18px}.ln .cta .l{display:none}.ln .cta .s{display:inline}}
 .ln nav{margin-left:auto;display:flex;gap:22px;font-size:12.5px}
 .ln nav a{opacity:.72;padding:16px 0;transition:opacity .3s}
-.ln nav a:hover,.ln nav a.on{opacity:1}
+@media (hover:hover){.ln nav a:hover,.ln nav a.on{opacity:1}}
 .ln nav a.on{font-weight:600}
-.ln .cta{font-size:12.5px;padding:0 13px;min-height:28px;border-radius:980px;background:var(--teal);color:#fff;display:inline-flex;align-items:center;white-space:nowrap}
+.ln .cta{position:relative;font-size:12.5px;padding:0 13px;min-height:28px;border-radius:980px;background:var(--teal);color:#fff;display:inline-flex;align-items:center;white-space:nowrap}
 .ln.dark{background:rgba(10,16,36,.66);color:var(--on-night);border-color:rgba(255,255,255,.1)}
 @media (max-width:980px){.ln nav{display:none}.ln .cta{margin-left:auto}}
 
@@ -72,7 +74,7 @@ html.rm .zh-stage{margin-bottom:0}
 .pairs b{font-weight:600}.pairs span{color:#0B6E69;font-weight:600}
 .hl-ctl{display:flex;justify-content:flex-end;gap:12px}
 .hl-ctl button{all:unset;cursor:pointer;width:44px;height:44px;border-radius:50%;background:#E8E8ED;display:grid;place-items:center;color:var(--ink);transition:background .2s,opacity .2s}
-.hl-ctl button:hover{background:#DCDCE1}
+@media (hover:hover){.hl-ctl button:hover{background:#DCDCE1}}
 .hl-ctl button[disabled]{opacity:.35;cursor:default}
 .hl-ctl button:focus-visible{outline:2px solid var(--link);outline-offset:3px}
 .hl-ctl .i{width:18px;height:18px}
@@ -105,7 +107,7 @@ html.rm .zh-stage{margin-bottom:0}
 .sd-h h3{font-family:var(--app);font-size:18px;font-weight:700;letter-spacing:-.02em}
 .sd-h .rt{display:flex;align-items:center;gap:10px}
 .pub{all:unset;cursor:pointer;height:38px;padding:0 18px;border-radius:19px;background:#0B6E69;color:#fff;font:700 14px/38px var(--app);transition:transform .2s var(--ease),background .3s}
-.pub:active{transform:scale(.96)}
+.pub:not([disabled]):active{transform:scale(.96)}
 .pub:focus-visible{outline:2px solid #0B6E69;outline-offset:3px}
 .pub[disabled]{background:#E7F4EC;color:#1D6B45;cursor:default}
 .toasts{position:absolute;right:clamp(14px,3vw,40px);top:clamp(14px,3vw,40px);display:flex;flex-direction:column;gap:8px;width:300px;pointer-events:none;z-index:3}
@@ -116,7 +118,7 @@ html.rm .zh-stage{margin-bottom:0}
 .toast small{color:#6A7176}
 .toast .av{width:32px;height:32px;font-size:11.5px}
 .reset{all:unset;cursor:pointer;color:var(--link);font-size:15px;margin-left:8px}
-.reset:hover{text-decoration:underline}
+@media (hover:hover){.reset:hover{text-decoration:underline}}
 
 /* time clock demo */
 .ckx{background:transparent}
@@ -124,8 +126,8 @@ html.rm .zh-stage{margin-bottom:0}
 .kio .ckc{position:relative}
 .kio .keys button,.kio .cont,.kio .done,.kio .lang-b{all:unset;cursor:pointer;box-sizing:border-box}
 .kio .keys button{height:64px;border-radius:18px;background:#F0F3F2;display:grid;place-items:center;font-size:25px;font-weight:600;transition:background .15s,transform .15s}
-.kio .keys button:hover{background:#E6ECEA}
-.kio .keys button:active{transform:scale(.95);background:#DCE5E3}
+@media (hover:hover){.kio .keys button:hover{background:#E6ECEA}}
+.kio .keys button:active{transform:scale(.96);background:#DCE5E3}
 .kio .keys button.lt{font-size:15px;background:#fff;box-shadow:inset 0 0 0 1.5px #DCE2E1}
 .kio .keys .i{width:26px;height:26px}
 .kio .cont{display:grid;place-items:center;width:100%;margin-top:14px;height:54px;border-radius:27px;background:#DCE5E3;color:#6A7176;font-weight:700;font-size:16px}
@@ -216,7 +218,7 @@ html.rm .zh-stage{margin-bottom:0}
 .rondo2 .lead{color:var(--ink-2)}
 .chips{margin-top:36px;display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
 .chips button{all:unset;cursor:pointer;min-height:44px;padding:0 18px;border-radius:22px;background:rgba(255,255,255,.62);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);box-shadow:inset 0 0 0 1px rgba(29,29,31,.1);font-size:15px;color:var(--ink);display:inline-flex;align-items:center;transition:background .25s}
-.chips button:hover{background:rgba(255,255,255,.9)}
+@media (hover:hover){.chips button:hover{background:rgba(255,255,255,.9)}}
 .chips button[aria-pressed="true"]{background:#0B6E69;box-shadow:none;color:#fff}
 .chips button:focus-visible{outline:2px solid var(--link);outline-offset:3px}
 .ans .c-a{box-shadow:0 0 0 1px rgba(16,40,38,.05),0 40px 80px -40px rgba(16,40,38,.4)}
@@ -256,18 +258,12 @@ html.rm .fan>div,html.rm .toast,html.rm .zh-call span,html.rm .tcard .r .ckm{tra
 {{SCREEN_CSS}}
 </style>
 
-<header class="gn" id="gn">
-  <div class="wrap">
-    <a href="https://claude.ai/artifact/UJJ24djMRv8NiskiGmx2PA" aria-label="Velani home">{{VELANI}}</a>
-    <nav aria-label="Main"><a href="#top" aria-current="page">NEVORA</a><a href="{{RONDO_URL}}">Rondo</a><a href="{{RELAY_URL}}">Relay</a><a href="#plans">Plans</a><a href="#ft">About</a><a href="#ft">Support</a></nav>
-    <span class="lang">ES</span>
-  </div>
-</header>
+{{HEADER}}
 <div class="ln" id="ln">
   <div class="wrap">
     <a class="nm" href="#top">NEVORA Workforce</a>
     <nav aria-label="NEVORA sections"><a href="#schedule">Schedule</a><a href="#team">Your team</a><a href="#clock">Time clock</a><a href="#rondo">Rondo</a><a href="#timecards">Timecards</a><a href="#payroll">Payroll</a><a href="#plans">Plans</a></nav>
-    <a class="cta" href="#plans">Request a free trial</a>
+    <a class="cta" href="#plans"><span class="l">Request a free trial</span><span class="s">Free trial</span></a>
   </div>
 </div>
 
@@ -520,21 +516,7 @@ html.rm .fan>div,html.rm .toast,html.rm .zh-call span,html.rm .tcard .r .ckm{tra
 
 </main>
 
-<footer class="ft" id="ft">
-  <div class="wrap">
-    <div class="disc">
-      <p>People, places and figures on this page are samples. Northside Café is fictional. Demos keep nothing and send nothing.</p>
-      <p>NEVORA calculates pay from approved hours. It doesn't pay employees or file payroll taxes. Rondo prepares changes; the Owner approves them.</p>
-    </div>
-    <div class="cols">
-      <div><h6>Products</h6><a href="#top">NEVORA Workforce</a><a href="{{RONDO_URL}}">Rondo</a><a href="{{RELAY_URL}}">Relay</a><a href="{{NEVORA_URL}}">Plans</a></div>
-      <div><h6>Velani</h6><a href="#ft">About</a><a href="#ft">Contact</a><a href="#ft">Sign in</a></div>
-      <div><h6>Support</h6><a href="#ft">Help</a><span style="display:block;padding:4px 0;user-select:all">support@thevelani.com</span><span style="display:block;padding:4px 0">Monday to Friday, 8 am to 9 pm ET</span></div>
-      <div><h6>Legal</h6><a href="#ft">NEVORA privacy</a><a href="#ft">NEVORA terms</a><a href="#ft">Accessibility</a><a href="#ft">Security</a></div>
-    </div>
-    <div class="base"><span>Copyright © 2026 VELANI LLC. All rights reserved.</span><span>English · Español</span></div>
-  </div>
-</footer>
+{{FOOTER}}
 
 <button class="tw-b" type="button" id="tw-b" aria-expanded="false" aria-controls="tw">Tweaks</button>
 <div class="tw" id="tw" hidden>

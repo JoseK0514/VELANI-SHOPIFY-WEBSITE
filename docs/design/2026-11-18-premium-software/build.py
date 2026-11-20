@@ -82,23 +82,32 @@ PRODUCT_CSS = '\n'.join([
     nblock('/* ---------------- chapters', '/* schedule demo'),
     nblock('/* rondo */', '/* reduced motion */'),
 ])
-FOOTER = NV[NV.index('<footer class="ft"'):NV.index('<script>')].strip()
+HEADER = rd('header.html')
+FOOTER = rd('footer.html')
+TWEAKS = NV[NV.index('<button class="tw-b"'):NV.index('<script>')].strip()
+NEVORA_URL = 'https://claude.ai/artifact/Q2eKrGUyxAtdXzniZrtT13'
 URLS = {
     '{{HOME_URL}}': 'https://claude.ai/artifact/UJJ24djMRv8NiskiGmx2PA',
-    '{{NEVORA_URL}}': 'https://claude.ai/artifact/Q2eKrGUyxAtdXzniZrtT13',
+    '{{NEVORA_URL}}': NEVORA_URL,
     '{{RONDO_URL}}': os.environ.get('RONDO_URL', 'https://claude.ai/artifact/EZNKQDGCQPJ9Pg2kdndHL9'),
     '{{RELAY_URL}}': os.environ.get('RELAY_URL', 'https://claude.ai/artifact/VDE3KAXUcc3NWqNigGGfBa'),
 }
-def product(js):
-    d = {'{{SHARED_CSS}}': SHARED_CSS, '{{PRODUCT_CSS}}': PRODUCT_CSS, '{{FOOTER}}': FOOTER,
-         '{{PRODUCT_JS}}': rd('product.js'), '{{PAGE_JS}}': rd(js)}
+CUR = ' aria-current="page"'
+def chrome(current, plans, trial, footer_extra=''):
+    d = {'{{HEADER}}': HEADER, '{{FOOTER}}': FOOTER + footer_extra}
+    d.update({'{{CUR_NEVORA}}': CUR if current == 'nevora' else '', '{{CUR_RONDO}}': CUR if current == 'rondo' else '',
+              '{{CUR_RELAY}}': CUR if current == 'relay' else '', '{{PLANS_URL}}': plans, '{{TRIAL_URL}}': trial})
     d.update(URLS); return d
+def product(js, current, trial):
+    d = chrome(current, NEVORA_URL, trial, '\n\n' + TWEAKS)
+    d.update({'{{SHARED_CSS}}': SHARED_CSS, '{{PRODUCT_CSS}}': PRODUCT_CSS, '{{PRODUCT_JS}}': rd('product.js'), '{{PAGE_JS}}': rd(js)})
+    return d
 
 for src, out, extra in [
-    ('home.template.html', 'velani-premium-home.html', dict(URLS)),
-    ('nevora.template.html', 'velani-nevora.html', dict(URLS, **{'{{SHARED_CSS}}': SHARED_CSS, '{{NEVORA_JS}}': rd('nevora.js')})),
-    ('rondo.template.html', 'velani-rondo.html', product('rondo.js')),
-    ('relay.template.html', 'velani-relay.html', product('relay.js')),
+    ('home.template.html', 'velani-premium-home.html', chrome('home', '#plans', '#start')),
+    ('nevora.template.html', 'velani-nevora.html', dict(chrome('nevora', '#plans', '#close'), **{'{{SHARED_CSS}}': SHARED_CSS, '{{NEVORA_JS}}': rd('nevora.js')})),
+    ('rondo.template.html', 'velani-rondo.html', product('rondo.js', 'rondo', '#close')),
+    ('relay.template.html', 'velani-relay.html', product('relay.js', 'relay', NEVORA_URL)),
 ]:
     html = render(rd(src), extra)
     open(os.path.join(HERE, out), 'w').write(html)
