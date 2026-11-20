@@ -100,8 +100,8 @@ Reserved, only with real material: a signed note from Jose (before Plans) and a 
 | Page | Job | Sections | Light | Status |
 |---|---|---|---|---|
 | **NEVORA** | Let an owner try NEVORA before asking | Zoom hero · highlights · schedule · team · time clock · Rondo · timecards · payroll · plans · questions · closing | full day | Mocked |
-| **Rondo** (new, approved) | Explain the assistant honestly | Hero question that types itself · pick-a-question demo (EN/ES) · "You approve every change" · what it can and can't do · who sees it (Owner only) · questions | noon to night | To design |
-| **Relay** (new, approved) | Collect waitlist sign-ups without promising dates | Kitchen screen concept · three things it will do (orders, kitchen screen, inventory) · "In design" status · waitlist form · questions | golden hour | To design |
+| **Rondo** (new, approved, **mocked**: `velani-rondo.html`) | Explain the assistant honestly | Hero question that types itself · pick-a-question demo (EN/ES) · "You approve every change" · what it can and can't do · who sees it (Owner only) · questions | noon to night | To design |
+| **Relay** (new, approved, **mocked**: `velani-relay.html`) | Collect waitlist sign-ups without promising dates | Kitchen screen concept · three things it will do (orders, kitchen screen, inventory) · "In design" status · waitlist form · questions | golden hour | To design |
 | **Plans** | Decide and start | Two plan cards · everything included · day-30 timeline · more than 30 employees · questions | dawn | Restyle |
 | **About** | Who builds this and why | Velani in one line · why NEVORA exists · how we work with you (setup, support hours, languages) · contact | morning | Rewrite |
 | **Help** | Find an answer or a person | Search-style topic tiles (sign in, PINs, schedule, pay statements, billing, account deletion) · contact · support hours | white | Restyle |

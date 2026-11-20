@@ -74,9 +74,31 @@ def render(t, extra=None):
     assert not left, left
     return t
 
+NV = rd('nevora.template.html')
+def nblock(start, end):
+    a = NV.index(start); return NV[a:NV.index(end, a)]
+PRODUCT_CSS = '\n'.join([
+    nblock('.gn{position:relative', '/* ---------------- hero: zoom'),
+    nblock('/* ---------------- chapters', '/* schedule demo'),
+    nblock('/* rondo */', '/* reduced motion */'),
+])
+FOOTER = NV[NV.index('<footer class="ft"'):NV.index('<script>')].strip()
+URLS = {
+    '{{HOME_URL}}': 'https://claude.ai/artifact/UJJ24djMRv8NiskiGmx2PA',
+    '{{NEVORA_URL}}': 'https://claude.ai/artifact/Q2eKrGUyxAtdXzniZrtT13',
+    '{{RONDO_URL}}': os.environ.get('RONDO_URL', 'https://claude.ai/artifact/EZNKQDGCQPJ9Pg2kdndHL9'),
+    '{{RELAY_URL}}': os.environ.get('RELAY_URL', 'https://claude.ai/artifact/VDE3KAXUcc3NWqNigGGfBa'),
+}
+def product(js):
+    d = {'{{SHARED_CSS}}': SHARED_CSS, '{{PRODUCT_CSS}}': PRODUCT_CSS, '{{FOOTER}}': FOOTER,
+         '{{PRODUCT_JS}}': rd('product.js'), '{{PAGE_JS}}': rd(js)}
+    d.update(URLS); return d
+
 for src, out, extra in [
-    ('home.template.html', 'velani-premium-home.html', None),
-    ('nevora.template.html', 'velani-nevora.html', {'{{SHARED_CSS}}': SHARED_CSS, '{{NEVORA_JS}}': rd('nevora.js')}),
+    ('home.template.html', 'velani-premium-home.html', dict(URLS)),
+    ('nevora.template.html', 'velani-nevora.html', dict(URLS, **{'{{SHARED_CSS}}': SHARED_CSS, '{{NEVORA_JS}}': rd('nevora.js')})),
+    ('rondo.template.html', 'velani-rondo.html', product('rondo.js')),
+    ('relay.template.html', 'velani-relay.html', product('relay.js')),
 ]:
     html = render(rd(src), extra)
     open(os.path.join(HERE, out), 'w').write(html)
