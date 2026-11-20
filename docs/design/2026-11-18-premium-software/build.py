@@ -91,23 +91,28 @@ URLS = {
     '{{NEVORA_URL}}': NEVORA_URL,
     '{{RONDO_URL}}': os.environ.get('RONDO_URL', 'https://claude.ai/artifact/EZNKQDGCQPJ9Pg2kdndHL9'),
     '{{RELAY_URL}}': os.environ.get('RELAY_URL', 'https://claude.ai/artifact/VDE3KAXUcc3NWqNigGGfBa'),
+    '{{ABOUT_URL}}': os.environ.get('ABOUT_URL', 'https://claude.ai/artifact/DFCnZ1kth6cDnhLs6JPoQM'),
 }
+PLANS_PAGE = os.environ.get('PLANS_URL', 'https://claude.ai/artifact/LgRFVSXec9qWSE4ChxxwaS')
 CUR = ' aria-current="page"'
 def chrome(current, plans, trial, footer_extra=''):
     d = {'{{HEADER}}': HEADER, '{{FOOTER}}': FOOTER + footer_extra}
     d.update({'{{CUR_NEVORA}}': CUR if current == 'nevora' else '', '{{CUR_RONDO}}': CUR if current == 'rondo' else '',
-              '{{CUR_RELAY}}': CUR if current == 'relay' else '', '{{PLANS_URL}}': plans, '{{TRIAL_URL}}': trial})
+              '{{CUR_RELAY}}': CUR if current == 'relay' else '', '{{CUR_PLANS}}': CUR if current == 'plans' else '',
+              '{{PLANS_URL}}': plans, '{{TRIAL_URL}}': trial})
     d.update(URLS); return d
-def product(js, current, trial):
-    d = chrome(current, NEVORA_URL, trial, '\n\n' + TWEAKS)
+def product(js, current, trial, plans=None):
+    d = chrome(current, plans or PLANS_PAGE, trial, '\n\n' + TWEAKS)
     d.update({'{{SHARED_CSS}}': SHARED_CSS, '{{PRODUCT_CSS}}': PRODUCT_CSS, '{{PRODUCT_JS}}': rd('product.js'), '{{PAGE_JS}}': rd(js)})
     return d
 
 for src, out, extra in [
-    ('home.template.html', 'velani-premium-home.html', chrome('home', '#plans', '#start')),
-    ('nevora.template.html', 'velani-nevora.html', dict(chrome('nevora', '#plans', '#close'), **{'{{SHARED_CSS}}': SHARED_CSS, '{{NEVORA_JS}}': rd('nevora.js')})),
+    ('home.template.html', 'velani-premium-home.html', chrome('home', PLANS_PAGE, '#start')),
+    ('nevora.template.html', 'velani-nevora.html', dict(chrome('nevora', PLANS_PAGE, '#close'), **{'{{SHARED_CSS}}': SHARED_CSS, '{{NEVORA_JS}}': rd('nevora.js')})),
     ('rondo.template.html', 'velani-rondo.html', product('rondo.js', 'rondo', '#close')),
-    ('relay.template.html', 'velani-relay.html', product('relay.js', 'relay', NEVORA_URL)),
+    ('relay.template.html', 'velani-relay.html', product('relay.js', 'relay', PLANS_PAGE)),
+    ('plans.template.html', 'velani-plans.html', product('plans.js', 'plans', '#close', '#top')),
+    ('about.template.html', 'velani-about.html', product('about.js', 'about', PLANS_PAGE)),
 ]:
     html = render(rd(src), extra)
     open(os.path.join(HERE, out), 'w').write(html)

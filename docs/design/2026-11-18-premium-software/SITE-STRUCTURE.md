@@ -102,8 +102,8 @@ Reserved, only with real material: a signed note from Jose (before Plans) and a 
 | **NEVORA** | Let an owner try NEVORA before asking | Zoom hero · highlights · schedule · team · time clock · Rondo · timecards · payroll · plans · questions · closing | full day | Mocked |
 | **Rondo** (new, approved, **mocked**: `velani-rondo.html`) | Explain the assistant honestly | Hero question that types itself · pick-a-question demo (EN/ES) · "You approve every change" · what it can and can't do · who sees it (Owner only) · questions | noon to night | To design |
 | **Relay** (new, approved, **mocked**: `velani-relay.html`) | Collect waitlist sign-ups without promising dates | Kitchen screen concept · three things it will do (orders, kitchen screen, inventory) · "In design" status · waitlist form · questions | golden hour | To design |
-| **Plans** | Decide and start | Two plan cards · everything included · day-30 timeline · more than 30 employees · questions | dawn | Restyle |
-| **About** | Who builds this and why | Velani in one line · why NEVORA exists · how we work with you (setup, support hours, languages) · contact | morning | Rewrite |
+| **Plans** (**mocked**: `velani-plans.html`) | Decide and start | Two plan cards · everything included · day-30 timeline · more than 30 employees · questions | dawn | Restyle |
+| **About** (**mocked**: `velani-about.html`) | Who builds this and why | Velani in one line · why NEVORA exists · how we work with you (setup, support hours, languages) · contact | morning | Rewrite |
 | **Help** | Find an answer or a person | Search-style topic tiles (sign in, PINs, schedule, pay statements, billing, account deletion) · contact · support hours | white | Restyle |
 | **Contact** | One form for trial, Relay waitlist and questions | Topic picker driven by `?interest=` · form · reply promise | white | Restyle, keep form logic and preview safeguards |
 | Sign in, free trial, set up, billing, billing return | Product flows | Same content, new header, footer and type | white | Restyle only |
@@ -162,3 +162,7 @@ Preview inquiry delivery stays disabled; nothing sends until Jose turns it on.
 3. **Products page (Claude's recommendation, accepted):** keep it at its URL as a light three-tile index, outside the menus, so old links still work with no store change. Retire it with a redirect to NEVORA in the same publish step as item 2 if traffic shows nobody needs it.
 4. **Rondo and Relay pages are approved,** EN and ES. Their four Shopify Page resources are created only at publish time, with Jose's go-ahead.
 5. **"How starting works" is added (Claude's recommendation, accepted)** between the product tiles and Plans: Today → within two business days → setup day → day 30. It is in the homepage mockup.
+
+## 11. Mockup status (November 20)
+
+All six marketing mockups are built from one source (`build.py`) with a shared header, phone menu, footer and product-page frame, and link to each other: Home, NEVORA, Rondo, Relay, Plans, About. Every page passes axe WCAG 2.x A/AA with 0 violations, has no horizontal scroll at 320px and no script errors. The Relay screens keep the Puerto Rican menu items (Jose, November 20).
