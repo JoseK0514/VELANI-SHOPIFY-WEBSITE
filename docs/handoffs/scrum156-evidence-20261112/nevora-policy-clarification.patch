@@ -1,0 +1,72 @@
+From a8de13a9a65cdcc8d920645fbb38f3acc483fd7b Mon Sep 17 00:00:00 2001
+From: Jose Karlo Natal <josekarlo-@hotmail.com>
+Date: Fri, 13 Nov 2026 01:40:35 +0000
+Subject: [PATCH] docs(privacy): distinguish workforce recovery and provider
+ copy retention
+
+---
+ ...026-11-12-scrum156-policy-clarification.md | 32 +++++++++++++++++++
+ src/lib/legal/policies.ts                     |  4 +--
+ 2 files changed, 34 insertions(+), 2 deletions(-)
+ create mode 100644 docs/handoffs/2026-11-12-scrum156-policy-clarification.md
+
+diff --git a/docs/handoffs/2026-11-12-scrum156-policy-clarification.md b/docs/handoffs/2026-11-12-scrum156-policy-clarification.md
+new file mode 100644
+index 00000000..c9d33190
+--- /dev/null
++++ b/docs/handoffs/2026-11-12-scrum156-policy-clarification.md
+@@ -0,0 +1,32 @@
++# SCRUM-156 app policy clarification
++
++Prepared November 12, 2026 (Puerto Rico), from freshly fetched development
++`f6baaaa6d988f34fb1c3388d0e1fe4c410bcbfd5`, in the isolated Linux checkout.
++
++The two policy-text changes distinguish the workforce database's seven-day
++restore-history window from purpose-limited recovery snapshots, provider logs
++and mailbox copies. Account deletion no longer promises immediate erasure of
++every provider-held copy. Existing statutory retention periods, deletion-request
++timing, trial rules, accepted-policy version and authorization behavior remain
++the existing contracts. No deletion operation or timer is added.
++
++The English website mirror and complete Spanish website policy/support routes
++are prepared in the Velani SCRUM-156 source packet. The app paragraphs and the
++English website paragraphs are byte-identical. The Spanish wording carries the
++same limits and uses the existing website glossary.
++
++Validation: 22 legal model/render/context tests; TypeScript; scoped ESLint;
++`git diff --check`. These checks qualify the text change locally, not the combined
++release, hosted deletion, provider erasure or a restore rehearsal.
++
++The existing SCRUM-190 finisher is active and retains NEVORA assembly,
++development publication, CI and the finite hosted window. This local commit is
++provided as a patch/bundle in the Velani handoff; it is not pushed to NEVORA
++development and does not start a competing candidate or workflow. Apply it to
++the finisher's combined source before freezing that release, then run its normal
++affected gates. Preserve all independent findings and the original custody.
++
++Governance: source preparation is conditionally compliant; business/legal review,
++selected-source hosted EN/ES readback and publication remain open. Jose retains
++those decisions and main/production authorization. No runtime/provider/data
++mutation, message, payment, Tax operation or spending occurred here.
+diff --git a/src/lib/legal/policies.ts b/src/lib/legal/policies.ts
+index cc23c17d..0df2cec0 100644
+--- a/src/lib/legal/policies.ts
++++ b/src/lib/legal/policies.ts
+@@ -17,7 +17,7 @@ export const POLICY_FACTS: Record<string, string | null> = {
+   SUPPORT_RESPONSE_TIME: "We aim to respond to support and privacy inquiries within two business days. Business days are Monday through Friday, excluding public holidays observed in Puerto Rico. Requests that need investigation may take longer to resolve.",
+   DELETION_COMPLETION_PERIOD: "30 calendar days after we receive the request",
+   RETENTION_SCHEDULE: "attendance, approved timecards, payroll calculations, published pay statements and their corrections and approvals for three years from the record’s final entry, and records supporting employment taxes for at least four years after the tax is due or paid, whichever is later; security and access logs for up to 90 days; records of privacy requests for 24 months after the request is closed; and records under a legal hold or unresolved dispute until the hold is released and the applicable period has passed. The longest applicable period applies, and a deletion request doesn’t restart it.",
+-  BACKUP_EXPIRY: "Our database keeps a restore history of seven days, so changed or deleted information drops out of it after seven days. We may also keep separate recovery snapshots taken for a specific purpose, such as before a database upgrade. They are restricted to that purpose, are never used to restore your account after deletion, and are deleted once they are no longer needed for it.",
++  BACKUP_EXPIRY: "NEVORA’s workforce database has a seven-day restore-history window. Changed or deleted information can remain in that history until it expires. Separate recovery snapshots, such as those taken before an upgrade, are restricted to their purpose, are never used to restore a deleted account, and are deleted when no longer needed for that purpose. This window does not determine retention of provider logs or mailbox copies.",
+   PROCESSORS_AND_PURPOSES: "Vercel hosts the application and runs its servers; Neon stores the database; a transactional email provider delivers recovery codes and other account email; and your browser’s push service, run by its maker (such as Apple, Google or Mozilla), delivers the notifications you turn on.",
+   HOSTING_TRANSFER_DETAILS: "Our database and application servers are in the United States, in Northern Virginia. Email delivery, push notification services and our providers’ logs and support may process information in other locations.",
+   SALE_SHARING_AND_TRACKING_STATEMENT: "NEVORA does not display advertisements, sell personal information, or share personal information for cross-context behavioral advertising. We do not track users across other companies’ applications or websites for advertising purposes. We disclose information to your employer and our service providers as necessary to operate NEVORA and for the purposes described in this policy.",
+@@ -118,7 +118,7 @@ export const ACCOUNT_DELETION: PolicyDocument = {
+       { p: ["If you can’t sign in, use ", { href: "/forgot-access", text: "Forgot password?" }, " first, or email ", mail, " and we’ll help you confirm it’s you."] },
+     ] },
+     { heading: "What happens next", blocks: [{ p: ["When you confirm, we save your request and show you a reference such as DEL-7KQ2M9XA. You’re signed out on every device and can’t sign in again. We aim to delete your account within ", f("DELETION_COMPLETION_PERIOD"), ", and we email you when it’s done if we have your email address. Quote your reference to ", mail, " to ask about it."] }] },
+-    { heading: "What is removed", blocks: [{ p: ["Your account and the information linked to it that can be deleted: your profile, sign-in details, sessions, notification subscriptions, calendar feed links and the content you contributed, including copies held by our service providers."] }] },
++    { heading: "What is removed", blocks: [{ p: ["Your account and the information linked to it that can be deleted: your profile, sign-in details, sessions, notification subscriptions, calendar feed links and the content you contributed. Provider-held copies remain subject to applicable obligations and retention periods. This does not promise immediate erasure of all provider, backup or mailbox copies."] }] },
+     { heading: "What may be kept", blocks: [{ p: ["Some attendance, payroll, security or dispute records may have to be kept for a recorded obligation. We keep ", f("RETENTION_SCHEDULE"), " Backups: ", f("BACKUP_EXPIRY"), " Kept records are restricted and never used to restore your account."] }] },
+     { heading: "Your job and your workplace", blocks: [{ p: ["Deleting your NEVORA account doesn’t end your employment or remove records your employer has to keep. If you’re the Owner, your company’s workspace stays open for the rest of your team; closing a workspace is separate, so email ", mail, " to arrange it."] }] },
+   ],

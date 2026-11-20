@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "issue": "SCRUM-153",
+  "deliveredPayload": "151bfd82defea76a21896fc7165be59141894e5b",
+  "remoteDevelopmentApiAndFetchVerified": true,
+  "jiraStatus": "Done",
+  "jiraComment": "10313",
+  "jiraStatusDescriptionHistoryAndCommentReadbackVerified": true,
+  "remainingIssues": {
+    "SCRUM-155": "In Progress",
+    "SCRUM-157": "In Progress",
+    "SCRUM-190": "In Progress"
+  },
+  "sourceScope": "backend source integration and corrected active Claude handoff only",
+  "runtimeChanged": false,
+  "releaseAccepted": false,
+  "receiptCommitScope": "Documentation receipt and link update only; payload source is already verified in development."
+}

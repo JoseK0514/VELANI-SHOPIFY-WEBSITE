@@ -1,0 +1,108 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-11-13T00:02:42.992512+00:00",
+  "issue": "SCRUM-153",
+  "scope": "Rondo backend source integration, bounded contract/security review and active Claude source handoff; not runtime activation or whole-release acceptance.",
+  "source": {
+    "reviewedDevelopment": "daca3fc17f35fc8142c8ec7ccf91c6ccab39c261",
+    "qualifiedApplication": "a456364bade4a32d3114980c7cc24bf2bb321725",
+    "oldBackendAncestor": "fb6a79b26d3748da9e556149e74de4dd1b6a57b4",
+    "ancestorVerified": true,
+    "originalPR": 1,
+    "prState": "MERGED",
+    "prMergedAt": "2026-11-12T22:49:22Z",
+    "approvedWorkingBranches": [
+      "development",
+      "main"
+    ]
+  },
+  "freshVerification": {
+    "contractTests": {
+      "passed": 13,
+      "failed": 0,
+      "pending": 0,
+      "uses": "actual Fastify handler and both headless clients, EN/ES; synthetic injection only"
+    },
+    "typecheckExitCode": 0,
+    "buildExitCode": 0,
+    "npmProductionAudit": {
+      "exitCode": 0,
+      "vulnerabilities": 0
+    },
+    "temporaryDependencyLinkRemoved": true
+  },
+  "retainedDatabaseVerification": {
+    "report": "../branch-consolidation-evidence-20261112/backend-tests.json",
+    "passed": 261,
+    "failed": 0,
+    "pending": 0,
+    "rerunForThisDocumentationChange": false,
+    "localPostgres": "16.2; source-bound earlier260-case PostgreSQL17 evidence is separate; no new hosted17 equivalence claim"
+  },
+  "sourceComparison": {
+    "inputs": 122,
+    "differences": 0,
+    "manifest": "unchanged-backend-inputs.json",
+    "includes": "source, adapter, migrations, scripts, locked dependencies, tests, reference and actual Shopify client"
+  },
+  "review": {
+    "checked": [
+      "origin/CAPTCHA/session validation and private error envelope",
+      "UUID/hash/lease request recovery and consented lead boundaries",
+      "provider rejection mapping and explicit edit/new-operation behavior",
+      "durable budget reservation and source/role isolation boundaries"
+    ],
+    "newRuntimeDefectDemonstrated": false,
+    "handoffDefect": "Active entry files directed Claude to retired feature branches and stale current setup/model/retention claims.",
+    "disposition": "Correct source checkout and authoritative contract/operating navigation; preserve historical Git blobs and dated test/provider records.",
+    "certification": "Bounded technical integration review; not an independent whole-system security or release certification."
+  },
+  "historicalEntryDocuments": [
+    {
+      "path": "services/velani-ai/README.md",
+      "historicalSource": "daca3fc17f35fc8142c8ec7ccf91c6ccab39c261",
+      "gitBlob": "4d12de42115e89a3d75d747f1ca9e62a2b9459af"
+    },
+    {
+      "path": "services/velani-ai/docs/START-HERE-CLAUDE.md",
+      "historicalSource": "daca3fc17f35fc8142c8ec7ccf91c6ccab39c261",
+      "gitBlob": "5fe689d16ef4a4db9590fd67b56a96839f92b6bf"
+    },
+    {
+      "path": "services/velani-ai/docs/CLAUDE-UI-START-HERE.md",
+      "historicalSource": "daca3fc17f35fc8142c8ec7ccf91c6ccab39c261",
+      "gitBlob": "e2ccd23cd387326ec5636ee58eeb2b1ca688473c"
+    },
+    {
+      "path": "services/velani-ai/docs/CLAUDE-HANDOFF.md",
+      "historicalSource": "daca3fc17f35fc8142c8ec7ccf91c6ccab39c261",
+      "gitBlob": "bf704cb818f6a9aa9671e8fc3b11c44bfe5fa96f"
+    }
+  ],
+  "ownership": {
+    "thisChat": "SCRUM-153 backend integration/handoff correction",
+    "SCRUM-155": "existing finisher retains runtime budget/retention, independent outage coverage, delivery and acknowledgment",
+    "SCRUM-157": "Claude retains widget/site UI and unpublished-theme acceptance",
+    "SCRUM-164": "completed November12 knowledge refresh",
+    "SCRUM-191": "next knowledge operational review"
+  },
+  "controls": {
+    "codeChanged": false,
+    "schemaOrDatabaseMutation": false,
+    "providerInference": false,
+    "realEmailOrPush": false,
+    "CIWorkflowDispatched": false,
+    "mainOrProductionChanged": false,
+    "shopifyChanged": false,
+    "runtimeActivated": false,
+    "sourceIntegrationAccepted": true,
+    "wholeReleaseAccepted": false
+  },
+  "rawFreshEvidence": "/Users/josek0514/.codex/visualizations/2026/11/12/01a1b8f7-b37b-78b3-90b1-44c2af149856/scrum153-execution",
+  "documentationChecks": {
+    "relativeLinks": "pass for all five active/review documents",
+    "retiredBranchCommands": "no active git clone/fetch/worktree commands recreate retired branches",
+    "scopeAssertions": "source integration accepted; whole release remains open",
+    "gitDiffCheck": "pass"
+  }
+}

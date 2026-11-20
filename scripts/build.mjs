@@ -13,7 +13,7 @@ export async function build() {
   await mkdir(path.join(root, 'public/assets'), { recursive: true });
   for (const weight of [400, 500, 600]) await copyFile(path.join(root, 'node_modules/@fontsource/dm-sans/files/dm-sans-latin-' + weight + '-normal.woff2'), path.join(root, 'public/assets/dm-sans-latin-' + weight + '-normal.woff2'));
   for (const name of ['check', 'arrow-right']) await copyFile(path.join(root, 'node_modules/@phosphor-icons/core/assets/regular/' + name + '.svg'), path.join(root, 'public/assets/' + name + '.svg'));
-  for (const name of ['favicon.svg', 'favicon-32.png', 'apple-touch-icon.png']) await copyFile(path.join(root, 'src/brand', name), path.join(root, 'public/assets', name));
+  for (const name of ['favicon.svg', 'favicon-32.png', 'apple-touch-icon.png', 'rondo-lantern.svg', 'rondo-lantern-16.svg', 'rondo-lantern-site.svg', 'rondo-lantern-app.svg']) await copyFile(path.join(root, 'src/brand', name), path.join(root, 'public/assets', name));
   for (const name of ['inquiry', 'privacy', 'client-hub']) {
     try { await copyFile(path.join(root, 'src/' + name + '.mjs'), path.join(root, 'public/assets/' + name + '.js')); }
     catch (error) { if (error.code !== 'ENOENT') throw error; }

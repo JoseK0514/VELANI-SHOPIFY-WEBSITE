@@ -1,0 +1,15 @@
+{
+  "targetTheme": "193401127226",
+  "role": "UNPUBLISHED",
+  "requiredFiles": 208,
+  "matchedFiles": 208,
+  "retainedUnusedFiles": 38,
+  "retainedFilesChanged": [],
+  "originalThemeUnchanged": true,
+  "inquiriesEnabled": false,
+  "clientHubPreviewSubmissions": false,
+  "normalizedJsonMatched": 91,
+  "byteMatchedFiles": 117,
+  "mismatches": [],
+  "normalization": "91 JSON files have the Shopify-generated header/formatting; 90 templates gain only empty per-section settings objects. Full parsed values, after adding that exact empty default to the intended templates, match source and disabled preview settings."
+}

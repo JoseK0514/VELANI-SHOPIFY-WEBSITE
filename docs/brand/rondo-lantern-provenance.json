@@ -1,0 +1,47 @@
+{
+  "concept": "Rondo concept 1 (Lantern)",
+  "approval": "Jose: Go with Rondo concept 1 (Lantern). Refine it and build the final set for the NEVORA app and the Velani site.",
+  "sourceThread": "01a1b6ef-59b4-7280-927b-8f6f295aaebc",
+  "sourceThreadTitle": "Rondo icon/avatar design",
+  "sourceTurn": "external-import-turn-3",
+  "sourceItem": "item-47",
+  "sourceTool": "mcp__visualize__show_widget, rondo_premium_concepts",
+  "originalGeometry": {
+    "grid": 48,
+    "center": [
+      24,
+      24
+    ],
+    "radius": 13,
+    "arcAngles": [
+      -35,
+      -65
+    ],
+    "lightAngle": -50,
+    "lightRadius": 3.3,
+    "haloRadius": 6.2
+  },
+  "refinements": [
+    "Ring opacity .55 to .8 and width 2.25 to 2.75 for small-size contrast.",
+    "16px optical export: full-opacity 1px ring and 1.33px point.",
+    "Flat approved website/app colours; orbit runs only during actual answer wait and stops for reduced motion or browser verification."
+  ],
+  "exports": [
+    {
+      "path": "src/brand/rondo-lantern.svg",
+      "sha256": "e16c96bb76ec0d69a2777752c94a6cab039769c1e4e789abefd57c7be7f7f540"
+    },
+    {
+      "path": "src/brand/rondo-lantern-16.svg",
+      "sha256": "bd4e06355eab82b7d95c7870f505daff7b04b4cdfabf165d67c60ae34de52194"
+    },
+    {
+      "path": "src/brand/rondo-lantern-site.svg",
+      "sha256": "d86a9c0300c45b728932391f265f1739cef03eaf70c38944e02503746835cca4"
+    },
+    {
+      "path": "src/brand/rondo-lantern-app.svg",
+      "sha256": "48f5be522d49cbf2004c29bcbfe8192a2fb450d4bf72dfa0558d286244792c30"
+    }
+  ]
+}

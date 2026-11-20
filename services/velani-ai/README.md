@@ -1,10 +1,10 @@
 # Velani / NEVORA AI backend
 
-**Current backend follow-through (2026-11-05):** [Retention schedule, knowledge refresh, client sync and verification](docs/RETENTION-REFRESH-2026-11-05.md). This supersedes the historical setup status below and the November 3 handoffs. Claude owns the Shopify UI.
+**Current source and handoff — November 12:** use [development checkout and current source](docs/START-HERE-CLAUDE.md), [Claude's existing widget contract](docs/CLAUDE-UI-START-HERE.md) and the [SCRUM-153 integration receipt](../../docs/handoffs/2026-11-12-scrum153-rondo-backend-integration.md). Backend feature branches are retired. Development is the primary operating/acceptance line; main promotion, runtime activation, Shopify publication and paid/provider tests remain separately gated.
 
-**For Claude:** [GitHub source and checkout instructions](docs/START-HERE-CLAUDE.md) · [Vercel setup](docs/VERCEL.md). This is an independent service; use `services/velani-ai` as the deployment root in the website repository.
+This README includes local setup instructions and dated release history. Existing resource IDs, model selections, knowledge expiry and scheduler statements below do not select today's runtime or authorize re-provisioning. Read [current development operations](docs/DEVELOPMENT-OPERATIONS.md) and its dated receipts first. Use only explicitly owned disposable databases for tests; migration/seed/role/retention/evaluation commands have effects and require the appropriate environment and authorization.
 
-**Current release: 0.2.2 — sculptural Velani entrance.** A 3.35-second titanium V and oversized wordmark reveal now opens the personalized guide. See [animation, recordings and Shopify installation](docs/ENTRANCE-ANIMATION.md). Run `npm run dev` and open `http://localhost:3001` for the bilingual experience. See [guide release details](docs/RELEASE-0.2.md), [AI validation](docs/VALIDATION-0.2.md), [model comparison](docs/model-comparison.md), and [the roadmap](docs/AI-EXPERIENCE-ROADMAP.md). The older integration harness remains available as a smaller API example.
+Historical release0.2.2 animation and model evaluation remain in [their original release record](docs/RELEASE-0.2.md) and [validation](docs/VALIDATION-0.2.md). Claude owns the approved website UI.
 
 A working development implementation for thoughtful product advice and explicit lead capture. It uses a configurable frontier model through an OpenAI-compatible API, a separate Neon Postgres database, reviewed English/Spanish knowledge, bounded conversation memory, and an embeddable browser client.
 
@@ -23,7 +23,7 @@ Start with [the Claude handoff](docs/CLAUDE-HANDOFF.md). See [architecture](docs
 
 The existing Vercel backend and protected Shopify preview have passed hosted chat checks, including English follow-up context, Spanish, source links and deletion. See the current follow-through document for the conversation-cleanup deployment evidence. This does not publish the Shopify theme or establish that every model request will succeed.
 
-## Existing isolated development resources
+## Historical isolated service resources
 
 Neon project `wild-leaf-57992989` / `velani-website-ai-development`, branch `br-snowy-brook-bcc6b3zm`, database `velani_ai`. PostgreSQL 17 plus pgvector. Runtime role: `velani_ai_app`. This project is separate from the owner's NEVORA employee databases.
 

@@ -1,0 +1,850 @@
+[
+  {
+    "filename": "assets/apple-touch-icon.png",
+    "sha256": "6d0a0aef03bf5e1ec28843d00f78d46f20e89487a3bb80208ee72465c793b3ce"
+  },
+  {
+    "filename": "assets/arrow-right.svg",
+    "sha256": "e45bc4a12592b8723110db42c6deffdf177e4fe7704cf50324963fa0a59b2d74"
+  },
+  {
+    "filename": "assets/check.svg",
+    "sha256": "cbb89a8c42f283d4f846eb935e05d88c1be04462f16480e068c0f82b9ce40b12"
+  },
+  {
+    "filename": "assets/client-hub.js",
+    "sha256": "7ab7ab83025484c42929492871ac30fa432a496952913c54e7e0bbe6dcc1531e"
+  },
+  {
+    "filename": "assets/dm-sans-latin-400-normal.woff2",
+    "sha256": "4ab51eb2cd7305d177187908d6397474d4520663f6c6e572feb0a64f4fa80006"
+  },
+  {
+    "filename": "assets/dm-sans-latin-500-normal.woff2",
+    "sha256": "19bf1984956517c35c2bd35b6cdedac12a21d6fcd3596c614ecdfb88b648909d"
+  },
+  {
+    "filename": "assets/dm-sans-latin-600-normal.woff2",
+    "sha256": "6bb2b2645ba5eeaecf56322c543fa3a75b87b927977b9c03b1dabc4205089120"
+  },
+  {
+    "filename": "assets/favicon-32.png",
+    "sha256": "54e4c2f094d4d7d43a48d811def6ceadf9dc74f03ac6900ad9d1ca14c4918715"
+  },
+  {
+    "filename": "assets/favicon.svg",
+    "sha256": "ed6ff4a970611243096e685cd4192c78bf445e55c067cf2c009050c8b5c6f1b2"
+  },
+  {
+    "filename": "assets/inquiry.js",
+    "sha256": "ebc0308f56e50b60d30887ec8a3eaa91b69cce473336c44f1782ab6ee6d0c324"
+  },
+  {
+    "filename": "assets/night-ai-dash.webp",
+    "sha256": "3ef9ab2d8a283e0a2e164016af561ed6e581790f740e36c3ea8854dda5ee3ad4"
+  },
+  {
+    "filename": "assets/night-ai-devices.webp",
+    "sha256": "e24c46d137eba926e1e75d69bf8efd2b89696442b71b7fe863588a4e1746932e"
+  },
+  {
+    "filename": "assets/night-ai-glow.webp",
+    "sha256": "58e368348402f219ba76e090cba9e7508b14c25ab98ad898e111688d6cb0a725"
+  },
+  {
+    "filename": "assets/night-ai-laptop-soft.webp",
+    "sha256": "083a00b6c4652474e1c7a26c96d648c40ad66a9d709cdc9957b51025e20ef4bb"
+  },
+  {
+    "filename": "assets/night-ai-laptop.webp",
+    "sha256": "d71f4ae33f7fcbf85e88d8886cee1ff097e0fb61425f32a395f60e756968e2f3"
+  },
+  {
+    "filename": "assets/night-ai-light.webp",
+    "sha256": "f3eed64d083bca85966db9f73e9173c5942f682437d96ddae0dca089b99ef2ff"
+  },
+  {
+    "filename": "assets/night-ai-phone-soft.webp",
+    "sha256": "a3528d40cb6fbfc33100270f0b9af6a5bc48424966cef3ea16dc817f4b6f4730"
+  },
+  {
+    "filename": "assets/night-ai-phone.webp",
+    "sha256": "dfe9e7cb0d5ad5cbdcfe593e3435e09ec9fd23a42e36b94e7b15b95985ca858f"
+  },
+  {
+    "filename": "assets/night-ai-room.webp",
+    "sha256": "cf37b659592ac23fa05e2163a9ba056e3c88c93a95003567d33d4d7ce76c0e73"
+  },
+  {
+    "filename": "assets/night-ai-store-soft.webp",
+    "sha256": "07bddfc8cbaea6c29d3a6d1a7ce9e8d743f3a1a149f55bb628c6caae878b1dd0"
+  },
+  {
+    "filename": "assets/night-ai-store.webp",
+    "sha256": "076ec5a6f725f19f7bcf37b0651e88721eeaaad36c8f8f2522bf44e514cd6823"
+  },
+  {
+    "filename": "assets/night-booking.webp",
+    "sha256": "67c167a89917aa710a2b8ed143e8fb880ece82d1eea3cffca760f94f61f6bc4b"
+  },
+  {
+    "filename": "assets/night-desk.webp",
+    "sha256": "e4f9dc70ea05f132fe3157821e6712dbaddf535c6eb7781103c47a40b28c683e"
+  },
+  {
+    "filename": "assets/night-k-later.webp",
+    "sha256": "2ddaeef53c33a22ff67748f28c6ff3be2400b3d0e6207e122c1e5fac6d93a4c9"
+  },
+  {
+    "filename": "assets/night-nevora-wm-ink.png",
+    "sha256": "c88cfb1e627a04c841da7e27a890fdbb5f615978c019804c13ecbed60b856c29"
+  },
+  {
+    "filename": "assets/night-nevora-wm-white.png",
+    "sha256": "36a98b5acf00509700f7458a00680166768fb6aaebdf3b7ff848690ac8c952e2"
+  },
+  {
+    "filename": "assets/night-owner.webp",
+    "sha256": "efe98c22e0825e99f3d4cf9985e94d6465cdafb7bdf0d5b0d9f60cb829153d9a"
+  },
+  {
+    "filename": "assets/night-phone-long.webp",
+    "sha256": "a734d6a550e0d203cdb32b892ac057863e56290be69f5a314a32dbba7cd61c6a"
+  },
+  {
+    "filename": "assets/night-r1-clocker-1000.webp",
+    "sha256": "f4f395dc8552cad92c5dbb341b7d78aee27abdf4394a65c8f9a80056e9dadaff"
+  },
+  {
+    "filename": "assets/night-r1-clocker.webp",
+    "sha256": "990cf890a13477675f41e912497043a4585d8a7aec88df519c8a8f8ab2c87aa2"
+  },
+  {
+    "filename": "assets/night-r1-owner-1000.webp",
+    "sha256": "ff340c27b1a41a55e66c0f6301ede2dd1fb859cc24f9e7af3bf3ed9ffa5b474a"
+  },
+  {
+    "filename": "assets/night-r1-owner-today-1000.webp",
+    "sha256": "66db4001a2fb7729fff5fde0187117369a475c2856b831169ce019b96f924495"
+  },
+  {
+    "filename": "assets/night-r1-owner-today.webp",
+    "sha256": "99fbc14f0f9ecde221b98166b10c5d7a782f34534168e41f60e2f110ebba5910"
+  },
+  {
+    "filename": "assets/night-r1-owner.webp",
+    "sha256": "1f7d239efee2f1f58e6b64294a5ae0d1026b80a603cffefa2a3456a60499538d"
+  },
+  {
+    "filename": "assets/night-r1-payroll-1000.webp",
+    "sha256": "90b7d93a682ad01b2514655b6c7d38a432135d36d0d43181a91b8a3fc8e8c65f"
+  },
+  {
+    "filename": "assets/night-r1-payroll.webp",
+    "sha256": "99a40e0f1c774a396c284505a104060f82e4fa134d02801f2843d5aa5ecc4721"
+  },
+  {
+    "filename": "assets/night-r1-ph-home.webp",
+    "sha256": "43b574e390ef338f8e3472ae6a606a2982f7a7a7092718f1bafe15fd1d497668"
+  },
+  {
+    "filename": "assets/night-r1-ph-pay.webp",
+    "sha256": "aac0aa53e00a77332efb470b50c6b406acbcfd8f74a546aed6f9f88f4bd59da3"
+  },
+  {
+    "filename": "assets/night-r1-ph-schedule.webp",
+    "sha256": "8e0401247a2d4eacd98de0acac31438d24c0c97f0eeaf14ac65414f3b8aee38a"
+  },
+  {
+    "filename": "assets/night-r1-schedule-1000.webp",
+    "sha256": "e59e2136b7f98f8701c70645bb15e8d59cb74ac488bb387e7f99174b34673166"
+  },
+  {
+    "filename": "assets/night-r1-schedule.webp",
+    "sha256": "5fd9abfef80f6afeda0da5c5bf850960eb22e95f2b9aab2f4ed1beaba2eafeda"
+  },
+  {
+    "filename": "assets/night-r1-timecards-1000.webp",
+    "sha256": "e7a3f9ef3f097eebad297694c3dcf851288887ea21dd0180963ac61f1793c297"
+  },
+  {
+    "filename": "assets/night-r1-timecards.webp",
+    "sha256": "267860bb7a07aa3a88a9e1086b736532d5448c132d2442dc52b2445ab74adc41"
+  },
+  {
+    "filename": "assets/night-store-1000.webp",
+    "sha256": "f84876b87ca28c8d7b0fb1b59fa0c49a45af31ff76ecaf1652946f7b5c73137f"
+  },
+  {
+    "filename": "assets/night-store.webp",
+    "sha256": "03733461600c20562a81a1afcb8e813a7c67f79900c9cde6e65e7f36cea1131c"
+  },
+  {
+    "filename": "assets/night-tabbar.webp",
+    "sha256": "d90ef69739431be5fcd57bcc1b27793c48a58c9f15d5d93025f5e3f73ea646fe"
+  },
+  {
+    "filename": "assets/night-tb-home-1000.webp",
+    "sha256": "96156e1075ded7403ae30b1ed6747cd48c4e40dc824bff9835d7dd3ee5ce9515"
+  },
+  {
+    "filename": "assets/night-tb-home.webp",
+    "sha256": "b95d2640a4843a7d355050941c67e034440603379b34791cb3a51b3bd6804816"
+  },
+  {
+    "filename": "assets/night-yavi-book.webp",
+    "sha256": "0a77b038c5908f86f84a37a984a3ab7b71fae7a2606b1aa711f3ecb445f3cf1a"
+  },
+  {
+    "filename": "assets/night-yavi-rewards.webp",
+    "sha256": "e1ee8d51fe0de40ec844fd5764d7bebc40e63fb0e4915a36107d3ff96ed31e16"
+  },
+  {
+    "filename": "assets/privacy.js",
+    "sha256": "b75b3e1849de0a047e05bf8d299ad776acf50c584a3dedf1b12d5bec0159bc4e"
+  },
+  {
+    "filename": "assets/rondo-lantern-16.svg",
+    "sha256": "bd4e06355eab82b7d95c7870f505daff7b04b4cdfabf165d67c60ae34de52194"
+  },
+  {
+    "filename": "assets/rondo-lantern-app.svg",
+    "sha256": "48f5be522d49cbf2004c29bcbfe8192a2fb450d4bf72dfa0558d286244792c30"
+  },
+  {
+    "filename": "assets/rondo-lantern-site.svg",
+    "sha256": "d86a9c0300c45b728932391f265f1739cef03eaf70c38944e02503746835cca4"
+  },
+  {
+    "filename": "assets/rondo-lantern.svg",
+    "sha256": "e16c96bb76ec0d69a2777752c94a6cab039769c1e4e789abefd57c7be7f7f540"
+  },
+  {
+    "filename": "assets/velani-assist.js",
+    "sha256": "8105d1d824fd09e958559688140b0631e828de2363541056013fc9b3afe48ed8"
+  },
+  {
+    "filename": "assets/velani-assistant.js",
+    "sha256": "add851a64a9fc4aff15659672bf7365aa5f71f295e37ca3e361d2f851c46e0c4"
+  },
+  {
+    "filename": "assets/velani-commerce.js",
+    "sha256": "eb9c004a2f82bdd5806e8333d32f9b3dd745cb32ca26348653f770a28dc54458"
+  },
+  {
+    "filename": "assets/velani-home.css",
+    "sha256": "5adf99824a750edb22bf4ecedc0375ece858e19d61b4103c9f23d2f9b33674cc"
+  },
+  {
+    "filename": "assets/velani-hub.js",
+    "sha256": "e3d243453d1d953af38a8d50a3cedcc5641cc1cf6512d8aff91751ecf7c09177"
+  },
+  {
+    "filename": "assets/velani-motion.js",
+    "sha256": "160634f9eef9a7843d5894b0b5514ba632afe8cdea1ba9ceedb9c98e269d538a"
+  },
+  {
+    "filename": "assets/velani-nevora.css",
+    "sha256": "be40a14cc58c92fee1777631235850b77c758ede8ea8cdf7236a1220030b3e88"
+  },
+  {
+    "filename": "assets/velani-nevora.js",
+    "sha256": "aa01c5831109ac7c8c151da83ba62911d659430ed1de45d08231eac6143eb297"
+  },
+  {
+    "filename": "assets/velani-social-custom.png",
+    "sha256": "880fa2365644e7fecd0fe628812dab15db899d76dca69d4c3eeec089011d45a2"
+  },
+  {
+    "filename": "assets/velani-social-nevora.png",
+    "sha256": "8c76b7c1571b7fec3a7446fb7110756410c26dc5ce3cd3c99a641b06a9d812e9"
+  },
+  {
+    "filename": "assets/velani-social-plans.png",
+    "sha256": "6abbeaeffe730a28a9b16494a30c6abed7dbe4a7915d71802fe4b077f9867380"
+  },
+  {
+    "filename": "assets/velani-social.png",
+    "sha256": "ae4f7a1c9ad6ddc1f06e17185ab36eea11b913e086e6a585329f2e28b3a507df"
+  },
+  {
+    "filename": "assets/velani.css",
+    "sha256": "07d0dd9e5cf3fa4fe8aa1e7403ef9e1e5bcad3b6d920a9840be3fd573d66a3e8"
+  },
+  {
+    "filename": "assets/velani.js",
+    "sha256": "4deee1f762122aa431290a5d4b4cd5ebb2a21486d14277f25912a63b57cf2b6b"
+  },
+  {
+    "filename": "config/settings_data.json",
+    "sha256": "8dd9187179fec8d4328516d68bc156102439e923f0b79fc084c2b1df383124e4"
+  },
+  {
+    "filename": "config/settings_schema.json",
+    "sha256": "c27acaa6864021cff58cc2cfb574d3800080c9414679306a36723494ce5f769a"
+  },
+  {
+    "filename": "layout/theme.liquid",
+    "sha256": "86ed2138bb6777e2a63912f05e087bbcd8d1f964581a4387e34c6a2275dc5641"
+  },
+  {
+    "filename": "locales/en.default.json",
+    "sha256": "bc73c61a3bd968538ca57e62ca72a15b29a74f082992f14ecbfb72e26e4a1b3c"
+  },
+  {
+    "filename": "sections/velani-about.liquid",
+    "sha256": "f2ffda0bff4d0b79f47acd5adac6b512a4f714c73e0b02cfe882e9a63aa892a4"
+  },
+  {
+    "filename": "sections/velani-accessibility.liquid",
+    "sha256": "b18a64aa2bbd647a554267692b602731e942ad21f0b7675157215ee05b1840d2"
+  },
+  {
+    "filename": "sections/velani-contact.liquid",
+    "sha256": "ee0d5eee8ae49ab31dce82a1fdf612af5fcb89473022e1cb13428dcc424435d6"
+  },
+  {
+    "filename": "sections/velani-cookies.liquid",
+    "sha256": "572d03e0b326372c2456e6a5b385ac5d1b600d8cd7e1b2ca19711fe0fc53b6b6"
+  },
+  {
+    "filename": "sections/velani-custom-development.liquid",
+    "sha256": "9a38b66506243248d209cee2163c9aaa1ea92a653e8cb12f09f8e186740449f2"
+  },
+  {
+    "filename": "sections/velani-es-a-la-medida.liquid",
+    "sha256": "cb681f5cb87425e3e34c64438ae9576342439f3da0568ad176d1599575437408"
+  },
+  {
+    "filename": "sections/velani-es-ayuda.liquid",
+    "sha256": "b4a9f666fe0dbf4b5021f5a3bb3687bcb46a9031363da4945d9763f66c4e74f3"
+  },
+  {
+    "filename": "sections/velani-es-configurar.liquid",
+    "sha256": "4b44cd13f88137e0514079be63040341ccc7136b4c75f661d82073f31ef7a7d4"
+  },
+  {
+    "filename": "sections/velani-es-contacto.liquid",
+    "sha256": "5b6acd118365e89c0c0270bd725a4c3c7f48fbde002e1a53073826a48fdb63a3"
+  },
+  {
+    "filename": "sections/velani-es-entrar.liquid",
+    "sha256": "be9a54b3a0daf7d097701a7fcd3e144dd9d02732088c4e09d743a23554d35dcd"
+  },
+  {
+    "filename": "sections/velani-es-facturacion.liquid",
+    "sha256": "2c169cf8e5a6286ed7d02e2dad3f3113d8b25ca5c7ce1607a0c5a45275ad63c2"
+  },
+  {
+    "filename": "sections/velani-es-nevora-account-deletion.liquid",
+    "sha256": "bfa8a0398574083f88f846b33e5e074256b4b4a0db077fc5d5ec7140500540eb"
+  },
+  {
+    "filename": "sections/velani-es-nevora-privacy.liquid",
+    "sha256": "70e8d584646b9a756a910adccdbfae6a80b9c9cd51c8c17e6bca439b1945383e"
+  },
+  {
+    "filename": "sections/velani-es-nevora-support.liquid",
+    "sha256": "83f6315c6ddc406efa08050e848fbb40e051c411c0630d18c5785d08f9504610"
+  },
+  {
+    "filename": "sections/velani-es-nevora-terms.liquid",
+    "sha256": "bc9b0cd59d83bb82dc41fb4e5d5abbca98ccfabf93420c2b3e753e4aada1b657"
+  },
+  {
+    "filename": "sections/velani-es-nevora.liquid",
+    "sha256": "e2227905253463e6409a9d4cf26e2568c2915719bb736cf0b41d80e0b178afa8"
+  },
+  {
+    "filename": "sections/velani-es-nosotros.liquid",
+    "sha256": "cb1ad30425750c0ba381d1e3f5cf70f42d9cca41b203ea7ea2a108f87f7f7534"
+  },
+  {
+    "filename": "sections/velani-es-pago.liquid",
+    "sha256": "462d56f451790855677b397371aa81c93ad04cdcfb551fc8bf55a3ff37088a9f"
+  },
+  {
+    "filename": "sections/velani-es-planes.liquid",
+    "sha256": "fc056cf902aba3d7d2e09c96721c02ef2c3ea38fabcca0bed9c317ae8994c511"
+  },
+  {
+    "filename": "sections/velani-es-privacy.liquid",
+    "sha256": "ab4e162a4124a4cb3d22b4c655ea5e676d6b29eae69de19e2dd912163f3b4e93"
+  },
+  {
+    "filename": "sections/velani-es-productos.liquid",
+    "sha256": "3c9dbb8967abca71a4a6d4faad4692aa13a0540b1eba1d7749c56104246229fb"
+  },
+  {
+    "filename": "sections/velani-es-prueba.liquid",
+    "sha256": "9db1f82e2417d080b1078c3b4a75af88e2c51ebd2c7667535178bb11705aa115"
+  },
+  {
+    "filename": "sections/velani-es.liquid",
+    "sha256": "779635bdb2a5c02ff895dc4e86c4fffb8441ede9667a98777af5536197b2b034"
+  },
+  {
+    "filename": "sections/velani-help.liquid",
+    "sha256": "c677e71890c348e6618e73656a57daff19411c25382a2fa5b0970c0fdec5b057"
+  },
+  {
+    "filename": "sections/velani-home.liquid",
+    "sha256": "03f12072f5c61c8dee7b8123556b1845575cb1632213adf8c1fa4bf940a4d342"
+  },
+  {
+    "filename": "sections/velani-legal.liquid",
+    "sha256": "955acc5944d617c594a82c664eafc92d71f380032ec1d402e81901532ecf70e2"
+  },
+  {
+    "filename": "sections/velani-nevora-account-deletion.liquid",
+    "sha256": "408209de327545364d5dc2e71f88ac9d4b1155bf00435ab91132334931d378d2"
+  },
+  {
+    "filename": "sections/velani-nevora-billing-return.liquid",
+    "sha256": "270599835dbe1d0758e6d938576f22285363302a0d5df5544820a951abc76493"
+  },
+  {
+    "filename": "sections/velani-nevora-billing.liquid",
+    "sha256": "2d0cfb831959e2197b463e81799c75df150756c29599cbf9aa92919a076eef60"
+  },
+  {
+    "filename": "sections/velani-nevora-privacy.liquid",
+    "sha256": "54f7dc1fcfb28e030dc47f3ab71e08df46ca880593914e03bd9d04f52ec6d97f"
+  },
+  {
+    "filename": "sections/velani-nevora-start.liquid",
+    "sha256": "03b40d474ac4e98b3ff2fbf93ca6c544243c69038c79976077f77f83603cdf1a"
+  },
+  {
+    "filename": "sections/velani-nevora-support.liquid",
+    "sha256": "fab3d011c1e4a5ed6392599fd429a3a57b190913b8457ba9467152676f9fdd93"
+  },
+  {
+    "filename": "sections/velani-nevora-terms.liquid",
+    "sha256": "afc1f11c8fd81ec276bd779d59f5324efc0831af5e1cbfcdc6ad6cd58b3ab9e2"
+  },
+  {
+    "filename": "sections/velani-nevora-verify.liquid",
+    "sha256": "d6ca264b8cff9a72f9af258bb6336e0ce37262dad18431b037fbd6a406bd55c8"
+  },
+  {
+    "filename": "sections/velani-nevora.liquid",
+    "sha256": "0681a81f9518b0d94f2342bf2bddcce1f6a8c67894248bd8086ec398c6635a48"
+  },
+  {
+    "filename": "sections/velani-not-found.liquid",
+    "sha256": "c02784c86bad673feb62b86039c3134be1fcb66db53162eb182153828d510a36"
+  },
+  {
+    "filename": "sections/velani-plans.liquid",
+    "sha256": "cbb2bbad9e227d32b0a297a9fc80b19acb760ab3bc07e86b425b13d581a91499"
+  },
+  {
+    "filename": "sections/velani-privacy.liquid",
+    "sha256": "c2d9fd582468673a9825e17f95020fd30e822c3fed43480230292beeefc4e3f9"
+  },
+  {
+    "filename": "sections/velani-products.liquid",
+    "sha256": "dd2635d5d42edc99bcb602b4e79cfcb81056dcc7153cfd0dfc2e412e5ca119e6"
+  },
+  {
+    "filename": "sections/velani-security.liquid",
+    "sha256": "9ec18aec9601c5b5c9bfee3dfb172917b0bfa097bc708afd17a6c82a4d9242ff"
+  },
+  {
+    "filename": "sections/velani-sign-in.liquid",
+    "sha256": "550568706ef661f6e410bbc1fc48902c88889406715dfcebe542b8e36e51aebe"
+  },
+  {
+    "filename": "sections/velani-software-project-terms.liquid",
+    "sha256": "a9e10f06489923b1d2d1ffaad7c6583a18532c80e23137cd4784916b5d1e8a5e"
+  },
+  {
+    "filename": "sections/velani-website-terms.liquid",
+    "sha256": "f39467c8ea1d29effa20be80bdc7ada721c0dc0f827250fdcccd0f75e44d16c9"
+  },
+  {
+    "filename": "snippets/velani-footer-en.liquid",
+    "sha256": "3128c8e9ea0f1befc597649f18d003c3dfe7a5c7903bb5c5cc759951de269b1b"
+  },
+  {
+    "filename": "snippets/velani-footer-es.liquid",
+    "sha256": "279965ac6ffc97e26889b4ac712604eab3d2f7578f6cb3729fb6c2e2a0d0fd67"
+  },
+  {
+    "filename": "snippets/velani-header-en.liquid",
+    "sha256": "f88d91f6daee0465ecac357d35ead471a26238b57a788ab3ea6e8e0a832889bb"
+  },
+  {
+    "filename": "snippets/velani-header-es.liquid",
+    "sha256": "8be7843fef74d4abf1628d6022bf56eff334e84f2b705b3ed6c1839672593867"
+  },
+  {
+    "filename": "templates/404.json",
+    "sha256": "453ab1e3aa6b94f57e286086f031673e9e1f7b42d7ebf98b4965b7d96c476753"
+  },
+  {
+    "filename": "templates/cart.json",
+    "sha256": "453ab1e3aa6b94f57e286086f031673e9e1f7b42d7ebf98b4965b7d96c476753"
+  },
+  {
+    "filename": "templates/collection.json",
+    "sha256": "453ab1e3aa6b94f57e286086f031673e9e1f7b42d7ebf98b4965b7d96c476753"
+  },
+  {
+    "filename": "templates/index.json",
+    "sha256": "b8c188675b48f41022f2bbb0bb30fbbb7f51691860ef381f109e699b23d2ccd7"
+  },
+  {
+    "filename": "templates/index.velani-about.json",
+    "sha256": "3f43fe88981699137fe5ce873883db95aaf08deef0be8aa13db1edfc67b066d3"
+  },
+  {
+    "filename": "templates/index.velani-accessibility.json",
+    "sha256": "3815dac78f0ebf9b267b7e7a7f974ca064d514ccd282d8e156250c361aed5551"
+  },
+  {
+    "filename": "templates/index.velani-contact.json",
+    "sha256": "31f8283aec0a60bfbe6b03d09e321a1ff1501ac4ad844a1c128435232e3ff94d"
+  },
+  {
+    "filename": "templates/index.velani-cookies.json",
+    "sha256": "6caab3dce046d9d5f7a0f493fff39bfad29bc888535adba41b6fa10490fcf91d"
+  },
+  {
+    "filename": "templates/index.velani-custom-development.json",
+    "sha256": "ed94d74df398464b231318c258021370864c9d79f30c8d0756ad3fa0bcb19b65"
+  },
+  {
+    "filename": "templates/index.velani-es-a-la-medida.json",
+    "sha256": "8cdb18a1c52b30ec6ac4aae8e9de7be9a6db26dc2eb85f25ccb883017f9cd66f"
+  },
+  {
+    "filename": "templates/index.velani-es-ayuda.json",
+    "sha256": "1baced55e3e157591220ff20acccd7cb412e59d29bcf10ea594df0b3aa456f6a"
+  },
+  {
+    "filename": "templates/index.velani-es-configurar.json",
+    "sha256": "bc5cce4b207182baf2d8c9cd489b5b0ad74d0735bc20cc6150908f792aedc0ab"
+  },
+  {
+    "filename": "templates/index.velani-es-contacto.json",
+    "sha256": "c498fbb40c6414eb663bfaca7fc623c45452b862a0ed220673a1a0ff87c42ccd"
+  },
+  {
+    "filename": "templates/index.velani-es-entrar.json",
+    "sha256": "85b1864d9d49b52f787bafa6dd5f1cdfac03faf7577f8a994207d6431cf23a29"
+  },
+  {
+    "filename": "templates/index.velani-es-facturacion.json",
+    "sha256": "2376600da79f87745091d417b99b5d8410c92cb1992bd4c560d00a4c4f7c6352"
+  },
+  {
+    "filename": "templates/index.velani-es-nevora-account-deletion.json",
+    "sha256": "9b1a25102d8815e79d42e402280d270ec851f72e864771eadc08b6ce0bfd003d"
+  },
+  {
+    "filename": "templates/index.velani-es-nevora-privacy.json",
+    "sha256": "aaa540242e66c267d85bf4edeac71d8bedc58eb1f59065623bc28797094f5401"
+  },
+  {
+    "filename": "templates/index.velani-es-nevora-support.json",
+    "sha256": "d6d41ad1fbfcb6d35e06a0fc0b8938c6c94e678317384b8e5a1c81e47cdb0321"
+  },
+  {
+    "filename": "templates/index.velani-es-nevora-terms.json",
+    "sha256": "43673c2cd7e778fa4658e5b4907bf0942af73a5cb95a9413158b7eb41367af03"
+  },
+  {
+    "filename": "templates/index.velani-es-nevora.json",
+    "sha256": "9678fd80850e0c0671d81784a82122020afd49105c265726cf609190e0095851"
+  },
+  {
+    "filename": "templates/index.velani-es-nosotros.json",
+    "sha256": "e79703feb20fcbca7a89680d453c5d57d617d9c2ae730cc0d627c390599b497b"
+  },
+  {
+    "filename": "templates/index.velani-es-pago.json",
+    "sha256": "3e096bd3447c93f3761422d4b0bbdde18e69ed55d24f12a80e6c118fcad358c9"
+  },
+  {
+    "filename": "templates/index.velani-es-planes.json",
+    "sha256": "cbc4960b6825e4f8b29c7927f1d73bda1c422b1748056709a9da1e9546a670d0"
+  },
+  {
+    "filename": "templates/index.velani-es-privacy.json",
+    "sha256": "7c696f9277fdd32789b5a28d590e4ae3eaa9f93e520bb74ee00a65595ad2c479"
+  },
+  {
+    "filename": "templates/index.velani-es-productos.json",
+    "sha256": "671165f63692fad20540ca1f371879b50126a63d5834383828a5ada48612061c"
+  },
+  {
+    "filename": "templates/index.velani-es-prueba.json",
+    "sha256": "9102be4bf4f419ed00c3c513dcce60c07f20dfecec3672d35b1526fa2171abc5"
+  },
+  {
+    "filename": "templates/index.velani-es.json",
+    "sha256": "7cea47aa6e4044d61f3261977f2d11387402a80f0059f9c84d2aa23ae15e8335"
+  },
+  {
+    "filename": "templates/index.velani-help.json",
+    "sha256": "936c04786ffb6e73008b56f2402dfb144e2681312c6dfe0caa13ab3472b54866"
+  },
+  {
+    "filename": "templates/index.velani-legal.json",
+    "sha256": "d59881dc374bc5fa0331251f94642253ecd5831c280a9327fcb3d1a741058e1f"
+  },
+  {
+    "filename": "templates/index.velani-nevora-account-deletion.json",
+    "sha256": "a6b73a010075b6e97a41a7952ee0060d11db6f280f9ceb40f6ad85627accda58"
+  },
+  {
+    "filename": "templates/index.velani-nevora-billing-return.json",
+    "sha256": "25941602146f3758b4d9c08931a01744a8476ed56029711b8e59ef8e3de6ed32"
+  },
+  {
+    "filename": "templates/index.velani-nevora-billing.json",
+    "sha256": "65a91e0f4a5956dd0b85c2235cedfd6217f235b9c6f6bafe563477dbad1ed4ec"
+  },
+  {
+    "filename": "templates/index.velani-nevora-privacy.json",
+    "sha256": "6cf753eeb95fbb7513c7ed75c02680e7db606f62cef6f433e302a5c63de838af"
+  },
+  {
+    "filename": "templates/index.velani-nevora-start.json",
+    "sha256": "9ba129068591e6a31eade4fe8f4fab6a176c2225ad04bd1e889122213ef0dec2"
+  },
+  {
+    "filename": "templates/index.velani-nevora-support.json",
+    "sha256": "2d965685c5eeab52cf63f02fbed133200b5074bd7123926c3cc9692c6e4f1c3b"
+  },
+  {
+    "filename": "templates/index.velani-nevora-terms.json",
+    "sha256": "9a8f112eee37af74e5d81bd8809b84e2bd3b6296bceda27a272b2b13aeb7fa19"
+  },
+  {
+    "filename": "templates/index.velani-nevora-verify.json",
+    "sha256": "83b35c10b32256f4eb3f6fa1c1cc3bfdaea914e9a1041b2efbd69dcb61a3c784"
+  },
+  {
+    "filename": "templates/index.velani-nevora.json",
+    "sha256": "9b689e1e624ec83931206dbef902cb56790f803da9846935e65f827916be1ae0"
+  },
+  {
+    "filename": "templates/index.velani-plans.json",
+    "sha256": "626240076169635c2629183235b191ccca11dcf64e98dc687be214ab3ff5401f"
+  },
+  {
+    "filename": "templates/index.velani-privacy.json",
+    "sha256": "b32db39e6cc25caf85e5b24dbb7325409560ed8674bc04a446300a2b107a0bde"
+  },
+  {
+    "filename": "templates/index.velani-products.json",
+    "sha256": "9de4162887c657de7eebf96e1bc8b1481d9aa0292650a9c3c68c67d500a58661"
+  },
+  {
+    "filename": "templates/index.velani-security.json",
+    "sha256": "0c0142b8292ab0d290ca96c74e9601a7ab6ada1563c8cb784661efe679d75268"
+  },
+  {
+    "filename": "templates/index.velani-sign-in.json",
+    "sha256": "5df2102e7782d2ac7899636f0f0543e281fb2078fc9d7140b38d874e0445d9d6"
+  },
+  {
+    "filename": "templates/index.velani-software-project-terms.json",
+    "sha256": "ac5cf5ef0d8fa69de4de65ae7e4185e83f49b47dc1c2dd682b44ae879684efca"
+  },
+  {
+    "filename": "templates/index.velani-website-terms.json",
+    "sha256": "b277d0e6b4ccd59281d4bdb1e09b1af019dc1dd8d013836b2fe9589323299ce7"
+  },
+  {
+    "filename": "templates/list-collections.json",
+    "sha256": "453ab1e3aa6b94f57e286086f031673e9e1f7b42d7ebf98b4965b7d96c476753"
+  },
+  {
+    "filename": "templates/llms.txt.liquid",
+    "sha256": "8fd4bafb9f796ef95ea84e66219601f76043bf624dbc4e7951e0c4edf1c7a646"
+  },
+  {
+    "filename": "templates/page.about.json",
+    "sha256": "3f43fe88981699137fe5ce873883db95aaf08deef0be8aa13db1edfc67b066d3"
+  },
+  {
+    "filename": "templates/page.accessibility.json",
+    "sha256": "3815dac78f0ebf9b267b7e7a7f974ca064d514ccd282d8e156250c361aed5551"
+  },
+  {
+    "filename": "templates/page.contact.json",
+    "sha256": "31f8283aec0a60bfbe6b03d09e321a1ff1501ac4ad844a1c128435232e3ff94d"
+  },
+  {
+    "filename": "templates/page.cookies.json",
+    "sha256": "6caab3dce046d9d5f7a0f493fff39bfad29bc888535adba41b6fa10490fcf91d"
+  },
+  {
+    "filename": "templates/page.custom-development.json",
+    "sha256": "ed94d74df398464b231318c258021370864c9d79f30c8d0756ad3fa0bcb19b65"
+  },
+  {
+    "filename": "templates/page.es-a-la-medida.json",
+    "sha256": "8cdb18a1c52b30ec6ac4aae8e9de7be9a6db26dc2eb85f25ccb883017f9cd66f"
+  },
+  {
+    "filename": "templates/page.es-ayuda.json",
+    "sha256": "1baced55e3e157591220ff20acccd7cb412e59d29bcf10ea594df0b3aa456f6a"
+  },
+  {
+    "filename": "templates/page.es-configurar.json",
+    "sha256": "bc5cce4b207182baf2d8c9cd489b5b0ad74d0735bc20cc6150908f792aedc0ab"
+  },
+  {
+    "filename": "templates/page.es-contacto.json",
+    "sha256": "c498fbb40c6414eb663bfaca7fc623c45452b862a0ed220673a1a0ff87c42ccd"
+  },
+  {
+    "filename": "templates/page.es-entrar.json",
+    "sha256": "85b1864d9d49b52f787bafa6dd5f1cdfac03faf7577f8a994207d6431cf23a29"
+  },
+  {
+    "filename": "templates/page.es-facturacion.json",
+    "sha256": "2376600da79f87745091d417b99b5d8410c92cb1992bd4c560d00a4c4f7c6352"
+  },
+  {
+    "filename": "templates/page.es-nevora-account-deletion.json",
+    "sha256": "9b1a25102d8815e79d42e402280d270ec851f72e864771eadc08b6ce0bfd003d"
+  },
+  {
+    "filename": "templates/page.es-nevora-privacy.json",
+    "sha256": "aaa540242e66c267d85bf4edeac71d8bedc58eb1f59065623bc28797094f5401"
+  },
+  {
+    "filename": "templates/page.es-nevora-support.json",
+    "sha256": "d6d41ad1fbfcb6d35e06a0fc0b8938c6c94e678317384b8e5a1c81e47cdb0321"
+  },
+  {
+    "filename": "templates/page.es-nevora-terms.json",
+    "sha256": "43673c2cd7e778fa4658e5b4907bf0942af73a5cb95a9413158b7eb41367af03"
+  },
+  {
+    "filename": "templates/page.es-nevora.json",
+    "sha256": "9678fd80850e0c0671d81784a82122020afd49105c265726cf609190e0095851"
+  },
+  {
+    "filename": "templates/page.es-nosotros.json",
+    "sha256": "e79703feb20fcbca7a89680d453c5d57d617d9c2ae730cc0d627c390599b497b"
+  },
+  {
+    "filename": "templates/page.es-pago.json",
+    "sha256": "3e096bd3447c93f3761422d4b0bbdde18e69ed55d24f12a80e6c118fcad358c9"
+  },
+  {
+    "filename": "templates/page.es-planes.json",
+    "sha256": "cbc4960b6825e4f8b29c7927f1d73bda1c422b1748056709a9da1e9546a670d0"
+  },
+  {
+    "filename": "templates/page.es-privacy.json",
+    "sha256": "7c696f9277fdd32789b5a28d590e4ae3eaa9f93e520bb74ee00a65595ad2c479"
+  },
+  {
+    "filename": "templates/page.es-productos.json",
+    "sha256": "671165f63692fad20540ca1f371879b50126a63d5834383828a5ada48612061c"
+  },
+  {
+    "filename": "templates/page.es-prueba.json",
+    "sha256": "9102be4bf4f419ed00c3c513dcce60c07f20dfecec3672d35b1526fa2171abc5"
+  },
+  {
+    "filename": "templates/page.es.json",
+    "sha256": "7cea47aa6e4044d61f3261977f2d11387402a80f0059f9c84d2aa23ae15e8335"
+  },
+  {
+    "filename": "templates/page.help.json",
+    "sha256": "936c04786ffb6e73008b56f2402dfb144e2681312c6dfe0caa13ab3472b54866"
+  },
+  {
+    "filename": "templates/page.json",
+    "sha256": "453ab1e3aa6b94f57e286086f031673e9e1f7b42d7ebf98b4965b7d96c476753"
+  },
+  {
+    "filename": "templates/page.legal.json",
+    "sha256": "d59881dc374bc5fa0331251f94642253ecd5831c280a9327fcb3d1a741058e1f"
+  },
+  {
+    "filename": "templates/page.nevora-account-deletion.json",
+    "sha256": "a6b73a010075b6e97a41a7952ee0060d11db6f280f9ceb40f6ad85627accda58"
+  },
+  {
+    "filename": "templates/page.nevora-billing-return.json",
+    "sha256": "25941602146f3758b4d9c08931a01744a8476ed56029711b8e59ef8e3de6ed32"
+  },
+  {
+    "filename": "templates/page.nevora-billing.json",
+    "sha256": "65a91e0f4a5956dd0b85c2235cedfd6217f235b9c6f6bafe563477dbad1ed4ec"
+  },
+  {
+    "filename": "templates/page.nevora-privacy.json",
+    "sha256": "6cf753eeb95fbb7513c7ed75c02680e7db606f62cef6f433e302a5c63de838af"
+  },
+  {
+    "filename": "templates/page.nevora-start.json",
+    "sha256": "9ba129068591e6a31eade4fe8f4fab6a176c2225ad04bd1e889122213ef0dec2"
+  },
+  {
+    "filename": "templates/page.nevora-support.json",
+    "sha256": "2d965685c5eeab52cf63f02fbed133200b5074bd7123926c3cc9692c6e4f1c3b"
+  },
+  {
+    "filename": "templates/page.nevora-terms.json",
+    "sha256": "9a8f112eee37af74e5d81bd8809b84e2bd3b6296bceda27a272b2b13aeb7fa19"
+  },
+  {
+    "filename": "templates/page.nevora-verify.json",
+    "sha256": "83b35c10b32256f4eb3f6fa1c1cc3bfdaea914e9a1041b2efbd69dcb61a3c784"
+  },
+  {
+    "filename": "templates/page.nevora.json",
+    "sha256": "9b689e1e624ec83931206dbef902cb56790f803da9846935e65f827916be1ae0"
+  },
+  {
+    "filename": "templates/page.plans.json",
+    "sha256": "626240076169635c2629183235b191ccca11dcf64e98dc687be214ab3ff5401f"
+  },
+  {
+    "filename": "templates/page.privacy.json",
+    "sha256": "b32db39e6cc25caf85e5b24dbb7325409560ed8674bc04a446300a2b107a0bde"
+  },
+  {
+    "filename": "templates/page.products.json",
+    "sha256": "9de4162887c657de7eebf96e1bc8b1481d9aa0292650a9c3c68c67d500a58661"
+  },
+  {
+    "filename": "templates/page.security.json",
+    "sha256": "0c0142b8292ab0d290ca96c74e9601a7ab6ada1563c8cb784661efe679d75268"
+  },
+  {
+    "filename": "templates/page.sign-in.json",
+    "sha256": "5df2102e7782d2ac7899636f0f0543e281fb2078fc9d7140b38d874e0445d9d6"
+  },
+  {
+    "filename": "templates/page.software-project-terms.json",
+    "sha256": "ac5cf5ef0d8fa69de4de65ae7e4185e83f49b47dc1c2dd682b44ae879684efca"
+  },
+  {
+    "filename": "templates/page.website-terms.json",
+    "sha256": "b277d0e6b4ccd59281d4bdb1e09b1af019dc1dd8d013836b2fe9589323299ce7"
+  },
+  {
+    "filename": "templates/product.json",
+    "sha256": "453ab1e3aa6b94f57e286086f031673e9e1f7b42d7ebf98b4965b7d96c476753"
+  },
+  {
+    "filename": "templates/robots.txt.liquid",
+    "sha256": "b5a6f64d71186bde50e25924d6062a2caa8f35c1108f6c31ae894c84deb806ba"
+  },
+  {
+    "filename": "templates/search.json",
+    "sha256": "453ab1e3aa6b94f57e286086f031673e9e1f7b42d7ebf98b4965b7d96c476753"
+  }
+]

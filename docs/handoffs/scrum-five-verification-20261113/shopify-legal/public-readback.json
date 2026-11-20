@@ -1,0 +1,136 @@
+{
+  "mode": "Unauthenticated public GET; no preview cookie",
+  "checks": [
+    {
+      "path": "/pages/privacy",
+      "curlExit": 0,
+      "httpStatus": 200,
+      "title": "Website privacy notice \u00b7 Velani",
+      "lang": "en",
+      "theme": {
+        "id": 193311572282,
+        "name": "Velani signature hero (preview)",
+        "role": "main"
+      },
+      "bodySha256": "be2ae7417f417a9dba67ca6f58897501519133952af24fb93323b0c9b6c89377"
+    },
+    {
+      "path": "/pages/nevora-privacy",
+      "curlExit": 0,
+      "httpStatus": 200,
+      "title": "NEVORA privacy policy \u00b7 Velani",
+      "lang": "en",
+      "theme": {
+        "id": 193311572282,
+        "name": "Velani signature hero (preview)",
+        "role": "main"
+      },
+      "bodySha256": "c9cd81a9eaf7d1a35bb6b4fc4dbda73e04adc8dda69883b200aa23df83835503"
+    },
+    {
+      "path": "/pages/nevora-terms",
+      "curlExit": 0,
+      "httpStatus": 200,
+      "title": "NEVORA terms of use \u00b7 Velani",
+      "lang": "en",
+      "theme": {
+        "id": 193311572282,
+        "name": "Velani signature hero (preview)",
+        "role": "main"
+      },
+      "bodySha256": "f5e228dc4a61893a6202d3ae2d7b184abf69c1483a12dead5caa528b28bb94d9"
+    },
+    {
+      "path": "/pages/nevora-support",
+      "curlExit": 0,
+      "httpStatus": 200,
+      "title": "NEVORA support \u00b7 Velani",
+      "lang": "en",
+      "theme": {
+        "id": 193311572282,
+        "name": "Velani signature hero (preview)",
+        "role": "main"
+      },
+      "bodySha256": "ad8a20df9709b97f3471a8ca531eca4ac5c0bb28857d08b8f01da42211ff74dd"
+    },
+    {
+      "path": "/pages/nevora-account-deletion",
+      "curlExit": 0,
+      "httpStatus": 200,
+      "title": "Delete your NEVORA account \u00b7 Velani",
+      "lang": "en",
+      "theme": {
+        "id": 193311572282,
+        "name": "Velani signature hero (preview)",
+        "role": "main"
+      },
+      "bodySha256": "674534c18d0e8fd354d9e01c0faa5158cd3f462dcd94ad36e674e0b67a08291a"
+    },
+    {
+      "path": "/pages/es-privacy",
+      "curlExit": 0,
+      "httpStatus": 404,
+      "title": "Page not found \u00b7 Velani",
+      "lang": "en",
+      "theme": {
+        "id": 193311572282,
+        "name": "Velani signature hero (preview)",
+        "role": "main"
+      },
+      "bodySha256": "4d625673a4f94f324b2ce3921e49836443f96a48f26100845f82c26a9a7155d6"
+    },
+    {
+      "path": "/pages/es-nevora-privacy",
+      "curlExit": 0,
+      "httpStatus": 404,
+      "title": "Page not found \u00b7 Velani",
+      "lang": "en",
+      "theme": {
+        "id": 193311572282,
+        "name": "Velani signature hero (preview)",
+        "role": "main"
+      },
+      "bodySha256": "f3f7392456203877cfd16a090ac69dfeb2e0605711b756be838383079cadcfac"
+    },
+    {
+      "path": "/pages/es-nevora-terms",
+      "curlExit": 0,
+      "httpStatus": 404,
+      "title": "Page not found \u00b7 Velani",
+      "lang": "en",
+      "theme": {
+        "id": 193311572282,
+        "name": "Velani signature hero (preview)",
+        "role": "main"
+      },
+      "bodySha256": "a4e42e4d2f1d11a75613e58c6765f5b02192b2b0463f57ff77340fa5bbce0777"
+    },
+    {
+      "path": "/pages/es-nevora-support",
+      "curlExit": 0,
+      "httpStatus": 404,
+      "title": "Page not found \u00b7 Velani",
+      "lang": "en",
+      "theme": {
+        "id": 193311572282,
+        "name": "Velani signature hero (preview)",
+        "role": "main"
+      },
+      "bodySha256": "deddb436e399f509c1bedf4866cc53b6ff5fd21315aace8ae6db57eed8c2742c"
+    },
+    {
+      "path": "/pages/es-nevora-account-deletion",
+      "curlExit": 0,
+      "httpStatus": 404,
+      "title": "Page not found \u00b7 Velani",
+      "lang": "en",
+      "theme": {
+        "id": 193311572282,
+        "name": "Velani signature hero (preview)",
+        "role": "main"
+      },
+      "bodySha256": "141e0095fca764ec063cc69c377ee92f107e62b45a0bebd31f7feae32dd2b7d4"
+    }
+  ],
+  "limitation": "Read-only current public-state evidence. No global Page or theme publication."
+}

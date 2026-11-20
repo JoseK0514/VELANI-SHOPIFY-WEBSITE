@@ -1,0 +1,15 @@
+{
+  "command": [
+    "npx",
+    "vitest",
+    "run",
+    "--maxWorkers=2",
+    "--reporter=json",
+    "--outputFile=/workspace/scratch/velani-operations-evidence/backend-report.json"
+  ],
+  "exitCode": 0,
+  "fixtureHost": "127.0.0.1",
+  "fixtureDatabase": "velani_rondo_development",
+  "cluster": "/workspace/scratch/velani-operations-pg-5zv5mc5d",
+  "owned": true
+}

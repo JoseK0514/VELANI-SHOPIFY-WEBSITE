@@ -1,0 +1,22 @@
+{
+  "recordedAt": "2026-11-13T07:59:11.909308-04:00",
+  "method": "GET only; no browser scripts or submission",
+  "checks": [
+    {
+      "kind": "hosted",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 745,
+      "sha256": "9ea600f834332d27e346e1315f738743f6f2025905eadc357f4e29517b9ebfc0"
+    },
+    {
+      "kind": "pdf",
+      "status": 200,
+      "contentType": "application/octet-stream",
+      "bytes": 22101,
+      "sha256": "bc2e7665ca9b2cbcda54ea28db7fe83c0705e9af9c5bfb5dea0a050b6c7e3753",
+      "pages": 1,
+      "hasOneDollarAmount": true
+    }
+  ]
+}

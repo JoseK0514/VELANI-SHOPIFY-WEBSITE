@@ -1,0 +1,66 @@
+{
+  "project": "prj_T9x5XwRzCkLSUy2wYk36nz8C3k9B",
+  "target": "preview",
+  "primaryOrigin": "https://velani-rondo-development-git-de-3f1ea3-josekarlo-5933s-projects.vercel.app",
+  "updated": [
+    {
+      "id": "Tpc9mT7Q7va9GjEQ",
+      "key": "DATABASE_URL",
+      "target": [
+        "preview"
+      ],
+      "type": "sensitive",
+      "gitBranch": null
+    },
+    {
+      "id": "It1rVivtgzPQqvey",
+      "key": "AI_MODEL",
+      "target": [
+        "preview"
+      ],
+      "type": "plain",
+      "gitBranch": null
+    },
+    {
+      "id": "SepLq1y4Ymr1NHl3",
+      "key": "AI_PLAN_MODEL",
+      "target": [
+        "preview"
+      ],
+      "type": "plain",
+      "gitBranch": null
+    },
+    {
+      "id": "WhqEOoBF30ixk7mt",
+      "key": "AI_BUDGET_AUTHORIZATION_ID",
+      "target": [
+        "preview"
+      ],
+      "type": "plain",
+      "gitBranch": null
+    },
+    {
+      "id": "Jrv5yabpFXTPiAvj",
+      "key": "ALLOWED_ORIGINS",
+      "target": [
+        "preview"
+      ],
+      "type": "plain",
+      "gitBranch": null
+    },
+    {
+      "id": "d0FtDEYhKWB1UqZR",
+      "key": "CLIENT_HUB_ENABLED",
+      "target": [
+        "preview"
+      ],
+      "type": "plain",
+      "gitBranch": null
+    }
+  ],
+  "gitLinkAdded": false,
+  "ssoProtection": "all; unchanged",
+  "productionChanged": false,
+  "sessionAndProviderSecrets": "existing approved matching store; neither read nor changed",
+  "captchaAndNodeEnvironment": "existing accepted protected-development settings preserved; not weakened"
+}

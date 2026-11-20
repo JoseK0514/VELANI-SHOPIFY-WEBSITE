@@ -1,0 +1,25 @@
+[
+  {
+    "mode": "block",
+    "status": 200,
+    "theme": 193401127226,
+    "title": "Aviso de privacidad del sitio",
+    "errors": [
+      {
+        "message": "Failed to read the 'serviceWorker' property from 'Navigator': Service worker is disabled because the context is sandboxed and lacks the 'allow-same-origin' flag.",
+        "stack": "SecurityError: Failed to read the 'serviceWorker' property from 'Navigator': Service worker is disabled because the context is sandboxed and lacks the 'allow-same-origin' flag.\n    at <anonymous>:3:15\n    at <anonymous>:5:7\n    at async Wc.r (https://www.thevelani.com/cdn/wpm/b1f538ef0wddb2fc58p5c4202ccm39876735m.js:1:205805)\n    at async Wc (https://www.thevelani.com/cdn/wpm/b1f538ef0wddb2fc58p5c4202ccm39876735m.js:1:204500)\n    at async Promise.all (index 3)"
+      },
+      {
+        "message": "Failed to read the 'serviceWorker' property from 'Navigator': Service worker is disabled because the context is sandboxed and lacks the 'allow-same-origin' flag.",
+        "stack": "SecurityError: Failed to read the 'serviceWorker' property from 'Navigator': Service worker is disabled because the context is sandboxed and lacks the 'allow-same-origin' flag.\n    at <anonymous>:3:15\n    at <anonymous>:5:7"
+      }
+    ]
+  },
+  {
+    "mode": "allow",
+    "status": 200,
+    "theme": 193401127226,
+    "title": "Aviso de privacidad del sitio",
+    "errors": []
+  }
+]

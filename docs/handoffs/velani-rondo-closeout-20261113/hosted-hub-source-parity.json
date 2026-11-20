@@ -1,0 +1,24 @@
+{
+  "source": "b794ed1ae9e79f4075e3c9a29cd8146c21fc3442",
+  "themeId": 193374224698,
+  "method": "Applied exact build.mjs dependency content-fingerprint rewrite, then normalized tracked/theme and Shopify-minified modules with same esbuild0.28.2 syntax/whitespace transform, preserving identifiers.",
+  "previousRawAndIdentifierMinificationComparisons": "Failed comparisons retained; raw equality is not claimed.",
+  "result": [
+    {
+      "asset": "client-hub.js",
+      "trackedSha256": "7ab7ab83025484c42929492871ac30fa432a496952913c54e7e0bbe6dcc1531e",
+      "themeBuildInputSha256": "7ab7ab83025484c42929492871ac30fa432a496952913c54e7e0bbe6dcc1531e",
+      "hostedSha256": "0f9d50046ece4a657bd192488525c51d5850bd8c723629436fa98f0db055b03b",
+      "normalizedSha256": "5da49e60f4bd742d36f498cc71ee9fb3f9fed08f1069851203641ca26989fade",
+      "normalizedMatch": true
+    },
+    {
+      "asset": "velani-hub.js",
+      "trackedSha256": "24f5d7f0fec911e813686e5f6cba94a3cdba778a6e11eb835a94e1d355686d12",
+      "themeBuildInputSha256": "e3d243453d1d953af38a8d50a3cedcc5641cc1cf6512d8aff91751ecf7c09177",
+      "hostedSha256": "fc809c084380a1daab7029e34c7f19313dc66ad257968923737f83b59742f0ca",
+      "normalizedSha256": "ba00a78f990070d591326cbefa8d622261bb84c951cba6f28677b62ed4c6f9d1",
+      "normalizedMatch": true
+    }
+  ]
+}

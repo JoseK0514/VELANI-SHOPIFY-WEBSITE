@@ -1,0 +1,264 @@
+{
+  "themeId": "193401127226",
+  "role": "UNPUBLISHED",
+  "waitForDocumentLoad": true,
+  "source": "4671b614846fe47c75fdc29c9315ba97391b6669",
+  "checks": [
+    {
+      "engine": "chromium",
+      "width": 390,
+      "path": "es-privacy",
+      "themeVerified": true,
+      "languageRoundTrip": true,
+      "mainAxeViolations": 0,
+      "enlargedText": 200,
+      "internalLinks": 3
+    },
+    {
+      "engine": "chromium",
+      "width": 390,
+      "path": "es-nevora-privacy",
+      "themeVerified": true,
+      "languageRoundTrip": true,
+      "mainAxeViolations": 0,
+      "enlargedText": 200,
+      "internalLinks": 5
+    },
+    {
+      "engine": "chromium",
+      "width": 390,
+      "path": "es-nevora-terms",
+      "themeVerified": true,
+      "languageRoundTrip": true,
+      "mainAxeViolations": 0,
+      "enlargedText": 200,
+      "internalLinks": 6
+    },
+    {
+      "engine": "chromium",
+      "width": 390,
+      "path": "es-nevora-support",
+      "themeVerified": true,
+      "languageRoundTrip": true,
+      "mainAxeViolations": 0,
+      "enlargedText": 200,
+      "internalLinks": 6
+    },
+    {
+      "engine": "chromium",
+      "width": 390,
+      "path": "es-nevora-account-deletion",
+      "themeVerified": true,
+      "languageRoundTrip": true,
+      "mainAxeViolations": 0,
+      "enlargedText": 200,
+      "internalLinks": 4
+    },
+    {
+      "engine": "chromium",
+      "width": 1440,
+      "path": "es-privacy",
+      "themeVerified": true,
+      "languageRoundTrip": true,
+      "mainAxeViolations": 0,
+      "enlargedText": 200,
+      "internalLinks": 3
+    },
+    {
+      "engine": "chromium",
+      "width": 1440,
+      "path": "es-nevora-privacy",
+      "themeVerified": true,
+      "languageRoundTrip": true,
+      "mainAxeViolations": 0,
+      "enlargedText": 200,
+      "internalLinks": 5
+    },
+    {
+      "engine": "chromium",
+      "width": 1440,
+      "path": "es-nevora-terms",
+      "themeVerified": true,
+      "languageRoundTrip": true,
+      "mainAxeViolations": 0,
+      "enlargedText": 200,
+      "internalLinks": 6
+    },
+    {
+      "engine": "chromium",
+      "width": 1440,
+      "path": "es-nevora-support",
+      "themeVerified": true,
+      "languageRoundTrip": true,
+      "mainAxeViolations": 0,
+      "enlargedText": 200,
+      "internalLinks": 6
+    },
+    {
+      "engine": "chromium",
+      "width": 1440,
+      "path": "es-nevora-account-deletion",
+      "themeVerified": true,
+      "languageRoundTrip": true,
+      "mainAxeViolations": 0,
+      "enlargedText": 200,
+      "internalLinks": 4
+    },
+    {
+      "engine": "webkit",
+      "width": 390,
+      "path": "es-privacy",
+      "themeVerified": true,
+      "languageRoundTrip": true,
+      "mainAxeViolations": 0,
+      "enlargedText": 200,
+      "internalLinks": 3
+    },
+    {
+      "engine": "webkit",
+      "width": 390,
+      "path": "es-nevora-privacy",
+      "themeVerified": true,
+      "languageRoundTrip": true,
+      "mainAxeViolations": 0,
+      "enlargedText": 200,
+      "internalLinks": 5
+    },
+    {
+      "engine": "webkit",
+      "width": 390,
+      "path": "es-nevora-terms",
+      "themeVerified": true,
+      "languageRoundTrip": true,
+      "mainAxeViolations": 0,
+      "enlargedText": 200,
+      "internalLinks": 6
+    },
+    {
+      "engine": "webkit",
+      "width": 390,
+      "path": "es-nevora-support",
+      "themeVerified": true,
+      "languageRoundTrip": true,
+      "mainAxeViolations": 0,
+      "enlargedText": 200,
+      "internalLinks": 6
+    },
+    {
+      "engine": "webkit",
+      "width": 390,
+      "path": "es-nevora-account-deletion",
+      "themeVerified": true,
+      "languageRoundTrip": true,
+      "mainAxeViolations": 0,
+      "enlargedText": 200,
+      "internalLinks": 4
+    },
+    {
+      "engine": "webkit",
+      "width": 1440,
+      "path": "es-privacy",
+      "themeVerified": true,
+      "languageRoundTrip": true,
+      "mainAxeViolations": 0,
+      "enlargedText": 200,
+      "internalLinks": 3
+    },
+    {
+      "engine": "webkit",
+      "width": 1440,
+      "path": "es-nevora-privacy",
+      "themeVerified": true,
+      "languageRoundTrip": true,
+      "mainAxeViolations": 0,
+      "enlargedText": 200,
+      "internalLinks": 5
+    },
+    {
+      "engine": "webkit",
+      "width": 1440,
+      "path": "es-nevora-terms",
+      "themeVerified": true,
+      "languageRoundTrip": true,
+      "mainAxeViolations": 0,
+      "enlargedText": 200,
+      "internalLinks": 6
+    },
+    {
+      "engine": "webkit",
+      "width": 1440,
+      "path": "es-nevora-support",
+      "themeVerified": true,
+      "languageRoundTrip": true,
+      "mainAxeViolations": 0,
+      "enlargedText": 200,
+      "internalLinks": 6
+    },
+    {
+      "engine": "webkit",
+      "width": 1440,
+      "path": "es-nevora-account-deletion",
+      "themeVerified": true,
+      "languageRoundTrip": true,
+      "mainAxeViolations": 0,
+      "enlargedText": 200,
+      "internalLinks": 4
+    }
+  ],
+  "errors": [],
+  "pageErrors": [],
+  "limits": [
+    "Unpublished theme alternate views only. No global Shopify Page creation or publication, business/legal approval or production acceptance.",
+    "All non-GET/HEAD browser requests are aborted; no inquiry, payment, email or AI submission is exercised.",
+    "200% check enlarges root text, not physical-device or native browser zoom certification."
+  ],
+  "blockedNonReadRequests": 1121,
+  "blockedRequestCounts": [
+    {
+      "method": "POST",
+      "host": "error-analytics-production.shopifysvc.com",
+      "path": "/",
+      "count": 10
+    },
+    {
+      "method": "POST",
+      "host": "error-analytics-sessions-production.shopifysvc.com",
+      "path": "/",
+      "count": 72
+    },
+    {
+      "method": "POST",
+      "host": "monorail-edge.shopifysvc.com",
+      "path": "/v1/produce",
+      "count": 1
+    },
+    {
+      "method": "POST",
+      "host": "otlp-http-production.shopifysvc.com",
+      "path": "/v1/metrics",
+      "count": 143
+    },
+    {
+      "method": "POST",
+      "host": "www.thevelani.com",
+      "path": "/.well-known/shopify/monorail/unstable/produce_batch",
+      "count": 759
+    },
+    {
+      "method": "POST",
+      "host": "www.thevelani.com",
+      "path": "/api/collect",
+      "count": 136
+    }
+  ],
+  "screenshots": [
+    "chromium-390-privacy.png",
+    "chromium-1440-privacy.png",
+    "webkit-390-privacy.png",
+    "webkit-1440-privacy.png"
+  ],
+  "rawReportSha256": "c6675b88eb271a66369b06577d5446fbdd5eb6f5503b5666b6e5bb98cfe2f0a2",
+  "sourceHashCount": 212,
+  "sourceHashesUnchanged": true,
+  "sourceTestsPassed": 100
+}

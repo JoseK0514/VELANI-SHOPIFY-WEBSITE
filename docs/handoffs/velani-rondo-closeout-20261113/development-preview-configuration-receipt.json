@@ -1,0 +1,85 @@
+{
+  "project": "prj_E1Vl2AEpTlJlBam4MTKG7oEHB7x2",
+  "team": "team_Lzbw410WwXGWHTuUXuamRI1N",
+  "branch": "development",
+  "target": "preview",
+  "source": "b794ed1ae9e79f4075e3c9a29cd8146c21fc3442",
+  "created": [
+    {
+      "id": "2NI2an4JweZ1A5C4",
+      "key": "DATABASE_URL",
+      "type": "sensitive",
+      "target": [
+        "preview"
+      ],
+      "gitBranch": "development"
+    },
+    {
+      "id": "ig7VamcczcxRfJI9",
+      "key": "SESSION_HASH_SECRET",
+      "type": "sensitive",
+      "target": [
+        "preview"
+      ],
+      "gitBranch": "development"
+    },
+    {
+      "id": "JLXycUA4LawOWoTJ",
+      "key": "AI_MODEL",
+      "type": "plain",
+      "target": [
+        "preview"
+      ],
+      "gitBranch": "development"
+    },
+    {
+      "id": "8dlKrdcNWaPC1Sdb",
+      "key": "AI_PLAN_MODEL",
+      "type": "plain",
+      "target": [
+        "preview"
+      ],
+      "gitBranch": "development"
+    },
+    {
+      "id": "pT68VZkxuLHi6xEX",
+      "key": "AI_BUDGET_AUTHORIZATION_ID",
+      "type": "plain",
+      "target": [
+        "preview"
+      ],
+      "gitBranch": "development"
+    },
+    {
+      "id": "SwvLV5ry8waHLwOA",
+      "key": "ALLOWED_ORIGINS",
+      "type": "plain",
+      "target": [
+        "preview"
+      ],
+      "gitBranch": "development"
+    },
+    {
+      "id": "mDvQ6TmR6Oyt5qIS",
+      "key": "CLIENT_HUB_ENABLED",
+      "type": "plain",
+      "target": [
+        "preview"
+      ],
+      "gitBranch": "development"
+    },
+    {
+      "id": "sGd4xEHTHBABaHGK",
+      "key": "CLIENT_HUB_ALLOWED_ORIGINS",
+      "type": "plain",
+      "target": [
+        "preview"
+      ],
+      "gitBranch": "development"
+    }
+  ],
+  "productionValuesChanged": false,
+  "protectionChanged": false,
+  "mailEnabled": false,
+  "secretsExported": false
+}

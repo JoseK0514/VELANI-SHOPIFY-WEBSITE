@@ -1,0 +1,8 @@
+
+ RUN  v5.0.5 /workspace/NEVORA
+
+
+ Test Files  3 passed (3)
+      Tests  22 passed (22)
+   Start at  01:39:31
+   Duration  1.48s (import 79%, transform 12%, tests 8%, worker 1%)

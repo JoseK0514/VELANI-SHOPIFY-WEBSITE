@@ -5,7 +5,7 @@ import { routes } from '../src/content.mjs';
 import { ES_PATHS, ES_NEAREST } from '../src/content.es.mjs';
 import { renderPage, renderBody, renderShopifyLayout, renderShopifySnippets } from '../src/render.mjs';
 
-const PAIRS = { '/': '/pages/es', '/pages/nevora': '/pages/es-nevora', '/pages/plans': '/pages/es-planes', '/pages/products': '/pages/es-productos', '/pages/contact': '/pages/es-contacto', '/pages/about': '/pages/es-nosotros', '/pages/help': '/pages/es-ayuda', '/pages/custom-development': '/pages/es-a-la-medida', '/pages/sign-in': '/pages/es-entrar', '/pages/nevora-start': '/pages/es-prueba', '/pages/nevora-billing': '/pages/es-facturacion', '/pages/nevora-verify': '/pages/es-configurar', '/pages/nevora-billing-return': '/pages/es-pago' };
+const PAIRS = { '/pages/privacy': '/pages/es-privacy', '/pages/nevora-privacy': '/pages/es-nevora-privacy', '/pages/nevora-terms': '/pages/es-nevora-terms', '/pages/nevora-support': '/pages/es-nevora-support', '/pages/nevora-account-deletion': '/pages/es-nevora-account-deletion', '/': '/pages/es', '/pages/nevora': '/pages/es-nevora', '/pages/plans': '/pages/es-planes', '/pages/products': '/pages/es-productos', '/pages/contact': '/pages/es-contacto', '/pages/about': '/pages/es-nosotros', '/pages/help': '/pages/es-ayuda', '/pages/custom-development': '/pages/es-a-la-medida', '/pages/sign-in': '/pages/es-entrar', '/pages/nevora-start': '/pages/es-prueba', '/pages/nevora-billing': '/pages/es-facturacion', '/pages/nevora-verify': '/pages/es-configurar', '/pages/nevora-billing-return': '/pages/es-pago' };
 const ES = Object.values(PAIRS);
 const text = html => html.replace(/<script[^]*?<\/script>|<style[^]*?<\/style>/g, ' ').replace(/<[^>]+>/g, ' ').replace(/&nbsp;/g, ' ').replace(/\s+/g, ' ');
 const withoutHiddenSent = html => html.replace(/<div class="sent" id="inquiry-sent" tabindex="-1" hidden>[\s\S]*?<\/div>/, '');
@@ -13,7 +13,7 @@ const between = (html, start, end) => { const s = html.indexOf(start); assert.ok
 // English UI words that must not appear in the Spanish header, phone menu, footer, cookie dialog or contact form
 const DENY = /\b(Products|Websites|Custom apps|Plans|Support|About|Contact|Request free|Start a project|Skip to content|Menu|Main menu|Name|Email|Company|optional|Topic|Team size|Number of locations|Something else|Website preview|Cookie choices|Necessary|Preferences|Analytics|Sale or sharing|Always on|Reject all|Accept all|Save choices|All rights reserved|Client support|Monday|Friday|Language|Send inquiry|Check draft|Privacy notice|Back to home|Message sent|Trial request|In development|Coming soon|Scheduling|time clock|payroll)\b/;
 
-test('the thirteen Spanish routes exist, pair with their English pages and use the same components', () => {
+test('the Spanish product and legal routes exist, pair with their English pages and use the same components', () => {
   assert.deepEqual(Object.fromEntries(Object.entries(ES_PATHS)), PAIRS);
   for (const [en, es] of Object.entries(PAIRS)) {
     assert.equal(routes[es].lang, 'es', es);
@@ -286,8 +286,8 @@ test('the request form has a real label for every field and a live summary that 
 test('after a trial request the panel names Jose, leads to the NEVORA page and keeps Home as a quiet link', async () => {
   const { readFile } = await import('node:fs/promises');
   const js = await readFile(new URL('../public/assets/velani.js', import.meta.url), 'utf8');
-  assert.match(js, /Jose from Velani will email you within two business days to set up your workplace\. Your 30 days start the day it’s ready\./);
-  assert.match(js, /Jose de Velani te escribirá en un plazo de dos días laborables para configurar tu lugar de trabajo\. Tus 30 días empiezan el día en que esté listo\./);
+  assert.match(js, /Jose from Velani will email you within two business days to set up your workplace\. Your 30 days start when your workplace is provisioned \(created in NEVORA\)\./);
+  assert.match(js, /Jose de Velani te escribirá en un plazo de dos días laborables para configurar tu lugar de trabajo\. Tus 30 días comienzan cuando se crea tu lugar de trabajo en NEVORA\./);
   assert.match(js, /topic === 'nevora-demo'\) \{ next\.hidden = false; back\.className = 'sent-back'; \}/);
   for (const [path, next, nextHref, back, backHref] of [['/pages/contact', 'See how NEVORA works', '/pages/nevora', 'Back to home', '/'], ['/pages/es-contacto', 'Mira cómo funciona NEVORA', '/pages/es-nevora', 'Volver al inicio', '/pages/es']]) {
     const html = renderBody(path, { target: 'local' });

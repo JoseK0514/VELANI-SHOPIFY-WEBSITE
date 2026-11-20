@@ -1,0 +1,72 @@
+{
+  "account": {
+    "stripe_context": "acct_1UZZK1HT1nhEuOJ2",
+    "livemode": false,
+    "name": "Velani LLC  sandbox"
+  },
+  "readOnly": true,
+  "events": [
+    {
+      "id": "evt_1Ub0kAHT1nhEuOJ2ImWJkHFM",
+      "isError": false,
+      "livemode": false,
+      "type": "customer.subscription.updated",
+      "objectId": "sub_1UZgMUHT1nhEuOJ2yTmfBGli",
+      "customer": "cus_Vas1btkENBmYRB",
+      "status": "canceled",
+      "trial_start": 1794183782,
+      "trial_end": 1794184197,
+      "automatic_tax": {
+        "disabled_reason": null,
+        "enabled": false,
+        "liability": null
+      },
+      "api_version": "2026-10-28.endive"
+    },
+    {
+      "id": "evt_1Ub0kBHT1nhEuOJ28VKYe3kP",
+      "isError": false,
+      "livemode": false,
+      "type": "customer.subscription.updated",
+      "objectId": "sub_1UZgQYHT1nhEuOJ20l7h8Tgc",
+      "customer": "cus_Vas7wCvkuskT2G",
+      "status": "canceled",
+      "trial_start": 1794184034,
+      "trial_end": 1794184200,
+      "automatic_tax": {
+        "disabled_reason": null,
+        "enabled": false,
+        "liability": null
+      },
+      "api_version": "2026-10-28.endive"
+    }
+  ],
+  "subscriptions": [
+    {
+      "id": "sub_1UZgMUHT1nhEuOJ2yTmfBGli",
+      "customer": "cus_Vas1btkENBmYRB",
+      "livemode": false,
+      "status": "canceled",
+      "trial_start": 1794183782,
+      "trial_end": 1794184197,
+      "automaticTaxEnabled": false,
+      "customerMatchesOriginal": true,
+      "trialMatchesOriginal": true
+    },
+    {
+      "id": "sub_1UZgQYHT1nhEuOJ20l7h8Tgc",
+      "customer": "cus_Vas7wCvkuskT2G",
+      "livemode": false,
+      "status": "canceled",
+      "trial_start": 1794184034,
+      "trial_end": 1794184200,
+      "automaticTaxEnabled": false,
+      "customerMatchesOriginal": true,
+      "trialMatchesOriginal": true
+    }
+  ],
+  "limitations": [
+    "Historical metadata-only events and current canceled original subscriptions; no paid lifecycle or new combined-source acceptance.",
+    "No provider mutation, live-mode access, payment, invoice or Tax activation."
+  ]
+}

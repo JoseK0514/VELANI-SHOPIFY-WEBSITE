@@ -1,0 +1,11 @@
+{
+  "id": "4ce28a98-efb1-4b92-a436-efefb44d8069",
+  "scope": "development",
+  "target": "velani_rondo_development",
+  "approvalReference": "SCRUM-155: unarmed example; no additional message allowance",
+  "recipient": "support@thevelani.com",
+  "validFrom": "2026-11-13T04:00:00.000Z",
+  "validUntil": "2026-12-01T04:00:00.000Z",
+  "mailEnabled": false,
+  "maxAttempts": 0
+}

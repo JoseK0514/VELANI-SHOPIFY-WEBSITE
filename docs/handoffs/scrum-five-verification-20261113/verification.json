@@ -1,0 +1,20 @@
+{
+  "recordedAtUtc": "2026-11-13T03:03:02.021746+00:00",
+  "websiteSource": "4dde3c8f476b68e8ecbf345ee6308dedee1a6e08",
+  "nevoraLocalSource": "289e3f58dfe2070fcad6c862824df52acf33baa3",
+  "hostedPreviewTheme": "193401127226",
+  "hostedLegalCellsPassed": 20,
+  "hostedPageErrors": 0,
+  "blockedNonReadRequests": 1110,
+  "websiteUnitPassed": 100,
+  "clientHubBackendTestsPassed": 261,
+  "nevoraUnitPassed": 12766,
+  "nevoraUnitSkipped": 895,
+  "nevoraReportedTotal": 13716,
+  "nevoraAdditionalCasesNotCountedAsPasses": 55,
+  "limits": [
+    "NEVORA combined integration/actual-development qualification and bounded hosted acceptance belong to existing finisher.",
+    "Public Spanish routes still 404 on unchanged MAIN; preview is unpublished alternate views only.",
+    "Blocked Shopify analytics attempts are retained; no delivered inquiry/payment/email/AI request."
+  ]
+}

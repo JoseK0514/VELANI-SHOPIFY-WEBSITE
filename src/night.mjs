@@ -4,6 +4,7 @@ import path from 'node:path';
 import { company, routes } from './content.mjs';
 import { CHROME_ES, ES_PATHS } from './content.es.mjs';
 import { POLICY_DOCS, POLICY_FACTS } from './nevora-policies.mjs';
+import { POLICY_DOCS_ES, POLICY_FACTS_ES } from './nevora-policies.es.mjs';
 
 const dir = path.join(import.meta.dirname, 'night');
 const read = name => readFileSync(path.join(dir, name), 'utf8');
@@ -41,8 +42,11 @@ function kiosk(lang) {
     .replace('Oct 27&nbsp;· 2:17 PM</b><span id="kio-dot">.</span>', '27 oct&nbsp;· 2:17 p.\u00a0m.</b><span id="kio-dot"></span>');
 }
 /** Turn a prototype fragment into site markup: icons inline, images from theme assets, real routes. */
-/** Rondo's mark: a round badge with the R and a three-quarter ring of light (the same markup everywhere; size comes from the context) */
-const RONDO_MARK = (cls = '') => '<b class="rmark' + (cls ? ' ' + cls : '') + '" aria-hidden="true"><svg viewBox="0 0 32 32" focusable="false"><circle cx="16" cy="16" r="14.25"/><path d="M16 1.75A14.25 14.25 0 1 1 1.75 16"/></svg>R</b>';
+/** Jose's approved Lantern concept 1; see docs/brand/rondo-lantern.md for provenance.
+ * Adjacent text names Rondo, so these repeated marks are decorative. The exported SVG is named when used alone. */
+const RONDO_SVG = readFileSync(path.join(root, 'src/brand/rondo-lantern.svg'), 'utf8')
+  .replace(/\s(width|height)="[^"]*"/g, '').replace('role="img" aria-label="Rondo"', 'focusable="false"').trim();
+const RONDO_MARK = (cls = '') => '<b class="rmark' + (cls ? ' ' + cls : '') + '" aria-hidden="true">' + RONDO_SVG + '</b>';
 export function site(html, target, lang = 'en') {
   return html
     .replace('{{kiosk}}', () => kiosk(lang))
@@ -113,10 +117,13 @@ export function header(current, target, { nevora = false, lang = 'en', hrefs = S
   const signIn = cls => `<a class="${cls}" href="${t.signInHref}"${enOnly(t.signInHref)}${mark('signin')}>${t.signIn}</a>`;
   const menu = signIn('gmenu-signin') + t.groups.map(([, label, , items]) => `<p class="gmenu-k">${label}</p>` + items.map(([name, href]) => `<a class="gmenu-sub" href="${href}"${enOnly(href)}>${name}</a>`).join('')).join('');
   const staticClass = '';
+  // Real links remain usable when the disclosure controller cannot run.
+  const fallback = `<noscript><nav class="wrap gnav-fallback" aria-label="${t.mainMenu}"><a href="/pages/nevora">NEVORA</a>`
+    + t.nav.map(([label, href]) => `<a href="${href}"${enOnly(href)}>${label}</a>`).join('') + '</nav></noscript>';
   // One header action on every page: the trial (the Custom software page keeps Start a project as its own first-screen action)
   const cta = (cls, trial) => `<a class="${cls}" href="/pages/contact?interest=nevora-demo">${trial}</a>`;
   const html = `<a class="skip" href="#main">${t.skip}</a><header class="gnav${staticClass}" id="gnav"><nav class="wrap gnav-in" aria-label="${t.main}"><a class="wordmark" href="/" aria-label="${t.home}">${WORDMARK}</a><ul class="gnav-links">${links}</ul>${langSwitch(lang, hrefs, ' gnav-lang')}${signIn('gnav-signin')}${cta('pill line', t.trial)}<button class="gnav-menu" id="gmenu-btn" type="button" aria-expanded="false" aria-controls="gmenu" aria-label="${t.menu}"><span class="i-open">${icon('list')}</span><span class="i-close" hidden>${icon('x')}</span></button></nav></header><div class="gmenu" id="gmenu" hidden><nav class="wrap" aria-label="${t.mainMenu}">${menu}${langSwitch(lang, hrefs, ' gmenu-lang')}${cta('pill', t.trialLong)}<small>${t.support} · <a href="mailto:${company.email}">${company.email}</a>${company.phone ? ` · <a href="tel:+1${company.phone.replace(/-/g, '')}">${company.phone}</a>` : ''} · ${t.hours}<br>${t.brandOf}${company.operator}.</small></nav></div>`;
-  return localize(html, lang);
+  return localize(html.replace('</header>', fallback + '</header>'), lang);
 }
 export function footer(target, { lang = 'en', hrefs = SHOPIFY_LANG_HREFS } = {}) { return localize(site(read(lang === 'es' ? 'foot.es.html' : 'foot.html'), target).replace('{{lang}}', () => langSwitch(lang, hrefs, ' foot-lang')), lang); }
 /** Custom development: client screenshots open full screen (an inline script at the end of the section). */
@@ -132,10 +139,10 @@ export const nightAssets = {
 /* NEVORA policy pages (Privacy, Support, Account deletion, Terms), from the NEVORA app's approved policy source. */
 const APP_ONLY = new Set(['/login', '/forgot-access']);
 const POLICY_ROUTE = { '/privacy': '/pages/nevora-privacy', '/terms': '/pages/nevora-terms', '/support': '/pages/nevora-support', '/account-deletion': '/pages/nevora-account-deletion' };
-function inline(parts) {
+function inline(parts, facts = POLICY_FACTS) {
   return parts.map(x => {
     if (typeof x === 'string') return e(x);
-    if (x.fact) return e(POLICY_FACTS[x.fact]);
+    if (x.fact) return e(facts[x.fact]);
     if (x.strong) return '<strong>' + e(x.strong) + '</strong>';
     if (x.href) {
       if (APP_ONLY.has(x.href)) return e(x.text);
@@ -145,12 +152,18 @@ function inline(parts) {
   }).join('');
 }
 /** The website names each policy page ("NEVORA privacy policy"); the policy source keeps its own document titles. */
-const siteTitle = slug => routes[POLICY_ROUTE['/' + slug]]?.title || POLICY_DOCS.find(d => d.slug === slug).title;
-export function policyMain(slug) {
-  const doc = POLICY_DOCS.find(d => d.slug === slug);
-  const others = POLICY_DOCS.filter(d => d.slug !== slug);
+const siteTitle = (slug, lang = 'en') => routes[lang === 'es' ? ES_PATHS[POLICY_ROUTE['/' + slug]] : POLICY_ROUTE['/' + slug]]?.title;
+export function policyMain(slug, lang = 'en') {
+  const docs = lang === 'es' ? POLICY_DOCS_ES : POLICY_DOCS;
+  const facts = lang === 'es' ? POLICY_FACTS_ES : POLICY_FACTS;
+  const doc = docs.find(d => d.slug === slug);
+  const others = docs.filter(d => d.slug !== slug);
+  const t = lang === 'es'
+    ? { effective: 'Vigente desde el', toc: 'En esta página', contents: 'Contenido de la página', also: 'También sobre NEVORA', other: 'Otras páginas de NEVORA', questions: 'Preguntas', write: 'Escribe a', postal: ', o por correo postal a ', contact: 'Página de contacto', support: 'Soporte de NEVORA' }
+    : { effective: 'Effective', toc: 'On this page', contents: 'Page contents', also: 'Also for NEVORA', other: 'Other NEVORA pages', questions: 'Questions', write: 'Write to', postal: ', or to ', contact: 'Contact page', support: 'NEVORA support' };
+  const renderInline = parts => inline(parts, facts);
   const toc = doc.sections.map((s, i) => `<a href="#p-${i}">${e(s.heading)}</a>`).join('');
-  const body = doc.sections.map((s, i) => `<section id="p-${i}"><i>${String(i + 1).padStart(2, '0')}</i><h2>${e(s.heading)}</h2>${s.blocks.map(b => b.p ? `<p>${inline(b.p)}</p>` : b.steps ? `<ol>${b.steps.map(li => `<li>${inline(li)}</li>`).join('')}</ol>` : `<ul>${b.list.map(li => `<li>${inline(li)}</li>`).join('')}</ul>`).join('')}</section>`).join('');
-  const eff = doc.effective ? `<p class="doc-meta">Effective ${e(POLICY_FACTS.EFFECTIVE_DATE)}</p>` : '';
-  return `<section class="phero"><div class="wrap"><h1 class="t1 rise">${e(siteTitle(slug))}</h1><p class="lede fade">${e(doc.summary)}</p>${eff}</div></section><section class="doc"><div class="wrap doc-grid"><div class="doc-aside"><details class="doc-toc" open><summary class="doc-aside-t">On this page</summary><nav aria-label="Page contents">${toc}</nav></details><p class="doc-aside-t">Also for NEVORA</p><nav aria-label="Other NEVORA pages">${others.map(d => `<a href="${POLICY_ROUTE['/' + d.slug]}">${e(siteTitle(d.slug))}</a>`).join('')}</nav></div><div class="doc-body">${body}<div class="doc-end"><h2 class="t3">Questions</h2><p>Write to <a href="mailto:${company.email}">${company.email}</a>${body.includes(e(company.address)) ? '' : ', or to ' + e(company.operator) + ', ' + e(company.address)}.</p><div class="acts">${slug === 'support' ? '<a class="pill line" href="/pages/contact">Contact page</a>' : '<a class="pill line" href="/pages/nevora-support">NEVORA support</a>'}</div></div></div></div></section>`;
+  const body = doc.sections.map((s, i) => `<section id="p-${i}"><i>${String(i + 1).padStart(2, '0')}</i><h2>${e(s.heading)}</h2>${s.blocks.map(b => b.p ? `<p>${renderInline(b.p)}</p>` : b.steps ? `<ol>${b.steps.map(li => `<li>${renderInline(li)}</li>`).join('')}</ol>` : `<ul>${b.list.map(li => `<li>${renderInline(li)}</li>`).join('')}</ul>`).join('')}</section>`).join('');
+  const eff = doc.effective ? `<p class="doc-meta">${t.effective} ${e(facts.EFFECTIVE_DATE)}</p>` : '';
+  return localize(`<section class="phero"><div class="wrap"><h1 class="t1 rise">${e(siteTitle(slug, lang))}</h1><p class="lede fade">${e(doc.summary)}</p>${eff}</div></section><section class="doc"><div class="wrap doc-grid"><div class="doc-aside"><details class="doc-toc" open><summary class="doc-aside-t">${t.toc}</summary><nav aria-label="${t.contents}">${toc}</nav></details><p class="doc-aside-t">${t.also}</p><nav aria-label="${t.other}">${others.map(d => `<a href="${POLICY_ROUTE['/' + d.slug]}">${e(siteTitle(d.slug, lang))}</a>`).join('')}</nav></div><div class="doc-body">${body}<div class="doc-end"><h2 class="t3">${t.questions}</h2><p>${t.write} <a href="mailto:${company.email}">${company.email}</a>${body.includes(e(company.address)) ? '' : t.postal + e(company.operator) + ', ' + e(company.address)}.</p><div class="acts">${slug === 'support' ? '<a class="pill line" href="/pages/contact">' + t.contact + '</a>' : '<a class="pill line" href="/pages/nevora-support">' + t.support + '</a>'}</div></div></div></div></section>`, lang);
 }

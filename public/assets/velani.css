@@ -305,6 +305,9 @@ html:has(main > .hpanel){--anchor:56px}
 .ul{text-decoration:underline;text-decoration-color:var(--line-2);text-underline-offset:3px}@media(hover:hover){.ul:hover{text-decoration-color:currentColor}}
 /* Without JavaScript (or if the script never runs), the header links wrap under the wordmark on phones; anchors land closer to the top */
 @media(max-width:833px){.no-js .gnav-in,.still .gnav-in{flex-wrap:wrap}.no-js .gnav-links,.still .gnav-links{display:flex;flex-wrap:wrap;order:3;width:100%;margin:0 0 4px -14px}.no-js .gnav-menu,.still .gnav-menu{display:none}html{--anchor:64px}}
+.no-js .gnav .gnav-links,.no-js .gnav .gnav-menu{display:none}
+.gnav-fallback{display:flex;flex-wrap:wrap;column-gap:20px;padding-bottom:8px}
+.gnav-fallback a{display:inline-flex;align-items:center;min-height:44px;color:var(--text-2);font-size:.875rem}
 /* Phones keep the 17px body size */
 
 /* ---------- Inner pages: company, contact, help, legal and NEVORA policies ---------- */
@@ -435,8 +438,10 @@ html:has(main > .hpanel){--anchor:56px}
 @media(max-width:700px){.tiles{grid-template-columns:1fr}.tile{min-height:0;padding:24px}}
 
 /* Long documents: legal notices and NEVORA policies. Numbered sections, a quiet contents column, no hairlines. */
-.doc{padding-bottom:var(--s3)}
+.doc{padding-bottom:var(--s3);overflow-wrap:anywhere}
+.phero:has(+.doc) h1{overflow-wrap:anywhere}
 .doc-grid{display:grid;grid-template-columns:minmax(0,3fr) minmax(0,8fr);gap:48px 96px;align-items:start}
+.doc-grid>*{min-width:0}
 .doc-aside{position:sticky;top:88px;display:flex;flex-direction:column;gap:4px}
 .doc-aside-t{margin:28px 0 8px;font-size:0.75rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--text-3)}
 .doc-aside-t:first-child{margin-top:0}
@@ -465,12 +470,12 @@ html:has(main > .hpanel){--anchor:56px}
 .doc-body .pill{margin:20px 0 36px}
 @media(min-width:834px){.doc-end,.doc-body>.pill{margin-left:72px}}
 @media(max-width:833px){
- .doc-grid{grid-template-columns:1fr;gap:32px}
+ .doc-grid{grid-template-columns:minmax(0,1fr);gap:32px}
  .doc-aside{position:static}
  .doc-toc{display:block;margin-bottom:16px}.doc-toc summary{cursor:pointer;min-height:44px;margin:0;padding:0 2px;border-bottom:1px solid var(--line);color:var(--text)}.doc-toc summary::after{display:block;margin-top:-4px}.doc-aside .doc-toc nav{flex-direction:column;gap:0;padding:8px 0 4px}
  .doc-aside .doc-aside-t{margin-top:0}
  .doc-aside nav:last-of-type{flex-direction:row;flex-wrap:wrap;gap:8px}
- .doc-aside a{display:inline-flex;align-items:center;min-height:44px;padding:0 14px;border:1px solid var(--line-2);border-radius:var(--r);font-size:0.75rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--text)}
+ .doc-aside a{display:inline-flex;align-items:center;min-width:0;max-width:100%;min-height:44px;padding:0 14px;border:1px solid var(--line-2);border-radius:var(--r);font-size:0.75rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--text)}
  .doc-toc a{display:block;min-height:0;padding:9px 0 9px 14px;border:0;border-left:1px solid var(--line);border-radius:0;font-size:0.9375rem;font-weight:400;letter-spacing:0;text-transform:none;color:var(--text-2)}
  .doc-body section{grid-template-columns:1fr;padding-bottom:44px}
  .doc-body section>i{grid-row:auto}
@@ -1382,16 +1387,20 @@ main>section:first-of-type .fade{opacity:1}
 @media(min-width:960px) and (max-width:1099px){.lnav-lang{margin-right:2px}.lnav-lang a{min-width:26px;padding:0 3px}html[lang=es] .lnav ul a{padding:0 6px}html[lang=es] .lnav ul{margin-right:6px}}
 @media(min-width:960px) and (max-width:1023px){html[lang=es] .lnav ul a{padding:0 4px}}
 
-/* ---------- Rondo's mark: round, with a three-quarter ring of light (one design for every place Rondo appears) ---------- */
-b.rmark,.hchat-h b.rmark,.rondo-kick .rmark,.ast-launch .rmark,.ast-head .rmark,.ast-who .rmark{position:relative;display:grid;place-items:center;flex:none;border-radius:50%;background:radial-gradient(circle at 35% 28%,#1c3049 0,#0f1a29 58%,#0a121c 100%);color:#dcebff;font-style:normal;font-weight:600;letter-spacing:0;line-height:1;box-shadow:none;border:0}
-.rmark svg{position:absolute;inset:0;width:100%;height:100%;fill:none;stroke-width:1.5;stroke-linecap:round;pointer-events:none}
-.rmark svg circle{stroke:rgba(187,216,255,.18)}
-.rmark svg path{stroke:#bbd8ff}
+/* ---------- Approved Rondo Lantern: one ring and its light; static unless an answer is actually pending ---------- */
+b.rmark,.hchat-h b.rmark,.rondo-kick .rmark,.ast-launch .rmark,.ast-head .rmark,.ast-who .rmark{position:relative;display:grid;place-items:center;flex:none;width:26px;height:26px;border-radius:50%;background:#101c29;color:#bbd8ff;font-style:normal;font-weight:600;letter-spacing:0;line-height:1;box-shadow:none;border:0}
+.rmark svg{display:block;width:100%;height:100%;pointer-events:none}
+.rmark.day-r{width:20px;height:20px;border-radius:6px;background:var(--teal);color:#fff}
+.rmark-orbit{transform-origin:24px 24px}
+.rmark.is-thinking .rmark-orbit{animation:rondo-lantern-orbit 3.2s linear infinite}
+@keyframes rondo-lantern-orbit{to{transform:rotate(360deg)}}
+@media(prefers-reduced-motion:reduce){.rmark.is-thinking .rmark-orbit{animation:none}}
 .ast-head .rmark{width:32px;height:32px;font-size:0.875rem}
 .ast-launch .rmark{width:26px;height:26px;font-size:0.75rem}
 .ast-who{display:flex;align-items:center;gap:8px}
 .ast-who .rmark{width:22px;height:22px;font-size:0.6875rem}
-@media(forced-colors:active){.rmark{forced-color-adjust:none;background:Canvas;color:CanvasText}.rmark svg path{stroke:CanvasText}.rmark svg circle{stroke:GrayText}}
+.ast-wait .rmark{width:22px;height:22px}
+@media(forced-colors:active){b.rmark,.rmark.day-r{background:Canvas;color:CanvasText}.rmark path{stroke-opacity:1}}
 /* Example chat header: a longer name (Spanish) moves the status label to its own line instead of past the card edge */
 .hchat-h{flex-wrap:wrap;row-gap:4px}
 .hchat-h span{min-width:0}

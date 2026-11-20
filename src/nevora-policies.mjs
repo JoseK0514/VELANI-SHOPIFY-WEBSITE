@@ -1,7 +1,6 @@
-// Generated from the NEVORA app's approved policy source (src/lib/legal/policies.ts, confirmed 2026-10-20), then edited on the website side on 2026-11-03/04 (sign-in guidance, regional statement, retention list, day-30 demo deletion). Mirror those edits into policies.ts before the next regeneration.
-// 2026-11-09: Terms "Your account", "Free trial and assisted setup" and "After an unpaid trial" copied verbatim from policies.ts
-// (POLICY_VERSION 2026-11-09, Codex assembly e915e4ba9); the privacy "Free trial workplaces" paragraph follows the same rule.
-// 2026-11-07: BACKUP_EXPIRY and POLICY_VERSION copied verbatim from policies.ts at NEVORA f5fa463b (seven-day restore history plus purpose-limited recovery snapshots). The website-side edits above are still not in policies.ts.
+// English website mirror of NEVORA policy version 2026-11-09, with website sign-in and retention details.
+// November 12 SCRUM-156: scoped backup/provider-copy clarification matches the accompanying app patch.
+// Source preparation is not business/legal approval or Shopify publication.
 const SUPPORT_EMAIL = "support@thevelani.com";
 const POLICY_OPERATOR = "VELANI LLC";
 const POLICY_VERSION = "2026-11-09";
@@ -10,7 +9,7 @@ const POLICY_FACTS = {
   SUPPORT_RESPONSE_TIME: "We aim to respond to support and privacy inquiries within two business days. Business days are Monday to Friday, excluding public holidays observed in Puerto Rico. Requests that need investigation may take longer to resolve.",
   DELETION_COMPLETION_PERIOD: "30 calendar days after we receive the request",
   RETENTION_SCHEDULE: "attendance, approved timecards, payroll calculations, published pay statements and their corrections and approvals for three years from the record\u2019s final entry, and records supporting employment taxes for at least four years after the tax is due or paid, whichever is later; security and access logs for up to 90 days; records of privacy requests for 24 months after the request is closed; and records under a legal hold or unresolved dispute until the hold is released and the applicable period has passed. The longest applicable period applies, and a deletion request doesn\u2019t restart it.",
-  BACKUP_EXPIRY: "Our database keeps a restore history of seven days, so changed or deleted information drops out of it after seven days. We may also keep separate recovery snapshots taken for a specific purpose, such as before a database upgrade. They are restricted to that purpose, are never used to restore your account after deletion, and are deleted once they are no longer needed for it.",
+  BACKUP_EXPIRY: "NEVORA’s workforce database has a seven-day restore-history window. Changed or deleted information can remain in that history until it expires. Separate recovery snapshots, such as those taken before an upgrade, are restricted to their purpose, are never used to restore a deleted account, and are deleted when no longer needed for that purpose. This window does not determine retention of provider logs or mailbox copies.",
   PROCESSORS_AND_PURPOSES: "Vercel hosts the application and runs its servers; Neon stores the database; a transactional email provider delivers recovery codes and other account email; and your browser\u2019s push service, run by its maker (such as Apple, Google or Mozilla), delivers the notifications you turn on.",
   HOSTING_TRANSFER_DETAILS: "Our database and application servers are in the United States, in Northern Virginia. Email delivery, push notification services and our providers\u2019 logs and support may process information in other locations.",
   SALE_SHARING_AND_TRACKING_STATEMENT: "NEVORA does not display advertisements, sell personal information, or share personal information for cross-context behavioral advertising. We do not track users across other companies\u2019 applications or websites for advertising purposes. We disclose information to your employer and our service providers as necessary to operate NEVORA and for the purposes described in this policy.",
@@ -112,7 +111,7 @@ const ACCOUNT_DELETION = {
       { p: ["If you can\u2019t sign in, use ", { strong: "Forgot access" }, " first, or email ", mail, " and we\u2019ll help you confirm it\u2019s you."] }
     ] },
     { heading: "What happens next", blocks: [{ p: ["When you confirm, we save your request and show you a reference such as DEL‑7KQ2M9XA. You\u2019re signed out on every device and can\u2019t sign in again. We aim to delete your account within ", f("DELETION_COMPLETION_PERIOD"), ", and we email you when it\u2019s done if we have your email address. Quote your reference to ", mail, " to ask about it."] }] },
-    { heading: "What is removed", blocks: [{ p: ["Your account and the information linked to it that can be deleted: your profile, sign-in details, sessions, notification subscriptions, calendar feed links and the content you contributed, including copies held by our service providers."] }] },
+    { heading: "What is removed", blocks: [{ p: ["Your account and the information linked to it that can be deleted: your profile, sign-in details, sessions, notification subscriptions, calendar feed links and the content you contributed. Provider-held copies remain subject to applicable obligations and retention periods. This does not promise immediate erasure of all provider, backup or mailbox copies."] }] },
     { heading: "What may be kept", blocks: [
       { p: ["Some attendance, payroll, security or dispute records may have to be kept for a recorded obligation. We keep:"] },
       { list: [

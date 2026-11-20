@@ -2,7 +2,7 @@ import { randomUUID } from 'node:crypto';
 import type { Pool, PoolClient } from 'pg';
 
 export interface RondoMonitorPolicy {
-  scope: 'development'; sourceSha: string; mailEnabled: boolean;
+  scope: 'development' | 'production'; sourceSha: string; mailEnabled: boolean;
   maxNoticeAttempts: number; deliveryDeadlineMs?: number;
 }
 type Kind = 'outage' | 'recovery';
@@ -16,7 +16,7 @@ export async function processRondoObservation(
   observe: () => Promise<{ status: string }>,
   notify: (kind: Kind, key: string) => Promise<{ id: string }>,
 ): Promise<{ state: string; notice: Notice }> {
-  if (policy.scope !== 'development' || !/^[a-f0-9]{40}$/.test(policy.sourceSha)
+  if (!['development','production'].includes(policy.scope) || !/^[a-f0-9]{40}$/.test(policy.sourceSha)
     || !Number.isSafeInteger(policy.maxNoticeAttempts) || policy.maxNoticeAttempts < 0 || policy.maxNoticeAttempts > 100
     || (policy.deliveryDeadlineMs !== undefined && (!Number.isInteger(policy.deliveryDeadlineMs)
       || policy.deliveryDeadlineMs < 10 || policy.deliveryDeadlineMs > 5000))) throw Error('rondo_monitor_configuration_invalid');

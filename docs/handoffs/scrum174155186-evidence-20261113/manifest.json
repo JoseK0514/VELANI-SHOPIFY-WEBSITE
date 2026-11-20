@@ -1,0 +1,64 @@
+{
+  "files": [
+    {
+      "path": "admin-readback.json",
+      "bytes": 343,
+      "sha256": "a9be2bef747454a645768d84d2b0d831683486a2292fa28d3944fa71b8392855"
+    },
+    {
+      "path": "backend-build.log.gz",
+      "bytes": 92,
+      "sha256": "d31ce89ade85012f3725d60534669045bd19b7f0975741604f5b1ae0309f3d52"
+    },
+    {
+      "path": "backend-report.json.gz",
+      "bytes": 13433,
+      "sha256": "5f82358a98cd2182c46e787f8a5f7e4fb0e0e0a909b8595dfa890093e451502f"
+    },
+    {
+      "path": "backend-scram.log.gz",
+      "bytes": 620,
+      "sha256": "6d2905158f116559a2caee0f25876b1913103fc195d77df840bffad1c0345be7"
+    },
+    {
+      "path": "backend-types.log.gz",
+      "bytes": 91,
+      "sha256": "1c508e490ea31c2ac036883865d05d1652ee75c3826f24a7f80c3d23cdb81595"
+    },
+    {
+      "path": "cluster-closure.json",
+      "bytes": 85,
+      "sha256": "3363dd984b3720d8439b84e264d6056132d1cb7cd40b12750455f8efe2afb0e7"
+    },
+    {
+      "path": "local-run.json",
+      "bytes": 367,
+      "sha256": "746bed02d3801c5ee569266209f91a347475a99a814ddeb11aa7836a9d36939c"
+    },
+    {
+      "path": "local-source-files.json",
+      "bytes": 33639,
+      "sha256": "95ee38dfbc49c5e40d01f16f5b2d9cadfc7143c9552cb107cd5b62fab30e1e7d"
+    },
+    {
+      "path": "stripe-hosted-readback.json",
+      "bytes": 602,
+      "sha256": "b2edc8af9b38c0818a0701675f889e85701f7f9d1709c8fed0eb687704f6fc4a"
+    },
+    {
+      "path": "stripe-readback.json",
+      "bytes": 723,
+      "sha256": "c4f2bdcea78e6700363018847db65d8d05e2b2ca079d14db0864993547b6df56"
+    },
+    {
+      "path": "website-tests.log.gz",
+      "bytes": 3801,
+      "sha256": "114b48398ea15093fadfe364156afab6053ddbe30f5fa5884aa245760158a1e5"
+    },
+    {
+      "path": "website-theme.log.gz",
+      "bytes": 107,
+      "sha256": "d6ff826060683ff45ef69b95bf972fbcf35258340ac311b34057c08752c5f118"
+    }
+  ]
+}

@@ -1,0 +1,5 @@
+
+> velani-company-site@0.1.0 check:theme
+> node scripts/check-theme.mjs
+
+[]

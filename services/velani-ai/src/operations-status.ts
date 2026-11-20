@@ -4,7 +4,7 @@ import { readBudgetStatus } from './ai-budget.js';
 /** Read-only combined check for an external operator/monitor. It never grants or
  * spends an allowance, purges data, sends an alert, or treats an operator run as
  * evidence that a scheduler executed. */
-export async function readRondoOperationsStatus(pool: Pool, authorizationId?: string) {
+export async function readRondoOperationsStatus(pool: Pick<Pool, 'query'>, authorizationId?: string) {
   const [retention, budget] = await Promise.all([
     readOperationsStatus(pool), readBudgetStatus(pool, authorizationId),
   ]);
@@ -14,7 +14,7 @@ export async function readRondoOperationsStatus(pool: Pool, authorizationId?: st
 }
 
 /** Aggregate-only operator check. A manual run never satisfies scheduler freshness. */
-export async function readOperationsStatus(pool: Pool) {
+export async function readOperationsStatus(pool: Pick<Pool, 'query'>) {
   const result = await pool.query<{
     scheduled_completed_at: Date | null; scheduled_fresh: boolean;
     overdue_sessions: string; overdue_leads: string;
