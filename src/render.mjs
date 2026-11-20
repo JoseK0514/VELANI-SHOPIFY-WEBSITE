@@ -1,7 +1,7 @@
 import { company, routes, services, legalUpdated, langOf, counterpart } from './content.mjs';
 import { HUB_API } from './client-hub.mjs';
 import { CONSENT_ES, CONTACT_ES, PLANS_ES, HOURS_ES, ABOUT_ES, FAQ_ES, ES_PATHS, ES_NEAREST, IN_ENGLISH, WORK_ES, SIGNIN_ES } from './content.es.mjs';
-import { dayHeader, dayFooter, dayMain, DAY_PAGE_ASSETS } from './day.mjs';
+import { dayHeader, dayFooter, dayMain, dayIcon, DAY_PAGE_ASSETS } from './day.mjs';
 import { header as nightHeader, footer as nightFooter, homeMain, nevoraMain, productsMain, policyMain, zoomScript, assistant as nightAssistant, icon, WORDMARK, CHROME, localize } from './night.mjs';
 export function escapeHtml(value) {
   return String(value ?? '').replace(/[&<>"']/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[char]);
@@ -117,6 +117,7 @@ const SENT_ICON = '<svg class="sent-i" aria-hidden="true" focusable="false" xmln
 const sentPanel = (hidden = false, lang = 'en') => { const t = CONTACT[lang]; return '<div class="sent" id="inquiry-sent" tabindex="-1"' + (hidden ? ' hidden' : '') + '>' + SENT_ICON + '<p class="note" data-sent-preview hidden>' + t.sentPreview + '</p><h2 class="t2 sent-h" data-sent-h>' + t.sentH + '</h2><p class="sent-p" data-sent-p>' + t.sentP + '</p><p class="sent-from">' + t.sentFrom[0] + '<a href="mailto:' + company.email + '">' + company.email + '</a>' + t.sentFrom[1] + '</p><div class="sent-acts"><a class="hb fill" data-sent-next hidden href="' + (lang === 'es' ? '/pages/es-nevora' : '/pages/nevora') + '">' + t.sentNext + icon('arrow-right') + '</a><a class="pill" data-sent-back href="' + (lang === 'es' ? '/pages/es' : '/') + '">' + t.back + '</a></div></div>'; };
 /** Contact on the Day design (Nov 20): four topics instead of custom work; the side follows the topic (the boot script's ask-*
  * classes, kept in step by velani-day-contact.js); the form is Jose's form, with the same live/preview/email safeguards. */
+const DAY_HELP = { en: { client: ['Already a Velani client?', 'Get help with your website or app, or ask for a change to it.'] } };
 const DAY_CONTACT = {
   en: {
     tiles: [['nevora-demo', 'Free trial', 'Up to 30 employees'], ['nevora', 'More than 30', 'Assisted setup'], ['relay', 'Relay waitlist', 'In design'], ['other', 'Something else', 'Any question']],
@@ -443,6 +444,8 @@ function renderRawBody(path, target) {
   const lang = langOf(path);
   // A page that has moved to the Day design renders its Day body (src/day/)
   // Plans keeps Jose's billing pieces: the commerce settings template and velani-commerce.js (team-size card, Owner handoff)
+  // Help keeps Jose's client request section, folded into one quiet line for existing clients
+  if (page.day === 'help') return dayMain(page.day, lang, target).replace('<!--client-->', () => '<details class="clientd" id="client-d"><summary><span>' + e(DAY_HELP[lang].client[0]) + '<span>' + e(DAY_HELP[lang].client[1]) + '</span></span>' + dayIcon('caret-down') + '</summary>' + clientSection(target, lang) + '</details>');
   if (page.day && page.day !== 'contact') return dayMain(page.day, lang, target) + (page.day === 'plans' ? commerceBlock(target) + '<script type="module" src="' + asset('velani-commerce.js', target) + '"></script>' : '');
   switch (page.kind) {
     case 'home': return homeMain(target, lang);

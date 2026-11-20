@@ -12,6 +12,9 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 REPO = os.path.abspath(os.path.join(HERE, '..'))
 SRC = os.path.join(REPO, 'docs/design/2026-11-18-premium-software')
 OUT = os.path.join(REPO, 'src/day')
+import sys
+if os.path.exists(os.path.join(OUT, 'home.body.html')):
+    sys.exit('src/day/home.body.html exists: this one-time port already ran and src/day is the source now.')
 rd = lambda p: open(os.path.join(SRC, p)).read()
 T = rd('home.template.html')
 

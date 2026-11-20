@@ -170,3 +170,29 @@ test('Contact on Day: four topics, Jose\'s form and safeguards, the side followi
   assert.match(live, /\{% elsif theme\.role == 'main' %\}<div class="client-write">/);
   assert.match(live, /\{% else %\}<form id="project-inquiry"[^>]*data-inquiry-mode="preview"/);
 });
+
+test('Help on Day: answers, two keys, deletion, and Jose\'s client form folded into one quiet line', () => {
+  const html = renderBody('/pages/help');
+  assert.equal((html.match(/<h1/g) || []).length, 1);
+  assert.equal((html.match(/<details data-topic=/g) || []).length, 13, 'thirteen answers');
+  assert.match(html, /<input type="search" id="q"/);
+  assert.match(html, /id="signin"[^]*id="delete"[^]*<details class="clientd" id="client-d">[^]*id="close"/, 'sections in order');
+  assert.match(html, /<summary><span>Already a Velani client\?<span>/);
+  assert.match(html, /<form id="project-inquiry" class="inquiry-form" data-inquiry-mode="hub" data-hub="preview"/, 'the client form keeps its preview mode off the published theme');
+  assert.match(html, /Your 30 free days start when your workplace is created in NEVORA/);
+  assert.match(html, /Forgot password\?/);
+  assert.match(html, /href="\/pages\/nevora-account-deletion"/);
+  assert.match(html, /Never email your password, a verification code, bank details or payroll documents\./);
+  assert.doesNotMatch(html, /custom-development|Does Velani build custom software|\{\{/);
+  const live = renderBody('/pages/help', { target: 'shopify' });
+  assert.match(live, /data-hub="\{% if theme\.role == 'main' or settings\.client_hub_preview_submissions %\}live\{% else %\}preview\{% endif %\}"/);
+});
+
+test('Sign in on Day: Jose\'s three facts, the two keys, and support at the end with no offer', () => {
+  const html = renderBody('/pages/sign-in');
+  assert.equal((html.match(/<h1/g) || []).length, 1);
+  for (const h of ['Your address and ID', 'Forgot your password?', 'Your 4-digit PIN']) assert.ok(html.includes('<h2>' + h + '</h2>'), h);
+  assert.match(html, /Two different keys\./);
+  assert.match(html, /href="\/pages\/nevora-support">NEVORA support</);
+  assert.doesNotMatch(html, /project-inquiry|Request a free trial|custom-development|\{\{/);
+});

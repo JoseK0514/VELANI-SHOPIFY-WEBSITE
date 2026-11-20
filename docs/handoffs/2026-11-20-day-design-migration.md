@@ -19,7 +19,8 @@ The approved "Day" design (mockups and reviews in `docs/design/2026-11-18-premiu
 | NEVORA (EN) | Done | Ported by `scripts/port-day-nevora.py` (one-time); device, plan and app-screen styles moved to `src/day/devices.css` (Home and NEVORA); the schedule demo says "Not published" instead of "Draft" (public pages never say draft); `#relay` is the closing Relay line; the section bar carries the trial |
 | Plans (EN) | Done | Keeps the `velani-commerce.js` contract: `#top .hcopy` (h1, `p.lead.fade`, `.hacts`, `.hfact`) for the Owner handoff, the `[data-pcard]` team-size card, `#price` with the quote and billing links, the commerce template. `src/day/plans.js` only reads the card's `data-n` (price per employee, matching plan, real dates) |
 | Contact (EN) | Done | Jose's form unchanged (inquiry-* fields, velani.js checks, preview check, Shopify `form 'contact'` only on the main theme with inquiries on, email otherwise). Four topics: trial, more than 30, Relay waitlist, something else (no custom work). `src/day/contact.js` keeps the side, the button words, the message label and the team fields in step with the topic. `velani.js` change: an exact topic choice now wins in `syncTopics` (the three-choice form behaves as before) |
-| Help, Sign in | Next | Contact keeps the live/preview inquiry safeguards from `src/render.mjs`; Help keeps existing-client support as one quiet line (recommended November 20) |
+| Help (EN) | Done | Ported by `scripts/port-day-help.py` (one-time). Search and topic chips over 13 answers, two keys, deletion steps; Jose's client request section (hub form, live/preview branches unchanged) sits in a closed "Already a Velani client?" disclosure that a `#client` or `?interest=client-…` link opens |
+| Sign in (EN) | Done | Jose's three sign-in facts, the two keys, and NEVORA support at the end; no client form or offer, as on Jose's page | Contact keeps the live/preview inquiry safeguards from `src/render.mjs`; Help keeps existing-client support as one quiet line (recommended November 20) |
 | Rondo, Relay | New routes | Until then the header and footer link `/pages/nevora#rondo` and `#relay` |
 | Spanish pages | After English | Day chrome already has Spanish words; `localize()` moves links |
 | Legal and NEVORA policy pages | Last | Restyle only; wording is Jose's |
@@ -30,6 +31,12 @@ The approved "Day" design (mockups and reviews in `docs/design/2026-11-18-premiu
 - Custom work is removed (decision 2 in `SITE-STRUCTURE.md`). Existing-client support stays on Help as one quiet line using the client request service (decided November 20); no new custom work is offered.
 - For Jose (found while porting Plans): `velani-commerce.js` picks the quote link with `#price a[href*="interest=nevora"]`, which also matches `interest=nevora-demo`. The Night Plans page put the trial link first in `#price`, so an Owner over 30 coming from NEVORA could get the trial link instead of assisted setup. The Day page keeps only the quote and billing links in `#price`, and the fixture's `over-30` handoff now shows Contact Velani → `?interest=nevora`. Matching `interest=nevora"` or `[href$="interest=nevora"]` in the script would remove the trap for any future layout.
 - Assigned UI findings still open (from `services/velani-ai/docs/CLAUDE-UI-START-HERE.md`): the Retry-After cap in `public/assets/velani-hub.js` and final success focus in the Shopify preview.
+
+## Verification (November 20, Help and Sign in)
+
+- `npm test`: 114/114 (Day Help and Sign in tests). `npm run check:theme`: 0 offenses. `scripts/browser-check.mjs`: 99/99 (`evidence/day-help-signin-20261120`).
+- Day check on all seven Day pages: 147/147. Help flows 12/12 (search, chips, PIN, client door from `#client`, client form preview with errors and no sends).
+- A Sign in draft that included the client form failed the rule that public pages carry no preview wording; the form was removed from Sign in, matching Jose's design. During the work the Help port script was run a second time by mistake and overwrote one CSS fix; the fix was reapplied and the three port scripts now refuse to run over existing sources.
 
 ## Verification (November 20, Contact)
 

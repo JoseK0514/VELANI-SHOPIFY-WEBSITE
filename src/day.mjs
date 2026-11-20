@@ -117,12 +117,12 @@ function body(name, target) {
   if (left && left.some(x => !x.startsWith('{{I:'))) throw new Error('day: unfilled ' + left.join(' '));
   return sprite(html);
 }
-const BODIES = { about: { en: 'about.body.html' }, home: { en: 'home.body.html' }, nevora: { en: 'nevora.body.html' }, plans: { en: 'plans.body.html' } };
+const BODIES = { about: { en: 'about.body.html' }, home: { en: 'home.body.html' }, nevora: { en: 'nevora.body.html' }, plans: { en: 'plans.body.html' }, help: { en: 'help.body.html' }, signin: { en: 'signin.body.html' } };
 /** Pages with their own stylesheet and script beside the shared Day ones. */
-export const DAY_PAGE_ASSETS = { home: ['velani-day-devices.css', 'velani-day-home.css', 'velani-day-home.js'], nevora: ['velani-day-devices.css', 'velani-day-nevora.css', 'velani-day-nevora.js'], plans: ['velani-day-plans.css', 'velani-day-plans.js'], contact: ['velani-day-contact.css', 'velani-day-contact.js'] };
+export const DAY_PAGE_ASSETS = { home: ['velani-day-devices.css', 'velani-day-home.css', 'velani-day-home.js'], nevora: ['velani-day-devices.css', 'velani-day-nevora.css', 'velani-day-nevora.js'], plans: ['velani-day-plans.css', 'velani-day-plans.js'], contact: ['velani-day-contact.css', 'velani-day-contact.js'], help: ['velani-day-contact.css', 'velani-day-help.css', 'velani-day-help.js'], signin: ['velani-day-help.css', 'velani-day-signin.css', 'velani-day-signin.js'] };
 export function dayMain(kind, lang = 'en', target = 'preview') {
   const file = BODIES[kind]?.[lang];
   if (!file) throw new Error('day: no ' + lang + ' body for ' + kind);
   return localize(body(file, target), lang);
 }
-export const dayAssets = { css: read('day.css'), js: read('day.js'), pages: { devices: { css: read('devices.css') }, home: { css: read('home.css'), js: read('home.js') }, nevora: { css: read('nevora.css'), js: read('nevora.js') }, plans: { css: read('plans.css'), js: read('plans.js') }, contact: { css: read('contact.css'), js: read('contact.js') } } };
+export const dayAssets = { css: read('day.css'), js: read('day.js'), pages: { devices: { css: read('devices.css') }, home: { css: read('home.css'), js: read('home.js') }, nevora: { css: read('nevora.css'), js: read('nevora.js') }, plans: { css: read('plans.css'), js: read('plans.js') }, contact: { css: read('contact.css'), js: read('contact.js') }, help: { css: read('help.css'), js: read('help.js') }, signin: { css: read('signin.css'), js: read('signin.js') } } };

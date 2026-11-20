@@ -1,0 +1,129 @@
+<div class="atmo" id="atmo" aria-hidden="true"></div>
+
+<section class="hp-h" aria-labelledby="h1" data-sky="dawn">
+  <div class="wrap">
+    <h1 id="h1">How can we help?</h1>
+    <p class="lead">Answers about NEVORA for your team and for Owners. A person replies within two business days.</p>
+    <form class="hsrch" role="search" action="#answers" onsubmit="return false">
+      <label class="sr" for="q">Search help</label>
+      {{icon:magnifying-glass}}<input type="search" id="q" placeholder="Search help, like “forgot PIN”" autocomplete="off" aria-controls="answers-list" aria-describedby="ans-st">
+    </form>
+    <ul class="hchips" aria-label="Topics">
+      <li><button class="chip-b" type="button" data-topic="signin" aria-pressed="false">{{icon:sign-in}}Signing in</button></li>
+      <li><button class="chip-b" type="button" data-topic="clock" aria-pressed="false">{{icon:device-tablet}}Clocking in</button></li>
+      <li><button class="chip-b" type="button" data-topic="pay" aria-pressed="false">{{icon:money}}Shifts and pay</button></li>
+      <li><button class="chip-b" type="button" data-topic="account" aria-pressed="false">{{icon:user-circle}}Your account</button></li>
+      <li><button class="chip-b" type="button" data-topic="trial" aria-pressed="false">{{icon:gift}}Trial and plans</button></li>
+      <li><button class="chip-b" type="button" data-topic="rondo" aria-pressed="false">{{icon:chat-circle}}Rondo and Relay</button></li>
+    </ul>
+  </div>
+</section>
+
+<section class="sec" id="answers" aria-label="Answers" data-sky="morning" style="padding-top:clamp(24px,3vw,40px)">
+  <div class="wrap hans" id="answers-list">
+    <p class="ans-st" id="ans-st" role="status">13 answers</p>
+
+    <div class="grp" data-grp>
+      <h2>{{icon:users-three}}If you work at a business that uses NEVORA</h2>
+      <div class="faq">
+        <details data-topic="signin" id="a-signin"><summary>How do I sign in?{{icon:caret-down}}</summary><p>NEVORA has no shared sign-in page. Each workplace has its own address, and you sign in there with your Employee ID and password, or with a passkey or Face ID where offered. Your address and Employee ID are in the invitation email from your workplace.</p></details>
+        <details data-topic="signin"><summary>I never got an invitation.{{icon:caret-down}}</summary><p>Your account comes from your workplace, not from this website. Ask your Owner to send your invitation.</p></details>
+        <details data-topic="signin"><summary>I forgot my password.{{icon:caret-down}}</summary><p>Choose <b>Forgot password?</b> on your workplace’s sign-in page. If you no longer have the email address on your account, ask your manager or Owner: they can confirm it’s you and give you a recovery code. We never ask for your password or a verification code by email.</p></details>
+        <details data-topic="clock"><summary>I forgot my PIN.{{icon:caret-down}}</summary><p>Your 4-digit PIN is only for clocking in on your workplace’s tablet. It isn’t your password. Ask the Owner to set a new one.</p></details>
+        <details data-topic="pay"><summary>A shift, a time-off request or my pay looks wrong.{{icon:caret-down}}</summary><p>Ask your manager or the Owner. Your workplace manages shifts, time off, pay and corrections to work records. Write to us if a problem in the app stops you from reaching them.</p></details>
+        <details data-topic="account"><summary>How do I delete my account?{{icon:caret-down}}</summary><p>In the app, open Profile and choose Delete my account. Read what is removed and what may be kept, then re-enter your password to confirm. No app? Sign in on the web at your workplace’s address and do the same. <a href="#delete">See the four steps</a> or <a href="/pages/nevora-account-deletion">the full account deletion page</a>.</p></details>
+      </div>
+    </div>
+
+    <div class="grp" data-grp>
+      <h2>{{icon:key}}If you own the business</h2>
+      <div class="faq">
+        <details data-topic="trial"><summary>How does my business start?{{icon:caret-down}}</summary><p>Request a free trial. Online signup isn’t open yet: Jose from Velani replies within two business days and sets up your workplace with you. Your 30 free days start when your workplace is created in NEVORA, and no card is needed.</p></details>
+        <details data-topic="trial"><summary>What does it cost after 30 days?{{icon:caret-down}}</summary><p>$19 a month for up to 15 employees, or $29 a month for 16 to 30. One price for the whole business, billed monthly in USD. Owners aren’t counted. More than 30 employees? Write to us for assisted setup.</p></details>
+        <details data-topic="trial"><summary>What happens on day 30?{{icon:caret-down}}</summary><p>The Owner picks a plan in NEVORA. Nothing is charged until you do. Without a plan, NEVORA pauses for your team: you can still open billing and export available payroll records, and employees can still see their own pay statements. Ending a trial doesn’t delete anything on its own.</p></details>
+        <details data-topic="pay"><summary>Does NEVORA pay my employees?{{icon:caret-down}}</summary><p>No. NEVORA calculates pay statements from the hours you approve. You still pay your team and file payroll taxes.</p></details>
+        <details data-topic="rondo"><summary>Can Rondo change the schedule on its own?{{icon:caret-down}}</summary><p>No. Rondo prepares a change and shows what will be different. Nothing changes until you approve it, and NEVORA checks the change again before it applies. Rondo is for the Owner only.</p></details>
+        <details data-topic="rondo"><summary>When is Relay available?{{icon:caret-down}}</summary><p>Relay is in design, with no date and no price yet. Join the waitlist and we’ll email you when early access opens.</p></details>
+        <details data-topic="account"><summary>How do I close my workplace?{{icon:caret-down}}</summary><p>Email support@thevelani.com and we’ll help you with your workplace and its records.</p></details>
+      </div>
+    </div>
+
+    <div class="empty" id="empty" hidden>
+      <b>No answer for that yet.</b>
+      <p>Write to us and a person replies within two business days.</p>
+      <div class="acts"><a class="pillbtn" href="/pages/contact">Contact us</a><button class="clear" type="button" id="clear">Show all answers</button></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="signin" aria-labelledby="pp-h" data-sky="noon">
+  <div class="wrap">
+    <div class="center chead" data-rv><p class="eyebrow">Signing in</p><h2 id="pp-h">Two different keys.</h2><p class="lead">Most sign-in questions come from mixing these up.</p></div>
+    <div class="two-v" data-rv>
+      <div class="vc">
+        <h3>Your password <span>signs you in.</span></h3>
+        <p class="vp">On your phone or computer, at your workplace’s own address, with your Employee ID.</p>
+        <div class="hstage" aria-hidden="true">
+          <div class="si">
+            <div class="si-top"><img src="{{NV_INK}}" alt=""><span class="si-ws">Northside Café</span></div>
+            <div class="si-t">Sign in</div>
+            <div class="si-f">Employee ID<span><i class="cr"></i></span></div>
+            <div class="si-f">Password<span>••••••••</span></div>
+            <div class="si-fg">Forgot password?</div>
+            <div class="si-b">Sign in</div>
+          </div>
+        </div>
+      </div>
+      <div class="vc">
+        <h3>Your PIN <span>clocks you in.</span></h3>
+        <p class="vp">Four digits, only on your workplace’s tablet. Forgot it? The Owner sets a new one.</p>
+        <div class="hstage" aria-hidden="true">
+          <div class="pv" id="pv">
+            <div class="pv-t">Enter your PIN</div>
+            <div class="pv-s">Your PIN is separate from your password.</div>
+            <div class="pv-d"><i></i><i></i><i></i><i></i></div>
+            <div class="pv-k"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span></div>
+            <div class="pv-ok">{{icon:check-circle}}Clocked in · 7:58 AM</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="delete" aria-labelledby="dl-h" data-sky="noon">
+  <div class="wrap">
+    <div class="center chead" data-rv><p class="eyebrow">Your account</p><h2 id="dl-h">Delete your account in four steps.</h2><p class="lead">In the NEVORA app, or on the web without it.</p></div>
+    <ol class="del" data-rv>
+      <li><b>Open Profile</b><span>In the app, or on the web at your workplace’s address.</span></li>
+      <li><b>Choose Delete my account</b><span>From your profile, start the request.</span></li>
+      <li><b>Read what happens</b><span>The page shows what is removed and what may be kept.</span></li>
+      <li><b>Confirm with your password</b><span>Re-enter your password, then confirm.</span></li>
+    </ol>
+    <p class="del-n" data-rv>Can’t sign in? Use Forgot password? first, or write to <a href="mailto:support@thevelani.com">support@thevelani.com</a> and we’ll help you confirm it’s you.</p>
+  </div>
+</section>
+
+<section class="sec client-s" aria-label="Velani clients" data-sky="noon"><div class="wrap"><!--client--></div></section>
+
+<section class="close" id="close" aria-labelledby="nd-h" data-sky="dawn">
+  <div class="wrap need">
+    <div>
+      <h2 id="nd-h">Still need help?</h2>
+      <div class="mail"><code id="mail">support@thevelani.com</code><button class="copy" type="button" id="copy">Copy</button></div>
+      <p class="hours">Monday to Friday, 8 am to 9 pm ET, in English or Spanish. We reply within two business days.</p>
+      <p class="sr" id="copy-st" role="status"></p>
+      <div class="acts"><a class="pillbtn" href="/pages/contact">Contact us</a><a class="more" href="/pages/nevora-support">NEVORA support{{chev}}</a></div>
+    </div>
+    <div class="hincl">
+      <h3>What to include</h3>
+      <ul>
+        <li>{{icon:check-circle}}What happened, and what you expected</li>
+        <li>{{icon:check-circle}}Your device, and the app version if you use the app</li>
+        <li>{{icon:check-circle}}Your workplace name, if we need it to find the problem</li>
+        <li>{{icon:check-circle}}Screenshots, with personal information removed</li>
+      </ul>
+      <p class="warn">{{icon:warning-circle}}<span>Never email your password, a verification code, bank details or payroll documents.</span></p>
+    </div>
+  </div>
+</section>
