@@ -48,7 +48,7 @@ a,button,summary,label{-webkit-tap-highlight-color:transparent}
 .gn .gnav a{padding:14px 0;opacity:.82;transition:opacity .15s}
 .gn .gnav a[aria-current="page"]{opacity:1;font-weight:600}
 .gn .lang-sw{display:flex;align-items:center;font-size:12.5px}
-.gn .lang-sw a{opacity:.55;padding:14px 5px;min-width:24px;text-align:center}
+.gn .lang-sw a{opacity:.72;padding:14px 5px;min-width:24px;text-align:center}
 .gn .lang-sw a[aria-current]{opacity:1}
 .lang-sep{display:none}
 .gn .signin{font-size:12.5px;opacity:.82;padding:14px 0}

@@ -69,6 +69,11 @@
   function fit(){$$('.fit').forEach(function(f){var nw=+f.dataset.nw,nh=+f.dataset.nh||0,p=f.parentElement,z=p.clientWidth/nw;if(nh&&p.clientHeight)z=Math.min(z,p.clientHeight/nh);f.style.zoom=Math.max(.05,z).toFixed(4)})}
   fit();addEventListener('resize',fit);
 
+  /* Legal pages: the "On this page" list is open on wide screens and folded on phones (as on the Night pages) */
+  var tocs=$$('.doc-toc'),tocWide=matchMedia('(min-width:600px)');
+  function syncToc(){tocs.forEach(function(x){x.open=tocWide.matches})}
+  if(tocs.length){syncToc();if(tocWide.addEventListener)tocWide.addEventListener('change',syncToc)}
+
   function tick(){skyTick();rvTick();ltTick();barTick();ticks.forEach(function(f){f()})}
   var raf=0;
   addEventListener('scroll',function(){if(!raf)raf=requestAnimationFrame(function(){raf=0;tick()})},{passive:true});

@@ -232,3 +232,20 @@ test('Relay on Day: in design, no date or price, and the waitlist is the Contact
 test('no designer notes from the mockups reach a Day page', () => {
   for (const path of dayRoutes) assert.doesNotMatch(renderBody(path), /class="dn"|Apple's|Apple’s "|Tweaks/, path);
 });
+
+test('legal and NEVORA policy pages use the Day chrome and keep Jose\'s documents unchanged', () => {
+  const legal = Object.entries(routes).filter(([, p]) => p.legal || p.kind === 'policy' || p.kind === 'legal-index');
+  assert.equal(legal.length, 16);
+  for (const [path, page] of legal) {
+    assert.equal(page.day, 'doc', path);
+    const html = renderPage(path).html;
+    assert.match(html, /velani-day\.css[^]*velani-day-legal\.css/, path);
+    assert.match(html, /<header class="gn" id="gn">/, path);
+    assert.match(html, /<section class="phero">/, path);
+    assert.doesNotMatch(html, /velani-motion\.js|velani\.css"/, path);
+  }
+  // The bodies are the same documents as before: Jose's sections and contents list
+  const body = renderBody('/pages/nevora-privacy');
+  assert.equal((body.match(/<section id="p-\d+">/g) || []).length, (body.match(/<a href="#p-\d+">/g) || []).length);
+  assert.match(renderPage('/missing-page').html, /velani-day-legal\.css/, 'the not-found page uses the legal look');
+});

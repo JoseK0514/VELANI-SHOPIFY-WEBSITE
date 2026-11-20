@@ -98,6 +98,8 @@ export const routes = {
 for (const route of Object.values(routes)) if (route.kind === 'policy') route.intro = POLICY_DOCS.find(doc => doc.slug === route.slug).summary;
 // Spanish pages (src/content.es.mjs): each names its English page (en), and that page names it back (es)
 for (const [path, page] of Object.entries(ES_ROUTES)) { routes[path] = page; routes[page.en].es = path; }
+// Legal and NEVORA policy pages (both languages) use the Day header, footer and look; their bodies stay Jose's documents
+for (const page of Object.values(routes)) if (page.legal || page.kind === 'policy' || page.kind === 'legal-index') page.day ??= 'doc';
 /** Language of a route ('en' unless the page says otherwise), and its counterpart in the other language, if any. */
 export const langOf = path => routes[path]?.lang || 'en';
 export const counterpart = path => routes[path]?.lang === 'es' ? routes[path].en : routes[path]?.es;

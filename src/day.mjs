@@ -26,7 +26,7 @@ export const DAY_CHROME = {
     skip: 'Skip to content', home: 'Velani home', main: 'Main', menu: 'Open menu', closeMenu: 'Close menu', menuDialog: 'Menu',
     nav: [['NEVORA', '/pages/nevora', ['nevora']], ['Rondo', '/pages/rondo', ['rondo']], ['Relay', '/pages/relay', ['relay']], ['Plans', '/pages/plans', ['plans']], ['Support', '/pages/help', ['help', 'contact', 'nevora-help']]],
     signIn: 'Sign in', trialShort: 'Free trial', trial: 'Request a free trial',
-    footer: 'Footer', legal: 'Legal', cookies: 'Cookie choices',
+    footer: 'Footer', legal: 'Legal notices', cookies: 'Cookie choices',
     disc: ['Screens on this website come from the NEVORA app, with fictional people and places.', 'NEVORA calculates pay from approved hours. It doesn’t pay employees or file payroll taxes. Rondo prepares changes; the Owner approves them. Relay is in design and has no release date.'],
     cols: [
       ['Products', [['NEVORA Workforce', '/pages/nevora'], ['Rondo', '/pages/rondo'], ['Relay', '/pages/relay', 'In design']]],
@@ -41,7 +41,7 @@ export const DAY_CHROME = {
     skip: 'Saltar al contenido', home: 'Inicio de Velani', main: 'Principal', menu: 'Abrir menú', closeMenu: 'Cerrar menú', menuDialog: 'Menú',
     nav: [['NEVORA', '/pages/nevora', ['nevora']], ['Rondo', '/pages/rondo', ['rondo']], ['Relay', '/pages/relay', ['relay']], ['Planes', '/pages/plans', ['plans']], ['Soporte', '/pages/help', ['help', 'contact', 'nevora-help']]],
     signIn: 'Entrar', trialShort: 'Prueba gratis', trial: 'Pide la prueba gratis',
-    footer: 'Pie de página', legal: 'Legal', cookies: 'Opciones de cookies',
+    footer: 'Pie de página', legal: 'Avisos legales', cookies: 'Opciones de cookies',
     disc: ['Las pantallas de este sitio vienen de la app NEVORA, con personas y lugares ficticios.', 'NEVORA calcula la paga a partir de las horas aprobadas. No paga a los empleados ni presenta impuestos de nómina. Rondo prepara cambios; el dueño los aprueba. Relay está en diseño y no tiene fecha de lanzamiento.'],
     cols: [
       ['Productos', [['NEVORA Workforce', '/pages/nevora'], ['Rondo', '/pages/rondo'], ['Relay', '/pages/relay', 'En diseño']]],
@@ -125,7 +125,7 @@ function body(name, target, raw) {
 }
 const BODIES = { about: { en: 'about.body.html' }, home: { en: 'home.body.html' }, nevora: { en: 'nevora.body.html' }, plans: { en: 'plans.body.html' }, help: { en: 'help.body.html' }, signin: { en: 'signin.body.html' }, rondo: { en: 'rondo.body.html' }, relay: { en: 'relay.body.html' } };
 /** Pages with their own stylesheet and script beside the shared Day ones. */
-export const DAY_PAGE_ASSETS = { home: ['velani-day-devices.css', 'velani-day-home.css', 'velani-day-home.js'], nevora: ['velani-day-devices.css', 'velani-day-nevora.css', 'velani-day-nevora.js'], plans: ['velani-day-plans.css', 'velani-day-plans.js'], contact: ['velani-day-contact.css', 'velani-day-contact.js'], help: ['velani-day-contact.css', 'velani-day-help.css', 'velani-day-help.js'], signin: ['velani-day-help.css', 'velani-day-signin.css', 'velani-day-signin.js'], rondo: ['velani-day-devices.css', 'velani-day-product.css', 'velani-day-rondo.css', 'velani-day-rondo.js'], relay: ['velani-day-devices.css', 'velani-day-product.css', 'velani-day-relay.css', 'velani-day-relay.js'] };
+export const DAY_PAGE_ASSETS = { home: ['velani-day-devices.css', 'velani-day-home.css', 'velani-day-home.js'], nevora: ['velani-day-devices.css', 'velani-day-nevora.css', 'velani-day-nevora.js'], plans: ['velani-day-plans.css', 'velani-day-plans.js'], contact: ['velani-day-contact.css', 'velani-day-contact.js'], doc: ['velani-day-legal.css'], help: ['velani-day-contact.css', 'velani-day-help.css', 'velani-day-help.js'], signin: ['velani-day-help.css', 'velani-day-signin.css', 'velani-day-signin.js'], rondo: ['velani-day-devices.css', 'velani-day-product.css', 'velani-day-rondo.css', 'velani-day-rondo.js'], relay: ['velani-day-devices.css', 'velani-day-product.css', 'velani-day-relay.css', 'velani-day-relay.js'] };
 export function dayMain(kind, lang = 'en', target = 'preview') {
   if (lang === 'es') {
     // Links to pages that exist only in English say so (localize() moves the rest to their Spanish pages)
@@ -135,4 +135,4 @@ export function dayMain(kind, lang = 'en', target = 'preview') {
   if (!file) throw new Error('day: no ' + lang + ' body for ' + kind);
   return localize(body(file, target), lang);
 }
-export const dayAssets = { css: read('day.css'), js: read('day.js'), pages: { devices: { css: read('devices.css') }, home: { css: read('home.css'), js: read('home.js') }, nevora: { css: read('nevora.css'), js: read('nevora.js') }, plans: { css: read('plans.css'), js: read('plans.js') }, contact: { css: read('contact.css'), js: read('contact.js') }, help: { css: read('help.css'), js: read('help.js') }, signin: { css: read('signin.css'), js: read('signin.js') }, product: { css: read('product.css') }, rondo: { css: read('rondo.css'), js: read('rondo.js') }, relay: { css: read('relay.css'), js: read('relay.js') } } };
+export const dayAssets = { css: read('day.css'), js: read('day.js'), pages: { devices: { css: read('devices.css') }, home: { css: read('home.css'), js: read('home.js') }, nevora: { css: read('nevora.css'), js: read('nevora.js') }, plans: { css: read('plans.css'), js: read('plans.js') }, contact: { css: read('contact.css'), js: read('contact.js') }, help: { css: read('help.css'), js: read('help.js') }, signin: { css: read('signin.css'), js: read('signin.js') }, product: { css: read('product.css') }, legal: { css: read('legal.css') }, rondo: { css: read('rondo.css'), js: read('rondo.js') }, relay: { css: read('relay.css'), js: read('relay.js') } } };

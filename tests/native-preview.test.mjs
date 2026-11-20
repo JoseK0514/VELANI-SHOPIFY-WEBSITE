@@ -77,3 +77,12 @@ test('the assistant appears only when an API address is configured', async () =>
   assert.match(renderPage('/').html, /data-api="http:\/\/127\.0\.0\.1:3001"[\s\S]*velani-assist\.js/);
   if (saved === undefined) delete process.env.VELANI_ASSISTANT_API; else process.env.VELANI_ASSISTANT_API = saved;
 });
+test('Shopify not-found and policy pages use the Day header and the legal look', async () => {
+  const layout = renderShopifyLayout();
+  for (const [name, page_type] of [['404', '404'], ['product', 'product'], ['page', 'policy']]) {
+    const html = await liquid.parseAndRender(layout, { theme: { role: 'main', id: 9 }, routes: { root_url: '/' }, template: { name, suffix: '' }, request: { locale: { iso_code: 'en' }, page_type, path: '/policies/privacy-policy' }, settings: {} });
+    assert.match(html, /velani-day\.css[^]*velani-day-legal\.css/, name);
+    assert.match(html, /<header class="gn" id="gn">/, name);
+    assert.doesNotMatch(html, /velani-motion\.js|class="gnav" id="gnav"/, name);
+  }
+});
