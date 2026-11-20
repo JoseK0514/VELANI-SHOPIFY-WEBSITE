@@ -1,0 +1,141 @@
+{%- liquid
+  assign limit_1 = section.settings.limit_1 | default: 15
+  assign limit_2 = section.settings.limit_2 | default: 30
+  assign price_1 = section.settings.price_1 | default: 19
+  assign price_2 = section.settings.price_2 | default: 29
+  assign top = limit_2 | plus: 1
+  assign start = section.settings.start | at_most: limit_2
+  assign price = price_1
+  if start > limit_1
+    assign price = price_2
+  endif
+  assign per = price | times: 1.0 | divided_by: start | round: 2
+-%}
+<section class="vs-calc" aria-labelledby="vs-calc-{{ section.id }}">
+  <div class="vs-wrap">
+    <h2 id="vs-calc-{{ section.id }}" class="vs-calc__title">{{ section.settings.heading | escape }}</h2>
+    <velani-plans-calc
+      class="vs-calc__card"
+      data-limit-1="{{ limit_1 }}"
+      data-limit-2="{{ limit_2 }}"
+      data-price-1="{{ price_1 }}"
+      data-price-2="{{ price_2 }}"
+      data-note="{{ section.settings.note | escape }}"
+      data-over-note="{{ section.settings.over_note | escape }}"
+    >
+      <div class="vs-calc__top">
+        <div>
+          <label for="vs-team-{{ section.id }}">{{ section.settings.label | escape }}</label>
+          <output class="vs-calc__n" for="vs-team-{{ section.id }}" data-n>{{ start }}<small>{% if start == 1 %}employee{% else %}employees{% endif %}</small></output>
+        </div>
+        <div class="vs-calc__price" aria-live="polite">
+          <span class="vs-calc__k">{{ section.settings.price_label | escape }}</span>
+          <b data-p>${{ price }}<small>/month</small></b>
+          <span class="vs-calc__per" data-per>${{ per }} per employee</span>
+        </div>
+      </div>
+      <div class="vs-calc__range">
+        <button class="vs-calc__step" type="button" data-step="-1" aria-label="One fewer employee">&minus;</button>
+        <input
+          type="range"
+          id="vs-team-{{ section.id }}"
+          min="1"
+          max="{{ top }}"
+          step="1"
+          value="{{ start }}"
+          aria-describedby="vs-calc-note-{{ section.id }}"
+        >
+        <button class="vs-calc__step" type="button" data-step="1" aria-label="One more employee">+</button>
+      </div>
+      <p class="vs-calc__note" id="vs-calc-note-{{ section.id }}" data-note-out>{{ section.settings.note | escape }}</p>
+    </velani-plans-calc>
+  </div>
+</section>
+
+{% stylesheet %}
+.vs-calc { padding-block: clamp(80px, 10vw, 140px); }
+.vs-calc__title { text-align: center; font-size: clamp(44px, 6vw, 80px); line-height: 1; letter-spacing: -0.048em; margin: 0; }
+.vs-calc__card { display: block; max-width: 760px; margin: 56px auto 0; padding: clamp(24px, 4vw, 40px); border-radius: 28px; background: #fff; border: 1px solid transparent; box-shadow: 0 1px 2px rgba(10, 16, 36, 0.06), 0 12px 40px rgba(10, 16, 36, 0.08); }
+.vs-calc__top { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 24px; }
+.vs-calc__top label { display: block; font-size: 17px; color: var(--ink-2); }
+.vs-calc__n { display: block; margin-top: 6px; font-size: clamp(48px, 7vw, 72px); font-weight: 700; letter-spacing: -0.05em; line-height: 1; font-variant-numeric: tabular-nums; }
+.vs-calc__n small, .vs-calc__price small { font-size: 17px; font-weight: 500; letter-spacing: 0; color: var(--ink-2); margin-left: 6px; }
+.vs-calc__price { text-align: right; }
+.vs-calc__k { display: block; font-size: 14px; font-weight: 600; color: var(--teal); }
+.vs-calc__price b { display: block; font-size: clamp(36px, 5vw, 52px); letter-spacing: -0.04em; font-variant-numeric: tabular-nums; }
+.vs-calc__per { display: block; min-height: 1.4em; font-size: 15px; color: var(--ink-2); font-variant-numeric: tabular-nums; }
+.vs-calc__range { display: flex; align-items: center; gap: 14px; margin-top: 32px; }
+.vs-calc__range input { flex: 1; min-width: 0; height: 44px; accent-color: var(--teal); }
+.vs-calc__range input:focus-visible { outline: 2px solid var(--teal); outline-offset: 4px; border-radius: 8px; }
+.vs-calc__step { flex: none; width: 44px; height: 44px; border-radius: 50%; border: 1px solid #c9d3d1; background: #fff; color: var(--ink); font-size: 22px; line-height: 1; cursor: pointer; -webkit-tap-highlight-color: transparent; transition-property: scale, opacity; transition-duration: 150ms; transition-timing-function: ease-out; }
+.vs-calc__step:not(:disabled):active { scale: 0.96; }
+.vs-calc__step:disabled { opacity: 0.4; cursor: default; }
+.vs-calc__note { margin: 20px 0 0; font-size: 16px; line-height: 1.45; color: var(--ink-2); }
+@media (max-width: 560px) {
+  .vs-calc__price { text-align: left; }
+}
+{% endstylesheet %}
+
+{% javascript %}
+class VelaniPlansCalc extends HTMLElement {
+  connectedCallback() {
+    const d = this.dataset;
+    this.l1 = Number(d.limit1);
+    this.l2 = Number(d.limit2);
+    this.p1 = Number(d.price1);
+    this.p2 = Number(d.price2);
+    this.input = this.querySelector('input[type="range"]');
+    this.steps = Array.from(this.querySelectorAll('[data-step]'));
+    this.onInput = () => this.draw();
+    this.onStep = (e) => {
+      const v = Number(this.input.value) + Number(e.currentTarget.dataset.step);
+      this.input.value = String(Math.min(this.l2 + 1, Math.max(1, v)));
+      this.draw();
+    };
+    this.input.addEventListener('input', this.onInput);
+    this.steps.forEach((b) => b.addEventListener('click', this.onStep));
+    this.draw();
+  }
+  disconnectedCallback() {
+    this.input.removeEventListener('input', this.onInput);
+    this.steps.forEach((b) => b.removeEventListener('click', this.onStep));
+  }
+  draw() {
+    const v = Number(this.input.value);
+    const over = v > this.l2;
+    const price = v <= this.l1 ? this.p1 : this.p2;
+    const word = v === 1 ? 'employee' : 'employees';
+    this.querySelector('[data-n]').innerHTML = (over ? this.l2 + '+' : v) + '<small>' + word + '</small>';
+    this.querySelector('[data-p]').innerHTML = over ? 'Let’s talk' : '$' + price + '<small>/month</small>';
+    this.querySelector('[data-per]').textContent = over ? '' : '$' + (price / v).toFixed(2) + ' per employee';
+    this.querySelector('[data-note-out]').textContent = over ? this.dataset.overNote : this.dataset.note;
+    this.input.setAttribute('aria-valuetext', over ? 'More than ' + this.l2 + ' employees, assisted setup' : v + ' ' + word + ', $' + price + ' a month');
+    this.steps[0].disabled = v <= 1;
+    this.steps[1].disabled = v >= this.l2 + 1;
+  }
+}
+if (!customElements.get('velani-plans-calc')) customElements.define('velani-plans-calc', VelaniPlansCalc);
+{% endjavascript %}
+
+{% schema %}
+{
+  "name": "Team-size price",
+  "tag": "div",
+  "class": "velani-section",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "One price. Set by your team size." },
+    { "type": "text", "id": "label", "label": "Slider label", "default": "How many employees do you have?" },
+    { "type": "text", "id": "price_label", "label": "Price label", "default": "After 30 days" },
+    { "type": "range", "id": "start", "label": "Starting team size", "min": 1, "max": 30, "step": 1, "default": 8 },
+    { "type": "header", "content": "Plans" },
+    { "type": "number", "id": "limit_1", "label": "First plan: up to this many employees", "default": 15 },
+    { "type": "number", "id": "price_1", "label": "First plan: monthly price in USD", "default": 19 },
+    { "type": "number", "id": "limit_2", "label": "Second plan: up to this many employees", "default": 30 },
+    { "type": "number", "id": "price_2", "label": "Second plan: monthly price in USD", "default": 29 },
+    { "type": "header", "content": "Notes" },
+    { "type": "text", "id": "note", "label": "Note under the slider", "default": "Owners aren’t counted. One price for the whole business, billed monthly." },
+    { "type": "text", "id": "over_note", "label": "Note above the last plan", "default": "More than 30? Write to us for assisted setup. We reply within two business days." }
+  ],
+  "presets": [{ "name": "Team-size price" }]
+}
+{% endschema %}

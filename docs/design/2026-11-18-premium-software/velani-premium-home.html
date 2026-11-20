@@ -1275,7 +1275,7 @@ html.rm .tile .img{transform:none}
   }
   function tick(){
     if(!rm()){var hr=hero.getBoundingClientRect();hero.style.setProperty('--hp',clamp(-hr.top/(hr.height*.7)).toFixed(3));}
-    if(litW.length){var p=rm()?1:prog(lit,.9,.4),n=p*litW.length;litW.forEach(function(w,i){w.style.setProperty('--o',Math.max(.16,Math.min(1,n-i+.6)).toFixed(2))})}
+    if(litW.length){var p=rm()?1:prog(lit,.9,.4),n=p*litW.length;litW.forEach(function(w,i){w.style.setProperty('--o',Math.max(.5,Math.min(1,n-i+.6)).toFixed(2))})}
     dayTick();
     if(convo.getBoundingClientRect().top<innerHeight*.8&&!convo.classList.contains('on')){convo.classList.add('on');if(!typed)typeAnswer()}
     rises.forEach(function(el){el.style.setProperty('--tp',rm()?1:prog(el.parentElement,1,.35).toFixed(3))});

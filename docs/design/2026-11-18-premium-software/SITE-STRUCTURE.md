@@ -166,3 +166,5 @@ Preview inquiry delivery stays disabled; nothing sends until Jose turns it on.
 ## 11. Mockup status (November 20)
 
 All six marketing mockups are built from one source (`build.py`) with a shared header, phone menu, footer and product-page frame, and link to each other: Home, NEVORA, Rondo, Relay, Plans, About. Every page passes axe WCAG 2.x A/AA with 0 violations, has no horizontal scroll at 320px and no script errors. The Relay screens keep the Puerto Rican menu items (Jose, November 20).
+
+Plans and About passed a second review (see `REVIEW-2026-11-20.md`): slider focus ring, real-calendar fallback, readable unlit headlines and a price per employee. Still to mock up: Help and Contact. Then the real theme build on an unpublished theme, then the Spanish pages.

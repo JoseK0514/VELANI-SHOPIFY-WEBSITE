@@ -316,6 +316,8 @@ html.notes .dn{display:block}
 .bands span:last-child{text-align:right}
 .range{margin-top:22px;display:flex;align-items:center;gap:14px}
 .range input{flex:1;accent-color:#0B6E69;height:44px;min-width:0}
+.range input:focus-visible{outline:2px solid var(--link);outline-offset:4px;border-radius:8px}
+.calc .per{display:block;margin-top:8px;font-size:15px;color:var(--ink-2);font-variant-numeric:tabular-nums;min-height:22px}
 .step{all:unset;cursor:pointer;width:44px;height:44px;border-radius:50%;display:grid;place-items:center;background:#fff;box-shadow:inset 0 0 0 1px #D2D2D7;font-size:22px;font-weight:500;color:var(--ink);flex:none}
 .step:focus-visible{outline:2px solid var(--link);outline-offset:3px}
 .step:not([disabled]):active{transform:scale(.96)}
@@ -705,7 +707,7 @@ html.rm [data-rv]{opacity:1;transform:none}
     <div class="calc" id="calc">
       <div class="calc-top">
         <div><label for="team">How many employees do you have?</label><output class="n" id="team-n" for="team">8<small>employees</small></output></div>
-        <div class="price" aria-live="polite"><span class="k">After 30 days</span><b id="team-p">$19<small>/month</small></b></div>
+        <div class="price" aria-live="polite"><span class="k">After 30 days</span><b id="team-p">$19<small>/month</small></b><span class="per" id="team-per">$2.38 per employee</span></div>
       </div>
       <div class="marks" id="marks" aria-hidden="true"></div>
       <div class="bands" aria-hidden="true"><span>1 to 15 · $19</span><span>16 to 30 · $29</span><span>31+</span></div>
@@ -751,10 +753,10 @@ html.rm [data-rv]{opacity:1;transform:none}
   <div class="wrap">
     <div class="center chead" data-rv><p class="eyebrow">Your 30 days</p><h2 id="dy-h">Thirty days, on a real calendar.</h2><p class="lead">Your free days start the day your workplace is ready. If it were ready today:</p></div>
     <ol class="days" data-rv>
-      <li class="day"><span class="cal" data-off="0"><small>Mon</small><b>1</b></span><p class="k">Day 1</p><h3>Your workplace is ready</h3><p>You invite your team, and each person gets a PIN for the time clock tablet.</p></li>
-      <li class="day"><span class="cal" data-off="3"><small>Thu</small><b>4</b></span><p class="k">First week</p><h3>Publish the schedule</h3><p>Your team sees their shifts, swaps shifts and asks for time off, in English or Spanish.</p></li>
-      <li class="day"><span class="cal" data-off="10"><small>Thu</small><b>11</b></span><p class="k">Second week</p><h3>Approve timecards</h3><p>NEVORA calculates payroll from the approved hours and makes a pay statement for each person.</p></li>
-      <li class="day"><span class="cal" data-off="29"><small>Tue</small><b>30</b></span><p class="k">Day 30</p><h3>Pick a plan</h3><p>The Owner picks a plan in NEVORA. Nothing is charged until you do.</p></li>
+      <li class="day"><span class="cal" data-off="0"><small>Day</small><b>1</b></span><p class="k">Day 1</p><h3>Your workplace is ready</h3><p>You invite your team, and each person gets a PIN for the time clock tablet.</p></li>
+      <li class="day"><span class="cal" data-off="3"><small>Day</small><b>4</b></span><p class="k">First week</p><h3>Publish the schedule</h3><p>Your team sees their shifts, swaps shifts and asks for time off, in English or Spanish.</p></li>
+      <li class="day"><span class="cal" data-off="10"><small>Day</small><b>11</b></span><p class="k">Second week</p><h3>Approve timecards</h3><p>NEVORA calculates payroll from the approved hours and makes a pay statement for each person.</p></li>
+      <li class="day"><span class="cal" data-off="29"><small>Day</small><b>30</b></span><p class="k">Day 30</p><h3>Pick a plan</h3><p>The Owner picks a plan in NEVORA. Nothing is charged until you do.</p></li>
     </ol>
     <p class="days-note" id="days-note">Dates follow your calendar. To start, ask for a trial and Jose replies within two business days.</p>
   </div>
@@ -904,7 +906,7 @@ html.rm [data-rv]{opacity:1;transform:none}
   var V=window.VP,$=V.$,$$=V.$$;
 
   /* Team-size picker: price, bar and matching plan follow the slider. */
-  var r=$('#team'),n=$('#team-n'),p=$('#team-p'),note=$('#calc-note'),marks=$('#marks'),minus=$('#minus'),plus=$('#plus'),pc1=$('#pc1'),pc2=$('#pc2');
+  var r=$('#team'),n=$('#team-n'),p=$('#team-p'),per=$('#team-per'),note=$('#calc-note'),marks=$('#marks'),minus=$('#minus'),plus=$('#plus'),pc1=$('#pc1'),pc2=$('#pc2');
   var NOTE='Owners aren’t counted. One price for the whole business, billed monthly.';
   for(var i=1;i<=31;i++){var m=document.createElement('i');m.className=i<=15?'b1':i<=30?'b2':'over';marks.appendChild(m)}
   var ms=$$('i',marks);
@@ -913,6 +915,7 @@ html.rm [data-rv]{opacity:1;transform:none}
     n.innerHTML=(over?'31+':v)+'<small>'+(v===1?'employee':'employees')+'</small>';
     p.innerHTML=over?'Let’s talk':(v<=15?'$19':'$29')+'<small>/month</small>';
     r.setAttribute('aria-valuetext',over?'More than 30 employees, assisted setup':v+(v===1?' employee, ':' employees, ')+(v<=15?'$19':'$29')+' a month');
+    per.textContent=over?'':'$'+((v<=15?19:29)/v).toFixed(2)+' per employee';
     note.innerHTML=over?'More than 30? <b>Write to us for assisted setup.</b> We reply within two business days.':NOTE;
     ms.forEach(function(m,i){m.classList.toggle('on',i===v-1)});
     pc1.classList.toggle('sel',!over&&v<=15);pc2.classList.toggle('sel',!over&&v>15);
