@@ -4,6 +4,7 @@ import path from 'node:path';
 import { routes, company } from '../src/content.mjs';
 import { renderPage, renderBody, renderShopifyLayout, renderShopifySnippets } from '../src/render.mjs';
 import { nightAssets } from '../src/night.mjs';
+import { dayAssets } from '../src/day.mjs';
 export const root = path.resolve(import.meta.dirname, '..');
 export async function build() {
   const out = path.join(root, 'dist');
@@ -23,6 +24,11 @@ export async function build() {
   await writeFile(path.join(root, 'public/assets/velani-home.css'), css.home);
   await writeFile(path.join(root, 'public/assets/velani-nevora.css'), css.home + '\n' + css.nevora); // the NEVORA page shares Home's sections and live piece
   await writeFile(path.join(root, 'public/assets/velani-motion.js'), js.motion);
+  // Day pages: one stylesheet and one script. The assistant keeps its Night look there, so its tokens are scoped to its root.
+  const nightTokens = css.base.match(/:root\{([^}]*)\}/)[1];
+  await writeFile(path.join(root, 'public/assets/velani-day.css'), dayAssets.css + '\n.ast-root{' + nightTokens + '}\n' + css.assist);
+  await writeFile(path.join(root, 'public/assets/velani-day.js'), dayAssets.js);
+  await copyFile(path.join(root, 'src/day/day-grain.png'), path.join(root, 'public/assets/day-grain.png'));
   await writeFile(path.join(root, 'public/assets/velani-nevora.js'), js.nevora);
   await writeFile(path.join(root, 'public/assets/velani-assist.js'), js.assist);
   await writeFile(path.join(root, 'public/assets/velani-assistant.js'), js.assistClient);

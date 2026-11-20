@@ -1,0 +1,83 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import { routes } from '../src/content.mjs';
+import { renderPage, renderBody, renderShopifyLayout, renderShopifySnippets } from '../src/render.mjs';
+import { dayHeader, dayFooter } from '../src/day.mjs';
+
+const dayRoutes = Object.entries(routes).filter(([, page]) => page.day).map(([path]) => path);
+
+test('pages opt into the Day design one at a time; every other page keeps Night', () => {
+  assert.ok(dayRoutes.includes('/pages/about'));
+  for (const [path, page] of Object.entries(routes)) {
+    const html = renderPage(path).html;
+    if (page.day) {
+      assert.match(html, /velani-day\.css/, path);
+      assert.match(html, /<header class="gn" id="gn">/, path);
+      assert.doesNotMatch(html, /velani-motion\.js|class="gnav" id="gnav"|dm-sans-latin/, path);
+      assert.match(html, /<meta name="color-scheme" content="light">/, path);
+    } else {
+      assert.doesNotMatch(html, /velani-day\.(css|js)|<header class="gn"/, path);
+    }
+  }
+});
+
+test('the Day header: five product links, sign-in, one trial action and a phone menu dialog', () => {
+  const html = dayHeader('plans', 'preview', { lang: 'en', hrefs: { en: '/pages/plans', es: '/pages/es-planes' } });
+  const nav = html.match(/<nav class="gnav"[^>]*>(.*?)<\/nav>/)[1];
+  assert.deepEqual([...nav.matchAll(/>([^<]+)<\/a>/g)].map(m => m[1]), ['NEVORA', 'Rondo', 'Relay', 'Plans', 'Support']);
+  assert.match(nav, /href="\/pages\/plans" aria-current="page">Plans/);
+  assert.equal((html.match(/aria-current="page"/g) || []).length, 2, 'current link in the bar and in the menu');
+  assert.match(html, /^<a class="skip" href="#main">/);
+  assert.match(html, /class="cta" href="\/pages\/contact\?interest=nevora-demo">Free trial</);
+  assert.match(html, /class="signin" href="\/pages\/sign-in"/);
+  assert.match(html, /<button class="mb" type="button" aria-expanded="false" aria-controls="mm" aria-label="Open menu">/);
+  assert.match(html, /<div class="mm" id="mm" role="dialog" aria-modal="true" aria-label="Menu" hidden>/);
+  assert.match(html, /<a class="mb-nojs" href="#ft">Menu<\/a>/, 'without JavaScript the menu link goes to the footer');
+  assert.doesNotMatch(html, /custom-development|Custom software|Websites/);
+});
+
+test('the Day footer links the product pages, support and legal, without custom work or project terms', () => {
+  const html = dayFooter('preview', { lang: 'en', hrefs: { en: '/pages/about', es: '/pages/es-nosotros' } });
+  for (const href of ['/pages/nevora', '/pages/plans', '/pages/sign-in', '/pages/help', '/pages/contact', '/pages/nevora-support', '/pages/nevora-account-deletion', '/pages/about', '/pages/security', '/pages/accessibility', '/pages/legal', '/pages/privacy', '/pages/cookies', '/pages/website-terms', '/pages/nevora-privacy', '/pages/nevora-terms']) assert.ok(html.includes('href="' + href + '"'), href);
+  assert.doesNotMatch(html, /custom-development|software-project-terms|Project terms/);
+  assert.match(html, /<button type="button" data-cookie-open data-live="the cookie choices dialog" disabled>Cookie choices<\/button>/);
+  assert.match(html, /It doesn’t pay employees or file payroll taxes\./);
+  assert.match(html, /Monday to Friday, 8 am to 9 pm ET/);
+});
+
+test('Spanish Day chrome: Spanish words, Spanish pages where they exist, English-only pages marked', () => {
+  const header = dayHeader(null, 'preview', { lang: 'es', hrefs: { en: '/pages/about', es: '/pages/es-nosotros' } });
+  assert.match(header, /href="\/pages\/es-nevora">NEVORA</);
+  assert.match(header, /href="\/pages\/es-planes">Planes</);
+  assert.match(header, /href="\/pages\/es-contacto\?interest=nevora-demo">Prueba gratis</);
+  assert.match(header, /aria-label="Abrir menú"/);
+  const footer = dayFooter('preview', { lang: 'es', hrefs: { en: '/pages/about', es: '/pages/es-nosotros' } });
+  assert.match(footer, /href="\/pages\/security" hreflang="en">Seguridad</);
+  assert.match(footer, /href="\/pages\/es-privacy">Privacidad</);
+  assert.match(footer, />Opciones de cookies</);
+});
+
+test('the Shopify layout picks the Day snippets, head and colours per page', () => {
+  const layout = renderShopifyLayout();
+  assert.match(layout, /\{% assign velani_design = 'night' %\}/, 'Night is the default');
+  assert.match(layout, /\{% when 'about' %\}[^]*?\{% assign velani_design = 'day' %\}[^]*?\{% when /);
+  assert.match(layout, /\{% if velani_design == 'day' %\}\{% if velani_lang == 'es' %\}\{% render 'velani-day-header-es'/);
+  assert.match(layout, /\{% if velani_design == 'day' %\}<link rel="stylesheet" href="\{\{ 'velani-day\.css' \| asset_url \}\}">/);
+  assert.match(layout, /\{% if velani_design == 'day' %\}<meta name="color-scheme" content="light">/);
+  const snippets = renderShopifySnippets();
+  for (const name of ['velani-day-header-en', 'velani-day-header-es', 'velani-day-footer-en', 'velani-day-footer-es']) assert.ok(snippets[name], name);
+  assert.match(snippets['velani-day-header-en'], /\{% if velani_nav == 'plans' %\} aria-current="page"\{% endif %\}/);
+  assert.match(snippets['velani-day-footer-en'], /<dialog class="cookie-dialog" id="cookie-dialog"/, 'the cookie dialog travels with the Day footer');
+});
+
+test('About on Day: real routes and facts, one copy button with a fallback, no custom work', () => {
+  const body = renderBody('/pages/about');
+  assert.match(renderBody('/pages/about', { target: 'shopify' }), /\{% if theme\.role == 'main' %\}\/pages\/nevora\{% else %\}/, 'links follow the unpublished-theme preview');
+  assert.match(body, /<h1 id="ab-t">Software for small businesses\.<\/h1>/);
+  assert.match(body, /Velani started in 2026\./);
+  assert.match(body, /href="\/pages\/nevora"/);
+  assert.match(body, /href="\/pages\/contact\?interest=nevora-demo">Request a free trial</);
+  assert.match(body, /<a class="mail-a" id="ab-mail" href="mailto:support@thevelani\.com">/, 'the address stays a link when copying is not available');
+  assert.doesNotMatch(body, /custom-development|fixed price|written scope|<script/);
+  assert.equal((body.match(/<h1/g) || []).length, 1);
+});
