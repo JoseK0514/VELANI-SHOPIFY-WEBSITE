@@ -32,7 +32,7 @@ test('the Day header: five product links, sign-in, one trial action and a phone 
   assert.match(html, /class="signin" href="\/pages\/sign-in"/);
   assert.match(html, /<button class="mb" type="button" aria-expanded="false" aria-controls="mm" aria-label="Open menu">/);
   assert.match(html, /<div class="mm" id="mm" role="dialog" aria-modal="true" aria-label="Menu" hidden>/);
-  assert.match(html, /<a class="mb-nojs" href="#ft">Menu<\/a>/, 'without JavaScript the menu link goes to the footer');
+  assert.doesNotMatch(html, /mb-nojs/, 'without JavaScript the header links show as a row instead (day.css)');
   assert.doesNotMatch(html, /custom-development|Custom software|Websites/);
 });
 
@@ -152,4 +152,21 @@ test('Plans on Day keeps the billing contract of velani-commerce.js', () => {
   assert.match(html, /Prices are in US dollars and may change before online billing opens\./);
   assert.match(html, /<template id="velani-commerce" data-api="[^"]*"><\/template><script type="module" src="\/assets\/velani-commerce\.js"><\/script>/);
   assert.doesNotMatch(html, /custom-development|Start a project|\bDraft\b/);
+});
+
+test('Contact on Day: four topics, Jose\'s form and safeguards, the side following the topic', async () => {
+  const html = renderBody('/pages/contact');
+  assert.equal((html.match(/<h1/g) || []).length, 1);
+  assert.match(html, /<form id="project-inquiry" class="inquiry-form" method="post" action="\/\?velani_preview_inquiry=1" data-inquiry-mode="preview" novalidate>/);
+  for (const id of ['inquiry-name', 'inquiry-email', 'inquiry-company', 'inquiry-team', 'inquiry-locations', 'inquiry-message', 'inquiry-interest', 'inquiry-sent']) assert.ok(html.includes('id="' + id + '"'), id);
+  assert.match(html, /data-inquiry-submit/);
+  assert.match(html, /Preview\. This form checks your draft and sends nothing\./);
+  for (const k of ['trial', 'big', 'relay', 'other']) assert.ok(html.includes('class="tp-' + k + '"'), k);
+  assert.match(html, /Your 30 free days start when your workplace is created in NEVORA/);
+  assert.doesNotMatch(html, /custom-software|Web or app|Start a project|website or an app/);
+  // On Shopify: Shopify's contact form only on the published theme with inquiries on; email there otherwise; the preview check elsewhere
+  const live = renderBody('/pages/contact', { target: 'shopify' });
+  assert.match(live, /\{% if settings\.inquiries_enabled and theme\.role == 'main' %\}\{% form 'contact', id: 'project-inquiry'/);
+  assert.match(live, /\{% elsif theme\.role == 'main' %\}<div class="client-write">/);
+  assert.match(live, /\{% else %\}<form id="project-inquiry"[^>]*data-inquiry-mode="preview"/);
 });

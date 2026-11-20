@@ -65,8 +65,12 @@ test('no English UI is left in the Spanish header, phone menu, footer, cookie di
 });
 test('the Spanish contact form sends the same topic values and team size as the English one', () => {
   const values = html => [...between(html, '<fieldset class="kinds topics field-topic">', '</fieldset>').matchAll(/value="([^"]*)"/g)].map(m => m[1]);
-  assert.deepEqual(values(renderPage('/pages/es-contacto').html), values(renderPage('/pages/contact').html));
-  assert.deepEqual(values(renderPage('/pages/es-contacto').html), ['custom-software', 'nevora', 'other']);
+  // Same design, same topics. While only English Contact is on Day, English sends the four Day topics and Spanish the Night three.
+  if (Boolean(routes['/pages/contact'].day) === Boolean(routes['/pages/es-contacto'].day)) assert.deepEqual(values(renderPage('/pages/es-contacto').html), values(renderPage('/pages/contact').html));
+  else {
+    assert.deepEqual(values(renderPage('/pages/contact').html), ['nevora-demo', 'nevora', 'relay', 'other']);
+    assert.deepEqual(values(renderPage('/pages/es-contacto').html), ['custom-software', 'nevora', 'other']);
+  }
   assert.match(renderPage('/pages/es-contacto').html, /<input type="hidden" id="inquiry-interest" name="contact\[interest\]" value="">/);
   assert.match(renderPage('/pages/es-contacto').html, /<option value="More than 30 \(assisted setup\)">Más de 30 \(configuración asistida\)<\/option>/);
   const live = renderBody('/pages/es-contacto', { target: 'shopify' });

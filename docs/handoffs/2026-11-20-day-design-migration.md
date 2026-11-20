@@ -18,7 +18,8 @@ The approved "Day" design (mockups and reviews in `docs/design/2026-11-18-premiu
 | Home (EN) | Done | Ported by `scripts/port-day-home.py` (one-time); trial start and fine print follow Jose's current wording; device screens are pictures (`role="img"`, inner screens hidden) |
 | NEVORA (EN) | Done | Ported by `scripts/port-day-nevora.py` (one-time); device, plan and app-screen styles moved to `src/day/devices.css` (Home and NEVORA); the schedule demo says "Not published" instead of "Draft" (public pages never say draft); `#relay` is the closing Relay line; the section bar carries the trial |
 | Plans (EN) | Done | Keeps the `velani-commerce.js` contract: `#top .hcopy` (h1, `p.lead.fade`, `.hacts`, `.hfact`) for the Owner handoff, the `[data-pcard]` team-size card, `#price` with the quote and billing links, the commerce template. `src/day/plans.js` only reads the card's `data-n` (price per employee, matching plan, real dates) |
-| Help, Contact, Sign in | Next | Contact keeps the live/preview inquiry safeguards from `src/render.mjs`; Help keeps existing-client support as one quiet line (recommended November 20) |
+| Contact (EN) | Done | Jose's form unchanged (inquiry-* fields, velani.js checks, preview check, Shopify `form 'contact'` only on the main theme with inquiries on, email otherwise). Four topics: trial, more than 30, Relay waitlist, something else (no custom work). `src/day/contact.js` keeps the side, the button words, the message label and the team fields in step with the topic. `velani.js` change: an exact topic choice now wins in `syncTopics` (the three-choice form behaves as before) |
+| Help, Sign in | Next | Contact keeps the live/preview inquiry safeguards from `src/render.mjs`; Help keeps existing-client support as one quiet line (recommended November 20) |
 | Rondo, Relay | New routes | Until then the header and footer link `/pages/nevora#rondo` and `#relay` |
 | Spanish pages | After English | Day chrome already has Spanish words; `localize()` moves links |
 | Legal and NEVORA policy pages | Last | Restyle only; wording is Jose's |
@@ -29,6 +30,12 @@ The approved "Day" design (mockups and reviews in `docs/design/2026-11-18-premiu
 - Custom work is removed (decision 2 in `SITE-STRUCTURE.md`). Existing-client support stays on Help as one quiet line using the client request service (decided November 20); no new custom work is offered.
 - For Jose (found while porting Plans): `velani-commerce.js` picks the quote link with `#price a[href*="interest=nevora"]`, which also matches `interest=nevora-demo`. The Night Plans page put the trial link first in `#price`, so an Owner over 30 coming from NEVORA could get the trial link instead of assisted setup. The Day page keeps only the quote and billing links in `#price`, and the fixture's `over-30` handoff now shows Contact Velani → `?interest=nevora`. Matching `interest=nevora"` or `[href$="interest=nevora"]` in the script would remove the trap for any future layout.
 - Assigned UI findings still open (from `services/velani-ai/docs/CLAUDE-UI-START-HERE.md`): the Retry-After cap in `public/assets/velani-hub.js` and final success focus in the Shopify preview.
+
+## Verification (November 20, Contact)
+
+- `npm test`: 112/112 (Day Contact test pins the live/email/preview branches; the language test compares topics only when both Contact pages share a design).
+- `scripts/browser-check.mjs`: first run 97/99 kept (`evidence/day-contact-20261120`: the help link pointed at a Help anchor that does not exist yet, now `/pages/sign-in`; and the header hid its links without JavaScript on phones, now a second row as Jose's suite requires). Second run 98/99 kept (`-rerun`: the no-JavaScript Menu link `#ft` was read on a redirect page; removed as redundant). Final 99/99 (`-rerun2`).
+- Day check on Home, NEVORA, Plans, Contact and About: 105/105. Contact flows 17/17: topics from links, side and button follow the topic, more than 30 becomes assisted setup and back, message label follows, errors and focus, preview confirmation says nothing was sent, no network sends.
 
 ## Verification (November 20, Plans)
 

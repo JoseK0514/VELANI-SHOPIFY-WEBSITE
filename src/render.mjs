@@ -95,14 +95,14 @@ const CONTACT = {
 /** Links to pages that exist only in English say so to browsers and assistive technology on Spanish pages. */
 const enOnly = (lang, href) => lang === 'es' && !ES_PATHS[href] ? ' hreflang="en"' : '';
 /** A plain form in one column: the label sits inside the field and lifts when the field is used; errors sit under their field. */
-function fields(live = false, lang = 'en') {
+function fields(live = false, lang = 'en', tiles = CONTACT[lang].tiles) {
   const t = CONTACT[lang], opt = ' <span class="opt">' + t.optional + '</span>';
   const ff = (id, name, label, extra = '', value = '') => '<div class="ff"><input id="inquiry-' + id + '" name="contact[' + name + ']" placeholder=" " ' + extra + (value ? ' value="' + value + '"' : '') + '><label for="inquiry-' + id + '">' + label + '</label><p class="field-error" id="error-' + id + '"></p></div>';
   const name = ff('name', 'name', t.name, 'autocomplete="name" maxlength="120" required aria-describedby="error-name"', live ? '{{ form.name | escape }}' : '');
   const email = ff('email', 'email', t.email, 'type="email" autocomplete="email" maxlength="254" required aria-describedby="error-email"', live ? '{{ form.email | escape }}' : '');
   const company = ff('company', 'company', t.company + opt, 'autocomplete="organization" maxlength="160" aria-describedby="error-company"');
   // Topic: three choices of one size in place of a menu (radios set the hidden contact[interest]; velani.js keeps them in step)
-  const topic = '<p class="kinds-q field-topic" aria-hidden="true">' + t.topicQ + '</p><fieldset class="kinds topics field-topic"><legend class="sr">' + t.topicQ + '</legend>' + t.tiles.map(([value, label]) => '<label class="kind"><input type="radio" name="topic_choice" value="' + value + '"><b>' + label + '</b></label>').join('') + '</fieldset><input type="hidden" id="inquiry-interest" name="contact[interest]" value="">';
+  const topic = '<p class="kinds-q field-topic" aria-hidden="true">' + t.topicQ + '</p><fieldset class="kinds topics field-topic"><legend class="sr">' + t.topicQ + '</legend>' + tiles.map(([value, label, sub]) => '<label class="kind"><input type="radio" name="topic_choice" value="' + value + '"><b>' + label + '</b>' + (sub ? '<small>' + sub + '</small>' : '') + '</label>').join('') + '</fieldset><input type="hidden" id="inquiry-interest" name="contact[interest]" value="">';
   // The submitted team size stays in English ("More than 30 (assisted setup)") so every inquiry email reads the same
   const big = CONTACT.en.bigTeam, bigOption = t.bigTeam === big ? '<option>' + big + '</option>' : '<option value="' + big + '">' + t.bigTeam + '</option>';
   const team = '<div class="frow" data-nevora-fields hidden><div class="ff sel"><select id="inquiry-team" name="contact[team_size]"><option value=""></option><option>1–10</option><option>11–20</option><option>21–30</option>' + bigOption + '</select><label for="inquiry-team">' + t.team + '</label></div>' + ff('locations', 'locations', t.locations, 'maxlength="120" aria-describedby="error-locations" inputmode="numeric"') + '</div>';
@@ -115,6 +115,36 @@ const v = (general, nevora, demo, relay) => '<span class="v-d">' + general + '</
 /** After a successful send the form is replaced by this confirmation; velani.js adapts its wording to the topic (and shows it after a preview check). */
 const SENT_ICON = '<svg class="sent-i" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M173.66,98.34a8,8,0,0,1,0,11.32l-56,56a8,8,0,0,1-11.32,0l-24-24a8,8,0,0,1,11.32-11.32L112,148.69l50.34-50.35A8,8,0,0,1,173.66,98.34ZM232,128A104,104,0,1,1,128,24,104.11,104.11,0,0,1,232,128Zm-16,0a88,88,0,1,0-88,88A88.1,88.1,0,0,0,216,128Z"/></svg>';
 const sentPanel = (hidden = false, lang = 'en') => { const t = CONTACT[lang]; return '<div class="sent" id="inquiry-sent" tabindex="-1"' + (hidden ? ' hidden' : '') + '>' + SENT_ICON + '<p class="note" data-sent-preview hidden>' + t.sentPreview + '</p><h2 class="t2 sent-h" data-sent-h>' + t.sentH + '</h2><p class="sent-p" data-sent-p>' + t.sentP + '</p><p class="sent-from">' + t.sentFrom[0] + '<a href="mailto:' + company.email + '">' + company.email + '</a>' + t.sentFrom[1] + '</p><div class="sent-acts"><a class="hb fill" data-sent-next hidden href="' + (lang === 'es' ? '/pages/es-nevora' : '/pages/nevora') + '">' + t.sentNext + icon('arrow-right') + '</a><a class="pill" data-sent-back href="' + (lang === 'es' ? '/pages/es' : '/') + '">' + t.back + '</a></div></div>'; };
+/** Contact on the Day design (Nov 20): four topics instead of custom work; the side follows the topic (the boot script's ask-*
+ * classes, kept in step by velani-day-contact.js); the form is Jose's form, with the same live/preview/email safeguards. */
+const DAY_CONTACT = {
+  en: {
+    tiles: [['nevora-demo', 'Free trial', 'Up to 30 employees'], ['nevora', 'More than 30', 'Assisted setup'], ['relay', 'Relay waitlist', 'In design'], ['other', 'Something else', 'Any question']],
+    topics: {
+      trial: ['Free 30-day trial', 'Request your free trial.', 'Tell us about your team. Jose from Velani replies within two business days and sets up your workplace with you. Your 30 free days start when your workplace is created in NEVORA, with no card.',
+        [['Jose replies', 'Within two business days, by email.'], ['We set up your workplace together', 'Jose sets it up with you, in English or Spanish.'], ['Your 30 days start', 'When your workplace is created in NEVORA. No card.'], ['Day 30: pick a plan', '$19 or $29 a month. Nothing is charged until you do.']]],
+      big: ['More than 30 employees', 'Set up NEVORA for a larger team.', 'For teams of more than 30 employees. We check what you need and set up your workplace with you. Teams that qualify get the same 30 days free.',
+        [['We reply', 'Within two business days, by email.'], ['We check what you need', 'We review your team and give you a quote.'], ['30 days free', 'For teams that qualify, from the day the workplace is created.']]],
+      relay: ['Relay waitlist', 'Join the NEVORA Relay waitlist.', 'NEVORA Relay is in design, with no dates yet. We’ll email you when early access opens.', [['You’re on the list', 'With the name and email you give us.'], ['Early access opens', 'We email you. No date yet.']]],
+      other: ['Contact', 'Tell us what you need.', 'A question about NEVORA, Rondo, Relay or Velani. We reply by email within two business days.', []],
+    },
+    steps: 'What happens next', prefer: 'Prefer email?', hours: 'Monday to Friday, 8 am to 9 pm ET, in English or Spanish.',
+    work: ['Can’t sign in at work?', 'Your account comes from your workplace, not from this website. Help has the answers for your team.', 'Sign-in help'],
+  },
+};
+function dayContact(page, target, lang = 'en') {
+  const t = CONTACT[lang], d = DAY_CONTACT[lang];
+  const pick = i => Object.entries(d.topics).map(([k, v]) => '<span class="tp-' + k + '">' + e(v[i]) + '</span>').join('');
+  const steps = Object.entries(d.topics).filter(([, v]) => v[3].length).map(([k, v]) => '<ol class="nxt tp-' + k + '" aria-label="' + e(d.steps) + '">' + v[3].map(([b, s]) => '<li><b>' + e(b) + '</b><span>' + e(s) + '</span></li>').join('') + '</ol>').join('');
+  const head = '<div class="ct-side ct-head rise"><p class="eyebrow">' + pick(0) + '</p><h1 id="ct-t" tabindex="-1">' + pick(1) + '</h1><p class="lead">' + pick(2) + '</p></div>';
+  const more = '<div class="ct-side ct-more">' + steps + '<p class="ct-mail">' + e(d.prefer) + ' <a href="mailto:' + company.email + '">' + company.email + '</a><br>' + e(d.hours) + '</p></div>';
+  const preview = '<form id="project-inquiry" class="inquiry-form" method="post" action="/?velani_preview_inquiry=1" data-inquiry-mode="preview" novalidate>' + fields(false, lang, d.tiles) + '<div class="form-status" role="status" aria-live="polite" tabindex="-1"></div><p class="client-preview">' + t.preview + '</p><noscript><p>' + t.noscript + '</p></noscript></form>';
+  const email = '<div class="client-write"><h2>' + t.writeTitle + '</h2><p>' + t.writeText + company.email + '.</p><div class="acts"><a class="pillbtn" href="mailto:' + company.email + '">' + t.writeButton + company.email + '</a></div><p class="field-help mail">' + t.noSensitive + '</p></div>';
+  const native = "{% if settings.inquiries_enabled and theme.role == 'main' %}{% form 'contact', id: 'project-inquiry', class: 'inquiry-form', novalidate: 'novalidate' %}{% if form.posted_successfully? %}{{ velani_sent }}{% else %}<div data-inquiry-mode=\"live\">" + fields(true, lang, d.tiles) + "</div>{% if form.errors %}<div class=\"form-status\" role=\"alert\">{{ form.errors | default_errors }}</div>{% endif %}<div class=\"form-legal\">{{ 'shopify.online_store.spam_detection.disclaimer_html' | t }}</div>{% endif %}{% endform %}{% elsif theme.role == 'main' %}" + email + '{% else %}' + preview + "{{ velani_sent | replace: 'id=\"inquiry-sent\" tabindex=\"-1\"', 'id=\"inquiry-sent\" tabindex=\"-1\" hidden' }}{% endif %}";
+  const card = '<div class="ct-card client-form">' + (target === 'shopify' ? native : preview + sentPanel(true, lang)) + '</div>';
+  const work = '<section class="sec ct-work" aria-label="' + e(d.work[0]) + '" data-sky="morning"><div class="wrap"><div class="work glass" data-rv><p><b>' + e(d.work[0]) + '</b> ' + e(d.work[1]) + '</p><a class="more" href="/pages/sign-in">' + e(d.work[2]) + '</a></div></div></section>';
+  return '<div class="atmo" id="atmo" aria-hidden="true"></div><section class="ct" aria-labelledby="ct-t" data-sky="morning"><div class="wrap ct-g">' + head + card + more + '</div></section>' + work;
+}
 /** Contact (Nov 7): one split like the Sign in page. The heading and its line change with the topic the visitor came for (the
  * boot script marks the document before paint; velani.js removes the unused wording), the phone sits under them, the form beside. */
 function contact(page, target, lang = 'en') {
@@ -413,14 +443,14 @@ function renderRawBody(path, target) {
   const lang = langOf(path);
   // A page that has moved to the Day design renders its Day body (src/day/)
   // Plans keeps Jose's billing pieces: the commerce settings template and velani-commerce.js (team-size card, Owner handoff)
-  if (page.day) return dayMain(page.day, lang, target) + (page.day === 'plans' ? commerceBlock(target) + '<script type="module" src="' + asset('velani-commerce.js', target) + '"></script>' : '');
+  if (page.day && page.day !== 'contact') return dayMain(page.day, lang, target) + (page.day === 'plans' ? commerceBlock(target) + '<script type="module" src="' + asset('velani-commerce.js', target) + '"></script>' : '');
   switch (page.kind) {
     case 'home': return homeMain(target, lang);
     case 'nevora': return nevoraMain(target, lang);
     case 'products': return productsMain(target, lang);
     case 'policy': return policyMain(page.slug, lang);
     case 'services': return services_(page, target, lang);
-    case 'contact': return localize((target === 'shopify' ? '{% capture velani_sent %}' + sentPanel(false, lang) + '{% endcapture %}' : '') + contact(page, target, lang), lang);
+    case 'contact': return localize((target === 'shopify' ? '{% capture velani_sent %}' + sentPanel(false, lang) + '{% endcapture %}' : '') + (page.day === 'contact' ? dayContact(page, target, lang) : contact(page, target, lang)), lang);
     case 'signin': return signin(page, target, lang);
     case 'commerce': return localize(commercePage(page, target, lang), lang);
     case 'faq': return faq(page, target, lang);

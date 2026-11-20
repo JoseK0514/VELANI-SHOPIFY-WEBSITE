@@ -248,4 +248,4 @@ html.rm .fan>div,html.rm .toast,html.rm .zh-call span,html.rm .tcard .r .ckm{tra
 .sec[data-flush]{padding-top:0}
 /* The section bar carries the trial here, so the header's copy of it steps aside (Apple's product-page pattern) */
 .gn .cta{display:none}
-@media (max-width:820px){.js .gn .mb,.no-js .gn .mb-nojs{margin-left:auto}}
+@media (max-width:820px){.js .gn .mb{margin-left:auto}}

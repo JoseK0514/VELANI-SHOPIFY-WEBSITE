@@ -23,7 +23,7 @@ const CHEV = '<svg class="dic chev" viewBox="0 0 10 10" aria-hidden="true" focus
 /** The words of the Day header, phone menu and footer per language. Hrefs are English paths; localize() moves them to Spanish. */
 export const DAY_CHROME = {
   en: {
-    skip: 'Skip to content', home: 'Velani home', main: 'Main', menu: 'Open menu', closeMenu: 'Close menu', menuDialog: 'Menu', menuLink: 'Menu',
+    skip: 'Skip to content', home: 'Velani home', main: 'Main', menu: 'Open menu', closeMenu: 'Close menu', menuDialog: 'Menu',
     nav: [['NEVORA', '/pages/nevora', ['nevora']], ['Rondo', '/pages/nevora#rondo', ['rondo']], ['Relay', '/pages/nevora#relay', ['relay']], ['Plans', '/pages/plans', ['plans']], ['Support', '/pages/help', ['help', 'contact', 'nevora-help']]],
     signIn: 'Sign in', trialShort: 'Free trial', trial: 'Request a free trial',
     footer: 'Footer', legal: 'Legal', cookies: 'Cookie choices',
@@ -38,7 +38,7 @@ export const DAY_CHROME = {
     copyright: '© 2026 VELANI LLC. All rights reserved.', hours: 'Monday to Friday, 8 am to 9 pm ET',
   },
   es: {
-    skip: 'Saltar al contenido', home: 'Inicio de Velani', main: 'Principal', menu: 'Abrir menú', closeMenu: 'Cerrar menú', menuDialog: 'Menú', menuLink: 'Menú',
+    skip: 'Saltar al contenido', home: 'Inicio de Velani', main: 'Principal', menu: 'Abrir menú', closeMenu: 'Cerrar menú', menuDialog: 'Menú',
     nav: [['NEVORA', '/pages/nevora', ['nevora']], ['Rondo', '/pages/nevora#rondo', ['rondo']], ['Relay', '/pages/nevora#relay', ['relay']], ['Planes', '/pages/plans', ['plans']], ['Soporte', '/pages/help', ['help', 'contact', 'nevora-help']]],
     signIn: 'Entrar', trialShort: 'Prueba gratis', trial: 'Pide la prueba gratis',
     footer: 'Pie de página', legal: 'Legal', cookies: 'Opciones de cookies',
@@ -70,8 +70,7 @@ export function dayHeader(current, target, { lang = 'en', hrefs = SHOPIFY_LANG_H
     + `<nav class="gnav" aria-label="${t.main}">${nav}</nav>${langSwitch(lang, hrefs)}`
     + `<a class="signin" href="${signin}"${enOnly(lang, signin)}${mark(['signin'])}>${t.signIn}</a>`
     + `<a class="cta" href="${trialHref}">${t.trialShort}</a>`
-    + `<button class="mb" type="button" aria-expanded="false" aria-controls="mm" aria-label="${t.menu}">${dayIcon('list')}</button>`
-    + `<a class="mb-nojs" href="#ft">${t.menuLink}</a></div></header>`
+    + `<button class="mb" type="button" aria-expanded="false" aria-controls="mm" aria-label="${t.menu}">${dayIcon('list')}</button></div></header>`
     + `<div class="mm" id="mm" role="dialog" aria-modal="true" aria-label="${t.menuDialog}" hidden><div class="mm-top"><a class="logo" href="/" aria-label="${t.home}">${WORDMARK}</a><button class="mx" type="button" aria-label="${t.closeMenu}">${dayIcon('x')}</button></div>`
     + `<nav class="mm-nav" aria-label="${t.main}">${nav}</nav>`
     + `<div class="mm-2"><a class="pillbtn" href="${trialHref}">${t.trial}</a><a class="mm-s" href="${signin}"${enOnly(lang, signin)}>${t.signIn}</a>${langSwitch(lang, hrefs)}</div></div>`;
@@ -120,10 +119,10 @@ function body(name, target) {
 }
 const BODIES = { about: { en: 'about.body.html' }, home: { en: 'home.body.html' }, nevora: { en: 'nevora.body.html' }, plans: { en: 'plans.body.html' } };
 /** Pages with their own stylesheet and script beside the shared Day ones. */
-export const DAY_PAGE_ASSETS = { home: ['velani-day-devices.css', 'velani-day-home.css', 'velani-day-home.js'], nevora: ['velani-day-devices.css', 'velani-day-nevora.css', 'velani-day-nevora.js'], plans: ['velani-day-plans.css', 'velani-day-plans.js'] };
+export const DAY_PAGE_ASSETS = { home: ['velani-day-devices.css', 'velani-day-home.css', 'velani-day-home.js'], nevora: ['velani-day-devices.css', 'velani-day-nevora.css', 'velani-day-nevora.js'], plans: ['velani-day-plans.css', 'velani-day-plans.js'], contact: ['velani-day-contact.css', 'velani-day-contact.js'] };
 export function dayMain(kind, lang = 'en', target = 'preview') {
   const file = BODIES[kind]?.[lang];
   if (!file) throw new Error('day: no ' + lang + ' body for ' + kind);
   return localize(body(file, target), lang);
 }
-export const dayAssets = { css: read('day.css'), js: read('day.js'), pages: { devices: { css: read('devices.css') }, home: { css: read('home.css'), js: read('home.js') }, nevora: { css: read('nevora.css'), js: read('nevora.js') }, plans: { css: read('plans.css'), js: read('plans.js') } } };
+export const dayAssets = { css: read('day.css'), js: read('day.js'), pages: { devices: { css: read('devices.css') }, home: { css: read('home.css'), js: read('home.js') }, nevora: { css: read('nevora.css'), js: read('nevora.js') }, plans: { css: read('plans.css'), js: read('plans.js') }, contact: { css: read('contact.css'), js: read('contact.js') } } };
