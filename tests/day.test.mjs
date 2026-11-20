@@ -196,3 +196,35 @@ test('Sign in on Day: Jose\'s three facts, the two keys, and support at the end 
   assert.match(html, /href="\/pages\/nevora-support">NEVORA support</);
   assert.doesNotMatch(html, /project-inquiry|Request a free trial|custom-development|\{\{/);
 });
+
+test('Rondo and Relay have their own Day pages, and the header, footer, Home and About link to them', () => {
+  for (const path of ['/pages/rondo', '/pages/relay']) assert.ok(routes[path]?.day, path);
+  const header = dayHeader(null, 'preview', { lang: 'en', hrefs: { en: '/', es: '/pages/es' } }), footer = dayFooter('preview', { lang: 'en', hrefs: { en: '/', es: '/pages/es' } });
+  for (const html of [header, footer, renderBody('/'), renderBody('/pages/about')]) {
+    assert.match(html, /href="\/pages\/rondo"/); assert.match(html, /href="\/pages\/relay"/);
+    assert.doesNotMatch(html, /\/pages\/nevora#(rondo|relay)/);
+  }
+  const es = dayHeader(null, 'preview', { lang: 'es', hrefs: { en: '/', es: '/pages/es' } });
+  assert.match(es, /href="\/pages\/rondo" hreflang="en">Rondo</, 'English-only pages are marked on Spanish pages');
+});
+
+test('Rondo on Day: owner-only assistant, approval before change, sources named', () => {
+  const html = renderBody('/pages/rondo');
+  assert.equal((html.match(/<h1/g) || []).length, 1);
+  assert.match(html, /<div class="ln" id="ln" data-bar>/);
+  for (const id of ['top', 'ask', 'approve', 'knows', 'owner', 'faq']) assert.ok(html.includes('id="' + id + '"'), id);
+  assert.match(html, /Nothing changes until the Owner approves, and NEVORA checks the change again before it applies\./);
+  assert.match(html, /Only the business Owner\./);
+  assert.match(html, /href="\/pages\/contact\?interest=nevora-demo"/);
+  assert.doesNotMatch(html, /claude\.ai|\{\{/);
+});
+
+test('Relay on Day: in design, no date or price, and the waitlist is the Contact form (no form of its own)', () => {
+  const html = renderBody('/pages/relay');
+  assert.equal((html.match(/<h1/g) || []).length, 1);
+  assert.match(html, /Relay is in design and has no release date yet\./);
+  assert.match(html, /There’s no price yet\.|There's no price yet\./);
+  assert.match(html, /href="\/pages\/contact\?interest=relay">Join the waitlist</);
+  assert.doesNotMatch(html, /<form|<input|type="email"|nothing is sent|mockup/i);
+  assert.match(html, /Concept screen/);
+});

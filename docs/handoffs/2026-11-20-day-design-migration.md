@@ -21,7 +21,7 @@ The approved "Day" design (mockups and reviews in `docs/design/2026-11-18-premiu
 | Contact (EN) | Done | Jose's form unchanged (inquiry-* fields, velani.js checks, preview check, Shopify `form 'contact'` only on the main theme with inquiries on, email otherwise). Four topics: trial, more than 30, Relay waitlist, something else (no custom work). `src/day/contact.js` keeps the side, the button words, the message label and the team fields in step with the topic. `velani.js` change: an exact topic choice now wins in `syncTopics` (the three-choice form behaves as before) |
 | Help (EN) | Done | Ported by `scripts/port-day-help.py` (one-time). Search and topic chips over 13 answers, two keys, deletion steps; Jose's client request section (hub form, live/preview branches unchanged) sits in a closed "Already a Velani client?" disclosure that a `#client` or `?interest=client-…` link opens |
 | Sign in (EN) | Done | Jose's three sign-in facts, the two keys, and NEVORA support at the end; no client form or offer, as on Jose's page | Contact keeps the live/preview inquiry safeguards from `src/render.mjs`; Help keeps existing-client support as one quiet line (recommended November 20) |
-| Rondo, Relay | New routes | Until then the header and footer link `/pages/nevora#rondo` and `#relay` |
+| Rondo, Relay (EN) | Done, new routes | `/pages/rondo` and `/pages/relay`, ported by `scripts/port-day-products.py` (one-time) with `src/day/product.css` (the NEVORA styles their designs use). Header, footer, Home and About now link to them. Relay has no form of its own: Join the waitlist opens Contact on the Relay topic. **At publish time** these two need Shopify Page resources (handles `rondo` and `relay`, templates `page.rondo` and `page.relay`); creating them is a store change for Jose's go-ahead. Until then they work on the theme preview through `?view=velani-rondo` and `?view=velani-relay` |
 | Spanish pages | After English | Day chrome already has Spanish words; `localize()` moves links |
 | Legal and NEVORA policy pages | Last | Restyle only; wording is Jose's |
 
@@ -30,7 +30,15 @@ The approved "Day" design (mockups and reviews in `docs/design/2026-11-18-premiu
 - The 30 free days run from workplace provisioning (creation in NEVORA), per `development` commit 5d2e545. The mockups say "the day your workplace is ready"; use the provisioning wording in the theme.
 - Custom work is removed (decision 2 in `SITE-STRUCTURE.md`). Existing-client support stays on Help as one quiet line using the client request service (decided November 20); no new custom work is offered.
 - For Jose (found while porting Plans): `velani-commerce.js` picks the quote link with `#price a[href*="interest=nevora"]`, which also matches `interest=nevora-demo`. The Night Plans page put the trial link first in `#price`, so an Owner over 30 coming from NEVORA could get the trial link instead of assisted setup. The Day page keeps only the quote and billing links in `#price`, and the fixture's `over-30` handoff now shows Contact Velani → `?interest=nevora`. Matching `interest=nevora"` or `[href$="interest=nevora"]` in the script would remove the trap for any future layout.
+- For Jose: the Rondo page keeps the approved wording "included in every NEVORA plan, and in the free 30-day trial". The website privacy notice says the Owner assistant in NEVORA depends on workplace availability and authorization; confirm the page wording matches what Owners get.
 - Assigned UI findings still open (from `services/velani-ai/docs/CLAUDE-UI-START-HERE.md`): the Retry-After cap in `public/assets/velani-hub.js` and final success focus in the Shopify preview.
+
+## Verification (November 20, Rondo and Relay)
+
+- `npm test`: 117/117 (new routes, links from header, footer, Home and About, Rondo and Relay content, no Relay form). `npm run check:theme`: 0 offenses.
+- `scripts/browser-check.mjs`: first run 101/103 kept (`evidence/day-rondo-relay-20261120`: Relay hero text style leaked into the drawn kitchen screen, contrast 1.61; hero rules are now scoped to the hero copy). Rerun 103/103 (`-rerun`).
+- Day check on all nine Day pages: 189/189. Rondo and Relay flows 12/12 (section bar marks and darkens, question picker, Approve, phone fitted, Relay waitlist opens Contact on the Relay topic, no sends).
+- Found by the new tests: Spanish Day header links to English-only pages were not marked `hreflang="en"`; fixed.
 
 ## Verification (November 20, Help and Sign in)
 

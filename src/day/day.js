@@ -53,7 +53,23 @@
   var lts=$$('[data-lt]');
   function ltTick(){lts.forEach(function(el){var v=still()?1:clamp((innerHeight*.78-el.getBoundingClientRect().top)/(innerHeight*.22));el.style.setProperty('--lt',v.toFixed(3))})}
 
-  function tick(){skyTick();rvTick();ltTick();ticks.forEach(function(f){f()})}
+  /* A product page's section bar (marked data-bar; NEVORA drives its own): the section on screen is marked, and the bar
+     turns dark over night sections. */
+  var bar=$('#ln[data-bar]'),barLinks=bar?$$('nav a',bar):[],barSecs=barLinks.map(function(a){return $(a.getAttribute('href'))});
+  function barTick(){
+    if(!bar)return;
+    var cur=-1,dark=false;
+    barSecs.forEach(function(s,i){if(s&&s.getBoundingClientRect().top<=innerHeight*.4)cur=i});
+    barLinks.forEach(function(a,i){a.classList.toggle('on',i===cur);if(i===cur)a.setAttribute('aria-current','true');else a.removeAttribute('aria-current')});
+    $$('[data-dark]').forEach(function(el){var r=el.getBoundingClientRect();if(r.top<=60&&r.bottom>60)dark=true});
+    bar.classList.toggle('dark',dark);
+  }
+
+  /* Devices are drawn at their natural size and scaled to the space they are given. */
+  function fit(){$$('.fit').forEach(function(f){var nw=+f.dataset.nw,nh=+f.dataset.nh||0,p=f.parentElement,z=p.clientWidth/nw;if(nh&&p.clientHeight)z=Math.min(z,p.clientHeight/nh);f.style.zoom=Math.max(.05,z).toFixed(4)})}
+  fit();addEventListener('resize',fit);
+
+  function tick(){skyTick();rvTick();ltTick();barTick();ticks.forEach(function(f){f()})}
   var raf=0;
   addEventListener('scroll',function(){if(!raf)raf=requestAnimationFrame(function(){raf=0;tick()})},{passive:true});
   addEventListener('resize',tick);
