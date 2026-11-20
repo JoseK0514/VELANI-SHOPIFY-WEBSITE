@@ -111,17 +111,19 @@ function body(name, target) {
   const html = read(name).replace(/\{\{(SCR_\w+)\}\}/g, (_, k) => { if (!SCREENS[k]) throw new Error('day: no screen ' + k); return SCREENS[k]; })
     .replace(/\{\{SB:([0-9:]+)\}\}/g, (_, t) => statusBar(t)).replace(/\{\{STRIP\}\}/g, STRIP)
     .replace(/src="\{\{(NV_INK|NV_WHITE|ICON)\}\}"/g, (_, k) => { const [file, w, h] = IMAGES[k]; return `src="${asset(file, target)}" width="${w}" height="${h}"`; })
-    .replace(/\{\{icon:([\w-]+)\}\}/g, (_, n) => dayIcon(n)).replace(/\{\{chev\}\}/g, CHEV);
+    .replace(/\{\{icon:([\w-]+)\}\}/g, (_, n) => dayIcon(n)).replace(/\{\{chev\}\}/g, CHEV)
+    // The team-size meter: 30 marks, the first 8 on and the rest of the first band lit (the card starts at 8 employees)
+    .replace('{{ticks}}', () => Array.from({ length: 30 }, (_, i) => '<i' + (i < 8 ? ' class="pc-on"' : i < 15 ? ' class="pc-in"' : '') + '></i>').join(''));
   const left = html.match(/\{\{(?!\s)[^}]*\}\}/g);
   if (left && left.some(x => !x.startsWith('{{I:'))) throw new Error('day: unfilled ' + left.join(' '));
   return sprite(html);
 }
-const BODIES = { about: { en: 'about.body.html' }, home: { en: 'home.body.html' }, nevora: { en: 'nevora.body.html' } };
+const BODIES = { about: { en: 'about.body.html' }, home: { en: 'home.body.html' }, nevora: { en: 'nevora.body.html' }, plans: { en: 'plans.body.html' } };
 /** Pages with their own stylesheet and script beside the shared Day ones. */
-export const DAY_PAGE_ASSETS = { home: ['velani-day-devices.css', 'velani-day-home.css', 'velani-day-home.js'], nevora: ['velani-day-devices.css', 'velani-day-nevora.css', 'velani-day-nevora.js'] };
+export const DAY_PAGE_ASSETS = { home: ['velani-day-devices.css', 'velani-day-home.css', 'velani-day-home.js'], nevora: ['velani-day-devices.css', 'velani-day-nevora.css', 'velani-day-nevora.js'], plans: ['velani-day-plans.css', 'velani-day-plans.js'] };
 export function dayMain(kind, lang = 'en', target = 'preview') {
   const file = BODIES[kind]?.[lang];
   if (!file) throw new Error('day: no ' + lang + ' body for ' + kind);
   return localize(body(file, target), lang);
 }
-export const dayAssets = { css: read('day.css'), js: read('day.js'), pages: { devices: { css: read('devices.css') }, home: { css: read('home.css'), js: read('home.js') }, nevora: { css: read('nevora.css'), js: read('nevora.js') } } };
+export const dayAssets = { css: read('day.css'), js: read('day.js'), pages: { devices: { css: read('devices.css') }, home: { css: read('home.css'), js: read('home.js') }, nevora: { css: read('nevora.css'), js: read('nevora.js') }, plans: { css: read('plans.css'), js: read('plans.js') } } };

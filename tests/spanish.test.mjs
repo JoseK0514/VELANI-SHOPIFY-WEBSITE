@@ -260,7 +260,7 @@ test('the NEVORA page tells the week in order from the same sample data as Home,
 });
 
 test('Plans puts the team-size price control in its first screen, once, and ends on the trial only', async () => {
-  for (const path of ['/pages/plans', '/pages/es-planes']) {
+  for (const path of ['/pages/plans', '/pages/es-planes'].filter(p => !routes[p].day)) {
     const html = renderBody(path, { target: 'local' });
     assert.equal((html.match(/data-pcard/g) || []).length, 1, path);
     const top = html.slice(html.indexOf('plans-top'), html.indexOf('id="price"'));

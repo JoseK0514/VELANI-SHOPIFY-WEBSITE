@@ -133,3 +133,23 @@ test('every in-page link on a Day page lands on an element of that page', () => 
     for (const [, id] of html.matchAll(/href="#([\w-]+)"/g)) assert.ok(html.includes('id="' + id + '"'), path + ' #' + id);
   }
 });
+
+test('Plans on Day keeps the billing contract of velani-commerce.js', () => {
+  const html = renderBody('/pages/plans');
+  const hero = html.slice(html.indexOf('id="top"'), html.indexOf('data-pcard'));
+  assert.match(hero, /<div class="center hcopy">\s*<h1 id="h1">/, 'the handoff swaps the hero copy in #top .hcopy');
+  assert.match(hero, /<p class="lead fade">/, 'the line the handoff replaces: .hcopy > p.fade:not(.hfact)');
+  assert.match(hero, /<div class="hacts"><a class="hb fill" href="\/pages\/contact\?interest=nevora-demo">/);
+  assert.match(hero, /<p class="hfact">Your 30 free days start when your workplace is provisioned \(created in NEVORA\)\./);
+  assert.equal((html.match(/data-pcard/g) || []).length, 1);
+  for (const hook of ['id="pc-n"', 'data-count', 'data-unit', 'data-amt', 'data-per>', 'data-note', 'data-pc-live', 'data-step="-1"', 'data-step="1"', 'data-price-mine']) assert.ok(html.includes(hook), hook);
+  assert.equal((html.match(/<div class="pc-meter"[^>]*>(.*?)<\/div>/)[1].match(/<i/g) || []).length, 30, 'thirty marks');
+  assert.match(html, /<input id="pc-n" type="range" min="1" max="31" value="8"[^>]* disabled>/, 'the slider waits for the script; without it the card reads 8 employees at $19');
+  // velani-commerce.js takes the first #price link containing interest=nevora as the quote: it must be the quote, not the trial
+  const price = html.slice(html.indexOf('id="price"'), html.indexOf('</section>', html.indexOf('id="price"')));
+  assert.match(price.match(/href="[^"]*interest=nevora[^"]*"/)[0], /interest=nevora"/);
+  assert.match(html, /href="\/pages\/nevora-billing"/);
+  assert.match(html, /Prices are in US dollars and may change before online billing opens\./);
+  assert.match(html, /<template id="velani-commerce" data-api="[^"]*"><\/template><script type="module" src="\/assets\/velani-commerce\.js"><\/script>/);
+  assert.doesNotMatch(html, /custom-development|Start a project|\bDraft\b/);
+});

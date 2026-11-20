@@ -1,0 +1,18 @@
+PASS card: slider enabled by commerce script
+PASS card: steps shown
+PASS card: starts at 8 employees, $19, $2.38 each
+PASS plan card 1 marked Your plan
+PASS keyboard to 16: $29, plan 2 marked  [16 employees, $29 a month]
+PASS per employee follows: $1.81  [$1.81 per employee]
+PASS 31+: quote instead of price, no per-employee, no plan marked  [Contact us]
+PASS price line below the plans says it  [With more than 30 employees: write to us first for assisted setup. Teams that qualify get the same 30 days free, from workplace provisioning (creation in NEVORA).]
+PASS calendar shows real dates  [Friday, November 20]
+FAIL handoff trial: hero replaced  [Billing isn’t available right now | How to open billing -> http://127.0.0.1:4199/pages/nevora-billing]
+PASS handoff trial: fragment scrubbed
+FAIL handoff trial: language choice shown
+PASS handoff expired: hero replaced  [Billing isn’t available right now | How to open billing -> http://127.0.0.1:4199/pages/nevora-billing]
+PASS handoff expired: fragment scrubbed
+FAIL handoff over-30: hero replaced  [Billing isn’t available right now | How to open billing -> http://127.0.0.1:4199/pages/nevora-billing]
+PASS handoff over-30: fragment scrubbed
+FAIL handoff over-30: quote goes to assisted setup, not the trial  [How to open billing -> http://127.0.0.1:4199/pages/nevora-billing]
+PASS no script errors or CSP reports

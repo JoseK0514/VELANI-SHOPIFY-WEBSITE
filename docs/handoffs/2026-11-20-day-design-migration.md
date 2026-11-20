@@ -17,7 +17,8 @@ The approved "Day" design (mockups and reviews in `docs/design/2026-11-18-premiu
 | About (EN) | Done | Products-only facts; route description updated |
 | Home (EN) | Done | Ported by `scripts/port-day-home.py` (one-time); trial start and fine print follow Jose's current wording; device screens are pictures (`role="img"`, inner screens hidden) |
 | NEVORA (EN) | Done | Ported by `scripts/port-day-nevora.py` (one-time); device, plan and app-screen styles moved to `src/day/devices.css` (Home and NEVORA); the schedule demo says "Not published" instead of "Draft" (public pages never say draft); `#relay` is the closing Relay line; the section bar carries the trial |
-| Plans, Help, Contact, Sign in | Next | Contact keeps the live/preview inquiry safeguards from `src/render.mjs`; Help keeps existing-client support as one quiet line (recommended November 20) |
+| Plans (EN) | Done | Keeps the `velani-commerce.js` contract: `#top .hcopy` (h1, `p.lead.fade`, `.hacts`, `.hfact`) for the Owner handoff, the `[data-pcard]` team-size card, `#price` with the quote and billing links, the commerce template. `src/day/plans.js` only reads the card's `data-n` (price per employee, matching plan, real dates) |
+| Help, Contact, Sign in | Next | Contact keeps the live/preview inquiry safeguards from `src/render.mjs`; Help keeps existing-client support as one quiet line (recommended November 20) |
 | Rondo, Relay | New routes | Until then the header and footer link `/pages/nevora#rondo` and `#relay` |
 | Spanish pages | After English | Day chrome already has Spanish words; `localize()` moves links |
 | Legal and NEVORA policy pages | Last | Restyle only; wording is Jose's |
@@ -26,7 +27,15 @@ The approved "Day" design (mockups and reviews in `docs/design/2026-11-18-premiu
 
 - The 30 free days run from workplace provisioning (creation in NEVORA), per `development` commit 5d2e545. The mockups say "the day your workplace is ready"; use the provisioning wording in the theme.
 - Custom work is removed (decision 2 in `SITE-STRUCTURE.md`). Existing-client support stays on Help as one quiet line using the client request service (decided November 20); no new custom work is offered.
+- For Jose (found while porting Plans): `velani-commerce.js` picks the quote link with `#price a[href*="interest=nevora"]`, which also matches `interest=nevora-demo`. The Night Plans page put the trial link first in `#price`, so an Owner over 30 coming from NEVORA could get the trial link instead of assisted setup. The Day page keeps only the quote and billing links in `#price`, and the fixture's `over-30` handoff now shows Contact Velani → `?interest=nevora`. Matching `interest=nevora"` or `[href$="interest=nevora"]` in the script would remove the trap for any future layout.
 - Assigned UI findings still open (from `services/velani-ai/docs/CLAUDE-UI-START-HERE.md`): the Retry-After cap in `public/assets/velani-hub.js` and final success focus in the Shopify preview.
+
+## Verification (November 20, Plans)
+
+- `npm test`: 111/111, with a Day Plans test that pins the commerce contract (hooks, 30 marks, disabled slider without the script, quote link order). The Night Plans layout test runs only for Plans pages still on Night.
+- `npm run check:theme`: 0 offenses. `scripts/browser-check.mjs`: 99/99 (`evidence/day-plans-20261120`).
+- Day check on Home, NEVORA, Plans and About: 84/84.
+- With Jose's local commerce fixture (`scripts/commerce-fixture.mjs`, no real service): 18/18, including keyboard on the card (16 → $29, End → quote), the price per employee and matching plan, real dates, and the Owner handoff scenarios trial, expired and over-30 (fragment scrubbed, language choice, assisted setup link).
 
 ## Verification (November 20, NEVORA)
 

@@ -412,7 +412,8 @@ function renderRawBody(path, target) {
   if (!page) return notFound();
   const lang = langOf(path);
   // A page that has moved to the Day design renders its Day body (src/day/)
-  if (page.day) return dayMain(page.day, lang, target);
+  // Plans keeps Jose's billing pieces: the commerce settings template and velani-commerce.js (team-size card, Owner handoff)
+  if (page.day) return dayMain(page.day, lang, target) + (page.day === 'plans' ? commerceBlock(target) + '<script type="module" src="' + asset('velani-commerce.js', target) + '"></script>' : '');
   switch (page.kind) {
     case 'home': return homeMain(target, lang);
     case 'nevora': return nevoraMain(target, lang);
