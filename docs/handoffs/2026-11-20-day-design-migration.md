@@ -35,7 +35,7 @@ The approved "Day" design (mockups and reviews in `docs/design/2026-11-18-premiu
 - `npm test`: 111/111, with a Day Plans test that pins the commerce contract (hooks, 30 marks, disabled slider without the script, quote link order). The Night Plans layout test runs only for Plans pages still on Night.
 - `npm run check:theme`: 0 offenses. `scripts/browser-check.mjs`: 99/99 (`evidence/day-plans-20261120`).
 - Day check on Home, NEVORA, Plans and About: 84/84.
-- With Jose's local commerce fixture (`scripts/commerce-fixture.mjs`, no real service): 18/18, including keyboard on the card (16 → $29, End → quote), the price per employee and matching plan, real dates, and the Owner handoff scenarios trial, expired and over-30 (fragment scrubbed, language choice, assisted setup link).
+- With Jose’s local commerce fixture (`scripts/commerce-fixture.mjs`, no real service): 18/18 (`plans-commerce-fixture-rerun.txt`; an earlier 14/18 run is kept with its cause in `evidence/day-plans-20261120/README.txt`), including keyboard on the card (16 → $29, End → quote), the price per employee and matching plan, real dates, and the Owner handoff scenarios trial, expired and over-30 (fragment scrubbed, language choice, assisted setup link).
 
 ## Verification (November 20, NEVORA)
 

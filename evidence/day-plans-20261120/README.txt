@@ -1,0 +1,2 @@
+plans-commerce-fixture.txt: 14/18. Not a site failure: both local preview servers build into the same dist/ folder, and restarting the server without VELANI_COMMERCE_API rebuilt the pages with billing off, so the handoff scenarios correctly showed "Billing isn’t available right now".
+plans-commerce-fixture-rerun.txt: the same checks after restarting only the fixture-backed server (billing API set).
