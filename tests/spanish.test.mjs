@@ -174,8 +174,10 @@ test('while online signup is closed, the old trial page sends visitors to the tr
   assert.match(await liquid.parseAndRender(en, closed), /<a class="hb fill" href="\/pages\/contact\?interest=nevora-demo">/, 'the page still offers the request button without a script');
 });
 
+/** Homes still on the Night design; a home that moved to Day is covered by tests/day.test.mjs. */
+const NIGHT_HOMES = ['/', '/pages/es'].filter(p => !routes[p].day);
 test('the home first screen carries the live sample day in both languages, with a pause control and a status region', async () => {
-  for (const [path, word] of [['/', 'Clock in'], ['/pages/es', 'Marcar entrada']]) {
+  for (const [path, word] of [['/', 'Clock in'], ['/pages/es', 'Marcar entrada']].filter(([p]) => !routes[p].day)) {
     const html = renderBody(path, { target: 'shopify' });
     assert.match(html, /data-day data-now="478"/, path);
     assert.match(html, new RegExp('data-clock[^>]*>' + word + '<'), path);
@@ -186,7 +188,7 @@ test('the home first screen carries the live sample day in both languages, with 
 });
 
 test('the four views of the live piece share one set of numbers: schedule, time clock, pay and Rondo agree', async () => {
-  for (const path of ['/', '/pages/es']) {
+  for (const path of NIGHT_HOMES) {
     const html = renderBody(path, { target: 'shopify' });
     assert.equal((html.match(/role="tab" /g) || []).length, 4, path);
     assert.equal((html.match(/role="tabpanel"/g) || []).length, 4, path);
@@ -211,7 +213,7 @@ test('the four views of the live piece share one set of numbers: schedule, time 
 });
 
 test('Home is NEVORA and Rondo: no client panels, one filled action in the closing, and one quiet line to custom software', async () => {
-  for (const [path, link] of [['/', '/pages/custom-development'], ['/pages/es', '/pages/es-a-la-medida']]) {
+  for (const [path, link] of [['/', '/pages/custom-development'], ['/pages/es', '/pages/es-a-la-medida']].filter(([p]) => !routes[p].day)) {
     const html = renderBody(path, { target: 'local' });
     assert.doesNotMatch(html, /id="websites"|id="apps"|Tool Box|Yavi/, path);
     const closing = html.slice(html.indexOf('id="velani"'));
@@ -223,7 +225,7 @@ test('Home is NEVORA and Rondo: no client panels, one filled action in the closi
 });
 
 test('Home below the first screen is three live sections that read the same week as the piece', async () => {
-  for (const path of ['/', '/pages/es']) {
+  for (const path of NIGHT_HOMES) {
     const html = renderBody(path, { target: 'local' });
     for (const id of ['nevora', 'rondo', 'start']) assert.match(html, new RegExp('<section class="hn [^"]+" id="' + id + '"'), path + ' ' + id);
     for (const b of ['arWeek', 'arToday', 'arState', 'brief']) assert.match(html, new RegExp('data-b="' + b + '"'), path + ' ' + b);
@@ -239,7 +241,8 @@ test('Home below the first screen is three live sections that read the same week
 });
 
 test('the NEVORA page tells the week in order from the same sample data as Home, and its time clock clocks Alexandra in', async () => {
-  for (const [path, home] of [['/pages/nevora', '/'], ['/pages/es-nevora', '/pages/es']]) {
+  // The NEVORA pages share the sample week with the Night home (Home on Day draws its own screens from the same people)
+  for (const [path, home] of [['/pages/nevora', NIGHT_HOMES[0]], ['/pages/es-nevora', NIGHT_HOMES[0]]]) {
     const html = renderBody(path, { target: 'local' }), h = renderBody(home, { target: 'local' });
     const order = ['id="top"', 'id="plan"', 'id="clock"', 'id="approve"', 'id="pay"', 'id="rondo"', 'id="begin"', 'id="velani"'].map(k => html.indexOf(k));
     assert.ok(order.every((v, i) => v > -1 && (i === 0 || v > order[i - 1])), path + ' sections in week order');

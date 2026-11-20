@@ -81,3 +81,32 @@ test('About on Day: real routes and facts, one copy button with a fallback, no c
   assert.doesNotMatch(body, /custom-development|fixed price|written scope|<script/);
   assert.equal((body.match(/<h1/g) || []).length, 1);
 });
+
+test('Home on Day: the day in five moments, Rondo with approval, starting, plans and both languages', () => {
+  const html = renderBody('/');
+  assert.equal((html.match(/<h1/g) || []).length, 1);
+  assert.match(html, /<h1 id="h1">Open to close\.<\/h1>/);
+  const order = ['id="hero"', 'id="day"', 'id="rondo"', 'id="nevora"', 'id="start"', 'id="plans"', 'id="lang"'].map(k => html.indexOf(k));
+  assert.ok(order.every((v, i) => v > -1 && (i === 0 || v > order[i - 1])), 'sections in order');
+  assert.equal((html.match(/<article class="mo/g) || []).length, 5, 'five moments');
+  assert.equal((html.match(/data-go="\d"/g) || []).length, 5, 'five timeline buttons');
+  assert.match(html, /<button class="ok" type="button" id="ok" aria-pressed="false"/);
+  assert.match(html, /Nothing changes until you approve\./);
+  assert.match(html, /\$19<small>\/month<\/small>[^]*\$29<small>\/month<\/small>/);
+  assert.match(html, /Your 30 days start when it’s created in NEVORA\./, 'trial start follows workplace provisioning');
+  assert.match(html, /Prices are in US dollars and may change before online billing opens\./);
+  assert.match(html, /it doesn’t pay employees or file payroll taxes/);
+  assert.match(html, /href="\/pages\/contact\?interest=nevora-demo">Request a free trial</);
+  assert.doesNotMatch(html, /custom-development|Custom software|claude\.ai|\{\{|style="list-style/);
+});
+
+test('Home device screens are pictures: named once, hidden from screen readers inside, icons from one sprite', () => {
+  const html = renderBody('/', { target: 'shopify' });
+  assert.match(html, /<div class="hs" role="img" aria-label="NEVORA on a MacBook, an iPad time clock and an iPhone\. Sample data from Northside Café\.">/);
+  assert.match(html, /<div class="stage" aria-hidden="true">/);
+  assert.equal((html.match(/<svg class="spr" aria-hidden="true"/g) || []).length, 1);
+  for (const [, id] of html.matchAll(/<use href="#(i-[\w-]+)"/g)) assert.ok(html.includes('<symbol id="' + id + '"'), id);
+  assert.match(html, /src="\{\{ 'night-nevora-wm-ink\.png' \| asset_url \}\}"/);
+  assert.match(html, /src="\{\{ 'day-nevora-icon\.png' \| asset_url \}\}"/);
+  assert.doesNotMatch(html, /data:image/);
+});

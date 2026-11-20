@@ -14,11 +14,11 @@ const svgCache = new Map();
 export function dayIcon(name) {
   if (!svgCache.has(name)) {
     const raw = readFileSync(path.join(root, 'node_modules/@phosphor-icons/core/assets/bold/' + name + '-bold.svg'), 'utf8');
-    svgCache.set(name, raw.replace(/\s(width|height)="[^"]*"/g, '').replace('<svg ', '<svg class="ic" aria-hidden="true" focusable="false" '));
+    svgCache.set(name, raw.replace(/\s(width|height)="[^"]*"/g, '').replace('<svg ', '<svg class="dic" aria-hidden="true" focusable="false" '));
   }
   return svgCache.get(name);
 }
-const CHEV = '<svg class="ic chev" viewBox="0 0 10 10" aria-hidden="true" focusable="false"><path d="M3 1l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+const CHEV = '<svg class="dic chev" viewBox="0 0 10 10" aria-hidden="true" focusable="false"><path d="M3 1l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>';
 
 /** The words of the Day header, phone menu and footer per language. Hrefs are English paths; localize() moves them to Spanish. */
 export const DAY_CHROME = {
@@ -88,12 +88,40 @@ export function dayFooter(target, { lang = 'en', hrefs = SHOPIFY_LANG_HREFS } = 
   return localize(html, lang);
 }
 
-/** A page body: icons inline, real routes kept, Spanish links moved by localize(). */
-function body(name) { return read(name).replace(/\{\{icon:([\w-]+)\}\}/g, (_, n) => dayIcon(n)).replace(/\{\{chev\}\}/g, CHEV); }
-const BODIES = { about: { en: 'about.body.html' } };
-export function dayMain(kind, lang = 'en') {
+const asset = (name, target) => target === 'shopify' ? "{{ '" + name + "' | asset_url }}" : '/assets/' + name;
+/** The NEVORA app screens drawn in HTML (sample data), shared by the pages that show devices. */
+const SCREENS = Object.fromEntries([...read('screens.html').matchAll(/<!--@(\w+)-->\n(.*?)(?=\n<!--@|$)/gs)].map(([, k, v]) => [k, v.trim()]));
+const WIFI = '<svg class="wifi" viewBox="0 0 17 12" aria-hidden="true" focusable="false"><path fill="currentColor" d="M8.5 2.4c2.4 0 4.6.9 6.3 2.5l1.2-1.2A10.2 10.2 0 0 0 8.5.7 10.2 10.2 0 0 0 1 3.7l1.2 1.2a8.6 8.6 0 0 1 6.3-2.5Zm0 3.3c1.5 0 2.8.5 3.9 1.5l1.2-1.2a7.3 7.3 0 0 0-10.2 0l1.2 1.2c1-1 2.4-1.5 3.9-1.5Zm0 3.3c.7 0 1.2.2 1.7.6L8.5 11.3 6.8 9.6c.5-.4 1-.6 1.7-.6Z"/></svg>';
+const statusBar = time => `<div class="sb"><span>${time}</span><span class="sbi"><span class="bars"><i></i><i></i><i></i><i></i></span>${WIFI}<span class="bat"><i></i></span></span></div>`;
+const STRIP = Array.from({ length: 10 }, (_, d) => `<span>${d}</span>`).join('') + '<span></span>';
+/** Icons inside the app screens repeat many times, so they share one hidden sprite at the top of the page body. */
+function sprite(html) {
+  const names = [...new Set([...html.matchAll(/\{\{I:([\w-]+)\}\}/g)].map(m => m[1]))].sort();
+  if (!names.length) return html;
+  const symbols = names.map(n => {
+    const raw = readFileSync(path.join(root, 'node_modules/@phosphor-icons/core/assets/bold/' + n + '-bold.svg'), 'utf8');
+    return `<symbol id="i-${n}" viewBox="0 0 256 256">${raw.match(/<svg[^>]*>(.*)<\/svg>/s)[1]}</symbol>`;
+  }).join('');
+  return `<svg class="spr" aria-hidden="true" focusable="false">${symbols}</svg>` + html.replace(/\{\{I:([\w-]+)\}\}/g, (_, n) => `<svg class="i" aria-hidden="true" focusable="false"><use href="#i-${n}"/></svg>`);
+}
+/** Theme images used by the screens and tiles, with their real sizes (width and height stop the page from shifting). */
+const IMAGES = { NV_INK: ['night-nevora-wm-ink.png', 907, 122], NV_WHITE: ['night-nevora-wm-white.png', 907, 122], ICON: ['day-nevora-icon.png', 120, 120] };
+/** A page body: screens and icons filled in, images from theme assets, real routes kept, Spanish links moved by localize(). */
+function body(name, target) {
+  const html = read(name).replace(/\{\{(SCR_\w+)\}\}/g, (_, k) => { if (!SCREENS[k]) throw new Error('day: no screen ' + k); return SCREENS[k]; })
+    .replace(/\{\{SB:([0-9:]+)\}\}/g, (_, t) => statusBar(t)).replace(/\{\{STRIP\}\}/g, STRIP)
+    .replace(/src="\{\{(NV_INK|NV_WHITE|ICON)\}\}"/g, (_, k) => { const [file, w, h] = IMAGES[k]; return `src="${asset(file, target)}" width="${w}" height="${h}"`; })
+    .replace(/\{\{icon:([\w-]+)\}\}/g, (_, n) => dayIcon(n)).replace(/\{\{chev\}\}/g, CHEV);
+  const left = html.match(/\{\{(?!\s)[^}]*\}\}/g);
+  if (left && left.some(x => !x.startsWith('{{I:'))) throw new Error('day: unfilled ' + left.join(' '));
+  return sprite(html);
+}
+const BODIES = { about: { en: 'about.body.html' }, home: { en: 'home.body.html' } };
+/** Pages with their own stylesheet and script beside the shared Day ones. */
+export const DAY_PAGE_ASSETS = { home: ['velani-day-home.css', 'velani-day-home.js'] };
+export function dayMain(kind, lang = 'en', target = 'preview') {
   const file = BODIES[kind]?.[lang];
   if (!file) throw new Error('day: no ' + lang + ' body for ' + kind);
-  return localize(body(file), lang);
+  return localize(body(file, target), lang);
 }
-export const dayAssets = { css: read('day.css'), js: read('day.js') };
+export const dayAssets = { css: read('day.css'), js: read('day.js'), pages: { home: { css: read('home.css'), js: read('home.js') } } };

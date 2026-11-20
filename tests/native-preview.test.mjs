@@ -12,7 +12,7 @@ liquid.parseAndRender = (tpl, ctx = {}) => parseAndRender(tpl, ctx, { globals: c
 test('unpublished navigation stays in the exact draft without published page resources', async () => {
   const html = await liquid.parseAndRender(renderBody('/', { target: 'shopify' }), { theme: { role: 'unpublished', id: 123 }, routes: { root_url: '/' } });
   assert.match(html, /href="\/\?preview_theme_id=123&amp;view=velani-contact&amp;interest=nevora-demo"/);
-  assert.match(html, /href="\/\?preview_theme_id=123&amp;view=velani-custom-development"/);
+  assert.match(html, /href="\/\?preview_theme_id=123&amp;view=velani-nevora"/);
   assert.doesNotMatch(html, /href="\/pages\//);
 });
 test('main-theme links retain canonical company page destinations', async () => {
@@ -35,8 +35,10 @@ test('the published theme is indexable while drafts stay noindex', async () => {
   const draft = await liquid.parseAndRender(layout, ctx('unpublished'));
   assert.doesNotMatch(main, /noindex/);
   assert.match(draft, /name="robots" content="noindex, nofollow"/);
-  assert.match(main, /<title>Velani · Software, websites and custom apps for your business<\/title>/);
-  assert.match(main, /velani-home\.css/);
+  assert.match(main, /<title>Velani · Scheduling, time clock and payroll for small businesses<\/title>/);
+  assert.match(main, /velani-day\.css[^]*velani-day-home\.css/, 'Home is on the Day design with its own stylesheet');
+  assert.doesNotMatch(main, /velani-home\.css|velani-motion\.js/);
+  assert.match(main, /<meta name="color-scheme" content="light">/);
 });
 test('the NEVORA page loads its own assets and marks its nav item', async () => {
   const layout = renderShopifyLayout();

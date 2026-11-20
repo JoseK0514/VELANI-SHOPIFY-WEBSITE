@@ -15,7 +15,8 @@ The approved "Day" design (mockups and reviews in `docs/design/2026-11-18-premiu
 | Page | Day | Notes |
 | --- | --- | --- |
 | About (EN) | Done | Products-only facts; route description updated |
-| Home, NEVORA, Plans, Help, Contact, Sign in | Next | Contact keeps the live/preview inquiry safeguards from `src/render.mjs` |
+| Home (EN) | Done | Ported by `scripts/port-day-home.py` (one-time); trial start and fine print follow Jose's current wording; device screens are pictures (`role="img"`, inner screens hidden) |
+| NEVORA, Plans, Help, Contact, Sign in | Next | Contact keeps the live/preview inquiry safeguards from `src/render.mjs`; Help keeps existing-client support as one quiet line (recommended November 20) |
 | Rondo, Relay | New routes | Until then the header and footer link `/pages/nevora#rondo` and `#relay` |
 | Spanish pages | After English | Day chrome already has Spanish words; `localize()` moves links |
 | Legal and NEVORA policy pages | Last | Restyle only; wording is Jose's |
@@ -23,10 +24,17 @@ The approved "Day" design (mockups and reviews in `docs/design/2026-11-18-premiu
 ## Facts to carry into the next pages
 
 - The 30 free days run from workplace provisioning (creation in NEVORA), per `development` commit 5d2e545. The mockups say "the day your workplace is ready"; use the provisioning wording in the theme.
-- Custom work is removed (decision 2 in `SITE-STRUCTURE.md`). The Help page's client-hub door ("a website or app we built") and the client request service are Jose's backend work: confirm with Jose whether existing-client support stays on Help before removing it from the theme.
+- Custom work is removed (decision 2 in `SITE-STRUCTURE.md`). Existing-client support stays on Help as one quiet line using the client request service (decided November 20); no new custom work is offered.
 - Assigned UI findings still open (from `services/velani-ai/docs/CLAUDE-UI-START-HERE.md`): the Retry-After cap in `public/assets/velani-hub.js` and final success focus in the Shopify preview.
 
-## Verification (November 20)
+## Verification (November 20, Home)
+
+- `npm test`: 108/108. Night-home tests in `tests/spanish.test.mjs` now run only for homes still on Night (the Spanish home); `tests/day.test.mjs` covers the Day home.
+- `npm run check:theme`: 0 offenses (11 image-size offenses found and fixed).
+- `scripts/browser-check.mjs`: first run 89/99 (`evidence/day-home-20261120`, kept) because three checks were written for the Night home; they now check the same purpose on either design. Rerun 99/99 (`evidence/day-home-20261120-rerun`).
+- Day check on Home and About: 42/42 (`evidence/day-home-20261120-rerun/day-check.txt`), after fixing a missing night colour token (Rondo tile contrast) and device-screen semantics.
+
+## Verification (November 20, About)
 
 - `npm test`: 106/106, including `tests/day.test.mjs` (design switch, chrome, Spanish chrome, layout, About body).
 - `npm run check:theme`: 0 offenses.
