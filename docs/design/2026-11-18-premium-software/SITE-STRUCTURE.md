@@ -167,4 +167,9 @@ Preview inquiry delivery stays disabled; nothing sends until Jose turns it on.
 
 All six marketing mockups are built from one source (`build.py`) with a shared header, phone menu, footer and product-page frame, and link to each other: Home, NEVORA, Rondo, Relay, Plans, About. Every page passes axe WCAG 2.x A/AA with 0 violations, has no horizontal scroll at 320px and no script errors. The Relay screens keep the Puerto Rican menu items (Jose, November 20).
 
-Plans and About passed a second review (see `REVIEW-2026-11-20.md`): slider focus ring, real-calendar fallback, readable unlit headlines and a price per employee. Still to mock up: Help and Contact. Then the real theme build on an unpublished theme, then the Spanish pages.
+Plans and About passed a second review (see `REVIEW-2026-11-20.md`): slider focus ring, real-calendar fallback, readable unlit headlines and a price per employee. Help and Contact are mocked (November 20), so all eight marketing pages exist and link to each other:
+- **Help** (`velani-help.html`): "How can we help?" with a search field and topic chips over 13 answers (6 for team members, 7 for Owners), "Two different keys" (password signs you in, PIN clocks you in), deleting an account in four steps, and "Still need help?" with the email, hours, what to include and what never to email. The custom-work door from the old Support page is gone (decision 2).
+- **Contact** (`velani-contact.html`): one form with four topics: free trial (`nevora-demo`), more than 30 employees (`nevora`), Relay waitlist (`relay`), something else (`other`). `?interest=` picks the topic; the heading, next steps, fields and button follow it. The same checks as `src/inquiry.mjs`. The preview says it sends nothing, before and after the check.
+- Every "Request a free trial" button now goes to Contact with the trial topic; "Write to us for assisted setup" uses the 30+ topic; header Support goes to Help; Sign in goes to Help's sign-in answers.
+
+Next: the real theme build on an unpublished theme, then the Spanish pages.

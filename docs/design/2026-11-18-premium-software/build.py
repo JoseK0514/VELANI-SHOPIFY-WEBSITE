@@ -1,7 +1,7 @@
 """Assemble the self-contained mockups: python3 build.py <dir-with-b64-assets>
 
-Builds velani-premium-home.html (home.template.html) and velani-nevora.html
-(nevora.template.html). The NEVORA page reuses the home page's base, pricing,
+Builds the eight mockup pages listed at the bottom (home, NEVORA, Rondo, Relay,
+Plans, About, Help, Contact). The NEVORA page reuses the home page's base, pricing,
 Rondo, footer and Tweaks CSS, so both pages share one source of truth.
 """
 import re, sys, os
@@ -94,11 +94,17 @@ URLS = {
     '{{ABOUT_URL}}': os.environ.get('ABOUT_URL', 'https://claude.ai/artifact/DFCnZ1kth6cDnhLs6JPoQM'),
 }
 PLANS_PAGE = os.environ.get('PLANS_URL', 'https://claude.ai/artifact/LgRFVSXec9qWSE4ChxxwaS')
+HELP_PAGE = os.environ.get('HELP_URL', 'https://claude.ai/artifact/7x7gAkniSKSsADth9CqdqS')
+CONTACT_PAGE = os.environ.get('CONTACT_URL', 'https://claude.ai/artifact/2uz2knViEMQtyDyyyX1cRm')
+URLS.update({'{{HELP_URL}}': HELP_PAGE, '{{CONTACT_URL}}': CONTACT_PAGE,
+             '{{BIG_URL}}': CONTACT_PAGE + '?interest=nevora'})
+TRIAL = CONTACT_PAGE + '?interest=nevora-demo'
 CUR = ' aria-current="page"'
 def chrome(current, plans, trial, footer_extra=''):
     d = {'{{HEADER}}': HEADER, '{{FOOTER}}': FOOTER + footer_extra}
     d.update({'{{CUR_NEVORA}}': CUR if current == 'nevora' else '', '{{CUR_RONDO}}': CUR if current == 'rondo' else '',
               '{{CUR_RELAY}}': CUR if current == 'relay' else '', '{{CUR_PLANS}}': CUR if current == 'plans' else '',
+              '{{CUR_HELP}}': CUR if current in ('help', 'contact') else '',
               '{{PLANS_URL}}': plans, '{{TRIAL_URL}}': trial})
     d.update(URLS); return d
 def product(js, current, trial, plans=None):
@@ -107,12 +113,14 @@ def product(js, current, trial, plans=None):
     return d
 
 for src, out, extra in [
-    ('home.template.html', 'velani-premium-home.html', chrome('home', PLANS_PAGE, '#start')),
-    ('nevora.template.html', 'velani-nevora.html', dict(chrome('nevora', PLANS_PAGE, '#close'), **{'{{SHARED_CSS}}': SHARED_CSS, '{{NEVORA_JS}}': rd('nevora.js')})),
-    ('rondo.template.html', 'velani-rondo.html', product('rondo.js', 'rondo', '#close')),
-    ('relay.template.html', 'velani-relay.html', product('relay.js', 'relay', PLANS_PAGE)),
-    ('plans.template.html', 'velani-plans.html', product('plans.js', 'plans', '#close', '#top')),
-    ('about.template.html', 'velani-about.html', product('about.js', 'about', PLANS_PAGE)),
+    ('home.template.html', 'velani-premium-home.html', chrome('home', PLANS_PAGE, TRIAL)),
+    ('nevora.template.html', 'velani-nevora.html', dict(chrome('nevora', PLANS_PAGE, TRIAL), **{'{{SHARED_CSS}}': SHARED_CSS, '{{NEVORA_JS}}': rd('nevora.js')})),
+    ('rondo.template.html', 'velani-rondo.html', product('rondo.js', 'rondo', TRIAL)),
+    ('relay.template.html', 'velani-relay.html', product('relay.js', 'relay', TRIAL)),
+    ('plans.template.html', 'velani-plans.html', product('plans.js', 'plans', TRIAL, '#top')),
+    ('about.template.html', 'velani-about.html', product('about.js', 'about', TRIAL)),
+    ('help.template.html', 'velani-help.html', product('help.js', 'help', TRIAL)),
+    ('contact.template.html', 'velani-contact.html', product('contact.js', 'contact', TRIAL)),
 ]:
     html = render(rd(src), extra)
     open(os.path.join(HERE, out), 'w').write(html)
