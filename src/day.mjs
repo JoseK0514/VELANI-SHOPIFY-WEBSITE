@@ -1,10 +1,10 @@
-// "Day" design (approved 2026-11-20): header, phone menu, footer and page bodies for the pages that have moved from Night.
-// A route opts in with design: 'day' (src/content.mjs); every other route keeps the Night design until it moves.
+// "Day" design (approved 2026-11-20): header, phone menu, footer and page bodies. Every route names its Day body with
+// day: '<body>' in src/content.mjs; day: 'doc' is a legal page (Day chrome around Jose's document).
 import { readFileSync } from 'node:fs';
 import path from 'node:path';
 import { company } from './content.mjs';
 import { ES_PATHS } from './content.es.mjs';
-import { localize, langSwitch, WORDMARK, SHOPIFY_LANG_HREFS } from './night.mjs';
+import { localize, langSwitch, WORDMARK, SHOPIFY_LANG_HREFS } from './shared.mjs';
 
 const dir = path.join(import.meta.dirname, 'day');
 const root = path.join(import.meta.dirname, '..');
@@ -109,7 +109,7 @@ function sprite(html) {
   return `<svg class="spr" aria-hidden="true" focusable="false">${symbols}</svg>` + html.replace(/\{\{I:([\w-]+)\}\}/g, (_, n) => `<svg class="i" aria-hidden="true" focusable="false"><use href="#i-${n}"/></svg>`);
 }
 /** Theme images used by the screens and tiles, with their real sizes (width and height stop the page from shifting). */
-const IMAGES = { NV_INK: ['night-nevora-wm-ink.png', 907, 122], NV_WHITE: ['night-nevora-wm-white.png', 907, 122], ICON: ['day-nevora-icon.png', 120, 120] };
+const IMAGES = { NV_INK: ['nevora-wm-ink.png', 907, 122], NV_WHITE: ['nevora-wm-white.png', 907, 122], ICON: ['day-nevora-icon.png', 120, 120] };
 /** A page body: screens and icons filled in, images from theme assets, real routes kept, Spanish links moved by localize(). */
 /** A Spanish page is its English body with each phrase pair from src/day/es/<page>.json applied (English stays the one source).
  * Every pair must match, so a change to the English wording stops the build until the Spanish follows it. */

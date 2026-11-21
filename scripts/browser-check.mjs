@@ -55,12 +55,12 @@ for (const engine of engines) {
       const geometry = await page.evaluate(() => { const h = document.querySelector('h1'), style = getComputedStyle(h); return { width: innerWidth, client: document.documentElement.clientWidth, scroll: document.documentElement.scrollWidth, lines: h.getBoundingClientRect().height / parseFloat(style.lineHeight) }; });
       expect(geometry.scroll <= geometry.client + 1, 'Horizontal overflow');
       if (width === 969) expect(geometry.lines < 2.2, 'Approved desktop headline must keep its two lines');
-      if (width >= 969) expect(!await page.locator('#gmenu-btn, .gn .mb').first().isVisible(), 'Mobile menu appears on desktop');
+      if (width >= 969) expect(!await page.locator('.gn .mb').first().isVisible(), 'Mobile menu appears on desktop');
       const trial = page.locator('main').getByRole('link', { name: 'Request a free trial', exact: true }).first();
       expect(await trial.isVisible() && await trial.getAttribute('href') === '/pages/contact?interest=nevora-demo', 'Assisted trial request is unavailable');
-      // The assisted trial and the no-card boundary, in the Night or the Day wording
+      // The assisted trial and the no-card boundary
       const words = await page.locator('main').innerText();
-      expect(words.includes('Jose from Velani sets up your workplace with you. Free for 30 days, no card.') || (words.includes('Free for 30 days. No card.') && words.includes('A person sets you up.')), 'The assisted trial and no-card boundary is missing');
+      expect(words.includes('Free for 30 days. No card.') && words.includes('A person sets you up.'), 'The assisted trial and no-card boundary is missing');
       const covered = await page.evaluate(() => [...document.querySelectorAll('main a, main button')].filter(el => el.checkVisibility({ opacityProperty: true, visibilityProperty: true })).filter(el => { const b = el.getBoundingClientRect(); return b.width && b.top >= 0 && b.bottom <= innerHeight }).filter(el => { const b = el.getBoundingClientRect(); return !el.contains(document.elementFromPoint(b.left + b.width / 2, b.top + b.height / 2)) }).map(el => el.textContent.trim()));
       expect(covered.length === 0, 'Visible links covered by another layer: ' + covered.join(', '));
       return geometry;
@@ -89,21 +89,12 @@ for (const engine of engines) {
       await motionPage.goto(base, { waitUntil: 'networkidle' }); await motionPage.waitForTimeout(600);
       const covered = await motionPage.evaluate(() => [...document.querySelectorAll('main a, main button')].filter(el => el.checkVisibility({ opacityProperty: true, visibilityProperty: true })).filter(el => { const b = el.getBoundingClientRect(); return b.width && b.top >= 0 && b.bottom <= innerHeight }).filter(el => { const b = el.getBoundingClientRect(); return !el.contains(document.elementFromPoint(b.left + b.width / 2, b.top + b.height / 2)) }).map(el => el.textContent.trim()));
       expect(covered.length === 0, 'Visible links covered by another layer: ' + covered.join(', '));
-      // Hidden tab panels are not visible targets. Exercise the Rondo panel too,
-      // so excluding its initially hidden questions cannot conceal a blocked action.
-      if (await motionPage.locator('#day .tl').count()) {
-        // Day home: jump the day to Rondo's moment, then approve the prepared change in the Rondo section
-        await motionPage.getByRole('button', { name: /12:30\s*PM\s*Rondo/ }).click();
-        await motionPage.waitForFunction(() => document.getElementById('day').dataset.i === '2', null, { timeout: 5000 });
-        const approve = motionPage.locator('#ok');
-        await approve.scrollIntoViewIfNeeded(); await approve.click();
-        expect(await approve.getAttribute('aria-pressed') === 'true', 'The Rondo sample change could not be approved');
-      } else {
-        await motionPage.getByRole('tab', { name: 'Rondo', exact: true }).click();
-        const question = motionPage.getByRole('button', { name: 'Investigate coverage for tomorrow and compare my options.', exact: true });
-        await question.click();
-        expect(await question.getAttribute('aria-pressed') === 'true', 'The visible Rondo sample question could not be selected');
-      }
+      // Jump the day to Rondo's moment, then approve the prepared change in the Rondo section
+      await motionPage.getByRole('button', { name: /12:30\s*PM\s*Rondo/ }).click();
+      await motionPage.waitForFunction(() => document.getElementById('day').dataset.i === '2', null, { timeout: 5000 });
+      const approve = motionPage.locator('#ok');
+      await approve.scrollIntoViewIfNeeded(); await approve.click();
+      expect(await approve.getAttribute('aria-pressed') === 'true', 'The Rondo sample change could not be approved');
     });
   }
   await motion.close();

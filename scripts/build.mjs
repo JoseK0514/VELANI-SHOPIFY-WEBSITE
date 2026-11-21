@@ -3,7 +3,7 @@ import { createHash } from 'node:crypto';
 import path from 'node:path';
 import { routes, company } from '../src/content.mjs';
 import { renderPage, renderBody, renderShopifyLayout, renderShopifySnippets } from '../src/render.mjs';
-import { nightAssets } from '../src/night.mjs';
+import { sharedAssets } from '../src/shared.mjs';
 import { dayAssets } from '../src/day.mjs';
 export const root = path.resolve(import.meta.dirname, '..');
 export async function build() {
@@ -12,29 +12,20 @@ export async function build() {
   await mkdir(path.join(out, 'preview/assets'), { recursive: true });
   await mkdir(path.join(out, 'theme/assets'), { recursive: true });
   await mkdir(path.join(root, 'public/assets'), { recursive: true });
-  for (const weight of [400, 500, 600]) await copyFile(path.join(root, 'node_modules/@fontsource/dm-sans/files/dm-sans-latin-' + weight + '-normal.woff2'), path.join(root, 'public/assets/dm-sans-latin-' + weight + '-normal.woff2'));
-  for (const name of ['check', 'arrow-right']) await copyFile(path.join(root, 'node_modules/@phosphor-icons/core/assets/regular/' + name + '.svg'), path.join(root, 'public/assets/' + name + '.svg'));
   for (const name of ['favicon.svg', 'favicon-32.png', 'apple-touch-icon.png', 'rondo-lantern.svg', 'rondo-lantern-16.svg', 'rondo-lantern-site.svg', 'rondo-lantern-app.svg']) await copyFile(path.join(root, 'src/brand', name), path.join(root, 'public/assets', name));
   for (const name of ['inquiry', 'privacy', 'client-hub']) {
     try { await copyFile(path.join(root, 'src/' + name + '.mjs'), path.join(root, 'public/assets/' + name + '.js')); }
     catch (error) { if (error.code !== 'ENOENT') throw error; }
   }
-  const { css, js } = nightAssets;
-  await writeFile(path.join(root, 'public/assets/velani.css'), css.base + '\n' + css.pages + '\n' + css.kiosk + '\n' + css.assist + '\n' + css.polish);
-  await writeFile(path.join(root, 'public/assets/velani-home.css'), css.home);
-  await writeFile(path.join(root, 'public/assets/velani-nevora.css'), css.home + '\n' + css.nevora); // the NEVORA page shares Home's sections and live piece
-  await writeFile(path.join(root, 'public/assets/velani-motion.js'), js.motion);
-  // Day pages: one stylesheet and one script. The assistant keeps its Night look there, so its tokens are scoped to its root.
-  const nightTokens = css.base.match(/:root\{([^}]*)\}/)[1];
-  await writeFile(path.join(root, 'public/assets/velani-day.css'), dayAssets.css + '\n.ast-root{' + nightTokens + '}\n' + css.assist);
+  // One stylesheet and one script for every page, plus each page's own (src/day/). The assistant's look travels with it.
+  await writeFile(path.join(root, 'public/assets/velani-day.css'), dayAssets.css + '\n' + sharedAssets.assistCss);
   await writeFile(path.join(root, 'public/assets/velani-day.js'), dayAssets.js);
   for (const [name, page] of Object.entries(dayAssets.pages)) { await writeFile(path.join(root, 'public/assets/velani-day-' + name + '.css'), page.css); if (page.js) await writeFile(path.join(root, 'public/assets/velani-day-' + name + '.js'), page.js); }
   await copyFile(path.join(root, 'src/day/day-nevora-icon.png'), path.join(root, 'public/assets/day-nevora-icon.png'));
   await copyFile(path.join(root, 'src/day/day-grain.png'), path.join(root, 'public/assets/day-grain.png'));
-  await writeFile(path.join(root, 'public/assets/velani-nevora.js'), js.nevora);
-  await writeFile(path.join(root, 'public/assets/velani-assist.js'), js.assist);
-  await writeFile(path.join(root, 'public/assets/velani-assistant.js'), js.assistClient);
-  await writeFile(path.join(root, 'public/assets/velani-commerce.js'), js.commerce);
+  await writeFile(path.join(root, 'public/assets/velani-assist.js'), sharedAssets.assist);
+  await writeFile(path.join(root, 'public/assets/velani-assistant.js'), sharedAssets.assistClient);
+  await writeFile(path.join(root, 'public/assets/velani-commerce.js'), sharedAssets.commerce);
   await cp(path.join(root, 'public/assets'), path.join(out, 'preview/assets'), { recursive: true });
   await cp(path.join(root, 'public/assets'), path.join(out, 'theme/assets'), { recursive: true });
   // Module imports between theme assets carry a content fingerprint, so Shopify's CDN and browsers never serve a stale copy
@@ -76,7 +67,7 @@ export async function build() {
   await writeFile(path.join(out, 'theme/locales/en.default.json'), JSON.stringify({ general: { accessibility: { skip_to_content: 'Skip to content' } } }, null, 2) + '\n');
   await writeFile(path.join(out, 'routes.json'), JSON.stringify(manifest, null, 2) + '\n');
   await mkdir(path.join(root, 'docs/licenses'), { recursive: true });
-  for (const [source, dest] of [['@fontsource/dm-sans/LICENSE', 'dm-sans.txt'], ['@phosphor-icons/core/LICENSE', 'phosphor.txt']]) await copyFile(path.join(root, 'node_modules', source), path.join(root, 'docs/licenses', dest));
+  for (const [source, dest] of [['@phosphor-icons/core/LICENSE', 'phosphor.txt']]) await copyFile(path.join(root, 'node_modules', source), path.join(root, 'docs/licenses', dest));
   return { routes: Object.keys(manifest).length, preview: path.join(out, 'preview'), theme: path.join(out, 'theme') };
 }
 if (process.argv[1] === import.meta.filename) console.log(JSON.stringify(await build()));

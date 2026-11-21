@@ -17,7 +17,7 @@
     /* the message is required only for a general question; its label says so (Jose's words) */
     var ml=form.querySelector('label[for="inquiry-message"]');
     if(ml&&k!==last)ml.innerHTML=k==='other'?MSG[0]:MSG[1]+' <span class="opt">'+MSG[2]+'</span>';
-    /* team size and locations belong to the NEVORA topics (velani.js does the same on a change; on load Night used CSS for it) */
+    /* team size and locations belong to the NEVORA topics (velani.js does the same on a change; this covers the first load) */
     var row=form.querySelector('[data-nevora-fields]');if(row)row.hidden=!/^nevora/.test(interest.value||'');
     last=k;
   }

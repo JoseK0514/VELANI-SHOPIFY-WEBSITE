@@ -6,18 +6,14 @@ import { dayHeader, dayFooter } from '../src/day.mjs';
 
 const dayRoutes = Object.entries(routes).filter(([, page]) => page.day).map(([path]) => path);
 
-test('pages opt into the Day design one at a time; every other page keeps Night', () => {
-  assert.ok(dayRoutes.includes('/pages/about'));
+test('every page is on the Day design (Night removed November 21)', () => {
   for (const [path, page] of Object.entries(routes)) {
+    assert.ok(page.day, path + ' names its Day body');
     const html = renderPage(path).html;
-    if (page.day) {
-      assert.match(html, /velani-day\.css/, path);
-      assert.match(html, /<header class="gn" id="gn">/, path);
-      assert.doesNotMatch(html, /velani-motion\.js|class="gnav" id="gnav"|dm-sans-latin/, path);
-      assert.match(html, /<meta name="color-scheme" content="light">/, path);
-    } else {
-      assert.doesNotMatch(html, /velani-day\.(css|js)|<header class="gn"/, path);
-    }
+    assert.match(html, /velani-day\.css/, path);
+    assert.match(html, /<header class="gn" id="gn">/, path);
+    assert.doesNotMatch(html, /velani\.css|velani-motion\.js|class="gnav" id="gnav"|dm-sans-latin|night-/, path);
+    assert.match(html, /<meta name="color-scheme" content="light">/, path);
   }
 });
 
@@ -57,15 +53,15 @@ test('Spanish Day chrome: Spanish words, Spanish pages where they exist, English
   assert.match(footer, />Opciones de cookies</);
 });
 
-test('the Shopify layout picks the Day snippets, head and colours per page', () => {
+test('the Shopify layout renders every page with the Day snippets, head and colours (Night removed November 21)', () => {
   const layout = renderShopifyLayout();
-  assert.match(layout, /\{% assign velani_design = 'night' %\}/, 'Night is the default');
-  assert.match(layout, /\{% when 'about' %\}[^]*?\{% assign velani_design = 'day' %\}[^]*?\{% when /);
-  assert.match(layout, /\{% if velani_design == 'day' %\}\{% if velani_lang == 'es' %\}\{% render 'velani-day-header-es'/);
-  assert.match(layout, /\{% if velani_design == 'day' %\}<link rel="stylesheet" href="\{\{ 'velani-day\.css' \| asset_url \}\}">/);
-  assert.match(layout, /\{% if velani_design == 'day' %\}<meta name="color-scheme" content="light">/);
+  assert.doesNotMatch(layout, /velani_design|velani\.css|velani-motion|dm-sans|color-scheme" content="dark"|render 'velani-(header|footer)-/, 'no Night branch is left');
+  assert.match(layout, /\{% if velani_lang == 'es' %\}\{% render 'velani-day-header-es'/);
+  assert.match(layout, /<link rel="stylesheet" href="\{\{ 'velani-day\.css' \| asset_url \}\}">/);
+  assert.match(layout, /<meta name="color-scheme" content="light"><meta name="theme-color" content="#FBFBFD">/);
+  assert.match(layout, /\{% when 'nevora' %\}[^]*?\{% capture velani_head %\}[^]*?velani-day-nevora\.css[^]*?\{% when /, 'each page captures its own Day assets');
   const snippets = renderShopifySnippets();
-  for (const name of ['velani-day-header-en', 'velani-day-header-es', 'velani-day-footer-en', 'velani-day-footer-es']) assert.ok(snippets[name], name);
+  assert.deepEqual(Object.keys(snippets).sort(), ['velani-day-footer-en', 'velani-day-footer-es', 'velani-day-header-en', 'velani-day-header-es']);
   assert.match(snippets['velani-day-header-en'], /\{% if velani_nav == 'plans' %\} aria-current="page"\{% endif %\}/);
   assert.match(snippets['velani-day-footer-en'], /<dialog class="cookie-dialog" id="cookie-dialog"/, 'the cookie dialog travels with the Day footer');
 });
@@ -106,7 +102,7 @@ test('Home device screens are pictures: named once, hidden from screen readers i
   assert.match(html, /<div class="stage" aria-hidden="true">/);
   assert.equal((html.match(/<svg class="spr" aria-hidden="true"/g) || []).length, 1);
   for (const [, id] of html.matchAll(/<use href="#(i-[\w-]+)"/g)) assert.ok(html.includes('<symbol id="' + id + '"'), id);
-  assert.match(html, /src="\{\{ 'night-nevora-wm-ink\.png' \| asset_url \}\}"/);
+  assert.match(html, /src="\{\{ 'nevora-wm-ink\.png' \| asset_url \}\}"/);
   assert.match(html, /src="\{\{ 'day-nevora-icon\.png' \| asset_url \}\}"/);
   assert.doesNotMatch(html, /data:image/);
 });
@@ -258,7 +254,7 @@ test('the trial and billing pages are on Day and keep every hook velani-commerce
     const html = renderPage(path).html;
     assert.match(html, /<header class="gn"/, path + ' Day header');
     assert.match(html, /velani-day-account\.css/, path + ' its stylesheet');
-    assert.doesNotMatch(html, /class="hpanel|night-ai-light|night-r1-ph/, path + ' no Night panels or photos');
+    assert.doesNotMatch(html, /class="hpanel|night-/, path + ' no Night panels or photos');
     assert.equal((html.match(/<h1[ >]/g) || []).length, 1, path + ' one heading');
     if (step === 'start') assert.match(html, /location\.replace\(/, path + ' still sends visitors to the trial request while signup is closed');
     if (step === 'verify') { assert.match(html, /data-verify-retired/, path); assert.match(html, /id="velani-commerce"/, path); }

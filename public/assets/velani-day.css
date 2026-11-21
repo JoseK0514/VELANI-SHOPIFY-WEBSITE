@@ -222,10 +222,11 @@ html.mm-open{overflow:hidden}
 @media (forced-colors:active){.pillbtn,.gn .cta,.cookie-actions .pill{border:1px solid ButtonText}}
 @media print{.gn,.mm,.atmo,.ft .legal button{display:none}}
 
+/* The assistant keeps its own look on every page; its colour tokens are scoped to its root. */
 .ast-root{
  --bg:#05090e;--panel:#0d1620;--panel-2:#101c29;--line:rgba(255,255,255,.08);--line-2:rgba(255,255,255,.15);
  --text:#f4f6f9;--text-2:#a3b1c1;--text-3:#7a8a9c;--accent:#bbd8ff;--label:#c9d6ea;
- --font:"DM Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+ --font:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
  --wrap:1240px;--pad:clamp(20px,4.4vw,48px);--r:4px;--r2:12px;
  --s1:clamp(48px,5vw,72px);--s2:clamp(72px,8vw,120px);--s3:clamp(88px,10vw,136px);
  --out:cubic-bezier(.16,1,.3,1);--io:cubic-bezier(.65,0,.35,1);
@@ -314,5 +315,5 @@ a.ast-link{display:inline-flex;align-items:center}
 .ast-launch{transition:opacity .25s var(--out),transform .3s var(--out),visibility 0s,background-color .3s}
 .ast-tucked .ast-launch{opacity:0;transform:translateY(16px);visibility:hidden;pointer-events:none;transition:opacity .2s,transform .2s,visibility 0s .2s}
 /* …and is gone while a full-screen menu is open (motion.js and nevora.js also make it inert) */
-body:has(#gmenu-btn[aria-expanded=true]) .ast-launch,body:has(#lnav-tog[aria-expanded=true]) .ast-launch{display:none}
+body:has(.gn .mb[aria-expanded=true]) .ast-launch{display:none}
 @media(prefers-reduced-motion:reduce){.ast-wait i{animation:none;opacity:.6}.js .ast{transition:none}}

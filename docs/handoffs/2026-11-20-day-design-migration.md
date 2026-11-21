@@ -4,11 +4,12 @@ The approved "Day" design (mockups and reviews in `docs/design/2026-11-18-premiu
 
 ## How it works
 
-- A route opts in with `day: '<body>'` in `src/content.mjs`. Every other route keeps the Night design, so the site is whole at every step.
+- Every route names its Day body with `day: '<body>'` in `src/content.mjs` (`doc` for legal pages, `account` for the trial and billing pages). The Night design was removed on November 21 (below); the last commit with it is `d58806f`, and the recovery tags under `archive/velani-20261112/` keep the older history.
 - `src/day.mjs` renders the Day header, phone menu and footer (English and Spanish) and the page bodies in `src/day/*.body.html`.
-- `src/day/day.css` and `src/day/day.js` build into `velani-day.css` and `velani-day.js`. Day pages load only these plus `velani.js` (forms and cookie choices); no Night CSS, no `velani-motion.js`, no web font (system fonts).
-- Theme: the layout's per-page case branch sets `velani_design = 'day'`; the head, colours and the `velani-day-header-*` / `velani-day-footer-*` snippets follow it. The cookie dialog travels with the Day footer.
-- The assistant keeps its Night look on Day pages (its tokens are scoped to `.ast-root` in `velani-day.css`) until it gets its own Day styling.
+- `src/day/day.css` and `src/day/day.js` build into `velani-day.css` and `velani-day.js`. Pages load only these, their own page files and `velani.js` (forms and cookie choices); no web font (system fonts).
+- `src/shared.mjs` holds what every page shares: icons, Spanish links, the language switch, the wordmark, the assistant markup and the NEVORA policy pages. `src/shared/` holds the billing script (`velani-commerce.js`) and the assistant (`assist.*`, `velani-assistant.js`).
+- Theme: one layout for every page, with the `velani-day-header-*` / `velani-day-footer-*` snippets; each page's case branch captures its own Day assets in `velani_head`. The cookie dialog travels with the footer.
+- The assistant keeps its earlier dark look (its tokens are scoped to `.ast-root` in `velani-day.css`) until it gets its own Day styling. Its greeting still offers "the websites and apps we build"; that wording, and what the assistant service answers about custom work, is for Jose.
 
 ## Status
 
@@ -40,6 +41,24 @@ Every route is now on Day.
 - For Jose (found while porting Plans): `velani-commerce.js` picks the quote link with `#price a[href*="interest=nevora"]`, which also matches `interest=nevora-demo`. The Night Plans page put the trial link first in `#price`, so an Owner over 30 coming from NEVORA could get the trial link instead of assisted setup. The Day page keeps only the quote and billing links in `#price`, and the fixture's `over-30` handoff now shows Contact Velani → `?interest=nevora`. Matching `interest=nevora"` or `[href$="interest=nevora"]` in the script would remove the trap for any future layout.
 - For Jose: the Rondo page keeps the approved wording "included in every NEVORA plan, and in the free 30-day trial". The website privacy notice says the Owner assistant in NEVORA depends on workplace availability and authorization; confirm the page wording matches what Owners get.
 - Assigned UI findings still open (from `services/velani-ai/docs/CLAUDE-UI-START-HERE.md`): the Retry-After cap in `public/assets/velani-hub.js` and final success focus in the Shopify preview.
+
+## Night design removed (November 21)
+
+- Deleted: `src/night.mjs` and `src/night/` (Night header, footer, Home, NEVORA and Products bodies, the time clock, motion, styles), the Night page renderers in `src/render.mjs` (custom work, Night contact, sign in, plans, support, about, panels and closings, screenshots and their `srcset`), the Night layout branch (design switch, dark colours, DM Sans preload, `velani.css`, `velani-motion.js`) and the `velani-header-*` / `velani-footer-*` snippets.
+- Deleted assets: `velani.css`, `velani-home.css`, `velani-nevora.css`, `velani-nevora.js`, `velani-motion.js`, the DM Sans fonts and `@fontsource/dm-sans` (and its license copy), `check.svg`, `arrow-right.svg`, 38 `night-*.webp` screenshots and photos, and `velani-social-custom.png` (the custom-development share image).
+- Deleted content: the Night-only Spanish tables (chrome, work, about, support, plans), the custom-work `services` list, the old Help FAQ entries, and unused keys in the contact and client-request tables.
+- Moved, unchanged (checked byte for byte against the old output): the billing script, the assistant and its client, the policy page renderer, icons, Spanish links, the language switch and the wordmark. The backend test that imports the assistant client now points at `src/shared/velani-assistant.js` (the path resolves and exports `VelaniAssistant`; the test itself needs the backend's vitest install, which this container does not have, so it was not run).
+- Renamed: `night-nevora-wm-ink.png` / `night-nevora-wm-white.png` to `nevora-wm-ink.png` / `nevora-wm-white.png`.
+- Fixed while there: the assistant hid its launcher when the old Night menu opened; it now hides under the Day phone menu. Two Spanish share-image descriptions still spoke of custom work (Products and Contact).
+- Kept on purpose: the theme name "Velani Midnight" (Jose's), the share images (`velani-social*.png`, made in the Night look by `scripts/og/make-share-images.mjs`, which reads the live store, not this repository; new Day share images would be a separate design task), and the dated hosted checks in `scripts/checks/`.
+- Publish-time: the next theme push no longer carries the Night assets above; nothing published references them once this theme is the live one.
+
+## Verification (November 21, Night removed)
+
+- Render comparison (`evidence/day-night-removed-20261121/flows/render-identity.json`): all 88 page and section outputs identical to commit `d58806f`; only the four Night snippets are gone. After that, two deliberate changes: the wordmark rename and the two share descriptions.
+- `npm test`: 117/117. Six tests that only covered Night pages are gone (each filtered itself to Night pages and checked nothing once every page moved); the design-switch and layout tests now check that every page is Day and that no Night branch is left.
+- `npm run check:theme`: 0 offenses; no Night file is referenced anywhere in the built theme or preview. `scripts/browser-check.mjs`: 101/101 (`evidence/day-night-removed-20261121`), with its dead Night branches removed.
+- Day check on all 41 pages that render (the two trial pages redirect while signup is closed): 861/861. Flows: Spanish 56/56, Rondo/Relay 12/12, NEVORA demos 12/12, Help 12/12, Contact 17/17, trial and billing with signup closed 10/10, LOCAL commerce fixture 13/13. Assistant launcher under the Day phone menu: hidden while open, back after (checked with the assistant root revealed by hand, since no assistant service runs locally).
 
 ## Verification (November 21, Spanish Rondo and Relay; Spanish screens)
 

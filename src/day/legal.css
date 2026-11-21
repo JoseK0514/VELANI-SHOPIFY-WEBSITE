@@ -1,5 +1,5 @@
-/* Legal and NEVORA policy pages on the Day design. The markup is Jose's (legalDoc, legalIndex, policyMain in src/render.mjs and
-   src/night.mjs); only its look changes: a quiet page with a sticky contents list, readable measure and plain links. */
+/* Legal and NEVORA policy pages on the Day design. The markup is Jose's (legalDoc, legalIndex in src/render.mjs and policyMain in
+   src/shared.mjs); only its look changes: a quiet page with a sticky contents list, readable measure and plain links. */
 main{background:var(--bg)}
 .phero{padding-top:clamp(56px,8vw,112px);padding-bottom:clamp(32px,4vw,56px);border-bottom:1px solid var(--line)}
 .phero .t1{font-size:clamp(40px,5.6vw,72px);line-height:1;letter-spacing:-.05em;max-width:18ch;overflow-wrap:anywhere}

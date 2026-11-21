@@ -69,7 +69,7 @@ html.dt-trial .tp-trial,html.dt-big .tp-big,html.dt-relay .tp-relay,html.dt-othe
 .client-write h2{font-size:28px;letter-spacing:-.035em}
 .client-write p{margin-top:10px;color:var(--ink-2)}
 .client-write .acts{margin-top:18px}
-/* the word variants velani.js chooses from (general, quote, trial, Relay), as on the Night page */
+/* the word variants velani.js chooses from (general, quote, trial, Relay) */
 .ask-nevora .v-d,html:not(.ask-nevora) .v-n,html:not(.ask-demo) .v-m,.ask-demo .v-n:not(.v-nm){display:none}
 html:not(.ask-relay) .v-r{display:none}
 
