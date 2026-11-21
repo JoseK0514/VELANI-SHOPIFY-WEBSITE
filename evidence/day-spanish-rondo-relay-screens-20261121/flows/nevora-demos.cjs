@@ -1,0 +1,32 @@
+// NEVORA (Day) demos on the real local preview: publish, PIN clock-in, Rondo questions, timecards, highlights, section bar.
+const { chromium } = require('playwright');
+const B = 'http://127.0.0.1:4180/pages/nevora';
+const res = []; const ok = (n, c, x = '') => res.push((c ? 'PASS ' : 'FAIL ') + n + (x ? '  [' + String(x).slice(0, 200) + ']' : ''));
+(async () => {
+  const b = await chromium.launch({ executablePath: '/opt/pw-browsers/chromium-1243/chrome-linux64/chrome' });
+  const c = await b.newContext({ viewport: { width: 1440, height: 900 } }); const p = await c.newPage();
+  const errs = []; p.on('pageerror', e => errs.push(e.message)); p.on('console', m => { if (/Content Security Policy|Refused/.test(m.text())) errs.push(m.text()); });
+  await p.goto(B); await p.waitForTimeout(600);
+  await p.locator('#pub').scrollIntoViewIfNeeded(); await p.click('#pub'); await p.waitForTimeout(900);
+  ok('publish: chip says Published', /Published/.test(await p.textContent('#sd-chip')), await p.textContent('#sd-chip'));
+  ok('publish: status announced', (await p.textContent('#sd-status')).trim().length > 0, await p.textContent('#sd-status'));
+  const kio = p.locator('.ckx-dev .kv-pin'); await kio.scrollIntoViewIfNeeded();
+  for (const k of ['1', '2', '3', '4']) await kio.locator('.keys [data-k="' + k + '"]').click();
+  ok('PIN: Continue enabled after 4 digits', !(await kio.locator('.cont').isDisabled()));
+  await kio.locator('.cont').click(); await p.waitForTimeout(700);
+  ok('PIN: clock-in recorded', await p.locator('.ckx-dev .kd-t').isVisible());
+  await p.locator('[data-q="1"]').scrollIntoViewIfNeeded(); await p.click('[data-q="1"]'); await p.waitForTimeout(900);
+  ok('Rondo: question selected', (await p.getAttribute('[data-q="1"]', 'aria-pressed')) === 'true');
+  ok('Rondo: answer shown', (await p.textContent('#ans')).length > 20, (await p.textContent('#ans')).trim().slice(0, 90));
+  await p.click('[data-l="es"]'); await p.waitForTimeout(400);
+  ok('Rondo: Spanish switch pressed', (await p.getAttribute('[data-l="es"]', 'aria-pressed')) === 'true');
+  await p.locator('#tc-ok').scrollIntoViewIfNeeded(); await p.click('#tc-ok'); await p.waitForTimeout(900);
+  ok('Timecards: week approved', (await p.textContent('#tc-st')).trim().length > 0, await p.textContent('#tc-st'));
+  await p.locator('#hl-next').scrollIntoViewIfNeeded(); const x0 = await p.$eval('#hl-track', e => e.scrollLeft); await p.click('#hl-next'); await p.waitForTimeout(700);
+  ok('Highlights: next moves the carousel', (await p.$eval('#hl-track', e => e.scrollLeft)) > x0);
+  await p.evaluate(() => document.getElementById('payroll').scrollIntoView()); await p.waitForTimeout(500);
+  ok('Section bar marks Payroll', /Payroll/.test(await p.$eval('.ln nav a.on', a => a.textContent).catch(() => '')));
+  ok('Section bar is dark over the night chapter', await p.$eval('#ln', e => e.classList.contains('dark')));
+  ok('no script errors or CSP reports', errs.length === 0, errs.join(' | '));
+  console.log(res.join('\n')); await b.close();
+})();

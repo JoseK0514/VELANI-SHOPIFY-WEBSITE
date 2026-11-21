@@ -1,0 +1,2 @@
+PASS / greeting: I’m Velani’s AI adviser on this website. Ask me about NEVORA, Rondo, Relay or the free trial. | suggestions: How does the time clock work? / How does the free trial work? / What can Rondo do for an Owner?
+PASS /pages/es greeting: Soy el asesor de IA de Velani en este sitio web. Pregúntame sobre NEVORA, Rondo, Relay o la prueba gratis. | suggestions: ¿Cómo funciona el registro de tiempo? / ¿Cómo funciona la prueba gratis? / ¿Qué puede hacer Rondo por el dueño?

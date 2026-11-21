@@ -1,0 +1,12 @@
+PASS 13 answers  [13 answers]
+PASS search finds and opens one answer  [1 answer for “forgot pin”]
+PASS chip filters to the trial answers  [3 answers in Trial and plans]
+PASS chip toggles off
+PASS PIN fills and clocks in
+PASS client door closed by default
+PASS a #client link opens the client door
+PASS client form enabled by its script
+PASS empty client request: errors shown, nothing sent  [3 fields need attention: Name, Email, What do you need?]
+PASS client form says it is a preview  [Preview. This form checks your draft and sends nothing.]
+PASS no network sends
+PASS no script errors or CSP reports

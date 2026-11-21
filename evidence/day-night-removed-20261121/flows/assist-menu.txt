@@ -1,0 +1,2 @@
+PASS launcher visible, hidden while the menu is open, back after  [true,false,true,rgb(244, 246, 249)]
+PASS no script errors  []

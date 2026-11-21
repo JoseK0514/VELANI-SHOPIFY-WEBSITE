@@ -1,0 +1,12 @@
+PASS Rondo: header marks Rondo
+PASS Rondo: the header trial steps aside for the section bar
+PASS Rondo: question picker present  [5]
+PASS Rondo: a question gets an answer with its source  [ 12:30 PMAskAsk about today, in plain words.Your team, coverage and recorded hours. Rondo shows where each answer came from. Pick a question. What needs my atte]
+PASS Rondo: Approve plays the approval  [ 4:00 PMApprovalsYou approve every change.Rondo prepares the change and shows exactly what will be different. Press Approve and NEVORA checks it again before it]
+PASS Rondo: section bar marks Owner only and turns dark
+PASS Rondo: phone screen scaled to fit
+PASS Relay: header marks Relay
+PASS Relay: no form in the page body
+PASS Relay: Join the waitlist opens Contact on the Relay topic
+PASS no network sends
+PASS no script errors or CSP reports

@@ -1,0 +1,126 @@
+PASS / 200  [200]
+PASS / no script errors
+PASS / no CSP violations
+PASS / no external requests
+PASS / header links
+PASS / one h1
+PASS / skip link first
+PASS / Tab reaches skip link
+PASS / skip moves focus to main
+PASS / cookie button enabled
+PASS / cookie dialog opens
+PASS / axe WCAG
+PASS / axe best-practice
+PASS / menu opens, focus on close
+PASS / page behind is inert
+PASS / focus stays in menu
+PASS / Escape closes, focus back on button
+PASS / no sideways scroll at 320  [320]
+PASS / no sideways scroll at 768  [768]
+PASS / no-JS: header links shown as a row, menu button hidden
+PASS / no-JS: content visible
+PASS /pages/nevora 200  [200]
+PASS /pages/nevora no script errors
+PASS /pages/nevora no CSP violations
+PASS /pages/nevora no external requests
+PASS /pages/nevora header links  [NEVORA]
+PASS /pages/nevora one h1
+PASS /pages/nevora skip link first
+PASS /pages/nevora Tab reaches skip link
+PASS /pages/nevora skip moves focus to main
+PASS /pages/nevora cookie button enabled
+PASS /pages/nevora cookie dialog opens
+PASS /pages/nevora axe WCAG
+PASS /pages/nevora axe best-practice
+PASS /pages/nevora menu opens, focus on close
+PASS /pages/nevora page behind is inert
+PASS /pages/nevora focus stays in menu
+PASS /pages/nevora Escape closes, focus back on button
+PASS /pages/nevora no sideways scroll at 320  [320]
+PASS /pages/nevora no sideways scroll at 768  [768]
+PASS /pages/nevora no-JS: header links shown as a row, menu button hidden
+PASS /pages/nevora no-JS: content visible
+PASS /pages/rondo 200  [200]
+PASS /pages/rondo no script errors
+PASS /pages/rondo no CSP violations
+PASS /pages/rondo no external requests
+PASS /pages/rondo header links  [Rondo]
+PASS /pages/rondo one h1
+PASS /pages/rondo skip link first
+PASS /pages/rondo Tab reaches skip link
+PASS /pages/rondo skip moves focus to main
+PASS /pages/rondo cookie button enabled
+PASS /pages/rondo cookie dialog opens
+PASS /pages/rondo axe WCAG
+PASS /pages/rondo axe best-practice
+PASS /pages/rondo menu opens, focus on close
+PASS /pages/rondo page behind is inert
+PASS /pages/rondo focus stays in menu
+PASS /pages/rondo Escape closes, focus back on button
+PASS /pages/rondo no sideways scroll at 320  [320]
+PASS /pages/rondo no sideways scroll at 768  [768]
+PASS /pages/rondo no-JS: header links shown as a row, menu button hidden
+PASS /pages/rondo no-JS: content visible
+PASS /pages/es 200  [200]
+PASS /pages/es no script errors
+PASS /pages/es no CSP violations
+PASS /pages/es no external requests
+PASS /pages/es header links
+PASS /pages/es one h1
+PASS /pages/es skip link first
+PASS /pages/es Tab reaches skip link
+PASS /pages/es skip moves focus to main
+PASS /pages/es cookie button enabled
+PASS /pages/es cookie dialog opens
+PASS /pages/es axe WCAG
+PASS /pages/es axe best-practice
+PASS /pages/es menu opens, focus on close
+PASS /pages/es page behind is inert
+PASS /pages/es focus stays in menu
+PASS /pages/es Escape closes, focus back on button
+PASS /pages/es no sideways scroll at 320  [320]
+PASS /pages/es no sideways scroll at 768  [768]
+PASS /pages/es no-JS: header links shown as a row, menu button hidden
+PASS /pages/es no-JS: content visible
+PASS /pages/es-nevora 200  [200]
+PASS /pages/es-nevora no script errors
+PASS /pages/es-nevora no CSP violations
+PASS /pages/es-nevora no external requests
+PASS /pages/es-nevora header links  [NEVORA]
+PASS /pages/es-nevora one h1
+PASS /pages/es-nevora skip link first
+PASS /pages/es-nevora Tab reaches skip link
+PASS /pages/es-nevora skip moves focus to main
+PASS /pages/es-nevora cookie button enabled
+PASS /pages/es-nevora cookie dialog opens
+PASS /pages/es-nevora axe WCAG
+PASS /pages/es-nevora axe best-practice
+PASS /pages/es-nevora menu opens, focus on close
+PASS /pages/es-nevora page behind is inert
+PASS /pages/es-nevora focus stays in menu
+PASS /pages/es-nevora Escape closes, focus back on button
+PASS /pages/es-nevora no sideways scroll at 320  [320]
+PASS /pages/es-nevora no sideways scroll at 768  [768]
+PASS /pages/es-nevora no-JS: header links shown as a row, menu button hidden
+PASS /pages/es-nevora no-JS: content visible
+PASS /pages/es-rondo 200  [200]
+PASS /pages/es-rondo no script errors
+PASS /pages/es-rondo no CSP violations
+PASS /pages/es-rondo no external requests
+PASS /pages/es-rondo header links  [Rondo]
+PASS /pages/es-rondo one h1
+PASS /pages/es-rondo skip link first
+PASS /pages/es-rondo Tab reaches skip link
+PASS /pages/es-rondo skip moves focus to main
+PASS /pages/es-rondo cookie button enabled
+PASS /pages/es-rondo cookie dialog opens
+PASS /pages/es-rondo axe WCAG
+PASS /pages/es-rondo axe best-practice
+PASS /pages/es-rondo menu opens, focus on close
+PASS /pages/es-rondo page behind is inert
+PASS /pages/es-rondo focus stays in menu
+PASS /pages/es-rondo Escape closes, focus back on button
+PASS /pages/es-rondo no sideways scroll at 320  [320]
+PASS /pages/es-rondo no sideways scroll at 768  [768]
+PASS /pages/es-rondo no-JS: header links shown as a row, menu button hidden
+PASS /pages/es-rondo no-JS: content visible

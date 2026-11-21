@@ -1,0 +1,10 @@
+PASS /pages/nevora-start sends visitors to the trial request  [http://127.0.0.1:4180/pages/contact?interest=nevora-demo]
+PASS /pages/es-prueba sends visitors to the trial request  [http://127.0.0.1:4180/pages/es-contacto?interest=nevora-demo]
+PASS /pages/nevora-billing shows billing support while billing is closed  [Plan and billing.The business Owner opens billing from NEVORA, in Settings.Online billing isn’t open yet. If NEVORA already runs your workplace, write to us about your plan or a charge. We reply within two business days.]
+PASS /pages/nevora-billing card stays hidden
+PASS /pages/es-facturacion shows billing support while billing is closed  [Plan y facturación.El dueño del negocio abre la facturación desde NEVORA, en Configuración.La facturación en línea todavía no está abierta. Si NEVORA ya funciona en tu lugar de trabajo, escríbenos sobre tu plan o un cobr]
+PASS /pages/es-facturacion card stays hidden
+PASS verify scrubs an old #token= link  [http://127.0.0.1:4180/pages/nevora-verify]
+PASS verify offers the trial request
+PASS only the local site and fixture were contacted
+PASS no script errors or CSP reports

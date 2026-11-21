@@ -1,0 +1,350 @@
+[
+[
+">Open to close.<",
+">De abrir a cerrar.<"
+],
+[
+"NEVORA plans the week, records every hour and calculates the pay. Rondo tells you what needs you today.",
+"NEVORA planifica la semana, registra cada hora y calcula la paga. Rondo te dice qué necesita de ti hoy."
+],
+[
+">Request a free trial<",
+">Pide la prueba gratis<"
+],
+[
+"Watch the day{{chev}}",
+"Mira el día{{chev}}"
+],
+[
+"Free for 30 days. No card. In English and Spanish.",
+"Gratis por 30 días. Sin tarjeta. En español y en inglés."
+],
+[
+"Velani makes software for small businesses. The ones that open early, close late and <em>run on people.</em>",
+"Velani hace software para pequeños negocios. Los que abren temprano, cierran tarde y <em>funcionan gracias a su gente.</em>"
+],
+[
+"One Saturday at Northside Café",
+"Un sábado en Northside Café"
+],
+[
+"<span class=\"sr\">5:45 AM. </span>",
+"<span class=\"sr\">5:45 a. m. </span>"
+],
+[
+"<span class=\"sr\">7:58 AM. </span>",
+"<span class=\"sr\">7:58 a. m. </span>"
+],
+[
+"<span class=\"sr\">12:30 PM. </span>",
+"<span class=\"sr\">12:30 p. m. </span>"
+],
+[
+"<span class=\"sr\">4:00 PM. </span>",
+"<span class=\"sr\">4:00 p. m. </span>"
+],
+[
+"<span class=\"sr\">10:00 PM. </span>",
+"<span class=\"sr\">10:00 p. m. </span>"
+],
+[
+"Next week, published before sunrise.",
+"La semana que viene, publicada antes del amanecer."
+],
+[
+"Carmen publishes the schedule from home. Alexandra gets it on her phone in Spanish, the language she picked.",
+"Carmen publica el horario desde su casa. Alexandra lo recibe en su teléfono en español, el idioma que eligió."
+],
+[
+"Clocked in, two minutes early.",
+"Entrada marcada, dos minutos antes."
+],
+[
+"She types her PIN on the café tablet. NEVORA records the time, the place and the shift.",
+"Escribe su PIN en la tableta del café. NEVORA registra la hora, el lugar y el turno."
+],
+[
+"Rondo finds Sunday's cover.",
+"Rondo encuentra quién cubre el domingo."
+],
+[
+"Ask in plain words. Rondo checks the schedule and the hours, prepares the change and waits for you.",
+"Pregunta como hablas. Rondo revisa el horario y las horas, prepara el cambio y te espera."
+],
+[
+"Every punch lands on a timecard.",
+"Cada entrada y salida llega a su tarjeta de tiempo."
+],
+[
+"A late start stands out today, so you sort it out now instead of on payday.",
+"Una llegada tarde se nota hoy, así que la resuelves ahora y no el día de pago."
+],
+[
+"Close the week.",
+"Cierra la semana."
+],
+[
+"Approve the hours and NEVORA calculates each person's pay. You still pay your team and file payroll taxes.",
+"Aprueba las horas y NEVORA calcula la paga de cada persona. Tú sigues pagándole a tu equipo y presentando los impuestos de nómina."
+],
+[
+"See plans{{chev}}",
+"Ver planes{{chev}}"
+],
+[
+">Alexandra's iPhone<",
+">iPhone de Alexandra<"
+],
+[
+">The café's iPad · Main Street<",
+">iPad del café · Main Street<"
+],
+[
+">Carmen's iPhone · Owner<",
+">iPhone de Carmen · dueña<"
+],
+[
+"<small>Schedule</small>",
+"<small>Horario</small>"
+],
+[
+"<small>Clock in</small>",
+"<small>Entrada</small>"
+],
+[
+"<small>Timecards</small>",
+"<small>Tarjetas</small>"
+],
+[
+"<small>Payroll</small>",
+"<small>Nómina</small>"
+],
+[
+"data-en=\"Ask in plain words.\" data-es=\"Pregunta como hablas.\">Ask in plain words.<",
+"data-en=\"Ask in plain words.\" data-es=\"Pregunta como hablas.\">Pregunta como hablas.<"
+],
+[
+">Rondo answers from your workplace's records, shows where the answer came from and prepares changes for you to approve.<",
+">Rondo responde con los registros de tu lugar de trabajo, te muestra de dónde salió la respuesta y prepara cambios para que los apruebes.<"
+],
+[
+"<button type=\"button\" aria-pressed=\"true\" data-lang=\"en\">English</button><button type=\"button\" aria-pressed=\"false\" data-lang=\"es\" lang=\"es\">Español</button>",
+"<button type=\"button\" aria-pressed=\"false\" data-lang=\"en\" lang=\"en\">English</button><button type=\"button\" aria-pressed=\"true\" data-lang=\"es\">Español</button>"
+],
+[
+">Who can cover Sunday, 12 to 8?<",
+">¿Quién puede cubrir el domingo de 12 a 8?<"
+],
+[
+">Dana Kim is off on Sunday and at 32 hours this week, so this shift brings her to 40. Ana Colón is already at 40.<",
+">Dana Kim está libre el domingo y lleva 32 horas esta semana, así que este turno la lleva a 40. Ana Colón ya tiene 40.<"
+],
+[
+">From the published schedule, Nov 2 – 8<",
+">Del horario publicado, 2 – 8 de nov.<"
+],
+[
+">Prepared for your approval<",
+">Preparado para tu aprobación<"
+],
+[
+">Add Dana Kim on Sunday, November 8<",
+">Añadir a Dana Kim el domingo 8 de noviembre<"
+],
+[
+">Register, 12:00 to 8:00, with Luis Medina.<",
+">Caja, 12:00 a 8:00, con Luis Medina.<"
+],
+[
+">Approve<",
+">Aprobar<"
+],
+[
+">Nothing changes until you approve.<",
+">Nada cambia hasta que apruebes.<"
+],
+[
+"Rondo is for the business Owner and is included in NEVORA. NEVORA checks every prepared change again before it applies. Sample conversation.",
+"Rondo es para el dueño del negocio y está incluido en NEVORA. NEVORA revisa de nuevo cada cambio preparado antes de aplicarlo. Conversación de muestra."
+],
+[
+">Available now<",
+">Disponible ahora<"
+],
+[
+"The whole week, from schedule to pay.",
+"Toda la semana, del horario a la paga."
+],
+[
+"Learn more{{chev}}",
+"Más información{{chev}}"
+],
+[
+">Included in NEVORA<",
+">Incluido en NEVORA<"
+],
+[
+"Ask in English or Spanish. You approve every change.",
+"Pregunta en español o en inglés. Tú apruebas cada cambio."
+],
+[
+">In design<",
+">En diseño<"
+],
+[
+"From the counter to the kitchen screen.",
+"Del mostrador a la pantalla de cocina."
+],
+[
+"Join the waitlist{{chev}}",
+"Únete a la lista de espera{{chev}}"
+],
+[
+"How starting works.",
+"Así se empieza."
+],
+[
+"A person sets you up. Nothing is charged until you pick a plan.",
+"Una persona te ayuda a empezar. No se cobra nada hasta que elijas un plan."
+],
+[
+">Today<",
+">Hoy<"
+],
+[
+"Tell us about your team and your locations.",
+"Cuéntanos de tu equipo y tus locales."
+],
+[
+">Within two business days<",
+">En dos días laborables<"
+],
+[
+">Jose replies<",
+">Jose te responde<"
+],
+[
+"You get a real reply from Velani, in English or Spanish.",
+"Recibes una respuesta real de Velani, en español o en inglés."
+],
+[
+">Setup day<",
+">Día de configuración<"
+],
+[
+">Set up together<",
+">Lo configuran juntos<"
+],
+[
+"Jose sets up your workplace with you. Your 30 days start when it’s created in NEVORA.",
+"Jose configura tu lugar de trabajo contigo. Tus 30 días comienzan cuando se crea en NEVORA."
+],
+[
+">Day 30<",
+">Día 30<"
+],
+[
+">Pick a plan<",
+">Elige un plan<"
+],
+[
+"$19 or $29 a month. If you don't pick one, NEVORA pauses. No card until then.",
+"$19 o $29 al mes. Si no eliges uno, NEVORA se pausa. Sin tarjeta hasta entonces."
+],
+[
+"One price for the whole team.",
+"Un precio para todo el equipo."
+],
+[
+"Free for 30 days. No card. Rondo included.",
+"Gratis por 30 días. Sin tarjeta. Rondo incluido."
+],
+[
+">Up to 15 employees<",
+">Hasta 15 empleados<"
+],
+[
+"<small>/month</small>",
+"<small>/mes</small>"
+],
+[
+">One price per business.<",
+">Un precio por negocio.<"
+],
+[
+">16 to 30 employees<",
+">De 16 a 30 empleados<"
+],
+[
+">Every plan includes<",
+">Todos los planes incluyen<"
+],
+[
+"Scheduling, with swaps and time off",
+"Horarios, con cambios de turno y tiempo libre"
+],
+[
+"A tablet time clock with PINs",
+"Un reloj de tiempo en tableta, con PIN"
+],
+[
+"Timecards you approve",
+"Tarjetas de tiempo que tú apruebas"
+],
+[
+"Payroll calculation and pay statements",
+"Cálculo de nómina y comprobantes de nómina"
+],
+[
+"Rondo for the Owner",
+"Rondo para el dueño"
+],
+[
+"English and Spanish, for everyone",
+"Español e inglés, para todos"
+],
+[
+"Setup with Jose from Velani",
+"Configuración con Jose, de Velani"
+],
+[
+"Support, Monday to Friday",
+"Soporte, de lunes a viernes"
+],
+[
+"On day 30 the Owner picks a plan in NEVORA; nothing is charged until then. Prices are in US dollars and may change before online billing opens. NEVORA calculates pay; it doesn’t pay employees or file payroll taxes.",
+"El día 30, el dueño elige un plan en NEVORA; no se cobra nada hasta entonces. Los precios están en dólares estadounidenses y pueden cambiar antes de que abra la facturación en línea. NEVORA calcula la paga; no les paga a los empleados ni presenta impuestos de nómina."
+],
+[
+"<span lang=\"es\" class=\"es\">En español.</span><span>And in English.</span>",
+"<span class=\"es\">En español.</span><span lang=\"en\">And in English.</span>"
+],
+[
+"Every screen in NEVORA and every answer from Rondo works in both languages. The Owner picks a language, and each person on the team picks their own.",
+"Cada pantalla de NEVORA y cada respuesta de Rondo funcionan en los dos idiomas. El dueño elige un idioma, y cada persona del equipo elige el suyo."
+],
+[
+"aria-label=\"NEVORA on a MacBook, an iPad time clock and an iPhone. Sample data from Northside Café.\"",
+"aria-label=\"NEVORA en una MacBook, un reloj de tiempo en iPad y un iPhone. Datos de muestra de Northside Café.\""
+],
+[
+"aria-label=\"About Velani\"",
+"aria-label=\"Sobre Velani\""
+],
+[
+"aria-label=\"Jump to a time of day\"",
+"aria-label=\"Ir a una hora del día\""
+],
+[
+"aria-label=\"Conversation language\"",
+"aria-label=\"Idioma de la conversación\""
+],
+[
+"aria-label=\"Velani products\"",
+"aria-label=\"Productos de Velani\""
+],
+[
+"<span class=\"mer\"><span>AM</span><span class=\"off\">PM</span></span>",
+"<span class=\"mer\"><span>a. m.</span><span class=\"off\">p. m.</span></span>"
+]
+]

@@ -1,0 +1,99 @@
+/* Contact on the Day design: the heading and next steps on the left, Jose's form in a light card on the right; on phones the
+   form comes right after the heading. The form markup is velani.js's (inquiry-* ids, .ff fields, .kind topic choices). */
+.ct{padding-top:clamp(48px,7vw,104px);padding-bottom:clamp(64px,8vw,110px)}
+.ct-g{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.08fr);grid-template-areas:"head card" "more card";column-gap:clamp(36px,6vw,96px);row-gap:36px;align-items:start}
+.ct-head{grid-area:head}.ct-more{grid-area:more}.ct-card{grid-area:card}
+.ct-side .eyebrow{color:var(--link)}
+.ct-side h1{font-size:clamp(46px,6.2vw,88px);line-height:.96;letter-spacing:-.054em;max-width:11ch}
+.ct-side h1:focus{outline:none}
+.ct-side .lead{margin-top:20px;max-width:34ch;font-size:clamp(18px,1.6vw,22px);line-height:1.42;color:#3F3F44}
+.ct-card{animation:rise 1.1s var(--ease) both;animation-delay:.12s;border-radius:32px;padding:clamp(22px,3.2vw,40px);background:rgba(255,255,255,.82);-webkit-backdrop-filter:blur(24px) saturate(1.3);backdrop-filter:blur(24px) saturate(1.3);border:1px solid transparent;box-shadow:inset 0 0 0 1px rgba(255,255,255,.8),0 50px 100px -60px rgba(16,24,40,.45),0 2px 6px rgba(16,24,40,.04)}
+@media (max-width:900px){.ct-g{grid-template-columns:minmax(0,1fr);grid-template-areas:"head" "card" "more"}}
+
+/* the side follows the topic: ask-* (boot script) until velani-day-contact.js runs, dt-* after */
+.tp-trial,.tp-big,.tp-relay,.tp-other{display:none}
+html:not(.dt).ask-demo .tp-trial,html:not(.dt).ask-nevora:not(.ask-demo) .tp-big,html:not(.dt).ask-relay .tp-relay,html:not(.dt):not(.ask-nevora):not(.ask-relay) .tp-other,
+html.dt-trial .tp-trial,html.dt-big .tp-big,html.dt-relay .tp-relay,html.dt-other .tp-other{display:revert}
+
+/* what happens next */
+.nxt{list-style:none;margin:0;padding:0 0 0 34px;position:relative;max-width:420px}
+.nxt::before{content:"";position:absolute;left:9px;top:10px;bottom:10px;width:2px;border-radius:1px;background:linear-gradient(var(--teal),rgba(11,110,105,.18))}
+.nxt li{position:relative;padding:0 0 20px}
+.nxt li:last-child{padding-bottom:0}
+.nxt li::before{content:"";position:absolute;left:-34px;top:2px;width:20px;height:20px;border-radius:50%;background:#fff;box-shadow:inset 0 0 0 2px var(--teal)}
+.nxt li:first-child::before{background:var(--teal);box-shadow:inset 0 0 0 5px #fff,0 0 0 2px var(--teal)}
+.nxt b{display:block;font-size:17px;letter-spacing:-.015em}
+.nxt span{display:block;margin-top:3px;font-size:15.5px;line-height:1.45;color:var(--ink-2)}
+.ct-mail{margin-top:32px;font-size:15.5px;line-height:1.5;color:var(--ink-2)}
+.ct-mail a{color:var(--link);font-weight:600;text-decoration:underline;text-underline-offset:3px}
+
+/* Jose's form, in the Day style */
+.inquiry-form fieldset{border:0;margin:0;padding:0;min-width:0}
+.inquiry-form .kinds-q{font:600 17px/1.3 var(--display);letter-spacing:-.015em;margin:0 0 12px}
+.inquiry-form .kinds{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:0;padding:0;border:0;min-width:0}
+.kind{position:relative;display:flex;flex-direction:column;justify-content:center;gap:2px;min-height:60px;padding:12px 16px;border-radius:18px;background:#fff;border:1px solid var(--ink-3);cursor:pointer;transition-property:border-color,box-shadow,background-color,scale;transition-duration:.15s;transition-timing-function:ease-out}
+.kind input{position:absolute;inset:0;width:100%;height:100%;margin:0;opacity:0;cursor:pointer}
+.kind b{font-size:15.5px;font-weight:600;letter-spacing:-.01em}
+.kind small{font-size:13.5px;color:var(--ink-2)}
+.kind:has(input:checked){border-color:var(--teal);box-shadow:inset 0 0 0 1px var(--teal);background:#F2F8F7}
+.kind:has(input:focus-visible){outline:2px solid var(--link);outline-offset:3px}
+.kind:active{scale:.98}
+.frow{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 16px}
+.frow[hidden]{display:none}
+.ff{display:grid;margin-top:16px;position:relative}
+.ff label{order:-1;margin:0 0 6px;font-size:14.5px;font-weight:600;color:var(--ink)}
+.ff .opt{font-weight:500;color:var(--ink-2)}
+.ff .opt::before{content:"· "}
+.ff input,.ff select,.ff textarea{width:100%;box-sizing:border-box;min-height:50px;padding:12px 14px;border-radius:14px;border:1px solid var(--ink-3);background:#fff;font:500 16px/1.4 var(--text);color:var(--ink);-webkit-appearance:none;appearance:none;transition-property:border-color,box-shadow;transition-duration:.15s}
+.ff textarea{min-height:118px;resize:vertical}
+.ff.sel select{padding-right:42px;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256'%3E%3Cpath fill='%235F5F64' d='M216.49 104.49l-80 80a12 12 0 0 1-17 0l-80-80a12 12 0 0 1 17-17L128 159l71.51-71.52a12 12 0 0 1 17 17Z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;background-size:16px}
+.ff input:focus-visible,.ff select:focus-visible,.ff textarea:focus-visible{outline:2px solid var(--link);outline-offset:2px;border-color:var(--link)}
+.ff [aria-invalid="true"]{border-color:#C4271A;box-shadow:inset 0 0 0 1px #C4271A}
+.field-error{margin:6px 0 0;font-size:14px;line-height:1.35;color:#B3261E}
+.field-error:empty{display:none}
+.client-send{margin-top:24px;display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+.inquiry-form .pill{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 22px;border-radius:980px;border:0;background:var(--teal);color:#fff;font:inherit;font-size:17px;cursor:pointer;transition-property:background-color,scale;transition-duration:.15s;transition-timing-function:ease-out}
+.inquiry-form .pill:not(:disabled):active{scale:.96}
+.inquiry-form .pill:disabled{opacity:.6;cursor:default}
+.send-note{margin:0;font-size:14px;line-height:1.45;color:var(--ink-2);max-width:32ch}
+.send-note a{color:var(--link);text-decoration:underline;text-underline-offset:3px}
+.quote-note{margin-top:16px;max-width:none;padding:12px 14px;border-radius:14px;background:#EEF4F3;color:#21403E}
+.inquiry-form .fine{margin:18px 0 0;padding-top:16px;border-top:1px solid rgba(29,29,31,.1);font-size:13.5px;line-height:1.5;color:var(--ink-2)}
+.form-status{margin:14px 0 0;font-size:14.5px;font-weight:600;color:#B3261E}
+.form-status:empty{display:none}
+.form-status[data-state="checking"],.form-status[data-state="sending"],.form-status[data-state="preview"]{color:var(--ink-2)}
+.client-preview{display:flex;gap:8px;align-items:center;margin:20px 0 0;font-size:13.5px;font-weight:600;color:#7A3D00}
+.client-preview::before{content:"";width:8px;height:8px;border-radius:50%;background:#C26A00;flex:none}
+.form-legal{margin-top:14px;font-size:12.5px;color:var(--ink-2)}
+.form-legal a{text-decoration:underline}
+.client-write h2{font-size:28px;letter-spacing:-.035em}
+.client-write p{margin-top:10px;color:var(--ink-2)}
+.client-write .acts{margin-top:18px}
+/* the word variants velani.js chooses from (general, quote, trial, Relay) */
+.ask-nevora .v-d,html:not(.ask-nevora) .v-n,html:not(.ask-demo) .v-m,.ask-demo .v-n:not(.v-nm){display:none}
+html:not(.ask-relay) .v-r{display:none}
+
+/* after sending (or after the preview check) */
+.sent{text-align:center;padding:clamp(12px,3vw,32px) 0}
+.sent:focus{outline:none}
+.sent-i{width:56px;height:56px;margin:0 auto;color:var(--teal)}
+.sent .note{display:flex;justify-content:center;gap:8px;align-items:center;margin-top:16px;font-size:13.5px;font-weight:600;color:#7A3D00}
+.sent .note::before{content:"";width:8px;height:8px;border-radius:50%;background:#C26A00;flex:none}
+.sent-h{margin-top:10px;font-size:clamp(34px,3.6vw,48px);letter-spacing:-.045em;line-height:1.02}
+.sent-p{margin:12px auto 0;max-width:34ch;font-size:17.5px;line-height:1.5;color:var(--ink-2)}
+.sent-from{margin:16px auto 0;max-width:38ch;font-size:14.5px;line-height:1.5;color:var(--ink-2)}
+.sent-from a{color:var(--link);text-decoration:underline}
+.sent-acts{margin-top:28px;display:flex;justify-content:center;gap:20px;flex-wrap:wrap;align-items:center}
+.sent .hb{display:inline-flex;align-items:center;gap:6px;min-height:44px;padding:0 22px;border-radius:980px;background:var(--teal);color:#fff}
+.sent .hb .icon{width:16px;height:16px}
+.sent .pill{display:inline-flex;align-items:center;min-height:44px;padding:0 22px;border-radius:980px;box-shadow:inset 0 0 0 1px var(--ink-3)}
+.sent .sent-back{color:var(--link);min-height:44px;display:inline-flex;align-items:center}
+
+/* help at work */
+.ct-work{padding-top:0;padding-bottom:clamp(64px,8vw,110px)}
+.work{margin:0 auto;max-width:860px;display:flex;gap:16px;align-items:center;justify-content:space-between;flex-wrap:wrap;padding:20px 24px;border-radius:24px}
+.work p{margin:0;font-size:16.5px;line-height:1.45;color:#3F3F44;max-width:52ch}
+.work b{color:var(--ink)}
+@media (max-width:520px){.frow{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:360px){.inquiry-form .kinds{grid-template-columns:minmax(0,1fr)}}
+@media (prefers-reduced-motion:reduce){.ct-card{animation:none}.kind{transition:none}}

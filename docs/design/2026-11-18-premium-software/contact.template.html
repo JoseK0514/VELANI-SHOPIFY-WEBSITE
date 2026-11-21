@@ -1,0 +1,215 @@
+<title>Velani Contact Page</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Mockup of the Velani Contact page: one form for a free NEVORA trial, assisted setup for more than 30 employees, the Relay waitlist and anything else. The preview checks the draft and sends nothing.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..800&family=DM+Sans:opsz,wght@9..40,200..700&display=swap">
+<style>
+{{SHARED_CSS}}
+{{PRODUCT_CSS}}
+/* Layout: one screen. The heading and what happens next on the left, the form on the right. The topic picks the words, the fields and the button. */
+.ct{padding-top:clamp(48px,7vw,104px);padding-bottom:clamp(72px,9vw,128px)}
+.ct-g{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.08fr);gap:clamp(36px,6vw,96px);align-items:start}
+.ct-g{grid-template-areas:"head card" "more card";row-gap:36px}.ct-head{grid-area:head}.ct-more{grid-area:more}.ct-card{grid-area:card}
+.ct-side .eyebrow{color:var(--teal)}
+.ct-side h1{font-size:clamp(46px,6.2vw,88px);line-height:.96;letter-spacing:-.054em;max-width:11ch}
+.ct-side h1:focus{outline:none}
+.ct-side .lead{margin-top:20px;max-width:34ch;font-size:clamp(18px,1.6vw,22px);line-height:1.42;color:#3F3F44}
+@keyframes rise6{from{opacity:0;translate:0 40px}to{opacity:1;translate:0 0}}
+.ct-side>*,.ct-card{animation:rise6 1.1s var(--ease) both}.ct-side>*:nth-child(2){animation-delay:.05s}.ct-side>*:nth-child(3){animation-delay:.1s}.ct-side>*:nth-child(4){animation-delay:.15s}.ct-card{animation-delay:.12s}
+
+/* what happens next */
+.nxt{list-style:none;margin:0;padding:0 0 0 34px;position:relative;max-width:420px}
+.nxt::before{content:"";position:absolute;left:9px;top:10px;bottom:10px;width:2px;border-radius:1px;background:linear-gradient(var(--teal),rgba(11,110,105,.18))}
+.nxt li{position:relative;padding:0 0 20px}
+.nxt li:last-child{padding-bottom:0}
+.nxt li::before{content:"";position:absolute;left:-34px;top:2px;width:20px;height:20px;border-radius:50%;background:#fff;box-shadow:inset 0 0 0 2px var(--teal)}
+.nxt li:first-child::before{background:var(--teal);box-shadow:inset 0 0 0 5px #fff,0 0 0 2px var(--teal)}
+.nxt b{display:block;font-size:17px;letter-spacing:-.015em}
+.nxt span{display:block;margin-top:3px;font-size:15.5px;line-height:1.45;color:var(--ink-2)}
+.ct-mail{margin-top:32px;font-size:15.5px;line-height:1.5;color:var(--ink-2)}
+.ct-mail a{color:var(--link);font-weight:600;text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1px}
+
+/* card */
+.ct-card{border-radius:32px;padding:clamp(22px,3.2vw,40px);background:rgba(255,255,255,.8);-webkit-backdrop-filter:blur(24px) saturate(1.3);backdrop-filter:blur(24px) saturate(1.3);border:1px solid transparent;box-shadow:inset 0 0 0 1px rgba(255,255,255,.8),0 50px 100px -60px rgba(16,24,40,.45),0 2px 6px rgba(16,24,40,.04)}
+.pvw{display:flex;align-items:center;gap:8px;margin:0 0 20px;font-size:13.5px;font-weight:600;color:#7A3D00}
+.pvw::before{content:"";width:8px;height:8px;border-radius:50%;background:#C26A00;flex:none}
+
+/* topic tiles */
+.tpc{border:0;margin:0;padding:0;min-width:0}
+.tpc legend{font:600 17px/1.3 var(--display);letter-spacing:-.015em;padding:0;margin-bottom:12px}
+.tpls{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.tpl{position:relative;display:flex;gap:12px;align-items:flex-start;padding:14px 16px;border-radius:18px;background:#fff;border:1px solid #86868B;cursor:pointer;-webkit-tap-highlight-color:transparent;transition-property:border-color,box-shadow,scale;transition-duration:150ms;transition-timing-function:ease-out;min-height:44px}
+.tpl input{position:absolute;opacity:0;inset:0;margin:0;cursor:pointer}
+.tpl .i{width:22px;height:22px;flex:none;color:var(--teal);margin-top:1px}
+.tpl b{display:block;font-size:15.5px;line-height:1.25;letter-spacing:-.01em}
+.tpl small{display:block;margin-top:2px;font-size:13.5px;color:var(--ink-2)}
+.tpl:has(input:checked){border-color:var(--teal);box-shadow:inset 0 0 0 1px var(--teal);background:#F2F8F7}
+.tpl:has(input:focus-visible){outline:2px solid var(--link);outline-offset:3px}
+.tpl:active{scale:.98}
+
+/* fields */
+.ffs{border:0;margin:24px 0 0;padding:0;min-width:0;display:grid;gap:16px}
+.frow{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.fd{display:flex;flex-direction:column;gap:7px;min-width:0}
+.fd label{font-size:14.5px;font-weight:600;color:var(--ink)}
+.fd label .opt{font-weight:500;color:var(--ink-2)}
+.fd input,.fd select,.fd textarea{width:100%;box-sizing:border-box;border-radius:14px;border:1px solid #86868B;background:#fff;font:500 16px/1.4 var(--text);color:var(--ink);padding:0 14px;height:50px;-webkit-appearance:none;appearance:none;transition-property:border-color,box-shadow;transition-duration:150ms}
+.fd textarea{height:auto;min-height:118px;padding:12px 14px;resize:vertical}
+.fd select{padding-right:42px;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256'%3E%3Cpath fill='%235F5F64' d='M216.49 104.49l-80 80a12 12 0 0 1-17 0l-80-80a12 12 0 0 1 17-17L128 159l71.51-71.52a12 12 0 0 1 17 17Z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;background-size:16px}
+.fd input:focus-visible,.fd select:focus-visible,.fd textarea:focus-visible{outline:2px solid var(--link);outline-offset:2px;border-color:var(--link)}
+.fd [aria-invalid="true"]{border-color:#C4271A;box-shadow:inset 0 0 0 1px #C4271A}
+.ferr{margin:0;font-size:14px;line-height:1.35;color:#B3261E;display:flex;gap:6px;align-items:flex-start}
+.ferr:empty{display:none}
+.ferr::before{content:"!";flex:none;width:16px;height:16px;border-radius:50%;background:#B3261E;color:#fff;font:700 11px/16px var(--text);text-align:center;margin-top:1px}
+.thint{margin:0;padding:12px 14px;border-radius:14px;background:#EEF4F3;font-size:14.5px;line-height:1.45;color:#21403E;display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+.thint button{all:unset;box-sizing:border-box;cursor:pointer;min-height:40px;padding:0 14px;border-radius:20px;background:#fff;box-shadow:inset 0 0 0 1px var(--teal);color:var(--teal);font-weight:600;font-size:14px;display:inline-flex;align-items:center}
+.thint button:focus-visible{outline:2px solid var(--link);outline-offset:3px}
+
+.send{margin-top:24px;display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+.send .pillbtn{border:0;cursor:pointer;font:inherit;font-weight:600}
+.send .pillbtn:not(:disabled):active{scale:.96}
+.send-n{margin:0;font-size:14px;line-height:1.45;color:var(--ink-2);max-width:30ch}
+.send-n a{color:var(--link);text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1px}
+.ffine{margin:18px 0 0;padding-top:16px;border-top:1px solid rgba(29,29,31,.1);font-size:13.5px;line-height:1.5;color:var(--ink-2)}
+.form-st{margin:14px 0 0;font-size:14.5px;font-weight:600;color:#B3261E}
+.form-st:empty{display:none}
+
+/* confirmation */
+.sent{text-align:center;padding:clamp(12px,3vw,32px) 0}
+.sent:focus{outline:none}
+.sent .sent-ic{width:64px;height:64px;margin:0 auto;border-radius:50%;display:grid;place-items:center;background:#E3F1EE;color:var(--teal)}
+.sent .sent-ic .i{width:34px;height:34px}
+.sent .pvw{justify-content:center;margin:18px 0 0}
+.sent h2{margin:10px 0 0;font-size:clamp(34px,3.6vw,48px);letter-spacing:-.045em;line-height:1.02}
+.sent h2:focus{outline:none}
+.sent p.sp{margin:12px auto 0;max-width:34ch;font-size:17.5px;line-height:1.5;color:var(--ink-2)}
+.sent p.sf{margin:16px auto 0;max-width:38ch;font-size:14.5px;line-height:1.5;color:var(--ink-2)}
+.sent .acts{margin-top:28px;display:flex;justify-content:center;gap:20px;flex-wrap:wrap;align-items:center}
+.edit{all:unset;cursor:pointer;min-height:44px;display:inline-flex;align-items:center;font:600 16px/1 var(--text);color:var(--link)}
+.edit:focus-visible{outline:2px solid var(--link);outline-offset:3px;border-radius:6px}
+
+/* work help note */
+.work{margin:0 auto;max-width:860px;display:flex;gap:16px;align-items:center;justify-content:space-between;flex-wrap:wrap;padding:20px 24px;border-radius:24px;background:rgba(255,255,255,.6);box-shadow:inset 0 0 0 1px rgba(255,255,255,.7),0 24px 50px -40px rgba(16,24,40,.3)}
+.work p{margin:0;font-size:16.5px;line-height:1.45;color:#3F3F44;max-width:52ch}
+.work b{color:var(--ink)}
+
+@media (max-width:900px){.ct-g{grid-template-columns:minmax(0,1fr);grid-template-areas:"head" "card" "more"}.nxt{margin-top:0}}
+@media (max-width:520px){.frow{grid-template-columns:minmax(0,1fr)}.tpl{flex-direction:column;gap:8px;padding:12px 14px}}
+@media (max-width:360px){.tpls{grid-template-columns:minmax(0,1fr)}}
+
+[data-only]{display:none}
+html.t-trial [data-only~="trial"],html.t-big [data-only~="big"],html.t-relay [data-only~="relay"],html:not(.t-trial):not(.t-big):not(.t-relay) [data-only~="other"]{display:revert}
+html.t-trial .fd[data-only~="trial"],html.t-big .fd[data-only~="big"]{display:flex}
+html.t-trial .frow[data-only~="trial"],html.t-big .frow[data-only~="big"]{display:grid}
+html.rm .ct-side>*,html.rm .ct-card{animation:none}
+html.rm [data-rv]{opacity:1;transform:none}
+[hidden]{display:none!important}
+{{SCREEN_CSS}}
+</style>
+<script>
+/* Pick the topic before paint, from ?interest= (or #interest= in this mockup), so the right words show first. */
+(function(){var m={'nevora-demo':'trial','nevora':'big','relay':'relay','other':'other'},s=(location.search+'&'+location.hash).match(/interest=([a-z-]+)/);document.documentElement.classList.add('t-'+((s&&m[s[1]])||'other'))})();
+</script>
+
+{{HEADER}}
+
+<div class="atmo" id="atmo" aria-hidden="true"></div>
+<main id="top">
+
+<section class="ct" aria-labelledby="h1" data-sky="morning">
+  <div class="wrap ct-g">
+    <div class="ct-side ct-head">
+      <p class="eyebrow"><span data-only="trial">Free 30-day trial</span><span data-only="big">More than 30 employees</span><span data-only="relay">Relay waitlist</span><span data-only="other">Contact</span></p>
+      <h1 id="h1" tabindex="-1"><span data-only="trial">Request your free trial.</span><span data-only="big">Set up NEVORA for a larger team.</span><span data-only="relay">Join the Relay waitlist.</span><span data-only="other">Tell us what you need.</span></h1>
+      <p class="lead"><span data-only="trial">Tell us about your team. Jose from Velani replies within two business days and sets up your workplace with you.</span><span data-only="big">We check what you need and set up your workplace with you. Teams we approve get the same 30 days free.</span><span data-only="relay">Relay is in design, with no date or price yet. We’ll email you when early access opens.</span><span data-only="other">A question about NEVORA, Rondo, Relay or Velani. A person replies by email within two business days.</span></p>
+    </div>
+
+    <div class="ct-card">
+      <form id="f" novalidate aria-labelledby="h1">
+        <p class="pvw">Preview · this form checks your draft and sends nothing</p>
+        <fieldset class="tpc">
+          <legend>What is it about?</legend>
+          <div class="tpls">
+            <label class="tpl"><input type="radio" name="topic" value="trial">{{I:gift}}<span><b>Free trial</b><small>Up to 30 employees</small></span></label>
+            <label class="tpl"><input type="radio" name="topic" value="big">{{I:users-three}}<span><b>More than 30</b><small>Assisted setup</small></span></label>
+            <label class="tpl"><input type="radio" name="topic" value="relay">{{I:cooking-pot}}<span><b>Relay waitlist</b><small>In design</small></span></label>
+            <label class="tpl"><input type="radio" name="topic" value="other">{{I:chat-circle}}<span><b>Something else</b><small>Any question</small></span></label>
+          </div>
+        </fieldset>
+
+        <fieldset class="ffs">
+          <legend class="sr">Your details</legend>
+          <div class="frow">
+            <div class="fd"><label for="f-name">Name</label><input id="f-name" name="name" autocomplete="name" maxlength="120" required aria-describedby="e-name"><p class="ferr" id="e-name"></p></div>
+            <div class="fd"><label for="f-email">Email</label><input id="f-email" name="email" type="email" autocomplete="email" maxlength="254" required aria-describedby="e-email"><p class="ferr" id="e-email"></p></div>
+          </div>
+          <div class="fd"><label for="f-company">Business <span class="opt">optional</span></label><input id="f-company" name="company" autocomplete="organization" maxlength="160"></div>
+          <div class="frow" data-only="trial big">
+            <div class="fd"><label for="f-team">Team size <span class="opt">optional</span></label><select id="f-team" name="team_size"><option value="">Choose</option><option>1–10</option><option>11–20</option><option>21–30</option><option value="More than 30 (assisted setup)">More than 30</option></select></div>
+            <div class="fd"><label for="f-loc">Locations <span class="opt">optional</span></label><input id="f-loc" name="locations" inputmode="numeric" maxlength="4" aria-describedby="e-loc"><p class="ferr" id="e-loc"></p></div>
+          </div>
+          <p class="thint" id="hint" hidden><span id="hint-t"></span><button type="button" id="hint-b"></button></p>
+          <div class="fd">
+            <label for="f-msg"><span data-only="other">Message</span><span data-only="trial big relay">Anything else <span class="opt">optional</span></span></label>
+            <textarea id="f-msg" name="message" maxlength="4000" rows="4" aria-describedby="e-msg"></textarea>
+            <p class="ferr" id="e-msg"></p>
+          </div>
+        </fieldset>
+
+        <div class="send">
+          <button class="pillbtn" type="submit"><span data-only="trial">Send trial request</span><span data-only="big">Request assisted setup</span><span data-only="relay">Join the waitlist</span><span data-only="other">Send message</span></button>
+          <p class="send-n">Don’t send passwords or payment details. <a href="#ft">Privacy notice</a></p>
+        </div>
+        <p class="form-st" id="form-st" role="alert"></p>
+        <p class="ffine" data-only="trial">On day 30, the Owner picks a plan in NEVORA. Nothing is charged until you do. NEVORA calculates pay statements; it doesn’t pay employees or file payroll taxes.</p>
+      </form>
+
+      <div class="sent" id="sent" hidden>
+        <div class="sent-ic">{{I:check-circle}}</div>
+        <p class="pvw">Preview · this is what you’d see after sending. Nothing was sent.</p>
+        <h2 id="sent-h" tabindex="-1"></h2>
+        <p class="sp" id="sent-p"></p>
+        <p class="sf">Replies come from support@thevelani.com. If it isn’t in your inbox, check spam or junk.</p>
+        <div class="acts"><a class="pillbtn" data-only="trial big other" href="{{NEVORA_URL}}">See how NEVORA works</a><a class="pillbtn" data-only="relay" href="{{RELAY_URL}}">See the Relay concept</a><button class="edit" type="button" id="edit">Edit the draft</button></div>
+      </div>
+    </div>
+    <div class="ct-side ct-more">
+      <ol class="nxt" aria-label="What happens next" data-only="trial">
+        <li><b>Jose replies</b><span>Within two business days, by email.</span></li>
+        <li><b>We set up your workplace together</b><span>Jose sets it up with you, in English or Spanish.</span></li>
+        <li><b>Your 30 days start</b><span>The day your workplace is ready. No card.</span></li>
+        <li><b>Day 30: pick a plan</b><span>$19 or $29 a month. Nothing is charged until you do.</span></li>
+      </ol>
+      <ol class="nxt" aria-label="What happens next" data-only="big">
+        <li><b>We reply</b><span>Within two business days, by email.</span></li>
+        <li><b>We check what you need</b><span>We review your team and give you a quote.</span></li>
+        <li><b>30 days free</b><span>For teams we approve, from the day the workplace is ready.</span></li>
+      </ol>
+      <ol class="nxt" aria-label="What happens next" data-only="relay">
+        <li><b>You’re on the list</b><span>We keep your name and email for the waitlist.</span></li>
+        <li><b>Early access opens</b><span>We email you. No date yet.</span></li>
+      </ol>
+      <p class="ct-mail">Prefer email? <a href="mailto:support@thevelani.com">support@thevelani.com</a><br>Monday to Friday, 8 am to 9 pm ET, in English or Spanish.</p>
+    </div>
+  </div>
+  <p class="dn"><b>Topic</b>Links set the topic with ?interest= (nevora-demo, nevora, relay, other), as on the live site. The heading, next steps, fields and button follow it. Picking “More than 30” on a trial offers assisted setup instead of switching on its own.</p>
+</section>
+
+<section class="sec" aria-label="Help at work" data-sky="morning" style="padding-top:0;padding-bottom:clamp(64px,8vw,110px)">
+  <div class="wrap">
+    <div class="work" data-rv>
+      <p><b>Can’t sign in at work?</b> Your account comes from your workplace, not from this website. Help has the answers for your team.</p>
+      <a class="more" href="{{HELP_URL}}#signin">Sign-in help{{CHEV}}</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+{{FOOTER}}
+
+<script>
+{{PRODUCT_JS}}
+{{PAGE_JS}}
+</script>

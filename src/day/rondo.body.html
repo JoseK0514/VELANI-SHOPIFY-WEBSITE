@@ -1,0 +1,112 @@
+<div class="ln" id="ln" data-bar>
+  <div class="wrap">
+    <a class="nm" href="#top">Rondo</a>
+    <nav aria-label="Rondo sections"><a href="#ask">Ask</a><a href="#approve">Approvals</a><a href="#knows">What it reads</a><a href="#owner">Owner only</a><a href="#faq">Questions</a></nav>
+    <a class="cta" href="/pages/contact?interest=nevora-demo"><span class="l">Request a free trial</span><span class="s">Free trial</span></a>
+  </div>
+</div>
+
+<div class="atmo" id="atmo" aria-hidden="true"></div>
+
+<section id="top" class="rh" aria-labelledby="h1" data-sky="noon">
+  <div class="wrap rh-grid">
+    <div class="rh-copy">
+      <span class="pst-pill">Included in NEVORA</span>
+      <h1 id="h1">Rondo.</h1>
+      <p class="sub">The assistant inside NEVORA for the business Owner. Ask in plain words, in English or Spanish.</p>
+      <div class="acts"><a class="pillbtn" href="/pages/contact?interest=nevora-demo">Request a free trial</a><a class="more" href="#ask">Try a question{{chev}}</a></div>
+      <p class="note">Rondo answers from your workplace's records. Nothing changes until you approve.</p>
+    </div>
+    <div class="rh-ph"><div><div class="fit" data-nw="422" role="img" aria-label="Rondo on the Owner's iPhone: asked who can cover Sunday, it answers from the published schedule and prepares a change to approve.">
+      <div class="iph" aria-hidden="true"><div class="bz"><div class="sc"><span class="di"></span><div id="rh-scr">{{SCR_RONDO}}</div><span class="hb"></span></div></div></div>
+    </div></div></div>
+  </div>
+</section>
+
+<section class="sec" id="ask" aria-labelledby="ask-h" data-sky="noon">
+  <div class="wrap">
+    <div class="center chead" data-rv><p class="eyebrow"><span class="tm">12:30 PM</span>Ask</p><h2 id="ask-h">Ask about today, in plain words.</h2><p class="lead">Your team, coverage and recorded hours. Rondo shows where each answer came from. Pick a question.</p></div>
+    <div class="chips" role="group" aria-label="Questions for Rondo">
+      <button type="button" aria-pressed="true" data-q="0">What needs my attention today?</button>
+      <button type="button" aria-pressed="false" data-q="1">Who can cover Sunday, 12 to 8?</button>
+      <button type="button" aria-pressed="false" data-q="2">Who is close to 40 hours this week?</button>
+      <button type="button" aria-pressed="false" data-q="3" lang="es">¿Quién llegó tarde esta semana?</button>
+      <button type="button" aria-pressed="false" data-q="4" lang="es">¿Quién está trabajando ahora?</button>
+    </div>
+    <div class="ans" id="ans" aria-live="polite" data-rv></div>
+    <p class="ro-note">Sample answers about Northside Café, a fictional business.</p>
+  </div>
+</section>
+
+<section class="sec" id="approve" aria-labelledby="ap-h" data-sky="golden">
+  <div class="wrap">
+    <div class="center chead" data-rv><p class="eyebrow"><span class="tm">4:00 PM</span>Approvals</p><h2 id="ap-h">You approve every change.</h2><p class="lead">Rondo prepares the change and shows exactly what will be different. Press Approve and NEVORA checks it again before it applies.</p></div>
+    <div class="ap-wrap" data-rv>
+      <div class="card ui apc">
+        <p class="lbl"><span class="rm-badge">R</span>Prepared for your approval</p>
+        <h3>Add Dana Kim on Sunday, November 8</h3>
+        <div class="diff">
+          <div class="dr"><div class="t"><b>Luis Medina</b><span>Register · 12:00 to 8:00</span></div><span class="cp gy">No change</span></div>
+          <div class="dr old" id="ap-old"><div class="t"><b>Open shift</b><span>Register · 12:00 to 8:00</span></div><span class="cp am">Needs cover</span></div>
+          <div class="dr new"><div class="t"><b>Dana Kim</b><span>Register · 12:00 to 8:00</span></div><span class="cp gr">Added</span></div>
+        </div>
+        <div class="hrsline num"><span>Dana's week</span><span class="bar"><i></i><em></em></span><b>32 h → 40 h</b></div>
+        <div class="row"><button class="ok" type="button" id="ap-ok" aria-pressed="false">Approve</button><button class="notnow" type="button" id="ap-no">Not now</button></div>
+        <div class="chk" id="ap-chk">
+          <div><i>{{I:check}}</i><span class="sr" data-st>Not yet: </span>You approved the change</div>
+          <div><i>{{I:check}}</i><span class="sr" data-st>Not yet: </span>NEVORA checked the schedule again</div>
+          <div><i>{{I:check}}</i><span class="sr" data-st>Not yet: </span>Applied. Dana sees Sunday on her phone</div>
+        </div>
+        <p class="sr" role="status" id="ap-live"></p>
+      </div>
+    </div>
+    <div class="three">
+      <div><b>Rondo prepares.</b><p>It works out the change from the schedule and the hours.</p></div>
+      <div><b>You decide.</b><p>Approve it, or leave it. Nothing happens on its own.</p></div>
+      <div><b>NEVORA checks again.</b><p>Every prepared change is checked before it applies.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="knows" aria-labelledby="kn-h" data-sky="golden">
+  <div class="wrap">
+    <div class="center chead" data-rv><p class="eyebrow">What it reads</p><h2 id="kn-h">Answers from your own records.</h2><p class="lead">Rondo reads what your workplace already keeps in NEVORA, and names the source under every answer.</p></div>
+    <div class="srcs" data-rv>
+      <div class="srcc">{{I:clock}}<h3>Today's punches</h3><p>Who clocked in, when, and who hasn't yet.</p><span class="ex">From today's punches</span></div>
+      <div class="srcc">{{I:calendar-blank}}<h3>The published schedule</h3><p>Who works when, open shifts and days that are short.</p><span class="ex">From the published schedule, Nov 2 – 8</span></div>
+      <div class="srcc">{{I:users}}<h3>Recorded hours</h3><p>Timecards for the week, including late starts.</p><span class="ex">From timecards, Nov 2 – 8</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec own" id="owner" aria-labelledby="ow-h" data-sky="night" data-dark>
+  <div class="wrap center">
+    <p class="eyebrow"><span class="tm">10:00 PM</span>Owner only</p>
+    <h2 id="ow-h">Rondo works for the Owner.</h2>
+    <p class="lead">It lives in the Owner's profile. Managers and employees use NEVORA without it.</p>
+    <div class="own-pts">
+      <div><b>Only the Owner asks</b><span>Rondo is part of the Owner's view of the workplace.</span></div>
+      <div><b>Nothing changes on its own</b><span>Every change waits for your approval.</span></div>
+      <div><b>Checked before it applies</b><span>NEVORA checks each prepared change again.</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="faq" aria-labelledby="fq-h" data-sky="dawn">
+  <div class="wrap faq">
+    <h2 id="fq-h">Questions</h2>
+    <details><summary>What can Rondo do?{{I:caret-down}}</summary><p>Rondo answers the Owner's questions about today's team, coverage and recorded hours from your workplace's records, and can prepare a coverage change for the Owner to approve.</p></details>
+    <details><summary>Does Rondo cost extra?{{I:caret-down}}</summary><p>No. Rondo is included in every NEVORA plan, and in the free 30-day trial.</p></details>
+    <details><summary>Can Rondo change the schedule on its own?{{I:caret-down}}</summary><p>No. Rondo prepares a change and shows what will be different. Nothing changes until the Owner approves, and NEVORA checks the change again before it applies.</p></details>
+    <details><summary>Who can use Rondo?{{I:caret-down}}</summary><p>Only the business Owner. Managers and employees use NEVORA without Rondo.</p></details>
+    <details><summary>Does it work in Spanish?{{I:caret-down}}</summary><p>Yes. Ask in English or Spanish.</p></details>
+  </div>
+</section>
+
+<section class="close" id="close" aria-labelledby="cl-h" data-sky="dawn">
+  <div class="wrap center">
+    <h2 id="cl-h">Try Rondo with NEVORA, free for 30 days.</h2>
+    <p class="lead">Jose from Velani replies within two business days and sets up your workplace with you.</p>
+    <div class="acts"><a class="pillbtn" href="/pages/contact?interest=nevora-demo">Request a free trial</a><a class="more" href="/pages/nevora">See NEVORA{{chev}}</a></div>
+  </div>
+</section>

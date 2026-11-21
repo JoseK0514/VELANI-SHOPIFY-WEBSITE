@@ -1,0 +1,102 @@
+[
+[
+">How to sign in to NEVORA.<",
+">Cómo entrar a NEVORA.<"
+],
+[
+"NEVORA has no shared sign-in page. Each workplace has its own address, and you sign in there with your Employee ID and password.",
+"NEVORA no tiene una página de entrada compartida. Cada lugar de trabajo tiene su propia dirección, y entras ahí con tu ID de empleado y tu contraseña."
+],
+[
+"aria-label=\"Sign-in help\"",
+"aria-label=\"Ayuda para entrar\""
+],
+[
+"<h2>Your address and ID</h2><p>They’re in the invitation email from your workplace. Lost it? Ask your employer.</p>",
+"<h2>Tu dirección y tu ID</h2><p>Están en el correo de invitación de tu lugar de trabajo. ¿Lo perdiste? Pregúntale a tu empleador.</p>"
+],
+[
+"<h2>Forgot your password?</h2><p>Choose <b>Forgot password?</b> on your workplace’s sign-in page. You’ll need your Employee ID and the email your workplace has on file.</p>",
+"<h2>¿Olvidaste tu contraseña?</h2><p>Elige <b>¿Olvidaste tu contraseña?</b> en la página para entrar de tu lugar de trabajo. Vas a necesitar tu ID de empleado y el correo que tu lugar de trabajo tiene registrado.</p>"
+],
+[
+"<h2>Your 4-digit PIN</h2><p>It’s only for clocking in on your workplace’s tablet, not for signing in. Forgot it? Ask the business Owner to set a new one.</p>",
+"<h2>Tu PIN de 4 dígitos</h2><p>Es solo para marcar entrada en la tableta de tu lugar de trabajo, no para entrar a NEVORA. ¿Lo olvidaste? Pide al dueño del negocio que te ponga uno nuevo.</p>"
+],
+[
+"<p class=\"eyebrow\">Signing in</p>",
+"<p class=\"eyebrow\">Entrar</p>"
+],
+[
+">Two different keys.<",
+">Dos llaves distintas.<"
+],
+[
+">Most sign-in questions come from mixing these up.<",
+">La mayoría de las dudas para entrar vienen de confundirlas.<"
+],
+[
+"<h3>Your password <span>signs you in.</span></h3>",
+"<h3>Tu contraseña <span>te deja entrar.</span></h3>"
+],
+[
+"On your phone or computer, at your workplace’s own address, with your Employee ID.",
+"En tu teléfono o tu computadora, en la dirección de tu lugar de trabajo, con tu ID de empleado."
+],
+[
+"<div class=\"si-t\">Sign in</div>",
+"<div class=\"si-t\">Entrar</div>"
+],
+[
+"<div class=\"si-f\">Employee ID<span>",
+"<div class=\"si-f\">ID de empleado<span>"
+],
+[
+"<div class=\"si-f\">Password<span>",
+"<div class=\"si-f\">Contraseña<span>"
+],
+[
+"<div class=\"si-fg\">Forgot password?</div>",
+"<div class=\"si-fg\">¿Olvidaste tu contraseña?</div>"
+],
+[
+"<div class=\"si-b\">Sign in</div>",
+"<div class=\"si-b\">Entrar</div>"
+],
+[
+"<h3>Your PIN <span>clocks you in.</span></h3>",
+"<h3>Tu PIN <span>marca tu entrada.</span></h3>"
+],
+[
+"Four digits, only on your workplace’s tablet. Forgot it? The Owner sets a new one.",
+"Cuatro dígitos, solo en la tableta de tu lugar de trabajo. ¿Lo olvidaste? El dueño te pone uno nuevo."
+],
+[
+">Enter your PIN<",
+">Ingresa tu PIN<"
+],
+[
+">Your PIN is separate from your password.<",
+">Tu PIN es distinto de tu contraseña.<"
+],
+[
+"Clocked in · 7:58 AM",
+"Entrada marcada · 7:58 a. m."
+],
+[
+">Still can’t sign in?<",
+">¿Todavía no puedes entrar?<"
+],
+[
+"No longer have the email on your account? Your manager or Owner can confirm it’s you and give you a recovery code. If the app itself is the problem, we help.",
+"¿Ya no tienes el correo de tu cuenta? Tu gerente o el dueño pueden confirmar que eres tú y darte un código de recuperación. Si el problema es la app, te ayudamos."
+],
+[
+">NEVORA support<",
+">Soporte de NEVORA<"
+],
+[
+"Email support@thevelani.com{{chev}}",
+"Escribe a support@thevelani.com{{chev}}"
+]
+]

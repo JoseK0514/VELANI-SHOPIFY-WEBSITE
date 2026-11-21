@@ -12,7 +12,7 @@ liquid.parseAndRender = (tpl, ctx = {}) => parseAndRender(tpl, ctx, { globals: c
 test('unpublished navigation stays in the exact draft without published page resources', async () => {
   const html = await liquid.parseAndRender(renderBody('/', { target: 'shopify' }), { theme: { role: 'unpublished', id: 123 }, routes: { root_url: '/' } });
   assert.match(html, /href="\/\?preview_theme_id=123&amp;view=velani-contact&amp;interest=nevora-demo"/);
-  assert.match(html, /href="\/\?preview_theme_id=123&amp;view=velani-custom-development"/);
+  assert.match(html, /href="\/\?preview_theme_id=123&amp;view=velani-nevora"/);
   assert.doesNotMatch(html, /href="\/pages\//);
 });
 test('main-theme links retain canonical company page destinations', async () => {
@@ -35,17 +35,19 @@ test('the published theme is indexable while drafts stay noindex', async () => {
   const draft = await liquid.parseAndRender(layout, ctx('unpublished'));
   assert.doesNotMatch(main, /noindex/);
   assert.match(draft, /name="robots" content="noindex, nofollow"/);
-  assert.match(main, /<title>Velani · Software, websites and custom apps for your business<\/title>/);
-  assert.match(main, /velani-home\.css/);
+  assert.match(main, /<title>Velani · Scheduling, time clock and payroll for small businesses<\/title>/);
+  assert.match(main, /velani-day\.css[^]*velani-day-home\.css/, 'Home is on the Day design with its own stylesheet');
+  assert.doesNotMatch(main, /velani-home\.css|velani-motion\.js/);
+  assert.match(main, /<meta name="color-scheme" content="light">/);
 });
 test('the NEVORA page loads its own assets and marks its nav item', async () => {
   const layout = renderShopifyLayout();
   const html = await liquid.parseAndRender(layout, { theme: { role: 'main', id: 9 }, routes: { root_url: '/' }, template: { name: 'page', suffix: 'nevora' }, request: { locale: { iso_code: 'en' }, page_type: 'page' }, settings: {} });
-  assert.match(html, /velani-nevora\.js/);
-  assert.match(html, /class="gnav"/);
-  // NEVORA lives under the NEVORA menu: its button carries the current-section mark; the phone menu lists it
-  assert.match(html, /<button class="gnav-ddbtn txt" type="button" aria-expanded="false" aria-controls="gnav-dd-nevora" data-cur>NEVORA/);
-  assert.match(html, /<a class="gmenu-sub" href="\/pages\/nevora">NEVORA Workforce<\/a>/);
+  // NEVORA is on the Day design: shared device styles, its own stylesheet and script, and its header link marked current
+  assert.match(html, /velani-day-devices\.css[^]*velani-day-nevora\.css[^]*velani-day-nevora\.js/);
+  assert.doesNotMatch(html, /velani-nevora\.(js|css)|velani-motion\.js/);
+  assert.match(html, /<nav class="gnav" aria-label="Main"><a href="\/pages\/nevora" aria-current="page">NEVORA<\/a>/);
+  assert.match(html, /<nav class="mm-nav" aria-label="Main"><a href="\/pages\/nevora" aria-current="page">NEVORA<\/a>/);
 });
 test('live contact page never shows the preview form on the published theme', async () => {
   const body = renderBody('/pages/contact', { target: 'shopify' }).replace(/\{% form [^%]*%\}/, '<form>').replace('{% endform %}', '</form>').replace(/\{\{ 'shopify[^}]*\}\}/, '');
@@ -74,4 +76,13 @@ test('the assistant appears only when an API address is configured', async () =>
   process.env.VELANI_ASSISTANT_API = 'http://127.0.0.1:3001';
   assert.match(renderPage('/').html, /data-api="http:\/\/127\.0\.0\.1:3001"[\s\S]*velani-assist\.js/);
   if (saved === undefined) delete process.env.VELANI_ASSISTANT_API; else process.env.VELANI_ASSISTANT_API = saved;
+});
+test('Shopify not-found and policy pages use the Day header and the legal look', async () => {
+  const layout = renderShopifyLayout();
+  for (const [name, page_type] of [['404', '404'], ['product', 'product'], ['page', 'policy']]) {
+    const html = await liquid.parseAndRender(layout, { theme: { role: 'main', id: 9 }, routes: { root_url: '/' }, template: { name, suffix: '' }, request: { locale: { iso_code: 'en' }, page_type, path: '/policies/privacy-policy' }, settings: {} });
+    assert.match(html, /velani-day\.css[^]*velani-day-legal\.css/, name);
+    assert.match(html, /<header class="gn" id="gn">/, name);
+    assert.doesNotMatch(html, /velani-motion\.js|class="gnav" id="gnav"/, name);
+  }
 });

@@ -1,0 +1,17 @@
+PASS topic "none": heading and choice  [Tell us what you need. / (none)]
+PASS topic "?interest=nevora-demo": heading and choice  [Request your free trial. / nevora-demo]
+PASS topic "?interest=nevora": heading and choice  [Set up NEVORA for a larger team. / nevora]
+PASS topic "?interest=relay": heading and choice  [Join the NEVORA Relay waitlist. / relay]
+PASS trial: team fields shown
+PASS trial: button says Send trial request  [Send trial request]
+PASS more than 30 on a trial: becomes assisted setup, note shown  [Set up NEVORA for a larger team.]
+PASS more than 30: button says Request assisted setup
+PASS back to 11–20: trial again
+PASS choose Relay: side and button follow
+PASS switch to Something else: message label says it is needed  [What needs to work better]
+PASS empty submit: summary names the fields, focus on the first  [3 fields need attention: Name, Email, What needs to work better.]
+PASS errors under their fields
+PASS preview check: confirmation shown, says nothing was sent  [Website preview · this is what visitors see after sending. Nothing was sent.Message sent.Thanks for writing. We reply by email within two business days.Replies ]
+PASS focus on the confirmation
+PASS no form was sent over the network
+PASS no script errors or CSP reports

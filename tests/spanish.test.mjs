@@ -5,7 +5,7 @@ import { routes } from '../src/content.mjs';
 import { ES_PATHS, ES_NEAREST } from '../src/content.es.mjs';
 import { renderPage, renderBody, renderShopifyLayout, renderShopifySnippets } from '../src/render.mjs';
 
-const PAIRS = { '/pages/privacy': '/pages/es-privacy', '/pages/nevora-privacy': '/pages/es-nevora-privacy', '/pages/nevora-terms': '/pages/es-nevora-terms', '/pages/nevora-support': '/pages/es-nevora-support', '/pages/nevora-account-deletion': '/pages/es-nevora-account-deletion', '/': '/pages/es', '/pages/nevora': '/pages/es-nevora', '/pages/plans': '/pages/es-planes', '/pages/products': '/pages/es-productos', '/pages/contact': '/pages/es-contacto', '/pages/about': '/pages/es-nosotros', '/pages/help': '/pages/es-ayuda', '/pages/custom-development': '/pages/es-a-la-medida', '/pages/sign-in': '/pages/es-entrar', '/pages/nevora-start': '/pages/es-prueba', '/pages/nevora-billing': '/pages/es-facturacion', '/pages/nevora-verify': '/pages/es-configurar', '/pages/nevora-billing-return': '/pages/es-pago' };
+const PAIRS = { '/pages/rondo': '/pages/es-rondo', '/pages/relay': '/pages/es-relay', '/pages/privacy': '/pages/es-privacy', '/pages/nevora-privacy': '/pages/es-nevora-privacy', '/pages/nevora-terms': '/pages/es-nevora-terms', '/pages/nevora-support': '/pages/es-nevora-support', '/pages/nevora-account-deletion': '/pages/es-nevora-account-deletion', '/': '/pages/es', '/pages/nevora': '/pages/es-nevora', '/pages/plans': '/pages/es-planes', '/pages/products': '/pages/es-productos', '/pages/contact': '/pages/es-contacto', '/pages/about': '/pages/es-nosotros', '/pages/help': '/pages/es-ayuda', '/pages/sign-in': '/pages/es-entrar', '/pages/nevora-start': '/pages/es-prueba', '/pages/nevora-billing': '/pages/es-facturacion', '/pages/nevora-verify': '/pages/es-configurar', '/pages/nevora-billing-return': '/pages/es-pago' };
 const ES = Object.values(PAIRS);
 const text = html => html.replace(/<script[^]*?<\/script>|<style[^]*?<\/style>/g, ' ').replace(/<[^>]+>/g, ' ').replace(/&nbsp;/g, ' ').replace(/\s+/g, ' ');
 const withoutHiddenSent = html => html.replace(/<div class="sent" id="inquiry-sent" tabindex="-1" hidden>[\s\S]*?<\/div>/, '');
@@ -44,7 +44,7 @@ test('Spanish pages link to the Spanish version of a page whenever one exists', 
     const english = [...html.matchAll(/href="(\/[^"]*)"/g)].map(m => m[1]).filter(href => ES_PATHS[href.split(/[?#]/)[0]]);
     assert.deepEqual(english, [], path);
     // Custom software leads to a project inquiry, every other Spanish page to the NEVORA trial request (same as English)
-    assert.match(html, path === '/pages/es-a-la-medida' ? /href="\/pages\/es-contacto\?interest=custom-software"/ : /href="\/pages\/es-contacto\?interest=nevora-demo"/, path);
+    assert.match(html, /href="\/pages\/es-contacto\?interest=nevora-demo"/, path);
     // Pages that exist only in English are marked for browsers and assistive technology
     for (const m of html.matchAll(/<a [^>]*href="\/pages\/(privacy|nevora-privacy|website-terms|legal|cookies)"[^>]*>/g)) assert.match(m[0], /hreflang="en"/, path + ' ' + m[0]);
   }
@@ -53,20 +53,22 @@ test('Spanish pages link to the Spanish version of a page whenever one exists', 
 test('no English UI is left in the Spanish header, phone menu, footer, cookie dialog or contact form', () => {
   for (const path of ES) {
     const html = renderPage(path).html;
-    const chrome = between(html, '<a class="skip"', '</nav></div>') + between(html, '<footer class="foot">', '</footer>') + between(html, '<dialog class="cookie-dialog"', '</dialog>');
+    // The header and phone menu up to <main>, and footer.ft
+    const chrome = between(html, '<a class="skip"', '<main') + between(html, '<footer class="ft"', '</footer>') + between(html, '<dialog class="cookie-dialog"', '</dialog>');
     const hit = text(chrome).match(DENY);
     assert.equal(hit, null, path + ': ' + (hit && hit[0]));
   }
   const contact = renderPage('/pages/es-contacto').html;
-  const form = between(contact, '<div class="cform-hero contact-side">', '<div class="client-form">') + between(contact, '<form id="project-inquiry"', '</form>') + between(contact, '<div class="sent"', '</div>');
+  const side = between(contact, '<section class="ct"', '<div class="ct-card') + between(contact, '<div class="ct-side ct-more">', '</section>');
+  const form = side + between(contact, '<form id="project-inquiry"', '</form>') + between(contact, '<div class="sent"', '</div>');
   const hit = text(form).match(DENY);
   assert.equal(hit, null, 'contact form: ' + (hit && hit[0]));
-  assert.match(contact, /<input type="radio" name="topic_choice" value="custom-software"><b>Web o app<\/b>/);
+  assert.match(contact, /<input type="radio" name="topic_choice" value="nevora-demo"><b>Prueba gratis<\/b><small>Hasta 30 empleados<\/small>/);
 });
 test('the Spanish contact form sends the same topic values and team size as the English one', () => {
   const values = html => [...between(html, '<fieldset class="kinds topics field-topic">', '</fieldset>').matchAll(/value="([^"]*)"/g)].map(m => m[1]);
   assert.deepEqual(values(renderPage('/pages/es-contacto').html), values(renderPage('/pages/contact').html));
-  assert.deepEqual(values(renderPage('/pages/es-contacto').html), ['custom-software', 'nevora', 'other']);
+  assert.deepEqual(values(renderPage('/pages/contact').html), ['nevora-demo', 'nevora', 'relay', 'other']);
   assert.match(renderPage('/pages/es-contacto').html, /<input type="hidden" id="inquiry-interest" name="contact\[interest\]" value="">/);
   assert.match(renderPage('/pages/es-contacto').html, /<option value="More than 30 \(assisted setup\)">Más de 30 \(configuración asistida\)<\/option>/);
   const live = renderBody('/pages/es-contacto', { target: 'shopify' });
@@ -75,11 +77,11 @@ test('the Spanish contact form sends the same topic values and team size as the 
 });
 test('the NEVORA time clock demo starts in Spanish on the Spanish page and offers English', () => {
   const html = renderPage('/pages/es-nevora').html;
-  assert.match(html, /<div class="kio" id="kio" lang="es">/);
-  assert.match(html, /data-k-t="Enter your PIN">Ingresa tu PIN</);
-  assert.match(html, /data-k-t="Clock-in recorded">Entrada registrada</);
-  assert.match(html, /<span id="kio-lang-t" lang="en">English<\/span>/);
-  assert.match(renderPage('/pages/nevora').html, /data-k-t="Enter your PIN">Enter your PIN</);
+  // The time clock: the same English keys (data-t) with Spanish words, and the switch offers English
+  assert.match(html, /<div class="nv ck kio" data-kio lang="es" data-lang="es">/);
+  assert.match(html, /data-t="Enter your PIN">Ingresa tu PIN</);
+  assert.match(html, /<h3 class="kd-t">Entrada registrada<\/h3>/);
+  assert.match(html, /<span lang="en">English<\/span><\/button>/);
 });
 test('every page has a language switch; it round-trips between the pairs and falls back to the closest Spanish page', () => {
   const sw = html => [...html.matchAll(/<span class="lang-sw[^"]*" role="group" aria-label="([^"]+)"><a href="([^"]+)" hreflang="en" lang="en" aria-label="English"( aria-current="true")?>EN<\/a><span class="lang-sep" aria-hidden="true">\|<\/span><a href="([^"]+)" hreflang="es" lang="es" aria-label="Español"( aria-current="true")?>ES<\/a><\/span>/g)];
@@ -122,9 +124,10 @@ test('the main-theme layout renders Spanish pages in Spanish with es_US metadata
   assert.match(html, /<meta property="og:locale" content="es_US"><meta property="og:locale:alternate" content="en_US">/);
   assert.match(html, /<link rel="canonical" href="https:\/\/www\.thevelani\.com\/pages\/es-nevora">/);
   assert.match(html, /<a class="skip" href="#main">Saltar al contenido<\/a>/);
-  assert.match(html, /<header class="gnav" id="gnav">/);
-  assert.match(html, /<button class="gnav-ddbtn txt" type="button" aria-expanded="false" aria-controls="gnav-dd-nevora" data-cur>NEVORA/);
-  assert.match(html, /<a class="gnav-signin" href="\/pages\/es-entrar">Entrar<\/a>/);
+  // The Spanish NEVORA page is on the Day design: its header marks NEVORA current and signs in on the Spanish page
+  assert.match(html, /<header class="gn" id="gn">/);
+  assert.match(html, /<nav class="gnav" aria-label="Principal"><a href="\/pages\/es-nevora" aria-current="page">NEVORA<\/a>/);
+  assert.match(html, /<a class="signin" href="\/pages\/es-entrar">Entrar<\/a>/);
   assert.match(html, /<a href="\/pages\/nevora" hreflang="en" lang="en" aria-label="English">EN<\/a>/);
   assert.match(html, /<a href="\/pages\/es-nevora" hreflang="es" lang="es" aria-label="Español" aria-current="true">ES<\/a>/);
   assert.match(html, /Opciones de cookies/);
@@ -135,8 +138,6 @@ test('the main-theme layout renders Spanish pages in Spanish with es_US metadata
   // The switch keeps the visitor's place: About goes to Nosotros; an English-only page goes to its closest Spanish page
   const about = await page('main', '/pages/about');
   assert.match(about, /<a href="\/pages\/about" hreflang="en" lang="en" aria-label="English" aria-current="true">EN<\/a><span class="lang-sep" aria-hidden="true">\|<\/span><a href="\/pages\/es-nosotros" hreflang="es"/);
-  const dev = await page('main', '/pages/custom-development');
-  assert.match(dev, /<a href="\/pages\/es-a-la-medida" hreflang="es" lang="es" aria-label="Español">ES<\/a>/);
   const legal = await page('main', '/pages/legal');
   assert.match(legal, /<a href="\/pages\/es-ayuda" hreflang="es" lang="es" aria-label="Español">ES<\/a>/);
 });
@@ -171,102 +172,7 @@ test('while online signup is closed, the old trial page sends visitors to the tr
   assert.doesNotMatch(await liquid.parseAndRender(en, open), /location\.replace/);
   const draft = await liquid.parseAndRender(en, { ...closed, theme: { role: 'unpublished', id: 77 } });
   assert.match(draft, /location\.replace\("\/\?preview_theme_id=77&view=velani-contact&interest=nevora-demo"\)/, 'a draft stays in the draft');
-  assert.match(await liquid.parseAndRender(en, closed), /<a class="hb fill" href="\/pages\/contact\?interest=nevora-demo">/, 'the page still offers the request button without a script');
-});
-
-test('the home first screen carries the live sample day in both languages, with a pause control and a status region', async () => {
-  for (const [path, word] of [['/', 'Clock in'], ['/pages/es', 'Marcar entrada']]) {
-    const html = renderBody(path, { target: 'shopify' });
-    assert.match(html, /data-day data-now="478"/, path);
-    assert.match(html, new RegExp('data-clock[^>]*>' + word + '<'), path);
-    assert.match(html, /data-pp aria-label="[^"]+"/, path);
-    assert.match(html, /role="status" data-day-status/, path);
-    assert.equal((html.match(/class="hb fill"/g) || []).length >= 1, true);
-  }
-});
-
-test('the four views of the live piece share one set of numbers: schedule, time clock, pay and Rondo agree', async () => {
-  for (const path of ['/', '/pages/es']) {
-    const html = renderBody(path, { target: 'shopify' });
-    assert.equal((html.match(/role="tab" /g) || []).length, 4, path);
-    assert.equal((html.match(/role="tabpanel"/g) || []).length, 4, path);
-    const rows = [...html.matchAll(/class="day-row" data-state="(\w+)" data-due="(\d+)" data-week="(\d+)" data-sched="(\d+)" data-sun="\d"(?: data-auto="\d+")?(?: data-in="(\d+)")?/g)];
-    assert.equal(rows.length, 5, path);
-    // Mon–Fri minutes per person equal eight hours for every weekday chip in the schedule
-    const sched = [...html.matchAll(/<tr><th scope="row">[^<]+<\/th>(.*?)<td class="day-wk">(\d+) h<\/td><\/tr>/g)];
-    sched.forEach(([, cells, total], i) => {
-      const days = cells.split('</td>').slice(0, 7).map(c => c.includes('day-chip'));
-      assert.equal(days.filter(Boolean).length * 8, +total, 'weekly hours match the chips');
-      assert.equal(days.slice(0, 5).filter(Boolean).length * 480, +rows[i][3], 'Mon–Fri minutes match the schedule');
-      assert.equal(days[5], true, 'everyone on the Time clock view is scheduled on Saturday');
-      assert.equal(+rows[i][4], +total, 'the hours Rondo reads match the schedule');
-    });
-    // At 7:58 the first paint agrees across views: today's pay and the week's pay at $15 an hour
-    const now = +html.match(/data-now="(\d+)"/)[1], rate = +html.match(/data-rate="(\d+)"/)[1];
-    const today = rows.reduce((m, r) => m + (r[5] ? now - r[5] : 0), 0), week = rows.reduce((m, r) => m + +r[3], 0) + today;
-    const usd = v => '$' + v.toLocaleString('en-US', { minimumFractionDigits: 2 });
-    assert.match(html, new RegExp('data-pay>' + usd(today * rate / 60).replace('$', '\\$') + '<'), path);
-    assert.match(html, new RegExp('data-week-pay>' + usd(week * rate / 60).replace(/[$]/g, '\\$') + '<'), path);
-  }
-});
-
-test('Home is NEVORA and Rondo: no client panels, one filled action in the closing, and one quiet line to custom software', async () => {
-  for (const [path, link] of [['/', '/pages/custom-development'], ['/pages/es', '/pages/es-a-la-medida']]) {
-    const html = renderBody(path, { target: 'local' });
-    assert.doesNotMatch(html, /id="websites"|id="apps"|Tool Box|Yavi/, path);
-    const closing = html.slice(html.indexOf('id="velani"'));
-    assert.equal((closing.match(/class="hb fill"/g) || []).length, 1, path);
-    assert.equal((closing.match(/class="hb"/g) || []).length, 0, path);
-    assert.match(closing, new RegExp('class="hfact halso fade">[^<]+<a class="ul" href="' + link + '"'), path);
-    assert.equal((html.match(/data-ask="\d"/g) || []).length, 2, path);
-  }
-});
-
-test('Home below the first screen is three live sections that read the same week as the piece', async () => {
-  for (const path of ['/', '/pages/es']) {
-    const html = renderBody(path, { target: 'local' });
-    for (const id of ['nevora', 'rondo', 'start']) assert.match(html, new RegExp('<section class="hn [^"]+" id="' + id + '"'), path + ' ' + id);
-    for (const b of ['arWeek', 'arToday', 'arState', 'brief']) assert.match(html, new RegExp('data-b="' + b + '"'), path + ' ' + b);
-    // Alexandra's Mon–Fri hours on the phone equal her row in the piece (1440 minutes)
-    assert.match(html, /data-b="arWeek">24:00</, path);
-    assert.match(html, /class="day-row" data-state="you" data-due="480" data-week="1440"/, path);
-    const between = html.slice(html.indexOf('id="nevora"'), html.indexOf('<section class="hpanel end"'));
-    assert.equal((between.match(/class="hb fill"/g) || []).length, 1, 'one filled action below the first screen, in the price section');
-    assert.match(between, /data-approve/);
-    assert.match(between, /\$19<\/b>[^<]+<b>\$29<\/b>/);
-    assert.doesNotMatch(between, /class="hpanel/);
-  }
-});
-
-test('the NEVORA page tells the week in order from the same sample data as Home, and its time clock clocks Alexandra in', async () => {
-  for (const [path, home] of [['/pages/nevora', '/'], ['/pages/es-nevora', '/pages/es']]) {
-    const html = renderBody(path, { target: 'local' }), h = renderBody(home, { target: 'local' });
-    const order = ['id="top"', 'id="plan"', 'id="clock"', 'id="approve"', 'id="pay"', 'id="rondo"', 'id="begin"', 'id="velani"'].map(k => html.indexOf(k));
-    assert.ok(order.every((v, i) => v > -1 && (i === 0 || v > order[i - 1])), path + ' sections in week order');
-    const rows = s => [...s.matchAll(/class="day-row" data-state="\w+" data-due="\d+" data-week="\d+" data-sched="\d+" data-sun="\d"/g)].map(m => m[0]).join('|');
-    assert.equal(rows(html), rows(h), 'the same five rows as Home');
-    assert.equal(html.match(/data-now="(\d+)" data-rate="(\d+)"/)[0], h.match(/data-now="(\d+)" data-rate="(\d+)"/)[0]);
-    for (const b of ['need', 'weekPay', 'weekH', 'h2', 'a2', 'cov', 'f3', 't0', 't4']) assert.match(html, new RegExp('data-b="' + b + '"'), path + ' ' + b);
-    assert.match(html, /id="kio-who">Alexandra Rivera/);
-    assert.match(html, /id="kio-date">(Saturday, November 7|Sábado, 7 de noviembre)</);
-    assert.doesNotMatch(html, /class="lnav"|In development|En desarrollo|eight people|ocho personas/);
-    assert.equal((html.match(/<details>/g) || []).length, 6);
-    assert.equal((html.match(/class="hb fill"/g) || []).length, 3, 'one filled action each in the first screen, the start section and the ending');
-  }
-});
-
-test('Plans puts the team-size price control in its first screen, once, and ends on the trial only', async () => {
-  for (const path of ['/pages/plans', '/pages/es-planes']) {
-    const html = renderBody(path, { target: 'local' });
-    assert.equal((html.match(/data-pcard/g) || []).length, 1, path);
-    const top = html.slice(html.indexOf('plans-top'), html.indexOf('id="price"'));
-    assert.match(top, /data-pcard/, path + ' the control is in the first screen');
-    assert.match(top, /role="status" data-pc-live/, path);
-    const end = html.slice(html.indexOf('id="velani"'));
-    assert.equal((end.match(/class="hb fill"/g) || []).length, 1, path);
-    assert.doesNotMatch(end, /custom-development|a-la-medida/, path);
-    assert.doesNotMatch(html, /night-r1-schedule/, path + ' no schedule screenshot');
-  }
+  assert.match(await liquid.parseAndRender(en, closed), /<a class="(hb fill|pillbtn)" href="\/pages\/contact\?interest=nevora-demo">/, 'the page still offers the request button without a script');
 });
 
 test('the request form has a real label for every field and a live summary that names the fields to fix', async () => {
@@ -298,26 +204,14 @@ test('after a trial request the panel names Jose, leads to the NEVORA page and k
   }
 });
 
-test('custom software tells two stories the same way and ends on one action', () => {
-  for (const [path, labels, action] of [['/pages/custom-development', ['What they needed', 'What we decided', 'What we delivered'], 'Start a project'], ['/pages/es-a-la-medida', ['Lo que necesitaban', 'Lo que decidimos', 'Lo que entregamos'], 'Empieza un proyecto']]) {
-    const html = renderBody(path, { target: 'local' });
-    assert.equal((html.match(/<dl class="case-story">/g) || []).length, 2, path + ' two stories');
-    for (const label of labels) assert.equal(html.split('<dt>' + label + '</dt>').length - 1, 2, path + ' ' + label);
-    assert.doesNotMatch(html, /class="jump|class="rail|<i>0\d<\/i>|hkick/, path + ' no jump row, numbering or labels above headings');
-    assert.equal((html.match(/class="hb fill"/g) || []).length, 2, path + ' one filled action per dark screen');
-    assert.equal(html.split('>' + action + '<svg').length - 1, 2, path + ' the same action at the start and the end');
-    assert.doesNotMatch(html, /interest=nevora-demo/, path + ' no trial offer');
-    for (const img of ['night-tb-home', 'night-store', 'night-yavi-book', 'night-yavi-rewards']) assert.match(html, new RegExp(img), path + ' ' + img);
-  }
-});
 
-test('Products is one light page of three equal cards with one filled action; Legal has no labels above headings', () => {
+test('Products is one light Day page of three product rows with one filled action; Legal has no labels above headings', () => {
   for (const path of ['/pages/products', '/pages/es-productos']) {
     const html = renderBody(path, { target: 'local' });
-    assert.equal((html.match(/class="make-card/g) || []).length, 3, path);
-    assert.equal((html.match(/class="hb fill"/g) || []).length, 2, path + ' one filled action in the cards and one in the ending');
-    assert.doesNotMatch(html, /kicker|hkick|in development|en desarrollo/, path);
-    for (const id of ['nevora', 'relay', 'websites', 'apps']) assert.match(html, new RegExp('id="' + id + '"'), path + ' keeps #' + id);
+    assert.equal((html.match(/class="irow"/g) || []).length, 3, path);
+    assert.equal((html.match(/class="pillbtn"/g) || []).length, 1, path + ' one filled action');
+    for (const href of ['nevora', 'rondo', 'relay']) assert.match(html, new RegExp('href="/pages/(es-)?' + href + '"'), path + ' links ' + href);
+    assert.doesNotMatch(html, /kicker|hkick|in development|en desarrollo|websites|sitios web/i, path);
   }
   assert.doesNotMatch(renderBody('/pages/legal', { target: 'local' }), /hkick/);
 });
