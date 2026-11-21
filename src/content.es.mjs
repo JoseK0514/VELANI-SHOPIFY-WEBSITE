@@ -18,7 +18,6 @@ export const ES_PATHS = Object.freeze({
   '/pages/contact': '/pages/es-contacto',
   '/pages/about': '/pages/es-nosotros',
   '/pages/help': '/pages/es-ayuda',
-  '/pages/custom-development': '/pages/es-a-la-medida',
   '/pages/sign-in': '/pages/es-entrar',
   '/pages/nevora-start': '/pages/es-prueba',
   '/pages/nevora-billing': '/pages/es-facturacion',
@@ -29,7 +28,7 @@ export const ES_PATHS = Object.freeze({
 /** English-only pages whose closest Spanish page is not the Spanish home: the ES switch goes there instead. */
 export const ES_NEAREST = Object.freeze({
   '/pages/legal': '/pages/es-ayuda', '/pages/cookies': '/pages/es-ayuda', '/pages/website-terms': '/pages/es-ayuda',
-  '/pages/software-project-terms': '/pages/es-ayuda', '/pages/accessibility': '/pages/es-ayuda', '/pages/security': '/pages/es-ayuda',
+  '/pages/accessibility': '/pages/es-ayuda', '/pages/security': '/pages/es-ayuda',
 });
 
 /** Spanish routes: same kinds (and so the same components, images and order) as their English pages. */
@@ -50,8 +49,8 @@ export const ES_ROUTES = {
     og: ['velani-social-nevora.png', 'NEVORA en un teléfono: horarios, registro de tiempo y cálculo de nómina para equipos por turnos'],
   }),
   '/pages/es-productos': es('/pages/products', {
-    kind: 'products', nav: 'products', eyebrow: 'Velani', title: 'Lo que hacemos.', name: 'Productos',
-    intro: 'NEVORA Workforce: horarios, registro de tiempo y cálculo de nómina, gratis por 30 días. NEVORA Relay: pedidos e inventario, en diseño. Sitios web y apps.',
+    kind: 'products', nav: 'products', day: 'products', eyebrow: 'Velani', title: 'Lo que hacemos.', name: 'Productos',
+    intro: 'NEVORA para horarios, registro de tiempo y cálculo de nómina, gratis por 30 días; Rondo, el asistente del dueño; y Relay, en diseño.',
     og: ['velani-social.png', 'Velani. Productos de software y desarrollo a la medida.'],
   }),
   '/pages/es-planes': es('/pages/plans', {
@@ -91,23 +90,23 @@ ES_ROUTES['/pages/es-ayuda'] = es('/pages/help', {
 });
 
 ES_ROUTES['/pages/es-prueba'] = es('/pages/nevora-start', {
-  kind: 'commerce', step: 'start', nav: 'plans', eyebrow: '', name: 'Pide una prueba de NEVORA', noindex: true,
+  kind: 'commerce', step: 'start', nav: 'plans', day: 'account', eyebrow: '', name: 'Pide una prueba de NEVORA', noindex: true,
   title: 'Tu prueba gratis.',
   intro: 'La app completa para tu equipo, gratis por 30 días. Sin tarjeta.',
   desc: 'Pide una prueba gratis de NEVORA por 30 días para tu negocio. Sin tarjeta.',
 });
 ES_ROUTES['/pages/es-facturacion'] = es('/pages/nevora-billing', {
-  kind: 'commerce', step: 'billing', nav: 'plans', eyebrow: '', name: 'Facturación de NEVORA', noindex: true,
+  kind: 'commerce', step: 'billing', nav: 'plans', day: 'account', eyebrow: '', name: 'Facturación de NEVORA', noindex: true,
   title: 'Plan y facturación.',
   intro: 'El dueño del negocio abre la facturación desde NEVORA, en Configuración.',
 });
 ES_ROUTES['/pages/es-configurar'] = es('/pages/nevora-verify', {
-  kind: 'commerce', step: 'verify', nav: 'plans', eyebrow: '', name: 'Configura tu lugar de trabajo de NEVORA', noindex: true,
+  kind: 'commerce', step: 'verify', nav: 'plans', day: 'account', eyebrow: '', name: 'Configura tu lugar de trabajo de NEVORA', noindex: true,
   title: 'Configura tu lugar de trabajo.',
   intro: 'La configuración del lugar de trabajo ocurre en NEVORA. El botón de tu correo de verificación la abre.',
 });
 ES_ROUTES['/pages/es-pago'] = es('/pages/nevora-billing-return', {
-  kind: 'commerce', step: 'return', nav: 'plans', eyebrow: '', name: 'Facturación de NEVORA',
+  kind: 'commerce', step: 'return', nav: 'plans', day: 'account', eyebrow: '', name: 'Facturación de NEVORA',
   title: 'Plan y facturación.',
   intro: '', noindex: true,
   desc: 'Facturación de un lugar de trabajo de NEVORA. El dueño del negocio abre la facturación desde NEVORA, en Configuración.',
@@ -117,13 +116,6 @@ ES_ROUTES['/pages/es-entrar'] = es('/pages/sign-in', {
   title: 'Cómo entrar a NEVORA.',
   intro: 'Cómo entrar a NEVORA en la dirección de tu lugar de trabajo, qué hacer si olvidaste tu contraseña y para qué sirve tu PIN.',
   desc: 'Cómo entrar a NEVORA: la dirección de tu lugar de trabajo, tu ID de empleado y tu contraseña, y qué hacer si olvidaste tu contraseña o tu PIN.',
-});
-ES_ROUTES['/pages/es-a-la-medida'] = es('/pages/custom-development', {
-  kind: 'services', nav: 'services', eyebrow: 'Software a la medida', name: 'Software a la medida',
-  title: 'Sitios web y apps para tu negocio.',
-  intro: 'Diseñamos y creamos sitios web, apps de reservas, tiendas en línea y herramientas de negocio. Antes de empezar cualquier trabajo pagado, recibes una cotización fija por escrito.',
-  desc: 'Velani diseña y crea sitios web, apps de reservas, tiendas en línea y herramientas de negocio, con una cotización fija por escrito.',
-  og: ['velani-social-custom.png', 'Velani: un sitio web creado por Velani para un cliente'],
 });
 
 /** The Custom software page below its hero (render.mjs WORK.en has the English). */

@@ -1,0 +1,45 @@
+/* The NEVORA trial and billing pages (Day): one calm centered column. velani-commerce.js fills the billing card. */
+.acct{min-height:calc(100svh - 52px);display:flex;align-items:center;padding:clamp(72px,10vw,140px) 0 clamp(64px,8vw,112px)}
+.acct-w{max-width:620px;text-align:center}
+.acct-ic{display:block;width:72px;height:72px;margin:0 auto 28px;border-radius:17px;box-shadow:0 18px 36px -22px rgba(16,24,40,.45)}
+.acct h1{font-size:clamp(40px,6vw,72px);line-height:1;letter-spacing:-.045em}
+/* the script moves focus to the heading for screen readers; a heading is not a control, so no ring (as on Contact) */
+.acct h1:focus{outline:none}
+.acct .lead{margin:20px auto 0;max-width:36ch}
+.acct-off{margin:16px auto 0;max-width:44ch;font-size:17px;line-height:1.5;color:var(--ink-2)}
+.acct .acts{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:12px 24px;margin-top:32px}
+.acct .acts span{display:contents}
+.acct-note{margin:28px auto 0;max-width:46ch;font-size:15px;line-height:1.5;color:var(--ink-2)}
+.acct-note a{color:var(--link)}
+@media (hover:hover){.acct-note a:hover{text-decoration:underline}}
+
+/* the buttons velani-commerce.js writes (Jose's .hb) */
+.acct .hb{display:inline-flex;align-items:center;gap:6px;min-height:44px;color:var(--link);font-size:17px;border:0;background:none;padding:0;cursor:pointer;font-family:inherit}
+.acct .hb.fill{justify-content:center;padding:0 22px;border-radius:980px;background:var(--teal);color:#fff;transition-property:background-color,scale;transition-duration:.15s;transition-timing-function:ease-out}
+.acct .hb.fill:not(:disabled):active{scale:.96}
+.acct .hb:disabled{opacity:.6;cursor:default}
+.acct .hb .icon{width:16px;height:16px}
+@media (hover:hover){.acct .hb:not(.fill):hover{text-decoration:underline}.acct .hb.fill:not(:disabled):hover{background:var(--teal-d)}}
+
+/* the card: the setup notice, the plan facts, the payment steps */
+.acct-card{margin:36px auto 0;max-width:520px;padding:28px;border-radius:24px;background:#fff;border:1px solid transparent;box-shadow:0 0 0 1px rgba(0,0,0,.06),0 24px 48px -32px rgba(16,24,40,.28);text-align:left}
+.acct-card > p{font-size:17px;line-height:1.5;color:var(--ink)}
+.acct-card .acts{justify-content:flex-start;margin-top:20px}
+.setup-facts{margin:0;display:grid;gap:0}
+.setup-facts > div{display:flex;justify-content:space-between;gap:16px;padding:14px 0;border-bottom:1px solid var(--line)}
+.setup-facts > div:first-child{padding-top:0}
+.setup-facts dt{color:var(--ink-2);font-size:15px}
+.setup-facts dd{margin:0;font-size:15px;font-weight:600;color:var(--ink);font-variant-numeric:tabular-nums;text-align:right}
+.setup-note{margin-top:16px;font-size:15px;line-height:1.5;color:var(--ink-2)}
+.setup-note:empty{display:none}
+.setup-out{margin-top:16px;min-height:44px;padding:0;border:0;background:none;color:var(--link);font:inherit;font-size:15px;cursor:pointer}
+@media (hover:hover){.setup-out:hover{text-decoration:underline}}
+.setup-steps{margin:0;padding:0;list-style:none;display:grid;gap:12px}
+.setup-steps li{display:flex;align-items:center;gap:12px;font-size:16px;color:var(--ink-3)}
+.setup-steps li::before{content:"";flex:none;width:10px;height:10px;border-radius:50%;box-shadow:inset 0 0 0 1.5px var(--ink-3)}
+.setup-steps li[data-state="done"]{color:var(--ink-2)}
+.setup-steps li[data-state="done"]::before{background:var(--teal);box-shadow:none}
+.setup-steps li[data-state="now"]{color:var(--ink);font-weight:600}
+.setup-steps li[data-state="now"]::before{box-shadow:inset 0 0 0 2px var(--teal)}
+.acct :focus-visible{outline:2px solid var(--link);outline-offset:3px}
+@media (max-width:600px){.acct{align-items:flex-start}.acct-card{padding:22px}}

@@ -110,21 +110,13 @@ for (const engine of engines) {
   await page.setViewportSize({ width: 390, height: 844 });
   await check(engine + ' mobile menu and keyboard return', async () => {
     await page.goto(base);
-    const day = await page.locator('.gn .mb').count() > 0;
-    const button = page.locator(day ? '.gn .mb' : '#gmenu-btn');
+    const button = page.locator('.gn .mb');
     await button.click(); expect(await button.getAttribute('aria-expanded') === 'true', 'Menu did not open');
     await page.keyboard.press('Escape'); expect(await button.getAttribute('aria-expanded') === 'false', 'Escape did not close menu');
     expect(await button.evaluate(el => el === document.activeElement), 'Menu focus not restored');
-    if (day) {
-      await button.click(); await page.locator('#mm').getByRole('link', { name: 'Plans', exact: true }).click();
-      await page.waitForURL('**/pages/plans');
-      expect(await page.locator('h1').count() === 1, 'The Plans page did not open from the menu');
-    } else {
-      await button.click(); await page.locator('#gmenu').getByRole('link', { name: 'Websites', exact: true }).first().click();
-      await page.waitForURL('**/pages/custom-development#web-applications');
-      expect((await page.locator('h1').innerText()).includes('Websites and apps for your business.'), 'Wrong service destination');
-      expect(await page.locator('#web-applications').count() === 1, 'The selected service fragment is missing');
-    }
+    await button.click(); await page.locator('#mm').getByRole('link', { name: 'Plans', exact: true }).click();
+    await page.waitForURL('**/pages/plans');
+    expect(await page.locator('h1').count() === 1, 'The Plans page did not open from the menu');
   });
   await check(engine + ' inquiry validation and no delivery', async () => {
     await page.goto(base + '/pages/contact?interest=nevora');

@@ -169,6 +169,8 @@ html.mm-open{overflow:hidden}
 .ab-h .eyebrow{color:var(--ink-2)}
 .ab-h h1{font-size:clamp(52px,9.4vw,140px);line-height:.94;letter-spacing:-.058em;max-width:12ch}
 .ab-h .lead{margin-top:28px;max-width:34ch;font-size:clamp(20px,1.9vw,26px);line-height:1.35;color:#3F3F44}
+.pr-h{padding-bottom:clamp(24px,3vw,48px)}
+.pr-s{padding-top:clamp(24px,3vw,48px)}
 .bel-s{padding-top:clamp(40px,5vw,70px)}
 .bel-k{font-size:17px;letter-spacing:-.01em;color:var(--teal);margin-bottom:28px}
 .bel{border-top:1px solid rgba(29,29,31,.14)}

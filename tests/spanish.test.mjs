@@ -5,7 +5,7 @@ import { routes } from '../src/content.mjs';
 import { ES_PATHS, ES_NEAREST } from '../src/content.es.mjs';
 import { renderPage, renderBody, renderShopifyLayout, renderShopifySnippets } from '../src/render.mjs';
 
-const PAIRS = { '/pages/privacy': '/pages/es-privacy', '/pages/nevora-privacy': '/pages/es-nevora-privacy', '/pages/nevora-terms': '/pages/es-nevora-terms', '/pages/nevora-support': '/pages/es-nevora-support', '/pages/nevora-account-deletion': '/pages/es-nevora-account-deletion', '/': '/pages/es', '/pages/nevora': '/pages/es-nevora', '/pages/plans': '/pages/es-planes', '/pages/products': '/pages/es-productos', '/pages/contact': '/pages/es-contacto', '/pages/about': '/pages/es-nosotros', '/pages/help': '/pages/es-ayuda', '/pages/custom-development': '/pages/es-a-la-medida', '/pages/sign-in': '/pages/es-entrar', '/pages/nevora-start': '/pages/es-prueba', '/pages/nevora-billing': '/pages/es-facturacion', '/pages/nevora-verify': '/pages/es-configurar', '/pages/nevora-billing-return': '/pages/es-pago' };
+const PAIRS = { '/pages/privacy': '/pages/es-privacy', '/pages/nevora-privacy': '/pages/es-nevora-privacy', '/pages/nevora-terms': '/pages/es-nevora-terms', '/pages/nevora-support': '/pages/es-nevora-support', '/pages/nevora-account-deletion': '/pages/es-nevora-account-deletion', '/': '/pages/es', '/pages/nevora': '/pages/es-nevora', '/pages/plans': '/pages/es-planes', '/pages/products': '/pages/es-productos', '/pages/contact': '/pages/es-contacto', '/pages/about': '/pages/es-nosotros', '/pages/help': '/pages/es-ayuda', '/pages/sign-in': '/pages/es-entrar', '/pages/nevora-start': '/pages/es-prueba', '/pages/nevora-billing': '/pages/es-facturacion', '/pages/nevora-verify': '/pages/es-configurar', '/pages/nevora-billing-return': '/pages/es-pago' };
 const ES = Object.values(PAIRS);
 const text = html => html.replace(/<script[^]*?<\/script>|<style[^]*?<\/style>/g, ' ').replace(/<[^>]+>/g, ' ').replace(/&nbsp;/g, ' ').replace(/\s+/g, ' ');
 const withoutHiddenSent = html => html.replace(/<div class="sent" id="inquiry-sent" tabindex="-1" hidden>[\s\S]*?<\/div>/, '');
@@ -44,7 +44,7 @@ test('Spanish pages link to the Spanish version of a page whenever one exists', 
     const english = [...html.matchAll(/href="(\/[^"]*)"/g)].map(m => m[1]).filter(href => ES_PATHS[href.split(/[?#]/)[0]]);
     assert.deepEqual(english, [], path);
     // Custom software leads to a project inquiry, every other Spanish page to the NEVORA trial request (same as English)
-    assert.match(html, path === '/pages/es-a-la-medida' ? /href="\/pages\/es-contacto\?interest=custom-software"/ : /href="\/pages\/es-contacto\?interest=nevora-demo"/, path);
+    assert.match(html, /href="\/pages\/es-contacto\?interest=nevora-demo"/, path);
     // Pages that exist only in English are marked for browsers and assistive technology
     for (const m of html.matchAll(/<a [^>]*href="\/pages\/(privacy|nevora-privacy|website-terms|legal|cookies)"[^>]*>/g)) assert.match(m[0], /hreflang="en"/, path + ' ' + m[0]);
   }
@@ -153,8 +153,6 @@ test('the main-theme layout renders Spanish pages in Spanish with es_US metadata
   // The switch keeps the visitor's place: About goes to Nosotros; an English-only page goes to its closest Spanish page
   const about = await page('main', '/pages/about');
   assert.match(about, /<a href="\/pages\/about" hreflang="en" lang="en" aria-label="English" aria-current="true">EN<\/a><span class="lang-sep" aria-hidden="true">\|<\/span><a href="\/pages\/es-nosotros" hreflang="es"/);
-  const dev = await page('main', '/pages/custom-development');
-  assert.match(dev, /<a href="\/pages\/es-a-la-medida" hreflang="es" lang="es" aria-label="Español">ES<\/a>/);
   const legal = await page('main', '/pages/legal');
   assert.match(legal, /<a href="\/pages\/es-ayuda" hreflang="es" lang="es" aria-label="Español">ES<\/a>/);
 });
@@ -189,7 +187,7 @@ test('while online signup is closed, the old trial page sends visitors to the tr
   assert.doesNotMatch(await liquid.parseAndRender(en, open), /location\.replace/);
   const draft = await liquid.parseAndRender(en, { ...closed, theme: { role: 'unpublished', id: 77 } });
   assert.match(draft, /location\.replace\("\/\?preview_theme_id=77&view=velani-contact&interest=nevora-demo"\)/, 'a draft stays in the draft');
-  assert.match(await liquid.parseAndRender(en, closed), /<a class="hb fill" href="\/pages\/contact\?interest=nevora-demo">/, 'the page still offers the request button without a script');
+  assert.match(await liquid.parseAndRender(en, closed), /<a class="(hb fill|pillbtn)" href="\/pages\/contact\?interest=nevora-demo">/, 'the page still offers the request button without a script');
 });
 
 /** Homes still on the Night design; a home that moved to Day is covered by tests/day.test.mjs. */
@@ -319,26 +317,14 @@ test('after a trial request the panel names Jose, leads to the NEVORA page and k
   }
 });
 
-test('custom software tells two stories the same way and ends on one action', () => {
-  for (const [path, labels, action] of [['/pages/custom-development', ['What they needed', 'What we decided', 'What we delivered'], 'Start a project'], ['/pages/es-a-la-medida', ['Lo que necesitaban', 'Lo que decidimos', 'Lo que entregamos'], 'Empieza un proyecto']]) {
-    const html = renderBody(path, { target: 'local' });
-    assert.equal((html.match(/<dl class="case-story">/g) || []).length, 2, path + ' two stories');
-    for (const label of labels) assert.equal(html.split('<dt>' + label + '</dt>').length - 1, 2, path + ' ' + label);
-    assert.doesNotMatch(html, /class="jump|class="rail|<i>0\d<\/i>|hkick/, path + ' no jump row, numbering or labels above headings');
-    assert.equal((html.match(/class="hb fill"/g) || []).length, 2, path + ' one filled action per dark screen');
-    assert.equal(html.split('>' + action + '<svg').length - 1, 2, path + ' the same action at the start and the end');
-    assert.doesNotMatch(html, /interest=nevora-demo/, path + ' no trial offer');
-    for (const img of ['night-tb-home', 'night-store', 'night-yavi-book', 'night-yavi-rewards']) assert.match(html, new RegExp(img), path + ' ' + img);
-  }
-});
 
-test('Products is one light page of three equal cards with one filled action; Legal has no labels above headings', () => {
+test('Products is one light Day page of three product rows with one filled action; Legal has no labels above headings', () => {
   for (const path of ['/pages/products', '/pages/es-productos']) {
     const html = renderBody(path, { target: 'local' });
-    assert.equal((html.match(/class="make-card/g) || []).length, 3, path);
-    assert.equal((html.match(/class="hb fill"/g) || []).length, 2, path + ' one filled action in the cards and one in the ending');
-    assert.doesNotMatch(html, /kicker|hkick|in development|en desarrollo/, path);
-    for (const id of ['nevora', 'relay', 'websites', 'apps']) assert.match(html, new RegExp('id="' + id + '"'), path + ' keeps #' + id);
+    assert.equal((html.match(/class="irow"/g) || []).length, 3, path);
+    assert.equal((html.match(/class="pillbtn"/g) || []).length, 1, path + ' one filled action');
+    for (const href of ['nevora', 'rondo', 'relay']) assert.match(html, new RegExp('href="/pages/(es-)?' + href + '"'), path + ' links ' + href);
+    assert.doesNotMatch(html, /kicker|hkick|in development|en desarrollo|websites|sitios web/i, path);
   }
   assert.doesNotMatch(renderBody('/pages/legal', { target: 'local' }), /hkick/);
 });

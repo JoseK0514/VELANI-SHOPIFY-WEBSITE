@@ -235,7 +235,7 @@ test('no designer notes from the mockups reach a Day page', () => {
 
 test('legal and NEVORA policy pages use the Day chrome and keep Jose\'s documents unchanged', () => {
   const legal = Object.entries(routes).filter(([, p]) => p.legal || p.kind === 'policy' || p.kind === 'legal-index');
-  assert.equal(legal.length, 16);
+  assert.equal(legal.length, 15, 'the project terms page left with custom work (decision 2)');
   for (const [path, page] of legal) {
     assert.equal(page.day, 'doc', path);
     const html = renderPage(path).html;
@@ -248,4 +248,23 @@ test('legal and NEVORA policy pages use the Day chrome and keep Jose\'s document
   const body = renderBody('/pages/nevora-privacy');
   assert.equal((body.match(/<section id="p-\d+">/g) || []).length, (body.match(/<a href="#p-\d+">/g) || []).length);
   assert.match(renderPage('/missing-page').html, /velani-day-legal\.css/, 'the not-found page uses the legal look');
+});
+
+test('the trial and billing pages are on Day and keep every hook velani-commerce.js reads', () => {
+  for (const [path, step] of [['/pages/nevora-start', 'start'], ['/pages/es-prueba', 'start'], ['/pages/nevora-verify', 'verify'], ['/pages/es-configurar', 'verify'], ['/pages/nevora-billing', 'billing'], ['/pages/es-facturacion', 'billing'], ['/pages/nevora-billing-return', 'return'], ['/pages/es-pago', 'return']]) {
+    assert.equal(routes[path].day, 'account', path);
+    const html = renderPage(path).html;
+    assert.match(html, /<header class="gn"/, path + ' Day header');
+    assert.match(html, /velani-day-account\.css/, path + ' its stylesheet');
+    assert.doesNotMatch(html, /class="hpanel|night-ai-light|night-r1-ph/, path + ' no Night panels or photos');
+    assert.equal((html.match(/<h1[ >]/g) || []).length, 1, path + ' one heading');
+    if (step === 'start') assert.match(html, /location\.replace\(/, path + ' still sends visitors to the trial request while signup is closed');
+    if (step === 'verify') { assert.match(html, /data-verify-retired/, path); assert.match(html, /id="velani-commerce"/, path); }
+    if (step === 'billing' || step === 'return') {
+      assert.match(html, new RegExp('id="setup"[^>]*data-account-page="' + step + '"'), path);
+      for (const hook of ['data-setup-lede', 'data-setup-acts', 'data-setup-card', 'data-off', 'data-announce', 'id="setup-t" tabindex="-1"', 'id="velani-commerce"', 'velani-commerce.js']) assert.match(html, new RegExp(hook.replace('.', '\\.')), path + ' ' + hook);
+      assert.match(html, /href="mailto:support@thevelani\.com\?subject=/, path + ' billing support by email');
+      assert.doesNotMatch(html, /data-setup-acts[^]*?interest=nevora-demo[^]*?data-setup-card/, path + ' billing visitors get support, not a new trial');
+    }
+  }
 });

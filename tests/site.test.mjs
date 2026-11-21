@@ -5,7 +5,7 @@ import { ES_PATHS } from '../src/content.es.mjs';
 import { renderPage, escapeHtml } from '../src/render.mjs';
 
 test('both business paths and every required company/legal destination exist', () => {
-  for (const path of ['/', '/pages/nevora', '/pages/custom-development', '/pages/about', '/pages/contact', '/pages/help', '/pages/plans', '/pages/legal', '/pages/privacy', '/pages/cookies', '/pages/website-terms', '/pages/software-project-terms', '/pages/accessibility', '/pages/security']) assert.ok(routes[path], path);
+  for (const path of ['/', '/pages/nevora', '/pages/about', '/pages/contact', '/pages/help', '/pages/plans', '/pages/legal', '/pages/privacy', '/pages/cookies', '/pages/website-terms', '/pages/accessibility', '/pages/security']) assert.ok(routes[path], path);
   assert.equal(company.name, 'Velani');
   assert.equal(company.operator, 'VELANI LLC');
   assert.equal(company.email, 'support@thevelani.com');
@@ -68,4 +68,8 @@ test('NEVORA payroll is described as calculation, never payment or tax filing', 
   assert.match(html, /calculates (?:payroll|pay)\b/);
   assert.match(html, /doesn(?:'|’)t pay employees or file payroll taxes/);
   assert.doesNotMatch(html, /NEVORA (?:pays|runs payroll|files)/);
+});
+test('custom work is gone from the source: no custom-software or project-terms routes, and no page links to them', () => {
+  for (const path of ['/pages/custom-development', '/pages/es-a-la-medida', '/pages/software-project-terms']) assert.equal(routes[path], undefined, path);
+  for (const path of Object.keys(routes)) assert.doesNotMatch(renderPage(path).html, /href="[^"]*(custom-development|es-a-la-medida|software-project-terms)/, path);
 });
