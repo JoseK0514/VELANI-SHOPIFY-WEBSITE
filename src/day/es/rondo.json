@@ -133,7 +133,7 @@
 ],
 [
 "<p class=\"eyebrow\">What it reads</p><h2 id=\"kn-h\">Answers from your own records.</h2><p class=\"lead\">Rondo reads what your workplace already keeps in NEVORA, and names the source under every answer.</p>",
-"<p class=\"eyebrow\">Qué lee</p><h2 id=\"kn-h\">Respuestas con tus propios registros.</h2><p class=\"lead\">Rondo lee lo que tu lugar de trabajo ya guarda en NEVORA, y nombra la fuente debajo de cada respuesta.</p>"
+"<p class=\"eyebrow\">Qué lee</p><h2 id=\"kn-h\">Respuestas basadas en tus propios registros.</h2><p class=\"lead\">Rondo lee lo que tu lugar de trabajo ya guarda en NEVORA, y nombra la fuente debajo de cada respuesta.</p>"
 ],
 [
 "<h3>Today's punches</h3><p>Who clocked in, when, and who hasn't yet.</p><span class=\"ex\">From today's punches</span>",
@@ -206,5 +206,9 @@
 [
 "See NEVORA{{chev}}",
 "Ver NEVORA{{chev}}"
+],
+[
+"<span class=\"sr\" data-st>Not yet: </span>",
+"<span class=\"sr\" data-st>Todavía no: </span>"
 ]
 ]

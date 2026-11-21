@@ -73,3 +73,14 @@ test('custom work is gone from the source: no custom-software or project-terms r
   for (const path of ['/pages/custom-development', '/pages/es-a-la-medida', '/pages/software-project-terms']) assert.equal(routes[path], undefined, path);
   for (const path of Object.keys(routes)) assert.doesNotMatch(renderPage(path).html, /href="[^"]*(custom-development|es-a-la-medida|software-project-terms)/, path);
 });
+test('llms.txt and robots.txt name only pages that exist and no custom work', async () => {
+  const { readFileSync } = await import('node:fs');
+  for (const name of ['llms.txt.liquid', 'robots.txt.liquid']) {
+    const text = readFileSync(new URL('../src/seo/' + name, import.meta.url), 'utf8');
+    assert.doesNotMatch(text, /custom-development|es-a-la-medida|software-project-terms|custom-software/, name);
+    for (const [, path] of text.matchAll(/https:\/\/www\.thevelani\.com(\/pages\/[\w-]+)/g)) assert.ok(routes[path], name + ' links ' + path);
+  }
+  const llms = readFileSync(new URL('../src/seo/llms.txt.liquid', import.meta.url), 'utf8');
+  for (const path of ['/pages/rondo', '/pages/relay', '/pages/es-rondo', '/pages/es-relay', '/pages/products']) assert.match(llms, new RegExp(path.replace(/\//g, '\\/') + '\\)'), 'llms.txt lists ' + path);
+  assert.doesNotMatch(llms, /websites, booking apps|Coming later|nevora#(rondo|relay)/);
+});

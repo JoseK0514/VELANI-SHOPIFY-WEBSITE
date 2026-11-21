@@ -10,8 +10,7 @@
 .acct .acts{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:12px 24px;margin-top:32px}
 .acct .acts span{display:contents}
 .acct-note{margin:28px auto 0;max-width:46ch;font-size:15px;line-height:1.5;color:var(--ink-2)}
-.acct-note a{color:var(--link)}
-@media (hover:hover){.acct-note a:hover{text-decoration:underline}}
+.acct-note a{color:var(--link);text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1px}
 
 /* the buttons velani-commerce.js writes (Jose's .hb) */
 .acct .hb{display:inline-flex;align-items:center;gap:6px;min-height:44px;color:var(--link);font-size:17px;border:0;background:none;padding:0;cursor:pointer;font-family:inherit}

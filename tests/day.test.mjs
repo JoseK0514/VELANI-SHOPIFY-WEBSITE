@@ -321,3 +321,22 @@ test('pages that show Rondo answers load the stylesheet that draws the answer ca
   }
   for (const js of ['nevora.js', 'rondo.js']) assert.doesNotMatch(readFileSync(new URL('../src/day/' + js, import.meta.url), 'utf8'), /<h4>/, js + ' builds no h4 (the card title is p.prep-t under an h2)');
 });
+
+test('review fixes: approval steps carry their state, the assistant opens the sample clock, language buttons name their language', async () => {
+  const { readFileSync } = await import('node:fs');
+  for (const [path, pending] of [['/pages/rondo', 'Not yet: '], ['/pages/es-rondo', 'Todavía no: ']]) {
+    const html = renderPage(path).html;
+    assert.match(html, /<div class="chk" id="ap-chk">/, path + ' the checklist is not a status region');
+    assert.equal((html.match(new RegExp('<span class="sr" data-st>' + pending + '</span>', 'g')) || []).length, 3, path + ' each step says it has not happened yet');
+    assert.match(html, /<p class="sr" role="status" id="ap-live"><\/p>/, path + ' one place announces the outcome');
+  }
+  const assist = readFileSync(new URL('../src/shared/assist.js', import.meta.url), 'utf8');
+  assert.doesNotMatch(assist, /#try/); assert.match(assist, /getElementById\('clock'\)/);
+  assert.match(renderPage('/pages/nevora').html, /id="clock"/, 'the assistant’s target exists');
+  assert.match(renderPage('/').html, /data-lang="es" lang="es">Español</);
+  assert.match(renderPage('/pages/nevora').html, /<span lang="es">Español<\/span>/);
+  assert.match(renderPage('/pages/es-nevora').html, /<span lang="en">English<\/span>/);
+  for (const path of ['/pages/nevora', '/pages/es-nevora']) assert.match(renderPage(path).html, /<span class="sr" role="status" data-pin-live><\/span>/, path + ' PIN count for screen readers');
+  const rondo = readFileSync(new URL('../src/day/rondo.js', import.meta.url), 'utf8');
+  assert.doesNotMatch(rondo, /32 hours or less|pasa de 32 horas/, 'the sample answer agrees with the sample week (32:04)');
+});

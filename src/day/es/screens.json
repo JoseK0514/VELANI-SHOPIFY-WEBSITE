@@ -54,7 +54,7 @@
 ],
 [
 "</i>Clocked in</small><b>3 / 5</b><em>on shift now</em>",
-"</i>Con entrada</small><b>3 / 5</b><em>en turno ahora</em>"
+"</i>Marcaron entrada</small><b>3 / 5</b><em>en turno ahora</em>"
 ],
 [
 "</i>Late</small>",
@@ -416,7 +416,7 @@
 ],
 [
 "<span>Today, by first punch</span>",
-"<span>Hoy, por primera marca</span>"
+"<span>Hoy, por hora de entrada</span>"
 ],
 [
 "<span class=\"cp am\">Late</span>",

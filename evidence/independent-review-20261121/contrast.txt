@@ -1,0 +1,26 @@
+PASS UTC             /pages/nevora         #top .more            5.38:1 on 243,210,194
+PASS UTC             /pages/nevora         #top .sub             6.22:1 on 239,211,201
+PASS UTC             /pages/nevora         #sch-h + .lead        5.26:1 on 230,202,192
+PASS UTC             /pages/nevora         .chead .eyebrow       5.68:1 on 230,211,213
+PASS UTC             /pages/plans          .more                 5.38:1 on 243,210,195
+PASS UTC             /pages/plans          .eyebrow              5.90:1 on 6,94,89
+PASS UTC             /                     .stp .when            7.05:1 on 242,247,246
+PASS UTC             /pages/sign-in        .si-fg                7.63:1 on 255,255,255
+PASS UTC             /pages/products       .eyebrow              5.73:1 on 221,214,225
+PASS UTC             /pages/products       .pr-h .lead           7.68:1 on 63,63,68
+PASS UTC             /pages/about          .eyebrow              5.69:1 on 226,212,220
+PASS UTC             /pages/contact        .ct-head .eyebrow     5.10:1 on 191,214,235
+PASS UTC             /pages/sign-in        .more                 5.47:1 on 6,94,89
+PASS UTC             /pages/help           .more                 5.42:1 on 242,211,198
+PASS UTC             /pages/relay          #top .more            5.82:1 on 6,94,89
+PASS UTC             /pages/relay          #top .note            6.63:1 on 79,79,84
+PASS Europe/Moscow   /                     .hero .more           5.92:1 on 248,222,204
+PASS Europe/Moscow   /                     .hero .note           6.09:1 on 244,218,199
+PASS Europe/Moscow   /                     .hero .sub            6.83:1 on 74,74,79
+PASS Pacific/Auckland/                     .hero .more           5.70:1 on 249,218,178
+PASS Pacific/Auckland/                     .hero .note           6.44:1 on 79,79,84
+PASS Pacific/Auckland/                     .hero .sub            6.67:1 on 74,74,79
+PASS UTC             /                     #day .place           7.51:1 on 237,217,209
+PASS UTC             /                     .tl button small      10.02:1 on 250,235,227
+PASS UTC             /pages/nevora-billing .acct-note            6.58:1 on 79,79,84
+lowest 5.10

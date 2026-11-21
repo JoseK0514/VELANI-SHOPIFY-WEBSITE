@@ -93,10 +93,11 @@
     function tr(s){return st.lang==='es'&&ES[s]?ES[s]:s}
     function texts(){
       $$('[data-t]',el).forEach(function(n){n.textContent=tr(n.dataset.t)});
-      lb.textContent=st.lang==='es'?'English':'Español';
+      lb.textContent=st.lang==='es'?'English':'Español';lb.lang=st.lang==='es'?'en':'es';
       el.setAttribute('data-lang',st.lang);el.setAttribute('lang',st.lang);live();
     }
-    function draw(){dots.forEach(function(d,i){d.classList.toggle('on',i<st.pin.length)});cont.disabled=st.pin.length<4}
+    var pinLive=$('[data-pin-live]',el);
+    function draw(){dots.forEach(function(d,i){d.classList.toggle('on',i<st.pin.length)});cont.disabled=st.pin.length<4;if(pinLive)pinLive.textContent=st.pin.length?(st.lang==='es'?st.pin.length+' de 4 dígitos':st.pin.length+' of 4 digits'):''}
     function reset(){clearTimeout(st.timer);st.pin='';vDone.hidden=true;vPin.hidden=false;msg.classList.remove('err');pinBox.classList.remove('err');msg.textContent=tr('Your PIN is separate from your portal password.');draw()}
     function key(k){
       if(!vDone.hidden) return;

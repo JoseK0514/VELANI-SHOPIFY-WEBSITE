@@ -2,8 +2,8 @@
    page-wide sky. Shared by every page that has moved to Day: tokens, header and phone menu, footer, cookie dialog,
    chapters, reveal and the sky. System fonts only (SF Pro on Apple devices), so no web font is downloaded. */
 :root{
-  --bg:#FBFBFD;--tile:#F5F5F7;--ink:#1D1D1F;--ink-2:#5F5F64;--ink-3:#86868B;--line:#D2D2D7;
-  --teal:#0B6E69;--teal-d:#0A5E5A;--link:#0A7C76;--night:#0A1024;--on-night:#F5F5F7;--on-night-2:#A7ADBE;
+  --bg:#FBFBFD;--tile:#F5F5F7;--ink:#1D1D1F;--ink-2:#4F4F54;--ink-3:#86868B;--line:#D2D2D7;
+  --teal:#0B6E69;--teal-d:#0A5E5A;--link:#065E59;--night:#0A1024;--on-night:#F5F5F7;--on-night-2:#A7ADBE;
   --display:"SF Pro Display",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
   --text:"SF Pro Text",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
   --ease:cubic-bezier(.22,1,.36,1);--wrap:1200px;
@@ -140,7 +140,7 @@ html.mm-open{overflow:hidden}
 
 /* ---------------- chapters ---------------- */
 .sec{padding-block:clamp(110px,12vw,170px)}
-.eyebrow{font-size:17px;font-weight:600;color:var(--teal);margin-bottom:12px;letter-spacing:-.01em}
+.eyebrow{font-size:17px;font-weight:600;color:var(--link);margin-bottom:12px;letter-spacing:-.01em}
 .lead{font-size:clamp(19px,1.6vw,22px);color:var(--ink-2);line-height:1.42;letter-spacing:-.015em}
 .center{text-align:center;display:flex;flex-direction:column;align-items:center}
 .center h2{font-size:clamp(40px,5.4vw,72px);line-height:1;letter-spacing:-.05em;max-width:16ch}
@@ -172,7 +172,7 @@ html.mm-open{overflow:hidden}
 .pr-h{padding-bottom:clamp(24px,3vw,48px)}
 .pr-s{padding-top:clamp(24px,3vw,48px)}
 .bel-s{padding-top:clamp(40px,5vw,70px)}
-.bel-k{font-size:17px;letter-spacing:-.01em;color:var(--teal);margin-bottom:28px}
+.bel-k{font-size:17px;letter-spacing:-.01em;color:var(--link);margin-bottom:28px}
 .bel{border-top:1px solid rgba(29,29,31,.14)}
 .bl{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:clamp(24px,5vw,80px);align-items:baseline;padding-block:clamp(40px,5vw,64px);border-bottom:1px solid rgba(29,29,31,.14)}
 .bl h3{font-size:clamp(34px,4.8vw,64px);line-height:1;letter-spacing:-.05em;opacity:calc(.5 + .5 * var(--lt,1));transition:opacity .3s linear}

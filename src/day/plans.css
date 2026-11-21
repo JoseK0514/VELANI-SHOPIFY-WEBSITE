@@ -78,7 +78,7 @@
 .dy .cal{display:inline-flex;flex-direction:column;align-items:center;justify-content:center;width:64px;height:68px;border-radius:16px;background:#fff;box-shadow:0 0 0 1px rgba(16,40,38,.06),0 10px 24px -14px rgba(16,40,38,.35);font-variant-numeric:tabular-nums}
 .dy .cal small{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#B42318}
 .dy .cal b{font-size:28px;line-height:1;letter-spacing:-.03em;margin-top:2px}
-.dy .k{margin-top:18px;font-size:14px;font-weight:600;color:var(--teal)}
+.dy .k{margin-top:18px;font-size:14px;font-weight:600;color:var(--link)}
 .dy h3{font-size:22px;letter-spacing:-.025em;margin-top:4px}
 .dy p{margin-top:8px;font-size:15.5px;line-height:1.45;color:var(--ink-2)}
 .days-note{text-align:center;margin-top:24px;font-size:14px;color:var(--ink-2)}

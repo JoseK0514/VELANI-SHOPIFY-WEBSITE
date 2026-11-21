@@ -42,6 +42,12 @@ Every route is now on Day.
 - For Jose: the Rondo page keeps the approved wording "included in every NEVORA plan, and in the free 30-day trial". The website privacy notice says the Owner assistant in NEVORA depends on workplace availability and authorization; confirm the page wording matches what Owners get.
 - Assigned UI findings still open (from `services/velani-ai/docs/CLAUDE-UI-START-HERE.md`): the Retry-After cap in `public/assets/velani-hub.js` and final success focus in the Shopify preview.
 
+## Independent review (November 21)
+
+- A separate reviewer read `8177dd6..2342d56`: no blockers; ten findings. Report and outcome per finding: `evidence/independent-review-20261121/README.md`.
+- Fixed: `llms.txt` (still offered custom development and linked the removed page), text contrast on the sky backgrounds (link and secondary greys darkened, small teal labels use the link teal; lowest measured 5.10:1), the account pages' email link underlined, the Rondo approval steps' state for screen readers, a sample answer that disagreed with the sample week, the assistant's "Try the time clock" anchor, PIN feedback and language marks on the kiosk and Home, and six Spanish wordings.
+- For Jose: the website's NEVORA policy mirror is version 2026-11-09 ("Forgot access"); the app's policy source is 2026-11-10 and says "Forgot password?", as the app and the Day pages do. Syncing the legal text is his call. Also still open: whether Rondo is included today (site) or to be confirmed per workplace (assistant knowledge).
+
 ## Rondo answer card fix (November 21)
 
 - On NEVORA and Rondo (English and Spanish), Rondo's sample answer and the Approve buttons were unstyled: their rules were only in `home.css`. They now live in `devices.css`, which Home, NEVORA and Rondo load; the scripts build the card title as `p.prep-t` instead of an `h4`. A test keeps both in place.

@@ -52,11 +52,12 @@
         </div>
         <div class="hrsline num"><span>Dana's week</span><span class="bar"><i></i><em></em></span><b>32 h → 40 h</b></div>
         <div class="row"><button class="ok" type="button" id="ap-ok" aria-pressed="false">Approve</button><button class="notnow" type="button" id="ap-no">Not now</button></div>
-        <div class="chk" role="status" id="ap-chk">
-          <div><i>{{I:check}}</i>You approved the change</div>
-          <div><i>{{I:check}}</i>NEVORA checked the schedule again</div>
-          <div><i>{{I:check}}</i>Applied. Dana sees Sunday on her phone</div>
+        <div class="chk" id="ap-chk">
+          <div><i>{{I:check}}</i><span class="sr" data-st>Not yet: </span>You approved the change</div>
+          <div><i>{{I:check}}</i><span class="sr" data-st>Not yet: </span>NEVORA checked the schedule again</div>
+          <div><i>{{I:check}}</i><span class="sr" data-st>Not yet: </span>Applied. Dana sees Sunday on her phone</div>
         </div>
+        <p class="sr" role="status" id="ap-live"></p>
       </div>
     </div>
     <div class="three">

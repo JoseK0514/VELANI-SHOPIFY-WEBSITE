@@ -128,7 +128,7 @@
 ">Rondo responde con los registros de tu lugar de trabajo, te muestra de dónde salió la respuesta y prepara cambios para que los apruebes.<"
 ],
 [
-"<button type=\"button\" aria-pressed=\"true\" data-lang=\"en\">English</button><button type=\"button\" aria-pressed=\"false\" data-lang=\"es\">Español</button>",
+"<button type=\"button\" aria-pressed=\"true\" data-lang=\"en\">English</button><button type=\"button\" aria-pressed=\"false\" data-lang=\"es\" lang=\"es\">Español</button>",
 "<button type=\"button\" aria-pressed=\"false\" data-lang=\"en\" lang=\"en\">English</button><button type=\"button\" aria-pressed=\"true\" data-lang=\"es\">Español</button>"
 ],
 [
@@ -213,7 +213,7 @@
 ],
 [
 "Tell us about your team and your locations.",
-"Cuéntanos de tu equipo y tus localidades."
+"Cuéntanos de tu equipo y tus locales."
 ],
 [
 ">Within two business days<",

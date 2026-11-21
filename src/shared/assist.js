@@ -193,7 +193,7 @@ import { VelaniAssistant, safeSourceUrl } from './velani-assistant.js';
  // Suggested next steps go only to pages that exist on this site; Rondo itself never books, sends or pays
  const action = (answer, sources) => {
   const a = document.createElement('a');
-  if (answer.action === 'show_demo') { const here = !!document.getElementById('try'); a.href = here ? '#try' : siteHref(page('/pages/nevora') + '#try'); a.textContent = t('demo'); if (here) a.addEventListener('click', () => close()); return a; }
+  if (answer.action === 'show_demo') { const here = !!document.getElementById('clock'); a.href = here ? '#clock' : siteHref(page('/pages/nevora') + '#clock'); a.textContent = t('demo'); if (here) a.addEventListener('click', () => close()); return a; }
   if (answer.action === 'lead_form') { a.href = siteHref(page('/pages/contact') + '?interest=nevora'); a.textContent = t('quote'); return a; }
   if (answer.action === 'human_help') { const support = sources.some(s => /\/pages\/nevora-support\b/.test(s.url)); a.href = siteHref(support ? '/pages/nevora-support' : page('/pages/contact')); a.textContent = support ? t('support') : t('talk'); return a; }
   return null;

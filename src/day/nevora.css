@@ -70,7 +70,7 @@ html.rm .zh-stage{margin-bottom:0}
 
 /* ---------------- chapters ---------------- */
 .sec{padding-block:clamp(110px,12vw,170px)}
-.eyebrow{font-size:17px;font-weight:600;color:var(--teal);margin-bottom:12px;letter-spacing:-.01em}
+.eyebrow{font-size:17px;font-weight:600;color:var(--link);margin-bottom:12px;letter-spacing:-.01em}
 .sec-h{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:48px;align-items:end;margin-bottom:56px}
 .sec-h h2{font-size:clamp(40px,5.4vw,72px);line-height:1;letter-spacing:-.05em}
 .sec-h p,.lead{font-size:clamp(19px,1.6vw,22px);color:var(--ink-2);line-height:1.42;letter-spacing:-.015em}
