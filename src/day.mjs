@@ -90,6 +90,11 @@ export function dayFooter(target, { lang = 'en', hrefs = SHOPIFY_LANG_HREFS } = 
 const asset = (name, target) => target === 'shopify' ? "{{ '" + name + "' | asset_url }}" : '/assets/' + name;
 /** The NEVORA app screens drawn in HTML (sample data), shared by the pages that show devices. */
 const SCREENS = Object.fromEntries([...read('screens.html').matchAll(/<!--@(\w+)-->\n(.*?)(?=\n<!--@|$)/gs)].map(([, k, v]) => [k, v.trim()]));
+/** Spanish drawn screens: each English screen plus src/day/es/screens.json (exact phrase pairs; the build fails if a phrase stops matching). */
+const SCREENS_ES = Object.fromEntries(Object.entries(JSON.parse(read('es/screens.json'))).map(([k, pairs]) => {
+  if (!SCREENS[k]) throw new Error('day: Spanish pairs for a missing screen ' + k);
+  return [k, pairs.reduce((html, [en, es]) => { if (!html.includes(en)) throw new Error('day: Spanish ' + k + ' phrase no longer in the English screen: ' + en.slice(0, 80)); return html.split(en).join(es); }, SCREENS[k])];
+}));
 const WIFI = '<svg class="wifi" viewBox="0 0 17 12" aria-hidden="true" focusable="false"><path fill="currentColor" d="M8.5 2.4c2.4 0 4.6.9 6.3 2.5l1.2-1.2A10.2 10.2 0 0 0 8.5.7 10.2 10.2 0 0 0 1 3.7l1.2 1.2a8.6 8.6 0 0 1 6.3-2.5Zm0 3.3c1.5 0 2.8.5 3.9 1.5l1.2-1.2a7.3 7.3 0 0 0-10.2 0l1.2 1.2c1-1 2.4-1.5 3.9-1.5Zm0 3.3c.7 0 1.2.2 1.7.6L8.5 11.3 6.8 9.6c.5-.4 1-.6 1.7-.6Z"/></svg>';
 const statusBar = time => `<div class="sb"><span>${time}</span><span class="sbi"><span class="bars"><i></i><i></i><i></i><i></i></span>${WIFI}<span class="bat"><i></i></span></span></div>`;
 const STRIP = Array.from({ length: 10 }, (_, d) => `<span>${d}</span>`).join('') + '<span></span>';
@@ -110,10 +115,10 @@ const IMAGES = { NV_INK: ['night-nevora-wm-ink.png', 907, 122], NV_WHITE: ['nigh
  * Every pair must match, so a change to the English wording stops the build until the Spanish follows it. */
 function spanish(kind) {
   const pairs = JSON.parse(read('es/' + kind + '.json'));
-  return pairs.reduce((html, [en, es]) => { if (!html.includes(en)) throw new Error('day: Spanish ' + kind + ' phrase no longer in the English body: ' + en.slice(0, 80)); return html.split(en).join(es); }, read(BODIES[kind].en));
+  return pairs.reduce((html, [en, es]) => { if (!html.includes(en)) throw new Error('day: Spanish ' + kind + ' phrase no longer in the English body: ' + en.slice(0, 80)); return html.split(en).join(es); }, read(BODIES[kind].en)).replace(/\{\{(SCR_\w+)\}\}/g, (m, k) => SCREENS_ES[k] ? '{{ES_' + k + '}}' : m);
 }
 function body(name, target, raw) {
-  const html = (raw ?? read(name)).replace(/\{\{(SCR_\w+)\}\}/g, (_, k) => { if (!SCREENS[k]) throw new Error('day: no screen ' + k); return SCREENS[k]; })
+  const html = (raw ?? read(name)).replace(/\{\{(ES_)?(SCR_\w+)\}\}/g, (_, es, k) => { const set = es ? SCREENS_ES : SCREENS; if (!set[k]) throw new Error('day: no screen ' + k); return set[k]; })
     .replace(/\{\{SB:([0-9:]+)\}\}/g, (_, t) => statusBar(t)).replace(/\{\{STRIP\}\}/g, STRIP)
     .replace(/src="\{\{(NV_INK|NV_WHITE|ICON)\}\}"/g, (_, k) => { const [file, w, h] = IMAGES[k]; return `src="${asset(file, target)}" width="${w}" height="${h}"`; })
     .replace(/\{\{icon:([\w-]+)\}\}/g, (_, n) => dayIcon(n)).replace(/\{\{chev\}\}/g, CHEV)

@@ -57,7 +57,7 @@
 .strip span{display:block;height:1.04em;line-height:1.04em;text-align:center}
 .colon{display:inline-block;width:.2em;text-align:center;line-height:1.04em;transform:translateY(-.04em)}
 .mer{font-size:.2em;font-weight:500;letter-spacing:0;margin:.32em 0 0 .3em;position:relative;width:2.2em;height:1.2em}
-.mer span{position:absolute;left:0;top:0;transition:opacity .5s,transform .6s var(--ease)}
+.mer span{position:absolute;left:0;top:0;white-space:nowrap;transition:opacity .5s,transform .6s var(--ease)}
 .mer span.off{opacity:0;transform:translateY(-.5em)}
 .moments{position:relative;min-height:250px}
 .mo-cta{margin-top:24px;display:flex;gap:22px;align-items:center;flex-wrap:wrap}

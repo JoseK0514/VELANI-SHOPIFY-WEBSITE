@@ -23,6 +23,8 @@ export const ES_PATHS = Object.freeze({
   '/pages/nevora-billing': '/pages/es-facturacion',
   '/pages/nevora-verify': '/pages/es-configurar',
   '/pages/nevora-billing-return': '/pages/es-pago',
+  '/pages/rondo': '/pages/es-rondo',
+  '/pages/relay': '/pages/es-relay',
 });
 
 /** English-only pages whose closest Spanish page is not the Spanish home: the ES switch goes there instead. */
@@ -40,6 +42,14 @@ export const ES_ROUTES = {
     name: 'Velani · Horarios, registro de tiempo y nómina para pequeños negocios',
     intro: 'NEVORA planifica la semana, registra cada hora y calcula la paga. Rondo le dice al dueño qué necesita hoy. Gratis por 30 días, sin tarjeta.',
     og: ['velani-social.png', 'Velani. Más luz para tu trabajo.'],
+  }),
+  '/pages/es-rondo': es('/pages/rondo', {
+    nav: 'rondo', day: 'rondo', eyebrow: 'Rondo', title: 'Rondo.', name: 'Rondo · El asistente del dueño en NEVORA',
+    intro: 'Rondo es el asistente del dueño dentro de NEVORA: pregunta como hablas, en español o en inglés, y aprueba cada cambio que prepara. Incluido en NEVORA.',
+  }),
+  '/pages/es-relay': es('/pages/relay', {
+    nav: 'relay', day: 'relay', eyebrow: 'Relay', title: 'Relay.', name: 'Relay · Pedidos, pantalla de cocina e inventario, en diseño',
+    intro: 'NEVORA Relay está en diseño: pedidos, pantalla de cocina e inventario en un solo sistema. Aún sin fecha ni precio; únete a la lista de espera.',
   }),
   '/pages/es-nevora': es('/pages/nevora', {
     kind: 'nevora', day: 'nevora', nav: 'nevora', eyebrow: 'NEVORA',

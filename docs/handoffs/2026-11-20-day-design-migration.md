@@ -28,6 +28,9 @@ The approved "Day" design (mockups and reviews in `docs/design/2026-11-18-premiu
 | Products (EN and ES) | Done | One light page outside the menus: NEVORA, Rondo and Relay as index rows (`src/day/products.body.html`, Spanish pairs in `src/day/es/products.json`), one filled action (free trial) |
 | NEVORA trial and billing pages (EN and ES) | Done | `nevora-start`, `nevora-verify`, `nevora-billing`, `nevora-billing-return`, `es-prueba`, `es-configurar`, `es-facturacion`, `es-pago` (`day: 'account'`, `dayCommerce()` in `src/render.mjs`, `src/day/account.css`). One centered column with the NEVORA icon. Every `velani-commerce.js` hook kept: `#setup[data-account-page]`, the heading `#setup-t` (tabindex -1), `[data-setup-lede]`, `[data-setup-acts]`, `[data-setup-card]`, `[data-off]`, `[data-announce]`, `[data-verify-retired]`, the `#velani-commerce` template, and the trial page's redirect to the trial request while signup is closed. The script's own markup (`.hb`, `.setup-facts`, `.setup-steps`, `.setup-note`, `.setup-out`) is styled in Day |
 
+| Rondo and Relay (ES) | Done, new routes | `/pages/es-rondo` and `/pages/es-relay` (pairs in `src/day/es/rondo.json` and `relay.json`; `ES_PATHS` maps them, so the Spanish header, footer, Products and Home now link them). The Spanish Rondo page asks three questions in Spanish and two in English (marked `lang="en"`), the reverse of the English page; `rondo.js` picks its answers and button words by the page language. Publish-time: two more Shopify Page resources (`es-rondo`, `es-relay`) |
+| Drawn app screens (ES) | Done | Spanish pages draw the app screens in Spanish: `src/day/es/screens.json` holds exact phrase pairs per screen (the build fails if an English screen changes without its Spanish), and Spanish bodies use `{{ES_SCR_…}}`. Wording follows NEVORA's own Spanish (Inicio, Horario, Tiempo, Nómina, Equipo, Próximo turno, Entrada registrada, Período de pago, Aprobada, En espera) and the kiosk's terms. `home.js` and `nevora.js` write the live greeting, date and a. m./p. m. in the page language; Home's payroll chip says Calculando/Calculado. The lock screen was already Spanish; Home's Spanish Rondo conversation is unchanged |
+
 Every route is now on Day.
 
 ## Facts to carry into the next pages
@@ -37,6 +40,14 @@ Every route is now on Day.
 - For Jose (found while porting Plans): `velani-commerce.js` picks the quote link with `#price a[href*="interest=nevora"]`, which also matches `interest=nevora-demo`. The Night Plans page put the trial link first in `#price`, so an Owner over 30 coming from NEVORA could get the trial link instead of assisted setup. The Day page keeps only the quote and billing links in `#price`, and the fixture's `over-30` handoff now shows Contact Velani → `?interest=nevora`. Matching `interest=nevora"` or `[href$="interest=nevora"]` in the script would remove the trap for any future layout.
 - For Jose: the Rondo page keeps the approved wording "included in every NEVORA plan, and in the free 30-day trial". The website privacy notice says the Owner assistant in NEVORA depends on workplace availability and authorization; confirm the page wording matches what Owners get.
 - Assigned UI findings still open (from `services/velani-ai/docs/CLAUDE-UI-START-HERE.md`): the Retry-After cap in `public/assets/velani-hub.js` and final success focus in the Shopify preview.
+
+## Verification (November 21, Spanish Rondo and Relay; Spanish screens)
+
+- `npm test`: 123/123. New tests: the Spanish Rondo and Relay pages (Spanish words, English questions marked, Spanish links); Spanish pages draw Spanish screens and English pages keep English ones. Updated: the header test now expects Spanish pages to link `es-rondo` and `es-relay` (English-only marking checked on the footer's Security link).
+- `npm run check:theme`: 0 offenses. `scripts/browser-check.mjs`: 101/101 (`evidence/day-spanish-rondo-relay-screens-20261121`).
+- Day check: 210/210 on ten Spanish pages and 210/210 on ten English pages; Spanish Rondo and Relay rerun 42/42 after the last wording change.
+- Spanish flows 56/56: no visible English in thirteen Spanish page bodies; a new second pass reads the drawn screens after the scripts run and finds no English screen words; Rondo answers, approvals and the hero phone in Spanish, an English question answered in English and marked so; the Relay waitlist opens Spanish Contact on the Relay topic. English flows unchanged: Rondo/Relay 12/12, NEVORA demos 12/12, Help 12/12, Contact 17/17.
+- Found and fixed: `nevora.js` wrote "Good evening" and "AM" into Spanish screens (the screen check caught it); the Home clock label could wrap as "a. m." (kept on one line); the Spanish question in the Rondo phone wrapped (shortened to "¿Quién cubre el domingo, de 12 a 8?").
 
 ## Verification (November 21, custom work removed; Products; trial and billing pages)
 

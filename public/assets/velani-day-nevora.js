@@ -24,9 +24,9 @@
   function live(){
     var d=new Date(),h=d.getHours(),m=d.getMinutes();
     $$('[data-live-time]').forEach(function(n){n.textContent=(h%12||12)+':'+String(m).padStart(2,'0')});
-    $$('[data-live-mer]').forEach(function(n){n.textContent=h<12?'AM':'PM'});
+    $$('[data-live-mer]').forEach(function(n){n.textContent=n.closest('[data-lang="es"]')?(h<12?'a. m.':'p. m.'):(h<12?'AM':'PM')});
     $$('[data-live-date]').forEach(function(n){n.textContent=d.toLocaleDateString(n.closest('[data-lang="es"]')?'es-PR':'en-US',{weekday:'long',month:'long',day:'numeric'})});
-    var g=h<12&&h>=4?'Good morning':h>=12&&h<18?'Good afternoon':'Good evening';
+    var g=h<12&&h>=4?T('Good morning','Buenos días'):h>=12&&h<18?T('Good afternoon','Buenas tardes'):T('Good evening','Buenas noches');
     $$('#zh [data-greet]').forEach(function(n){n.textContent=g+', '+n.dataset.greet});
   }
 

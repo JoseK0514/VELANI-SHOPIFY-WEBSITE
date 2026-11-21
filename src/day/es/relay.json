@@ -1,0 +1,118 @@
+[
+[
+"<nav aria-label=\"Relay sections\"><a href=\"#jobs\">What it does</a><a href=\"#waitlist\">Waitlist</a><a href=\"#faq\">Questions</a></nav>",
+"<nav aria-label=\"Secciones de Relay\"><a href=\"#jobs\">Qué hace</a><a href=\"#waitlist\">Lista de espera</a><a href=\"#faq\">Preguntas</a></nav>"
+],
+[
+">Join the waitlist<",
+">Únete a la lista de espera<"
+],
+[
+"<span class=\"st-pill\">In design</span>",
+"<span class=\"st-pill\">En diseño</span>"
+],
+[
+"From the counter to the kitchen screen. Orders, the kitchen screen and inventory in one system.",
+"Del mostrador a la pantalla de cocina. Pedidos, la pantalla de cocina e inventario en un solo sistema."
+],
+[
+"See what we're designing{{chev}}",
+"Mira lo que estamos diseñando{{chev}}"
+],
+[
+"<p class=\"note\">Relay is in design and has no release date yet.</p>",
+"<p class=\"note\">Relay está en diseño y todavía no tiene fecha de lanzamiento.</p>"
+],
+[
+"aria-label=\"Relay concept: a kitchen screen with order tickets, timers and a running-low list.\"",
+"aria-label=\"Concepto de Relay: una pantalla de cocina con órdenes, temporizadores y una lista de lo que se está acabando.\""
+],
+[
+"Concept screen. Screens, features and timing will change.",
+"Pantalla de concepto. Las pantallas, las funciones y las fechas van a cambiar."
+],
+[
+">What we're designing</p><h2 id=\"jb-h\">Three jobs. One system.</h2><p class=\"lead\">Relay is being designed for the rush: the order, the kitchen, and what's running low.</p>",
+">Lo que estamos diseñando</p><h2 id=\"jb-h\">Tres trabajos. Un sistema.</h2><p class=\"lead\">Relay se está diseñando para la hora pico: el pedido, la cocina y lo que se está acabando.</p>"
+],
+[
+"<p class=\"k\">Orders</p><h3>Take the order once.</h3><p>At the counter or for pickup. The order goes straight to the kitchen with its notes.</p>",
+"<p class=\"k\">Pedidos</p><h3>Toma el pedido una sola vez.</h3><p>En el mostrador o para recoger. El pedido llega directo a la cocina con sus notas.</p>"
+],
+[
+"<span>Pickup · Marisol</span>",
+"<span>Para recoger · Marisol</span>"
+],
+[
+"<li class=\"md\">ham and cheese</li><li><b>1</b>Jugo de china</li></ul><div class=\"send\">Send to kitchen</div>",
+"<li class=\"md\">jamón y queso</li><li><b>1</b>Jugo de china</li></ul><div class=\"send\">Enviar a cocina</div>"
+],
+[
+"<p class=\"k\">The kitchen screen</p><h3>Every ticket, in order, with a timer.</h3><p>The kitchen sees what to make next and how long each order has waited. Bump it when it's ready.</p>",
+"<p class=\"k\">La pantalla de cocina</p><h3>Cada orden, en fila, con su tiempo.</h3><p>La cocina ve qué preparar después y cuánto ha esperado cada pedido. Lo despachas cuando está listo.</p>"
+],
+[
+"<p class=\"k\">Inventory</p><h3>Know what's running low.</h3><p>Relay is being designed to count down stock as orders go out, so you reorder before you run out.</p>",
+"<p class=\"k\">Inventario</p><h3>Sabe qué se está acabando.</h3><p>Relay se está diseñando para descontar el inventario a medida que salen los pedidos, así vuelves a pedir antes de que se acabe.</p>"
+],
+[
+"<b>Whole milk</b><span>4 gallons left</span>",
+"<b>Leche entera</b><span>Quedan 4 galones</span>"
+],
+[
+"<b>Quesitos</b><span>6 left</span>",
+"<b>Quesitos</b><span>Quedan 6</span>"
+],
+[
+"<b>Coffee beans</b><span>3 bags left</span>",
+"<b>Café en grano</b><span>Quedan 3 bolsas</span>"
+],
+[
+"<b>12 oz cups</b><span>1 sleeve left</span>",
+"<b>Vasos de 12 oz</b><span>Queda 1 paquete</span>"
+],
+[
+"Concept screens with sample orders. Relay is in design.",
+"Pantallas de concepto con pedidos de muestra. Relay está en diseño."
+],
+[
+"<p class=\"eyebrow\">Waitlist</p><h2 id=\"wl-h\">Be first to try Relay.</h2><p class=\"lead\">Join the list and we'll email you when early access opens.</p>",
+"<p class=\"eyebrow\">Lista de espera</p><h2 id=\"wl-h\">Sé de los primeros en probar Relay.</h2><p class=\"lead\">Únete a la lista y te escribimos cuando abra el acceso anticipado.</p>"
+],
+[
+"One short form on our Contact page: your name, your email and, if you like, your business. We email you when early access opens.",
+"Un formulario corto en nuestra página de Contacto: tu nombre, tu correo y, si quieres, tu negocio. Te escribimos cuando abra el acceso anticipado."
+],
+[
+"<h2 id=\"fq-h\">Questions</h2>",
+"<h2 id=\"fq-h\">Preguntas</h2>"
+],
+[
+"When will Relay be available?{{I:caret-down}}</summary><p>Relay is in design and has no release date yet. Join the waitlist and we'll email you when early access opens.</p>",
+"¿Cuándo estará disponible Relay?{{I:caret-down}}</summary><p>Relay está en diseño y todavía no tiene fecha de lanzamiento. Únete a la lista de espera y te escribimos cuando abra el acceso anticipado.</p>"
+],
+[
+"How much will Relay cost?{{I:caret-down}}</summary><p>There's no price yet. We'll share it before early access opens.</p>",
+"¿Cuánto costará Relay?{{I:caret-down}}</summary><p>Todavía no tiene precio. Lo compartiremos antes de que abra el acceso anticipado.</p>"
+],
+[
+"Can I use Relay today?{{I:caret-down}}</summary><p>Not yet. NEVORA, for scheduling, the time clock and pay, is available now with a free 30-day trial.</p>",
+"¿Puedo usar Relay hoy?{{I:caret-down}}</summary><p>Todavía no. NEVORA, para horarios, el reloj de tiempo y la paga, ya está disponible con una prueba gratis de 30 días.</p>"
+],
+[
+"<h2 id=\"cl-h\">Running shifts today?</h2>",
+"<h2 id=\"cl-h\">¿Ya trabajas por turnos?</h2>"
+],
+[
+"NEVORA plans the week, records every hour and calculates the pay. Free for 30 days.",
+"NEVORA planifica la semana, registra cada hora y calcula la paga. Gratis por 30 días."
+],
+[
+">See NEVORA<",
+">Ver NEVORA<"
+],
+[
+"Join the Relay waitlist{{chev}}",
+"Únete a la lista de espera de Relay{{chev}}"
+]
+]

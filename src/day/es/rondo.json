@@ -1,0 +1,210 @@
+[
+[
+"<nav aria-label=\"Rondo sections\"><a href=\"#ask\">Ask</a><a href=\"#approve\">Approvals</a><a href=\"#knows\">What it reads</a><a href=\"#owner\">Owner only</a><a href=\"#faq\">Questions</a></nav>",
+"<nav aria-label=\"Secciones de Rondo\"><a href=\"#ask\">Pregunta</a><a href=\"#approve\">Aprobaciones</a><a href=\"#knows\">Qué lee</a><a href=\"#owner\">Solo el dueño</a><a href=\"#faq\">Preguntas</a></nav>"
+],
+[
+"<span class=\"l\">Request a free trial</span><span class=\"s\">Free trial</span>",
+"<span class=\"l\">Pide la prueba gratis</span><span class=\"s\">Prueba gratis</span>"
+],
+[
+">Request a free trial<",
+">Pide la prueba gratis<"
+],
+[
+"<span class=\"pst-pill\">Included in NEVORA</span>",
+"<span class=\"pst-pill\">Incluido en NEVORA</span>"
+],
+[
+"The assistant inside NEVORA for the business Owner. Ask in plain words, in English or Spanish.",
+"El asistente dentro de NEVORA para el dueño del negocio. Pregunta como hablas, en español o en inglés."
+],
+[
+"Try a question{{chev}}",
+"Prueba una pregunta{{chev}}"
+],
+[
+"Rondo answers from your workplace's records. Nothing changes until you approve.",
+"Rondo responde con los registros de tu lugar de trabajo. Nada cambia hasta que apruebes."
+],
+[
+"aria-label=\"Rondo on the Owner's iPhone: asked who can cover Sunday, it answers from the published schedule and prepares a change to approve.\"",
+"aria-label=\"Rondo en el iPhone del dueño: le preguntan quién puede cubrir el domingo, responde con el horario publicado y prepara un cambio para aprobar.\""
+],
+[
+"<span class=\"tm\">12:30 PM</span>Ask</p><h2 id=\"ask-h\">Ask about today, in plain words.</h2><p class=\"lead\">Your team, coverage and recorded hours. Rondo shows where each answer came from. Pick a question.</p>",
+"<span class=\"tm\">12:30 p. m.</span>Pregunta</p><h2 id=\"ask-h\">Pregunta por el día de hoy, como hablas.</h2><p class=\"lead\">Tu equipo, quién cubre y las horas registradas. Rondo muestra de dónde salió cada respuesta. Escoge una pregunta.</p>"
+],
+[
+"aria-label=\"Questions for Rondo\"",
+"aria-label=\"Preguntas para Rondo\""
+],
+[
+"data-q=\"0\">What needs my attention today?<",
+"data-q=\"0\">¿Qué necesita mi atención hoy?<"
+],
+[
+"data-q=\"1\">Who can cover Sunday, 12 to 8?<",
+"data-q=\"1\">¿Quién puede cubrir el domingo, de 12 a 8?<"
+],
+[
+"data-q=\"2\">Who is close to 40 hours this week?<",
+"data-q=\"2\">¿Quién está cerca de 40 horas esta semana?<"
+],
+[
+"data-q=\"3\" lang=\"es\">¿Quién llegó tarde esta semana?<",
+"data-q=\"3\" lang=\"en\">Who was late this week?<"
+],
+[
+"data-q=\"4\" lang=\"es\">¿Quién está trabajando ahora?<",
+"data-q=\"4\" lang=\"en\">Who is working right now?<"
+],
+[
+"Sample answers about Northside Café, a fictional business.",
+"Respuestas de muestra sobre Northside Café, un negocio ficticio."
+],
+[
+"<span class=\"tm\">4:00 PM</span>Approvals</p><h2 id=\"ap-h\">You approve every change.</h2><p class=\"lead\">Rondo prepares the change and shows exactly what will be different. Press Approve and NEVORA checks it again before it applies.</p>",
+"<span class=\"tm\">4:00 p. m.</span>Aprobaciones</p><h2 id=\"ap-h\">Tú apruebas cada cambio.</h2><p class=\"lead\">Rondo prepara el cambio y muestra exactamente qué será distinto. Presiona Aprobar y NEVORA lo revisa de nuevo antes de aplicarlo.</p>"
+],
+[
+"Prepared for your approval</p>",
+"Preparado para tu aprobación</p>"
+],
+[
+"<h3>Add Dana Kim on Sunday, November 8</h3>",
+"<h3>Añadir a Dana Kim el domingo 8 de noviembre</h3>"
+],
+[
+"Register · 12:00 to 8:00",
+"Caja · 12:00 a 8:00"
+],
+[
+">No change<",
+">Sin cambios<"
+],
+[
+"<b>Open shift</b>",
+"<b>Turno abierto</b>"
+],
+[
+">Needs cover<",
+">Sin cubrir<"
+],
+[
+">Added<",
+">Añadida<"
+],
+[
+"<span>Dana's week</span>",
+"<span>Semana de Dana</span>"
+],
+[
+"id=\"ap-ok\" aria-pressed=\"false\">Approve<",
+"id=\"ap-ok\" aria-pressed=\"false\">Aprobar<"
+],
+[
+"id=\"ap-no\">Not now<",
+"id=\"ap-no\">Ahora no<"
+],
+[
+"You approved the change</div>",
+"Aprobaste el cambio</div>"
+],
+[
+"NEVORA checked the schedule again</div>",
+"NEVORA revisó el horario de nuevo</div>"
+],
+[
+"Applied. Dana sees Sunday on her phone</div>",
+"Aplicado. Dana ve el domingo en su teléfono</div>"
+],
+[
+"<b>Rondo prepares.</b><p>It works out the change from the schedule and the hours.</p>",
+"<b>Rondo prepara.</b><p>Arma el cambio con el horario y las horas.</p>"
+],
+[
+"<b>You decide.</b><p>Approve it, or leave it. Nothing happens on its own.</p>",
+"<b>Tú decides.</b><p>Apruébalo o déjalo. Nada pasa por sí solo.</p>"
+],
+[
+"<b>NEVORA checks again.</b><p>Every prepared change is checked before it applies.</p>",
+"<b>NEVORA revisa de nuevo.</b><p>Cada cambio preparado se revisa antes de aplicarse.</p>"
+],
+[
+"<p class=\"eyebrow\">What it reads</p><h2 id=\"kn-h\">Answers from your own records.</h2><p class=\"lead\">Rondo reads what your workplace already keeps in NEVORA, and names the source under every answer.</p>",
+"<p class=\"eyebrow\">Qué lee</p><h2 id=\"kn-h\">Respuestas con tus propios registros.</h2><p class=\"lead\">Rondo lee lo que tu lugar de trabajo ya guarda en NEVORA, y nombra la fuente debajo de cada respuesta.</p>"
+],
+[
+"<h3>Today's punches</h3><p>Who clocked in, when, and who hasn't yet.</p><span class=\"ex\">From today's punches</span>",
+"<h3>Las marcas de hoy</h3><p>Quién marcó entrada, a qué hora y quién todavía no.</p><span class=\"ex\">De las marcas de hoy</span>"
+],
+[
+"<h3>The published schedule</h3><p>Who works when, open shifts and days that are short.</p><span class=\"ex\">From the published schedule, Nov 2 – 8</span>",
+"<h3>El horario publicado</h3><p>Quién trabaja cuándo, turnos abiertos y días con poca gente.</p><span class=\"ex\">Del horario publicado, 2 – 8 de nov.</span>"
+],
+[
+"<h3>Recorded hours</h3><p>Timecards for the week, including late starts.</p><span class=\"ex\">From timecards, Nov 2 – 8</span>",
+"<h3>Horas registradas</h3><p>Las tarjetas de tiempo de la semana, con las llegadas tarde.</p><span class=\"ex\">De las tarjetas de tiempo, 2 – 8 de nov.</span>"
+],
+[
+"<span class=\"tm\">10:00 PM</span>Owner only</p>",
+"<span class=\"tm\">10:00 p. m.</span>Solo el dueño</p>"
+],
+[
+"<h2 id=\"ow-h\">Rondo works for the Owner.</h2>",
+"<h2 id=\"ow-h\">Rondo trabaja para el dueño.</h2>"
+],
+[
+"It lives in the Owner's profile. Managers and employees use NEVORA without it.",
+"Vive en el perfil del dueño. Los gerentes y los empleados usan NEVORA sin él."
+],
+[
+"<b>Only the Owner asks</b><span>Rondo is part of the Owner's view of the workplace.</span>",
+"<b>Solo el dueño pregunta</b><span>Rondo es parte de la vista del dueño sobre el lugar de trabajo.</span>"
+],
+[
+"<b>Nothing changes on its own</b><span>Every change waits for your approval.</span>",
+"<b>Nada cambia por sí solo</b><span>Cada cambio espera tu aprobación.</span>"
+],
+[
+"<b>Checked before it applies</b><span>NEVORA checks each prepared change again.</span>",
+"<b>Revisado antes de aplicarse</b><span>NEVORA revisa de nuevo cada cambio preparado.</span>"
+],
+[
+"<h2 id=\"fq-h\">Questions</h2>",
+"<h2 id=\"fq-h\">Preguntas</h2>"
+],
+[
+"What can Rondo do?{{I:caret-down}}</summary><p>Rondo answers the Owner's questions about today's team, coverage and recorded hours from your workplace's records, and can prepare a coverage change for the Owner to approve.</p>",
+"¿Qué puede hacer Rondo?{{I:caret-down}}</summary><p>Rondo responde las preguntas del dueño sobre el equipo de hoy, quién cubre y las horas registradas con los registros de tu lugar de trabajo, y puede preparar un cambio de cobertura para que el dueño lo apruebe.</p>"
+],
+[
+"Does Rondo cost extra?{{I:caret-down}}</summary><p>No. Rondo is included in every NEVORA plan, and in the free 30-day trial.</p>",
+"¿Rondo cuesta más?{{I:caret-down}}</summary><p>No. Rondo está incluido en cada plan de NEVORA y en la prueba gratis de 30 días.</p>"
+],
+[
+"Can Rondo change the schedule on its own?{{I:caret-down}}</summary><p>No. Rondo prepares a change and shows what will be different. Nothing changes until the Owner approves, and NEVORA checks the change again before it applies.</p>",
+"¿Rondo puede cambiar el horario por sí solo?{{I:caret-down}}</summary><p>No. Rondo prepara un cambio y muestra qué será distinto. Nada cambia hasta que el dueño lo aprueba, y NEVORA revisa el cambio de nuevo antes de aplicarlo.</p>"
+],
+[
+"Who can use Rondo?{{I:caret-down}}</summary><p>Only the business Owner. Managers and employees use NEVORA without Rondo.</p>",
+"¿Quién puede usar Rondo?{{I:caret-down}}</summary><p>Solo el dueño del negocio. Los gerentes y los empleados usan NEVORA sin Rondo.</p>"
+],
+[
+"Does it work in Spanish?{{I:caret-down}}</summary><p>Yes. Ask in English or Spanish.</p>",
+"¿Funciona en inglés?{{I:caret-down}}</summary><p>Sí. Pregunta en español o en inglés.</p>"
+],
+[
+"<h2 id=\"cl-h\">Try Rondo with NEVORA, free for 30 days.</h2>",
+"<h2 id=\"cl-h\">Prueba Rondo con NEVORA, gratis por 30 días.</h2>"
+],
+[
+"Jose from Velani replies within two business days and sets up your workplace with you.",
+"Jose, de Velani, responde en un plazo de dos días laborables y configura tu lugar de trabajo contigo."
+],
+[
+"See NEVORA{{chev}}",
+"Ver NEVORA{{chev}}"
+]
+]

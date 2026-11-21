@@ -1,6 +1,6 @@
 /* Home on the Day design: time-of-day hero, the pinned day, Rondo conversation, start track. Ported from the approved mockup. */
 (function(){
-  var root=document.documentElement;
+  var root=document.documentElement,ES=/^es\b/i.test(root.lang);
   if(matchMedia('(prefers-reduced-motion: reduce)').matches) root.classList.add('rm');
   function rm(){return root.classList.contains('rm')}
   function clamp(v){return v<0?0:v>1?1:v}
@@ -25,7 +25,7 @@
     var d=new Date(),p=skyPick==='auto'?period(d.getHours()):skyPick;
     hero.classList.remove('t-dawn','t-day','t-golden','t-night');hero.classList.add('t-'+p);
     if(p==='night')hero.setAttribute('data-dark','');else hero.removeAttribute('data-dark');
-    var h=d.getHours(),g=h<12&&h>=4?'Good morning':h>=12&&h<18?'Good afternoon':'Good evening';
+    var h=d.getHours(),g=ES?(h<12&&h>=4?'Buenos días':h>=12&&h<18?'Buenas tardes':'Buenas noches'):(h<12&&h>=4?'Good morning':h>=12&&h<18?'Good afternoon':'Good evening');
     document.querySelectorAll('#hero [data-greet]').forEach(function(n){n.textContent=g+', '+n.dataset.greet});
   }
   var phT=document.querySelector('.hs-ph .sb span');if(phT)phT.setAttribute('data-live-time','');
@@ -33,8 +33,8 @@
     var d=new Date(),h=d.getHours(),m=d.getMinutes();
     var t=(h%12||12)+':'+String(m).padStart(2,'0');
     document.querySelectorAll('[data-live-time]').forEach(function(n){n.textContent=t});
-    document.querySelectorAll('[data-live-mer]').forEach(function(n){n.textContent=h<12?'AM':'PM'});
-    document.querySelectorAll('[data-live-date]').forEach(function(n){n.textContent=d.toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric'})});
+    document.querySelectorAll('[data-live-mer]').forEach(function(n){n.textContent=ES?(h<12?'a. m.':'p. m.'):(h<12?'AM':'PM')});
+    document.querySelectorAll('[data-live-date]').forEach(function(n){n.textContent=d.toLocaleDateString(ES?'es-PR':'en-US',{weekday:'long',month:'long',day:'numeric'})});
     heroSky();
   }
   live(); setInterval(live,15000);
@@ -123,7 +123,7 @@
     /* 10:00 PM pay resolves person by person */
     var y=R||i>4?5:i<4?0:q<.08?0:Math.min(5,1+Math.floor((q-.08)/.08));
     put('py',y,function(v){var sum=0;pyAmt.forEach(function(a,k){var on=k<v;a.classList.toggle('pend',!on);a.textContent=on?money(+a.dataset.v):'—';if(on)sum+=+a.dataset.v});
-      pyTot.textContent=money(sum);pyTop.textContent=v?money(sum):'—';pyChip.textContent=v<5?'Calculating':'Calculated';pyChip.className='cp '+(v<5?'gy':'gr')});
+      pyTot.textContent=money(sum);pyTop.textContent=v?money(sum):'—';pyChip.textContent=ES?(v<5?'Calculando':'Calculado'):(v<5?'Calculating':'Calculated');pyChip.className='cp '+(v<5?'gy':'gr')});
   }
   function dayTick(){
     var r=day.getBoundingClientRect(),tot=r.height-innerHeight;

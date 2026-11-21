@@ -342,5 +342,9 @@
 [
 "aria-label=\"Velani products\"",
 "aria-label=\"Productos de Velani\""
+],
+[
+"<span class=\"mer\"><span>AM</span><span class=\"off\">PM</span></span>",
+"<span class=\"mer\"><span>a. m.</span><span class=\"off\">p. m.</span></span>"
 ]
 ]

@@ -1,0 +1,740 @@
+{
+"SCR_OWNER": [
+[
+"<span>Owner · Main Street</span>",
+"<span>Dueña · Main Street</span>"
+],
+[
+"}}Home</span>",
+"}}Inicio</span>"
+],
+[
+"}}Schedule</span>",
+"}}Horario</span>"
+],
+[
+"}}Time</span>",
+"}}Tiempo</span>"
+],
+[
+"}}Payroll</span>",
+"}}Nómina</span>"
+],
+[
+"}}Team</span>",
+"}}Equipo</span>"
+],
+[
+"}}Things to do<em>",
+"}}Pendientes<em>"
+],
+[
+"}}Search or jump to</span>",
+"}}Busca o ve a</span>"
+],
+[
+"<b>Home</b>",
+"<b>Inicio</b>"
+],
+[
+"Good morning, Carmen</span> · Saturday, November 7",
+"Buenos días, Carmen</span> · sábado, 7 de noviembre"
+],
+[
+"<span>2 things need you</span>",
+"<span>2 cosas te necesitan</span>"
+],
+[
+"}}Open Clocker</span>",
+"}}Abrir reloj</span>"
+],
+[
+"}}Add shift</span>",
+"}}Añadir turno</span>"
+],
+[
+"</i>Clocked in</small><b>3 / 5</b><em>on shift now</em>",
+"</i>Con entrada</small><b>3 / 5</b><em>en turno ahora</em>"
+],
+[
+"</i>Late</small>",
+"</i>Tarde</small>"
+],
+[
+"<small>Open shifts</small><b>1</b><em>Sunday, 12 PM</em>",
+"<small>Turnos abiertos</small><b>1</b><em>domingo, 12 p. m.</em>"
+],
+[
+"<small>Scheduled this week</small><b>168 h</b><em>21 shifts</em>",
+"<small>Programado esta semana</small><b>168 h</b><em>21 turnos</em>"
+],
+[
+"<span>Needs you<span class=\"pl\">2</span></span><span class=\"a\">See all</span>",
+"<span>Te necesita<span class=\"pl\">2</span></span><span class=\"a\">Ver todo</span>"
+],
+[
+"Jordan Torres hasn't clocked in</div><div class=\"s\">Due at 7:30 AM · Kitchen</div></div><span class=\"ac s\">Message</span>",
+"Jordan Torres no ha marcado entrada</div><div class=\"s\">Debía entrar a las 7:30 a. m. · Cocina</div></div><span class=\"ac s\">Mensaje</span>"
+],
+[
+"Cover Sunday, 12:00 to 8:00</div><div class=\"s\">Register · 1 open shift</div></div><span class=\"ac p\">Find cover</span>",
+"Cubrir el domingo, 12:00 a 8:00</div><div class=\"s\">Caja · 1 turno abierto</div></div><span class=\"ac p\">Buscar quién cubra</span>"
+],
+[
+"Barista · 7:00 to 3:00</div></div><span class=\"cp gr\">In 7:00</span>",
+"Barista · 7:00 a 3:00</div></div><span class=\"cp gr\">Entró 7:00</span>"
+],
+[
+"Barista · 8:00 to 4:00</div></div><span class=\"cp gr\">In 7:58</span>",
+"Barista · 8:00 a 4:00</div></div><span class=\"cp gr\">Entró 7:58</span>"
+],
+[
+"Payday <span class=\"due\">Submit by Monday</span>",
+"Día de pago <span class=\"due\">Envía antes del lunes</span>"
+],
+[
+">Friday, Nov 13<",
+">viernes, 13 de nov.<"
+],
+[
+"Pay period Nov 2 – 8 · 5 people",
+"Período de pago 2 – 8 de nov. · 5 personas"
+],
+[
+">Review timecards<",
+">Revisar tarjetas de tiempo<"
+],
+[
+"<span>Coverage this week</span><span style=\"color:#0B6E69;font-size:13px\">Schedule</span>",
+"<span>Cobertura esta semana</span><span style=\"color:#0B6E69;font-size:13px\">Horario</span>"
+],
+[
+">Mon<b>",
+">lun<b>"
+],
+[
+">Tue<b>",
+">mar<b>"
+],
+[
+">Wed<b>",
+">mié<b>"
+],
+[
+">Thu<b>",
+">jue<b>"
+],
+[
+">Fri<b>",
+">vie<b>"
+],
+[
+">Sat<b>",
+">sáb<b>"
+],
+[
+">Sun<b>",
+">dom<b>"
+]
+],
+"SCR_SCHED": [
+[
+"<span>Owner · Main Street</span>",
+"<span>Dueña · Main Street</span>"
+],
+[
+"}}Home</span>",
+"}}Inicio</span>"
+],
+[
+"}}Schedule</span>",
+"}}Horario</span>"
+],
+[
+"}}Time</span>",
+"}}Tiempo</span>"
+],
+[
+"}}Payroll</span>",
+"}}Nómina</span>"
+],
+[
+"}}Team</span>",
+"}}Equipo</span>"
+],
+[
+"}}Things to do<em>",
+"}}Pendientes<em>"
+],
+[
+"}}Search or jump to</span>",
+"}}Busca o ve a</span>"
+],
+[
+"<b>Schedule</b>",
+"<b>Horario</b>"
+],
+[
+"<span>Week of Nov 2 – 8</span>",
+"<span>Semana del 2 al 8 de nov.</span>"
+],
+[
+">Templates<",
+">Plantillas<"
+],
+[
+">Publish changes<",
+">Publicar cambios<"
+],
+[
+"Main Street · Published Friday, Oct 30 · 168 hours",
+"Main Street · Publicado el viernes 30 de oct. · 168 horas"
+],
+[
+"\">Week</span>",
+"\">Semana</span>"
+],
+[
+"</span>Open shift</span>",
+"</span>Turno abierto</span>"
+],
+[
+">Mon<b>",
+">lun<b>"
+],
+[
+">Tue<b>",
+">mar<b>"
+],
+[
+">Wed<b>",
+">mié<b>"
+],
+[
+">Thu<b>",
+">jue<b>"
+],
+[
+">Fri<b>",
+">vie<b>"
+],
+[
+">Sat<b>",
+">sáb<b>"
+],
+[
+">Sun<b>",
+">dom<b>"
+]
+],
+"SCR_CLOCK_LIVE": [
+[
+"TIME CLOCK",
+"REGISTRO DE TIEMPO"
+],
+[
+"Tablet registered · Main Street iPad",
+"Tableta registrada · iPad de Main Street"
+],
+[
+"<h4>Enter your PIN</h4>",
+"<h4>Ingresa tu PIN</h4>"
+],
+[
+"Type your four digits, then Continue.",
+"Escribe tus cuatro dígitos y luego Continuar."
+],
+[
+">Clear<",
+">Borrar<"
+],
+[
+">Continue<",
+">Continuar<"
+],
+[
+"<small data-live-mer>AM</small>",
+"<small data-live-mer>a. m.</small>"
+],
+[
+"data-live-date>Saturday, November 7<",
+"data-live-date>sábado, 7 de noviembre<"
+]
+],
+"SCR_CLOCK_DONE": [
+[
+"TIME CLOCK",
+"REGISTRO DE TIEMPO"
+],
+[
+"Tablet registered · Main Street iPad",
+"Tableta registrada · iPad de Main Street"
+],
+[
+"<h4>Enter your PIN</h4>",
+"<h4>Ingresa tu PIN</h4>"
+],
+[
+"Type your four digits, then Continue.",
+"Escribe tus cuatro dígitos y luego Continuar."
+],
+[
+">Clear<",
+">Borrar<"
+],
+[
+">Continue<",
+">Continuar<"
+],
+[
+"7:58<small>AM</small>",
+"7:58<small>a. m.</small>"
+],
+[
+">Saturday, November 7<",
+">sábado, 7 de noviembre<"
+],
+[
+"<h4>Clock-in recorded</h4>",
+"<h4>Entrada registrada</h4>"
+],
+[
+"Have a good shift, Alexandra.",
+"Que tengas buen turno, Alexandra."
+],
+[
+"Barista · 8:00 AM to 4:00 PM",
+"Barista · 8:00 a. m. a 4:00 p. m."
+],
+[
+">In 7:58<",
+">Entró 7:58<"
+],
+[
+"<div>Time<b>7:58 AM</b></div><div>Place<b>Main Street</b></div><div>This week<b>24:00 h</b></div>",
+"<div>Hora<b>7:58 a. m.</b></div><div>Lugar<b>Main Street</b></div><div>Esta semana<b>24:00 h</b></div>"
+]
+],
+"SCR_EMP": [
+[
+"}}Home</span>",
+"}}Inicio</span>"
+],
+[
+"}}Schedule</span>",
+"}}Horario</span>"
+],
+[
+"}}Time</span>",
+"}}Tiempo</span>"
+],
+[
+"}}Pay</span>",
+"}}Paga</span>"
+],
+[
+"}}Requests</span>",
+"}}Solicitudes</span>"
+],
+[
+"Good morning, Alexandra",
+"Buenos días, Alexandra"
+],
+[
+">Saturday, November 7<",
+">sábado, 7 de noviembre<"
+],
+[
+"<div class=\"k\">Next shift</div><div class=\"tm num\">8:00 AM – 4:00 PM</div>",
+"<div class=\"k\">Próximo turno</div><div class=\"tm num\">8:00 a. m. – 4:00 p. m.</div>"
+],
+[
+"Clock in on the Main Street tablet",
+"Marca entrada en la tableta de Main Street"
+],
+[
+"<span>This week</span><span class=\"a num\">24:00 so far</span>",
+"<span>Esta semana</span><span class=\"a num\">24:00 hasta ahora</span>"
+],
+[
+">Tue 3<",
+">mar 3<"
+],
+[
+">Wed 4<",
+">mié 4<"
+],
+[
+">Fri 6<",
+">vie 6<"
+],
+[
+">Sat 7, today<",
+">sáb 7, hoy<"
+],
+[
+">Starts 8:00<",
+">Empieza 8:00<"
+]
+],
+"SCR_TIME": [
+[
+"}}Home</span>",
+"}}Inicio</span>"
+],
+[
+"}}Schedule</span>",
+"}}Horario</span>"
+],
+[
+"}}Time</span>",
+"}}Tiempo</span>"
+],
+[
+"}}Payroll</span>",
+"}}Nómina</span>"
+],
+[
+"}}Team</span>",
+"}}Equipo</span>"
+],
+[
+">Time</div>",
+">Tiempo</div>"
+],
+[
+"Saturday, Nov 7 · Main Street",
+"sábado, 7 de nov. · Main Street"
+],
+[
+"</i>On the clock</small>",
+"</i>Trabajando</small>"
+],
+[
+"</i>Late today</small>",
+"</i>Tarde hoy</small>"
+],
+[
+"<span>Today, by first punch</span>",
+"<span>Hoy, por primera marca</span>"
+],
+[
+"<span class=\"cp am\">Late</span>",
+"<span class=\"cp am\">Tarde</span>"
+],
+[
+"7:52 – 3:30 · due 7:30",
+"7:52 – 3:30 · debía 7:30"
+],
+[
+"In since 7:58",
+"Desde las 7:58"
+],
+[
+"In since 11:56",
+"Desde las 11:56"
+]
+],
+"SCR_PAY": [
+[
+"}}Home</span>",
+"}}Inicio</span>"
+],
+[
+"}}Schedule</span>",
+"}}Horario</span>"
+],
+[
+"}}Time</span>",
+"}}Tiempo</span>"
+],
+[
+"}}Payroll</span>",
+"}}Nómina</span>"
+],
+[
+"}}Team</span>",
+"}}Equipo</span>"
+],
+[
+">Payroll</div>",
+">Nómina</div>"
+],
+[
+"Pay period Nov 2 – 8 · Payday Friday, Nov 13",
+"Período de pago 2 – 8 de nov. · Día de pago viernes 13 de nov."
+],
+[
+"<small>Hours approved</small>",
+"<small>Horas aprobadas</small>"
+],
+[
+"<small>Pay, calculated</small>",
+"<small>Paga calculada</small>"
+],
+[
+"<span>5 people</span>",
+"<span>5 personas</span>"
+],
+[
+"data-py-chip>Calculated<",
+"data-py-chip>Calculado<"
+],
+[
+"Sample rate $15.00 an hour",
+"Tarifa de muestra: $15.00 la hora"
+]
+],
+"SCR_EMP_SCHED": [
+[
+"}}Home</span>",
+"}}Inicio</span>"
+],
+[
+"}}Schedule</span>",
+"}}Horario</span>"
+],
+[
+"}}Time</span>",
+"}}Tiempo</span>"
+],
+[
+"}}Pay</span>",
+"}}Paga</span>"
+],
+[
+"}}Requests</span>",
+"}}Solicitudes</span>"
+],
+[
+">Schedule</div>",
+">Horario</div>"
+],
+[
+"Week of Nov 9 – 15 · 4 shifts · 32 h",
+"Semana del 9 al 15 de nov. · 4 turnos · 32 h"
+],
+[
+">M<b>9</b>",
+">L<b>9</b>"
+],
+[
+">T<b>10</b>",
+">M<b>10</b>"
+],
+[
+">W<b>11</b>",
+">M<b>11</b>"
+],
+[
+">T<b>12</b>",
+">J<b>12</b>"
+],
+[
+">F<b>13</b>",
+">V<b>13</b>"
+],
+[
+">S<b>15</b>",
+">D<b>15</b>"
+],
+[
+"<b>10</b>Tue",
+"<b>10</b>mar"
+],
+[
+"<b>11</b>Wed",
+"<b>11</b>mié"
+],
+[
+"<b>13</b>Fri",
+"<b>13</b>vie"
+],
+[
+"<b>14</b>Sat",
+"<b>14</b>sáb"
+],
+[
+"8:00 AM – 4:00 PM",
+"8:00 a. m. – 4:00 p. m."
+],
+[
+"Barista · with Dana Kim",
+"Barista · con Dana Kim"
+]
+],
+"SCR_EMP_REQ": [
+[
+"}}Home</span>",
+"}}Inicio</span>"
+],
+[
+"}}Schedule</span>",
+"}}Horario</span>"
+],
+[
+"}}Time</span>",
+"}}Tiempo</span>"
+],
+[
+"}}Pay</span>",
+"}}Paga</span>"
+],
+[
+"}}Requests</span>",
+"}}Solicitudes</span>"
+],
+[
+">Requests</div>",
+">Solicitudes</div>"
+],
+[
+">Time off and swaps<",
+">Tiempo libre y cambios<"
+],
+[
+"<span>Yours</span>",
+"<span>Tuyas</span>"
+],
+[
+"Time off · Fri, Nov 27",
+"Tiempo libre · vie, 27 de nov."
+],
+[
+">Family visit<",
+">Visita familiar<"
+],
+[
+">Approved<",
+">Aprobada<"
+],
+[
+"Swap · Sat, Nov 21",
+"Cambio · sáb, 21 de nov."
+],
+[
+">With Dana Kim<",
+">Con Dana Kim<"
+],
+[
+">Waiting<",
+">En espera<"
+],
+[
+">New request<",
+">Nueva solicitud<"
+],
+[
+"Ask for time off or offer a shift to a coworker. The Owner approves it.",
+"Pide tiempo libre u ofrece un turno a un compañero. El dueño lo aprueba."
+],
+[
+">Start a request<",
+">Hacer una solicitud<"
+]
+],
+"SCR_RONDO": [
+[
+"</i>Home</span>",
+"</i>Inicio</span>"
+],
+[
+"Answers from Northside Café's records",
+"Responde con los registros de Northside Café"
+],
+[
+"Who can cover Sunday, 12 to 8?",
+"¿Quién cubre el domingo, de 12 a 8?"
+],
+[
+"Dana Kim is off Sunday and at 32 hours, so this shift brings her to 40. Ana Colón is already at 40.",
+"Dana Kim está libre el domingo y lleva 32 horas, así que este turno la lleva a 40. Ana Colón ya tiene 40."
+],
+[
+"Published schedule · Nov 2 – 8",
+"Horario publicado · 2 – 8 de nov."
+],
+[
+"Add Dana Kim on Sunday, Nov 8",
+"Añadir a Dana Kim el domingo 8 de nov."
+],
+[
+"Register · 12:00 to 8:00 · with Luis Medina",
+"Caja · 12:00 a 8:00 · con Luis Medina"
+],
+[
+">Approve<",
+">Aprobar<"
+],
+[
+">Edit<",
+">Editar<"
+],
+[
+">Ask Rondo<",
+">Pregúntale a Rondo<"
+]
+],
+"SCR_KDS": [
+[
+"Kitchen · Main Street",
+"Cocina · Main Street"
+],
+[
+"<span>All stations</span><span>8:14 AM</span>",
+"<span>Todas las estaciones</span><span>8:14 a. m.</span>"
+],
+[
+">Counter<",
+">Mostrador<"
+],
+[
+">Bump<",
+">Despachar<"
+],
+[
+"Pickup · Marisol",
+"Para recoger · Marisol"
+],
+[
+"Pickup · Luis",
+"Para recoger · Luis"
+],
+[
+">ham and cheese<",
+">jamón y queso<"
+],
+[
+">Table 2<",
+">Mesa 2<"
+],
+[
+">Table 4<",
+">Mesa 4<"
+],
+[
+">no onion<",
+">sin cebolla<"
+],
+[
+"<span>Ready</span>",
+"<span>Listo</span>"
+],
+[
+">Picked up<",
+">Recogido<"
+],
+[
+"<b>Running low</b><span>Whole milk · 4 gal</span><span>Quesitos · 6 left</span><span>12 oz cups · 1 sleeve</span>",
+"<b>Se está acabando</b><span>Leche entera · 4 gal</span><span>Quesitos · quedan 6</span><span>Vasos de 12 oz · 1 paquete</span>"
+],
+[
+"Concept screen. Relay is in design.",
+"Pantalla de concepto. Relay está en diseño."
+],
+[
+"<span>Sample orders</span>",
+"<span>Pedidos de muestra</span>"
+]
+]
+}

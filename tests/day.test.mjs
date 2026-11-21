@@ -205,7 +205,9 @@ test('Rondo and Relay have their own Day pages, and the header, footer, Home and
     assert.doesNotMatch(html, /\/pages\/nevora#(rondo|relay)/);
   }
   const es = dayHeader(null, 'preview', { lang: 'es', hrefs: { en: '/', es: '/pages/es' } });
-  assert.match(es, /href="\/pages\/rondo" hreflang="en">Rondo</, 'English-only pages are marked on Spanish pages');
+  assert.match(es, /href="\/pages\/es-rondo">Rondo</, 'Spanish pages link the Spanish Rondo page');
+  assert.match(es, /href="\/pages\/es-relay">Relay</, 'Spanish pages link the Spanish Relay page');
+  assert.match(dayFooter('preview', { lang: 'es', hrefs: { en: '/', es: '/pages/es' } }), /href="\/pages\/security" hreflang="en">/, 'English-only pages are marked on Spanish pages');
 });
 
 test('Rondo on Day: owner-only assistant, approval before change, sources named', () => {
@@ -267,4 +269,30 @@ test('the trial and billing pages are on Day and keep every hook velani-commerce
       assert.doesNotMatch(html, /data-setup-acts[^]*?interest=nevora-demo[^]*?data-setup-card/, path + ' billing visitors get support, not a new trial');
     }
   }
+});
+
+test('Rondo and Relay have Spanish pages with Spanish words, the other language marked, and Spanish links', () => {
+  const rondo = renderPage('/pages/es-rondo').html, relay = renderPage('/pages/es-relay').html;
+  assert.match(rondo, /<h2 id="ap-h">Tú apruebas cada cambio\.<\/h2>/);
+  assert.match(rondo, /data-q="3" lang="en">Who was late this week\?</, 'the English questions are marked English');
+  assert.match(rondo, /href="\/pages\/es-contacto\?interest=nevora-demo"/);
+  assert.match(rondo, /href="\/pages\/es-nevora"/);
+  assert.match(relay, /<h2 id="jb-h">Tres trabajos\. Un sistema\.<\/h2>/);
+  assert.match(relay, /href="\/pages\/es-contacto\?interest=relay"/, 'the waitlist opens the Spanish Contact page on the Relay topic');
+  for (const html of [rondo, relay]) {
+    assert.match(html, /velani-day-(rondo|relay)\.js/);
+    assert.doesNotMatch(html.replace(/<a [^>]*aria-label="English"[^>]*>EN<\/a>/g, ''), /href="\/pages\/(contact|nevora|rondo|relay)[?"#]/, 'no links to English pages that have Spanish versions, besides the language switch');
+  }
+});
+
+test('Spanish pages draw the app screens in Spanish; English pages keep them in English', () => {
+  const pick = html => html.replace(/<script[^]*?<\/script>/g, '');
+  const esHome = pick(renderPage('/pages/es').html), enHome = pick(renderPage('/').html);
+  for (const words of ['REGISTRO DE TIEMPO', 'Entrada registrada', 'Período de pago', 'Despachar', 'Pregúntale a Rondo']) assert.match(esHome, new RegExp(words), 'Spanish Home ' + words);
+  for (const words of ['TIME CLOCK', 'Clock-in recorded', 'Pay period', '>Bump<', 'Ask Rondo']) assert.match(enHome, new RegExp(words), 'English Home ' + words);
+  assert.match(pick(renderPage('/pages/es-nevora').html), /Próximo turno/);
+  assert.match(pick(renderPage('/pages/es-relay').html), /Para recoger · Marisol/);
+  const esRondo = pick(renderPage('/pages/es-rondo').html);
+  assert.match(esRondo, /class="nv ro-scene"[^]*data-words>Dana Kim está libre/, 'the hero phone keeps the hooks rondo.js plays');
+  for (const path of ['/pages/es', '/pages/es-nevora', '/pages/es-rondo', '/pages/es-relay']) assert.doesNotMatch(pick(renderPage(path).html), /\{\{|(?<!lang="en")>(Home|Schedule|Payroll|Bump|Approve|AM|PM)</, path + ' no English screen labels outside text marked English');
 });

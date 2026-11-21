@@ -534,5 +534,9 @@
 [
 "Join the waitlist{{chev}}",
 "Únete a la lista de espera{{chev}}"
+],
+[
+"<small data-live-mer>AM</small>",
+"<small data-live-mer>a. m.</small>"
 ]
 ]
