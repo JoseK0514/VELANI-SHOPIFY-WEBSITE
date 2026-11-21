@@ -42,6 +42,13 @@ Every route is now on Day.
 - For Jose: the Rondo page keeps the approved wording "included in every NEVORA plan, and in the free 30-day trial". The website privacy notice says the Owner assistant in NEVORA depends on workplace availability and authorization; confirm the page wording matches what Owners get.
 - Assigned UI findings still open (from `services/velani-ai/docs/CLAUDE-UI-START-HERE.md`): the Retry-After cap in `public/assets/velani-hub.js` and final success focus in the Shopify preview.
 
+## Unpublished Shopify theme (November 21)
+
+- Commit `1e22602` is on the store as theme **193710227770 "Velani Day design 1e22602 (preview)", role UNPUBLISHED** (staged upload, then `themeCreate`). The live theme (193311572282) is unchanged. Nothing was published and no store data changed.
+- The import skipped `templates/robots.txt.liquid`; it was added to the unpublished theme with `themeFilesUpsert`, and its checksum matches.
+- Preview (signed in to Shopify): `https://www.thevelani.com/?preview_theme_id=193710227770`; other pages add `&view=velani-<page>` (for example `velani-rondo`, `velani-es-relay`).
+- Hosted acceptance is not done: the Shopify connector lacks theme screenshot and read permissions here, and anonymous preview links redirect to the live site. Evidence: `evidence/shopify-unpublished-20261121`.
+
 ## Independent review (November 21)
 
 - A separate reviewer read `8177dd6..2342d56`: no blockers; ten findings. Report and outcome per finding: `evidence/independent-review-20261121/README.md`.
