@@ -131,6 +131,11 @@ function body(name, target, raw) {
 const BODIES = { about: { en: 'about.body.html' }, home: { en: 'home.body.html' }, nevora: { en: 'nevora.body.html' }, plans: { en: 'plans.body.html' }, help: { en: 'help.body.html' }, signin: { en: 'signin.body.html' }, products: { en: 'products.body.html' }, rondo: { en: 'rondo.body.html' }, relay: { en: 'relay.body.html' } };
 /** Pages with their own stylesheet and script beside the shared Day ones. */
 export const DAY_PAGE_ASSETS = { home: ['velani-day-devices.css', 'velani-day-home.css', 'velani-day-home.js'], nevora: ['velani-day-devices.css', 'velani-day-nevora.css', 'velani-day-nevora.js'], plans: ['velani-day-plans.css', 'velani-day-plans.js'], contact: ['velani-day-contact.css', 'velani-day-contact.js'], doc: ['velani-day-legal.css'], account: ['velani-day-account.css'], help: ['velani-day-contact.css', 'velani-day-help.css', 'velani-day-help.js'], signin: ['velani-day-help.css', 'velani-day-signin.css', 'velani-day-signin.js'], rondo: ['velani-day-devices.css', 'velani-day-product.css', 'velani-day-rondo.css', 'velani-day-rondo.js'], relay: ['velani-day-devices.css', 'velani-day-product.css', 'velani-day-relay.css', 'velani-day-relay.js'] };
+/** One drawn app screen on its own, in the page language (the share images use it: scripts/og/make-share-images.mjs). */
+export function dayScreen(key, { lang = 'en', target = 'preview' } = {}) {
+  if (!SCREENS[key]) throw new Error('day: no screen ' + key);
+  return body(null, target, '{{' + (lang === 'es' && SCREENS_ES[key] ? 'ES_' : '') + key + '}}');
+}
 export function dayMain(kind, lang = 'en', target = 'preview') {
   if (lang === 'es') {
     // Links to pages that exist only in English say so (localize() moves the rest to their Spanish pages)

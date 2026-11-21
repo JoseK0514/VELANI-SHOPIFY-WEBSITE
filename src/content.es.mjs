@@ -38,14 +38,14 @@ export const ES_ROUTES = {
     kind: 'home', day: 'home', title: 'De abrir a cerrar.', eyebrow: 'Velani',
     name: 'Velani · Horarios, registro de tiempo y nómina para pequeños negocios',
     intro: 'NEVORA planifica la semana, registra cada hora y calcula la paga. Rondo le dice al dueño qué necesita hoy. Gratis por 30 días, sin tarjeta.',
-    og: ['velani-social.png', 'Velani. Más luz para tu trabajo.'],
+    og: ['velani-social-es.png', 'Velani: NEVORA en una MacBook y un iPhone. De abrir a cerrar.'],
   }),
   '/pages/es-rondo': es('/pages/rondo', {
-    nav: 'rondo', day: 'rondo', eyebrow: 'Rondo', title: 'Rondo.', name: 'Rondo · El asistente del dueño en NEVORA',
+    nav: 'rondo', day: 'rondo', eyebrow: 'Rondo', title: 'Rondo.', og: ['velani-social-rondo-es.png', 'Rondo en un iPhone: responde quién puede cubrir el domingo y prepara un cambio para que el dueño lo apruebe'], name: 'Rondo · El asistente del dueño en NEVORA',
     intro: 'Rondo es el asistente del dueño dentro de NEVORA: pregunta como hablas, en español o en inglés, y aprueba cada cambio que prepara. Incluido en NEVORA.',
   }),
   '/pages/es-relay': es('/pages/relay', {
-    nav: 'relay', day: 'relay', eyebrow: 'Relay', title: 'Relay.', name: 'Relay · Pedidos, pantalla de cocina e inventario, en diseño',
+    nav: 'relay', day: 'relay', eyebrow: 'Relay', title: 'Relay.', og: ['velani-social-relay-es.png', 'Concepto de Relay: una pantalla de cocina con órdenes, temporizadores y una lista de lo que se está acabando. En diseño'], name: 'Relay · Pedidos, pantalla de cocina e inventario, en diseño',
     intro: 'NEVORA Relay está en diseño: pedidos, pantalla de cocina e inventario en un solo sistema. Aún sin fecha ni precio; únete a la lista de espera.',
   }),
   '/pages/es-nevora': es('/pages/nevora', {
@@ -53,24 +53,24 @@ export const ES_ROUTES = {
     title: 'NEVORA · Horarios, registro de tiempo y cálculo de nómina para equipos por turnos',
     name: 'NEVORA · Horarios, registro de tiempo y nómina',
     intro: 'Horarios, registro de tiempo y cálculo de nómina para equipos por turnos: planifica en la web, consulta turnos en el teléfono y marca entrada con un PIN.',
-    og: ['velani-social-nevora.png', 'NEVORA en un teléfono: horarios, registro de tiempo y cálculo de nómina para equipos por turnos'],
+    og: ['velani-social-nevora-es.png', 'NEVORA en una MacBook y un iPhone: toda la semana, del horario a la paga'],
   }),
   '/pages/es-productos': es('/pages/products', {
     kind: 'products', nav: 'products', day: 'products', eyebrow: 'Velani', title: 'Lo que hacemos.', name: 'Productos',
     intro: 'NEVORA para horarios, registro de tiempo y cálculo de nómina, gratis por 30 días; Rondo, el asistente del dueño; y Relay, en diseño.',
-    og: ['velani-social.png', 'Velani. NEVORA, Rondo y Relay: software para negocios que trabajan por turnos.'],
+    og: ['velani-social-es.png', 'Velani. NEVORA, Rondo y Relay: software para negocios que trabajan por turnos.'],
   }),
   '/pages/es-planes': es('/pages/plans', {
     kind: 'plans', day: 'plans', nav: 'plans', eyebrow: 'Planes', name: 'Planes',
     title: 'Prueba NEVORA gratis por 30 días.',
     intro: 'Prueba NEVORA gratis por 30 días, sin tarjeta. Luego $19 al mes para hasta 15 empleados o $29 al mes para 16 a 30, por negocio.',
     lede: 'Pide tu prueba gratis de NEVORA, sin tarjeta. Luego un precio mensual por negocio.',
-    og: ['velani-social-plans.png', 'Planes de NEVORA: gratis por 30 días y luego un precio mensual por negocio'],
+    og: ['velani-social-plans-es.png', 'Planes de NEVORA: gratis por 30 días y luego un precio mensual por negocio'],
   }),
   '/pages/es-contacto': es('/pages/contact', {
     kind: 'contact', day: 'contact', nav: 'contact', eyebrow: 'Contacto', title: 'Cuéntanos qué necesitas.', name: 'Contacto',
     intro: 'Pide una prueba gratis de NEVORA, configuración asistida para más de 30 empleados, la lista de Relay o lo que necesites. Respondemos en dos días laborables.',
-    og: ['velani-social.png', 'Velani. Escríbenos sobre NEVORA, Rondo o Relay.'],
+    og: ['velani-social-es.png', 'Velani. Escríbenos sobre NEVORA, Rondo o Relay.'],
   }),
 };
 

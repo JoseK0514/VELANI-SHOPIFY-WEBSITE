@@ -292,3 +292,20 @@ test('Spanish pages draw the app screens in Spanish; English pages keep them in 
   assert.match(esRondo, /class="nv ro-scene"[^]*data-words>Dana Kim está libre/, 'the hero phone keeps the hooks rondo.js plays');
   for (const path of ['/pages/es', '/pages/es-nevora', '/pages/es-rondo', '/pages/es-relay']) assert.doesNotMatch(pick(renderPage(path).html), /\{\{|(?<!lang="en")>(Home|Schedule|Payroll|Bump|Approve|AM|PM)</, path + ' no English screen labels outside text marked English');
 });
+
+test('share images: every one a page names exists at 1200 by 630, and Spanish pages share Spanish images', async () => {
+  const { readFileSync, existsSync } = await import('node:fs');
+  const size = file => { const b = readFileSync(new URL('../public/assets/' + file, import.meta.url)); return [b.readUInt32BE(16), b.readUInt32BE(20)]; };
+  const named = new Set(['velani-social.png', 'velani-social-es.png']);
+  for (const [path, page] of Object.entries(routes)) if (page.og) {
+    named.add(page.og[0]);
+    if (page.lang === 'es') assert.match(page.og[0], /-es\.png$/, path + ' uses a Spanish image');
+    else assert.doesNotMatch(page.og[0], /-es\.png$/, path);
+    assert.ok(page.og[1].length > 20, path + ' describes its image');
+  }
+  for (const file of named) { assert.ok(existsSync(new URL('../public/assets/' + file, import.meta.url)), file); assert.deepEqual(size(file), [1200, 630], file); }
+  assert.ok(!existsSync(new URL('../public/assets/velani-social-custom.png', import.meta.url)));
+  const layout = renderShopifyLayout();
+  assert.match(layout, /\{% when 'es-ayuda' %\}[^]*?\{% assign velani_og = 'velani-social-es\.png' %\}[^]*?\{% when /, 'a Spanish page without its own image shares the Spanish one');
+  assert.match(layout, /\{% when 'rondo' %\}[^]*?\{% assign velani_og = 'velani-social-rondo\.png' %\}/);
+});

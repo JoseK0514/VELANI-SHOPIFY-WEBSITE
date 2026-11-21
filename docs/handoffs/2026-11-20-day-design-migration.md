@@ -42,6 +42,13 @@ Every route is now on Day.
 - For Jose: the Rondo page keeps the approved wording "included in every NEVORA plan, and in the free 30-day trial". The website privacy notice says the Owner assistant in NEVORA depends on workplace availability and authorization; confirm the page wording matches what Owners get.
 - Assigned UI findings still open (from `services/velani-ai/docs/CLAUDE-UI-START-HERE.md`): the Retry-After cap in `public/assets/velani-hub.js` and final success focus in the Shopify preview.
 
+## Share images (November 21)
+
+- Ten Day share images (1200 × 630), English and Spanish: Home (the general image), NEVORA, Plans, Rondo and Relay (`public/assets/velani-social*.png`, `-es` for Spanish). They use the site's own Day styles, drawn screens (`dayScreen()` in `src/day.mjs`, Spanish screens on the Spanish images) and each page's own words.
+- `scripts/og/make-share-images.mjs` now builds them from this repository (the old one read the live store's Night assets from Jose's Mac). It needs Chromium and the Inter and Inter Display fonts, and refuses to write an image in a fallback font.
+- Pages: Rondo and Relay now have their own images; Spanish pages use the Spanish images, and a Spanish page without its own image shares the Spanish general image (the layout's Spanish default). The NEVORA and Spanish Home descriptions match the new pictures. A test checks every named image exists at 1200 × 630.
+- Evidence: `evidence/share-images-20261121/contact-sheet.png`.
+
 ## Theme name and assistant (November 21)
 
 - The theme is named "Velani" (settings_schema `theme_info`, the package manifest and `dist/velani-unpublished.zip`). `npm run package:theme` had been refusing the theme's `snippets/` folder; it now packages it.
@@ -58,7 +65,7 @@ Every route is now on Day.
 - Moved, unchanged (checked byte for byte against the old output): the billing script, the assistant and its client, the policy page renderer, icons, Spanish links, the language switch and the wordmark. The backend test that imports the assistant client now points at `src/shared/velani-assistant.js` (the path resolves and exports `VelaniAssistant`; the test itself needs the backend's vitest install, which this container does not have, so it was not run).
 - Renamed: `night-nevora-wm-ink.png` / `night-nevora-wm-white.png` to `nevora-wm-ink.png` / `nevora-wm-white.png`.
 - Fixed while there: the assistant hid its launcher when the old Night menu opened; it now hides under the Day phone menu. Two Spanish share-image descriptions still spoke of custom work (Products and Contact).
-- Kept on purpose: the share images (`velani-social*.png`, made in the Night look by `scripts/og/make-share-images.mjs`, which reads the live store, not this repository; new Day share images would be a separate design task), and the dated hosted checks in `scripts/checks/`.
+- Kept on purpose: the dated hosted checks in `scripts/checks/`. (The share images were redone in Day the same day; see below.)
 - Publish-time: the next theme push no longer carries the Night assets above; nothing published references them once this theme is the live one.
 
 ## Verification (November 21, Night removed)
