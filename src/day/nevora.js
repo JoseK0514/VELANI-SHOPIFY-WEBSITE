@@ -179,7 +179,7 @@
   function esc(s){return s.replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
   function showAns(i){
     var a=ANS[i],h='<div class="c-a fade" lang="'+a.lang+'"><div class="c-who"><span class="rm-badge">R</span>'+a.who+'</div><p>'+esc(a.text)+'</p><span class="src"><i></i><span>'+esc(a.src)+'</span></span>';
-    if(a.prep) h+='<div class="prep"><h4>'+esc(a.prep.t)+'</h4><p class="d">'+esc(a.prep.d)+'</p><div class="row"><button class="ok" type="button" aria-pressed="false" id="ans-ok">'+T('Approve','Aprobar')+'</button><small id="ans-m">'+T('Nothing changes until you approve.','Nada cambia hasta que apruebes.')+'</small></div></div>';
+    if(a.prep) h+='<div class="prep"><p class="prep-t">'+esc(a.prep.t)+'</p><p class="d">'+esc(a.prep.d)+'</p><div class="row"><button class="ok" type="button" aria-pressed="false" id="ans-ok">'+T('Approve','Aprobar')+'</button><small id="ans-m">'+T('Nothing changes until you approve.','Nada cambia hasta que apruebes.')+'</small></div></div>';
     ans.innerHTML=h+'</div>';
     var ok=$('#ans-ok');if(ok)ok.addEventListener('click',function(){ok.setAttribute('aria-pressed','true');ok.textContent=T('Approved','Aprobado');$('#ans-m').textContent=T('Dana is on Sunday, 12:00 to 8:00. Sample only.','Dana cubre el domingo, 12:00 a 8:00. Es solo una muestra.')});
   }

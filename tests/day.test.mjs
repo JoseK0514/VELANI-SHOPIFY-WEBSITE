@@ -309,3 +309,15 @@ test('share images: every one a page names exists at 1200 by 630, and Spanish pa
   assert.match(layout, /\{% when 'es-ayuda' %\}[^]*?\{% assign velani_og = 'velani-social-es\.png' %\}[^]*?\{% when /, 'a Spanish page without its own image shares the Spanish one');
   assert.match(layout, /\{% when 'rondo' %\}[^]*?\{% assign velani_og = 'velani-social-rondo\.png' %\}/);
 });
+
+test('pages that show Rondo answers load the stylesheet that draws the answer card and approve button', async () => {
+  const { readFileSync } = await import('node:fs');
+  const { DAY_PAGE_ASSETS } = await import('../src/day.mjs');
+  const devices = readFileSync(new URL('../src/day/devices.css', import.meta.url), 'utf8');
+  for (const rule of ['.c-a{', '.c-who{', '.rm-badge{', '.src{', '.prep{', '.prep .prep-t{', '.ok{']) assert.ok(devices.includes(rule), 'devices.css draws ' + rule);
+  for (const [path, day] of [['/', 'home'], ['/pages/nevora', 'nevora'], ['/pages/rondo', 'rondo'], ['/pages/es-nevora', 'nevora'], ['/pages/es-rondo', 'rondo']]) {
+    assert.ok(DAY_PAGE_ASSETS[day].includes('velani-day-devices.css'), path + ' loads devices.css');
+    assert.match(renderPage(path).html, /velani-day-devices\.css/, path);
+  }
+  for (const js of ['nevora.js', 'rondo.js']) assert.doesNotMatch(readFileSync(new URL('../src/day/' + js, import.meta.url), 'utf8'), /<h4>/, js + ' builds no h4 (the card title is p.prep-t under an h2)');
+});

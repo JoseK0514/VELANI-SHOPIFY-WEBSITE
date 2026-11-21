@@ -41,7 +41,7 @@
   function show(i){
     var a=ANS[i],es=a.lang==='es';
     var h='<div class="c-a fade" lang="'+a.lang+'"><div class="c-who"><span class="rm-badge">R</span>Rondo</div><p>'+esc(a.text)+'</p><span class="src"><i></i><span>'+esc(a.src)+'</span></span>';
-    if(a.prep) h+='<div class="prep"><h4>'+esc(a.prep.t)+'</h4><p class="d">'+esc(a.prep.d)+'</p><div class="row"><button class="ok" type="button" aria-pressed="false" id="ans-ok">'+W.approve+'</button><small id="ans-m">'+W.wait+'</small></div></div>';
+    if(a.prep) h+='<div class="prep"><p class="prep-t">'+esc(a.prep.t)+'</p><p class="d">'+esc(a.prep.d)+'</p><div class="row"><button class="ok" type="button" aria-pressed="false" id="ans-ok">'+W.approve+'</button><small id="ans-m">'+W.wait+'</small></div></div>';
     ans.innerHTML=h+'</div>';
     var ok=$('#ans-ok');if(ok)ok.addEventListener('click',function(){ok.setAttribute('aria-pressed','true');ok.textContent=W.approved;$('#ans-m').textContent=W.done});
   }

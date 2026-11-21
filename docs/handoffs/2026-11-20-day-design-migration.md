@@ -42,6 +42,11 @@ Every route is now on Day.
 - For Jose: the Rondo page keeps the approved wording "included in every NEVORA plan, and in the free 30-day trial". The website privacy notice says the Owner assistant in NEVORA depends on workplace availability and authorization; confirm the page wording matches what Owners get.
 - Assigned UI findings still open (from `services/velani-ai/docs/CLAUDE-UI-START-HERE.md`): the Retry-After cap in `public/assets/velani-hub.js` and final success focus in the Shopify preview.
 
+## Rondo answer card fix (November 21)
+
+- On NEVORA and Rondo (English and Spanish), Rondo's sample answer and the Approve buttons were unstyled: their rules were only in `home.css`. They now live in `devices.css`, which Home, NEVORA and Rondo load; the scripts build the card title as `p.prep-t` instead of an `h4`. A test keeps both in place.
+- Checks: `npm test` 119/119, theme check 0, browser suite 101/101, Day check 126/126 on the six affected pages, flows Rondo/Relay 12/12, NEVORA demos 12/12, Spanish 56/56. Evidence: `evidence/day-answer-card-20261121`.
+
 ## Share images (November 21)
 
 - Ten Day share images (1200 × 630), English and Spanish: Home (the general image), NEVORA, Plans, Rondo and Relay (`public/assets/velani-social*.png`, `-es` for Spanish). They use the site's own Day styles, drawn screens (`dayScreen()` in `src/day.mjs`, Spanish screens on the Spanish images) and each page's own words.
