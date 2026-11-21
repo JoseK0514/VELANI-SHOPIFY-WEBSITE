@@ -9,7 +9,7 @@ The approved "Day" design (mockups and reviews in `docs/design/2026-11-18-premiu
 - `src/day/day.css` and `src/day/day.js` build into `velani-day.css` and `velani-day.js`. Pages load only these, their own page files and `velani.js` (forms and cookie choices); no web font (system fonts).
 - `src/shared.mjs` holds what every page shares: icons, Spanish links, the language switch, the wordmark, the assistant markup and the NEVORA policy pages. `src/shared/` holds the billing script (`velani-commerce.js`) and the assistant (`assist.*`, `velani-assistant.js`).
 - Theme: one layout for every page, with the `velani-day-header-*` / `velani-day-footer-*` snippets; each page's case branch captures its own Day assets in `velani_head`. The cookie dialog travels with the footer.
-- The assistant keeps its earlier dark look (its tokens are scoped to `.ast-root` in `velani-day.css`) until it gets its own Day styling. Its greeting still offers "the websites and apps we build"; that wording, and what the assistant service answers about custom work, is for Jose.
+- The assistant keeps its earlier dark look (its tokens are scoped to `.ast-root` in `velani-day.css`) until it gets its own Day styling. Since November 21 it speaks about products only (below).
 
 ## Status
 
@@ -42,6 +42,14 @@ Every route is now on Day.
 - For Jose: the Rondo page keeps the approved wording "included in every NEVORA plan, and in the free 30-day trial". The website privacy notice says the Owner assistant in NEVORA depends on workplace availability and authorization; confirm the page wording matches what Owners get.
 - Assigned UI findings still open (from `services/velani-ai/docs/CLAUDE-UI-START-HERE.md`): the Retry-After cap in `public/assets/velani-hub.js` and final success focus in the Shopify preview.
 
+## Theme name and assistant (November 21)
+
+- The theme is named "Velani" (settings_schema `theme_info`, the package manifest and `dist/velani-unpublished.zip`). `npm run package:theme` had been refusing the theme's `snippets/` folder; it now packages it.
+- The on-site assistant (`src/shared/assist.js`, `assist.html`) greets with "Ask me about NEVORA, Rondo, Relay or the free trial" (Spanish to match), and its third suggested question is about Rondo instead of building a website or app.
+- The assistant service's knowledge (`services/velani-ai/knowledge/nevora.json`): the enquiries entries no longer offer custom websites or apps or link the removed custom-development page; existing clients go to the client request on Help; the contact topics match the Contact page. Rondo's entries point to the Rondo pages and drop "Velani's websites and apps" (their availability caveat is unchanged). Relay's entries point to the Relay pages and describe what those pages say. The six entries are dated reviewed November 21, valid to December 21.
+- For Jose: the hosted assistant still has the old knowledge until it is published again with the service's own seed script (`npm run seed` in `services/velani-ai`, against its database). That is a runtime change for him to approve and run.
+- Evidence: `evidence/assistant-products-only-20261121`.
+
 ## Night design removed (November 21)
 
 - Deleted: `src/night.mjs` and `src/night/` (Night header, footer, Home, NEVORA and Products bodies, the time clock, motion, styles), the Night page renderers in `src/render.mjs` (custom work, Night contact, sign in, plans, support, about, panels and closings, screenshots and their `srcset`), the Night layout branch (design switch, dark colours, DM Sans preload, `velani.css`, `velani-motion.js`) and the `velani-header-*` / `velani-footer-*` snippets.
@@ -50,7 +58,7 @@ Every route is now on Day.
 - Moved, unchanged (checked byte for byte against the old output): the billing script, the assistant and its client, the policy page renderer, icons, Spanish links, the language switch and the wordmark. The backend test that imports the assistant client now points at `src/shared/velani-assistant.js` (the path resolves and exports `VelaniAssistant`; the test itself needs the backend's vitest install, which this container does not have, so it was not run).
 - Renamed: `night-nevora-wm-ink.png` / `night-nevora-wm-white.png` to `nevora-wm-ink.png` / `nevora-wm-white.png`.
 - Fixed while there: the assistant hid its launcher when the old Night menu opened; it now hides under the Day phone menu. Two Spanish share-image descriptions still spoke of custom work (Products and Contact).
-- Kept on purpose: the theme name "Velani Midnight" (Jose's), the share images (`velani-social*.png`, made in the Night look by `scripts/og/make-share-images.mjs`, which reads the live store, not this repository; new Day share images would be a separate design task), and the dated hosted checks in `scripts/checks/`.
+- Kept on purpose: the share images (`velani-social*.png`, made in the Night look by `scripts/og/make-share-images.mjs`, which reads the live store, not this repository; new Day share images would be a separate design task), and the dated hosted checks in `scripts/checks/`.
 - Publish-time: the next theme push no longer carries the Night assets above; nothing published references them once this theme is the live one.
 
 ## Verification (November 21, Night removed)
