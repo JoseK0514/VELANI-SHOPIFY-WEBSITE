@@ -10,7 +10,7 @@ async function walk(dir) {
     if (entry.isDirectory()) await walk(full);
     else if (entry.isFile()) {
       const filename = path.relative(root, full).split(path.sep).join('/');
-      if (!/^(assets|config|layout|locales|sections|templates)\//.test(filename)) throw new Error('Unexpected theme path: ' + filename);
+      if (!/^(assets|config|layout|locales|sections|snippets|templates)\//.test(filename)) throw new Error('Unexpected theme path: ' + filename);
       const raw = await readFile(full);
       files.push({ filename, bytes: raw.length, md5: createHash('md5').update(raw).digest('hex'), sha256: createHash('sha256').update(raw).digest('hex') });
     } else throw new Error('Unsupported file type: ' + full);
@@ -32,7 +32,7 @@ for (const file of jsonFiles) {
 }
 const settings = JSON.parse(await readFile(path.join(root, 'config/settings_data.json'), 'utf8'));
 if (settings.current.inquiries_enabled !== true) throw new Error('Inquiry form was approved by the owner on 2026-11-02 and must be enabled');
-const zip = path.resolve('dist/velani-midnight-unpublished.zip');
+const zip = path.resolve('dist/velani-unpublished.zip');
 execFileSync('python3', ['-c', `import pathlib,sys,zipfile
 root=pathlib.Path(sys.argv[1]); out=pathlib.Path(sys.argv[2])
 with zipfile.ZipFile(out,'w',zipfile.ZIP_DEFLATED) as z:
@@ -44,6 +44,6 @@ with zipfile.ZipFile(out) as z:
  assert len(set(z.namelist()))==len(z.namelist())
 `, root, zip]);
 const raw = await readFile(zip);
-const manifest = { format: 1, theme: 'Velani Midnight', state: 'Day design; contact form on for the published theme', files: files.length, jsonFiles: jsonFiles.length, zip: path.basename(zip), bytes: raw.length, sha256: createHash('sha256').update(raw).digest('hex'), entries: files };
+const manifest = { format: 1, theme: 'Velani', state: 'Day design; contact form on for the published theme', files: files.length, jsonFiles: jsonFiles.length, zip: path.basename(zip), bytes: raw.length, sha256: createHash('sha256').update(raw).digest('hex'), entries: files };
 await writeFile('dist/theme-manifest.json', JSON.stringify(manifest, null, 2) + '\n');
 console.log(JSON.stringify({ ...manifest, entries: undefined }));
