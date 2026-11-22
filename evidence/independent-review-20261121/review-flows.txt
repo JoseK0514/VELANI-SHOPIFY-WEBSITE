@@ -1,0 +1,15 @@
+PASS /pages/rondo steps start as not yet  [Not yet: |Not yet: |Not yet: ]
+PASS /pages/rondo steps become done  [Done: |Done: |Done: ]
+PASS /pages/rondo the outcome is announced once  [Approved. NEVORA checked the schedule again and applied the change: Dana sees Sunday on her phone.]
+PASS /pages/rondo no h4 in the answer card
+PASS /pages/es-rondo steps start as not yet  [Todavía no: |Todavía no: |Todavía no: ]
+PASS /pages/es-rondo steps become done  [Hecho: |Hecho: |Hecho: ]
+PASS /pages/es-rondo the outcome is announced once  [Aprobado. NEVORA revisó el horario de nuevo y aplicó el cambio: Dana ve el domingo en su teléfono.]
+PASS /pages/es-rondo no h4 in the answer card
+PASS /pages/nevora PIN count for screen readers  [1 of 4 digits]
+PASS /pages/nevora language button marked es
+PASS /pages/nevora after switching, the button names the other language  [English]
+PASS /pages/es-nevora PIN count for screen readers  [1 de 4 dígitos]
+PASS /pages/es-nevora language button marked en
+PASS /pages/es-nevora after switching, the button names the other language  [Español]
+PASS no script errors

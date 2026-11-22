@@ -1,0 +1,210 @@
+PASS / 200  [200]
+PASS / no script errors
+PASS / no CSP violations
+PASS / no external requests
+PASS / header links
+PASS / one h1
+PASS / skip link first
+PASS / Tab reaches skip link
+PASS / skip moves focus to main
+PASS / cookie button enabled
+PASS / cookie dialog opens
+PASS / axe WCAG
+PASS / axe best-practice
+PASS / menu opens, focus on close
+PASS / page behind is inert
+PASS / focus stays in menu
+PASS / Escape closes, focus back on button
+PASS / no sideways scroll at 320  [320]
+PASS / no sideways scroll at 768  [768]
+PASS / no-JS: header links shown as a row, menu button hidden
+PASS / no-JS: content visible
+PASS /pages/nevora 200  [200]
+PASS /pages/nevora no script errors
+PASS /pages/nevora no CSP violations
+PASS /pages/nevora no external requests
+PASS /pages/nevora header links  [NEVORA]
+PASS /pages/nevora one h1
+PASS /pages/nevora skip link first
+PASS /pages/nevora Tab reaches skip link
+PASS /pages/nevora skip moves focus to main
+PASS /pages/nevora cookie button enabled
+PASS /pages/nevora cookie dialog opens
+PASS /pages/nevora axe WCAG
+PASS /pages/nevora axe best-practice
+PASS /pages/nevora menu opens, focus on close
+PASS /pages/nevora page behind is inert
+PASS /pages/nevora focus stays in menu
+PASS /pages/nevora Escape closes, focus back on button
+PASS /pages/nevora no sideways scroll at 320  [320]
+PASS /pages/nevora no sideways scroll at 768  [768]
+PASS /pages/nevora no-JS: header links shown as a row, menu button hidden
+PASS /pages/nevora no-JS: content visible
+PASS /pages/rondo 200  [200]
+PASS /pages/rondo no script errors
+PASS /pages/rondo no CSP violations
+PASS /pages/rondo no external requests
+PASS /pages/rondo header links  [Rondo]
+PASS /pages/rondo one h1
+PASS /pages/rondo skip link first
+PASS /pages/rondo Tab reaches skip link
+PASS /pages/rondo skip moves focus to main
+PASS /pages/rondo cookie button enabled
+PASS /pages/rondo cookie dialog opens
+PASS /pages/rondo axe WCAG
+PASS /pages/rondo axe best-practice
+PASS /pages/rondo menu opens, focus on close
+PASS /pages/rondo page behind is inert
+PASS /pages/rondo focus stays in menu
+PASS /pages/rondo Escape closes, focus back on button
+PASS /pages/rondo no sideways scroll at 320  [320]
+PASS /pages/rondo no sideways scroll at 768  [768]
+PASS /pages/rondo no-JS: header links shown as a row, menu button hidden
+PASS /pages/rondo no-JS: content visible
+PASS /pages/relay 200  [200]
+PASS /pages/relay no script errors
+PASS /pages/relay no CSP violations
+PASS /pages/relay no external requests
+PASS /pages/relay header links  [Relay]
+PASS /pages/relay one h1
+PASS /pages/relay skip link first
+PASS /pages/relay Tab reaches skip link
+PASS /pages/relay skip moves focus to main
+PASS /pages/relay cookie button enabled
+PASS /pages/relay cookie dialog opens
+PASS /pages/relay axe WCAG
+PASS /pages/relay axe best-practice
+PASS /pages/relay menu opens, focus on close
+PASS /pages/relay page behind is inert
+PASS /pages/relay focus stays in menu
+PASS /pages/relay Escape closes, focus back on button
+PASS /pages/relay no sideways scroll at 320  [320]
+PASS /pages/relay no sideways scroll at 768  [768]
+PASS /pages/relay no-JS: header links shown as a row, menu button hidden
+PASS /pages/relay no-JS: content visible
+PASS /pages/plans 200  [200]
+PASS /pages/plans no script errors
+PASS /pages/plans no CSP violations
+PASS /pages/plans no external requests
+PASS /pages/plans header links  [Plans]
+PASS /pages/plans one h1
+PASS /pages/plans skip link first
+PASS /pages/plans Tab reaches skip link
+PASS /pages/plans skip moves focus to main
+PASS /pages/plans cookie button enabled
+PASS /pages/plans cookie dialog opens
+PASS /pages/plans axe WCAG
+PASS /pages/plans axe best-practice
+PASS /pages/plans menu opens, focus on close
+PASS /pages/plans page behind is inert
+PASS /pages/plans focus stays in menu
+PASS /pages/plans Escape closes, focus back on button
+PASS /pages/plans no sideways scroll at 320  [320]
+PASS /pages/plans no sideways scroll at 768  [768]
+PASS /pages/plans no-JS: header links shown as a row, menu button hidden
+PASS /pages/plans no-JS: content visible
+PASS /pages/contact 200  [200]
+PASS /pages/contact no script errors
+PASS /pages/contact no CSP violations
+PASS /pages/contact no external requests
+PASS /pages/contact header links  [Support]
+PASS /pages/contact one h1
+PASS /pages/contact skip link first
+PASS /pages/contact Tab reaches skip link
+PASS /pages/contact skip moves focus to main
+PASS /pages/contact cookie button enabled
+PASS /pages/contact cookie dialog opens
+PASS /pages/contact axe WCAG
+PASS /pages/contact axe best-practice
+PASS /pages/contact menu opens, focus on close
+PASS /pages/contact page behind is inert
+PASS /pages/contact focus stays in menu
+PASS /pages/contact Escape closes, focus back on button
+PASS /pages/contact no sideways scroll at 320  [320]
+PASS /pages/contact no sideways scroll at 768  [768]
+PASS /pages/contact no-JS: header links shown as a row, menu button hidden
+PASS /pages/contact no-JS: content visible
+PASS /pages/help 200  [200]
+PASS /pages/help no script errors
+PASS /pages/help no CSP violations
+PASS /pages/help no external requests
+PASS /pages/help header links  [Support]
+PASS /pages/help one h1
+PASS /pages/help skip link first
+PASS /pages/help Tab reaches skip link
+PASS /pages/help skip moves focus to main
+PASS /pages/help cookie button enabled
+PASS /pages/help cookie dialog opens
+PASS /pages/help axe WCAG
+PASS /pages/help axe best-practice
+PASS /pages/help menu opens, focus on close
+PASS /pages/help page behind is inert
+PASS /pages/help focus stays in menu
+PASS /pages/help Escape closes, focus back on button
+PASS /pages/help no sideways scroll at 320  [320]
+PASS /pages/help no sideways scroll at 768  [768]
+PASS /pages/help no-JS: header links shown as a row, menu button hidden
+PASS /pages/help no-JS: content visible
+PASS /pages/sign-in 200  [200]
+PASS /pages/sign-in no script errors
+PASS /pages/sign-in no CSP violations
+PASS /pages/sign-in no external requests
+PASS /pages/sign-in header links
+PASS /pages/sign-in one h1
+PASS /pages/sign-in skip link first
+PASS /pages/sign-in Tab reaches skip link
+PASS /pages/sign-in skip moves focus to main
+PASS /pages/sign-in cookie button enabled
+PASS /pages/sign-in cookie dialog opens
+PASS /pages/sign-in axe WCAG
+PASS /pages/sign-in axe best-practice
+PASS /pages/sign-in menu opens, focus on close
+PASS /pages/sign-in page behind is inert
+PASS /pages/sign-in focus stays in menu
+PASS /pages/sign-in Escape closes, focus back on button
+PASS /pages/sign-in no sideways scroll at 320  [320]
+PASS /pages/sign-in no sideways scroll at 768  [768]
+PASS /pages/sign-in no-JS: header links shown as a row, menu button hidden
+PASS /pages/sign-in no-JS: content visible
+PASS /pages/about 200  [200]
+PASS /pages/about no script errors
+PASS /pages/about no CSP violations
+PASS /pages/about no external requests
+PASS /pages/about header links
+PASS /pages/about one h1
+PASS /pages/about skip link first
+PASS /pages/about Tab reaches skip link
+PASS /pages/about skip moves focus to main
+PASS /pages/about cookie button enabled
+PASS /pages/about cookie dialog opens
+PASS /pages/about axe WCAG
+PASS /pages/about axe best-practice
+PASS /pages/about menu opens, focus on close
+PASS /pages/about page behind is inert
+PASS /pages/about focus stays in menu
+PASS /pages/about Escape closes, focus back on button
+PASS /pages/about no sideways scroll at 320  [320]
+PASS /pages/about no sideways scroll at 768  [768]
+PASS /pages/about no-JS: header links shown as a row, menu button hidden
+PASS /pages/about no-JS: content visible
+PASS /pages/products 200  [200]
+PASS /pages/products no script errors
+PASS /pages/products no CSP violations
+PASS /pages/products no external requests
+PASS /pages/products header links
+PASS /pages/products one h1
+PASS /pages/products skip link first
+PASS /pages/products Tab reaches skip link
+PASS /pages/products skip moves focus to main
+PASS /pages/products cookie button enabled
+PASS /pages/products cookie dialog opens
+PASS /pages/products axe WCAG
+PASS /pages/products axe best-practice
+PASS /pages/products menu opens, focus on close
+PASS /pages/products page behind is inert
+PASS /pages/products focus stays in menu
+PASS /pages/products Escape closes, focus back on button
+PASS /pages/products no sideways scroll at 320  [320]
+PASS /pages/products no sideways scroll at 768  [768]
+PASS /pages/products no-JS: header links shown as a row, menu button hidden
+PASS /pages/products no-JS: content visible

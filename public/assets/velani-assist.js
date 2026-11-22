@@ -9,13 +9,13 @@ import { VelaniAssistant, safeSourceUrl } from './velani-assistant.js';
  const launch = $('ast-launch'), panel = $('ast'), body = $('ast-body'), intro = $('ast-intro'), log = $('ast-log'), form = $('ast-form'), input = $('ast-in'), send = $('ast-send');
  const status = $('ast-status'), statusT = $('ast-status-t'), retryBtn = $('ast-retry'), discardBtn = $('ast-discard'), contactLink = $('ast-contact'), verify = $('ast-verify'), confirm = $('ast-confirm'), clearBtn = $('ast-clear');
  const T = {
-  en: { launch: 'Ask Velani', launchLabel: 'Ask Velani, the AI adviser on this site', sub: ['On this site', ' · AI adviser for Velani and NEVORA'], hi: 'Hi, I’m {name}.', lede: 'I’m Velani’s AI adviser on this website. Ask me about NEVORA, the free trial, or the websites and apps we build.', scope: 'I can’t see employee accounts, and I can’t make changes, bookings or payments.',
+  en: { launch: 'Ask Velani', launchLabel: 'Ask Velani, the AI adviser on this site', sub: ['On this site', ' · AI adviser for Velani and NEVORA'], hi: 'Hi, I’m {name}.', lede: 'I’m Velani’s AI adviser on this website. Ask me about NEVORA, Rondo, Relay or the free trial.', scope: 'I can’t see employee accounts, and I can’t make changes, bookings or payments.',
    ask: 'Ask Rondo a question', label: 'Your question for Rondo', send: 'Send', close: 'Close', del: 'Delete this conversation', lang: 'Language',
    confirm: 'Delete this conversation from our servers?', yes: 'Delete', keep: 'Keep',
    switchQ: 'Switch to Spanish? This conversation will be deleted and a new one started in Spanish.', switchYes: 'Switch', switchNo: 'Keep English', switched: 'New conversation in English.',
    verify: 'Checking that your browser is not an automated program…', note: 'Rondo is an AI and can be wrong. Don’t share passwords, payment details or employee records. Conversations are kept for up to 30 days.', privacy: 'Privacy notice',
    retry: 'Retry', discard: 'Discard', edit: 'Edit question', contact: 'Contact page',
-   sugg: ['How does the time clock work?', 'How does the free trial work?', 'Can you build our website or app?'],
+   sugg: ['How does the time clock work?', 'How does the free trial work?', 'What can Rondo do for an Owner?'],
    sources: 'Sources', newTab: '(opens in a new tab)', demo: 'Try the time clock', quote: 'Ask for a quote', support: 'NEVORA support', talk: 'Contact us',
    deleted: 'Conversation deleted. Inquiries sent through the contact form are kept separately.',
    ended: 'This conversation had already ended. It is removed from our servers within 30 days.',
@@ -23,13 +23,13 @@ import { VelaniAssistant, safeSourceUrl } from './velani-assistant.js';
    unavailable: 'Rondo isn’t available right now. Write to support@thevelani.com or use the contact page.',
    expired: 'This conversation expired. Your question is back in the box: send it to start a new conversation.',
    thinking: 'Rondo is thinking…', slow: 'Still working. Answers can take up to 45 seconds.', verifying: 'Waiting for the verification below…', seconds: 's' },
-  es: { launch: 'Pregúntale a Velani', launchLabel: 'Pregúntale a Velani, el asesor de IA de este sitio', sub: ['En este sitio', ' · Asesor de IA de Velani y NEVORA'], hi: 'Hola, soy {name}.', lede: 'Soy el asesor de IA de Velani en este sitio web. Pregúntame sobre NEVORA, la prueba gratis o los sitios web y aplicaciones que desarrollamos.', scope: 'No puedo ver cuentas de empleados ni hacer cambios, reservas o pagos.',
+  es: { launch: 'Pregúntale a Velani', launchLabel: 'Pregúntale a Velani, el asesor de IA de este sitio', sub: ['En este sitio', ' · Asesor de IA de Velani y NEVORA'], hi: 'Hola, soy {name}.', lede: 'Soy el asesor de IA de Velani en este sitio web. Pregúntame sobre NEVORA, Rondo, Relay o la prueba gratis.', scope: 'No puedo ver cuentas de empleados ni hacer cambios, reservas o pagos.',
    ask: 'Escribe tu pregunta para Rondo', label: 'Tu pregunta para Rondo', send: 'Enviar', close: 'Cerrar', del: 'Eliminar esta conversación', lang: 'Idioma',
    confirm: '¿Eliminar esta conversación de nuestros servidores?', yes: 'Eliminar', keep: 'Conservar',
    switchQ: '¿Cambiar a inglés? Esta conversación se eliminará y empezará una nueva en inglés.', switchYes: 'Cambiar', switchNo: 'Seguir en español', switched: 'Nueva conversación en español.',
    verify: 'Comprobando que tu navegador no es un programa automatizado…', note: 'Rondo es una IA y puede equivocarse. No compartas contraseñas, datos de pago ni registros de empleados. Las conversaciones se conservan hasta 30 días.', privacy: 'Aviso de privacidad (en inglés)',
    retry: 'Reintentar', discard: 'Descartar', edit: 'Editar pregunta', contact: 'Página de contacto',
-   sugg: ['¿Cómo funciona el registro de tiempo?', '¿Cómo funciona la prueba gratis?', '¿Pueden crear nuestro sitio web o aplicación?'],
+   sugg: ['¿Cómo funciona el registro de tiempo?', '¿Cómo funciona la prueba gratis?', '¿Qué puede hacer Rondo por el dueño?'],
    sources: 'Fuentes', newTab: '(se abre en una pestaña nueva)', demo: 'Probar el registro de tiempo', quote: 'Pedir una cotización', support: 'Soporte de NEVORA', talk: 'Contáctanos',
    deleted: 'Conversación eliminada. Las consultas enviadas por el formulario de contacto se conservan por separado.',
    ended: 'Esta conversación ya había terminado. Se elimina de nuestros servidores en un plazo de 30 días.',
@@ -193,7 +193,7 @@ import { VelaniAssistant, safeSourceUrl } from './velani-assistant.js';
  // Suggested next steps go only to pages that exist on this site; Rondo itself never books, sends or pays
  const action = (answer, sources) => {
   const a = document.createElement('a');
-  if (answer.action === 'show_demo') { const here = !!document.getElementById('try'); a.href = here ? '#try' : siteHref(page('/pages/nevora') + '#try'); a.textContent = t('demo'); if (here) a.addEventListener('click', () => close()); return a; }
+  if (answer.action === 'show_demo') { const here = !!document.getElementById('clock'); a.href = here ? '#clock' : siteHref(page('/pages/nevora') + '#clock'); a.textContent = t('demo'); if (here) a.addEventListener('click', () => close()); return a; }
   if (answer.action === 'lead_form') { a.href = siteHref(page('/pages/contact') + '?interest=nevora'); a.textContent = t('quote'); return a; }
   if (answer.action === 'human_help') { const support = sources.some(s => /\/pages\/nevora-support\b/.test(s.url)); a.href = siteHref(support ? '/pages/nevora-support' : page('/pages/contact')); a.textContent = support ? t('support') : t('talk'); return a; }
   return null;

@@ -3,7 +3,8 @@ import { createHash } from 'node:crypto';
 import path from 'node:path';
 import { routes, company } from '../src/content.mjs';
 import { renderPage, renderBody, renderShopifyLayout, renderShopifySnippets } from '../src/render.mjs';
-import { nightAssets } from '../src/night.mjs';
+import { sharedAssets } from '../src/shared.mjs';
+import { dayAssets } from '../src/day.mjs';
 export const root = path.resolve(import.meta.dirname, '..');
 export async function build() {
   const out = path.join(root, 'dist');
@@ -11,22 +12,20 @@ export async function build() {
   await mkdir(path.join(out, 'preview/assets'), { recursive: true });
   await mkdir(path.join(out, 'theme/assets'), { recursive: true });
   await mkdir(path.join(root, 'public/assets'), { recursive: true });
-  for (const weight of [400, 500, 600]) await copyFile(path.join(root, 'node_modules/@fontsource/dm-sans/files/dm-sans-latin-' + weight + '-normal.woff2'), path.join(root, 'public/assets/dm-sans-latin-' + weight + '-normal.woff2'));
-  for (const name of ['check', 'arrow-right']) await copyFile(path.join(root, 'node_modules/@phosphor-icons/core/assets/regular/' + name + '.svg'), path.join(root, 'public/assets/' + name + '.svg'));
   for (const name of ['favicon.svg', 'favicon-32.png', 'apple-touch-icon.png', 'rondo-lantern.svg', 'rondo-lantern-16.svg', 'rondo-lantern-site.svg', 'rondo-lantern-app.svg']) await copyFile(path.join(root, 'src/brand', name), path.join(root, 'public/assets', name));
   for (const name of ['inquiry', 'privacy', 'client-hub']) {
     try { await copyFile(path.join(root, 'src/' + name + '.mjs'), path.join(root, 'public/assets/' + name + '.js')); }
     catch (error) { if (error.code !== 'ENOENT') throw error; }
   }
-  const { css, js } = nightAssets;
-  await writeFile(path.join(root, 'public/assets/velani.css'), css.base + '\n' + css.pages + '\n' + css.kiosk + '\n' + css.assist + '\n' + css.polish);
-  await writeFile(path.join(root, 'public/assets/velani-home.css'), css.home);
-  await writeFile(path.join(root, 'public/assets/velani-nevora.css'), css.home + '\n' + css.nevora); // the NEVORA page shares Home's sections and live piece
-  await writeFile(path.join(root, 'public/assets/velani-motion.js'), js.motion);
-  await writeFile(path.join(root, 'public/assets/velani-nevora.js'), js.nevora);
-  await writeFile(path.join(root, 'public/assets/velani-assist.js'), js.assist);
-  await writeFile(path.join(root, 'public/assets/velani-assistant.js'), js.assistClient);
-  await writeFile(path.join(root, 'public/assets/velani-commerce.js'), js.commerce);
+  // One stylesheet and one script for every page, plus each page's own (src/day/). The assistant's look travels with it.
+  await writeFile(path.join(root, 'public/assets/velani-day.css'), dayAssets.css + '\n' + sharedAssets.assistCss);
+  await writeFile(path.join(root, 'public/assets/velani-day.js'), dayAssets.js);
+  for (const [name, page] of Object.entries(dayAssets.pages)) { await writeFile(path.join(root, 'public/assets/velani-day-' + name + '.css'), page.css); if (page.js) await writeFile(path.join(root, 'public/assets/velani-day-' + name + '.js'), page.js); }
+  await copyFile(path.join(root, 'src/day/day-nevora-icon.png'), path.join(root, 'public/assets/day-nevora-icon.png'));
+  await copyFile(path.join(root, 'src/day/day-grain.png'), path.join(root, 'public/assets/day-grain.png'));
+  await writeFile(path.join(root, 'public/assets/velani-assist.js'), sharedAssets.assist);
+  await writeFile(path.join(root, 'public/assets/velani-assistant.js'), sharedAssets.assistClient);
+  await writeFile(path.join(root, 'public/assets/velani-commerce.js'), sharedAssets.commerce);
   await cp(path.join(root, 'public/assets'), path.join(out, 'preview/assets'), { recursive: true });
   await cp(path.join(root, 'public/assets'), path.join(out, 'theme/assets'), { recursive: true });
   // Module imports between theme assets carry a content fingerprint, so Shopify's CDN and browsers never serve a stale copy
@@ -63,12 +62,12 @@ export async function build() {
   // robots.txt (Shopify's rules plus named AI crawlers) and llms.txt (a plain summary of the business for AI assistants)
   for (const name of ['robots.txt.liquid', 'llms.txt.liquid']) await copyFile(path.join(root, 'src/seo', name), path.join(out, 'theme/templates', name));
   for (const [name, liquid] of Object.entries(renderShopifySnippets())) await writeFile(path.join(out, 'theme/snippets', name + '.liquid'), liquid);
-  await writeFile(path.join(out, 'theme/config/settings_schema.json'), JSON.stringify([{ name: 'theme_info', theme_name: 'Velani Midnight', theme_version: '0.1.0', theme_author: company.operator, theme_documentation_url: 'https://www.thevelani.com', theme_support_url: 'https://www.thevelani.com/pages/contact' }, { name: 'Inquiry activation', settings: [{ type: 'paragraph', content: 'When on, the Contact page uses the Shopify contact form on the published theme, and inquiries are emailed to the store sender address. When off, the page shows the support email instead.' }, { type: 'checkbox', id: 'inquiries_enabled', label: 'Enable inquiries on a published MAIN theme only', default: true }] }, { name: 'Client request testing', settings: [{ type: 'paragraph', content: 'The client request form on Support always sends for real on the published theme. On an unpublished copy it only checks the draft and sends nothing. Turn this on only on an unpublished acceptance copy to send real requests to Velani support from it. The form then shows a test notice and the review states are off. Leave it off everywhere else.' }, { type: 'checkbox', id: 'client_hub_preview_submissions', label: 'Send real client requests from this unpublished copy', default: false }] }, { name: 'AI assistant', settings: [{ type: 'paragraph', content: 'The Velani assistant (chat) appears on every page when the API address is set. Use the HTTPS address of the deployed Velani AI service, with no path. Leave empty to hide the assistant.' }, { type: 'text', id: 'assistant_api_url', label: 'Assistant API address' }] }, { name: 'NEVORA billing', settings: [{ type: 'paragraph', content: 'The NEVORA trial signup and billing pages (Plans, nevora-start, nevora-verify, nevora-billing, nevora-billing-return) use the NEVORA commerce API at this HTTPS address, with no path. Leave empty and those pages say billing is not available yet.' }, { type: 'text', id: 'commerce_api_url', label: 'NEVORA commerce API address' }] }], null, 2) + '\n');
+  await writeFile(path.join(out, 'theme/config/settings_schema.json'), JSON.stringify([{ name: 'theme_info', theme_name: 'Velani', theme_version: '0.1.0', theme_author: company.operator, theme_documentation_url: 'https://www.thevelani.com', theme_support_url: 'https://www.thevelani.com/pages/contact' }, { name: 'Inquiry activation', settings: [{ type: 'paragraph', content: 'When on, the Contact page uses the Shopify contact form on the published theme, and inquiries are emailed to the store sender address. When off, the page shows the support email instead.' }, { type: 'checkbox', id: 'inquiries_enabled', label: 'Enable inquiries on a published MAIN theme only', default: true }] }, { name: 'Client request testing', settings: [{ type: 'paragraph', content: 'The client request form on Support always sends for real on the published theme. On an unpublished copy it only checks the draft and sends nothing. Turn this on only on an unpublished acceptance copy to send real requests to Velani support from it. The form then shows a test notice and the review states are off. Leave it off everywhere else.' }, { type: 'checkbox', id: 'client_hub_preview_submissions', label: 'Send real client requests from this unpublished copy', default: false }] }, { name: 'AI assistant', settings: [{ type: 'paragraph', content: 'The Velani assistant (chat) appears on every page when the API address is set. Use the HTTPS address of the deployed Velani AI service, with no path. Leave empty to hide the assistant.' }, { type: 'text', id: 'assistant_api_url', label: 'Assistant API address' }] }, { name: 'NEVORA billing', settings: [{ type: 'paragraph', content: 'The NEVORA trial signup and billing pages (Plans, nevora-start, nevora-verify, nevora-billing, nevora-billing-return) use the NEVORA commerce API at this HTTPS address, with no path. Leave empty and those pages say billing is not available yet.' }, { type: 'text', id: 'commerce_api_url', label: 'NEVORA commerce API address' }] }], null, 2) + '\n');
   await writeFile(path.join(out, 'theme/config/settings_data.json'), JSON.stringify({ current: { inquiries_enabled: true, assistant_api_url: '', commerce_api_url: '', client_hub_preview_submissions: false }, presets: {} }, null, 2) + '\n');
   await writeFile(path.join(out, 'theme/locales/en.default.json'), JSON.stringify({ general: { accessibility: { skip_to_content: 'Skip to content' } } }, null, 2) + '\n');
   await writeFile(path.join(out, 'routes.json'), JSON.stringify(manifest, null, 2) + '\n');
   await mkdir(path.join(root, 'docs/licenses'), { recursive: true });
-  for (const [source, dest] of [['@fontsource/dm-sans/LICENSE', 'dm-sans.txt'], ['@phosphor-icons/core/LICENSE', 'phosphor.txt']]) await copyFile(path.join(root, 'node_modules', source), path.join(root, 'docs/licenses', dest));
+  for (const [source, dest] of [['@phosphor-icons/core/LICENSE', 'phosphor.txt']]) await copyFile(path.join(root, 'node_modules', source), path.join(root, 'docs/licenses', dest));
   return { routes: Object.keys(manifest).length, preview: path.join(out, 'preview'), theme: path.join(out, 'theme') };
 }
 if (process.argv[1] === import.meta.filename) console.log(JSON.stringify(await build()));

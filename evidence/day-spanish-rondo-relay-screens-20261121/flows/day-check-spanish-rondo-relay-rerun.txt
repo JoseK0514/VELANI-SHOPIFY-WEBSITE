@@ -1,0 +1,42 @@
+PASS /pages/es-rondo 200  [200]
+PASS /pages/es-rondo no script errors
+PASS /pages/es-rondo no CSP violations
+PASS /pages/es-rondo no external requests
+PASS /pages/es-rondo header links  [Rondo]
+PASS /pages/es-rondo one h1
+PASS /pages/es-rondo skip link first
+PASS /pages/es-rondo Tab reaches skip link
+PASS /pages/es-rondo skip moves focus to main
+PASS /pages/es-rondo cookie button enabled
+PASS /pages/es-rondo cookie dialog opens
+PASS /pages/es-rondo axe WCAG
+PASS /pages/es-rondo axe best-practice
+PASS /pages/es-rondo menu opens, focus on close
+PASS /pages/es-rondo page behind is inert
+PASS /pages/es-rondo focus stays in menu
+PASS /pages/es-rondo Escape closes, focus back on button
+PASS /pages/es-rondo no sideways scroll at 320  [320]
+PASS /pages/es-rondo no sideways scroll at 768  [768]
+PASS /pages/es-rondo no-JS: header links shown as a row, menu button hidden
+PASS /pages/es-rondo no-JS: content visible
+PASS /pages/es-relay 200  [200]
+PASS /pages/es-relay no script errors
+PASS /pages/es-relay no CSP violations
+PASS /pages/es-relay no external requests
+PASS /pages/es-relay header links  [Relay]
+PASS /pages/es-relay one h1
+PASS /pages/es-relay skip link first
+PASS /pages/es-relay Tab reaches skip link
+PASS /pages/es-relay skip moves focus to main
+PASS /pages/es-relay cookie button enabled
+PASS /pages/es-relay cookie dialog opens
+PASS /pages/es-relay axe WCAG
+PASS /pages/es-relay axe best-practice
+PASS /pages/es-relay menu opens, focus on close
+PASS /pages/es-relay page behind is inert
+PASS /pages/es-relay focus stays in menu
+PASS /pages/es-relay Escape closes, focus back on button
+PASS /pages/es-relay no sideways scroll at 320  [320]
+PASS /pages/es-relay no sideways scroll at 768  [768]
+PASS /pages/es-relay no-JS: header links shown as a row, menu button hidden
+PASS /pages/es-relay no-JS: content visible

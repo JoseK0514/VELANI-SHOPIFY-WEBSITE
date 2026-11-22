@@ -1,0 +1,56 @@
+PASS /pages/es lang=es and Day
+PASS /pages/es no visible English in the page body
+PASS /pages/es drawn screens in Spanish (after scripts ran)
+PASS /pages/es-nevora lang=es and Day
+PASS /pages/es-nevora no visible English in the page body
+PASS /pages/es-nevora drawn screens in Spanish (after scripts ran)
+PASS /pages/es-planes lang=es and Day
+PASS /pages/es-planes no visible English in the page body
+PASS /pages/es-planes drawn screens in Spanish (after scripts ran)
+PASS /pages/es-contacto lang=es and Day
+PASS /pages/es-contacto no visible English in the page body
+PASS /pages/es-contacto drawn screens in Spanish (after scripts ran)
+PASS /pages/es-ayuda lang=es and Day
+PASS /pages/es-ayuda no visible English in the page body
+PASS /pages/es-ayuda drawn screens in Spanish (after scripts ran)
+PASS /pages/es-entrar lang=es and Day
+PASS /pages/es-entrar no visible English in the page body
+PASS /pages/es-entrar drawn screens in Spanish (after scripts ran)
+PASS /pages/es-nosotros lang=es and Day
+PASS /pages/es-nosotros no visible English in the page body
+PASS /pages/es-nosotros drawn screens in Spanish (after scripts ran)
+PASS /pages/es-rondo lang=es and Day
+PASS /pages/es-rondo no visible English in the page body
+PASS /pages/es-rondo drawn screens in Spanish (after scripts ran)
+PASS /pages/es-relay lang=es and Day
+PASS /pages/es-relay no visible English in the page body
+PASS /pages/es-relay drawn screens in Spanish (after scripts ran)
+PASS /pages/es-productos lang=es and Day
+PASS /pages/es-productos no visible English in the page body
+PASS /pages/es-productos drawn screens in Spanish (after scripts ran)
+PASS /pages/es-configurar lang=es and Day
+PASS /pages/es-configurar no visible English in the page body
+PASS /pages/es-configurar drawn screens in Spanish (after scripts ran)
+PASS /pages/es-facturacion lang=es and Day
+PASS /pages/es-facturacion no visible English in the page body
+PASS /pages/es-facturacion drawn screens in Spanish (after scripts ran)
+PASS /pages/es-pago lang=es and Day
+PASS /pages/es-pago no visible English in the page body
+PASS /pages/es-pago drawn screens in Spanish (after scripts ran)
+PASS es-nevora: kiosk starts in Spanish
+PASS es-nevora: publish demo in Spanish  [5 personas notificadas. Cada una ve sus propios turnos. Reiniciar la demostración]
+PASS es-nevora: Rondo answers in Spanish
+PASS es-nevora: timecards approve in Spanish  [Aprobado. Listo para la nómina.]
+PASS es home: Rondo conversation starts in Spanish
+PASS es-rondo: first answer in Spanish  [RRondoJordan Torres debía entrar a las 7:30 y todavía no marca. Alexandra Rivera empieza a las 8:00. El domingo tiene un turno de caja abierto, de 12:00 a 8:00.De las marcas de hoy y el horario publicado]
+PASS es-rondo: prepared change approves in Spanish
+PASS es-rondo: an English question gets an English answer marked English
+PASS es-rondo: approval demo in Spanish
+PASS es-rondo: hero phone plays in Spanish
+PASS es-relay: the waitlist opens Spanish Contact on the Relay topic
+PASS es-ayuda: search counts in Spanish  [1 respuesta para “pin”]
+PASS es-planes: price per employee and calendar in Spanish  [$2.38 por empleado / sábado, 21 de noviembre]
+PASS es-contacto: Relay topic, Spanish button  [Unirme a la lista]
+PASS es-contacto: errors in Spanish  [2 campos necesitan atención: Nombre, Correo electrónico.]
+PASS no network sends
+PASS no script errors or CSP reports

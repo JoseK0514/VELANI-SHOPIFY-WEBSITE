@@ -5,7 +5,7 @@ import { buildApp } from '../src/app.js';
 import { readConfig } from '../src/config.js';
 import { ModelError } from '../src/engine.js';
 import { VelaniAssistant as ReferenceClient } from '../integration/velani-assistant.js';
-import { VelaniAssistant as ShopifyClient } from '../../../src/night/velani-assistant.js';
+import { VelaniAssistant as ShopifyClient } from '../../../src/shared/velani-assistant.js';
 
 const fixtures = JSON.parse(await readFile(new URL('../../../docs/handoffs/six-release-evidence-20261112/rondo-ui-fixtures.json', import.meta.url), 'utf8'));
 const clients = [['reference', ReferenceClient], ['Shopify', ShopifyClient]];

@@ -1,0 +1,168 @@
+PASS /pages/products 200  [200]
+PASS /pages/products no script errors
+PASS /pages/products no CSP violations
+PASS /pages/products no external requests
+PASS /pages/products header links
+PASS /pages/products one h1
+PASS /pages/products skip link first
+PASS /pages/products Tab reaches skip link
+PASS /pages/products skip moves focus to main
+PASS /pages/products cookie button enabled
+PASS /pages/products cookie dialog opens
+PASS /pages/products axe WCAG
+PASS /pages/products axe best-practice
+PASS /pages/products menu opens, focus on close
+PASS /pages/products page behind is inert
+PASS /pages/products focus stays in menu
+PASS /pages/products Escape closes, focus back on button
+PASS /pages/products no sideways scroll at 320  [320]
+PASS /pages/products no sideways scroll at 768  [768]
+PASS /pages/products no-JS: header links shown as a row, menu button hidden
+PASS /pages/products no-JS: content visible
+PASS /pages/es-productos 200  [200]
+PASS /pages/es-productos no script errors
+PASS /pages/es-productos no CSP violations
+PASS /pages/es-productos no external requests
+PASS /pages/es-productos header links
+PASS /pages/es-productos one h1
+PASS /pages/es-productos skip link first
+PASS /pages/es-productos Tab reaches skip link
+PASS /pages/es-productos skip moves focus to main
+PASS /pages/es-productos cookie button enabled
+PASS /pages/es-productos cookie dialog opens
+PASS /pages/es-productos axe WCAG
+PASS /pages/es-productos axe best-practice
+PASS /pages/es-productos menu opens, focus on close
+PASS /pages/es-productos page behind is inert
+PASS /pages/es-productos focus stays in menu
+PASS /pages/es-productos Escape closes, focus back on button
+PASS /pages/es-productos no sideways scroll at 320  [320]
+PASS /pages/es-productos no sideways scroll at 768  [768]
+PASS /pages/es-productos no-JS: header links shown as a row, menu button hidden
+PASS /pages/es-productos no-JS: content visible
+PASS /pages/nevora-verify 200  [200]
+PASS /pages/nevora-verify no script errors
+PASS /pages/nevora-verify no CSP violations
+PASS /pages/nevora-verify no external requests
+PASS /pages/nevora-verify header links  [Plans]
+PASS /pages/nevora-verify one h1
+PASS /pages/nevora-verify skip link first
+PASS /pages/nevora-verify Tab reaches skip link
+PASS /pages/nevora-verify skip moves focus to main
+PASS /pages/nevora-verify cookie button enabled
+PASS /pages/nevora-verify cookie dialog opens
+PASS /pages/nevora-verify axe WCAG
+PASS /pages/nevora-verify axe best-practice
+PASS /pages/nevora-verify menu opens, focus on close
+PASS /pages/nevora-verify page behind is inert
+PASS /pages/nevora-verify focus stays in menu
+PASS /pages/nevora-verify Escape closes, focus back on button
+PASS /pages/nevora-verify no sideways scroll at 320  [320]
+PASS /pages/nevora-verify no sideways scroll at 768  [768]
+PASS /pages/nevora-verify no-JS: header links shown as a row, menu button hidden
+PASS /pages/nevora-verify no-JS: content visible
+PASS /pages/es-configurar 200  [200]
+PASS /pages/es-configurar no script errors
+PASS /pages/es-configurar no CSP violations
+PASS /pages/es-configurar no external requests
+PASS /pages/es-configurar header links  [Planes]
+PASS /pages/es-configurar one h1
+PASS /pages/es-configurar skip link first
+PASS /pages/es-configurar Tab reaches skip link
+PASS /pages/es-configurar skip moves focus to main
+PASS /pages/es-configurar cookie button enabled
+PASS /pages/es-configurar cookie dialog opens
+PASS /pages/es-configurar axe WCAG
+PASS /pages/es-configurar axe best-practice
+PASS /pages/es-configurar menu opens, focus on close
+PASS /pages/es-configurar page behind is inert
+PASS /pages/es-configurar focus stays in menu
+PASS /pages/es-configurar Escape closes, focus back on button
+PASS /pages/es-configurar no sideways scroll at 320  [320]
+PASS /pages/es-configurar no sideways scroll at 768  [768]
+PASS /pages/es-configurar no-JS: header links shown as a row, menu button hidden
+PASS /pages/es-configurar no-JS: content visible
+PASS /pages/nevora-billing 200  [200]
+PASS /pages/nevora-billing no script errors
+PASS /pages/nevora-billing no CSP violations
+PASS /pages/nevora-billing no external requests
+PASS /pages/nevora-billing header links  [Plans]
+PASS /pages/nevora-billing one h1
+PASS /pages/nevora-billing skip link first
+PASS /pages/nevora-billing Tab reaches skip link
+PASS /pages/nevora-billing skip moves focus to main
+PASS /pages/nevora-billing cookie button enabled
+PASS /pages/nevora-billing cookie dialog opens
+PASS /pages/nevora-billing axe WCAG
+PASS /pages/nevora-billing axe best-practice
+PASS /pages/nevora-billing menu opens, focus on close
+PASS /pages/nevora-billing page behind is inert
+PASS /pages/nevora-billing focus stays in menu
+PASS /pages/nevora-billing Escape closes, focus back on button
+PASS /pages/nevora-billing no sideways scroll at 320  [320]
+PASS /pages/nevora-billing no sideways scroll at 768  [768]
+PASS /pages/nevora-billing no-JS: header links shown as a row, menu button hidden
+PASS /pages/nevora-billing no-JS: content visible
+PASS /pages/es-facturacion 200  [200]
+PASS /pages/es-facturacion no script errors
+PASS /pages/es-facturacion no CSP violations
+PASS /pages/es-facturacion no external requests
+PASS /pages/es-facturacion header links  [Planes]
+PASS /pages/es-facturacion one h1
+PASS /pages/es-facturacion skip link first
+PASS /pages/es-facturacion Tab reaches skip link
+PASS /pages/es-facturacion skip moves focus to main
+PASS /pages/es-facturacion cookie button enabled
+PASS /pages/es-facturacion cookie dialog opens
+PASS /pages/es-facturacion axe WCAG
+PASS /pages/es-facturacion axe best-practice
+PASS /pages/es-facturacion menu opens, focus on close
+PASS /pages/es-facturacion page behind is inert
+PASS /pages/es-facturacion focus stays in menu
+PASS /pages/es-facturacion Escape closes, focus back on button
+PASS /pages/es-facturacion no sideways scroll at 320  [320]
+PASS /pages/es-facturacion no sideways scroll at 768  [768]
+PASS /pages/es-facturacion no-JS: header links shown as a row, menu button hidden
+PASS /pages/es-facturacion no-JS: content visible
+PASS /pages/nevora-billing-return 200  [200]
+PASS /pages/nevora-billing-return no script errors
+PASS /pages/nevora-billing-return no CSP violations
+PASS /pages/nevora-billing-return no external requests
+PASS /pages/nevora-billing-return header links  [Plans]
+PASS /pages/nevora-billing-return one h1
+PASS /pages/nevora-billing-return skip link first
+PASS /pages/nevora-billing-return Tab reaches skip link
+PASS /pages/nevora-billing-return skip moves focus to main
+PASS /pages/nevora-billing-return cookie button enabled
+PASS /pages/nevora-billing-return cookie dialog opens
+PASS /pages/nevora-billing-return axe WCAG
+PASS /pages/nevora-billing-return axe best-practice
+PASS /pages/nevora-billing-return menu opens, focus on close
+PASS /pages/nevora-billing-return page behind is inert
+PASS /pages/nevora-billing-return focus stays in menu
+PASS /pages/nevora-billing-return Escape closes, focus back on button
+PASS /pages/nevora-billing-return no sideways scroll at 320  [320]
+PASS /pages/nevora-billing-return no sideways scroll at 768  [768]
+PASS /pages/nevora-billing-return no-JS: header links shown as a row, menu button hidden
+PASS /pages/nevora-billing-return no-JS: content visible
+PASS /pages/es-pago 200  [200]
+PASS /pages/es-pago no script errors
+PASS /pages/es-pago no CSP violations
+PASS /pages/es-pago no external requests
+PASS /pages/es-pago header links  [Planes]
+PASS /pages/es-pago one h1
+PASS /pages/es-pago skip link first
+PASS /pages/es-pago Tab reaches skip link
+PASS /pages/es-pago skip moves focus to main
+PASS /pages/es-pago cookie button enabled
+PASS /pages/es-pago cookie dialog opens
+PASS /pages/es-pago axe WCAG
+PASS /pages/es-pago axe best-practice
+PASS /pages/es-pago menu opens, focus on close
+PASS /pages/es-pago page behind is inert
+PASS /pages/es-pago focus stays in menu
+PASS /pages/es-pago Escape closes, focus back on button
+PASS /pages/es-pago no sideways scroll at 320  [320]
+PASS /pages/es-pago no sideways scroll at 768  [768]
+PASS /pages/es-pago no-JS: header links shown as a row, menu button hidden
+PASS /pages/es-pago no-JS: content visible

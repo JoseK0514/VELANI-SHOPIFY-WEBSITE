@@ -1,0 +1,13 @@
+PASS start stays put when signup is configured  [http://127.0.0.1:4199/pages/nevora-start]
+PASS billing: the handoff leaves the address bar  [http://127.0.0.1:4199/pages/nevora-billing]
+PASS billing: business name heading and trial line  [Northside Coffee | Your free trial is running.]
+PASS billing: plan facts card shows  [PlanFree trialTrial endsDecember 8, 2026Employees8 of 30Subscribe now and you keep every day of your trial. You aren’t charged until it ends. Stripe processes the payment.Sign out]
+PASS billing: support email hidden once signed in
+PASS billing: actions are Day buttons  [SubscribeBack to NEVORA]
+PASS billing: sign out returns to instructions  [You’re signed out of billing.]
+PASS es billing: paid line in Spanish  [Tu plan está activo.]
+PASS billing: an expired link says so  [This link has expired.]
+PASS return: confirms the subscription  [You’re subscribed. | You’re subscribed.NEVORA is paid through December 7, 2026.Online billing isn’t open yet. If NEVORA already runs your workplace, write to us about your plan or a]
+PASS billing phone: no sideways scroll
+PASS only the local site and fixture were contacted
+PASS no script errors or CSP reports

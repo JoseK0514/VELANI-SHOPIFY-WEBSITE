@@ -1,0 +1,78 @@
+/* Legal and NEVORA policy pages on the Day design. The markup is Jose's (legalDoc, legalIndex in src/render.mjs and policyMain in
+   src/shared.mjs); only its look changes: a quiet page with a sticky contents list, readable measure and plain links. */
+main{background:var(--bg)}
+.phero{padding-top:clamp(56px,8vw,112px);padding-bottom:clamp(32px,4vw,56px);border-bottom:1px solid var(--line)}
+.phero .t1{font-size:clamp(40px,5.6vw,72px);line-height:1;letter-spacing:-.05em;max-width:18ch;overflow-wrap:anywhere}
+.phero .lede{margin-top:18px;max-width:46ch;font-size:clamp(18px,1.6vw,21px);line-height:1.45;color:var(--ink-2)}
+.doc-meta{margin-top:20px;font-size:14px;font-weight:600;color:var(--ink-2)}
+.phero .acts{margin-top:24px;display:flex;gap:12px;flex-wrap:wrap}
+
+/* a document: contents on the left, the text on the right */
+.doc{padding-block:clamp(40px,5vw,72px) clamp(72px,9vw,120px);overflow-wrap:anywhere}
+.doc-grid{display:grid;grid-template-columns:minmax(0,3fr) minmax(0,8fr);gap:48px clamp(40px,7vw,96px);align-items:start}
+.doc-grid>*{min-width:0}
+.doc-aside{position:sticky;top:72px;display:flex;flex-direction:column;gap:2px}
+.doc-aside-t{margin:28px 0 8px;font-size:13px;font-weight:600;color:var(--ink-2)}
+.doc-aside-t:first-child,.doc-toc .doc-aside-t{margin-top:0}
+.doc-toc{display:contents}
+.doc-toc summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;min-height:44px}
+.doc-toc summary::-webkit-details-marker{display:none}
+.doc-aside nav{display:flex;flex-direction:column}
+.doc-aside a{padding:7px 0 7px 14px;border-left:1px solid var(--line);font-size:15px;line-height:1.4;color:var(--ink-2);transition-property:color,border-color;transition-duration:.15s}
+@media (hover:hover){.doc-aside a:hover{color:var(--ink);border-color:var(--ink)}}
+.doc-body{max-width:40em}
+.doc-body section{display:grid;grid-template-columns:48px minmax(0,1fr);gap:4px 16px;padding:0 0 48px;scroll-margin-top:72px}
+.doc-body section>i{grid-row:1/span 9;padding-top:.5em;font-style:normal;font-size:13px;font-weight:600;color:var(--teal);font-variant-numeric:tabular-nums}
+.doc-body section>*:not(i){grid-column:2}
+.doc-body h2{font-size:clamp(22px,2vw,28px);font-weight:600;letter-spacing:-.025em;line-height:1.2;margin-bottom:10px}
+.doc-body h3{font-size:19px;letter-spacing:-.015em;margin:18px 0 6px}
+.doc-body p,.doc-body li{color:#3F3F44;font-size:17px;line-height:1.65}
+.doc-body p+p,.doc-body p+ul,.doc-body ul+p,.doc-body p+ol,.doc-body ol+p{margin-top:14px}
+.doc-body ul,.doc-body ol{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:10px}
+.doc-body li{position:relative;padding-left:22px}
+.doc-body ul li::before{content:"";position:absolute;left:4px;top:.75em;width:6px;height:6px;border-radius:50%;background:var(--teal)}
+.doc-body ol{counter-reset:step}
+.doc-body ol li{counter-increment:step;padding-left:28px}
+.doc-body ol li::before{content:counter(step) ".";position:absolute;left:0;top:0;font-weight:600;color:var(--teal);font-variant-numeric:tabular-nums}
+.doc-body strong{color:var(--ink);font-weight:600}
+.doc-body a,.doc-end p a,.cookie-nojs-note a{color:var(--link);text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1px}
+.doc-end{margin-top:8px;padding:28px;border-radius:24px;background:var(--tile)}
+.doc-end .t3{font-size:21px;letter-spacing:-.02em}
+.doc-end p{margin-top:8px;color:#3F3F44;line-height:1.6}
+.doc-end .acts{margin-top:18px;display:flex;gap:12px;flex-wrap:wrap}
+@media (min-width:834px){.doc-end{margin-left:64px}}
+
+/* Jose's buttons on these pages (.pill, .pill.line) in the Day style */
+.pill{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 20px;border-radius:980px;background:var(--teal);color:#fff;font-size:16px;transition-property:background-color,scale;transition-duration:.15s;transition-timing-function:ease-out}
+.pill.line{background:#fff;color:var(--ink);box-shadow:inset 0 0 0 1px var(--ink-3)}
+.pill:active{scale:.96}
+@media (hover:hover){.pill:not(.line):hover{background:var(--teal-d)}.pill.line:hover{box-shadow:inset 0 0 0 1px var(--ink)}}
+
+/* the not-found page's actions (Jose's .hb links) */
+.phero .acts .hb{display:inline-flex;align-items:center;gap:6px;min-height:44px;padding:0 20px;border-radius:980px;box-shadow:inset 0 0 0 1px var(--ink-3);font-size:16px}
+.phero .acts .hb.fill{background:var(--teal);color:#fff;box-shadow:none}
+.phero .acts .hb .icon{width:16px;height:16px}
+
+/* the legal index */
+.dir{padding-block:clamp(40px,5vw,72px) clamp(72px,9vw,120px)}
+.dir .t2{font-size:clamp(24px,2.4vw,32px);letter-spacing:-.03em;margin:40px 0 0}
+.dir .t2:first-child{margin-top:0}
+.tiles{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:20px}
+.tile{display:flex;flex-direction:column;gap:6px;min-height:150px;padding:24px;border-radius:24px;background:#fff;box-shadow:inset 0 0 0 1px var(--line);transition-property:box-shadow;transition-duration:.2s}
+.tile .t3{font:600 19px/1.3 var(--display);letter-spacing:-.02em}
+.tile p{color:var(--ink-2);font-size:15.5px;line-height:1.5;max-width:34em}
+.tile .icon{margin-top:auto;align-self:flex-end;width:20px;height:20px;color:var(--ink-2);transition:transform .35s var(--ease)}
+@media (hover:hover){.tile:hover{box-shadow:inset 0 0 0 1px var(--ink-3),0 16px 40px -24px rgba(16,24,40,.25)}.tile:hover .icon{transform:translateX(5px);color:var(--ink)}}
+
+@media (max-width:820px){
+  .doc-grid{grid-template-columns:minmax(0,1fr);gap:28px}
+  .doc-aside{position:static;padding:16px 18px;border-radius:18px;background:var(--tile)}
+  .doc-toc{display:block}
+  .doc-toc summary::after{content:"";width:8px;height:8px;border-right:1.5px solid var(--ink-2);border-bottom:1.5px solid var(--ink-2);transform:rotate(45deg);transition:transform .2s}
+  .doc-toc[open] summary::after{transform:rotate(225deg)}
+  .doc-body section{grid-template-columns:minmax(0,1fr)}
+  .doc-body section>i{grid-row:auto;padding-top:0}
+  .doc-body section>*:not(i){grid-column:1}
+  .tiles{grid-template-columns:minmax(0,1fr)}
+}
+@media (prefers-reduced-motion:reduce){.tile .icon,.doc-toc summary::after{transition:none}}

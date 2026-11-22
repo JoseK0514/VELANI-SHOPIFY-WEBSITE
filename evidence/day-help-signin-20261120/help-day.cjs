@@ -1,0 +1,30 @@
+// Day Help on the real local preview: search, chips, PIN, client disclosure and Jose's client form (preview, no sends).
+const { chromium } = require('playwright');
+const B = 'http://127.0.0.1:4180/pages/help';
+const res = []; const ok = (n, c, x = '') => res.push((c ? 'PASS ' : 'FAIL ') + n + (x ? '  [' + String(x).slice(0, 200) + ']' : ''));
+(async () => {
+  const b = await chromium.launch({ executablePath: '/opt/pw-browsers/chromium-1243/chrome-linux64/chrome' });
+  const c = await b.newContext({ viewport: { width: 1280, height: 900 } });
+  const errs = [], posts = [];
+  const open = async u => { const p = await c.newPage(); p.on('pageerror', e => errs.push(e.message)); p.on('console', m => { if (/Content Security Policy|Refused/.test(m.text())) errs.push(m.text()); }); p.on('request', r => { if (r.method() !== 'GET') posts.push(r.method() + ' ' + r.url()); }); await p.goto(u); await p.waitForTimeout(500); return p; };
+  let p = await open(B);
+  const vis = () => p.$$eval('#answers-list details', d => d.filter(x => !x.hidden).length), st = () => p.textContent('#ans-st');
+  ok('13 answers', (await vis()) === 13, await st());
+  await p.fill('#q', 'forgot pin'); ok('search finds and opens one answer', (await vis()) === 1 && (await p.$$eval('#answers-list details', d => d.filter(x => !x.hidden && x.open).length)) === 1, await st());
+  await p.fill('#q', ''); await p.click('.chip-b[data-topic="trial"]'); ok('chip filters to the trial answers', (await vis()) === 3, await st());
+  await p.click('.chip-b[data-topic="trial"]'); ok('chip toggles off', (await vis()) === 13);
+  await p.$eval('#pv', e => e.scrollIntoView({ block: 'center' })); await p.waitForTimeout(400); await p.evaluate(() => scrollBy(0, 200)); await p.waitForTimeout(400);
+  ok('PIN fills and clocks in', (await p.$$eval('.pv-d i.on', d => d.length)) === 4);
+  ok('client door closed by default', !(await p.$eval('#client-d', d => d.open)));
+  await p.close();
+  p = await open(B + '#client');
+  ok('a #client link opens the client door', await p.$eval('#client-d', d => d.open));
+  ok('client form enabled by its script', !(await p.$eval('#project-inquiry fieldset', f => f.disabled)));
+  await p.click('#project-inquiry [data-inquiry-submit]'); await p.waitForTimeout(300);
+  ok('empty client request: errors shown, nothing sent', (await p.textContent('#error-name')).length > 0 && posts.length === 0, await p.textContent('#project-inquiry .form-status'));
+  ok('client form says it is a preview', /sends nothing|Nothing/i.test(await p.textContent('#project-inquiry')), (await p.textContent('#project-inquiry .client-preview').catch(() => '')));
+  await p.close();
+  ok('no network sends', posts.length === 0, posts.join(' '));
+  ok('no script errors or CSP reports', errs.length === 0, errs.join(' | '));
+  console.log(res.join('\n')); await b.close();
+})();

@@ -1,0 +1,215 @@
+<title>NEVORA Plans Page</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Mockup of the NEVORA plans page: free for 30 days, then $19 or $29 a month per business, with a team-size picker and the 30 days on real dates.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..800&family=DM+Sans:opsz,wght@9..40,200..700&display=swap">
+<style>
+{{SHARED_CSS}}
+{{PRODUCT_CSS}}
+/* Layout: plans run from dawn to morning light. One question in the hero (how many people work for you), the price answers it, then what every plan includes, the 30 days on real dates and the two ways day 30 can go. */
+.ph-h{text-align:center;padding-top:clamp(40px,5vw,72px)}
+.ph-h .center h1{font-size:clamp(48px,7.6vw,110px);line-height:.96;letter-spacing:-.055em;max-width:14ch}
+.ph-h .lead{margin-top:20px}
+.ph-h .acts{margin-top:26px;display:flex;gap:26px;align-items:center;flex-wrap:wrap;justify-content:center}
+@keyframes rise5{from{opacity:0;translate:0 40px}to{opacity:1;translate:0 0}}
+.ph-h .center>*,.calc{animation:rise5 1.1s var(--ease) both}
+.ph-h .center>*:nth-child(2){animation-delay:.06s}.ph-h .center>*:nth-child(3){animation-delay:.12s}.calc{animation-delay:.22s}
+
+/* team-size calculator */
+.calc{max-width:920px;margin:clamp(48px,6vw,80px) auto 0;border-radius:36px;padding:clamp(24px,4vw,48px);background:rgba(255,255,255,.6);-webkit-backdrop-filter:blur(26px) saturate(1.3);backdrop-filter:blur(26px) saturate(1.3);box-shadow:inset 0 0 0 1px rgba(255,255,255,.7),0 50px 100px -60px rgba(60,40,60,.45);text-align:left}
+.calc-top{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:24px;align-items:end}
+.calc label{font-size:17px;font-weight:600;letter-spacing:-.01em}
+.calc .n{display:block;font-family:var(--display);font-size:clamp(64px,9vw,112px);line-height:1;letter-spacing:-.05em;font-weight:600;margin-top:8px;font-variant-numeric:tabular-nums}
+.calc .n small{font-size:.22em;letter-spacing:-.01em;font-weight:500;color:var(--ink-2);margin-left:.25em}
+.calc .price{text-align:right}
+.calc .price .k{font-size:15px;color:var(--ink-2)}
+.calc .price b{display:block;font-family:var(--display);font-size:clamp(56px,7.4vw,96px);line-height:1;letter-spacing:-.05em;font-weight:600;color:var(--teal);margin-top:8px;font-variant-numeric:tabular-nums}
+.calc .price b small{font-size:.24em;color:var(--ink-2);font-weight:500;letter-spacing:-.01em;margin-left:.2em}
+.marks{margin-top:30px;display:grid;grid-template-columns:repeat(31,minmax(0,1fr));gap:4px;align-items:end;height:40px}
+.marks i{display:block;height:16px;border-radius:3px;background:#DCE3E2;transition:background-color .2s,height .2s}
+.marks i.b1{background:#BFE0DA}.marks i.b2{background:#9FD0C8}
+.marks i.on{background:var(--teal);height:40px}
+.marks i.over{background:#EADFC9}
+.bands{display:grid;grid-template-columns:15fr 15fr 1fr;gap:4px;margin-top:8px;font-size:13px;color:var(--ink-2)}
+.bands span:last-child{text-align:right}
+.range{margin-top:22px;display:flex;align-items:center;gap:14px}
+.range input{flex:1;accent-color:#0B6E69;height:44px;min-width:0}
+.range input:focus-visible{outline:2px solid var(--link);outline-offset:4px;border-radius:8px}
+.calc .per{display:block;margin-top:8px;font-size:15px;color:var(--ink-2);font-variant-numeric:tabular-nums;min-height:22px}
+.step{all:unset;cursor:pointer;width:44px;height:44px;border-radius:50%;display:grid;place-items:center;background:#fff;box-shadow:inset 0 0 0 1px #D2D2D7;font-size:22px;font-weight:500;color:var(--ink);flex:none}
+.step:focus-visible{outline:2px solid var(--link);outline-offset:3px}
+.step:not([disabled]):active{transform:scale(.96)}
+.step[disabled]{opacity:.4;cursor:default}
+.calc-note{margin-top:18px;font-size:15px;color:var(--ink-2);min-height:22px}
+.calc-note b{color:var(--ink)}
+
+/* two plans */
+.two{max-width:920px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.pc{border-radius:30px;padding:36px 32px 32px;background:rgba(255,255,255,.55);-webkit-backdrop-filter:blur(22px) saturate(1.3);backdrop-filter:blur(22px) saturate(1.3);box-shadow:inset 0 0 0 1px rgba(255,255,255,.65),0 30px 60px -40px rgba(60,40,60,.35);transition:box-shadow .3s;display:flex;flex-direction:column;gap:6px}
+.pc.sel{box-shadow:inset 0 0 0 2px var(--teal),0 30px 60px -40px rgba(11,110,105,.45)}
+.pc .who{font-size:19px;font-weight:600;letter-spacing:-.02em;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.pc .yours{font-size:12.5px;font-weight:600;color:#0A6B55;background:#D7EEE7;border-radius:12px;padding:4px 10px;opacity:0;transition:opacity .25s}
+.pc.sel .yours{opacity:1}
+.pc .amt{font-family:var(--display);font-size:clamp(72px,8vw,104px);line-height:1;letter-spacing:-.055em;font-weight:600;margin-top:16px}
+.pc .amt small{font-size:.22em;letter-spacing:-.01em;font-weight:500;color:var(--ink-2);margin-left:.2em}
+.pc .d{color:var(--ink-2);font-size:16px}
+.pc .pillbtn{margin-top:26px;align-self:flex-start}
+@media (max-width:820px){.two{grid-template-columns:minmax(0,1fr)}.calc-top{grid-template-columns:minmax(0,1fr)}.calc .price{text-align:left}}
+
+/* included */
+.inc{max-width:980px;margin:0 auto;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0 28px}
+.inc div{border-top:1px solid rgba(29,29,31,.14);padding:22px 0 28px}
+.inc .i{width:24px;height:24px;color:var(--teal)}
+.inc b{display:block;font-size:19px;letter-spacing:-.02em;margin-top:12px}
+.inc span{display:block;margin-top:4px;font-size:15.5px;color:var(--ink-2);line-height:1.45}
+@media (max-width:820px){.inc{grid-template-columns:minmax(0,1fr)}}
+
+/* 30 days on real dates */
+.days{max-width:1080px;margin:0 auto;list-style:none;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px}
+.day{border-radius:26px;padding:24px;background:rgba(255,255,255,.55);-webkit-backdrop-filter:blur(20px);backdrop-filter:blur(20px);box-shadow:inset 0 0 0 1px rgba(255,255,255,.6)}
+.day .cal{display:inline-flex;flex-direction:column;align-items:center;justify-content:center;width:64px;height:68px;border-radius:16px;background:#fff;box-shadow:0 0 0 1px rgba(16,40,38,.06),0 10px 24px -14px rgba(16,40,38,.35);font-variant-numeric:tabular-nums}
+.day .cal small{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#B42318}
+.day .cal b{font-size:28px;line-height:1;letter-spacing:-.03em;margin-top:2px}
+.day .k{margin-top:18px;font-size:14px;font-weight:600;color:var(--teal)}
+.day h3{font-size:22px;letter-spacing:-.025em;margin-top:4px}
+.day p{margin-top:8px;font-size:15.5px;line-height:1.45;color:var(--ink-2)}
+.days-note{text-align:center;margin-top:24px;font-size:14px;color:var(--ink-2)}
+@media (max-width:900px){.days{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}}
+@media (max-width:520px){.days{grid-template-columns:minmax(0,1fr)}}
+
+/* two endings */
+.ends{max-width:980px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.end{border-radius:30px;padding:clamp(26px,3.4vw,40px)}
+.end.yes{background:#0B6E69;color:#fff}
+.end.no{background:rgba(255,255,255,.6);-webkit-backdrop-filter:blur(20px);backdrop-filter:blur(20px);box-shadow:inset 0 0 0 1px rgba(255,255,255,.6)}
+.end .k{font-size:14px;font-weight:600}
+.end.yes .k{color:#fff}.end.no .k{color:var(--ink-2)}
+.end h3{font-size:clamp(26px,2.6vw,34px);letter-spacing:-.035em;line-height:1.08;margin-top:8px}
+.end p{margin-top:12px;font-size:16.5px;line-height:1.5}
+.end.yes p{color:rgba(255,255,255,.86)}
+.end.no p{color:var(--ink-2)}
+@media (max-width:820px){.ends{grid-template-columns:minmax(0,1fr)}}
+.billing{text-align:center;margin-top:28px;font-size:15px;color:var(--ink-2)}
+
+html.rm .ph-h .center>*,html.rm .calc{animation:none}
+html.rm [data-rv]{opacity:1;transform:none}
+{{SCREEN_CSS}}
+</style>
+
+{{HEADER}}
+<div class="ln" id="ln">
+  <div class="wrap">
+    <a class="nm" href="#top">NEVORA Plans</a>
+    <nav aria-label="Plans sections"><a href="#prices">Prices</a><a href="#included">What's included</a><a href="#days">Your 30 days</a><a href="#faq">Questions</a></nav>
+    <a class="cta" href="#close"><span class="l">Request a free trial</span><span class="s">Free trial</span></a>
+  </div>
+</div>
+
+<div class="atmo" id="atmo" aria-hidden="true"></div>
+<main id="top">
+
+<!-- HERO + CALCULATOR -->
+<section class="ph-h" id="prices" aria-labelledby="h1" data-sky="dawn">
+  <div class="wrap">
+    <div class="center"><h1 id="h1">Try NEVORA free for 30 days.</h1><p class="lead">Your whole team gets the complete app, with no card. Then one monthly price for your business.</p><div class="acts"><a class="pillbtn" href="{{TRIAL_URL}}">Request a free trial</a><a class="more" href="#days">See your 30 days{{CHEV}}</a></div></div>
+    <div class="calc" id="calc">
+      <div class="calc-top">
+        <div><label for="team">How many employees do you have?</label><output class="n" id="team-n" for="team">8<small>employees</small></output></div>
+        <div class="price" aria-live="polite"><span class="k">After 30 days</span><b id="team-p">$19<small>/month</small></b><span class="per" id="team-per">$2.38 per employee</span></div>
+      </div>
+      <div class="marks" id="marks" aria-hidden="true"></div>
+      <div class="bands" aria-hidden="true"><span>1 to 15 · $19</span><span>16 to 30 · $29</span><span>31+</span></div>
+      <div class="range"><button class="step" type="button" id="minus" aria-label="One fewer employee">−</button><input type="range" id="team" min="1" max="31" step="1" value="8" aria-describedby="calc-note"><button class="step" type="button" id="plus" aria-label="One more employee">+</button></div>
+      <p class="calc-note" id="calc-note">Owners aren't counted. One price for the whole business, billed monthly.</p>
+    </div>
+  </div>
+  <p class="dn"><b>Hero</b>The page answers one question first: how many people work for you. The price, the bar and the matching plan below all follow the slider. 31+ explains assisted setup instead of showing a price.</p>
+</section>
+
+<!-- TWO PLANS -->
+<section class="sec" aria-labelledby="two-h" data-sky="dawn" style="padding-top:clamp(60px,7vw,100px)">
+  <div class="wrap">
+    <h2 id="two-h" class="sr">Plans</h2>
+    <div class="two" data-rv>
+      <div class="pc" id="pc1"><span class="who">Up to 15 employees<span class="yours">Your plan</span></span><span class="amt num">$19<small>/month</small></span><span class="d">One price per business.</span><a class="pillbtn" href="{{TRIAL_URL}}">Request a free trial</a></div>
+      <div class="pc" id="pc2"><span class="who">16 to 30 employees<span class="yours">Your plan</span></span><span class="amt num">$29<small>/month</small></span><span class="d">One price per business.</span><a class="pillbtn" href="{{TRIAL_URL}}">Request a free trial</a></div>
+    </div>
+    <p class="billing">More than 30 employees? <a class="more" style="font-size:15px;min-height:0" href="{{BIG_URL}}">Write to us for assisted setup{{CHEV}}</a></p>
+  </div>
+</section>
+
+<!-- INCLUDED -->
+<section class="sec" id="included" aria-labelledby="in-h" data-sky="morning">
+  <div class="wrap">
+    <div class="center chead" data-rv><p class="eyebrow">Every plan</p><h2 id="in-h">The whole app, in every plan.</h2><p class="lead">The price depends only on how many employees you have.</p></div>
+    <div class="inc" data-rv>
+      <div>{{I:calendar-blank}}<b>Scheduling</b><span>Publish the week, open shifts, swaps and time off.</span></div>
+      <div>{{I:device-tablet}}<b>Tablet time clock</b><span>A PIN for each person on a shared tablet.</span></div>
+      <div>{{I:clock}}<b>Timecards</b><span>Late starts flagged, corrections with a reason, approved by you.</span></div>
+      <div>{{I:money}}<b>Payroll calculation</b><span>Pay statements from approved hours, ready to export.</span></div>
+      <div>{{I:chat-circle}}<b>Rondo</b><span>The Owner's assistant, with every change approved.</span></div>
+      <div>{{I:translate}}<b>English and Spanish</b><span>For the Owner and for every person on the team.</span></div>
+      <div>{{I:users}}<b>Your team's app</b><span>Shifts, requests and pay statements, in any browser.</span></div>
+      <div>{{I:user-plus}}<b>Setup with Jose</b><span>We set up your workplace with you.</span></div>
+      <div>{{I:paper-plane-tilt}}<b>Support</b><span>Monday to Friday, 8 am to 9 pm ET.</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 30 DAYS -->
+<section class="sec" id="days" aria-labelledby="dy-h" data-sky="morning">
+  <div class="wrap">
+    <div class="center chead" data-rv><p class="eyebrow">Your 30 days</p><h2 id="dy-h">Thirty days, on a real calendar.</h2><p class="lead">Your free days start the day your workplace is ready. If it were ready today:</p></div>
+    <ol class="days" data-rv>
+      <li class="day"><span class="cal" data-off="0"><small>Day</small><b>1</b></span><p class="k">Day 1</p><h3>Your workplace is ready</h3><p>You invite your team, and each person gets a PIN for the time clock tablet.</p></li>
+      <li class="day"><span class="cal" data-off="3"><small>Day</small><b>4</b></span><p class="k">First week</p><h3>Publish the schedule</h3><p>Your team sees their shifts, swaps shifts and asks for time off, in English or Spanish.</p></li>
+      <li class="day"><span class="cal" data-off="10"><small>Day</small><b>11</b></span><p class="k">Second week</p><h3>Approve timecards</h3><p>NEVORA calculates payroll from the approved hours and makes a pay statement for each person.</p></li>
+      <li class="day"><span class="cal" data-off="29"><small>Day</small><b>30</b></span><p class="k">Day 30</p><h3>Pick a plan</h3><p>The Owner picks a plan in NEVORA. Nothing is charged until you do.</p></li>
+    </ol>
+    <p class="days-note" id="days-note">Dates follow your calendar. To start, ask for a trial and Jose replies within two business days.</p>
+  </div>
+</section>
+
+<!-- TWO ENDINGS -->
+<section class="sec" aria-labelledby="en-h" data-sky="golden">
+  <div class="wrap">
+    <div class="center chead" data-rv><p class="eyebrow">Day 30</p><h2 id="en-h">Two ways day 30 can go.</h2></div>
+    <div class="ends" data-rv>
+      <div class="end yes"><p class="k">You pick a plan</p><h3>NEVORA keeps running.</h3><p>Billing starts, monthly, per business. Cancel any time and NEVORA keeps working through the month you paid for.</p></div>
+      <div class="end no"><p class="k">You don't</p><h3>NEVORA pauses for your team.</h3><p>The Owner can still open billing and export the payroll records that are there.</p></div>
+    </div>
+    <p class="billing">Already on NEVORA? The Owner opens billing from NEVORA, in Settings.</p>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="sec" id="faq" aria-labelledby="fq-h" data-sky="dawn">
+  <div class="wrap faq">
+    <h2 id="fq-h">Questions</h2>
+    <details><summary>Who counts as an employee?{{I:caret-down}}</summary><p>Every person on your team in NEVORA. Owners aren't counted.</p></details>
+    <details><summary>How am I billed?{{I:caret-down}}</summary><p>Monthly, per business, in US dollars. One price covers the whole app for everyone on your team.</p></details>
+    <details><summary>Can the prices change?{{I:caret-down}}</summary><p>Prices may change before online billing opens.</p></details>
+    <details><summary>Can I cancel?{{I:caret-down}}</summary><p>Yes, any time. NEVORA keeps working through the month you paid for.</p></details>
+    <details><summary>What if I have more than 30 employees?{{I:caret-down}}</summary><p>Write to us for assisted setup. We reply within two business days.</p></details>
+    <details><summary>Does NEVORA pay my employees or file payroll taxes?{{I:caret-down}}</summary><p>No. NEVORA calculates pay statements from the hours you approve. You still pay your team and file payroll taxes.</p></details>
+  </div>
+</section>
+
+<!-- CLOSING -->
+<section class="close" id="close" aria-labelledby="cl-h" data-sky="dawn">
+  <div class="wrap center">
+    <h2 id="cl-h">Start your 30 days.</h2>
+    <p class="lead">Ask for a trial and Jose from Velani replies within two business days to set up your workplace with you.</p>
+    <div class="acts"><a class="pillbtn" href="{{TRIAL_URL}}">Request a free trial</a><a class="more" href="{{NEVORA_URL}}">See NEVORA{{CHEV}}</a></div>
+  </div>
+</section>
+
+</main>
+
+{{FOOTER}}
+
+<script>
+{{PRODUCT_JS}}
+{{PAGE_JS}}
+</script>

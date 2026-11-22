@@ -62,7 +62,9 @@ if (form && !justSent && !hubForm) {
   // Contact: the three topic choices set the hidden topic and announce the change, so the rest of the form adapts as it did with the menu;
   // syncTopics keeps them in step when the topic changes in code (a link's ?interest=, the team of more than 30, a restored draft)
   const topicRadios = [...form.querySelectorAll('input[name="topic_choice"]')];
-  const syncTopics = () => { const v = fields.interest?.value || ''; topicRadios.forEach(r => { r.checked = r.value === v || (r.value === 'custom-software' && v === 'website') || (r.value === 'nevora' && /^(nevora|relay)/.test(v)); }); };
+  // A form with a choice for the exact topic (Day Contact: trial, more than 30, Relay, other) marks that one; the three-choice
+  // form maps website to custom software and every NEVORA topic to NEVORA, as before
+  const syncTopics = () => { const v = fields.interest?.value || ''; const exact = topicRadios.some(r => r.value === v); topicRadios.forEach(r => { r.checked = exact ? r.value === v : (r.value === 'custom-software' && v === 'website') || (r.value === 'nevora' && /^(nevora|relay)/.test(v)); }); };
   topicRadios.forEach(r => r.addEventListener('change', () => { if (r.checked && fields.interest) { fields.interest.value = r.value; fields.interest.dispatchEvent(new Event('change')); } }));
   syncTopics();
   // Sign in page: two kinds of client request share one form. The choice sets the topic, the message label, the timing or

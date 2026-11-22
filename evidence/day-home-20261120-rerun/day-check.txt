@@ -1,0 +1,42 @@
+PASS / 200  [200]
+PASS / no script errors
+PASS / no CSP violations
+PASS / no external requests
+PASS / header links
+PASS / one h1
+PASS / skip link first
+PASS / Tab reaches skip link
+PASS / skip moves focus to main
+PASS / cookie button enabled
+PASS / cookie dialog opens
+PASS / axe WCAG
+PASS / axe best-practice
+PASS / menu opens, focus on close
+PASS / page behind is inert
+PASS / focus stays in menu
+PASS / Escape closes, focus back on button
+PASS / no sideways scroll at 320  [320]
+PASS / no sideways scroll at 768  [768]
+PASS / no-JS: menu link shown, button hidden
+PASS / no-JS: content visible
+PASS /pages/about 200  [200]
+PASS /pages/about no script errors
+PASS /pages/about no CSP violations
+PASS /pages/about no external requests
+PASS /pages/about header links
+PASS /pages/about one h1
+PASS /pages/about skip link first
+PASS /pages/about Tab reaches skip link
+PASS /pages/about skip moves focus to main
+PASS /pages/about cookie button enabled
+PASS /pages/about cookie dialog opens
+PASS /pages/about axe WCAG
+PASS /pages/about axe best-practice
+PASS /pages/about menu opens, focus on close
+PASS /pages/about page behind is inert
+PASS /pages/about focus stays in menu
+PASS /pages/about Escape closes, focus back on button
+PASS /pages/about no sideways scroll at 320  [320]
+PASS /pages/about no sideways scroll at 768  [768]
+PASS /pages/about no-JS: menu link shown, button hidden
+PASS /pages/about no-JS: content visible

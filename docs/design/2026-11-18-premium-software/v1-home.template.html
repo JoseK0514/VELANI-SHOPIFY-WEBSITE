@@ -1,0 +1,813 @@
+<title>Velani Premium Home</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Mockup: Velani as a software company. NEVORA, Rondo and Relay, told as one week of a shift business.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&family=Inter:wght@400;500;600;700&display=swap">
+<style>
+/* Layout: alternating ink and paper chapters, one product moment per screen, pinned "week" stage on desktop. */
+:root{
+  --ink:#05090E;          /* Velani night, kept from the current site */
+  --ink-teal:#0C1918;     /* NEVORA Direction B ink tile, used for the Rondo chapter */
+  --paper:#F2F5F4;        /* NEVORA Direction B canvas */
+  --white:#FFFFFF;
+  --on-ink:#F4F6F9;
+  --on-ink-2:#A3B1C1;
+  --on-ink-3:#6F7F90;
+  --text:#111517;
+  --text-2:#5A6166;
+  --rule-ink:rgba(255,255,255,.10);
+  --rule:#DCE1E0;
+  --teal:#0B6E69;
+  --mint:#6FE0CF;
+  --sky:#BBD8FF;
+  --amber:#E2A13B;
+  --display:"DM Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  --app:"Inter",-apple-system,"Segoe UI",sans-serif;
+  --wrap:1180px;
+  --ease:cubic-bezier(.16,1,.3,1);
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-padding-top:72px}
+body{margin:0;background:var(--ink);color:var(--on-ink);font:17px/1.55 var(--display);-webkit-font-smoothing:antialiased;overflow-x:clip}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--ink)}
+a{color:inherit}
+.wrap{max-width:var(--wrap);margin:0 auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+h1,h2,h3{font-family:var(--display);font-weight:600;margin:0;text-wrap:balance}
+p{margin:0;text-wrap:pretty}
+:focus-visible{outline:2px solid var(--sky);outline-offset:3px;border-radius:6px}
+.paper :focus-visible,.white :focus-visible{outline-color:var(--teal)}
+
+/* ---------- header ---------- */
+.hdr{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:rgba(5,9,14,.72);-webkit-backdrop-filter:saturate(1.4) blur(18px);backdrop-filter:saturate(1.4) blur(18px);border-bottom:1px solid var(--rule-ink)}
+.hdr .wrap{display:flex;align-items:center;gap:28px;height:56px}
+.wm{display:block;height:15px;width:auto;color:var(--on-ink)}
+.nav{display:flex;gap:26px;margin-left:auto;font-size:14px;color:var(--on-ink-2)}
+.nav a{text-decoration:none;padding:12px 0}
+.nav a:hover{color:var(--on-ink)}
+.lang{font-size:13px;color:var(--on-ink-3);display:flex;gap:8px}
+.lang b{color:var(--on-ink);font-weight:500}
+.btn{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 20px;border-radius:999px;font:500 15px/1 var(--display);text-decoration:none;border:0;cursor:pointer;transition:transform .2s var(--ease),background .2s}
+.btn:active{transform:scale(.97)}
+.btn.fill{background:var(--on-ink);color:var(--ink)}
+.btn.fill:hover{background:#fff}
+.btn.line{color:var(--on-ink);box-shadow:inset 0 0 0 1px rgba(255,255,255,.28)}
+.btn.line:hover{box-shadow:inset 0 0 0 1px rgba(255,255,255,.6)}
+.btn.sm{min-height:36px;padding:0 16px;font-size:14px}
+.paper .btn.fill,.white .btn.fill{background:var(--text);color:#fff}
+.paper .btn.line,.white .btn.line{color:var(--text);box-shadow:inset 0 0 0 1px rgba(17,21,23,.25)}
+.arrow{width:14px;height:14px;flex:none}
+@media (max-width:860px){.nav,.lang{display:none}.hdr .btn{margin-left:auto}}
+
+/* ---------- chapters ---------- */
+.ink{background:var(--ink);color:var(--on-ink)}
+.inkt{background:var(--ink-teal);color:var(--on-ink)}
+.paper{background:var(--paper);color:var(--text)}
+.white{background:var(--white);color:var(--text)}
+.chap{padding-block:clamp(88px,12vw,168px)}
+.eyebrow{font:600 13px/1 var(--display);letter-spacing:.08em;text-transform:uppercase;color:var(--on-ink-2);margin-bottom:18px;display:flex;gap:10px;align-items:center}
+.paper .eyebrow,.white .eyebrow{color:var(--text-2)}
+.h-xl{font-size:clamp(48px,8.4vw,112px);line-height:.98;letter-spacing:-.045em}
+.h-l{font-size:clamp(38px,5.6vw,76px);line-height:1.02;letter-spacing:-.038em}
+.h-m{font-size:clamp(28px,3.4vw,44px);line-height:1.08;letter-spacing:-.028em}
+.lede{font-size:clamp(18px,1.6vw,22px);line-height:1.45;color:var(--on-ink-2);max-width:40ch}
+.paper .lede,.white .lede{color:var(--text-2)}
+.fine{font-size:13px;line-height:1.5;color:var(--on-ink-3);max-width:62ch}
+.paper .fine,.white .fine{color:#6A7176}
+.status{display:inline-flex;align-items:center;gap:7px;height:26px;padding:0 11px;border-radius:13px;font:600 12.5px/1 var(--display);letter-spacing:0;text-transform:none}
+.status::before{content:"";width:7px;height:7px;border-radius:50%;background:currentColor}
+.st-live{background:rgba(111,224,207,.14);color:var(--mint)}
+.st-in{background:rgba(187,216,255,.14);color:var(--sky)}
+.st-design{background:rgba(226,161,59,.16);color:#F2C477}
+.paper .st-live,.white .st-live{background:#E7F4EC;color:#1D6B45}
+.paper .st-design,.white .st-design{background:#FDF3E4;color:#8A4B00}
+.paper .st-in,.white .st-in{background:#E8EEF8;color:#2C4E7E}
+
+/* ---------- hero ---------- */
+.hero{padding-top:clamp(72px,10vw,132px);padding-bottom:0;overflow:clip}
+.hero-copy{display:grid;gap:26px;justify-items:start;max-width:980px}
+.hero-ctas{display:flex;gap:12px;flex-wrap:wrap;margin-top:6px}
+.hero-note{font-size:14px;color:var(--on-ink-3)}
+.stage-hero{margin-top:clamp(56px,7vw,96px);perspective:1600px}
+.shot{--p:1;transform-origin:50% 0;transform:translateY(calc((1 - var(--p)) * 40px)) scale(calc(.86 + .14 * var(--p)));border-radius:calc(28px - 10px * var(--p));overflow:hidden;box-shadow:0 0 0 1px rgba(255,255,255,.08),0 60px 120px -40px rgba(11,110,105,.45);will-change:transform;margin-bottom:-2px}
+.fit{width:100%;overflow:hidden}
+.fit>.canvas{zoom:var(--fit,1)}
+
+/* ---------- product index ---------- */
+.index{border-top:1px solid var(--rule)}
+.irow{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:20px;padding:clamp(22px,3vw,34px) 0;border-bottom:1px solid var(--rule);text-decoration:none;color:var(--text)}
+.irow .nm{font-size:clamp(40px,6.4vw,88px);line-height:1;letter-spacing:-.045em;font-weight:600;transition:transform .5s var(--ease)}
+.irow .ds{font-size:clamp(16px,1.4vw,19px);color:var(--text-2);margin-top:10px;max-width:46ch}
+.irow .rt{display:flex;flex-direction:column;align-items:flex-end;gap:14px}
+.irow .go{width:48px;height:48px;border-radius:50%;display:grid;place-items:center;box-shadow:inset 0 0 0 1px rgba(17,21,23,.18);transition:background .3s,color .3s,transform .5s var(--ease)}
+.irow:hover .nm{transform:translateX(10px)}
+.irow:hover .go{background:var(--text);color:#fff;transform:rotate(-45deg)}
+@media (max-width:640px){.irow{grid-template-columns:1fr}.irow .rt{flex-direction:row;align-items:center;justify-content:space-between}}
+
+/* ---------- week (pinned scrollytelling) ---------- */
+.week{position:relative}
+.week-grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(32px,5vw,72px)}
+.steps{display:flex;flex-direction:column}
+.step{min-height:88vh;display:flex;flex-direction:column;justify-content:center;gap:18px;padding-block:8vh;opacity:.28;transition:opacity .5s var(--ease)}
+.step.on{opacity:1}
+.step .day{font:600 13px/1 var(--display);letter-spacing:.08em;text-transform:uppercase;color:var(--teal)}
+.step .step-panel{display:none}
+.sticky{position:sticky;top:72px;height:calc(100vh - 96px);display:flex;flex-direction:column;justify-content:center;gap:22px}
+.rail{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
+.rail span{font:600 12px/1 var(--display);letter-spacing:.06em;text-transform:uppercase;color:#98A1A6;display:flex;flex-direction:column;gap:9px}
+.rail span::before{content:"";height:4px;border-radius:2px;background:#DCE2E1;transition:background .5s var(--ease)}
+.rail span.done{color:var(--text)}
+.rail span.done::before{background:var(--teal)}
+.panels{position:relative;aspect-ratio:1180/800;max-height:calc(100vh - 190px);width:100%}
+.panel{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;opacity:0;transform:translateY(24px) scale(.98);transition:opacity .6s var(--ease),transform .8s var(--ease);pointer-events:none}
+.panel.on{opacity:1;transform:none;pointer-events:auto}
+.panel .fit{max-height:100%}
+@media (max-width:900px){
+  .week-grid{grid-template-columns:minmax(0,1fr)}
+  .sticky{display:none}
+  .step{min-height:0;opacity:1;padding-block:28px}
+  .step .step-panel{display:block;margin-top:10px}
+}
+
+/* ---------- statement ---------- */
+.say{font-size:clamp(32px,4.6vw,64px);line-height:1.12;letter-spacing:-.034em;font-weight:600;max-width:20ch}
+.say .w{opacity:var(--o,1);transition:opacity .25s linear}
+
+/* ---------- Rondo ---------- */
+.rondo-grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:clamp(32px,6vw,96px);align-items:center}
+@media (max-width:900px){.rondo-grid{grid-template-columns:minmax(0,1fr)}}
+.chat{display:flex;flex-direction:column;gap:14px;font-family:var(--app)}
+.msg{opacity:0;transform:translateY(16px);transition:opacity .6s var(--ease),transform .7s var(--ease)}
+.msg.on{opacity:1;transform:none}
+.q{align-self:flex-end;background:rgba(255,255,255,.08);border-radius:20px 20px 6px 20px;padding:12px 16px;font-size:15.5px;max-width:80%}
+.a{background:#fff;color:#111517;border-radius:22px;padding:18px 20px;box-shadow:0 30px 60px -30px rgba(0,0,0,.6)}
+.who{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:600;color:#0B6E69;margin-bottom:8px}
+.rmark{width:22px;height:22px;border-radius:7px;background:#0B6E69;color:#fff;display:grid;place-items:center;font-size:12px;font-weight:700}
+.a p{font-size:15px;line-height:1.5}
+.src{margin-top:10px;font-size:12.5px;color:#6A7176;display:flex;gap:6px;align-items:center}
+.prep{margin-top:4px;border-radius:16px;background:#F2F5F4;padding:16px}
+.prep h4{margin:0 0 4px;font-size:16px}
+.prep .acts{display:flex;align-items:center;gap:12px;margin-top:14px;flex-wrap:wrap}
+.approve{font:700 14.5px/1 var(--app);height:42px;padding:0 20px;border-radius:21px;border:0;background:#0B6E69;color:#fff;cursor:pointer;transition:transform .2s var(--ease)}
+.approve:active{transform:scale(.96)}
+.approve[disabled]{background:#E7F4EC;color:#1D6B45;cursor:default}
+.prep small{font-size:13px;color:#6A7176}
+
+/* ---------- bilingual ---------- */
+.bi-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(32px,6vw,96px);align-items:center}
+@media (max-width:900px){.bi-grid{grid-template-columns:minmax(0,1fr)}}
+.seg{display:inline-flex;padding:4px;border-radius:999px;background:#fff;box-shadow:inset 0 0 0 1px var(--rule)}
+.seg button{font:600 14px/1 var(--display);min-height:40px;min-width:64px;padding:0 18px;border-radius:999px;border:0;background:none;color:var(--text-2);cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--text);color:#fff}
+.phone-wrap{display:flex;justify-content:center}
+.phone{width:min(360px,100%)}
+.phone .fit{overflow:visible;padding:12px}
+@media (max-width:700px){.stage-hero .fit{overflow:hidden}.stage-hero .canvas{margin-left:-232px}}
+
+/* ---------- Relay ---------- */
+.relay-head{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:24px;align-items:end}
+@media (max-width:760px){.relay-head{grid-template-columns:minmax(0,1fr)}}
+.rail-wrap{margin-top:clamp(48px,6vw,80px);overflow:hidden;padding-block:8px}
+.kds{--p:0;display:flex;gap:16px;width:max-content;transform:translateX(calc(var(--p) * -28%));will-change:transform;font-family:var(--app)}
+.col{width:300px;flex:none;display:flex;flex-direction:column;gap:12px}
+.col h5{margin:0 0 4px;font:700 12.5px/1 var(--app);letter-spacing:.06em;text-transform:uppercase;color:#6A7176;display:flex;justify-content:space-between}
+.tk{background:#fff;border-radius:18px;padding:16px;box-shadow:0 0 0 1px rgba(16,40,38,.06),0 12px 28px -14px rgba(16,40,38,.25)}
+.tk .tn{display:flex;justify-content:space-between;font-weight:700;font-size:15px}
+.tk .tn em{font-style:normal;font-weight:600;font-size:12.5px;color:#6A7176}
+.tk ul{margin:10px 0 0;padding:0;list-style:none;font-size:14px;line-height:1.7}
+.tk li b{display:inline-block;min-width:22px}
+.tk .tm{margin-top:10px;font-size:12.5px;font-weight:600}
+.late{color:#8A4B00}.ok{color:#1D6B45}
+.concept{margin-top:20px}
+
+/* ---------- plans ---------- */
+.price{font-size:clamp(88px,16vw,220px);line-height:.9;letter-spacing:-.06em;font-weight:600}
+.price small{font-size:.24em;letter-spacing:-.02em;color:var(--on-ink-2);font-weight:500;margin-left:.2em}
+.plan-grid{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:clamp(32px,6vw,96px);align-items:end}
+@media (max-width:900px){.plan-grid{grid-template-columns:minmax(0,1fr)}}
+.plan-list{display:grid;gap:0;border-top:1px solid var(--rule-ink)}
+.plan-list div{display:flex;justify-content:space-between;gap:16px;padding:16px 0;border-bottom:1px solid var(--rule-ink);font-size:16px}
+.plan-list span:last-child{color:var(--on-ink-2);text-align:right}
+
+/* ---------- footer ---------- */
+.foot{padding-block:96px 48px;border-top:1px solid var(--rule-ink)}
+.foot-big{width:min(100%,780px);height:auto;color:var(--on-ink);opacity:.92}
+.foot-cols{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:28px;margin-top:64px;font-size:14px}
+@media (max-width:760px){.foot-cols{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.foot-cols h6{margin:0 0 12px;font:500 13px/1 var(--display);color:var(--on-ink-3)}
+.foot-cols a{display:block;text-decoration:none;color:var(--on-ink-2);padding:6px 0}
+.foot-cols a:hover{color:var(--on-ink)}
+.foot-base{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;margin-top:56px;padding-top:20px;border-top:1px solid var(--rule-ink);font-size:13px;color:var(--on-ink-3)}
+
+/* ---------- design notes (Tweaks) ---------- */
+.note{display:none;margin-top:28px;max-width:560px;font:500 13.5px/1.5 var(--display);color:#08312F;background:#D9F3EE;border-radius:14px;padding:14px 16px}
+.note b{display:block;font-weight:600;margin-bottom:2px}
+html.notes .note{display:block}
+.tweaks-btn{position:fixed;right:max(16px,env(safe-area-inset-right,0px));bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:70;font:600 13px/1 var(--display);min-height:40px;padding:0 16px;border-radius:999px;border:0;background:#fff;color:#111517;box-shadow:0 10px 30px -10px rgba(0,0,0,.5);cursor:pointer}
+.tweaks{position:fixed;right:max(16px,env(safe-area-inset-right,0px));bottom:calc(66px + env(safe-area-inset-bottom,0px));z-index:70;width:270px;background:#fff;color:#111517;border-radius:18px;padding:16px;box-shadow:0 30px 60px -20px rgba(0,0,0,.55);font-size:14px}
+.tweaks h6{margin:0 0 10px;font:600 14px/1 var(--display)}
+.tweaks label{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:8px 0;border-top:1px solid #ECEEEF;cursor:pointer}
+.tweaks input{width:18px;height:18px;accent-color:#0B6E69}
+
+/* ---------- reduced motion ---------- */
+html.rm .shot{--p:1!important;transform:none;border-radius:18px}
+html.rm .say .w{--o:1!important}
+html.rm .msg{opacity:1;transform:none;transition:none}
+html.rm .kds{transform:none;flex-wrap:wrap;width:auto}
+html.rm .panel,html.rm .step{transition:none}
+html.rm .irow .nm,html.rm .irow .go{transition:none}
+@media (max-width:900px){.kds{transform:none!important;flex-wrap:nowrap;width:max-content}.rail-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;scroll-snap-type:x mandatory}.col{scroll-snap-align:start;width:280px}}
+
+/* =====================================================================
+   NEVORA product UI, rebuilt in Direction B (claude-codex-collab-nevora:
+   Inter, teal band, glass figures, 22px white cards, ink payday tile).
+   ===================================================================== */
+.nv{font:15px/1.4 var(--app);color:#111517;-webkit-font-smoothing:antialiased;text-align:left}
+.nv *{box-sizing:border-box}
+.nv .num{font-variant-numeric:tabular-nums}
+.nv-desk{width:1180px;height:760px;display:grid;grid-template-columns:232px 1fr;background:#F2F5F4;overflow:hidden}
+.nv-side{background:#FBFCFC;box-shadow:inset -1px 0 0 #E4E8E8;padding:22px 14px;display:flex;flex-direction:column;gap:14px}
+.nv-side .lg{height:14px;margin:4px 12px 6px;display:block;width:auto}
+.nv-ws{display:flex;align-items:center;gap:10px;padding:8px 10px;border-radius:14px;background:#fff;box-shadow:0 0 0 1px rgba(16,40,38,.06),0 1px 2px rgba(16,40,38,.05)}
+.nv-wsi{width:32px;height:32px;border-radius:10px;background:#0B6E69;color:#fff;display:grid;place-items:center;font-weight:700;font-size:14px}
+.nv-ws b{font-size:13.5px;display:block}.nv-ws span{font-size:12px;color:#6A7176}
+.nv-nav{display:flex;flex-direction:column;gap:2px}
+.nv-nav a{display:flex;align-items:center;gap:11px;padding:9px 12px;border-radius:10px;font-size:14px;color:#3F464B;text-decoration:none}
+.nv-nav a.on{background:#E8F3F1;color:#0B6E69;font-weight:600}
+.nv-nav i{width:16px;height:16px;border-radius:5px;box-shadow:inset 0 0 0 1.6px currentColor;opacity:.8}
+.nv-nav .bd{margin-left:auto;background:#B42318;color:#fff;font-size:11.5px;font-weight:700;border-radius:9px;padding:2px 7px;font-style:normal}
+.nv-main{position:relative;overflow:hidden}
+.nv-band{position:relative;color:#fff;padding:22px 30px 96px;background:radial-gradient(70% 120% at 100% 0%,rgb(63 179 168/.42) 0%,transparent 55%),radial-gradient(60% 90% at 0% 100%,rgb(5 48 46/.85) 0%,transparent 70%),linear-gradient(160deg,#0E7A74 0%,#0B6E69 40%,#06403C 100%)}
+.nv-band::after{content:"";position:absolute;inset:0;background-image:linear-gradient(rgb(255 255 255/.045) 1px,transparent 1px);background-size:100% 28px;-webkit-mask-image:linear-gradient(transparent,#000 45%,transparent);mask-image:linear-gradient(transparent,#000 45%,transparent);pointer-events:none}
+.nv-top{display:flex;justify-content:space-between;align-items:center;font-size:13px;color:rgba(255,255,255,.78)}
+.nv-top b{color:#fff}
+.nv-search{width:240px;height:34px;border-radius:17px;background:rgba(255,255,255,.12);box-shadow:inset 0 0 0 1px rgba(255,255,255,.16);display:flex;align-items:center;padding:0 14px;font-size:13px;color:rgba(255,255,255,.7)}
+.nv-hi{margin-top:26px;font-size:14px;color:rgba(255,255,255,.82)}
+.nv-h{font-size:34px;font-weight:700;letter-spacing:-.03em;margin-top:4px;display:flex;justify-content:space-between;align-items:center}
+.nv-h .bt{display:flex;gap:10px}
+.nv-h .bt span{font-size:14px;font-weight:600;height:38px;padding:0 16px;border-radius:19px;display:inline-flex;align-items:center;letter-spacing:0}
+.nv-h .g{background:rgba(255,255,255,.12);box-shadow:inset 0 0 0 1px rgba(255,255,255,.2)}
+.nv-h .w{background:#fff;color:#0B3B38}
+.nv-stats{margin-top:20px;display:grid;grid-template-columns:repeat(4,1fr);border-radius:16px;background:rgba(255,255,255,.12);box-shadow:inset 0 0 0 1px rgba(255,255,255,.16);position:relative;z-index:1}
+.nv-stats div{padding:14px 16px;border-left:1px solid rgba(255,255,255,.14)}
+.nv-stats div:first-child{border-left:0}
+.nv-stats small{font-size:12.5px;color:rgba(255,255,255,.78);display:flex;align-items:center;gap:6px}
+.nv-stats small i{width:7px;height:7px;border-radius:50%;display:inline-block}
+.nv-stats b{display:block;font-size:24px;font-weight:700;margin-top:4px;letter-spacing:-.02em}
+.nv-stats em{font-style:normal;font-size:12.5px;color:rgba(255,255,255,.66)}
+.nv-body{position:relative;z-index:2;margin:-70px 30px 0;display:grid;grid-template-columns:minmax(0,1.55fr) minmax(0,1fr);gap:18px}
+.nv-card{background:#fff;border-radius:22px;box-shadow:0 0 0 1px rgb(16 40 38/.05),0 1px 2px rgb(16 40 38/.06),0 12px 28px -12px rgb(16 40 38/.18);overflow:hidden}
+.nv-card .hd{display:flex;justify-content:space-between;align-items:center;padding:16px 20px 6px;font-weight:700;font-size:15.5px}
+.nv-card .hd a{font-size:13px;color:#0B6E69;text-decoration:none;font-weight:600}
+.pill{min-width:24px;height:22px;border-radius:11px;padding:0 8px;background:#E8F3F1;color:#0B6E69;font-size:12.5px;font-weight:700;display:inline-grid;place-items:center;margin-left:8px}
+.row{display:flex;align-items:center;gap:13px;padding:11px 20px;min-height:60px;border-top:1px solid #ECEEEF}
+.row:first-of-type{border-top:0}
+.row .tx{flex:1;min-width:0}
+.row .t{font-size:14.5px;font-weight:600;line-height:20px}
+.row .s{font-size:13px;color:#6A7176;line-height:18px}
+.ic{width:34px;height:34px;border-radius:17px;display:grid;place-items:center;flex:none;font-size:13px;font-weight:700}
+.ic.amber{background:#FDF3E4;color:#8A4B00}.ic.teal{background:#E8F3F1;color:#0B6E69}.ic.red{background:#FDECEA;color:#B42318}
+.av{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;font-size:12.5px;font-weight:600;flex:none;background:#EEF1F2;color:#3F464B}
+.av.on{box-shadow:0 0 0 2px #fff,0 0 0 4px #2FB37F}
+.av.late{box-shadow:0 0 0 2px #fff,0 0 0 4px #E2A13B}
+.act{font-size:13px;font-weight:700;height:34px;padding:0 14px;border-radius:17px;display:inline-flex;align-items:center;flex:none}
+.act.p{background:#0B6E69;color:#fff}.act.s{background:#F0F2F3;color:#3F464B}
+.chip{display:inline-flex;align-items:center;height:22px;padding:0 8px;border-radius:11px;font-size:12px;font-weight:600;white-space:nowrap}
+.chip.amber{background:#FDF3E4;color:#8A4B00}.chip.green{background:#E7F4EC;color:#1D6B45}.chip.grey{background:#F0F2F3;color:#3F464B}.chip.teal{background:#E8F3F1;color:#0B6E69}
+.inkt-tile{color:#fff;border-radius:22px;padding:20px;display:flex;flex-direction:column;gap:14px;background:radial-gradient(80% 120% at 100% 0%,rgb(63 179 168/.35),transparent 60%),linear-gradient(150deg,#152A28 0%,#0C1918 100%);box-shadow:0 18px 36px -18px rgb(5 30 28/.7)}
+.inkt-tile .k{font-size:12.5px;font-weight:600;color:rgba(255,255,255,.7);letter-spacing:.04em;text-transform:uppercase;display:flex;justify-content:space-between;align-items:center}
+.inkt-tile .due{font-size:11.5px;font-weight:700;color:#FFD596;background:rgba(255,196,107,.14);padding:4px 9px;border-radius:999px;letter-spacing:0;text-transform:none}
+.inkt-tile .big{font-size:28px;line-height:32px;font-weight:700;letter-spacing:-.025em}
+.inkt-tile .m{font-size:13.5px;color:rgba(255,255,255,.66);margin-top:-8px}
+.segs{display:flex;gap:4px}.segs i{flex:1;height:6px;border-radius:3px;background:rgba(255,255,255,.14)}.segs i.on{background:#6FE0CF}
+.inkt-tile .wb{height:44px;border-radius:22px;background:#fff;color:#0C1918;font-size:15px;font-weight:700;display:grid;place-items:center}
+
+/* schedule week */
+.sched{padding:6px 20px 18px}
+.sg{display:grid;grid-template-columns:150px repeat(7,1fr) 54px;gap:6px;align-items:center;font-size:13px}
+.sg .dh{font-size:12px;color:#6A7176;text-align:center;font-weight:600;padding-bottom:4px}
+.sg .dh b{display:block;color:#111517;font-size:15px}
+.sg .dh.today{color:#0B6E69}.sg .dh.today b{color:#0B6E69}
+.sg .nm{display:flex;align-items:center;gap:9px;font-weight:600;font-size:13.5px}
+.sg .nm .av{width:28px;height:28px;font-size:11px}
+.sh{height:44px;border-radius:12px;background:#E8F3F1;color:#0B6E69;display:flex;flex-direction:column;align-items:center;justify-content:center;font-weight:700;font-size:12.5px;line-height:1.2}
+.sh small{font-weight:500;color:#3F7F7A;font-size:11px}
+.sh.t{background:#0B6E69;color:#fff}.sh.t small{color:rgba(255,255,255,.75)}
+.sh.open{background:#fff;box-shadow:inset 0 0 0 1.5px #B9C3C1;color:#6A7176;border:0}
+.sg .tot{text-align:right;font-weight:600;color:#3F464B}
+
+/* clocker */
+.ck{width:1024px;height:700px;display:grid;grid-template-columns:400px 1fr;background:#F2F5F4;overflow:hidden}
+.ck-band{color:#fff;padding:32px;display:flex;flex-direction:column;background:radial-gradient(70% 120% at 100% 0%,rgb(63 179 168/.42) 0%,transparent 55%),linear-gradient(160deg,#0E7A74 0%,#0B6E69 40%,#06403C 100%)}
+.ck-band img{height:16px;width:auto;align-self:flex-start}
+.ck-band .lbl{font-size:11px;letter-spacing:.14em;font-weight:600;margin-top:6px;opacity:.8}
+.ck-band .loc{margin-top:18px;align-self:flex-start;font-size:13px;font-weight:600;padding:6px 12px;border-radius:14px;background:rgba(255,255,255,.12);box-shadow:inset 0 0 0 1px rgba(255,255,255,.18)}
+.ck-time{margin-top:auto;font-size:96px;font-weight:600;letter-spacing:-.05em;line-height:1}
+.ck-time small{font-size:24px;letter-spacing:0;margin-left:8px;font-weight:600}
+.ck-date{font-size:16px;opacity:.82;margin-top:8px}
+.ck-st{margin-top:28px;font-size:13px;padding:12px 14px;border-radius:14px;background:rgba(255,255,255,.12);box-shadow:inset 0 0 0 1px rgba(255,255,255,.16);display:flex;gap:10px;align-items:center}
+.ck-st i{width:8px;height:8px;border-radius:50%;background:#6FE0CF}
+.ck-r{display:grid;place-items:center}
+.ck-card{width:430px;background:#fff;border-radius:22px;padding:26px;box-shadow:0 0 0 1px rgb(16 40 38/.05),0 18px 40px -16px rgb(16 40 38/.25);text-align:center}
+.ck-card h4{margin:0;font-size:24px;letter-spacing:-.02em}
+.ck-ok{width:64px;height:64px;border-radius:50%;margin:0 auto 14px;display:grid;place-items:center;background:#E7F4EC;box-shadow:0 0 0 4px #2FB37F inset;color:#1D6B45;font-size:28px;font-weight:700}
+.ck-card p{color:#6A7176;font-size:15px;margin-top:6px}
+.ck-who{margin-top:18px;display:flex;align-items:center;gap:12px;text-align:left;padding:14px;border-radius:16px;background:#F7F9F9}
+.ck-who .av{width:44px;height:44px;font-size:15px}
+.ck-keys{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:18px}
+.ck-keys span{height:56px;border-radius:16px;background:#F0F3F2;display:grid;place-items:center;font-size:22px;font-weight:600}
+.ck-dots{display:flex;gap:12px;justify-content:center;margin-top:16px}
+.ck-dots i{width:14px;height:14px;border-radius:50%;background:#0B6E69}
+
+/* timecards */
+.tc{padding:2px 0 8px}
+.tc .row{min-height:58px}
+.tc .hrs{font-weight:700;font-size:15px;text-align:right;min-width:64px}
+.tc .sub{font-size:12.5px;color:#6A7176;text-align:right}
+
+/* phone */
+.ph{width:390px;height:780px;border-radius:52px;background:#F2F5F4;overflow:hidden;box-shadow:0 0 0 10px #0F1416,0 0 0 11px #2A3134,0 50px 90px -30px rgba(0,0,0,.45);position:relative}
+.ph-band{color:#fff;padding:18px 22px 84px;background:radial-gradient(70% 120% at 100% 0%,rgb(63 179 168/.42) 0%,transparent 55%),linear-gradient(160deg,#0E7A74 0%,#0B6E69 40%,#06403C 100%)}
+.ph-sb{display:flex;justify-content:space-between;font-size:14px;font-weight:600;padding:0 8px}
+.ph-tb{display:flex;justify-content:space-between;align-items:center;margin-top:16px}
+.ph-tb img{height:12px;width:auto}
+.ph-tb .me{width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.14);display:grid;place-items:center;font-size:12.5px;font-weight:700}
+.ph-hi{margin-top:22px;font-size:14px;opacity:.82}
+.ph-h{font-size:30px;font-weight:700;letter-spacing:-.03em;line-height:1.1;margin-top:4px}
+.ph-body{margin:-62px 16px 0;display:flex;flex-direction:column;gap:14px;position:relative}
+.ph-next{padding:18px}
+.ph-next .k{font-size:12.5px;font-weight:700;color:#0B6E69;letter-spacing:.04em;text-transform:uppercase}
+.ph-next .tm{font-size:26px;font-weight:700;letter-spacing:-.025em;margin-top:6px}
+.ph-next .s{font-size:14px;color:#6A7176}
+.ph-next .cta{margin-top:14px;height:46px;border-radius:23px;background:#0B6E69;color:#fff;display:grid;place-items:center;font-weight:700;font-size:15px}
+.ph-tabs{position:absolute;left:12px;right:12px;bottom:14px;height:64px;border-radius:32px;background:rgba(255,255,255,.86);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);box-shadow:0 0 0 1px rgba(16,40,38,.06),0 10px 24px -12px rgba(16,40,38,.3);display:grid;grid-template-columns:repeat(4,1fr);align-items:center;font-size:11.5px;font-weight:600;color:#6A7176;text-align:center}
+.ph-tabs span.on{color:#0B6E69}
+.ph-tabs span.on::before{content:"";display:block;width:44px;height:4px;border-radius:2px;margin:0 auto 6px;background:#0B6E69}
+</style>
+
+<header class="hdr">
+  <div class="wrap">
+    <a href="#top" aria-label="Velani home">{{VELANI}}</a>
+    <nav class="nav" aria-label="Main">
+      <a href="#nevora">NEVORA</a><a href="#rondo">Rondo</a><a href="#relay">Relay</a><a href="#plans">Plans</a><a href="#company">Company</a>
+    </nav>
+    <div class="lang" aria-label="Language"><b>EN</b><span aria-hidden="true">·</span><a href="#top" style="text-decoration:none">ES</a></div>
+    <a class="btn fill sm" href="#plans">Request a free trial</a>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- 1. HERO -->
+<section class="ink hero" aria-labelledby="h1">
+  <div class="wrap">
+    <div class="hero-copy">
+      <h1 id="h1" class="h-xl">Software for<br>the shift.</h1>
+      <p class="lede">Velani makes NEVORA for teams that work in shifts: the schedule, the time clock and the pay, with Rondo to tell you what needs you today.</p>
+      <div class="hero-ctas">
+        <a class="btn fill" href="#plans">Request a free trial <svg class="arrow" viewBox="0 0 256 256" aria-hidden="true"><path fill="currentColor" d="M221.66 133.66l-72 72a8 8 0 0 1-11.32-11.32L196.69 136H40a8 8 0 0 1 0-16h156.69l-58.35-58.34a8 8 0 0 1 11.32-11.32l72 72a8 8 0 0 1 0 11.32Z"/></svg></a>
+        <a class="btn line" href="#nevora">See one week</a>
+      </div>
+      <p class="hero-note">Made in San Juan. In English and Spanish. Free for 30 days, no card.</p>
+    </div>
+    <p class="note"><b>01 · Hero: one product, full width</b>The page opens on the product the way Apple opens on the device. The Owner's Home screen (NEVORA Direction B) starts slightly small and tilted back, then settles to full size as you scroll. CSS view-timeline in production; this mock uses a small script.</p>
+    <div class="stage-hero">
+      <div class="shot" data-scrub="hero">
+        <div class="fit" data-w="1180">
+          <div class="canvas nv nv-desk" role="img" aria-label="NEVORA Owner Home on desktop. Sample data: 2 things need you, 3 of 5 clocked in, payday Friday, November 13.">
+            <aside class="nv-side">
+              <img class="lg" src="{{NV_INK}}" alt="">
+              <div class="nv-ws"><div class="nv-wsi">N</div><div><b>Northside Café</b><span>Owner · 1 location</span></div></div>
+              <nav class="nv-nav"><a class="on"><i></i>Home</a><a><i></i>Schedule</a><a><i></i>Time</a><a><i></i>Payroll</a><a><i></i>Team</a><a><i></i>Things to do<em class="bd">2</em></a></nav>
+            </aside>
+            <div class="nv-main">
+              <div class="nv-band">
+                <div class="nv-top"><span>Northside Café / <b>Home</b></span><span class="nv-search">Search or jump to</span></div>
+                <p class="nv-hi">Good morning, Carmen · Saturday, November 7</p>
+                <div class="nv-h"><span>2 things need you</span><span class="bt"><span class="g">Open Clocker</span><span class="w">+ Add shift</span></span></div>
+                <div class="nv-stats num">
+                  <div><small><i style="background:#2FB37F"></i>Clocked in</small><b>3 / 5</b><em>on shift now</em></div>
+                  <div><small><i style="background:#E2A13B"></i>Late</small><b>1</b><em>Jordan</em></div>
+                  <div><small>Open shifts</small><b>1</b><em>Sunday 12 PM</em></div>
+                  <div><small>Scheduled this week</small><b>176 h</b><em>24 shifts</em></div>
+                </div>
+              </div>
+              <div class="nv-body">
+                <div class="nv-card">
+                  <div class="hd"><span>Needs you<span class="pill">2</span></span><a>See all</a></div>
+                  <div class="row"><div class="ic amber">!</div><div class="tx"><div class="t">Jordan Torres hasn't clocked in</div><div class="s">Due at 7:30 AM · Kitchen</div></div><span class="act s">Message</span></div>
+                  <div class="row"><div class="ic teal">+</div><div class="tx"><div class="t">Cover Sunday, 12:00 to 8:00</div><div class="s">Register · 1 open shift</div></div><span class="act p">Find cover</span></div>
+                  <div class="row"><div class="av on">AC</div><div class="tx"><div class="t">Ana Colón</div><div class="s">Barista · 7:00 to 3:00</div></div><span class="chip green">In 7:00</span></div>
+                  <div class="row"><div class="av late">JT</div><div class="tx"><div class="t">Jordan Torres</div><div class="s">Kitchen · 7:30 to 3:30</div></div><span class="chip amber">Late</span></div>
+                </div>
+                <div class="inkt-tile">
+                  <div class="k">Payday <span class="due">Approve by Monday</span></div>
+                  <div class="big">Friday, Nov 13</div>
+                  <div class="m">Pay period Nov 2 – 8 · 5 people</div>
+                  <div class="segs"><i class="on"></i><i class="on"></i><i></i></div>
+                  <div class="wb">Review timecards</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 2. PRODUCT INDEX -->
+<section class="paper chap" aria-labelledby="idx">
+  <div class="wrap">
+    <p class="eyebrow" id="idx">What we make</p>
+    <div class="index">
+      <a class="irow" href="#nevora">
+        <div><div class="nm">NEVORA</div><p class="ds">The schedule, a tablet time clock, timecards and payroll calculation for teams that work in shifts.</p></div>
+        <div class="rt"><span class="status st-live">Available · 30 days free</span><span class="go" aria-hidden="true"><svg class="arrow" viewBox="0 0 256 256"><path fill="currentColor" d="M221.66 133.66l-72 72a8 8 0 0 1-11.32-11.32L196.69 136H40a8 8 0 0 1 0-16h156.69l-58.35-58.34a8 8 0 0 1 11.32-11.32l72 72a8 8 0 0 1 0 11.32Z"/></svg></span></div>
+      </a>
+      <a class="irow" href="#rondo">
+        <div><div class="nm">Rondo</div><p class="ds">The assistant inside NEVORA for the Owner. Ask in plain words; approve what it prepares.</p></div>
+        <div class="rt"><span class="status st-in">Included in NEVORA</span><span class="go" aria-hidden="true"><svg class="arrow" viewBox="0 0 256 256"><path fill="currentColor" d="M221.66 133.66l-72 72a8 8 0 0 1-11.32-11.32L196.69 136H40a8 8 0 0 1 0-16h156.69l-58.35-58.34a8 8 0 0 1 11.32-11.32l72 72a8 8 0 0 1 0 11.32Z"/></svg></span></div>
+      </a>
+      <a class="irow" href="#relay">
+        <div><div class="nm">Relay</div><p class="ds">Orders, the kitchen screen and inventory in one system.</p></div>
+        <div class="rt"><span class="status st-design">In design · Waitlist</span><span class="go" aria-hidden="true"><svg class="arrow" viewBox="0 0 256 256"><path fill="currentColor" d="M221.66 133.66l-72 72a8 8 0 0 1-11.32-11.32L196.69 136H40a8 8 0 0 1 0-16h156.69l-58.35-58.34a8 8 0 0 1 11.32-11.32l72 72a8 8 0 0 1 0 11.32Z"/></svg></span></div>
+      </a>
+    </div>
+    <p class="note"><b>02 · A product index set in type</b>Three names, three honest statuses, no feature-card grid. Website creation is gone from the menu and from this list. Each row is a full-width link with a 48px target.</p>
+  </div>
+</section>
+
+<!-- 3. THE WEEK -->
+<section class="white chap week" id="nevora" aria-labelledby="wk">
+  <div class="wrap">
+    <p class="eyebrow">NEVORA Workforce</p>
+    <h2 id="wk" class="h-l" style="max-width:14ch">One week at Northside Café.</h2>
+    <p class="lede" style="margin-top:20px">From the schedule on Monday to the pay statement on payday. Sample people, sample hours.</p>
+    <p class="note"><b>03 · Pinned stage, normal scroll</b>The screen holds still on the right while the four moments of the week pass on the left. The page never takes over the scroll wheel (NN/g found scrolljacking disorients people). Under 900px the stage turns off and each moment shows its own screen inline.</p>
+    <div class="week-grid">
+      <div class="steps">
+        <article class="step on" data-step="0">
+          <p class="day">Monday · Plan</p>
+          <h3 class="h-m">Build the week and publish it once.</h3>
+          <p class="lede">Each person sees their own shifts on their phone and can ask for a swap or time off.</p>
+          <div class="step-panel"></div>
+        </article>
+        <article class="step" data-step="1">
+          <p class="day">Saturday, 7:58 AM · Clock in</p>
+          <h3 class="h-m">Alexandra clocks in on the tablet with her PIN.</h3>
+          <p class="lede">The Clocker knows the location and the time. Her hours start adding up on her timecard.</p>
+          <div class="step-panel"></div>
+        </article>
+        <article class="step" data-step="2">
+          <p class="day">Monday · Approve</p>
+          <h3 class="h-m">Approve the hours before payroll.</h3>
+          <p class="lede">NEVORA flags what needs a look, like a late start, and you approve the week.</p>
+          <div class="step-panel"></div>
+        </article>
+        <article class="step" data-step="3">
+          <p class="day">Friday · Payday</p>
+          <h3 class="h-m">Each person gets a pay statement.</h3>
+          <p class="lede">NEVORA calculates pay from the approved hours. You still pay your team and file payroll taxes.</p>
+          <div class="step-panel"></div>
+        </article>
+      </div>
+      <div>
+        <div class="sticky" aria-hidden="true">
+          <div class="rail"><span class="done">Plan</span><span>Clock in</span><span>Approve</span><span>Pay</span></div>
+          <div class="panels">
+            <div class="panel on" data-panel="0">
+              <div class="fit" data-w="760"><div class="canvas nv nv-card" style="width:760px">
+                <div class="hd"><span>Week of Nov 2 – 8 · Main Street</span><span class="chip teal">Published</span></div>
+                <div class="sched"><div class="sg num">
+                  <span></span><span class="dh">Mon<b>2</b></span><span class="dh">Tue<b>3</b></span><span class="dh">Wed<b>4</b></span><span class="dh">Thu<b>5</b></span><span class="dh">Fri<b>6</b></span><span class="dh today">Sat<b>7</b></span><span class="dh">Sun<b>8</b></span><span class="dh">Week</span>
+                  <span class="nm"><span class="av">AC</span>Ana Colón</span><span class="sh">7<small>3</small></span><span class="sh">7<small>3</small></span><span></span><span class="sh">7<small>3</small></span><span class="sh">7<small>3</small></span><span class="sh t">7<small>3</small></span><span></span><span class="tot">40 h</span>
+                  <span class="nm"><span class="av">DK</span>Dana Kim</span><span class="sh">7:30<small>3:30</small></span><span></span><span class="sh">7:30<small>3:30</small></span><span class="sh">7:30<small>3:30</small></span><span></span><span class="sh t">7:30<small>3:30</small></span><span></span><span class="tot">32 h</span>
+                  <span class="nm"><span class="av">AR</span>Alexandra R.</span><span></span><span class="sh">8<small>4</small></span><span class="sh">8<small>4</small></span><span></span><span class="sh">8<small>4</small></span><span class="sh t">8<small>4</small></span><span></span><span class="tot">32 h</span>
+                  <span class="nm"><span class="av">JT</span>Jordan Torres</span><span class="sh">7:30<small>3:30</small></span><span class="sh">7:30<small>3:30</small></span><span></span><span></span><span class="sh">7:30<small>3:30</small></span><span class="sh t">7:30<small>3:30</small></span><span></span><span class="tot">32 h</span>
+                  <span class="nm"><span class="av">LM</span>Luis Medina</span><span></span><span></span><span class="sh">12<small>8</small></span><span class="sh">12<small>8</small></span><span></span><span class="sh t">12<small>8</small></span><span class="sh">12<small>8</small></span><span class="tot">32 h</span>
+                  <span class="nm" style="color:#6A7176"><span class="av" style="background:#fff;box-shadow:inset 0 0 0 1.5px #B9C3C1">+</span>Open shift</span><span></span><span></span><span></span><span></span><span></span><span></span><span class="sh open">12<small>8</small></span><span class="tot"></span>
+                </div></div>
+              </div></div>
+            </div>
+            <div class="panel" data-panel="1">
+              <div class="fit" data-w="1024"><div class="canvas nv ck">
+                <div class="ck-band">
+                  <img src="{{NV_WHITE}}" alt="">
+                  <span class="lbl">TIME CLOCK</span>
+                  <span class="loc">Main Street</span>
+                  <div class="ck-time num">7:58<small>AM</small></div>
+                  <div class="ck-date">Saturday, November 7</div>
+                  <div class="ck-st"><i></i>Tablet registered · Main Street iPad</div>
+                </div>
+                <div class="ck-r"><div class="ck-card">
+                  <div class="ck-ok">✓</div>
+                  <h4>Clock-in recorded</h4>
+                  <p>Have a good shift, Alexandra.</p>
+                  <div class="ck-who"><div class="av on">AR</div><div><div style="font-weight:700">Alexandra Rivera</div><div style="font-size:13.5px;color:#6A7176">Barista · 8:00 AM to 4:00 PM</div></div><span class="chip green" style="margin-left:auto">In 7:58</span></div>
+                  <div class="ck-dots"><i></i><i></i><i></i><i></i></div>
+                  <div class="ck-keys"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span></div>
+                </div></div>
+              </div></div>
+            </div>
+            <div class="panel" data-panel="2">
+              <div class="fit" data-w="700"><div class="canvas nv nv-card tc" style="width:700px">
+                <div class="hd"><span>Timecards · Nov 2 – 8<span class="pill">1 to check</span></span><span class="act p" style="height:36px">Approve week</span></div>
+                <div class="row"><div class="av">AC</div><div class="tx"><div class="t">Ana Colón</div><div class="s">5 shifts</div></div><div><div class="hrs num">40:00</div><div class="sub">on schedule</div></div></div>
+                <div class="row"><div class="av">DK</div><div class="tx"><div class="t">Dana Kim</div><div class="s">4 shifts</div></div><div><div class="hrs num">32:04</div><div class="sub">on schedule</div></div></div>
+                <div class="row"><div class="av">AR</div><div class="tx"><div class="t">Alexandra Rivera</div><div class="s">4 shifts</div></div><div><div class="hrs num">32:02</div><div class="sub">on schedule</div></div></div>
+                <div class="row" style="background:#FFFBF4"><div class="av late">JT</div><div class="tx"><div class="t">Jordan Torres <span class="chip amber">Late Sat · in 7:52</span></div><div class="s">4 shifts · started 22 minutes late</div></div><div><div class="hrs num">31:38</div><div class="sub">check</div></div></div>
+                <div class="row"><div class="av">LM</div><div class="tx"><div class="t">Luis Medina</div><div class="s">4 shifts</div></div><div><div class="hrs num">32:00</div><div class="sub">on schedule</div></div></div>
+              </div></div>
+            </div>
+            <div class="panel" data-panel="3">
+              <div class="fit" data-w="760"><div class="canvas nv" style="width:760px;display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:start">
+                <div class="inkt-tile">
+                  <div class="k">Payday <span class="due" style="color:#BFF3E9;background:rgba(111,224,207,.16)">Approved</span></div>
+                  <div class="big">Friday, Nov 13</div>
+                  <div class="m">Pay period Nov 2 – 8 · 5 people</div>
+                  <div class="segs"><i class="on"></i><i class="on"></i><i class="on"></i></div>
+                  <div style="display:flex;justify-content:space-between;font-size:13.5px;color:rgba(255,255,255,.75)"><span>Hours approved</span><b class="num" style="color:#fff">167:44</b></div>
+                  <div class="wb">Export for payroll</div>
+                </div>
+                <div class="nv-card" style="padding:20px">
+                  <div style="font-size:12.5px;font-weight:700;color:#0B6E69;letter-spacing:.04em;text-transform:uppercase">Pay statement</div>
+                  <div style="font-size:20px;font-weight:700;margin-top:6px">Alexandra Rivera</div>
+                  <div style="font-size:13.5px;color:#6A7176">Barista · Nov 2 – 8</div>
+                  <div class="num" style="margin-top:16px;display:grid;gap:10px;font-size:14px">
+                    <div style="display:flex;justify-content:space-between;border-top:1px solid #ECEEEF;padding-top:10px"><span>Hours</span><b>32:02</b></div>
+                    <div style="display:flex;justify-content:space-between"><span>Sample rate, per hour</span><b>$15.00</b></div>
+                    <div style="display:flex;justify-content:space-between;border-top:1px solid #ECEEEF;padding-top:12px;font-size:16px"><span style="font-weight:600">Pay, calculated</span><b style="font-size:22px;letter-spacing:-.02em">$480.50</b></div>
+                  </div>
+                </div>
+              </div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 4. STATEMENT -->
+<section class="ink chap" aria-label="How NEVORA calculates pay">
+  <div class="wrap">
+    <p class="say" data-scrub="say">Every amount on a pay statement goes back to an hour someone worked and you approved.</p>
+    <p class="fine" style="margin-top:28px">NEVORA calculates pay. It doesn't pay employees or file payroll taxes.</p>
+    <p class="note"><b>04 · Words light up as you read</b>One idea per screen, lit word by word with scroll (Apple's AirPods reveal). The full sentence is readable at rest, in a screenshot and with reduced motion.</p>
+  </div>
+</section>
+
+<!-- 5. RONDO -->
+<section class="inkt chap" id="rondo" aria-labelledby="ro">
+  <div class="wrap rondo-grid">
+    <div>
+      <p class="eyebrow"><span>Rondo</span><span class="status st-in">Included in NEVORA</span></p>
+      <h2 id="ro" class="h-l">Ask what needs you today.</h2>
+      <p class="lede" style="margin-top:22px">Rondo answers from your workplace's records and shows where the answer came from. When a change helps, it prepares it. Nothing changes until you approve.</p>
+      <p class="fine" style="margin-top:24px">Rondo is for the business Owner. NEVORA checks every prepared change again before it applies.</p>
+      <p class="note"><b>05 · The AI is shown doing one real job</b>The research found the trusted pattern across Square, Gusto and Shopify Sidekick: answers from your own data, a visible source, the Owner approves. No "saves 10 hours" claims (the FTC acted on unsupported AI claims in 2025). Try the Approve button.</p>
+    </div>
+    <div class="chat" data-scrub="chat">
+      <div class="msg q">What needs my attention today?</div>
+      <div class="msg a">
+        <div class="who"><span class="rmark">R</span>Rondo</div>
+        <p>Jordan Torres was due at 7:30 and hasn't clocked in. Alexandra Rivera starts at 8:00. Sunday has one open register shift, 12:00 to 8:00.</p>
+        <div class="src">From today's punches and the published schedule</div>
+      </div>
+      <div class="msg q">Who can cover Sunday?</div>
+      <div class="msg a">
+        <div class="who"><span class="rmark">R</span>Prepared for your approval</div>
+        <div class="prep">
+          <h4>Add Dana Kim on Sunday, November 8</h4>
+          <p style="font-size:14px;color:#3F464B">Register, 12:00 to 8:00, with Luis Medina. Dana is off Sunday and at 32 hours, so this brings her to 40.</p>
+          <div class="acts"><button class="approve" id="approve" type="button">Approve</button><small id="approve-msg" role="status">Nothing changes until you approve.</small></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 6. BILINGUAL -->
+<section class="paper chap" aria-labelledby="bi">
+  <div class="wrap bi-grid">
+    <div>
+      <p class="eyebrow">English and Spanish</p>
+      <h2 id="bi" class="h-l" data-en="Each person picks their language." data-es="Cada persona elige su idioma.">Each person picks their language.</h2>
+      <p class="lede" style="margin-top:22px">Alexandra reads her shifts in Spanish. Carmen runs the week in English. Same workplace, same records.</p>
+      <div style="margin-top:28px"><div class="seg" role="group" aria-label="Phone language"><button type="button" aria-pressed="true" data-lang="en">English</button><button type="button" aria-pressed="false" data-lang="es">Español</button></div></div>
+      <p class="note"><b>06 · A difference you can switch</b>Competitors translate the staff app; few speak Spanish to the Owner. A real toggle makes the claim checkable. Spanish terms come from the NEVORA glossary (Próximo turno, Marcar entrada).</p>
+    </div>
+    <div class="phone-wrap">
+      <div class="phone"><div class="fit" data-w="390"><div class="canvas nv ph" id="ph">
+        <div class="ph-band">
+          <div class="ph-sb"><span>7:41</span><span>●●●</span></div>
+          <div class="ph-tb"><img src="{{NV_WHITE}}" alt=""><span class="me">AR</span></div>
+          <p class="ph-hi" data-en="Good morning, Alexandra" data-es="Buenos días, Alexandra">Good morning, Alexandra</p>
+          <div class="ph-h" data-en="Saturday, November 7" data-es="Sábado, 7 de noviembre">Saturday, November 7</div>
+        </div>
+        <div class="ph-body">
+          <div class="nv-card ph-next">
+            <div class="k" data-en="Next shift" data-es="Próximo turno">Next shift</div>
+            <div class="tm num" data-en="8:00 AM – 4:00 PM" data-es="8:00 a. m. – 4:00 p. m.">8:00 AM – 4:00 PM</div>
+            <div class="s" data-en="Barista · Main Street" data-es="Barista · Main Street">Barista · Main Street</div>
+            <div class="cta" data-en="Clock in on the Main Street tablet" data-es="Marca entrada en la tableta de Main Street">Clock in on the Main Street tablet</div>
+          </div>
+          <div class="nv-card">
+            <div class="hd" style="padding-bottom:2px"><span data-en="This week" data-es="Esta semana">This week</span><span class="num" style="color:#6A7176;font-weight:600;font-size:13px" data-en="24:00 so far" data-es="24:00 hasta hoy">24:00 so far</span></div>
+            <div class="row"><div class="tx"><div class="t" data-en="Tue 3" data-es="mar 3">Tue 3</div></div><span class="num" style="font-size:14px">8:00 – 4:00</span></div>
+            <div class="row"><div class="tx"><div class="t" data-en="Wed 4" data-es="mié 4">Wed 4</div></div><span class="num" style="font-size:14px">8:00 – 4:00</span></div>
+            <div class="row"><div class="tx"><div class="t" data-en="Fri 6" data-es="vie 6">Fri 6</div></div><span class="num" style="font-size:14px">8:00 – 4:00</span></div>
+            <div class="row"><div class="tx"><div class="t" style="color:#0B6E69" data-en="Sat 7, today" data-es="sáb 7, hoy">Sat 7, today</div></div><span class="chip teal" data-en="Starts 8:00" data-es="Empieza 8:00">Starts 8:00</span></div>
+          </div>
+        </div>
+        <div class="ph-tabs"><span class="on" data-en="Home" data-es="Inicio">Home</span><span data-en="Schedule" data-es="Horario">Schedule</span><span data-en="Time" data-es="Tiempo">Time</span><span data-en="Requests" data-es="Solicitudes">Requests</span></div>
+      </div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 7. RELAY -->
+<section class="white chap" id="relay" aria-labelledby="rl">
+  <div class="wrap">
+    <div class="relay-head">
+      <div>
+        <p class="eyebrow"><span>Relay</span><span class="status st-design">In design</span></p>
+        <h2 id="rl" class="h-l" style="max-width:15ch">From the counter to the kitchen screen.</h2>
+        <p class="lede" style="margin-top:22px">Relay will bring orders, the kitchen screen and inventory into one system, next to NEVORA. It's in design and has no release date yet.</p>
+      </div>
+      <a class="btn fill" href="#plans">Join the waitlist</a>
+    </div>
+  </div>
+  <div class="rail-wrap" aria-label="Relay concept: a kitchen screen with three columns of order tickets">
+    <div class="wrap" style="max-width:none;padding-left:max(20px,calc((100vw - var(--wrap))/2 + 20px))">
+      <div class="kds" data-scrub="kds">
+        <div class="col"><h5>New <span>2</span></h5>
+          <div class="tk"><div class="tn">#41 <em>Counter · 8:12</em></div><ul><li><b>2</b>Cortado</li><li><b>1</b>Quesito</li></ul><div class="tm ok">Just in</div></div>
+          <div class="tk"><div class="tn">#42 <em>Pickup · 8:13</em></div><ul><li><b>1</b>Café con leche</li><li><b>1</b>Sándwich de mallorca</li></ul><div class="tm ok">Just in</div></div>
+        </div>
+        <div class="col"><h5>Making <span>2</span></h5>
+          <div class="tk"><div class="tn">#38 <em>Table 4 · 8:05</em></div><ul><li><b>2</b>Avena caliente</li><li><b>2</b>Jugo de china</li></ul><div class="tm late">7 min</div></div>
+          <div class="tk"><div class="tn">#39 <em>Counter · 8:08</em></div><ul><li><b>1</b>Tostada</li><li><b>1</b>Americano</li></ul><div class="tm ok">4 min</div></div>
+        </div>
+        <div class="col"><h5>Ready <span>1</span></h5>
+          <div class="tk"><div class="tn">#37 <em>Pickup · 8:01</em></div><ul><li><b>3</b>Pan sobao</li><li><b>1</b>Cortado</li></ul><div class="tm ok">Ready · Maria called</div></div>
+        </div>
+        <div class="col"><h5>Running low <span>2</span></h5>
+          <div class="tk"><div class="tn">Whole milk <em>Walk-in</em></div><ul><li>4 gallons left</li><li>About 2 hours at this pace</li></ul><div class="tm late">Reorder</div></div>
+          <div class="tk"><div class="tn">Quesitos <em>Case</em></div><ul><li>6 left</li></ul><div class="tm late">Bake more</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="wrap concept">
+    <p class="fine">Concept screen. Relay is in design; screens, features and timing will change.</p>
+    <p class="note"><b>07 · The unreleased product, shown honestly</b>The ticket rail slides sideways as you scroll down, so the kitchen "moves" without autoplay. The status says In design, the button says Join the waitlist, and there's no date or price. Menu items are Puerto Rican café staples, a detail only this business would have.</p>
+  </div>
+</section>
+
+<!-- 8. PLANS -->
+<section class="ink chap" id="plans" aria-labelledby="pl">
+  <div class="wrap plan-grid">
+    <div>
+      <p class="eyebrow" id="pl">NEVORA plans</p>
+      <div class="price num">$19<small>a month</small></div>
+      <p class="lede" style="margin-top:18px">For up to 15 employees. $29 a month for 16 to 30. One price per business, with Rondo included.</p>
+    </div>
+    <div>
+      <div class="plan-list">
+        <div><span>Free trial</span><span>30 days, no card</span></div>
+        <div><span>Setup</span><span>Jose from Velani sets up your workplace with you</span></div>
+        <div><span>Languages</span><span>English and Spanish</span></div>
+        <div><span>On day 30</span><span>You pick a plan. Nothing is charged until you do.</span></div>
+      </div>
+      <div class="hero-ctas" style="margin-top:28px"><a class="btn fill" href="#top">Request a free trial</a><a class="btn line" href="#top">Compare plans</a></div>
+      <p class="fine" style="margin-top:18px">Prices may change before online billing opens.</p>
+    </div>
+  </div>
+  <div class="wrap"><p class="note"><b>08 · Price as the headline</b>Category leaders publish prices, and a no-card trial next to "ask for a quote" reads as inconsistent. The number is set at display size, Apple-style, with the conditions in a plain list.</p></div>
+</section>
+
+</main>
+
+<footer class="ink foot" id="company">
+  <div class="wrap">
+    {{VELANI_BIG}}
+    <div class="foot-cols">
+      <div><h6>Products</h6><a href="#nevora">NEVORA Workforce</a><a href="#rondo">Rondo</a><a href="#relay">Relay</a><a href="#plans">Plans</a></div>
+      <div><h6>Company</h6><a href="#company">About</a><a href="#company">Contact</a><a href="#company">Support</a><a href="#company">Sign in</a></div>
+      <div><h6>Legal</h6><a href="#company">Privacy</a><a href="#company">Terms</a><a href="#company">Accessibility</a><a href="#company">Security</a></div>
+      <div><h6>Support</h6><span style="display:block;color:var(--on-ink-2);padding:6px 0;user-select:all">support@thevelani.com</span><span style="display:block;color:var(--on-ink-3);padding:6px 0">Monday to Friday, 8 am to 9 pm ET</span></div>
+    </div>
+    <div class="foot-base"><span>© 2026 VELANI LLC · San Juan, Puerto Rico</span><span>EN · ES</span></div>
+    <p class="note"><b>09 · Footer without services</b>Websites, booking apps and online stores are gone. Existing clients reach Velani through Contact and Support. Screens on this page use fictional people and places.</p>
+  </div>
+</footer>
+
+<button class="tweaks-btn" type="button" id="tw-btn" aria-expanded="false" aria-controls="tw">Tweaks</button>
+<div class="tweaks" id="tw" hidden>
+  <h6>Tweaks</h6>
+  <label for="tw-notes">Show design notes <input type="checkbox" id="tw-notes"></label>
+  <label for="tw-rm">Reduced motion <input type="checkbox" id="tw-rm"></label>
+</div>
+
+<script>
+(function(){
+  var root=document.documentElement;
+  var mq=window.matchMedia('(prefers-reduced-motion: reduce)');
+  if(mq.matches) root.classList.add('rm');
+
+  /* Fit fixed-size product canvases to their column with CSS zoom. */
+  function fitAll(){
+    document.querySelectorAll('.fit').forEach(function(f){
+      var w=+f.getAttribute('data-w')||1180;
+      var avail=f.parentElement.clientWidth||f.clientWidth;
+      var s=Math.min(1,avail/w);
+      if(f.closest('.stage-hero')&&avail<700){s=Math.max(s,avail/(w-232));}
+      var p=f.closest('.panel');
+      if(p){var ph=p.parentElement.clientHeight;var c=f.querySelector('.canvas');if(c&&ph){var nat=c.offsetHeight||1;s=Math.min(s,ph/nat);}}
+      f.style.setProperty('--fit',s.toFixed(4));
+    });
+  }
+
+  /* Copy each stage panel into its step for narrow screens and no-pin layouts. */
+  document.querySelectorAll('.step').forEach(function(st){
+    var i=st.getAttribute('data-step');
+    var src=document.querySelector('.panel[data-panel="'+i+'"] .fit');
+    var slot=st.querySelector('.step-panel');
+    if(src&&slot){var c=src.cloneNode(true);c.querySelectorAll('[id]').forEach(function(n){n.removeAttribute('id')});slot.appendChild(c);}
+  });
+
+  /* Split the statement into words. */
+  var say=document.querySelector('[data-scrub="say"]');
+  if(say){var words=say.textContent.trim().split(/\s+/);say.setAttribute('aria-label',say.textContent.trim());say.innerHTML=words.map(function(w){return '<span class="w" aria-hidden="true">'+w+'</span>'}).join(' ');}
+  var sayW=say?say.querySelectorAll('.w'):[];
+
+  var hero=document.querySelector('[data-scrub="hero"]');
+  var kds=document.querySelector('[data-scrub="kds"]');
+  var chat=document.querySelector('[data-scrub="chat"]');
+  var msgs=chat?chat.querySelectorAll('.msg'):[];
+  var steps=[].slice.call(document.querySelectorAll('.step'));
+  var panels=[].slice.call(document.querySelectorAll('.panel'));
+  var rail=[].slice.call(document.querySelectorAll('.rail span'));
+
+  function prog(el,start,end){ /* 0 when el top is at start*vh, 1 at end*vh */
+    var r=el.getBoundingClientRect(),vh=innerHeight;
+    var a=vh*start,b=vh*end;
+    return Math.max(0,Math.min(1,(a-r.top)/(a-b)));
+  }
+  var cur=-1;
+  function tick(){
+    var rm=root.classList.contains('rm');
+    if(hero&&!rm) hero.style.setProperty('--p',prog(hero,1,.18).toFixed(3));
+    if(kds&&!rm&&innerWidth>900) kds.style.setProperty('--p',prog(kds.parentElement,1,0).toFixed(3));
+    if(sayW.length){
+      var p=rm?1:prog(say,.85,.35);
+      var lit=p*sayW.length;
+      sayW.forEach(function(w,i){w.style.setProperty('--o',Math.max(.18,Math.min(1,lit-i+.5)).toFixed(2))});
+    }
+    if(msgs.length&&!rm){
+      var cp=prog(chat,.95,.25);
+      msgs.forEach(function(m,i){m.classList.toggle('on',cp>i/msgs.length*.9)});
+    }
+    var mid=innerHeight*.5,best=0;
+    steps.forEach(function(s,i){var r=s.getBoundingClientRect();if(r.top+r.height*.35<mid)best=i;});
+    if(best!==cur){
+      cur=best;
+      steps.forEach(function(s,i){s.classList.toggle('on',i===best)});
+      panels.forEach(function(p,i){p.classList.toggle('on',i===best)});
+      rail.forEach(function(r,i){r.classList.toggle('done',i<=best)});
+    }
+  }
+  var raf=0;function onScroll(){if(!raf)raf=requestAnimationFrame(function(){raf=0;tick();});}
+  addEventListener('scroll',onScroll,{passive:true});
+  addEventListener('resize',function(){fitAll();tick();});
+  fitAll();tick();
+  if(document.fonts&&document.fonts.ready) document.fonts.ready.then(function(){fitAll();tick();});
+
+  /* Rondo approve */
+  var ap=document.getElementById('approve'),am=document.getElementById('approve-msg');
+  if(ap) ap.addEventListener('click',function(){ap.disabled=true;ap.textContent='Approved';am.textContent='Dana is on Sunday, 12:00 to 8:00. Sample only.';});
+
+  /* Language toggle */
+  document.querySelectorAll('.seg button').forEach(function(b){
+    b.addEventListener('click',function(){
+      var l=b.getAttribute('data-lang');
+      document.querySelectorAll('.seg button').forEach(function(x){x.setAttribute('aria-pressed',String(x===b))});
+      document.querySelectorAll('#bi,#ph [data-en]').forEach(function(n){n.textContent=n.getAttribute('data-'+l)});
+      var ph=document.getElementById('ph'); if(ph) ph.setAttribute('lang',l);
+    });
+  });
+
+  /* Tweaks */
+  var tb=document.getElementById('tw-btn'),tw=document.getElementById('tw');
+  tb.addEventListener('click',function(){tw.hidden=!tw.hidden;tb.setAttribute('aria-expanded',String(!tw.hidden));});
+  var tn=document.getElementById('tw-notes'),tr=document.getElementById('tw-rm');
+  tr.checked=root.classList.contains('rm');
+  tn.addEventListener('change',function(){root.classList.toggle('notes',tn.checked);fitAll();});
+  tr.addEventListener('change',function(){root.classList.toggle('rm',tr.checked);
+    if(tr.checked){if(hero)hero.style.removeProperty('--p');if(kds)kds.style.removeProperty('--p');msgs.forEach(function(m){m.classList.add('on')});}
+    tick();});
+})();
+</script>

@@ -1,0 +1,12 @@
+PASS publish: chip says Published  [Published]
+PASS publish: status announced  [5 people notified. Each sees their own shifts. Reset the demo]
+PASS PIN: Continue enabled after 4 digits
+PASS PIN: clock-in recorded
+PASS Rondo: question selected
+PASS Rondo: answer shown  [RRondoDana Kim is off on Sunday and at 32 hours this week, so this shift brings her to 40.]
+PASS Rondo: Spanish switch pressed
+PASS Timecards: week approved  [Approved. Ready for payroll.]
+PASS Highlights: next moves the carousel
+PASS Section bar marks Payroll
+PASS Section bar is dark over the night chapter
+PASS no script errors or CSP reports

@@ -1,0 +1,12 @@
+{
+  "compared": "every route rendered as a preview page and as a Shopify section body, plus the Shopify chrome snippets; before = commit d58806f, after = working tree once all Night code was removed, before two deliberate changes made afterwards (the NEVORA wordmark images renamed from night-nevora-wm-* to nevora-wm-*, and two Spanish share-image descriptions that still mentioned custom work)",
+  "keysBefore": 96,
+  "keysAfter": 92,
+  "removed": [
+    "snippet velani-header-en",
+    "snippet velani-footer-en",
+    "snippet velani-header-es",
+    "snippet velani-footer-es"
+  ],
+  "changed": []
+}
