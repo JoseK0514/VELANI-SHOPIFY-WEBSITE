@@ -4,7 +4,7 @@ import { readFileSync } from 'node:fs';
 import path from 'node:path';
 import { company } from './content.mjs';
 import { ES_PATHS } from './content.es.mjs';
-import { localize, langSwitch, WORDMARK, SHOPIFY_LANG_HREFS } from './shared.mjs';
+import { localize, langSwitch, WORDMARK, MARK, SHOPIFY_LANG_HREFS } from './shared.mjs';
 
 const dir = path.join(import.meta.dirname, 'day');
 const root = path.join(import.meta.dirname, '..');
@@ -66,12 +66,12 @@ export function dayHeader(current, target, { lang = 'en', hrefs = SHOPIFY_LANG_H
   const nav = t.nav.map(([label, href, keys]) => `<a href="${href}"${enOnly(lang, href)}${mark(keys)}>${label}</a>`).join('');
   const trialHref = '/pages/contact?interest=nevora-demo', signin = '/pages/sign-in';
   const html = `<a class="skip" href="#main">${t.skip}</a>`
-    + `<header class="gn" id="gn"><div class="wrap"><a class="logo" href="/" aria-label="${t.home}">${WORDMARK}</a>`
+    + `<header class="gn" id="gn"><div class="wrap"><a class="logo" href="/" aria-label="${t.home}">${MARK}${WORDMARK}</a>`
     + `<nav class="gnav" aria-label="${t.main}">${nav}</nav>${langSwitch(lang, hrefs)}`
     + `<a class="signin" href="${signin}"${enOnly(lang, signin)}${mark(['signin'])}>${t.signIn}</a>`
     + `<a class="cta" href="${trialHref}">${t.trialShort}</a>`
     + `<button class="mb" type="button" aria-expanded="false" aria-controls="mm" aria-label="${t.menu}">${dayIcon('list')}</button></div></header>`
-    + `<div class="mm" id="mm" role="dialog" aria-modal="true" aria-label="${t.menuDialog}" hidden><div class="mm-top"><a class="logo" href="/" aria-label="${t.home}">${WORDMARK}</a><button class="mx" type="button" aria-label="${t.closeMenu}">${dayIcon('x')}</button></div>`
+    + `<div class="mm" id="mm" role="dialog" aria-modal="true" aria-label="${t.menuDialog}" hidden><div class="mm-top"><a class="logo" href="/" aria-label="${t.home}">${MARK}${WORDMARK}</a><button class="mx" type="button" aria-label="${t.closeMenu}">${dayIcon('x')}</button></div>`
     + `<nav class="mm-nav" aria-label="${t.main}">${nav}</nav>`
     + `<div class="mm-2"><a class="pillbtn" href="${trialHref}">${t.trial}</a><a class="mm-s" href="${signin}"${enOnly(lang, signin)}>${t.signIn}</a>${langSwitch(lang, hrefs)}</div></div>`;
   return localize(html, lang);

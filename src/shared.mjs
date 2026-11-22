@@ -42,6 +42,9 @@ export function langSwitch(lang, hrefs, cls = '') {
 // Official VELANI wordmark, traced 1:1 from docs/reference/velani-logo-official.pdf; colour comes from CSS.
 export const WORDMARK = readFileSync(new URL('./brand/velani-wordmark.svg', import.meta.url), 'utf8').trim()
   .replace(/^<svg[^>]*viewBox="([^"]*)"[^>]*>/, '<svg class="wm-velani" viewBox="$1" fill="currentColor" aria-hidden="true" focusable="false">');
+// The Velani symbol ("Fan"), written by scripts/brand-icons.mjs; decorative next to the wordmark, which names the link.
+export const MARK = readFileSync(new URL('./brand/velani-mark.svg', import.meta.url), 'utf8').trim()
+  .replace(/^<svg[^>]*viewBox="([^"]*)"[^>]*>/, '<svg class="mk-velani" viewBox="$1" fill="currentColor" aria-hidden="true" focusable="false">');
 /** The assistant launcher and panel; the API address is filled in by the layout (theme setting or preview environment). */
 export function assistant(target, apiAttribute) {
   const html = read('assist.html').replace(/\{\{icon:([\w-]+)\}\}/g, (_, n) => icon(n)).replace(/\{\{rondo(?::([\w -]+))?\}\}/g, (_, cls) => RONDO_MARK(cls));

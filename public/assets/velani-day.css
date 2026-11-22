@@ -43,7 +43,7 @@ a,button,summary,label{-webkit-tap-highlight-color:transparent}
 .gn{position:sticky;top:0;z-index:50;height:48px;background:rgba(251,251,253,.72);-webkit-backdrop-filter:saturate(1.8) blur(20px);backdrop-filter:saturate(1.8) blur(20px);color:var(--ink)}
 .gn .wrap{height:100%;display:flex;align-items:center;gap:28px}
 .gn .logo,.mm .logo{display:flex;align-items:center;min-height:44px}
-.gn .wm-velani,.mm .wm-velani{height:12px;width:auto}
+.gn .wm-velani,.mm .wm-velani{height:12px;width:auto}.gn .mk-velani,.mm .mk-velani{width:18px;height:18px;flex:none;margin-right:10px}
 .gn .gnav{display:flex;gap:30px;margin-left:auto;font-size:12.5px;letter-spacing:-.01em}
 .gn .gnav a{padding:14px 0;opacity:.82;transition:opacity .15s}
 .gn .gnav a[aria-current="page"]{opacity:1;font-weight:600}

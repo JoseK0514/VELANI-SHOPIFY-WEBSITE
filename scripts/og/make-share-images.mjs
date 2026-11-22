@@ -8,7 +8,7 @@ import path from 'node:path';
 import { pathToFileURL } from 'node:url';
 import { createRequire } from 'node:module';
 import { dayScreen } from '../../src/day.mjs';
-import { WORDMARK } from '../../src/shared.mjs';
+import { WORDMARK, MARK } from '../../src/shared.mjs';
 
 const root = path.resolve(import.meta.dirname, '../..');
 const require = createRequire(import.meta.url);
@@ -64,7 +64,8 @@ html,body{margin:0;width:1200px;height:630px;overflow:hidden;background:#FBFBFD}
 .og-at{position:absolute}
 .og-dev{filter:drop-shadow(0 40px 60px rgba(16,24,40,.22))}
 .og-copy{position:absolute;left:72px;top:76px;width:560px;z-index:2}
-.og-mark{display:block;height:26px;color:var(--ink)}
+.og-mark{display:flex;align-items:center;gap:14px;height:26px;color:var(--ink)}
+.og-mark .mk-velani{width:36px;height:36px;flex:none}
 .og-mark .wm-velani{height:26px;width:auto}
 .og-nvwm{height:24px;width:auto;display:block}
 .og-eye{margin:44px 0 0;font:600 17px/1 var(--text);color:var(--ink-2);letter-spacing:-.01em}
@@ -76,7 +77,7 @@ html,body{margin:0;width:1200px;height:630px;overflow:hidden;background:#FBFBFD}
 
 function page({ sky, mark, art }, lang, t) {
   const [a, b, c, gl, gy] = SKY[sky];
-  const brand = mark === 'nevora' ? NV_INK : `<span class="og-mark">${WORDMARK}</span>`;
+  const brand = mark === 'nevora' ? NV_INK : `<span class="og-mark">${MARK}${WORDMARK}</span>`;
   const screens = art(lang).replace(/(src|href)="\/assets\//g, '$1="');
   // A soft wash behind the words, in the sky's own colours, so the copy stays legible over a device
   const fade = `<div class="og-fade" style="background:linear-gradient(90deg,${rgb(b)} 0%,${rgb(b).replace('rgb(', 'rgba(').replace(')', ',.94)')} 52%,${rgb(b).replace('rgb(', 'rgba(').replace(')', ',0)')} 100%)"></div>`;

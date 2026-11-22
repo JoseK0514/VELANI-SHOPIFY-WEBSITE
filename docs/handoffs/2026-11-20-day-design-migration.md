@@ -42,6 +42,15 @@ Every route is now on Day.
 - For Jose: the Rondo page keeps the approved wording "included in every NEVORA plan, and in the free 30-day trial". The website privacy notice says the Owner assistant in NEVORA depends on workplace availability and authorization; confirm the page wording matches what Owners get.
 - Assigned UI findings still open (from `services/velani-ai/docs/CLAUDE-UI-START-HERE.md`): the Retry-After cap in `public/assets/velani-hub.js` and final success focus in the Shopify preview.
 
+## Velani symbol "Fan" (November 22)
+
+- The user chose a new symbol, **Fan**: four quarter circles, three facing one way and one turned back. It replaces the serif-V tab
+  icon and now sits before the wordmark in the header and phone menu, and beside it on the Velani share images.
+- `scripts/brand-icons.mjs` is its single source: `src/brand/velani-mark.svg`, `favicon.svg` (white on dark tabs),
+  `favicon-32.png`, `apple-touch-icon.png` and the 1024 px app icon (`velani-app-icon.svg`/`.png`, not used by the site; for app
+  listings and profile pictures). Each size is drawn on its own pixel grid so the gaps stay sharp at 16 and 32 px.
+- Exploration, the icon test and verification: `evidence/brand-fan-20261122`.
+
 ## Unpublished Shopify theme (November 21)
 
 - Commit `1e22602` is on the store as theme **193710227770 "Velani Day design 1e22602 (preview)", role UNPUBLISHED** (staged upload, then `themeCreate`). The live theme (193311572282) is unchanged. Nothing was published and no store data changed.
