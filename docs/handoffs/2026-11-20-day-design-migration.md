@@ -50,6 +50,7 @@ Every route is now on Day.
   `favicon-32.png`, `apple-touch-icon.png` and the 1024 px app icon (`velani-app-icon.svg`/`.png`, not used by the site; for app
   listings and profile pictures). Each size is drawn on its own pixel grid so the gaps stay sharp at 16 and 32 px.
 - Exploration, the icon test and verification: `evidence/brand-fan-20261122`.
+- The unpublished theme 193710227770 now carries these changes (12 files, checksums match) and is named "Velani Day design c627743 (preview)".
 
 ## Unpublished Shopify theme (November 21)
 

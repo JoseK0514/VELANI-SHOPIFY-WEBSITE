@@ -44,3 +44,29 @@ except Fan.
   header snippets).
 
 Not verified: hosted Shopify rendering, Safari and Firefox, and real home-screen installs on iOS and Android.
+
+## Unpublished Shopify theme update
+
+- Target read first: theme `193710227770`, role `UNPUBLISHED`. The live theme `193311572282` (`MAIN`) was read before and
+  after and is unchanged (`updatedAt` 2026-11-11).
+- The 12 changed files were uploaded from the commit `c627743` build through private staged uploads (HTTP 201 each), then
+  written with `themeFilesUpsert` (URL bodies, two jobs, both done). No other file changed.
+- Read back from Shopify: all 12 `checksumMd5` values equal the local `md5sum`:
+
+  | File | MD5 |
+  | --- | --- |
+  | `assets/apple-touch-icon.png` | b00f6d4da832dffc28bbce8119a4050e |
+  | `assets/favicon-32.png` | c999ac2740f18f213ae6e09ea5cf89dc |
+  | `assets/favicon.svg` | c0a303b24c0ad9d5e890dc09deb47e4b |
+  | `assets/velani-day.css` | 40ea23899f555ebec9257f6a03cd78fc |
+  | `assets/velani-social.png` | 852c448576f6064c6cb8296f06ce2b1c |
+  | `assets/velani-social-es.png` | 0992d331958acae953b354a443541db0 |
+  | `assets/velani-social-rondo.png` | a1dd6c192c5e7409c39b59a14978c7b0 |
+  | `assets/velani-social-rondo-es.png` | 05bb1bce90e9b761a1fbd030dc588cdc |
+  | `assets/velani-social-relay.png` | 9e82c851cca6e1a6757b2a152fa5e209 |
+  | `assets/velani-social-relay-es.png` | 8307bea487bb8e7bfd8ecd10bd767473 |
+  | `snippets/velani-day-header-en.liquid` | e08e6e1b547c6745de9ccc7fe7ca11cb |
+  | `snippets/velani-day-header-es.liquid` | 71beea6bccbe039513d3fb2647fed13d |
+
+- The theme was renamed "Velani Day design c627743 (preview)". Nothing was published; no store data changed.
+- Hosted rendering is still not verified (no theme screenshot permission; previews need a Shopify sign-in).
